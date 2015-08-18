@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]&quot;Error en el bus&quot; al ejecutar el programa (Recomenat per a Xavi Drudis)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F%3D22Error_en_el_bus%3D22%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F_al_ejecutar_el_programa_%3D28Recomenat_per_a_Xavi_Dr%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fudis%3D29%3F%3D&In-Reply-To=%3C200812151225.32178.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000538.html">
+   <LINK REL="Next"  HREF="000541.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]&quot;Error en el bus&quot; al ejecutar el programa (Recomenat per a Xavi Drudis) </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F%3D22Error_en_el_bus%3D22%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F_al_ejecutar_el_programa_%3D28Recomenat_per_a_Xavi_Dr%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fudis%3D29%3F%3D&In-Reply-To=%3C200812151225.32178.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]&quot;Error en el bus&quot; al ejecutar el programa (Recomenat per a Xavi Drudis)">tborras en conetxia.com
+       </A><BR>
+    <I>Lun Dic 15 12:25:32 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000538.html">[BulmaGés]&quot;Error en el bus&quot; al ejecutar el programa
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000541.html">[BulmaGés][BulmaGÃ©s]&quot;Error en el bus&quot; al ejecutar el programa  (Recomenat per a Xavi Drudis)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#539">[ fecha ]</a>
+              <a href="thread.html#539">[ hilo ]</a>
+              <a href="subject.html#539">[ asunto ]</a>
+              <a href="author.html#539">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola !!!
+
+Pués tienes el mismo error que estuvimos detectando en la Termes Lan Party con 
+Albert Mas.
+
+Además estoy seguro de que usas SUSE pq a mi con Ubuntu no me pasa (y es un 
+misterio).
+
+El origen del error está en unos cambios recientes sobre la clase 
+postgresiface2.cpp que generan este error en SUSE y no en Ubuntu.
+
+Mientras no tenga el tema controlado puedes hacer un svn update -r 2830 
+y compilar (esta revision no genera el error de bus).
+
+PD: Xavi, no se perque falla i tampoc se perque falla només a una distro i a 
+una altre no. Creq que té a veurer amb el pas dels punters dels arrays de 
+parametres de postgresiface2::cargacursor cap a cursor2::cursor2 pero no ho
+he pogut verificar. (Tampoc l'hi he dedicat tot el temps que cal)
+També he mogut el try de lloc per englobar la interpretació de l'array pero la 
+excepció no salta (es veu que es un problema de baix nivell com acces a una 
+direcció de memoria que no existeix).
+
+PD2: Jo migraria els char *  a QString's ja que en tot el codi només feim 
+servir QString i així ho tenim una mica més uniforme.
+
+Salut
+
+El Monday 15 December 2008 11:14:10 Marcos Mezo escribió:
+&gt;<i> Buenas a todos,
+</I>&gt;<i>
+</I>&gt;<i> Tras haber podido compilar el programa bien con vuestra ayuda (quitando los
+</I>&gt;<i> restos viejos de una compilación con qmake) ahora tengo dificultades para
+</I>&gt;<i> ejecutar los programas.
+</I>&gt;<i>
+</I>&gt;<i> Antes de nada borré el directorio /etc/bulmages antes de volver a hacer un
+</I>&gt;<i> make install. También he borrado todas las bases de datos &quot;viejas&quot;. Todo
+</I>&gt;<i> ello para tenerlo todo &quot;limpito&quot; en esta ocasión.
+</I>&gt;<i>
+</I>&gt;<i> He ejecutado el bulmasetup.py y he creado una base de datos y una
+</I>&gt;<i> configuración nueva para bulmacont. En el archivo bulmages.conf de /etc he
+</I>&gt;<i> cambiado la variable del servidor para ser &quot;localhost&quot; en vez de &quot;--&quot;.
+</I>&gt;<i>
+</I>&gt;<i> He tenido que sortear algunos escollos pequeños, como meter manualmente en
+</I>&gt;<i> el LD_LIBRARY_PATH el directorio /usr/local/lib, al ser el directorio de
+</I>&gt;<i> instalación por defecto de las librerías y porque yo no lo tenía en el
+</I>&gt;<i> path.
+</I>&gt;<i>
+</I>&gt;<i> Luego me daba un error, supongo que más bien aviso porque seguía, de que no
+</I>&gt;<i> encontraba unos archivos .qm, que ya he descubierto que son los idiomas y
+</I>&gt;<i> es porque el make install no copia la carpeta traducciones
+</I>&gt;<i> a /usr/local/share/bulmages/traducciones/, pero sin embargo en el archivo
+</I>&gt;<i> bulmages.conf viene configurado allí. Copiando el directorio a mano se
+</I>&gt;<i> soluciona.
+</I>&gt;<i>
+</I>&gt;<i> Pero este ya no he sabido por dónde atacarlo...
+</I>&gt;<i>
+</I>&gt;<i> Cualquier programa que ejecuto siempre acaba en &quot;Error en el bus&quot;. He hecho
+</I>&gt;<i> un rgrep en todos los fuentes de bulmages con la cadena &quot;Error en el bus&quot; y
+</I>&gt;<i> no ha encontrado nada.
+</I>&gt;<i>
+</I>&gt;<i> El problema ocurre tanto si ejecuto los programas como usuario como si lo
+</I>&gt;<i> hago como root. En este último caso se me abre una ventana diciendo que la
+</I>&gt;<i> identificación es incorrecta, pero después de poner el usuario correcto y
+</I>&gt;<i> cerrarla sale exactamente lo mismo.
+</I>&gt;<i>
+</I>&gt;<i> Por ejemplo:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">mmezo en pcmarcos</A>:~$ bulmacont
+</I>&gt;<i> --&gt; Leyendo el archivo '/etc/bulmages/bulmages.conf'&lt;--
+</I>&gt;<i> Leyendo configuracion/etc/bulmages/bulmages.conf
+</I>&gt;<i>
+</I>&gt;<i> FIN Leyendo configuracion
+</I>&gt;<i> --&gt; El archivo '/etc/bulmages/bulmacont.conf' existe. Se va a leer.&lt;--
+</I>&gt;<i> Leyendo configuracion/etc/bulmages/bulmacont.conf
+</I>&gt;<i>
+</I>&gt;<i> FIN Leyendo configuracion
+</I>&gt;<i> --&gt; El archivo '/home/mmezo/.bulmages/bulmages.conf' no existe. &lt;--
+</I>&gt;<i> --&gt; El archivo '/home/mmezo/.bulmages/bulmacont.conf' no existe. &lt;--
+</I>&gt;<i> Error en el bus
+</I>&gt;<i>
+</I>&gt;<i> He buscado en la lista y tampo he encontrado ningún mensaje con referencia
+</I>&gt;<i> a algo parecido.
+</I>&gt;<i>
+</I>&gt;<i> Gracias otra vez por vuestra ayuda y disculpad los emails tan largos, pero
+</I>&gt;<i> trato de dar toda la información posible para confinar lo más posible el
+</I>&gt;<i> problema.
+</I>&gt;<i>
+</I>&gt;<i> Marcos Mezo
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000538.html">[BulmaGés]&quot;Error en el bus&quot; al ejecutar el programa
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000541.html">[BulmaGés][BulmaGÃ©s]&quot;Error en el bus&quot; al ejecutar el programa  (Recomenat per a Xavi Drudis)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#539">[ fecha ]</a>
+              <a href="thread.html#539">[ hilo ]</a>
+              <a href="subject.html#539">[ asunto ]</a>
+              <a href="author.html#539">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

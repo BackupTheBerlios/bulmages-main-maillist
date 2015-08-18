@@ -1,0 +1,3596 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] 	[Git]Project bulmages at BerliOS branch, nsis_fapacges,	created. cf4b348170933974a59088a915a8f23074f9c5f4
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%5BGit%5DProject%20bulmages%20at%20BerliOS%20branch%2C%20nsis_fapacges%2C%0A%09created.%20cf4b348170933974a59088a915a8f23074f9c5f4&In-Reply-To=%3C20110704184324.851DD483382%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006148.html">
+   <LINK REL="Next"  HREF="006157.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] 	[Git]Project bulmages at BerliOS branch, nsis_fapacges,	created. cf4b348170933974a59088a915a8f23074f9c5f4 </H1>
+    <B>fcojavmc at BerliOS</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%5BGit%5DProject%20bulmages%20at%20BerliOS%20branch%2C%20nsis_fapacges%2C%0A%09created.%20cf4b348170933974a59088a915a8f23074f9c5f4&In-Reply-To=%3C20110704184324.851DD483382%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] 	[Git]Project bulmages at BerliOS branch, nsis_fapacges,	created. cf4b348170933974a59088a915a8f23074f9c5f4">git en mail.berlios.de
+       </A><BR>
+    <I>Lun Jul  4 20:43:23 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006148.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, nsis_fapacges,	deleted. a62eded25ca7bf3ba2e0769e350426d13d6b8396
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006157.html">[BulmaGés] Me habeis saturado
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6182">[ fecha ]</a>
+              <a href="thread.html#6182">[ hilo ]</a>
+              <a href="subject.html#6182">[ asunto ]</a>
+              <a href="author.html#6182">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+The branch, nsis_fapacges has been created
+        at  cf4b348170933974a59088a915a8f23074f9c5f4 (commit)
+
+- Log -----------------------------------------------------------------
+commit cf4b348170933974a59088a915a8f23074f9c5f4
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Sun Jul 3 23:25:10 2011 +0200
+
+    Creo nueva función blWebBrowser
+    
+    Esta función permite invocar el navegador web, siguiendo una sencilla
+    pauta.
+    
+    Primero busca en la configuración si existe la variable CONF_NAVEGADOR
+    (La cual ya existia previamente en bulmages), si encuentra un navegador
+    lo usa..
+    
+    Si no existe, recurre a QDesktopServices y QUrl con TolerantMode.
+    
+    De esta manera, tenemos una función multiplataforma de invocación del
+    navegador, mucho más correcta y sencilla.
+    
+    Ejemploe:
+    
+    blWebBrowser(&quot;<A HREF="http://iglues.org">http://iglues.org</A>&quot;);
+
+commit a62eded25ca7bf3ba2e0769e350426d13d6b8396
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sun Jul 3 21:45:30 2011 +0200
+
+    Cambios para pluginbl_exaro, ahora ya recoge archivos inf_XXXX.bdrt que funcionan como el resto de reportes pero cuyo contenido son archivos creados con exaro
+
+commit 3cc7fce2f4f8d5d52727ee1ccdfa15fe2347c872
+Merge: ca07de8 937a911
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sun Jul 3 19:36:13 2011 +0200
+
+    Merge branch 'master' of <A HREF="ssh://git.berlios.de/gitroot/bulmages">ssh://git.berlios.de/gitroot/bulmages</A>
+
+commit 937a9110fbc090316860cfce447aea355d948413
+Author: Walter Garcia-Fontes &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">wgarcia en delle6410</A>&gt;
+Date:   Sun Jul 3 19:20:31 2011 +0200
+
+    Update Catalan Translation
+
+commit ca07de84be560c4fd2cd69bee595f9e3f27fdac6
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sun Jul 3 18:58:22 2011 +0200
+
+    Este commit es la primera toma de contacto con exaro. Compila exaro y todas sus dependencias y los instala con lo que al compilar bulmages tambien se compila exaro y otros componentes (no tienen empaquetado y parecen poco activos con lo que no se muy bien cual sera el final de este componente. Si hay problemas para compilarlo avisadme ya que igual hay algun error que a mi no me sucede. Si teneis prisa comentad la linea add_subdirectori(pluginbl_exaro) del CMakeLists.txt y todo estara como antes
+
+commit 02bf18e84ab843cde50d86cfcdd2d1561eb06358
+Author: Walter Garcia-Fontes &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">wgarcia en delle6410</A>&gt;
+Date:   Sun Jul 3 18:46:52 2011 +0200
+
+    Arregla Bug #16694. S'introdueixen &quot;decode&quot; per a les cadenes del nom de l'empresa.
+
+commit 11c8d64d787e744e9878d8993529d3ed033616bd
+Author: Walter Garcia-Fontes &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">wgarcia en delle6410</A>&gt;
+Date:   Sun Jul 3 13:18:12 2011 +0200
+
+    Canvio &quot;Classe&quot; i &quot;Aula&quot; a &quot;Grup-classe&quot;, que és com s'anomenen a les escoles cada grup d'alumnes.
+
+commit ebe79d79067619f44883e85fbac556f6d687abe3
+Merge: 90d2b5b 655e285
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sun Jul 3 09:26:20 2011 +0200
+
+    Merge branch 'master' of <A HREF="ssh://git.berlios.de/gitroot/bulmages">ssh://git.berlios.de/gitroot/bulmages</A>
+
+commit 90d2b5b636d5fd68286387eab0b063acf7fef604
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sun Jul 3 09:17:45 2011 +0200
+
+    Arreglo problemas adicionales en los menus. Al parecer durante la migracion a BlAction hubo detalles importantes que se perdieron
+
+commit 655e2859297431cff644586872e02e2146f9fb21
+Author: Walter Garcia-Fontes &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">wgarcia en delle6410</A>&gt;
+Date:   Sun Jul 3 09:03:57 2011 +0200
+
+    Fixes Bug #16462
+
+commit db160cc4b2fe7d7de7e82baf00c461acc6836bc0
+Author: Walter Garcia-Fontes &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">wgarcia en delle6410</A>&gt;
+Date:   Sun Jul 3 08:22:03 2011 +0200
+
+    Some strings were not showing up, update translations
+
+commit 3be8bb7b345f254be5b869526b5a298920fa603c
+Author: Walter Garcia-Fontes &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">wgarcia en delle6410</A>&gt;
+Date:   Sun Jul 3 08:03:58 2011 +0200
+
+    Update translations
+
+commit 6540de73161053f2952c3705478782009764d209
+Author: Walter Garcia-Fontes &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">wgarcia en delle6410</A>&gt;
+Date:   Sun Jul 3 07:48:59 2011 +0200
+
+    Update translations
+
+commit 2c6f28eeed04f3c8b6f7d43f23f4d33bb59138ae
+Author: Walter Garcia-Fontes &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">wgarcia en delle6410</A>&gt;
+Date:   Sun Jul 3 06:56:19 2011 +0200
+
+    Translation updates
+
+commit e69e2706b7b78a80bd215e43e0ac6d151741a7d2
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri Jul 1 21:53:25 2011 +0200
+
+    Corrijo error en pluginbf_profesor que al no retornar bien las llamadas BlAction impedia la cadena de llamadas a plugins con lo que no se disparaban los plugins posteriores al actual
+
+commit dbbf16abd15f8388c1cacf4346bb6e9f42d51f7c
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Wed Jun 29 13:14:11 2011 +0200
+
+    Si Tomeu vuelve a poner archivos en 'images' entonces restauro la
+    instalación de estos archivos.
+    
+    *********************************
+    Fco. Javier M. C.
+    *********************************
+              Todo-Redes
+            C/.Begonia, 12
+       07010 Palma de Mallorca.
+          Tel: +34-971499071
+       <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+      comercial(en)todo-redes.com
+    *********************************
+
+commit a417a561ab4c4f7ab201c4a2e62f78e2c3be46d5
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Wed Jun 29 12:00:22 2011 +0200
+
+    Me faltaba por subir el directorio images. Perdon por las molestias causadas.
+
+commit 363d661a068fc3decb1a70a0b081374f817cc1ed
+Merge: 8c816ea 1ada948
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue Jun 28 18:23:38 2011 +0200
+
+    Merge branch 'master' of <A HREF="ssh://git.berlios.de/gitroot/bulmages">ssh://git.berlios.de/gitroot/bulmages</A>
+
+commit 8c816eaf6e53748aeaa83fd42acd69b4027161b0
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue Jun 28 18:23:19 2011 +0200
+
+    Un fallo tan antiguo como el programa. Comprueba que no se metan bucles en las listas de componentes de un articulos y en caso de producirse da un mensaje de error. Un bucle (Que en la lista de componentes aparezca el propio articulo) genera unos divertidos segfaults, desajustes de stock e incluso creo que podra dejar sin manos al infractor
+
+commit 1ada94884527bdc7815a159d3fe4fc7411da54de
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Tue Jun 28 17:18:24 2011 +0200
+
+    Directorio 'images' ya no existe.
+    
+    *********************************
+    Fco. Javier M. C.
+    *********************************
+              Todo-Redes
+            C/.Begonia, 12
+       07010 Palma de Mallorca.
+          Tel: +34-971499071
+       <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+      comercial(en)todo-redes.com
+    *********************************
+
+commit afd6f680744e8a148872782075cf545525e0987a
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon Jun 27 08:55:30 2011 +0200
+
+    Agrego pluginbf_articulo como dependencia en la compilacion de pluginbf_informecliente
+
+commit 435325dcf4f07943da44e0875cd4bb66230b66cf
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sun Jun 26 00:20:31 2011 +0200
+
+    Arreglos en los CSS del plugin de tickets
+
+commit a8aee63d98c6637cfc52608e48a37e201ce85c95
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sat Jun 25 00:18:38 2011 +0200
+
+    Pongo las nuevas opciones de filtrado en el resto de listados
+
+commit 805efe49f5fb8e8a5ffa44f0c5997dbe70134361
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Fri Jun 24 19:06:27 2011 +0200
+
+    Hago que funcione la opción del botón derecho &quot;Abrir asiento&quot; del
+    listado del Libro Mayor y Libro Diario.
+    
+    *********************************
+    Fco. Javier M. C.
+    *********************************
+              Todo-Redes
+            C/.Begonia, 12
+       07010 Palma de Mallorca.
+          Tel: +34-971499071
+       <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+      comercial(en)todo-redes.com
+    *********************************
+
+commit 1ff9b3d35b9c2755de076f25e372a825daa7aa80
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Fri Jun 24 17:13:27 2011 +0200
+
+    Corrijo la alineación a la derecha del Debe y Haber del listado de
+    cuentas del plan contable.
+    
+    *********************************
+    Fco. Javier M. C.
+    *********************************
+              Todo-Redes
+            C/.Begonia, 12
+       07010 Palma de Mallorca.
+          Tel: +34-971499071
+       <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+      comercial(en)todo-redes.com
+    *********************************
+
+commit 2f8e039c8b525542d5675d8ea3c49933ab855ba6
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri Jun 24 02:22:51 2011 +0200
+
+    Encapsulo y extiendo el cambio anterior a los listados de cliente y proveedor, sera sencillo ponerlo en el resto de listados
+
+commit 1ab2b29d10fb6e93ec119f8d0c38b6bd0e5d38e2
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri Jun 24 01:42:22 2011 +0200
+
+    Habia un problema en la busqueda automatica en todos los campos del tipo Varchar para el campo de filtro. Para que funcionase bien debia haberse una carga previa ya que no buscaba en las cabeceras sino en los campos cargados. Lo he cambiado para que se forme el query a partir de las cabeceras definidas y asi se solventa el problema.
+
+commit 0fe043933e22239c2abc37917b03f1e3203a0989
+Author: aishen &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">aishen en free.fr</A>&gt;
+Date:   Thu Jun 23 13:24:10 2011 +0200
+
+     traduction corrigée
+
+commit 798c97eda9bdcd23068e790fb71d3a8da5083ec8
+Merge: f48d739 31ee5bb
+Author: root &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">root en pc.</A>(none)&gt;
+Date:   Thu Jun 23 12:27:39 2011 +0200
+
+    Merge branch 'master' of <A HREF="ssh://git.berlios.de/gitroot/bulmages">ssh://git.berlios.de/gitroot/bulmages</A>
+
+commit f48d7397dea2392700eeec722bbea1faf52bbe95
+Author: root &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">root en pc.</A>(none)&gt;
+Date:   Thu Jun 23 12:21:57 2011 +0200
+
+    erreur corrigée
+
+commit 31ee5bb8167bfccd0ecbc1cc27728dae0d1f8b27
+Author: Aron &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">auryn en wanadoo.es</A>&gt;
+Date:   Thu Jun 23 10:49:53 2011 +0200
+
+    Quito un &quot;delete&quot; del delegado para fechas.
+    Al cambiar una fecha, el programa se cerraba. Parace relacionado con el último commit de Tomeu sobre &quot;doble delete&quot;.
+
+commit 0ace036e31d41516594ea507bfb88757e538008d
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Wed Jun 22 18:48:08 2011 +0200
+
+    Arreglo un problemilla de doble delete debido a que Qt borra los elementos graficos automaticamente. Pongo el guardado del filtrado en los albaranes de proveedor
+
+commit 4973914d1ffa371152242cc684596c19e20b947d
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Wed Jun 22 13:54:07 2011 +0200
+
+    Arreglo algunos temas de memory leak. Pocos para lo que pensaba que habria.
+
+commit 2774f7b274a1caf79f3c5ae0ee8fed766023695d
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Wed Jun 22 01:02:41 2011 +0200
+
+    Arreglo temas del blDebug y hago algunos tests con valgrind
+
+commit 13927516ed26b2e198ae70e5efe7e62fbe5c16ad
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue Jun 21 14:58:38 2011 +0200
+
+    Termino de poner las macros de depuracion
+
+commit 703e6d6e4d557f8728745e46895724a4f0360004
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue Jun 21 03:28:39 2011 +0200
+
+    Empiezo a cambiar el sistema de trazas de depuracion al sistema propuesto por Toni Asensi, que funciona mucho mejor que lo que teniamos hasta ahora
+
+commit 475cc06fa7084d0e8fa51adaa1a865a74c26b75d
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri Jun 17 23:18:09 2011 +0200
+
+    Algunos cambios en el pluginbt_cobrarparcialivaincluido que evitan un segfault en determinadas condiciones
+
+commit 6d375d98ecc85468f7c76580a88584cbdfabadb2
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Thu Jun 16 23:54:51 2011 +0200
+
+    Corrijo un 'segmentation fault' al borrar un ticket si existen tickets
+    de varios camareros.
+    
+    *********************************
+    Fco. Javier M. C.
+    *********************************
+              Todo-Redes
+            C/.Begonia, 12
+       07010 Palma de Mallorca.
+          Tel: +34-971499071
+       <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+      comercial(en)todo-redes.com
+    *********************************
+
+commit 24c72c326086b7f39353c0f59b522e2e193b8b19
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Wed Jun 15 11:37:18 2011 +0200
+
+    - TPV: Si existen tickets sin procesar no deja hacer la Z.
+    
+    *********************************
+    Fco. Javier M. C.
+    *********************************
+              Todo-Redes
+            C/.Begonia, 12
+       07010 Palma de Mallorca.
+          Tel: +34-971499071
+       <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+      comercial(en)todo-redes.com
+    *********************************
+
+commit ff4e53191ab6cf49a878ce6944d0aa725953109b
+Merge: c9ae4d2 737690a
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Wed Jun 15 10:34:30 2011 +0200
+
+    Merge branch 'master-fix'
+
+commit 737690ad651cff7801ffabbe285819d61d9c20d9
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Wed Jun 15 10:33:46 2011 +0200
+
+    - Hay problemas con algunas variables globales que se usan el los
+      plugins. El programa 'peta'. Para evitarlo renombro estas variables
+    con el nombre del plugin para asegurarme que son únicas.
+    - Elimino algunos 'cast' que no son necesarios.
+    - Corrijo erratas: Se cambiará el blDebug, pero mientras tanto que no
+      falle lo que hay :)
+    
+    *********************************
+    Fco. Javier M. C.
+    *********************************
+              Todo-Redes
+            C/.Begonia, 12
+       07010 Palma de Mallorca.
+          Tel: +34-971499071
+       <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+      comercial(en)todo-redes.com
+    *********************************
+
+commit c9ae4d2142dfcb8445b719ff7f759b4100bfff75
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Wed Jun 15 07:13:34 2011 +0200
+
+    Quito salidas exit en bulmacont
+
+commit 6b01e9cb7632b5b272e816633d271c14db688018
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue Jun 14 17:51:38 2011 +0200
+
+    Agrego un return a la llamada de plugins de bancos ya que en windows no funcionaba bien
+
+commit 000e1e9d6acd8b212eff6194e6a1ed97c85484e0
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue Jun 14 17:09:35 2011 +0200
+
+    Quito las llamadas del tipo exit para las compilaciones exclusivas de Windows en BulmaFact
+
+commit c7435392a1240233a7bc5ef12e12a4f6e1443f1d
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue Jun 14 01:06:00 2011 +0200
+
+    Antes las Qt generaban un segfault al cerrar el programa y por eso habia un exit para disimular el error. Esto causaba que no se guardasen los tickets ni las configuraciones en el TPV. Como ya no hace falta he quitado la salida programada
+
+commit 6e5cd9b181ea52f33458eb3fd88b70c1a87e43b2
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon Jun 13 18:09:00 2011 +0200
+
+    Corrijo partes sensibles a traducción
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 66703a1f9a4071b2bef5113db14d8ea839bed123
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon Jun 13 12:06:14 2011 +0200
+
+    Substituyendo simbolos NO-ASCII
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 6830a0227b4861fdeda8ea1d49c362ab5cdc13f5
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Fri Jun 10 12:52:10 2011 +0200
+
+    Actualizando traducciones en varios plugins
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit f11eaf27976a2d61d5ece6f6cab8c86a9cdc907f
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon Jun 13 10:11:56 2011 +0200
+
+    Creo el parametro de configuracion CONF_TPV_TEXTOMESA que indica el texto a poner al pulsar sobre el boton mesa. Para personalizar mejor ese texto
+
+commit 24c03b4df69f23888082ce5e4a58b3803d842eab
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sun Jun 12 23:59:33 2011 +0200
+
+    Arreglo un fallo en el plugin de pulseras
+
+commit a3f48d4cc467c98fa1298dbde3daa0db00a84c04
+Merge: b56c9af f82accd
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sun Jun 12 23:55:08 2011 +0200
+
+    Merge branch 'master' of <A HREF="ssh://git.berlios.de/gitroot/bulmages">ssh://git.berlios.de/gitroot/bulmages</A>
+
+commit b56c9afeba125232cc5ee5ab24775c4c394e93de
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sun Jun 12 23:54:48 2011 +0200
+
+    Arreglo un fallo en el plugin de pulseras
+
+commit f82accd545524720f52f6a69abb351fbeca51599
+Merge: 2c814d5 b2166d7
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Sun Jun 12 22:54:07 2011 +0200
+
+    Merge branch 'master-fix'
+
+commit b2166d7b583ce0d82ea6d75f00bd017460514afc
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Sun Jun 12 22:53:33 2011 +0200
+
+    Cambio que permite generar códigos de barra con texto debajo
+    (humanReadable=&quot;1&quot;).
+    
+    Ejemplo de uso (archivo .rml):
+    
+    &lt;barCode code=&quot;code128&quot; height=&quot;1cm&quot;
+    humanReadable=&quot;1&quot;&gt;1234567890&lt;/barCode&gt;
+    
+    *********************************
+    Fco. Javier M. C.
+    *********************************
+              Todo-Redes
+            C/.Begonia, 12
+       07010 Palma de Mallorca.
+          Tel: +34-971499071
+       <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+      comercial(en)todo-redes.com
+    *********************************
+
+commit 2c814d553afaeec13728d1e1cc33d146d52a1c52
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sun Jun 12 21:17:25 2011 +0200
+
+    Cambio QDateTime por QTime ya que las pulseras son solo por un dia
+
+commit d21c4e7d96c32f108cbc15c32f8fb617490b13cc
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sun Jun 12 02:42:11 2011 +0200
+
+    Me deje un mensaje de depuracion
+
+commit 443b4fe0d845806f0508cc2dfbfc17d90442f89b
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sat Jun 11 16:57:40 2011 +0200
+
+    Hago que el plugin de pulseras exporte sus datos en las exportaciones de tickets para asi conseguir restaurarlas tras un fallo o con los plugins de sincronizacion
+
+commit 677d689896af5d357ae6993e302f3059e0124800
+Merge: f800bb2 c7a9a66
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri Jun 10 22:34:21 2011 +0200
+
+    Merge branch 'master' of <A HREF="ssh://git.berlios.de/gitroot/bulmages">ssh://git.berlios.de/gitroot/bulmages</A>
+
+commit f800bb2b0f97c774dbb9a710df1ce37904cc5439
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri Jun 10 22:33:59 2011 +0200
+
+    Cambios en el pluginbf_comerciales, aunque todavia le queda mucho por hacer
+
+commit c7a9a66e1a899d38fca38ab5af5ac9777db5ad15
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu Jun 9 11:49:21 2011 +0200
+
+    Parche a BulmaSetup que arregla el Bug #18160
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 13149afd8c9ab00493ada3b49c09e86ca458b903
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed Jun 8 18:58:45 2011 +0200
+
+    Arreglo algunas cadenas de traduccón incorrectas en bulmacont,fact y tpv
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 7b49637359260788b43092900700fa5a4a0fad4e
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Wed Jun 8 22:09:27 2011 +0200
+
+    Arreglos en el plugin de pulseras
+
+commit 213fabe329eaacb58213f1c8eb8ece0317024769
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Wed Jun 8 21:09:09 2011 +0200
+
+    En relacion al bug #18160 a este plugin tambien le sobraban los punto y coma
+
+commit f5c544e005f228c2dd22f1b42ce3f2939eb5a667
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Wed Jun 8 21:07:24 2011 +0200
+
+    En atencion el bug #18160, sobraban los punto y coma finales del README
+
+commit 293381059d4d4cbdb2a9980541596f509c199e6c
+Merge: 1136483 b32e61e
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Wed Jun 8 18:59:48 2011 +0200
+
+    Merge branch 'master' of <A HREF="ssh://git.berlios.de/gitroot/bulmages">ssh://git.berlios.de/gitroot/bulmages</A>
+
+commit 1136483eee134a5ea2cfed9353de7cff8a7722d9
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Wed Jun 8 18:59:20 2011 +0200
+
+    Arreglo el plugin de pulseras para que acepte un periodo inicial
+
+commit b32e61e748319b171724c4ca79a0ed7a6ae2ad3d
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed Jun 8 17:53:53 2011 +0200
+
+    Arreglo algunas traducciones mal formadas
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 25394ea6abca83241b2f30fa83a4cd17b7cbe3d8
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Wed Jun 8 16:36:04 2011 +0200
+
+    Agrego eventos al sistema de logs de bulmaTPV i no permito que camareros no administrador usen el boton de borrar
+
+commit 8e9bede62e50da744676212e619e10868da8a7f3
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed Jun 8 10:34:08 2011 +0200
+
+    Cambio algunas lineas sujetas a traducción en pluginbf_profesor y arreglo errores de traducción
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 3a44d9d867543cef16b0fd68b245795d1d74e801
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue Jun 7 23:58:57 2011 +0200
+
+    Arreglos en pluginbf_trabajadores que ahora solo permite que enten al programa los gerentes y a los demas no les deja la entrada. Es FALSA seguridad pero es lo que piden los clientes
+
+commit ae8ddab6f75a8ac858e61804ea9bb1809b79c530
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue Jun 7 23:47:46 2011 +0200
+
+    Arreglos para el pluginbt_camareros
+
+commit c4c3e20c2a55be16790a2e1167f366964696d562
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue Jun 7 02:37:11 2011 +0200
+
+    Arreglo un problema con el cambio del splashscreen
+
+commit 3c332b25ddccf3788019f009c2d1e6f1c6b11a70
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue Jun 7 02:36:13 2011 +0200
+
+    Arreglo un error de comprobacion de la existencia de campos en BlDbRecord
+
+commit e33a2eb083d0c3ad8fd17f0495551182dfc0077e
+Merge: e2b7b7b 3f4c7e3
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon Jun 6 23:13:28 2011 +0200
+
+    Merge branch 'master' of <A HREF="ssh://tborras@git.berlios.de/gitroot/bulmages">ssh://tborras@git.berlios.de/gitroot/bulmages</A>
+
+commit e2b7b7bbd1c74e29f76f53ab570b06e04baa7938
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon Jun 6 23:13:06 2011 +0200
+
+    Arreglo un problemilla del splash en la version para Windows
+
+commit 3f4c7e3c2093bacb1034751d59a58cbcdd98c4f2
+Merge: 2151286 d5b770d
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Mon Jun 6 23:05:59 2011 +0200
+
+    Merge branch 'master-fix'
+
+commit d5b770d9b75c1b2e410a42dc7f9813d0f99db3b4
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Mon Jun 6 23:05:30 2011 +0200
+
+    Corrijo otra errata.
+    
+    *********************************
+    Fco. Javier M. C.
+    *********************************
+              Todo-Redes
+            C/.Begonia, 12
+       07010 Palma de Mallorca.
+          Tel: +34-971499071
+       <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+      comercial(en)todo-redes.com
+    *********************************
+
+commit 2151286d4c9f9580ce3c1291f88314bd975a1afe
+Merge: e57440d 770ec86
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon Jun 6 22:59:40 2011 +0200
+
+    Merge branch 'master' of <A HREF="ssh://tborras@git.berlios.de/gitroot/bulmages">ssh://tborras@git.berlios.de/gitroot/bulmages</A>
+
+commit e57440da013361a4d39c713ade0bd13ae5326624
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon Jun 6 22:59:18 2011 +0200
+
+    Arreglo tema en escprinter
+
+commit 770ec862abcab366e1e60c5df45565dea1cd7c7b
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Mon Jun 6 22:34:45 2011 +0200
+
+    Errata.
+
+commit 6a261a1a87efcb95a7b8326b17ee65699af1a311
+Merge: 9d84087 831ab8f
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Mon Jun 6 22:28:52 2011 +0200
+
+    Merge branch 'master-fix'
+    
+    Conflicts:
+    	bulmages/bulmalib/plugins/pluginbl_bloqconf/pluginbl_bloqconf.cpp
+    	bulmages/bulmalib/plugins/pluginbl_subform2pdf/pluginbl_subform2pdf.cpp
+
+commit 831ab8f5a394914c9fce77a9a78a69d470ef3ed7
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Mon Jun 6 22:24:55 2011 +0200
+
+    Más cambios blDebug.
+    
+    *********************************
+    Fco. Javier M. C.
+    *********************************
+              Todo-Redes
+            C/.Begonia, 12
+       07010 Palma de Mallorca.
+          Tel: +34-971499071
+       <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+      comercial(en)todo-redes.com
+    *********************************
+
+commit 9d84087eb29b75936565b245fc90d8afc7413dc2
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon Jun 6 19:52:59 2011 +0200
+
+    Estructuro correctamente un QAction de pluginbl_subform2pdf
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 2598571e4b69d5144883d5ce3876bd07278bbc4c
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon Jun 6 18:24:13 2011 +0200
+
+    Arreglo error tipografico en un ObjectName de pluginbl_bloqconf
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 145b0df3c3f686c5b430fe0ccd6969807cf5f785
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon Jun 6 18:23:44 2011 +0200
+
+    Arreglo la impresion de la X para Windows
+
+commit 087acb4f6ea146d9516b0ec7865eaf5dae72218e
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon Jun 6 18:19:26 2011 +0200
+
+    El secreto de Windows es convertir lo facil en imposible. Tnx Javier por mostrarme que los comandos de sistema tienen que ir entrecomillados. Vease CONF_FLIP
+
+commit 731f11d0980279ddd6831b7dd48bca8bc20b13f6
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon Jun 6 17:46:30 2011 +0200
+
+    Añado BlAction_triggered, del contrario, no funcionaba.
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 34c87996a96ebc06009eeb64865012eddf6726fd
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon Jun 6 17:21:28 2011 +0200
+
+    Vuelvo a dejar algunos fragmentos en otro archivo *.h, a pesar de compilar, sigue dando algunos errores
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 8676e7602d6377bc345ba0d6d9d8ef30cfd4dd20
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon Jun 6 16:32:50 2011 +0200
+
+    Actualizo pluginbl_bloqconf para que use BlAction en algunos apartados.
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 29dcbe41dc3ac83fd23844bf8c8c11d169596223
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon Jun 6 16:05:06 2011 +0200
+
+    Arreglo un tema de la impresion en ticketeras con Windows
+
+commit dc4531ed10962d4b13b137f816d983d684bfb52f
+Merge: fcc2dbd 80a97c7
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon Jun 6 13:05:52 2011 +0200
+
+    Merge branch 'master' of <A HREF="ssh://git.berlios.de/gitroot/bulmages">ssh://git.berlios.de/gitroot/bulmages</A>
+
+commit fcc2dbd5088e9984b86ac555b08828e552067d85
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon Jun 6 13:01:25 2011 +0200
+
+    Arreglo problema de funcion presentar en inventario.cpp insexistente
+
+commit 80a97c7537ec0435cc9bf4edc2fc70d09143f447
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon Jun 6 12:35:02 2011 +0200
+
+    Cambios en CMakeList de pluginbc_mayor para evitar warnings
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit f9ddabaff2a32d94518d15e76937c67550f29a58
+Merge: 0a6ea57 2f6ee53
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon Jun 6 12:06:36 2011 +0200
+
+    Merge branch 'master' into dropranch
+
+commit 2f6ee53d09e73f78bddea895052d2b5f48e7ad0b
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon Jun 6 11:55:03 2011 +0200
+
+    Arreglo fallo en la impresion de tickets para windows
+
+commit 2f2775c78f2497a8642ea1a59844043b9b3655cb
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon Jun 6 11:33:14 2011 +0200
+
+    Actualizo pluginbc_mayor para que use BlAction y corrijo cadena de blDebug en pluginbf_carterapagos
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 0a6ea57eb57c02fa99dfbf3e3b0a58e29898afb2
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon Jun 6 11:33:14 2011 +0200
+
+    Actualizo pluginbc_mayor para que use BlAction y corrijo cadena de blDebug en pluginbf_carterapagos
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit b160af2aa2cd2e44d781f793d7aa7fbf9a99857e
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon Jun 6 11:28:51 2011 +0200
+
+    Arreglo un pequeño error en el commit del bldebug
+
+commit 2987d3d5f0c222dafc8d0f87a097674d685f8c27
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Mon Jun 6 00:17:48 2011 +0200
+
+    Más cambios blDebug.
+    
+    *********************************
+    Fco. Javier M. C.
+    *********************************
+              Todo-Redes
+            C/.Begonia, 12
+       07010 Palma de Mallorca.
+          Tel: +34-971499071
+       <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+      comercial(en)todo-redes.com
+    *********************************
+
+commit c4f6402c38707856abf16099e86c1ae3d431bb5c
+Merge: 69e7e69 88845fe
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Sun Jun 5 13:22:19 2011 +0200
+
+    Merge branch 'master-fix'
+    
+    Conflicts:
+    	bulmages/bulmacont/plugins/pluginbc_diario/pluginbc_diario.cpp
+    	bulmages/bulmacont/plugins/pluginbc_example/pluginbc_example.cpp
+    	bulmages/bulmatpv/src/btbulmatpv.cpp
+
+commit 88845fe9824b47dcf9621ab5c4b6230056cdb66b
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Sun Jun 5 12:33:38 2011 +0200
+
+    Empiezo a cambiar blDebug a la nueva forma.
+    
+    Nota: El &quot;END &quot; del cierre no se puede poner para traducción porque se
+    comprueba que exista el la función blDebug.
+    
+    Faltan muchos cambios todavía y corregir algunos detalles.
+
+commit 69e7e69b3449d8113600c78a55ce5f8600508e93
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sun Jun 5 09:03:10 2011 +0200
+
+    Agrego dos archivos que faltaban
+
+commit 51ffcbeb73cfece4573d31ebe62307fc899387cb
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sun Jun 5 09:01:06 2011 +0200
+
+    Completo el plugin de pulseras que pone cronometros a determinados articulos
+
+commit 479e1d09df532950f57d447055bd1a6cd5fd6072
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Sat Jun 4 23:16:12 2011 +0200
+
+    Eliminados archivos de backup &quot;*~&quot; producidos en el ultimo commit de Tomeu
+
+commit 064fe5276a74cab068348627fa069dd8471b8f39
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Fri Jun 3 18:04:53 2011 +0200
+
+    Primer commit de  pluginbt_example, no existía ningún plugin de ejemplo, ahora si.
+
+commit 4b76dc09d73ae64664264399668c2ad0a3d81f02
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sat Jun 4 15:19:00 2011 +0200
+
+    Primer commit del pluginbt_pulseras, que servira para control de chickiparks
+
+commit 835f18077a8bf0887404b8324a030e8133ebc31e
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sat Jun 4 03:07:12 2011 +0200
+
+    Ahora se pueden recuperar tickets escribiendo la mesa y pulsando recuperar. Si la mesa no existe entonces aparece el listado de mesas guardadas
+
+commit 0b38e2fa633247d24630dd55097b023d0facd7dd
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu Jun 2 16:27:32 2011 +0200
+
+    Created pluginbt_debug
+    
+    Is a BlDockWidget with a QCheckBox, it respects de config files.
+    Es un BlDockWidget con un QCheckBox, respecta los archivos de configuración.
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit ca8ab62bfafcf5cedbc7949a594d8ff34b21f8db
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu Jun 2 16:16:02 2011 +0200
+
+    Arreglo los problemas en el escalado de mesas para el pluginbt_mesas
+
+commit 0e6cbb220928533d27729b28eccf7124c2400902
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed Jun 1 18:54:22 2011 +0200
+
+    Estandarización de código en BulmaTPV
+    
+    empresaTPV() por company()
+    m_empresaTPV por m_company()
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit f4b975a4c10ac4532510c632c548371b59e61b6e
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed Jun 1 17:36:04 2011 +0200
+
+    Fix pluginbc_example
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit b7b793873562b9cae4ed1b8cdd6199519e88d8cb
+Merge: 7b35696 6e08e3a
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Wed Jun 1 16:13:22 2011 +0200
+
+    Merge branch 'master' of <A HREF="ssh://tborras@git.berlios.de/gitroot/bulmages">ssh://tborras@git.berlios.de/gitroot/bulmages</A>
+
+commit 7b35696fed868fe8d46da9b1719b5369dc8216da
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Wed Jun 1 16:12:48 2011 +0200
+
+    Pequenyo cambio en el plugin de facturas de proveedores
+
+commit 6e08e3a97609ba613388e2089899e5ac85e6264b
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed Jun 1 10:33:01 2011 +0200
+
+    Actualizo pluginbc_example para que use blAction
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit e7f7945d2abf254c985192509f50b99d5fef3f85
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed Jun 1 09:59:06 2011 +0200
+
+    Actualizo pluginbc_diario para que use BlAction
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit c22fc672ed5f187e7fd974652d94b54dfe8eaf4a
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Wed Jun 1 09:40:32 2011 +0200
+
+    Elimino Warnings de compilación
+    
+    *********************************
+    Fco. Javier M. C.
+    *********************************
+              Todo-Redes
+            C/.Begonia, 12
+       07010 Palma de Mallorca.
+          Tel: +34-971499071
+       <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+      comercial(en)todo-redes.com
+    *********************************
+
+commit 3c1ac135bcc1e7877c8ddfbdb7aeb323de569845
+Merge: 40ecad3 d3b8326
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Tue May 31 21:51:55 2011 +0200
+
+    Merge branch 'master-fix'
+    
+    Conflicts:
+    	bulmages/bulmacont/plugins/pluginbc_proyectos/pluginbc_proyectos.h
+
+commit d3b83263c94f0e4e0897cf425791d5debca947f3
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Tue May 31 21:49:17 2011 +0200
+
+    Estandarización de código.
+    
+    *********************************
+    Fco. Javier M. C.
+    *********************************
+              Todo-Redes
+            C/.Begonia, 12
+       07010 Palma de Mallorca.
+          Tel: +34-971499071
+       <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+      comercial(en)todo-redes.com
+    *********************************
+
+commit 40ecad395562f38fd3f591ad315819466b3f5728
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Tue May 31 19:59:12 2011 +0200
+
+    Actualizo pluginbc_proyectos para que use BlAction
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit c55bdab9f8d6eedc4f1c384f05f1ceca119390f8
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Tue May 31 19:23:40 2011 +0200
+
+    Corrijo setObjectName en Pluginbc_cuentasanuales, pluginbc_registroiva
+
+commit 152ff2a2deac15a971213cd7ac2b530ba0364ad5
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Tue May 31 19:09:05 2011 +0200
+
+    Arreglo setObjectName en algunos blAction de plugins que impedia que funcionaran correctamente en BulmaFact
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 68033052575d0e78310bac6477de0d78377bb04b
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Tue May 31 17:24:42 2011 +0200
+
+    Corrijo zonas sensibles a traducciones en pluginbc_balance
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 1c410678ce13c96b12240a9934300aa55d5db756
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Tue May 31 11:05:36 2011 +0200
+
+    Añado y corrijo traducciones de pluginbc_asiento
+
+commit a566632b53c9c4f4c8cde08c6223cda27c5e052f
+Merge: 5003e79 46d5deb
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Tue May 31 10:17:12 2011 +0200
+
+    Merge branch 'master' of <A HREF="ssh://git.berlios.de/gitroot/bulmages">ssh://git.berlios.de/gitroot/bulmages</A>
+
+commit 5003e790888e49b35f2f9757c12ad936884d11e0
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Tue May 31 00:06:41 2011 +0200
+
+    Estandarizo código.
+
+commit e98a92cdc0ec170b0445e1a8e7ca3d22fb087b8b
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon May 30 21:53:38 2011 +0200
+
+    Habia un error en el BlAction de Planes Contables al no establecerse el nombre del objeto
+
+commit 4827fe9b2ef517bea5bc6f445fd521bba7abb731
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Mon May 30 23:48:21 2011 +0200
+
+    Estandarizo código.
+
+commit 46d5deb24c3faf9d72a756edaa613377ba4f03ac
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon May 30 21:53:38 2011 +0200
+
+    Habia un error en el BlAction de Planes Contables al no establecerse el nombre del objeto
+
+commit 310ba6ac68121e01c455b06f36a66fc4a877cbca
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon May 30 20:06:39 2011 +0200
+
+    Actualizados los .po, preparados ahora para traducir
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit be14b26a6e0de8c5219fcfaef20d23502a01b170
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon May 30 19:29:27 2011 +0200
+
+    Actualizo pluginbc_depuracion para que use BlAction
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit ad71f3d565bd1a4398d48922b96425fe9372ad5c
+Merge: d4e1dc2 e9bd883
+Author: unknown &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Tomeu en .</A>(none)&gt;
+Date:   Mon May 30 19:15:32 2011 +0200
+
+    Arreglo mas conflictos
+
+commit d4e1dc23328c7365d52c72ff8b8411aa7ef28c4e
+Author: unknown &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Tomeu en .</A>(none)&gt;
+Date:   Mon May 30 19:11:53 2011 +0200
+
+    Arreglo conflictos
+
+commit e9bd883863a0b860b76bc365e1992cc1785ee7ce
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon May 30 18:37:23 2011 +0200
+
+    Cambio los en los desktop.in las referencias de xmp por svg
+
+commit c7e0fef7fec252d9d91458ef7e845058f2bbe18d
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon May 30 18:11:10 2011 +0200
+
+    Arreglo todos los conflictos por los cambios de Tomeu y Javi y actualizo pluginbc_cuentasanuales
+    
+    (Tomeu, revisa si los he puesto correctamente, por si acaso, gracias)
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 6a42cc603fd04066b775ae94bd47930955512519
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon May 30 17:51:54 2011 +0200
+
+    Actualizo pluginbc_bloqueofechas y pluginbc_cuenta para que usen BlAction.
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 23e653f29426d8c0aa741caa543fd1fbc7acba5e
+Merge: 7cf2dfe 0fd9719
+Author: unknown &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Tomeu en .</A>(none)&gt;
+Date:   Mon May 30 17:26:18 2011 +0200
+
+    Merge branch 'master' of <A HREF="ssh://tborras@git.berlios.de/gitroot/bulmages">ssh://tborras@git.berlios.de/gitroot/bulmages</A>
+
+commit 0fd9719cbc24d3e3de2cd6d458e4717142770331
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon May 30 17:27:51 2011 +0200
+
+    Arreglo conflicto en btcompany.cpp producido por el choque entre el código de Tomeu y Javi.
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 7cf2dfe1fd460f11bb9db0f9e58eb34997132f51
+Author: unknown &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Tomeu en .</A>(none)&gt;
+Date:   Mon May 30 17:26:02 2011 +0200
+
+    Cambios que arreglan conflictos
+
+commit 9d39b03951a3c22905a61a0b779fcbfa731802f7
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon May 30 17:24:37 2011 +0200
+
+    Arreglo error en blfunctions (valor ahora es value), añado blDebug a pluginbc_balancearbol
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 4e12933b73c32a577a74395d53bfba9dce338c96
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon May 30 17:10:10 2011 +0200
+
+    Hago que pluginbc_balance use BlAction en lugar de clase derivada.
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 8be4f9831f811aa222c265d0995f25bfdd231527
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Mon May 30 00:29:08 2011 +0200
+
+    Estandariza código.
+    
+    *********************************
+    Fco. Javier M. C.
+    *********************************
+              Todo-Redes
+            C/.Begonia, 12
+       07010 Palma de Mallorca.
+          Tel: +34-971499071
+       <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+      comercial(en)todo-redes.com
+    *********************************
+
+commit 7a2574c47a5f5ada4ed40877d9aea10d2023ac3d
+Merge: 60eeb29 bdf11af
+Author: unknown &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Tomeu en .</A>(none)&gt;
+Date:   Mon May 30 16:36:01 2011 +0200
+
+    Arreglo un conflicto surgido
+
+commit 60eeb29c4689af0ce05cc206148fac1206d387a9
+Author: unknown &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Tomeu en .</A>(none)&gt;
+Date:   Mon May 30 16:31:46 2011 +0200
+
+    Cambios realizados para versionado windows
+
+commit bdf11afad51e27c6fdb6711ee46147b545eeaa4f
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon May 30 12:59:12 2011 +0200
+
+    Actualizo pluginbc_asiento para que use BlAction en lugar de una clase derivada.
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 31ba21a7a59fb635adfb36348bda3696f2b2b8ab
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon May 30 12:04:39 2011 +0200
+
+    Estandarizo &quot;empresactual&quot; por &quot;company&quot;, y actualizo pluginbc_amortizacion para que use BlAction
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit cb57d969f7934d728c43c1b5df8d8b0c6204b94a
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon May 30 10:55:13 2011 +0200
+
+    Cambio algunos blDebug y corrijo error en pluginbf_tallascolores
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit c4988e85b2f3585d7a4a472e162baf0500a0fe8e
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon May 30 09:16:43 2011 +0200
+
+    Cambio algunos blDebug y actualizo tres plugins  plugins.
+    
+    Cambio número de versión del plugin_profesor, para que detecte la nueva versión..
+    Hago unos cambios en pluginbf_tallascolores y actualizo su versión
+    Actualizo pluginbf_abrecodigobarras para que use BlAction
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit e9fc6cb02b96d582875eeac32c55740b2d6af864
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Sun May 29 15:57:09 2011 +0200
+
+    Estandarizo algunos nombres de métodos.
+
+commit 4a549cbeeee5bf2f611c414f05d9bf521a443ad6
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Fri May 27 19:55:58 2011 +0200
+
+    Actualizo pluginbf_actividad para que use BlAction
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit f2e73ae5c24e80eb27242d0a7aed6f6d51a68cb5
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Fri May 27 19:37:38 2011 +0200
+
+    Pongo dos cadenas sensibles para traducir
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit eeaf5e4399d61443e8a31963cd7888f89d2a4648
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Fri May 27 19:35:05 2011 +0200
+
+    Actualizo pluginbf_alumno para que use BlAction
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 436dd040a310a11a5837e18aea59191954758eae
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Fri May 27 12:57:26 2011 +0200
+
+    Modifico algunas cadenas de BlDebug, y añado zonas sensibles a traducción. pluginbf_debug ahora usa BlAction
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit ac0ab3a5bbda86b1964869997847d613e872d227
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri May 27 12:56:26 2011 +0200
+
+    Creo los iconos svg para corregir el error de pixelado
+
+commit a24cea1937d4b8db2719b768db6cdc84e5f6b1a4
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Fri May 27 12:31:17 2011 +0200
+
+    Corrijo un pequeño fallo en pluginbf_z2z y cambio algunos blDebug
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 62d9caa90c161c6b9ad98e1521c7d162a55cc3b8
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu May 26 18:49:04 2011 +0200
+
+    Cambios en pluginbf_inventarios, pluginbf_profesor, plugin_z2z
+    
+    Actualizo pluginbf_trazabilidad para que use BlAction.
+    
+    Actualizo pluginbf_z2z y arreglo un error tipográfico en pluginbf_profesor.
+    Se utiliza 'as' como variable  RECORD. Se confunde con la palabra
+    reservada 'AS' y no es correcto. La renombro a 'rsa'.
+    
+    Modifico además pluginbf_inventariosimple-rm.sql que eliminaba las
+    tablas creadas por pluginbf_profesor en lugar de las creadas por este
+    mismo por pluginbf_inventariosimple.
+
+commit 549fda9c12505d5d704942f9bda6e89357dfff92
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu May 26 12:06:26 2011 +0200
+
+    Actualizo pluginbf_tutor para que use BlAction
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 857ef0f77df160ec8f75a65167223fa1c15171c4
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu May 26 10:49:19 2011 +0200
+
+    Actualizo pluginbf_trabajador para que use BlAction y elimino código sin usar en pluginbf_ticket
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 993abfdb27cc51bce40aab3d8d01440ac88487e0
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed May 25 19:35:48 2011 +0200
+
+    Actualizo pluginbf_seriesfactura para que use BlAction
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 91b42f47c8fc358ea7bed05d3270021744902c53
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed May 25 19:16:57 2011 +0200
+
+    Actualizo pluginbf_recibo para que use BlAction en lugar de una clase derivada.
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 8d15b3355a1b290e5bae5edcf1d62b6440be3801
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed May 25 17:12:04 2011 +0200
+
+    Actualizo pluginbf_proveedorfactura,pluginbf_proveedorpago y pluginbf_proveedorpedido para que usen BlAction.
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit ddf2e5408181691a98f722859b56ffbe7450ed94
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed May 25 13:03:49 2011 +0200
+
+    Corrijo pluginbf_proveedor y actualizo pluginbf_proveedoralbaran para que use BlAction
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit b8f031ebf44d89a8928bb8458e2af130966f49db
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Tue May 24 19:46:18 2011 +0200
+
+    Cambio pluginbf_multiimprimir, pluginbf_promedios y pluginbf_proveedor
+    
+    Elimino código comentado sin usar de pluginbf_promedios y actualizo pluginbf_proveedor para que use BlAction
+    Elimino código comentado no usado en pluginbf_multiimprimir.
+    Elimino código comentado sin usar de pluginbf_promedios.
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 9883fc2fa435e22f17a44e66d2303024b2030b40
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Tue May 24 19:08:54 2011 +0200
+
+    Elimino código que estaba comentado, y ya no se usa desde el año 2010.
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 55e8bb0860f69b33dbf24bcf5493eac4ad66b892
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Tue May 24 17:51:16 2011 +0200
+
+    Arreglo fallo con el BlAction_triggered en pluginbf_articulo
+    Arreglo fallo en nombre de objeto de pluginbf_bulmatpv
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit fdd082cfdedb32ddf245923b7d5863d5f992b22f
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon May 23 18:00:11 2011 +0200
+
+    Actualizo pluginbf_minicontabilidad para que use BlAction
+    Pongo nombre correcto PluginBf_InventarioSimple en lugar de PluginBf_Profesor
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit ecb45a646b84dc8b27cca3bc8aed2c21ede5fcf0
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon May 23 17:31:59 2011 +0200
+
+    Actualizo pluginbf_iva para que use BlAction
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 3a8921777f5e423bfa930a68a71f63bc8963e8d1
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon May 23 11:59:36 2011 +0200
+
+    Añado &quot;return 0&quot; a pluginbf_asociacion,arreglo pluginbf_inventariosimple para que se BlAction y añado incompatibilidades
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit eb858b25750dc65d4728aacd74420c21172da49c
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon May 23 11:52:14 2011 +0200
+
+    Arreglo pluginbf_asociacion para que use BlAction y además coloco el metodo correcto.
+    
+    El disparador de &quot;Convocar comisión&quot; disparaba realmente la clase
+    JDirectivaView y no ComisionView.
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 6e95ba9995549a64bbeee3302b3b531458eca490
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon May 23 10:06:35 2011 +0200
+
+    Cambio de lugar carga de g_bges
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 953f977d3c4c191d2eb382b46e12bfec0cb56c35
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon May 23 09:36:04 2011 +0200
+
+    Actualizo pluginbf_inventario para que use BlAction y a su vez pongo un icono
+    Actualizo el pluginbf_articulos para que use BlAction.
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 1bfb40377bb5520fd2019de833818d6d81dcfdc5
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Fri May 20 17:22:51 2011 +0200
+
+    Actualizo plugins para que usen BlAction en lugar de clases derivadas
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 15875e40e0ead1d8af76780ec92cf638db0feab4
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Fri May 20 11:22:02 2011 +0200
+
+    Arreglo pluginbf_clienteticket para que use BlAction en lugar de una clase derivada.
+    Arreglo pluginbf_clientepresupuesto para que use BlAction en lugar de una clase derivada.
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 534a02d83b369a1cc88ba2efb10f82b26e882927
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu May 19 20:02:18 2011 +0200
+
+    Actualizo pluginbf_clientepedido para que use BlAction y cambio nombre de las acciones
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 9c1d5330b39d86646ae345bc70cfee0baa2bfb14
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu May 19 19:50:20 2011 +0200
+
+    Actualizo pluginbf_clientefactura para que use BlAction
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 94b26e9376c0d24f6acea40382d0b6e236fe92d4
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu May 19 19:27:55 2011 +0200
+
+    Actualizo pluginbf_clientecobro para que use BlAction en lugar de una clase derivada
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 16fe3c5988e06892da1461522206b252906b2c77
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu May 19 18:52:32 2011 +0200
+
+    Arreglo pluginbf_clientealbaran para que use BlAction en lugar de una clase derivada
+
+commit fb44801dd6d639858659257fd6db4b4d5960264e
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu May 19 18:24:15 2011 +0200
+
+    Arreglo pluginbf_cliente para que use BlAction
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit aee15eef7e3e4182c1da70b31fe5464f075e3411
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu May 19 18:02:15 2011 +0200
+
+    No se habia indicado el BlAction
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 7207814d2afebd27796f95b9d8ab9020ccb86c17
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu May 19 17:52:54 2011 +0200
+
+    Arreglo pluginbf_banco para que use BlAction en lugar de una clase derivada.
+    Estandarizo el nombre del objeto en pluginbf_almacen
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit a0832a1519a261a0a30a72c8254bd9ef74ace0e5
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu May 19 17:38:09 2011 +0200
+
+    Cambio nombres de objetos por mui_actionNombre, algo más acorde con un estandar de código
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 52cc14d2c71e2745da6f989a8130b341b6cc7ad8
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu May 19 17:01:45 2011 +0200
+
+    Arreglo pluginbf_almacen para que use BlAction
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit a224a37af24c9a151f58b152ca26a72704a85539
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu May 19 11:48:06 2011 +0200
+
+    Cambio el título de &quot;Tipo de Trabajo&quot; por &quot;Tipo de trabajo&quot;
+
+commit 381754fb3af7ede570b7cce864e67284f875e41e
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu May 19 09:38:42 2011 +0200
+
+    Actualizo pluginbf_tipotrabajo para que use BlAction
+    Carga automáticamente el ComboBox de Tipos de trabajador en Trabajadores.
+    Arreglo zonas para que sean sensibles a la traducción.
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 0b53b123fdaf9fb23bbb60493e37f0906d2f4d7c
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed May 18 19:23:49 2011 +0200
+
+    Estandarizo pluginbf_tallas colores y arreglo bug en este
+    
+    1.) Dejo los nombres de los archivos de manera correcta
+    2.) Arreglo el plugin para que use BlAction en lugar de una clase derivada.
+    3.) Arreglo el bug que reporté con YouTube, el plugin realmente no se desistalaba de la base de datos, quedaba rastros de el en la tabla &quot;configuración&quot;.
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit a80ba461f5b1c7e00ee1572d72a1d3aca4a6cf43
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed May 18 17:08:44 2011 +0200
+
+    Estandarizo pluginbf_inventariosimple
+    
+    MyPlugInv1 por SubForm_InventarioSimple
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit f3508298f4b4911731734f1f1838ef967e1e4858
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed May 18 16:49:26 2011 +0200
+
+    Estandarizo pluginbf_tarifa para que use BlAction en lugar de una clase derivada.
+    
+    Además corrijo un pequeño error en los otros plugins (faltaba un return 0;)
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit b0f817a3bc796cbc60f52a438ba4547fcaef94ea
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed May 18 12:57:26 2011 +0200
+
+    Estandarizo pluginbf_bulmatpv para que use use un BlAction en lugar de una clase derivada
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit ede68ef7fd7a0e309e988fbf4a25d25e4fcfd52d
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed May 18 12:35:09 2011 +0200
+
+    Arreglo el pluginbf_carteracobros para que use un BlAction y corrijo algunos errores en pluginbf_carterapagos
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 3e21c82d0ecc17d7c11b0bf2758ebeb705ddf77b
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed May 18 12:16:05 2011 +0200
+
+    Arreglo un typo que indicaba usar QAction en lugar del BlAction.
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 3c7e675ef3e7a33e2e90a7aaa8f75a1ac8afff38
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed May 18 12:02:50 2011 +0200
+
+    Arreglo el pluginbf_carterapagos para que use un BlAction en lugar de tener una clase derivada
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit c31c5c842bb927fa03b7c088408a2eeebf8181c3
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Tue May 17 17:40:09 2011 +0200
+
+    Nuevo botón (pluginbf_ivaincluido) para calcular el PVP IVA Incluido a partir del precio sin IVA
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit b1588a7a8e92bcbe337b40370c222ce25a9a65b7
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue May 17 14:49:34 2011 +0200
+
+    Pongo el icono de archivo documental y mejoro el plugin
+
+commit 6f64a52950a64f0f23385a592f1740c2522451bf
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Tue May 17 11:02:43 2011 +0200
+
+    Estandarizo nivel de identación en Python de bulmasetup a 4 espacios
+    
+    A lo largo del tiempo, mucha gente ha tocado bulmasetup con muchos
+    editores distintos, usando tabuladores, identaciones con espacios de a 1, 2, 3, e
+    inclusod de 8, establezco aquí según el estandar &quot;pythonero&quot;, la
+    identación a 4 espacios.
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit f18da06ed9027a75724aa5d8676ae27626c80459
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Tue May 17 10:24:04 2011 +0200
+
+    Modifico campo inactivoarticulo de pluginbf_articulo de BlDbField::DbBoolean a BlDbField::DbVarChar
+    
+    En la base de datos esta registrado como VARCHAR(1), y al intentar
+    tratarlo como booleano produce errores.
+    
+    Principalmente a la hora de usar una tabla de articulos importados.
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit f02c992ffc14ab33150a361e4a754362c88dcd5d
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu May 12 19:06:38 2011 +0200
+
+    Cambio llamadas a system(konqueror `ruta al archivo o url `) por lo aconsejado según QT.
+    
+    No es correcto hacer llamadas a sytem(konqueror), cuando no sabemos ni
+    el sistema que ejecutamos, y mucho menos si esta instalado este
+    navegador.
+    
+    El sistema ahora implementado, permite hacer llamadas al navegador por
+    defecto del usuario, independientemente del sistema operativo.
+    
+    Sigue esta lógica:
+     #include &lt;QDesktopServices&gt;
+     #include &lt;QUrl&gt;
+    QDesktopServices::openUrl(QUrl(&quot;RUTA&quot;, QUrl::TolerantMode))
+    
+    Funciona bajo GNU/Linux Maemo/Meego/Moblin Linux, Windows XP,Vista,7 y MacOsX, etc...
+    Proximamente con la inclusión de Android en QT4.8 también debería funcionar.
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit e037649d1503511cab0a611d9efe6a41cecd8176
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed May 11 19:00:21 2011 +0200
+
+    Estandarizo nombre clases en plugins de bulmalib (jue may 12 17:17:14 2011)
+    
+    plugin_bloqconf: MyPluginBloqConf por PluginBl_BloqConf (plblbloqconf.h incorrecto)
+    pluginbl_clipboard: myplugclipboard por PluginBl_Clipboard
+    pluginbl_embed: myplugincont por PluginBl_Embed (plblembed.h incorrecto)
+    pluginbl_importcsv: mypluginimportcsv por PluginBl_ImportCSV (plblimportcsv.h incorrecto)
+    pluginbl_report: MyPluginInformes por PluginBl_Report (plblreport.h incorrecto)
+    pluginbl_report2ods: MyPluginInformes por PluginBl_Report (plblreport2ods.h incorrecto)
+    pluginbl_subform2pdf: myplugsubformods por PluginBl_SubForm2PDF
+    pluginbl_subform2ods: myplugsubformods por PluginBl_SubForm2ODS
+    pluginbl_subform2sxc: myplugsubformsxc por PluginBl_SubForm2SXC
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 93e404bd4a65996d9c6cdd112a343967b8a20d28
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu May 12 17:01:27 2011 +0200
+
+    Arreglo fallo en las formas de pago que daba error si no se rellenaban determinados campos
+
+commit 65635396eefc298083e3ce64c25ada904694f84c
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu May 12 16:18:05 2011 +0200
+
+    Arreglo un error que no dejaba guardar el codigo postal de la empresa en la base de datos
+
+commit 01754e7967daa2de41dd658474140e62d457842d
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu May 12 15:46:34 2011 +0200
+
+    Hago las opciones de menu contextual y de menu de subformulario para subir y bajar registros
+
+commit 0bcdd5957a237e7c2891a6fa75355a39e05e5b6c
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu May 12 11:49:22 2011 +0200
+
+    Hago visible como opcion de menu contextual y como boton de subformulario la edicion en editor separado. Que hasta ahora solo se activaba pulsando Ctrl+/
+
+commit 32e65f3a541da7e5ceeb9b6111c3370839161637
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Wed May 11 22:46:05 2011 +0200
+
+    Arreglo error del commit anterior que no compilaba en Linux
+
+commit 2d8a2628dca177c1c6103370ebc7a1ebbee77551
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed May 11 21:29:05 2011 +0200
+
+    Cambio permisos en los archivos &quot;copyng&quot; de 755 a 644
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit e252a933cd7b8eb5faa7fad973dace1fdf655a60
+Author: unknown &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Tomeu en .</A>(none)&gt;
+Date:   Wed May 11 16:55:21 2011 +0200
+
+    Modifico el pluginbf_correothunderbird para que funcione bajo Windows
+
+commit d83a95eefed164c4e7e35c431abd31095d195e03
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed May 11 10:50:06 2011 +0200
+
+    Estandarizo las el nombre de clases principàles en plugins de BulmaCont
+    
+    PluginBt_Amortizacion por PluginBc_Amortizacion
+    MyPluginAsiento por PluginBc_Asiento
+    myplugin4 por PluginBc_Balance
+    myBloqFechas por PluginBc_BloqueFechas
+    MyPluginCuenta por PluginBc_Cuenta
+    MyPluginCuenta1 por Subform_Cuenta
+    MyPluginCuentasAnuales PluginBc_CuentasAnuales
+    myplugin por PluginBc_Debug
+    MyPluginDuplicarAsiento por PluginBc_DuplicarAsiento
+    myplugin por PluginBc_Estadisticas
+    myplugin por PluginBc_Example
+    MyPluginMayor por PluginBc_Mayor
+    myplugin por PluginBc_Online
+    mytiptrab por PluginBc_Proyectos
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 71957178886896b9a071e952990b2a386b5dd935
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed May 11 10:40:45 2011 +0200
+
+    Corregidas letras mayusculas, y campos de GetText
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 4ef92514a338dd4ac722e4a28044e0bb71552627
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Tue May 10 17:18:57 2011 +0200
+
+    Cambio permisos en algunos archivos. Faltaba poner el nuevo plugin para
+    que compile.
+    
+    *********************************
+    Fco. Javier M. C.
+    *********************************
+              Todo-Redes
+            C/.Begonia, 12
+       07010 Palma de Mallorca.
+          Tel: +34-971499071
+       <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+      comercial(en)todo-redes.com
+    *********************************
+
+commit 25dbdba92740b2d91f71af05e80c8da54de31061
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Tue May 10 11:00:56 2011 +0200
+
+    Pongo las dependencias del plugin.
+    
+    *********************************
+    Fco. Javier M. C.
+    *********************************
+              Todo-Redes
+            C/.Begonia, 12
+       07010 Palma de Mallorca.
+          Tel: +34-971499071
+       <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+      comercial(en)todo-redes.com
+    *********************************
+
+commit b4068c1d99ee817b85b08a5bd8cd91221f902869
+Merge: 019ee37 be72424
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Tue May 10 10:54:47 2011 +0200
+
+    Merge branch 'nuevoplugin1'
+
+commit be724248978cb2c10850f9a07439546d99b5d531
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Tue May 10 10:49:08 2011 +0200
+
+    Nuevo plugin para cobrar tickets de forma parcial (IVA incluido).
+    
+    Aparece un botón en la ventana de cobro (IVA incluido) y al
+    seleccionarlo aparecen dos tickes, origen y destino. Se pueden mover
+    líneas enteras entre tickets o sólo unidades (por defecto 1 unidad). Al
+    pulsar 'aceptar' se modifica el ticket original y se crea uno nuevo con
+    el mismo nombre + &quot;:&quot; para diferenciarlo.
+    
+    *********************************
+    Fco. Javier M. C.
+    *********************************
+              Todo-Redes
+            C/.Begonia, 12
+       07010 Palma de Mallorca.
+          Tel: +34-971499071
+       <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+      comercial(en)todo-redes.com
+    *********************************
+
+commit 019ee37690c21fe50657b112574180b2ee4ed0e8
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri May 6 22:44:26 2011 +0200
+
+    Arreglo el pluginbf_contrato para que use un BlAction en lugar de tener una clase derivada
+
+commit 844584c4e56a3504e7cade8561e580099e19745d
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Fri May 6 18:46:35 2011 +0200
+
+    Estandarizo nombre de clase en pluginbf_bulmatpv
+    
+    myplugincont por PluginBf_BulmaTPV
+    
+    Se mantiene la clase en el lugar equivocado zlist.h
+    Motivo:
+        Este plugin necesita actualizarse al nuevo metodo.
+
+commit 9985282fad0249b2d94be8155a8c267b08020e32
+Merge: 825a7d1 eb13589
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri May 6 17:22:40 2011 +0200
+
+    Merge branch 'master' of <A HREF="ssh://git.berlios.de/gitroot/bulmages">ssh://git.berlios.de/gitroot/bulmages</A>
+
+commit 825a7d19c70f6b156938eff281cf9d72bbd01e6a
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri May 6 17:22:19 2011 +0200
+
+    Arreglo un poquito el directorio debian para que no de error al ejecutar el dpkg-buildpackage
+
+commit eb1358999d59cc1e49e4ccd6d155cc02ad74b47b
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Fri May 6 12:35:14 2011 +0200
+
+    Estandarizo clase en pluginbf_z2z
+    
+    mypluginzz por PluginBf_Z2Z
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 48690c4ba84549548f8f904605673596245ddc20
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Fri May 6 11:17:35 2011 +0200
+
+    Estandarizo clase en pluginbf_trazabilidad
+    
+    myplugin por PluginBf_Trazabilidad
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 9227a401476f76f99aa942276af1c5212eb53949
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu May 5 21:04:19 2011 +0200
+
+    El mismo error que ocurria con los articulos se podia reproducir en los plugins que modifico
+
+commit 39d98c2a014331587185e31275b68b1398f6a958
+Merge: 4edb3a6 7d0266a
+Author: unknown &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Tomeu en .</A>(none)&gt;
+Date:   Thu May 5 19:34:41 2011 +0200
+
+    Merge branch 'master' of <A HREF="ssh://tborras@git.berlios.de/gitroot/bulmages">ssh://tborras@git.berlios.de/gitroot/bulmages</A>
+
+commit 4edb3a6479aebbaa6c2b06b989a1d40b30892a47
+Author: unknown &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Tomeu en .</A>(none)&gt;
+Date:   Thu May 5 19:33:40 2011 +0200
+
+    Arreglo, ahora si, el fallo de cuelgue en windows al dar sobre nuevo articulo. El problema es que habia un WA_DeleteOnClose descontrolado
+
+commit 7d0266a0389c9bd5bc668d6c343114cdd6159399
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu May 5 18:56:52 2011 +0200
+
+    Estandarizo nombre de clase en pluginbf_tarifa
+    
+    myplugin1 port PluginBf_Tarifa
+    
+    La definición permanece por el momento en el lugar equivocado
+    listltarifaview.h en lugar de pluginbf_tarifa.h
+    
+    Motivo:
+        Como ayer me explico Tomeu, algunos plugins antiguos heredan de
+        QToolButton, QFormLayout, etc..
+        Esto no nos permite declarar la clase en el .h de inicio,
+        estos plugins, deberían pasarse a nuestras clases ya hechas del
+        nuevo modelo, usando BlToolButton, BlSubForm...
+    
+    Haré una lista, con todos los plugins que deben transformarse.
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit f239323bc954067bfb3dd4eadf0ec2fa4bd0f9bc
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu May 5 17:31:52 2011 +0200
+
+    Corrijo un error solo de windows que daba un precioso cuelgue al borrar un elemento previamente borrado. Lo que aun no comprendo es como en Linux no generaba un segfault
+
+commit 61ca003fbcf31bc1ec7a26d16e4fccbd102b2700
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu May 5 16:07:47 2011 +0200
+
+    Cambio el icono de bulmages que no lanzaba el programa que tocaba
+
+commit 99a949e6ca82134a6087d59b03b914e8a852cb66
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu May 5 16:05:46 2011 +0200
+
+    Elimino archivos de copia que se colaron con el ultimo cambio
+
+commit c43bf338a6f56779d07ab03ca5c27dcb022e8604
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu May 5 16:02:57 2011 +0200
+
+    Corrijo un error en pluginbf_recibo.h y cambio un numero de version en bulmasetup
+
+commit 9bba65c1bb10a53ac8fec448b145ec71c231c909
+Merge: b1c860d d8924dc
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu May 5 13:34:58 2011 +0200
+
+    Merge branch 'master' of <A HREF="ssh://git.berlios.de/gitroot/bulmages">ssh://git.berlios.de/gitroot/bulmages</A>
+
+commit b1c860dcd59aa736cc12b3b4cc2e65a3f90d6759
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu May 5 13:34:40 2011 +0200
+
+    Agrego las entradas de menu tanto para KDE como para GNOME y XFCE que cambian segun el directorio de instalacion. Teoricamente funcionaran bien si se hace instalacion en /usr/local o en /usr. Necesito que algun usuario de Gnome los pruebe
+
+commit d8924dc0b30e2957cf2d507ca58c3e213345ae00
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu May 5 12:59:13 2011 +0200
+
+    Estandarizo clase en pluginbf_seriesfactura
+    
+    MyPlugSeriesFactura por PluginBf_SeriesFactura
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit fd8ee2b3608831c83902af83d1d3dde913f21182
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu May 5 12:55:38 2011 +0200
+
+    Estandarizo clases en pluginbf_recibo
+    
+    MyPlugProf por PluginBf_Recibo
+    MyPlugRecibo1 por EmitirRecibos
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 1edb1f3beab10eb458e60d8f711a195b6532b3a3
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu May 5 12:27:13 2011 +0200
+
+    Estandarizo clase en pluginbf_proveedorpago
+    
+    mypluginpag por PluginBf_ProveedorPago
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 7c82d1574ac448381ab9e7bfa4eb1a030ed8e6be
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu May 5 11:14:09 2011 +0200
+
+    Estandarizo clase en pluginbf_profesor, pluginbf_proveedor
+    
+    MyPlugProf por PluginBf_Profesor
+    MyPlugPro por PluginBf_Proveedor
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit b7051db7cb1e143f1f51a6401a3929024814820b
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu May 5 10:55:13 2011 +0200
+
+    Estandarizo clase en pluginbf_modificaciones
+    
+    MyPlugModificadores por PluginBf_Modificadores
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 30e6b6918aede0d9d21aa62b5b72cfbdd5008794
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu May 5 10:30:13 2011 +0200
+
+    Estandarizo clase en pluginbf_iva, pluginbf_minicontabilidad
+    
+    MyPlugIVA por PluginBf_IVA
+    MyPlugArt por PluginBf_MiniContabilidad
+    MyPlugArt1 por SubForm_MiniContabilidad
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit c5dc216cde4706f5b00734d37a2c2530bd96bdfc
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu May 5 09:39:00 2011 +0200
+
+    Estandarizo clase en pluginbf_formasdepag, pluginbf_inventario, pluginbf_inventariosimple
+    MyPlugFPago por PluginBf_FormasDePago
+    myplugininv por PluginBf_Inventario
+    myplugininvsimple por PluginBf_InventarioSimple
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 896174aa684224d0d2221a9dc58a1b43fa1344a4
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu May 5 09:29:11 2011 +0200
+
+    Estandarizo clase del plugin de ejemplo (pluginbf_example)
+    
+    myplugin por PluginBf_Example
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 9bf3a7010c1062b0ca9bb39322eeb3bd6ac8344c
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu May 5 07:29:39 2011 +0200
+
+    Creo la miniap runbulmasetup para lanzar bulmasetup como root usando kdesudo o gksudo segun el escritorio que usamnos
+
+commit a57f3f0990f6f3dd02afff0859178c9129e222f9
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed May 4 19:34:19 2011 +0200
+
+    Estandarizo clase en pluginbf_debug
+    
+    myplugin por PluginBf_Debug
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit b4d4efcea0600969c9c9f14f763f135048c48ed6
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed May 4 18:40:16 2011 +0200
+
+    Estandarizo clase en pluginbf_contrato, dejo la declaración sin mover.
+    
+    Motivos:
+        Si se desplaza la clase PluginBf_Contrato al archivo correcto:
+        pluginbf_contrato/pluginbf_contrato.h
+    
+        Se queja nuevamente de que no puede cargar la libreria desde
+        /usr/local/lib/bulmatpv....
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 45f9cbde60eae750ac7d701b18cf6c5d191db4f2
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed May 4 18:04:28 2011 +0200
+
+    Añado dependencia de pluginbf_clientealbaran, pero sigue sin funcionar.
+    
+    Lo he dejado reportado en el reportbug de BerliOs.
+    <A HREF="https://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=18094&amp;group_id=4472">https://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=18094&amp;group_id=4472</A>
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 1708ad3c301c8b729510af1ba8f8e07a9a7ae872
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed May 4 12:49:09 2011 +0200
+
+    Estandarizo clase en pluginbf_compraventa.
+    
+    myplugincv por PluginBf_CompraVenta.
+
+commit 7cbb53d29a254dcff09eb17c1ed0fc3d1ff2b02b
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Tue May 3 19:50:25 2011 +0200
+
+    Comienzo estandarización en clase de pluginbf_comercial y restablezco otros
+    
+    pluginbf_comercial:
+        Clase mypluginbf implementada en myplugin.cpp movida a pluginbf_comercial.cpp
+        Clase mypluginbf renombrada a PluginBf_Comercial
+    
+        La declaración permanece temporalmente ahora en comercial.h.
+        Motivos:
+            Si se mueve la función al lugar correcto pluginbf_comercial.h,
+            por algún motivo salta error.
+            'No se puede encontrar la libreria
+            /usr/local/lib/bulmatpv/plugins/libpluginbf_comercial.so'
+    
+            Ese archivo realmente no existe ya que no pertenece a BulmaTPV.
+            Debería revisarse el lanzamiento de plugins por parte de
+            BulmaLib.
+    
+    pluginbf_carterapagos:
+        Vuelvo a desplazar PluginBf_CarteraCobros a cartepagoslist.h por
+        el mismo motivo.
+    
+    pluginbf_carteracobros:
+            Vuelvo a desplazar PluginBf_CarteraCobros a carteracobroslist.h
+            por  el mismo motivo.
+
+commit 3cb1b14525ea05af0385fb864b3268da135e581d
+Merge: 2ab25a0 9dc1dfd
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue May 3 12:39:38 2011 +0200
+
+    Merge branch 'master' of <A HREF="ssh://git.berlios.de/gitroot/bulmages">ssh://git.berlios.de/gitroot/bulmages</A>
+
+commit 2ab25a08a35962b4816a76ad302dda154ef87337
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue May 3 12:39:02 2011 +0200
+
+    Agrego imagenes a algunos README
+
+commit 9dc1dfdace399250336f3d375d13e998eceed348
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Tue May 3 12:25:42 2011 +0200
+
+    Estandarizo clase en  pluginbf_clientepresupuesto
+    
+    pluginbf_clientepresupuesto:
+        mypluginpres por PluginBf_ClientePresupuesto
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 0d84e33f9b36b55942ce577346f40888d00f9c10
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Tue May 3 12:01:39 2011 +0200
+
+    Estandarizo clase en pluginbf_clientepedido
+    
+    pluginbf_clientepedido:
+        mypluginped por PluginBf_ClientePedido
+    
+    pluginbf_proveedorpedido:
+        mypluginpedp por PluginBf_ProveedorPedido
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit f263a5a5050dcb725f13ed3b23ab29fa78708a4b
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Tue May 3 11:47:12 2011 +0200
+
+    Estandarizo clase en pluginbf_clientefactura y pluginbf_proveedorfactura
+    
+    pluginbf_clientefactura:
+        mypluginfact por PluginBf_ClienteFactura
+    
+    pluginbf_proveedorfactura:
+        mypluginfactp por PluginBf_ProveedorFactura
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 8e71b59c74b3c141e159b76dc7fb8bc52de565e7
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Tue May 3 11:31:29 2011 +0200
+
+    Estandarizo clase en pluginbf_clientecobro
+    
+    myplugincob por PluginBf_ClienteCobro
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 6d4bf911ed9ec1c7745433be2b83e8de7012f442
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Tue May 3 10:42:45 2011 +0200
+
+    Estandarizo clases en varios plugins de BulmaFact
+    
+    pluginbf_clientealbaran:
+    mypluginalb por PluginBf_ClienteAlbaran
+    
+    pluginbf_clienteticket:
+    mypluginalb por PluginBf_ClienteTicket
+    
+    pluginbf_proveedoralbaran:
+    mypluginalb por PluginBf_ProveedorAlbaran
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 5bfe4a736df4aa340793ae53fc2915d3c2fdf334
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Tue May 3 10:31:38 2011 +0200
+
+    Estandarizo clases en pluginbf_cliente
+    
+    MyPlugCli por PluginBf_Cliente
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 21584454f4c4e4f939e761faed01b851a43ffad0
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Tue May 3 10:20:36 2011 +0200
+
+    Estandarizo y muevo clase en pluginbf_carterapagos
+    
+    MyPluginCarteraPagos por PluginBf_CarteraPagos
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 3d3089247f5006a1be27a8d26788f7e36917bc42
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Tue May 3 10:09:59 2011 +0200
+
+    Estandarizo clase en pluginbf_cuadrante
+    
+    myplugin4 por PluginBf_Cuadrante
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 984ffb2f5304a5fe16ebb28567679e79dda3068a
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Tue May 3 09:55:03 2011 +0200
+
+    Estandarizo y muevo clases en pluginbf_carteracobros
+    
+    MyPluginCarteraCobros por PluginBf_CarteraCobros
+
+commit e2dc46fd7d939fc802a38dde757e63e181756b72
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue May 3 00:48:39 2011 +0200
+
+    Amplio el README de pluginbf_inventario
+
+commit e261d3c3f7e1ad87f2d69f6a17135b07d1828ef2
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon May 2 19:45:01 2011 +0200
+
+    Estandarizo clases de pluginbf_tutor
+    
+    MyPlugProf por PluginBf_Tutor
+    MyPlugTutor1 por SubForm_Tutor
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit e8d8c287305eef98972f9e3b94c588bf4d3ef9aa
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon May 2 19:34:10 2011 +0200
+
+    Nombre erroneo: PluginBf_Trabajo por PluginBf_Trabajador.
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 04e2deac4508a26a48c9456a940723a8733496c7
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon May 2 19:24:27 2011 +0200
+
+    Estandarizo clase en pluginbf_trabajo: MyPlugTrab por PluginBf_Trabajo
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 70b645721940e748e841dd0ea4f7ec3d71d1189d
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon May 2 11:32:25 2011 +0200
+
+    Estandarizo clase en pluginbf_banco
+    
+    MyPlugBanc por PluginBf_Banco
+
+commit 336b8d35c4b887665054c136ec49175008189662
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon May 2 11:16:26 2011 +0200
+
+    Estandarizo clases en pluginbf_asociacion
+    
+    MyPlugAsoc por PluginBf_Asociacion
+
+commit 1349a2cbf8923a378c73547e1ec18c61c048cd3c
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon May 2 10:52:43 2011 +0200
+
+    Estandarizo y corrijo tres plugins en BulmaFact
+    
+    Estandarizaziones en pluginbf_articulo:
+    MyPlugArt por PluginBf_Articulo
+    MyPlugArt1 por SubForm_Articulo
+    
+    Correciones en pluginbf_actividad, pluginbf_alumno:
+    Subform_Actividad por SubForm_Actividad
+    Subform_Alumno por SubForm_Alumno
+
+commit 2f9fa840b6447cbfe3ab9e695eed0fa18870cc30
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Mon May 2 10:28:31 2011 +0200
+
+    Estandarizo clases de pluginbf_articulo
+    
+    MyPlugArt por PluginBf_Articulo
+    MyPlugArt1 por Subform_Articulo
+
+commit 4ca652e7ef990404aa91aab7a8516cd9d239c961
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed Apr 20 17:09:06 2011 +0200
+
+    Estandarizo clases de pluginbf_alumno
+    
+    MyPlugProf a PluginBf_Alumno
+    MyPlugAl1 a Subform_Alumno
+
+commit 84d97a123beef8a9507fe66b29e978a5b99d9154
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sat Apr 30 15:31:01 2011 +0200
+
+    Arreglo un poco el README.es del pluginbf_carteracobros
+
+commit c865139e9c37aca4f0ad2f65ce6502df37bea06a
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu Apr 28 22:25:49 2011 +0200
+
+    Modifico y amplio la descripcion de este plugin en bulmasetup
+
+commit 7b304a2891c765fafde10bea9466d41d2eb52379
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu Apr 28 16:36:56 2011 +0200
+
+    Mejoro y amplio la explicacion del plugin de minicontabilidad
+
+commit fc12d79b3c77410e63d27e0ae6436c9d8febd1bc
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sun Apr 24 19:59:46 2011 +0200
+
+    Agrego imagenes y mejoro la descripcion para el pluginbl_clipboard.
+    
+    Corrijo un error en el README de pluginbf_catalogo que lo ponia en una categoria erronea.
+
+commit cb3053b19e79648888d4999f42b3789454d10f47
+Author: Walter Garcia-Fontes &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">walter.garcia en upf.edu</A>&gt;
+Date:   Fri Apr 22 19:46:30 2011 +0200
+
+    Updated English, Catalan translation of bulmasetup
+
+commit c6b3f532b3c71c1a8ae5dfdc3db1b76722a253c3
+Author: Walter Garcia-Fontes &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">walter.garcia en upf.edu</A>&gt;
+Date:   Thu Apr 21 22:57:27 2011 +0200
+
+    Correct spelling error
+
+commit 75cf6b264d361d580302050bc9698d53f697d2d3
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en Neo.</A>(none)&gt;
+Date:   Thu Apr 21 19:33:03 2011 +0200
+
+    Agrego el icono a la opcion de pegado desde portapapeles y lo pongo en la botonera de los subformularios
+
+commit 51b663a0f84f74575adb1330326568a68ebc370e
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en Neo.</A>(none)&gt;
+Date:   Thu Apr 21 00:14:01 2011 +0200
+
+    Arreglo fallo en los README de los plugins de cartera que impedia que se aplicasen los parches en la base de datos.
+
+commit 0af6e54dfa8fba7fccd90100c5dd729b808284ed
+Merge: 7b03a45 6d3747f
+Author: Aron y Toni &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">auryn en wanadoo.es</A>&gt;
+Date:   Wed Apr 20 19:00:17 2011 +0200
+
+    Merge branch 'master' of <A HREF="ssh://git.berlios.de/gitroot/bulmages">ssh://git.berlios.de/gitroot/bulmages</A>
+
+commit 7b03a458a0b6b306817d6e30876e3535ceceb515
+Author: Aron y Toni &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">auryn en wanadoo.es</A>&gt;
+Date:   Wed Apr 20 18:58:32 2011 +0200
+
+    Evitar botones encogidos con subforms estrechos.
+
+commit 6d3747f13d271f58bde9e4581218c90f291ba811
+Author: unknown &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Tomeu en .</A>(none)&gt;
+Date:   Wed Apr 20 17:22:11 2011 +0200
+
+    Si la compilacion es en windows, de momento no se compila el pluginbc_registroiva
+
+commit 4bf2d7b4770d121bad96247b5fb4f4d42576d847
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed Apr 20 16:47:44 2011 +0200
+
+    Arreglo nombre de clase que pusé mal, y estandarizo el correcto.
+
+commit 6c12fdd02e493f4637cd1f1c9e94cc2fa70c0c49
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en Neo.</A>(none)&gt;
+Date:   Wed Apr 20 13:23:00 2011 +0200
+
+    Arreglo un error de la instalacion de pluginbf_example\n Este plugin no se instalaba bien al no estar presente la sentencia de instalacion en el CMakeFiles.txt pero si aparecia en el bulmasetup porque los README si que se instalaban. Ahora ya se instala correctamente.
+
+commit 1220d964f4a79d7dfd5762fbc6d72785fbafeda6
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed Apr 20 12:40:11 2011 +0200
+
+    Se estandariza el nombre de la clase 'MyPlugAlm' por 'PluginBf_Almacen'.
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit 0fcd08501dac090bbce0a2c2df9d7448df3b457c
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed Apr 20 11:24:16 2011 +0200
+
+    Se estandariza el nombre de la clase 'MyPluginAct1' por 'PluginBf_Actividad'.
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit c895070258015f7b59df2035e7f84d087d4232d7
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed Apr 20 09:30:53 2011 +0200
+
+    Se estandariza el nombre de la clase 'MyPlugin' por
+    'PluginBf_AbreCodigoBarras.'
+    
+    *********************************
+    · Daniel Ripoll
+    *********************************
+    ·          Todo-Redes
+    ·        C/.Begonia, 12
+    ·   07010 Palma de Mallorca
+    ·      Tel: +34-971499071
+    ·   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+    ·  comercial(en)todo-redes.com
+    *********************************
+
+commit b21a3d4e73663dc8742ee69642548ac414070d67
+Merge: c8ce37e e2dd99f
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue Apr 19 19:18:12 2011 +0200
+
+    Merge branch 'master' of <A HREF="ssh://git.berlios.de/gitroot/bulmages">ssh://git.berlios.de/gitroot/bulmages</A>
+
+commit c8ce37e89103093fa8e5eb508d76368dbef9d171
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue Apr 19 19:17:42 2011 +0200
+
+    Arreglo error reportado sobre la agregacion de albaranes a una factura dada. El problema se debe a que se ha quitado la dependencia de linkado de clientealbaran en clientefactura. Aun asi la solucion logica es cambiar la funionalidad de sitio
+
+commit e2dd99f0f7f3bb6b7a22995089299a5cf7cad334
+Author: Aron y Toni &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">auryn en wanadoo.es</A>&gt;
+Date:   Mon Apr 18 13:21:59 2011 +0200
+
+    Nuevo método existsAnyRecord(table, cond) para simplemente saber si existe al menos un registro que cumpla cierta condición en una tabla.
+
+commit 20e9f9b2263dd76d7f308d353abcc4fe735ec89f
+Author: Aron y Toni &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">auryn en wanadoo.es</A>&gt;
+Date:   Mon Apr 18 09:56:44 2011 +0200
+
+    Agrego variables con fecha y hora de impresión para que cualquier informe pueda usarlas en caso necesario.
+    Sus nombres son: [fecha_actual] y [hora_actual].
+
+commit 3b4c609410c1141de77115812267cc627e00a70d
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Sat Apr 16 00:40:59 2011 +0200
+
+    Hago que los botones de las pantallas de mesas tengan el tamaño
+    adecuado.
+    
+    *********************************
+    Fco. Javier M. C.
+    *********************************
+              Todo-Redes
+            C/.Begonia, 12
+       07010 Palma de Mallorca.
+          Tel: +34-971499071
+       <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+      comercial(en)todo-redes.com
+    *********************************
+
+commit e9a913d37451dea75965fd5d70ea94f06fe6fcd7
+Merge: 3a83ec7 2caaf35
+Author: Walter Garcia-Fontes &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">wgarcia en cj060241</A>&gt;
+Date:   Fri Apr 15 20:11:27 2011 +0200
+
+    Merge branch 'master' of <A HREF="ssh://git.berlios.de/gitroot/bulmages">ssh://git.berlios.de/gitroot/bulmages</A>
+
+commit 3a83ec70ba837d2e6585d6b502fe0ba0b5c503f6
+Author: Walter Garcia-Fontes &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">wgarcia en cj060241</A>&gt;
+Date:   Fri Apr 15 20:09:15 2011 +0200
+
+    English translation
+
+commit 85639a8a3b1c11fc838a593ac980b72f047e5b78
+Author: Walter Garcia-Fontes &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">wgarcia en cj060241</A>&gt;
+Date:   Fri Apr 15 19:42:39 2011 +0200
+
+    Corrección título del README
+
+commit 2caaf3548ce5f836ec1af0b9f30c8affcd1864d1
+Merge: eb9d47f 2fcfe49
+Author: Aron y Toni &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">auryn en wanadoo.es</A>&gt;
+Date:   Fri Apr 15 19:06:06 2011 +0200
+
+    Merge branch 'master' of <A HREF="ssh://git.berlios.de/gitroot/bulmages">ssh://git.berlios.de/gitroot/bulmages</A>
+
+commit eb9d47f845a3e8430e08cebd10b073eeda61b032
+Author: Aron y Toni &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">auryn en wanadoo.es</A>&gt;
+Date:   Fri Apr 15 19:03:10 2011 +0200
+
+    Nuevas variables disponibles para el informe de listado: [fecha_actual] y [hora_actual].
+    Pueden ser útiles para el pie de página.
+    Intentaré que estén para el resto de informes también (si no hay incoveniente).
+
+commit 2fcfe496b9905f2a9961b3d99308b7a2bd1c6f28
+Author: Walter Garcia-Fontes &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">wgarcia en cj060241</A>&gt;
+Date:   Fri Apr 15 18:15:37 2011 +0200
+
+    Errores ortográficos
+
+commit 560a310601a9ddb49955720e235e46d2c246a9d0
+Author: Walter Garcia-Fontes &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">wgarcia en cj060241</A>&gt;
+Date:   Fri Apr 15 18:11:01 2011 +0200
+
+    Corrección error tipográfico
+
+commit 559658a6fd246ab5eb53629a14026fcf6a9a632e
+Author: Walter Garcia-Fontes &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">wgarcia en cj060241</A>&gt;
+Date:   Fri Apr 15 18:05:33 2011 +0200
+
+    English translation
+
+commit ca065ec99dac43f4fa4f6b665efa213059c9720f
+Author: Walter Garcia-Fontes &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">wgarcia en cj060241</A>&gt;
+Date:   Fri Apr 15 18:02:21 2011 +0200
+
+    Catalan translation correction
+
+commit 621bd8a99d768483927c471f285800fd05943ec7
+Author: Aron y Toni &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">auryn en wanadoo.es</A>&gt;
+Date:   Fri Apr 15 17:22:31 2011 +0200
+
+    Quito la dependencia con BFact y BCont que tenían los plugins de BulmaLib (no parece necesario incluir cabeceras de dichos módulos). Así se puede usar Bulmafact sin tener Bulmacont.
+
+commit 744bc709b62aa2d2ac33675f2d33d9009ab6ea7d
+Author: Aron y Toni &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">auryn en wanadoo.es</A>&gt;
+Date:   Fri Apr 15 11:32:25 2011 +0200
+
+    Evito que el plugin dependa de BFact o de BCont (no parece necesario incluir bcbulmacont.h y bfbulmafact.h).
+
+commit b44daffd812b9a0c5307ca560a346836e8d9ca2b
+Merge: deb2a0c 659697f
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu Apr 14 21:19:52 2011 +0200
+
+    Merge branch 'master' of <A HREF="ssh://git.berlios.de/gitroot/bulmages">ssh://git.berlios.de/gitroot/bulmages</A>
+
+commit deb2a0c35bc4cce0cc6890bb4529325887d0587a
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu Apr 14 21:18:35 2011 +0200
+
+    Cambio en el guardado de los filtros
+
+commit 659697f35085fa5b96db3ffeeaab0509356472fc
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu Apr 14 17:46:50 2011 +0200
+
+    Importno nuevos cambios hechos por hilex en SVN:
+    
+    Hago que los títulos de ventana principal de BulmaCont y BulmaTPV tambi?\195?\169n sean configurables.
+
+commit fb8394acb58cd1d1442b4c5026c107713882063d
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu Apr 14 17:33:24 2011 +0200
+
+    Importo los cambios realizados por hilex rev 4749
+    
+    &quot;Agrego un ajuste de configuración nuevo para el título de la ventana principal de Bulmafact.
+    Además, en la lectura de la configuración especifico
+    que el texto es &quot;UTF-8&quot;.&quot;
+
+commit bd16b4a9c1addaf4c62bd6aaee668b672ea7623d
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu Apr 14 12:38:49 2011 +0200
+
+    Eliminado: Ya sabemos que pasa con la codificació.
+
+commit c7cb854aa72ebef9859a6113aef5f5a89dbb44b9
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu Apr 14 11:21:53 2011 +0200
+
+    Pruebas de acentos áéí
+
+commit cadad2ae9e302b17784ff3b814ad7c7ab1533846
+Merge: d32be1d 7e0181e
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu Apr 14 11:17:27 2011 +0200
+
+    Merge branch 'master' of <A HREF="ssh://git.berlios.de/gitroot/bulmages">ssh://git.berlios.de/gitroot/bulmages</A>
+
+commit d32be1d65d89dd22622e17947f7bfccaeb28d7d9
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu Apr 14 11:07:13 2011 +0200
+
+    áéíóú Que tal se ven los acentos ahora:?
+
+commit 7e0181ed6b97dc6fe4a6af727e908c8a4b4bce2c
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Thu Apr 14 11:07:13 2011 +0200
+
+    áéíóú Que tal se ven los acentos ahora?
+
+commit 568ec3ad1bae64f5b66087b2c6ebd615f816dac9
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed Apr 13 17:51:43 2011 +0200
+
+    Borrada prueba de acentuación
+
+commit 3af3ea800f235fa67dd6dbb66d73bc3af45b1a24
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed Apr 13 17:21:41 2011 +0200
+
+    PRUEBA DE ACENTOS 2: ÁÉÍÓÚ ÄËÏÖÜ ÀÈÌÒÙ
+
+commit 710db4cd09a91c6484499cc75736ba1c375b3772
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Wed Apr 13 16:46:44 2011 +0200
+
+    
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006148.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, nsis_fapacges,	deleted. a62eded25ca7bf3ba2e0769e350426d13d6b8396
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006157.html">[BulmaGés] Me habeis saturado
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6182">[ fecha ]</a>
+              <a href="thread.html#6182">[ hilo ]</a>
+              <a href="subject.html#6182">[ asunto ]</a>
+              <a href="author.html#6182">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

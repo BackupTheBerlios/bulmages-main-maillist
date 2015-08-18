@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: mtelleria pushed	3 commits to gbp-d...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20mtelleria%20pushed%0A%093%20commits%20to%20gbp-d...&In-Reply-To=%3C20130206180452.3EBA7F80%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007515.html">
+   <LINK REL="Next"  HREF="007517.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: mtelleria pushed	3 commits to gbp-d... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20mtelleria%20pushed%0A%093%20commits%20to%20gbp-d...&In-Reply-To=%3C20130206180452.3EBA7F80%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: mtelleria pushed	3 commits to gbp-d...">no-reply en gitorious.org
+       </A><BR>
+    <I>Mie Feb  6 19:04:51 CET 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007515.html">[BulmaGés] [Gitorious] Activity: mtelleria created	branch pristine-t...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007517.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7516">[ fecha ]</a>
+              <a href="thread.html#7516">[ hilo ]</a>
+              <a href="subject.html#7516">[ asunto ]</a>
+              <a href="author.html#7516">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+mtelleria pushed 3 commits to gbp-debian-release
+gbp-debian-release changed from 581940d to b44d51d
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/581940d56c9f8e3be15a59bf5fb739342b640b30/diffs/b44d51d2f833b82786a17da34c558e4fc294dad4">https://gitorious.org/bulmages/bulmages/commit/581940d56c9f8e3be15a59bf5fb739342b640b30/diffs/b44d51d2f833b82786a17da34c558e4fc294dad4</A>
+
+Diff: 
+
+commit b44d51d2f833b82786a17da34c558e4fc294dad4
+Author: Miguel Telleria de Esteban &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">miguel en mtelleria.com</A>&gt;
+Date:   Wed Feb 6 17:40:07 2013 +0100
+
+    release build for 0.14.0-1fa1cab1-sid2
+
+diff --git a/debian/changelog b/debian/changelog
+index a42a279..b47812a 100644
+--- a/debian/changelog
++++ b/debian/changelog
+@@ -1,3 +1,10 @@
++bulmages-release (0.14.0-1fa1cab1-sid2) sid; urgency=low
++
++  * fixing .gitignore
++  * We forgot about debian/gbp.conf because it was masked by .gitignore
++
++ -- Miguel Telleria de Esteban &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">miguel en mtelleria.com</A>&gt;  Wed, 06 Feb 2013 17:38:44 +0100
++
+ bulmages-release (0.14.0-1fa1cab1-sid1) sid; urgency=low
+ 
+   * Imported Upstream version 0.14.0 from release (3 years of release work)
+
+commit c9e54501fe9b93dfd4969e7f8ca2db04939edf0b
+Author: Miguel Telleria de Esteban &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">miguel en mtelleria.com</A>&gt;
+Date:   Wed Feb 6 17:23:57 2013 +0100
+
+    We forgot about debian/gbp.conf because it was masked by .gitignore
+
+diff --git a/debian/gbp.conf b/debian/gbp.conf
+new file mode 100644
+index 0000000..5729698
+--- /dev/null
++++ b/debian/gbp.conf
+@@ -0,0 +1,12 @@
++[DEFAULT]
++builder = debuild -i -I
++pristine-tar = True
++debian-branch = gbp-debian-release
++upstream-branch = release
++upstream-tag = release/%(version)s
++debian-tag = release-debian/%(version)s
++
++[git-buildpackage]
++sign-tags = True
++export-dir = ../build-area
++pristine-tar-commit = True
+
+commit f3f4a5b5438f475752734072b021a64f84f9c6ec
+Author: Miguel Telleria de Esteban &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">miguel en mtelleria.com</A>&gt;
+Date:   Wed Feb 6 17:22:48 2013 +0100
+
+    fixing .gitignore
+
+diff --git a/.gitignore b/.gitignore
+index 73fe87f..845ca06 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -1,23 +1 @@
+-build
+-*.cmake
+-*.conf
+-*.depends
+-*.pot_list
+-actualizabulmacont
+-actualizabulmafact
+-bgtrml2pdf.py
+-bulmasetup.py
+-CMakeCache.txt
+-CMakeFiles
+-config.py
+-creabulmacont
+-creabulmafact
+-create_gettext_files
+-create_message_catalog
+-installbulmages-db
+-install_manifest.txt
+-local_blI18n.h
+-Makefile
+-update_message_catalog_lang
+-version
+-applications
++.pc
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007515.html">[BulmaGés] [Gitorious] Activity: mtelleria created	branch pristine-t...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007517.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7516">[ fecha ]</a>
+              <a href="thread.html#7516">[ hilo ]</a>
+              <a href="subject.html#7516">[ asunto ]</a>
+              <a href="author.html#7516">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

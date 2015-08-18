@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] BulmaInCloud pre1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20BulmaInCloud%20pre1&In-Reply-To=%3CCAJWqEtc-mb_18xVJES%2BCTyADqx%2BtbhAJ12D%3DLWjqOL1t2JdvjA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007658.html">
+   <LINK REL="Next"  HREF="007662.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] BulmaInCloud pre1 </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20BulmaInCloud%20pre1&In-Reply-To=%3CCAJWqEtc-mb_18xVJES%2BCTyADqx%2BtbhAJ12D%3DLWjqOL1t2JdvjA%40mail.gmail.com%3E"
+       TITLE="[BulmaGés] BulmaInCloud pre1">tborras en conetxia.com
+       </A><BR>
+    <I>Mar Jun 25 13:25:36 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007658.html">[BulmaGés]BulmaInCloud pre1
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007662.html">[BulmaGés]BulmaInCloud pre1
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7659">[ fecha ]</a>
+              <a href="thread.html#7659">[ hilo ]</a>
+              <a href="subject.html#7659">[ asunto ]</a>
+              <a href="author.html#7659">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bones a tothom
+
+Tras una buena criba en Python, Evince, y en nuestro propio share el
+volumen de BulmaInCloud ronda los 60Mb (bastante razonable teniendo en
+cuenta que debe llevar todas las Qt y Python). Aun  quedan cosillas por
+quitar pero  no creo que podamos bajar de los 50Mb. Claro que se pueden
+dejar cosas sin poner y meterlas mediante la actualización remota (Algunas
+librerias de Qt sólo las utilizan determinados plugins) pero no se si
+debemos sacrificar tanto en pos del tamaño.
+
+También, tras el reporte del error, he arreglado u problema en el .bat de
+la version anterior que aun buscaba una ruta absoluta. Ahora ya no lo hace.
+
+Y esta version incorpora la versión mejorada de blsync donde se muestra una
+barra de progreso para cada descarga (asi no nos volvemos tontos intentando
+averiguar si el programa se ha colgado o esta descargando cosas de la red).
+
+Ahora si os conectais a la demo os dejará guardar, pero no irá muy rápido
+ya que el server de la demo tiene un postgresql 7.4 (De hace unos 5 años).
+En cuanto me decida por un VPS que me agrade la cosa cambiará bastante ya
+que las pruebas que he hecho a través de una vpn atacando a un postgres 9.0
+sobre un ADSL son mucho más espectaculares.
+
+La descarga esta reemplazando a la anterior,
+<A HREF="http://www.bulmages.com/BulmaInCloud.zip">http://www.bulmages.com/BulmaInCloud.zip</A>
+
+Salut
+
+
+El 23 de junio de 2013 12:18, Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras at conetxia.com</A>&gt; escribió:
+
+&gt;<i> Bones a tothom
+</I>&gt;<i>
+</I>&gt;<i> Aqui os dejo un zip con una previa de lo que va a ser BulmaInCloud.
+</I>&gt;<i>
+</I>&gt;<i> Esta versión debería funcionar en cualquier Windows (32bits) y en
+</I>&gt;<i> cualquier carpeta donde se descomprima. No instala nada ni en el registro
+</I>&gt;<i> ni fuera de esta carpeta con lo que la portabilidad es 100% aun habiendo
+</I>&gt;<i> actualizaciones. No lo he probado desde un stick USB pero creo que irá
+</I>&gt;<i> igual de bien.
+</I>&gt;<i>
+</I>&gt;<i> Viene preconfigurado para conectarse a una base de datos de prueba
+</I>&gt;<i> (password inc. Es un error de seguridad pero se trata de una demo sin
+</I>&gt;<i> necesidad de cumplir la LOPD), Cambiando los datos de conexion podría
+</I>&gt;<i> funcionar con otros servidores. Esta base de datos no esta en ningun gran
+</I>&gt;<i> servidor con lo que la conexión no irá todo lo fluida que me gustaría y
+</I>&gt;<i> tampoco está bien montada así que os podria dar problemas a la hora de
+</I>&gt;<i> guardar. Espero que algún dia acabe siendo un servidor dedicado o un cloud
+</I>&gt;<i> de postgresql.
+</I>&gt;<i>
+</I>&gt;<i> Se actualiza automáticamente al arrancar segun las directrices de los
+</I>&gt;<i> archivos files.txt y pfiles.txt que se encuentran en el directorio
+</I>&gt;<i> .bulmages Queda pendiente crear un tutorial para que cualquiera pueda
+</I>&gt;<i> montarse su propio sistema (pero antes vamos a testearlo y mejorarlo todo
+</I>&gt;<i> lo posible).
+</I>&gt;<i>
+</I>&gt;<i> La configuración esta pensada para no sobrecargar la conexion a internet.
+</I>&gt;<i> Asi que no refrescará automaticamente los listados ni hará cosas que vayan
+</I>&gt;<i> a intensificar las conversaciones entre el programa y PostgreSQL.
+</I>&gt;<i>
+</I>&gt;<i> De momento el tamaño no es muy reducido (100Mb), aunque queda margen para
+</I>&gt;<i> reducir (python27, plantillas, imagenes, evince, y algunas DLL's).
+</I>&gt;<i>
+</I>&gt;<i> Lo podeis descargar en <A HREF="http://www.bulmages.com/BulmaInCloud.zip">http://www.bulmages.com/BulmaInCloud.zip</A>
+</I>&gt;<i>
+</I>&gt;<i> Podría dar algunos problemas con los permisos (necesita permisos de
+</I>&gt;<i> escritura para poder actualizarse)
+</I>&gt;<i>
+</I>&gt;<i> Tambien podría tardar un poco en arrancar, dependiendo de las
+</I>&gt;<i> actualizaciones que tenga pendientes y no hay, por ahora, nada que avise de
+</I>&gt;<i> que se esta actualizando el programa. Determinadas actualizaciones piden
+</I>&gt;<i> que se reinicie el programa y lo cierran, al volver a arrancarlo queda
+</I>&gt;<i> solucionado.
+</I>&gt;<i>
+</I>&gt;<i> Si estabilizamos pronto y el sistema funciona decentemente pasaremos
+</I>&gt;<i> inmediatamente a la segunda fase (un postgreSQL local y portable para poder
+</I>&gt;<i> trabajar offline en los modos que describí anteriormente).
+</I>&gt;<i>
+</I>&gt;<i> PD: Soy afortunado y el reloj sigue en marcha.
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Tomeu Borrás
+</I>&gt;<i> Conetxia Soluciones Informáticas
+</I>&gt;<i> 677 77 44 76
+</I>&gt;<i>
+</I>
+
+
+-- 
+Tomeu Borrás
+Conetxia Soluciones Informáticas
+677 77 44 76
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20130625/ca6c5dd9/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20130625/ca6c5dd9/attachment.html</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007658.html">[BulmaGés]BulmaInCloud pre1
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007662.html">[BulmaGés]BulmaInCloud pre1
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7659">[ fecha ]</a>
+              <a href="thread.html#7659">[ hilo ]</a>
+              <a href="subject.html#7659">[ asunto ]</a>
+              <a href="author.html#7659">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

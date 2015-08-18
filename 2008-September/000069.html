@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Privilegis dels usuaris de bases de dades
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FPrivilegis_dels_usuar%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fis_de_bases_de_dades%3F%3D&In-Reply-To=%3C20080924181011.GA10858%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000051.html">
+   <LINK REL="Next"  HREF="000077.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Privilegis dels usuaris de bases de dades </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FPrivilegis_dels_usuar%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fis_de_bases_de_dades%3F%3D&In-Reply-To=%3C20080924181011.GA10858%40localhost%3E"
+       TITLE="[BulmaGés]Privilegis dels usuaris de bases de dades">xdrudis en tinet.cat
+       </A><BR>
+    <I>Mie Sep 24 20:10:11 CEST 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000051.html">[BulmaGés]Privilegis dels usuaris de bases de dades
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000077.html">[BulmaGés]Privilegis dels usuaris de bases de dades
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#69">[ fecha ]</a>
+              <a href="thread.html#69">[ hilo ]</a>
+              <a href="subject.html#69">[ asunto ]</a>
+              <a href="author.html#69">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sun, Sep 21, 2008 at 01:57:39AM +0200, Tomeu Borras wrote:
+&gt;<i> De tot el que comentes el que em sobta es que un usuari normal no pugui entrar 
+</I>&gt;<i> al programa. Jo ho vaig provar fa un temps i si que podia entrar.
+</I>&gt;<i> 
+</I>
+Mmm... Potser no ho vaig provar bé. O em vaig liar amb la contrasenya, o què sé jo, 
+però ho vaig provar unes quantes vegades. 
+
+Però ara ho he tornat a provar i sí he pogut entrar amb un usuari creat a mà 
+(no super, no crea bases de dades i no crea rols). L'únic és que no puc 
+fer res quan sóc dintre perquè no tinc permisos, com tu dius. Les bases de 
+dades creades per bulmasetup tenen propietari postgres i clar, un usuari creat
+nou no hi té permisos.
+
+Perdó per haver provat malament, encara no entenc què devia passar. 
+
+&gt;<i> De fet bulmages esta preparat per emprar els privilegis dels usuaris i si (per 
+</I>&gt;<i> exemple) no tens permisos per escriurer a la taula de clients doncs et 
+</I>&gt;<i> desabilita el botó de guardar a la fitxa de clients o si no la pots llegir 
+</I>&gt;<i> doncs en lloc de un error directament no te mostra els clients. Si fas click 
+</I>&gt;<i> amb el botó dret sobre una fitxa veuràs que tens opciones avanzadas de ficha 
+</I>&gt;<i> i te diu quins usuaris tenen privilegis.
+</I>&gt;<i> 
+</I>
+Això està molt i molt bé. 
+Potser es podrien fer alguna mena de perfils predefinits (rols de grup on 
+assignar els rols d'usuari, i un conjunt de GRANTs pel grup). Encara que depengui 
+molt de cada empresa potser hi ha certs perfils comuns, no sé.  
+
+&gt;<i> El que passa es que ja no es un tema de esser super usuari o no. Sino que si 
+</I>&gt;<i> t'hi poses enserio tens que fer administració de permisos per a cada usuari i 
+</I>&gt;<i> taula amb el GRANT xxxxxxx (una feinada de implementació en un tema que acaba 
+</I>&gt;<i> servint a un administrador de bases de dades).
+</I>&gt;<i> 
+</I>
+Clar, ja veig. Passa que si es tinguessin algunes empreses &quot;tipus&quot; amb uns 
+grups predefinits potser qui es vulgués estalviar la feina d'administració 
+de base de dades podria passar amb una configuració menys agosarada que 
+tots els usuaris com a superusuaris. 
+
+&gt;<i> I clar, tot això ja no es tema de gestió empresarial sino que pertany a 
+</I>&gt;<i> administració de bases de dades i amb el pgadmin III ho tens molt resolt.
+</I>&gt;<i>
+</I>
+Amb el pgadmin i amb bastantes nocions de com funciona la base de dades de bulmafact. 
+Que ja entenc que s'han de tenir per implantar-lo bé però que potser es 
+poden minimitzar si poses configuracions de permisos per omissió... 
+
+Els que teniu molta experiència amb bulmages què us heu trobat ? Els permisos 
+que s'atorguen, els perfils d'usuari i això canvien molt d'una empresa a una 
+altra ? O simplement la majoria de casos només hi ha un usuari i ni es 
+configuren permisos ? 
+ 
+&gt;<i> Conclusió:
+</I>&gt;<i> Al usuari normal de una PIME (tu mateix ho has dit) tot això li es per demes. 
+</I>&gt;<i> Una empresa mes gran toca tenir un informàtic que sap com fer-ho i amb una 
+</I>&gt;<i> eina molt millor de la que nosaltres poguem fer. Ho veig una mica com 
+</I>&gt;<i> desperdiciar un temps molt valuos duplicant l'esforç.
+</I>&gt;<i>
+</I>
+No sé, jo tinc poca experiència. Però la primera PIME a qui ho he
+ensenyat s'ha espantat que es pugui modificar una factura emesa. Opina
+que no s'hauria de poder fer o si de cas només un usuari especial. No
+sé fins a quin punt això no és extrapolable a altres PIMEs.
+
+En una PIME sense informàtic hi pot haver un parell de treballadors i un amo, 
+i no em sembla eixelebrat que hi hagi gent que tingui diferents permisos. 
+Potser sí que s'ha de parlar en cada cas i algún informàtic  extern que conegui exactament 
+la base de dades ha de donar permisos objecte per objecte, però així 
+des de la ignorància sembla que es podria evitar amb una o n configuracions
+de permisos &quot;raonables&quot; que vinguessin amb el paquet. 
+
+Vull dir que sí que és un esforç, i no estic dient que ningú ho hagi de fer
+ni quan, només ho comento per veure si la gent coincideix en que seria
+un esforç que després s'aprofitaria moltes vegades o si estic dient bestieses
+i no serviria de res perque les instal·lacions són sempre massa diferents. 
+ 
+&gt;<i> De totes formes en Leo ja m'ha parlat de que el usuari no ahuria de tenir 
+</I>&gt;<i> privilegis de super usuari. Miraré de implementar que els usuaris que es 
+</I>&gt;<i> crein amb el bulmasetup no siguin superusuaris i de que tot funcioni com cal 
+</I>&gt;<i> amb usuaris normals. La resta de moment pgadmin.
+</I>
+Ok. 
+
+Suposo que només és canviar el nuevousuario.py per no passar els parametres de
+superusuari, de crear rols i de crear bd al createuser (fàcil) i després fer que les 
+BD creades siguin d'un rol (posem que es digui bulmages) i els usuaris que crei 
+els afegeixi al rol bulmages, no ? Es podria fer base de dades per base de dades
+amb rols diferents (empresa per empresa) però llavors al crear usuaris hauries
+d'especificar de quina empresa són, i entenc que per la mateixa filosofia que
+comentes val més que vingui tot amb rol bumages i qui ho vulgui diferent 
+que tiri de pgadmin.
+
+&gt;<i> Bueno un plugin de canvi de contrasenya no costara gaire tampoc.
+</I>&gt;<i> 
+</I>
+Doncs trobo que seria útil, per molt que es pugui fer també amb eines de 
+postgres.
+
+
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>
+Signa per fer Collserola parc natural com cal
+<A HREF="http://www.collserola.org/salvemelparcnatural/">http://www.collserola.org/salvemelparcnatural/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000051.html">[BulmaGés]Privilegis dels usuaris de bases de dades
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000077.html">[BulmaGés]Privilegis dels usuaris de bases de dades
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#69">[ fecha ]</a>
+              <a href="thread.html#69">[ hilo ]</a>
+              <a href="subject.html#69">[ asunto ]</a>
+              <a href="author.html#69">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

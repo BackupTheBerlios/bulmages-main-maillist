@@ -1,0 +1,853 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]problema con bulmasetup en Debian
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fproblema_con_bulmaset%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fup_en_Debian%3F%3D&In-Reply-To=%3C52C1AE0F.3040706%40gnuinos.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007807.html">
+   <LINK REL="Next"  HREF="007809.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]problema con bulmasetup en Debian </H1>
+    <B>aitor_cz</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fproblema_con_bulmaset%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fup_en_Debian%3F%3D&In-Reply-To=%3C52C1AE0F.3040706%40gnuinos.org%3E"
+       TITLE="[BulmaGés]problema con bulmasetup en Debian">aitor en gnuinos.org
+       </A><BR>
+    <I>Lun Dic 30 18:31:59 CET 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007807.html">[BulmaGés]problema con bulmasetup en Debian
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007809.html">[BulmaGés]problema con bulmasetup en Debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7808">[ fecha ]</a>
+              <a href="thread.html#7808">[ hilo ]</a>
+              <a href="subject.html#7808">[ asunto ]</a>
+              <a href="author.html#7808">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola, Miguel Ángel, ¿por qué no pruebas a instalar la release que te he 
+comentado? Evitarás incompatibilidades entre versiones (supongo que 
+estás en debian wheezy).
+
+En cuanto al bulmasetup ejecutado, si va precedido por ./ entonces 
+estarás ejecutando el bulmasetup ubicado en la ruta donde tengas abierta 
+la terminal en ese momento, si es que hay alguno. En caso contrario (es 
+decir, si no va precedido por ./), el sistema lo buscará en las rutas 
+/usr/bin, /usr/sbin, /usr/local/bin, etc...
+
+Aitor.
+
+On 30/12/13 16:23, Miguel Ángel Ordóñez Moya wrote:
+&gt;<i> El 30/12/13 11:38, Tomeu Borras escribió:
+</I>&gt;&gt;<i> Un par de cosas:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> El bulmaetup donde lo ejecutas ? Porque igual estas ejecutando la
+</I>&gt;&gt;<i> versión del source en lugar de la instalada.
+</I>&gt;&gt;<i> haz:
+</I>&gt;&gt;<i> cd /usr/local/share/bulmages/bulmasetup
+</I>&gt;&gt;<i> sudo ./bulmasetup
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Otra cosa que puedes mirar es dentro de este directorio
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> rgrep /datos/Programacion/trunk *
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> e intenta cambiar las lineas a mano por /usr/local/share/
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Salut
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i> Hola de nuevo.
+</I>&gt;<i>
+</I>&gt;<i> Entiendo que el bulmasetup que se ejecuta es el de /usr/local/bin
+</I>&gt;<i>
+</I>&gt;<i> Creo que acabo de descubrir uno de los errores. Creo que tiene relación
+</I>&gt;<i> con el lenguaje plpgsql que está instalado por defecto desde la versión
+</I>&gt;<i> 9.0 de postgresql.
+</I>&gt;<i>
+</I>&gt;<i> He comentado las líneas del fichero bulmacont_schema.sql que se
+</I>&gt;<i> encuentra en /usr/local/share/bulmages/dbmodels/crear/bulmacont
+</I>&gt;<i> \echo -n ':: plpgsql_call_handler ... '
+</I>&gt;<i> --CREATE OR REPLACE FUNCTION plpgsql_call_handler() RETURNS language_handler
+</I>&gt;<i> --    AS '$libdir/plpgsql', 'plpgsql_call_handler'
+</I>&gt;<i> --    LANGUAGE c;
+</I>&gt;<i>
+</I>&gt;<i> \echo -n ':: Establecemos el lenguaje de procedimientos ... '
+</I>&gt;<i> --DROP PROCEDURAL LANGUAGE IF EXISTS plpgsql CASCADE;
+</I>&gt;<i> --CREATE TRUSTED PROCEDURAL LANGUAGE plpgsql HANDLER plpgsql_call_handler;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Ahora si que se crea la base de datos, aunque todavía aparece algún
+</I>&gt;<i> error, como este:
+</I>&gt;<i>
+</I>&gt;<i> Tratando Bloqueo de Fechas
+</I>&gt;<i> su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels	/plugins/
+</I>&gt;<i> coordinadora&quot;
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> error: psql:/usr/local/share/bulmages/dbmodels/plugins:0: no se pudo
+</I>&gt;<i> leer el archivo de entrada: Es un directorio
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Perdonadme que pegue de nuevo el &quot;chorizo&quot; de la consola de bulmasetup.
+</I>&gt;<i>
+</I>&gt;<i> Un saludo y muchas gracias.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> su postgres -c &quot;createdb -E UNICODE coordinadora&quot;
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> su postgres -c &quot;psql coordinadora
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> ********* INICIADO FICHERO DE ESTRUCTURA DE LA BASE DE DATOS DE
+</I>&gt;<i> BULMACONT ********* ::
+</I>&gt;<i> BEGIN :: Establecemos los mensajes minimos a avisos y otros parametros
+</I>&gt;<i> ... ::
+</I>&gt;<i> SET ::
+</I>&gt;<i> SET ::
+</I>&gt;<i> SET ::
+</I>&gt;<i> SET :: plpgsql_call_handler ... :: Establecemos el lenguaje de
+</I>&gt;<i> procedimientos ... ::
+</I>&gt;<i> REVOKE ::
+</I>&gt;<i> GRANT :: Configuracion ...
+</I>&gt;<i> CREATE TABLE :: Pais ...
+</I>&gt;<i> CREATE TABLE :: Provincia ...
+</I>&gt;<i> CREATE TABLE
+</I>&gt;<i> :: Canal ...
+</I>&gt;<i> CREATE TABLE
+</I>&gt;<i> :: Centro de coste ...
+</I>&gt;<i> CREATE TABLE :: Centro de coste distribuido ...
+</I>&gt;<i> CREATE TABLE
+</I>&gt;<i> :: Cuenta ...
+</I>&gt;<i> CREATE TABLE
+</I>&gt;<i> :: Acumulado centro de coste ...
+</I>&gt;<i> CREATE TABLE :: Acumulado canal ...
+</I>&gt;<i> CREATE TABLE
+</I>&gt;<i> :: Diario (La tabla diario esta en desuso, aunque de momento se crea.) ...
+</I>&gt;<i> CREATE TABLE
+</I>&gt;<i> :: Asiento ...
+</I>&gt;<i> CREATE TABLE :: Archivo documental ...
+</I>&gt;<i> CREATE TABLE :: Apunte ...
+</I>&gt;<i> CREATE TABLE
+</I>&gt;<i> :: Borrador ...
+</I>&gt;<i> CREATE TABLE
+</I>&gt;<i> :: Forma de pago ...
+</I>&gt;<i> CREATE TABLE
+</I>&gt;<i> :: Tipo de IVA ...
+</I>&gt;<i> CREATE TABLE :: Registro de IVA ...
+</I>&gt;<i> CREATE TABLE :: Prevision de cobro ...
+</I>&gt;<i> CREATE TABLE
+</I>&gt;<i> :: IVA ...
+</I>&gt;<i> CREATE TABLE :: Asiento inteligente ...
+</I>&gt;<i> CREATE TABLE :: Linea de asientos inteligentes (Pte. borrar)...
+</I>&gt;<i> CREATE TABLE :: Balance ...
+</I>&gt;<i> CREATE TABLE
+</I>&gt;<i> :: Masa patrimonial ...
+</I>&gt;<i> CREATE TABLE
+</I>&gt;<i> :: Componente de masa patrimonial ...
+</I>&gt;<i> CREATE TABLE
+</I>&gt;<i> :: Componente de balance ...
+</I>&gt;<i> CREATE TABLE :: Amortizacion ...
+</I>&gt;<i> CREATE TABLE :: Linea de amortizacion ...
+</I>&gt;<i> CREATE TABLE
+</I>&gt;<i> :: Ejercicios ...
+</I>&gt;<i> CREATE TABLE :: Funcion abre asientos ...
+</I>&gt;<i> CREATE FUNCTION :: Funcion cambia asiento ...
+</I>&gt;<i> CREATE FUNCTION :: Funcion calcular contrapartida ...
+</I>&gt;<i> CREATE FUNCTION :: Funcion contrapartidas de un asiento ...
+</I>&gt;<i> CREATE FUNCTION :: Funcion buscar contrapartida ...
+</I>&gt;<i> CREATE FUNCTION :: Funcion buscar contrapartida borrador ...
+</I>&gt;<i> CREATE FUNCTION :: Funcion ID cuenta ...
+</I>&gt;<i> CREATE FUNCTION :: Funcion nivel de codigo de cuenta ... :: Usamos la
+</I>&gt;<i> longitud del codigo para determinarlo ya que los sistemas contables usan
+</I>&gt;<i> esa notacion. Podria usarse el nivel en el arbol de cuentas y seria mas
+</I>&gt;<i> general y correcto
+</I>&gt;<i> CREATE FUNCTION :: Funcion saldo total masa patrimonial ... CREATE
+</I>&gt;<i> FUNCTION :: Funcion saldo masa patrimonial ...
+</I>&gt;<i> CREATE FUNCTION :: Funcion debe de masa patrimonial ... CREATE FUNCTION
+</I>&gt;<i> :: Funcion haber de masa patrimonial ...
+</I>&gt;<i> CREATE FUNCTION :: Funcion saldo total ...
+</I>&gt;<i> CREATE FUNCTION :: Funcion debe total entre fechas ... CREATE FUNCTION
+</I>&gt;<i> :: Funcion debe total ...
+</I>&gt;<i> CREATE FUNCTION :: Funcion haber total entre fechas ... CREATE FUNCTION
+</I>&gt;<i> :: Funcion haber total ...
+</I>&gt;<i> CREATE FUNCTION :: Funcion recalcula saldos ... CREATE FUNCTION ::
+</I>&gt;<i> Funcion recalcula saldos 2 ...
+</I>&gt;<i> CREATE FUNCTION :: Funcion tratamiento de acumulados ...
+</I>&gt;<i> CREATE FUNCTION
+</I>&gt;<i> :: Disparador nuevo apunte aumente valor ...
+</I>&gt;<i> CREATE TRIGGER :: Funcion crea cuenta ... CREATE FUNCTION :: Disparador
+</I>&gt;<i> nueva cuenta ...
+</I>&gt;<i> CREATE TRIGGER :: Funcion borra cuenta ...
+</I>&gt;<i> CREATE FUNCTION :: Disparador borra cuenta ... CREATE TRIGGER :: Funcion
+</I>&gt;<i> crea canal ...
+</I>&gt;<i> CREATE FUNCTION :: Disparador nuevo canal ... CREATE TRIGGER :: Funcion
+</I>&gt;<i> borra canal ...
+</I>&gt;<i> CREATE FUNCTION :: Disparador borra canal ... CREATE TRIGGER :: Funcion
+</I>&gt;<i> crea centro de coste ...
+</I>&gt;<i> CREATE FUNCTION :: Disparador nuevo centro de coste ... CREATE TRIGGER
+</I>&gt;<i> :: Funcion borra centro de coste ... CREATE FUNCTION :: Disparador borra
+</I>&gt;<i> centro de coste ...
+</I>&gt;<i> CREATE TRIGGER :: Funcion propaga acumulado cuenta ... CREATE FUNCTION
+</I>&gt;<i> :: Disparador propaga acumulado cuenta ...
+</I>&gt;<i> CREATE TRIGGER :: Funcion propaga acumulado centro de coste ... CREATE
+</I>&gt;<i> FUNCTION :: Disparador propaga acumulado centro de coste ...
+</I>&gt;<i> CREATE TRIGGER :: Funcion acumulados canal ... CREATE FUNCTION ::
+</I>&gt;<i> Disparador acumulados canal ...
+</I>&gt;<i> CREATE TRIGGER :: Funcion abre asiento ... CREATE FUNCTION :: Funcion
+</I>&gt;<i> cierra asiento ... CREATE FUNCTION :: Funcion reordena asientos por
+</I>&gt;<i> ejercicio ...
+</I>&gt;<i> CREATE FUNCTION :: Funcion reordena todos los asientos ... CREATE
+</I>&gt;<i> FUNCTION :: Funcion restricciones de cuenta ...
+</I>&gt;<i> CREATE FUNCTION :: Disparador restricciones de cuenta ... CREATE TRIGGER
+</I>&gt;<i> :: Funcion restricciones al borrado de cuenta ... CREATE FUNCTION ::
+</I>&gt;<i> Disparador restricciones al borrado de cuenta ...
+</I>&gt;<i> CREATE TRIGGER :: Funcion restricciones borrador ... CREATE FUNCTION ::
+</I>&gt;<i> Disparador restricciones borrador ...
+</I>&gt;<i> CREATE TRIGGER :: Funcion distribucion centros de coste en borrador ...
+</I>&gt;<i> CREATE FUNCTION :: Disparador restricciones borrador ...
+</I>&gt;<i> CREATE TRIGGER :: Funcion restricciones asiento ... CREATE FUNCTION ::
+</I>&gt;<i> Disparador restricciones asiento ... CREATE TRIGGER :: Funcion borrado
+</I>&gt;<i> asiento desde un disparador ...
+</I>&gt;<i> CREATE FUNCTION :: Disparador restricciones borrado de asiento ...
+</I>&gt;<i> CREATE TRIGGER :: Funcion inserta tipo de IVA ...
+</I>&gt;<i> CREATE FUNCTION :: Disparador nuevo tipo de IVA ... CREATE TRIGGER ::
+</I>&gt;<i> Funcion borra tipo de IVA ... CREATE FUNCTION :: Disparador borra tipo
+</I>&gt;<i> de IVA ...
+</I>&gt;<i> CREATE TRIGGER :: Funcion cambiado IVA ... CREATE FUNCTION :: Disparador
+</I>&gt;<i> cambio tipo IVA ... CREATE TRIGGER
+</I>&gt;<i> CREATE FUNCTION
+</I>&gt;<i> actualizarevision ------------------- 0 (1 fila)
+</I>&gt;<i> DROP FUNCTION &quot;Actualizada la revision de la base de datos a la version
+</I>&gt;<i> 0.13.1&quot; ::
+</I>&gt;<i> COMMENT ::
+</I>&gt;<i> COMMIT ********* FIN FICHERO DE ESTRUCTURA DE LA BASE DE DATOS DE
+</I>&gt;<i> BULMACONT *********
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> su postgres -c &quot;psql coordinadora
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> BEGIN
+</I>&gt;<i> INSERT 0 1
+</I>&gt;<i> INSERT 0 1 INSERT 0 1 INSERT 0 1
+</I>&gt;<i> INSERT 0 1 INSERT 0 1 INSERT 0 1 INSERT 0 1
+</I>&gt;<i> INSERT 0 1 INSERT 0 1 INSERT 0 1 INSERT 0 1
+</I>&gt;<i> INSERT 0 1 INSERT 0 1 INSERT 0 1 INSERT 0 1 INSERT 0 1
+</I>&gt;<i> INSERT 0 1 INSERT 0 1 INSERT 0 1 INSERT 0 1 INSERT 0 1
+</I>&gt;<i> INSERT 0 1 INSERT 0 1 INSERT 0 1
+</I>&gt;<i> COMMIT
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> su postgres -c 'psql coordinadora -c &quot;UPDATE configuracion set
+</I>&gt;<i> valor='&quot;'coordinadora'&quot;' WHERE nombre = '&quot;'NombreEmpresa'&quot;';&quot;'
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> error: coordinadora: -c: lÃ­nea 0: EOF inesperado mientras se buscaba un
+</I>&gt;<i> `'' coincidente
+</I>&gt;<i> error: coordinadora: -c: lÃ­nea 1: error sintÃ¡ctico: no se esperaba el
+</I>&gt;<i> final del fichero
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> ACTUALIZANDO PLUGINS
+</I>&gt;<i> Tratando Asiento
+</I>&gt;<i> Tratando Balance Jerárquico.
+</I>&gt;<i> Tratando Duplicar Asientos Contables
+</I>&gt;<i> Tratando Mayor
+</I>&gt;<i> Tratando Balance
+</I>&gt;<i> Tratando Diario
+</I>&gt;<i> Tratando Cuentas Contables
+</I>&gt;<i> Tratando Importar datos separados por coma
+</I>&gt;<i> Tratando Resumen de una cuenta contable
+</I>&gt;<i> Tratando Imprimir subformularios
+</I>&gt;<i> Tratando Exportar subformularios a ODS.
+</I>&gt;<i> Tratando Informes personalizados por ficha
+</I>&gt;<i> Tratando Informes personalizados por e-mail
+</I>&gt;<i> Tratando Informes personalizados de ficha en ODS
+</I>&gt;<i> Tratando Bloquear configuraciones
+</I>&gt;<i> Tratando Exportar listados a SXC.
+</I>&gt;<i> Tratando Cuentas anuales
+</I>&gt;<i> Tratando Pegar desde el portapapeles
+</I>&gt;<i> Tratando Corrector Contable
+</I>&gt;<i> Tratando Modo Debug
+</I>&gt;<i> Tratando Embeber aplicaciones
+</I>&gt;<i> Tratando Mostrar el logotipo
+</I>&gt;<i> Tratando Adjuntar documentos
+</I>&gt;<i> Tratando Proyectos Contables
+</I>&gt;<i> Tratando Ejemplo de desarrollo
+</I>&gt;<i> Tratando Amortizaciones
+</I>&gt;<i> Tratando Cuentas Anuales
+</I>&gt;<i> Tratando Bloqueo de fichas
+</I>&gt;<i> Tratando Informes personalizados
+</I>&gt;<i> Tratando Informes personalizados en ODS
+</I>&gt;<i> Tratando Bloqueo de Fechas
+</I>&gt;<i> Tratando Registro de IVA
+</I>&gt;<i> Tratando Bloqueo de Fechas
+</I>&gt;<i> su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/
+</I>&gt;<i> coordinadora&quot;
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> error: psql:/usr/local/share/bulmages/dbmodels/plugins:0: no se pudo
+</I>&gt;<i> leer el archivo de entrada: Es un directorio
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Tratando Registro de IVA
+</I>&gt;<i> su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/
+</I>&gt;<i> coordinadora&quot;
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> error: psql:/usr/local/share/bulmages/dbmodels/plugins:0: no se pudo
+</I>&gt;<i> leer el archivo de entrada: Es un directorio
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Tratando Informes personalizados en ODS
+</I>&gt;<i> su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/
+</I>&gt;<i> coordinadora&quot;
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> error: psql:/usr/local/share/bulmages/dbmodels/plugins:0: no se pudo
+</I>&gt;<i> leer el archivo de entrada: Es un directorio
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Tratando Informes personalizados
+</I>&gt;<i> su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/
+</I>&gt;<i> coordinadora&quot;
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> error: psql:/usr/local/share/bulmages/dbmodels/plugins:0:
+</I>&gt;<i> error: no se pudo leer el archivo de entrada: Es un directorio
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Tratando Bloqueo de fichas
+</I>&gt;<i> su postgres -c &quot;psql -t -f
+</I>&gt;<i> /usr/local/share/bulmages/dbmodels/plugins/pluginbl_formlock-rm.sql
+</I>&gt;<i> coordinadora&quot;
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> &quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE BLOQUEOS
+</I>&gt;<i> *********&quot; &quot;:: Establecemos los mensajes minimos a avisos y otros
+</I>&gt;<i> parametros ... &quot; &quot;:: &quot;
+</I>&gt;<i> SET
+</I>&gt;<i> SET
+</I>&gt;<i> BEGIN
+</I>&gt;<i> CREATE FUNCTION
+</I>&gt;<i> CREATE FUNCTION
+</I>&gt;<i> CREATE FUNCTION
+</I>&gt;<i> 0
+</I>&gt;<i> DROP FUNCTION
+</I>&gt;<i> CREATE FUNCTION
+</I>&gt;<i> 0
+</I>&gt;<i> DROP FUNCTION &quot;Eliminado el plugin de bloqueos de la base de datos.&quot;
+</I>&gt;<i> DROP FUNCTION
+</I>&gt;<i> DROP FUNCTION
+</I>&gt;<i> COMMIT
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Tratando Cuentas Anuales
+</I>&gt;<i> Tratando Amortizaciones
+</I>&gt;<i> Tratando Modo Debug
+</I>&gt;<i> su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/
+</I>&gt;<i> coordinadora&quot;
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> error: psql:/usr/local/share/bulmages/dbmodels/plugins:0: no se pudo
+</I>&gt;<i> leer el archivo de entrada: Es un directorio
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Tratando Embeber aplicaciones
+</I>&gt;<i> su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/
+</I>&gt;<i> coordinadora&quot;
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> error: psql:/usr/local/share/bulmages/dbmodels/plugins:0: no se pudo
+</I>&gt;<i> leer el archivo de entrada: Es un directorio
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Tratando Mostrar el logotipo
+</I>&gt;<i> su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/
+</I>&gt;<i> coordinadora&quot;
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> error: psql:/usr/local/share/bulmages/dbmodels/plugins:0: no se pudo
+</I>&gt;<i> leer el archivo de entrada: Es un directorio
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Tratando Adjuntar documentos
+</I>&gt;<i> su postgres -c &quot;psql -t -f
+</I>&gt;<i> /usr/local/share/bulmages/dbmodels/plugins/pluginbl_attachdocument-rm.sql coordinadora&quot;
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> &quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE ARCHIVOS *********&quot;
+</I>&gt;<i> &quot;:: Establecemos los mensajes minimos a avisos y otros parametros ...&quot;
+</I>&gt;<i> &quot;::&quot;
+</I>&gt;<i> SET
+</I>&gt;<i> SET BEGIN
+</I>&gt;<i> CREATE FUNCTION
+</I>&gt;<i> CREATE FUNCTION
+</I>&gt;<i> CREATE FUNCTION
+</I>&gt;<i> 0
+</I>&gt;<i> DROP FUNCTION
+</I>&gt;<i> CREATE FUNCTION
+</I>&gt;<i> 0
+</I>&gt;<i> DROP FUNCTION &quot;Eliminada la revision de la base de datos&quot;
+</I>&gt;<i> DROP FUNCTION
+</I>&gt;<i> DROP FUNCTION
+</I>&gt;<i> COMMIT
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Tratando Proyectos Contables
+</I>&gt;<i> su postgres -c &quot;psql -t -f
+</I>&gt;<i> /usr/local/share/bulmages/dbmodels/plugins/pluginbc_proyectos-rm.sql
+</I>&gt;<i> coordinadora&quot;
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> &quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE PRESUPUESTOS
+</I>&gt;<i> CONTABLES *********&quot; &quot;:: Establecemos los mensajes minimos a avisos y
+</I>&gt;<i> otros parametros ... &quot; &quot;:: &quot;
+</I>&gt;<i> SET
+</I>&gt;<i> SET
+</I>&gt;<i> BEGIN
+</I>&gt;<i> CREATE FUNCTION
+</I>&gt;<i> CREATE FUNCTION
+</I>&gt;<i> CREATE FUNCTION
+</I>&gt;<i> 0
+</I>&gt;<i> DROP FUNCTION &quot;Eliminamos las tablas necesarias para presupuestos
+</I>&gt;<i> contables&quot;
+</I>&gt;<i> CREATE FUNCTION
+</I>&gt;<i> 0
+</I>&gt;<i> DROP FUNCTION &quot;Eliminamos la revision de la base de datos&quot;
+</I>&gt;<i> DROP FUNCTION
+</I>&gt;<i> DROP FUNCTION
+</I>&gt;<i> COMMIT
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Tratando Ejemplo de desarrollo
+</I>&gt;<i> Tratando Corrector Contable
+</I>&gt;<i> Tratando Bloquear configuraciones
+</I>&gt;<i> Tratando Exportar listados a SXC.
+</I>&gt;<i> Tratando Cuentas anuales
+</I>&gt;<i> Tratando Pegar desde el portapapeles
+</I>&gt;<i> Tratando Informes personalizados por ficha
+</I>&gt;<i> su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/
+</I>&gt;<i> coordinadora&quot;
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> error: psql:/usr/local/share/bulmages/dbmodels/plugins:0: no se pudo
+</I>&gt;<i> leer el archivo de entrada: Es un directorio
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Tratando Informes personalizados por e-mail
+</I>&gt;<i> su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/
+</I>&gt;<i> coordinadora&quot;
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> error: psql:/usr/local/share/bulmages/dbmodels/plugins:0: no se pudo
+</I>&gt;<i> leer el archivo de entrada: Es un directorio
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Tratando Informes personalizados de ficha en ODS
+</I>&gt;<i> su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/
+</I>&gt;<i> coordinadora&quot;
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> error: psql:/usr/local/share/bulmages/dbmodels/plugins:0: no se pudo
+</I>&gt;<i> leer el archivo de entrada: Es un directorio
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Tratando Imprimir subformularios
+</I>&gt;<i> Tratando Exportar subformularios a ODS.
+</I>&gt;<i> Tratando Importar datos separados por coma
+</I>&gt;<i> Tratando Resumen de una cuenta contable
+</I>&gt;<i> Tratando Balance Jerárquico.
+</I>&gt;<i> Tratando Duplicar Asientos Contables
+</I>&gt;<i> Tratando Mayor
+</I>&gt;<i> Tratando Balance
+</I>&gt;<i> Tratando Diario
+</I>&gt;<i> Tratando Cuentas Contables
+</I>&gt;<i> Tratando Asiento
+</I>&gt;<i> ESCRIBIENDO CONFIGURACION
+</I>&gt;<i> Escribiendo configuracion en /etc/bulmages/
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Tratando Asiento
+</I>&gt;<i> Tratando Balance Jerárquico.
+</I>&gt;<i> Tratando Duplicar Asientos Contables
+</I>&gt;<i> Tratando Mayor
+</I>&gt;<i> Tratando Balance
+</I>&gt;<i> Tratando Diario
+</I>&gt;<i> Tratando Cuentas Contables
+</I>&gt;<i> Tratando Importar datos separados por coma
+</I>&gt;<i> Tratando Resumen de una cuenta contable
+</I>&gt;<i> Tratando Imprimir subformularios
+</I>&gt;<i> Tratando Exportar subformularios a ODS.
+</I>&gt;<i> Tratando Informes personalizados por ficha
+</I>&gt;<i> Tratando Informes personalizados por e-mail
+</I>&gt;<i> Tratando Informes personalizados de ficha en ODS
+</I>&gt;<i> Tratando Bloquear configuraciones
+</I>&gt;<i> Tratando Exportar listados a SXC.
+</I>&gt;<i> Tratando Cuentas anuales
+</I>&gt;<i> Tratando Pegar desde el portapapeles
+</I>&gt;<i> Tratando Corrector Contable
+</I>&gt;<i> Tratando Modo Debug
+</I>&gt;<i> Tratando Embeber aplicaciones
+</I>&gt;<i> Tratando Mostrar el logotipo
+</I>&gt;<i> Tratando Adjuntar documentos
+</I>&gt;<i> Tratando Proyectos Contables
+</I>&gt;<i> Tratando Ejemplo de desarrollo
+</I>&gt;<i> Tratando Amortizaciones
+</I>&gt;<i> Tratando Cuentas Anuales
+</I>&gt;<i> Tratando Bloqueo de fichas
+</I>&gt;<i> Tratando Informes personalizados
+</I>&gt;<i> Tratando Informes personalizados en ODS
+</I>&gt;<i> Tratando Bloqueo de Fechas
+</I>&gt;<i> Tratando Registro de IVA
+</I>&gt;<i> Generando plantillas RML y PYS
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> Generamos backup de las plantillas de impresion en
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora_old1
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/es/canuales.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/es
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/es/diario.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/es
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/es/extracto.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/es
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/es/plantilla.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/es
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/es/plantilla1.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/es
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/es/estilos.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/es
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/es/listado.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/es
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/es/logo.jpg
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/es
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/es/ficha.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/es
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/ca/canuales.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/ca
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/ca/diario.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/ca
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/ca/extracto.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/ca
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/ca/plantilla.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/ca
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/ca/plantilla1.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/ca
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/ca/estilos.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/ca
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/ca/listado.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/ca
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/ca/logo.jpg
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/ca
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/ca/ficha.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/ca
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/fr/canuales.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/fr
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/fr/diario.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/fr
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/fr/extracto.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/fr
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/fr/plantilla.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/fr
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/fr/plantilla1.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/fr
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/fr/estilos.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/fr
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/fr/listado.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/fr
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/fr/logo.jpg
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/fr
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/fr/ficha.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/fr
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/en/canuales.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/en
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/en/diario.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/en
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/en/extracto.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/en
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/en/plantilla.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/en
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/en/plantilla1.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/en
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/en/estilos.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/en
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/en/listado.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/en
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/en/logo.jpg
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/en
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> cp /usr/local/share/bulmages/openreports/en/ficha.rml
+</I>&gt;<i> /opt/bulmages/openreports_coordinadora/en
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i> Tratando Bloqueo de Fechas
+</I>&gt;<i> Tratando Cuentas Anuales
+</I>&gt;<i> Tratando Corrector Contable
+</I>&gt;<i> Tratando Informes personalizados
+</I>&gt;<i> Tratando Informes personalizados por ficha
+</I>&gt;<i> Tratando Asiento
+</I>&gt;<i> Tratando Bloquear configuraciones
+</I>&gt;<i> Tratando Importar datos separados por coma
+</I>&gt;<i> Tratando Balance Jerárquico.
+</I>&gt;<i> Tratando Modo Debug
+</I>&gt;<i> Tratando Imprimir subformularios
+</I>&gt;<i> Tratando Duplicar Asientos Contables
+</I>&gt;<i> Tratando Exportar listados a SXC.
+</I>&gt;<i> Tratando Mayor
+</I>&gt;<i> Tratando Balance
+</I>&gt;<i> Tratando Embeber aplicaciones
+</I>&gt;<i> Tratando Mostrar el logotipo
+</I>&gt;<i> Tratando Diario
+</I>&gt;<i> Tratando Amortizaciones
+</I>&gt;<i> Tratando Registro de IVA
+</I>&gt;<i> Tratando Adjuntar documentos
+</I>&gt;<i> Tratando Cuentas anuales
+</I>&gt;<i> Tratando Bloqueo de fichas
+</I>&gt;<i> Tratando Informes personalizados en ODS
+</I>&gt;<i> Tratando Exportar subformularios a ODS.
+</I>&gt;<i> Tratando Proyectos Contables
+</I>&gt;<i> Tratando Ejemplo de desarrollo
+</I>&gt;<i> Tratando Informes personalizados por e-mail
+</I>&gt;<i> Tratando Cuentas Contables
+</I>&gt;<i> Tratando Resumen de una cuenta contable
+</I>&gt;<i> Tratando Informes personalizados de ficha en ODS
+</I>&gt;<i> Tratando Pegar desde el portapapeles
+</I>&gt;<i>
+</I>&gt;<i> Started.
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Done.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20131230/83fa0283/attachment-0001.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20131230/83fa0283/attachment-0001.html</A>&gt;
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007807.html">[BulmaGés]problema con bulmasetup en Debian
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007809.html">[BulmaGés]problema con bulmasetup en Debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7808">[ fecha ]</a>
+              <a href="thread.html#7808">[ hilo ]</a>
+              <a href="subject.html#7808">[ asunto ]</a>
+              <a href="author.html#7808">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

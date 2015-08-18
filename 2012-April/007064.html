@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Bulmages Windows
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FBulmages_Windows%3F%3D&In-Reply-To=%3CCAJWqEte7Q7SDUkz0Rt_PdQGg%2Bx2T2KpEUg%3DSaw%2BT3kx-PN8U8A%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007062.html">
+   <LINK REL="Next"  HREF="007098.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Bulmages Windows </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FBulmages_Windows%3F%3D&In-Reply-To=%3CCAJWqEte7Q7SDUkz0Rt_PdQGg%2Bx2T2KpEUg%3DSaw%2BT3kx-PN8U8A%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]Bulmages Windows">tborras en conetxia.com
+       </A><BR>
+    <I>Mie Abr 18 23:33:20 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007062.html">[BulmaGés]Bulmages Windows
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007098.html">[BulmaGés] Hablando de ramas
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7064">[ fecha ]</a>
+              <a href="thread.html#7064">[ hilo ]</a>
+              <a href="subject.html#7064">[ asunto ]</a>
+              <a href="author.html#7064">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Aun no he llegado a profundizar con los tags. Pero parece que estamos
+deacuerdo y que release14 debería pasar a ser simplemente release.
+
+Mi idea es dejar unas pocas ramas bien definidas (hasta que puedan verse
+todas en el gitorious).
+
+Mis siguiente victimas van a ser release5.3 y otras releases antiguas.
+
+Y me queda por estudiar debian-packages (que ni la he mirado).
+
+Salut
+
+El 18 de abril de 2012 22:53, Pablo Alvarez de Sotomayor Posadillo &lt;
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">palvarez at iglues.org</A>&gt; escribió:
+
+&gt;<i> &gt; La duda es la siguiente:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Siendo la diferencia con cualquier otra rama un directorio.
+</I>&gt;<i> &gt; (nsis_bulmages), y estando en  Git y no en subversion, donde las ramas
+</I>&gt;<i> son
+</I>&gt;<i> &gt; bastante diferentes. ¿Merece la pena que sea una rama separada?.
+</I>&gt;<i> &gt; Pq este detalle nos obligará a hacer un winversion14 y toda la
+</I>&gt;<i> parafernalia
+</I>&gt;<i> &gt; asociada a hacer merges parriba y pabajo mientras que teniendo el
+</I>&gt;<i> &gt; directorio como &quot;uno más&quot; se adapta perfectamente sin molestar a nadie.
+</I>&gt;<i>
+</I>&gt;<i> Yo lo mantendria en la misma rama. Como bien dices, en git las ramas son
+</I>&gt;<i> un poco diferentes, y generalmente estan pensadas para ir desarrollando
+</I>&gt;<i> funcionalidades manteniendo un codigo base mas o menos estable. Desde mi
+</I>&gt;<i> punto de vista es el mismo caso que puede tener, por ejemplo, un paquete
+</I>&gt;<i> debian, que basicamente varia con respecto al resto del programa en un
+</I>&gt;<i> directorio. En ese caso se suele crear una rama para desarrollar una
+</I>&gt;<i> funcionalidad (crear un paquete debian a partir del codigo fuente) y,
+</I>&gt;<i> una vez que se termina de desarrollar la funcionalidad se mergea con la
+</I>&gt;<i> rama correspondiente. Asi no tienes que tener una rama para crear paquetes
+</I>&gt;<i> debian que tengas que actualizar cada vez que quieras crear un paquete.
+</I>&gt;<i>
+</I>&gt;<i> Otra cosa es que el codigo en windows compartiera poco con el resto, con
+</I>&gt;<i> lo que si podria tener sentido tenerlo en una rama aparte (si ves mi
+</I>&gt;<i> repositorio en gitorious he hecho eso para la documentacion o la web, ya
+</I>&gt;<i> que quien esta trabajando en la documentacion o en la web no le preocupa
+</I>&gt;<i> si alguien ha hecho un cambio en el codigo fuente). E incluso para estos
+</I>&gt;<i> casos mucha gente prefiere tener repositorios aparte.
+</I>&gt;<i>
+</I>&gt;<i> Por cierto, en git los tags son muy utiles, porque te permiten tener una
+</I>&gt;<i> unica rama estable (no una por version), incluir una tag cada vez que se
+</I>&gt;<i> lance una version y, en caso de que se encuentre un bug en una version
+</I>&gt;<i> estable que no sea la ultima git te permite crear branches a partir de
+</I>&gt;<i> una tag, con lo cual no te obliga a tener una branch por cada version
+</I>&gt;<i> estable que haya.
+</I>&gt;<i>
+</I>&gt;<i> UN SALUDO
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i>    Pablo Álvarez de Sotomayor Posadillo
+</I>&gt;<i> Ingeniero Técnico en Informática de Sistemas
+</I>&gt;<i>            <A HREF="http://ritho.net">http://ritho.net</A>
+</I>&gt;<i>  &quot;De todas las cosas que he perdido la que
+</I>&gt;<i>     mas hecho de menos es mi cerebro&quot;
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>
+
+
+-- 
+Tomeu Borrás
+Conetxia Soluciones Informáticas
+902 88 11 66 - 677 77 44 76
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20120418/37a2cf01/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20120418/37a2cf01/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007062.html">[BulmaGés]Bulmages Windows
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007098.html">[BulmaGés] Hablando de ramas
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7064">[ fecha ]</a>
+              <a href="thread.html#7064">[ hilo ]</a>
+              <a href="subject.html#7064">[ asunto ]</a>
+              <a href="author.html#7064">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

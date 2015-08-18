@@ -1,0 +1,481 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20master...&In-Reply-To=%3C20130628045844.23FB4167%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007664.html">
+   <LINK REL="Next"  HREF="007666.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20master...&In-Reply-To=%3C20130628045844.23FB4167%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Vie Jun 28 06:58:44 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007664.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007666.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7665">[ fecha ]</a>
+              <a href="thread.html#7665">[ hilo ]</a>
+              <a href="subject.html#7665">[ asunto ]</a>
+              <a href="author.html#7665">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 2 commits to master
+master changed from f79b5e3 to 226b468
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/f79b5e3a753817ccfa1c9b8d34294fc37fba64fa/diffs/226b468ba3e3fc2d5a15ecfaacc82872bed10917">https://gitorious.org/bulmages/bulmages/commit/f79b5e3a753817ccfa1c9b8d34294fc37fba64fa/diffs/226b468ba3e3fc2d5a15ecfaacc82872bed10917</A>
+
+Diff: 
+
+commit 226b468ba3e3fc2d5a15ecfaacc82872bed10917
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri Jun 28 06:58:20 2013 +0200
+
+    Arreglo problemas con las signals activated que ha desaparecido del QAction en Qt5
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_actividad/pluginbf_actividad.cpp b/bulmages/bulmafact/plugins/pluginbf_actividad/pluginbf_actividad.cpp
+index c329c0a..0c751ae 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_actividad/pluginbf_actividad.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_actividad/pluginbf_actividad.cpp
+@@ -60,7 +60,6 @@ int entryPoint ( BfBulmaFact *bges )
+         accionA-&gt;setObjectName(&quot;mui_actionActividades&quot;);
+         pPluginMenu-&gt;addAction ( accionA );
+         bges-&gt;Listados-&gt;addAction ( accionA );
+-        //connect ( accionA, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+ 
+         BlAction *accionB = new BlAction ( _ ( &quot;&amp;Nueva actividad&quot; ), 0 );
+         accionB-&gt;setIcon ( QIcon ( QString::fromUtf8 ( &quot;:/ImgGestionAula/icons/actividad_add.png&quot; ) ) );
+@@ -69,7 +68,6 @@ int entryPoint ( BfBulmaFact *bges )
+         accionB-&gt;setObjectName(&quot;mui_actionActividadNueva&quot;);
+         pPluginMenu-&gt;addAction ( accionB );
+         bges-&gt;Fichas-&gt;addAction ( accionB );
+-        //connect ( accionB, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+ 
+         pPluginMenu-&gt;addSeparator();
+ 
+@@ -80,7 +78,6 @@ int entryPoint ( BfBulmaFact *bges )
+         accionC-&gt;setObjectName(&quot;mui_actionActividadTipos&quot;);
+         pPluginMenu-&gt;addAction ( accionC );
+         bges-&gt;Fichas-&gt;addAction ( accionC );
+-        //connect ( accionC, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
+         
+     } // end if
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_comercial/pluginbf_comercial.cpp b/bulmages/bulmafact/plugins/pluginbf_comercial/pluginbf_comercial.cpp
+index e4e6898..f922991 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_comercial/pluginbf_comercial.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_comercial/pluginbf_comercial.cpp
+@@ -101,13 +101,13 @@ void PluginBf_Comercial::inicializa ( BfBulmaFact *bges )
+     planCuentas1-&gt;setStatusTip ( _ ( &quot;Zonas comerciales&quot; ) );
+     planCuentas1-&gt;setWhatsThis ( _ ( &quot;Zonas comerciales&quot; ) );
+     bges-&gt;menuMaestro-&gt;addAction ( planCuentas1 );
+-    connect ( planCuentas1, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
++    connect ( planCuentas1, SIGNAL ( triggered(bool) ), this, SLOT ( elslot1() ) );
+     /// Creamos la opci&oacute;n para Rutas Comerciales que dispare el m&eacute;todo adecuado.
+     QAction *planCuentas = new QAction ( _ ( &quot;&amp;Rutas comerciales&quot; ), 0 );
+     planCuentas-&gt;setStatusTip ( _ ( &quot;Rutas comerciales&quot; ) );
+     planCuentas-&gt;setWhatsThis ( _ ( &quot;Rutas comerciales&quot; ) );
+     bges-&gt;menuMaestro-&gt;addAction ( planCuentas );
+-    connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
++    connect ( planCuentas, SIGNAL ( triggered(bool) ), this, SLOT ( elslot() ) );
+     
+ }
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_compraventa/pluginbf_compraventa.cpp b/bulmages/bulmafact/plugins/pluginbf_compraventa/pluginbf_compraventa.cpp
+index b2c9c25..edcf711 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_compraventa/pluginbf_compraventa.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_compraventa/pluginbf_compraventa.cpp
+@@ -81,7 +81,7 @@ void PluginBf_CompraVenta::inicializa ( BfBulmaFact *bges )
+     pPluginMenu-&gt;addSeparator();
+     pPluginMenu-&gt;addAction ( planCuentas );
+     bges-&gt;Listados-&gt;addAction ( planCuentas );
+-    connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
++    connect ( planCuentas, SIGNAL ( triggered(bool) ), this, SLOT ( elslot() ) );
+     
+ }
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_example/pluginbf_example.cpp b/bulmages/bulmafact/plugins/pluginbf_example/pluginbf_example.cpp
+index a7b63ee..1750461 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_example/pluginbf_example.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_example/pluginbf_example.cpp
+@@ -123,7 +123,7 @@ void PluginBf_Example::inicializa ( BfBulmaFact *bges )
+     QAction *accion = new QAction ( _ ( &quot;&amp;Prueba de plugin&quot; ), 0 );
+     accion-&gt;setStatusTip ( _ ( &quot;Muestra statustip&quot; ) );
+     accion-&gt;setWhatsThis ( _ ( &quot;Muestra que es esto&quot; ) );
+-    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
++    connect ( accion, SIGNAL ( triggered(bool) ), this, SLOT ( elslot() ) );
+     pPluginMenu-&gt;addAction ( accion );
+     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
+     bges-&gt;menuBar() -&gt;insertMenu ( bges-&gt;menuVentana-&gt;menuAction(), pPluginMenu );
+diff --git a/bulmages/bulmafact/plugins/pluginbf_profesor/pluginbf_profesor.cpp b/bulmages/bulmafact/plugins/pluginbf_profesor/pluginbf_profesor.cpp
+index 584568b..8ccddba 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_profesor/pluginbf_profesor.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_profesor/pluginbf_profesor.cpp
+@@ -67,7 +67,6 @@ int entryPoint ( BfBulmaFact *bges )
+         accionA-&gt;setObjectName(&quot;mui_actionProfesores&quot;);
+         pPluginMenu-&gt;addAction ( accionA );
+         bges-&gt;Listados-&gt;addAction ( accionA );
+-        //connect ( accionA, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+ 
+         BlAction *accionB = new BlAction ( _ ( &quot;&amp;Nuevo profesor&quot; ), 0 );
+         accionB-&gt;setIcon ( QIcon ( QString::fromUtf8 ( &quot;:/ImgGestionAula/icons/profesor_add.png&quot; ) ) );
+@@ -76,14 +75,12 @@ int entryPoint ( BfBulmaFact *bges )
+         accionB-&gt;setObjectName(&quot;mui_actionProfesorNuevo&quot;);
+         pPluginMenu-&gt;addAction ( accionB );
+         bges-&gt;Fichas-&gt;addAction ( accionB );
+-        //connect ( accionB, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+ 
+         BlAction *accionC = new BlAction ( _ ( &quot;About FAPAC&quot; ), 0 );
+         accionC-&gt;setStatusTip ( _ ( &quot;About FAPAC&quot; ) );
+         accionC-&gt;setWhatsThis ( _ ( &quot;About FAPAC&quot; ) );
+         accionC-&gt;setObjectName(&quot;mui_actionAboutFapac&quot;);
+         bges-&gt;menuAcerca_de-&gt;addAction ( accionC );
+-        //connect ( accionC, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
+ 
+     } // end if
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_qwebcam/pluginbf_qwebcam.cpp b/bulmages/bulmafact/plugins/pluginbf_qwebcam/pluginbf_qwebcam.cpp
+index e14998f..fb5abb0 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_qwebcam/pluginbf_qwebcam.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_qwebcam/pluginbf_qwebcam.cpp
+@@ -53,7 +53,7 @@ void myplugin1::inicializa(bulmafact *bges) {
+     planCuentas-&gt;setWhatsThis(&quot;QWebCams&quot;);
+     bges-&gt;menuArticulos-&gt;addSeparator();
+     bges-&gt;menuArticulos-&gt;addAction(planCuentas);
+-    connect(planCuentas, SIGNAL(activated()), this, SLOT(elslot()));
++    connect(planCuentas, SIGNAL(triggered(bool)), this, SLOT(elslot()));
+ }
+ 
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_socio/pluginbf_socio.cpp b/bulmages/bulmafact/plugins/pluginbf_socio/pluginbf_socio.cpp
+index c4ef08e..abbd187 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_socio/pluginbf_socio.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_socio/pluginbf_socio.cpp
+@@ -114,7 +114,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
+         planCuentas-&gt;setWhatsThis ( _ ( &quot;Socios&quot; ) );
+         pPluginMenu-&gt;addAction ( planCuentas );
+         bges-&gt;Listados-&gt;addAction ( planCuentas );
+-        connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
++        connect ( planCuentas, SIGNAL ( triggered(bool) ), this, SLOT ( elslot() ) );
+ 
+         QAction *npago = new QAction ( _ ( &quot;&amp;Nuevo socio&quot; ), 0 );
+         npago-&gt;setIcon ( QIcon ( QString::fromUtf8 ( &quot;:/ImgGestionAula/icons/tutor-new.png&quot; ) ) );
+@@ -122,7 +122,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
+         npago-&gt;setWhatsThis ( _ ( &quot;Nuevo socio&quot; ) );
+         pPluginMenu-&gt;addAction ( npago );
+         bges-&gt;Fichas-&gt;addAction ( npago );
+-        connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
++        connect ( npago, SIGNAL ( triggered(bool) ), this, SLOT ( elslot1() ) );
+ 
+ 	QAction *tiposoc = new QAction ( _ ( &quot;&amp;Tipos de socio&quot; ), 0 );
+         tiposoc-&gt;setIcon ( QIcon ( QString::fromUtf8 ( &quot;:/ImgGestionAula/icons/tutor-new.png&quot; ) ) );
+@@ -130,7 +130,7 @@ void MyPlugProf::inicializa ( BfBulmaFact *bges )
+         tiposoc-&gt;setWhatsThis ( _ ( &quot;Tipos de socio&quot; ) );
+         pPluginMenu-&gt;addAction ( tiposoc );
+         bges-&gt;Fichas-&gt;addAction ( tiposoc );
+-        connect ( tiposoc, SIGNAL ( activated() ), this, SLOT ( elslot2() ) );
++        connect ( tiposoc, SIGNAL ( triggered(bool) ), this, SLOT ( elslot2() ) );
+     }// end if
+     
+ }
+diff --git a/bulmages/bulmafact/plugins/pluginbf_vehiculo/pluginbf_vehiculo.cpp b/bulmages/bulmafact/plugins/pluginbf_vehiculo/pluginbf_vehiculo.cpp
+index a96586e..5f1416d 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_vehiculo/pluginbf_vehiculo.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_vehiculo/pluginbf_vehiculo.cpp
+@@ -79,7 +79,7 @@ void myplugin::inicializa ( BfBulmaFact *bges )
+     QAction *accion = new QAction ( _(&quot;&amp;Nuevo vehiculo&quot;), 0 );
+     accion-&gt;setStatusTip ( _(&quot;Vehiculos&quot;) );
+     accion-&gt;setWhatsThis ( _(&quot;Vehiculos&quot;) );
+-    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
++    connect ( accion, SIGNAL ( triggered(bool) ), this, SLOT ( elslot() ) );
+     pPluginMenu-&gt;addAction ( accion );
+     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
+     bges-&gt;menuBar() -&gt;addMenu ( pPluginMenu );
+diff --git a/bulmages/bulmafact/plugins/pluginbf_z2z/pluginbf_z2z.cpp b/bulmages/bulmafact/plugins/pluginbf_z2z/pluginbf_z2z.cpp
+index 7bb3475..53dfc9b 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_z2z/pluginbf_z2z.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_z2z/pluginbf_z2z.cpp
+@@ -59,7 +59,6 @@ int entryPoint ( BfBulmaFact *bges )
+     accionA-&gt;setStatusTip ( _(&quot;Traspaso de Z&quot;) );
+     accionA-&gt;setWhatsThis ( _(&quot;Traspaso de Z&quot;) );
+     accionA-&gt;setObjectName(&quot;mui_actionZ2Z&quot;);
+-    //QObject::connect ( accionA, SIGNAL ( activated (  ) ), corr, SLOT ( elslot ( ) ) );
+     pPluginMenu-&gt;addSeparator();
+     pPluginMenu-&gt;addAction ( accionA );
+     
+diff --git a/bulmages/bulmafact/src/bfbuscararticulo.cpp b/bulmages/bulmafact/src/bfbuscararticulo.cpp
+index ebcfe5f..d031a01 100644
+--- a/bulmages/bulmafact/src/bfbuscararticulo.cpp
++++ b/bulmages/bulmafact/src/bfbuscararticulo.cpp
+@@ -144,7 +144,6 @@ BfBuscarArticuloDelegate::BfBuscarArticuloDelegate ( QWidget *parent )
+     BL_FUNC_DEBUG
+     m_cursorcombo = NULL;
+     setEditable ( true );
+-//    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
+     connect ( this, SIGNAL ( editTextChanged ( const QString &amp; ) ), this, SLOT ( s_editTextChanged ( const QString &amp; ) ) );
+     
+ }
+diff --git a/bulmages/bulmafact/src/bfbuscarregimenfiscal.cpp b/bulmages/bulmafact/src/bfbuscarregimenfiscal.cpp
+index aede22e..92d49f0 100644
+--- a/bulmages/bulmafact/src/bfbuscarregimenfiscal.cpp
++++ b/bulmages/bulmafact/src/bfbuscarregimenfiscal.cpp
+@@ -35,7 +35,6 @@ BfBuscarRegimenFiscal::BfBuscarRegimenFiscal ( QWidget *parent )
+ {
+     BL_FUNC_DEBUG
+     // El activatedItem esta en la clase padre con lo que aqui no es muy necesario.
+-    // connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( activatedItem ( int ) ) );
+     addItem ( &quot;Normal&quot; );
+     addItem ( &quot;Intracomunitario&quot; );
+     addItem ( &quot;Extracomunitario&quot; );
+diff --git a/bulmages/bulmafact/src/bfbuscartipoiva.cpp b/bulmages/bulmafact/src/bfbuscartipoiva.cpp
+index b74cef9..6305f6b 100644
+--- a/bulmages/bulmafact/src/bfbuscartipoiva.cpp
++++ b/bulmages/bulmafact/src/bfbuscartipoiva.cpp
+@@ -146,7 +146,6 @@ BfBuscarTipoIVADelegate::BfBuscarTipoIVADelegate ( QWidget *parent )
+ {
+     BL_FUNC_DEBUG
+     m_comboRecordSet = NULL;
+-//    setSizeAdjustPolicy ( QComboBox::AdjustToContents );
+     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
+     
+ }
+diff --git a/bulmages/bulmalib/plugins/pluginbl_embed/pluginbl_embed.cpp b/bulmages/bulmalib/plugins/pluginbl_embed/pluginbl_embed.cpp
+index 967b712..3a68bcf 100644
+--- a/bulmages/bulmalib/plugins/pluginbl_embed/pluginbl_embed.cpp
++++ b/bulmages/bulmalib/plugins/pluginbl_embed/pluginbl_embed.cpp
+@@ -244,8 +244,8 @@ int entryPoint ( BlMainWindow *bges )
+     accion1-&gt;setStatusTip ( _ ( &quot;Embeber Aplicacion&quot; ) );
+     accion1-&gt;setWhatsThis ( _ ( &quot;Embeber Aplicacion&quot; ) );
+ 
+-    mcont-&gt;connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot() ) );
+-    mcont-&gt;connect ( accion1, SIGNAL ( activated() ), mcont, SLOT ( elslot1() ) );
++    mcont-&gt;connect ( accion, SIGNAL ( triggered(bool) ), mcont, SLOT ( elslot() ) );
++    mcont-&gt;connect ( accion1, SIGNAL ( triggered(bool) ), mcont, SLOT ( elslot1() ) );
+ 
+     /// Miramos si existe un menu Herramientas
+     QMenu *pPluginMenu = bges-&gt;newMenu ( &quot;&amp;Herramientas&quot;, &quot;menuHerramientas&quot;, &quot;menuAcerca_de&quot; );
+@@ -377,7 +377,7 @@ int init67 (  )
+         accion-&gt;setObjectName ( fileInfo.fileName() );
+         accion-&gt;setStatusTip ( titulo);
+         accion-&gt;setWhatsThis ( titulo );
+-        mcont-&gt;connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( embedPYS() ) );
++        mcont-&gt;connect ( accion, SIGNAL ( triggered(bool) ), mcont, SLOT ( embedPYS() ) );
+         menu-&gt;addAction ( accion );
+     } // end for
+ 
+diff --git a/bulmages/bulmalib/plugins/pluginbl_importcsv/pluginbl_importcsv.cpp b/bulmages/bulmalib/plugins/pluginbl_importcsv/pluginbl_importcsv.cpp
+index 45f4b89..69abb6d 100644
+--- a/bulmages/bulmalib/plugins/pluginbl_importcsv/pluginbl_importcsv.cpp
++++ b/bulmages/bulmalib/plugins/pluginbl_importcsv/pluginbl_importcsv.cpp
+@@ -94,7 +94,7 @@ int entryPoint ( BlMainWindow *bges )
+     accion-&gt;setWhatsThis ( _ ( &quot;Importacion CSV&quot; ) );
+     accion-&gt;setIcon ( QIcon ( QString::fromUtf8 ( &quot;:/Images/document-import.png&quot; ) ) );
+ 	
+-    mcont-&gt;connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot() ) );
++    mcont-&gt;connect ( accion, SIGNAL ( triggered(bool) ), mcont, SLOT ( elslot() ) );
+     
+     /// Miramos si existe un menu Herramientas
+     QMenu *pPluginMenu = bges-&gt;newMenu ( _(&quot;&amp;Herramientas&quot;), &quot;menuHerramientas&quot;, &quot;menuAcerca_de&quot; );
+
+commit 6699559f384d0d3c6a48edca16412d296f9876ca
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri Jun 28 06:44:39 2013 +0200
+
+    Arreglo diversos temitas. El mas importante es que el SIGNAL del QAction activated ha desaparecido en Qt5 y hace que no se disparen muchas cosas
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_balance/README.es b/bulmages/bulmafact/plugins/pluginbf_balance/README.es
+index f1d4861..48fa189 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_balance/README.es
++++ b/bulmages/bulmafact/plugins/pluginbf_balance/README.es
+@@ -18,7 +18,7 @@ ArchivoSQLpatch: -
+ 
+ ArchivoSQLdeins: -
+ 
+-Dependencias: libpluginbf_factcont;
++Dependencias: libpluginbf_factcont
+ 
+ Incompatibles:
+ 
+diff --git a/bulmages/bulmalib/plugins/pluginbl_feeds/pluginbl_feeds.cpp b/bulmages/bulmalib/plugins/pluginbl_feeds/pluginbl_feeds.cpp
+index 25e161c..278cd8c 100644
+--- a/bulmages/bulmalib/plugins/pluginbl_feeds/pluginbl_feeds.cpp
++++ b/bulmages/bulmalib/plugins/pluginbl_feeds/pluginbl_feeds.cpp
+@@ -59,8 +59,8 @@ int entryPoint ( BlMainWindow *bcont )
+     g_docFeedsWidget = new BlDockWidget ( &quot;Info&quot;, bcont );
+     g_docFeedsWidget-&gt;setFeatures ( QDockWidget::AllDockWidgetFeatures );
+ 
+-    g_docFeedsWidget-&gt;resize ( 260, 220 );
+-    g_docFeedsWidget-&gt;setMinimumSize(260, 220);
++    g_docFeedsWidget-&gt;setGeometry ( 100, 100, 100, 500 );
++    g_docFeedsWidget-&gt;resize ( 330, 400 );
+     bcont-&gt;addDockWidget ( Qt::RightDockWidgetArea, g_docFeedsWidget );
+     g_docFeedsWidget-&gt;show();
+ 
+diff --git a/bulmages/bulmalib/plugins/pluginbl_feeds/visorhtmlbase.ui b/bulmages/bulmalib/plugins/pluginbl_feeds/visorhtmlbase.ui
+index 5bd63e8..d8401c2 100644
+--- a/bulmages/bulmalib/plugins/pluginbl_feeds/visorhtmlbase.ui
++++ b/bulmages/bulmalib/plugins/pluginbl_feeds/visorhtmlbase.ui
+@@ -24,7 +24,7 @@
+   &lt;/property&gt;
+   &lt;property name=&quot;maximumSize&quot;&gt;
+    &lt;size&gt;
+-    &lt;width&gt;260&lt;/width&gt;
++    &lt;width&gt;2630&lt;/width&gt;
+     &lt;height&gt;16777215&lt;/height&gt;
+    &lt;/size&gt;
+   &lt;/property&gt;
+diff --git a/bulmages/bulmalib/plugins/pluginbl_report/pluginbl_report.cpp b/bulmages/bulmalib/plugins/pluginbl_report/pluginbl_report.cpp
+index f636d92..2f8636e 100644
+--- a/bulmages/bulmalib/plugins/pluginbl_report/pluginbl_report.cpp
++++ b/bulmages/bulmalib/plugins/pluginbl_report/pluginbl_report.cpp
+@@ -95,7 +95,7 @@ void PluginBl_Report::elslot2( )
+ void PluginBl_Report::elslot1( )
+ {
+     BL_FUNC_DEBUG
+-
++    
+     BlForm *ficha = new BlForm ( g_pluginbl_report_emp, 0 );
+     if ( !ficha-&gt;generateRML ( sender()-&gt;objectName() ) ) return;
+     blCreateAndLoadPDF ( sender()-&gt;objectName().left ( sender()-&gt;objectName().size() - 4 ) );
+@@ -229,7 +229,7 @@ int init (  )
+         accion-&gt;setObjectName ( fileInfo.fileName() );
+         accion-&gt;setStatusTip ( titulo);
+         accion-&gt;setWhatsThis ( titulo );
+-        mcont-&gt;connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot1() ) );
++        QObject::connect ( accion, SIGNAL ( triggered(bool) ), mcont, SLOT ( elslot1() ) );
+         menu-&gt;addAction ( accion );
+     } // end for
+ 
+@@ -357,7 +357,7 @@ int init1 (  )
+         accion-&gt;setObjectName ( fileInfo.fileName() );
+         accion-&gt;setStatusTip ( titulo);
+         accion-&gt;setWhatsThis ( titulo );
+-        mcont-&gt;connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot2() ) );
++        mcont-&gt;connect ( accion, SIGNAL ( triggered(bool) ), mcont, SLOT ( elslot2() ) );
+         menu-&gt;addAction ( accion );
+     } // end for
+ 
+diff --git a/bulmages/bulmalib/plugins/pluginbl_report2ods/pluginbl_report2ods.cpp b/bulmages/bulmalib/plugins/pluginbl_report2ods/pluginbl_report2ods.cpp
+index b7744e7..5cb3f7d 100644
+--- a/bulmages/bulmalib/plugins/pluginbl_report2ods/pluginbl_report2ods.cpp
++++ b/bulmages/bulmalib/plugins/pluginbl_report2ods/pluginbl_report2ods.cpp
+@@ -202,7 +202,7 @@ int init (  )
+         accion-&gt;setObjectName ( fileInfo.fileName() );
+         accion-&gt;setStatusTip ( titulo);
+         accion-&gt;setWhatsThis ( titulo );
+-        mcont-&gt;connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot1() ) );
++        mcont-&gt;connect ( accion, SIGNAL ( triggered(bool) ), mcont, SLOT ( elslot1() ) );
+         menu-&gt;addAction ( accion );
+     } // end for
+ 
+diff --git a/bulmages/bulmalib/src/blwindowlistdock.cpp b/bulmages/bulmalib/src/blwindowlistdock.cpp
+index ab06658..20987aa 100644
+--- a/bulmages/bulmalib/src/blwindowlistdock.cpp
++++ b/bulmages/bulmalib/src/blwindowlistdock.cpp
+@@ -201,6 +201,7 @@ BlWindowListDock::BlWindowListDock ( QWidget *a ) : QDockWidget ( a )
+ void BlWindowListDock::dclicked()
+ {
+     BL_FUNC_DEBUG
++
+     QWidget *widget = ( QWidget * ) ( ( BlListWidgetItem * ) m_listBox-&gt;currentItem() ) -&gt;object();
+     if ( widget != NULL ) {
+         if ( widget-&gt;isMaximized() == true ) {
+@@ -211,7 +212,6 @@ void BlWindowListDock::dclicked()
+         widget-&gt;parentWidget()-&gt;activateWindow();
+ 
+     } // end if
+-    
+ }
+ 
+ 
+@@ -221,15 +221,30 @@ void BlWindowListDock::dclicked()
+ void BlWindowListDock::clicked()
+ {
+     BL_FUNC_DEBUG
++
+     QWidget *widget = ( QWidget * ) ( ( BlListWidgetItem * ) m_listBox-&gt;currentItem() ) -&gt;object();
+     if ( widget != NULL ) {
+-        widget-&gt;show();
+ 	if (widget-&gt;parentWidget()) widget-&gt;parentWidget() -&gt;raise();
+ 	if (widget-&gt;parentWidget()) widget-&gt;parentWidget()-&gt;activateWindow();
+ 
+-     
++	/// Buscamos la ventana correspondiente y la borramos.
++	int i = 0;
++	bool maximized = false;
++	while ( i &lt; m_listBox-&gt;count() ) {
++	    BlListWidgetItem * m = ( BlListWidgetItem * ) m_listBox-&gt;item ( i );
++	    if ( ( ( QWidget * ) m-&gt;object() ) -&gt;isMaximized ( ) ) {
++	        maximized = true;
++	    } // end if
++	    i++;
++	} // end while
++	
++	if (maximized) {
++	  widget-&gt;showMaximized();
++	} else {
++	  widget-&gt;show();
++	} // end if
++	
+     } // end if
+-    
+ }
+ 
+ 
+@@ -388,6 +403,7 @@ int BlWindowListDock::insertWindow ( QString name, QObject *object, bool checkDu
+             i++;
+         } // end while
+     } catch ( ... ) {
++        BlDebug::blDebug ( &quot;BlWindowListDock::selectWindow&quot;, 2, &quot;Error en la Seleccion&quot; );
+         throw - 1;
+     } // end try
+     
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007664.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007666.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7665">[ fecha ]</a>
+              <a href="thread.html#7665">[ hilo ]</a>
+              <a href="subject.html#7665">[ asunto ]</a>
+              <a href="author.html#7665">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

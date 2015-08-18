@@ -1,0 +1,475 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130601234341.C6FDE15F%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007604.html">
+   <LINK REL="Next"  HREF="007606.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130601234341.C6FDE15F%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Dom Jun  2 01:43:41 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007604.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007606.html">[BulmaGés]Hagamos una rimera versión Qt5 para Windows
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7605">[ fecha ]</a>
+              <a href="thread.html#7605">[ hilo ]</a>
+              <a href="subject.html#7605">[ asunto ]</a>
+              <a href="author.html#7605">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from 2ded849 to c3c2168
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/2ded849a30ef825ec6bd212ee4a38c5e845c6340/diffs/c3c2168f5e4ca9903068516e087004513649fbdc">https://gitorious.org/bulmages/bulmages/commit/2ded849a30ef825ec6bd212ee4a38c5e845c6340/diffs/c3c2168f5e4ca9903068516e087004513649fbdc</A>
+
+Diff: 
+
+commit c3c2168f5e4ca9903068516e087004513649fbdc
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sun Jun 2 01:41:51 2013 +0200
+
+    Pongo en la configuracion las raices de cuenta con las que crear automaticamente cuentas para clientes, proveedores, formas de pago y familias.
+    Arreglo un error derivado de la desaparicion de QWorkSpace que hacia que algunos botones no funcionasen.
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoview.cpp b/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoview.cpp
+index 53098dd..e874f53 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoview.cpp
+@@ -582,11 +582,9 @@ void BcAsientoList::on_mui_inicio_released() {
+ void BcAsientoList::botonInicio()
+ {
+     BL_FUNC_DEBUG
+-    if(mainCompany()-&gt;pWorkspace()-&gt;activeWindow() == this) {
+-	if ( m_cursorAsientos-&gt;numregistros() != 0 ) {
++    if ( m_cursorAsientos-&gt;numregistros() != 0 ) {
+ 	    m_cursorAsientos-&gt;firstRecord();
+ 	    load ( m_cursorAsientos-&gt;value( &quot;idasiento&quot; ) );
+-	} // end if
+     } // end if
+     
+ }
+@@ -605,13 +603,10 @@ void BcAsientoList::on_mui_fin_released() {
+ void BcAsientoList::botonFin()
+ {
+     BL_FUNC_DEBUG
+-    if(mainCompany()-&gt;pWorkspace()-&gt;activeWindow() == this) {
+-	if ( m_cursorAsientos-&gt;numregistros() != 0 ) {
+-	    m_cursorAsientos-&gt;lastRecord();
+-	    load ( m_cursorAsientos-&gt;value( &quot;idasiento&quot; ) );
+-	} // end if
++    if ( m_cursorAsientos-&gt;numregistros() != 0 ) {
++      m_cursorAsientos-&gt;lastRecord();
++      load ( m_cursorAsientos-&gt;value( &quot;idasiento&quot; ) );
+     } // end if
+-    
+ }
+ 
+ 
+@@ -632,17 +627,16 @@ void BcAsientoList::on_mui_siguiente_released() {
+ void BcAsientoList::botonSiguiente()
+ {
+     BL_FUNC_DEBUG
+-    if (mainCompany()-&gt;pWorkspace()-&gt;activeWindow() == this) {
+-        ///  Si no hay nada que mostrar vacia la pantalla para que no queden resto.
+-        if ( m_cursorAsientos-&gt;numregistros() == 0 ) {
+-	    return;
+-        } // end if
+-
+-        if ( !m_cursorAsientos-&gt;isLastRecord() ) {
+-            m_cursorAsientos-&gt;nextRecord();
+-            load ( m_cursorAsientos-&gt;value( &quot;idasiento&quot; ) );
+-        }// end if
++    ///  Si no hay nada que mostrar vacia la pantalla para que no queden resto.
++    if ( m_cursorAsientos-&gt;numregistros() == 0 ) {
++	return;
+     } // end if
++
++    if ( !m_cursorAsientos-&gt;isLastRecord() ) {
++	m_cursorAsientos-&gt;nextRecord();
++	load ( m_cursorAsientos-&gt;value( &quot;idasiento&quot; ) );
++    }// end if
++
+ }
+ 
+ 
+@@ -662,17 +656,13 @@ void BcAsientoList::on_mui_anterior_released() {
+ void BcAsientoList::botonAnterior()
+ {
+     BL_FUNC_DEBUG
+-    
+-    if (mainCompany()-&gt;pWorkspace()-&gt;activeWindow() == this) {
+-        ///  Si no hay nada que mostrar vacia la pantalla para que no queden resto.
+-        if ( m_cursorAsientos-&gt;numregistros() == 0 ) {
+-            return;
+-        } // end if
++    if ( m_cursorAsientos-&gt;numregistros() == 0 ) {
++	return;
++    } // end if
+ 
+-        if ( !m_cursorAsientos-&gt;isFirstRecord() ) {
+-            m_cursorAsientos-&gt;previousRecord();
+-            load ( m_cursorAsientos-&gt;value( &quot;idasiento&quot; ) );
+-        } // end if
++    if ( !m_cursorAsientos-&gt;isFirstRecord() ) {
++	m_cursorAsientos-&gt;previousRecord();
++	load ( m_cursorAsientos-&gt;value( &quot;idasiento&quot; ) );
+     } // end if
+ }
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cuenta/pluginbf_cuenta.cpp b/bulmages/bulmafact/plugins/pluginbf_cuenta/pluginbf_cuenta.cpp
+index 315f9ad..f7be70b 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cuenta/pluginbf_cuenta.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_cuenta/pluginbf_cuenta.cpp
+@@ -639,7 +639,7 @@ int ClienteView_Guardar_Pre(ClienteView *cliente) {
+     /// buscamos entre las que ser&aacute;n sus hermanas y le asignamos el n&uacute;mero
+     /// siguiente que le corresponda.
+     QString query;
+-    QString codpadre = &quot;4300&quot;;
++    QString codpadre = g_confpr-&gt;value(CONF_CONT_CTA_CLIENTES);
+     QString codint = codpadre;
+     int tipocuenta = 0;
+     
+@@ -658,8 +658,6 @@ int ClienteView_Guardar_Pre(ClienteView *cliente) {
+         codint.setNum ( valor );
+ 
+     } else {
+-
+-	// PONER UN PARAMETRO APROPIADO
+         while ( codint.length() &lt;  g_confpr-&gt;value(CONF_CONT_NUMDIGITOSEMPRESA).toInt() - 1 ) {
+             codint = codint + &quot;0&quot;;
+         } // end while
+@@ -728,7 +726,7 @@ int ProveedorView_Guardar_Pre(ProveedorView *proveedor) {
+     /// buscamos entre las que ser&aacute;n sus hermanas y le asignamos el n&uacute;mero
+     /// siguiente que le corresponda.
+     QString query;
+-    QString codpadre = &quot;4000&quot;;
++    QString codpadre = g_confpr-&gt;value(CONF_CONT_CTA_PROVEEDORES);
+     QString codint = codpadre;
+     int tipocuenta = 0;
+     
+@@ -849,7 +847,7 @@ int FamiliasView_Guardar_Pre ( FamiliasView *fam )
+ 	      /// buscamos entre las que ser&aacute;n sus hermanas y le asignamos el n&uacute;mero
+ 	      /// siguiente que le corresponda.
+ 	      QString query;
+-	      QString codpadre = &quot;700&quot;;
++	      QString codpadre = g_confpr-&gt;value(CONF_CONT_CTA_VENTAPRODUCTO);
+ 	      QString codint = codpadre;
+ 	      int tipocuenta = 0;
+ 	      
+@@ -897,7 +895,7 @@ int FamiliasView_Guardar_Pre ( FamiliasView *fam )
+ 	      /// buscamos entre las que ser&aacute;n sus hermanas y le asignamos el n&uacute;mero
+ 	      /// siguiente que le corresponda.
+ 	      QString query;
+-	      QString codpadre = &quot;600&quot;;
++	      QString codpadre = g_confpr-&gt;value(CONF_CONT_CTA_COMPRAPRODUCTO);
+ 	      QString codint = codpadre;
+ 	      int tipocuenta = 0;
+ 	      
+@@ -1031,7 +1029,7 @@ int FPagoView_Guardar_Pre ( FPagoView *fam )
+ 	      /// buscamos entre las que ser&aacute;n sus hermanas y le asignamos el n&uacute;mero
+ 	      /// siguiente que le corresponda.
+ 	      QString query;
+-	      QString codpadre = &quot;570&quot;;
++	      QString codpadre = g_confpr-&gt;value(CONF_CONT_CTA_FPAGO);
+ 	      QString codint = codpadre;
+ 	      int tipocuenta = 0;
+ 	      
+@@ -1107,153 +1105,3 @@ int FPagoView_currentItemChanged_Post ( FPagoView *fam )
+ 
+ 
+ 
+-
+-/*
+-
+-int ClienteView_cargarPost_Post ( ClienteView *cliente )
+-{
+-    BlDbRecordSet *rec;
+-
+-    cliente-&gt;mainCompany()-&gt;begin();
+-  
+-    // 1) coge idcuentabanco de banco.
+-    // 2) se conecta a contabilidad.
+-    // 3) busca el codigo cuenta usando el idcuenta de banco.
+-    // 4) rellena qlineedit con codigo cuenta.
+-    
+-    QString query = &quot;SELECT idcuentacliente FROM cliente WHERE idcliente = '&quot; + cliente-&gt;dbValue(cliente-&gt;fieldId()) + &quot;' LIMIT 1&quot;;
+-    
+-    
+-    rec = cliente-&gt;mainCompany()-&gt;loadQuery(query);
+-    
+-    // Si no hay datos en idcuenta no se hace nada.
+-    if ( rec != NULL ) {
+-
+-	cliente-&gt;mainCompany()-&gt;run(&quot;SELECT conectabulmacont()&quot;);
+-	
+-	QString query = &quot;SELECT codigo FROM bc_cuenta WHERE idcuenta = '&quot; + rec-&gt;value(&quot;idcuentacliente&quot;) + &quot;' LIMIT 1&quot;;
+-	rec = cliente-&gt;mainCompany()-&gt;loadQuery(query);
+-	
+-	cliente-&gt;findChild&lt;QLineEdit *&gt;(&quot;mui_cuenta_cliente&quot;)-&gt;setText( rec-&gt;value(&quot;codigo&quot;) );
+-	
+-    } // end if
+-
+-  
+-    cliente-&gt;mainCompany()-&gt;commit();
+-
+-    return 0;
+-}
+-
+-
+-int ClienteView_Guardar_Pre ( ClienteView *cliente )
+-{
+-    BlDbRecordSet *rec;
+-
+-    /// En la creacion del cliente no existe ID.
+-    if ( !cliente-&gt;dbValue ( cliente-&gt;fieldId() ).isEmpty() ) {
+-    
+-      QString query = &quot;SELECT idcuentacliente FROM cliente WHERE idcliente = '&quot; + cliente-&gt;dbValue(cliente-&gt;fieldId()) + &quot;' LIMIT 1&quot;;
+-
+-      rec = cliente-&gt;mainCompany()-&gt;loadQuery(query);
+-
+-      if ( rec != NULL ) {
+-	  cliente-&gt;setDbValue(&quot;idcuentacliente&quot;, cliente-&gt;dbValue(&quot;idcuentacliente&quot;));
+-      } // end if
+-      
+-      delete rec;
+-
+-    } else {
+-      cliente-&gt;setDbValue(&quot;idcuentacliente&quot;, &quot;0&quot;);
+-    } // end if
+-
+-    return 0;
+-}
+-
+-
+-int ClienteView_Guardar_Post ( ClienteView *cliente )
+-{
+-    BlDbRecordSet *rec_cliente;
+-    BlDbRecordSet *tmp_cliente;
+-    BlDbRecordSet *rsa;
+-    QString query;
+-
+-    try {
+-
+-      cliente-&gt;mainCompany()-&gt;run(&quot;SELECT conectabulmacont()&quot;);
+-      
+-      /// Hace la comprobacion de los datos introducidos y que son validos en la contabilidad.
+-      /// La cuenta que se especifique tiene que existir en la contabilidad. No se crean de forma
+-      /// automatica.
+-      QString cuentacliente = cliente-&gt;mainCompany()-&gt;sanearCadena(cliente-&gt;findChild&lt;QLineEdit *&gt;(&quot;mui_cuenta_cliente&quot;)-&gt;text());
+-
+-      if ( cliente-&gt;dbValue(cliente-&gt;fieldId()).isEmpty() ) return -1;
+-
+-      
+-      if (cuentacliente.isEmpty()) {
+-
+-	/// En el caso de dejar vacio el campo de cuenta preferente
+-	/// se mira si antes se hizo utilizo la cuenta preferente
+-	/// y restaura la cuenta original.
+-	query = &quot;SELECT origenidcuentacliente FROM cliente WHERE idcliente = &quot; + cliente-&gt;dbValue(cliente-&gt;fieldId());
+-	tmp_cliente = cliente-&gt;mainCompany()-&gt;loadQuery(query);
+-
+-	if (!tmp_cliente-&gt;value(&quot;origenidcuentacliente&quot;).isEmpty()) {
+-	    /// Restaura cuenta original
+-	    query = &quot;UPDATE cliente SET idcuentacliente = &quot; + tmp_cliente-&gt;value(&quot;origenidcuentacliente&quot;) + &quot; WHERE idcliente = &quot; + cliente-&gt;dbValue(cliente-&gt;fieldId());
+-	    cliente-&gt;mainCompany()-&gt;runQuery(query);
+-	    
+-	    /// Vacia campo origen.
+-	    query = &quot;UPDATE cliente SET origenidcuentacliente = NULL WHERE idcliente = &quot; + cliente-&gt;dbValue(cliente-&gt;fieldId());
+-	    cliente-&gt;mainCompany()-&gt;runQuery(query);
+-	} // end if
+-	
+-      } else {
+-	/// Verifica que el idcuenta guardado y el codigo introducido coincidan
+-	/// si no coinciden entonces el codigo ha cambiado y se tiene que buscar
+-	/// a que idcuenta corresponde y hacer la actualizacion.
+-	
+-	query = &quot;SELECT codigo FROM bc_cuenta WHERE idcuenta = '&quot; + cliente-&gt;dbValue(&quot;idcuentacliente&quot;) + &quot;'&quot;;
+-	rsa = cliente-&gt;mainCompany()-&gt;loadQuery(query);
+-	if (rsa != NULL) {
+-	  
+-	  if (rsa-&gt;value(&quot;codigo&quot;) != cuentacliente) {
+-		  
+-	      QString query_cliente = &quot;SELECT idcuenta FROM bc_cuenta WHERE codigo = '&quot; + cuentacliente + &quot;' LIMIT 1&quot;;
+-	      rec_cliente = cliente-&gt;mainCompany()-&gt;loadQuery(query_cliente);
+-	      
+-	      if (rec_cliente-&gt;numregistros() &lt;= 0) {
+-		throw -300;
+-	      } // end if
+-
+-	      /// Almacena la informacion de la cuenta antes de sobreescribirla.
+-	      /// Verifica primero que el campo este vacio.
+-	      query = &quot;SELECT origenidcuentacliente FROM cliente WHERE idcliente = &quot; + cliente-&gt;dbValue(cliente-&gt;fieldId());
+-	      tmp_cliente = cliente-&gt;mainCompany()-&gt;loadQuery(query);
+-	      
+-	      if (tmp_cliente-&gt;value(&quot;origenidcuentacliente&quot;).isEmpty()) {
+-		query = &quot;SELECT idcuentacliente FROM cliente WHERE idcliente = &quot; + cliente-&gt;dbValue(cliente-&gt;fieldId());
+-		tmp_cliente = cliente-&gt;mainCompany()-&gt;loadQuery(query);
+-		query = &quot;UPDATE cliente SET origenidcuentacliente = &quot; + tmp_cliente-&gt;value(&quot;idcuentacliente&quot;) + &quot; WHERE idcliente = &quot; + cliente-&gt;dbValue(cliente-&gt;fieldId());
+-		cliente-&gt;mainCompany()-&gt;runQuery(query);
+-	      } // end if
+-
+-	      query = &quot;UPDATE cliente SET idcuentacliente = &quot; + rec_cliente-&gt;value(&quot;idcuenta&quot;) + &quot; WHERE idcliente = &quot; + cliente-&gt;dbValue(cliente-&gt;fieldId());
+-	      cliente-&gt;mainCompany()-&gt;runQuery(query);
+-	      
+-	    } // end if
+-	    
+-	  } // end if
+-	  
+-	} // end if
+-	
+-    } catch (int e) {
+-	if (e == -300) {
+-	  blMsgError(_(&quot;La cuenta no existe en la contabilidad.&quot;));
+-	} // end if
+-	throw -1;
+-    } // end try
+-
+-    return 0;
+-}
+-
+-*/
+diff --git a/bulmages/bulmalib/src/blconfiguration.cpp b/bulmages/bulmalib/src/blconfiguration.cpp
+index 9c08819..7c29dfb 100644
+--- a/bulmages/bulmalib/src/blconfiguration.cpp
++++ b/bulmages/bulmalib/src/blconfiguration.cpp
+@@ -471,13 +471,19 @@ QString BlConfiguration::name( int i )
+        return &quot;CONF_PRECALC_CODARTICULO&quot;;
+     if ( i == CONF_CONT_NUMDIGITOSEMPRESA )
+        return &quot;CONF_CONT_NUMDIGITOSEMPRESA&quot;;
++    if ( i == CONF_CONT_CTA_CLIENTES )
++       return &quot;CONF_CONT_CTA_CLIENTES&quot;;
++    if ( i == CONF_CONT_CTA_PROVEEDORES )
++       return &quot;CONF_CONT_CTA_PROVEEDORES&quot;;
++    if ( i == CONF_CONT_CTA_VENTAPRODUCTO )
++       return &quot;CONF_CONT_CTA_VENTAPRODUCTO&quot;;
++    if ( i == CONF_CONT_CTA_COMPRAPRODUCTO )
++       return &quot;CONF_CONT_CTA_COMPRAPRODUCTO&quot;;
++    if ( i == CONF_CONT_CTA_FPAGO )
++       return &quot;CONF_CONT_CTA_FPAGO&quot;;
+     return &quot;&quot;;
+ }
+ 
+-
+-
+-
+-
+ /// This method writes the configuration of the system to the home bulmages.conf file
+ /// Este metodo escribe la configuracion del sistema en el fichero bulmages.conf del
+ /// 'home' del usuario.
+diff --git a/bulmages/bulmalib/src/blconfiguration.h b/bulmages/bulmalib/src/blconfiguration.h
+index 32cab54..ca805cf 100644
+--- a/bulmages/bulmalib/src/blconfiguration.h
++++ b/bulmages/bulmalib/src/blconfiguration.h
+@@ -298,6 +298,13 @@
+ 
+ /// Sistema de configuracion contable
+ #define CONF_CONT_NUMDIGITOSEMPRESA  568
++#define CONF_CONT_CTA_CLIENTES               569
++#define CONF_CONT_CTA_PROVEEDORES            570
++#define CONF_CONT_CTA_VENTAPRODUCTO          571
++#define CONF_CONT_CTA_COMPRAPRODUCTO         572
++#define CONF_CONT_CTA_FPAGO                  573
++
++
+ 
+ typedef QMap&lt;int, QString&gt; mapa;
+ 
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_accesobotones/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_accesobotones/CMakeLists.txt
+index 44f3253..1707a7f 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_accesobotones/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_accesobotones/CMakeLists.txt
+@@ -27,13 +27,9 @@ include_directories(
+ 	${CMAKE_BINARY_DIR}/bulmatpv/src/
+ 	${CMAKE_SOURCE_DIR}/bulmatpv/src/)
+ 
+-# generate rules for building source files from the resources
+-#QT5_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
+-
+ # generate rules for building source files that moc generates
+ QT5_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
+ QT5_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
+-#QT5_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
+ 
+ 
+ IF(WIN32)
+@@ -77,7 +73,12 @@ set_target_properties( ${plugin} PROPERTIES
+   SOVERSION &quot;${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}&quot;
+   VERSION &quot;${BULMAGES_VERSION}&quot;)
+ 
++if(WIN32)
+ target_link_libraries(${plugin} libbulmatpv bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
++ELSE(WIN32)
++target_link_libraries(${plugin} libbulmatpv bulmalib)
++qt5_use_modules(${plugin} Widgets)
++ENDIF(WIN32)
+ 
+ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)
+ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/bulmatpv-plugins/ RENAME README.es.${plugin})
+diff --git a/bulmages/installbulmages/bulmafact.conf.in b/bulmages/installbulmages/bulmafact.conf.in
+index 33f0d6f..3478593 100644
+--- a/bulmages/installbulmages/bulmafact.conf.in
++++ b/bulmages/installbulmages/bulmafact.conf.in
+@@ -71,6 +71,11 @@ CONF_PRECALC_CODARTICULO   TRUE
+ # -------------------------------------
+ 
+ CONF_CONT_NUMDIGITOSEMPRESA          8
++CONF_CONT_CTA_CLIENTES               4300
++CONF_CONT_CTA_PROVEEDORES            4000
++CONF_CONT_CTA_VENTAPRODUCTO          700
++CONF_CONT_CTA_COMPRAPRODUCTO         600
++CONF_CONT_CTA_FPAGO                  570
+ 
+ #--------------------------------------------------------------------#
+ #                                                                    #
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007604.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007606.html">[BulmaGés]Hagamos una rimera versión Qt5 para Windows
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7605">[ fecha ]</a>
+              <a href="thread.html#7605">[ hilo ]</a>
+              <a href="subject.html#7605">[ asunto ]</a>
+              <a href="author.html#7605">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

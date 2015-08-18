@@ -1,0 +1,400 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120503211016.07F1F75CE7%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007168.html">
+   <LINK REL="Next"  HREF="007170.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120503211016.07F1F75CE7%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Jue Mayo  3 23:10:15 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007168.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007170.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7169">[ fecha ]</a>
+              <a href="thread.html#7169">[ hilo ]</a>
+              <a href="subject.html#7169">[ asunto ]</a>
+              <a href="author.html#7169">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from ef2b48b to 90553f1
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/ef2b48b378e7a54f66f48fa8b4944d7b8fac10bf/diffs/90553f14ab97d54570e9a733507bcbb85e1b11e9">https://gitorious.org/bulmages/bulmages/commit/ef2b48b378e7a54f66f48fa8b4944d7b8fac10bf/diffs/90553f14ab97d54570e9a733507bcbb85e1b11e9</A>
+
+Diff: 
+
+commit 90553f14ab97d54570e9a733507bcbb85e1b11e9
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu May 3 23:10:07 2012 +0200
+
+    Este cambio seguro que os gusta como agua de Mayo. Reestructuro el metodo BlSubForm::load y lo mejoro para que la carga sea mas rapida. Se aprecia alguna mejora.
+
+diff --git a/bulmages/bulmalib/src/blsubform.cpp b/bulmages/bulmalib/src/blsubform.cpp
+index 2a57c8a..e3e8e21 100644
+--- a/bulmages/bulmalib/src/blsubform.cpp
++++ b/bulmages/bulmalib/src/blsubform.cpp
+@@ -200,6 +200,7 @@ BlSubForm::BlSubForm ( QWidget *parent ) : BlWidget ( parent )
+     /// Desactivamos el procesado de cambios.
+     m_procesacambios = FALSE;
+ 
++    m_columnaParaRowSpan = &quot;&quot;;
+     m_textoceldaParaRowSpan = &quot;&quot;;
+     m_filaInicialRowSpan = -1;
+ 
+@@ -1397,6 +1398,8 @@ void BlSubForm::load ( BlDbRecordSet *cur )
+     QColor colorfondo = m_colorfondo1;
+     bool coloraponerfondo = FALSE;
+ 
++    
++
+     /// Preparamos la barra de progreso
+     BlProgressBar *barra = new BlProgressBar;
+     if ( cur-&gt;numregistros() &gt; 100 ) {
+@@ -1408,21 +1411,26 @@ void BlSubForm::load ( BlDbRecordSet *cur )
+     /// Desactivamos el sorting debido a un error en las Qt4.
+     mui_list-&gt;setSortingEnabled ( FALSE );
+ 
+-    /// Reseteamos el &quot;rowSpan&quot; de la tabla antes de borrar las filas.
+-    for ( int i = 0; i &lt; m_lista.size(); ++i ) {
+-        reg = m_lista.at ( i );
+-        for ( int j = 0; j &lt; reg-&gt;lista() -&gt;size(); ++j ) {
+-            BlSubFormHeader *head = m_lcabecera.at ( j );
+-            if ( head-&gt;fieldName() == m_columnaParaRowSpan ) {
+-                mui_list-&gt;setSpan ( i, j, 1, 1 );
+-            } // end if
+-        } // end for
+-    } // end for
+ 
++    if (m_columnaParaRowSpan != &quot;&quot;) {
++	/// Reseteamos el &quot;rowSpan&quot; de la tabla antes de borrar las filas.
++	for ( int i = 0; i &lt; m_lista.size(); ++i ) {
++	    reg = m_lista.at ( i );
++	    for ( int j = 0; j &lt; reg-&gt;lista() -&gt;size(); ++j ) {
++		BlSubFormHeader *head = m_lcabecera.at ( j );
++		if ( head-&gt;fieldName() == m_columnaParaRowSpan ) {
++		    mui_list-&gt;setSpan ( i, j, 1, 1 );
++		} // end if
++	    } // end for
++	} // end for
++    } // end if
++
++
++    
+     /// Vaciamos la tabla para que no contenga registros.
+     mui_list-&gt;clear();
+     mui_list-&gt;setRowCount ( 0 );
+-
++    
+     /// Vaciamos el recordset para que no contenga registros.
+     BlDbSubFormRecord *rec;
+     while ( !m_lista.isEmpty() ) {
+@@ -1431,6 +1439,10 @@ void BlSubForm::load ( BlDbRecordSet *cur )
+             delete rec;
+     } // end while
+ 
++//    m_lista.clear();
++
++
++
+     /// Inicializamos las columnas y pintamos las cabeceras.
+     mui_list-&gt;setColumnCount ( m_lcabecera.count() );
+     pintaCabeceras();
+@@ -1470,119 +1482,123 @@ void BlSubForm::load ( BlDbRecordSet *cur )
+     } else {
+         mui_paganterior-&gt;setEnabled ( TRUE );
+     } // end if
++    
++    
+ 
+-    /// Recorremos el recordset y ponemos los registros en un orden determinado.
+-    int porcentajecarga = 0;
+-    while ( !cur-&gt;eof() &amp;&amp; m_lista.count() &lt; filpag ) {
+-        BlDbSubFormRecord * rec = newDbSubFormRecord();
+-        rec-&gt;DBload ( cur );
+-        m_lista.append ( rec );
+-        cur-&gt;nextRecord();
+-        porcentajecarga++;
+-    } // end while
+-
+-    /// Inicializamos la tabla con las filas necesarias.
+-    mui_list-&gt;setRowCount ( m_lista.count() );
+-
+-    /// Rendimiento: a partir de aqu&iacute; m_lista ya no cambia, así que ya podemos usar una constante
+-    /// para guardar la cantidad de elementos y no volver a invocar al m&eacute;todo size()
+-    const int m_lista_size = m_lista.size();
+-
++    
+     /// Rendimiento: estas variables s&oacute;lo se usan en el bucle, pero no es necesario crearlas en cada iteración
+-    QRegExp patronFecha ( &quot;^.*00:00:00.*$&quot; ); /// Para emparejar los valores fechas.
+     QFont bold;
+     bold.setBold ( true );
+-
++    
++    /// Rendimiento: a partir de aqu&iacute; m_lista ya no cambia, así que ya podemos usar una constante
++    /// para guardar la cantidad de elementos y no volver a invocar al m&eacute;todo size()
++    const int m_lista_size = cur-&gt;numregistros() &gt; filpag? filpag : cur-&gt;numregistros();
++    
++    /// Establecemos el rango de la barra, que iterara sobre las filas.
+     barra-&gt;setRange ( 0, m_lista_size );
+-    for ( int i = 0; i &lt; m_lista_size; ++i ) {
+-        reg = m_lista.at ( i );
+-        for ( int j = 0; j &lt; reg-&gt;lista() -&gt;size(); ++j ) {
+-           /// Pone en negrita el texto de la cabecera de las columnas editables
+-           if ( i == 0 &amp;&amp; ! ( m_lcabecera [ j ] -&gt; options() &amp; BlSubFormHeader::DbNoWrite ) ) {
+-              mui_list-&gt;horizontalHeaderItem ( j ) -&gt; setFont( bold );
+-           } // end if
+-            camp = ( BlDbSubFormField * ) reg-&gt;lista() -&gt;at ( j );
+-            /// Si es una fecha lo truncamos a 10 caracteres para presentar solo la fecha.
+-            if ( patronFecha.exactMatch ( camp-&gt;fieldValue() ) ) {
+-                camp-&gt;set
+-                ( camp-&gt;fieldValue().left ( 10 ) );
+-            } // end if
+-            /// Rellena la tabla con los datos.
+-            mui_list-&gt;setItem ( i, j, camp );
+-        } // end for
+-        barra-&gt;setValue ( i );
++    
++    /// Inicializamos la tabla con las filas necesarias.
++    mui_list-&gt;setRowCount ( m_lista_size );
++    
++    /// Hay datos que solo precisamos coger una unica vez y almacenarlo en variables.
++    const int ncolumnas = m_lcabecera.size();
++    for ( int j = 0; j &lt; ncolumnas; ++j ) {
++	/// Pone en negrita el texto de la cabecera de las columnas editables
++	if ( ! ( m_lcabecera [ j ] -&gt; options() &amp; BlSubFormHeader::DbNoWrite ) ) {
++	  mui_list-&gt;horizontalHeaderItem ( j ) -&gt; setFont( bold );
++	} // end if
+     } // end for
+ 
++
++    int reciterate=0;
++    while ( reciterate &lt; m_lista_size ) {
++        BlDbSubFormRecord * rec = newDbSubFormRecord();
++        rec-&gt;DBload ( cur );
++        m_lista.append ( rec );
++
++        for ( int j = 0; j &lt; ncolumnas; ++j ) {
++	    /// Rellena la tabla con los datos.
++            camp = ( BlDbSubFormField * ) rec-&gt;lista() -&gt;at ( j );
++            mui_list-&gt;setItem ( reciterate, j, camp );
++        } // end for
++	
++        cur-&gt;nextRecord();
++	barra-&gt;setValue(reciterate++);
++    } // end while
++
+     /// Establece el &quot;rowSpan&quot; de la tabla.
+     QString textoCeldaAnterior;
+     QString textoCeldaActual;
+ 
++    
+     /// Recorre las filas.
+     m_filaInicialRowSpan = -1;
+ 
+     /// Pone el 'rowSpan' a las filas que son iguales.
+-    for ( int i = 0; i &lt; m_lista_size; ++i ) {
+-        reg = m_lista.at ( i );
+-        for ( int j = 0; j &lt; reg-&gt;lista() -&gt;size(); ++j ) {
+-            BlSubFormHeader *head = m_lcabecera.at ( j );
+-            if ( head-&gt;fieldName() == m_columnaParaRowSpan ) {
+-                camp = ( BlDbSubFormField * ) reg-&gt;lista() -&gt;at ( j );
+-                textoCeldaActual = camp-&gt;fieldValue();
+-                /// Mira lo que hay en la fila anterior si existe.
+-                if ( i &gt; 0 ) {
+-                    reg2 = m_lista.at ( i - 1 );
+-                    camp2 = ( BlDbSubFormField * ) reg2-&gt;lista() -&gt;at ( j );
+-                    textoCeldaAnterior = camp2-&gt;fieldValue();
+-                    if ( textoCeldaActual == textoCeldaAnterior ) {
+-                        /// activamos el indice de celdas iguales
+-                        if ( m_filaInicialRowSpan == -1 ) {
+-                            m_filaInicialRowSpan = i - 1;
+-                        } // end if
+-                        /// hay un registro despu&eacute;s. No, dibuja 'rowSpan'.
+-                        if ( i == ( m_lista_size - 1 ) ) {
+-                            ponItemColorFondo ( mui_list, m_filaInicialRowSpan, i - m_filaInicialRowSpan + 1, colorfondo );
+-                            mui_list-&gt;setSpan ( m_filaInicialRowSpan, j, i - m_filaInicialRowSpan + 1, 1 );
+-
+-                            if ( coloraponerfondo == FALSE ) {
+-                                colorfondo = m_colorfondo2;
+-                                coloraponerfondo = TRUE;
+-                            } else {
+-                                colorfondo = m_colorfondo1;
+-                                coloraponerfondo = FALSE;
+-                            } // end if
+-
+-                        } // end if
+-                    } else {
+-                        /// Comprobamos si queda algo pendiente de hacer 'rowSpan'.
+-                        if ( m_filaInicialRowSpan != -1 ) {
+-                            /// 'rowSpan' desde inicio iguales hasta fila anterior.
+-                            ponItemColorFondo ( mui_list, m_filaInicialRowSpan, i - m_filaInicialRowSpan, colorfondo );
+-                            mui_list-&gt;setSpan ( m_filaInicialRowSpan, j, i - m_filaInicialRowSpan, 1 );
+-
+-                            if ( coloraponerfondo == FALSE ) {
+-                                colorfondo = m_colorfondo2;
+-                                coloraponerfondo = TRUE;
+-                            } else {
+-                                colorfondo = m_colorfondo1;
+-                                coloraponerfondo = FALSE;
+-                            } // end if
+-                        } else {
+-                            /// El registro s&oacute;lo tiene una fila.
+-                            ponItemColorFondo ( mui_list, i - 1, 1, colorfondo );
+-                            if ( coloraponerfondo == FALSE ) {
+-                                colorfondo = m_colorfondo2;
+-                                coloraponerfondo = TRUE;
+-                            } else {
+-                                colorfondo = m_colorfondo1;
+-                                coloraponerfondo = FALSE;
+-                            } // end if
+-                        } // end if
+-                        m_filaInicialRowSpan = -1;
+-                    } // end if
+-                } // end if
+-            } // end if
+-        } // end for
+-    } // end for
++    if (m_columnaParaRowSpan != &quot;&quot;) {
++	for ( int i = 0; i &lt; m_lista_size; ++i ) {
++	    reg = m_lista.at ( i );
++	    for ( int j = 0; j &lt; reg-&gt;lista() -&gt;size(); ++j ) {
++		BlSubFormHeader *head = m_lcabecera.at ( j );
++		if ( head-&gt;fieldName() == m_columnaParaRowSpan ) {
++		    camp = ( BlDbSubFormField * ) reg-&gt;lista() -&gt;at ( j );
++		    textoCeldaActual = camp-&gt;fieldValue();
++		    /// Mira lo que hay en la fila anterior si existe.
++		    if ( i &gt; 0 ) {
++			reg2 = m_lista.at ( i - 1 );
++			camp2 = ( BlDbSubFormField * ) reg2-&gt;lista() -&gt;at ( j );
++			textoCeldaAnterior = camp2-&gt;fieldValue();
++			if ( textoCeldaActual == textoCeldaAnterior ) {
++			    /// activamos el indice de celdas iguales
++			    if ( m_filaInicialRowSpan == -1 ) {
++				m_filaInicialRowSpan = i - 1;
++			    } // end if
++			    /// hay un registro despu&eacute;s. No, dibuja 'rowSpan'.
++			    if ( i == ( m_lista_size - 1 ) ) {
++				ponItemColorFondo ( mui_list, m_filaInicialRowSpan, i - m_filaInicialRowSpan + 1, colorfondo );
++				mui_list-&gt;setSpan ( m_filaInicialRowSpan, j, i - m_filaInicialRowSpan + 1, 1 );
++
++				if ( coloraponerfondo == FALSE ) {
++				    colorfondo = m_colorfondo2;
++				    coloraponerfondo = TRUE;
++				} else {
++				    colorfondo = m_colorfondo1;
++				    coloraponerfondo = FALSE;
++				} // end if
++
++			    } // end if
++			} else {
++			    /// Comprobamos si queda algo pendiente de hacer 'rowSpan'.
++			    if ( m_filaInicialRowSpan != -1 ) {
++				/// 'rowSpan' desde inicio iguales hasta fila anterior.
++				ponItemColorFondo ( mui_list, m_filaInicialRowSpan, i - m_filaInicialRowSpan, colorfondo );
++				mui_list-&gt;setSpan ( m_filaInicialRowSpan, j, i - m_filaInicialRowSpan, 1 );
++
++				if ( coloraponerfondo == FALSE ) {
++				    colorfondo = m_colorfondo2;
++				    coloraponerfondo = TRUE;
++				} else {
++				    colorfondo = m_colorfondo1;
++				    coloraponerfondo = FALSE;
++				} // end if
++			    } else {
++				/// El registro s&oacute;lo tiene una fila.
++				ponItemColorFondo ( mui_list, i - 1, 1, colorfondo );
++				if ( coloraponerfondo == FALSE ) {
++				    colorfondo = m_colorfondo2;
++				    coloraponerfondo = TRUE;
++				} else {
++				    colorfondo = m_colorfondo1;
++				    coloraponerfondo = FALSE;
++				} // end if
++			    } // end if
++			    m_filaInicialRowSpan = -1;
++			} // end if
++		    } // end if
++		} // end if
++	    } // end for
++	} // end for
++    } // end if
+ 
+     /// Si est&aacute; definido no aplicamos ninguna ordenaci&oacute;n.
+     if ( !m_ordenporquery ) {
+@@ -1718,18 +1734,15 @@ void BlSubForm::load ( QString query )
+                  /// ... usar el mismo n&uacute;mero de fila
+                  fila_futura = active_row;
+               } // end if
+-          } // end if
+-
+-           /// Si la fila era la &uacute;ltima, seguir en la &uacute;ltima, pase lo que pase
+-           else
+-           {
++          } else {
++		/// Si la fila era la &uacute;ltima, seguir en la &uacute;ltima, pase lo que pase
+                fila_futura = rowCount() - 1;
+-           } // end if
++          } // end if
+ 
+-           if ( fila_futura &gt; -1 ) {
++          if ( fila_futura &gt; -1 ) {
+                mui_list-&gt;setCurrentCell ( fila_futura, active_col ) ;
+                mui_list-&gt;scrollToItem ( mui_list-&gt;currentItem(), QAbstractItemView::PositionAtCenter ) ;
+-           } // end if
++          } // end if
+ 
+         } // end if
+         /// Fin de Restaurar la posición anterior a la carga si es posible
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007168.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007170.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7169">[ fecha ]</a>
+              <a href="thread.html#7169">[ hilo ]</a>
+              <a href="subject.html#7169">[ asunto ]</a>
+              <a href="author.html#7169">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

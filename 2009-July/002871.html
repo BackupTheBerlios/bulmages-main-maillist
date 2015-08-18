@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Campo BlSearchWidget que abre un listado en modo BL_SELECT_MODE de otro plugin
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3FCampo_BlSearchWidget_que_a%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fbre_un_listado_en_modo_BL%3D5FSELECT%3D5FMODE_de_otro_plugin%3F%3D&In-Reply-To=%3C200907301152.12075.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002870.html">
+   <LINK REL="Next"  HREF="002872.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Campo BlSearchWidget que abre un listado en modo BL_SELECT_MODE de otro plugin </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3FCampo_BlSearchWidget_que_a%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fbre_un_listado_en_modo_BL%3D5FSELECT%3D5FMODE_de_otro_plugin%3F%3D&In-Reply-To=%3C200907301152.12075.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]Campo BlSearchWidget que abre un listado en modo BL_SELECT_MODE de otro plugin">tborras en conetxia.com
+       </A><BR>
+    <I>Jue Jul 30 11:52:12 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002870.html">[BulmaGés] Campo BlSearchWidget que abre un	listado en modo BL_SELECT_MODE de otro plugin
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002872.html">[BulmaGés]Consulta RAE (gramatical | régimen |cobro)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2871">[ fecha ]</a>
+              <a href="thread.html#2871">[ hilo ]</a>
+              <a href="subject.html#2871">[ asunto ]</a>
+              <a href="author.html#2871">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Aron:
+
+Asi a bote pronto no lo he pillado muy bien pero segun he mirado de la clase 
+BlSearchWidget
+
+tienes la llamada a plugin 
+
+Busqueda_on_mui_buscar_released
+
+que puedes implementar en cualquier plugin y que &quot;normalmente&quot; mira cual es la 
+tabla con que esta configurado el campo y actua en consecuencia.
+Que yo sepa la limitación que menciones de estar dentro del propio plugin  no 
+existe.
+
+
+Si haces un rgrep de esta llamad por los plugins de bulmafact seguro que 
+encuentras algun ejemplo.
+
+Salut
+
+
+
+El Thursday 30 July 2009 11:20:16 Aron escribió:
+&gt;<i> Tengo un plugin que contiene un listado que se va a usar en otros plugins
+</I>&gt;<i> en sus campos BlSearchWidget.
+</I>&gt;<i>
+</I>&gt;<i> He establecido la dependencia entre ellos en los README.es.
+</I>&gt;<i>
+</I>&gt;<i> Por lo que he visto, los listados que abren los BlSearchWidget siempre
+</I>&gt;<i> están definidos dentro del mismo plugin.
+</I>&gt;<i>
+</I>&gt;<i> Para poder compartir un listado entre plugins, he tenido que hacer un
+</I>&gt;<i> enlace simbólico del .h y el .cpp del listado a usar del otro plugin.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Ejemplo:
+</I>&gt;<i>
+</I>&gt;<i> Plugin A: Listado y ficha de empresas
+</I>&gt;<i>
+</I>&gt;<i> Plugin B: Listado y ficha de contactos, enlace al listado de empresas del
+</I>&gt;<i> plugin A
+</I>&gt;<i>
+</I>&gt;<i> El contacto tiene un campo con la empresa a la que pertenece.
+</I>&gt;<i> Un BlSearchWidget permite abrir el listado de empresas del otro plugin en
+</I>&gt;<i> modo BL_SELECT_MODE.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ¿Estoy haciendo una burrada? ¿hay una forma mejor de compartir elementos
+</I>&gt;<i> entre plugins?
+</I>
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002870.html">[BulmaGés] Campo BlSearchWidget que abre un	listado en modo BL_SELECT_MODE de otro plugin
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002872.html">[BulmaGés]Consulta RAE (gramatical | régimen |cobro)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2871">[ fecha ]</a>
+              <a href="thread.html#2871">[ hilo ]</a>
+              <a href="subject.html#2871">[ asunto ]</a>
+              <a href="author.html#2871">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

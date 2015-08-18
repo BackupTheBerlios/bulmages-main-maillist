@@ -1,0 +1,329 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120525101317.25295756D4%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007277.html">
+   <LINK REL="Next"  HREF="007278.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120525101317.25295756D4%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Vie Mayo 25 12:13:16 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007277.html">[BulmaGés]¿Para que se usa el +set(QT_USE_QTNETWORK true) ?
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007278.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7275">[ fecha ]</a>
+              <a href="thread.html#7275">[ hilo ]</a>
+              <a href="subject.html#7275">[ asunto ]</a>
+              <a href="author.html#7275">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from e6b1bf9 to 9cac37a
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/e6b1bf9d8bfa3bf0f75532120d4dd849ba806c9e/diffs/9cac37a855c5e161151c96f853a66e74324cddb7">https://gitorious.org/bulmages/bulmages/commit/e6b1bf9d8bfa3bf0f75532120d4dd849ba806c9e/diffs/9cac37a855c5e161151c96f853a66e74324cddb7</A>
+
+Diff: 
+
+commit 9cac37a855c5e161151c96f853a66e74324cddb7
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri May 25 12:11:09 2012 +0200
+
+    Hago que la opcion contextual de editar articulo haga su trabajo en ventana emergente en lugar de
+    en el workplace (no asi el boton de editar).
+    Esto queda mas acorde con la accion nuevo articulo que tambien se hace emergente.
+    
+    Podriamos decir que boton derecho hace emergentes y la accion normal trabaja con el workplace.
+    
+    Salut
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_articulo/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_articulo/CMakeLists.txt
+index b625be4..4e67cbf 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_articulo/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_articulo/CMakeLists.txt
+@@ -103,6 +103,20 @@ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.fr DESTINATION share/bulmages/
+ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.en ${CMAKE_CURRENT_BINARY_DIR}/README.en @ONLY)
+ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.en DESTINATION share/bulmages/bulmafact-plugins/ RENAME README.en.${plugin})
+ 
++# Este plugin también se puede utilizar en BulmaTPV
++
++configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)
++install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/bulmatpv-plugins/ RENAME README.es.${plugin})
++
++configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.ca ${CMAKE_CURRENT_BINARY_DIR}/README.ca @ONLY)
++install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.ca DESTINATION share/bulmages/bulmatpv-plugins/ RENAME README.ca.${plugin})
++
++configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.fr ${CMAKE_CURRENT_BINARY_DIR}/README.fr @ONLY)
++install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.fr DESTINATION share/bulmages/bulmatpv-plugins/ RENAME README.fr.${plugin})
++
++configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.en ${CMAKE_CURRENT_BINARY_DIR}/README.en @ONLY)
++install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.en DESTINATION share/bulmages/bulmatpv-plugins/ RENAME README.en.${plugin})
++
+ 
+ add_dependencies(${plugin} bulmafact bulmalib)
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_articulo/articulolist.cpp b/bulmages/bulmafact/plugins/pluginbf_articulo/articulolist.cpp
+index 4c155b4..2406c60 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_articulo/articulolist.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_articulo/articulolist.cpp
+@@ -142,6 +142,7 @@ void ArticuloList::editar ( int row )
+ }
+ 
+ 
++
+ /// No requiere de ninguna accion adicional
+ /**
+ **/
+@@ -287,28 +288,6 @@ void ArticuloList::on_mui_importar_clicked()
+ }
+ 
+ 
+-/** \TODO: REVISAR ESTE METODO YA QUE NO PARECE SER EL ADECUADO
+-    EN LA LLAMADA DE SUBMENUS
+-*/
+-/**
+-\return
+-**/
+-void ArticuloList::submenu ( const QPoint &amp; )
+-{
+-    BL_FUNC_DEBUG
+-    int a = mui_list-&gt;currentRow();
+-    if ( a &lt; 0 )
+-        return;
+-    QMenu *popup = new QMenu ( this );
+-    QAction *edit = popup-&gt;addAction ( _ ( &quot;Editar articulo&quot; ) );
+-    QAction *del = popup-&gt;addAction ( _ ( &quot;Borrar articulo&quot; ) );
+-    QAction *opcion = popup-&gt;exec ( QCursor::pos() );
+-    if ( opcion == del )
+-        on_mui_borrar_clicked();
+-    if ( opcion == edit )
+-        on_mui_editar_clicked();
+-    delete popup;
+-}
+ 
+ 
+ ///
+diff --git a/bulmages/bulmafact/plugins/pluginbf_articulo/articulolist.h b/bulmages/bulmafact/plugins/pluginbf_articulo/articulolist.h
+index 59f1274..c3944d4 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_articulo/articulolist.h
++++ b/bulmages/bulmafact/plugins/pluginbf_articulo/articulolist.h
+@@ -73,7 +73,6 @@ public:
+     void imprimir();
+     void remove();
+     void crear();
+-    void submenu ( const QPoint &amp; );
+ 
+ public slots:
+     virtual void on_mui_importar_clicked();
+diff --git a/bulmages/bulmafact/plugins/pluginbf_articulo/pluginbf_articulo.cpp b/bulmages/bulmafact/plugins/pluginbf_articulo/pluginbf_articulo.cpp
+index e9727cd..2117ac1 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_articulo/pluginbf_articulo.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_articulo/pluginbf_articulo.cpp
+@@ -50,50 +50,52 @@ int entryPoint ( BfBulmaFact *bges )
+     /// Inicializa el sistema de traducciones 'gettext'.
+     setlocale ( LC_ALL, &quot;&quot; );
+     blBindTextDomain ( &quot;pluginbf_articulo&quot;, g_confpr-&gt;value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+-    g_pluginbf_articulo = bges;
+ 
+-    if ( bges-&gt;company()-&gt;hasTablePrivilege ( &quot;articulo&quot;, &quot;SELECT&quot; ) ) {
+-
+-        /// Miramos si existe un menu Articulos
+-        QMenu *pPluginMenu = bges-&gt;newMenu ( _(&quot;&amp;Articulos&quot;), &quot;menuArticulos&quot;, &quot;menuMaestro&quot; );
+-        pPluginMenu-&gt;addSeparator();
+-
+-        /// El men&uacute; de Articulos en la secci&oacute;n de art&iacute;culos.
+-        
+-
+-        BlAction *accionA = g_pbf_articulo_actionA = new BlAction ( _ ( &quot;&amp;Articulos&quot; ), 0 );
+-        accionA-&gt;setIcon ( QIcon ( QString::fromUtf8 ( &quot;:/Images/product-list.png&quot; ) ) );
+-        accionA-&gt;setStatusTip ( _ ( &quot;Articulos&quot; ) );
+-        accionA-&gt;setWhatsThis ( _ ( &quot;Articulos&quot; ) );
+-        accionA-&gt;setObjectName(&quot;mui_actionArticulos&quot;);
+-        pPluginMenu-&gt;addAction ( accionA );
+-        bges-&gt;Listados-&gt;addAction ( accionA );
+-
+-        BlAction *accionB = g_pbf_articulo_actionB = new BlAction ( _ ( &quot;&amp;Nuevo articulo&quot; ), 0 );
+-        accionB-&gt;setIcon ( QIcon ( QString::fromUtf8 ( &quot;:/Images/product.png&quot; ) ) );
+-        accionB-&gt;setStatusTip ( _ ( &quot;Nuevo articulo&quot; ) );
+-        accionB-&gt;setWhatsThis ( _ ( &quot;Nuevo articulo&quot; ) );
+-        accionB-&gt;setObjectName(&quot;mui_actionArticuloNuevo&quot;);
+-        pPluginMenu-&gt;addAction ( accionB );
+-        bges-&gt;Fichas-&gt;addAction ( accionB );
+-
+-        pPluginMenu-&gt;addSeparator();
+-        BlAction *accionC = g_pbf_articulo_actionC = new BlAction ( _ ( &quot;&amp;Tipos de articulo&quot; ), 0 );
+-        accionC-&gt;setIcon ( QIcon ( QString::fromUtf8 ( &quot;:/Images/product-type.png&quot; ) ) );
+-        accionC-&gt;setStatusTip ( _ ( &quot;Tipos de articulo&quot; ) );
+-        accionC-&gt;setWhatsThis ( _ ( &quot;Tipos de articulo&quot; ) );
+-        accionC-&gt;setObjectName(&quot;mui_actionArticulosTipo&quot;);
+-        pPluginMenu-&gt;addAction ( accionC );
+-        bges-&gt;Fichas-&gt;addAction ( accionC );
+-
+-        pPluginMenu-&gt;addSeparator();
+-        BlAction *accionD = g_pbf_articulo_actionD = new BlAction ( _ ( &quot;&amp;Familias&quot; ), 0 );
+-        accionD-&gt;setIcon ( QIcon ( QString::fromUtf8 ( &quot;:/Images/product-family.png&quot; ) ) );
+-        accionD-&gt;setStatusTip ( _ ( &quot;Familias&quot; ) );
+-        accionD-&gt;setWhatsThis ( _ ( &quot;Familias&quot; ) );
+-        accionD-&gt;setObjectName(&quot;mui_actionFamilias&quot;);
+-        pPluginMenu-&gt;addAction ( accionD );
+-        bges-&gt;Fichas-&gt;addAction ( accionD );
++    if (bges-&gt;objectName() != &quot;BtBulmaTPVBase&quot;) {
++	g_pluginbf_articulo = (BfBulmaFact * ) bges;
++	if ( bges-&gt;company()-&gt;hasTablePrivilege ( &quot;articulo&quot;, &quot;SELECT&quot; ) ) {
++
++	    /// Miramos si existe un menu Articulos
++	    QMenu *pPluginMenu = bges-&gt;newMenu ( _(&quot;&amp;Articulos&quot;), &quot;menuArticulos&quot;, &quot;menuMaestro&quot; );
++	    pPluginMenu-&gt;addSeparator();
++
++	    /// El men&uacute; de Articulos en la secci&oacute;n de art&iacute;culos.
++	    
++
++	    BlAction *accionA = g_pbf_articulo_actionA = new BlAction ( _ ( &quot;&amp;Articulos&quot; ), 0 );
++	    accionA-&gt;setIcon ( QIcon ( QString::fromUtf8 ( &quot;:/Images/product-list.png&quot; ) ) );
++	    accionA-&gt;setStatusTip ( _ ( &quot;Articulos&quot; ) );
++	    accionA-&gt;setWhatsThis ( _ ( &quot;Articulos&quot; ) );
++	    accionA-&gt;setObjectName(&quot;mui_actionArticulos&quot;);
++	    pPluginMenu-&gt;addAction ( accionA );
++	    bges-&gt;Listados-&gt;addAction ( accionA );
++
++	    BlAction *accionB = g_pbf_articulo_actionB = new BlAction ( _ ( &quot;&amp;Nuevo articulo&quot; ), 0 );
++	    accionB-&gt;setIcon ( QIcon ( QString::fromUtf8 ( &quot;:/Images/product.png&quot; ) ) );
++	    accionB-&gt;setStatusTip ( _ ( &quot;Nuevo articulo&quot; ) );
++	    accionB-&gt;setWhatsThis ( _ ( &quot;Nuevo articulo&quot; ) );
++	    accionB-&gt;setObjectName(&quot;mui_actionArticuloNuevo&quot;);
++	    pPluginMenu-&gt;addAction ( accionB );
++	    bges-&gt;Fichas-&gt;addAction ( accionB );
++
++	    pPluginMenu-&gt;addSeparator();
++	    BlAction *accionC = g_pbf_articulo_actionC = new BlAction ( _ ( &quot;&amp;Tipos de articulo&quot; ), 0 );
++	    accionC-&gt;setIcon ( QIcon ( QString::fromUtf8 ( &quot;:/Images/product-type.png&quot; ) ) );
++	    accionC-&gt;setStatusTip ( _ ( &quot;Tipos de articulo&quot; ) );
++	    accionC-&gt;setWhatsThis ( _ ( &quot;Tipos de articulo&quot; ) );
++	    accionC-&gt;setObjectName(&quot;mui_actionArticulosTipo&quot;);
++	    pPluginMenu-&gt;addAction ( accionC );
++	    bges-&gt;Fichas-&gt;addAction ( accionC );
++
++	    pPluginMenu-&gt;addSeparator();
++	    BlAction *accionD = g_pbf_articulo_actionD = new BlAction ( _ ( &quot;&amp;Familias&quot; ), 0 );
++	    accionD-&gt;setIcon ( QIcon ( QString::fromUtf8 ( &quot;:/Images/product-family.png&quot; ) ) );
++	    accionD-&gt;setStatusTip ( _ ( &quot;Familias&quot; ) );
++	    accionD-&gt;setWhatsThis ( _ ( &quot;Familias&quot; ) );
++	    accionD-&gt;setObjectName(&quot;mui_actionFamilias&quot;);
++	    pPluginMenu-&gt;addAction ( accionD );
++	    bges-&gt;Fichas-&gt;addAction ( accionD );
++	} // end if
+     } // end if
+ 
+     return 0;
+@@ -358,8 +360,9 @@ void SubForm_Articulo::s_trataMenu ( QAction *action )
+     BfSubForm *sub = ( BfSubForm * ) parent();
+     if ( action-&gt;text() == _ ( &quot;Editar articulo&quot; ) ) {
+         QString idarticulo = sub-&gt;dbValue ( &quot;idarticulo&quot; );
+-        if ( idarticulo != &quot;&quot; )
++        if ( idarticulo != &quot;&quot; ) {
+             editarArticulo ( idarticulo );
++	} // end if
+     } else if ( action-&gt;text() == _ ( &quot;Seleccionar articulo&quot; ) ) {
+         seleccionarArticulo ( sub );
+     } else if ( action-&gt;text() == _ ( &quot;Nuevo articulo&quot; )  ) {
+@@ -378,16 +381,21 @@ void SubForm_Articulo::editarArticulo ( QString idarticulo )
+     BL_FUNC_DEBUG
+     BlSubForm * subf = ( BlSubForm * ) parent();
+     ArticuloView * art = new ArticuloView ( ( BfCompany * ) subf-&gt;mainCompany(), 0 );
+-    subf-&gt;mainCompany() -&gt;m_pWorkspace-&gt;addSubWindow ( art );
++    /// Desabilitamos el borrado automatico de la clase y lo realizaremos manualmente para que no se llame al isHidden sobre un objeto eliminado.
++    art-&gt;setAttribute ( Qt::WA_DeleteOnClose, FALSE );
++
+     /// Si la carga no va bien entonces terminamos.
+     if ( art-&gt;load ( idarticulo ) ) {
+         delete art;
+-	
+         return;
+     } // end if
+-    art-&gt;hide();
++    /// Esto es convertir un QWidget en un sistema modal de dialogo.
++    subf-&gt;setEnabled ( false );
+     art-&gt;show();
+-    
++    while ( !art-&gt;isHidden() )
++        g_theApp-&gt;processEvents();
++    subf-&gt;setEnabled ( true );
++    delete art;
+ }
+ 
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cliente/pluginbf_cliente.cpp b/bulmages/bulmafact/plugins/pluginbf_cliente/pluginbf_cliente.cpp
+index 62d280b..9459d1e 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cliente/pluginbf_cliente.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_cliente/pluginbf_cliente.cpp
+@@ -45,16 +45,13 @@ int entryPoint ( BlMainWindow *bges )
+     blBindTextDomain ( &quot;pluginbf_cliente&quot;, g_confpr-&gt;value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+ 
+     if (bges-&gt;objectName() != &quot;BtBulmaTPVBase&quot;) {
+-    g_pluginbf_cliente = (BfBulmaFact * ) bges;
+-	
++	g_pluginbf_cliente = (BfBulmaFact * ) bges;
+ 	if ( g_pluginbf_cliente-&gt;company()-&gt;hasTablePrivilege ( &quot;cliente&quot;, &quot;SELECT&quot; ) ) {
+ 
+ 	    /// Miramos si existe un menu Ventas
+ 	    QMenu *pPluginMenu = g_pluginbf_cliente-&gt;newMenu ( _(&quot;&amp;Ventas&quot;), &quot;menuVentas&quot;, &quot;menuMaestro&quot; );
+ 	    pPluginMenu-&gt;addSeparator();
+ 
+-
+-	    
+ 	    BlAction *accionA = new BlAction ( _ ( &quot;&amp;Clientes&quot; ), 0 );
+ 	    accionA-&gt;setIcon ( QIcon ( QString::fromUtf8 ( &quot;:/Images/client-list.png&quot; ) ) );
+ 	    accionA-&gt;setStatusTip ( _ ( &quot;Clientes&quot; ) );
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007277.html">[BulmaGés]¿Para que se usa el +set(QT_USE_QTNETWORK true) ?
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007278.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7275">[ fecha ]</a>
+              <a href="thread.html#7275">[ hilo ]</a>
+              <a href="subject.html#7275">[ asunto ]</a>
+              <a href="author.html#7275">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

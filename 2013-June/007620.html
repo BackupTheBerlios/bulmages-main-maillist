@@ -1,0 +1,214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130607060123.B2856198%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007619.html">
+   <LINK REL="Next"  HREF="007621.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130607060123.B2856198%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Vie Jun  7 08:01:23 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007619.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007621.html">[BulmaGés] BulmaInCloud
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7620">[ fecha ]</a>
+              <a href="thread.html#7620">[ hilo ]</a>
+              <a href="subject.html#7620">[ asunto ]</a>
+              <a href="author.html#7620">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from 5e840fb to 838c745
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/5e840fb32b4cbcd364c6c4b3a4fff8bdabea866b/diffs/838c745358d7f721f76a7494fcbecae9b32c4d03">https://gitorious.org/bulmages/bulmages/commit/5e840fb32b4cbcd364c6c4b3a4fff8bdabea866b/diffs/838c745358d7f721f76a7494fcbecae9b32c4d03</A>
+
+Diff: 
+
+commit 838c745358d7f721f76a7494fcbecae9b32c4d03
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri Jun 7 08:01:09 2013 +0200
+
+    Arreglos para centros de coste y canales en subformularios
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/README.es b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/README.es
+index 132eef1..39cf1c0 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/README.es
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/README.es
+@@ -9,7 +9,7 @@ Nombre: Balance
+ Biblioteca: libpluginbf_canalyccoste.so
+ 
+ Descripción: &lt;H1&gt;Balance jerarquico&lt;/H1&gt;
+-&lt;P&gt;Permite hacer un canalyccoste jerárquico.&lt;/P&gt;
++&lt;P&gt;Permite la generación de canales y de centros de coste en la contabilidad.&lt;/P&gt;
+ &lt;HR&gt;
+ 
+ ParmBD: -
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/pluginbf_canalyccoste.cpp b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/pluginbf_canalyccoste.cpp
+index faeaeeb..1c0cc30 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/pluginbf_canalyccoste.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/pluginbf_canalyccoste.cpp
+@@ -157,4 +157,98 @@ int PgetSinCanal(bool &amp;text) {
+ }
+ 
+     
++    
++/// ==============================================================
++
++int BlSubFormDelegate_createEditor ( BlSubFormDelegate *bl )
++{
++    BL_FUNC_DEBUG
++    int ret = 0;
++    if ( g_fieldName == &quot;nomcanal&quot; ) {
++        BlComboBox * editor = new BlComboBox ( g_editor );
++        editor-&gt;setObjectName ( &quot;EditCanal&quot; );
++        editor-&gt;setMainCompany ( ( BfCompany * ) bl-&gt;m_subform-&gt;mainCompany() );
++        editor-&gt;setQuery ( &quot;SELECT * FROM canal ORDER BY nombre&quot; );
++	editor-&gt;m_valores[&quot;nombre&quot;] = &quot;&quot;;
++        editor-&gt;setTableName (&quot;canal&quot;);
++	editor-&gt;setFieldId(&quot;idcanal&quot;);
++	editor-&gt;setAllowNull (true);
++	editor-&gt;setId(&quot;&quot;);
++        g_plugParams =  editor;
++        ret = -1;
++    } // end if
++
++    if ( g_fieldName == &quot;nomc_coste&quot; ) {
++        BlComboBox * editor = new BlComboBox ( g_editor );
++        editor-&gt;setObjectName ( &quot;EditCCoste&quot; );
++        editor-&gt;setMainCompany ( ( BfCompany * ) bl-&gt;m_subform-&gt;mainCompany() );
++        editor-&gt;setQuery ( &quot;SELECT * FROM c_coste ORDER BY nombre&quot; );
++	editor-&gt;m_valores[&quot;nombre&quot;] = &quot;&quot;;
++        editor-&gt;setTableName (&quot;c_coste&quot;);
++	editor-&gt;setFieldId(&quot;idc_coste&quot;);
++	editor-&gt;setAllowNull (true);
++	editor-&gt;setId(&quot;&quot;);
++        g_plugParams =  editor;
++        ret = -1;
++    } // end if
++    
++
++    return ret;
++}
++
++
++
++/// Hay cosas que deberian estar en el plugin de alumno
++int BlSubFormDelegate_setModelData ( BlSubFormDelegate *bl )
++{
++    BL_FUNC_DEBUG
++    int ret = 0;
++    if ( g_editor-&gt;objectName() == &quot;EditCanal&quot;  || g_editor-&gt;objectName() ==&quot;EditCCoste&quot;) {
++        BlComboBox * comboBox = ( BlComboBox * ) g_editor;
++        QString value = comboBox-&gt;currentText();
++        g_model-&gt;setData ( g_index, value );
++        ret = -1;
++    } // end if
++    
++    return ret;
++}
++
++
++int BlSubFormDelegate_setEditorData ( BlSubFormDelegate *bl )
++{
++    BL_FUNC_DEBUG
++    int ret = 0;
++    if ( g_editor-&gt;objectName() == &quot;EditCanal&quot; || g_editor-&gt;objectName() == &quot;EditCCoste&quot; ) {
++        QString value = g_index.model() -&gt;data ( g_index, Qt::DisplayRole ).toString();
++        BlComboBox *comboBox = ( BlComboBox * ) g_editor ;
++        comboBox-&gt;setId ( value );
++        ret = -1;
++    } // end if
++    return ret;
++}
++
++int BlSubForm_editFinished ( BlSubForm *sub )
++{
++    BL_FUNC_DEBUG
++    if ( sub-&gt;m_campoactual-&gt;fieldName() == &quot;nomcanal&quot; ) {
++        QString params[1]= {  sub-&gt;m_campoactual-&gt;text() };
++	QString query = &quot;SELECT idcanal FROM canal WHERE nombre = $1&quot;;
++        BlDbRecordSet *cur = sub-&gt;mainCompany() -&gt; loadQuery( query, 1, params );
++        if ( !cur-&gt;eof() ) {
++            sub-&gt;m_registrolinea-&gt;setDbValue ( &quot;idcanal&quot;, cur-&gt;value( &quot;idcanal&quot; ) );
++        } // end if
++        delete cur;
++    } // end if
++    if ( sub-&gt;m_campoactual-&gt;fieldName() == &quot;nomc_coste&quot; ) {
++        QString params[1]= {  sub-&gt;m_campoactual-&gt;text() };
++	QString query = &quot;SELECT idc_coste FROM c_coste WHERE nombre = $1&quot;;
++        BlDbRecordSet *cur = sub-&gt;mainCompany() -&gt; loadQuery( query, 1, params );
++        if ( !cur-&gt;eof() ) {
++            sub-&gt;m_registrolinea-&gt;setDbValue ( &quot;idc_coste&quot;, cur-&gt;value( &quot;idc_coste&quot; ) );
++        } // end if
++        delete cur;
++    } // end if
++    
++    return 0;
++}
+     
+\ No newline at end of file
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/pluginbf_canalyccoste.h b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/pluginbf_canalyccoste.h
+index 1fc85cf..375a3ee 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/pluginbf_canalyccoste.h
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/pluginbf_canalyccoste.h
+@@ -33,5 +33,8 @@ extern &quot;C&quot; PLUGINBC_CANALYCCOSTE_EXPORT int BlAction_actionTriggered(BlAction *)
+ extern &quot;C&quot; PLUGINBC_CANALYCCOSTE_EXPORT int PgetSelCostes(QString &amp;);
+ extern &quot;C&quot; PLUGINBC_CANALYCCOSTE_EXPORT int PgetSelCanales(QString &amp;);
+ extern &quot;C&quot; PLUGINBC_CANALYCCOSTE_EXPORT int PgetSinCanal(bool &amp;);
++extern &quot;C&quot; PLUGINBC_CANALYCCOSTE_EXPORT int BlSubFormDelegate_createEditor(BlSubFormDelegate *);
++extern &quot;C&quot; PLUGINBC_CANALYCCOSTE_EXPORT int BlSubFormDelegate_setModelData(BlSubFormDelegate *);
++extern &quot;C&quot; PLUGINBC_CANALYCCOSTE_EXPORT int BlSubFormDelegate_setEditorData(BlSubFormDelegate *);
+ #endif
+ 
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007619.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007621.html">[BulmaGés] BulmaInCloud
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7620">[ fecha ]</a>
+              <a href="thread.html#7620">[ hilo ]</a>
+              <a href="subject.html#7620">[ asunto ]</a>
+              <a href="author.html#7620">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

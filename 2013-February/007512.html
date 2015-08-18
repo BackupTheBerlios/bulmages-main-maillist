@@ -1,0 +1,1530 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: mtelleria pushed	6 commits to maste...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20mtelleria%20pushed%0A%096%20commits%20to%20maste...&In-Reply-To=%3C20130206104602.0467FFAE%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007511.html">
+   <LINK REL="Next"  HREF="007513.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: mtelleria pushed	6 commits to maste... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20mtelleria%20pushed%0A%096%20commits%20to%20maste...&In-Reply-To=%3C20130206104602.0467FFAE%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: mtelleria pushed	6 commits to maste...">no-reply en gitorious.org
+       </A><BR>
+    <I>Mie Feb  6 11:46:01 CET 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007511.html">[BulmaGés] [Gitorious] Activity: mtelleria created	branch gbp-debian...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007513.html">[BulmaGés] [Gitorious] Activity: mtelleria pushed	7 commits to relea...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7512">[ fecha ]</a>
+              <a href="thread.html#7512">[ hilo ]</a>
+              <a href="subject.html#7512">[ asunto ]</a>
+              <a href="author.html#7512">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+mtelleria pushed 6 commits to master
+master changed from 9527933 to ef7f8f7
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/9527933a8fdb6a7bdbad4e857ee24cc437f88b4a/diffs/ef7f8f75231b4896ca608160b33ee5d4fc0f20a4">https://gitorious.org/bulmages/bulmages/commit/9527933a8fdb6a7bdbad4e857ee24cc437f88b4a/diffs/ef7f8f75231b4896ca608160b33ee5d4fc0f20a4</A>
+
+Diff: 
+
+commit ef7f8f75231b4896ca608160b33ee5d4fc0f20a4
+Author: Miguel Telleria de Esteban &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">miguel en mtelleria.com</A>&gt;
+Date:   Fri Jan 11 13:34:46 2013 +0100
+
+    changing commit_date to authored_date when returning the commit
+    timestamp
+
+diff --git a/tools/bgversion.py b/tools/bgversion.py
+index fbe0dda..90bb5c0 100644
+--- a/tools/bgversion.py
++++ b/tools/bgversion.py
+@@ -115,7 +115,7 @@ class BgVersion:
+             return (&quot;&quot;, &quot;&quot;, &quot;&quot;)
+ 
+         commit = self.repo.commit(target_commit)
+-        timestamp_gmt = time.gmtime(commit.committed_date)
++        timestamp_gmt = time.gmtime(commit.authored_date)
+         ts_date = time.strftime(&quot;%Y%m%d&quot;, timestamp_gmt)
+         ts_time = time.strftime(&quot;%H%M&quot;, timestamp_gmt)
+         short_hash = commit.hexsha[:8]
+
+commit 3472349196e990d65f3b19673fe75397abd8cc91
+Author: Miguel Telleria de Esteban &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">miguel en mtelleria.com</A>&gt;
+Date:   Wed Jan 9 20:19:51 2013 +0100
+
+    tools:  no longer required to be on git (use --force-version then)
+    
+    Besides the debian dir is also excluded from generate_orig_tar
+
+diff --git a/tools/bgversion.py b/tools/bgversion.py
+index f6b9193..fbe0dda 100644
+--- a/tools/bgversion.py
++++ b/tools/bgversion.py
+@@ -32,13 +32,18 @@ class BgVersion:
+         # We see current git parameters
+ 
+         # See <A HREF="http://packages.python.org/GitPython/0.3.1/tutorial.html">http://packages.python.org/GitPython/0.3.1/tutorial.html</A>
+-        self.repo = git.Repo(git_dir)
+-        self.active_commit = self.repo.commit().hexsha
++        try:
++            self.repo = git.Repo(git_dir)
++            self.active_commit = self.repo.commit().hexsha
+ 
+-        if self.repo.head.is_detached:
+-            self.active_branch = None
+-        else:
+-            self.active_branch = self.repo.active_branch.name
++            if self.repo.head.is_detached:
++                self.active_branch = None
++            else:
++                self.active_branch = self.repo.active_branch.name
++        except git.InvalidRepositoryError:
++            self.repo = None
++            self.active_commit = &quot;&quot;
++            self.active_branch = &quot;&quot;
+ 
+     def get_git_info(self):
+         return (self.active_branch, self.active_commit)
+@@ -106,6 +111,9 @@ class BgVersion:
+         if not target_commit:
+             target_commit = self.active_commit
+ 
++        if not self.repo :
++            return (&quot;&quot;, &quot;&quot;, &quot;&quot;)
++
+         commit = self.repo.commit(target_commit)
+         timestamp_gmt = time.gmtime(commit.committed_date)
+         ts_date = time.strftime(&quot;%Y%m%d&quot;, timestamp_gmt)
+diff --git a/tools/compute_and_set_version.py b/tools/compute_and_set_version.py
+index 3f85c5c..ef3e923 100755
+--- a/tools/compute_and_set_version.py
++++ b/tools/compute_and_set_version.py
+@@ -6,9 +6,6 @@ sys.dont_write_bytecode = True
+ import argparse
+ import bgversion
+ 
+-# From python-git package
+-import git
+-
+ class opt:
+     commit = &quot;&quot;
+     force_version = &quot;&quot;
+diff --git a/tools/generate_orig_tar_gz.py b/tools/generate_orig_tar_gz.py
+index cbd726b..904e95a 100755
+--- a/tools/generate_orig_tar_gz.py
++++ b/tools/generate_orig_tar_gz.py
+@@ -37,8 +37,13 @@ def main():
+     # tar --exclude=.git -z -c -v -f ../bulmages_0.14.0.20121128.1132-f070fef1.orig.tar.gz \
+     # ../mtelleria-bulmages
+ 
++
+     cur_basedir = os.path.basename(os.getcwd())
+-    cmdline = &quot;tar --exclude=.git -z -c -v -f ../bulmages_%s.orig.tar.gz ../%s&quot; % (full_version, cur_basedir)
++    cmdline = &quot;tar --exclude=.git --exclude=debian -z -c -v -f ../bulmages_%s.orig.tar.gz ../%s&quot; % (full_version, cur_basedir)
++
++    if opt.print_only :
++        print cmdline
++        sys.exit(0)
+ 
+     print &quot;Cmdline: %s&quot; % cmdline
+     try:
+
+commit b30bd5bfbd4881167f67d6b216686ab572c7f1f2
+Author: Miguel Telleria de Esteban &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">miguel en mtelleria.com</A>&gt;
+Date:   Fri Dec 21 13:09:07 2012 +0100
+
+    renaming version variables
+
+diff --git a/tools/bgversion.py b/tools/bgversion.py
+index e8aaa0b..f6b9193 100644
+--- a/tools/bgversion.py
++++ b/tools/bgversion.py
+@@ -43,8 +43,8 @@ class BgVersion:
+     def get_git_info(self):
+         return (self.active_branch, self.active_commit)
+ 
+-    def obtain_code_version(self, filename, target_commit = None):
+-        &quot;&quot;&quot;Get version from CMakeLists.txt in this commit or another&quot;&quot;&quot;
++    def obtain_cmakelists_version(self, filename, target_commit = None):
++        &quot;&quot;&quot;Get cmakelists_version from CMakeLists.txt in this commit or another&quot;&quot;&quot;
+ 
+         # By default we use the active_commit
+         if not target_commit:
+@@ -72,7 +72,7 @@ class BgVersion:
+             checkout_cmd = &quot;git checkout %s -- %s&quot; % (target_commit, filename)
+             _do_command_or_exit(checkout_cmd)
+ 
+-        version = &quot;&quot;
++        cmakelists_version = &quot;&quot;
+ 
+         with open(filename, 'r') as file:
+             for line in file:
+@@ -82,11 +82,11 @@ class BgVersion:
+                 match = BgVersion.regexp_ver.search(line) # search instead of match because it is not 
+                                                     # anchored at the beginning of the line
+                 if match :
+-                    version = match.groups()[0]
++                    cmakelists_version = match.groups()[0]
+                     break
+             file.close()
+ 
+-        # We backtrack the commit and restore a possibly changed work version
++        # We backtrack the commit and restore a possibly changed work cmakelists_version
+         if tempdir:
+             checkout_cmd = &quot;git checkout %s -- %s&quot; % (self.active_commit, filename)
+             _do_command_or_exit(checkout_cmd)
+@@ -96,11 +96,11 @@ class BgVersion:
+ 
+             shutil.rmtree(tempdir)
+ 
+-        if not version:
+-            print(&quot;version no encontrada en %s&quot; % filename)
++        if not cmakelists_version:
++            print(&quot;CMakeLists cmakelists_version no encontrada en %s&quot; % filename)
+             sys.exit(-1)
+ 
+-        return version
++        return cmakelists_version
+ 
+     def obtain_git_version_info(self, target_commit = None):
+         if not target_commit:
+@@ -114,9 +114,16 @@ class BgVersion:
+ 
+         return (ts_date, ts_time, short_hash)
+     
+-    def set_code_version(self, filename, version, create_debian_patch = False):
++    def set_cmakelists_version(self, filename, version, create_debian_patch = False):
+ 
+         if create_debian_patch :
++            auto_patch_name = &quot;bgversion_auto_codeversion_upgrade.patch&quot;
++            
++            # If the patch exists we remove it
++            if os.path.isfile(&quot;debian/patches/&quot;+auto_patch_name):
++                # The -r removes the patch file as well (otherwise only the series file would be changed)
++                cmdline = &quot;QUILT_PATCHES=debian/patches quilt delete -r %s&quot; % auto_patch_name
++                _do_command_or_exit(cmdline)
+             
+             # First we do quilt push -a if we have a patch
+             cmdline = &quot;QUILT_PATCHES=debian/patches quilt series&quot;
+@@ -126,7 +133,7 @@ class BgVersion:
+                 _do_command_or_exit(cmdline)
+ 
+             # Now we start a new patch and mark CMakeLists.txt to be modified
+-            cmdline = &quot;QUILT_PATCHES=debian/patches quilt new bgversion_auto_codeversion_upgrade.patch&quot;
++            cmdline = &quot;QUILT_PATCHES=debian/patches quilt new %s&quot; % auto_patch_name
+             _do_command_or_exit(cmdline)
+             
+             cmdline = &quot;QUILT_PATCHES=debian/patches quilt add %s&quot; % filename
+@@ -163,7 +170,7 @@ class BgVersion:
+             cmdline = &quot;QUILT_PATCHES=debian/patches quilt pop -a&quot;
+             _do_command_or_exit(cmdline)
+ 
+-    def reset_code_version(self, filename):
++    def reset_cmakelists_version(self, filename):
+         if not filename:
+             print &quot;Filename CMakeLists.txt not specified&quot;
+             sys.exit(-1)
+@@ -183,21 +190,18 @@ class BgVersion:
+ # ADAPT THIS TO COMPUTE THE VERSION
+ # This is a library function not belonging to bg_version class
+ 
+-def assemble_version_and_revision(code_version, ts_date, ts_time, commit_short_hexsha, mode):
+-    version = &quot;&quot;
++def assemble_code_and_full_versions(cmakelists_version, ts_date, ts_time, commit_short_hexsha, mode):
+     if mode == 'master':
+-        version = &quot;%s.%s.%s&quot; % (code_version, ts_date, ts_time)
+-        revision = commit_short_hexsha
++        code_version = &quot;%s.%s.%s&quot; % (cmakelists_version, ts_date, ts_time)
++        full_version = &quot;%s-%s&quot; % (code_version, commit_short_hexsha)
+     elif mode == &quot;release&quot;:
+-        version = code_version
+-        revision = commit_short_hexsha
++        code_version = cmakelists_version
++        full_version = &quot;%s-%s&quot; % (code_version, commit_short_hexsha)
+     else:
+         print &quot;mode master/release not specified&quot;
+         sys.exit(-1)
+ 
+-    full_version = &quot;%s-%s&quot; % (version, revision)
+-
+-    return (version, full_version)
++    return (code_version, full_version)
+ # -------------------------------------------------------------------------------------------
+ 
+ def _do_command_or_exit(cmdline, verbose=False):
+diff --git a/tools/compute_and_set_version.py b/tools/compute_and_set_version.py
+index ce34f0e..3f85c5c 100755
+--- a/tools/compute_and_set_version.py
++++ b/tools/compute_and_set_version.py
+@@ -19,7 +19,7 @@ class opt:
+ 
+ class glb:
+     commit = &quot;&quot;
+-    version = &quot;&quot;
++    code_version = &quot;&quot;
+     mode = &quot;&quot;
+     filename = &quot;&quot;
+     bg_version = None
+@@ -34,25 +34,27 @@ def main():
+     
+     if opt.reset :
+         # We reset the value to git's content
+-        glb.bg_version.reset_code_version(glb.filename)
++        glb.bg_version.reset_cmakelists_version(glb.filename)
+         sys.exit(0)
+ 
+-    if glb.version :
+-        full_version = glb.version
++    if glb.code_version :
++        full_version = glb.code_version
+     else:
+         # We look at the version in bulmages/CMakeLists.txt
+         # (temporary checkout included)
+-        code_version = glb.bg_version.obtain_code_version(glb.filename, glb.commit)
++        cmakelists_version = glb.bg_version.obtain_cmakelists_version(glb.filename, glb.commit)
+         (ts_date, ts_time, short_hash) = glb.bg_version.obtain_git_version_info(glb.commit)
+ 
+-        glb.version, full_version = bgversion.assemble_version_and_revision(code_version, ts_date, ts_time, short_hash, glb.mode)
++        glb.code_version, full_version = bgversion.assemble_code_and_full_versions(cmakelists_version, 
++                                                                                   ts_date, ts_time, short_hash, glb.mode)
+ 
+     if opt.print_only:
+-        print glb.version
++        print glb.code_version
+         print full_version
+         sys.exit(0)
+ 
+-    glb.bg_version.set_code_version(glb.filename, glb.version)
++    if glb.code_version != cmakelists_version:
++        glb.bg_version.set_cmakelists_version(glb.filename, glb.code_version)
+ 
+ 
+ def consolidate_glb():
+@@ -60,7 +62,7 @@ def consolidate_glb():
+         glb.commit = opt.commit
+ 
+     if opt.force_version:
+-        glb.version = opt.force_version
++        glb.code_version = opt.force_version
+ 
+     if opt.mode:
+         glb.mode = opt.mode
+@@ -85,7 +87,7 @@ def consolidate_glb():
+     if not glb.commit:
+         glb.commit = active_commit
+ 
+-    # NOTE 1: glb.version is left intentionally unchanged either defined or not
++    # NOTE 1: glb.code_version is left intentionally unchanged either defined or not
+         
+ # ----------------------------------------------------------------------
+ 
+@@ -94,7 +96,7 @@ def consolidate_glb():
+ # Missing point: nargs='?' for optional position arguments
+ def parse_argv():
+ 
+-    parser = argparse.ArgumentParser(description='Computes the version and revision and updates CMakeLists.txt.')
++    parser = argparse.ArgumentParser(description='Computes the code and full versions and updates CMakeLists.txt.')
+ 
+     parser.add_argument(&quot;commit&quot;, 
+                         help = &quot;commit reference used in the computation, defaults to the current checked out work-copy&quot;,
+@@ -115,7 +117,7 @@ def parse_argv():
+ 
+     parser.add_argument('--print-only',
+                         action = 'store_true',
+-                        help = 'Compute the version and revision and print to stdout')
++                        help = 'Compute the code and full versions print to stdout')
+ 
+     args = parser.parse_args()
+ 
+diff --git a/tools/generate_orig_tar_gz.py b/tools/generate_orig_tar_gz.py
+index e7c5cba..cbd726b 100755
+--- a/tools/generate_orig_tar_gz.py
++++ b/tools/generate_orig_tar_gz.py
+@@ -14,7 +14,7 @@ class opt:
+     print_only = &quot;&quot;
+ 
+ class glb:
+-    version = &quot;&quot;
++    code_version = &quot;&quot;
+     mode = &quot;&quot;
+     filename = &quot;&quot;
+     bg_version = None
+@@ -25,12 +25,13 @@ def main():
+     parsea_argv()
+     consolidate_glb()
+ 
+-    if glb.version:
+-        full_version = glb.version
++    if glb.code_version:
++        full_version = glb.code_version
+     else:
+-        code_version = glb.bg_version.obtain_code_version(glb.filename)
++        cmakelists_version = glb.bg_version.obtain_cmakelists_version(glb.filename)
+         (ts_date, ts_time, short_hash) = glb.bg_version.obtain_git_version_info()
+-        glb.version, full_version = bgversion.assemble_version_and_revision(code_version, ts_date, ts_time, short_hash, glb.mode)
++        glb.code_version, full_version = bgversion.assemble_code_and_full_versions(cmakelists_version, 
++                                                                                   ts_date, ts_time, short_hash, glb.mode)
+ 
+     # Now we create the .orig.tar.gz
+     # tar --exclude=.git -z -c -v -f ../bulmages_0.14.0.20121128.1132-f070fef1.orig.tar.gz \
+@@ -50,7 +51,7 @@ def main():
+ 
+ def consolidate_glb() :
+     if opt.force_version:
+-        glb.version = opt.force_version
++        glb.code_version = opt.force_version
+ 
+     if opt.mode:
+         glb.mode = opt.mode
+@@ -81,7 +82,7 @@ def parsea_argv() :
+                         help = 'print only version number and do not launch tar')
+ 
+     parser.add_argument(&quot;--force-version&quot;, 
+-                        help = &quot;force this version to be used in CMakesList&quot;)
++                        help = &quot;force this version to be used as full version in the orig.tar.gz file&quot;)
+ 
+     parser.add_argument(&quot;--mode&quot;, choices = [&quot;master&quot;, &quot;release&quot;],
+                         help = &quot;master or release mode (default: search in active branch or master if not found)&quot;)
+
+commit c4d8b3dabf162a00367ab56a4e871493d0dec338
+Author: Miguel Telleria de Esteban &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">miguel en mtelleria.com</A>&gt;
+Date:   Tue Dec 18 10:15:11 2012 +0100
+
+    Adding bgversion.py as a common library for version tools
+    
+    Used by compute_and_set_version.py, generate_orig_tar_gz.py y
+    version_and_tag_upstream.py (this one in gbp-debian branches)
+
+diff --git a/tools/bgversion.py b/tools/bgversion.py
+new file mode 100644
+index 0000000..e8aaa0b
+--- /dev/null
++++ b/tools/bgversion.py
+@@ -0,0 +1,230 @@
++# Module bulmages_version.py
++import re
++import sys
++import os
++import time
++import shutil
++import tempfile
++import fileinput
++import subprocess
++
++import git
++
++class BgVersion:
++    # You can test the regexp with
++    # /usr/share/doc/python2.7/examples/Tools/scripts/redemo.py
++    # example_str:  &quot;SET( BULMAGES_VERSION 0.14.0 )&quot;
++    regexp_ver_str = r&quot;BULMAGES_VERSION ([^\s]+)&quot;
++    regexp_ver = re.compile(regexp_ver_str)
++    regexp_ver_repl = &quot;BULMAGES_VERSION %s&quot; # To be % with version value
++
++    # Just to detect comments
++    regexp_comm_str = r'^\s*#'
++    regexp_comm = re.compile(regexp_comm_str)
++
++    # Git Data
++    repo = None
++    active_commit = &quot;&quot;
++    active_branch = &quot;&quot;
++
++
++    def __init__(self, git_dir = '.'):
++        # We see current git parameters
++
++        # See <A HREF="http://packages.python.org/GitPython/0.3.1/tutorial.html">http://packages.python.org/GitPython/0.3.1/tutorial.html</A>
++        self.repo = git.Repo(git_dir)
++        self.active_commit = self.repo.commit().hexsha
++
++        if self.repo.head.is_detached:
++            self.active_branch = None
++        else:
++            self.active_branch = self.repo.active_branch.name
++
++    def get_git_info(self):
++        return (self.active_branch, self.active_commit)
++
++    def obtain_code_version(self, filename, target_commit = None):
++        &quot;&quot;&quot;Get version from CMakeLists.txt in this commit or another&quot;&quot;&quot;
++
++        # By default we use the active_commit
++        if not target_commit:
++            target_commit = self.active_commit
++
++        tempdir = &quot;&quot;
++        if self.active_commit != target_commit :
++            # We do a temporary checkout of bulmages/CMakeLists.txt
++            #
++            # There is no way to checkout the file in a external dir
++            # without modifying the local copy.  Attemps tried:
++            #
++            # -  --work-tree=tempdir
++            # -  cd tempdir &amp;&amp; --git-dir=&lt;curdir/.git&gt; --work-tree=tempdir
++            # -  cd tempdir &amp;&amp;  (as above) with --bare
++            #
++            # So what we do is temporary copy CMakeLists to the external
++            # dir, re-checkout and then copying it again
++            tempdir = tempfile.mkdtemp()
++            shutil.copy2(filename, tempdir)
++
++            # python-git does not support this yet
++            # Cmd:
++            # git checkout 7f7787fc9bc4a3f01bb89e9ebf3d0ea0921b157c -- bulmages/CMakeLists.txt
++            checkout_cmd = &quot;git checkout %s -- %s&quot; % (target_commit, filename)
++            _do_command_or_exit(checkout_cmd)
++
++        version = &quot;&quot;
++
++        with open(filename, 'r') as file:
++            for line in file:
++                if BgVersion.regexp_comm.match(line):
++                    # Comment line
++                    continue
++                match = BgVersion.regexp_ver.search(line) # search instead of match because it is not 
++                                                    # anchored at the beginning of the line
++                if match :
++                    version = match.groups()[0]
++                    break
++            file.close()
++
++        # We backtrack the commit and restore a possibly changed work version
++        if tempdir:
++            checkout_cmd = &quot;git checkout %s -- %s&quot; % (self.active_commit, filename)
++            _do_command_or_exit(checkout_cmd)
++
++            temp_filename = os.path.join(tempdir, os.path.basename(filename) )
++            shutil.copy2(temp_filename, filename)
++
++            shutil.rmtree(tempdir)
++
++        if not version:
++            print(&quot;version no encontrada en %s&quot; % filename)
++            sys.exit(-1)
++
++        return version
++
++    def obtain_git_version_info(self, target_commit = None):
++        if not target_commit:
++            target_commit = self.active_commit
++
++        commit = self.repo.commit(target_commit)
++        timestamp_gmt = time.gmtime(commit.committed_date)
++        ts_date = time.strftime(&quot;%Y%m%d&quot;, timestamp_gmt)
++        ts_time = time.strftime(&quot;%H%M&quot;, timestamp_gmt)
++        short_hash = commit.hexsha[:8]
++
++        return (ts_date, ts_time, short_hash)
++    
++    def set_code_version(self, filename, version, create_debian_patch = False):
++
++        if create_debian_patch :
++            
++            # First we do quilt push -a if we have a patch
++            cmdline = &quot;QUILT_PATCHES=debian/patches quilt series&quot;
++            patch_list = _run_command_capture_stdout(cmdline, shell=True)
++            if patch_list:
++                cmdline = &quot;QUILT_PATCHES=debian/patches quilt push -a&quot;
++                _do_command_or_exit(cmdline)
++
++            # Now we start a new patch and mark CMakeLists.txt to be modified
++            cmdline = &quot;QUILT_PATCHES=debian/patches quilt new bgversion_auto_codeversion_upgrade.patch&quot;
++            _do_command_or_exit(cmdline)
++            
++            cmdline = &quot;QUILT_PATCHES=debian/patches quilt add %s&quot; % filename
++            _do_command_or_exit(cmdline)
++
++        else:
++            # We do it interactively
++            print &quot;About to modify file %s to set the version as %s&quot; % (filename, version)
++            try:
++                raw_input(&quot;Press ENTER to proceed or Ctrl^C to cancel\n&quot;)
++            except KeyboardInterrupt:
++                print &quot;Aborted!&quot;
++                sys.exit(0)
++
++        # Second answer in
++        # <A HREF="http://stackoverflow.com/questions/39086/search-and-replace-a-line-in-a-file-in-python">http://stackoverflow.com/questions/39086/search-and-replace-a-line-in-a-file-in-python</A>
++        for line in fileinput.FileInput(filename, inplace = 1):
++            if BgVersion.regexp_comm.match(line):
++                # Comment line
++                new_line = line
++            elif BgVersion.regexp_ver.search(line) : # search instead of match because it is not 
++                                             # anchored at the beginning of the line
++                # example_str:  &quot;SET( BULMAGES_VERSION 0.14.0 )&quot;
++                # regexp_ver_str = r&quot;BULMAGES_VERSION ([^\s]+)&quot;
++                new_line = BgVersion.regexp_ver.sub( BgVersion.regexp_ver_repl % version, line)
++            else:
++                new_line = line
++            print new_line,
++
++        if create_debian_patch:
++            cmdline = &quot;QUILT_PATCHES=debian/patches quilt refresh&quot;
++            _do_command_or_exit(cmdline)
++
++            cmdline = &quot;QUILT_PATCHES=debian/patches quilt pop -a&quot;
++            _do_command_or_exit(cmdline)
++
++    def reset_code_version(self, filename):
++        if not filename:
++            print &quot;Filename CMakeLists.txt not specified&quot;
++            sys.exit(-1)
++
++        print &quot;About to RESET file %s to git contents&quot; % filename
++        try:
++            raw_input(&quot;Press ENTER to proceed or Ctrl^C to cancel\n&quot;)
++        except KeyboardInterrupt:
++            print &quot;Aborted!&quot;
++            sys.exit(0)
++
++        checkout_cmd = &quot;git checkout %s -- %s&quot; % (self.active_commit, filename)
++        _do_command_or_exit(checkout_cmd)
++
++
++# ------------------------------------------------------------------------------------------
++# ADAPT THIS TO COMPUTE THE VERSION
++# This is a library function not belonging to bg_version class
++
++def assemble_version_and_revision(code_version, ts_date, ts_time, commit_short_hexsha, mode):
++    version = &quot;&quot;
++    if mode == 'master':
++        version = &quot;%s.%s.%s&quot; % (code_version, ts_date, ts_time)
++        revision = commit_short_hexsha
++    elif mode == &quot;release&quot;:
++        version = code_version
++        revision = commit_short_hexsha
++    else:
++        print &quot;mode master/release not specified&quot;
++        sys.exit(-1)
++
++    full_version = &quot;%s-%s&quot; % (version, revision)
++
++    return (version, full_version)
++# -------------------------------------------------------------------------------------------
++
++def _do_command_or_exit(cmdline, verbose=False):
++    if verbose:
++        print(&quot;About to execute: %s&quot; % cmdline)
++
++    status = os.system(cmdline)
++    if status != 0 :
++        print(&quot;Error executing cmdline: %s &quot; % cmdline)
++        sys.exit(-1)
++
++# A simple thing that ehemmm PERL has out of the box with the ``
++# strings but that python needs to do more carefully
++#
++# Taken from
++# <A HREF="http://stackoverflow.com/questions/4760215/running-shell-command-from-python-and-capturing-the-output">http://stackoverflow.com/questions/4760215/running-shell-command-from-python-and-capturing-the-output</A>
++def _run_command_capture_stdout(cmdline, shell=False):
++    
++    if not shell:
++        prog = cmdline.split()
++    else:
++        prog = cmdline
++
++    p = subprocess.Popen(prog, stdout=subprocess.PIPE,
++                         stderr=subprocess.PIPE, shell=shell)
++
++    out, err = p.communicate()
++
++    return out
++    
+diff --git a/tools/compute_and_set_version.py b/tools/compute_and_set_version.py
+index 16cbbd1..ce34f0e 100755
+--- a/tools/compute_and_set_version.py
++++ b/tools/compute_and_set_version.py
+@@ -1,191 +1,61 @@
+ #!/usr/bin/env python
+ 
+-import re
+ import sys
+-import time
+-import os
++# Prevent cluttering with bgversion.pyc &amp; co
++sys.dont_write_bytecode = True
+ import argparse
+-import tempfile
+-import fileinput
+-import shutil
+-
++import bgversion
+ 
+ # From python-git package
+ import git
+ 
+-# From python standard lib, but only for python2
+-# python3 has the same name in lowercase letters
+-import ConfigParser
+-
+ class opt:
+     commit = &quot;&quot;
+     force_version = &quot;&quot;
+     mode = &quot;&quot;
+     print_only = &quot;&quot;
++    reset = &quot;&quot;
+ 
+ 
+ class glb:
+     commit = &quot;&quot;
+-    active_commit = &quot;&quot;
+     version = &quot;&quot;
+     mode = &quot;&quot;
+-    repo = None
+-    active_branch = &quot;&quot;
+     filename = &quot;&quot;
+-
+-    # You can test the regexp with
+-    # /usr/share/doc/python2.7/examples/Tools/scripts/redemo.py
+-    # example_str:  &quot;SET( BULMAGES_VERSION 0.14.0 )&quot;
+-    regexp_ver_str = r&quot;BULMAGES_VERSION ([^\s]+)&quot;
+-    regexp_ver = re.compile(regexp_ver_str)
+-
+-    # Just to detect comments
+-    regexp_comm_str = r'^\s*#'
+-    regexp_comm = re.compile(regexp_comm_str)
+-
+-
++    bg_version = None
+ 
+ def main():
+ 
++    glb.bg_version = bgversion.BgVersion()
++
+     parse_argv()
+ 
+-    # Get the date and hash of the latest commit
+-    # ------------------------------------------
+-    # See <A HREF="http://packages.python.org/GitPython/0.3.1/tutorial.html">http://packages.python.org/GitPython/0.3.1/tutorial.html</A>
+-    glb.repo = git.Repo('.')
+     consolidate_glb()
+     
+-    if glb.version :
+-        revision = &quot;&quot;
++    if opt.reset :
++        # We reset the value to git's content
++        glb.bg_version.reset_code_version(glb.filename)
++        sys.exit(0)
+ 
+-    if not glb.version:
++    if glb.version :
++        full_version = glb.version
++    else:
+         # We look at the version in bulmages/CMakeLists.txt
+         # (temporary checkout included)
+-        code_version = obtain_code_version(glb.filename)
+-
+-        commit = glb.repo.commit(glb.commit)
+-        timestamp = time.strftime(&quot;%Y%m%d.%H%M&quot;, time.gmtime(commit.committed_date))
+-        short_hash = commit.hexsha[:8]
++        code_version = glb.bg_version.obtain_code_version(glb.filename, glb.commit)
++        (ts_date, ts_time, short_hash) = glb.bg_version.obtain_git_version_info(glb.commit)
+ 
+-        glb.version, revision = assemble_version_and_revision(code_version, timestamp, short_hash, glb.mode)
++        glb.version, full_version = bgversion.assemble_version_and_revision(code_version, ts_date, ts_time, short_hash, glb.mode)
+ 
+     if opt.print_only:
+         print glb.version
+-        if revision:
+-            print &quot;%s-%s&quot; % (glb.version, revision)
++        print full_version
+         sys.exit(0)
+ 
+-    if glb.active_commit == glb.commit:
+-        reset_code_version()
+-    else:
+-        print &quot;NOT RESETTING %s because we are looking at a different commit&quot; % glb.filename
+-        print &quot;Version: %s       Version-Revision: %s-%s&quot; % (glb.version, glb.version, revision)
+-
+-# ---------------------------------------------------------------------------------------
+-
+-# ADAPT THIS TO COMPUTE THE VERSION
+-def assemble_version_and_revision(code_version, commit_timestamp, commit_short_hexsha, mode):
+-    version = &quot;&quot;
+-    if mode == 'master':
+-        version = &quot;%s.%s&quot; % (code_version, commit_timestamp)
+-        revision = commit_short_hexsha
+-    elif mode == &quot;release&quot;:
+-        version = code_version
+-        revision = commit_short_hexsha
+-    else:
+-        print &quot;mode master/release not specified&quot;
+-        sys.exit(-1)
+-
+-    return (version, revision)
+-
+-# -----------------------------------------------------
+-
+-def obtain_code_version(filename):
+-    &quot;&quot;&quot;Get version from CMakeLists.txt&quot;&quot;&quot;
+-
+-    tempdir = &quot;&quot;
+-    if glb.active_commit != glb.commit :
+-        # We do a temporary checkout of bulmages/CMakeLists.txt
+-        #
+-        # There is no way to checkout the file in a external dir
+-        # without modifying the local copy.  Attemps tried:
+-        #
+-        # -  --work-tree=tempdir
+-        # -  cd tempdir &amp;&amp; --git-dir=&lt;curdir/.git&gt; --work-tree=tempdir
+-        # -  cd tempdir &amp;&amp;  (as above) with --bare
+-        #
+-        # So what we do is temporary copy CMakeLists to the external
+-        # dir, re-checkout and then copying it again
+-        tempdir = tempfile.mkdtemp()
+-        shutil.copy2(filename, tempdir)
+-
+-        # python-git does not support this yet
+-        # Cmd:
+-        # git checkout 7f7787fc9bc4a3f01bb89e9ebf3d0ea0921b157c -- bulmages/CMakeLists.txt
+-        checkout_cmd = &quot;git checkout %s -- %s&quot; % (glb.commit, filename)
+-        do_command_or_exit(checkout_cmd)
+-
+-    version = &quot;&quot;
+-
+-    with open(filename, 'r') as file:
+-        for line in file:
+-            if glb.regexp_comm.match(line):
+-                # Comment line
+-                continue
+-            match = glb.regexp_ver.search(line) # search instead of match because it is not 
+-                                                # anchored at the beginning of the line
+-            if match :
+-                version = match.groups()[0]
+-                break
+-        file.close()
+-
+-    # We backtrack the commit and restore a possibly changed work version
+-    if tempdir:
+-        checkout_cmd = &quot;git checkout %s -- %s&quot; % (glb.active_commit, filename)
+-        do_command_or_exit(checkout_cmd)
+-
+-        temp_filename = os.path.join(tempdir, os.path.basename(filename) )
+-        shutil.copy2(temp_filename, filename)
+-
+-        shutil.rmtree(tempdir)
+-
+-    if not version:
+-        print(&quot;version no encontrada en %s&quot; % filename)
+-        sys.exit(-1)
+-
+-    return version
+-
+-# --------------------------------------------------------------------
+-
+-def reset_code_version():
+-    
+-    print &quot;About to modify file %s to set the version as %s&quot; % (glb.filename, glb.version)
+-    try:
+-        raw_input(&quot;Press ENTER to proceed or Ctrl^C to cancel\n&quot;)
+-    except KeyboardInterrupt:
+-        print &quot;Aborted!&quot;
+-        sys.exit(0)
++    glb.bg_version.set_code_version(glb.filename, glb.version)
+ 
+-    # Second answer in
+-    # <A HREF="http://stackoverflow.com/questions/39086/search-and-replace-a-line-in-a-file-in-python">http://stackoverflow.com/questions/39086/search-and-replace-a-line-in-a-file-in-python</A>
+-    for line in fileinput.FileInput(glb.filename, inplace = 1):
+-        if glb.regexp_comm.match(line):
+-            # Comment line
+-            new_line = line
+-        elif glb.regexp_ver.search(line) : # search instead of match because it is not 
+-                                         # anchored at the beginning of the line
+-            # example_str:  &quot;SET( BULMAGES_VERSION 0.14.0 )&quot;
+-            # regexp_ver_str = r&quot;BULMAGES_VERSION ([^\s]+)&quot;
+-            new_line = glb.regexp_ver.sub(&quot;BULMAGES_VERSION %s&quot; % glb.version, line)
+-        else:
+-            new_line = line
+-        print new_line,
+-
+-# --------------------------------------------------------------------
+ 
+ def consolidate_glb():
+-    
+-
+     if opt.commit:
+         glb.commit = opt.commit
+ 
+@@ -195,22 +65,17 @@ def consolidate_glb():
+     if opt.mode:
+         glb.mode = opt.mode
+ 
+-    # git state
+-    if glb.repo.head.is_detached:
+-        glb.active_branch = None
+-    else:
+-        glb.active_branch = glb.repo.active_branch.name
++    (active_branch, active_commit) = glb.bg_version.get_git_info()
+ 
+-    glb.active_commit = glb.repo.commit().hexsha
+ 
+     # First we decide if we are in mode master or mode release
+     # --------------------------------------------------------
+ 
+     # First preference active_branch (unless we are detached)
+-    if not glb.mode and glb.active_branch:
+-        if 'release' in glb.active_branch:
++    if not glb.mode and active_branch:
++        if 'release' in active_branch:
+             glb.mode = 'release'
+-        elif 'master' in glb.active_branch:
++        elif 'master' in active_branch:
+             glb.mode = 'master'
+     else:
+         # Default mode
+@@ -218,7 +83,7 @@ def consolidate_glb():
+ 
+     # If the commit is not specified we look at the current commit
+     if not glb.commit:
+-        glb.commit = glb.active_commit
++        glb.commit = active_commit
+ 
+     # NOTE 1: glb.version is left intentionally unchanged either defined or not
+         
+@@ -235,6 +100,10 @@ def parse_argv():
+                         help = &quot;commit reference used in the computation, defaults to the current checked out work-copy&quot;,
+                         default = &quot;&quot;, nargs='?')
+ 
++    parser.add_argument('--reset',
++                        action = 'store_true',
++                        help = 'Reset the CMakeLists.txt file to its original git contents')
++
+     parser.add_argument(&quot;--force-version&quot;, 
+                         help = &quot;force this version to be used in CMakesList&quot;)
+ 
+@@ -254,17 +123,9 @@ def parse_argv():
+     opt.force_version = args.force_version
+     opt.mode = args.mode
+     opt.print_only = args.print_only
++    opt.reset = args.reset
+     glb.filename = args.filename
+ 
+-def do_command_or_exit(cmdline, verbose=False):
+-    if verbose:
+-        print(&quot;About to execute: %s&quot; % cmdline)
+-
+-    status = os.system(cmdline)
+-    if status != 0 :
+-        print(&quot;Unable to checkout the requested commit&quot;)
+-        sys.exit(-1)
+-
+ 
+ if __name__ == '__main__':
+     main()
+diff --git a/tools/generate_orig_tar_gz.py b/tools/generate_orig_tar_gz.py
+index eab6e8d..e7c5cba 100755
+--- a/tools/generate_orig_tar_gz.py
++++ b/tools/generate_orig_tar_gz.py
+@@ -1,76 +1,43 @@
+ #!/usr/bin/env python
+ 
+-import re
+ import sys
+-import time
++# Prevent cluttering with bgversion.pyc &amp; co
++sys.dont_write_bytecode = True
+ import os
+ import argparse
+ 
+-# From python-git package
+-import git
++import bgversion
+ 
+ class opt:
+-    version_only = False
++    force_version = &quot;&quot;
++    mode = &quot;&quot;
++    print_only = &quot;&quot;
++
++class glb:
++    version = &quot;&quot;
++    mode = &quot;&quot;
++    filename = &quot;&quot;
++    bg_version = None
+ 
+ def main():
++    
++    glb.bg_version = bgversion.BgVersion()
+     parsea_argv()
++    consolidate_glb()
+ 
+-    # Get the upstream version from CMakelists
+-    # ----------------------------------------
+-    #
+-    # You can test the regexp with
+-    # /usr/share/doc/python2.7/examples/Tools/scripts/redemo.py
+-    #
+-    # example_str:  &quot;SET( BULMAGES_VERSION 0.14.0 )&quot;
+-    regexp_ver_str = r&quot;BULMAGES_VERSION ([^\s]+)&quot;
+-
+-    filename = 'bulmages/CMakeLists.txt'
+-    regexp_ver = re.compile(regexp_ver_str)
+-
+-    # Just to detect comments
+-    regexp_comm_str = r'^\s*#'
+-    regexp_comm = re.compile(regexp_comm_str)
+-
+-    upstream_version = &quot;&quot;
+-
+-    with open(filename, 'r') as file:
+-        for line in file:
+-            if regexp_comm.match(line):
+-                # Comment line
+-                continue
+-            match = regexp_ver.search(line) # search instead of match because it is not 
+-                                            # anchored at the beginning of the line
+-            if match :
+-                upstream_version = match.groups()[0]
+-                break
+-        file.close()
+-
+-    if not upstream_version:
+-        print(&quot;upstream version no encontrada en %s&quot; % filename)
+-        sys.exit(-1)
+-
+-    # Get the date and hash of the latest commit
+-    # ------------------------------------------
+-    # See <A HREF="http://packages.python.org/GitPython/0.3.1/tutorial.html">http://packages.python.org/GitPython/0.3.1/tutorial.html</A>
+-    repo = git.Repo('.')
+-    commit = repo.commit(&quot;HEAD&quot;)
+-    timestamp = time.strftime(&quot;%Y%m%d.%H%M&quot;, time.gmtime(commit.committed_date))
+-    hash = commit.hexsha[:8]
+-
+-    debian_orig_version = upstream_version + &quot;.&quot; + timestamp + &quot;.&quot; + hash
+-
+-    if opt.version_only:
+-        print debian_orig_version
+-        sys.exit(0)
+-
+-    print &quot;Version: &quot; + debian_orig_version
++    if glb.version:
++        full_version = glb.version
++    else:
++        code_version = glb.bg_version.obtain_code_version(glb.filename)
++        (ts_date, ts_time, short_hash) = glb.bg_version.obtain_git_version_info()
++        glb.version, full_version = bgversion.assemble_version_and_revision(code_version, ts_date, ts_time, short_hash, glb.mode)
+ 
+     # Now we create the .orig.tar.gz
+-    # tar --exclude=.git -z -c -v -f ../bulmages_0.14.0.20121128.1132.f070fef1.orig.tar.gz \
++    # tar --exclude=.git -z -c -v -f ../bulmages_0.14.0.20121128.1132-f070fef1.orig.tar.gz \
+     # ../mtelleria-bulmages
+ 
+     cur_basedir = os.path.basename(os.getcwd())
+-    cmdline = &quot;tar --exclude=.git -z -c -v -f ../bulmages_%s.orig.tar.gz ../%s&quot; % (debian_orig_version, cur_basedir)
++    cmdline = &quot;tar --exclude=.git -z -c -v -f ../bulmages_%s.orig.tar.gz ../%s&quot; % (full_version, cur_basedir)
+ 
+     print &quot;Cmdline: %s&quot; % cmdline
+     try:
+@@ -81,17 +48,53 @@ def main():
+     
+     os.system(cmdline)
+ 
++def consolidate_glb() :
++    if opt.force_version:
++        glb.version = opt.force_version
++
++    if opt.mode:
++        glb.mode = opt.mode
++
++    (active_branch, active_commit) = glb.bg_version.get_git_info()
++
++
++    # First we decide if we are in mode master or mode release
++    # --------------------------------------------------------
++
++    # First preference active_branch (unless we are detached)
++    if not glb.mode and active_branch:
++        if 'release' in active_branch:
++            glb.mode = 'release'
++        elif 'master' in active_branch:
++            glb.mode = 'master'
++    else:
++        # Default mode
++        glb.mode = 'master'
++    
++
+ def parsea_argv() :
+ 
+     parser = argparse.ArgumentParser(description='Generates the orig.tar.gz with version info from CMakeLists and git.')
+ 
+-    parser.add_argument('--version-only',
++    parser.add_argument('--print-only',
+                         action = 'store_true',
+                         help = 'print only version number and do not launch tar')
+ 
++    parser.add_argument(&quot;--force-version&quot;, 
++                        help = &quot;force this version to be used in CMakesList&quot;)
++
++    parser.add_argument(&quot;--mode&quot;, choices = [&quot;master&quot;, &quot;release&quot;],
++                        help = &quot;master or release mode (default: search in active branch or master if not found)&quot;)
++
++    parser.add_argument(&quot;--filename&quot;, default=&quot;bulmages/CMakeLists.txt&quot;,
++                        help = &quot;CMakeLists.txt file to be used for parsing and replacing&quot;)
++
+     args = parser.parse_args()
+ 
+-    opt.version_only = args.version_only
++    opt.force_version = args.force_version
++    opt.mode = args.mode
++    opt.print_only = args.print_only
++    glb.filename = args.filename
+ 
+ if __name__ == '__main__':
+     main()
+
+commit bc03808bd676bdf25ab7c07887e8b184978a9089
+Author: Miguel Telleria de Esteban &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">miguel en mtelleria.com</A>&gt;
+Date:   Mon Dec 17 13:36:55 2012 +0100
+
+    Adding tools/compute_and_set_version.py
+
+diff --git a/tools/compute_and_set_version.py b/tools/compute_and_set_version.py
+new file mode 100755
+index 0000000..16cbbd1
+--- /dev/null
++++ b/tools/compute_and_set_version.py
+@@ -0,0 +1,277 @@
++#!/usr/bin/env python
++
++import re
++import sys
++import time
++import os
++import argparse
++import tempfile
++import fileinput
++import shutil
++
++
++# From python-git package
++import git
++
++# From python standard lib, but only for python2
++# python3 has the same name in lowercase letters
++import ConfigParser
++
++class opt:
++    commit = &quot;&quot;
++    force_version = &quot;&quot;
++    mode = &quot;&quot;
++    print_only = &quot;&quot;
++
++
++class glb:
++    commit = &quot;&quot;
++    active_commit = &quot;&quot;
++    version = &quot;&quot;
++    mode = &quot;&quot;
++    repo = None
++    active_branch = &quot;&quot;
++    filename = &quot;&quot;
++
++    # You can test the regexp with
++    # /usr/share/doc/python2.7/examples/Tools/scripts/redemo.py
++    # example_str:  &quot;SET( BULMAGES_VERSION 0.14.0 )&quot;
++    regexp_ver_str = r&quot;BULMAGES_VERSION ([^\s]+)&quot;
++    regexp_ver = re.compile(regexp_ver_str)
++
++    # Just to detect comments
++    regexp_comm_str = r'^\s*#'
++    regexp_comm = re.compile(regexp_comm_str)
++
++
++
++def main():
++
++    parse_argv()
++
++    # Get the date and hash of the latest commit
++    # ------------------------------------------
++    # See <A HREF="http://packages.python.org/GitPython/0.3.1/tutorial.html">http://packages.python.org/GitPython/0.3.1/tutorial.html</A>
++    glb.repo = git.Repo('.')
++    consolidate_glb()
++    
++    if glb.version :
++        revision = &quot;&quot;
++
++    if not glb.version:
++        # We look at the version in bulmages/CMakeLists.txt
++        # (temporary checkout included)
++        code_version = obtain_code_version(glb.filename)
++
++        commit = glb.repo.commit(glb.commit)
++        timestamp = time.strftime(&quot;%Y%m%d.%H%M&quot;, time.gmtime(commit.committed_date))
++        short_hash = commit.hexsha[:8]
++
++        glb.version, revision = assemble_version_and_revision(code_version, timestamp, short_hash, glb.mode)
++
++    if opt.print_only:
++        print glb.version
++        if revision:
++            print &quot;%s-%s&quot; % (glb.version, revision)
++        sys.exit(0)
++
++    if glb.active_commit == glb.commit:
++        reset_code_version()
++    else:
++        print &quot;NOT RESETTING %s because we are looking at a different commit&quot; % glb.filename
++        print &quot;Version: %s       Version-Revision: %s-%s&quot; % (glb.version, glb.version, revision)
++
++# ---------------------------------------------------------------------------------------
++
++# ADAPT THIS TO COMPUTE THE VERSION
++def assemble_version_and_revision(code_version, commit_timestamp, commit_short_hexsha, mode):
++    version = &quot;&quot;
++    if mode == 'master':
++        version = &quot;%s.%s&quot; % (code_version, commit_timestamp)
++        revision = commit_short_hexsha
++    elif mode == &quot;release&quot;:
++        version = code_version
++        revision = commit_short_hexsha
++    else:
++        print &quot;mode master/release not specified&quot;
++        sys.exit(-1)
++
++    return (version, revision)
++
++# -----------------------------------------------------
++
++def obtain_code_version(filename):
++    &quot;&quot;&quot;Get version from CMakeLists.txt&quot;&quot;&quot;
++
++    tempdir = &quot;&quot;
++    if glb.active_commit != glb.commit :
++        # We do a temporary checkout of bulmages/CMakeLists.txt
++        #
++        # There is no way to checkout the file in a external dir
++        # without modifying the local copy.  Attemps tried:
++        #
++        # -  --work-tree=tempdir
++        # -  cd tempdir &amp;&amp; --git-dir=&lt;curdir/.git&gt; --work-tree=tempdir
++        # -  cd tempdir &amp;&amp;  (as above) with --bare
++        #
++        # So what we do is temporary copy CMakeLists to the external
++        # dir, re-checkout and then copying it again
++        tempdir = tempfile.mkdtemp()
++        shutil.copy2(filename, tempdir)
++
++        # python-git does not support this yet
++        # Cmd:
++        # git checkout 7f7787fc9bc4a3f01bb89e9ebf3d0ea0921b157c -- bulmages/CMakeLists.txt
++        checkout_cmd = &quot;git checkout %s -- %s&quot; % (glb.commit, filename)
++        do_command_or_exit(checkout_cmd)
++
++    version = &quot;&quot;
++
++    with open(filename, 'r') as file:
++        for line in file:
++            if glb.regexp_comm.match(line):
++                # Comment line
++                continue
++            match = glb.regexp_ver.search(line) # search instead of match because it is not 
++                                                # anchored at the beginning of the line
++            if match :
++                version = match.groups()[0]
++                break
++        file.close()
++
++    # We backtrack the commit and restore a possibly changed work version
++    if tempdir:
++        checkout_cmd = &quot;git checkout %s -- %s&quot; % (glb.active_commit, filename)
++        do_command_or_exit(checkout_cmd)
++
++        temp_filename = os.path.join(tempdir, os.path.basename(filename) )
++        shutil.copy2(temp_filename, filename)
++
++        shutil.rmtree(tempdir)
++
++    if not version:
++        print(&quot;version no encontrada en %s&quot; % filename)
++        sys.exit(-1)
++
++    return version
++
++# --------------------------------------------------------------------
++
++def reset_code_version():
++    
++    print &quot;About to modify file %s to set the version as %s&quot; % (glb.filename, glb.version)
++    try:
++        raw_input(&quot;Press ENTER to proceed or Ctrl^C to cancel\n&quot;)
++    except KeyboardInterrupt:
++        print &quot;Aborted!&quot;
++        sys.exit(0)
++
++    # Second answer in
++    # <A HREF="http://stackoverflow.com/questions/39086/search-and-replace-a-line-in-a-file-in-python">http://stackoverflow.com/questions/39086/search-and-replace-a-line-in-a-file-in-python</A>
++    for line in fileinput.FileInput(glb.filename, inplace = 1):
++        if glb.regexp_comm.match(line):
++            # Comment line
++            new_line = line
++        elif glb.regexp_ver.search(line) : # search instead of match because it is not 
++                                         # anchored at the beginning of the line
++            # example_str:  &quot;SET( BULMAGES_VERSION 0.14.0 )&quot;
++            # regexp_ver_str = r&quot;BULMAGES_VERSION ([^\s]+)&quot;
++            new_line = glb.regexp_ver.sub(&quot;BULMAGES_VERSION %s&quot; % glb.version, line)
++        else:
++            new_line = line
++        print new_line,
++
++# --------------------------------------------------------------------
++
++def consolidate_glb():
++    
++
++    if opt.commit:
++        glb.commit = opt.commit
++
++    if opt.force_version:
++        glb.version = opt.force_version
++
++    if opt.mode:
++        glb.mode = opt.mode
++
++    # git state
++    if glb.repo.head.is_detached:
++        glb.active_branch = None
++    else:
++        glb.active_branch = glb.repo.active_branch.name
++
++    glb.active_commit = glb.repo.commit().hexsha
++
++    # First we decide if we are in mode master or mode release
++    # --------------------------------------------------------
++
++    # First preference active_branch (unless we are detached)
++    if not glb.mode and glb.active_branch:
++        if 'release' in glb.active_branch:
++            glb.mode = 'release'
++        elif 'master' in glb.active_branch:
++            glb.mode = 'master'
++    else:
++        # Default mode
++        glb.mode = 'master'
++
++    # If the commit is not specified we look at the current commit
++    if not glb.commit:
++        glb.commit = glb.active_commit
++
++    # NOTE 1: glb.version is left intentionally unchanged either defined or not
++        
++# ----------------------------------------------------------------------
++
++# useful tutorial for argparse
++# <A HREF="http://docs.python.org/2/howto/argparse.html">http://docs.python.org/2/howto/argparse.html</A>
++# Missing point: nargs='?' for optional position arguments
++def parse_argv():
++
++    parser = argparse.ArgumentParser(description='Computes the version and revision and updates CMakeLists.txt.')
++
++    parser.add_argument(&quot;commit&quot;, 
++                        help = &quot;commit reference used in the computation, defaults to the current checked out work-copy&quot;,
++                        default = &quot;&quot;, nargs='?')
++
++    parser.add_argument(&quot;--force-version&quot;, 
++                        help = &quot;force this version to be used in CMakesList&quot;)
++
++    parser.add_argument(&quot;--mode&quot;, choices = [&quot;master&quot;, &quot;release&quot;],
++                        help = &quot;master or release mode (default: search in active branch or master if not found)&quot;)
++
++    parser.add_argument(&quot;--filename&quot;, default=&quot;bulmages/CMakeLists.txt&quot;,
++                        help = &quot;CMakeLists.txt file to be used for parsing and replacing&quot;)
++
++    parser.add_argument('--print-only',
++                        action = 'store_true',
++                        help = 'Compute the version and revision and print to stdout')
++
++    args = parser.parse_args()
++
++    opt.commit = args.commit
++    opt.force_version = args.force_version
++    opt.mode = args.mode
++    opt.print_only = args.print_only
++    glb.filename = args.filename
++
++def do_command_or_exit(cmdline, verbose=False):
++    if verbose:
++        print(&quot;About to execute: %s&quot; % cmdline)
++
++    status = os.system(cmdline)
++    if status != 0 :
++        print(&quot;Unable to checkout the requested commit&quot;)
++        sys.exit(-1)
++
++
++if __name__ == '__main__':
++    main()
++
++
++
++
++    
++
++            
+
+commit 24d09de1fb9e727014481cc9e5114df9c1d82960
+Author: Miguel Telleria de Esteban &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">miguel en mtelleria.com</A>&gt;
+Date:   Wed Nov 28 10:18:40 2012 +0100
+
+    Creando generate_orig_tar_gz
+
+diff --git a/tools/generate_orig_tar_gz.py b/tools/generate_orig_tar_gz.py
+new file mode 100755
+index 0000000..eab6e8d
+--- /dev/null
++++ b/tools/generate_orig_tar_gz.py
+@@ -0,0 +1,104 @@
++#!/usr/bin/env python
++
++import re
++import sys
++import time
++import os
++import argparse
++
++# From python-git package
++import git
++
++class opt:
++    version_only = False
++
++def main():
++    parsea_argv()
++
++    # Get the upstream version from CMakelists
++    # ----------------------------------------
++    #
++    # You can test the regexp with
++    # /usr/share/doc/python2.7/examples/Tools/scripts/redemo.py
++    #
++    # example_str:  &quot;SET( BULMAGES_VERSION 0.14.0 )&quot;
++    regexp_ver_str = r&quot;BULMAGES_VERSION ([^\s]+)&quot;
++
++    filename = 'bulmages/CMakeLists.txt'
++    regexp_ver = re.compile(regexp_ver_str)
++
++    # Just to detect comments
++    regexp_comm_str = r'^\s*#'
++    regexp_comm = re.compile(regexp_comm_str)
++
++    upstream_version = &quot;&quot;
++
++    with open(filename, 'r') as file:
++        for line in file:
++            if regexp_comm.match(line):
++                # Comment line
++                continue
++            match = regexp_ver.search(line) # search instead of match because it is not 
++                                            # anchored at the beginning of the line
++            if match :
++                upstream_version = match.groups()[0]
++                break
++        file.close()
++
++    if not upstream_version:
++        print(&quot;upstream version no encontrada en %s&quot; % filename)
++        sys.exit(-1)
++
++    # Get the date and hash of the latest commit
++    # ------------------------------------------
++    # See <A HREF="http://packages.python.org/GitPython/0.3.1/tutorial.html">http://packages.python.org/GitPython/0.3.1/tutorial.html</A>
++    repo = git.Repo('.')
++    commit = repo.commit(&quot;HEAD&quot;)
++    timestamp = time.strftime(&quot;%Y%m%d.%H%M&quot;, time.gmtime(commit.committed_date))
++    hash = commit.hexsha[:8]
++
++    debian_orig_version = upstream_version + &quot;.&quot; + timestamp + &quot;.&quot; + hash
++
++    if opt.version_only:
++        print debian_orig_version
++        sys.exit(0)
++
++    print &quot;Version: &quot; + debian_orig_version
++
++    # Now we create the .orig.tar.gz
++    # tar --exclude=.git -z -c -v -f ../bulmages_0.14.0.20121128.1132.f070fef1.orig.tar.gz \
++    # ../mtelleria-bulmages
++
++    cur_basedir = os.path.basename(os.getcwd())
++    cmdline = &quot;tar --exclude=.git -z -c -v -f ../bulmages_%s.orig.tar.gz ../%s&quot; % (debian_orig_version, cur_basedir)
++
++    print &quot;Cmdline: %s&quot; % cmdline
++    try:
++        raw_input(&quot;Press ENTER to proceed or Ctrl^C to cancel\n&quot;)
++    except KeyboardInterrupt:
++        print &quot;Aborted!&quot;
++        sys.exit(0)
++    
++    os.system(cmdline)
++
++def parsea_argv() :
++
++    parser = argparse.ArgumentParser(description='Generates the orig.tar.gz with version info from CMakeLists and git.')
++
++    parser.add_argument('--version-only',
++                        action = 'store_true',
++                        help = 'print only version number and do not launch tar')
++
++    args = parser.parse_args()
++
++    opt.version_only = args.version_only
++
++if __name__ == '__main__':
++    main()
++
++
++
++
++    
++
++            
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007511.html">[BulmaGés] [Gitorious] Activity: mtelleria created	branch gbp-debian...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007513.html">[BulmaGés] [Gitorious] Activity: mtelleria pushed	7 commits to relea...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7512">[ fecha ]</a>
+              <a href="thread.html#7512">[ hilo ]</a>
+              <a href="subject.html#7512">[ asunto ]</a>
+              <a href="author.html#7512">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

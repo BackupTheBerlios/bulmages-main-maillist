@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Algo nuevo para los informes.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FAlgo_nuevo_para_los_i%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fnformes%3D2E%3F%3D&In-Reply-To=%3CCANdfMDecMwyiDJUd4hLqsg-5ko8Gw-mfr-NxH_KV_0eJPZ_E0g%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006516.html">
+   <LINK REL="Next"  HREF="006518.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Algo nuevo para los informes. </H1>
+    <B>Aron</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FAlgo_nuevo_para_los_i%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fnformes%3D2E%3F%3D&In-Reply-To=%3CCANdfMDecMwyiDJUd4hLqsg-5ko8Gw-mfr-NxH_KV_0eJPZ_E0g%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]Algo nuevo para los informes.">auryn en wanadoo.es
+       </A><BR>
+    <I>Jue Nov 10 10:47:50 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006516.html">[BulmaGés] Algo nuevo para los informes.
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006518.html">[BulmaGés]Invitación a conectarnos en LinkedIn
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6517">[ fecha ]</a>
+              <a href="thread.html#6517">[ hilo ]</a>
+              <a href="subject.html#6517">[ asunto ]</a>
+              <a href="author.html#6517">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>¡Estupendo! precisamente tenía informes que pedían fechas.
+
+Un saludo.
+
+El 10 de noviembre de 2011 10:35, Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;escribió:
+
+&gt;<i> Bones a tothom:
+</I>&gt;<i>
+</I>&gt;<i> Siguiendo con el tema que me ocupa estos dias &quot;AutoForms&quot; he estado
+</I>&gt;<i> extendiendo la cosa a algo también muy útil.
+</I>&gt;<i>
+</I>&gt;<i> Si habeis manejado alguna vez informes personales con entrada de
+</I>&gt;<i> parametros os habeis dado cuenta de que la forma de introducir los datos
+</I>&gt;<i> era algo cutre. Apenas permitia campos de QLineEdit QCheckBox y para de
+</I>&gt;<i> contar.
+</I>&gt;<i> Un simple BlDateSearch era imposible por no hablar de campos alimentados
+</I>&gt;<i> por la base de datos.
+</I>&gt;<i>
+</I>&gt;<i> Bueno, pués eso se acabó. Ahora se puede poner en los interfaces de
+</I>&gt;<i> informes los campos BlComboBox, BlDateSearch y BlSearchWidget sin problemas
+</I>&gt;<i> y hacer que funcionen.
+</I>&gt;<i>
+</I>&gt;<i> El BlDateSearch funciona directamente (con lo que ese mensaje tan feo de
+</I>&gt;<i> introduzca fecha (dd/mm/yyyy) ya puede desaparecer.
+</I>&gt;<i>
+</I>&gt;<i> Los BlComboBox y BlSearchWidget deben ser inicializados previamente con
+</I>&gt;<i> los parametros de busqueda del campo. Esto se hace de la siguiente forma:
+</I>&gt;<i>
+</I>&gt;<i> Cito un trozo del inf_resumcompras.pys, pero también es igual en los rml
+</I>&gt;<i>
+</I>&gt;<i> #!/usr/bin/python
+</I>&gt;<i> # -*- coding: utf8 -*-
+</I>&gt;<i>
+</I>&gt;<i> # pathtitle=&quot;&amp;Compras\Informes\Resumen de Compras&quot;
+</I>&gt;<i> # title=&quot;Resumen Compras&quot;
+</I>&gt;<i> #&lt;!--IFACE SRC=&quot;[CONF_DIR_OPENREPORTS]inf_ventas.ui&quot;--&gt;
+</I>&gt;<i> #&lt;!--PARAM NAME=&quot;fecha_inicial&quot; TYPE=&quot;date&quot;--&gt;
+</I>&gt;<i> #&lt;!--PARAM NAME=&quot;fecha_final&quot; TYPE=&quot;date&quot;--&gt;
+</I>&gt;<i> #&lt;!--PARAM NAME=&quot;idarticulo&quot; TYPE=&quot;BLSEARCHWIDGET&quot; LABEL=&quot;Seleccione
+</I>&gt;<i> Articulo&quot; TABLE=&quot;articulo&quot; TABLEID=&quot;idarticulo&quot;
+</I>&gt;<i> VALUES=&quot;codigocompletoarticulo,nomarticulo&quot;--&gt;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> La llamada a inf_ventas.ui para indicar que saque esta interficie, luego
+</I>&gt;<i> pasa por una nueva clase de Bulmalib BlUiLoader y inicializa los campos con
+</I>&gt;<i> la sentencia param.
+</I>&gt;<i>
+</I>&gt;<i> En este caso se puede apreciar el parametro idarticulo del tipo
+</I>&gt;<i> BLSEARCHWIDGET, que inicializa sobre la tabla articulo, devuelve el
+</I>&gt;<i> idarticulo (que se puede usar como variable del informe  [idarticulo])
+</I>&gt;<i> y que para los valores de búsqueda utiliza el codigocompletoarticulo y el
+</I>&gt;<i> nomarituclo.
+</I>&gt;<i>
+</I>&gt;<i> Creo que esto le va a dar mucho juego a los informes ampliando bastante su
+</I>&gt;<i> capacidad.
+</I>&gt;<i>
+</I>&gt;<i> Salut
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Tomeu Borrás
+</I>&gt;<i> Conetxia Soluciones Informáticas
+</I>&gt;<i> 902 88 11 66 - 677 77 44 76
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20111110/f227d2ad/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20111110/f227d2ad/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006516.html">[BulmaGés] Algo nuevo para los informes.
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006518.html">[BulmaGés]Invitación a conectarnos en LinkedIn
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6517">[ fecha ]</a>
+              <a href="thread.html#6517">[ hilo ]</a>
+              <a href="subject.html#6517">[ asunto ]</a>
+              <a href="author.html#6517">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

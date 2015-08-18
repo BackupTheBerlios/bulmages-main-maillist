@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: themeph pushed 1	commits to qt5qt5...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20themeph%20pushed%201%0A%09commits%20to%20qt5qt5...&In-Reply-To=%3C20130113225853.982C4F8E%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007505.html">
+   <LINK REL="Next"  HREF="007507.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: themeph pushed 1	commits to qt5qt5... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20themeph%20pushed%201%0A%09commits%20to%20qt5qt5...&In-Reply-To=%3C20130113225853.982C4F8E%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: themeph pushed 1	commits to qt5qt5...">no-reply en gitorious.org
+       </A><BR>
+    <I>Dom Ene 13 23:58:53 CET 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007505.html">[BulmaGés] [Gitorious] Activity: themeph pushed 1	commits to qt5qt5...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007507.html">[BulmaGés] [Gitorious] Activity: themeph pushed 4	commits to qt5qt5...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7506">[ fecha ]</a>
+              <a href="thread.html#7506">[ hilo ]</a>
+              <a href="subject.html#7506">[ asunto ]</a>
+              <a href="author.html#7506">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+themeph pushed 1 commits to qt5
+qt5 changed from 93d5c2d to 2cb147d
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/93d5c2da6ad6d64e90d3f554387abe34a9106aeb/diffs/2cb147d584fab5b3e7d17d464664f5c6be59175c">https://gitorious.org/bulmages/bulmages/commit/93d5c2da6ad6d64e90d3f554387abe34a9106aeb/diffs/2cb147d584fab5b3e7d17d464664f5c6be59175c</A>
+
+Diff: 
+
+commit 2cb147d584fab5b3e7d17d464664f5c6be59175c
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">info en danielripoll.es</A>&gt;
+Date:   Sun Jan 13 23:56:06 2013 +0100
+
+    Meto bajo traduccion algunas cadenas que no de traducian.
+    
+    --
+    Daniel Ripoll Osma
+    <A HREF="http://danielripoll.es">http://danielripoll.es</A>
+    <A HREF="http://bulmages.es">http://bulmages.es</A>
+    <A HREF="http://manualencatala.tk">http://manualencatala.tk</A>
+    6688.27.4.90
+    
+    Web &amp; Desktop Developer
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_carteracobros/q19view.cpp b/bulmages/bulmafact/plugins/pluginbf_carteracobros/q19view.cpp
+index 83e9a6a..44c5b19 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_carteracobros/q19view.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_carteracobros/q19view.cpp
+@@ -66,9 +66,9 @@ Q19View::Q19View ( CarteraCobrosList *fac, BfCompany *comp, QWidget *parent )
+             QString val = rec-&gt;dbValue ( &quot;selector&quot; );
+             if ( val == &quot;TRUE&quot; ) {
+ 		if (rec-&gt;dbValue(&quot;descforma_pago&quot;) != &quot;Transferencia&quot;) 
+-			blMsgInfo(&quot;Hay vencimientos que no pueden ser Remesados&quot;);
++			blMsgInfo(_(&quot;Hay vencimientos que no pueden ser Remesados&quot;));
+ 		if (rec-&gt;dbValue(&quot;estadovencimientoc&quot;) != &quot;Pendiente&quot;) 
+-			blMsgInfo(&quot;Hay vencimientos con estado no Pendiente&quot;);
++			blMsgInfo(_(&quot;Hay vencimientos con estado no Pendiente&quot;));
+                 a = a + BlFixed ( rec-&gt;dbValue ( &quot;cantvencimientoc&quot; ) );
+ 		numop++;
+             } // end if
+@@ -580,8 +580,8 @@ void Q19View::on_mui_aceptar_clicked()
+             } // end if
+         } // end for
+ 
+-        blMsgInfo ( &quot;Numero de Operaciones: &quot; + QString::number ( j ) );
+-        blMsgInfo ( &quot;Total del archivo: &quot; + total.toQString() );
++        blMsgInfo ( _(&quot;Numero de Operaciones: &quot;) + QString::number ( j ) );
++        blMsgInfo ( _(&quot;Total del archivo: &quot;) + total.toQString() );
+ 
+         totalOrdenante ( out, total.toQString().remove ( ',' ).remove ( '.' ), QString::number ( j ), QString::number ( j + 2 ) );
+         totalGeneral ( out, total.toQString().remove ( ',' ).remove ( '.' ), QString::number ( j ), QString::number ( j + 4 ) );
+@@ -597,9 +597,9 @@ void Q19View::on_mui_aceptar_clicked()
+ 
+ 
+ void Q19View::on_mui_buscararchivo_clicked() {
+- QString fileName = QFileDialog::getSaveFileName(this, tr(&quot;Guardar archivo&quot;),
++ QString fileName = QFileDialog::getSaveFileName(this, _(&quot;Guardar archivo&quot;),
+                                                  &quot;&quot;,
+-                                                 tr(&quot;Remesas Bancarias (*.q19)&quot;));
++                                                 _(&quot;Remesas Bancarias (*.q19)&quot;));
+ mui_archivo-&gt;setText(fileName);
+ }
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_carterapagos/q34view.cpp b/bulmages/bulmafact/plugins/pluginbf_carterapagos/q34view.cpp
+index 44eb60b..d700b0a 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_carterapagos/q34view.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_carterapagos/q34view.cpp
+@@ -83,7 +83,7 @@ Q34View::Q34View ( CarteraPagosList *fac, BfCompany *comp, QWidget *parent )
+         dialogChanges_readValues();
+ 	blScript(this);
+     } catch ( ... ) {
+-        blMsgInfo ( tr ( &quot;Error al crear el archivo&quot; ) );
++        blMsgInfo ( _ ( &quot;Error al crear el archivo&quot; ) );
+     } // end try
+     
+ }
+@@ -545,8 +545,8 @@ void Q34View::on_mui_aceptar_clicked()
+ 
+ 
+ void Q34View::on_mui_buscararchivo_clicked() {
+- QString fileName = QFileDialog::getSaveFileName(this, tr(&quot;Guardar archivo&quot;),
++ QString fileName = QFileDialog::getSaveFileName(this, _(&quot;Guardar archivo&quot;),
+                                                  &quot;&quot;,
+-                                                 tr(&quot;Remesas Bancarias (*.q34)&quot;));
++                                                 _(&quot;Remesas Bancarias (*.q34)&quot;));
+ mui_archivo-&gt;setText(fileName);
+ }
+diff --git a/bulmages/bulmafact/plugins/pluginbf_compraventa/compraventaview.cpp b/bulmages/bulmafact/plugins/pluginbf_compraventa/compraventaview.cpp
+index 91a6256..57c74f6 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_compraventa/compraventaview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_compraventa/compraventaview.cpp
+@@ -592,7 +592,7 @@ void CompraVentaView::generarFactura()
+ 
+             int resur = g_plugins-&gt;run ( &quot;SNewFacturaView&quot;, ( BfCompany * ) mainCompany() );
+             if ( !resur ) {
+-                blMsgInfo ( &quot;No se pudo crear instancia de factura&quot; );
++                blMsgInfo ( _(&quot;No se pudo crear instancia de factura&quot;) );
+                 return;
+             } // end if
+             bud = ( FacturaView * ) g_plugParams;
+@@ -610,7 +610,7 @@ void CompraVentaView::generarFactura()
+         /// Creamos la factura.
+         int resur = g_plugins-&gt;run ( &quot;SNewFacturaView&quot;, ( BfCompany * ) mainCompany() );
+         if ( !resur ) {
+-            blMsgInfo ( &quot;No se pudo crear instancia de factura&quot; );
++            blMsgInfo ( _(&quot;No se pudo crear instancia de factura&quot;) );
+             return;
+         } // end if
+         bud = ( FacturaView * ) g_plugParams;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/pluginbf_sincrobulmacont.cpp b/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/pluginbf_sincrobulmacont.cpp
+index 34ad6c8..a1eed67 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/pluginbf_sincrobulmacont.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/pluginbf_sincrobulmacont.cpp
+@@ -169,9 +169,9 @@ int FamiliasView_Guardar_Pre ( FamiliasView *famv )
+      } // end if
+     } catch (int e) {
+ 	if (e == -300) {
+-	  blMsgError(&quot;Cuenta de venta no existe en la contabilidad.&quot;);
++	  blMsgError(_(&quot;Cuenta de venta no existe en la contabilidad.&quot;));
+ 	} else if (e == -400) {
+-	  blMsgError(&quot;Cuenta de compra no existe en la contabilidad.&quot;);
++	  blMsgError(_(&quot;Cuenta de compra no existe en la contabilidad.&quot;));
+ 	} // end if
+ 	throw -1;
+     } // end try
+@@ -259,7 +259,7 @@ int FPagoView_Guardar_Pre ( FPagoView *fpagov )
+ 
+     } catch (int e) {
+ 	if (e == -300) {
+-	  blMsgError(&quot;La cuenta no existe en la contabilidad.&quot;);
++	  blMsgError(_(&quot;La cuenta no existe en la contabilidad.&quot;));
+ 	} // end if
+ 	throw -1;
+     } // end try
+diff --git a/bulmages/bulmafact/plugins/pluginbf_tipotrabajo/listtipostrabajoview.cpp b/bulmages/bulmafact/plugins/pluginbf_tipotrabajo/listtipostrabajoview.cpp
+index a4d3505..ded2ece 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_tipotrabajo/listtipostrabajoview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_tipotrabajo/listtipostrabajoview.cpp
+@@ -74,7 +74,7 @@ void ListTiposTrabajoView::on_mui_aceptar_clicked()
+         g_theApp-&gt;emitDbTableChanged ( &quot;tipotrabajo&quot; );
+         close();
+     } catch ( ... ) {
+-        blMsgInfo ( &quot;Error al guardar los tipos de trabajo&quot; );
++        blMsgInfo ( _( &quot;Error al guardar los tipos de trabajo&quot; ));
+     } // end try
+ }
+ 
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007505.html">[BulmaGés] [Gitorious] Activity: themeph pushed 1	commits to qt5qt5...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007507.html">[BulmaGés] [Gitorious] Activity: themeph pushed 4	commits to qt5qt5...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7506">[ fecha ]</a>
+              <a href="thread.html#7506">[ hilo ]</a>
+              <a href="subject.html#7506">[ asunto ]</a>
+              <a href="author.html#7506">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

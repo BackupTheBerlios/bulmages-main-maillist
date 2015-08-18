@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120424094847.43E39756DA%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007114.html">
+   <LINK REL="Next"  HREF="007116.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120424094847.43E39756DA%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Mar Abr 24 11:48:47 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007114.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to release...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007116.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7115">[ fecha ]</a>
+              <a href="thread.html#7115">[ hilo ]</a>
+              <a href="subject.html#7115">[ asunto ]</a>
+              <a href="author.html#7115">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from a04ce3a to e4000fa
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/a04ce3a835112bfd9aaa873d384e0df800d756d7/diffs/e4000faa64f2388427fbacdbf4d80d12a17cc179">https://gitorious.org/bulmages/bulmages/commit/a04ce3a835112bfd9aaa873d384e0df800d756d7/diffs/e4000faa64f2388427fbacdbf4d80d12a17cc179</A>
+
+Diff: 
+
+commit e4000faa64f2388427fbacdbf4d80d12a17cc179
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue Apr 24 10:49:52 2012 +0200
+
+    Arreglo problema con el copiado de los archivos en Windows que al faltar el parametro de sobreescritura no reemplazaba versiones existentes
+
+diff --git a/bulmages/bulmalib/src/blfunctions.cpp b/bulmages/bulmalib/src/blfunctions.cpp
+index bde3c2e..bccc336 100644
+--- a/bulmages/bulmalib/src/blfunctions.cpp
++++ b/bulmages/bulmalib/src/blfunctions.cpp
+@@ -1443,17 +1443,18 @@ bool blCopyFile( const QString &amp;oldName, const QString &amp;newName )
+     QString newFile = QUrl(newName, QUrl::TolerantMode).toString();
+ 
+     // Intenta copiar usando QFile::copy() y si falla, lo copia mediante sistema
+-    if(!QFile::copy(oldFile, newFile))
+-    {
++    if(!QFile::copy(oldFile, newFile)) {
+ 	QString command = &quot;&quot;;
+ 
+-	#ifdef Q_OS_WIN32
+-	    command = &quot;copy \&quot;&quot; + oldFile + &quot;\&quot; \&quot;&quot; + newFile + &quot;\&quot;&quot;;
+-	#else
+-	    command = &quot;cp &quot; + oldFile + &quot; &quot; + newFile;
+-	#endif
++		#ifdef Q_OS_WIN32
++			command = &quot;copy \&quot;&quot; + oldFile + &quot;\&quot; \&quot;&quot; + newFile + &quot;\&quot;&quot;;
++			command.replace(&quot;/&quot;, &quot;\\&quot;);
++			command = command + &quot; /y&quot;;
++		#else
++			command = &quot;cp &quot; + oldFile + &quot; &quot; + newFile;
++		#endif
+ 
+-	int result = system ( command.toAscii().data() );
++		int result = system ( command.toAscii().data() );
+ 
+         if (result == -1) {
+             return false;
+@@ -1482,6 +1483,7 @@ bool blRemove(const QString &amp;filetoremove )
+ 
+ 	#ifdef Q_OS_WIN32
+ 	    command = &quot;del \&quot;&quot; + removeFile + &quot;\&quot;&quot;;
++		command.replace(&quot;/&quot;, &quot;\\&quot;);
+ 	#else
+ 	    command = &quot;rm &quot; + removeFile;
+ 	#endif
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007114.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to release...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007116.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7115">[ fecha ]</a>
+              <a href="thread.html#7115">[ hilo ]</a>
+              <a href="subject.html#7115">[ asunto ]</a>
+              <a href="author.html#7115">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

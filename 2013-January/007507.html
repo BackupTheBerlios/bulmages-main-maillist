@@ -1,0 +1,749 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: themeph pushed 4	commits to qt5qt5...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20themeph%20pushed%204%0A%09commits%20to%20qt5qt5...&In-Reply-To=%3C20130116031422.4260DF76%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007506.html">
+   <LINK REL="Next"  HREF="007508.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: themeph pushed 4	commits to qt5qt5... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20themeph%20pushed%204%0A%09commits%20to%20qt5qt5...&In-Reply-To=%3C20130116031422.4260DF76%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: themeph pushed 4	commits to qt5qt5...">no-reply en gitorious.org
+       </A><BR>
+    <I>Mie Ene 16 04:14:22 CET 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007506.html">[BulmaGés] [Gitorious] Activity: themeph pushed 1	commits to qt5qt5...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007508.html">[BulmaGés] Repositorio (temporal) de mis paquetes	Debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7507">[ fecha ]</a>
+              <a href="thread.html#7507">[ hilo ]</a>
+              <a href="subject.html#7507">[ asunto ]</a>
+              <a href="author.html#7507">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+themeph pushed 4 commits to qt5
+qt5 changed from 2cb147d to 4df8b88
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/2cb147d584fab5b3e7d17d464664f5c6be59175c/diffs/4df8b880edd369cc6a37d7852ebb6160a45c90ad">https://gitorious.org/bulmages/bulmages/commit/2cb147d584fab5b3e7d17d464664f5c6be59175c/diffs/4df8b880edd369cc6a37d7852ebb6160a45c90ad</A>
+
+Diff: 
+
+commit 4df8b880edd369cc6a37d7852ebb6160a45c90ad
+Author: User &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">user en localhost.localdomain</A>&gt;
+Date:   Wed Jan 16 04:07:54 2013 +0100
+
+    Corrijo las cabeceras de headers que quedaban en BulmaTPV, ya funciona!
+    
+        --
+        Daniel Ripoll Osma
+        <A HREF="http://danielripoll.es">http://danielripoll.es</A>
+        <A HREF="http://bulmages.es">http://bulmages.es</A>
+        <A HREF="http://manualencatala.tk">http://manualencatala.tk</A>
+        6688.27.4.90
+    
+        Web &amp; Desktop Developer
+
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_clientsync/clientsync.cpp b/bulmages/bulmatpv/plugins/pluginbt_clientsync/clientsync.cpp
+index 74c1389..09efe6d 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_clientsync/clientsync.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_clientsync/clientsync.cpp
+@@ -25,7 +25,7 @@
+ 
+ #include &lt;QtWidgets/QLabel&gt;
+ #include &lt;QtWidgets/QTextBrowser&gt;
+-#include &lt;QHostAddress&gt;
++#include &lt;QtNetwork/QHostAddress&gt;
+ #include &lt;QtNetwork/QTcpSocket&gt;
+ 
+ #include &quot;clientsync.h&quot;
+@@ -100,4 +100,4 @@ void ClientSync::send(const QString &amp; texto) {
+     m_socket-&gt;write(texto.toLatin1());
+     mui_plainText-&gt;appendPlainText(&quot;Enviando mensaje a:&quot; + m_socket-&gt;peerAddress().toString() + &quot;\n&quot; );  
+     
+-}
+\ No newline at end of file
++}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_modificadores/tabletcanvas.h b/bulmages/bulmatpv/plugins/pluginbt_modificadores/tabletcanvas.h
+index 3fe3330..c34833c 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_modificadores/tabletcanvas.h
++++ b/bulmages/bulmatpv/plugins/pluginbt_modificadores/tabletcanvas.h
+@@ -45,8 +45,8 @@
+ #include &lt;QtWidgets/QWidget&gt;
+ #include &lt;QtGui/QPixmap&gt;
+ #include &lt;QtCore/QPoint&gt;
+-#include &lt;QTabletEvent&gt;
+-#include &lt;QColor&gt;
++#include &lt;QtGui/QTabletEvent&gt;
++#include &lt;QtGui/QColor&gt;
+ #include &lt;QtGui/QBrush&gt;
+ #include &lt;QtGui/QPen&gt;
+ #include &lt;QtCore/QPoint&gt;
+
+commit 687f9d2db01e0a83352bb12ed136181c95c49d89
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">info en danielripoll.es</A>&gt;
+Date:   Tue Jan 15 15:37:06 2013 +0100
+
+    Corrijo algunas cabeceras más
+    
+    --
+    Daniel Ripoll Osma
+    <A HREF="http://danielripoll.es">http://danielripoll.es</A>
+    <A HREF="http://bulmages.es">http://bulmages.es</A>
+    <A HREF="http://manualencatala.tk">http://manualencatala.tk</A>
+    6688.27.4.90
+    
+    Web &amp; Desktop Developer
+
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_articulografico/artgraficos.cpp b/bulmages/bulmatpv/plugins/pluginbt_articulografico/artgraficos.cpp
+index ebb5ba7..9b9b4a8 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_articulografico/artgraficos.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_articulografico/artgraficos.cpp
+@@ -3,7 +3,7 @@
+ #include &lt;QtWidgets/QHeaderView&gt;
+ #include &lt;QtCore/QFile&gt;
+ #include &lt;QtXml/QDomDocument&gt;
+-#include &lt;QPicture&gt;
++#include &lt;QtGui/QPicture&gt;
+ #include &lt;QtGui/QPainter&gt;
+ #include &lt;QtWidgets/QPushButton&gt;
+ #include &lt;QtCore/QTextStream&gt;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.cpp b/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.cpp
+index c3e1a25..076478e 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.cpp
+@@ -27,12 +27,12 @@
+ #include &lt;QtWidgets/QHeaderView&gt;
+ #include &lt;QtCore/QFile&gt;
+ #include &lt;QtXml/QDomDocument&gt;
+-#include &lt;QPicture&gt;
++#include &lt;QtGui/QPicture&gt;
+ #include &lt;QtGui/QPainter&gt;
+ #include &lt;QtWidgets/QPushButton&gt;
+-#include &lt;QScrollArea&gt;
+-#include &lt;QScrollBar&gt;
+-#include &lt;QSizePolicy&gt;
++#include &lt;QtWidgets/QScrollArea&gt;
++#include &lt;QtWidgets/QScrollBar&gt;
++#include &lt;QtWidgets/QSizePolicy&gt;
+ #include &lt;QtCore/QList&gt;
+ 
+ #include &quot;artgraficosdb.h&quot;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.h b/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.h
+index 96bd992..e83557f 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.h
++++ b/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.h
+@@ -26,7 +26,7 @@
+ 
+ #include &lt;QtXml/QDomDocument&gt;
+ #include &lt;QtWidgets/QTableWidget&gt;
+-#include &lt;QSignalMapper&gt;
++#include &lt;QtCore/QSignalMapper&gt;
+ 
+ #include &quot;blfunctions.h&quot;
+ #include &quot;blwidget.h&quot;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_camareros/trabajadores.h b/bulmages/bulmatpv/plugins/pluginbt_camareros/trabajadores.h
+index 6706c94..e3599f9 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_camareros/trabajadores.h
++++ b/bulmages/bulmatpv/plugins/pluginbt_camareros/trabajadores.h
+@@ -3,7 +3,7 @@
+ 
+ #include &lt;QtWidgets/QDialog&gt;
+ #include &lt;QtCore/QProcess&gt;
+-#include &lt;QDockWidget&gt;
++#include &lt;QtWidgets/QDockWidget&gt;
+ #include &quot;blwidget.h&quot;
+ #include &quot;ui_trabajadoresbase.h&quot;
+ 
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_cliente/pluginbt_cliente.cpp b/bulmages/bulmatpv/plugins/pluginbt_cliente/pluginbt_cliente.cpp
+index ec401fb..d55904e 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_cliente/pluginbt_cliente.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_cliente/pluginbt_cliente.cpp
+@@ -35,9 +35,9 @@
+ #include &lt;QtWidgets/QToolButton&gt;
+ #include &lt;QtCore/QProcess&gt;
+ #include &lt;QtWidgets/QDockWidget&gt;
+-#ifndef Q_OS_WIN32
+-#include &lt;QX11EmbedContainer&gt;
+-#endif
++//#ifndef Q_OS_WIN32
++//#include &lt;QX11EmbedContainer&gt;
++//#endif
+ 
+ ///
+ /**
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_modificadores/modificadores.h b/bulmages/bulmatpv/plugins/pluginbt_modificadores/modificadores.h
+index a512872..594cf52 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_modificadores/modificadores.h
++++ b/bulmages/bulmatpv/plugins/pluginbt_modificadores/modificadores.h
+@@ -3,7 +3,7 @@
+ 
+ #include &lt;QtWidgets/QDialog&gt;
+ #include &lt;QtCore/QProcess&gt;
+-#include &lt;QDockWidget&gt;
++#include &lt;QtWidgets/QDockWidget&gt;
+ #include &lt;QtCore/QString&gt;
+ #include &quot;blwidget.h&quot;
+ #include &quot;ui_modificadoresbase.h&quot;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_modificadores/tabletcanvas.cpp b/bulmages/bulmatpv/plugins/pluginbt_modificadores/tabletcanvas.cpp
+index a428951..aa68817 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_modificadores/tabletcanvas.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_modificadores/tabletcanvas.cpp
+@@ -39,7 +39,7 @@
+ **
+ ****************************************************************************/
+ 
+-#include &lt;QtGui&gt;
++#include &lt;QtGui/QtGui&gt;
+ #include &lt;math.h&gt;
+ 
+ #include &quot;tabletcanvas.h&quot;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_modificadores/tabletcanvas.h b/bulmages/bulmatpv/plugins/pluginbt_modificadores/tabletcanvas.h
+index 0845521..3fe3330 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_modificadores/tabletcanvas.h
++++ b/bulmages/bulmatpv/plugins/pluginbt_modificadores/tabletcanvas.h
+@@ -44,12 +44,12 @@
+ 
+ #include &lt;QtWidgets/QWidget&gt;
+ #include &lt;QtGui/QPixmap&gt;
+-#include &lt;QPoint&gt;
++#include &lt;QtCore/QPoint&gt;
+ #include &lt;QTabletEvent&gt;
+ #include &lt;QColor&gt;
+ #include &lt;QtGui/QBrush&gt;
+ #include &lt;QtGui/QPen&gt;
+-#include &lt;QPoint&gt;
++#include &lt;QtCore/QPoint&gt;
+ 
+ #include &quot;blfunctions.h&quot;
+ 
+
+commit 16d13d27e7fb23a0058deccad965386684748f46
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">info en danielripoll.es</A>&gt;
+Date:   Tue Jan 15 15:26:13 2013 +0100
+
+    Corrijo algunos #includes de Qt, que no cargaban correctamente.
+    
+    --
+    Daniel Ripoll Osma
+    <A HREF="http://danielripoll.es">http://danielripoll.es</A>
+    <A HREF="http://bulmages.es">http://bulmages.es</A>
+    <A HREF="http://manualencatala.tk">http://manualencatala.tk</A>
+    6688.27.4.90
+    
+    Web &amp; Desktop Developer
+
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_alias/pluginbt_alias.cpp b/bulmages/bulmatpv/plugins/pluginbt_alias/pluginbt_alias.cpp
+index 34a6185..d594ecb 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_alias/pluginbt_alias.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_alias/pluginbt_alias.cpp
+@@ -20,7 +20,7 @@
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+  ***************************************************************************/
+ 
+-#include &lt;QDockWidget&gt;
++#include &lt;QtWidgets/QDockWidget&gt;
+ 
+ #include &quot;pluginbt_alias.h&quot;
+ #include &quot;btcompany.h&quot;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_aliastallasycolores/pluginbt_aliastallasycolores.cpp b/bulmages/bulmatpv/plugins/pluginbt_aliastallasycolores/pluginbt_aliastallasycolores.cpp
+index 43f4c85..37da8f4 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_aliastallasycolores/pluginbt_aliastallasycolores.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_aliastallasycolores/pluginbt_aliastallasycolores.cpp
+@@ -20,7 +20,7 @@
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+  ***************************************************************************/
+ 
+-#include &lt;QDockWidget&gt;
++#include &lt;QtWidgets/QDockWidget&gt;
+ #include &lt;QtWidgets/QLabel&gt;
+ #include &lt;QtWidgets/QTextBrowser&gt;
+ 
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_aliastallasycolores2/pluginbt_aliastallasycolores2.cpp b/bulmages/bulmatpv/plugins/pluginbt_aliastallasycolores2/pluginbt_aliastallasycolores2.cpp
+index 62fa6a9..75e5aea 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_aliastallasycolores2/pluginbt_aliastallasycolores2.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_aliastallasycolores2/pluginbt_aliastallasycolores2.cpp
+@@ -20,7 +20,7 @@
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+  ***************************************************************************/
+ 
+-#include &lt;QDockWidget&gt;
++#include &lt;QtWidgets/QDockWidget&gt;
+ 
+ #include &quot;pluginbt_aliastallasycolores2.h&quot;
+ #include &quot;blfunctions.h&quot;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_articulografico/artgraficos.cpp b/bulmages/bulmatpv/plugins/pluginbt_articulografico/artgraficos.cpp
+index 60c1834..ebb5ba7 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_articulografico/artgraficos.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_articulografico/artgraficos.cpp
+@@ -2,7 +2,7 @@
+ #include &lt;QtWidgets/QLabel&gt;
+ #include &lt;QtWidgets/QHeaderView&gt;
+ #include &lt;QtCore/QFile&gt;
+-#include &lt;QDomDocument&gt;
++#include &lt;QtXml/QDomDocument&gt;
+ #include &lt;QPicture&gt;
+ #include &lt;QtGui/QPainter&gt;
+ #include &lt;QtWidgets/QPushButton&gt;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_articulografico/artgraficos.h b/bulmages/bulmatpv/plugins/pluginbt_articulografico/artgraficos.h
+index 2f6ac17..75ac736 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_articulografico/artgraficos.h
++++ b/bulmages/bulmatpv/plugins/pluginbt_articulografico/artgraficos.h
+@@ -1,7 +1,7 @@
+ #ifndef ARTGRAFICOS_H
+ #define ARTGRAFICOS_H
+ 
+-#include &lt;QDomDocument&gt;
++#include &lt;QtXml/QDomDocument&gt;
+ #include &lt;QtWidgets/QTableWidget&gt;
+ 
+ #include &quot;blfunctions.h&quot;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.cpp b/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.cpp
+index 5c495e3..c3e1a25 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.cpp
+@@ -26,7 +26,7 @@
+ #include &lt;QtWidgets/QLabel&gt;
+ #include &lt;QtWidgets/QHeaderView&gt;
+ #include &lt;QtCore/QFile&gt;
+-#include &lt;QDomDocument&gt;
++#include &lt;QtXml/QDomDocument&gt;
+ #include &lt;QPicture&gt;
+ #include &lt;QtGui/QPainter&gt;
+ #include &lt;QtWidgets/QPushButton&gt;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.h b/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.h
+index 0e7a0f9..96bd992 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.h
++++ b/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.h
+@@ -24,7 +24,7 @@
+ #ifndef ARTGRAFICOSDB_H
+ #define ARTGRAFICOSDB_H
+ 
+-#include &lt;QDomDocument&gt;
++#include &lt;QtXml/QDomDocument&gt;
+ #include &lt;QtWidgets/QTableWidget&gt;
+ #include &lt;QSignalMapper&gt;
+ 
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_buscaarticulo/pluginbt_buscaarticulo.cpp b/bulmages/bulmatpv/plugins/pluginbt_buscaarticulo/pluginbt_buscaarticulo.cpp
+index 27e3e0e..8a223d7 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_buscaarticulo/pluginbt_buscaarticulo.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_buscaarticulo/pluginbt_buscaarticulo.cpp
+@@ -20,7 +20,7 @@
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+  ***************************************************************************/
+ 
+-#include &lt;QDockWidget&gt;
++#include &lt;QtWidgets/QDockWidget&gt;
+ 
+ #include &quot;pluginbt_buscaarticulo.h&quot;
+ #include &quot;btcompany.h&quot;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_buscacliente/pluginbt_buscacliente.cpp b/bulmages/bulmatpv/plugins/pluginbt_buscacliente/pluginbt_buscacliente.cpp
+index 2f07ee7..2a07651 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_buscacliente/pluginbt_buscacliente.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_buscacliente/pluginbt_buscacliente.cpp
+@@ -20,7 +20,7 @@
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+  ***************************************************************************/
+ 
+-#include &lt;QDockWidget&gt;
++#include &lt;QtWidgets/QDockWidget&gt;
+ 
+ #include &quot;pluginbt_buscacliente.h&quot;
+ #include &quot;blfunctions.h&quot;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_cliente/pluginbt_cliente.cpp b/bulmages/bulmatpv/plugins/pluginbt_cliente/pluginbt_cliente.cpp
+index 1128fe1..ec401fb 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_cliente/pluginbt_cliente.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_cliente/pluginbt_cliente.cpp
+@@ -34,7 +34,7 @@
+ #include &lt;QtWidgets/QHBoxLayout&gt;
+ #include &lt;QtWidgets/QToolButton&gt;
+ #include &lt;QtCore/QProcess&gt;
+-#include &lt;QDockWidget&gt;
++#include &lt;QtWidgets/QDockWidget&gt;
+ #ifndef Q_OS_WIN32
+ #include &lt;QX11EmbedContainer&gt;
+ #endif
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_clientsync/clientsync.cpp b/bulmages/bulmatpv/plugins/pluginbt_clientsync/clientsync.cpp
+index f7315f5..74c1389 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_clientsync/clientsync.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_clientsync/clientsync.cpp
+@@ -26,7 +26,7 @@
+ #include &lt;QtWidgets/QLabel&gt;
+ #include &lt;QtWidgets/QTextBrowser&gt;
+ #include &lt;QHostAddress&gt;
+-#include &lt;QTcpSocket&gt;
++#include &lt;QtNetwork/QTcpSocket&gt;
+ 
+ #include &quot;clientsync.h&quot;
+ #include &quot;bldb.h&quot;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_clientsync/clientsync.h b/bulmages/bulmatpv/plugins/pluginbt_clientsync/clientsync.h
+index 00d16fe..52e7b19 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_clientsync/clientsync.h
++++ b/bulmages/bulmatpv/plugins/pluginbt_clientsync/clientsync.h
+@@ -28,7 +28,7 @@
+ 
+ #include &lt;QtWidgets/QLabel&gt;
+ #include &lt;QtWidgets/QTableWidget&gt;
+- #include &lt;QTcpSocket&gt;
++ #include &lt;QtNetwork/QTcpSocket&gt;
+ 
+ #include &quot;btticket.h&quot;
+ #include &quot;btcompany.h&quot;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_dockapp/dockapp.cpp b/bulmages/bulmatpv/plugins/pluginbt_dockapp/dockapp.cpp
+index 377c248..d7ec6e4 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_dockapp/dockapp.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_dockapp/dockapp.cpp
+@@ -3,11 +3,11 @@
+ #include &quot;blfunctions.h&quot;
+ #include &lt;QtWidgets/QWidget&gt;
+ #include &lt;QtWidgets/QMenu&gt;
+-#include &lt;QSvgRenderer&gt;
++#include &lt;QtSvg/QSvgRenderer&gt;
+ #include &lt;QtWidgets/QFileDialog&gt;
+ #include &lt;QtWidgets/QInputDialog&gt;
+ #include &lt;QtCore/QTextStream&gt;
+-#include &lt;QDomDocument&gt;
++#include &lt;QtXml/QDomDocument&gt;
+ 
+ #include &quot;blmainwindow.h&quot;
+ #include &quot;blplugins.h&quot;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_ivaincluido/pluginbt_ivaincluido.cpp b/bulmages/bulmatpv/plugins/pluginbt_ivaincluido/pluginbt_ivaincluido.cpp
+index 2c3b728..3cc8f74 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_ivaincluido/pluginbt_ivaincluido.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_ivaincluido/pluginbt_ivaincluido.cpp
+@@ -25,7 +25,7 @@
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+  ***************************************************************************/
+ 
+-#include &lt;QDockWidget&gt;
++#include &lt;QtWidgets/QDockWidget&gt;
+ 
+ #include &quot;pluginbt_ivaincluido.h&quot;
+ #include &quot;blfunctions.h&quot;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_mesas/mesas.cpp b/bulmages/bulmatpv/plugins/pluginbt_mesas/mesas.cpp
+index b86f9fe..45ddb7f 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_mesas/mesas.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_mesas/mesas.cpp
+@@ -2,11 +2,11 @@
+ #include &quot;btbulmatpv.h&quot;
+ #include &lt;QtWidgets/QWidget&gt;
+ #include &lt;QtWidgets/QMenu&gt;
+-#include &lt;QSvgRenderer&gt;
++#include &lt;QtSvg/QSvgRenderer&gt;
+ #include &lt;QtWidgets/QFileDialog&gt;
+ #include &lt;QtWidgets/QInputDialog&gt;
+ #include &lt;QtCore/QTextStream&gt;
+-#include &lt;QDomDocument&gt;
++#include &lt;QtXml/QDomDocument&gt;
+ #include &lt;QtCore/QTimer&gt;
+ 
+ #include &quot;blmainwindow.h&quot;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_modificadores/modificadoresqtoolbutton.cpp b/bulmages/bulmatpv/plugins/pluginbt_modificadores/modificadoresqtoolbutton.cpp
+index 54f36c8..7a243b6 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_modificadores/modificadoresqtoolbutton.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_modificadores/modificadoresqtoolbutton.cpp
+@@ -28,7 +28,7 @@
+ #include &lt;QtWidgets/QFileDialog&gt;
+ #include &lt;QtCore/QMap&gt;
+ #include &lt;QtCore/QList&gt;
+-#include &lt;QBuffer&gt;
++#include &lt;QtCore/QBuffer&gt;
+ 
+ 
+ #include &quot;tabletcanvas.h&quot;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_modificadores/pluginbt_modificadores.cpp b/bulmages/bulmatpv/plugins/pluginbt_modificadores/pluginbt_modificadores.cpp
+index f387a0e..2807968 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_modificadores/pluginbt_modificadores.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_modificadores/pluginbt_modificadores.cpp
+@@ -21,7 +21,7 @@
+  ***************************************************************************/
+ 
+ #include &lt;QtWidgets/QToolButton&gt;
+-#include &lt;QBuffer&gt;
++#include &lt;QtCore/QBuffer&gt;
+ 
+ #include &quot;pluginbt_modificadores.h&quot;
+ #include &quot;blconfiguration.h&quot;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_modificadores/tabletcanvas.h b/bulmages/bulmatpv/plugins/pluginbt_modificadores/tabletcanvas.h
+index 6f420a8..0845521 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_modificadores/tabletcanvas.h
++++ b/bulmages/bulmatpv/plugins/pluginbt_modificadores/tabletcanvas.h
+@@ -48,7 +48,7 @@
+ #include &lt;QTabletEvent&gt;
+ #include &lt;QColor&gt;
+ #include &lt;QtGui/QBrush&gt;
+-#include &lt;QPen&gt;
++#include &lt;QtGui/QPen&gt;
+ #include &lt;QPoint&gt;
+ 
+ #include &quot;blfunctions.h&quot;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_printercocina/pluginbt_printercocina.cpp b/bulmages/bulmatpv/plugins/pluginbt_printercocina/pluginbt_printercocina.cpp
+index 4f4b55c..f040b35 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_printercocina/pluginbt_printercocina.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_printercocina/pluginbt_printercocina.cpp
+@@ -25,7 +25,7 @@
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+  ***************************************************************************/
+ 
+-#include &lt;QDockWidget&gt;
++#include &lt;QtWidgets/QDockWidget&gt;
+ 
+ #include &quot;pluginbt_printercocina.h&quot;
+ #include &quot;blfunctions.h&quot;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_pulseras/pluginbt_pulseras.cpp b/bulmages/bulmatpv/plugins/pluginbt_pulseras/pluginbt_pulseras.cpp
+index f427bee..f2edf6d 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_pulseras/pluginbt_pulseras.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_pulseras/pluginbt_pulseras.cpp
+@@ -32,7 +32,7 @@
+ #include &quot;pulsera.h&quot;
+ 
+ #include &lt;QtWidgets/QHBoxLayout&gt;
+-#include &lt;QDomDocument&gt;
++#include &lt;QtXml/QDomDocument&gt;
+ #include &lt;QtXml/QDomNode&gt;
+ 
+ #define ARTICULO_HORA_COMPLETA &quot;36&quot;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_serverlight/serverlight.cpp b/bulmages/bulmatpv/plugins/pluginbt_serverlight/serverlight.cpp
+index c6000d9..13fc9f0 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_serverlight/serverlight.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_serverlight/serverlight.cpp
+@@ -29,10 +29,10 @@
+ 
+ #include &lt;QtWidgets/QLabel&gt;
+ #include &lt;QtWidgets/QTextBrowser&gt;
+-#include &lt;QTcpServer&gt;
+-#include &lt;QTcpSocket&gt;
+-#include &lt;QDomDocument&gt;
+-#include &lt;QBuffer&gt;
++#include &lt;QtNetwork/QTcpServer&gt;
++#include &lt;QtNetwork/QTcpSocket&gt;
++#include &lt;QtXml/QDomDocument&gt;
++#include &lt;QtCore/QBuffer&gt;
+ 
+ #include &quot;serverlight.h&quot;
+ #include &quot;bldb.h&quot;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_serverlight/serverlight.h b/bulmages/bulmatpv/plugins/pluginbt_serverlight/serverlight.h
+index cd7da66..e96a783 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_serverlight/serverlight.h
++++ b/bulmages/bulmatpv/plugins/pluginbt_serverlight/serverlight.h
+@@ -31,7 +31,7 @@
+ #define SERVERLIGHT_H
+ 
+ #include &lt;QtCore/QObject&gt;
+- #include &lt;QTcpServer&gt;
++ #include &lt;QtNetwork/QTcpServer&gt;
+  
+ #include &quot;btticket.h&quot;
+ #include &quot;btcompany.h&quot;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_serversync/serversync.cpp b/bulmages/bulmatpv/plugins/pluginbt_serversync/serversync.cpp
+index f548367..3f2e33f 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_serversync/serversync.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_serversync/serversync.cpp
+@@ -25,8 +25,8 @@
+ 
+ #include &lt;QtWidgets/QLabel&gt;
+ #include &lt;QtWidgets/QTextBrowser&gt;
+-#include &lt;QTcpServer&gt;
+-#include &lt;QTcpSocket&gt;
++#include &lt;QtNetwork/QTcpServer&gt;
++#include &lt;QtNetwork/QTcpSocket&gt;
+ 
+ #include &quot;serversync.h&quot;
+ #include &quot;bldb.h&quot;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_serversync/serversync.h b/bulmages/bulmatpv/plugins/pluginbt_serversync/serversync.h
+index 5ab3931..4c7e868 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_serversync/serversync.h
++++ b/bulmages/bulmatpv/plugins/pluginbt_serversync/serversync.h
+@@ -28,7 +28,7 @@
+ 
+ #include &lt;QtWidgets/QLabel&gt;
+ #include &lt;QtWidgets/QTableWidget&gt;
+- #include &lt;QTcpServer&gt;
++ #include &lt;QtNetwork/QTcpServer&gt;
+ 
+ #include &quot;btticket.h&quot;
+ #include &quot;btcompany.h&quot;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_teclado/pluginbt_teclado.cpp b/bulmages/bulmatpv/plugins/pluginbt_teclado/pluginbt_teclado.cpp
+index 5d81ee8..e9ccbe8 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_teclado/pluginbt_teclado.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_teclado/pluginbt_teclado.cpp
+@@ -34,7 +34,7 @@
+ #include &lt;QtWidgets/QHBoxLayout&gt;
+ #include &lt;QtWidgets/QToolButton&gt;
+ #include &lt;QtCore/QProcess&gt;
+-#include &lt;QDockWidget&gt;
++#include &lt;QtWidgets/QDockWidget&gt;
+ #ifndef Q_OS_WIN32
+ #include &lt;QX11EmbedContainer&gt;
+ #endif
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_tecladonumerico/pluginbt_tecladonumerico.cpp b/bulmages/bulmatpv/plugins/pluginbt_tecladonumerico/pluginbt_tecladonumerico.cpp
+index 96140e6..15ad174 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_tecladonumerico/pluginbt_tecladonumerico.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_tecladonumerico/pluginbt_tecladonumerico.cpp
+@@ -20,7 +20,7 @@
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+  ***************************************************************************/
+ 
+-#include &lt;QDockWidget&gt;
++#include &lt;QtWidgets/QDockWidget&gt;
+ 
+ #include &quot;pluginbt_tecladonumerico.h&quot;
+ #include &quot;blfunctions.h&quot;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_ticketivaincluido/mticketivainc.cpp b/bulmages/bulmatpv/plugins/pluginbt_ticketivaincluido/mticketivainc.cpp
+index 7c16fcc..18105ef 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_ticketivaincluido/mticketivainc.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_ticketivaincluido/mticketivainc.cpp
+@@ -25,7 +25,7 @@
+ 
+ #include &lt;QtWidgets/QLabel&gt;
+ #include &lt;QtWidgets/QTextBrowser&gt;
+-#include &lt;QBitmap&gt;
++#include &lt;QtGui/QBitmap&gt;
+ 
+ #include &quot;mticketivainc.h&quot;
+ #include &quot;bldb.h&quot;
+
+commit 0f905af7a56211b01b44d123ea05981e94a616c7
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">info en danielripoll.es</A>&gt;
+Date:   Tue Jan 15 15:16:05 2013 +0100
+
+    Descomento plugins de PV para que compilar en Qt5.
+    
+    --
+    Daniel Ripoll Osma
+    <A HREF="http://danielripoll.es">http://danielripoll.es</A>
+    <A HREF="http://bulmages.es">http://bulmages.es</A>
+    <A HREF="http://manualencatala.tk">http://manualencatala.tk</A>
+    6688.27.4.90
+    
+    Web &amp; Desktop Developer
+
+diff --git a/bulmages/bulmatpv/plugins/CMakeLists.txt b/bulmages/bulmatpv/plugins/CMakeLists.txt
+index 147307d..5fe1709 100644
+--- a/bulmages/bulmatpv/plugins/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/CMakeLists.txt
+@@ -1,40 +1,40 @@
+-#add_subdirectory(pluginbt_ticket)
+-#add_subdirectory(pluginbt_ticketivaincluido)
+-#add_subdirectory(pluginbt_tecladonumerico)
+-#add_subdirectory(pluginbt_total)
+-#add_subdirectory(pluginbt_totalivaincluido)
+-#add_subdirectory(pluginbt_articulografico)
+-#add_subdirectory(pluginbt_articulograficodb)
+-#add_subdirectory(pluginbt_controlcaja)
+-##add_subdirectory(pluginbt_cobrar)
+-#add_subdirectory(pluginbt_articulosubform)
+-#add_subdirectory(pluginbt_ivaincluido)
+-#add_subdirectory(pluginbt_alias)
+-##add_subdirectory(pluginbt_aliastallasycolores2)
+-##add_subdirectory(pluginbt_aliastallasycolores)
+-##add_subdirectory(pluginbt_ticketdesglose)
+-#add_subdirectory(pluginbt_buscaarticulo)
+-#add_subdirectory(pluginbt_visor)
+-#add_subdirectory(pluginbt_buscacliente)
+-#add_subdirectory(pluginbt_cambio)
+-#add_subdirectory(pluginbt_cambioivaincluido)
+-##add_subdirectory(pluginbt_devolucion)
+-##add_subdirectory(pluginbt_devolucion2)
+-##add_subdirectory(pluginbt_ticketdevuelto)
+-#add_subdirectory(pluginbt_printercocina)
+-#add_subdirectory(pluginbt_modificadores)
+-#add_subdirectory(pluginbt_serversync)
+-#add_subdirectory(pluginbt_clientsync)
+-#add_subdirectory(pluginbt_mesas)
+-#add_subdirectory(pluginbt_pulseras)
+-#add_subdirectory(pluginbt_camareros)
+-##add_subdirectory(pluginbt_dockapp)
+-#add_subdirectory(pluginbt_serverlight)
+-##add_subdirectory(pluginbt_teclado)
+-#add_subdirectory(pluginbt_cliente)
+-#add_subdirectory(pluginbt_cobrarparcialivaincluido)
+-##add_subdirectory(pluginbt_debug)
+-##add_subdirectory(pluginbt_example)
++add_subdirectory(pluginbt_ticket)
++add_subdirectory(pluginbt_ticketivaincluido)
++add_subdirectory(pluginbt_tecladonumerico)
++add_subdirectory(pluginbt_total)
++add_subdirectory(pluginbt_totalivaincluido)
++add_subdirectory(pluginbt_articulografico)
++add_subdirectory(pluginbt_articulograficodb)
++add_subdirectory(pluginbt_controlcaja)
++#add_subdirectory(pluginbt_cobrar)
++add_subdirectory(pluginbt_articulosubform)
++add_subdirectory(pluginbt_ivaincluido)
++add_subdirectory(pluginbt_alias)
++#add_subdirectory(pluginbt_aliastallasycolores2)
++#add_subdirectory(pluginbt_aliastallasycolores)
++#add_subdirectory(pluginbt_ticketdesglose)
++add_subdirectory(pluginbt_buscaarticulo)
++add_subdirectory(pluginbt_visor)
++add_subdirectory(pluginbt_buscacliente)
++add_subdirectory(pluginbt_cambio)
++add_subdirectory(pluginbt_cambioivaincluido)
++#add_subdirectory(pluginbt_devolucion)
++#add_subdirectory(pluginbt_devolucion2)
++#add_subdirectory(pluginbt_ticketdevuelto)
++add_subdirectory(pluginbt_printercocina)
++add_subdirectory(pluginbt_modificadores)
++add_subdirectory(pluginbt_serversync)
++add_subdirectory(pluginbt_clientsync)
++add_subdirectory(pluginbt_mesas)
++add_subdirectory(pluginbt_pulseras)
++add_subdirectory(pluginbt_camareros)
++#add_subdirectory(pluginbt_dockapp)
++add_subdirectory(pluginbt_serverlight)
++#add_subdirectory(pluginbt_teclado)
++add_subdirectory(pluginbt_cliente)
++add_subdirectory(pluginbt_cobrarparcialivaincluido)
++#add_subdirectory(pluginbt_debug)
++#add_subdirectory(pluginbt_example)
+ 
+ if(NOT WIN32)
+ add_subdirectory(pluginbt_bascula)
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007506.html">[BulmaGés] [Gitorious] Activity: themeph pushed 1	commits to qt5qt5...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007508.html">[BulmaGés] Repositorio (temporal) de mis paquetes	Debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7507">[ fecha ]</a>
+              <a href="thread.html#7507">[ hilo ]</a>
+              <a href="subject.html#7507">[ asunto ]</a>
+              <a href="author.html#7507">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

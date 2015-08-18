@@ -1,0 +1,1259 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaG�s] [Bug #15881] NO SE PUEDE CREAR EMPRESA
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2315881%5D%20NO%20SE%20PUEDE%20CREAR%20EMPRESA&In-Reply-To=%3C200906181438.n5IEcuO6026914%40unicorn.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002454.html">
+   <LINK REL="Next"  HREF="002453.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaG�s] [Bug #15881] NO SE PUEDE CREAR EMPRESA </H1>
+    <B>admin en berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2315881%5D%20NO%20SE%20PUEDE%20CREAR%20EMPRESA&In-Reply-To=%3C200906181438.n5IEcuO6026914%40unicorn.berlios.de%3E"
+       TITLE="[BulmaG�s] [Bug #15881] NO SE PUEDE CREAR EMPRESA">admin en berlios.de
+       </A><BR>
+    <I>Jue Jun 18 16:38:56 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002454.html">[BulmaG�s]Funci�n de &quot;Actualizar la base de datos&quot; en BulmaSetup
+</A></li>
+        <LI>Pr�ximo mensaje: <A HREF="002453.html">[BulmaG�s]N�mero de &quot;Orden: &quot; en README.es
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2451">[ fecha ]</a>
+              <a href="thread.html#2451">[ hilo ]</a>
+              <a href="subject.html#2451">[ asunto ]</a>
+              <a href="author.html#2451">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bug #15881, was updated on 2009-Jun-18 13:41
+Here is a current snapshot of the bug.
+
+Project: BulmaGes, Gesti�n Empresarial Libre
+Category: bulmasetup
+Status: Open
+Resolution: None
+Bug Group: Unreproducible
+Priority: 5
+Submitted by: turkil
+Assigned to : none
+Summary: NO SE PUEDE CREAR EMPRESA
+
+Details: Mediante el nuevo bulmasetup no puedo crear una nueva empresa.
+
+Hago todo el proceso, parece que todo va bien pero la empresa no aparece por ninguna parte.
+
+El fichero de la configuracion de empresa dentro de /etc/bulmages se crea bien con sus debidos plugins.
+
+***Os dejo el log de la terminal:****
+
+su postgres -c &quot;createdb -E UNICODE casasdanico&quot;
+
+Started.
+
+Started.
+error: createdb: database creation failed: ERROR: database &quot;casasdanico&quot; already exists 
+Done.
+
+su postgres -c &quot;psql casasdanico 
+
+Started.
+
+Started.
+********* INICIADO FICHERO DE ESTRUCTURA DE LA BASE DE DATOS DE BULMAFACT ********* 
+::<i> Establecemos los mensajes minimos a avisos y otros parametros ... 
+</I>::<i> SET :: SET :: SET :: SET :: plpgsql_call_handler ... :: Establecemos el lenguaje de procedimientos ... :: BEGIN :: Configuracion ... 
+</I>error: ERROR: function &quot;plpgsql_call_handler&quot; already exists with same argument types ERROR: language &quot;plpgsql&quot; already exists 
+CREATE TABLE :: Pais ... 
+CREATE TABLE :: Provincia ... 
+CREATE TABLE :: Forma de pago ... 
+::<i> Almacen ... 
+</I>error: ERROR: relation &quot;banco&quot; does not exist 
+::<i> Banco ... 
+</I>error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+::<i> Trabajador ... 
+</I>error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+::<i> Moneda ... 
+</I>error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+::<i> Tipo de IVA ... 
+</I>error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+::<i> Tasa de IVA ... 
+</I>error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+::<i> Serie de factura ... 
+</I>error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+::<i> Familia ... 
+</I>error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+::<i> Funcion que calcula el codigo completo de la familia ... 
+</I>error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+::<i> Disparador que calcula el codigo completo de la familia ... 
+</I>error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+::<i> Funcion que propaga el codigo completo de la familia ... :: Disparador que propaga el codigo completo de la familia ... :: Tipo de articulo ... :: Articulo ... :: Crea o reemplaza funcion is_number ... :: Crea o reemplaza funcion to_number ... :: Funcion que calcula el codigo completo del articulo ... :: Disparador que calcula el codigo completo del articulo ... :: Componentes de articulo ... :: Tarifa ... :: Lineas de tarifa ... :: Crea indice de lineas de tarifa ... :: Funcion que calcula el precio segun cliente y almacen ... :: Proveedor ... :: Division ... :: Cliente ... :: Cobro ... :: Funcion que crea restricciones en cobro ... :: Disparador de restricciones en cobro ... :: Pago ... :: Funcion que crea restricciones en pago ... :: Disparador de restricciones en pago ... :: Pedido ... :: Usuario ... :: Factura de proveedor ... :: Albaran de proveedor ... :: Lineas de pedido ... :: Presupuesto ... :: Funcion que crea restricciones en presupuesto ... :: Disparador de r!
+</I> estricciones en presupuesto ... :: Descuento de presupuesto ... :: Lineas de presupuesto ... :: Funcion que actualiza el total del presupuesto ... :: Disparador al insertar o actualizar lineas en un pedido de cliente ... 
+error: ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transactio!
+ n is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored !
+ until end of transaction block ERROR: current transaction is a!
+ borted, 
+commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block 
+::<i> Disparador al insertar o actualizar descuentos en un pedido de cliente ... :: Funcion que actualiza el total del presupuesto al borrar una linea ... :: Disparador al borrar o actualizar lineas de un presupuesto a cliente ... :: Disparador al borrar o actualizar dewcuentos de un presupuesto a cliente ... :: Pedido de cliente ... :: Funcion con restricciones de un pedido de cliente ... :: Disparador de restricciones de un pedido de cliente ... :: Descuento de pedido de cliente ... :: Lineas de pedido de cliente ... :: Funcion para actualizar el total de pedido de cliente ... :: Disparador que actualiza el total de un pedido de cliente al insertar una linea ... :: Disparador que actualiza el total de un pedido de cliente al insertar un descuento... :: Funcion que actualiza el total del pedido de cliente al borrar una linea ... :: Disparador que actualiza el total de un pedido de cliente al borrar una linea ... :: Disparador que actualiza el total de un pedido de cliente al b!
+</I> orrar un descuento ... :: Factura ... :: Funcion con restricciones en factura ... :: Disparador antes de insertar o actualizar una factura ... :: Descuento de factura ... :: Lineas de factura ... :: Funcion con restricciones en lineas de factura ... :: Disparador al insertar o actualizar lineas de una factura ... :: Funcion que calcula el total de una factura ... :: Funcion que calcula la base imponible total de una factura ... :: Funcion que calcula los impuestos totales de una factura ... :: Funcion que actualiza el total de una factura ... :: Disparador que actualizar el total de una linea de factura al insertar una linea ... :: Disparador que actualizar el total de una linea de factura al insertar un descuento ... :: Funcion que actualiza el total de una factura al borrar una linea de detalle ... :: Disparador que actualiza el total de una factura al borrar o actualizar una linea de detalle ... :: Disparador que actualiza el total de una factura al borrar o actualizar u!
+ n descuento ... :: Factura de proveedor ... :: Funcion ... :: !
+ Creadas 
+las restricciones para la tabla de facturas a proveedores ... :: Lineas de factura de proveedor ... :: Descuento de facturas de proveedor ... :: Funcion que calcula el total de una factura de proveedor ... :: Funcion que calcula la Base Imponible total de una factura de proveedor ... :: Funcion que calcula el total de impuestos de una factura de proveedor ... :: Funcion que actualiza el total de una factura de proveedor ... :: Disparador que actualiza el total de una factura de proveedor al insertar una linea de detalle ... :: Disparador que actualiza el total de una factura de proveedor al insertar un descuento ... :: Funcion que actualiza el total de una factura de proveedor al borrar una linea de detalle ... :: Disparador que actualiza el total de una factura de proveedor al borrar una linea de detalle ... :: Disparador que actualiza el total de una factura de proveedor al borrar un descuento ... :: Albaran de proveedor ... :: Funcion con restricciones en los albaranes de!
+  proveedor ... :: Disparador de restricciones antes de insertar o actualizar un albaran de proveedor ... :: Lineas de albaran de proveedor ... :: Descuento en albaran de proveedor ... :: Funcion que calcula el total del albaran de proveedor ... :: Funcion que calcula la Base Imponible total de un albaran de proveedor ... :: Funcion que calcula el total de impuestos de un albaran de proveedor ... :: Funcion que actualiza el total de un albaran de proveedor ... :: Disparador que actualiza el total de un albaran de proveedor al insertar una linea de detalle ... :: Disparador que actualiza el total de un albaran de proveedor al insertar un descuento ... :: Funcion que actualiza el total de un albaran de proveedor al borrar una linea de detalle ... :: Disparador que actualiza el total de un albaran de proveedor al borrar una linea de detalle ... :: Disparador que actualiza el total de un albaran de proveedor al borrar un descuento ... :: Funcion random_string que genera una cade!
+ na aleatoria ... 
+error: ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transactio!
+ n is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored !
+ until end of transaction block ERROR: current transaction is a!
+ borted, 
+commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of tr!
+ ansaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current !
+ transaction is aborted, commands ignored until end of transact!
+ ion bloc
+k ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is !
+ aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until!
+  end of transaction block ERROR: current transaction is aborte!
+ d, comma
+nds ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transac!
+ tion block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current trans!
+ action is aborted, commands ignored until end of transaction b!
+ lock ERR
+OR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is abort!
+ ed, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: relation &quot;configuracion&quot; does not exist CONTEXT: SQL statement &quot;SELECT * FROM configuracion WHERE nombre = 'DatabaseRevision'&quot; PL/pgSQL function &quot;actualizarevision&quot; line 4 at SQL statement 
+::<i> Funcion crearef para crear codigos de referencia ... :: Albaran ... :: Funcion con restricciones en el albaran ... :: Disparador de las restricciones antes de insertar o actualizar un albaran ... :: Descuento de albaran ... :: Lineas de albaran ... :: Funcion que actualiza el total de un albaran ... :: Disparador que actualiza el total de un albaran al insertar o actualizar una linea de detalle ... :: Disparador que actualiza el total de un albaran al insertar o actualizar una descuento ... :: Funcion que actualiza el total de un albaran al borrar una linea de detalle ... :: Disparador que actualiza el total de un albaran al borrar una linea de detalle ... :: Disparador que actualiza el total de un albaran al borrar un descuento ... :: Ticket ... :: Controla que proveedor suministra un articulo ... :: Precio de compra ... :: Codigo de barras ... :: Funcion que calcula el IVA de un articulo ... :: Funcion que calcula el PVP de un articulo ... :: Pedido a proveedor ... :: F!
+</I> uncion con restricciones en pedidos a proveedor ... :: Disparador de restricciones antes de insertar o actualizar un pedidos a proveedor ... :: Descuento en pedido a proveedor ... :: Lineas de pedido a proveedor ... :: Funcion que calcula el total del pedido a proveedor ... :: Funcion que calcula la Base Imponible total de un pedido a proveedor ... :: Funcion que calcula el total de impuestos de un pedido a proveedor ... :: Funcion que actualiza el total de un pedido a proveedor ... :: Disparador que actualiza el total de un pedido a proveedor al insertar una linea de detalle ... :: Disparador que actualiza el total de un pedido a proveedor al insertar un descuento ... :: Funcion que actualiza un pedido a proveedor al borrar una linea de detalle ... :: Disparador que actualiza el total de un pedido a proveedor al borrar una linea de detalle ... :: Disparador que actualiza el total de un pedido a proveedor al borrar un descuento ... :: Funcion que calcula el total de un pres!
+ upuesto a cliente ... :: Funcion que calcula la Base Imponible!
+  total d
+e un presupuesto a cliente ... :: Funcion que calcula el total de impuestos de un presupuesto a cliente ... :: Funcion que calcula el total de un pedido de cliente ... :: Funcion que calcula la Base Imponible total de un pedido de cliente ... :: Funcion que calcula el total de impuestos de un pedido de cliente ... :: Funcion que calcula el total de un albaran a cliente ... :: Funcion que calcula la Base Imponible total de un albaran a cliente ... :: Funcion que calcula los impuestos totales de un albaran a cliente ... :: Funcion para disminuir stock ... :: Disparador que disminuye stock al borrar o actualizar el detalle de un albaran a cliente ... :: Funcion para aumentar stock ... :: Disparador que aumenta stock al insertar o actualizar el detalle de un albaran a cliente ... :: Funcion disminuye stockp ... :: Disparador que disminuye stock al borrar o actualizar el detalle de un albaran de proveedor ... :: Funcion que aumenta el stock al recibir mercancias de un proveedor .!
+ .. :: Disparador que aumenta stock al insertar o actualizar el detalle de un albaran de proveedor ... :: Funcion que modifica el stock de un articulo ... :: Disparador que modifica el stock al actualizar los datos de un articulo ... :: ROLLBACK ********* FIN FICHERO DE ESTRUCTURA DE LA BASE DE DATOS DE BULMAFACT ********* CREATE FUNCTION DROP FUNCTION &quot;Actualizada la revision de la base de datos a la version 0.11.1&quot; 
+Done.
+
+su postgres -c &quot;psql casasdanico 
+
+Started.
+
+Started.
+********* INICIADO FICHERO DE DATOS MINIMO PARA BULMAFACT ********* 
+::<i> 
+</I>SET 
+::<i> Configuracion ... 
+</I>BEGIN 
+error: ERROR: relation &quot;configuracion&quot; does not exist 
+error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block 
+::<i> Configuraciones ... ROLLBACK ********* FIN FICHERO DE DATOS MINIMO PARA BULMAFACT ********* 
+</I>error: ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block ERROR: current transaction is aborted, commands ignored until end of transaction block 
+Done.
+
+su postgres -c 'psql casasdanico -c &quot;UPDATE configuracion set valor='&quot;'CASAS DANICO'&quot;' WHERE nombre = '&quot;'NombreEmpresa'&quot;';&quot;'
+ACTUALIZANDO PLUGINS
+Tratando Manejo de TPV
+Tratando Traspaso de Z
+Tratando Ampliación de Almacenes
+Tratando Demostración del funcionamiento de los plugins
+Tratando Tarifas
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/pluginbf_variaciontarifa-rm.sql casasdanico&quot;
+
+Started.
+
+Started.
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE VARIACION TARIFA POR CANTIDAD *********&quot; 
+&quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot; 
+&quot;:: &quot;
+SET 
+SET 
+BEGIN 
+CREATE FUNCTION 
+CREATE FUNCTION 
+CREATE FUNCTION 
+0 
+DROP FUNCTION 
+&quot;Eliminamos la tabla variaciontarifa.&quot; 
+CREATE FUNCTION 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_variaciontarifa-rm.sql:83: 
+error: ERROR: relation &quot;configuracion&quot; does not exist CONTEXT: SQL statement &quot;SELECT * FROM configuracion WHERE nombre='PluginBf_VariacionTarifa'&quot; PL/pgSQL function &quot;actualizarevision&quot; line 4 at SQL statement 
+&quot;Eliminamos la revision de la base de datos&quot; 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_variaciontarifa-rm.sql:84: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_variaciontarifa-rm.sql:88: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_variaciontarifa-rm.sql:89: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+ROLLBACK 
+Done.
+
+
+Tratando Informe de Clientes en Hoja de Cálculo.
+Tratando Trabajo con múltiples documentos.
+Actualizando Trabajo con múltiples documentos.
+============ 
+Tratando Facturas de Proveedor
+Actualizando Facturas de Proveedor
+============ 
+Tratando Contabilidad en la facturacion
+Tratando Corrector de Facturacion
+Tratando Pedidos de Clientes
+Tratando Asociacion
+Tratando Contabilidad en la Facturacion
+Tratando Contratos con Clientes
+Actualizando Contratos con Clientes
+============ 
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/revf-plugincontratos.sql casasdanico&quot;
+
+Started.
+
+Started.
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE CONTRATOS *********&quot; &quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot; &quot;:: &quot;SET SET BEGIN 
+CREATE FUNCTION 
+CREATE FUNCTION 
+CREATE FUNCTION 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/revf-plugincontratos.sql:90: ERROR: relation &quot;cliente&quot; does not exist CONTEXT: SQL statement &quot;CREATE TABLE contrato ( idcontrato SERIAL PRIMARY KEY, idcliente INTEGER NOT NULL REFERENCES cliente(idcliente), refcontrato VARCHAR, nomcontrato VARCHAR NOT NULL, fincontrato DATE, ffincontrato DATE, periodicidadcontrato INTERVAL, descontrato VARCHAR, loccontrato VARCHAR )&quot; PL/pgSQL function &quot;aux&quot; line 7 at SQL statement 
+::<i> Agregamos los campos y tablas para el plugin PluginContratos ... &quot;Parcheo la funcion crearef para que contemple la nueva referencia.&quot; :: Funcion que crea restricciones en los contratos ... &quot;Actualizada la revision de la base de datos a la version 0.9.1&quot; ROLLBACK 
+</I>error: psql:/usr/local/share/bulmages/dbmodels/plugins/revf-plugincontratos.sql:91: ERROR: current transaction is aborted, commands ignored until end of transaction block psql:/usr/local/share/bulmages/dbmodels/plugins/revf-plugincontratos.sql:109: ERROR: current transaction is aborted, commands ignored until end of transaction block psql:/usr/local/share/bulmages/dbmodels/plugins/revf-plugincontratos.sql:110: ERROR: current transaction is aborted, commands ignored until end of transaction block psql:/usr/local/share/bulmages/dbmodels/plugins/revf-plugincontratos.sql:111: ERROR: current transaction is aborted, commands ignored until end of transaction block psql:/usr/local/share/bulmages/dbmodels/plugins/revf-plugincontratos.sql:118: ERROR: current transaction is aborted, commands ignored until end of transaction block psql:/usr/local/share/bulmages/dbmodels/plugins/revf-plugincontratos.sql:135: ERROR: current transaction is aborted, commands ignored until end of transaction!
+  block psql:/usr/local/share/bulmages/dbmodels/plugins/revf-plugincontratos.sql:141: ERROR: current transaction is aborted, commands ignored until end of transaction block psql:/usr/local/share/bulmages/dbmodels/plugins/revf-plugincontratos.sql:160: ERROR: current transaction is aborted, commands ignored until end of transaction block psql:/usr/local/share/bulmages/dbmodels/plugins/revf-plugincontratos.sql:161: ERROR: current transaction is aborted, commands ignored until end of transaction block psql:/usr/local/share/bulmages/dbmodels/plugins/revf-plugincontratos.sql:162: ERROR: current transaction is aborted, commands ignored until end of transaction block psql:/usr/local/share/bulmages/dbmodels/plugins/revf-plugincontratos.sql:166: ERROR: current transaction is aborted, commands ignored until end of transaction block psql:/usr/local/share/bulmages/dbmodels/plugins/revf-plugincontratos.sql:167: ERROR: current transaction is aborted, commands ignored until end of transacti!
+ on block 
+Done.
+
+
+Tratando Precios de coste
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/pluginbf_preciocoste-rm.sql casasdanico&quot;
+
+Started.
+
+Started.
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE PRECIO COSTE *********&quot; 
+&quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot; 
+&quot;:: &quot;
+SET 
+SET 
+BEGIN 
+CREATE FUNCTION 
+CREATE FUNCTION 
+CREATE FUNCTION 
+0 
+DROP FUNCTION 
+&quot;Quitado el campo precio de coste a los articulos&quot; 
+0 
+0 
+CREATE FUNCTION 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_preciocoste-rm.sql:100: 
+error: ERROR: relation &quot;configuracion&quot; does not exist CONTEXT: SQL statement &quot;SELECT * FROM configuracion WHERE nombre='PluginBf_PrecioCoste'&quot; PL/pgSQL function &quot;actualizarevision&quot; line 4 at SQL statement 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_preciocoste-rm.sql:101: 
+&quot;Quitada la revision de la base de datos&quot; 
+error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_preciocoste-rm.sql:105: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_preciocoste-rm.sql:106: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+ROLLBACK 
+Done.
+
+
+Tratando Pedidos a Proveedor
+Tratando Gestión de Comerciales
+Tratando Modo Debug
+Tratando Enviar documentos por e-mail
+Tratando Facturas a Clientes
+Tratando Trabajadores
+Actualizando Trabajadores
+============ 
+Tratando Listas de Precios
+Tratando Informe Clientes en Hoja de Cálculo.
+Tratando Albaranes a clientes
+Actualizando Albaranes a clientes
+============ 
+Tratando Control de presencia por centralita Asterisk
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/pluginbf_asterisk-rm.sql casasdanico&quot;
+
+Started.
+
+Started.
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE ASTERISK *********&quot; 
+&quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot; 
+&quot;:: &quot;
+SET 
+SET 
+BEGIN 
+CREATE FUNCTION 
+CREATE FUNCTION 
+CREATE FUNCTION 
+0 
+DROP FUNCTION 
+&quot;Quitamos las tablas necesarias para validaciones con Asterisk&quot; 
+0 
+CREATE FUNCTION 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_asterisk-rm.sql:99: 
+error: ERROR: relation &quot;configuracion&quot; does not exist CONTEXT: SQL statement &quot;SELECT * FROM configuracion WHERE nombre='PluginBf_Asterisk'&quot; PL/pgSQL function &quot;actualizarevision&quot; line 4 at SQL statement 
+&quot;Eliminada la revision de la base de datos&quot; 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_asterisk-rm.sql:100: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_asterisk-rm.sql:104: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_asterisk-rm.sql:105: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+ROLLBACK 
+Done.
+
+
+Tratando Envio de Documentos por e-mail usando Thunderbird
+Actualizando Envio de Documentos por e-mail usando Thunderbird
+============ 
+Tratando Bancos
+Actualizando Bancos
+============ 
+Tratando Alias
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/pluginbf_alias-rm.sql casasdanico&quot;
+
+Started.
+
+Started.
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE ALIAS *********&quot; 
+&quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot; 
+&quot;:: &quot;
+SET 
+SET 
+BEGIN 
+CREATE FUNCTION 
+CREATE FUNCTION 
+CREATE FUNCTION 
+0 
+DROP FUNCTION 
+&quot;:: Eliminaad la tabla de Alias ... &quot; 
+DROP INDEX 
+DROP INDEX 
+CREATE FUNCTION 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_alias-rm.sql:90: 
+error: ERROR: relation &quot;configuracion&quot; does not exist CONTEXT: SQL statement &quot;SELECT * FROM configuracion WHERE nombre='PluginBf_Alias'&quot; PL/pgSQL function &quot;actualizarevision&quot; line 4 at SQL statement 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_alias-rm.sql:91: 
+error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+&quot;Eliminada la revision de la base de datos&quot; 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_alias-rm.sql:95: 
+ROLLBACK 
+error: ERROR: current transaction is aborted, commands ignored until end of transaction block psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_alias-rm.sql:96: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+Done.
+
+
+Tratando Presupuestos a Clientes
+Tratando Articulos con IVA Incluido
+Tratando Alumno. Gestion de Alumnos
+Tratando Remesas bancarias
+Tratando Demostración del funcionamiento de los plugins
+Tratando Crear etiquetas
+Tratando Actividad. Gestion de Actividades
+Tratando Gestión de Inventarios.
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/rm-plugininventario.sql casasdanico&quot;
+
+Started.
+
+Started.
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE INVENTARIO *********&quot; 
+&quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot; 
+&quot;:: &quot;
+SET 
+SET 
+BEGIN 
+CREATE FUNCTION 
+CREATE FUNCTION 
+CREATE FUNCTION 
+0 
+DROP FUNCTION 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+CREATE FUNCTION 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/rm-plugininventario.sql:136: ERROR: relation &quot;configuracion&quot; does not exist CONTEXT: SQL statement &quot;SELECT * FROM configuracion WHERE nombre='DBRev-Inventario'&quot; PL/pgSQL function &quot;actualizarevision&quot; line 4 at SQL statement 
+&quot;Actualizada la revision de la base de datos a la version 0.10.1&quot; 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/rm-plugininventario.sql:137: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/rm-plugininventario.sql:141: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/rm-plugininventario.sql:142: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+ROLLBACK 
+Done.
+
+
+Tratando Impresión de Tickets
+Tratando Pagos
+Actualizando Pagos
+============ 
+Tratando Remesas Bancarias
+Actualizando Remesas Bancarias
+============ 
+Tratando Compra-Venta.
+Tratando Tallas y Colores
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/pluginbf_tc_articulos-rm.sql casasdanico&quot;
+
+Started.
+
+Started.
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE TALLAS Y COLORES *********&quot; 
+&quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot; 
+&quot;:: &quot;
+SET 
+SET 
+BEGIN 
+CREATE FUNCTION 
+CREATE FUNCTION 
+CREATE FUNCTION 
+0 
+DROP FUNCTION 
+&quot;:: Eliminamos las tablas de tallas, colores y stock... &quot; 
+CREATE FUNCTION 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_tc_articulos-rm.sql:145: 
+error: ERROR: relation &quot;configuracion&quot; does not exist CONTEXT: SQL statement &quot;SELECT * FROM configuracion WHERE nombre='PluginBf_-Tallas-y-Colores'&quot; PL/pgSQL function &quot;actualizarevision&quot; line 4 at SQL statement 
+&quot;Eliminada la revision de la base de datos a la version 0.11.1&quot; 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_tc_articulos-rm.sql:146: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_tc_articulos-rm.sql:150: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_tc_articulos-rm.sql:151: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+ROLLBACK 
+Done.
+
+
+Tratando Ampliación de Almacenes
+Tratando Facturas de Proveedor
+Tratando Imprimir tickets
+Tratando Tipos de Trabajo
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/rm-plugintipostrabajo.sql casasdanico&quot;
+
+Started.
+
+Started.
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE TIPOS DE TRABAJO *********&quot; 
+&quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot; 
+&quot;:: &quot;
+SET 
+SET 
+BEGIN 
+CREATE FUNCTION 
+CREATE FUNCTION 
+CREATE FUNCTION 
+0 
+DROP FUNCTION 
+&quot;Quito las tablas de tipo de trabajo y de almacentipotrabajo, tambien quito el campo idtipotrabajo a la tabla de trabajador&quot; 
+CREATE FUNCTION 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/rm-plugintipostrabajo.sql:95: 
+error: ERROR: relation &quot;configuracion&quot; does not exist CONTEXT: SQL statement &quot;SELECT * FROM configuracion WHERE nombre='DBRev-TiposTrabajo'&quot; PL/pgSQL function &quot;actualizarevision&quot; line 4 at SQL statement 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/rm-plugintipostrabajo.sql:96: 
+&quot;Quitada la revision de la base de datos a la version&quot; 
+error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/rm-plugintipostrabajo.sql:100: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/rm-plugintipostrabajo.sql:101: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+ROLLBACK 
+Done.
+
+
+Tratando Cobros
+Tratando Tutor. Gestion de Tutores
+Tratando Comerciales
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/pluginbf_comercial-rm.sql casasdanico&quot;
+
+Started.
+
+Started.
+SET 
+::<i> Iniciamos transaccion ... 
+</I>BEGIN 
+CREATE FUNCTION 
+CREATE FUNCTION 
+CREATE FUNCTION 
+0 
+DROP FUNCTION :: Eliminamos los campos y tablas para el plugin ComercialBF ... 
+DROP FUNCTION 
+CREATE FUNCTION 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_comercial-rm.sql:99: ERROR: relation &quot;configuracion&quot; does not exist CONTEXT: SQL statement &quot;SELECT * FROM configuracion WHERE nombre = 'PluginBf_Comercial'&quot; PL/pgSQL function &quot;actualizarevision&quot; line 5 at SQL statement 
+::<i> Eliminamos la revision de la base de datos 
+</I>error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_comercial-rm.sql:101: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_comercial-rm.sql:105: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+::<i> Finalizamos la transaccion ... 
+</I>error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_comercial-rm.sql:106: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+ROLLBACK 
+Done.
+
+
+Tratando IVA Incluido
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/pluginbf_ivaincluido-rm.sql casasdanico&quot;
+
+Started.
+
+Started.
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE IVA INCLUIDO *********&quot; 
+&quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot; 
+&quot;:: &quot;
+SET 
+SET 
+BEGIN 
+CREATE FUNCTION 
+CREATE FUNCTION 
+CREATE FUNCTION 
+0 
+DROP FUNCTION 
+&quot;Eliminamos el campo booleano ivaincarticulo a la tabla de articulos&quot; 
+CREATE FUNCTION 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_ivaincluido-rm.sql:96: 
+error: ERROR: relation &quot;configuracion&quot; does not exist CONTEXT: SQL statement &quot;SELECT * FROM configuracion WHERE nombre='PluginBf_IVAIncluido'&quot; PL/pgSQL function &quot;actualizarevision&quot; line 4 at SQL statement 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_ivaincluido-rm.sql:97: 
+error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+&quot;Eliminada la revision de la base de datos&quot; 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_ivaincluido-rm.sql:101: 
+error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_ivaincluido-rm.sql:102: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+ROLLBACK 
+Done.
+
+
+Tratando Informe Clientes.
+Tratando Albaranes de Proveedor
+Actualizando Albaranes de Proveedor
+============ 
+Tratando Cobros
+Actualizando Cobros
+============ 
+Tratando Facturas a clientes
+Actualizando Facturas a clientes
+============ 
+Tratando Trazabilidad
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/pluginbf_trazabilidad-rm.sql casasdanico&quot;
+
+Started.
+
+Started.
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE TRAZABILIDAD *********&quot; 
+&quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot; 
+&quot;:: &quot;
+SET 
+SET 
+BEGIN 
+CREATE FUNCTION 
+CREATE FUNCTION 
+CREATE FUNCTION 
+0 
+DROP FUNCTION 
+&quot;Eliminamos los campos para Trazabilidad en las tablas necesarias.&quot; 
+CREATE FUNCTION 
+0 
+DROP FUNCTION 
+&quot;:: Eliminamos la tabla de movimientos ... &quot; 
+&quot;:: Funcion que actualiza el total de una factura al borrar una linea de detalle ... &quot;
+0 
+&quot;:: Funcion que actualiza el total de una factura al borrar una linea de detalle ... &quot;
+0 &quot;:: Funcion que actualiza el total de una factura al borrar una linea de detalle ... &quot;
+0 &quot;:: Funcion que actualiza el total de una factura al borrar una linea de detalle ... &quot;
+0 &quot;:: Funcion que actualiza el total de una factura al borrar una linea de detalle ... &quot;
+0 &quot;:: Funcion que actualiza el total de una factura al borrar una linea de detalle ... &quot;
+0 
+CREATE FUNCTION 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_trazabilidad-rm.sql:133: ERROR: relation &quot;configuracion&quot; does not exist CONTEXT: SQL statement &quot;SELECT * FROM configuracion WHERE nombre='PluginBf_Trazabilidad'&quot; PL/pgSQL function &quot;actualizarevision&quot; line 4 at SQL statement 
+&quot;Eliminada la revision de la base de datos&quot; 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_trazabilidad-rm.sql:134: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_trazabilidad-rm.sql:138: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_trazabilidad-rm.sql:139: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+ROLLBACK 
+Done.
+
+
+Tratando Trazabilidad
+Tratando Traspaso de Z
+Tratando Profesor. Gestion de Profesores
+Tratando Compra-Venta.
+Tratando Cuadrantes de personal
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/pluginbf_cuadrante-rm.sql casasdanico&quot;
+
+Started.
+
+Started.
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE CUADRANTE *********&quot; 
+&quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot; 
+&quot;:: &quot;
+SET 
+SET 
+BEGIN 
+CREATE FUNCTION 
+CREATE FUNCTION 
+CREATE FUNCTION 
+0 
+DROP FUNCTION 
+&quot;Quitamos las tablas necesarias para cuadrantes.&quot; 
+0 
+CREATE FUNCTION 
+0 
+DROP FUNCTION &quot;Quitamos las tablas necesarias para control de ausencias&quot; 
+CREATE FUNCTION 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_cuadrante-rm.sql:116: ERROR: relation &quot;configuracion&quot; does not exist CONTEXT: SQL statement &quot;SELECT * FROM configuracion WHERE nombre='PluginBf_Cuadrante'&quot; PL/pgSQL function &quot;actualizarevision&quot; line 4 at SQL statement 
+&quot;Quitamos la revision del cuadrante&quot; 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_cuadrante-rm.sql:117: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_cuadrante-rm.sql:121: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_cuadrante-rm.sql:122: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+ROLLBACK 
+Done.
+
+
+Tratando Inventarios.
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/pluginbf_inventario-rm.sql casasdanico&quot;
+
+Started.
+
+Started.
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE INVENTARIO *********&quot; 
+&quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot; 
+&quot;:: &quot;
+SET 
+SET 
+BEGIN 
+CREATE FUNCTION 
+CREATE FUNCTION 
+CREATE FUNCTION 
+0 
+DROP FUNCTION 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+CREATE FUNCTION 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_inventario-rm.sql:136: ERROR: relation &quot;configuracion&quot; does not exist CONTEXT: SQL statement &quot;SELECT * FROM configuracion WHERE nombre='PluginBf_Inventario'&quot; PL/pgSQL function &quot;actualizarevision&quot; line 4 at SQL statement 
+&quot;Actualizada la revision de la base de datos a la version 0.10.1&quot; 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_inventario-rm.sql:137: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_inventario-rm.sql:141: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_inventario-rm.sql:142: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+ROLLBACK 
+Done.
+
+
+Tratando Trabajo con múltiples documentos.
+Actualizando Trabajo con múltiples documentos.
+============ 
+Tratando Tallas y Colores
+Tratando Apertura por referencia.
+Tratando Proveedores
+Actualizando Proveedores
+============ 
+Tratando Alumnos
+Tratando Cuadrantes de personal
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/rm-plugincuadrante.sql casasdanico&quot;
+
+Started.
+
+Started.
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE CUADRANTE *********&quot; 
+&quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot; 
+&quot;:: &quot;
+SET 
+SET 
+BEGIN 
+CREATE FUNCTION 
+CREATE FUNCTION 
+CREATE FUNCTION 
+0 
+DROP FUNCTION 
+&quot;Quitamos las tablas necesarias para cuadrantes.&quot; 
+0 
+CREATE FUNCTION 
+0 
+DROP FUNCTION 
+&quot;Quitamos las tablas necesarias para control de ausencias&quot; 
+CREATE FUNCTION 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/rm-plugincuadrante.sql:116: 
+error: ERROR: relation &quot;configuracion&quot; does not exist CONTEXT: SQL statement &quot;SELECT * FROM configuracion WHERE nombre='DBRev-Cuadrante'&quot; PL/pgSQL function &quot;actualizarevision&quot; line 4 at SQL statement 
+&quot;Quitamos la revision del cuadrante&quot; 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/rm-plugincuadrante.sql:117: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/rm-plugincuadrante.sql:121: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/rm-plugincuadrante.sql:122: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+ROLLBACK 
+Done.
+
+
+Tratando Tarifas
+Tratando Envio de Documentos por e-mail usando Thunderbird
+Tratando Recibos
+Tratando Datos iniciales
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/pluginbf_datosbase-rm.sql casasdanico&quot;
+
+Started.
+
+Started.
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE DATOS BASE *********&quot; 
+&quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot; 
+&quot;:: &quot;
+SET 
+SET 
+BEGIN 
+CREATE FUNCTION 
+CREATE FUNCTION 
+CREATE FUNCTION 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_datosbase-rm.sql:69: 
+error: ERROR: relation &quot;configuracion&quot; does not exist CONTEXT: SQL statement &quot;SELECT * FROM configuracion WHERE nombre='PluginBf_DatosBase'&quot; PL/pgSQL function &quot;actualizarevision&quot; line 4 at SQL statement 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_datosbase-rm.sql:70: 
+error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+&quot;Eliminaad la revision de la base de datos&quot; 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_datosbase-rm.sql:74: 
+error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_datosbase-rm.sql:75: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+ROLLBACK 
+Done.
+
+
+Tratando Actividades
+Tratando Activar Modo Debug
+Tratando Precios de Coste
+Tratando Manejo de TPV
+Tratando Pedidos de clientes
+Actualizando Pedidos de clientes
+============ 
+Tratando Clientes
+Actualizando Clientes
+============ 
+Tratando Control de Presencia por Centralita Asterisk
+Tratando Formas de pago
+Actualizando Formas de pago
+============ 
+Tratando Promedios en artículos
+Tratando Pedidos a Proveedor
+Actualizando Pedidos a Proveedor
+============ 
+Tratando Corrector de Facturacion
+Tratando Informe Clientes.
+Actualizando Informe Clientes.
+============ 
+Tratando Crear etiquetas
+Tratando Presupuestos a clientes
+Actualizando Presupuestos a clientes
+============ 
+Tratando Catálogo de artículos
+Tratando Albaranes a Clientes
+Tratando Apertura por referencia.
+Tratando Control de Ingresos y Gastos
+Tratando Tutores
+Tratando IVA y Tasas de IVA
+Actualizando IVA y Tasas de IVA
+============ 
+Tratando Albaranes de Proveedor
+Tratando Alta de proveedor conjunta con alta de cliente
+Tratando Promedios en Artículos
+Tratando Almacenes
+Actualizando Almacenes
+============ 
+Tratando Listas de Precios
+Tratando Alta de proveedor conjunta con alta de cliente
+Tratando Series de Factura
+Actualizando Series de Factura
+============ 
+Tratando Envio de Documentos por e-mail
+Tratando Catálogo de Artículos
+Tratando Contratos con Clientes
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/pluginbf_contrato-rm.sql casasdanico&quot;
+
+Started.
+
+Started.
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE CONTRATOS *********&quot; 
+&quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot; 
+&quot;:: &quot;
+SET 
+SET 
+BEGIN 
+CREATE FUNCTION 
+CREATE FUNCTION 
+CREATE FUNCTION 
+0 
+DROP FUNCTION 
+::<i> Eliminamos los campos y tablas para el plugin PluginContratos ... 
+</I>CREATE FUNCTION 
+0 
+DROP FUNCTION 
+&quot;Quito el parche de la funcion crearef para que no contemple las nueva referencia.&quot; 
+0 
+CREATE FUNCTION 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_contrato-rm.sql:115: ERROR: relation &quot;configuracion&quot; does not exist CONTEXT: SQL statement &quot;SELECT * FROM configuracion WHERE nombre='PluginBf_Contrato'&quot; PL/pgSQL function &quot;actualizarevision&quot; line 4 at SQL statement 
+&quot;Eliminada la revision de la base de datos&quot; 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_contrato-rm.sql:116: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_contrato-rm.sql:120: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_contrato-rm.sql:121: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+ROLLBACK 
+Done.
+
+
+Tratando Alias
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/rm-pluginalias.sql casasdanico&quot;
+
+Started.
+
+Started.
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE ALIAS *********&quot; 
+&quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot; 
+&quot;:: &quot;
+SET 
+SET 
+BEGIN 
+CREATE FUNCTION 
+CREATE FUNCTION 
+CREATE FUNCTION 
+0 
+DROP FUNCTION 
+&quot;:: Eliminaad la tabla de Alias ... &quot; 
+DROP INDEX 
+DROP INDEX 
+CREATE FUNCTION 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/rm-pluginalias.sql:90: 
+error: ERROR: relation &quot;configuracion&quot; does not exist CONTEXT: SQL statement &quot;SELECT * FROM configuracion WHERE nombre='DBRev-Alias'&quot; PL/pgSQL function &quot;actualizarevision&quot; line 4 at SQL statement 
+&quot;Eliminada la revision de la base de datos&quot; 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/rm-pluginalias.sql:91: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/rm-pluginalias.sql:95: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/rm-pluginalias.sql:96: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+ROLLBACK 
+Done.
+
+
+Tratando Profesores
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/pluginbf_profesor-rm.sql casasdanico&quot;
+
+Started.
+
+Started.
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE VARIACION TARIFA POR CANTIDAD *********&quot; 
+&quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot; 
+&quot;:: &quot;
+SET 
+SET 
+BEGIN 
+CREATE FUNCTION 
+CREATE FUNCTION 
+DROP FUNCTION 
+DROP FUNCTION 
+DROP FUNCTION 
+CREATE FUNCTION 
+0 
+DROP FUNCTION &quot;Creamos la tabla profesor.&quot; 
+CREATE FUNCTION 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_profesor-rm.sql:125: ERROR: relation &quot;configuracion&quot; does not exist CONTEXT: SQL statement &quot;SELECT * FROM configuracion WHERE nombre='PluginBf_Profesor'&quot; PL/pgSQL function &quot;actualizarevision&quot; line 4 at SQL statement 
+&quot;Actualizada la revision de la base de datos a la version&quot; 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_profesor-rm.sql:126: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_profesor-rm.sql:130: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_profesor-rm.sql:131: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+ROLLBACK 
+Done.
+
+
+Tratando Articulos
+Actualizando Articulos
+============ 
+Tratando Apertura Rapida Desde Códigos de Barras
+Tratando Apertura Rapida Desde Códigos de Barras
+Tratando Pagos
+Tratando Tipos de Trabajo
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/pluginbf_tipotrabajo-rm.sql casasdanico&quot;
+
+Started.
+
+Started.
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE TIPOS DE TRABAJO *********&quot; 
+&quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot; 
+&quot;:: &quot;
+SET 
+SET 
+BEGIN 
+CREATE FUNCTION 
+CREATE FUNCTION 
+CREATE FUNCTION 
+0 
+DROP FUNCTION &quot;Quito las tablas de tipo de trabajo y de almacentipotrabajo, tambien quito el campo idtipotrabajo a la tabla de trabajador&quot; 
+CREATE FUNCTION 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_tipotrabajo-rm.sql:95: ERROR: relation &quot;configuracion&quot; does not exist CONTEXT: SQL statement &quot;SELECT * FROM configuracion WHERE nombre='PluginBf_TipoTrabajo'&quot; PL/pgSQL function &quot;actualizarevision&quot; line 4 at SQL statement 
+&quot;Quitada la revision de la base de datos a la version&quot; 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_tipotrabajo-rm.sql:96: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_tipotrabajo-rm.sql:100: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_tipotrabajo-rm.sql:101: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+ROLLBACK 
+Done.
+
+
+Tratando Imprimir subformularios
+Tratando Bloqueo de fichas
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/pluginbl_formlock-rm.sql casasdanico&quot;
+
+Started.
+
+Started.
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE BLOQUEOS *********&quot; 
+&quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot; 
+&quot;:: &quot;
+SET 
+SET 
+BEGIN 
+CREATE FUNCTION 
+CREATE FUNCTION 
+CREATE FUNCTION 
+0 
+DROP FUNCTION 
+CREATE FUNCTION 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbl_formlock-rm.sql:96: 
+error: ERROR: relation &quot;configuracion&quot; does not exist CONTEXT: SQL statement &quot;SELECT * FROM configuracion WHERE nombre='PluginBl_FormLock'&quot; PL/pgSQL function &quot;actualizarevision&quot; line 4 at SQL statement 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbl_formlock-rm.sql:97: 
+error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+&quot;Eliminado el plugin de bloqueos de la base de datos.&quot; 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbl_formlock-rm.sql:101: 
+error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbl_formlock-rm.sql:102: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+ROLLBACK 
+Done.
+
+
+Tratando Informes personalizados en ODS
+Tratando Impresion de Informes Personalizados por e-mail
+Tratando Clipboard
+Tratando Informes personalizados de ficha en ODS
+Tratando Pegar desde el portapapeles
+Tratando Embeber aplicaciones
+Tratando Exportar subformularios a ODS.
+Tratando Bloqueo de Fichas
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/rm-pluginbloqueos.sql casasdanico&quot;
+
+Started.
+
+Started.
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE BLOQUEOS *********&quot; 
+&quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot; 
+&quot;:: &quot;
+SET 
+SET 
+BEGIN 
+CREATE FUNCTION 
+CREATE FUNCTION 
+CREATE FUNCTION 
+0 
+DROP FUNCTION 
+CREATE FUNCTION 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/rm-pluginbloqueos.sql:96: 
+error: ERROR: relation &quot;configuracion&quot; does not exist CONTEXT: SQL statement &quot;SELECT * FROM configuracion WHERE nombre='DBRev-Bloqueo'&quot; PL/pgSQL function &quot;actualizarevision&quot; line 4 at SQL statement 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/rm-pluginbloqueos.sql:97: 
+error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+&quot;Eliminado el plugin de bloqueos de la base de datos.&quot; 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/rm-pluginbloqueos.sql:101: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/rm-pluginbloqueos.sql:102: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+ROLLBACK 
+Done.
+
+
+Tratando Exportacion de listados a SXC.
+Tratando Exportar listados a SXC.
+Tratando Importacion de datos separados por coma
+Tratando Archivo Documental
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/rm-pluginarchivos.sql casasdanico&quot;
+
+Started.
+
+Started.
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE ARCHIVOS *********&quot; 
+&quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot; 
+&quot;:: &quot;
+SET 
+SET 
+BEGIN 
+CREATE FUNCTION 
+CREATE FUNCTION 
+CREATE FUNCTION 
+0 
+DROP FUNCTION 
+CREATE FUNCTION 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/rm-pluginarchivos.sql:92: 
+error: ERROR: relation &quot;configuracion&quot; does not exist CONTEXT: SQL statement &quot;SELECT * FROM configuracion WHERE nombre='DBRev-Archivos'&quot; PL/pgSQL function &quot;actualizarevision&quot; line 4 at SQL statement 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/rm-pluginarchivos.sql:93: 
+error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+&quot;Eliminada la revision de la base de datos&quot; 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/rm-pluginarchivos.sql:97: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/rm-pluginarchivos.sql:98: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+ROLLBACK 
+Done.
+
+
+Tratando Exportacion de listados a ODS.
+Tratando Informes personalizados por e-mail
+Tratando Informes personalizados
+Tratando Informes Personalizados
+Tratando Informes personalizados por ficha
+Tratando Importar datos separados por coma
+Tratando Bloquear configuraciones
+Tratando Informes Personalizados en hoja de calculo
+Tratando Impresión subformulario
+Tratando Adjuntar documentos
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/pluginbl_attachdocument-rm.sql casasdanico&quot;
+
+Started.
+
+Started.
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE ARCHIVOS *********&quot; 
+&quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot; 
+&quot;:: &quot;
+SET 
+SET 
+BEGIN 
+CREATE FUNCTION 
+CREATE FUNCTION 
+CREATE FUNCTION 
+0 
+DROP FUNCTION 
+CREATE FUNCTION 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbl_attachdocument-rm.sql:92: 
+error: ERROR: relation &quot;configuracion&quot; does not exist CONTEXT: SQL statement &quot;SELECT * FROM configuracion WHERE nombre='PluginBl_AttachDocument'&quot; PL/pgSQL function &quot;actualizarevision&quot; line 4 at SQL statement 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbl_attachdocument-rm.sql:93: 
+error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+&quot;Eliminada la revision de la base de datos&quot; 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbl_attachdocument-rm.sql:97: 
+error: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbl_attachdocument-rm.sql:98: ERROR: current transaction is aborted, commands ignored until end of transaction block 
+ROLLBACK 
+Done.
+
+
+Tratando Impresion de Informes Personalizados
+Tratando Embeber Aplicaciones
+Tratando Impresion de Informes Personalizados en ODS
+ESCRIBIENDO CONFIGURACION
+Escribiendo configuracion en /etc/bulmages/bulmafact_casasdanico.conf 
+
+Started.
+
+Started.
+Done.
+
+
+Started.
+
+Started.
+Done.
+
+Tratando Control de Ingresos y Gastos
+Tratando Articulos
+Hay que actualizar Articulos
+Tratando Importacion de datos separados por coma
+Tratando Importar datos separados por coma
+Tratando Imprimir subformularios
+Tratando Exportar subformularios a ODS.
+Tratando Exportacion de listados a ODS.
+Tratando Impresión subformulario
+Tratando Trabajadores
+Hay que actualizar Trabajadores
+Tratando Impresion de Informes Personalizados por e-mail
+Tratando Informes personalizados de ficha en ODS
+Tratando Informes personalizados por e-mail
+Tratando Informes personalizados por ficha
+Tratando Impresion de Informes Personalizados
+Tratando Impresion de Informes Personalizados en ODS
+Tratando Informes personalizados en ODS
+Tratando Clipboard
+Tratando Pegar desde el portapapeles
+Tratando Exportacion de listados a SXC.
+Tratando Exportar listados a SXC.
+Tratando Informes personalizados
+Tratando Informes Personalizados
+Tratando Bloquear configuraciones
+Tratando Informes Personalizados en hoja de calculo
+Tratando Demostración del funcionamiento de los plugins
+Tratando Modo Debug
+Tratando Embeber aplicaciones
+Tratando Archivo Documental
+Tratando Adjuntar documentos
+Tratando Embeber Aplicaciones
+Tratando Asociacion
+Tratando Recibos
+Tratando Actividades
+Tratando Profesores
+Tratando Alumnos
+Tratando Tutores
+Tratando Clientes
+Hay que actualizar Clientes
+Tratando Proveedores
+Hay que actualizar Proveedores
+Tratando Gestión de Inventarios.
+Tratando Inventarios.
+Tratando Tarifas
+Tratando Compra-Venta.
+Tratando Compra-Venta.
+Tratando Apertura Rapida Desde Códigos de Barras
+Tratando Apertura Rapida Desde Códigos de Barras
+Tratando IVA Incluido
+Tratando Presupuestos a clientes
+Hay que actualizar Presupuestos a clientes
+Tratando Pedidos de clientes
+Hay que actualizar Pedidos de clientes
+Tratando Albaranes a clientes
+Hay que actualizar Albaranes a clientes
+Tratando Facturas a clientes
+Hay que actualizar Facturas a clientes
+Tratando Cobros
+Hay que actualizar Cobros
+Tratando Pedidos a Proveedor
+Hay que actualizar Pedidos a Proveedor
+Tratando Albaranes de Proveedor
+Hay que actualizar Albaranes de Proveedor
+Tratando Facturas de Proveedor
+Hay que actualizar Facturas de Proveedor
+Tratando Pagos
+Hay que actualizar Pagos
+Tratando Comerciales
+Tratando Trazabilidad
+Tratando Series de Factura
+Hay que actualizar Series de Factura
+Tratando Cuadrantes de personal
+Tratando Cuadrantes de personal
+Tratando IVA y Tasas de IVA
+Hay que actualizar IVA y Tasas de IVA
+Tratando Contabilidad en la facturacion
+Tratando Precios de coste
+Tratando Envio de Documentos por e-mail usando Thunderbird
+Hay que actualizar Envio de Documentos por e-mail usando Thunderbird
+Tratando Envio de Documentos por e-mail usando Thunderbird
+Tratando Almacenes
+Hay que actualizar Almacenes
+Tratando Bloqueo de fichas
+Tratando Bloqueo de Fichas
+Tratando Formas de pago
+Hay que actualizar Formas de pago
+Tratando Contratos con Clientes
+Hay que actualizar Contratos con Clientes
+Tratando Contratos con Clientes
+Tratando Ampliación de Almacenes
+Tratando Informe de Clientes en Hoja de Cálculo.
+Tratando Informe Clientes en Hoja de Cálculo.
+Tratando Ampliación de Almacenes
+Tratando Bancos
+Hay que actualizar Bancos
+Tratando Tallas y Colores
+Tratando Traspaso de Z
+Tratando Trabajo con múltiples documentos.
+Hay que actualizar Trabajo con múltiples documentos.
+Tratando Enviar documentos por e-mail
+Tratando Listas de Precios
+Tratando Control de presencia por centralita Asterisk
+Tratando Alias
+Tratando Remesas bancarias
+Tratando Remesas Bancarias
+Hay que actualizar Remesas Bancarias
+Tratando Imprimir tickets
+Tratando Tipos de Trabajo
+Tratando Informe Clientes.
+Tratando Traspaso de Z
+Tratando Trabajo con múltiples documentos.
+Hay que actualizar Trabajo con múltiples documentos.
+Tratando Apertura por referencia.
+Tratando Datos iniciales
+Tratando Manejo de TPV
+Tratando Promedios en artículos
+Tratando Corrector de Facturacion
+Tratando Informe Clientes.
+Hay que actualizar Informe Clientes.
+Tratando Apertura por referencia.
+Tratando Promedios en Artículos
+Tratando Listas de Precios
+Tratando Alta de proveedor conjunta con alta de cliente
+Tratando Envio de Documentos por e-mail
+Tratando Alias
+Tratando Tipos de Trabajo
+Tratando Manejo de TPV
+Tratando Corrector de Facturacion
+Tratando Pedidos de Clientes
+Tratando Contabilidad en la Facturacion
+Tratando Pedidos a Proveedor
+Tratando Gestión de Comerciales
+Tratando Facturas a Clientes
+Tratando Presupuestos a Clientes
+Tratando Articulos con IVA Incluido
+Tratando Alumno. Gestion de Alumnos
+Tratando Demostración del funcionamiento de los plugins
+Tratando Crear etiquetas
+Tratando Actividad. Gestion de Actividades
+Tratando Impresión de Tickets
+Tratando Facturas de Proveedor
+Tratando Cobros
+Tratando Tutor. Gestion de Tutores
+Tratando Trazabilidad
+Tratando Profesor. Gestion de Profesores
+Tratando Tallas y Colores
+Tratando Tarifas
+Tratando Activar Modo Debug
+Tratando Precios de Coste
+Tratando Control de Presencia por Centralita Asterisk
+Tratando Crear etiquetas
+Tratando Catálogo de artículos
+Tratando Albaranes a Clientes
+Tratando Albaranes de Proveedor
+Tratando Alta de proveedor conjunta con alta de cliente
+Tratando Catálogo de Artículos
+Tratando Pagos
+Done.
+
+Follow-Ups:
+
+Date: 2009-Jun-18 16:38
+By: turkil
+
+Comment:
+He realizado un dropdb de la base de datos, ya que decia que esta ya existia.
+
+Con eso al crearla de nuevo ya no da el error de que la base de datos ya existe.
+
+Pero a�n as� no podemos ver la empresa que hemos creado por ningun sitio.
+-------------------------------------------------------
+
+Date: 2009-Jun-18 14:04
+By: turkil
+
+Comment:
+He realizado un dropdb de la base de datos, ya que decia que esta ya existia.
+
+Con eso al crearla de nuevo ya no da el error de que la base de datos ya existe.
+
+Pero a�n as� no podemos ver la empresa que hemos creado por ningun sitio.
+-------------------------------------------------------
+
+For detailed info, follow this link:
+<A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=15881&amp;group_id=4472">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=15881&amp;group_id=4472</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002454.html">[BulmaG�s]Funci�n de &quot;Actualizar la base de datos&quot; en BulmaSetup
+</A></li>
+	<LI>Pr�ximo mensaje: <A HREF="002453.html">[BulmaG�s]N�mero de &quot;Orden: &quot; en README.es
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2451">[ fecha ]</a>
+              <a href="thread.html#2451">[ hilo ]</a>
+              <a href="subject.html#2451">[ asunto ]</a>
+              <a href="author.html#2451">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">M�s informaci�n sobre la lista de distribuci�n Bulmages-main </a><br>
+</body></html>

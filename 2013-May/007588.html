@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Qt5 y Windows
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-15%3Fq%3FQt5_y_Windows%3F%3D&In-Reply-To=%3C201305282356.20158.leo%40alaxarxa.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007587.html">
+   <LINK REL="Next"  HREF="007590.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Qt5 y Windows </H1>
+    <B>Leopold Palomo Avellaneda</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-15%3Fq%3FQt5_y_Windows%3F%3D&In-Reply-To=%3C201305282356.20158.leo%40alaxarxa.net%3E"
+       TITLE="[BulmaGés]Qt5 y Windows">leo en alaxarxa.net
+       </A><BR>
+    <I>Mar Mayo 28 23:56:19 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007587.html">[BulmaGés]Qt5 y Windows
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007590.html">[BulmaGés]Qt5 y Windows
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7588">[ fecha ]</a>
+              <a href="thread.html#7588">[ hilo ]</a>
+              <a href="subject.html#7588">[ asunto ]</a>
+              <a href="author.html#7588">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>A Dimarts, 28 de maig de 2013, Tomeu Borras va escriure:
+&gt;<i> Bones Leo.
+</I>&gt;<i> 
+</I>&gt;<i> Agafem per exemple el bulmatpv. Dins el  src del bulmatpv generam els
+</I>&gt;<i> projectes libbulmatpv y el bulmatpv.
+</I>&gt;<i> El problema es que per a Windows el treball amb llibreries es totalment
+</I>&gt;<i> distint que amb Linux i has de fer servir el declspec(dllexport) o
+</I>&gt;<i> declspec(dllimport) a les declaracions segons estiguis construint la
+</I>&gt;<i> llibreria o la estiguis fent servir. Es una barbaritat però MS ja ens hi te
+</I>&gt;<i> acostumats.
+</I>&gt;<i> 
+</I>&gt;<i> Nosaltres tenim el parametre de compilació (BT_BULMATPV)  que feim servir
+</I>&gt;<i> unicament per aquest propòsit. Si compliles amb BT_BULMATPV activat estas
+</I>&gt;<i> construint la llibreria libbulmatpv i si no només la estas emprant.
+</I>&gt;<i> 
+</I>&gt;<i> Ara creq que dona problemes (abans no ho feia, pero també he cambiat de
+</I>&gt;<i> compilador, les Qt, el cmake ...) entre el bulmatpv.exe i el
+</I>&gt;<i> libbulmatpv.dll perque el parámetre BT_BULMATPV esta activat tant quan
+</I>&gt;<i> construim la llibrería com quan  construim l'executable. a l'executable no
+</I>&gt;<i> s'ha de fer servir ja que no construeixes la llibreria i la fas servir per
+</I>&gt;<i> tant el link del bulmatpv.exe falla dient coses molt lletges.
+</I>&gt;<i> 
+</I>&gt;<i> Així que la pregunta es com poder pasar el ADD_DEFINITIONS només per a un
+</I>&gt;<i> projecte i no per a tot el directori.
+</I>&gt;<i> 
+</I>
+crec que sí, però t'ho he de mirar. Vaig buscar una cosa semblant fa un temps, 
+per diferents opcions de compilació per diferents targets.
+
+Leo
+
+
+-- 
+--
+Linux User 152692     PGP: 0xF944807E
+Catalonia
+-------------------------------------
+A: Because it messes up the order in which people normally read text.
+Q: Why is top-posting such a bad thing?
+A: Top-posting.
+Q: What is the most annoying thing in e-mail?
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007587.html">[BulmaGés]Qt5 y Windows
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007590.html">[BulmaGés]Qt5 y Windows
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7588">[ fecha ]</a>
+              <a href="thread.html#7588">[ hilo ]</a>
+              <a href="subject.html#7588">[ asunto ]</a>
+              <a href="author.html#7588">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

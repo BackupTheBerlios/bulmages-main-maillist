@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] Problemas con el nombre de la empresa
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Problemas%20con%20el%20nombre%20de%20la%20empresa&In-Reply-To=%3C52BB4565.6010107%40wanadoo.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007783.html">
+   <LINK REL="Next"  HREF="007786.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] Problemas con el nombre de la empresa </H1>
+    <B>&quot;Manuel G. Antón Villamil&quot;</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Problemas%20con%20el%20nombre%20de%20la%20empresa&In-Reply-To=%3C52BB4565.6010107%40wanadoo.es%3E"
+       TITLE="[BulmaGés] Problemas con el nombre de la empresa">mgvillamil en wanadoo.es
+       </A><BR>
+    <I>Mie Dic 25 21:51:49 CET 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007783.html">[BulmaGés]Para empezar
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007786.html">[BulmaGés]Problemas con el nombre de la empresa
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7785">[ fecha ]</a>
+              <a href="thread.html#7785">[ hilo ]</a>
+              <a href="subject.html#7785">[ asunto ]</a>
+              <a href="author.html#7785">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Muy buenas a todos:
+
+Esta es mi primera incursión en este territorio. Estoy analizando las 
+posibilidades de Bulmages como herramienta de trabajo y, la verdad, me 
+parece realmente interesante.
+
+Instalé hace unos días la versión de Bulmages 1.5 en Windows 7 
+(bulmages-1_5.exe) y detecté problemas en bulmasetup con la grabación y 
+la modificación del nombre de la empresa en la tabla configuración.
+
+El origen aparentemente está en el archivo nuevacontabilidad.py, 
+concretamente en &quot;# Cambiamos el nombre de la empresa&quot;. Con self.command 
+= &quot;C:\Users\manuelanton\Bulmages\pgsql\bin\psql.exe&quot; -c &quot;UPDATE 
+configuracion set valor='xxxx' WHERE nombre = 'NombreEmpresa';&quot; dbxxxx, 
+aparentemente correctamente construido, 
+os.system(self.command.toAscii().data()) deja el valor de NombreEmpresa 
+en la tabla configuración en blanco. En principio sospeché que podría 
+ser algún problema de path o de permisos, pero el mismo comando (copiado 
+y pegado) ejecutado directamente en el shell o mediante 
+subprocess.call(self.command.toAscii().data(), shell=True) del módulo 
+subprocess funciona perfectamente.
+
+Gracias por vuestro fenomenal trabajo.
+
+Un saludo.
+
+Manuel G. Antón Villamil.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007783.html">[BulmaGés]Para empezar
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007786.html">[BulmaGés]Problemas con el nombre de la empresa
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7785">[ fecha ]</a>
+              <a href="thread.html#7785">[ hilo ]</a>
+              <a href="subject.html#7785">[ asunto ]</a>
+              <a href="author.html#7785">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

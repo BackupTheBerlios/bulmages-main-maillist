@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] Las llamadas a plugin devuelven SIEMPRE	un tipo int
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-March/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Las%20llamadas%20a%20plugin%20devuelven%20SIEMPRE%0A%09un%20tipo%20int&In-Reply-To=%3C200903241313.17879.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001410.html">
+   <LINK REL="Next"  HREF="001425.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] Las llamadas a plugin devuelven SIEMPRE	un tipo int </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Las%20llamadas%20a%20plugin%20devuelven%20SIEMPRE%0A%09un%20tipo%20int&In-Reply-To=%3C200903241313.17879.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés] Las llamadas a plugin devuelven SIEMPRE	un tipo int">tborras en conetxia.com
+       </A><BR>
+    <I>Mar Mar 24 13:13:17 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001410.html">[BulmaGés] r3160 -	trunk/bulmages/bulmalib/plugins/plugininformes
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001425.html">[BulmaGés]Las llamadas a plugin devuelven SIEMPRE un tipo int
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1411">[ fecha ]</a>
+              <a href="thread.html#1411">[ hilo ]</a>
+              <a href="subject.html#1411">[ asunto ]</a>
+              <a href="author.html#1411">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola ricuras:
+
+A ver que me explique:
+
+g_plugins-&gt;lanza() siempre espera que se devuelva un int (Valor entero) 
+
+SIEMPRE !!!!
+
+No se porque alguien ha cambiado todos los entryPoint para que devuelvan un 
+void y como no le funcionaba bien ha cambiado el plugins.cpp para que se 
+salte la finalizacion de una llamada a plugins si el valor devuelto es 
+distinto de cero con lo que ha fastidiado todo el invento y no funciona nada 
+asi como debe.
+
+Lo explico para que se entienda:
+
+Nosotros cargamos los plugins que deseamos en una lista ORDENADA de ejecución.
+
+Dicha lista dispara los puntos de interrupcion en el ORDEN establecido.
+
+Si en algun momento de la cadena una llamada devuelve un valor distinto de 
+cero la cadena se INTERRUMPE dando por finalizada la llamada de plugins 
+(normalmente cuando un plugin ha dado respuesta a la llamada y no quiere que 
+nadie mas responda) Esta caracteristica es DESEABLE ya que para ello usamos 
+la ORDENACION de los plugins.
+
+Por tanto todas las llamadas de plugins deben devolver un valor ENTERO y en el 
+caso del entryPoint deben devolver SIEMPRE un 0 para que se ejecuten todos 
+los entryPoint de todos los plugins. Y eso no es lo mismo que hacerlos del 
+tipo void donde el resultado es aleatorio.
+
+PD: Os voy a cortar las manos !!!!
+
+Venga, que tengais un buen dia, salut, paz para todos y que se acabe la crisis 
+pronto. Hasta luego.
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001410.html">[BulmaGés] r3160 -	trunk/bulmages/bulmalib/plugins/plugininformes
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001425.html">[BulmaGés]Las llamadas a plugin devuelven SIEMPRE un tipo int
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1411">[ fecha ]</a>
+              <a href="thread.html#1411">[ hilo ]</a>
+              <a href="subject.html#1411">[ asunto ]</a>
+              <a href="author.html#1411">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

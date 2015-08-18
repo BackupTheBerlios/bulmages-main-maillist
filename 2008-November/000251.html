@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaFact_y_BulmaT%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FPV%3D5D_Dudas_variadas_y_fallos_variados%3F%3D&In-Reply-To=%3C5c6804130811041129s795004bcw9944a6235f9fcc5d%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000249.html">
+   <LINK REL="Next"  HREF="000253.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados </H1>
+    <B>Daniel Bustos Fernández</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaFact_y_BulmaT%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FPV%3D5D_Dudas_variadas_y_fallos_variados%3F%3D&In-Reply-To=%3C5c6804130811041129s795004bcw9944a6235f9fcc5d%40mail.gmail.com%3E"
+       TITLE="[BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados">daniel69 en gmail.com
+       </A><BR>
+    <I>Mar Nov  4 20:29:26 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000249.html">[BulmaGés] r2767 -	trunk/bulmages/bulmafact/plugins/plugincontratos
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000253.html">[BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#251">[ fecha ]</a>
+              <a href="thread.html#251">[ hilo ]</a>
+              <a href="subject.html#251">[ asunto ]</a>
+              <a href="author.html#251">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola a todos
+
+&gt;&gt;<i> Guardar imágenes de artículos
+</I>
+Efectivamente, para que se guarden las imágenes había que editar el archivo
+/etc/bulmages/bulmafact.conf
+Ahí salen las siguientes directivas
+
+CONF_DIR_IMG_ARTICLES     /var/bulmages/articles/
+CONF_DIR_IMG_PERSONAL   /var/bulmages/personal/
+
+Como ninguno de las dos carpetas existían en mi kubuntu, las he creado y
+asunto resuelto.
+Decir que las he creado dándoles el mismo user que lanza la aplicación, no
+como root.
+Las imágenes de artículos se guardan en la carpeta articles (artículos).
+Ignoro para qué servirá la otra pero ya está creada para no tener problemas.
+
+&gt;&gt;<i>Plugins y Problema al guardar albaranes
+</I>
+En cuanto al asunto de los plugins, efectivamente, tras chequear el apartado
+correspondiente en bulmafact.conf veo que sí que hay instalados unos
+cuantos, y entre ellos el de trazabilidad ( libplugintrazabilidad.so ).
+Sin embargo, en bulmasetup al revisar la empresa creada no tengo ninguno
+marcado como instalado.
+Casualmente hay uno que se llama Trazabilidad. ¿Es el mismo?
+En ese caso, ¿no funciona el marcado en bulmasetup todavía? ¿no revisa
+bulmasetup el archivo para marcar o no los plugins?
+
+Aqui una captura por si no me explico bien
+<A HREF="http://img83.imageshack.us/my.php?image=instantnea2dr6.png">http://img83.imageshack.us/my.php?image=instantnea2dr6.png</A>
+
+Tras eliminar libplugintrazabilidad.so no hay problema al generar albaranes
+y entrar tantas veces como quiera y necesite.
+
+He intentado parchear pero me da un error: &quot;no existe el lenguaje plpgsql&quot;.
+Ignoro si debo instalar algún paquete en kubuntu ( según el manual de
+bulmages tengo que instalar postgresql-devel pero no aparece en el apt) o
+configurar algo en el postgres que ya está instalado.
+
+
+Comentar que en la web hay un error, pone revf_plugintrazabilidad.sql en vez
+de revf-plugintrazabilidad.sql (guión bajo por guión normal).
+
+
+Ahora vamos con un par de dudas / posibles errores nuevos
+
+&gt;&gt;<i> Generar PDF's
+</I>
+Estoy generando un presupuesto p.e., relleno todos los datos y hago clic en
+el botón de &quot;Informe por referencia&quot;.
+Se genera un pdf con todos los datos correctos, excepto 2. En el cuadrito de
+arriba, en vez de salir los datos del proveedor, sale
+[nomproveedor],[cifproveedor]
+Decir que el proveedor tiene todos los datos ok en su pantalla
+correspondiente.
+
+&gt;&gt;<i> Presupuesto -&gt; Factura ?
+</I>
+Yo tenía la siguiente idea: generabas un presupuesto, y a partir de él la
+factura.
+Sin embargo por lo que veo, en bulmages puedo hacer esto a partir de un
+albarán. Primero creo el albarán y más tarde la factura (y luego el cobro).
+¿Qué paso intermedio entre presupuesto-factura o presupuesto-albarán me
+estoy perdiendo?
+
+Decir que el problema con el plugin de trazabilidad anteriormente, también
+ocurría al añadir albaranes a facturas, ahora tras borrar el plugin no da
+problemas.
+
+
+&gt;&gt;<i>PFC
+</I>
+Como ya comenté, el uso de bulmages es parte de mi PFC. Mi tutor insiste en
+que siga, para el desarrollo de la interfaz que siga métrica v.3. que es lo
+que piden para el desarrollo de software para la administración española. No
+voy a desarrollar para la administración, pero mi tutor dice que así aprendo
+para el futuro.
+He estado mirando los pdf's de métrica y son infumables. Supongo que métrica
+debe abarcar cualquier cosa de cualquier tamaño, y para lo que yo quiero
+hacer, que es pequeño, me sobra muuuuucho. ¿Teneis experiencia en
+desarrollar con metrica? ¿es tan coñazo como parece?
+
+
+Bueno, gracias a todos por vuestra ayuda, sigo progresando, lento pero
+seguro.
+
+
+Saludos a todos
+
+Dani
+
+
+-- 
+&quot;Dios es un comediante que actúa para una audiencia demasiado asustada para
+reír.&quot;
+Voltaire
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20081104/37b8b22c/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20081104/37b8b22c/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000249.html">[BulmaGés] r2767 -	trunk/bulmages/bulmafact/plugins/plugincontratos
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000253.html">[BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#251">[ fecha ]</a>
+              <a href="thread.html#251">[ hilo ]</a>
+              <a href="subject.html#251">[ asunto ]</a>
+              <a href="author.html#251">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

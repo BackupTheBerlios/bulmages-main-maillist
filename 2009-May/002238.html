@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Bug #14477] Errors de codificació de caràcters a la consola d'errors sql
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%5BBug%20%2314477%5D%20Errors%20de%20codificaci%F3%20de%20car%E0cters%20a%20la%20consola%20d%27errors%20sql&In-Reply-To=%3C200905271056.n4RAueSq006819%40unicorn.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002264.html">
+   <LINK REL="Next"  HREF="002239.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Bug #14477] Errors de codificació de caràcters a la consola d'errors sql </H1>
+    <B>admin en berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%5BBug%20%2314477%5D%20Errors%20de%20codificaci%F3%20de%20car%E0cters%20a%20la%20consola%20d%27errors%20sql&In-Reply-To=%3C200905271056.n4RAueSq006819%40unicorn.berlios.de%3E"
+       TITLE="[Bug #14477] Errors de codificació de caràcters a la consola d'errors sql">admin en berlios.de
+       </A><BR>
+    <I>Mie Mayo 27 12:56:40 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002264.html">[BulmaGés]Manual. XML
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002239.html">[BulmaGés] r3435 - trunk/bulmages/bulmasetup
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2238">[ fecha ]</a>
+              <a href="thread.html#2238">[ hilo ]</a>
+              <a href="subject.html#2238">[ asunto ]</a>
+              <a href="author.html#2238">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bug #14477, was updated on 2008-Sep-11 09:25
+Here is a current snapshot of the bug.
+
+Project: BulmaGes, Gestión Empresarial Libre
+Category: bulmasetup
+Status: Open
+Resolution: Fixed
+Bug Group: None
+Priority: 5
+Submitted by: xdrudis
+Assigned to : tborras
+Summary: Errors de codificació de caràcters a la consola d'errors sql
+
+Details: A una instal·lació normal de lenny (aproximadament 10.8.2008) , el bulmasetup-0.11.1-2 mostra malament els accents i altres caràcters no ascii en el log 
+d'errors d'instal·lació. Aparentment el psql genera missatges en UTF-8 i 
+el bulmasetup els interpreta com a ISO-8859-1. El resultat és 
+
+
+Tratando Promedios en ArtÃ­culos
+...
+Tratando Informe Clientes en Hoja de CÃ¡lculo
+...
+Tratando GestiÃ³n de Contratos con Clientes
+...
+Tratando Trabajo con mÃºltiples documentos.
+...
+-------------------
+A ua installacion normau de *lenny (apuprètz 10.8.2008) , eth *bulmasetup-0.11.1-2 mòstra mau es accents e auti caractèrs non *ascii en eth *log 
+d'errors d'installacion. Aparentaments *psql genère messatges eth *UTF-8 e  *bulmasetup les interprete coma ISO-8859-1. Eth resultat ei
+
+Tratando Promedios en ArtÃ­culos
+...
+Tratando Informe Clientes en Hoja de CÃ¡lculo
+...
+Tratando GestiÃ³n de Contratos con Clientes
+...
+Tratando Trabajo con mÃºltiples documentos.
+
+--------------------
+In a normal installation of *lenny (roughly 10.8.2008) , the *bulmasetup-0.11.1-2  wrongly shows the accents and other non ascii characters in the installation error *log . Apparently *psql generates messages in *UTF-8 and  *bulmasetup interprets them as a *ISO-8859-1. The result is
+
+Tratando Promedios en ArtÃ­culos
+...
+Tratando Informe Clientes en Hoja de CÃ¡lculo
+...
+Tratando GestiÃ³n de Contratos con Clientes
+...
+Tratando Trabajo con mÃºltiples documentos.
+
+--------------------
+A una instalación normal de *lenny (aproximadamente 10.8.2008) , el *bulmasetup-0.11.1-2 muestra mal los acentos y otros caracteres no *ascii en el *log 
+de errores de instalación. Aparentemente el *psql genera mensajes en *UTF-8 y el 
+*bulmasetup les interpreta como *ISO-8859-1. El resultado es 
+
+Tratando Promedios en ArtÃ­culos
+...
+Tratando Informe Clientes en Hoja de CÃ¡lculo
+...
+Tratando GestiÃ³n de Contratos con Clientes
+...
+Tratando Trabajo con mÃºltiples documentos.
+
+
+Follow-Ups:
+
+Date: 2009-May-27 12:56
+By: tborras
+
+Comment:
+Arreglado haciendo uso del translate con recodificacion a Utf8.
+
+Seguro que hay alguna manera mejor de hacerlo pero no se me ocurre y no he encontrado ningún ejemplo en python para hacerlo.
+-------------------------------------------------------
+
+Date: 2008-Sep-11 18:38
+By: lepalom
+
+Comment:
+OK, vist. Prenen nota. S'ha de canviar unes línies del bulmasetup. No el tanco.
+-------------------------------------------------------
+
+For detailed info, follow this link:
+<A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=14477&amp;group_id=4472">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=14477&amp;group_id=4472</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002264.html">[BulmaGés]Manual. XML
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002239.html">[BulmaGés] r3435 - trunk/bulmages/bulmasetup
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2238">[ fecha ]</a>
+              <a href="thread.html#2238">[ hilo ]</a>
+              <a href="subject.html#2238">[ asunto ]</a>
+              <a href="author.html#2238">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Error al imprimir las facturas
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-September/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FError_al_imprimir_las%3F%3D%20%3D%3Fiso-8859-1%3Fq%3F_facturas%3F%3D&In-Reply-To=%3C200909252210.29234.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003032.html">
+   <LINK REL="Next"  HREF="003038.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Error al imprimir las facturas </H1>
+    <B>Tomeu</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FError_al_imprimir_las%3F%3D%20%3D%3Fiso-8859-1%3Fq%3F_facturas%3F%3D&In-Reply-To=%3C200909252210.29234.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]Error al imprimir las facturas">tborras en conetxia.com
+       </A><BR>
+    <I>Vie Sep 25 22:10:29 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003032.html">[BulmaGés]Error al imprimir las facturas
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003038.html">[BulmaGés]Error al imprimir las facturas
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3033">[ fecha ]</a>
+              <a href="thread.html#3033">[ hilo ]</a>
+              <a href="subject.html#3033">[ asunto ]</a>
+              <a href="author.html#3033">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola
+
+Creo que hay un problema con algun tag no soportado en  tu version de 
+reportlab.
+
+Hace mucho tiempo esto pasaba con los codigos de barras.
+
+¿Puedes pasarnos el factura.rml para que lo revisemos ? (Si lo consideras 
+oportuno cambia los datos de cliente, y totales) o crea una factura ficticia 
+que produzca el mismo error.
+
+Salut
+
+&gt;<i> &lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+</I>&gt;<i> &lt;html&gt;n
+</I>&gt;<i> &lt;head&gt;
+</I>&gt;<i>   &lt;meta content=&quot;text/html;charset=ISO-8859-1&quot; http-equiv=&quot;Content-Type&quot;&gt;
+</I>&gt;<i>   &lt;title&gt;&lt;/title&gt;
+</I>&gt;<i> &lt;/head&gt;
+</I>&gt;<i> &lt;body bgcolor=&quot;#ffffff&quot; text=&quot;#000000&quot;&gt;
+</I>&gt;<i> Este es el error:&lt;br&gt;
+</I>&gt;<i> &lt;br&gt;
+</I>&gt;<i> bgtrml2pdf factura.rml &gt; factura.pdf&lt;br&gt;
+</I>&gt;<i> Processing file: factura.rml&lt;br&gt;
+</I>&gt;<i> Traceback (most recent call last):&lt;br&gt;
+</I>&gt;<i> &nbsp; File &quot;/usr/bin/bgtrml2pdf&quot;, line 663, in &lt;module&gt;&lt;br&gt;
+</I>&gt;<i> &nbsp;&nbsp;&nbsp; print parseString(file(sys.argv[1], 'r').read()),&lt;br&gt;
+</I>&gt;<i> &nbsp; File &quot;/usr/bin/bgtrml2pdf&quot;, line 638, in parseString&lt;br&gt;
+</I>&gt;<i> &nbsp;&nbsp;&nbsp; r = _rml_doc(data)&lt;br&gt;
+</I>&gt;<i> &nbsp; File &quot;/usr/bin/bgtrml2pdf&quot;, line 154, in __init__&lt;br&gt;
+</I>&gt;<i> &nbsp;&nbsp;&nbsp; dom1 = xml.dom.minidom.parse(filename)&lt;br&gt;
+</I>&gt;<i> &nbsp; File &quot;/usr/lib/python2.5/xml/dom/minidom.py&quot;, line 1915, in
+</I>&gt;<i>  parse&lt;br&gt; &nbsp;&nbsp;&nbsp; return expatbuilder.parse(file)&lt;br&gt;
+</I>&gt;<i> &nbsp; File &quot;/usr/lib/python2.5/xml/dom/expatbuilder.py&quot;, line 924, in
+</I>&gt;<i>  parse&lt;br&gt; &nbsp;&nbsp;&nbsp; result = builder.parseFile(fp)&lt;br&gt;
+</I>&gt;<i> &nbsp; File &quot;/usr/lib/python2.5/xml/dom/expatbuilder.py&quot;, line 207, in
+</I>&gt;<i> parseFile&lt;br&gt;
+</I>&gt;<i> &nbsp;&nbsp;&nbsp; parser.Parse(buffer, 0)&lt;br&gt;
+</I>&gt;<i> xml.parsers.expat.ExpatError: mismatched tag: line 41, column 2&lt;br&gt;
+</I>&gt;<i> &lt;br&gt;
+</I>&gt;<i> &lt;br&gt;
+</I>&gt;<i> Fco. Javier M. C. escribi&oacute;:
+</I>&gt;<i> &lt;blockquote cite=&quot;mid:<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">4ABD1701.5090906 en todo-redes.com</A>&quot; type=&quot;cite&quot;&gt;
+</I>&gt;<i>   &lt;pre wrap=&quot;&quot;&gt;Hola.
+</I>&gt;<i> 
+</I>&gt;<i> Tienes instalado Reportlab?
+</I>&gt;<i> 
+</I>&gt;<i> ejecuta
+</I>&gt;<i> 
+</I>&gt;<i> bgtrml2pdf factura.rml &gt; factura.pdf
+</I>&gt;<i> 
+</I>&gt;<i> a ver que mensaje de error te da.
+</I>&gt;<i> 
+</I>&gt;<i> Un saludo.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Santos escribi&oacute;:
+</I>&gt;<i>   &lt;/pre&gt;
+</I>&gt;<i>   &lt;blockquote type=&quot;cite&quot;&gt;
+</I>&gt;<i>     &lt;pre wrap=&quot;&quot;&gt;Hola, acabo de hacer una instalaci&oacute;n nueva en
+</I>&gt;<i>  Debian Lenny con apt. La instalaci&oacute;n es correcta, todo va de cine,
+</I>&gt;<i>  pero al intentar imprimir albaranes y facturas no genera correctamente el
+</I>&gt;<i>  pdf. Veo que crea un archivo factura.rml con los datos de la factura y un
+</I>&gt;<i>  factura.pdf que no se abre (intento abrirlo manualmente con kpdf y da
+</I>&gt;<i>  error).
+</I>&gt;<i> La cuesti&oacute;n es que me suena esto de haberme pasado otra vez, pero he
+</I>&gt;<i> sido incapaz de solucionarlo. Alguna pista de qu&eacute; pude ser?
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> &lt;a class=&quot;moz-txt-link-abbreviated&quot;
+</I>&gt;<i>  href=&quot;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>&quot;&gt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.d</A>
+</I>&gt;<i> e&lt;/a&gt; &lt;a class=&quot;moz-txt-link-freetext&quot;
+</I>&gt;<i>  href=&quot;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>&quot;&gt;<A HREF="https://lis">https://lis</A>
+</I>&gt;<i> ts.berlios.de/mailman/listinfo/bulmages-main&lt;/a&gt;
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i>     &lt;/pre&gt;
+</I>&gt;<i>   &lt;/blockquote&gt;
+</I>&gt;<i>   &lt;pre wrap=&quot;&quot;&gt;&lt;!----&gt;
+</I>&gt;<i> 
+</I>&gt;<i>   &lt;/pre&gt;
+</I>&gt;<i> &lt;/blockquote&gt;
+</I>&gt;<i> &lt;br&gt;
+</I>&gt;<i> &lt;/body&gt;
+</I>&gt;<i> &lt;/html&gt;
+</I>&gt;<i> &quot;
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003032.html">[BulmaGés]Error al imprimir las facturas
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003038.html">[BulmaGés]Error al imprimir las facturas
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3033">[ fecha ]</a>
+              <a href="thread.html#3033">[ hilo ]</a>
+              <a href="subject.html#3033">[ asunto ]</a>
+              <a href="author.html#3033">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Actualización de repositorio master y BulmaGés de dieta (separando repositorios)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-October/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FActualizaci%3DF3n_de_re%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fpositorio_master_y_BulmaG%3DE9s_de_dieta_%3D28separando_reposi%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Ftorios%3D29%3F%3D&In-Reply-To=%3C5082E917.20205%40danielripoll.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007330.html">
+   <LINK REL="Next"  HREF="007332.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Actualización de repositorio master y BulmaGés de dieta (separando repositorios) </H1>
+    <B>Daniel Ripoll</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FActualizaci%3DF3n_de_re%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fpositorio_master_y_BulmaG%3DE9s_de_dieta_%3D28separando_reposi%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Ftorios%3D29%3F%3D&In-Reply-To=%3C5082E917.20205%40danielripoll.es%3E"
+       TITLE="[BulmaGés]Actualización de repositorio master y BulmaGés de dieta (separando repositorios)">info en danielripoll.es
+       </A><BR>
+    <I>Sab Oct 20 20:10:31 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007330.html">[BulmaGés] Resumen {B.H.M.} del domingo pasado
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007332.html">[BulmaGés]Actualización de repositorio master y BulmaGés de dieta (separando repositorios)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7331">[ fecha ]</a>
+              <a href="thread.html#7331">[ hilo ]</a>
+              <a href="subject.html#7331">[ asunto ]</a>
+              <a href="author.html#7331">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola a todos chicos,
+(algunos implicados puede que recibáis este email por duplicado.)
+(WARNING: TOCHOMAIL DETECTADO!)
+
+-----------------
+Primero:
+Hay algunos usuarios que han estado actualizando BulmaGés en su 
+repositorio privado, sin subir los cambios al master principal, pese a 
+ser cambios generales para el proyecto (tborras, que ha hecho un trabajo 
+cojonudo por ejemplo), no obstante al no subirse los cambios al central, 
+había gente que no se daba cuenta de estos cambios, así que me dispuse a 
+migrar sus cambios al general, haciendo uso del super git-rebase...
+
+Entonces me di cuenta que había commits vacios y/o cherry-pics al igual 
+que algunos ficheros que entraban en conflicto, así que después de 
+pelearme bastante con rebase y sus continues y skips, he conseguido que 
+el proyecto compile nuevamente, reflejando los cambios correctos y 
+subido al master (todavía no he mirado la release).
+
+¡Así que ya podéis actualizar vuestro código y poner vuestras maquinas a 
+compilar!
+
+Dejadme que os dé un briconsejo: si usais cherry-picks, eliminadlos 
+antes de subir los cambios lo mismo, no hagais commits que no aporten 
+cambio ninguno.
+
+-------------
+Segundo:
+Una de las cosas que destacaba de los cambios en el repo tborras y 
+también en el mio (y quizá alguno más que no hemos visto) es la 
+eliminación de las carpetas obsoletas, no-cont-bulmages, las 
+parcialmente obsoletas como debian y las de proyectos que no son de la 
+suite, si no extras.
+
+Así entonces he creado el proyecto bulmages-extra ( 
+<A HREF="https://gitorious.org/bulmages-extra">https://gitorious.org/bulmages-extra</A>) en gitorious, que contiene tres 
+repositorios:
+
+1º) bulmages-nds: contiene devKitPro y los archivos para crear el 
+bulmatpv de la Ninendo DS desde su raiz, conservando el log única y 
+exclusivamente de su carpeta correspondiente, como debe ser. He nombrado 
+al grupo iglues-bulmages como commiters y a javi y todoredes, como 
+administradores, al haber iniciado el a su empresa TodoRedes el proyecto 
+y es el quien da soporte comercial de esta versión.
+
+2º) debian-packaging: contiene todos los archivos necesarios (?) para el 
+empaquetado de Debian, siendo Walter quien ha metido más commits 
+ultimamente lo he dejado como commiter principal, junto al grupo 
+iglues-bulmages. He indicado en su descripción como &quot;Pendiente de 
+revisión&quot;, al no saber en que estado está.
+
+3º) no-cont-bulmages: este repositorio tiene supuestamente el proyecto 
+de web que permetía conectarse con bulmacont, actualmente ni funciona 
+con las ultimas versiones de BulmaGés, he dejado como commiters el grupo 
+iglues-bulmages, por si alguien se animara a renovarlo (aunque creo es 
+mejor empeza desde cero con ayuda de algún framework como symphony).
+
+Con estos cambios ahora el proyecto ha pasado a pesar 670.3 MBs en lugar 
+del 1.3GBs que pesaba hasta ahora, el grueso del peso se lo sigue 
+llevando el instalador para windows nsis_bulmages, que cuando tenga un 
+poco más de tiempo separaré como submodulo (ya que no tiene sentido que 
+esté en el central, y las ramas no se usan para eso) y el tamaño del 
+proyecto pasará a ser de solo 107 MBs.
+
+Ahí si que no habrá excusas para no descargarse el proyecto y ponerse a 
+compilar ;)
+
+Después de este tocho, me despido de vosotros,
+
+Buenas noches.
+
+-- 
+Daniel Ripoll Osma
+<A HREF="http://danielripoll.es">http://danielripoll.es</A>
+<A HREF="http://planet.bulmages.tk">http://planet.bulmages.tk</A>
+<A HREF="http://bulmages.tk">http://bulmages.tk</A>
+6688.27.4.90
+
+Web &amp; Desktop Developer
+
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20121020/ab65fbaf/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20121020/ab65fbaf/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007330.html">[BulmaGés] Resumen {B.H.M.} del domingo pasado
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007332.html">[BulmaGés]Actualización de repositorio master y BulmaGés de dieta (separando repositorios)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7331">[ fecha ]</a>
+              <a href="thread.html#7331">[ hilo ]</a>
+              <a href="subject.html#7331">[ asunto ]</a>
+              <a href="author.html#7331">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

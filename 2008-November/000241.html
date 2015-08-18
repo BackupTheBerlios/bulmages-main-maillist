@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] postgresiface2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20postgresiface2&In-Reply-To=%3C20081102183936.GB22060%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000240.html">
+   <LINK REL="Next"  HREF="000245.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] postgresiface2 </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20postgresiface2&In-Reply-To=%3C20081102183936.GB22060%40localhost%3E"
+       TITLE="[BulmaGés] postgresiface2">xdrudis en tinet.cat
+       </A><BR>
+    <I>Dom Nov  2 19:39:36 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000240.html">[BulmaGés]Plugin alies ?
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000245.html">[BulmaGés]postgresiface2
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#241">[ fecha ]</a>
+              <a href="thread.html#241">[ hilo ]</a>
+              <a href="subject.html#241">[ asunto ]</a>
+              <a href="author.html#241">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Hola. 
+
+Jo només he programat contra postgres des de Perl, PHP i Java, però 
+mai des de C++ ni C. 
+
+Tanmateix llegeixo aquí 
+<A HREF="http://www.postgresql.org/docs/8.3/interactive/libpq-exec.html">http://www.postgresql.org/docs/8.3/interactive/libpq-exec.html</A>
+<A HREF="http://www.postgresql.org/docs/8.3/static/protocol.html">http://www.postgresql.org/docs/8.3/static/protocol.html</A>
+
+que d'ençà del protocol 3 de postgresql a la libpq li pots posar
+paràmetres a les consultes ($1, $2, $3) i passar-li una taula de
+valors amb (PQExecParams)). Jo estic acostumat a fer-ho així, per
+facilitar la seguretat (tot i que em temo que les injeccions d'SQL no
+deuen ser un problema a bulmages, donat que la interfície les permet)
+i també per estalviar-me haver de posar cometes i escapar-les. Però el
+tros que he vist de bulmages no ho fa així
+
+Per exemple ara hi ha coses com 
+
+
+    QString SQLQuery = &quot;SELECT * FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias = '&quot; + val + &quot;'&quot;;
+    cursor2 *cur = busc-&gt;empresaBase() -&gt;cargacursor ( SQLQuery );
+
+Però llavors si val conté un apostrof (per exemple perquè l'alies és
+&quot;L'ombra de l'eunuc&quot;) donarà un error de sintaxi SQL, suposo. Podria
+escapar-ho bé (canviar ' per '' abans de concatenar però caldria mirar
+si amb això n'hi ha prou).  A mi m'agradaria poder fer alguna cosa
+semblant a
+
+    QString valors[1] = {val};
+    QString SQLQuery = &quot;SELECT * FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias = $1&quot;;
+    cursor2 *cur = busc-&gt;empresaBase() -&gt;cargacursor ( SQLQuery, 1, valors, NULL, NULL );
+
+I així funciona amb apòstrofs a val i no cal escapar res (i si els
+tipus dels paràmetres no són varchar cal declarar-los per comptes dels
+NULLS, suposo, però al menys és libpq qui fa el formateig o conversió
+de tipus, espero).
+
+Per a poder introduir això a postgresiface2 caldria exigir que la
+versió de postgresql fos &gt;=7.4 Els paquets de debian semblen requerir
+postgres &gt;= 8.3, o sia que per aquí rai, però no sé si hi ha alguna
+versió mínima de postgres requerida en altres plataformes.
+
+Si un dia es fessin servir consultes precompilades (PREPARE) podria ser útil
+també per reutilitzar més consultes, i donaria teòricament una mica
+més d'eficiència (en últimes versions de postgresql, abans no
+preparava consultes). Però encara que no s'usesin encara consultes
+precompilades seria una mica més cómode de programar, no? (o són
+manies meves?).
+
+Us semblaria bona idea  un canvi així ? 
+
+
+
+
+
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>
+Signa per fer Collserola parc natural com cal
+<A HREF="http://www.collserola.org/salvemelparcnatural/">http://www.collserola.org/salvemelparcnatural/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000240.html">[BulmaGés]Plugin alies ?
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000245.html">[BulmaGés]postgresiface2
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#241">[ fecha ]</a>
+              <a href="thread.html#241">[ hilo ]</a>
+              <a href="subject.html#241">[ asunto ]</a>
+              <a href="author.html#241">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

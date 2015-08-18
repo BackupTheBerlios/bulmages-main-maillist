@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Fallo de segmentación al poner una lista desplegable fuera del constructor de ficha
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FFallo_de_segmentaci%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3DF3n_al_poner_una_lista_desplegable_fuera_del_constructor_%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fde_ficha%3F%3D&In-Reply-To=%3C201006111604.21557.auryn%40wanadoo.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003701.html">
+   <LINK REL="Next"  HREF="003703.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Fallo de segmentación al poner una lista desplegable fuera del constructor de ficha </H1>
+    <B>Aron</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FFallo_de_segmentaci%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3DF3n_al_poner_una_lista_desplegable_fuera_del_constructor_%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fde_ficha%3F%3D&In-Reply-To=%3C201006111604.21557.auryn%40wanadoo.es%3E"
+       TITLE="[BulmaGés]Fallo de segmentación al poner una lista desplegable fuera del constructor de ficha">auryn en wanadoo.es
+       </A><BR>
+    <I>Vie Jun 11 16:04:21 CEST 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003701.html">[BulmaGés]Fallo de segmentación al poner una lista desplegable fuera del constructor de ficha
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003703.html">[BulmaGés]Fallo de segmentación al poner una lista desplegable fuera del constructor de ficha
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3702">[ fecha ]</a>
+              <a href="thread.html#3702">[ hilo ]</a>
+              <a href="subject.html#3702">[ asunto ]</a>
+              <a href="author.html#3702">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Gracias Tomeu, es que hago cosas un poco rebuscadas y entonces llegan los 
+problemas, jeje. A ver si puedo ampliaros la información.
+
+En este correo pongo el código del delegado:
+
+/// DELEGADO: constructor
+DesplegableProveedores::DesplegableProveedores
+( BlMainCompany *company, QObject *padre )
+:<i> QItemDelegate(padre), m_company(company)
+</I>{
+}
+
+
+/// DELEGADO: visualización
+void DesplegableProveedores::paint(QPainter *pintor
+, const QStyleOptionViewItem &amp;vis, const QModelIndex &amp;elemento) const
+{
+   QItemDelegate::paint(pintor, vis, elemento);
+}
+
+
+/// DELEGADO: creación del widget de edición
+QWidget *DesplegableProveedores::createEditor(QWidget *padre,
+const QStyleOptionViewItem &amp;vis, const QModelIndex &amp;elemento) const
+{
+   BlComboBox *desplegable = new BlComboBox(padre-&gt;parentWidget());
+   desplegable-&gt;setMainCompany(m_company);
+   desplegable-&gt;setQuery(&quot;SELECT id, nombre FROM gen.proveedor ORDER BY 
+nombre&quot;);
+   desplegable-&gt;setFieldId(&quot;id&quot;);
+   desplegable-&gt;m_valores[&quot;nombre&quot;] = &quot;&quot;;
+   desplegable-&gt;setAllowNull(true);
+
+/// Si en vez de cargar una consulta, inserto elementos uno a uno, todo 
+funciona bien: no hay fallo de segmentación
+/// ((BlComboBox *)editor)-&gt;insertItem(0, &quot;hola&quot;);
+
+   return desplegable;
+}
+
+
+/// DELEGADO: poner los datos en el widget de edición
+void DesplegableProveedores::setEditorData(QWidget *editor, const QModelIndex 
+&amp;elemento) const
+{
+   /// Esto provoca un fallo de segmentación
+   ((BlComboBox *)editor)-&gt;setId(elemento.model()-&gt;data(elemento).toString());
+}
+
+
+/// DELEGADO: Poner los cambios en la base de datos
+void DesplegableProveedores::setModelData(QWidget *editor,
+QAbstractItemModel *modelo, const QModelIndex &amp;elemento) const
+{
+   modelo-&gt;setData(elemento, ((BlComboBox *)editor)-&gt;id());
+}
+
+
+/// DELEGADO: actualizar posición y tamaño del widget de edición
+void DesplegableProveedores::updateEditorGeometry(QWidget *editor, const 
+QStyleOptionViewItem &amp;vis, const QModelIndex &amp;elemento) const
+{
+   editor-&gt;setGeometry(vis.rect);
+}
+
+
+
+On Viernes, 11 de Junio de 2010 14:16:41 usted escribió:
+&gt;<i> Hola Aron
+</I>&gt;<i> 
+</I>&gt;<i> Necesito más información para precisar el fallo.
+</I>&gt;<i> 
+</I>&gt;<i> &gt; Tengo un delegado que muestra una lista desplegable (BlComboBox) al
+</I>&gt;<i> &gt; editar
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt;  los campos de la columna de una tabla BfSubForm contenida en una ficha
+</I>&gt;<i> &gt;  BfForm.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Estoy intentando que aparezcan los datos en la lista, pero obtengo un
+</I>&gt;<i> &gt; fallo
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt;  de segmentación cada vez que se entra al &quot;createEditor&quot; del delegado.
+</I>&gt;<i> &gt;  Dentro de createEditor se define la lista desplegable. El fallo viene al
+</I>&gt;<i> &gt;  final, en la línea desplegable-&gt;setId(&quot;&quot;), que debería cargar los datos.
+</I>&gt;<i> 
+</I>&gt;<i> Creo que deberias hacer el setId en el setEditorData en lugar de en el
+</I>&gt;<i> createEditor.
+</I>&gt;<i> 
+</I>&gt;<i> De todos modos no tengo suficientes datos ni forma de probarlo para
+</I>&gt;<i> asegurarlo y los delegados son una parte bastante difícil.
+</I>&gt;<i> 
+</I>&gt;<i> Creas el delegado directamente y lo adjuntas con setItemDelegate ?
+</I>&gt;<i> 
+</I>&gt;<i> Derivas algunas clases para poner tu código ?
+</I>&gt;<i> 
+</I>&gt;<i> Usas las llamadas de plugins para crear el delegado correspondiente ?
+</I>&gt;<i> 
+</I>&gt;<i> Salut
+</I>&gt;<i> 
+</I>&gt;<i> &gt; Si pongo la definición de la lista desplegable en el constructor de la
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt;  ficha se cargan los datos y no hay problemas.
+</I>&gt;<i> &gt;  
+</I>&gt;<i> &gt; 	   BlComboBox *desplegable = new BlComboBox(this);
+</I>&gt;<i> &gt; 	   desplegable-&gt;setMainCompany(mainCompany());
+</I>&gt;<i> &gt; 	   desplegable-&gt;setQuery(&quot;SELECT id, nombre FROM gen.proveedor ORDER BY
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; nombre&quot;);
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 	   desplegable-&gt;setFieldId(&quot;id&quot;);
+</I>&gt;<i> &gt; 	   desplegable-&gt;m_valores[&quot;nombre&quot;] = &quot;&quot;;
+</I>&gt;<i> &gt; 	   desplegable-&gt;setAllowNull(true);
+</I>&gt;<i> &gt; 	   desplegable-&gt;setId(&quot;&quot;); // Aquí viene el fallo de segmentación si no
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; estamos en el constructor
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Gracias
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Bulmages-main mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i> &gt; &quot;
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003701.html">[BulmaGés]Fallo de segmentación al poner una lista desplegable fuera del constructor de ficha
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003703.html">[BulmaGés]Fallo de segmentación al poner una lista desplegable fuera del constructor de ficha
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3702">[ fecha ]</a>
+              <a href="thread.html#3702">[ hilo ]</a>
+              <a href="subject.html#3702">[ asunto ]</a>
+              <a href="author.html#3702">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

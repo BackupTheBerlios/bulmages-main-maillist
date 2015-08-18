@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Configuración del sistema para funcionar con NxSpooler
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FConfiguraci%3DF3n_del_s%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fistema_para_funcionar_con_NxSpooler%3F%3D&In-Reply-To=%3C200907241111.35623.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002824.html">
+   <LINK REL="Next"  HREF="002826.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Configuración del sistema para funcionar con NxSpooler </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FConfiguraci%3DF3n_del_s%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fistema_para_funcionar_con_NxSpooler%3F%3D&In-Reply-To=%3C200907241111.35623.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]Configuración del sistema para funcionar con NxSpooler">tborras en conetxia.com
+       </A><BR>
+    <I>Vie Jul 24 11:11:35 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002824.html">[BulmaGés]Configuración del sistema para funcionar con NxSpooler
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002826.html">[BulmaGés]Configuración del sistema para funcionar con NxSpooler
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2825">[ fecha ]</a>
+              <a href="thread.html#2825">[ hilo ]</a>
+              <a href="subject.html#2825">[ asunto ]</a>
+              <a href="author.html#2825">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Una pregunta/sugerencia/mejora:
+
+BulmaGés también trabaja mucho con ods y sxc 
+¿Es muy difícil cambiar el programa para que también abra este tipo de 
+archivos?
+
+Salut
+
+
+El Friday 24 July 2009 10:38:55 Toni Asensi Esteve escribió:
+&gt;<i> Respecto al programa NxSpooler: éstos son los cambios que recomendamos Arón
+</I>&gt;<i> y yo para realizar en el sistema y que funcione como se espera:
+</I>&gt;<i>
+</I>&gt;<i> * La primera vez:
+</I>&gt;<i>    + En el servidor:
+</I>&gt;<i>       - Hacer este cambio de configuración para que Bulmagés no abra los
+</I>&gt;<i> archivos PDF en el servidor (ya que tienen que abrirse en el cliente):
+</I>&gt;<i> editar /etc/bulmages/bulmages.conf y reemplazar &quot;konqueror&quot; por &quot;echo&quot; en
+</I>&gt;<i> el parámetro CONF_PDF.
+</I>&gt;<i>       - Nota: el usuario que se va a conectar debe tener su propio $HOME en
+</I>&gt;<i> el servidor.
+</I>&gt;<i>
+</I>&gt;<i>    + En el ordenador cliente:
+</I>&gt;<i>       - En Linux: compartir (usando Samba) la carpeta $HOME/.bulmages como
+</I>&gt;<i> &quot;bulmages&quot;, utilizando un nombre de usuario y contraseña particulares.
+</I>&gt;<i>       - En Windows: compartir la carpeta %UserProfile%\.bulmages como
+</I>&gt;<i> &quot;bulmages$&quot;, utilizando un nombre de usuario y contraseña particulares.
+</I>&gt;<i>       - Nota: al compartir, asegurarse de que el usuario particular que se
+</I>&gt;<i> usará para acceder al recurso compartido tiene permiso de escritura sobre
+</I>&gt;<i> el mismo.
+</I>&gt;<i>       - Configurar el programa cliente Nx para que utilizando la conexión 
+</I>&gt;<i> que se usa normalmente para acceder al servidor FreeNX éste pueda acceder
+</I>&gt;<i> al recurso compartido del que hablábamos. Por ejemplo, en el programa &quot;nx
+</I>&gt;<i> client&quot; para Linux se puede ir a una solapa &quot;Services&quot;, activar &quot;enable SMB
+</I>&gt;<i> printing and file sharing&quot; y pulsar en &quot;Add&quot; para añadir el recurso
+</I>&gt;<i> &quot;bulmages&quot;, especificar que su montaje en el servidor se realice en
+</I>&gt;<i> ~/.bulmages para que Bulmagés lo use de forma natural en la sesión remota;
+</I>&gt;<i> especificar el usuario y contraseña particulares.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> * Cada vez que el usuario se conecte al FreeNX del servidor:
+</I>&gt;<i>       - Ha de tener NxSpooler ejecutándose en su ordenador, claro :-).
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> De esta forma: los informes que hace Bulmagés en el servidor se abrirán en
+</I>&gt;<i> el ordenador cliente, donde puede imprimirlos en la impresora que quiera,
+</I>&gt;<i> guardarlos, enviarlos por correo, etc.
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002824.html">[BulmaGés]Configuración del sistema para funcionar con NxSpooler
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002826.html">[BulmaGés]Configuración del sistema para funcionar con NxSpooler
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2825">[ fecha ]</a>
+              <a href="thread.html#2825">[ hilo ]</a>
+              <a href="subject.html#2825">[ asunto ]</a>
+              <a href="author.html#2825">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]=?iso-8859-15?q?A_ver_quien_simplifi?= =?iso-8859-15?q?ca_esto?=
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Futf-8%3Fb%3FPT9pc28tODg1OS0xNT9xP0Ff%3F%3D%0A%09%3D%3Futf-8%3Fb%3FdmVyX3F1aWVuX3NpbXBsaWZpPz0gPT9pc28tODg1OS0xNT9xP2NhX2Vz%3F%3D%0A%09%3D%3Futf-8%3Fq%3Fto%3D3F%3D3D%3F%3D&In-Reply-To=%3C53397.1311771491%40tinet.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006334.html">
+   <LINK REL="Next"  HREF="006339.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]=?iso-8859-15?q?A_ver_quien_simplifi?= =?iso-8859-15?q?ca_esto?= </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Futf-8%3Fb%3FPT9pc28tODg1OS0xNT9xP0Ff%3F%3D%0A%09%3D%3Futf-8%3Fb%3FdmVyX3F1aWVuX3NpbXBsaWZpPz0gPT9pc28tODg1OS0xNT9xP2NhX2Vz%3F%3D%0A%09%3D%3Futf-8%3Fq%3Fto%3D3F%3D3D%3F%3D&In-Reply-To=%3C53397.1311771491%40tinet.org%3E"
+       TITLE="[BulmaGés]=?iso-8859-15?q?A_ver_quien_simplifi?= =?iso-8859-15?q?ca_esto?=">xdrudis en tinet.cat
+       </A><BR>
+    <I>Mie Jul 27 14:58:11 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006334.html">[BulmaGés]A ver quien simplifica esto
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006339.html">[BulmaGés]=?iso-8859-15?q?A_ver_quien_simplifi?= =?iso-8859-15?q?ca_es=?utf-8?q?to=3F=3D?=
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6336">[ fecha ]</a>
+              <a href="thread.html#6336">[ hilo ]</a>
+              <a href="subject.html#6336">[ asunto ]</a>
+              <a href="author.html#6336">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+On Wed 27/07/11 11:58 , Aron &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">auryn en wanadoo.es</A>&gt; wrote:
+&gt;<i> 
+</I>&gt;<i> SELECT
+</I>&gt;<i> *,
+</I>&gt;<i> Fecha1 + &quot;S&quot;.&quot;I&quot; AS Fecha2
+</I>&gt;<i> FROM (
+</I>&gt;<i> SELECT
+</I>&gt;<i> ('01/07/2011'::DATE + &quot;Series&quot;.&quot;Index&quot;) AS Fecha1,
+</I>&gt;<i> EXTRACT ('dow' FROM '01/07/2011'::DATE + &quot;Series&quot;.&quot;Index&quot; ) AS dowe
+</I>&gt;<i> FROM generate_series(-6,2) AS &quot;Series&quot;(&quot;Index&quot;)
+</I>&gt;<i> WHERE EXTRACT ('dow' FROM '01/07/2011'::DATE + &quot;Series&quot;.&quot;Index&quot; ) = 1
+</I>&gt;<i> LIMIT 1
+</I>&gt;<i> ) AS S2, generate_series(0,41) AS &quot;S&quot;(&quot;I&quot;);
+</I>&gt;<i>
+</I>
+No tinc un postgresql a mà 
+
+No serviria alguna cosa de l'estil 
+SELECT index, trunc_date('week', '01/07/2011'::DATE) + index  as dia 
+FROM generate_series(0,41) dies(index)
+
+o 
+
+SELECT index, trunc_date('week', '01/07/2011'::DATE) + index  + 7 as dia 
+FROM generate_series(0,41) dies(index)
+
+o 
+
+SELECT index, trunc_date('week', '01/07/2011'::DATE) + index  - 7 as dia 
+FROM generate_series(0,41) dies(index)
+
+o similar ?
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006334.html">[BulmaGés]A ver quien simplifica esto
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006339.html">[BulmaGés]=?iso-8859-15?q?A_ver_quien_simplifi?= =?iso-8859-15?q?ca_es=?utf-8?q?to=3F=3D?=
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6336">[ fecha ]</a>
+              <a href="thread.html#6336">[ hilo ]</a>
+              <a href="subject.html#6336">[ asunto ]</a>
+              <a href="author.html#6336">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

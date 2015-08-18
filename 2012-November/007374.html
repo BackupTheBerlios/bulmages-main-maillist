@@ -1,0 +1,322 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: themeph pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20themeph%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20121119012441.54169756E1%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007373.html">
+   <LINK REL="Next"  HREF="007375.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: themeph pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20themeph%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20121119012441.54169756E1%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: themeph pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Lun Nov 19 02:24:41 CET 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007373.html">[BulmaGés] [Gitorious] Activity: themeph pushed 1	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007375.html">[BulmaGés][Gitorious] Activity: themeph pushed 1 commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7374">[ fecha ]</a>
+              <a href="thread.html#7374">[ hilo ]</a>
+              <a href="subject.html#7374">[ asunto ]</a>
+              <a href="author.html#7374">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+themeph pushed 1 commits to master
+master changed from fc9c3c9 to 2e3d3c8
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/fc9c3c9c4d9d682ad4a9e56058ff7067a904fd12/diffs/2e3d3c87d67ee3f6925c5504859ea47662e21a47">https://gitorious.org/bulmages/bulmages/commit/fc9c3c9c4d9d682ad4a9e56058ff7067a904fd12/diffs/2e3d3c87d67ee3f6925c5504859ea47662e21a47</A>
+
+Diff: 
+
+commit 2e3d3c87d67ee3f6925c5504859ea47662e21a47
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">info en danielripoll.es</A>&gt;
+Date:   Mon Nov 19 02:23:21 2012 +0100
+
+    Añado una nueva directiva para cargar configuraciones
+    
+    Ahora el usuario podrá definir una configuración especifica para su
+    usuario y empresa.
+    
+    --
+    Daniel Ripoll Osma
+    <A HREF="http://danielripoll.es">http://danielripoll.es</A>
+    <A HREF="http://bulmages.es">http://bulmages.es</A>
+    <A HREF="http://manualencatala.tk">http://manualencatala.tk</A>
+    6688.27.4.90
+    
+    Web &amp; Desktop Developer
+
+diff --git a/bulmages/bulmacont/src/main.cxx b/bulmages/bulmacont/src/main.cxx
+index 698fe3a..c896fa2 100644
+--- a/bulmages/bulmacont/src/main.cxx
++++ b/bulmages/bulmacont/src/main.cxx
+@@ -138,13 +138,21 @@ int main ( int argc, char **argv )
+       splashScr-&gt;setProgressBar ( 2 );
+ 
+       /// Leemos la configuracion especifica de la base de datos que se ha abierto.
+-      QString confEsp = CONFGLOBAL + bges-&gt;company() -&gt;dbName() + &quot;.conf&quot;;
++      QString confGlobalEsp = CONFGLOBAL + bges-&gt;company()-&gt;dbName() + &quot;.conf&quot;;
+       QDir archivoConf;
+-      if ( !archivoConf.exists ( confEsp ) ) {
+-         QString mensaje = &quot;--&gt; El archivo '&quot; + confEsp + &quot;' no existe. &lt;--\n&quot;;
++      if ( !archivoConf.exists ( confGlobalEsp ) ) {
++         QString mensaje = &quot;--&gt;&quot; + _(&quot;El archivo '&quot;) + confGlobalEsp + _(&quot;' no existe. &lt;--\n&quot;);
+          fprintf ( stderr, &quot;%s&quot;, mensaje.toAscii().constData() );
+       } else {
+-         g_confpr-&gt;readConfig ( confEsp );
++         g_confpr-&gt;readConfig ( confGlobalEsp );
++      } // end if
++     
++      QString confLocalEsp = g_confpr-&gt;getLocalDir() + QString(&quot;bulmacont_&quot;) + bges-&gt;company()-&gt;dbName() + &quot;.conf&quot;;
++      if ( !archivoConf.exists ( confLocalEsp ) ) {
++          QString mensaje = &quot;--&gt;&quot; + _(&quot;El archivo '&quot;) + confLocalEsp + _(&quot;' no existe. &lt;--\n&quot;);
++          fprintf ( stderr, &quot;%s&quot;, mensaje.toAscii().constData() );
++      } else {
++          g_confpr-&gt;readConfig ( confLocalEsp );
+       } // end if
+ 
+       // Pone el color de fondo del workspace si esta definido y es un color valido.
+diff --git a/bulmages/bulmafact/plugins/pluginbf_correo/chosemailer.cpp b/bulmages/bulmafact/plugins/pluginbf_correo/chosemailer.cpp
+index 0da715c..e2f3ac1 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_correo/chosemailer.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_correo/chosemailer.cpp
+@@ -115,10 +115,7 @@ int ChoseMailer::GuardarConfig()
+      
+      /// Guardamos la configuracion, quiza sea interesante extraer este metodo hacia bulmalib posteriormente.
+     
+-    QString m_dirLocalConf = dirusuario + &quot;/.bulmages/bulmafact.conf&quot;;
+-    
+-    
+-    QFile file ( m_dirLocalConf );
++    QFile file ( g_confpr-&gt;getLocalDir() + &quot;bulmafact.conf&quot; );
+     if ( !file.open ( QIODevice::Append | QIODevice::Text ) )
+         return 1;
+     // end if
+@@ -143,7 +140,7 @@ int ChoseMailer::GuardarConfig()
+ **/
+ void ChoseMailer::on_mui_mailclients_currentIndexChanged(int index)
+ {
+-    /// Detectamos si el index ha cambiado, y en ese caso seteamos CONF_EMAIL_CLIENT y mui_location con la posible localizacion del cliente de email
++    /// Detectamos si el index ha cambiado, y en ese caso seteamos mui_location con la posible localizacion del cliente de email
+     
+     BL_FUNC_DEBUG
+     
+diff --git a/bulmages/bulmafact/src/main.cxx b/bulmages/bulmafact/src/main.cxx
+index 05449bc..af59086 100644
+--- a/bulmages/bulmafact/src/main.cxx
++++ b/bulmages/bulmafact/src/main.cxx
+@@ -59,6 +59,7 @@ int main ( int argc, char **argv )
+ 
+    try {
+       fprintf ( stderr, &quot;--&gt; MAIN::Iniciando el programa. &lt;--\n&quot; );
++      
+       Q_INIT_RESOURCE ( bulmages );
+       /// Leemos la configuracion que luego podremos usar siempre.
+       initConfiguration (&quot;bulmafact&quot;);
+@@ -136,15 +137,24 @@ int main ( int argc, char **argv )
+       splashScr-&gt;setProgressBar ( 2 );
+ 
+       /// Leemos la configuracion especifica de la base de datos que se ha abierto.
+-      QString confEsp = CONFGLOBAL + bges-&gt;company() -&gt;dbName() + &quot;.conf&quot;;
++      QString confGlobalEsp = CONFGLOBAL + bges-&gt;company()-&gt;dbName() + &quot;.conf&quot;;
+       QDir archivoConf;
+-      if ( !archivoConf.exists ( confEsp ) ) {
+-         QString mensaje = &quot;--&gt; El archivo '&quot; + confEsp + &quot;' no existe. &lt;--\n&quot;;
++      if ( !archivoConf.exists ( confGlobalEsp ) ) {
++         QString mensaje = &quot;--&gt;&quot; + _(&quot;El archivo '&quot;) + confGlobalEsp + _(&quot;' no existe. &lt;--\n&quot;);
+          fprintf ( stderr, &quot;%s&quot;, mensaje.toAscii().constData() );
+       } else {
+-         g_confpr-&gt;readConfig ( confEsp );
++         g_confpr-&gt;readConfig ( confGlobalEsp );
++      } // end if
++     
++      QString confLocalEsp = g_confpr-&gt;getLocalDir() + QString(&quot;bulmafact_&quot;) + bges-&gt;company()-&gt;dbName() + &quot;.conf&quot;;
++      if ( !archivoConf.exists ( confLocalEsp ) ) {
++          QString mensaje = &quot;--&gt;&quot; + _(&quot;El archivo '&quot;) + confLocalEsp + _(&quot;' no existe. &lt;--\n&quot;);
++          fprintf ( stderr, &quot;%s&quot;, mensaje.toAscii().constData() );
++      } else {
++          g_confpr-&gt;readConfig ( confLocalEsp );
+       } // end if
+ 
++
+       // Pone el color de fondo del workspace si esta definido y es un color valido.
+       if ( QColor(g_confpr-&gt;value( CONF_BACKGROUND_COLOR )).isValid() ) {
+          bges-&gt;workspace()-&gt;setBackground(QBrush(QColor( g_confpr-&gt;value( CONF_BACKGROUND_COLOR ) )));
+diff --git a/bulmages/bulmalib/src/blconfiguration.cpp b/bulmages/bulmalib/src/blconfiguration.cpp
+index da84c43..8f39ab1 100644
+--- a/bulmages/bulmalib/src/blconfiguration.cpp
++++ b/bulmages/bulmalib/src/blconfiguration.cpp
+@@ -62,7 +62,7 @@ void initConfiguration ( QString config )
+ ///
+ /// En Linux:
+ /// 1) /etc/bulmages/ -&gt; Opciones genericas para todos los usuarios.
+-/// 2) /home/~/.bulmages/  -&gt; Opciones especificas para cada usuario.
++/// 2) ~/.bulmages/  -&gt; Opciones especificas para cada usuario.
+ ///
+ /// En Windows:
+ /// 1) %ProgramFiles%\bulmages\etc\ -&gt; Opciones genericas para todos los usuarios.
+@@ -98,13 +98,13 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
+     QDir dirGlobalConf ( m_dirGlobalConf );
+ 
+ #ifndef Q_OS_WIN32
+-    QString dirusuario = getenv ( &quot;HOME&quot; );
++    QString userdir = getenv ( &quot;HOME&quot; );
+ #else
+-    QString dirusuario = getenv ( &quot;UserProfile&quot; );
+-    dirusuario.replace('\\', '/'); // Para no tener barras de los dos tipos mezclados en la misma ruta, usaremos las normales siempre
++    QString userdir = getenv ( &quot;UserProfile&quot; );
++    userdir.replace('\\', '/'); // Para no tener barras de los dos tipos mezclados en la misma ruta, usaremos las normales siempre
+ #endif
+ 
+-    m_dirLocalConf = dirusuario + &quot;/.bulmages/&quot;;
++    m_dirLocalConf = userdir + &quot;/.bulmages/&quot;;
+     m_genericGlobalConfFile = &quot;bulmages.conf&quot;;
+     m_programGlobalConfFile = nombreprograma + &quot;.conf&quot;;
+     m_genericLocalConfFile = m_genericGlobalConfFile;
+@@ -147,7 +147,7 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
+         readConfig ( m_dirGlobalConf + m_programGlobalConfFile );
+     }// end if
+ 
+-    /// Comprobamos si el usuario tiene creado su '/home/~/.bulmages/' directorio
++    /// Comprobamos si el usuario tiene creado el directorio de configuracion en su carpeta de usuario directorio
+     /// de configuracion.
+     if ( !dirGlobalConf.exists ( m_dirLocalConf ) ) {
+         if ( dirGlobalConf.mkdir ( m_dirLocalConf ) == TRUE ) {
+@@ -483,10 +483,9 @@ QString BlConfiguration::name( int i )
+ **/
+ void BlConfiguration::saveConfig()
+ {
+-    QString dir1 = getenv ( &quot;HOME&quot; );
+-    dir1 = dir1 + &quot;/.bulmages/&quot; + m_dirLocalConf;
++    QString confFile = m_dirLocalConf + m_programGlobalConfFile;
+ 
+-    QFile file ( dir1 );
++    QFile file ( confFile );
+     if ( !file.open ( QIODevice::WriteOnly | QIODevice::Text ) )
+         return;
+ 
+@@ -514,7 +513,7 @@ bool BlConfiguration::readConfig ( QString fich )
+ {
+     QFile arch ( fich );
+     if ( arch.open ( QIODevice::ReadOnly ) ) {
+-        QString cadaux1 = &quot;Leyendo configuracion&quot; + fich + &quot;\n&quot;;
++        QString cadaux1 = &quot;Leyendo configuracion: '&quot; + fich + &quot;'\n&quot;;
+         fprintf ( stderr, &quot;%s&quot;, cadaux1.toAscii().constData() );
+         fprintf ( stderr, &quot;%s&quot;, &quot;\n&quot; );
+         QTextStream in ( &amp;arch );
+@@ -580,3 +579,7 @@ void BlConfiguration::setValue ( int i, QString valor )
+     m_valores[i] = valor;
+ }
+ 
++QString BlConfiguration::getLocalDir()
++{
++    return m_dirLocalConf;
++}
+diff --git a/bulmages/bulmalib/src/blconfiguration.h b/bulmages/bulmalib/src/blconfiguration.h
+index 5168b9e..0795de4 100644
+--- a/bulmages/bulmalib/src/blconfiguration.h
++++ b/bulmages/bulmalib/src/blconfiguration.h
+@@ -328,6 +328,7 @@ public:
+     bool readConfig ( QString );
+     void saveConfig();
+     QString name( int );
++    QString getLocalDir();
+ };
+ 
+ 
+diff --git a/bulmages/bulmatpv/src/main.cxx b/bulmages/bulmatpv/src/main.cxx
+index ac36e22..1f63cd7 100644
+--- a/bulmages/bulmatpv/src/main.cxx
++++ b/bulmages/bulmatpv/src/main.cxx
+@@ -139,15 +139,22 @@ int main ( int argc, char **argv )
+         splashScr-&gt;setProgressBar ( 2 );
+ 
+         /// Leemos la configuracion especifica de la base de datos que se ha abierto.
+-        QString confEsp = CONFGLOBAL + bges-&gt;company()-&gt;dbName() + &quot;.conf&quot;;
++        QString confGlobalEsp = CONFGLOBAL + bges-&gt;company()-&gt;dbName() + &quot;.conf&quot;;
+         QDir archivoConf;
+-        
+-        if ( !archivoConf.exists ( confEsp ) ) {
+-            QString mensaje = &quot;--&gt; El archivo '&quot; + confEsp + &quot;' no existe. &lt;--\n&quot;;
++        if ( !archivoConf.exists ( confGlobalEsp ) ) {
++            QString mensaje = &quot;--&gt;&quot; + _(&quot;El archivo '&quot;) + confGlobalEsp + _(&quot;' no existe. &lt;--\n&quot;);
+             fprintf ( stderr, &quot;%s&quot;, mensaje.toAscii().constData() );
+         } else {
+-            g_confpr-&gt;readConfig ( confEsp );
++            g_confpr-&gt;readConfig ( confGlobalEsp );
+         } // end if
++     
++      QString confLocalEsp = g_confpr-&gt;getLocalDir() + QString(&quot;bulmatpv_&quot;) + bges-&gt;company()-&gt;dbName() + &quot;.conf&quot;;
++      if ( !archivoConf.exists ( confLocalEsp ) ) {
++          QString mensaje = &quot;--&gt;&quot; + _(&quot;El archivo '&quot;) + confLocalEsp + _(&quot;' no existe. &lt;--\n&quot;);
++          fprintf ( stderr, &quot;%s&quot;, mensaje.toAscii().constData() );
++      } else {
++          g_confpr-&gt;readConfig ( confLocalEsp );
++      } // end if
+ 
+         // Pone el color de fondo del workspace si esta definido y es un color valido.
+         if ( QColor(g_confpr-&gt;value( CONF_BACKGROUND_COLOR )).isValid() ) {
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007373.html">[BulmaGés] [Gitorious] Activity: themeph pushed 1	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007375.html">[BulmaGés][Gitorious] Activity: themeph pushed 1 commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7374">[ fecha ]</a>
+              <a href="thread.html#7374">[ hilo ]</a>
+              <a href="subject.html#7374">[ asunto ]</a>
+              <a href="author.html#7374">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

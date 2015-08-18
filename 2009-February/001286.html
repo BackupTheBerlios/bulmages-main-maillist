@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Binario Debian
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FBinario_Debian%3F%3D&In-Reply-To=%3C200902271635.44905.leo%40alaxarxa.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001283.html">
+   <LINK REL="Next"  HREF="001289.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Binario Debian </H1>
+    <B>Leopold Palomo-Avellaneda</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FBinario_Debian%3F%3D&In-Reply-To=%3C200902271635.44905.leo%40alaxarxa.net%3E"
+       TITLE="[BulmaGés]Binario Debian">leo en alaxarxa.net
+       </A><BR>
+    <I>Vie Feb 27 16:35:44 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001283.html">[BulmaGés]Binario Debian
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001289.html">[BulmaGés]Binario Debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1286">[ fecha ]</a>
+              <a href="thread.html#1286">[ hilo ]</a>
+              <a href="subject.html#1286">[ asunto ]</a>
+              <a href="author.html#1286">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>A Dijous 26 Febrer 2009, Tomeu Borras va escriure:
+&gt;<i> El Thursday 26 February 2009 17:58:16 Otilio escribió:
+</I>&gt;<i> &gt; Creo que no me he explicado bien, no se trata de que no haya podido
+</I>&gt;<i> &gt; compilar un archivo para debian, sino que kdevelop me da un error que no
+</I>&gt;<i> &gt; puede analizar el archivo bulmages.pro (de hecho no existe) y, aunque no
+</I>&gt;<i> &gt; tengo ni pájara de programación, lo que sí tengo entendido es que está
+</I>&gt;<i> &gt; programado con kdevelop, y debería al menos poder compilar/ejecutar el
+</I>&gt;<i> &gt; proyecto con kdevelop para poder echarle un ojo a los cambios.
+</I>&gt;<i>
+</I>&gt;<i> 	Este es el problema.
+</I>&gt;<i> 	No esta escrito en kdevelop. Esta en C++.
+</I>&gt;<i>
+</I>&gt;<i> 	Para compilar, además hemos cambiado qmake por cmake y la receta de
+</I>&gt;<i> compilación es la siguiente:
+</I>&gt;<i>
+</I>&gt;<i> 	1.- Acceder al directorio del fuente (trunk/bulmages)
+</I>&gt;<i>
+</I>&gt;<i> 	2.- Crear un directorio build (mkdir build). Otros nombres también vale. Y
+</I>&gt;<i> entrar en el (cd build).
+</I>&gt;<i>
+</I>&gt;<i> 	3.- Hacer cmake ../
+</I>&gt;<i>
+</I>&gt;<i> 	4.- Hacer make (la mejor opcion es sudo make install). Con esto ya
+</I>&gt;<i> tendremos el programa instalado en /usr/local
+</I>&gt;<i>
+</I>&gt;<i> 	5.- Para crear empresas o usuarios postgres (sudo bulmasetup)
+</I>&gt;<i>
+</I>&gt;<i> 	6.- Una vez creada la empresa lanzar los programas ( bulmalauncher,
+</I>&gt;<i> bulmafact, bulmacont, bulmatpv etc)
+</I>
+
+Bones,
+
+esta es la manera de compilar desde el código fuente, puro y duro. Si quieres 
+trabajar con los paquetes debian, puedes hacer:
+
+si estás en trunk, o sea, ves un directorio debian, uno bulmages, etc puedes 
+hacer:
+
+1) debian/rules binary
+
+te crea los debs, pero no comprueba dependencias
+
+2) debuild 
+
+te crea los debs, pero y comprueba dependencias 
+
+Ahora bien,
+
+actualmente no funciona ya que no están actualizados y se han hecho muchos 
+cambios. Yo creo que cuando se estabilice el código (je je) rehago los 
+paquetes.
+
+Igualmente puedes trabajar con la versión de debian. Más o menos funciona 
+bastante bien.
+
+&gt;<i> NOTA: La gente suele emocionarse con los plugins y tiende a meterlos todos.
+</I>&gt;<i> Yo empezaría poco a poco metiendo 2 o tres y probando a ver cuales van bien
+</I>&gt;<i> y cuales no.
+</I>
+bloqueos te aseguro que con bulmacont no funciona.
+
+&gt;<i> &gt; PD: Supongo que escribir en mallorquin??? es algo que os sale
+</I>&gt;<i> &gt; involuntariamente, no quiero entrar en ninguna polémica al respecto,
+</I>&gt;<i> &gt; pero la verdad es que me cuesta Dios y ayuda entenderlo. Si no os
+</I>&gt;<i> &gt; molesta demasiado y podéis contestar en castellano os lo agradecería.
+</I>
+yo escribo en catalán ;-) cuando Tomeu se pone hablar rápido en Mallorquin, ni 
+yo lo pillo ;-)
+
+Aceptamos cualquier idioma que sea oficial en el estado. Si no pillas algo, o 
+lees un párrafo y no lo entiendes o te queda duda, por favor, sientete libre 
+de preguntar sin ningún reparo. Ahora que, por favor, no le hagas ascos a un 
+correo que no esté en castellano, en general no somos literatos y se suelen 
+entender bastante bien. Decirte que tenemos un cordobés en la lista y lo 
+pilla todo ;-)
+
+&gt;<i> 	Por mi no hay problema en traducir mails chungos con el idioma siempre que
+</I>&gt;<i> conozca la fuente (con ruso, chino y árabe aun no me atrevo).
+</I>
+:<i>-P
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001283.html">[BulmaGés]Binario Debian
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001289.html">[BulmaGés]Binario Debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1286">[ fecha ]</a>
+              <a href="thread.html#1286">[ hilo ]</a>
+              <a href="subject.html#1286">[ asunto ]</a>
+              <a href="author.html#1286">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

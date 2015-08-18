@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Compilar i configurar bulmages
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FCompilar_i_configurar%3F%3D%20%3D%3Fiso-8859-1%3Fq%3F_bulmages%3F%3D&In-Reply-To=%3C200912022050.06876.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003187.html">
+   <LINK REL="Next"  HREF="003189.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Compilar i configurar bulmages </H1>
+    <B>Tomeu</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FCompilar_i_configurar%3F%3D%20%3D%3Fiso-8859-1%3Fq%3F_bulmages%3F%3D&In-Reply-To=%3C200912022050.06876.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]Compilar i configurar bulmages">tborras en conetxia.com
+       </A><BR>
+    <I>Mie Dic  2 20:50:06 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003187.html">[BulmaGés] Compilar i configurar bulmages
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003189.html">[BulmaGés] Error en executar bulmafact
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3188">[ fecha ]</a>
+              <a href="thread.html#3188">[ hilo ]</a>
+              <a href="subject.html#3188">[ asunto ]</a>
+              <a href="author.html#3188">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Walter
+
+per fer correr el bulmasetup hi ha una dependencia adicional:
+
+python-psycopg2
+
+Amb això el bulmasetup ja ahuria de anar bé.
+
+PD:Els scripts de montatge de la base de dades son obsolets i els mantenim al 
+svn només per motius històrics pero han de desapareixer properament.
+
+Salut
+
+&gt;<i> He aconseguit compilar sense massa problemes el bulmages a un ubuntu
+</I>&gt;<i> 9.10. La compilació no va donar cap error i make install sembla que ha
+</I>&gt;<i> posat tot al lloc corresponent.
+</I>&gt;<i> 
+</I>&gt;<i> Ara no sé com continuar. El Readme.es diu que es pot posar en marxa
+</I>&gt;<i> bulmages tant amb bulmasetup com &quot;a mà&quot;. He intentat en primer lloc
+</I>&gt;<i> amb bulmasetup , i em diu el següent:
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Traceback (most recent call last):
+</I>&gt;<i>   File &quot;/usr/local/bin/bulmasetup&quot;, line 18, in &lt;module&gt;
+</I>&gt;<i>     from nuevousuario import NuevoUsuario
+</I>&gt;<i>   File &quot;/usr/local/share/bulmages/bulmasetup/nuevousuario.py&quot;, line 8,
+</I>&gt;<i>   in &lt;module&gt;
+</I>&gt;<i>     from empresa import Empresa
+</I>&gt;<i>   File &quot;/usr/local/share/bulmages/bulmasetup/empresa.py&quot;, line 11, in
+</I>&gt;<i>   &lt;module&gt;
+</I>&gt;<i>     import psycopg2
+</I>&gt;<i> ImportError: No module named psycopg2
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> També he intentat el script &quot;installbulmages-db&quot; que me ha quedat el
+</I>&gt;<i> diretori &quot;build&quot; on he fet la compilació, i en surten uns sèrie de
+</I>&gt;<i> missatges de directoris no trobats, el primer dels quals és:
+</I>&gt;<i> 
+</I>&gt;<i> Comprobamos template1
+</I>&gt;<i> 
+</I>&gt;<i> -su: /usr/local/share/bulmages/dbmodels/actualizabulmafact: No such file or
+</I>&gt;<i>  directory
+</I>&gt;<i> 
+</I>&gt;<i> tot i que en algun lloc diu
+</I>&gt;<i>  INSTALACION FINALIZADA CON EXITO
+</I>&gt;<i> 
+</I>&gt;<i> però vaig a &quot;postgres&quot; i no hi ha cap base de dades de bulmages.
+</I>&gt;<i> 
+</I>&gt;<i> Alguna pista?
+</I>&gt;<i> 
+</I>&gt;<i> Walter
+</I>&gt;<i> &quot;
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003187.html">[BulmaGés] Compilar i configurar bulmages
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003189.html">[BulmaGés] Error en executar bulmafact
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3188">[ fecha ]</a>
+              <a href="thread.html#3188">[ hilo ]</a>
+              <a href="subject.html#3188">[ asunto ]</a>
+              <a href="author.html#3188">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

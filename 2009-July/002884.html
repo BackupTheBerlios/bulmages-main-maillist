@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Encuesta PCH
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FEncuesta_PCH%3F%3D&In-Reply-To=%3C200907311645.19608.pedro.lopez.cabanillas%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002883.html">
+   <LINK REL="Next"  HREF="002885.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Encuesta PCH </H1>
+    <B>Pedro Lopez-Cabanillas</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FEncuesta_PCH%3F%3D&In-Reply-To=%3C200907311645.19608.pedro.lopez.cabanillas%40gmail.com%3E"
+       TITLE="[BulmaGés]Encuesta PCH">pedro.lopez.cabanillas en gmail.com
+       </A><BR>
+    <I>Vie Jul 31 16:45:19 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002883.html">[BulmaGés]Encuesta PCH
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002885.html">[BulmaGés][BulmaGÃ©s] Encuesta PCH
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2884">[ fecha ]</a>
+              <a href="thread.html#2884">[ hilo ]</a>
+              <a href="subject.html#2884">[ asunto ]</a>
+              <a href="author.html#2884">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Friday, July 31, 2009, Fco. Javier M. C. wrote:
+&gt;<i> &gt; He tenido que reemplazar la definición de las macros de i18n: '_' y 'N_'
+</I>&gt;<i> &gt; en la línea de comando del compilador por una cabecera generada, que es
+</I>&gt;<i> &gt; distinta para cada  biblioteca y plugin, y se ha de incluir en los
+</I>&gt;<i> &gt; fuentes y definiciones &quot;.ui&quot; que lo requieran. En relación a esto:
+</I>&gt;<i>
+</I>&gt;<i> No te entiendo: ¿hay que cambiar el código fuente o dentro del cmake? Si
+</I>&gt;<i> hay que cambiar el código no lo veo práctico ¿qué habría que poner en su
+</I>&gt;<i> lugar?
+</I>
+Hay que añadir cosas al código de los fuentes C++ (.cpp) y diseños de interfaz 
+de usuario (.ui). Se genera automáticamente un nuevo header (.h) que se ha de 
+usar manualmente donde sea necesario con un &quot;#include&quot;. Lo mejor es un 
+ejemplo de dos cambios que ya he hecho en bulmalib:
+
+<A HREF="http://svn.berlios.de/viewvc/bulmages/trunk/bulmages/bulmalib/src/blfunctions.cpp?r1=3586&amp;r2=3588">http://svn.berlios.de/viewvc/bulmages/trunk/bulmages/bulmalib/src/blfunctions.cpp?r1=3586&amp;r2=3588</A>
+--- trunk/bulmages/bulmalib/src/blfunctions.cpp	2009/07/24 10:05:52	3586
++++ trunk/bulmages/bulmalib/src/blfunctions.cpp	2009/07/24 21:15:09	3588
+@@ -34,6 +34,7 @@
+ #include &quot;blfunctions.h&quot;
+ #include &quot;blconfiguration.h&quot;
+ #include &quot;blmainwindow.h&quot;
++#include &quot;local_BlI18n.h&quot;
+ 
+ /// Esta funcion permite editar un texto en un QTextEdit y devuelve el texto 
+editado.
+ QString editaTexto ( QString texto )
+
+<A HREF="http://svn.berlios.de/viewvc/bulmages/trunk/bulmages/bulmalib/src/blformconfigbase.ui?r1=3175&amp;r2=3588">http://svn.berlios.de/viewvc/bulmages/trunk/bulmages/bulmalib/src/blformconfigbase.ui?r1=3175&amp;r2=3588</A>
+--- trunk/bulmages/bulmalib/src/blformconfigbase.ui	2009/03/27 18:46:54	3175
++++ trunk/bulmages/bulmalib/src/blformconfigbase.ui	2009/07/24 21:15:09	3588
+@@ -322,6 +322,9 @@
+    &lt;/item&gt;
+   &lt;/layout&gt;
+  &lt;/widget&gt;
++ &lt;includes&gt;
++  &lt;include location=&quot;local&quot;&gt;local_BlI18n.h&lt;/include&gt;
++ &lt;/includes&gt;
+  &lt;layoutdefault spacing=&quot;0&quot; margin=&quot;0&quot; /&gt;
+  &lt;resources/&gt;
+  &lt;connections&gt;
+
+Se añade sólamente a aquellos fuentes que necesiten usar esas macros, no a 
+todos los del directorio. Sólamente donde haga falta. Concretamente, en el 
+directorio bulmalib/src hay 42 fuentes .cpp, y he tenido que añadir el 
+#include en 9 de ellos. Puede que sea más incomodo que no tener hacer nada, 
+pero tampoco lo veo tan grave.
+
+&gt;<i> &gt; 5) OK a la generación de la cabecera, que se llama 'local_BlI18n.h',
+</I>&gt;<i> &gt; ¿o generar la cabecera con otro nombre...?
+</I>&gt;<i>
+</I>&gt;<i> En cualquier caso ese nombre no cumple la regla de nombres. Conste que
+</I>&gt;<i> no entiendo muy bien lo que planteas. Lo puedes explicar un poco mejor.
+</I>
+No conozco ninguna regla de nombres, pero si me dices un nombre que cumpla esa 
+norma, lo cambio con mucho gusto. Estos ficheros &quot;local_BlI18n.h&quot; se generan 
+por medio de una macro de cmake, que está declarada 
+en &quot;ModulesCMake/MacrosBlI18n.cmake&quot;. El resultado lo puedes ver en el 
+directorio de compilación, por ejemplo en &quot;build/bulmalib/src/local_BlI18n.h&quot;
+suponiendo que tu directorio de compilación se llame &quot;build&quot;.
+
+El motivo por el que las macros tienen que declararse en un header y no en la 
+línea de mandatos del compilador con -D, es que en caso contrario no es 
+posible usar cabeceras precompiladas porque en los directorios de cada plugin 
+se usa una definición distinta (el nombre del plugin va en la macro). Si no 
+se puede aceptar esta limitación, nos tendremos que olvidar del asunto de las 
+PCH.
+
+Saludos,
+Pedro
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002883.html">[BulmaGés]Encuesta PCH
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002885.html">[BulmaGés][BulmaGÃ©s] Encuesta PCH
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2884">[ fecha ]</a>
+              <a href="thread.html#2884">[ hilo ]</a>
+              <a href="subject.html#2884">[ asunto ]</a>
+              <a href="author.html#2884">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

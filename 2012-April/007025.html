@@ -1,0 +1,520 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 3	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%203%0A%09commits%20to%20master...&In-Reply-To=%3C20120405211647.F0C347590A%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007024.html">
+   <LINK REL="Next"  HREF="007026.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 3	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%203%0A%09commits%20to%20master...&In-Reply-To=%3C20120405211647.F0C347590A%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 3	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Jue Abr  5 23:16:47 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007024.html">[BulmaGés] [Gitorious] Activity: cgarde pushed 2	commits to masterm...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007026.html">[BulmaGés] 5 claves a la hora de elegir un nicho	de mercado
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7025">[ fecha ]</a>
+              <a href="thread.html#7025">[ hilo ]</a>
+              <a href="subject.html#7025">[ asunto ]</a>
+              <a href="author.html#7025">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 3 commits to master
+master changed from edcb81c to c5a3f3b
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/edcb81cb4b68cacec8844aa6300085cbc514ffc7/diffs/c5a3f3b5dd905649a52cc7e3fbdf060cbaf554f4">https://gitorious.org/bulmages/bulmages/commit/edcb81cb4b68cacec8844aa6300085cbc514ffc7/diffs/c5a3f3b5dd905649a52cc7e3fbdf060cbaf554f4</A>
+
+Diff: 
+
+commit c5a3f3b5dd905649a52cc7e3fbdf060cbaf554f4
+Merge: 26bc31c edcb81c
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu Apr 5 23:22:55 2012 +0200
+
+    Merge branch 'master' of gitorious.org:bulmages/bulmages
+
+
+commit 26bc31c7afd6722067617da575621fd55e4d1357
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu Apr 5 23:22:05 2012 +0200
+
+    Arreglo diversos errores cometidos en plugins poco utilizados
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_alias/pluginbf_alias.h b/bulmages/bulmafact/plugins/pluginbf_alias/pluginbf_alias.h
+index 253c4df..7897709 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_alias/pluginbf_alias.h
++++ b/bulmages/bulmafact/plugins/pluginbf_alias/pluginbf_alias.h
+@@ -59,12 +59,7 @@ extern &quot;C&quot; PLUGINBF_ALIAS_EXPORT int entryPoint ( BfBulmaFact * );
+ extern &quot;C&quot; PLUGINBF_ALIAS_EXPORT int ArticuloView_ArticuloView ( ArticuloView * );
+ extern &quot;C&quot; PLUGINBF_ALIAS_EXPORT int ArticuloView_load ( ArticuloView * );
+ extern &quot;C&quot; PLUGINBF_ALIAS_EXPORT int ArticuloView_guardar_post ( ArticuloView * );
+-
+ extern &quot;C&quot; PLUGINBF_ALIAS_EXPORT int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget * );
+-/*
+-extern &quot;C&quot; MY_EXPORT int BfBuscarArticuloDelegate_textChanged_Post ( BfBuscarArticuloDelegate *baDel );
+-extern &quot;C&quot; MY_EXPORT int BfSubForm_on_mui_list_editFinished ( BfSubForm *sf ) ;
+-*/
+ extern &quot;C&quot; PLUGINBF_ALIAS_EXPORT int BlSubForm_editFinished(BlSubForm *);
+ extern &quot;C&quot; PLUGINBF_ALIAS_EXPORT int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *);
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_tarifa/pluginbf_tarifa.cpp b/bulmages/bulmafact/plugins/pluginbf_tarifa/pluginbf_tarifa.cpp
+index 3b610c8..eb955b5 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_tarifa/pluginbf_tarifa.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_tarifa/pluginbf_tarifa.cpp
+@@ -276,6 +276,12 @@ int BfSubForm_calculaPVP ( BfSubForm *sub )
+ {
+     BL_FUNC_DEBUG
+ 
++    /// Si la tabla afectada es la ltarifa no tiene que actuar
++    
++    if (sub-&gt;tableName() == &quot;ltarifa&quot;) {
++	return 0;
++    } // end if
++
+     BlDbRecordSet *cur = NULL;
+ 
+     QString cantactual = sub-&gt;m_registrolinea-&gt;dbValue ( &quot;cant&quot; + sub-&gt;tableName() ).replace ( &quot;,&quot;, &quot;.&quot; );
+diff --git a/bulmages/bulmafact/src/bfsubform.cpp b/bulmages/bulmafact/src/bfsubform.cpp
+index 3632f3f..e37c629 100644
+--- a/bulmages/bulmafact/src/bfsubform.cpp
++++ b/bulmages/bulmafact/src/bfsubform.cpp
+@@ -161,9 +161,7 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
+     m_registrolinea = rec;
+     m_campoactual = camp;
+ 
+-//    BlDbRecordSet *cur2 = NULL;
+     BlDbRecordSet *cur = NULL;
+-//    BlDbRecordSet *cur1 = NULL;
+ 
+     /// Lanzamos el manejador de la SuperClase para que se atiendan las opciones mas genericas.
+     BlSubForm::editFinished ( row, col, rec, camp );
+@@ -577,7 +575,7 @@ void BfSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
+         BlTextEditDelegate * textedit = qobject_cast&lt;BlTextEditDelegate *&gt; ( editor );
+         model-&gt;setData ( index, textedit-&gt;toPlainText() );
+     } else if ( linea-&gt;fieldName() == &quot;cant&quot; + m_subform-&gt;tableName()
+-                || linea-&gt;fieldName() == &quot;pvp&quot; + m_subform-&gt;tableName()
++                || linea-&gt;fieldName() == &quot;pvp&quot;
+                 || linea-&gt;fieldName() == &quot;descuento&quot; + m_subform-&gt;tableName()
+                 || linea-&gt;fieldName() == &quot;reqeq&quot; + m_subform-&gt;tableName()
+                 || linea-&gt;fieldName() == &quot;iva&quot; + m_subform-&gt;tableName() ) {
+diff --git a/bulmages/bulmalib/plugins/pluginbl_attachdocument/pluginbl_attachdocument.cpp b/bulmages/bulmalib/plugins/pluginbl_attachdocument/pluginbl_attachdocument.cpp
+index a884eb6..de2867c 100644
+--- a/bulmages/bulmalib/plugins/pluginbl_attachdocument/pluginbl_attachdocument.cpp
++++ b/bulmages/bulmalib/plugins/pluginbl_attachdocument/pluginbl_attachdocument.cpp
+@@ -37,7 +37,7 @@
+ #include &quot;local_blI18n.h&quot;
+ #include &quot;pluginbl_attachdocument.h&quot;
+ #include &quot;blform.h&quot;
+-#include &quot;blmaincompany.h&quot;
++
+ #include &quot;archmenu.h&quot;
+ #include &quot;bltoolbutton.h&quot;
+ #include &quot;blaction.h&quot;
+@@ -51,10 +51,20 @@ int entryPoint ( QMainWindow *bcont )
+     setlocale ( LC_ALL, &quot;&quot; );
+     blBindTextDomain ( &quot;pluginbl_attachdocument&quot;, g_confpr-&gt;value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+ 
++
++    
+     return ( 0 );
+ }
+ 
+ 
++int BlMainCompany_init(BlMainCompany * main) {
++    BL_FUNC_DEBUG
++    main-&gt;dbPatchVersionCheck(&quot;PluginBl_AttachDocument&quot;, &quot;0.11.1-0001&quot;);
++    return 0;
++}
++
++
++
+ int BlForm_load ( BlForm *ficha )
+ {
+     BL_FUNC_DEBUG
+@@ -84,17 +94,6 @@ int BlForm_DesFicha ( BlForm *ficha )
+ int BlForm_BlForm ( BlForm *l )
+ {
+     BL_FUNC_DEBUG
+-
+-    /// El plugin necesita un parche en la base de datos para funcionar.
+-    /// No se puede comprobar en entryPoint porque no se tiene acceso a MainCompany
+-    l-&gt;mainCompany()-&gt;dbPatchVersionCheck(&quot;PluginBl_AttachDocument&quot;, &quot;0.11.1-0001&quot;);
+-
+-    /*
+-    new ArchMenu ( l );
+-    new EQToolButton( l );
+-*/
+-
+-    
+     return 0;
+ }
+ 
+diff --git a/bulmages/bulmalib/plugins/pluginbl_attachdocument/pluginbl_attachdocument.h b/bulmages/bulmalib/plugins/pluginbl_attachdocument/pluginbl_attachdocument.h
+index 5f88b30..b8a0c2c 100644
+--- a/bulmages/bulmalib/plugins/pluginbl_attachdocument/pluginbl_attachdocument.h
++++ b/bulmages/bulmalib/plugins/pluginbl_attachdocument/pluginbl_attachdocument.h
+@@ -33,7 +33,7 @@ extern &quot;C&quot; PLUGINBL_ATTACHDOCUMENT_EXPORT int BlForm_load ( BlForm * );
+ extern &quot;C&quot; PLUGINBL_ATTACHDOCUMENT_EXPORT int BlForm_DesBlForm ( BlForm * );
+ extern &quot;C&quot; PLUGINBL_ATTACHDOCUMENT_EXPORT int BlForm_BlForm ( BlForm * );
+ extern &quot;C&quot; PLUGINBL_ATTACHDOCUMENT_EXPORT int BlForm_loadSpecs ( BlForm * );
+-
++extern &quot;C&quot; PLUGINBL_ATTACHDOCUMENT_EXPORT int BlMainCompany_init ( BlMainCompany * );
+ 
+ #endif
+ 
+diff --git a/bulmages/bulmalib/plugins/pluginbl_formlock/pluginbl_formlock.cpp b/bulmages/bulmalib/plugins/pluginbl_formlock/pluginbl_formlock.cpp
+index 00844db..4023c58 100644
+--- a/bulmages/bulmalib/plugins/pluginbl_formlock/pluginbl_formlock.cpp
++++ b/bulmages/bulmalib/plugins/pluginbl_formlock/pluginbl_formlock.cpp
+@@ -57,6 +57,13 @@ int entryPoint ( QMainWindow *bcont )
+ }
+ 
+ 
++int BlMainCompany_init(BlMainCompany * main) {
++    BL_FUNC_DEBUG
++    main-&gt;dbPatchVersionCheck(&quot;PluginBl_FormLock&quot;, &quot;0.11.1-0001&quot;);
++    return 0;
++}
++
++
+ /// Bloquear la ficha si no lo estaba ya por otro usuario
+ /**
+   Antes, en &quot;fichabloqueo&quot; s&oacute;lo se almacenaba el nombre del campo identificador.
+@@ -168,10 +175,6 @@ int BlForm_BlForm ( BlForm *l )
+ {
+     BL_FUNC_DEBUG
+     
+-    /// El plugin necesita un parche en la base de datos para funcionar.
+-    /// No se puede comprobar en entryPoint porque no se tiene acceso a MainCompany
+-    l-&gt;mainCompany()-&gt;dbPatchVersionCheck(&quot;PluginBl_FormLock&quot;, &quot;0.11.1-0001&quot;);
+-    
+     new BloqMenu ( l );
+     
+     return 0;
+diff --git a/bulmages/bulmalib/plugins/pluginbl_formlock/pluginbl_formlock.h b/bulmages/bulmalib/plugins/pluginbl_formlock/pluginbl_formlock.h
+index 69e22e1..f2f0174 100644
+--- a/bulmages/bulmalib/plugins/pluginbl_formlock/pluginbl_formlock.h
++++ b/bulmages/bulmalib/plugins/pluginbl_formlock/pluginbl_formlock.h
+@@ -29,4 +29,4 @@ extern &quot;C&quot; PLUGINBL_FORMLOCK_EXPORT int entryPoint ( QMainWindow * );
+ extern &quot;C&quot; PLUGINBL_FORMLOCK_EXPORT int BlForm_load ( BlForm * );
+ extern &quot;C&quot; PLUGINBL_FORMLOCK_EXPORT int BlForm_DesBlForm ( BlForm * );
+ extern &quot;C&quot; PLUGINBL_FORMLOCK_EXPORT int BlForm_BlForm ( BlForm * );
+-
++extern &quot;C&quot; PLUGINBL_FORMLOCK_EXPORT int BlMainCompany_init ( BlMainCompany * );
+\ No newline at end of file
+diff --git a/bulmages/bulmalib/src/bldb.cpp b/bulmages/bulmalib/src/bldb.cpp
+index 23d5c6c..5c54f5d 100644
+--- a/bulmages/bulmalib/src/bldb.cpp
++++ b/bulmages/bulmalib/src/bldb.cpp
+@@ -622,6 +622,8 @@ int BlDbRecord::dbSave ( QString &amp;id )
+ int BlDbRecord::setDbValue ( QString nomb, QString valor )
+ {
+     BL_FUNC_DEBUG
++    BlDebug::blDebug ( Q_FUNC_INFO, 0, nomb + &quot; --&gt; &quot; + valor );
++    
+     BlDbField *campo;
+     int error = 0;
+     int i = 0;
+diff --git a/bulmages/bulmalib/src/blmaincompany.cpp b/bulmages/bulmalib/src/blmaincompany.cpp
+index acd4290..5fce7d2 100644
+--- a/bulmages/bulmalib/src/blmaincompany.cpp
++++ b/bulmages/bulmalib/src/blmaincompany.cpp
+@@ -184,6 +184,7 @@ void BlMainCompany::init ( QString bd, QString tipo )
+ 
+     inicializa ( bd );
+     
++    g_plugins-&gt;run(&quot;BlMainCompany_init&quot;, this);
+ }
+ 
+ 
+diff --git a/bulmages/bulmalib/src/blplugins.cpp b/bulmages/bulmalib/src/blplugins.cpp
+index 99801af..3fb26a0 100644
+--- a/bulmages/bulmalib/src/blplugins.cpp
++++ b/bulmages/bulmalib/src/blplugins.cpp
+@@ -137,6 +137,7 @@ int BlPlugins::run ( const char *func, void *clase )
+ 	} // end for
+ 	
+ 	if (!encontrado) {
++	  BlDebug::blDebug(&quot;Lanzaremos el plugin de la libreria *** &quot; + m_plugins.at( i) -&gt; fileName() + &quot;***&quot;);
+ 	  funcAddressList.push_back(myFunction);
+ 	} // end if
+ 	
+@@ -147,6 +148,7 @@ int BlPlugins::run ( const char *func, void *clase )
+ 	myFunction = funcAddressList.at(i);
+ 
+ 	if ( myFunction &amp;&amp; a == 0 ) {
++	    BlDebug::blDebug(&quot;Lanzamos el plugin en orden *** &quot; + QString::number(i) + &quot;***&quot;);
+             a = myFunction ( clase );
+         } // end if
+     
+@@ -188,6 +190,7 @@ int BlPlugins::run ( const char *func, void *clase, void **ret )
+ 	} // end for
+ 	
+ 	if (!encontrado) {
++	  BlDebug::blDebug(&quot;Lanzaremos el plugin de la libreria *** &quot; + m_plugins.at( i) -&gt; fileName() + &quot;***&quot;);
+ 	  funcAddressList.push_back(myFunction1);
+ 	} // end if
+ 	
+@@ -198,6 +201,7 @@ int BlPlugins::run ( const char *func, void *clase, void **ret )
+ 	myFunction1 = funcAddressList.at(i);
+ 
+ 	if ( myFunction1 &amp;&amp; a == 0 ) {
++	    BlDebug::blDebug(&quot;Lanzamos el plugin en orden *** &quot; + QString::number(i) + &quot;***&quot;);
+             a = myFunction1 ( clase, ret );
+         } // end if
+     
+diff --git a/bulmages/bulmalib/src/blsubform.cpp b/bulmages/bulmalib/src/blsubform.cpp
+index acf55ea..761bd87 100644
+--- a/bulmages/bulmalib/src/blsubform.cpp
++++ b/bulmages/bulmalib/src/blsubform.cpp
+@@ -3385,8 +3385,6 @@ void BlSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
+ 
+     /// Disparamos los plugins.
+     g_plugins-&gt;run ( &quot;BlSubForm_editFinished&quot;, this );
+-
+-
+     
+ }
+ 
+
+commit ef18587626ea1d8694f6f04f244d482ce066fd53
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu Apr 5 16:35:57 2012 +0200
+
+    Arreglo problema con el plugin de inventarios y la comprobacion de stocks minimos que fallaba si existian subformularios sin modoinsercion o sin un campoactual
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_inventario/pluginbf_inventario.cpp b/bulmages/bulmafact/plugins/pluginbf_inventario/pluginbf_inventario.cpp
+index b2bb282..e9cd5a0 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_inventario/pluginbf_inventario.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_inventario/pluginbf_inventario.cpp
+@@ -125,8 +125,10 @@ int BlForm_guardar_Post ( BlForm *fich )
+ {
+     BlSubForm * form = fich-&gt;findChild&lt;BlSubForm *&gt; ( &quot;m_lmin&quot; );
+     if ( form ) {
+-        form-&gt;setColumnValue ( &quot;idarticulo&quot;, fich-&gt;dbValue ( &quot;idarticulo&quot; ) );
+-        form-&gt;save();
++        if (form-&gt;rowCount() &gt; 0) {
++	  form-&gt;setColumnValue ( &quot;idarticulo&quot;, fich-&gt;dbValue ( &quot;idarticulo&quot; ) );
++	  form-&gt;save();
++	} // end if
+     } // end if
+     return 0;
+ }
+@@ -137,6 +139,8 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
+     BL_FUNC_DEBUG
+ 
+     BlDbSubFormField *camp = ( BlDbSubFormField * ) subform-&gt;item ( subform-&gt;currentRow(), subform-&gt;currentColumn()  );
++    /// Si no hay campo actual salimos directamente.
++    if (!camp) return 0;
+     camp-&gt;refresh();
+     if ( camp-&gt;fieldName() == &quot;cant&quot; + subform-&gt;tableName() ) {
+       
+@@ -190,6 +194,12 @@ int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
+ int BlSubForm_campoCompleto ( BfSubForm *subform )
+ {
+     BL_FUNC_DEBUG
++    
++    /// Si el subformulario no tiene filas entonces no tiene sentido seguir. Y produce un error en la búsqueda de un dbValue.
++    if (subform-&gt;rowCount() == 0 || subform-&gt;currentRow() &lt; 0) {
++      return 0;
++    } // end if
++  
+   
+     QString camp1 = subform-&gt;dbValue(&quot;cantlpresupuesto&quot;);
+     if (camp1 == &quot;&quot;)
+diff --git a/bulmages/bulmalib/src/blsubform.cpp b/bulmages/bulmalib/src/blsubform.cpp
+index 26f74d3..acf55ea 100644
+--- a/bulmages/bulmalib/src/blsubform.cpp
++++ b/bulmages/bulmalib/src/blsubform.cpp
+@@ -1770,7 +1770,7 @@ BlDbSubFormRecord *BlSubForm::lineaat ( int row )
+         rec = ( BlDbSubFormRecord * ) camp-&gt;pare();
+ 
+     } catch ( ... ) {
+-        BlDebug::blDebug ( &quot;BlSubForm::lineaat linea inexistente&quot;, 2, QString::number ( row ) );
++        BlDebug::blDebug ( &quot;BlSubForm::lineaat linea inexistente&quot;, 2, QString::number ( row ) + objectName() + parent()-&gt;objectName() );
+         rec = NULL;
+     }
+     
+@@ -1786,6 +1786,7 @@ BlDbSubFormRecord *BlSubForm::lineaat ( int row )
+ bool BlSubForm::campoCompleto ( int row )
+ {
+     BL_FUNC_DEBUG
++    BlDebug::blDebug ( &quot;BlSubForm::campoCompleto()&quot;, 0, QString::number ( row ) );
+     bool resultat = false;
+     bool *pResultat = &resultat;
+     if ( g_plugins-&gt;run ( &quot;BlSubForm_campoCompleto&quot;, this, ( void** ) &amp;pResultat ) ) {
+@@ -2081,14 +2082,16 @@ QString BlSubForm::dbValue ( const QString &amp;campo, int row )
+         
+         return rec-&gt;dbValue ( campo );
+     } catch ( ... ) {
+-        blMsgInfo ( _ (&quot;Fila inexistente&quot; ));
++        /// Este tipo de errores no deben pasar desapercibidos ya que pueden acarrear problemas muchos mas graves y en la programacion no pueden permitirse.
++        /// Por este motivo es preferible mostrar un mensaje de error alarmante.
++        blMsgInfo ( _ (&quot;Se intentó obtener un valor en una Fila inexistente&quot; ) + &quot;en &quot; + objectName() + &quot;con &quot; + parent()-&gt;objectName() );
+         throw - 1;
+     }
+ }
+ 
+ 
+ ///
+-/**
++/** Si hay algun error da un mensaje de error.
+ \param campo Nombre de la columna que debe cambiarse.
+ \param row   Fila correspondiente a la casilla
+ \param valor Valor que tomara la casilla
+@@ -2109,7 +2112,9 @@ void BlSubForm::setDbValue ( const QString &amp;campo, int row, const QString &amp;valor
+         rec-&gt;setDbValue ( campo, valor );
+         
+     } catch ( ... ) {
+-        blMsgInfo ( _ (&quot;Fila inexistente&quot; ) );
++        /// Este tipo de errores no deben pasar desapercibidos ya que pueden acarrear problemas muchos mas graves y en la programacion no pueden permitirse.
++        /// Por este motivo es preferible mostrar un mensaje de error alarmante.
++        blMsgInfo ( _ (&quot;Se intentó establecer un valor en una Fila inexistente&quot; ) + &quot;en &quot; + objectName() + &quot;con &quot; + parent()-&gt;objectName() );
+         throw - 1;
+     }
+ }
+@@ -2131,38 +2136,46 @@ int BlSubForm::save()
+                 rec-&gt;remove();
+             } // end if
+         } // end while
+-
+-        /// Asegura que siempre la ultima linea se valide antes de guardar.
+-        /// Esto evita que se pueda perder informacion.
+-        if ( campoCompleto ( mui_list-&gt;rowCount() - 1 ) ) {
+-            newRecord();
+-        } // end if
+-
++        
+         /// Si no hay elementos que guardar salimos.
+         if ( mui_list-&gt;rowCount() == 0 || ( ( mui_list-&gt;rowCount() == 1 ) &amp;&amp; m_insercion ) ) {
+             return 0;
+         } // end if
+ 
++        /// Asegura que siempre la ultima linea se valide antes de guardar. Distinguiendo entre insercion y no insercion
++        /// Esto evita que se pueda perder informacion.
++        if ( m_insercion) {
++	    if (campoCompleto ( mui_list-&gt;rowCount() - 1 ) ) {
++		newRecord();
++	    } // end if
++	}// end if
++
+         /// Hacemos el guardado
+         for ( int j = 0; j &lt; mui_list-&gt;rowCount() - 1; ++j ) {
+             rec = lineaat ( j );
+             if ( rec ) {
+-                /// Si hay ordenacion de campos ahora la establecemos
+-                if ( m_orden ) {
+-                    rec-&gt;setDbValue ( &quot;orden&quot; + m_tablename, QString::number ( j ) );
+-                } // end if
+-                rec-&gt;refresh();
+-                rec-&gt;save();
++	        /// Hay casos en los que se guarda y entremedias hay campos no completos que no deben guardarse.
++	        if (campoCompleto ( j) ) {
++		    /// Si hay ordenacion de campos ahora la establecemos
++		    if ( m_orden ) {
++			rec-&gt;setDbValue ( &quot;orden&quot; + m_tablename, QString::number ( j ) );
++		    } // end if
++		    rec-&gt;refresh();
++		    rec-&gt;save();
++		} // end if
+             } // end if
+         } // end for
++        
+ 
+         /// Si no hay modo insercion hacemos el guardado de la ultima linea.
+         if ( !m_insercion ) {
+             rec = lineaat ( mui_list-&gt;rowCount() - 1 );
+-            if ( m_orden )
+-                rec-&gt;setDbValue ( &quot;orden&quot; + m_tablename, QString::number ( mui_list-&gt;rowCount() - 1 ) );
+-            rec-&gt;refresh();
+-            rec-&gt;save();
++	    if (campoCompleto(mui_list-&gt;rowCount() - 1)) {
++		if ( m_orden )
++		    rec-&gt;setDbValue ( &quot;orden&quot; + m_tablename, QString::number ( mui_list-&gt;rowCount() - 1 ) );
++		rec-&gt;refresh();
++		rec-&gt;save();
++	    }// end if
+         } // end if
+ 
+         /// Liberamos memoria
+@@ -2182,7 +2195,7 @@ int BlSubForm::save()
+         } // end if
+     } catch ( ... ) {
+ 	
+-        blMsgError ( _ (&quot;Error inesperado en el guardado. [BlSubForm::guardar]&quot; ) );
++        blMsgError ( _ (&quot;Error inesperado en el guardado.&quot; ) );
+         throw - 1;
+     } // end try
+     return -1;
+@@ -2225,7 +2238,7 @@ int BlSubForm::remove()
+         return error;
+     } catch ( ... ) {
+ 	
+-        blMsgError ( _ (&quot;Error al borrar. [BlSubForm::borrar]&quot; ));
++        blMsgError ( _ (&quot;Error al borrar.&quot; ));
+         return -1;
+     } // end try
+ }
+@@ -2284,7 +2297,7 @@ int BlSubForm::remove ( int row )
+ 
+     } catch ( ... ) {
+ 	
+-        blMsgInfo ( _ (&quot;Error al intentar borrar&quot; ) );
++        blMsgInfo ( _ (&quot;Error al borrar&quot; ) );
+         throw - 1;
+     } // end try
+ }
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007024.html">[BulmaGés] [Gitorious] Activity: cgarde pushed 2	commits to masterm...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007026.html">[BulmaGés] 5 claves a la hora de elegir un nicho	de mercado
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7025">[ fecha ]</a>
+              <a href="thread.html#7025">[ hilo ]</a>
+              <a href="subject.html#7025">[ asunto ]</a>
+              <a href="author.html#7025">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

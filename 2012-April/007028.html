@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20master...&In-Reply-To=%3C20120411205801.B01EB756EC%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007027.html">
+   <LINK REL="Next"  HREF="007032.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20master...&In-Reply-To=%3C20120411205801.B01EB756EC%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Mie Abr 11 22:58:01 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007027.html">[BulmaGés] [Gitorious] Activity: tborras pushed 5	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007032.html">[BulmaGés]Pregunta?
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7028">[ fecha ]</a>
+              <a href="thread.html#7028">[ hilo ]</a>
+              <a href="subject.html#7028">[ asunto ]</a>
+              <a href="author.html#7028">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 2 commits to master
+master changed from 289f99b to 7e2238a
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/289f99b88409e961582722ee0c1f689efd9eaf89/diffs/7e2238a5287e93074a9dc76676b0f93d57d9bdee">https://gitorious.org/bulmages/bulmages/commit/289f99b88409e961582722ee0c1f689efd9eaf89/diffs/7e2238a5287e93074a9dc76676b0f93d57d9bdee</A>
+
+Diff: 
+
+commit 7e2238a5287e93074a9dc76676b0f93d57d9bdee
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Wed Apr 11 22:33:24 2012 +0200
+
+    Arreglo error en la correccion de la version de la base de datos del plugin de tallas y colores
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_tallascolores/dbmodels/pluginbf_tallascolores.sql b/bulmages/bulmafact/plugins/pluginbf_tallascolores/dbmodels/pluginbf_tallascolores.sql
+index e198e23..8a9f240 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_tallascolores/dbmodels/pluginbf_tallascolores.sql
++++ b/bulmages/bulmafact/plugins/pluginbf_tallascolores/dbmodels/pluginbf_tallascolores.sql
+@@ -223,7 +223,7 @@ BEGIN
+ 	IF FOUND THEN
+ 		UPDATE CONFIGURACION SET valor=''0.11.1-0002'' WHERE nombre=''PluginBf_TallasColores'';
+ 	ELSE
+-		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_TallasColores'', ''0.11.1-0001'');
++		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBf_TallasColores'', ''0.11.1-0002'');
+ 	END IF;
+ 	RETURN 0;
+ END;
+
+commit f430bbaa1dd573cf2e1ea5d03081b9527f5025b0
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Wed Apr 11 21:00:53 2012 +0200
+
+    Arreglo el problema en los contratos que no coge bien la tasa de iva al haber un error en el query que lo recupera
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_contrato/contratoview.cpp b/bulmages/bulmafact/plugins/pluginbf_contrato/contratoview.cpp
+index f473515..faae9da 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_contrato/contratoview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_contrato/contratoview.cpp
+@@ -355,7 +355,7 @@ void ContratoView::on_mui_facturar_clicked()
+                     linea1-&gt;setDbValue ( &quot;pvplfactura&quot;, linea-&gt;dbValue ( &quot;pvplcontrato&quot; ) );
+                     /// Buscamos el tipo de iva que corresponde al articulo y lo ponemos.
+                     BlDbRecordSet *cur = mainCompany() -&gt;loadQuery ( &quot;SELECT * FROM articulo WHERE idarticulo = &quot; + linea-&gt;dbValue ( &quot;idarticulo&quot; ) );
+-                    BlDbRecordSet *cur1 = mainCompany() -&gt;loadQuery ( &quot;SELECT * FROM tasa_iva WHERE idtipo_iva = &quot; + cur-&gt;value( &quot;idtipo_iva&quot; ) + &quot; ORDER BY fechatasa_iva LIMIT 1&quot; );
++                    BlDbRecordSet *cur1 = mainCompany() -&gt;loadQuery ( &quot;SELECT * FROM tasa_iva WHERE idtipo_iva = &quot; + cur-&gt;value( &quot;idtipo_iva&quot; ) + &quot; ORDER BY fechatasa_iva DESC LIMIT 1&quot; );
+                     if ( !cur-&gt;eof() ) {
+ 
+                         if ( curcliente-&gt;value( &quot;regimenfiscalcliente&quot; ) == &quot;Normal&quot; ) {
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007027.html">[BulmaGés] [Gitorious] Activity: tborras pushed 5	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007032.html">[BulmaGés]Pregunta?
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7028">[ fecha ]</a>
+              <a href="thread.html#7028">[ hilo ]</a>
+              <a href="subject.html#7028">[ asunto ]</a>
+              <a href="author.html#7028">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

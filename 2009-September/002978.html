@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Listado BfSubForm de un listado con campos editables directamente
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-September/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FListado_BfSubForm_de_%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fun_listado_con_campos_editables_directamente%3F%3D&In-Reply-To=%3C200909071911.12438.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002974.html">
+   <LINK REL="Next"  HREF="002975.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Listado BfSubForm de un listado con campos editables directamente </H1>
+    <B>Tomeu</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FListado_BfSubForm_de_%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fun_listado_con_campos_editables_directamente%3F%3D&In-Reply-To=%3C200909071911.12438.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]Listado BfSubForm de un listado con campos editables directamente">tborras en conetxia.com
+       </A><BR>
+    <I>Lun Sep  7 19:11:12 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002974.html">[BulmaGés] Listado BfSubForm de un listado con	campos editables directamente
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002975.html">[BulmaGés] Sugerencia para las clases List	(definir las cadenas nombretabla e idtabla una sola vez)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2978">[ fecha ]</a>
+              <a href="thread.html#2978">[ hilo ]</a>
+              <a href="subject.html#2978">[ asunto ]</a>
+              <a href="author.html#2978">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Si es  posible.
+
+Lo que pasa es que si partes del componente Listado hay algo de trabajo 
+adicional ya que no tiene implementados los metodos de guardar (me refiero al 
+boton de guardar y eso ...). Aunque tampoco es mucho trabajo al final tienes 
+que tener en algun sitio la llamada al BfSubForm::save como hacerlo ya lo 
+montas como quieras.
+
+&gt;<i> ¿Es posible que una lista de selección de registros tenga algunos campos
+</I>&gt;<i> editables, o es una complicación?
+</I>&gt;<i> 
+</I>&gt;<i> Por ejemplo, un campo QCheckBox que pueda pulsarse directamente en la lista
+</I>&gt;<i> sin tener que abrir la ficha.
+</I>&gt;<i> 
+</I>&gt;<i> He probado quintado la propiedad &quot;BlSubFormHeader::DbNoWrite&quot; en la
+</I>&gt;<i>  definición de campos de la lista, pero aunque se puede cambiar el valor,
+</I>&gt;<i>  no llega a la base de datos.
+</I>&gt;<i> &quot;
+</I>
+La propiedad DbNoWrite afecta al aspecto visual (Ahora que lo miro no deberia 
+ser DbNoWrite ya que no hay alusion a la base de datos).
+
+La propiedad que hay que cambiar es DbNoSave y ponerloa como DbNone o 
+DbNotNull.
+
+NOTA: El segundo parametro indica la relacion del componente con la base de 
+datos. El tercer parametro indica las formas de presentacion y comportamiento 
+del campo en el subformulario. El tercer campo tiene una redundancia que hay 
+que corregir al usar DbDupPrimaryKey que es en aquellos escasos sitios donde 
+las claves primarias pueden cambiarse y se necesita la clave original para 
+hacer el update correctamente.
+
+	Ambos campos no son lo mismo ya que podemos tener un campo en el que queramos 
+escribir y guardar en la base de datos un cálculo a partir de éste, o el 
+selector de impresion que no tiene que ir a la base de datos. O también un 
+campo que no podamos tocar pero que queremos que se guarde.
+
+NOTA: Es MUY importante que si va a guardarse el/los campo/s DbPrimaryKey 
+este/n bien puesto/s pq sino los updates no funcionaran bien.
+
+
+
+
+
+Salut
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002974.html">[BulmaGés] Listado BfSubForm de un listado con	campos editables directamente
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002975.html">[BulmaGés] Sugerencia para las clases List	(definir las cadenas nombretabla e idtabla una sola vez)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2978">[ fecha ]</a>
+              <a href="thread.html#2978">[ hilo ]</a>
+              <a href="subject.html#2978">[ asunto ]</a>
+              <a href="author.html#2978">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

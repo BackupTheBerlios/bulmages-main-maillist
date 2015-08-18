@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] r3930 - in trunk/bulmages/bulmafact:	plugins/pluginbf_articulo src
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3930%20-%20in%20trunk/bulmages/bulmafact%3A%0A%09plugins/pluginbf_articulo%20src&In-Reply-To=%3C20100730160354.66F3A480CB4%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003868.html">
+   <LINK REL="Next"  HREF="003872.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] r3930 - in trunk/bulmages/bulmafact:	plugins/pluginbf_articulo src </H1>
+    <B>svn en mail.berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3930%20-%20in%20trunk/bulmages/bulmafact%3A%0A%09plugins/pluginbf_articulo%20src&In-Reply-To=%3C20100730160354.66F3A480CB4%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] r3930 - in trunk/bulmages/bulmafact:	plugins/pluginbf_articulo src">svn en mail.berlios.de
+       </A><BR>
+    <I>Vie Jul 30 18:03:54 CEST 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003868.html">[BulmaGés] r3929 -	trunk/bulmages/bulmafact/plugins/pluginbf_alumno
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003872.html">[BulmaGés] r3931 - in	trunk/bulmages/bulmafact/plugins: pluginbf_actividad	pluginbf_alumno pluginbf_asociacion pluginbf_inventariosimple	pluginbf_minicontabilidad pluginbf_profesor pluginbf_recibo	pluginbf_tutor
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3869">[ fecha ]</a>
+              <a href="thread.html#3869">[ hilo ]</a>
+              <a href="subject.html#3869">[ asunto ]</a>
+              <a href="author.html#3869">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: fcojavmc
+Date: 2010-07-30 18:03:54 +0200 (Fri, 30 Jul 2010)
+New Revision: 3930
+
+Modified:
+   trunk/bulmages/bulmafact/plugins/pluginbf_articulo/articuloview.cpp
+   trunk/bulmages/bulmafact/src/main.cxx
+Log:
+BUG corregido: En la creacion de articulos, si el usuario ha utilizado
+codigos de articulos propios (introducidos manualmente) demasiado
+largos, puede suceder que al querer generar un nuevo codigo
+automaticamente salga de su rango y se produzca un error en la base de
+datos. En este caso la consulta no devolveria ninguna fila.
+
+Ejemplo de consulta:
+
+select coalesce(max(codarticulo::integer),0) +1 as
+maximo, coalesce(max(length(codarticulo)), 4) AS long from articulo
+where codarticulo similar to '[0-9]+' AND idfamilia = 1176;
+
+Resultado de la base de datos:
+ERROR:  el valor ?\194?\1719052723240?\194?\187 est?\195?\161 fuera de rango para el tipo integer
+
+
+Codigo corregido:
+
+BlDbRecordSet *cur = mainCompany() -&gt;loadQuery ( query );
+
+&lt;--- AQUI 'cur' valdria NULL por el error en la base de datos.
+
+if ( cur != NULL ) { &lt;-- Proteccion
+  if( !cur-&gt;eof()) {
+
+
+En el caso comentado no se generaria ningun codigo de articulo
+automaticamente.
+
+
+
+
+*********************************
+*          Todo-Redes           *
+*        C/.Begonia, 12         *
+*   07010 Palma de Mallorca.    *
+*      Tel: +34-971499071       *
+*   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>   *
+*  comercial(en)todo-redes.com  *
+*********************************
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003868.html">[BulmaGés] r3929 -	trunk/bulmages/bulmafact/plugins/pluginbf_alumno
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003872.html">[BulmaGés] r3931 - in	trunk/bulmages/bulmafact/plugins: pluginbf_actividad	pluginbf_alumno pluginbf_asociacion pluginbf_inventariosimple	pluginbf_minicontabilidad pluginbf_profesor pluginbf_recibo	pluginbf_tutor
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3869">[ fecha ]</a>
+              <a href="thread.html#3869">[ hilo ]</a>
+              <a href="subject.html#3869">[ asunto ]</a>
+              <a href="author.html#3869">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

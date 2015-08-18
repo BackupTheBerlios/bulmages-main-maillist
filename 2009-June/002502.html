@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]BfBuscarArticuloDelegate ha de ser filla de BlComboBox ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FBfBuscarArticuloDeleg%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fate_ha_de_ser_filla_de_BlComboBox_%3D3F%3F%3D&In-Reply-To=%3C200906241719.20796.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002499.html">
+   <LINK REL="Next"  HREF="002504.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]BfBuscarArticuloDelegate ha de ser filla de BlComboBox ? </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FBfBuscarArticuloDeleg%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fate_ha_de_ser_filla_de_BlComboBox_%3D3F%3F%3D&In-Reply-To=%3C200906241719.20796.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]BfBuscarArticuloDelegate ha de ser filla de BlComboBox ?">tborras en conetxia.com
+       </A><BR>
+    <I>Mie Jun 24 17:19:20 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002499.html">[BulmaGés] BfBuscarArticuloDelegate ha de ser	filla de BlComboBox ?
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002504.html">[BulmaGés]BfBuscarArticuloDelegate ha de ser filla de BlComboBox ?
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2502">[ fecha ]</a>
+              <a href="thread.html#2502">[ hilo ]</a>
+              <a href="subject.html#2502">[ asunto ]</a>
+              <a href="author.html#2502">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Doncs resulta que tot això es obsolet i vaig a canviar-ho per la nova forma de 
+tratar-ho. Volia esperar a despres de estabilitzar pero en vista del error 
+sorgit millor ho faig ara.
+
+El canvi radica en que no hem de permetrer que un plugin tengui un Delegate al 
+src del programa si ho podem solventar d'alguna altre forma.
+
+La nova forma de fer-ho esta a pluginbf_tutor.cpp 
+
+on Se implementa el Delegate en forma de BlComboBox.
+
+Per lo del alias també ahurà de anar de forma semblant.
+
+Salut
+
+
+El Wednesday 24 June 2009 14:19:35 Xavi Drudis Ferran escribió:
+&gt;<i> Hola.
+</I>&gt;<i>
+</I>&gt;<i> Em sembla que ja va això del plugin alias. Ara ho pujaré.
+</I>&gt;<i>
+</I>&gt;<i> Però em peta (tant amb el plugin alias com sense) quan creo una factura,
+</I>&gt;<i> pico a una nova línia de factura, columna codi d'article, escric els
+</I>&gt;<i> 4 primers caracters d'un article, i llavors m'autocompleta un dels
+</I>&gt;<i> codis d'article que contenenla seqüencia de quatre caracters entrada.
+</I>&gt;<i> Llavors si dsplego el combo hi ha els articles que contenen la seqüència,
+</I>&gt;<i> i quan pico amb el ratolí a un dels articles del combo es tanca el
+</I>&gt;<i> programa.
+</I>&gt;<i>
+</I>&gt;<i> Pelque sembla és per culpa que BlComboBox.m_fieldId és null.
+</I>&gt;<i>
+</I>&gt;<i> Però mirant BlComboBox sembla que sigui un combo que es configura amb
+</I>&gt;<i> una consulta i un camp Id i el qu efa és ensenyar tots els registres
+</I>&gt;<i> de la consulta. BfBuscarArticuloDelegate hereta de BlComboBox però
+</I>&gt;<i> no defineix la consulta ni el camp Id, i fa les seves coses pel seu compte,
+</I>&gt;<i> com si no fos filla de BlComboBox. I jo diria que la intenció és que
+</I>&gt;<i> el comportament sigui un altre, que vagi canviant els contignuts del combo
+</I>&gt;<i> segons el que escriu l'usuari. No sé si hauria d'heretar de BlComboBox
+</I>&gt;<i> i per comptes de fer les consultes manualment anar reconfigurant
+</I>&gt;<i> BlComboBox, assignant els seus membres, o si directament hauria de fer el
+</I>&gt;<i> que fa sense heretar de BlComboBox sinó de ComboBox.
+</I>&gt;<i>
+</I>&gt;<i> Algú enten com va i perquè està fet així ?
+</I>
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002499.html">[BulmaGés] BfBuscarArticuloDelegate ha de ser	filla de BlComboBox ?
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002504.html">[BulmaGés]BfBuscarArticuloDelegate ha de ser filla de BlComboBox ?
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2502">[ fecha ]</a>
+              <a href="thread.html#2502">[ hilo ]</a>
+              <a href="subject.html#2502">[ asunto ]</a>
+              <a href="author.html#2502">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

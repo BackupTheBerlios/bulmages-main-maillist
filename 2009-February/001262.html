@@ -1,0 +1,239 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][BulmaGÃ©s]Binario Debian
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaG%3DC3%3DA9s%3D5DBi%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fnario_Debian%3F%3D&In-Reply-To=%3C20090225221706.GB5881%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001257.html">
+   <LINK REL="Next"  HREF="001274.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][BulmaGÃ©s]Binario Debian </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaG%3DC3%3DA9s%3D5DBi%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fnario_Debian%3F%3D&In-Reply-To=%3C20090225221706.GB5881%40localhost%3E"
+       TITLE="[BulmaGés][BulmaGÃ©s]Binario Debian">xdrudis en tinet.cat
+       </A><BR>
+    <I>Mie Feb 25 23:17:06 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001257.html">[BulmaGés][BulmaGÃ©s]Binario Debian
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001274.html">[BulmaGés]Binario Debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1262">[ fecha ]</a>
+              <a href="thread.html#1262">[ hilo ]</a>
+              <a href="subject.html#1262">[ asunto ]</a>
+              <a href="author.html#1262">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wed, Feb 25, 2009 at 03:18:32PM +0100, Xavi Drudis Ferran wrote:
+&gt;<i> &gt; Personalmente he editado algunos rml a mano para cambiar un par de cosas
+</I>&gt;<i> &gt; y no me parece muy complicado. Lo de python es otro cantar, pero bueno,
+</I>&gt;<i> &gt; si necesitáis ayuda con ello, lo dicho.
+</I>&gt;<i> &gt; Por mi parte intentaré empezar a ver algo de python ...
+</I>&gt;<i> &gt; Esos manuales están con los fuentes no??
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>
+De fet no sé perquè he citat aquest missatge si volia contestar a l'anterior.
+Ho sento. 
+ 
+&gt;<i> Jo sí que he compilat paquets .debs però no sé si ho he fet molt bé.
+</I>&gt;<i> El que no he aconseguit és generar-los per a una altra arquitectura.
+</I>&gt;<i> Vaig provar al meu i386 a dir-li que ho fés per amd64 de ma germana i me'ls va
+</I>&gt;<i> fer però després d'instal·larlos no anaven, vaig haver de compilar al amd64.
+</I>&gt;<i> 
+</I>&gt;<i> De tota manera no m'ha funcionat mai el debian/rules tal com el baixo del
+</I>&gt;<i> reositori. He de canviar alguns directoris per fer-ho funcionar.
+</I>&gt;<i> 
+</I>
+Adjunto el debian/rules que faig servir, però aviso que és probable que estigui 
+malament i a mi em funcioni per algun error, perquè jo no en tinc ni idea. 
+
+
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>
+Signa per fer Collserola parc natural com cal
+<A HREF="http://www.collserola.org/salvemelparcnatural/">http://www.collserola.org/salvemelparcnatural/</A>
+------------ próxima parte ------------
+#!/usr/bin/make -f
+
+# Sample debian/rules that uses debhelper.
+# This file was originally written by Joey Hess and Craig Small.
+# As a special exception, when this file is copied by dh-make into a
+# dh-make output file, you may use that output file without restriction.
+
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+# shared library versions, option 1
+#version=0.11~svn2389
+#major=1
+
+
+CFLAGS = -Wall -g
+ARCH:=$(shell dpkg --print-architecture)
+
+
+ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
+
+	CFLAGS += -O0
+	CXXFLAGS += -O0
+else
+ifneq (,$(findstring $(ARCH),s390 arm))
+        CXXFLAGS += -O0
+	CFLAGS += -O0
+else
+        CXXFLAGS += -O2
+        CFLAGS += -O2
+endif
+endif
+
+configure: configure-stamp
+configure-stamp:
+	dh_testdir
+	#This part should be looked when prepare the relase
+
+	cd bulmages; mkdir build.debian; cd build.debian; cmake \
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_SHARED_LINKER_FLAGS=&quot;-Wl,--as-needed&quot; \
+	-DCMAKE_MODULE_LINKER_FLAGS=&quot;-Wl,--as-needed&quot; \
+	-DCMAKE_EXE_LINKER_FLAGS=&quot;-Wl,--as-needed&quot; \
+	../;
+
+	touch configure-stamp
+
+
+build: build-stamp
+
+build-stamp: configure-stamp 
+	dh_testdir
+
+	# Add here commands to compile the package.
+	cd bulmages ; $(MAKE) ;
+
+	touch build-stamp
+
+clean:
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp configure-stamp
+
+#	Add here commands to clean up after the build process.
+	-rm -rf bulmages/build.debian
+	dh_clean 
+
+install: build
+
+	dh_testdir
+	dh_testroot
+	dh_clean -k 
+	dh_installdirs
+
+	# Add here commands to install the package into debian/tmp
+	cd bulmages ; $(MAKE) install DESTDIR=$(CURDIR)/debian/tmp
+
+	#####################
+	#here put the install files
+
+	dh_compress
+
+
+# Build architecture-independent files here.
+binary-indep: build install
+# We have nothing to do by default.
+
+# Build architecture-dependent files here.
+binary-arch: build install
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs 
+
+#	dh_installdocs debian/README.*Debian 
+	dh_installdocs 
+	dh_installexamples
+	dh_install --sourcedir=debian/tmp
+
+#If the private modules are not in a default directory (like
+#/usr/share/$package or /usr/lib/$package) you should pass the directory
+#to dh_pysupport and dh_python:
+	dh_pysupport 	-pbulmages-common /usr/share/bulmages/bgtrml2pdf
+#	dh_python 	-pbulmages-common /usr/share/bulmages/bgtrml2pdf
+
+	dh_pysupport 	-pbulmages-admin /usr/share/bulmages/bulmasetup
+#	dh_python 	-pbulmages-admin /usr/share/bulmages/bulmasetup
+
+
+	dh_installdebconf	
+
+	install -D -o root -g root -m 0644 debian/bulmacont.lintian $(CURDIR)/debian/bulmacont/usr/share/lintian/overrides/bulmacont
+	install -D -o root -g root -m 0644 debian/bulmafact.lintian $(CURDIR)/debian/bulmafact/usr/share/lintian/overrides/bulmafact
+	install -D -o root -g root -m 0644 debian/bulmatpv.lintian $(CURDIR)/debian/bulmatpv/usr/share/lintian/overrides/bulmatpv
+
+
+	dh_installmenu
+
+	dh_installman 	-pbulmacont debian/tmp/usr/share/man/bulmacont.1
+	dh_installman 	-pbulmacont debian/tmp/usr/share/man/bulmacont.conf.1  
+	dh_installman 	-pbulmafact debian/tmp/usr/share/man/bulmafact.1
+	dh_installman 	-pbulmafact debian/tmp/usr/share/man/bulmafact.conf.1  
+	dh_installman 	-pbulmatpv debian/tmp/usr/share/man/bulmatpv.1
+	dh_installman 	-pbulmatpv debian/tmp/usr/share/man/bulmatpv.conf.1
+	dh_installman  	-pbulmages debian/tmp/usr/share/man/bulmages.1
+	dh_installman  	-pbulmages-common debian/tmp/usr/share/man/bulmages.conf.1
+	dh_installman 	-pbulmages-common debian/tmp/usr/share/man/bgtrml2pdf.1
+	dh_installman  	-pbulmages-admin debian/tmp/usr/share/man/bulmasetup.1
+
+	dh_installdocs  -pbulmacont debian/tmp/usr/share/bulmages/doc/bulmacont_files
+	dh_installdocs  -pbulmacont debian/tmp/usr/share/bulmages/doc/bulmacont.html
+
+	dh_installdocs  -pbulmafact debian/tmp/usr/share/bulmages/doc/bulmafact_files
+	dh_installdocs  -pbulmafact debian/tmp/usr/share/bulmages/doc/bulmafact.html
+
+	dh_installdocs  -pbulmages-admin debian/tmp/usr/share/bulmages/doc/bulmasetup_files
+	dh_installdocs  -pbulmages-admin debian/tmp/usr/share/bulmages/doc/bulmasetup.html
+
+
+	dh_installman
+	dh_link
+	dh_strip
+	dh_compress
+	dh_fixperms
+
+	dh_makeshlibs
+	dh_shlibdeps
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install configure
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001257.html">[BulmaGés][BulmaGÃ©s]Binario Debian
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001274.html">[BulmaGés]Binario Debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1262">[ fecha ]</a>
+              <a href="thread.html#1262">[ hilo ]</a>
+              <a href="subject.html#1262">[ asunto ]</a>
+              <a href="author.html#1262">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

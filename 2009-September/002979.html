@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Sugerencia para las clases List (definir las cadenas nombretabla e idtabla una sola vez)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-September/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FSugerencia_para_las_c%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Flases_List_%3D28definir_las_cadenas_nombretabla_e_idt%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fabla_una_sola_vez%3D29%3F%3D&In-Reply-To=%3C200909071913.03222.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002975.html">
+   <LINK REL="Next"  HREF="002981.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Sugerencia para las clases List (definir las cadenas nombretabla e idtabla una sola vez) </H1>
+    <B>Tomeu</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FSugerencia_para_las_c%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Flases_List_%3D28definir_las_cadenas_nombretabla_e_idt%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fabla_una_sola_vez%3D29%3F%3D&In-Reply-To=%3C200909071913.03222.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]Sugerencia para las clases List (definir las cadenas nombretabla e idtabla una sola vez)">tborras en conetxia.com
+       </A><BR>
+    <I>Lun Sep  7 19:13:03 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002975.html">[BulmaGés] Sugerencia para las clases List	(definir las cadenas nombretabla e idtabla una sola vez)
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002981.html">[BulmaGés][OFF-Topic] Sólo verduras, frutos secos y queso
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2979">[ fecha ]</a>
+              <a href="thread.html#2979">[ hilo ]</a>
+              <a href="subject.html#2979">[ asunto ]</a>
+              <a href="author.html#2979">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Cierto. 
+
+Lo apunto para futuras versiones.
+
+Salut
+
+&gt;<i> En las clases que heredan de BlFormList se usan varias veces literales que
+</I>&gt;<i> contienen el nombre de la tabla o el identificar.
+</I>&gt;<i> 
+</I>&gt;<i> Por ejemplo, en articulolist.cpp tenemos muchas ocurrencias de la cadena
+</I>&gt;<i> &quot;idarticulo&quot;:
+</I>&gt;<i> mdb_idarticulo = mui_list-&gt;dbValue ( &quot;idarticulo&quot;, row );
+</I>&gt;<i> QString SQLQuery = &quot;DELETE FROM articulo WHERE idarticulo = &quot; + idarticulo;
+</I>&gt;<i> query += &quot; AND idarticulo IN (SELECT DISTINCT idarticulo FROM lpresupuesto&quot;
+</I>&gt;<i>  &quot; UNION SELECT DISTINCT idarticulo FROM lpedidocliente&quot;
+</I>&gt;<i> &quot; UNION SELECT DISTINCT idarticulo FROM lalbaran&quot;
+</I>&gt;<i> &quot; UNION SELECT DISTINCT idarticulo FROM lfactura&quot;
+</I>&gt;<i> &quot; UNION SELECT DISTINCT idarticulo FROM lpedidoproveedor&quot;
+</I>&gt;<i> &quot; UNION SELECT DISTINCT idarticulo FROM lalbaranp&quot;
+</I>&gt;<i> &quot; UNION SELECT DISTINCT idarticulo FROM lfacturap&quot;
+</I>&gt;<i> &quot;) &quot;;
+</I>&gt;<i> QString idarticulo = mui_list-&gt;dbValue ( &quot;idarticulo&quot; );
+</I>&gt;<i> setDbFieldId ( &quot;idarticulo&quot; );
+</I>&gt;<i> addSubFormHeader ( &quot;idarticulo&quot;, BlDbField::DbInt, BlDbField::DbNotNull |
+</I>&gt;<i> BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView |
+</I>&gt;<i> BlSubFormHeader::DbNoWrite, _ ( &quot;ID articulo&quot; ) );
+</I>&gt;<i> 
+</I>&gt;<i> También otras tantas de la cadena con el nombre de la tabla &quot;articulo&quot;:
+</I>&gt;<i> trataPermisos ( &quot;articulo&quot; );
+</I>&gt;<i> QString SQLQuery = &quot;DELETE FROM articulo WHERE idarticulo = &quot; + idarticulo;
+</I>&gt;<i> query += &quot;SELECT * FROM articulo NATURAL LEFT JOIN tipo_iva NATURAL LEFT
+</I>&gt;<i>  JOIN tipo_articulo WHERE 1 = 1 &quot;;
+</I>&gt;<i> setDbTableName ( &quot;articulo&quot; );
+</I>&gt;<i> 
+</I>&gt;<i> ¿Y si se usara una variable miembro en cada ArticuloList, o mejor en
+</I>&gt;<i> BlFormList para que la hereden siempre?
+</I>&gt;<i> Creo que así sería más sencillo crear nuevos listados basándose en otros.
+</I>&gt;<i> 
+</I>&gt;<i> Por ejemplo, en el constructor de la lista podrían ponerse las cadenas una
+</I>&gt;<i> sóla vez:
+</I>&gt;<i> m_nombretablalista = &quot;articulo&quot;
+</I>&gt;<i> m_idtablalista = &quot;idarticulo&quot;
+</I>&gt;<i> &quot;
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002975.html">[BulmaGés] Sugerencia para las clases List	(definir las cadenas nombretabla e idtabla una sola vez)
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002981.html">[BulmaGés][OFF-Topic] Sólo verduras, frutos secos y queso
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2979">[ fecha ]</a>
+              <a href="thread.html#2979">[ hilo ]</a>
+              <a href="subject.html#2979">[ asunto ]</a>
+              <a href="author.html#2979">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Rama en blanco
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FRama_en_blanco%3F%3D&In-Reply-To=%3C20110705044121.GD8356%40upf.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006160.html">
+   <LINK REL="Next"  HREF="006167.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Rama en blanco </H1>
+    <B>Walter Garcia-Fontes</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FRama_en_blanco%3F%3D&In-Reply-To=%3C20110705044121.GD8356%40upf.edu%3E"
+       TITLE="[BulmaGés]Rama en blanco">walter.garcia en upf.edu
+       </A><BR>
+    <I>Mar Jul  5 06:41:21 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006160.html">[BulmaGés] Rama en blanco
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006167.html">[BulmaGés]Rama en blanco
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6166">[ fecha ]</a>
+              <a href="thread.html#6166">[ hilo ]</a>
+              <a href="subject.html#6166">[ asunto ]</a>
+              <a href="author.html#6166">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>* Fco. Javier M. C. [04/07/11 21:53]:
+&gt;<i> Estoy intentando crear una nueva rama en GIT, pero tiene que estar el
+</I>&gt;<i> blanco. Es decir, no debe contener archivos ni estar basado en la rama
+</I>&gt;<i> MASTER, para albergar nuevos archivos diferentes. No lo consigo de
+</I>&gt;<i> ninguna manera.
+</I>&gt;<i> 
+</I>&gt;<i> ¿Alguna sugerencia?
+</I>
+Aquí mis apuntes del gran maestre Ripoll:
+
+ Creamos una nueva rama en base a la rama master.
+
+0.) git pull
+
+1.) git checkout --track -b master-fix origin/master
+
+--track = permite actualizar estando dentro de la nueva rama
+master-fix = nombre nueva rama
+origin/master = rama principal
+
+
+2.) Realizamos nuestro trabajo [editar,commit]
+
+
+3.) git rebase -i master
+
+Nos abrirá nuestro editor, mostrandonos los commits con diversas
+opciones
+pick = Coge el commit
+squash = Coge el commit, pero lo adjunta al anterior
+edit = edita el commit.
+
+Recomendado: primer commit &quot;pick&quot;, resto &quot;squash&quot;, logrando
+fusionarlos en un super-commit.
+
+ Volvemos a la rama master y mezclamos los cambios.
+
+1.) git checkout master
+
+2.) git pull
+
+3.) git merge master-fix
+
+4.) Solucionamos los conflictos si se diera el caso { Ver Migrando a
+GIT (III) }.
+
+5.) git push
+
+
+* Si queremos eliminar la rama master-fix, porque ya no la
+necesitamos:
+
+1.) git branch -d master-fix
+
+
+-- 
+Walter Garcia-Fontes
+mailto: <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">walter.garcia en upf.edu</A> - <A HREF="http://puna.upf.edu">http://puna.upf.edu</A>
+Departament d'Economia i Empresa - <A HREF="http://www.econ.upf.edu">http://www.econ.upf.edu</A>
+Universitat Pompeu Fabra
+Ramon Trias Fargas 25-27, 08005 Barcelona, Spain
+Tel. +34 93 542 2722 - Fax. +34 93 542 1746
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006160.html">[BulmaGés] Rama en blanco
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006167.html">[BulmaGés]Rama en blanco
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6166">[ fecha ]</a>
+              <a href="thread.html#6166">[ hilo ]</a>
+              <a href="subject.html#6166">[ asunto ]</a>
+              <a href="author.html#6166">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

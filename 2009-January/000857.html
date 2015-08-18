@@ -1,0 +1,229 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Información sobre el sistema de traducciones Gettext
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FInformaci%3DF3n_sobre_e%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fl_sistema_de_traducciones_Gettext%3F%3D&In-Reply-To=%3C497B784C.10206%40todo-redes.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000856.html">
+   <LINK REL="Next"  HREF="000858.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Información sobre el sistema de traducciones Gettext </H1>
+    <B>Fco. Javier M. C.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FInformaci%3DF3n_sobre_e%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fl_sistema_de_traducciones_Gettext%3F%3D&In-Reply-To=%3C497B784C.10206%40todo-redes.com%3E"
+       TITLE="[BulmaGés]Información sobre el sistema de traducciones Gettext">fcojavmc en todo-redes.com
+       </A><BR>
+    <I>Sab Ene 24 21:21:32 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000856.html">[BulmaGés] r2928 - in trunk/bulmages: ModulesCMake	bulmafact/src bulmalib/src installbulmages
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000858.html">[BulmaGés]Información sobre el sistema de traducciones Gettext
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#857">[ fecha ]</a>
+              <a href="thread.html#857">[ hilo ]</a>
+              <a href="subject.html#857">[ asunto ]</a>
+              <a href="author.html#857">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola a todos. Relacionado con el último 'commit' que he hecho para dar 
+soporte de traducciones 'gettext' a bulmafact os quiero informar sobre 
+algunos aspectos del sistema. Que conste que no soy experto en gettext 
+(ni en nada, todo sea dicho) que es un sistema complejo en si mismo.
+
+------------------------------------------------------------
+
+TÍTULO: Sistema de traducción GETTEXT en Bulmagés.
+AUTOR: Fco. Javier M. C. &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+LICENCIA DEL DOCUMENTO: CC-BY
+EFECTIVIDAD: SVN rev. 2928
+FECHA: 24/ENERO/2009
+
+------------------------------------------------------------
+
+INTRODUCCIÓN:
+--------------
+
+Este documento muestra los cambios que se han hecho en bulmagés para 
+adaptarlo al funcionamiento del sistema de traducciones y localización 
+'gettext'.
+
+A fecha de hoy sólo se ha adaptado el sistema a los .ui (pantallas) de 
+Bulmafact. El sistema se irá extendiendo progresivamente por el resto 
+del código.
+
+
+CAMBIOS EN BULMALIB:
+---------------------
+
+Para tener soporte de traducciones 'gettext' hay que hacer un 
+'#include', de al menos, uno de esos dos '.h' ('i18n.h' o 'funcaux.h').
+
+Se han creado los archivos 'i18n.h' e 'i18n.cpp' para colocar las 
+funciones necesarias de 'gettext'.
+Se ha puesto un '#include &quot;i18n.h&quot;' en 'funcaux.h' para aprovechar que 
+está incluido en casi todo el código.
+
+
+LOS UIS:
+---------
+
+El problema de las traducciones de los '.ui' es que no están en forma de 
+código. El sistema espera a disponer del código generado por 'moc' antes 
+de localizar las cadenas a traducir.
+
+En el archivo 'CMakeLists.txt' hay que colocar esta linea:
+QT4_WRAP_UI(bulmafact_UIS_H ${bulmafact_UIS} OPTIONS -tr i18n)
+
+Utilizamos la opción '-tr' para colocar las cadenas de texto dentro de 
+nuestra función 'i18n'.
+
+
+ATENCIÓN: Como 'i18n' es una función ajena a QT4 hay que poner un 
+'#include' de 'funcaux.h' o 'i18n.h' antes del include del '.ui'. De lo 
+contrario mostrará un error al compilar.
+
+Ejemplo (aboutview.h):
+
+MAL:
+      #include &lt;ui_aboutbase.h&gt;
+      #include &quot;funcaux.h&quot;
+
+BIEN:
+      #include &quot;funcaux.h&quot;
+      #include &lt;ui_aboutbase.h&gt;
+
+
+
+ARCHIVOS DE TRADUCCIONES '.POT', '.PO', '.GMO', '.MO':
+-------------------------------------------------------
+
+.POT = Archivo de texto plano. plantilla sin traducciones.
+.PO = Archivo de texto plano con traducciones hechas.
+.GMO = Archivo binario desde el .PO correspondiente.
+.MO = Archivo binario instalado.
+
+
+PROCEDIMIENTO DE TRADUCCIÓN:
+-----------------------------
+
+En el archivo 'CMakeLists.txt' hay que colocar esta linea para definir 
+los idiomas a procesar:
+GETTEXT_CREATE_TRANSLATIONS 
+(${CMAKE_BINARY_DIR}/bulmafact/src/bulmafact.pot ALL LANGUAGES 
+es_ES.UTF-8 en_US.UTF-8)
+
+En este caso se procesarán los idionas: 'es_ES.UTF-8' y 'en_US.UTF-8'. 
+Para un nuevo idioma sólo hay que añadirlo a la continuación de la lista.
+
+**
+
+$DC (Directorio de compilación) = build/bulmafact/src
+$CF (Directorio del código fuente) = trunk/bulmages/bulmafact/src
+
+Después de compilar, 'xgettext' genera en el $DC el archivo 
+'bulmafact.pot' que contiene todas las cadenas de texto que se han 
+encontrado para traducir. Es la plantilla base que se tiene que utilizar 
+para traduccir el programa a otro idioma.
+
+Automáticamente se lanza el comando 'msgmerge' que hace una mezcla de la 
+nueva plantilla generada: 'bulmafact.pot' con el archivo traducido 
+anterior, si existe, ej: '$CF/bulmafact_es_ES.UTF-8.po'. Si no existe lo 
+crea pero sin traducir nada.
+
+'msgfmt' se encarga a continuación de traducir, por ejemplo: 
+'$CF/bulmafact_es_ES.UTF-8.po' a formato binario '.gmo' dentro de $DC 
+(ej: '$DC/bulmafact_es_ES.UTF-8.gmo').
+
+Finalmente, cuando se realice la instalación con 'make install' los 
+archivos '.gmo' se colocarán en %CMAKE_INSTALL_PREFIX%/share/locale con 
+extensión '.mo'.
+(ej: '/usr/local/share/locale/es_ES.UTF-8/LC_MESSAGES/bulmafact.mo').
+
+
+NOTA: Se puede lanzar manualmente todo el proceso de traducción con 
+'make bulmafact_pos' dentro de $DC.
+
+
+LOCALIZAR LAS TRADUCCIONES:
+----------------------------
+
+'Gettext' busca la variable de entorno 'LANG' o 'LC_MESSAGES' para saber 
+que 'locale' tiene que utilizar. Si no se carga la traducción deseada 
+hay que mirar este punto.
+
+'bulmafact' utiliza la variable de configuración 'CONF_DIR_TRADUCCION' 
+de '/etc/bulmages/bulmages.conf' para localizar los archivos '.mo' para 
+que 'gettext' pueda hacer las traducciones cuando se use el programa. 
+(ej: 'CONF_DIR_TRADUCCION  /usr/local/share/locale'). Tiene que 
+coincidir con '%CMAKE_INSTALL_PREFIX%/share/locale'.
+
+NOTA: He modificado la plantilla de 'bulmages.conf.in' para que apunte 
+al lugar correcto, pero si se usa una configuración anterior hay que 
+revisar este apartado.
+
+
+MARCAR CADENAS DE TEXTO PARA TRADUCCIÓN EN EL CÓDIGO:
+------------------------------------------------------
+
+De forma preferente hay que encerrar el texto a traducir entrecomillado 
+entre '_()'. Ejemplo: '_(&quot;texto a traducir&quot;)' Esta función devuelve un 
+QString de QT.
+
+También se puede hacer con 'i18n(&quot;texto a traducir&quot;)' pero con '_()' es 
+más sencillo y se utiliza de esta manera en otros programas que hacen 
+uso de 'gettext'.
+
+
+MEJORAS Y BUGS:
+----------------
+
+Lo positivo es que el sistema funciona. Hay algunas cosas que se tienen 
+que mejorar. Por ejemplo, existe el archivo '$CF/bulmafact' que es un 
+archivo vacio. Es necesario porque hay una función que lo busca para que 
+la compilación se haga sin problemas. Tengo pendiente arreglar este aspecto.
+
+'Gettext' es complejo y no se han probado todas las posibilidades y 
+posiblemente haya que hacer algunos ajustes.
+
+El sistema de traducción no esta extendido por todo el código y tengo 
+que ver como funciona con los plugins.
+
+
+AGRADECIMIENTOS:
+-----------------
+
+Quiero darle las gracias a Leo por iniciar el camino a gettext... camino 
+lleno de piedras que he tenido que recorrer :)
+
+
+-- 
+Fco. Javier M. C.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000856.html">[BulmaGés] r2928 - in trunk/bulmages: ModulesCMake	bulmafact/src bulmalib/src installbulmages
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000858.html">[BulmaGés]Información sobre el sistema de traducciones Gettext
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#857">[ fecha ]</a>
+              <a href="thread.html#857">[ hilo ]</a>
+              <a href="subject.html#857">[ asunto ]</a>
+              <a href="author.html#857">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

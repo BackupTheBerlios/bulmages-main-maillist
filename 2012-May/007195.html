@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120510212501.5A5D4756DD%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007194.html">
+   <LINK REL="Next"  HREF="007196.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120510212501.5A5D4756DD%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Jue Mayo 10 23:25:00 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007194.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to arreglo...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007196.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7195">[ fecha ]</a>
+              <a href="thread.html#7195">[ hilo ]</a>
+              <a href="subject.html#7195">[ asunto ]</a>
+              <a href="author.html#7195">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from 06e105d to ececa95
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/06e105dfbbca8841570b82e8f1a175feba290be0/diffs/ececa9531068d5eed0d8bbb24ff2801afccbc66d">https://gitorious.org/bulmages/bulmages/commit/06e105dfbbca8841570b82e8f1a175feba290be0/diffs/ececa9531068d5eed0d8bbb24ff2801afccbc66d</A>
+
+Diff: 
+
+commit ececa9531068d5eed0d8bbb24ff2801afccbc66d
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu May 10 23:24:59 2012 +0200
+
+    Arreglo error en la generacion de filtraje para los subformularios
+
+diff --git a/bulmages/bulmalib/src/blsubform.cpp b/bulmages/bulmalib/src/blsubform.cpp
+index 4226ebd..b94fecc 100644
+--- a/bulmages/bulmalib/src/blsubform.cpp
++++ b/bulmages/bulmalib/src/blsubform.cpp
+@@ -3658,6 +3658,8 @@ QString BlSubForm::exportXML() {
+ }
+ 
+ 
++/// Genera la parte de una sentencia SQL con las opciones de filtrado LIKE a partir de los campos que esten en el subformulario.
++/// \param text Texto con el que se crean todas las consultas del tipo LIKE.
+ QString BlSubForm::likeFilterSQL(const QString &amp;text)
+ {
+     BL_FUNC_DEBUG
+@@ -3671,10 +3673,10 @@ QString BlSubForm::likeFilterSQL(const QString &amp;text)
+ 	for (int i=0; i &lt; headerList()-&gt;count(); i++) {
+ 	  if (headerList()-&gt;at(i)-&gt;fieldType() == BlDbField::DbVarChar) {  
+ 	    if (andor) {
+-	      result += &quot; lower(&quot; + headerList()-&gt;at(i)-&gt;fieldName() + &quot;) LIKE lower('%&quot; + mainCompany()-&gt;sanearCadenaUtf8(text) + &quot;%') &quot;;
++	      result += &quot; lower(&quot; + headerList()-&gt;at(i)-&gt;fieldName() + &quot;::text) LIKE lower('%&quot; + mainCompany()-&gt;sanearCadenaUtf8(text) + &quot;%') &quot;;
+ 	      andor = false;
+ 	    } else {
+-	      result += &quot; OR lower(&quot; + headerList()-&gt;at(i)-&gt;fieldName() + &quot;) LIKE lower('%&quot; + mainCompany()-&gt;sanearCadenaUtf8(text) + &quot;%') &quot;;
++	      result += &quot; OR lower(&quot; + headerList()-&gt;at(i)-&gt;fieldName() + &quot;::text) LIKE lower('%&quot; + mainCompany()-&gt;sanearCadenaUtf8(text) + &quot;%') &quot;;
+ 	    } // end if
+ 	  } // end if
+ 	} // end for
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007194.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to arreglo...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007196.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7195">[ fecha ]</a>
+              <a href="thread.html#7195">[ hilo ]</a>
+              <a href="subject.html#7195">[ asunto ]</a>
+              <a href="author.html#7195">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

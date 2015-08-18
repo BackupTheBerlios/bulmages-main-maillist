@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Instal.lat pero no em reconeix el usuaris
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FInstal%3D2Elat_pero_no_%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fem_reconeix_el_usuaris%3F%3D&In-Reply-To=%3Ce62868e0811052355w14e18a7cpf27e495d1e9faa05%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000268.html">
+   <LINK REL="Next"  HREF="000276.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Instal.lat pero no em reconeix el usuaris </H1>
+    <B>infoaxset axset</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FInstal%3D2Elat_pero_no_%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fem_reconeix_el_usuaris%3F%3D&In-Reply-To=%3Ce62868e0811052355w14e18a7cpf27e495d1e9faa05%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]Instal.lat pero no em reconeix el usuaris">infoaxset en gmail.com
+       </A><BR>
+    <I>Jue Nov  6 08:55:31 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000268.html">[BulmaGés]Instal.lat pero no em reconeix el usuaris
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000276.html">[BulmaGés]Instal.lat pero no em reconeix el usuaris
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#270">[ fecha ]</a>
+              <a href="thread.html#270">[ hilo ]</a>
+              <a href="subject.html#270">[ asunto ]</a>
+              <a href="author.html#270">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bon dia
+
+A mi em funciona possant aixo (a la ubuntu 8.04):
+al fitxer : $ /etc/postgresql/8.3/main/pg_hba.conf
+Configuracio:
+_____________________________________________
+# Database administrative login by UNIX sockets
+local   all         postgres                          ident sameuser
+
+# TYPE  DATABASE    USER        CIDR-ADDRESS          METHOD
+
+# &quot;local&quot; is for Unix domain socket connections only
+local   all         all                               ident sameuser
+# IPv4 local connections:
+#host    all         all         127.0.0.1/32        md5
+host    all         all         127.0.0.1/32        password
+host    all         all         192.168.10.0/24        password
+# IPv6 local connections:
+#host    all         all         ::1/128               md5
+host    all         all         ::1/128               password
+____________________________________________________
+
+Com a root. He creat els usuaris de sistema amb, per exemple,
+#  adduser bulmages
+Com a root entram a l'usuari postgres
+# su postgres
+
+Despres lusuari a postgres
+$ createuser bulmages
+Li posam es passwd de sistema
+$ pgsql template1
+&gt;<i> alter user bulmages with password 'passdebulmages';
+</I>&gt;<i> \q
+</I>
+Aixi esta creat a ma, però amb lo primer, si desde bulmasetup el creas
+hauria de funcionar igual
+
+Esper que sia d'utilitat.
+
+
+2008/11/5 David Samblas &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">dsamblas en gmail.com</A>&gt;
+
+&gt;<i> Finalmente hem aconseguit instal.lar el bulmages a la 8.10 ,els
+</I>&gt;<i> repositoris espanyols encara tenen el bug del kpdf , la cosa no va
+</I>&gt;<i> funcionar fins que els vam sustituir pels de US, soposo que trigaran en
+</I>&gt;<i> replicarse.
+</I>&gt;<i> Ara tenim un altre problema, hem executat el bulmasetup, pero quan
+</I>&gt;<i> executem el Bulmages, ens demana usuari password i ens no ens reconeix
+</I>&gt;<i> el que hem creat al Bulmasetup, ho hem probat creant nous usuaris pero
+</I>&gt;<i> res de res.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> David Reyes Samblas Martinez
+</I>&gt;<i> <A HREF="http://www.tuxbrain.com">http://www.tuxbrain.com</A>
+</I>&gt;<i> Open ultraportable solutions
+</I>&gt;<i> Openmoko, Openpandora, GP2X the Wiz, Letux 400
+</I>&gt;<i> Hey, watch out!!! There's a linux in your pocket!!!
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20081106/5d72e3ae/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20081106/5d72e3ae/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000268.html">[BulmaGés]Instal.lat pero no em reconeix el usuaris
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000276.html">[BulmaGés]Instal.lat pero no em reconeix el usuaris
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#270">[ fecha ]</a>
+              <a href="thread.html#270">[ hilo ]</a>
+              <a href="subject.html#270">[ asunto ]</a>
+              <a href="author.html#270">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

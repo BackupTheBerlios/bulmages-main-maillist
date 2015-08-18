@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] postgresiface2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20postgresiface2&In-Reply-To=%3C20081115120715.GA16582%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000250.html">
+   <LINK REL="Next"  HREF="000242.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] postgresiface2 </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20postgresiface2&In-Reply-To=%3C20081115120715.GA16582%40localhost%3E"
+       TITLE="[BulmaGés] postgresiface2">xdrudis en tinet.cat
+       </A><BR>
+    <I>Sab Nov 15 13:07:15 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000250.html">[BulmaGés]postgresiface2
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000242.html">[BulmaGés] dependencia Kpdf a Kubuntu 8.10
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#315">[ fecha ]</a>
+              <a href="thread.html#315">[ hilo ]</a>
+              <a href="subject.html#315">[ asunto ]</a>
+              <a href="author.html#315">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sun, Nov 02, 2008 at 07:39:36PM +0100, xdrudis wrote:
+&gt;<i> 
+</I>&gt;<i> Hola. 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i>     QString SQLQuery = &quot;SELECT * FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias = '&quot; + val + &quot;'&quot;;
+</I>&gt;<i>     cursor2 *cur = busc-&gt;empresaBase() -&gt;cargacursor ( SQLQuery );
+</I>&gt;<i> 
+</I>&gt;<i> Però llavors si val conté un apostrof (per exemple perquè l'alies és
+</I>&gt;<i> &quot;L'ombra de l'eunuc&quot;) donarà un error de sintaxi SQL, suposo. Podria
+</I>&gt;<i> escapar-ho bé (canviar ' per '' abans de concatenar però caldria mirar
+</I>&gt;<i> si amb això n'hi ha prou).  A mi m'agradaria poder fer alguna cosa
+</I>&gt;<i> semblant a
+</I>&gt;<i> 
+</I>&gt;<i>     QString valors[1] = {val};
+</I>&gt;<i>     QString SQLQuery = &quot;SELECT * FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias = $1&quot;;
+</I>&gt;<i>     cursor2 *cur = busc-&gt;empresaBase() -&gt;cargacursor ( SQLQuery, 1, valors, NULL, NULL );
+</I>&gt;<i> 
+</I>&gt;<i> I així funciona amb apòstrofs a val i no cal escapar res (i si els
+</I>&gt;<i> tipus dels paràmetres no són varchar cal declarar-los per comptes dels
+</I>&gt;<i> NULLS, suposo, però al menys és libpq qui fa el formateig o conversió
+</I>&gt;<i> de tipus, espero).
+</I>&gt;<i>
+</I>
+Mmmm... Doncs no, sembla ser que no. Ja puc esperar sentat. lipqxx (per a C++) potser sí que 
+fa la conversió de tipus, però libpq (per a C, i la que usa bulmages) 
+no  ho fa. Li pots passar els paràmetres en binari o en text. Si li passes 
+en text i són dates o númerics o tal t'has d'assegurar que estiguin ben formatats,
+i si li passes com a binari t'has de preocupar tú de girar els bytes com toqui 
+i saber la representació binària de cada tipus. Jo estava acostumat a passar
+un objecte String, o Date o Integer i la llibreria de BD ja feia les 
+conversions, no haver-ho de posar jo en format de protocol de xarxa.
+
+Entenc la frustració de  Jeff Lynn a 
+<A HREF="http://archives.postgresql.org/pgsql-interfaces/2007-05/msg00047.php">http://archives.postgresql.org/pgsql-interfaces/2007-05/msg00047.php</A>
+
+Sense la gestió de tipus més automàtica veig menys interessant això 
+de fer consultes amb paràmetres. Queden només dues avantatges:
+ 
+1.- Espero que no caldrà escapar cometes, apòstrofs ni contrabarres (poca avantatge 
+és tenint en compte que ja hi ha una funció que ho fa com em vau dir). 
+
+2.- Serà necessari si un dia es vol provar de fer consultes precompilades a veure
+si va més de pressa. Tot el que vagi amb paràmetres es pot compilar/planificar un 
+sol cop encara que canvïin els valors dels paràmetres, però si els valors formen
+part de la consulta semblen totes consultes diferents i es compilen i planifiquen
+de nou cada vegada. 
+
+3.- Evita injeccions d'SQL (aquesta no compta perquè bulmages permet injectar
+SQL expressament, no calen atacs sofisticats).
+
+Si us sembla passo cursor2 i postgresiface2-&gt;cargacursor a usar PQExecParams, 
+qui vulgui que passi consultes amb valors incorporats com abans 
+i qui vulgui que passi paràmetres en format text a part, però ni tan sols poso opció per 
+a format binari, que la gent passi QStrings i postgresiface les passarà a char* 
+i prou.
+
+I si després funciona alguna cosa ja us ho diré. 
+
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>
+Signa per fer Collserola parc natural com cal
+<A HREF="http://www.collserola.org/salvemelparcnatural/">http://www.collserola.org/salvemelparcnatural/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000250.html">[BulmaGés]postgresiface2
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000242.html">[BulmaGés] dependencia Kpdf a Kubuntu 8.10
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#315">[ fecha ]</a>
+              <a href="thread.html#315">[ hilo ]</a>
+              <a href="subject.html#315">[ asunto ]</a>
+              <a href="author.html#315">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

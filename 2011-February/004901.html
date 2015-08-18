@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Problemas de dependencias con dpkg-buildpackage
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FProblemas_de_dependen%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fcias_con_dpkg-buildpackage%3F%3D&In-Reply-To=%3CAANLkTimq8ZKXKgj1y5M7ZreM2QsC-9Stm%3DurQTxPOXp-%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="004899.html">
+   <LINK REL="Next"  HREF="004903.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Problemas de dependencias con dpkg-buildpackage </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FProblemas_de_dependen%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fcias_con_dpkg-buildpackage%3F%3D&In-Reply-To=%3CAANLkTimq8ZKXKgj1y5M7ZreM2QsC-9Stm%3DurQTxPOXp-%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]Problemas de dependencias con dpkg-buildpackage">tborras en gmail.com
+       </A><BR>
+    <I>Mar Feb  8 14:06:46 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="004899.html">[BulmaGés]Problemas de dependencias con dpkg-buildpackage
+</A></li>
+        <LI>Próximo mensaje: <A HREF="004903.html">[BulmaGés]Problemas de dependencias con dpkg-buildpackage
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4901">[ fecha ]</a>
+              <a href="thread.html#4901">[ hilo ]</a>
+              <a href="subject.html#4901">[ asunto ]</a>
+              <a href="author.html#4901">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Si, sin problemas.
+
+Ahora estoy probando un dpkg-buildpackage -nc para ver si se lo traga. Pero
+no me convence demasiado como solución.
+
+Salut
+
+El 8 de febrero de 2011 13:43, Santos Martinez Estrada
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">otilio en apdo.com</A>&gt;escribió:
+
+&gt;<i> Y eso mismo te lo compila correctamente por el método normal?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On Martes 08 Febrero 2011 13:27:06 Tomeu Borras escribió:
+</I>&gt;<i> &gt; Bones a tothom
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Estoy con el tema paquetes deb
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Cuando estoy haciendo el dpkg-buildpackages y se pone a compilar en el
+</I>&gt;<i> &gt; debian.build me aparece un error de compilacion:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; make[3]: se sale del directorio
+</I>&gt;<i> &gt; «/opt/svn-tborras-bulmages/bulmages/build.debian»
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; [ 27%] Built target pluginbt_visor
+</I>&gt;<i> &gt; In file included from
+</I>&gt;<i> &gt;
+</I>&gt;<i> /opt/svn-tborras-bulmages/bulmages/bulmatpv/plugins/pluginbt_clientsync/plu
+</I>&gt;<i> &gt; ginbt_clientsync.h:27:0, from
+</I>&gt;<i> &gt;
+</I>&gt;<i> /opt/svn-tborras-bulmages/bulmages/bulmatpv/plugins/pluginbt_clientsync/plu
+</I>&gt;<i> &gt; ginbt_clientsync.cpp:29:
+</I>&gt;<i> &gt;
+</I>&gt;<i> /opt/svn-tborras-bulmages/bulmages/bulmatpv/plugins/pluginbt_accesobotones
+</I>&gt;<i> &gt; /abrevs.h:5:27: fatal error: ui_abrevsbase.h: No existe el fichero o el
+</I>&gt;<i> &gt; directorio compilation terminated.
+</I>&gt;<i> &gt; make[3]: ***
+</I>&gt;<i> &gt;
+</I>&gt;<i> [bulmatpv/plugins/pluginbt_clientsync/CMakeFiles/pluginbt_clientsync.dir/pl
+</I>&gt;<i> &gt; uginbt_clientsync.o] Error 1
+</I>&gt;<i> &gt; make[3]: *** Se espera a que terminen otras tareas....
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Seguro que el error es debido a que compila antes pluginbt_clientsync que
+</I>&gt;<i> &gt; pluginbt_accesobotones pero
+</I>&gt;<i> &gt; he mirado el CMakeLists.txt del pluginbt_clientsync y tiene la directiva:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; add_dependencies(${plugin} bulmatpv bulmalib plubinbt_accesobotones)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; He probado de hacer un make sobre el build.debian y lo compila bien.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ¿Alguna idea?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Salut
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20110208/2353ee45/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20110208/2353ee45/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="004899.html">[BulmaGés]Problemas de dependencias con dpkg-buildpackage
+</A></li>
+	<LI>Próximo mensaje: <A HREF="004903.html">[BulmaGés]Problemas de dependencias con dpkg-buildpackage
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4901">[ fecha ]</a>
+              <a href="thread.html#4901">[ hilo ]</a>
+              <a href="subject.html#4901">[ asunto ]</a>
+              <a href="author.html#4901">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

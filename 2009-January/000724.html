@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Script para limitar usuarios.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FScript_para_limitar_u%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fsuarios%3D2E%3F%3D&In-Reply-To=%3C20090102152534.GA5974%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000722.html">
+   <LINK REL="Next"  HREF="000723.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Script para limitar usuarios. </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FScript_para_limitar_u%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fsuarios%3D2E%3F%3D&In-Reply-To=%3C20090102152534.GA5974%40localhost%3E"
+       TITLE="[BulmaGés]Script para limitar usuarios.">xdrudis en tinet.cat
+       </A><BR>
+    <I>Vie Ene  2 16:25:34 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000722.html">[BulmaGés] r2881 - in	trunk/bulmages/bulmafact/plugins: . pluginbarcodeopen	plugincobros pluginetiquetas pluginfacturaprov pluginfacturar	pluginpagos
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000723.html">[BulmaGés]r2879 - in trunk/bulmages: bulmafact/plugins bulmafact/plugins/plugin_tc_articulos bulmafact/plugins/pluginalbaranprov bulmafact/plugins/pluginbarcodeopen bulmafact/plugins/plugincobros bulmafact/plugins/plugincompraventa bulmafact/plu
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#724">[ fecha ]</a>
+              <a href="thread.html#724">[ hilo ]</a>
+              <a href="subject.html#724">[ asunto ]</a>
+              <a href="author.html#724">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola. 
+
+Aprofito per comentar una cosa que té poc a veure però he notat 
+provant aquesta configuració que envia l'Alberto gràcies a ell i el Tomeu. 
+Així quan se m'oblidi busco aquest missatge :op
+
+Si els usuaris accedeixen per sockets TCP, no Unix (o sia si no es diuen 
+els usuaris de bd igual que els del sistema o es diuen igual però no has 
+posat -- com a host servidor de bbdd), que és el cas, i arrenques bulmafact 
+sense arguments, intenta connectar-se a la bd de l'usuari, o si no a una 
+que es digui bulmafact o bulmacont o a template1 . template1 existeix 
+segur en una configuració per defecte de postgres però pots no tenir permisos
+a pg_hba.conf per a que un usuari s'hi connecti (no són permisos necessaris
+per a usuaris que no tinguin permisos per crear bases de dades). 
+
+Doncs no hi havia manera d'entrar. Per això la primera vegada que ho vaig 
+provar em vaig quedar amb la imipressió que calia que els usuaris fossin 
+superusuaris de postgres. Doncs, no, no cal, i si us ho vaig dir a agú 
+de vosaltres em vaig equivocar, el que cal és que tinguin permís
+per connectar a alguna de les bases de dades que prova. Si a pg_hba.conf els
+dones permís per connectar a bulmafact o bulmacont o template1 ja surt el 
+quadre per entrar contrasenya i nom d'usuari. 
+
+En teoria es podria passar la base de dades, usuari i contrasenya com arguments
+a bulmafact i potser no caldria crear bulmafact o bulmacont i donar permisos, però 
+no m'agrada perquè una contrasenya a línia de comandes queda al history i es veu 
+en un ps -ef i això no és gens segur.
+
+
+
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>
+Signa per fer Collserola parc natural com cal
+<A HREF="http://www.collserola.org/salvemelparcnatural/">http://www.collserola.org/salvemelparcnatural/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000722.html">[BulmaGés] r2881 - in	trunk/bulmages/bulmafact/plugins: . pluginbarcodeopen	plugincobros pluginetiquetas pluginfacturaprov pluginfacturar	pluginpagos
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000723.html">[BulmaGés]r2879 - in trunk/bulmages: bulmafact/plugins bulmafact/plugins/plugin_tc_articulos bulmafact/plugins/pluginalbaranprov bulmafact/plugins/pluginbarcodeopen bulmafact/plugins/plugincobros bulmafact/plugins/plugincompraventa bulmafact/plu
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#724">[ fecha ]</a>
+              <a href="thread.html#724">[ hilo ]</a>
+              <a href="subject.html#724">[ asunto ]</a>
+              <a href="author.html#724">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

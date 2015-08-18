@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. df7e63e5bca0afb876bde4b42feed40d4155592d
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-September/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%5BGit%5DProject%20bulmages%20at%20BerliOS%20branch%2C%20master%2C%0A%09updated.%20df7e63e5bca0afb876bde4b42feed40d4155592d&In-Reply-To=%3C20110919205149.542A44813CE%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006465.html">
+   <LINK REL="Next"  HREF="006467.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. df7e63e5bca0afb876bde4b42feed40d4155592d </H1>
+    <B>fcojavmc at BerliOS</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%5BGit%5DProject%20bulmages%20at%20BerliOS%20branch%2C%20master%2C%0A%09updated.%20df7e63e5bca0afb876bde4b42feed40d4155592d&In-Reply-To=%3C20110919205149.542A44813CE%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. df7e63e5bca0afb876bde4b42feed40d4155592d">git en mail.berlios.de
+       </A><BR>
+    <I>Lun Sep 19 22:51:46 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006465.html">[BulmaGés] Actualizaciones de la red LinkedIn,	19/09/2011
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006467.html">[BulmaGés] Actualizaciones de la red LinkedIn,	26/09/2011
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6466">[ fecha ]</a>
+              <a href="thread.html#6466">[ hilo ]</a>
+              <a href="subject.html#6466">[ asunto ]</a>
+              <a href="author.html#6466">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+The branch, master has been updated
+       via  df7e63e5bca0afb876bde4b42feed40d4155592d (commit)
+      from  55cacb8d1c2421701127e99a5c4bf46b61d0d911 (commit)
+
+Nuevas revisiones:
+
+- Log -----------------------------------------------------------------
+commit df7e63e5bca0afb876bde4b42feed40d4155592d
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Mon Sep 19 22:58:24 2011 +0200
+
+    Inventario y otros bugs.
+    
+    - El nombre del disparador de 'plugins' BlForm_load estaba mal escrito e
+      impedía que se ejecutase.
+    - Quito un ajuste innecesario del tamaño de los BlComboBox 'delegates'
+      que impedía ajustarse al espacio de las celdas.
+    - Evito un doble borrado de BlComboBox y elimino código duplicado de
+      inicialización del BlComboBox en BulmaFact.
+    - Quito la etiqueta &quot;Familia&quot; del formulario porque ya aparece en el
+      'widget' de buscar familia.
+    - Quito la funcionalidad &quot;Pregenerar inventario&quot; porque ya lo hace
+      automaticamente al cargar el listado.
+    - Se corrige la cabecera del listado de inventario desde &quot;Stock
+      anterior&quot; a &quot;Stock actual&quot;.
+    - Rellena los datos del 'Stock revisado' con el de 'Stock actual' al
+      crear un nuevo inventario.
+    - Añado método &quot;setOptions(int option)&quot; en BlSubForm para poder cambiar
+      las opciones de las columnas si se requiere. Lo utilizo para bloquear
+    la escritura en la columna &quot;Stock revisado&quot; cuando se carga un
+    inventario guardado o se guarda uno nuevo. Entiendo que cambiar estos
+    datos puede ser problemático si sólo se quiere revisar un inventario
+    previo. El punteo si que se puede modificar.
+    - Adapto algunas ventanas al nuevo estilo.
+    
+    *********************************
+    Fco. Javier M. C.
+    *********************************
+              Todo-Redes
+            C/.Begonia, 12
+       07010 Palma de Mallorca.
+          Tel: +34-971499071
+       <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+      comercial(en)todo-redes.com
+    *********************************
+
+-----------------------------------------------------------------------
+
+Resumen de cambios:
+ .../bulmafact/plugins/pluginbf_bulmatpv/zbase.ui   |  300 +++++++++--------
+ .../plugins/pluginbf_bulmatpv/zlistbase.ui         |  150 +++++++--
+ .../plugins/pluginbf_camarero/trabajadoresbase.ui  |   17 +-
+ .../carteracobroslistbase.ui                       |   74 +++-
+ .../plugins/pluginbf_carteracobros/q19base.ui      |    6 +-
+ .../pluginbf_carteracobros/vencimientocbase.ui     |    9 +-
+ .../pluginbf_carterapagos/carterapagoslistbase.ui  |   19 +-
+ .../plugins/pluginbf_carterapagos/q34base.ui       |    2 +-
+ .../pluginbf_carterapagos/vencimientopbase.ui      |    6 +-
+ .../plugins/pluginbf_inventario/inventario.cpp     |   19 +-
+ .../plugins/pluginbf_inventario/inventario.h       |    1 -
+ .../plugins/pluginbf_inventario/inventariobase.ui  |   44 +---
+ .../pluginbf_inventario/inventariosview.cpp        |    5 +-
+ .../plugins/pluginbf_inventario/inventarioview.cpp |   64 ++--
+ .../plugins/pluginbf_inventario/inventarioview.h   |    1 -
+ .../pluginbf_inventario/listcontrolstockview.cpp   |   51 +---
+ .../pluginbf_inventario/listcontrolstockview.h     |    3 -
+ .../pluginbf_inventario/pluginbf_inventario.cpp    |    5 +-
+ .../bulmafact/plugins/pluginbf_socio/sociobase.ui  |   32 +-
+ .../plugins/pluginbf_socio/sociolistbase.ui        |   38 ++-
+ .../pluginbf_tallascolores/listcoloresbase.ui      |   95 +++---
+ .../pluginbf_tallascolores/listtallasbase.ui       |   85 +++---
+ .../plugins/pluginbf_tarifa/tarifabase.ui          |  253 +++++++-------
+ .../plugins/pluginbf_tarifa/tarifalistbase.ui      |  169 +++++----
+ .../pluginbf_tipotrabajo/listtipostrabajobase.ui   |  110 ++++---
+ .../plugins/pluginbf_trabajador/trabajadorbase.ui  |  357 ++++++++++----------
+ .../pluginbf_trazabilidad/movimientosbase.ui       |   38 ++-
+ .../bulmafact/plugins/pluginbf_tutor/tutorbase.ui  |   36 +-
+ .../plugins/pluginbf_tutor/tutoreslistbase.ui      |   54 ++--
+ .../plugins/pluginbf_vehiculo/vehiculobase.ui      |  323 +++++++++---------
+ bulmages/bulmafact/plugins/pluginbf_z2z/z2zbase.ui |  329 +++++++++---------
+ bulmages/bulmafact/src/bfbuscaralmacen.cpp         |    7 -
+ bulmages/bulmafact/src/bfbuscaralmacen.h           |    5 +-
+ bulmages/bulmafact/src/bfbuscarreferenciabase.ui   |   26 +-
+ bulmages/bulmafact/src/bfbuscartipoiva.cpp         |    2 +-
+ bulmages/bulmafact/src/bfbuscartrabajador.cpp      |   12 -
+ bulmages/bulmafact/src/bfsubform.cpp               |    5 +
+ bulmages/bulmafact/src/bfsubform.h                 |    1 +
+ bulmages/bulmalib/src/blform.cpp                   |    2 +-
+ bulmages/bulmalib/src/blsubform.cpp                |   11 +-
+ bulmages/bulmalib/src/blsubform.h                  |    3 +-
+ 41 files changed, 1429 insertions(+), 1340 deletions(-)
+
+
+-- 
+Proyecto BulmaGes
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006465.html">[BulmaGés] Actualizaciones de la red LinkedIn,	19/09/2011
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006467.html">[BulmaGés] Actualizaciones de la red LinkedIn,	26/09/2011
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6466">[ fecha ]</a>
+              <a href="thread.html#6466">[ hilo ]</a>
+              <a href="subject.html#6466">[ asunto ]</a>
+              <a href="author.html#6466">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] r3301 - trunk/bulmages/bulmalib/src
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3301%20-%20trunk/bulmages/bulmalib/src&In-Reply-To=%3C200905092301.n49N1K48026290%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001763.html">
+   <LINK REL="Next"  HREF="001765.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] r3301 - trunk/bulmages/bulmalib/src </H1>
+    <B>svn en mail.berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3301%20-%20trunk/bulmages/bulmalib/src&In-Reply-To=%3C200905092301.n49N1K48026290%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] r3301 - trunk/bulmages/bulmalib/src">svn en mail.berlios.de
+       </A><BR>
+    <I>Dom Mayo 10 01:01:20 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001763.html">[BulmaGés] r3300 -	trunk/bulmages/bulmalib/plugins/pluginbl_template
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001765.html">[BulmaGés] r3302 - trunk/bulmages/bulmalib/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1764">[ fecha ]</a>
+              <a href="thread.html#1764">[ hilo ]</a>
+              <a href="subject.html#1764">[ asunto ]</a>
+              <a href="author.html#1764">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: xdrudis
+Date: 2009-05-10 01:01:14 +0200 (Sun, 10 May 2009)
+New Revision: 3301
+
+Modified:
+   trunk/bulmages/bulmalib/src/blpostgresqlclient.cpp
+   trunk/bulmages/bulmalib/src/blpostgresqlclient.h
+Log:
+ Quan vaig afegir l'opci?\195?\179 de canviar els conceptes a Q19 (de factures)
+vaig fer una funci?\195?\179 sanearCadena que no passa a ASCII, per si cal
+mantenir l'unicode intacte. Es far?\195?\160 servir a q19 sense massa necessitat,
+per?\195?\178 trobo que est?\195?\160 b?\195?\169 tenir-la i afegir una funci?\195?\179 no pot trencar res.
+L'?\195?\186nic petit potencial de trencament ?\195?\169s l'altre canvi:  corregeixo una cosa que em vaig deixar quan vaig fer el pristineQuery
+com a c?\195?\178pia de seguretat del query per a la pestanya de SQL del configurador
+de fitxa. Vaig preveure que un subquery contingui clausa limit (o un camp
+com ara limitcredit o aix?\195?\173) per?\195?\178 no vaig fer el mateix amb offset. Ho faig 
+ara. Simplement si li passes limit!=0 afegeix una clausula limit al final
+de la setencia i si li passes offset!=0 afegeix una clausula offset. No es
+preocupa de si ja n'hi ha una, tu sabras si n'hi ha una perque hi ?\195?\169s (podria
+ser part d'una cadena, o estar en un subquery, etc.). Amb el pristineQuery
+que mante copia del query abans d'aquests canvis la blsubform ja no necessita 
+aquest tractament. Espero que tampoc ho necessiti ning?\195?\186 m?\195?\169s. 
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001763.html">[BulmaGés] r3300 -	trunk/bulmages/bulmalib/plugins/pluginbl_template
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001765.html">[BulmaGés] r3302 - trunk/bulmages/bulmalib/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1764">[ fecha ]</a>
+              <a href="thread.html#1764">[ hilo ]</a>
+              <a href="subject.html#1764">[ asunto ]</a>
+              <a href="author.html#1764">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] CObros y rml para recibo
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20CObros%20y%20rml%20para%20recibo&In-Reply-To=%3Ce62868e0902060156t2b564fdavb23fc450ec68ae04%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000949.html">
+   <LINK REL="Next"  HREF="000951.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] CObros y rml para recibo </H1>
+    <B>infoaxset axset</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20CObros%20y%20rml%20para%20recibo&In-Reply-To=%3Ce62868e0902060156t2b564fdavb23fc450ec68ae04%40mail.gmail.com%3E"
+       TITLE="[BulmaGés] CObros y rml para recibo">infoaxset en gmail.com
+       </A><BR>
+    <I>Vie Feb  6 10:56:36 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000949.html">[BulmaGés] r2964 -	trunk/bulmages/bulmafact/plugins/pluginbf_cliente
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000951.html">[BulmaGés](no subject)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#950">[ fecha ]</a>
+              <a href="thread.html#950">[ hilo ]</a>
+              <a href="subject.html#950">[ asunto ]</a>
+              <a href="author.html#950">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Buenos dias
+
+Estoy intentando poner en marcha un BULMAGES, y me estoy encontrando con
+varios problemillas.
+
+El que me surge en este momento es en el modulo de pagos. Cuando le doy a
+generar un pago/cobro lo relleno, y al pulsar en guardar o aceptar me
+aparece una ventana que me consulta lo siguiente:
+
+ &lt;&lt; Procesar todos los documentos con esta referencia ? &gt;&gt;
+
+&lt;&lt; Continuar &gt;&gt;
+
+
+Dandole a continuar o cerrando la ventana, hace lo mismo, lo procesa todo.
+Que pasa si es un pago parcial de una factura y no deseas procesar nada,
+puesto que no has terminado de cobrar?
+
+
+Otra cosa sobre este tema. El rml del recibo no estaba actualizado y junto
+con arturo lo hemos revisado y deberia ser este (o parecido).
+
+
+Podriais revisarlo y actualizarlo en los repositorios? GRACIAS
+
+__________________________________ recibo .rml
+_________________________________________
+
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot; ?&gt;
+&lt;!DOCTYPE document SYSTEM &quot;rml_1_0.dtd&quot;&gt;
+&lt;document&gt;
+&lt;template pageSize=&quot;(21cm, 14.9cm)&quot; leftMargin=&quot;0cm&quot; rightMargin=&quot;0cm&quot;
+topMargin=&quot;1.0cm&quot; bottomMargin=&quot;2.0cm&quot; title=&quot;Recibo&quot; author=&quot;Tomeu Borras&quot;
+allowSplitting=&quot;20&quot;&gt;
+
+
+&lt;!--IF QUERY=&quot;SELECT * FROM CLIENTE WHERE idcliente = [idcliente]&quot;--&gt;
+&lt;!--QUERY=&quot;SELECT * FROM cliente WHERE idcliente=[idcliente]&quot;--&gt;
+
+&lt;pageTemplate id=&quot;main&quot;&gt;
+
+&lt;pageGraphics&gt;
+&lt;!-- EL LOGO DE CABECERA --&gt;
+&lt;image x=&quot;3cm&quot; y=&quot;11cm&quot; width=&quot;5cm&quot; file=&quot;logo.jpg&quot;/&gt;
+
+&lt;!-- EL PIE DE PAGINA --&gt;
+&lt;setFont name=&quot;Helvetica&quot; size=&quot;8&quot;/&gt;
+&lt;fill color=&quot;(0,0,0)&quot;/&gt;
+&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+&lt;drawString x=&quot;7.3cm&quot; y=&quot;1.2cm&quot;&gt;www.iglues.org -- <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">info en iglues.org</A> -- ESTA
+PLANTILLA ES DE MUESTRA. --&lt;/drawString&gt;
+
+&lt;fill color=&quot;(0,0,0)&quot;/&gt;
+&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+
+&lt;setFont name=&quot;Helvetica-Bold&quot; size=&quot;22&quot;/&gt;
+&lt;drawString x=&quot;2cm&quot; y=&quot;8.75cm&quot;&gt;RECIBO&lt;/drawString&gt;
+
+&lt;lineMode width=&quot;1.5&quot; /&gt;
+
+&lt;lines&gt;
+1.5cm 8cm 19.5cm 8cm
+&lt;/lines&gt;
+
+&lt;setFont name=&quot;Helvetica-Bold&quot; size=&quot;16&quot;/&gt;
+&lt;drawString x=&quot;13cm&quot; y=&quot;2.5cm&quot;&gt;TOTAL:&lt;/drawString&gt;
+&lt;drawString x=&quot;13cm&quot; y=&quot;8.75cm&quot;&gt;FECHA:&lt;/drawString&gt;
+
+&lt;setFont name=&quot;Helvetica&quot; size=&quot;12&quot;/&gt;
+&lt;drawString x=&quot;16cm&quot; y=&quot;2.5cm&quot;&gt;[cantcobro] &#8364;&lt;/drawString&gt;
+&lt;drawString x=&quot;16cm&quot; y=&quot;8.75cm&quot;&gt;[fechacobro]&lt;/drawString&gt;
+
+&lt;setFont name=&quot;Helvetica-Bold&quot; size=&quot;12&quot;/&gt;
+&lt;drawString x=&quot;3cm&quot; y=&quot;7.2cm&quot;&gt;Referencia:&lt;/drawString&gt;
+&lt;drawString x=&quot;3cm&quot; y=&quot;6.2cm&quot;&gt;Cliente:&lt;/drawString&gt;
+&lt;drawString x=&quot;3cm&quot; y=&quot;5.2cm&quot;&gt;CIF Cliente:&lt;/drawString&gt;
+&lt;drawString x=&quot;3cm&quot; y=&quot;4.2cm&quot;&gt;Comentario:&lt;/drawString&gt;
+
+&lt;setFont name=&quot;Helvetica&quot; size=&quot;12&quot;/&gt;
+&lt;drawString x=&quot;13cm&quot; y=&quot;7.2cm&quot;&gt;[refcobro]&lt;/drawString&gt;
+&lt;drawString x=&quot;13cm&quot; y=&quot;6.2cm&quot;&gt;[nomcliente]&lt;/drawString&gt;
+&lt;drawString x=&quot;13cm&quot; y=&quot;5.2cm&quot;&gt;[cifcliente]&lt;/drawString&gt;
+&lt;drawString x=&quot;13cm&quot; y=&quot;4.2cm&quot;&gt;[comentcobro]&lt;/drawString&gt;
+
+&lt;!--END QUERY--&gt;
+&lt;!--END IF QUERY--&gt;
+
+&lt;lineMode width=&quot;1.5&quot; /&gt;
+&lt;lines&gt;
+1.5cm 3.7cm 19.5cm 3.7cm
+&lt;/lines&gt;
+
+&lt;!-- FRAME DE CONTENIDOS --&gt;
+&lt;frame id=&quot;column&quot; x1=&quot;1cm&quot; y1=&quot;2cm&quot; width=&quot;19cm&quot; height=&quot;7cm&quot;/&gt;
+&lt;/pageGraphics&gt;
+&lt;/pageTemplate&gt;
+
+&lt;/template&gt;
+
+&lt;stylesheet&gt;
+&lt;blockTableStyle id=&quot;tablacontenido&quot;&gt;
+&lt;blockAlignment value=&quot;RIGHT&quot; start=&quot;2,1&quot; stop=&quot;-1,-1&quot;/&gt;
+&lt;blockAlignment value=&quot;CENTER&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+&lt;blockBackground colorName=&quot;(0.7,0.7,0.7)&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+&lt;blockTextColor colorName=&quot;(0,0,0)&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+&lt;lineStyle kind=&quot;LINEBEFORE&quot; colorName=&quot;(0.5,0.5,0.5)&quot; start=&quot;0,0&quot;
+stop=&quot;-1,-1&quot;/&gt;
+&lt;lineStyle kind=&quot;LINEBELOW&quot; colorName=&quot;(0,0,0)&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+&lt;lineStyle kind=&quot;OUTLINE&quot; colorName=&quot;black&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
+&lt;blockFont name=&quot;Helvetica-Bold&quot; size=&quot;10&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+&lt;blockFont name=&quot;Helvetica&quot; size=&quot;10&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
+&lt;blockFont name=&quot;Helvetica&quot; size=&quot;8&quot; start=&quot;1,1&quot; stop=&quot;1,-1&quot;/&gt;
+&lt;blockValign value=&quot;TOP&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
+&lt;/blockTableStyle&gt;
+
+&lt;blockTableStyle id=&quot;metatabla&quot;&gt;
+&lt;blockAlignment value=&quot;LEFT&quot;/&gt;
+&lt;/blockTableStyle&gt;
+&lt;/stylesheet&gt;
+
+&lt;story&gt;
+
+&lt;blockTable style=&quot;metatabla&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/blockTable&gt;
+
+&lt;/story&gt;
+&lt;/document&gt;
+
+______________________________________________________________________________________
+
+
+
+Gracias de nuevo ;)
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20090206/b31737eb/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20090206/b31737eb/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000949.html">[BulmaGés] r2964 -	trunk/bulmages/bulmafact/plugins/pluginbf_cliente
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000951.html">[BulmaGés](no subject)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#950">[ fecha ]</a>
+              <a href="thread.html#950">[ hilo ]</a>
+              <a href="subject.html#950">[ asunto ]</a>
+              <a href="author.html#950">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

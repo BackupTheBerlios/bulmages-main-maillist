@@ -1,0 +1,556 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 703e6d6e4d557f8728745e46895724a4f0360004
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%5BGit%5DProject%20bulmages%20at%20BerliOS%20branch%2C%20master%2C%0A%09updated.%20703e6d6e4d557f8728745e46895724a4f0360004&In-Reply-To=%3C20110621012910.35A2F480E51%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006020.html">
+   <LINK REL="Next"  HREF="006043.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 703e6d6e4d557f8728745e46895724a4f0360004 </H1>
+    <B>tborras at BerliOS</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%5BGit%5DProject%20bulmages%20at%20BerliOS%20branch%2C%20master%2C%0A%09updated.%20703e6d6e4d557f8728745e46895724a4f0360004&In-Reply-To=%3C20110621012910.35A2F480E51%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 703e6d6e4d557f8728745e46895724a4f0360004">git en mail.berlios.de
+       </A><BR>
+    <I>Mar Jun 21 03:29:07 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006020.html">[BulmaGés] Ayuda en Berlios
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006043.html">[BulmaGés] Project bulmages at BerliOS
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6021">[ fecha ]</a>
+              <a href="thread.html#6021">[ hilo ]</a>
+              <a href="subject.html#6021">[ asunto ]</a>
+              <a href="author.html#6021">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+The branch, master has been updated
+       via  703e6d6e4d557f8728745e46895724a4f0360004 (commit)
+      from  475cc06fa7084d0e8fa51adaa1a865a74c26b75d (commit)
+
+Nuevas revisiones:
+
+- Log -----------------------------------------------------------------
+commit 703e6d6e4d557f8728745e46895724a4f0360004
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue Jun 21 03:28:39 2011 +0200
+
+    Empiezo a cambiar el sistema de trazas de depuracion al sistema propuesto por Toni Asensi, que funciona mucho mejor que lo que teniamos hasta ahora
+
+-----------------------------------------------------------------------
+
+Resumen de cambios:
+ .../bcamortizacionlistview.cpp                     |   23 +-
+ .../pluginbc_amortizacion/bcamortizacionview.cpp   |   40 +-
+ .../pluginbc_amortizacion.cpp                      |    8 +-
+ .../plugins/pluginbc_asiento/bcasientoform.cpp     |  113 ++--
+ .../bcasientointeligenteimportarxml.cpp            |   16 +-
+ .../pluginbc_asiento/bcasientointeligenteview.cpp  |   96 ++--
+ .../pluginbc_asiento/bcasientolistsubform.cpp      |   20 +-
+ .../plugins/pluginbc_asiento/bcasientolistview.cpp |   24 +-
+ .../plugins/pluginbc_asiento/bcasientosubform.cpp  |   30 +-
+ .../plugins/pluginbc_asiento/bcasientoview.cpp     |  196 +++---
+ .../plugins/pluginbc_asiento/pluginbc_asiento.cpp  |    4 +-
+ .../plugins/pluginbc_balance/balanceprintview.cpp  |   28 +-
+ .../plugins/pluginbc_balance/balancesubform.cpp    |    8 +-
+ .../plugins/pluginbc_balance/balanceview.cpp       |   32 +-
+ .../plugins/pluginbc_balance/pluginbc_balance.cpp  |    7 +-
+ .../plugins/pluginbc_balancearbol/balance1view.cpp |   56 +-
+ .../pluginbc_balancearbol/bcplancontablearbol.cpp  |   68 +-
+ .../pluginbc_balancearbol.cpp                      |    8 +-
+ .../pluginbc_bloqueofechas/bcbloqueafechaview.cpp  |   28 +-
+ .../pluginbc_bloqueofechas.cpp                     |    2 +-
+ .../plugins/pluginbc_ccaa2ods/datosview.cpp        |    8 +-
+ .../pluginbc_ccaa2ods/pluginbc_ccaa2ods.cpp        |   14 +-
+ .../plugins/pluginbc_corrector/correctorwidget.cpp |   26 +-
+ .../pluginbc_corrector/pluginbc_corrector.cpp      |    4 +-
+ .../plugins/pluginbc_cuenta/bccuentalistview.cpp   |   70 ++--
+ .../plugins/pluginbc_cuenta/bccuentaview.cpp       |   12 +-
+ .../pluginbc_cuenta/bcplancontablearbol.cpp        |   68 +-
+ .../pluginbc_cuenta/bcplancontablelistview.cpp     |   92 ++--
+ .../plugins/pluginbc_cuenta/pluginbc_cuenta.cpp    |   68 +--
+ .../pluginbc_cuentaresumen/correctorwidget.cpp     |   20 +-
+ .../pluginbc_cuentaresumen.cpp                     |   14 +-
+ .../bccuentasanualesimprimirview.cpp               |   36 +-
+ .../bccuentasanualesview.cpp                       |   36 +-
+ .../pluginbc_cuentasanuales.cpp                    |    4 +-
+ .../pluginbc_cuentasanuales2ods/datosview.cpp      |   16 +-
+ .../pluginbc_cuentasanuales2ods.cpp                |   46 +-
+ .../pluginbc_depuracion/pluginbc_depuracion.cpp    |    4 +-
+ .../pluginbc_diario/bcdiarioimprimir2txt.cpp       |   20 +-
+ .../plugins/pluginbc_diario/bcdiarioprintview.cpp  |   20 +-
+ .../plugins/pluginbc_diario/bcdiariosubform.cpp    |   16 +-
+ .../plugins/pluginbc_diario/bcdiarioview.cpp       |   40 +-
+ .../plugins/pluginbc_diario/pluginbc_diario.cpp    |    9 +-
+ .../pluginbc_documentoadjunto/adocumental.cpp      |   74 ++--
+ .../pluginbc_documentoadjunto.cpp                  |    4 +-
+ .../bcasientoduplicarview.cpp                      |   20 +-
+ .../pluginbc_duplicarasiento.cpp                   |   20 +-
+ .../pluginbc_estadisticas.cpp                      |    8 +-
+ .../plugins/pluginbc_example/pluginbc_example.cpp  |    9 +-
+ .../plugins/pluginbc_mayor/bcextractosubform.cpp   |   16 +-
+ .../plugins/pluginbc_mayor/bcextractoview.cpp      |   90 ++--
+ .../plugins/pluginbc_mayor/pluginbc_mayor.cpp      |    4 +-
+ .../plugins/pluginbc_online/pluginbc_online.cpp    |    8 +-
+ .../pluginbc_proyectos/listproyectosview.cpp       |   23 +-
+ .../pluginbc_proyectos/pluginbc_proyectos.cpp      |    4 +-
+ .../plugins/pluginbc_proyectos/proyectoview.cpp    |    8 +-
+ .../bcmodelo300imprimir2ps.cpp                     |   48 +-
+ .../pluginbc_registroiva/bcmodelo347listview.cpp   |   24 +-
+ .../plugins/pluginbc_registroiva/bcmodeloaeat.cpp  |   56 +-
+ .../bcregistroivaimprimirview.cpp                  |   20 +-
+ .../plugins/pluginbc_registroiva/cobropagoview.cpp |   20 +-
+ .../bulmacont/plugins/pluginbc_registroiva/iva.cpp |   36 +-
+ .../plugins/pluginbc_registroiva/linprevcobro.cpp  |   48 +-
+ .../plugins/pluginbc_registroiva/listiva.cpp       |   46 +-
+ .../plugins/pluginbc_registroiva/listivaview.cpp   |   46 +-
+ .../pluginbc_registroiva/listlinprevcobro.cpp      |   44 +-
+ .../pluginbc_registroiva/listlinprevcobroview.cpp  |   56 +-
+ .../pluginbc_registroiva/listregistroivaview.cpp   |   44 +-
+ .../pluginbc_registroiva/pluginbc_registroiva.cpp  |   14 +-
+ .../plugins/pluginbc_registroiva/registroiva.cpp   |   74 ++--
+ .../pluginbc_registroiva/registroivaview.cpp       |   25 +-
+ .../pluginbc_registroiva/regivaqtoolbutton.cpp     |   16 +-
+ bulmages/bulmacont/src/bcaboutview.cpp             |   12 +-
+ bulmages/bulmacont/src/bcasientoduplicarview.cpp   |   20 +-
+ bulmages/bulmacont/src/bcbalanceimportarxml.cpp    |   32 +-
+ bulmages/bulmacont/src/bcbulmacont.cpp             |  192 +++---
+ bulmages/bulmacont/src/bcbuscarcanal.cpp           |   16 +-
+ bulmages/bulmacont/src/bcbuscarcentrocoste.cpp     |   16 +-
+ bulmages/bulmacont/src/bccambiacuentaview.cpp      |   12 +-
+ bulmages/bulmacont/src/bccanalseleccionarview.cpp  |   40 +-
+ bulmages/bulmacont/src/bccanalview.cpp             |   36 +-
+ .../bulmacont/src/bccentrocosteseleccionarview.cpp |   40 +-
+ bulmages/bulmacont/src/bccentrocosteview.cpp       |   34 +-
+ bulmages/bulmacont/src/bccompany.cpp               |  102 ++--
+ bulmages/bulmacont/src/bcconfiguracionview.cpp     |   34 +-
+ bulmages/bulmacont/src/bcform.cpp                  |   20 +-
+ bulmages/bulmacont/src/bcformapagoview.cpp         |   36 +-
+ bulmages/bulmacont/src/bcmasapatrimonial.cpp       |   48 +-
+ .../bulmacont/src/bcmasapatrimoniallistview.cpp    |   52 +-
+ bulmages/bulmacont/src/bcsubform.cpp               |   94 ++--
+ bulmages/bulmacont/src/bctipoivaview.cpp           |   24 +-
+ .../pluginbf_abrecodigobarras.cpp                  |    4 +-
+ .../pluginbf_abrereferencia.cpp                    |   10 +-
+ .../plugins/pluginbf_actividad/actividadeslist.cpp |   56 +-
+ .../plugins/pluginbf_actividad/actividadview.cpp   |   52 +-
+ .../pluginbf_actividad/convocatoriaslist.cpp       |   52 +-
+ .../pluginbf_actividad/convocatoriaview.cpp        |   16 +-
+ .../pluginbf_actividad/pluginbf_actividad.cpp      |   62 +-
+ .../pluginbf_actividad/tipoactividadview.cpp       |   40 +-
+ .../plugins/pluginbf_alias/pluginbf_alias.cpp      |   36 +-
+ .../plugins/pluginbf_almacen/listalmacenview.cpp   |   20 +-
+ .../plugins/pluginbf_almacen/pluginbf_almacen.cpp  |    6 +-
+ .../pluginbf_almacenamplia/almaceneslistview.cpp   |   44 +-
+ .../plugins/pluginbf_almacenamplia/almacenview.cpp |    8 +-
+ .../pluginbf_almacenamplia.cpp                     |    6 +-
+ .../plugins/pluginbf_alumno/alumnoslist.cpp        |   56 +-
+ .../plugins/pluginbf_alumno/alumnoview.cpp         |   56 +-
+ .../plugins/pluginbf_alumno/claseview.cpp          |   40 +-
+ .../pluginbf_alumno/listcuotasporalumnoview.cpp    |   20 +-
+ .../plugins/pluginbf_alumno/pluginbf_alumno.cpp    |   64 +-
+ .../plugins/pluginbf_articulo/articulolist.cpp     |   72 ++--
+ .../plugins/pluginbf_articulo/articuloview.cpp     |   35 +-
+ .../pluginbf_articulo/comparticulolistview.cpp     |   22 +-
+ .../plugins/pluginbf_articulo/familiasview.cpp     |   70 ++--
+ .../pluginbf_articulo/pluginbf_articulo.cpp        |   72 ++--
+ .../pluginbf_articulo/tiposarticuloview.cpp        |   64 +-
+ .../plugins/pluginbf_asociacion/comisioneslist.cpp |   52 +-
+ .../plugins/pluginbf_asociacion/comisionview.cpp   |   20 +-
+ .../pluginbf_asociacion/convreunionlist.cpp        |   52 +-
+ .../pluginbf_asociacion/convreunionview.cpp        |   44 +-
+ .../plugins/pluginbf_asociacion/jdirectivalist.cpp |   52 +-
+ .../plugins/pluginbf_asociacion/jdirectivaview.cpp |   24 +-
+ .../pluginbf_asociacion/pluginbf_asociacion.cpp    |    6 +-
+ .../pluginbf_asterisk/pluginbf_asterisk.cpp        |    8 +-
+ .../bulmafact/plugins/pluginbf_banco/bancoview.cpp |   40 +-
+ .../plugins/pluginbf_banco/pluginbf_banco.cpp      |    6 +-
+ .../pluginbf_bulmacont/pluginbf_bulmacont.cpp      |    2 +-
+ .../pluginbf_bulmatpv/pluginbf_bulmatpv.cpp        |   13 +-
+ .../bulmafact/plugins/pluginbf_bulmatpv/zlist.cpp  |   40 +-
+ .../bulmafact/plugins/pluginbf_bulmatpv/zview.cpp  |   12 +-
+ .../pluginbf_camarero/pluginbf_camarero.cpp        |    9 +-
+ .../pluginbf_carteracobros/carteracobroslist.cpp   |   68 +-
+ .../pluginbf_carteracobros.cpp                     |   30 +-
+ .../plugins/pluginbf_carteracobros/q19view.cpp     |   60 +-
+ .../pluginbf_carteracobros/vencimientocview.cpp    |    8 +-
+ .../pluginbf_carterapagos/carterapagoslist.cpp     |   68 +-
+ .../pluginbf_carterapagos.cpp                      |   23 +-
+ .../plugins/pluginbf_carterapagos/q34view.cpp      |   50 +-
+ .../pluginbf_carterapagos/vencimientopview.cpp     |    8 +-
+ .../pluginbf_catalogo/catalogoqtoolbutton.cpp      |   20 +-
+ .../pluginbf_catalogo/pluginbf_catalogo.cpp        |    6 +-
+ .../plugins/pluginbf_cliente/clienteview.cpp       |   28 +-
+ .../plugins/pluginbf_cliente/clientslist.cpp       |   56 +-
+ .../plugins/pluginbf_cliente/pluginbf_cliente.cpp  |    2 +-
+ .../pluginbf_clientealbaran/albaranclientelist.cpp |   68 +-
+ .../pluginbf_clientealbaran/albaranclienteview.cpp |   70 ++--
+ .../bfclientealbarandescuentosubform.cpp           |    6 +-
+ .../bfclientealbaransubform.cpp                    |    8 +-
+ .../pluginbf_clientealbaran/genalbqtoolbutton.cpp  |   24 +-
+ .../pluginbf_clientealbaran.cpp                    |   14 +-
+ .../impqtoolbutton.cpp                             |   16 +-
+ .../pluginbf_clientealbaranfacturar.cpp            |   10 +-
+ .../plugins/pluginbf_clientecobro/cobroslist.cpp   |   55 +-
+ .../plugins/pluginbf_clientecobro/cobroview.cpp    |   16 +-
+ .../pluginbf_clientecobro/impqtoolbutton.cpp       |   16 +-
+ .../pluginbf_clientecobro.cpp                      |   14 +-
+ .../pluginbf_clientefactura/facturaslist.cpp       |   70 ++--
+ .../pluginbf_clientefactura/facturaview.cpp        |   48 +-
+ .../pluginbf_clientefactura/genfacqtoolbutton.cpp  |   48 +-
+ .../listdescfacturaview.cpp                        |    4 +-
+ .../pluginbf_clientefactura/listlinfacturaview.cpp |    8 +-
+ .../pluginbf_clientefactura.cpp                    |   14 +-
+ .../pluginbf_clientepedido/genpedqtoolbutton.cpp   |   20 +-
+ .../listdescpedidoclienteview.cpp                  |    8 +-
+ .../listlinpedidoclienteview.cpp                   |    8 +-
+ .../pluginbf_clientepedido/pedidoclienteview.cpp   |   58 +-
+ .../pluginbf_clientepedido/pedidosclientelist.cpp  |   64 +-
+ .../pluginbf_clientepedido.cpp                     |    6 +-
+ .../genpreqtoolbutton.cpp                          |   50 +-
+ .../listdescpresupuestoview.cpp                    |    4 +-
+ .../listlinpresupuestoview.cpp                     |    8 +-
+ .../pluginbf_clientepresupuesto.cpp                |    6 +-
+ .../presupuestolist.cpp                            |   71 ++--
+ .../presupuestoview.cpp                            |   60 +-
+ .../pluginbf_clienteproveedor.cpp                  |    6 +-
+ .../bfclientealbarandescuentosubform.cpp           |    6 +-
+ .../bfclientealbaransubform.cpp                    |    8 +-
+ .../pluginbf_clienteticket/genalbqtoolbutton.cpp   |   24 +-
+ .../pluginbf_clienteticket.cpp                     |    2 +-
+ .../pluginbf_clienteticket/ticketclientelist.cpp   |   68 +-
+ .../pluginbf_clienteticket/ticketclienteview.cpp   |   48 +-
+ .../busquedaestadoincidencia.cpp                   |   12 +-
+ .../pluginbf_comercial/comercialclienteview.cpp    |   12 +-
+ .../pluginbf_comercial/incidenciacomercial.cpp     |   16 +-
+ .../pluginbf_comercial/incidenciacomercialview.cpp |   24 +-
+ .../pluginbf_comercial/listzonacomercialview.cpp   |   12 +-
+ .../pluginbf_comercial/pluginbf_comercial.cpp      |   38 +-
+ .../pluginbf_comercial/rutacomercialincview.cpp    |   34 +-
+ .../pluginbf_comercial/rutacomerciallist.cpp       |   52 +-
+ .../pluginbf_comercial/rutacomercialview.cpp       |   10 +-
+ .../pluginbf_compraventa/compraventaview.cpp       |   68 +-
+ .../pluginbf_compraventa/pluginbf_compraventa.cpp  |   18 +-
+ .../plugins/pluginbf_contrato/contrato.cpp         |   70 ++--
+ .../plugins/pluginbf_contrato/contratoslist.cpp    |   68 +-
+ .../plugins/pluginbf_contrato/contratoview.cpp     |   72 ++--
+ .../pluginbf_contrato/listlincontratoview.cpp      |    8 +-
+ .../pluginbf_contrato/pluginbf_contrato.cpp        |   10 +-
+ .../plugins/pluginbf_corrector/correctorwidget.cpp |   32 +-
+ .../pluginbf_corrector/pluginbf_corrector.cpp      |    4 +-
+ .../plugins/pluginbf_correo/impqtoolbutton.cpp     |   16 +-
+ .../plugins/pluginbf_correo/pluginbf_correo.cpp    |   18 +-
+ .../pluginbf_correothunderbird/impqtoolbutton.cpp  |   16 +-
+ .../pluginbf_correothunderbird.cpp                 |   18 +-
+ .../plugins/pluginbf_cuadrante/cuadrante1view.cpp  |    8 +-
+ .../pluginbf_cuadrante/cuadrantediarioview.cpp     |   56 +-
+ .../pluginbf_cuadrante/cuadranteqtablewidget.cpp   |   92 ++--
+ .../pluginbf_cuadrante/cuadranteqtreewidget.cpp    |   10 +-
+ .../plugins/pluginbf_cuadrante/cuadranteview.cpp   |   54 +-
+ .../pluginbf_cuadrante/pluginbf_cuadrante.cpp      |   19 +-
+ .../plugins/pluginbf_debug/pluginbf_debug.cpp      |    4 +-
+ .../plugins/pluginbf_efactura/efactura.cpp         |   20 +-
+ .../plugins/pluginbf_efactura/efacturaenvio.cpp    |    8 +-
+ .../pluginbf_efactura/efacturarecepcion.cpp        |   26 +-
+ .../plugins/pluginbf_efactura/efqtoolbutton.cpp    |   52 +-
+ .../pluginbf_efactura/efqtoolbutton_importar.cpp   |   40 +-
+ .../pluginbf_efactura/pluginbf_efactura.cpp        |   32 +-
+ .../pluginbf_etiquetado/pluginbf_etiquetado.cpp    |    6 +-
+ .../pluginbf_etiquetado/ticketqtoolbutton.cpp      |   16 +-
+ .../pluginbf_etiquetas/pluginbf_etiquetas.cpp      |    6 +-
+ .../pluginbf_etiquetas/ticketqtoolbutton.cpp       |   18 +-
+ .../plugins/pluginbf_example/pluginbf_example.cpp  |   20 +-
+ .../plugins/pluginbf_formasdepago/fpagoview.cpp    |   50 +-
+ .../pluginbf_formasdepago.cpp                      |   18 +-
+ .../pluginbf_informecliente/informeqtoolbutton.cpp |   40 +-
+ .../pluginbf_informecliente.cpp                    |   10 +-
+ .../informeqtoolbutton.cpp                         |   40 +-
+ .../informeqtoolbutton1.cpp                        |   40 +-
+ .../pluginbf_informecliente2sxc.cpp                |   10 +-
+ .../plugins/pluginbf_inventario/inventario.cpp     |   68 +-
+ .../pluginbf_inventario/inventariosview.cpp        |   44 +-
+ .../plugins/pluginbf_inventario/inventarioview.cpp |   44 +-
+ .../pluginbf_inventario/listcontrolstockview.cpp   |   20 +-
+ .../pluginbf_inventario/pluginbf_inventario.cpp    |   12 +-
+ .../listinventariosimpleview.cpp                   |   20 +-
+ .../pluginbf_inventariosimple.cpp                  |   55 +-
+ .../plugins/pluginbf_iva/listtasaivaview.cpp       |   20 +-
+ .../plugins/pluginbf_iva/listtipoivaview.cpp       |   23 +-
+ .../plugins/pluginbf_iva/pluginbf_iva.cpp          |    7 +-
+ .../pluginbf_ivaincluido/pluginbf_ivaincluido.cpp  |    6 +-
+ .../pluginbf_minicontabilidad/acontableview.cpp    |   24 +-
+ .../pluginbf_minicontabilidad/partidasview.cpp     |   70 ++--
+ .../pluginbf_minicontabilidad.cpp                  |   72 ++--
+ .../presupuestocontablelist.cpp                    |   34 +-
+ .../presupuestocontableview.cpp                    |   24 +-
+ .../pluginbf_modificadores.cpp                     |   12 +-
+ .../pluginbf_multiimprimir/impmultqtoolbutton.cpp  |   84 ++--
+ .../pluginbf_multiimprimir.cpp                     |   50 +-
+ .../pluginbf_preciocoste/pluginbf_preciocoste.cpp  |    6 +-
+ .../pluginbf_printercocina.cpp                     |    4 +-
+ .../pluginbf_profesor/pluginbf_profesor.cpp        |   12 +-
+ .../plugins/pluginbf_profesor/profesoreslist.cpp   |   55 +-
+ .../plugins/pluginbf_profesor/profesorview.cpp     |   20 +-
+ .../pluginbf_promedios/pluginbf_promedios.cpp      |   10 +-
+ .../plugins/pluginbf_promedios/promedioview.cpp    |   12 +-
+ .../pluginbf_proveedor/pluginbf_proveedor.cpp      |    7 +-
+ .../plugins/pluginbf_proveedor/provedit.cpp        |   16 +-
+ .../plugins/pluginbf_proveedor/providerslist.cpp   |   56 +-
+ .../albaranesproveedor.cpp                         |   74 ++--
+ .../albaranproveedorview.cpp                       |   44 +-
+ .../genalbpqtoolbutton.cpp                         |   20 +-
+ .../listdescalbaranprovview.cpp                    |    4 +-
+ .../pluginbf_proveedoralbaran.cpp                  |   11 +-
+ .../pluginbf_proveedorfactura/facturapview.cpp     |   44 +-
+ .../pluginbf_proveedorfactura/facturasplist.cpp    |   72 ++--
+ .../genfactqtoolbutton.cpp                         |   24 +-
+ .../listdescfacturaprovview.cpp                    |    4 +-
+ .../listlinfacturapview.cpp                        |    8 +-
+ .../pluginbf_proveedorfactura.cpp                  |   15 +-
+ .../pluginbf_proveedorpago/impqtoolbutton.cpp      |   16 +-
+ .../plugins/pluginbf_proveedorpago/pagoslist.cpp   |   34 +-
+ .../plugins/pluginbf_proveedorpago/pagoview.cpp    |    8 +-
+ .../pluginbf_proveedorpago.cpp                     |   19 +-
+ .../listdescpedidoproveedorview.cpp                |    4 +-
+ .../listlinpedidoproveedorview.cpp                 |    8 +-
+ .../pedidoproveedorview.cpp                        |   32 +-
+ .../pedidosproveedorlist.cpp                       |   68 +-
+ .../pluginbf_proveedorpedido.cpp                   |    7 +-
+ .../plugins/pluginbf_q19/pluginbf_q19.cpp          |   16 +-
+ .../plugins/pluginbf_q19/q19qtoolbutton.cpp        |   20 +-
+ .../plugins/pluginbf_q19/q19qtoolbutton1.cpp       |   16 +-
+ .../bulmafact/plugins/pluginbf_q19/q19view.cpp     |   18 +-
+ .../bulmafact/plugins/pluginbf_q19/q19writer.cpp   |   46 +-
+ .../plugins/pluginbf_qwebcam/pluginbf_qwebcam.cpp  |   10 +-
+ .../plugins/pluginbf_qwebcam/qwebcamview.cpp       |   12 +-
+ .../plugins/pluginbf_recibo/emitirrecibosview.cpp  |   12 +-
+ .../plugins/pluginbf_recibo/pluginbf_recibo.cpp    |   23 +-
+ .../plugins/pluginbf_recibo/reciboslist.cpp        |   60 +-
+ .../plugins/pluginbf_recibo/reciboview.cpp         |   40 +-
+ .../pluginbf_resumenarticulo/listlresarticulo.cpp  |   32 +-
+ .../plufinbf_resumenarticulo.cpp                   |   10 +-
+ .../listseriefacturaview.cpp                       |   12 +-
+ .../pluginbf_seriesfactura.cpp                     |    9 +-
+ .../pluginbf_sincrobulmacont/bancocuenta.cpp       |    8 +-
+ .../pluginbf_sincrobulmacont/clientecuenta.cpp     |    8 +-
+ .../pluginbf_sincrobulmacont/familiacuenta.cpp     |    8 +-
+ .../pluginbf_sincrobulmacont/fpagocuenta.cpp       |    8 +-
+ .../pluginbf_sincrobulmacont.cpp                   |    2 +-
+ .../pluginbf_sincrobulmacont/proveedorcuenta.cpp   |    8 +-
+ .../plugins/pluginbf_socio/pluginbf_socio.cpp      |   97 ++--
+ .../bulmafact/plugins/pluginbf_socio/sociolist.cpp |   56 +-
+ .../bulmafact/plugins/pluginbf_socio/socioview.cpp |   40 +-
+ .../plugins/pluginbf_socio/tiposocioview.cpp       |   36 +-
+ .../pluginbf_tallascolores/busquedacolor.cpp       |   42 +-
+ .../pluginbf_tallascolores/busquedatalla.cpp       |   16 +-
+ .../pluginbf_tallascolores/listcoloresview.cpp     |   20 +-
+ .../pluginbf_tallascolores/listtallasview.cpp      |   20 +-
+ .../pluginbf_tallascolores.cpp                     |   54 +-
+ .../plugins/pluginbf_tarifa/busquedatarifa.cpp     |   30 +-
+ .../plugins/pluginbf_tarifa/listltarifaview.cpp    |    8 +-
+ .../plugins/pluginbf_tarifa/listlvartarifaview.cpp |   26 +-
+ .../plugins/pluginbf_tarifa/pluginbf_tarifa.cpp    |   35 +-
+ .../plugins/pluginbf_tarifa/tarifalistsubform.cpp  |    6 +-
+ .../plugins/pluginbf_tarifa/tarifalistview.cpp     |   24 +-
+ .../plugins/pluginbf_tarifa/tarifaview.cpp         |   38 +-
+ .../plugins/pluginbf_ticket/pluginbf_ticket.cpp    |   16 +-
+ .../plugins/pluginbf_ticket/ticketqtoolbutton.cpp  |   16 +-
+ .../pluginbf_tipotrabajo/busquedatipotrabajo.cpp   |   38 +-
+ .../pluginbf_tipotrabajo/listtipostrabajoview.cpp  |    8 +-
+ .../pluginbf_tipotrabajo/pluginbf_tipotrabajo.cpp  |   40 +-
+ .../pluginbf_trabajador/pluginbf_trabajador.cpp    |    9 +-
+ .../plugins/pluginbf_trabajador/trabajadorview.cpp |   46 +-
+ .../pluginbf_trazabilidad/movimientosview.cpp      |   28 +-
+ .../pluginbf_trazabilidad.cpp                      |   29 +-
+ .../plugins/pluginbf_tutor/pluginbf_tutor.cpp      |   81 ++--
+ .../plugins/pluginbf_tutor/tutoreslist.cpp         |   52 +-
+ .../bulmafact/plugins/pluginbf_tutor/tutorview.cpp |   40 +-
+ .../pluginbf_vehiculo/pluginbf_vehiculo.cpp        |   20 +-
+ .../plugins/pluginbf_vehiculo/vehiculoview.cpp     |   16 +-
+ .../plugins/pluginbf_z2z/pluginbf_z2z.cpp          |    9 +-
+ .../bulmafact/plugins/pluginbf_z2z/z2zview.cpp     |    8 +-
+ bulmages/bulmafact/src/bfbulmafact.cpp             |  114 ++--
+ bulmages/bulmafact/src/bfbuscaralmacen.cpp         |   40 +-
+ bulmages/bulmafact/src/bfbuscararticulo.cpp        |   54 +-
+ bulmages/bulmafact/src/bfbuscarbanco.cpp           |   26 +-
+ bulmages/bulmafact/src/bfbuscarfamilia.cpp         |   28 +-
+ bulmages/bulmafact/src/bfbuscarformapago.cpp       |   30 +-
+ bulmages/bulmafact/src/bfbuscarreferencia.cpp      |   40 +-
+ bulmages/bulmafact/src/bfbuscarregimenfiscal.cpp   |   28 +-
+ bulmages/bulmafact/src/bfbuscarseriefactura.cpp    |   24 +-
+ bulmages/bulmafact/src/bfbuscartipoarticulo.cpp    |   28 +-
+ bulmages/bulmafact/src/bfbuscartipoiva.cpp         |   32 +-
+ bulmages/bulmafact/src/bfbuscartrabajador.cpp      |   32 +-
+ bulmages/bulmafact/src/bfcompany.cpp               |   54 +-
+ bulmages/bulmafact/src/bfconfiguracionview.cpp     |   12 +-
+ bulmages/bulmafact/src/bfform.cpp                  |   74 ++--
+ bulmages/bulmafact/src/bfinformereferencia.cpp     |   16 +-
+ .../bulmafact/src/bfproveedoralbaransubform.cpp    |    8 +-
+ bulmages/bulmafact/src/bfseriefacturaview.cpp      |   12 +-
+ bulmages/bulmafact/src/bfsubform.cpp               |  111 ++--
+ .../plugins/pluginbl_attachdocument/archivo.cpp    |   12 +-
+ .../plugins/pluginbl_attachdocument/archmenu.cpp   |   16 +-
+ .../pluginbl_attachdocument.cpp                    |   14 +-
+ .../pluginbl_bloqconf/pluginbl_bloqconf.cpp        |   28 +-
+ .../pluginbl_clipboard/pluginbl_clipboard.cpp      |   40 +-
+ .../plugins/pluginbl_embed/bx11embedcontainer.cpp  |   10 +-
+ .../plugins/pluginbl_embed/pluginbl_embed.cpp      |   34 +-
+ .../plugins/pluginbl_formlock/bloqmenu.cpp         |   16 +-
+ .../pluginbl_formlock/pluginbl_formlock.cpp        |   14 +-
+ .../plugins/pluginbl_importcsv/importcsv.cpp       |   12 +-
+ .../pluginbl_importcsv/pluginbl_importcsv.cpp      |   16 +-
+ .../plugins/pluginbl_logo/pluginbl_logo.cpp        |    4 +-
+ .../plugins/pluginbl_report/pluginbl_report.cpp    |   16 +-
+ .../pluginbl_report2ods/pluginbl_report2ods.cpp    |   16 +-
+ .../pluginbl_subform2ods/pluginbl_subform2ods.cpp  |   54 +-
+ .../pluginbl_subform2pdf/pluginbl_subform2pdf.cpp  |   32 +-
+ .../pluginbl_subform2sxc/pluginbl_subform2sxc.cpp  |   28 +-
+ .../plugins/pluginbl_template/eqtoolbutton.cpp     |   16 +-
+ .../pluginbl_template/pluginbl_template.cpp        |    8 +-
+ .../pluginbl_template2mail/eqtoolbutton.cpp        |   16 +-
+ .../pluginbl_template2mail.cpp                     |    8 +-
+ .../plugins/pluginbl_template2ods/eqtoolbutton.cpp |   16 +-
+ .../pluginbl_template2ods.cpp                      |    8 +-
+ bulmages/bulmalib/src/blaction.cpp                 |   12 +-
+ bulmages/bulmalib/src/blapplication.cpp            |   14 +-
+ bulmages/bulmalib/src/blargparser.cpp              |    4 +-
+ bulmages/bulmalib/src/blbankedit.cpp               |   48 +-
+ bulmages/bulmalib/src/blcombobox.cpp               |   32 +-
+ bulmages/bulmalib/src/blcomboboxdelegate.cpp       |   30 +-
+ bulmages/bulmalib/src/blcompanydialog.cpp          |   92 ++--
+ bulmages/bulmalib/src/blconfiguration.cpp          |    2 +-
+ bulmages/bulmalib/src/blcountryview.cpp            |   32 +-
+ bulmages/bulmalib/src/bldatedelegate.cpp           |   20 +-
+ bulmages/bulmalib/src/bldatelineedit.cpp           |   36 +-
+ bulmages/bulmalib/src/bldatesearch.cpp             |   56 +-
+ bulmages/bulmalib/src/bldb.cpp                     |  424 +++++++-------
+ bulmages/bulmalib/src/bldblogindialog.cpp          |   16 +-
+ bulmages/bulmalib/src/bldbsubform.cpp              |   54 +-
+ bulmages/bulmalib/src/bldialogchanges.cpp          |   37 +-
+ bulmages/bulmalib/src/bldockwidget.cpp             |   24 +-
+ bulmages/bulmalib/src/bldoublespinbox.cpp          |   20 +-
+ bulmages/bulmalib/src/blescprinter.cpp             |    4 +-
+ bulmages/bulmalib/src/blfixed.cpp                  |   39 +-
+ bulmages/bulmalib/src/blform.cpp                   |  185 +++---
+ bulmages/bulmalib/src/blformconfig.cpp             |    8 +-
+ bulmages/bulmalib/src/blformlist.cpp               |  138 +++--
+ bulmages/bulmalib/src/blformlistfilter.cpp         |   56 +-
+ bulmages/bulmalib/src/blfunctions.cpp              |  167 +++++-
+ bulmages/bulmalib/src/blfunctions.h                |   30 +-
+ .../bulmalib/src/blgenericcomboboxdelegate.cpp     |   47 +-
+ bulmages/bulmalib/src/bli18n.cpp                   |    5 +-
+ bulmages/bulmalib/src/blimportexport.cpp           |  187 +++---
+ bulmages/bulmalib/src/blmaincompany.cpp            |   64 +-
+ bulmages/bulmalib/src/blmaincompanypointer.cpp     |   26 +-
+ bulmages/bulmalib/src/blperiodicitycombobox.cpp    |   26 +-
+ bulmages/bulmalib/src/blplugins.cpp                |   28 +-
+ bulmages/bulmalib/src/blpostgresqlclient.cpp       |  247 ++++----
+ bulmages/bulmalib/src/blprogressbar.cpp            |   28 +-
+ bulmages/bulmalib/src/blradiobutton.cpp            |   12 +-
+ bulmages/bulmalib/src/blsearchwidget.cpp           |   96 ++--
+ bulmages/bulmalib/src/blsplashscreen.cpp           |   20 +-
+ bulmages/bulmalib/src/blsubform.cpp                |  634 ++++++++++----------
+ bulmages/bulmalib/src/bltablewidget.cpp            |   90 ++--
+ bulmages/bulmalib/src/bltexteditdelegate.cpp       |   14 +-
+ bulmages/bulmalib/src/bltoolbutton.cpp             |   16 +-
+ bulmages/bulmalib/src/bltreewidget.cpp             |   10 +-
+ bulmages/bulmalib/src/blwidget.cpp                 |   12 +-
+ bulmages/bulmalib/src/blwindowlistdock.cpp         |  106 ++--
+ bulmages/bulmalib/src/blworkspace.cpp              |   20 +-
+ .../plugins/pluginbt_accesobotones/abrevs.cpp      |    2 +-
+ .../pluginbt_accesobotones.cpp                     |    8 +-
+ .../plugins/pluginbt_accesobotones/tickets.cpp     |   12 +-
+ .../plugins/pluginbt_alias/pluginbt_alias.cpp      |   12 +-
+ .../pluginbt_aliastallasycolores.cpp               |   38 +-
+ .../pluginbt_aliastallasycolores2.cpp              |   12 +-
+ .../pluginbt_articulografico/artgraficos.cpp       |   12 +-
+ .../pluginbt_articulografico.cpp                   |    4 +-
+ .../pluginbt_articulograficodb/artgraficosdb.cpp   |   38 +-
+ .../pluginbt_articulograficodb.cpp                 |    8 +-
+ .../pluginbt_articulosubform/articulolisttpv.cpp   |   48 +-
+ .../pluginbt_articulosubform.cpp                   |   28 +-
+ .../plugins/pluginbt_bascula/pluginbt_bascula.cpp  |    8 +-
+ .../pluginbt_buscaarticulo.cpp                     |    4 +-
+ .../pluginbt_buscacliente.cpp                      |    4 +-
+ .../pluginbt_camareros/pluginbt_camareros.cpp      |    4 +-
+ .../bulmatpv/plugins/pluginbt_cambio/cambio.cpp    |   24 +-
+ .../plugins/pluginbt_cambio/pluginbt_cambio.cpp    |   16 +-
+ .../pluginbt_cambioivaincluido.cpp                 |    4 +-
+ .../plugins/pluginbt_cliente/pluginbt_cliente.cpp  |    8 +-
+ .../plugins/pluginbt_clientsync/clientsync.cpp     |   20 +-
+ .../pluginbt_clientsync/pluginbt_clientsync.cpp    |   12 +-
+ .../plugins/pluginbt_cobrar/pluginbt_cobrar.cpp    |    4 +-
+ .../cobrarparcialview.cpp                          |   42 +-
+ .../pluginbt_cobrarparcialivaincluido.cpp          |   10 +-
+ .../pluginbt_controlcaja/pluginbt_controlcaja.cpp  |    8 +-
+ bulmages/bulmatpv/plugins/pluginbt_debug/debug.cpp |   12 +-
+ .../plugins/pluginbt_debug/pluginbt_debug.cpp      |    8 +-
+ .../pluginbt_devolucion/pluginbt_devolucion.cpp    |   16 +-
+ .../pluginbt_devolucion2/pluginbt_devolucion2.cpp  |   16 +-
+ .../plugins/pluginbt_dockapp/pluginbt_dockapp.cpp  |    8 +-
+ .../bulmatpv/plugins/pluginbt_example/example.cpp  |    4 +-
+ .../plugins/pluginbt_example/pluginbt_example.cpp  |    8 +-
+ .../pluginbt_ivaincluido/pluginbt_ivaincluido.cpp  |   24 +-
+ bulmages/bulmatpv/plugins/pluginbt_mesas/mesas.cpp |    6 +-
+ .../plugins/pluginbt_mesas/pluginbt_mesas.cpp      |    8 +-
+ .../pluginbt_modificadores/modificadores.cpp       |    8 +-
+ .../modificadoresqtoolbutton.cpp                   |   32 +-
+ .../pluginbt_modificadores.cpp                     |   28 +-
+ .../pluginbt_printercocina.cpp                     |   20 +-
+ .../pluginbt_pulseras/pluginbt_pulseras.cpp        |   16 +-
+ .../pluginbt_serverlight/pluginbt_serverlight.cpp  |    8 +-
+ .../plugins/pluginbt_serverlight/serverlight.cpp   |   20 +-
+ .../pluginbt_serversync/pluginbt_serversync.cpp    |   12 +-
+ .../plugins/pluginbt_serversync/serversync.cpp     |   24 +-
+ .../pluginbt_stockcompras.cpp                      |   16 +-
+ .../plugins/pluginbt_teclado/pluginbt_teclado.cpp  |    8 +-
+ .../pluginbt_tecladonumerico.cpp                   |    4 +-
+ .../bulmatpv/plugins/pluginbt_ticket/mticket.cpp   |   42 +-
+ .../plugins/pluginbt_ticket/pluginbt_ticket.cpp    |   16 +-
+ .../pluginbt_ticketdesglose/mticketdesglose.cpp    |   12 +-
+ .../pluginbt_ticketdesglose.cpp                    |    4 +-
+ .../pluginbt_ticketdevuelto.cpp                    |   16 +-
+ .../pluginbt_ticketivaincluido/mticketivainc.cpp   |   14 +-
+ .../pluginbt_ticketivaincluido.cpp                 |   16 +-
+ .../plugins/pluginbt_total/pluginbt_total.cpp      |   16 +-
+ .../pluginbt_totalivaincluido.cpp                  |   16 +-
+ .../plugins/pluginbt_visor/pluginbt_visor.cpp      |   12 +-
+ bulmages/bulmatpv/src/btbulmatpv.cpp               |   36 +-
+ bulmages/bulmatpv/src/btcompany.cpp                |   74 ++--
+ bulmages/bulmatpv/src/btsubform.cpp                |   90 ++--
+ bulmages/bulmatpv/src/btticket.cpp                 |   84 ++--
+ 479 files changed, 7964 insertions(+), 7792 deletions(-)
+
+
+-- 
+Proyecto BulmaGes
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006020.html">[BulmaGés] Ayuda en Berlios
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006043.html">[BulmaGés] Project bulmages at BerliOS
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6021">[ fecha ]</a>
+              <a href="thread.html#6021">[ hilo ]</a>
+              <a href="subject.html#6021">[ asunto ]</a>
+              <a href="author.html#6021">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

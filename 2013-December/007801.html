@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]problema con bulmasetup en Debian
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fproblema_con_bulmaset%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fup_en_Debian%3F%3D&In-Reply-To=%3CCAJWqEteypJ8wFPv%2BMTYS6_UryVOv1OJ-WPUHW21Suk3zLcbQGA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007798.html">
+   <LINK REL="Next"  HREF="007807.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]problema con bulmasetup en Debian </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fproblema_con_bulmaset%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fup_en_Debian%3F%3D&In-Reply-To=%3CCAJWqEteypJ8wFPv%2BMTYS6_UryVOv1OJ-WPUHW21Suk3zLcbQGA%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]problema con bulmasetup en Debian">tborras en gmail.com
+       </A><BR>
+    <I>Lun Dic 30 11:38:44 CET 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007798.html">[BulmaGés]problema con bulmasetup en Debian
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007807.html">[BulmaGés]problema con bulmasetup en Debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7801">[ fecha ]</a>
+              <a href="thread.html#7801">[ hilo ]</a>
+              <a href="subject.html#7801">[ asunto ]</a>
+              <a href="author.html#7801">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Un par de cosas:
+
+El bulmaetup donde lo ejecutas ? Porque igual estas ejecutando la versión
+del source en lugar de la instalada.
+haz:
+cd /usr/local/share/bulmages/bulmasetup
+sudo ./bulmasetup
+
+Otra cosa que puedes mirar es dentro de este directorio
+
+rgrep /datos/Programacion/trunk *
+
+e intenta cambiar las lineas a mano por /usr/local/share/
+
+Salut
+
+
+
+El 30 de diciembre de 2013, 11:15, Miguel Ángel Ordóñez Moya &lt;
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">miguelangel.ordonez en gmail.com</A>&gt; escribió:
+
+&gt;<i> El 30/12/13 10:42, Tomeu Borras escribió:
+</I>&gt;<i> &gt; la 0.13 es algo antigua. Diría que tiene unos 2 años.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Pero si te ha compilado bien quiere decir que aun la puedes hacer servir.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Parece que te falla algún paso del ccmake y que hay un directorio que no
+</I>&gt;<i> &gt; esta bien puesto.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Probablemente CMAKE_INSTALL_PREFIX que debería ser /usr/local y lo
+</I>&gt;<i> &gt; tienes como /datos/Programacion/trunk para verificarlo mira a ver si se
+</I>&gt;<i> &gt; ha instalado correctamente en /usr/local/share/bulmages y si no reanuda
+</I>&gt;<i> &gt; la compilacion desde cero y sin tocar nada con el ccmake.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Espero que te ayude.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Salut
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> Hola Tomeu.
+</I>&gt;<i>
+</I>&gt;<i> Esta versión parece que se compiló bien. Aunque sea antigua, a ver si
+</I>&gt;<i> soy capaz de hacerla funcionar.
+</I>&gt;<i>
+</I>&gt;<i> Un ls -la en /usr/local/share/bulmages
+</I>&gt;<i> total 156
+</I>&gt;<i> drwxr-sr-x 22 root staff  4096 dic 15 20:30 .
+</I>&gt;<i> drwxrwsr-x 11 root staff  4096 dic 15 20:30 ..
+</I>&gt;<i> drwxr-xr-x  2 root staff  4096 dic 15 20:30 ainteligentes
+</I>&gt;<i> drwxr-xr-x  4 root staff  4096 dic 15 20:30 ayuda
+</I>&gt;<i> drwxr-sr-x  2 root staff  4096 dic 15 20:30 bgtrml2pdf
+</I>&gt;<i> drwxr-sr-x  2 root staff  4096 dic 15 20:30 bulmacont-plugins
+</I>&gt;<i> drwxr-sr-x  2 root staff 20480 dic 15 20:30 bulmafact-plugins
+</I>&gt;<i> drwxr-sr-x  2 root staff  4096 dic 15 20:30 bulmalib-plugins
+</I>&gt;<i> drwxr-sr-x  2 root staff  4096 dic 15 20:40 bulmasetup
+</I>&gt;<i> drwxr-sr-x  2 root staff 12288 dic 15 20:30 bulmatpv-plugins
+</I>&gt;<i> drwxr-xr-x  2 root staff  4096 dic 15 20:30 canuales
+</I>&gt;<i> drwxr-xr-x  2 root staff  4096 dic 15 20:30 confs
+</I>&gt;<i> -rw-r--r--  1 root staff 18009 dic 11 18:18 COPYING.txt
+</I>&gt;<i> drwxr-xr-x  2 root staff  4096 dic 15 20:30 css
+</I>&gt;<i> drwxr-xr-x  5 root staff  4096 dic 15 20:30 dbmodels
+</I>&gt;<i> drwxr-sr-x  5 root staff  4096 dic 15 20:30 doc
+</I>&gt;<i> drwxr-sr-x  4 root staff  4096 dic 15 20:30 examples
+</I>&gt;<i> drwxr-xr-x  2 root staff  4096 dic 15 20:30 icons
+</I>&gt;<i> drwxr-xr-x  8 root staff  4096 dic 15 20:30 images
+</I>&gt;<i> drwxr-sr-x  3 root staff  4096 dic 15 20:30 imagesrc
+</I>&gt;<i> drwxr-xr-x  6 root staff  4096 dic 15 20:30 openreports
+</I>&gt;<i> drwxr-xr-x  5 root staff  4096 dic 15 20:30 planescontables
+</I>&gt;<i> -rw-r--r--  1 root staff  1140 dic 11 18:18 README.Bulmalib.es
+</I>&gt;<i> -rw-r--r--  1 root staff 10021 dic 11 18:19 README.es
+</I>&gt;<i> -rw-r--r--  1 root staff  2281 dic 11 18:19 README.plugins.es
+</I>&gt;<i> drwxr-xr-x  2 root staff  4096 dic 15 20:30 rev-conf
+</I>&gt;<i> -rw-r--r--  1 root staff     7 dic 15 19:56 version
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> En /usr/local/bin, un ls bulma* -la
+</I>&gt;<i> -rwxr-xr-x 1 root staff  37346 dic 15 20:02 /usr/local/bin/bulmacont
+</I>&gt;<i> -rwxr-xr-x 1 root staff  37251 dic 15 20:01 /usr/local/bin/bulmafact
+</I>&gt;<i> -rwxr-xr-x 1 root staff 986682 dic 15 20:22 /usr/local/bin/bulmages
+</I>&gt;<i> -rwxr-xr-x 1 root staff   4206 dic 15 19:56 /usr/local/bin/bulmasetup
+</I>&gt;<i> -rwxr-xr-x 1 root staff  43837 dic 15 19:59 /usr/local/bin/bulmatpv
+</I>&gt;<i>
+</I>&gt;<i> Haciendo un less del fichero /usr/local/bin/bulmasetup aparece al
+</I>&gt;<i> principio esta línea:
+</I>&gt;<i> sys.path.append('/usr/local/share/bulmages/bulmasetup')
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ¿Debo modificar las líneas que planteabais del fichero
+</I>&gt;<i> nuevacontabilidad.py?
+</I>&gt;<i> #os.system(self.command.toAscii().data())
+</I>&gt;<i> self.process.start(self.command)
+</I>&gt;<i> self.process.waitForFinished(-1)
+</I>&gt;<i> (me estoy dando cuenta que las modifiqué donde no debía en
+</I>&gt;<i> /datos/Programación/trunk/bulmages/bulmasetup)
+</I>&gt;<i>
+</I>&gt;<i> Un saludo y muchas gracias.
+</I>&gt;<i> --
+</I>&gt;<i> Miguel Ángel
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20131230/261634ff/attachment-0001.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20131230/261634ff/attachment-0001.html</A>&gt;
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007798.html">[BulmaGés]problema con bulmasetup en Debian
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007807.html">[BulmaGés]problema con bulmasetup en Debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7801">[ fecha ]</a>
+              <a href="thread.html#7801">[ hilo ]</a>
+              <a href="subject.html#7801">[ asunto ]</a>
+              <a href="author.html#7801">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

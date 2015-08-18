@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]ampersand en los informes &quot;listado.rml&quot;
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fampersand_en_los_info%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Frmes_%3D22listado%3D2Erml%3D22%3F%3D&In-Reply-To=%3C4B6AEF76.70605%40todo-redes.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003370.html">
+   <LINK REL="Next"  HREF="003376.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]ampersand en los informes &quot;listado.rml&quot; </H1>
+    <B>Fco. Javier M. C.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fampersand_en_los_info%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Frmes_%3D22listado%3D2Erml%3D22%3F%3D&In-Reply-To=%3C4B6AEF76.70605%40todo-redes.com%3E"
+       TITLE="[BulmaGés]ampersand en los informes &quot;listado.rml&quot;">fcojavmc en todo-redes.com
+       </A><BR>
+    <I>Jue Feb  4 17:01:58 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003370.html">[BulmaGés]ampersand en los informes &quot;listado.rml&quot;
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003376.html">[BulmaGés]ampersand en los informes &quot;listado.rml&quot;
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3371">[ fecha ]</a>
+              <a href="thread.html#3371">[ hilo ]</a>
+              <a href="subject.html#3371">[ asunto ]</a>
+              <a href="author.html#3371">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>El 04/02/10 12:54, Aron escribió:
+&gt;<i> Buenos días
+</I>&gt;<i>
+</I>&gt;<i> Cuando en algún campo aparece el símbolo ampersand (&amp;), el informe de listado 
+</I>&gt;<i> falla en ese punto.
+</I>&gt;<i>
+</I>&gt;<i> He probado esto en la línea 2367 de blsubform.cpp:
+</I>&gt;<i> fitxersortidarml += &quot;    &lt;td&gt;&lt;![CDATA[&quot; +  valor-&gt;text() + &quot;]]&gt;&lt;/td&gt;\n&quot;;
+</I>&gt;<i>
+</I>&gt;<i> Pero se queda el &quot;&lt;![CDATA[&quot; en el PDF resultante.
+</I>&gt;<i>
+</I>&gt;<i> ¿Cómo podemos hacer funcionar los informes cuando está ese símbolo por ahí?
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+Sin todavía hacer las pruebas suficientes creo que he encontrado el
+fallo en bgtrml2pdf, aqui va el parche, para que lo pruebes.
+
+
+444c444
+&lt;                               rc += n.data
+---
+&gt;<i>                               rc += n.toxml()
+</I>446c446
+&lt;                               rc += n.data
+---
+&gt;<i>                               rc += n.toxml()
+</I>
+
+Un saludo.
+
+--
+Javier
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003370.html">[BulmaGés]ampersand en los informes &quot;listado.rml&quot;
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003376.html">[BulmaGés]ampersand en los informes &quot;listado.rml&quot;
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3371">[ fecha ]</a>
+              <a href="thread.html#3371">[ hilo ]</a>
+              <a href="subject.html#3371">[ asunto ]</a>
+              <a href="author.html#3371">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

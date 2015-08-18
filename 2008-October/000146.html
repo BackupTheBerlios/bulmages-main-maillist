@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]plugin sincronización
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fplugin_sincronizaci%3F%3D%20%3D%3Fiso-8859-1%3Fq%3F%3DF3n%3F%3D&In-Reply-To=%3C48EEF08C.2080309%40todo-redes.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000145.html">
+   <LINK REL="Next"  HREF="000147.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]plugin sincronización </H1>
+    <B>Fco. Javier M. C.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fplugin_sincronizaci%3F%3D%20%3D%3Fiso-8859-1%3Fq%3F%3DF3n%3F%3D&In-Reply-To=%3C48EEF08C.2080309%40todo-redes.com%3E"
+       TITLE="[BulmaGés]plugin sincronización">fcojavmc en todo-redes.com
+       </A><BR>
+    <I>Vie Oct 10 08:05:00 CEST 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000145.html">[BulmaGés]plugin sincronización
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000147.html">[BulmaGés]plugin sincronización
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#146">[ fecha ]</a>
+              <a href="thread.html#146">[ hilo ]</a>
+              <a href="subject.html#146">[ asunto ]</a>
+              <a href="author.html#146">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Freud escribió:
+&gt;<i> Hola Tomeu.
+</I>&gt;<i>
+</I>&gt;<i> Siguiendo tus instrucciones todo perfecto.
+</I>&gt;<i>
+</I>&gt;<i> Lo he añadido al Wiki. Echadle un vistazo a ver si os parece bien cómo 
+</I>&gt;<i> ha quedado.
+</I>&gt;<i>
+</I>
+¿Puedes pasar el enlace? porque no veo los cambios en el wiki.
+
+Gracias.
+Un saludo.
+
+
+&gt;<i> Gracias por todo,
+</I>&gt;<i>
+</I>&gt;<i>    - Freud -
+</I>&gt;<i>
+</I>&gt;<i> El 8 de octubre de 2008 9:41, Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A> 
+</I>&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;&gt; escribió:
+</I>&gt;<i>
+</I>&gt;<i>     Hola Freud
+</I>&gt;<i>
+</I>&gt;<i>     Sobre el plugin de sincronización no se instala automaticamente
+</I>&gt;<i>     porque es algo
+</I>&gt;<i>     complejo de instalar. Te explico los pasos a seguir y si te
+</I>&gt;<i>     apetece lo pones
+</I>&gt;<i>     en el wiki:
+</I>&gt;<i>
+</I>&gt;<i>     Supongamos que ya tienes dos bases de datos (una bulmafactdb y otra
+</I>&gt;<i>     bulmacontdb)
+</I>&gt;<i>
+</I>&gt;<i>     1.- Necesitas el paquete postgresql-contrib para poder usar dblink
+</I>&gt;<i>     $ sudo aptitude install postgresql-contrib
+</I>&gt;<i>
+</I>&gt;<i>     entro como usuario postgres para manejar bases de datos aunque hay
+</I>&gt;<i>     otras
+</I>&gt;<i>     formas de hacer esto.
+</I>&gt;<i>     $ sudo su
+</I>&gt;<i>     # sudo postgres
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     2.- En la base de datos de bulmafact tienes que instalar el dblink.
+</I>&gt;<i>     $ psql bulmafactdb &lt; /usr/share/postgresql/8.3/contrib/dblink.sql
+</I>&gt;<i>
+</I>&gt;<i>     3.- En la misma base de datos tienes que instalar el parche que
+</I>&gt;<i>     proporciona el
+</I>&gt;<i>     plugin (la ruta puede que cambie)
+</I>&gt;<i>
+</I>&gt;<i>     $psql bulmafactdb
+</I>&gt;<i>     &lt; /usr/share/bulmages/dbmodels/plugins/revf-pluginsyncbulmacont.sql
+</I>&gt;<i>
+</I>&gt;<i>     4.- Tienes que indicarle a la base de datos de bulmafact cual es
+</I>&gt;<i>     la base de
+</I>&gt;<i>     datos de contabilidad con la que se sincroniza
+</I>&gt;<i>
+</I>&gt;<i>     $ psql bulmafactdb
+</I>&gt;<i>     # update configuracion set valor='bulmacontdb' WHERE nombre
+</I>&gt;<i>     = 'DataBaseContabilidad'
+</I>&gt;<i>
+</I>&gt;<i>     Una vez hecho esto ya estará en marcha el plugin de sincronización.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     COSAS MUY A TENER EN CUENTA:
+</I>&gt;<i>            1.- Conviene que antes de poner en marcha esto tengas en
+</I>&gt;<i>     bulmacont las
+</I>&gt;<i>     siguientes cuentas creadas:
+</I>&gt;<i>                    - 43000...0 (Cliente varios,  sino el plugin
+</I>&gt;<i>     empezará a crearte cuentas con
+</I>&gt;<i>     sólo 4 dígitos )
+</I>&gt;<i>                    - 44000...0 (Proveedor varios, sino el plugin
+</I>&gt;<i>     empezará creandote cuentas de
+</I>&gt;<i>     sólo 4 digitos)
+</I>&gt;<i>                    - 472....16
+</I>&gt;<i>                    - 472.....7
+</I>&gt;<i>                    -472 .....4 (tantas de iva soportado como vayas a
+</I>&gt;<i>     utilizar sino  al utilizar
+</I>&gt;<i>     un iva que no tiene cuenta el programa dara un error)
+</I>&gt;<i>
+</I>&gt;<i>                    - 477 .....XX (Lo mismo para el iva repercutido)
+</I>&gt;<i>                    - 7000....00 (La cuenta de ventas para que las
+</I>&gt;<i>     facturas vayan bien)
+</I>&gt;<i>
+</I>&gt;<i>                    - Si usas recargos de equivalencia tienes que hacer
+</I>&gt;<i>     cuentas del tipo
+</I>&gt;<i>     47201...16, 47201......4 para cada iva y lo mismo para las 477
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>                    - Seguro que me dejo alguna cuenta que hay que
+</I>&gt;<i>     tener (Bancos o cajas)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     NOTAS:
+</I>&gt;<i>
+</I>&gt;<i>            1.- Hay un script de resincronización que es muy útil para
+</I>&gt;<i>     sincronizar un
+</I>&gt;<i>     sistema que ya está empezado. (no se donde esta instalado pero en
+</I>&gt;<i>     el svn es
+</I>&gt;<i>     facil de encontrar)
+</I>&gt;<i>            2.- Tambien tienes un script de desinstalación por si las
+</I>&gt;<i>     moscas.
+</I>&gt;<i>            3.- Es muy útil leer el revf-pluginsyncbulmacont.sql No es
+</I>&gt;<i>     difícil de
+</I>&gt;<i>     entender y si quieres hacer asientos especificos, o diferentes a
+</I>&gt;<i>     los que se
+</I>&gt;<i>     estan haciendo lo puedes modificar.
+</I>&gt;<i>     --
+</I>&gt;<i>     Tomeu Borrás Riera
+</I>&gt;<i>     Conetxia Soluciones Informáticas
+</I>&gt;<i>     902 88 11 66
+</I>&gt;<i>     (71 29 06 29
+</I>&gt;<i>     _______________________________________________
+</I>&gt;<i>     Bulmages-main mailing list
+</I>&gt;<i>     <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>&gt;
+</I>&gt;<i>     <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000145.html">[BulmaGés]plugin sincronización
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000147.html">[BulmaGés]plugin sincronización
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#146">[ fecha ]</a>
+              <a href="thread.html#146">[ hilo ]</a>
+              <a href="subject.html#146">[ asunto ]</a>
+              <a href="author.html#146">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Privilegis dels usuaris de bases de dades
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FPrivilegis_dels_usuar%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fis_de_bases_de_dades%3F%3D&In-Reply-To=%3C200809251111.55310.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000069.html">
+   <LINK REL="Next"  HREF="000049.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Privilegis dels usuaris de bases de dades </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FPrivilegis_dels_usuar%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fis_de_bases_de_dades%3F%3D&In-Reply-To=%3C200809251111.55310.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]Privilegis dels usuaris de bases de dades">tborras en conetxia.com
+       </A><BR>
+    <I>Jue Sep 25 11:11:55 CEST 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000069.html">[BulmaGés]Privilegis dels usuaris de bases de dades
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000049.html">[BulmaGés] r2715 - in trunk/bulmages:	bulmafact/src installbulmages/openreports
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#77">[ fecha ]</a>
+              <a href="thread.html#77">[ hilo ]</a>
+              <a href="subject.html#77">[ asunto ]</a>
+              <a href="author.html#77">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>El Wednesday 24 September 2008 20:10:11 Xavi Drudis Ferran escribió:
+
+&gt;<i> &gt; De fet bulmages esta preparat per emprar els privilegis dels usuaris i si
+</I>&gt;<i> &gt; (per exemple) no tens permisos per escriurer a la taula de clients doncs
+</I>&gt;<i> &gt; et desabilita el botó de guardar a la fitxa de clients o si no la pots
+</I>&gt;<i> &gt; llegir doncs en lloc de un error directament no te mostra els clients. Si
+</I>&gt;<i> &gt; fas click amb el botó dret sobre una fitxa veuràs que tens opciones
+</I>&gt;<i> &gt; avanzadas de ficha i te diu quins usuaris tenen privilegis.
+</I>&gt;<i>
+</I>&gt;<i> Això està molt i molt bé.
+</I>&gt;<i> Potser es podrien fer alguna mena de perfils predefinits (rols de grup on
+</I>&gt;<i> assignar els rols d'usuari, i un conjunt de GRANTs pel grup). Encara que
+</I>&gt;<i> depengui molt de cada empresa potser hi ha certs perfils comuns, no sé.
+</I>&gt;<i>
+</I>Aquesta es una bona idea, encara no se ben bé com se arribaria a implementar 
+però es bona opció. Sencilla de cara a l'usuari.
+
+&gt;<i> &gt; El que passa es que ja no es un tema de esser super usuari o no. Sino que
+</I>&gt;<i> &gt; si t'hi poses enserio tens que fer administració de permisos per a cada
+</I>&gt;<i> &gt; usuari i taula amb el GRANT xxxxxxx (una feinada de implementació en un
+</I>&gt;<i> &gt; tema que acaba servint a un administrador de bases de dades).
+</I>&gt;<i>
+</I>&gt;<i> Clar, ja veig. Passa que si es tinguessin algunes empreses &quot;tipus&quot; amb uns
+</I>&gt;<i> grups predefinits potser qui es vulgués estalviar la feina d'administració
+</I>&gt;<i> de base de dades podria passar amb una configuració menys agosarada que
+</I>&gt;<i> tots els usuaris com a superusuaris.
+</I>&gt;<i>
+</I>&gt;<i> &gt; I clar, tot això ja no es tema de gestió empresarial sino que pertany a
+</I>&gt;<i> &gt; administració de bases de dades i amb el pgadmin III ho tens molt resolt.
+</I>&gt;<i>
+</I>&gt;<i> Amb el pgadmin i amb bastantes nocions de com funciona la base de dades de
+</I>&gt;<i> bulmafact. Que ja entenc que s'han de tenir per implantar-lo bé però que
+</I>&gt;<i> potser es poden minimitzar si poses configuracions de permisos per
+</I>&gt;<i> omissió...
+</I>&gt;<i>
+</I>&gt;<i> Els que teniu molta experiència amb bulmages què us heu trobat ? Els
+</I>&gt;<i> permisos que s'atorguen, els perfils d'usuari i això canvien molt d'una
+</I>&gt;<i> empresa a una altra ? O simplement la majoria de casos només hi ha un
+</I>&gt;<i> usuari i ni es configuren permisos ?
+</I>&gt;<i>
+</I>Jo en tots els casos que he implantat sempre he acabat deixant el superusuari. 
+I ningú se m'ha queixat. Val a dir que tot son empreses petites on com a 
+màxim hi ha tres persones emprant el programa i el que cerquen es mes 
+productivitat que no pas seguretat.
+
+&gt;<i> &gt; Conclusió:
+</I>&gt;<i> &gt; Al usuari normal de una PIME (tu mateix ho has dit) tot això li es per
+</I>&gt;<i> &gt; demes. Una empresa mes gran toca tenir un informàtic que sap com fer-ho i
+</I>&gt;<i> &gt; amb una eina molt millor de la que nosaltres poguem fer. Ho veig una mica
+</I>&gt;<i> &gt; com desperdiciar un temps molt valuos duplicant l'esforç.
+</I>&gt;<i>
+</I>&gt;<i> No sé, jo tinc poca experiència. Però la primera PIME a qui ho he
+</I>&gt;<i> ensenyat s'ha espantat que es pugui modificar una factura emesa. Opina
+</I>&gt;<i> que no s'hauria de poder fer o si de cas només un usuari especial. No
+</I>&gt;<i> sé fins a quin punt això no és extrapolable a altres PIMEs.
+</I>&gt;<i>
+</I>Es un cas que no m'han plantejat mai. De totes formes te molt fàcil sol·lució 
+amb un trigger sobre la taula de factures. En canvi en el cas de que el 
+programa no deixes modificar les factures no seria sencill permetre a un 
+usuari especial modificar-les.
+
+
+&gt;<i> En una PIME sense informàtic hi pot haver un parell de treballadors i un
+</I>&gt;<i> amo, i no em sembla eixelebrat que hi hagi gent que tingui diferents
+</I>&gt;<i> permisos. Potser sí que s'ha de parlar en cada cas i algún informàtic 
+</I>&gt;<i> extern que conegui exactament la base de dades ha de donar permisos objecte
+</I>&gt;<i> per objecte, però així des de la ignorància sembla que es podria evitar amb
+</I>&gt;<i> una o n configuracions de permisos &quot;raonables&quot; que vinguessin amb el
+</I>&gt;<i> paquet.
+</I>&gt;<i>
+</I>Si, ja ho capto.
+
+&gt;<i> Vull dir que sí que és un esforç, i no estic dient que ningú ho hagi de fer
+</I>&gt;<i> ni quan, només ho comento per veure si la gent coincideix en que seria
+</I>&gt;<i> un esforç que després s'aprofitaria moltes vegades o si estic dient
+</I>&gt;<i> bestieses i no serviria de res perque les instal·lacions són sempre massa
+</I>&gt;<i> diferents.
+</I>&gt;<i>
+</I>L'unic problema que ens trobarem, i es complexe. Es que els plugins afegeixen 
+taules noves i per això serà un problema intentar fer un script que 
+evolucioni juntament amb els plugins. 
+
+La meva idea inicial (que la tinc aparcada per falta de temps) es anar cap a 
+la clase Ficha (es la meta clase de totes les pantalles) i a través de 
+les &quot;Opciones Avanzadas&quot; que un usuari administrador pugui posar o llevar 
+permisos a la taula principal d'aquesta fitxa.
+
+Ara mateix està implementat que es puguin veurer els permisos que té cada 
+usuari i només sería canviar aquesta clase perque amb ComboBox es poguessin 
+canviar, es clar que només canviaran si ets administrador de la base de 
+dades.
+
+D'aquesta forma estalviem haver de tenir un script que ha de canviar amb cada 
+plugin que s'afegeix. Pero ja te dic que ho tinc madurant i a molt llarg 
+plaç.
+
+&gt;<i> Suposo que només és canviar el nuevousuario.py per no passar els parametres
+</I>&gt;<i> de superusuari, de crear rols i de crear bd al createuser (fàcil) i després
+</I>&gt;<i> fer que les BD creades siguin d'un rol (posem que es digui bulmages) i els
+</I>&gt;<i> usuaris que crei els afegeixi al rol bulmages, no ? Es podria fer base de
+</I>&gt;<i> dades per base de dades amb rols diferents (empresa per empresa) però
+</I>&gt;<i> llavors al crear usuaris hauries d'especificar de quina empresa són, i
+</I>&gt;<i> entenc que per la mateixa filosofia que comentes val més que vingui tot amb
+</I>&gt;<i> rol bumages i qui ho vulgui diferent que tiri de pgadmin.
+</I>&gt;<i>
+</I>
+Doncs jo, després de haver escrit tot això i pensar en el tema no ho faria 
+així.
+
+En realitat 2 perfils (administrador i usuari sense cap permis). 
+L'administrador que pugui asignar permisos als usuaris sense permis a mesura 
+que es van necesitant i de forma sencilla. Pero per poder fer-ho primer hem 
+de acabar el tema de la asignació per Ficha.
+
+
+&gt;<i> &gt; Bueno un plugin de canvi de contrasenya no costara gaire tampoc.
+</I>&gt;<i>
+</I>&gt;<i> Doncs trobo que seria útil, per molt que es pugui fer també amb eines de
+</I>&gt;<i> postgres.
+</I>
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000069.html">[BulmaGés]Privilegis dels usuaris de bases de dades
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000049.html">[BulmaGés] r2715 - in trunk/bulmages:	bulmafact/src installbulmages/openreports
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#77">[ fecha ]</a>
+              <a href="thread.html#77">[ hilo ]</a>
+              <a href="subject.html#77">[ asunto ]</a>
+              <a href="author.html#77">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [PATCH] comparison with string literal	results in unspecified behaviour
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BPATCH%5D%20comparison%20with%20string%20literal%0A%09results%20in%20unspecified%20behaviour&In-Reply-To=%3C200907101643.11824.pedro.lopez.cabanillas%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002685.html">
+   <LINK REL="Next"  HREF="002687.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [PATCH] comparison with string literal	results in unspecified behaviour </H1>
+    <B>Pedro Lopez-Cabanillas</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BPATCH%5D%20comparison%20with%20string%20literal%0A%09results%20in%20unspecified%20behaviour&In-Reply-To=%3C200907101643.11824.pedro.lopez.cabanillas%40gmail.com%3E"
+       TITLE="[BulmaGés] [PATCH] comparison with string literal	results in unspecified behaviour">pedro.lopez.cabanillas en gmail.com
+       </A><BR>
+    <I>Vie Jul 10 16:43:11 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002685.html">[BulmaGés] [PATCH] control reaches end of non-void	function
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002687.html">[BulmaGés][PATCH] comparison with string literal results in unspecified behaviour
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2686">[ fecha ]</a>
+              <a href="thread.html#2686">[ hilo ]</a>
+              <a href="subject.html#2686">[ asunto ]</a>
+              <a href="author.html#2686">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Este parche (para trunk) elimina los warnings de compilación del tipo 
+siguiente:
+
+/usr/src/packages/BUILD/bulmages/bulmacont/src/bcmodelo300imprimir2ps.cpp: In 
+member function 'void BcModelo300Imprimir2PS::generaps()':
+/usr/src/packages/BUILD/bulmages/bulmacont/src/bcmodelo300imprimir2ps.cpp:211: 
+warning: comparison with string literal results in unspecified behaviour
+/usr/src/packages/BUILD/bulmages/bulmacont/src/bcmodelo300imprimir2ps.cpp:224: 
+warning: comparison with string literal results in unspecified behaviour
+/usr/src/packages/BUILD/bulmages/bulmacont/src/bcmodelo300imprimir2ps.cpp:237: 
+warning: comparison with string literal results in unspecified behaviour
+
+La importancia de eliminarlos es que este warning no se acepta en el build 
+service de openSUSE, e impide la creación del RPM con un mensaje de este 
+tipo:
+
+I: Expression compares a char* pointer with a string literal.
+Usually a strcmp() was intended by the programmer
+E: bulmages stringcompare
+
+Parece además que en el método BcModelo300Imprimir2PS::generaps() la variable 
+local char *cad1 podría ser un puntero loco. La he eliminado.
+
+Saludos,
+Pedro
+------------ próxima parte ------------
+A non-text attachment was scrubbed...
+Name: patch2-bulmages-0.12.patch
+Type: text/x-diff
+Size: 4200 bytes
+Desc: no disponible
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20090710/8602b8d4/attachment.patch">https://lists.berlios.de/pipermail/bulmages-main/attachments/20090710/8602b8d4/attachment.patch</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002685.html">[BulmaGés] [PATCH] control reaches end of non-void	function
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002687.html">[BulmaGés][PATCH] comparison with string literal results in unspecified behaviour
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2686">[ fecha ]</a>
+              <a href="thread.html#2686">[ hilo ]</a>
+              <a href="subject.html#2686">[ asunto ]</a>
+              <a href="author.html#2686">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

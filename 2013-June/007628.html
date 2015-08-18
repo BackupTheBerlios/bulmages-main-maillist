@@ -1,0 +1,230 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] Paquetes debian
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Paquetes%20debian&In-Reply-To=%3C20130611195447.101f7373%40namir.ctr.unican.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007623.html">
+   <LINK REL="Next"  HREF="007629.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] Paquetes debian </H1>
+    <B>Miguel Telleria de Esteban</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Paquetes%20debian&In-Reply-To=%3C20130611195447.101f7373%40namir.ctr.unican.es%3E"
+       TITLE="[BulmaGés] Paquetes debian">miguel en mtelleria.com
+       </A><BR>
+    <I>Mar Jun 11 19:54:47 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007623.html">[BulmaGés] Paquetes
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007629.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7628">[ fecha ]</a>
+              <a href="thread.html#7628">[ hilo ]</a>
+              <a href="subject.html#7628">[ asunto ]</a>
+              <a href="author.html#7628">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>[Me permito poner a la lista bulmages en copia, mejor discutir aqui por
+si alguien mas se anima]
+
+Enhorabuena lo primero Aitor por tu disponibilidad y esfuerzo.
+
+Te voy comentando algunas cosas entre líneas.
+
+
+On Tue, 11 Jun 2013 08:11:09 +0200 Aitor Cuadrado wrote:
+
+&gt;<i> Buenos días, Miguel, ya he hecho parte de mis deberes (para wheezy de
+</I>&gt;<i> 32 bits). Puedes ver el resultado en:
+</I>&gt;<i> 
+</I>&gt;<i> paquetes_bulmages &lt;<A HREF="http://www.gnuinos.org/packages/wheezy/bulmages/">http://www.gnuinos.org/packages/wheezy/bulmages/</A>&gt;
+</I>
+Estoy comprobando la compilación en en mi wheezy de amd64 y he tenido
+que cambiar una pequeña cosa para que se compilen en esta arquitectura.
+
+*   En debian/control cambia &quot;Architecture&quot; del Package:bulmages-release
+
+         i386  --&gt;  any
+
+    de otra los paquetes serían ignorados por arquitecturas
+    distintas a i386 (incluída amd64).
+
+Con este cambio he conseguido compilar el paquete en amd64.
+
+&gt;<i> 
+</I>&gt;<i> He comparado el resultado que arroja:
+</I>&gt;<i> 
+</I>&gt;<i> lintian -i paquete.deb
+</I>&gt;<i> 
+</I>&gt;<i> con tu paquete sid y con el mío.
+</I>&gt;<i> 
+</I>&gt;<i> Ya ves que no he usado tu nomenclatura, porque ahí todavía me pierdo.
+</I>&gt;<i> Además he usado dpkg-buildpackage en lugar de git-buildpackage, y tus
+</I>&gt;<i> scripts en python me dicen que no existe ningún módulo git.
+</I>
+Efectivamente, los paquetes que están en mi web mtelleria.be son una
+&quot;exportación&quot; de los originales que están en las ramas de repositorio
+git de gitorious.
+
+Toda la &quot;nomenclatura&quot; se basa en información de git la cual no está
+disponible en los paquetes de la web en sí.  Para obtenerla es
+necesario obtener el paquete fuente desde git con:
+
+   git clone <A HREF="git://gitorious.org/bulmages/bulmages.git">git://gitorious.org/bulmages/bulmages.git</A>
+
+de hecho si vas a modificar cosas es mejor que te hagas una cuenta de
+gitorious si no la tienes ya y te clees un clon de dicho repositorio.
+
+Si no estas familiarizado con git, te recomiendo que te hagas una serie
+de tutoriales y lo empieces a usar en local (estrictamente no hace
+falta un servidor git) y con gitorious como repositorio remoto.
+
+
+&gt;<i> 
+</I>&gt;<i> Por otra parte, las tags (etiquetas) a que te refieres en la wiki del
+</I>&gt;<i> redmine
+</I>&gt;<i> (wiki&lt;<A HREF="http://redmine.bulmages.es/wiki/bulmages-main/Bulmages_y_git-buildpackage/diff?version=13">http://redmine.bulmages.es/wiki/bulmages-main/Bulmages_y_git-buildpackage/diff?version=13</A>&gt;)
+</I>&gt;<i> supongo que serás la * seri*y la *ef7f8f75* de tus paquetes, ¿no?.
+</I>
+No, exactamente.  Cuando hablo de tag hablo de una tag de git, que como
+todas las tags en git, apuntan a commits.
+
+NOTA: Dada la gran cantidad de tags que se generan en el empaquetado,
+      las he puesto en mi clone de bulmages mtelleria-bulmages.
+
+<A HREF="https://gitorious.org/~mtelleria/bulmages/mtelleria-bulmages">https://gitorious.org/~mtelleria/bulmages/mtelleria-bulmages</A>
+
+Dichas tags (y sus commits) sirven para referenciar el contenido del
+orig.tar.gz y el workspace del empaquetado (orig.tar.gz + directorio
+debian).
+
+Por ejemplo refiriéndonos a los valores 1fa1cab1 y ef7f8f75:
+
+*  1fa1cab1 y ef7f8f75 son commits de git en las ramas release y master
+   respectivamente.  El contenido de dichos commits es lo que
+   constituye el orig.tar.gz.
+
+*  Las tags correspondientes a 1fa1cab1 serian:
+
+   -  Para el commit usado como orig.tar.gz:
+      - release/0.14.0-1fa1cab1
+
+   -  Para los commits usados como workspace de empaquetado tenemos
+      varios valores dependiendo de la distribución y de la versión
+
+      - release-squeeze/0.14.0-1fa1cab1-squeeze1
+      - release-debian/0.14.0-1fa1cab1-sid1
+      - release-debian/0.14.0-1fa1cab1-sid2
+
+      cada tag apunta al commit correspondiente a la versión del
+      paquete.  De hecho lo que está después de / ha de coincidir con
+      la versión puesta en debian/changelog.
+
+*  Idem para ef7f8f75 pero esta vez en la rama master, sólo que aquí
+   ponemos además el timestamp del commit git en GMT.
+
+   -  Commit usado como orig.tar.gz
+      - master/0.14.0.20130111.1234-ef7f8f75
+
+   -  Commits usados como workspace de empaquetado.
+      - master-debian/0.14.0.20130111.1234-ef7f8f75-1 
+          (en este se me olvidó añadir lo de sid)
+      - master-debian/0.14.0.20130111.1234-ef7f8f75-sid2
+      - master-debian/0.14.0.20130111.1234-ef7f8f75-sid3
+
+      - master-squeeze/0.14.0.20130111.1234-ef7f8f75-1
+      - master-squeeze/0.14.0.20130111.1234-ef7f8f75-squeeze1
+      - master-squeeze/0.14.0.20130111.1234-ef7f8f75-squeeze2
+
+&gt;<i> 
+</I>&gt;<i> También me gustaría saber si son importantes los permisos de lectura y
+</I>&gt;<i> escritura del fichero de envío .changes en el servidor.
+</I>
+Uff, no lo sé (y no me acuerdo).  Al haberlo puesto como dput y
+mini-dinstall me he olvidado del tema de permisos.
+&gt;<i> 
+</I>&gt;<i> Ya ves que he firmado mi repositorio siguiendo la misma estructura
+</I>&gt;<i> que en el tuyo, con la llave pública en el directorio raíz. Me queda
+</I>&gt;<i> seguir las instrucciones de Stefano Zacchirolli para subir los
+</I>&gt;<i> resultados mediante dput. Lo hecho directamente con el FileZilla.
+</I>
+Bien, bien, paso a paso.
+
+&gt;<i> 
+</I>&gt;<i> En fin, para haber conseguido estos avances en tres días, me doy por
+</I>&gt;<i> satisfecho. Ya me dirás...
+</I>
+¡¡ Enhorabuena de nuevo !!.  Si me permites 2 consejos extras:
+
+*  Familiarízate con git (si no lo estás ya) y con git-buildpackage.
+   Aunque en teoría se puede hacer todo sin ellas (a base de generarte
+   tar.gz's) verás que son útiles para este trabajo (y para otros
+   muchos).
+
+   Si parte de lo que te he dicho arriba te suena a chino mirate
+   primero git y, con tu conocimiento ya adquirido de empaquetado,
+   seguro que podrás armar el puzzle completo facilmente.
+
+*  No cejes en tu empeño y búscate momentos buenos para hacerte sprints
+   con ello.
+
+*  No olvides, cuando tengas tiempo, de bajarte paquetes de qt5 y
+   empaquetar el trabajo de Dani y Tomeu en referencia a ellos.
+
+Contamos contigo :) !!
+
+&gt;<i> 
+</I>&gt;<i> Un saludo,
+</I>&gt;<i> 
+</I>&gt;<i> Aitor.
+</I>
+
+-- 
+
+      (O-O)
+---oOO-(_)-OOo-----------------------------------------------------
+ Miguel TELLERIA DE ESTEBAN               <A HREF="http://www.mtelleria.com">http://www.mtelleria.com</A>
+ Email: miguel at mtelleria.com           Tel GSM:  +34 650 801098
+                                          Tel Fix:  +34 942 280174
+
+ Miembro de <A HREF="http://www.linuca.org">http://www.linuca.org</A>    Membre du <A HREF="http://www.bxlug.be">http://www.bxlug.be</A>
+ ¿Usuario captivo o libre?    <A HREF="http://www.obtengalinux.org/windows/">http://www.obtengalinux.org/windows/</A>
+ Free or  captive user?        <A HREF="http://www.getgnulinux.org/windows/">http://www.getgnulinux.org/windows/</A>
+-------------------------------------------------------------------
+
+------------ próxima parte ------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 198 bytes
+Desc: no disponible
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20130611/1a4b8fe8/attachment.pgp">https://lists.berlios.de/pipermail/bulmages-main/attachments/20130611/1a4b8fe8/attachment.pgp</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007623.html">[BulmaGés] Paquetes
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007629.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7628">[ fecha ]</a>
+              <a href="thread.html#7628">[ hilo ]</a>
+              <a href="subject.html#7628">[ asunto ]</a>
+              <a href="author.html#7628">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

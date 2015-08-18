@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][Bug #15949] Elemento predeterminado en campo BlComboBox
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3F%3D5BBug_%3D2315949%3D5D_Element%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fo_predeterminado_en_campo_BlComboBox%3F%3D&In-Reply-To=%3C200907021035.38535.auryn%40wanadoo.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002585.html">
+   <LINK REL="Next"  HREF="002592.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][Bug #15949] Elemento predeterminado en campo BlComboBox </H1>
+    <B>Aron</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3F%3D5BBug_%3D2315949%3D5D_Element%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fo_predeterminado_en_campo_BlComboBox%3F%3D&In-Reply-To=%3C200907021035.38535.auryn%40wanadoo.es%3E"
+       TITLE="[BulmaGés][Bug #15949] Elemento predeterminado en campo BlComboBox">auryn en wanadoo.es
+       </A><BR>
+    <I>Jue Jul  2 10:35:38 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002585.html">[BulmaGés][Bug #15949] Elemento predeterminado en campo BlComboBox
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002592.html">[BulmaGés][Bug #15949] Elemento predeterminado en campo BlComboBox
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2591">[ fecha ]</a>
+              <a href="thread.html#2591">[ hilo ]</a>
+              <a href="subject.html#2591">[ asunto ]</a>
+              <a href="author.html#2591">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Aunque ponga el setID(&quot;1&quot;) al final del try del constructor de la ficha, no me 
+funciona bien.
+
+
+   setAttribute( Qt::WA_DeleteOnClose );
+   try {
+      setupUi( this );
+      centrarEnPantalla( this );
+
+      // Definición de los campos a tratar en la ficha
+      setTitleName( _( &quot;asunto&quot; ) );
+      setDbTableName( &quot;asunto&quot; );
+      setDbFieldId( &quot;idasunto&quot; );
+      addDbField( &quot;idasunto&quot;, BlDbField::DbInt, BlDbField::DbPrimaryKey, _( 
+&quot;Id asunto&quot;) );
+      addDbField( &quot;idestadoasunto&quot;, BlDbField::DbInt, BlDbField::DbNotNull, _( 
+&quot;Estado&quot;) );
+
+      // Inicio definición buscador de estado
+      mui_id_estado-&gt;setMainCompany(mainCompany());
+      mui_id_estado-&gt;setQuery(&quot;SELECT * FROM estadoasunto&quot;);
+      mui_id_estado-&gt;setTableName(&quot;estadoasunto&quot;);
+      mui_id_estado-&gt;setFieldId(&quot;idestadoasunto&quot;);
+      mui_id_estado-&gt;m_valores[&quot;concepto&quot;] = &quot;&quot;;
+      mui_id_estado-&gt;setId(&quot;1&quot;);
+
+      meteWindow( windowTitle(), this, FALSE );
+      pintar();
+      dialogChanges_cargaInicial();
+   } catch( ... ) {
+      mensajeInfo( _( &quot;Error al crear la ficha de asunto&quot; ), this );
+   }
+
+
+El Miércoles 01 Julio 2009, Tomeu Borras escribió:
+&gt;<i> Hola Aron:
+</I>&gt;<i>
+</I>&gt;<i> Por lo que comentas el problema esta en que haces el setId demasiado pronto
+</I>&gt;<i> y alguna inicializacion del formulario te machaca el setId(&quot;&quot;).
+</I>&gt;<i>
+</I>&gt;<i> Me imagino que lo tienes puesto en el constructor así que prueba a ponerlo
+</I>&gt;<i> al final del mismo.
+</I>&gt;<i>
+</I>&gt;<i> Salut
+</I>&gt;<i>
+</I>&gt;<i> El Wednesday 01 July 2009 13:06:16 <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">admin en berlios.de</A> escribió:
+</I>&gt;<i> &gt; Bug #15949, was updated on 2009-Jul-01 13:06
+</I>&gt;<i> &gt; Here is a current snapshot of the bug.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Project: BulmaGes, Gesti&#65533;n Empresarial Libre
+</I>&gt;<i> &gt; Category: bulmafact
+</I>&gt;<i> &gt; Status: Open
+</I>&gt;<i> &gt; Resolution: None
+</I>&gt;<i> &gt; Bug Group: None
+</I>&gt;<i> &gt; Priority: 5
+</I>&gt;<i> &gt; Submitted by: hilex
+</I>&gt;<i> &gt; Assigned to : none
+</I>&gt;<i> &gt; Summary: Elemento predeterminado en campo BlComboBox
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Details: Cuando intento hacer que un campo desplegable BlComboBox tenga
+</I>&gt;<i> &gt; cierto elemento activo por defecto, al guardar se interpreta como nulo.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; El campo est&#65533; asociado a una consulta (setQuery), a una tabla (setTable)
+</I>&gt;<i> &gt; y le digo el campo identificador (setFieldId).
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Ejemplo 1:
+</I>&gt;<i> &gt; DESPLEGABLE-&gt;setAllowNull( TRUE );
+</I>&gt;<i> &gt; DESPLEGABLE-&gt;setId( &quot;1&quot; );
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Resultado 1:
+</I>&gt;<i> &gt; Aparece seleccionada inicialmente la l&#65533;nea &quot;--&quot;.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Ejemplo 2:
+</I>&gt;<i> &gt; DESPLEGABLE-&gt;setAllowNull( FALSE );
+</I>&gt;<i> &gt; DESPLEGABLE-&gt;setId( &quot;1&quot; );
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Resultado 2:
+</I>&gt;<i> &gt; Aparece seleccionada inicialmente la l&#65533;nea deseada, pero al guardar se
+</I>&gt;<i> &gt; interpreta como si estuviera vac&#65533;o.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; For detailed info, follow this link:
+</I>&gt;<i> &gt; <A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=15949&amp;group_id=44">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=15949&amp;group_id=44</A>
+</I>&gt;<i> &gt;72
+</I>
+
+-- 
+Aron
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002585.html">[BulmaGés][Bug #15949] Elemento predeterminado en campo BlComboBox
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002592.html">[BulmaGés][Bug #15949] Elemento predeterminado en campo BlComboBox
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2591">[ fecha ]</a>
+              <a href="thread.html#2591">[ hilo ]</a>
+              <a href="subject.html#2591">[ asunto ]</a>
+              <a href="author.html#2591">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

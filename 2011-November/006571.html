@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Problemas postgres9
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FProblemas_postgres9%3F%3D&In-Reply-To=%3CCAJWqEtf5pkJb4M1qXzoiAWEC8LoBamn%3DNbJATZQQ6wTo3D5zZQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006570.html">
+   <LINK REL="Next"  HREF="006572.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Problemas postgres9 </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FProblemas_postgres9%3F%3D&In-Reply-To=%3CCAJWqEtf5pkJb4M1qXzoiAWEC8LoBamn%3DNbJATZQQ6wTo3D5zZQ%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]Problemas postgres9">tborras en conetxia.com
+       </A><BR>
+    <I>Mar Nov 29 06:02:49 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006570.html">[BulmaGés]Problemas postgres9
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006572.html">[BulmaGés]Problemas postgres9
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6571">[ fecha ]</a>
+              <a href="thread.html#6571">[ hilo ]</a>
+              <a href="subject.html#6571">[ asunto ]</a>
+              <a href="author.html#6571">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Muchas gracias, hago un par de pruebas  y lo subo.
+
+El 29 de noviembre de 2011 02:52, Daniel Ripoll Osma &lt;
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">dripoll.public en gmail.com</A>&gt; escribió:
+
+&gt;<i>  Adjunto un archivo diff-patch con posibles correcciones, pegadle una
+</I>&gt;<i> ojeada, a ver que tal lo veis.
+</I>&gt;<i> Aunque sigue sin funcionar exactamente como debería por bulmasetup (a este
+</I>&gt;<i> paso me programo un bulmasetup2 en C++ y que se acaben los problemas), por
+</I>&gt;<i> terminal ya no se queja e instala correctamente.
+</I>&gt;<i>
+</I>
+Ayer mientras estaba con la instalación de la nueva Ubuntu tuve un problema
+que tal vez es el que te falla.
+Resulta que el postgresql 9 se instaló en el puerto 5433 y no en el 5432.
+Según pude comprobar psycopg2 no detecta automáticamente el puerto ni aún
+cuando el host es localhost. En cambio la linea de comandos psql si que lo
+hace.
+
+Lo peor del caso es que bulmasetup terminaba la ejecución dando un &quot;Unknow
+Error&quot;.
+Al final lo más sencillo fué cambiar el puerto de postgres para que
+funcionase.
+
+Salut
+
+
+&gt;<i> Salut!
+</I>&gt;<i>
+</I>&gt;<i> Al 28/11/11 21:28, En/na Tomeu Borras ha escrit:
+</I>&gt;<i>
+</I>&gt;<i> Bones a tothom
+</I>&gt;<i>
+</I>&gt;<i> Instalado Ubuntu 11.11. Por fin llego a los problemas reportados por
+</I>&gt;<i> Daniel. Me costó entenderlo.
+</I>&gt;<i>
+</I>&gt;<i> ¿Has subido el archivo con las correcciones?.
+</I>&gt;<i>
+</I>&gt;<i> Salut
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>Tomeu Borrás
+Conetxia Soluciones Informáticas
+902 88 11 66 - 677 77 44 76
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20111129/366cbbba/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20111129/366cbbba/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006570.html">[BulmaGés]Problemas postgres9
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006572.html">[BulmaGés]Problemas postgres9
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6571">[ fecha ]</a>
+              <a href="thread.html#6571">[ hilo ]</a>
+              <a href="subject.html#6571">[ asunto ]</a>
+              <a href="author.html#6571">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

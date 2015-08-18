@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][OT][Bug #15721] BULMASETUP NO APLICA PLUGINS CORRECTOS
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F%3D5BOT%3D5D%3D5BBug_%3D23157%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F21%3D5D_BULMASETUP_NO_APLICA_PLUGINS_CORRECTOS%3F%3D&In-Reply-To=%3C20090523150107.GA4611%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002100.html">
+   <LINK REL="Next"  HREF="002151.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][OT][Bug #15721] BULMASETUP NO APLICA PLUGINS CORRECTOS </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F%3D5BOT%3D5D%3D5BBug_%3D23157%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F21%3D5D_BULMASETUP_NO_APLICA_PLUGINS_CORRECTOS%3F%3D&In-Reply-To=%3C20090523150107.GA4611%40localhost%3E"
+       TITLE="[BulmaGés][OT][Bug #15721] BULMASETUP NO APLICA PLUGINS CORRECTOS">xdrudis en tinet.cat
+       </A><BR>
+    <I>Sab Mayo 23 17:01:07 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002100.html">[BulmaGés][OT][Bug #15721] BULMASETUP NO APLICA PLUGINS CORRECTOS
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002151.html">[BulmaGés][OT][Bug #15721] BULMASETUP NO APLICA PLUGINS CORRECTOS
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2116">[ fecha ]</a>
+              <a href="thread.html#2116">[ hilo ]</a>
+              <a href="subject.html#2116">[ asunto ]</a>
+              <a href="author.html#2116">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sat, May 23, 2009 at 10:17:20AM +0200, --==<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">F en lcon</A>==-- wrote:
+&gt;<i> Xavi Drudis Ferran escribió:
+</I>&gt;<i> &gt; On Sat, May 23, 2009 at 08:10:47AM +0200, --==<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">F en lcon</A>==-- wrote:
+</I>&gt;<i> &gt;   
+</I>&gt;<i> &gt;&gt; Pero eso se arregla con añadir una excepcion en Firefox... Aunque no es  
+</I>&gt;<i> &gt;&gt; la manera que toca, pero es usable. Teniendo en cuenta que los sitios  
+</I>&gt;<i> &gt;&gt; &quot;seguros&quot; de hacienda, la Seguridad Social, etc... tienen fcertificados  
+</I>&gt;<i> &gt;&gt; autofirmados, no me extraña que el de BerliOS tambien lo sea.
+</I>&gt;<i> &gt;&gt; Al menos a mí, con pulsar &quot;añadir exepción&quot;, luego &quot;obtener certificado&quot;  
+</I>&gt;<i> &gt;&gt; y luego &quot;confirmar exepción de seguridad&quot;... me funciona.
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;     
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Jo això ho faig quan només vull consultar informació, però no entro contrasenyes
+</I>&gt;<i> &gt; a webs així.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;   
+</I>&gt;<i> Vale, y estoy totalmente de acuerdo con ese planteamiento, pero acaso 
+</I>&gt;<i> importar la CA de BerliOS en nuestro navegador (sea Firefox, Konqueror, 
+</I>&gt;<i> Opera, etc.) no es lo mismo? El error que da Firefox en mi caso, es de 
+</I>
+No, no és el mateix. 
+
+No sé si em vaig deixar informació. 
+Però al svn de berlios hi entro per ssh. 
+El meu client ssh té la clau ssh del servidor de berlios, que va establir
+la primera vegada que va connectar (aquella vegada la web de berlios tenia
+un certificat ssl correcte, i crec recordar que vaig confirmar la clau 
+ssh del servidor així). El certificat de la CA que he importat de Berlios,
+l'he obtingut per ssh a un servidor de berlios que encara valida amb la seva 
+clau ssh. Si el servidor està compromés no té sentit que un atacant li hagi 
+canviat la clau ssl de l'apache, seria més fàcil i aixecaria menys sospites
+canviar els continguts. Per tant assumeixo que si la clau ssh del servidor 
+és bona és el servidor autèntic, i si allà trobo una clau de CA, aquesta és
+autèntica. No he agafat el certificat de la CA del navegador, que el navegador 
+obté del servidor sospitós, sinó d'una 
+conexió segura gràcies a una clau pública diferent previament acceptada.
+
+
+&gt;<i> que el certificado no está firmado por una CA reconocida, asi que si 
+</I>&gt;<i> importo la CA le estoy dando la confianza para aceptar el certificado...
+</I>&gt;<i> Tampoco estoy 100% seguro, asi que corregidme si me equivoco.
+</I>&gt;<i>
+</I>
+A mi no em diu que la CA sigui errònia, sinó que la signatura és errònia, 
+com ara si canvies el nom del servidor al certificat, o la signes amb la clau 
+que no és. Només em diu que la CA és desconeguda abans d'importar el certificat
+de la CA de berlios obtingut per ssh. 
+ 
+
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>
+Signa per fer Collserola parc natural com cal
+<A HREF="http://www.collserola.org/salvemelparcnatural/">http://www.collserola.org/salvemelparcnatural/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002100.html">[BulmaGés][OT][Bug #15721] BULMASETUP NO APLICA PLUGINS CORRECTOS
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002151.html">[BulmaGés][OT][Bug #15721] BULMASETUP NO APLICA PLUGINS CORRECTOS
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2116">[ fecha ]</a>
+              <a href="thread.html#2116">[ hilo ]</a>
+              <a href="subject.html#2116">[ asunto ]</a>
+              <a href="author.html#2116">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

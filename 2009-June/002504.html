@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]BfBuscarArticuloDelegate ha de ser filla de BlComboBox ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FBfBuscarArticuloDeleg%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fate_ha_de_ser_filla_de_BlComboBox_%3D3F%3F%3D&In-Reply-To=%3C20090624173306.GA16372%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002502.html">
+   <LINK REL="Next"  HREF="002506.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]BfBuscarArticuloDelegate ha de ser filla de BlComboBox ? </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FBfBuscarArticuloDeleg%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fate_ha_de_ser_filla_de_BlComboBox_%3D3F%3F%3D&In-Reply-To=%3C20090624173306.GA16372%40localhost%3E"
+       TITLE="[BulmaGés]BfBuscarArticuloDelegate ha de ser filla de BlComboBox ?">xdrudis en tinet.cat
+       </A><BR>
+    <I>Mie Jun 24 19:33:06 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002502.html">[BulmaGés]BfBuscarArticuloDelegate ha de ser filla de BlComboBox ?
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002506.html">[BulmaGés]BfBuscarArticuloDelegate ha de ser filla de BlComboBox ?
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2504">[ fecha ]</a>
+              <a href="thread.html#2504">[ hilo ]</a>
+              <a href="subject.html#2504">[ asunto ]</a>
+              <a href="author.html#2504">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wed, Jun 24, 2009 at 05:19:20PM +0200, Tomeu Borras wrote:
+&gt;<i> Doncs resulta que tot això es obsolet i vaig a canviar-ho per la nova forma de 
+</I>&gt;<i> tratar-ho. Volia esperar a despres de estabilitzar pero en vista del error 
+</I>&gt;<i> sorgit millor ho faig ara.
+</I>&gt;<i> 
+</I>
+Ah. Ara m'he estat mirant el plugin tutor, suposo que vols dir que 
+la classe BfBuscarArticuloDelegate no hauria d'existir i a tot 
+arreu on es fa servir s'hauria d'utilitzar un BlDbCompleterComboBox
+amb les propietats que calgui. 
+
+Llavors al plugin alias caldria canviar algun métode perque ja no 
+es llançarien les mateixes crides a plugins (canviaria el nom, i 
+caldria comprovar si el DlDbCompleterComboBox que t'ha cridat és el d'articles)
+
+
+&gt;<i> El canvi radica en que no hem de permetrer que un plugin tengui un Delegate al 
+</I>&gt;<i> src del programa si ho podem solventar d'alguna altre forma.
+</I>&gt;<i>
+</I>
+Quin plugin vols dir ?  El d'articles, no ? 
+ 
+&gt;<i> La nova forma de fer-ho esta a pluginbf_tutor.cpp 
+</I>&gt;<i> 
+</I>&gt;<i> on Se implementa el Delegate en forma de BlComboBox.
+</I>&gt;<i>
+</I>
+Just és del que em queixo, que el BfBuscarArticuloDelegate hereta de BlComboBox
+però no omple els camps que BlComboBox espera trobar plens. 
+El que veig és que a tutors els alumnes tenen un BlDbCompleterComboBox, 
+i aquest ha desconnectat la senyal activated, que és el que fa que no 
+peti com el BfBuscarArticuloDelegate. 
+
+O sia que una solució cutre  seria afegir
+    disconnect ( this, SIGNAL ( activated ( int ) ), 0, 0 );
+al constructor de BfBuscarArticuloDelegate  
+i una més maca seria carregar-se BfBuscarArticuloDelegate.
+És més maca però és més arriscada perquè no sé exactament què més
+pot afectar a part d'alias. 
+Una intermitja és fer que BfBuscarArticuloDelegate hereti 
+de BlDBCompleterComboBox per comptes de BlComboBox. 
+Però no m'agrada molt, és ni carn ni peix, i podria tenir alguna conseqüència si algun plugin 
+escolta els events que llança BlDbCompleterComboBox i no s'espera
+que puguin ser d'articles. 
+ 
+Com que no tinc molt clara la planificació (estem congelats o no?,
+quins canvis són tolerables, entenc que si es va congelar amb els
+Delegates que hi ha és perquè no es volia desestabilitzar més
+canviant-los o m'estic imaginant intencions ? , quines
+refactoritzacions estem disposats a admetre ara mateix ?) per ara no
+faig res.
+
+&gt;<i> Per lo del alias també ahurà de anar de forma semblant.
+</I>&gt;<i>
+</I>
+Si de cas el plugin d'articles, no hi ha cap BFBuscarAliasDelegate ni 
+res d'això, tot i que sí que caldrà canviar alguna cosa a alias si es canvia el 
+d'articles.
+
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>
+Signa per fer Collserola parc natural com cal
+<A HREF="http://www.collserola.org/salvemelparcnatural/">http://www.collserola.org/salvemelparcnatural/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002502.html">[BulmaGés]BfBuscarArticuloDelegate ha de ser filla de BlComboBox ?
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002506.html">[BulmaGés]BfBuscarArticuloDelegate ha de ser filla de BlComboBox ?
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2504">[ fecha ]</a>
+              <a href="thread.html#2504">[ hilo ]</a>
+              <a href="subject.html#2504">[ asunto ]</a>
+              <a href="author.html#2504">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

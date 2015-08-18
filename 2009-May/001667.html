@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Compilación con errores en los archivos .po
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FCompilaci%3DF3n_con_err%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fores_en_los_archivos_%3D2Epo%3F%3D&In-Reply-To=%3Cc42865c40905010416h37eba47dsc2d252d57d8e2a25%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001680.html">
+   <LINK REL="Next"  HREF="001668.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Compilación con errores en los archivos .po </H1>
+    <B>Raül Martínez i Peris</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FCompilaci%3DF3n_con_err%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fores_en_los_archivos_%3D2Epo%3F%3D&In-Reply-To=%3Cc42865c40905010416h37eba47dsc2d252d57d8e2a25%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]Compilación con errores en los archivos .po">elferrer en gmail.com
+       </A><BR>
+    <I>Vie Mayo  1 13:16:17 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001680.html">[BulmaGés]error al compilar la ultima version
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001668.html">[BulmaGés]Compilación con errores en los archivos .po
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1667">[ fecha ]</a>
+              <a href="thread.html#1667">[ hilo ]</a>
+              <a href="subject.html#1667">[ asunto ]</a>
+              <a href="author.html#1667">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola.
+
+Al compilar bulmaGES y haciendo referencia al archivo
+bulmalib_es_ES-UTF8.po, hay una linea que la que hay que cambiar la
+cadena de texto &quot;Cerrar&quot; por &quot;&amp;Cerrar&quot;, y viene del archivo:
+Place: ui_fichacfgbase.h:292
+Varios: fuzzy
+
+Pero al compilar da el siguiente error:
+
+[  8%] Generating bulmalib_es_ES.UTF-8.gmo, bulmalib_es_ES.UTF-8.po
+.................. terminado.
+/home/raul/bulmages/trunk/bulmages/build/bulmalib/src/bulmalib_es_ES.UTF-8.po:95:
+a alguna de las líneas `msgid' y `msgstr' les falta el `\n' final
+/home/raul/bulmages/trunk/bulmages/build/bulmalib/src/bulmalib_es_ES.UTF-8.po:343:
+a alguna de las líneas `msgid' y `msgstr' les falta el`\n' final
+/usr/bin/msgfmt: se encontraron 2 errores fatales
+make[2]: *** [bulmalib/src/bulmalib_es_ES.UTF-8.gmo] Error 1
+make[1]: *** [bulmalib/src/CMakeFiles/bulmalib_pos.dir/all] Error 2
+make: *** [all] Error 2
+
+He probado a quitar el &quot;&amp;&quot; de la cadena de texto y desde ese momento
+SÍ que compila.
+
+Supongo que la traducción se habría generado automáticamente y por
+ello añadió dicho símbolo. De momento he dejado la cadena de texto sin
+el símbolo &quot;&amp;&quot;.
+
+Si debe mantenerse el símbolo &quot;&amp;&quot;, ¿se supone que debo hacer algo al respecto?
+
+Un saludo.
+
+
+-- 
+Raül Martínez i Peris
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001680.html">[BulmaGés]error al compilar la ultima version
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001668.html">[BulmaGés]Compilación con errores en los archivos .po
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1667">[ fecha ]</a>
+              <a href="thread.html#1667">[ hilo ]</a>
+              <a href="subject.html#1667">[ asunto ]</a>
+              <a href="author.html#1667">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

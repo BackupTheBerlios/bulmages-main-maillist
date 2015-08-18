@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] Privilegis dels usuaris de bases de	dades
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Privilegis%20dels%20usuaris%20de%20bases%20de%0A%09dades&In-Reply-To=%3C20080920185904.GA4949%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000043.html">
+   <LINK REL="Next"  HREF="000051.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] Privilegis dels usuaris de bases de	dades </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Privilegis%20dels%20usuaris%20de%20bases%20de%0A%09dades&In-Reply-To=%3C20080920185904.GA4949%40localhost%3E"
+       TITLE="[BulmaGés] Privilegis dels usuaris de bases de	dades">xdrudis en tinet.cat
+       </A><BR>
+    <I>Sab Sep 20 20:59:04 CEST 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000043.html">[BulmaGés] r2714 -	trunk/bulmages/bulmafact/plugins
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000051.html">[BulmaGés]Privilegis dels usuaris de bases de dades
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#48">[ fecha ]</a>
+              <a href="thread.html#48">[ hilo ]</a>
+              <a href="subject.html#48">[ asunto ]</a>
+              <a href="author.html#48">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola. 
+
+Avui comentava amb el Leo una cosa que vaig observar instal·lant bulmafact 
+i m'ha suggerit que ho comenti a la llista.
+
+Em va semblar que el bulmasetup quan crea un usuari li dóna permisos 
+d'administrador. Així :
+
+                                  List of roles
+    Role name    | Superuser | Create role | Create DB | Connections | Member of 
+-----------------+-----------+-------------+-----------+-------------+-----------
+ Anna            | yes       | yes         | yes       | no limit    | 
+ ...
+
+o sia, igual que postgres. 
+Em va sobtar perquè no conec el programa però no sembla que sigui necessari 
+que qualsevol usuari pugui crear altres usuaris i que pugui crear bases de dades, 
+ni que sigui superusuari. En el meu cas particular no m'importa molt perquè 
+a aquesta instància de postgres no hi ha res més, però puc entendre que en 
+alguns casos sigui un problema.
+
+Però aparentment si crees un usuari normal i intentes entrar a bulmafact no 
+et deixa (encara que amb el psql pots entrar a la base de dades amb aquell 
+usuari, perquè al pg_hba.conf té els permisos). 
+
+La pregunta és una mica si això s'ha fet perquè el programa requereix tots
+aquests privilegis, o perquè encara no s'ha estudiat quins requereix, o 
+per simplificar alguna altra cosa... No sé si es podria crear un rol que 
+tingués privilegis per insert, update , delete , select i el que fes falta
+(potser create table, o el que fos) i assignar els usuaris que crees des de
+bulmasetup a aquest rol. 
+
+Una possible millora en un futur que no sé si considereu que val la pena 
+és permetre que els usuaris es puguin canviar la contrasenya des de l'aplicació.
+Ho poden fer des de postgres, és clar, i si s'autentica per trust (allò que per
+estar en una sessió de linux ja et deixa a entrar a postgres amb un usuari homònim) 
+doncs de fet no té massa sentit perquè les contrasenyes estan a /etc/shadow 
+(o on digui PAM). Però igual com hi ha un diàleg que et permet posar la contrasenya
+en entrar per si no fas servir aquest esquema autenticació, potser n'hi podria 
+haver un per canviar-te la contrasenya ? 
+
+En fi res, més que res saber què en penseu . 
+
+Per cert, moltes gràcies pel programa que no us ho havia dit. 
+
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>
+Signa per fer Collserola parc natural com cal
+<A HREF="http://www.collserola.org/salvemelparcnatural/">http://www.collserola.org/salvemelparcnatural/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000043.html">[BulmaGés] r2714 -	trunk/bulmages/bulmafact/plugins
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000051.html">[BulmaGés]Privilegis dels usuaris de bases de dades
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#48">[ fecha ]</a>
+              <a href="thread.html#48">[ hilo ]</a>
+              <a href="subject.html#48">[ asunto ]</a>
+              <a href="author.html#48">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

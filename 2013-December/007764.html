@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]SmtpClient for Qt
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FSmtpClient_for_Qt%3F%3D&In-Reply-To=%3CCAJWqEtdjjMoehOEu%3DPEDFKkUtOShT-0HkzfZujrdvAn49KWWPA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007762.html">
+   <LINK REL="Next"  HREF="007782.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]SmtpClient for Qt </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FSmtpClient_for_Qt%3F%3D&In-Reply-To=%3CCAJWqEtdjjMoehOEu%3DPEDFKkUtOShT-0HkzfZujrdvAn49KWWPA%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]SmtpClient for Qt">tborras en gmail.com
+       </A><BR>
+    <I>Mie Dic 18 08:38:54 CET 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007762.html">[BulmaGés]SmtpClient for Qt
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007782.html">[BulmaGés]Para empezar
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7764">[ fecha ]</a>
+              <a href="thread.html#7764">[ hilo ]</a>
+              <a href="subject.html#7764">[ asunto ]</a>
+              <a href="author.html#7764">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola
+
+Muy fácil. Ya lo tengo integrado en mi repositorio y va de fábula
+(sobretodo en envios masivos de facturas donde no se abren ventanas de
+thunderbird o kmail para cada envio).
+
+He agregado estos parámetros de configuración ya que esta integrado en
+bulmalib:
+
+#Opciones de mail embebido
+# Servidor de correo
+CONF_SMTP_SERVER mail.demo.com
+# Puerto
+CONF_SMTP_PORT 25
+# Usuario
+CONF_SMTP_USERNAME username
+# Contrasenya
+CONF_SMTP_PASSWORD password
+# Tipo de cifrado PLAIN, SSL, TLS
+CONF_SMTP_TYPE PLAIN
+
+Lo que me tiene algo mosqueado es que hay que meter la contraseña del
+servidor SMTP en la configuración. Pero no se me ocurre otra forma.
+
+PD: Ha salido Qt 5.2 y voy a empezar a probarlo aunque no me convencen las
+políticas de Digia. Seguro que pronto veremos un fork de las Qt.
+
+
+
+El 18 de diciembre de 2013, 7:34, Fco. Javier M. C. &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>
+&gt;<i> escribió:
+</I>
+&gt;<i>  Hola Tomeu.
+</I>&gt;<i>
+</I>&gt;<i> Tiene buena pinta, y se ve fácil de utilizar.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Un saludo.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> El 16/12/13 18:56, Tomeu Borras escribió:
+</I>&gt;<i>
+</I>&gt;<i>   Buenas:
+</I>&gt;<i>
+</I>&gt;<i>  Hace ya tiempo se habló de integrar un SMTP en BulmaLib.
+</I>&gt;<i>
+</I>&gt;<i>  Aqui esta prácticamente todo el trabajo hecho, con Qt, C++, adjuntos,
+</I>&gt;<i> SSL, TLS. Bastante completo.
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://github.com/bluetiger9/SmtpClient-for-Qt">https://github.com/bluetiger9/SmtpClient-for-Qt</A>
+</I>&gt;<i>
+</I>&gt;<i>  Sólo hay que meterlo en Bulmalib y cambiar la función de envio de email
+</I>&gt;<i> para que envíe a través de la clase Smtp (sencillo a excepción de la
+</I>&gt;<i> configuración de la cuenta enviante cuyos parámetros tendrían que meterse
+</I>&gt;<i> en los .conf del programa) y también cambiar el pluginbf_correo para que lo
+</I>&gt;<i> tenga como una opción más.
+</I>&gt;<i>
+</I>&gt;<i>  Salut
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">listBulmages-main en lists.berlios.dehttps</A>://lists.berlios.de/mailman/listinfo/bulmages-main
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Fco. Javier M. C.
+</I>&gt;<i> *************************<A HREF="http://todo-redes.comhttp://bulmagesplus.com">http://todo-redes.comhttp://bulmagesplus.com</A>
+</I>&gt;<i> *************************
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20131218/e8444698/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20131218/e8444698/attachment.html</A>&gt;
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007762.html">[BulmaGés]SmtpClient for Qt
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007782.html">[BulmaGés]Para empezar
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7764">[ fecha ]</a>
+              <a href="thread.html#7764">[ hilo ]</a>
+              <a href="subject.html#7764">[ asunto ]</a>
+              <a href="author.html#7764">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

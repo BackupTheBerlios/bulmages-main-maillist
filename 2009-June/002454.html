@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Función de &quot;Actualizar la base de datos&quot; en BulmaSetup
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Futf-8%3Fq%3FFunci%3DC3%3DB3n_de_%3D22Actuali%3F%3D%0A%09%3D%3Futf-8%3Fq%3Fzar_la_base_de_datos%3D22_en_BulmaSetup%3F%3D&In-Reply-To=%3C200906181944.10612.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002450.html">
+   <LINK REL="Next"  HREF="002451.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Función de &quot;Actualizar la base de datos&quot; en BulmaSetup </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Futf-8%3Fq%3FFunci%3DC3%3DB3n_de_%3D22Actuali%3F%3D%0A%09%3D%3Futf-8%3Fq%3Fzar_la_base_de_datos%3D22_en_BulmaSetup%3F%3D&In-Reply-To=%3C200906181944.10612.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]Función de &quot;Actualizar la base de datos&quot; en BulmaSetup">tborras en conetxia.com
+       </A><BR>
+    <I>Jue Jun 18 19:44:10 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002450.html">[BulmaGés]Función de &quot;Actualizar la base de datos&quot; en BulmaSetup
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002451.html">[BulmaGés] [Bug #15881] NO SE PUEDE CREAR EMPRESA
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2454">[ fecha ]</a>
+              <a href="thread.html#2454">[ hilo ]</a>
+              <a href="subject.html#2454">[ asunto ]</a>
+              <a href="author.html#2454">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Te cuento un poco como va el tema
+
+Para las aplicaciones tenemos un &quot;core&quot; de base de datos que se aplica en toda 
+empresa (uno para facturacion y otro para contabilidad). Ahora el core 
+incluye muchas cosas pero en la proxima versión la idea es delegar a los 
+plugins muchas de las tablas del core.
+
+Dicho core puede cambiar de una versión a otra y para mantener las bases de 
+datos actualizadas creamos unos parches que hacen la migración de una versión 
+a otra.
+
+Todo esto esta en installbulmages/dbmodels
+
+Sobre los parches decir que tienen como requisito el ser transaccionales, no 
+aplicables si la base de datos no esta en la version anterior o en la actual 
+y que se pueden aplicar tantas veces como se desee sin incurrir en corrupcion 
+de datos. De ahi que si abres uno tiene un poco de rollo en comprobaciones.
+
+Y ahora la pregunta:
+
+Cuando le das a aplicar cambios en la base de datos bulmasetup aplica los 
+parches de actualizacion, en orden, para dejar la base de datos desde 
+cualquier version a la actual.
+
+Esta es la historia.
+
+Salut
+
+El Thursday 18 June 2009 15:23:15 Aron escribió:
+&gt;<i> Otra pregunta tonta:
+</I>&gt;<i> ¿Qué ocurre cuando aplicamos los cambios con la opción &quot;Actualizar la base
+</I>&gt;<i> de datos&quot; activada en el administrador de empresa de facturación en
+</I>&gt;<i> BulmaSetup?
+</I>
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002450.html">[BulmaGés]Función de &quot;Actualizar la base de datos&quot; en BulmaSetup
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002451.html">[BulmaGés] [Bug #15881] NO SE PUEDE CREAR EMPRESA
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2454">[ fecha ]</a>
+              <a href="thread.html#2454">[ hilo ]</a>
+              <a href="subject.html#2454">[ asunto ]</a>
+              <a href="author.html#2454">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

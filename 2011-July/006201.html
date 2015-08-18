@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Exaro causa problemes a la compilació a windows
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FExaro_causa_problemes%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F_a_la_compilaci%3DF3_a_windows%3F%3D&In-Reply-To=%3C20110711112130.GC23209%40upf.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006199.html">
+   <LINK REL="Next"  HREF="006202.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Exaro causa problemes a la compilació a windows </H1>
+    <B>Walter Garcia-Fontes</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FExaro_causa_problemes%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F_a_la_compilaci%3DF3_a_windows%3F%3D&In-Reply-To=%3C20110711112130.GC23209%40upf.edu%3E"
+       TITLE="[BulmaGés]Exaro causa problemes a la compilació a windows">walter.garcia en upf.edu
+       </A><BR>
+    <I>Lun Jul 11 13:21:30 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006199.html">[BulmaGés]Exaro causa problemes a la compilació a windows
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006202.html">[BulmaGés]Exaro causa problemes a la compilació a windows
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6201">[ fecha ]</a>
+              <a href="thread.html#6201">[ hilo ]</a>
+              <a href="subject.html#6201">[ asunto ]</a>
+              <a href="author.html#6201">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>* Daniel Ripoll [11/07/11 11:56]:
+&gt;<i> El 09/07/11 08:31, Walter Garcia-Fontes escribió:
+</I>&gt;<i> &gt; * Toni Asensi Esteve [08/07/11 18:49]:
+</I>&gt;<i> &gt;&gt;&gt;&gt; En el meu cas, intentant compilar-ho tot, en Linux, em diu que:
+</I>&gt;<i> &gt;&gt;&gt;&gt;         
+</I>&gt;<i> &gt;&gt; [...]/bulmages/bulmalib/plugins/pluginbl_exaro/pluginbl_exaro.cpp:44:26:
+</I>&gt;<i> &gt;&gt;&gt;&gt; fatal error: reportengine.h: No existe el fichero o el directorio
+</I>&gt;<i> &gt;&gt;&gt; A mi en Linux (Ubujntu 11.04) em compila perfectament,
+</I>&gt;<i> &gt;&gt;&gt; Walter
+</I>&gt;<i> &gt;&gt; Si jo no compile el codi d'eXaro (desactivant lo de 
+</I>&gt;<i> &gt;&gt; &quot;add_subdirectory(pluginbl_exaro)&quot; en el CMakeLists.txt) a mi també em compila 
+</I>&gt;<i> &gt;&gt; Bulmagés en Linux. El problema apareix, com jo dia,  intentant compilar-ho 
+</I>&gt;<i> &gt;&gt; tot. En Linux tu estàs intentant compilar-ho tot, incloent el codi d'eXaro?
+</I>&gt;<i> &gt; Una altra rectificació: sí que em genera problemes també a Linux,
+</I>&gt;<i> &gt; específicament al &quot;cmake&quot; em dóna exactament el mateix error que a
+</I>&gt;<i> &gt; Windows. 
+</I>&gt;<i> &gt;
+</I>&gt;<i> 
+</I>&gt;<i> A mi em done  l'error de que manca reportengine.h quant faig el &quot;make&quot;
+</I>&gt;<i> tant a Linux com a Windows, encara que aques darrer, la compilació va
+</I>&gt;<i> com i quant vol, a moments compila fins aquí, moments apareix l'error
+</I>&gt;<i> aquell de LIBINTL i i18n, pareix que al compilar, Windows em cobra vida
+</I>&gt;<i> propia.
+</I>&gt;<i> 
+</I>&gt;<i> /pluginbl_exaro.cpp:44:26: error fatal: reportengine.h: No existe el
+</I>&gt;<i> fichero o el directorio
+</I>&gt;<i> compilación terminada.
+</I>
+
+L'error aquest del plugin exaro el pots resoldre comentant la línia
+que comença en &quot;add&quot; al CMakeLists.txt del directori de plugins de
+bulmalib. No sé si amb l'últim commit del Tomeu no s'haurà arreglat.
+
+En quant al LIBINT_LIBRARY a mi com deia em costar trobar la seqüència
+exacta que s'havia d'emprar per definir aquesta variable, però ara no
+em dóna cap problema. Ho repasso:
+
+1) Començar amb un arbre del git net.
+
+2) Obrir el cmake-gui i afegir la variable LIBINTL_LIBRARY. Escollir
+&quot;filepath&quot; i clicar al navegador, anar al directori bin de
+postgresplus versió 4.6 i escollir libintl-8.dll.
+
+3) Clicar sobre &quot;Configure&quot; diversos cops fins que surti tot blanc. 
+
+4) Clicar sobre &quot;Generate&quot;
+
+Així em funciona a mi,
+
+-- 
+Walter Garcia-Fontes
+L'Hospitalet de Llobregat
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006199.html">[BulmaGés]Exaro causa problemes a la compilació a windows
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006202.html">[BulmaGés]Exaro causa problemes a la compilació a windows
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6201">[ fecha ]</a>
+              <a href="thread.html#6201">[ hilo ]</a>
+              <a href="subject.html#6201">[ asunto ]</a>
+              <a href="author.html#6201">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

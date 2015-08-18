@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]presentación
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Futf-8%3Fq%3Fpresentaci%3DC3%3DB3n%3F%3D&In-Reply-To=%3C201312221816.13570.asmond%40gmx.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007771.html">
+   <LINK REL="Next"  HREF="007759.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]presentación </H1>
+    <B>Toni Asensi Esteve</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Futf-8%3Fq%3Fpresentaci%3DC3%3DB3n%3F%3D&In-Reply-To=%3C201312221816.13570.asmond%40gmx.com%3E"
+       TITLE="[BulmaGés]presentación">asmond en gmx.com
+       </A><BR>
+    <I>Dom Dic 22 18:16:13 CET 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007771.html">[BulmaGés]presentación
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007759.html">[BulmaGés] SmtpClient for Qt
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7777">[ fecha ]</a>
+              <a href="thread.html#7777">[ hilo ]</a>
+              <a href="subject.html#7777">[ asunto ]</a>
+              <a href="author.html#7777">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Por si alguien tiene curiosidad, en el std::cout de iostream, lo equivalente a 
+    printf(&quot;%10.2f&quot;, x);
+podía ser    
+    cout &lt;&lt; setw(10) &lt;&lt; setprecision(2) &lt;&lt; showpoint &lt;&lt; x;
+que añadia claridad para quien estaba aprendiendo (se usa &quot;set wide&quot;, &quot;set 
+precision&quot;, &quot;show point&quot;), no se ha de preocupar de tener que especificar el 
+tipo de dato a imprimir, no hay equivocación al especificar el tipo de dato ya 
+que no se especifica, etc. 
+
+Usando otras clases C++, como QString de Qt y QTextStream (que en Qt te 
+permite crear un objeto &quot;QTextStream cout(stdout)&quot; y otros con más 
+funcionalidades):
+1) Lo equivalente a
+    printf(&quot;%10.2f&quot;, x);
+puede ser 
+    cout &lt;&lt; QString().sprintf(&quot;%10.2f&quot;, x);
+lo que tiene sus ventajas :-) a la hora de adaptar un programa antiguo, por 
+poner un ejemplo. 
+
+2) Si se escribe 
+    cout &lt;&lt; QString(&quot;El número es: %1&quot;).arg(x);
+Alguien puede plantearse, ¿y &quot;arg()&quot; no me permitirá especificar la cantidad de 
+decimales a escribir y otras características del formato? Efectivamente:
+    QString::arg(double a, int fieldWidth = 0, char format = 'g', 
+                 int precision = -1, QChar fillChar = QLatin1Char( ' ' ))
+    QString::arg(int a, int fieldWidth = 0, int base = 10, 
+                 QChar fillChar = QLatin1Char( ' ' ))
+    [...]
+Se permite especificar el formato de una forma más clara a primera vista, lo 
+que viene muy bien, como mínimo cuando se está aprendiendo.
+
+_____________________________________________________________________
+
+&gt;<i> &gt; &gt; El ejemplo en ambos lenguajes se resuelve con una línea de código.
+</I>
+&gt;<i> &gt; La verdad es que no se ha visto que en C se pueda resolver ese problema  
+</I>&gt;<i> &gt; con una línea de código.
+</I>
+&gt;<i> Tanto en C como en C++ usarás una funcion que se llama crearDireccion(x,y)
+</I>&gt;<i> y que estará definida en alguna biblioteca. Hecha por tí o por un tercero.
+</I>
+Está pasando algo extraño en una conversación si se acaba de presentar como 
+solución la escritura de una nueva función &quot;crearDireccion(x,y)&quot; tras haberse 
+descrito previamente la función &quot;compose(x,y)&quot;. E incluso después de haberse 
+escrito ejemplos de su uso, de su versión en C++
+    string addr = compose(&#8220;bs&#8221;,&#8221;cs.tamu.edu&#8221;);
+y de su versión en C:
+    char* addr = compose(&#8220;bs&#8221;,&quot;cs.tamu.edu&#8221;);
+    // ...
+    free(addr); // release memory when done
+
+Parece que se esté en conversaciones diferentes, que no nos entendamos. :-(
+
+_____________________________________________________________________
+
+&gt;<i> El típico &quot;Hello World&quot; no puede decirse que sea en C++
+</I>
+C++ permite diversos paradigmas. Si el &quot;Hello world&quot; de C++ no puede decirse 
+que sea en C++, ya es definitivo, no nos entendemos en esta conversación. :-(
+
+_____________________________________________________________________
+
+&gt;<i> ¿Como harias un printf(&quot;%3.5f %-.55d \n&quot;, a, b) con un cout ?.
+</I>
+Con lo bien que está la realización de pruebas antes de escribir, y el tomarse 
+el tiempo necesario para escribir sin errores. Cuando un &quot;hilo&quot; de 
+conversaciones en internet tiene ya un texto excesivo, no hay un 
+entendimiento, no se contestan diversas preguntas, se sigue escribiendo como 
+si nada pasara, la longitud de estos mensajes va demasiado en aumento, se 
+ocupa demasiado tiempo, etc. --&gt; tengo por norma no seguir leyendo el hilo. 
+Así se evitan contestaciones de unos, de otros, etc., simplemente con no leer 
+más el hilo, la situación ya no empeora más, y todos acabamos con la capacidad 
+de dedicarnos a algo productivo y ganando tiempo. ¡OK!
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007771.html">[BulmaGés]presentación
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007759.html">[BulmaGés] SmtpClient for Qt
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7777">[ fecha ]</a>
+              <a href="thread.html#7777">[ hilo ]</a>
+              <a href="subject.html#7777">[ asunto ]</a>
+              <a href="author.html#7777">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

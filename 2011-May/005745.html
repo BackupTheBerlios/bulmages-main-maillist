@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Bug #18095] Relocalización de clases impide carga de plugins.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%5BBug%20%2318095%5D%20Relocalizaci%F3n%20de%20clases%20impide%20carga%20de%20plugins.&In-Reply-To=%3C201105061658.p46GwsmA027862%40unicorn.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005754.html">
+   <LINK REL="Next"  HREF="005752.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Bug #18095] Relocalización de clases impide carga de plugins. </H1>
+    <B>admin en berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%5BBug%20%2318095%5D%20Relocalizaci%F3n%20de%20clases%20impide%20carga%20de%20plugins.&In-Reply-To=%3C201105061658.p46GwsmA027862%40unicorn.berlios.de%3E"
+       TITLE="[Bug #18095] Relocalización de clases impide carga de plugins.">admin en berlios.de
+       </A><BR>
+    <I>Vie Mayo  6 18:58:54 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="005754.html">[BulmaGés]Pregunta tonta de GIT
+</A></li>
+        <LI>Próximo mensaje: <A HREF="005752.html">[BulmaGés][Bug #18095] Relocalización de clases impide carga de plugins.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5745">[ fecha ]</a>
+              <a href="thread.html#5745">[ hilo ]</a>
+              <a href="subject.html#5745">[ asunto ]</a>
+              <a href="author.html#5745">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bug #18095, was updated on 2011-May-04 19:12
+Here is a current snapshot of the bug.
+
+Project: BulmaGes, Gestión Empresarial Libre
+Category: None
+Status: Open
+Resolution: None
+Bug Group: None
+Priority: 5
+Submitted by: mph2
+Assigned to : none
+Summary: Relocalización de clases impide carga de plugins. 
+
+Details: Algunos plugins que he estado estandarizando, me he encontrado con un pequeño, pero gran problema.
+
+Estos plugins tienen su clase principal definida de manera incorrecta. Pej:
+
+pluginbf_contrato:
+pluginbf_contrato.cpp -&gt; Donde debería ir realmente la definición de clase
+contratolist.h -&gt; Declaración de la clase principal PluginBf_Contrato
+pluginbf_contrato.cpp -&gt; Implementación de la clase
+
+Si la movemos al lugar incorrecto, el plugin compila, es instalado, pero sin embargo no funciona, y lo intenta cargar en lugares incorrecto (/usr/local/bulmatpv/.. bulmacont... etc.).
+
+He intentado modificar el orden y demás, pero al parecer el problema en mi opinión esta en el disparador de plugins en bulmalib.
+
+Por ahora, los plugins afectados son:
+
+pluginbf_contrato, pluginbf_comercial, pluginbf_carterapagos, pluginbf_carteracobros
+
+Ahora mismo no veo una solución &quot;rápida&quot; a esto, aparte de mantenerlo en un archivo separado.
+
+Follow-Ups:
+
+Date: 2011-May-06 18:58
+By: mph2
+
+Comment:
+Añado una lista con todos los plugins afectados por este fallo.
+Que según Tomeu deberían poder arreglarse usando los nuevos metodos BlToolButton en lugar de QToolButton, etc...
+
+
+pluginbf_carterapagos:
+PluginBf_CarteraPagos declarado en carterapagoslist.h e implementado en pluginbf_carterapagos.h
+
+
+pluginbf_carteracobros:
+PluginBf_CarteraPagos declarado en carteracobroslist.h e implementado en pluginbf_carteracobros.h
+
+pluginbf_bulmatpv:
+PluginBf_BulmaTPV declarado en zlist.h e implementado en pluginbf_bulmatpv.cpp
+
+
+
+pluginbf_contrato:
+PluginBf_Contrato declarado en contratoslist.h  e implementado en pluginbf_contrato.cpp
+
+
+
+pluginbf_comercial:
+PluginBf_Comercial declarado en comercial.h e implementado en pluginbf_comercial.cpp
+
+
+
+pluginbf_efactura:
+efacturabf definido e implementado correctamente, no obstante lleva sin desarrollarse ni ser incluido en el cmake desde hace mucho:
+  Author: Arturo Martín Llado &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">antar_cheran en yahoo.es</A>&gt;
+  Date:   Thu May 17 17:16:58 2007 +0000
+
+
+
+pluginbf_qwebcam:
+Ultima actualización previa a mi fix masivo en los READMEes de hace mucho tiempo, actualmente tampoco es candidato en cmake:
+  Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en gmail.com</A>&gt;
+  Date:   Thu Jun 5 14:31:21 2008 +0000
+
+
+pluginbf_socio:
+Clases erroneas:
+MyPlugProf que debería ser PluginBf_Socio
+MyPlugTutor1 que podría ser Subform_Tutor
+
+No esta como candidato de compilación, ni tan si quiera aparece comentado en CmakeList.txt de plugins, así que he preferido no tocarlo.
+Lleva sin actulizarse desde:
+commit 1d1cbe1a9b289946ea0061034085e2717cfe943f
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en gmail.com</A>&gt;
+Date:   Tue Jan 25 17:44:10 2011 +0000
+
+
+
+
+pluginbf_tallascolores:
+plugin_tc_articulos debería ser PluginBf_TallasColores
+Declaración de plugin_tc_articulos en plugarticulos.h
+entryPoint definido en pluginarticulos.cpp
+Implementación en plugarticulos.h
+Usa QSubForm3BfDelegate declarado en plugarticulos.h
+Implementado QSubForm3BfDelegate en plugin_tc_articulos.h
+
+
+
+
+pluginbf_tarifa:
+PluginBf_Tarifa declarado en listltarifaview.h e implementado en pluginbf_tarifa.cpp
+
+
+
+pluginbf_trabajo:
+mytiptrab declarado en tiptrab.h e implementado en pluginbf_trabajo.cpp
+
+
+
+pluginbf_vehiculo
+Declarado en los lugares correctos con nombre incorrecto: myplugin, he preferido no tocarlo
+No es candidato a compilación, y lleva mucho tiempo sin ser desarrollado.
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en gmail.com</A>&gt;
+Date:   Sat Oct 13 22:36:44 2007 +0000
+-------------------------------------------------------
+
+For detailed info, follow this link:
+<A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=18095&amp;group_id=4472">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=18095&amp;group_id=4472</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="005754.html">[BulmaGés]Pregunta tonta de GIT
+</A></li>
+	<LI>Próximo mensaje: <A HREF="005752.html">[BulmaGés][Bug #18095] Relocalización de clases impide carga de plugins.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5745">[ fecha ]</a>
+              <a href="thread.html#5745">[ hilo ]</a>
+              <a href="subject.html#5745">[ asunto ]</a>
+              <a href="author.html#5745">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

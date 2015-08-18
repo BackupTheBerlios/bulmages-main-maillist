@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]id + &quot;tabla&quot; da problemas si uso de esquemas de	PostgreSQL
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fid_%2B_%3D22tabla%3D22_da_p%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Froblemas_si_uso_de_esquemas_de%3D09PostgreSQL%3F%3D&In-Reply-To=%3C20090702181320.GA3851%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002595.html">
+   <LINK REL="Next"  HREF="002597.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]id + &quot;tabla&quot; da problemas si uso de esquemas de	PostgreSQL </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fid_%2B_%3D22tabla%3D22_da_p%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Froblemas_si_uso_de_esquemas_de%3D09PostgreSQL%3F%3D&In-Reply-To=%3C20090702181320.GA3851%40localhost%3E"
+       TITLE="[BulmaGés]id + &quot;tabla&quot; da problemas si uso de esquemas de	PostgreSQL">xdrudis en tinet.cat
+       </A><BR>
+    <I>Jue Jul  2 20:13:20 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002595.html">[BulmaGés] id + &quot;tabla&quot; da problemas si uso de	esquemas de PostgreSQL
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002597.html">[BulmaGés] r3543 -	trunk/bulmages/bulmafact/plugins/pluginbf_actividad
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2604">[ fecha ]</a>
+              <a href="thread.html#2604">[ hilo ]</a>
+              <a href="subject.html#2604">[ asunto ]</a>
+              <a href="author.html#2604">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, Jul 02, 2009 at 12:58:08PM +0200, Aron wrote:
+&gt;<i> Otro ejemplo de suponer que el identificador es &quot;idtabla&quot; da error por usar 
+</I>&gt;<i> esquemas cuando hago doble click en un elemento de mi listado:
+</I>&gt;<i> 
+</I>&gt;<i> BlDbRecordSet::BlDbRecordSet: Error en la consulta: SELECT * FROM 
+</I>&gt;<i> &quot;ESQUEMA&quot;.&quot;TABLA&quot; WHERE id&quot;ESQUEMA&quot;.&quot;TABLA&quot;= $1 
+</I>&gt;<i> 
+</I>
+I perquè ho fas?. Pots simplement canviar l'ordre de cerca d'esquemes dels usuaris 
+que calgui al postgres i llavors només fer 
+SELECT * FROM TABLA WHERE idTABLA= $1 
+
+no ?  Només cal haver configurat els usuaris amb
+
+alter role usuari set search_path to  &quot;ESQUEMA&quot;,public;
+
+O vols accedir a &quot;ESQUEMA&quot;.&quot;TAULA&quot; a vegades i a &quot;TAULA&quot; a vegades  ? 
+
+En tot cas t'aviso que això de idtaula (o coditaula o pvptaula, etc.) 
+és un conveni molt omnipresent a bulmafact. I tampoc ho trobo especialment
+malament. Es perd una mica de flexibilitat però es guanya simplicitat.
+
+
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>
+Signa per fer Collserola parc natural com cal
+<A HREF="http://www.collserola.org/salvemelparcnatural/">http://www.collserola.org/salvemelparcnatural/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002595.html">[BulmaGés] id + &quot;tabla&quot; da problemas si uso de	esquemas de PostgreSQL
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002597.html">[BulmaGés] r3543 -	trunk/bulmages/bulmafact/plugins/pluginbf_actividad
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2604">[ fecha ]</a>
+              <a href="thread.html#2604">[ hilo ]</a>
+              <a href="subject.html#2604">[ asunto ]</a>
+              <a href="author.html#2604">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

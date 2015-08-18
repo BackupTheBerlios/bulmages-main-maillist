@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] Sincronizacion postGresql asincrona	multipuesto
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Sincronizacion%20postGresql%20asincrona%0A%09multipuesto&In-Reply-To=%3CCAJWqEtdxXrKk1_-gZtVYybh9H_7WczS27yBQm4ZNE6GsTitAzQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007669.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] Sincronizacion postGresql asincrona	multipuesto </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Sincronizacion%20postGresql%20asincrona%0A%09multipuesto&In-Reply-To=%3CCAJWqEtdxXrKk1_-gZtVYybh9H_7WczS27yBQm4ZNE6GsTitAzQ%40mail.gmail.com%3E"
+       TITLE="[BulmaGés] Sincronizacion postGresql asincrona	multipuesto">tborras en conetxia.com
+       </A><BR>
+    <I>Dom Jun 30 19:36:33 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007669.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+        
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7670">[ fecha ]</a>
+              <a href="thread.html#7670">[ hilo ]</a>
+              <a href="subject.html#7670">[ asunto ]</a>
+              <a href="author.html#7670">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>O sea:
+
+Vayamos a lo difícil, que resuleve prácticamente todos los casos y el resto
+será un paseo por la playa.
+
+
+Os pongo en antecedentes del problema: Dos bases de datos que en un momento
+conocido A estaban sincronizadas y ahora no lo están. Debemos idear un
+proceso para volverlas a tener en un estado de sincronización (Es decir que
+sean iguales). Es el típico caso donde alguien se lleva la empresa en el
+portátil y luego quiere adjuntar los cambios realizados a la
+principal. (Como es largo y tedioso vamos a suponer que queremos mantener
+sincronizada únicamente una tabla sin claves foráneas que vayan a complicar
+el tema, este tema lo trataremos luego.)
+
+Lo que si tenemos es un riguroso registro de cambios sucedidos en ambas
+bases de datos desde el momento A hasta el momento actual. Supongamos
+además que en las tablas sólo se hacen las operaciones INSERT, UPDATE y
+DELETE.
+
+Supongamos además que las bases de datos son predecibles. Es decir que no
+hay disparadores que en función del tiempo (o de  la aleatoriedad) metan
+mano a los datos.
+
+También ayudará bastante que ambas bases de datos tienen identificadores
+únicos para todos sus registros y que no se han repetido nunca, ni
+reutilizado varias veces (vuestros odiados autonuméricos) y que todas las
+tablas los tienen (Esto simplificara muchísimo la creación del log). En
+definitiva que no se hace nunca jamás una alteración de la clave primaria
+de las tablas.
+
+Y ya de paso .... como a nosotros nos va así ... podemos alargar el
+requisito a que todas las FK's estan bien referenciadas y con comprobación
+estricta
+
+Cumpliendo con estos requisitos vamos a ver que podemos hacer y diseñar un
+algoritmo de sincronización.
+
+Llamaremos log1 y log2 a los respectivos logs de ambas bases de datos.
+
+Diremos que un registro de la base de datos esta afectado por la
+sincronizacion si aparece en el log1 o log2 y que esta en conflicto si
+aparece en ambos logs.
+
+Para sincronizar los registros afectados que no estan en conflicto
+traspasamos a la otra base de datos el cambio indicado en el log y asunto
+resuelto.
+
+Para resolver los conflictos voy a elaborar una tabla con el tipo de
+operacion realizada y voy a hacer distinción de casos:
+
+Pondré tuplas de operaciones en un log y en otro (op1, op2)  que significa
+que operaciones realizadas en cada uno de los logs en el registro en
+conflicto. Sólo pongo la mitad de la tabla porque es simétrica y se deben
+aplicar las mismas medidas.
+
+
+INSERT INSERT : Es un caso en el que se han hecho inserciones en la misma
+tabla y ambas (aunque distintas)  han cogido el mismo identificador. Este
+problema se podría evitar asignando rangos de inserción distintos para los
+identificadores en cada una de las réplicas.
+ Pero si aun así se diese el caso la solución es hacer los inserts
+faltantes en ambas bases de datos y luego ajustar los identificadores para
+que sean los mismos en ambas bases de datos.
+
+INSERT UPDATE: No puede darse &quot;teóricamente&quot; sin que antes  haya habido un
+conflicto de tipo INSERT INSERT que lo solucionase. De aqui se deduce que
+si se arreglan, o tocan, identificadores el log también debe reajustarse
+para los siguientes problemas (Principalmente con las FK's).
+
+INSERT DELETE: Exactamente igual que el caso anterior. No debería ocurrir.
+No se puede borrar un registro que antes no existía.
+
+
+UPDATE UPDATE: Es un auténtico conflicto. Hay que comparar datos,
+entremezclar, usar sistemas cronológicos y también preguntar. Puede
+requerir intervención manual.
+
+UPDATE DELETE: Es un auténtico conflicto. Hay que comparar datos,
+entremezclar, usar sistemas cronológicos y también preguntar. Puede
+requerir intervención manual. No sabemos si se actualizó antes o después
+del borrado o si se quería borrar tras el UPDATE.
+
+
+Las FK's pueden dar algun dolor de cabeza intentando resolver un conflicto
+de forma desordenada. Por eso una primera mejora es intentar combinar ambos
+logs y ordenarlos cronológicamente a fin de disminuir posibilidades de
+conflico. Por suerte el NTP ha ayudado bastante en esto.
+
+
+
+Reconozco que este es el peor de los casos posibles en cuanto a
+sincronización ya que los otros modos descritos no dan pie a conflictos que
+deban resolverse manualmente.
+
+
+Este proceso no evita la existencia de cooperación por parte del usuario.
+¿Quien no ha duplicado toda su libreta de contactos del móvil al intentar
+sincronizarla con OutLook? Pero hecho con cabeza y un poco de organización
+puede ir bastante bien.
+
+Asignar rangos de insercion en las tablas es una buena idea que elimina la
+mitad de los problemas y tener las fechas de los ordenadores bien
+actualizadas con NTP puede eliminar el 90% de la otra mitad. También
+podemos ayudar en el momento de la sincronización haciendo comparación de
+fechas y metiendo en el LOG registros de control.
+
+De hecho si consideramos firme el tema de registros ordenados
+cronologicamente el algoritmo se puede optimizar mucho ya que se combinan
+ordenadamente por fecha ambos registros y se va sincronizando desde el
+momento A hasta el final haciendo desplazar para las comparaciones el
+momento A a medida que se va sincronizando.
+
+
+Teniendo en cuenta como es el trabajo de la facturación y contabilidad y
+como se organizan los trabajadores en torno a este hay muchos puntos a
+favor de este método:
+
+Prácticamente todo serán INSERTS o UPDATES sobre INSERTS creados en el
+mismo lado (pocos conflictos). No suelen hacerse DELETES. El exceso de
+conflictos sería en realidad un indicio de que hay un empleado tocón al que
+hay que cortarle las manos, o que el sistema de permisos no está bien
+establecido en la empresa.
+
+El tema de mantenimiento de permisos no voy a tratarlo. Ya sabeis .....
+&quot;Divide y vencerás&quot;
+
+Me ha salido un poco largo. Igual habría tardado menos en hacerlo que en
+explicarlo. Es a lo que me voy a dedicar a partir de  ahora.
+
+Salut
+
+-- 
+Tomeu Borrás
+Conetxia Soluciones Informáticas
+677 77 44 76
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20130630/e428e7c7/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20130630/e428e7c7/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007669.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+	
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7670">[ fecha ]</a>
+              <a href="thread.html#7670">[ hilo ]</a>
+              <a href="subject.html#7670">[ asunto ]</a>
+              <a href="author.html#7670">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

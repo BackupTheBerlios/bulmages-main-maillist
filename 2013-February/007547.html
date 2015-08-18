@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130224173922.35777F80%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007546.html">
+   <LINK REL="Next"  HREF="007548.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130224173922.35777F80%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Dom Feb 24 18:39:22 CET 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007546.html">[BulmaGés]Probando la versión de Qt5
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007548.html">[BulmaGés]Probando la versión de Qt5
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7547">[ fecha ]</a>
+              <a href="thread.html#7547">[ hilo ]</a>
+              <a href="subject.html#7547">[ asunto ]</a>
+              <a href="author.html#7547">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from a9cf379 to 3431c77
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/a9cf3798eb6beb7e2b1120768de9c91167cb080b/diffs/3431c774262b916235176b02a7bd1c4e0c2fe92c">https://gitorious.org/bulmages/bulmages/commit/a9cf3798eb6beb7e2b1120768de9c91167cb080b/diffs/3431c774262b916235176b02a7bd1c4e0c2fe92c</A>
+
+Diff: 
+
+commit 3431c774262b916235176b02a7bd1c4e0c2fe92c
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sun Feb 24 18:38:59 2013 +0100
+
+    Arreglo la compilacion de la rama master con Windows y arreglo un error en la base de datos que se produjo
+    con la incorporacion del IRPF.
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorcodigos/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_proveedorcodigos/CMakeLists.txt
+index fa05afe..24c1e29 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorcodigos/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorcodigos/CMakeLists.txt
+@@ -45,7 +45,7 @@ QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
+ 
+ IF(WIN32)
+ SET(CMAKE_SHARED_LINKER_FLAGS &quot;${CMAKE_SHARED_LINKER_FLAGS} -Wl,-enable-auto-import&quot;)
+-ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBF_ALIAS)
++ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBF_PROVEEDORCODIGOS)
+ ENDIF(WIN32)
+ 
+ 
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_clientsync/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_clientsync/CMakeLists.txt
+index aae5d12..3cabaa4 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_clientsync/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_clientsync/CMakeLists.txt
+@@ -18,6 +18,7 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ set(QT_USE_QTASSISTANT false)
+ set(QT_USE_QTXML true)
+ set(QT_USE_QTSCRIPT true)
++set(QT_USE_QTNETWORK true)
+ 
+ INCLUDE( ${QT_USE_FILE} )
+ 
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_serverlight/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_serverlight/CMakeLists.txt
+index 03cfe65..f006300 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_serverlight/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_serverlight/CMakeLists.txt
+@@ -18,6 +18,7 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ set(QT_USE_QTASSISTANT false)
+ set(QT_USE_QTXML true)
+ set(QT_USE_QTSCRIPT true)
++set(QT_USE_QTNETWORK true)
+ 
+ INCLUDE( ${QT_USE_FILE} )
+ 
+diff --git a/bulmages/installbulmages/dbmodels/crear/bulmafact/bulmafact_schema.sql b/bulmages/installbulmages/dbmodels/crear/bulmafact/bulmafact_schema.sql
+index b51640e..4d5350b 100644
+--- a/bulmages/installbulmages/dbmodels/crear/bulmafact/bulmafact_schema.sql
++++ b/bulmages/installbulmages/dbmodels/crear/bulmafact/bulmafact_schema.sql
+@@ -1491,7 +1491,7 @@ BEGIN
+ 
+     SELECT INTO rs tasairpf FROM irpf WHERE fechairpf &lt;= (SELECT ffactura FROM factura WHERE idfactura = idp) ORDER BY fechairpf DESC LIMIT 1;
+     IF FOUND THEN
+-        totalIRPF := totalBImponibleLineas * (rs.valor / 100);
++        totalIRPF := totalBImponibleLineas * (rs.tasairpf / 100);
+     END IF;
+ 
+     FOR rs IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura / 100) * (ivalfactura / 100) AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
+@@ -2897,7 +2897,7 @@ BEGIN
+ 
+     SELECT INTO rs tasairpf FROM irpf WHERE fechairpf &lt;= (SELECT fpresupuesto FROM presupuesto WHERE idpresupuesto = idp) ORDER BY fechairpf DESC LIMIT 1;
+     IF FOUND THEN
+-        totalIRPF := totalBImponibleLineas * (rs.valor / 100);
++        totalIRPF := totalBImponibleLineas * (rs.tasairpf / 100);
+     END IF;
+ 
+     FOR rs IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) * (ivalpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
+@@ -2996,7 +2996,7 @@ BEGIN
+ 
+     SELECT INTO rs tasairpf FROM irpf WHERE fechairpf &lt;= (SELECT fechapedidocliente FROM pedidocliente WHERE idpedidocliente = idp) ORDER BY fechairpf DESC LIMIT 1;
+     IF FOUND THEN
+-        totalIRPF := totalBImponibleLineas * (rs.valor / 100);
++        totalIRPF := totalBImponibleLineas * (rs.tasairpf / 100);
+     END IF;
+ 
+     FOR rs IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) * (ivalpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
+@@ -3095,7 +3095,7 @@ BEGIN
+ 
+     SELECT INTO rs tasairpf FROM irpf WHERE fechairpf &lt;= (SELECT fechaalbaran FROM albaran WHERE idalbaran = idp) ORDER BY fechairpf DESC LIMIT 1;
+     IF FOUND THEN
+-        totalIRPF := totalBImponibleLineas * (rs.valor / 100);
++        totalIRPF := totalBImponibleLineas * (rs.tasairpf / 100);
+     END IF;
+ 
+     FOR rs IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) * (ivalalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007546.html">[BulmaGés]Probando la versión de Qt5
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007548.html">[BulmaGés]Probando la versión de Qt5
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7547">[ fecha ]</a>
+              <a href="thread.html#7547">[ hilo ]</a>
+              <a href="subject.html#7547">[ asunto ]</a>
+              <a href="author.html#7547">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

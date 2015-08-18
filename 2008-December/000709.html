@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] Script para limitar usuarios.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Script%20para%20limitar%20usuarios.&In-Reply-To=%3C8c64fb150812291644n60c0afbai337e9e078df55a05%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000699.html">
+   <LINK REL="Next"  HREF="000710.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] Script para limitar usuarios. </H1>
+    <B>Albert Mas</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Script%20para%20limitar%20usuarios.&In-Reply-To=%3C8c64fb150812291644n60c0afbai337e9e078df55a05%40mail.gmail.com%3E"
+       TITLE="[BulmaGés] Script para limitar usuarios.">albertmas en termens.cat
+       </A><BR>
+    <I>Mar Dic 30 01:44:43 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000699.html">[BulmaGés] r2877 - in	trunk/bulmages/bulmafact/plugins: pluginbarcodeopen	plugincompraventa pluginetiquetado pluginpedidoprov
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000710.html">[BulmaGés]Script para limitar usuarios.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#709">[ fecha ]</a>
+              <a href="thread.html#709">[ hilo ]</a>
+              <a href="subject.html#709">[ asunto ]</a>
+              <a href="author.html#709">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola a todos, hoy tenemos una importante novedad, una genialidad de
+Tomeu que seguro que a mas de uno le vendrá genial.
+
+Primero de todo agradecer a Tomeu por la faena realizada.
+
+Explicación de la situación:
+Tenemos un servidor con FreeNX al que damos acceso a varios usuarios.
+Cada usuario dispone de una o varias empresa en Bulmages pero no
+queremos que al abrir la aplicación puedan ver y acceder a las otras
+empresas.
+
+Si creamos el usuario de sistema y posteriormente el usuario de
+postgres con bulmasetup estamos dando acceso a todo y en este caso
+esto es fatal.
+
+Solución y proceso:
+1. Primero de todo vamos a crear las empresas con bulmasetup con el
+proceso habitual.
+2. Creamos el usuario de sistema.
+3. Con usuario postgres crearemos el usuario haciendo:
+sudo su (vamos a root)
+su postgres (ahora ya somos usuario postgres)
+createuser NOMBREUSUARIO (esto nos crearà el usuario, recordad que
+tiene que tener el mismo nombre que el usuario de sistema)
+4. No dar ningún permiso al usuario.
+
+5. Copiamos el script adjunto en /home/administrador/bin (sustituye
+administrador por su super usuario)
+
+6. con usuario postgres, accedemos a la carpeta donde hemos copiado el
+script i lo ejecutamos así:
+./grantall.sh NOMBREBBDD NOMBREUSUARIO (sustituit NOMBREBBDD por el de
+la base de datos y NOMBREUSUARIO por el del usuari creado y de
+sistema)
+
+7. Entrar en bulmafact con el nuevo usuario y refrescar empresas.
+
+Ya esta!
+
+Ahora si a un servidor acceden varios usuarios y hay distintas
+empresas de bulmages solo veran la suya.
+
+Atención:
+El script se puede ejecutar tantas veces como queramos, pero en
+principio solo sera necesario ejecutarlo en caso de que se creen
+nuevas tablas en la base de datos (cosa poco habitual).
+
+
+Reitero las gracias a Tomeu y os felicito el año a todos.
+
+__________________
+Albert Mas
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">albertmas en termens.cat</A>
+blog: <A HREF="http://www.turkil.net">http://www.turkil.net</A>
+------------ próxima parte ------------
+A non-text attachment was scrubbed...
+Name: grantall.sh
+Type: application/x-sh
+Size: 478 bytes
+Desc: no disponible
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20081230/2ac01a99/attachment.sh">https://lists.berlios.de/pipermail/bulmages-main/attachments/20081230/2ac01a99/attachment.sh</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000699.html">[BulmaGés] r2877 - in	trunk/bulmages/bulmafact/plugins: pluginbarcodeopen	plugincompraventa pluginetiquetado pluginpedidoprov
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000710.html">[BulmaGés]Script para limitar usuarios.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#709">[ fecha ]</a>
+              <a href="thread.html#709">[ hilo ]</a>
+              <a href="subject.html#709">[ asunto ]</a>
+              <a href="author.html#709">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

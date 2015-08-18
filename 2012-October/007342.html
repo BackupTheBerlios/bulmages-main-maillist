@@ -1,0 +1,516 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: themeph pushed 2	commits to release...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-October/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20themeph%20pushed%202%0A%09commits%20to%20release...&In-Reply-To=%3C20121025211047.ACD96756F2%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007338.html">
+   <LINK REL="Next"  HREF="007343.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: themeph pushed 2	commits to release... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20themeph%20pushed%202%0A%09commits%20to%20release...&In-Reply-To=%3C20121025211047.ACD96756F2%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: themeph pushed 2	commits to release...">no-reply en gitorious.org
+       </A><BR>
+    <I>Jue Oct 25 23:10:47 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007338.html">[BulmaGés]Hola a todos, nueva en la lista
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007343.html">[BulmaGés] Continuamos ordenando (nsis_bulmages	extraido)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7342">[ fecha ]</a>
+              <a href="thread.html#7342">[ hilo ]</a>
+              <a href="subject.html#7342">[ asunto ]</a>
+              <a href="author.html#7342">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+themeph pushed 2 commits to release
+release changed from 7ce3afd to 3957448
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/7ce3afdd819b089f628d32e72cd80e9828092041/diffs/395744888de86c0d138381818ff81a023d66c138">https://gitorious.org/bulmages/bulmages/commit/7ce3afdd819b089f628d32e72cd80e9828092041/diffs/395744888de86c0d138381818ff81a023d66c138</A>
+
+Diff: 
+
+commit 395744888de86c0d138381818ff81a023d66c138
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri Sep 28 22:18:43 2012 +0200
+
+    Arreglo warning en el instalador de windows
+
+diff --git a/nsis_bulmages/NSIS_includes/install_section.nsh b/nsis_bulmages/NSIS_includes/install_section.nsh
+index 85f17c2..42c2787 100644
+--- a/nsis_bulmages/NSIS_includes/install_section.nsh
++++ b/nsis_bulmages/NSIS_includes/install_section.nsh
+@@ -102,13 +102,13 @@ Section &quot;Archivos Comunes&quot; SecInstall
+   !include &quot;NSIS_includes\bulmasetup.bat.tpt&quot;
+   File /oname=bulmasetup.vbs &quot;bulmasetup.vbs&quot;
+   
+-  CreateDirectory &quot;$SMPROGRAMS\Bulmages\Tools&quot;
+-  CreateShortCut &quot;$SMPROGRAMS\Bulmages\Tools\pgAdmin3.lnk&quot; &quot;$INSTDIR\pgsql\bin\pgAdmin3.vbs&quot; &quot;&quot; &quot;$INSTDIR\pgsql\bin\pgsql.ico&quot; 0 SW_SHOWNORMAL
++  CreateDirectory &quot;$SMPROGRAMS\Bulmages\Herramientas&quot;
++  CreateShortCut &quot;$SMPROGRAMS\Bulmages\Herramientas\pgAdmin3.lnk&quot; &quot;$INSTDIR\pgsql\bin\pgAdmin3.vbs&quot; &quot;&quot; &quot;$INSTDIR\pgsql\bin\pgsql.ico&quot; 0 SW_SHOWNORMAL
+ ;  CreateShortCut &quot;$SMPROGRAMS\Bulmages\Tools\BG_Backup.lnk&quot; &quot;$INSTDIR\program\Bulmages_Backup_Tool.exe&quot; &quot;&quot; &quot;$INSTDIR\program\backup.ico&quot; 0 SW_SHOWNORMAL
+ ;  CreateShortCut &quot;$SMPROGRAMS\Bulmages\Tools\BG_Restore.lnk&quot; &quot;$INSTDIR\program\Bulmages_Restore_Tool.exe&quot; &quot;&quot; &quot;$INSTDIR\program\restore.ico&quot; 0 SW_SHOWNORMAL
+-  CreateShortCut &quot;$SMPROGRAMS\Bulmages\Tools\BG_Desinstalar.lnk&quot; &quot;$INSTDIR\desinstalar.exe&quot; &quot;&quot; &quot;&quot; 0
++  CreateShortCut &quot;$SMPROGRAMS\Bulmages\Herramientas\Desinstalar.lnk&quot; &quot;$INSTDIR\desinstalar.exe&quot; &quot;&quot; &quot;&quot; 0
+ ;  CreateShortCut &quot;$SMPROGRAMS\Bulmages\Tools\BG_Nueva_Empresa.lnk&quot; &quot;$INSTDIR\program\Bulmages_CreateCompany_Tool.exe&quot; &quot;&quot; &quot;$INSTDIR\program\nuevaemp.ico&quot; 0 SW_SHOWNORMAL
+-  CreateShortCut &quot;$SMPROGRAMS\Bulmages\Tools\BulmaSetup.lnk&quot; &quot;$INSTDIR\bulmasetup\bulmasetup.vbs&quot; &quot;&quot; &quot;$INSTDIR\program\nuevaemp.ico&quot; 0 SW_SHOWNORMAL
++  CreateShortCut &quot;$SMPROGRAMS\Bulmages\BulmaSetup.lnk&quot; &quot;$INSTDIR\bulmasetup\bulmasetup.vbs&quot; &quot;&quot; &quot;$INSTDIR\program\nuevaemp.ico&quot; 0 SW_SHOWNORMAL
+   
+   ;Initialize PostgreSQL
+   DetailPrint 'Iniciando base de datos...'
+diff --git a/nsis_bulmages/NSIS_includes_comunes/include_functions.nsh b/nsis_bulmages/NSIS_includes_comunes/include_functions.nsh
+index 26084d8..18b059c 100644
+--- a/nsis_bulmages/NSIS_includes_comunes/include_functions.nsh
++++ b/nsis_bulmages/NSIS_includes_comunes/include_functions.nsh
+@@ -1,151 +1,151 @@
+-;
+-; Borra un directorio solo si esta vacio
+-;
+-; uso:
+-;       StrCpy $0 &quot;$SMPROGRAMS\DirectorioABorrar&quot;
+-;       Call un.DeleteDirIfEmpty
+-;
+-Function un.DeleteDirIfEmpty
+-  FindFirst $R0 $R1 &quot;$0\*.*&quot;
+-  strcmp $R1 &quot;.&quot; 0 NoDelete
+-   FindNext $R0 $R1
+-   strcmp $R1 &quot;..&quot; 0 NoDelete
+-    ClearErrors
+-    FindNext $R0 $R1
+-    IfErrors 0 NoDelete
+-     FindClose $R0
+-     Sleep 1000
+-     RMDir &quot;$0&quot;
+-  NoDelete:
+-   FindClose $R0
+-FunctionEnd
+-
+-
+-
+-
+-;
+-;Funcion que sirve para reemplazar coincidencias dentro de un archivo.
+-;
+-Function AdvReplaceInFile
+-Exch $0 ;file to replace in
+-Exch
+-Exch $1 ;number to replace after
+-Exch
+-Exch 2
+-Exch $2 ;replace and onwards
+-Exch 2
+-Exch 3
+-Exch $3 ;replace with
+-Exch 3
+-Exch 4
+-Exch $4 ;to replace
+-Exch 4
+-Push $5 ;minus count
+-Push $6 ;universal
+-Push $7 ;end string
+-Push $8 ;left string
+-Push $9 ;right string
+-Push $R0 ;file1
+-Push $R1 ;file2
+-Push $R2 ;read
+-Push $R3 ;universal
+-Push $R4 ;count (onwards)
+-Push $R5 ;count (after)
+-Push $R6 ;temp file name
+- 
+-  GetTempFileName $R6
+-  FileOpen $R1 $0 r ;file to search in
+-  FileOpen $R0 $R6 w ;temp file
+-   StrLen $R3 $4
+-   StrCpy $R4 -1
+-   StrCpy $R5 -1
+- 
+-loop_read:
+- ClearErrors
+- FileRead $R1 $R2 ;read line
+- IfErrors exit
+- 
+-   StrCpy $5 0
+-   StrCpy $7 $R2
+- 
+-loop_filter:
+-   IntOp $5 $5 - 1
+-   StrCpy $6 $7 $R3 $5 ;search
+-   StrCmp $6 &quot;&quot; file_write1
+-   StrCmp $6 $4 0 loop_filter
+- 
+-StrCpy $8 $7 $5 ;left part
+-IntOp $6 $5 + $R3
+-IntCmp $6 0 is0 not0
+-is0:
+-StrCpy $9 &quot;&quot;
+-Goto done
+-not0:
+-StrCpy $9 $7 &quot;&quot; $6 ;right part
+-done:
+-StrCpy $7 $8$3$9 ;re-join
+- 
+-IntOp $R4 $R4 + 1
+-StrCmp $2 all loop_filter
+-StrCmp $R4 $2 0 file_write2
+-IntOp $R4 $R4 - 1
+- 
+-IntOp $R5 $R5 + 1
+-StrCmp $1 all loop_filter
+-StrCmp $R5 $1 0 file_write1
+-IntOp $R5 $R5 - 1
+-Goto file_write2
+- 
+-file_write1:
+- FileWrite $R0 $7 ;write modified line
+-Goto loop_read
+- 
+-file_write2:
+- FileWrite $R0 $R2 ;write unmodified line
+-Goto loop_read
+- 
+-exit:
+-  FileClose $R0
+-  FileClose $R1
+- 
+-   SetDetailsPrint none
+-  Delete $0
+-  Rename $R6 $0
+-  Delete $R6
+-   SetDetailsPrint both
+- 
+-Pop $R6
+-Pop $R5
+-Pop $R4
+-Pop $R3
+-Pop $R2
+-Pop $R1
+-Pop $R0
+-Pop $9
+-Pop $8
+-Pop $7
+-Pop $6
+-Pop $5
+-Pop $0
+-Pop $1
+-Pop $2
+-Pop $3
+-Pop $4
+-FunctionEnd
+-
+-
+-
+-
+-; Devuelve el 'size' del archivo
+-Function FileSize
+- 
+-  Exch $0
+-  Push $1
+-  FileOpen $1 $0 &quot;r&quot;
+-  FileSeek $1 0 END $0
+-  FileClose $1
+-  Pop $1
+-  Exch $0
+- 
+-FunctionEnd
+-
++;
++; Borra un directorio solo si esta vacio
++;
++; uso:
++;       StrCpy $0 &quot;$SMPROGRAMS\DirectorioABorrar&quot;
++;       Call un.DeleteDirIfEmpty
++;
++Function un.DeleteDirIfEmpty
++  FindFirst $R0 $R1 &quot;$0\*.*&quot;
++  strcmp $R1 &quot;.&quot; 0 NoDelete
++   FindNext $R0 $R1
++   strcmp $R1 &quot;..&quot; 0 NoDelete
++    ClearErrors
++    FindNext $R0 $R1
++    IfErrors 0 NoDelete
++     FindClose $R0
++     Sleep 1000
++     RMDir &quot;$0&quot;
++  NoDelete:
++   FindClose $R0
++FunctionEnd
++
++
++
++
++;
++;Funcion que sirve para reemplazar coincidencias dentro de un archivo.
++;
++Function AdvReplaceInFile
++Exch $0 ;file to replace in
++Exch
++Exch $1 ;number to replace after
++Exch
++Exch 2
++Exch $2 ;replace and onwards
++Exch 2
++Exch 3
++Exch $3 ;replace with
++Exch 3
++Exch 4
++Exch $4 ;to replace
++Exch 4
++Push $5 ;minus count
++Push $6 ;universal
++Push $7 ;end string
++Push $8 ;left string
++Push $9 ;right string
++Push $R0 ;file1
++Push $R1 ;file2
++Push $R2 ;read
++Push $R3 ;universal
++Push $R4 ;count (onwards)
++Push $R5 ;count (after)
++Push $R6 ;temp file name
++ 
++  GetTempFileName $R6
++  FileOpen $R1 $0 r ;file to search in
++  FileOpen $R0 $R6 w ;temp file
++   StrLen $R3 $4
++   StrCpy $R4 -1
++   StrCpy $R5 -1
++ 
++loop_read:
++ ClearErrors
++ FileRead $R1 $R2 ;read line
++ IfErrors exit
++ 
++   StrCpy $5 0
++   StrCpy $7 $R2
++ 
++loop_filter:
++   IntOp $5 $5 - 1
++   StrCpy $6 $7 $R3 $5 ;search
++   StrCmp $6 &quot;&quot; file_write1
++   StrCmp $6 $4 0 loop_filter
++ 
++StrCpy $8 $7 $5 ;left part
++IntOp $6 $5 + $R3
++IntCmp $6 0 is0 not0
++is0:
++StrCpy $9 &quot;&quot;
++Goto done
++not0:
++StrCpy $9 $7 &quot;&quot; $6 ;right part
++done:
++StrCpy $7 $8$3$9 ;re-join
++ 
++IntOp $R4 $R4 + 1
++StrCmp $2 all loop_filter
++StrCmp $R4 $2 0 file_write2
++IntOp $R4 $R4 - 1
++ 
++IntOp $R5 $R5 + 1
++StrCmp $1 all loop_filter
++StrCmp $R5 $1 0 file_write1
++IntOp $R5 $R5 - 1
++Goto file_write2
++ 
++file_write1:
++ FileWrite $R0 $7 ;write modified line
++Goto loop_read
++ 
++file_write2:
++ FileWrite $R0 $R2 ;write unmodified line
++Goto loop_read
++ 
++exit:
++  FileClose $R0
++  FileClose $R1
++ 
++   SetDetailsPrint none
++  Delete $0
++  Rename $R6 $0
++  Delete $R6
++   SetDetailsPrint both
++ 
++Pop $R6
++Pop $R5
++Pop $R4
++Pop $R3
++Pop $R2
++Pop $R1
++Pop $R0
++Pop $9
++Pop $8
++Pop $7
++Pop $6
++Pop $5
++Pop $0
++Pop $1
++Pop $2
++Pop $3
++Pop $4
++FunctionEnd
++
++
++
++
++; Devuelve el 'size' del archivo
++;Function FileSize
++ 
++;  Exch $0
++;  Push $1
++;  FileOpen $1 $0 &quot;r&quot;
++;  FileSeek $1 0 END $0
++;  FileClose $1
++;  Pop $1
++;  Exch $0
++ 
++;FunctionEnd
++
+
+commit 3598b8927170575ca30b4bba6eb0ff42b61aa202
+Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon Aug 20 10:15:46 2012 +0200
+
+    Quito subcarpetas en el menu de instalacion para Windows
+
+diff --git a/nsis_bulmages/NSIS_includes/install_section.nsh b/nsis_bulmages/NSIS_includes/install_section.nsh
+index 166adab..85f17c2 100644
+--- a/nsis_bulmages/NSIS_includes/install_section.nsh
++++ b/nsis_bulmages/NSIS_includes/install_section.nsh
+@@ -40,22 +40,9 @@ Section &quot;Archivos Comunes&quot; SecInstall
+   Push &quot;$INSTDIR\etc\bulmages.conf&quot; #file to replace in
+   Call AdvReplaceInFile
+   
+-  
+-  ; Generamos todos los confs 
+-  ;SetOutPath &quot;$INSTDIR\confs&quot;
+-  ;File confs\*
+-  
+-  ;SetOutPath &quot;$INSTDIR\bgtrml2pdf&quot;
+-  ;CONFIG FILES...
+-  ;File /oname=bgtrml2pdf &quot;bgtrml2pdf\bgtrml2pdf&quot;
+-  ;File /oname=bgcolor.py &quot;bgtrml2pdf\bgcolor.py&quot;
+-  ;File /oname=bgutils.py &quot;bgtrml2pdf\bgutils.py&quot;
+-  ;File /oname=svgimage.py &quot;bgtrml2pdf\svgimage.py&quot;
+-  
+ ;  SetOutPath &quot;$INSTDIR&quot;
+ ; Instalamos el bgtrml2pdf
+   SetOutPath &quot;$INSTDIR\share\bulmages\bgtrml2pdf&quot;
+-;  !insertmacro InstallFolderFromSrc bgtrml2pdf &quot;\share\bulmages\bgtrml2pdf&quot; 
+   File /oname=flip.exe &quot;flip.exe&quot;    
+   !insertmacro InstallFilesFromSrc bgtrml2pdf &quot;\bin\bgtrml2pdf&quot;
+   
+@@ -192,11 +179,9 @@ Section &quot;BulmaFact&quot;
+   !include &quot;NSIS_includes\include_bulmafact_es_ES_install.nsh&quot;
+ 
+   ;Shortcuts
+-  CreateDirectory &quot;$SMPROGRAMS\Bulmages\Fact&quot;
+-
++  CreateDirectory &quot;$SMPROGRAMS\Bulmages&quot;
+   SetOutPath &quot;$INSTDIR\program&quot;
+-  CreateShortCut &quot;$SMPROGRAMS\Bulmages\Fact\Facturacion.lnk&quot; &quot;$INSTDIR\program\bulmafact.vbs&quot; &quot;&quot; &quot;$INSTDIR\program\Bulmages_fact_install.ico&quot; 0 SW_SHOWMAXIMIZED
+-  ;CreateShortCut &quot;$SMPROGRAMS\Bulmages\Fact\BG_Fact (demo).lnk&quot; &quot;$INSTDIR\program\bulmafact.vbs&quot; &quot;demo_tpv&quot; &quot;$INSTDIR\program\Bulmages_fact_install.ico&quot; 0 SW_SHOWMAXIMIZED
++  CreateShortCut &quot;$SMPROGRAMS\Bulmages\Facturacion.lnk&quot; &quot;$INSTDIR\program\bulmafact.vbs&quot; &quot;&quot; &quot;$INSTDIR\program\Bulmages_fact_install.ico&quot; 0 SW_SHOWMAXIMIZED
+ 
+   
+ SectionEnd
+@@ -243,31 +228,10 @@ Section &quot;BulmaCont&quot;
+ 
+ 
+   ;Shortcuts
+-  CreateDirectory &quot;$SMPROGRAMS\Bulmages\Cont&quot;
+-
+-
++  CreateDirectory &quot;$SMPROGRAMS\Bulmages&quot;
+   SetOutPath &quot;$INSTDIR\program&quot;
+-  CreateShortCut &quot;$SMPROGRAMS\Bulmages\Cont\Contabilidad.lnk&quot; &quot;$INSTDIR\program\bulmacont.vbs&quot; &quot;&quot; &quot;$INSTDIR\program\Bulmages_cont_install.ico&quot; 0 SW_SHOWMAXIMIZED
++  CreateShortCut &quot;$SMPROGRAMS\Bulmages\Contabilidad.lnk&quot; &quot;$INSTDIR\program\bulmacont.vbs&quot; &quot;&quot; &quot;$INSTDIR\program\Bulmages_cont_install.ico&quot; 0 SW_SHOWMAXIMIZED
+ 
+-;  CreateShortCut &quot;$SMPROGRAMS\Bulmages\Cont\BG_cont.lnk&quot; &quot;$INSTDIR\program\bulmacont.vbs&quot; &quot;&quot; &quot;$INSTDIR\program\Bulmages_cont_install.ico&quot; 0 SW_SHOWMAXIMIZED
+-;  CreateShortCut &quot;$SMPROGRAMS\Bulmages\Cont\BG_cont (demo).lnk&quot; &quot;$INSTDIR\program\bulmacont.vbs&quot; &quot;demo_cont&quot; &quot;$INSTDIR\program\Bulmages_cont_install.ico&quot; 0 SW_SHOWMAXIMIZED
+-
+- ; SetOutPath &quot;$INSTDIR&quot;
+-
+-  ;DetailPrint 'Activando base de datos...'
+-  ;nsExec::Exec '&quot;$INSTDIR\pgsql\bin\pg_ctl.exe&quot; -D &quot;$INSTDIR\pgsql\data&quot; -w -l &quot;$INSTDIR\pgsql\data\registro&quot; start'
+-
+-  ;DetailPrint 'Creando base de datos demo_cont...'
+-  ;nsExec::Exec '&quot;$INSTDIR\pgsql\bin\createdb.exe&quot; demo_cont'
+-;  nsExec::Exec '&quot;$INSTDIR\pgsql\bin\createdb.exe&quot; cont'
+-
+-  ;Load data to demo database
+-  ;DetailPrint 'Cargando la base de datos con datos...'
+-  ;nsExec::Exec '&quot;$INSTDIR\pgsql\bin\psql.exe&quot; -f &quot;$INSTDIR\db\demo_cont.sql&quot; -d demo_cont'
+-;  nsExec::Exec '&quot;$INSTDIR\pgsql\bin\psql.exe&quot; -f &quot;$INSTDIR\db\cont.sql&quot; -d cont'
+-
+-  ;DetailPrint 'Desactivando base de datos...'
+-  ;nsExec::Exec '&quot;$INSTDIR\pgsql\bin\pg_ctl.exe&quot; -D &quot;$INSTDIR\pgsql\data&quot; -w -l &quot;$INSTDIR\pgsql\data\registro&quot; stop'
+ 
+ SectionEnd
+ 
+@@ -310,15 +274,13 @@ Section &quot;BulmaTPV&quot;
+   
+   SetOutPath &quot;$INSTDIR\program&quot;
+   
+-  CreateDirectory &quot;$SMPROGRAMS\Bulmages\TPV&quot;
+-  CreateShortCut &quot;$SMPROGRAMS\Bulmages\TPV\TPV .lnk&quot; &quot;$INSTDIR\program\bulmatpv.vbs&quot; &quot;&quot; &quot;$INSTDIR\program\Bulmages_tpv_bar_install.ico&quot; 0 SW_SHOWMAXIMIZED
++  ;Shortcuts
++  CreateDirectory &quot;$SMPROGRAMS\Bulmages&quot;
++  CreateShortCut &quot;$SMPROGRAMS\Bulmages\TPV .lnk&quot; &quot;$INSTDIR\program\bulmatpv.vbs&quot; &quot;&quot; &quot;$INSTDIR\program\Bulmages_tpv_bar_install.ico&quot; 0 SW_SHOWMAXIMIZED
+ 
+ 
+   SetOutPath &quot;$INSTDIR&quot;
+ 
+-  ;Create directories for article images.
+-  ;CreateDirectory &quot;$INSTDIR\pgsql\data\img_articles&quot;
+-  ;SetOutPath &quot;$INSTDIR\pgsql\data\img_articles&quot;
+-  ;File img_articles\*
++
+   
+ SectionEnd
+\ No newline at end of file
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007338.html">[BulmaGés]Hola a todos, nueva en la lista
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007343.html">[BulmaGés] Continuamos ordenando (nsis_bulmages	extraido)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7342">[ fecha ]</a>
+              <a href="thread.html#7342">[ hilo ]</a>
+              <a href="subject.html#7342">[ asunto ]</a>
+              <a href="author.html#7342">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

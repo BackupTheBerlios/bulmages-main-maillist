@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][BulmaGÃ©s] Encuesta PCH
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaG%3DC3%3DA9s%3D5D_E%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fncuesta_PCH%3F%3D&In-Reply-To=%3C200907311659.08928.pedro.lopez.cabanillas%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002884.html">
+   <LINK REL="Next"  HREF="002886.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][BulmaGÃ©s] Encuesta PCH </H1>
+    <B>Pedro Lopez-Cabanillas</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaG%3DC3%3DA9s%3D5D_E%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fncuesta_PCH%3F%3D&In-Reply-To=%3C200907311659.08928.pedro.lopez.cabanillas%40gmail.com%3E"
+       TITLE="[BulmaGés][BulmaGÃ©s] Encuesta PCH">pedro.lopez.cabanillas en gmail.com
+       </A><BR>
+    <I>Vie Jul 31 16:59:08 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002884.html">[BulmaGés]Encuesta PCH
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002886.html">[BulmaGés]Orden de tabulación (foco) y BlDateSearchBase
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2885">[ fecha ]</a>
+              <a href="thread.html#2885">[ hilo ]</a>
+              <a href="subject.html#2885">[ asunto ]</a>
+              <a href="author.html#2885">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Friday, July 31, 2009, Xavi Drudis Ferran wrote:
+&gt;<i> &gt; 5) OK a la generación de la cabecera, que se llama 'local_BlI18n.h',
+</I>&gt;<i> &gt; ¿o generar la cabecera con otro nombre...?
+</I>&gt;<i>
+</I>&gt;<i> No sé. M'és igual. Perquè local ?
+</I>
+Porque se usa de forma local, en el directorio del plugin para el cual se ha 
+creado, en contraposición con la cabecera &quot;bli18n.h&quot; que está en bulmalib/src 
+y se usa de manera global.
+
+&gt;<i> &gt; 6) No generar la cabecera, mejor que sea un fuente estático de cada
+</I>&gt;<i> &gt; target.
+</I>&gt;<i>
+</I>&gt;<i> Diria que millor generar-la, no ? Això simplificaria crear plugins nous, no
+</I>&gt;<i> ?
+</I>
+Generarla permitirá mayor flexibilidad, por ejemplo con solo cambiar la macro 
+de cmake podremos añadir una nueva definición de macro C++ para todos los 
+plugins. Por otra parte, en los CMakeLists.txt de cada plugin se sustituyen 
+todas las (feas) líneas siguientes:
+
+	# i18n
+	if(WIN32)
+	ADD_DEFINITIONS(&quot;-D_(String)=BlI18n(\\\&quot;${plugin}\\\&quot;,String)&quot; )
+	ADD_DEFINITIONS(&quot;-DN_(String,Int)=BlI18n(\\\&quot;${plugin}\\\&quot;,String)&quot; )
+	endif(WIN32)
+	if(NOT WIN32)
+	ADD_DEFINITIONS(&quot;-D'_(String)=BlI18n(\&quot;${plugin}\&quot;,String)'&quot; )
+	ADD_DEFINITIONS(&quot;-D'N_(String,Int)=BlI18n(\&quot;${plugin}\&quot;,String)'&quot; )
+	endif(NOT WIN32)
+
+Por esta otra línea, mucho más clarita:
+
+	ADD_LOCAL_BLI18N_HEADER( ${plugin} )
+
+Que suponiendo que ${plugin} tenga el valor &quot;pluginbl_report&quot; genera la 
+cabecera siguiente:
+
+
+	/* Generated file. Please do not edit! */
+	/* created by MacrosBlI18n.cmake */
+	#ifndef LOCAL_BLI18N
+	#define LOCAL_BLI18N
+
+	#include &quot;bli18n.h&quot;
+
+	#ifndef _
+	 #define _(String) BlI18n(&quot;pluginbl_report&quot;,String)
+	#endif
+	#ifndef N_
+	 #define N_(String,Int) BlI18n(&quot;pluginbl_report&quot;,String)
+	#endif
+
+	#endif /*LOCAL_BLI18N*/
+
+
+Saludos,
+Pedro
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002884.html">[BulmaGés]Encuesta PCH
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002886.html">[BulmaGés]Orden de tabulación (foco) y BlDateSearchBase
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2885">[ fecha ]</a>
+              <a href="thread.html#2885">[ hilo ]</a>
+              <a href="subject.html#2885">[ asunto ]</a>
+              <a href="author.html#2885">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

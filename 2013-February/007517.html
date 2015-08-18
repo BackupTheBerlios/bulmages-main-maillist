@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20master...&In-Reply-To=%3C20130207063054.9EB5CF84%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007516.html">
+   <LINK REL="Next"  HREF="007518.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20master...&In-Reply-To=%3C20130207063054.9EB5CF84%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Jue Feb  7 07:30:54 CET 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007516.html">[BulmaGés] [Gitorious] Activity: mtelleria pushed	3 commits to gbp-d...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007518.html">[BulmaGés] La página wiki 'Empaquetado para Debian' ha sido actualizada
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7517">[ fecha ]</a>
+              <a href="thread.html#7517">[ hilo ]</a>
+              <a href="subject.html#7517">[ asunto ]</a>
+              <a href="author.html#7517">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 2 commits to master
+master changed from ef7f8f7 to 3ff7a80
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/ef7f8f75231b4896ca608160b33ee5d4fc0f20a4/diffs/3ff7a8000f49cbcb65899528520d02d450a8e62b">https://gitorious.org/bulmages/bulmages/commit/ef7f8f75231b4896ca608160b33ee5d4fc0f20a4/diffs/3ff7a8000f49cbcb65899528520d02d450a8e62b</A>
+
+Diff: 
+
+commit 3ff7a8000f49cbcb65899528520d02d450a8e62b
+Merge: fe19518 ef7f8f7
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu Feb 7 07:31:00 2013 +0100
+
+    Merge branch 'master' of gitorious.org:bulmages/bulmages
+
+
+commit fe195183e43de0fbe601a14c307eddb37a60ae10
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu Feb 7 07:29:11 2013 +0100
+
+    Arreglo problema con el calculo del recargo de equivalencia en los pedidos a proveedores
+    que se calculaban mal debido a los errores de la libreria de calculo de punto fijo.
+    
+    Lo he puesto igual que el calculo del IVA haciendo uso de PGeval (mas fiable).
+
+diff --git a/bulmages/bulmafact/src/bfform.cpp b/bulmages/bulmafact/src/bfform.cpp
+index cc11b50..6a0d69b 100644
+--- a/bulmages/bulmafact/src/bfform.cpp
++++ b/bulmages/bulmafact/src/bfform.cpp
+@@ -176,7 +176,6 @@ void BfForm::calculaypintatotales()
+             QString evpariva = &quot;( 1 - &quot; + porcentt.toQString() + &quot; / 100 ) * &quot; + it.value().toQString() + &quot; * &quot; + piva.toQString() + &quot; / 100&quot;;
+             QString tot = mainCompany()-&gt;PGEval ( evpariva );
+             pariva = BlFixed ( tot );
+-//            pariva = ( it.value() - it.value() * porcentt / 100 ) * piva / 100;
+         } else {
+             QString evpariva = it.value().toQString() + &quot; * &quot; + piva.toQString() + &quot; / 100&quot;;
+ 	    QString tot = mainCompany()-&gt;PGEval ( evpariva );
+@@ -196,9 +195,13 @@ void BfForm::calculaypintatotales()
+         BlFixed preqeq ( it.key().toAscii().constData() );
+         
+         if ( porcentt &gt; BlFixed ( &quot;0.00&quot; ) ) {
+-            parreqeq = ( it.value() - it.value() * porcentt / 100 ) * preqeq / 100;
++            QString evparre = &quot;( 1 - &quot; + porcentt.toQString() + &quot; / 100 ) * &quot; + it.value().toQString() + &quot; * &quot; + preqeq.toQString() + &quot; / 100&quot;;
++            QString tot = mainCompany()-&gt;PGEval ( evparre );
++            parreqeq = BlFixed ( tot );
+         } else {
+-            parreqeq = it.value() * preqeq / 100;
++            QString evparre = it.value().toQString() + &quot; * &quot; + preqeq.toQString() + &quot; / 100&quot;;
++	    QString tot = mainCompany()-&gt;PGEval ( evparre );
++            parreqeq = BlFixed ( tot );
+         } // end if
+         
+         totreqeq = totreqeq + parreqeq;
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007516.html">[BulmaGés] [Gitorious] Activity: mtelleria pushed	3 commits to gbp-d...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007518.html">[BulmaGés] La página wiki 'Empaquetado para Debian' ha sido actualizada
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7517">[ fecha ]</a>
+              <a href="thread.html#7517">[ hilo ]</a>
+              <a href="subject.html#7517">[ asunto ]</a>
+              <a href="author.html#7517">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

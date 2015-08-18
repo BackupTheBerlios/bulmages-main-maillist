@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: themeph pushed 2	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20themeph%20pushed%202%0A%09commits%20to%20master...&In-Reply-To=%3C20120524014731.DEEEC756EC%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007264.html">
+   <LINK REL="Next"  HREF="007267.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: themeph pushed 2	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20themeph%20pushed%202%0A%09commits%20to%20master...&In-Reply-To=%3C20120524014731.DEEEC756EC%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: themeph pushed 2	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Jue Mayo 24 03:47:31 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007264.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to release...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007267.html">[BulmaGés]Quito algunos modulos más de la release
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7265">[ fecha ]</a>
+              <a href="thread.html#7265">[ hilo ]</a>
+              <a href="subject.html#7265">[ asunto ]</a>
+              <a href="author.html#7265">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+themeph pushed 2 commits to master
+master changed from 8acab85 to 8e574e2
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/8acab85b5d4f4a9cd772573e3ad169319a761f38/diffs/8e574e2e46888fba9ccf93fa00cc964e161a8f18">https://gitorious.org/bulmages/bulmages/commit/8acab85b5d4f4a9cd772573e3ad169319a761f38/diffs/8e574e2e46888fba9ccf93fa00cc964e161a8f18</A>
+
+Diff: 
+
+commit 8e574e2e46888fba9ccf93fa00cc964e161a8f18
+Merge: 94983ab 8acab85
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">info en danielripoll.es</A>&gt;
+Date:   Thu May 24 03:45:38 2012 +0200
+
+    Merge branch 'master' of gitorious.org:bulmages/bulmages
+
+
+commit 94983abc8d2017d6c162cd3d311acec55c9842ba
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">info en danielripoll.es</A>&gt;
+Date:   Thu May 24 03:44:01 2012 +0200
+
+    Corrijo el problema del que informaba Tomeu sobre CMake al introducir el modulo FindPythonInterpr
+    
+    --
+    Daniel Ripoll Osma
+    www.danielripoll.es
+    6688.27.4.90
+    
+    Web &amp; Desktop Developer
+
+diff --git a/bulmages/CMakeLists.txt b/bulmages/CMakeLists.txt
+index 9904185..0b2237f 100644
+--- a/bulmages/CMakeLists.txt
++++ b/bulmages/CMakeLists.txt
+@@ -90,12 +90,30 @@ endif (${QT_MAJOR_VERSION}.${QT_MINOR_VERSION} LESS 4.7)
+ INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindPostgreSQL.cmake)
+ INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindGettext.cmake)
+ 
+-INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindPythonInterp.cmake)
+-
++if (${CMAKE_VERSION} VERSION_GREATER 2.8.1)
++   INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindPythonInterp.cmake)
++else()
++   IF(WIN32 AND NOT UNIX)
++      if(EXISTS &quot;C:/Python27/python.exe&quot;)
++         message(STATUS &quot;Found Python: C:/Python27/python.exe&quot;)
++         set(PYTHON_EXECUTABLE &quot;C:/Python27/python.exe&quot; CACHE STRING &quot;Where python is installed&quot;)
++      endif()
++   ENDIF(WIN32 AND NOT UNIX)
++   IF(UNIX AND NOT WIN32)
++      if(EXISTS &quot;/usr/bin/python&quot;)
++        message(STATUS &quot;Found Python: /usr/bin/python&quot;)
++        set(PYTHON_EXECUTABLE &quot;/usr/bin/python&quot; CACHE STRING &quot;Where python is installed&quot;)
++      endif()
++      if(EXISTS &quot;/usr/local/bin/python&quot;)
++       message(STATUS &quot;Found Python: /usr/local/bin/python&quot;)
++       set(PYTHON_EXECUTABLE &quot;/usr/local/bin/python&quot; CACHE STRING &quot;Where python is installed&quot;)
++      endif()
++   ENDIF(UNIX AND NOT WIN32)
++endif()
+ 
+ 
+ if(NOT PYTHON_EXECUTABLE)
+-  message(&quot;Without python you will not be able to run bulmasetup or create pdfs&quot;)
++  message(STATUS &quot;Python was not found: Without this you will not be able to run bulmasetup or create pdfs&quot;)
+ endif(NOT PYTHON_EXECUTABLE)
+ 
+ option(USE_GETTEXT &quot;Enable use gettext mode&quot; ON)
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007264.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to release...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007267.html">[BulmaGés]Quito algunos modulos más de la release
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7265">[ fecha ]</a>
+              <a href="thread.html#7265">[ hilo ]</a>
+              <a href="subject.html#7265">[ asunto ]</a>
+              <a href="author.html#7265">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

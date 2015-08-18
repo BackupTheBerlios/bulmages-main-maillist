@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] Empaquetado preliminar bulmages 0.14 en	Debian Sid
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Empaquetado%20preliminar%20bulmages%200.14%20en%0A%09Debian%20Sid&In-Reply-To=%3C20121114190150.0701c764%40namir.ctr.unican.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007350.html">
+   <LINK REL="Next"  HREF="007352.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] Empaquetado preliminar bulmages 0.14 en	Debian Sid </H1>
+    <B>Miguel Telleria de Esteban</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Empaquetado%20preliminar%20bulmages%200.14%20en%0A%09Debian%20Sid&In-Reply-To=%3C20121114190150.0701c764%40namir.ctr.unican.es%3E"
+       TITLE="[BulmaGés] Empaquetado preliminar bulmages 0.14 en	Debian Sid">miguel en mtelleria.com
+       </A><BR>
+    <I>Mie Nov 14 19:01:50 CET 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007350.html">[BulmaGés]Tenemos Git commits vía RSS
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007352.html">[BulmaGés]Empaquetado preliminar bulmages 0.14 en Debian Sid
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7351">[ fecha ]</a>
+              <a href="thread.html#7351">[ hilo ]</a>
+              <a href="subject.html#7351">[ asunto ]</a>
+              <a href="author.html#7351">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola a todos,
+
+Soy  un GNU/Linuxero de Cantabria (Linuca) que va a recibir un curso de
+&quot;finanzas para ingenieros&quot; este viernes y sábado.
+
+Temiéndome que nos metan un contaplus o algún programa propietario he
+decidido mirarme un poco Bulmages.  Y para mí el primer paso siempre es
+empaquetar las cosas para Debian :).
+
+He creado un repositorio en gitourious clonando el vuestro:
+
+	<A HREF="https://gitorious.org/~mtelleria/bulmages/mtelleria-bulmages">https://gitorious.org/~mtelleria/bulmages/mtelleria-bulmages</A>
+
+donde he añadido 4 ramas:
+
+*  paquetes: con el paquete fuente y el binario
+
+   las 3 siguientes están relacionados con el git-buildpackage
+
+*  gbp-debian  (contiene código con el directorio debian)
+*  gbp-upstream (contiene el orig.tar.gz descomprimido)
+*  pristine-tar (metadata para regenerar el orig.tar.gz tal y como se
+   importó con git-import-orig)
+
+Usé como base (el orig.tar.gz) la rama master al estado de ayer, en
+concreto el commit:
+
+	5c113a0dc6e0a24a455383591065914537526e1c
+
+Algunas observaciones:
+
+*  Soy nuevo en bulmages, aún no lo he usado, no tengo ni idea de
+   contabilidad y nunca he usado CMake.  Toda mi fuente de conocimiento
+   es el README.es que me ha permitido llegar a hacer este paquete.
+
+*  He puesto todo en un único paquete (no he diferenciado bulmacont,
+   bulmafact, etc).  Aunque vi un poco como Rene empaquetó la versión
+   0.11 no me siento con los conocimientos suficientes para hacer la
+   partición.
+
+*  Utilizo delbhelper moderno (con dh_ y dh_override's) y quilt-3.0
+
+*  He eliminado (por falta de conocimiento) la funcionalidad de
+   dbadmin.  La &quot;puesta en marcha&quot; (bases de pgsql, etc) corre a cargo
+   del usuario una vez que se instala los paquetes.
+
+*  Hay muchos warnings y errores de Lintian pero al menos se instala y
+   se desinstala bien en Debian Sid.
+
+Ahora mi objetivo es empezar a usarlo y portarlo a Debian squeeze para
+poder usarlo en mi portátil durante el curso.
+
+Saludos,
+
+	Miguel
+
+
+-- 
+
+      (O-O)
+---oOO-(_)-OOo-----------------------------------------------------
+ Miguel TELLERIA DE ESTEBAN               <A HREF="http://www.mtelleria.com">http://www.mtelleria.com</A>
+ Email: miguel at mtelleria.com           Tel GSM:  +34 650 801098
+                                          Tel Fix:  +34 942 280174
+
+ Miembro de <A HREF="http://www.linuca.org">http://www.linuca.org</A>    Membre du <A HREF="http://www.bxlug.be">http://www.bxlug.be</A>
+ ¿Usuario captivo o libre?    <A HREF="http://www.obtengalinux.org/windows/">http://www.obtengalinux.org/windows/</A>
+ Free or  captive user?        <A HREF="http://www.getgnulinux.org/windows/">http://www.getgnulinux.org/windows/</A>
+-------------------------------------------------------------------
+
+------------ próxima parte ------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 198 bytes
+Desc: no disponible
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20121114/a6657f60/attachment.pgp">https://lists.berlios.de/pipermail/bulmages-main/attachments/20121114/a6657f60/attachment.pgp</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007350.html">[BulmaGés]Tenemos Git commits vía RSS
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007352.html">[BulmaGés]Empaquetado preliminar bulmages 0.14 en Debian Sid
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7351">[ fecha ]</a>
+              <a href="thread.html#7351">[ hilo ]</a>
+              <a href="subject.html#7351">[ asunto ]</a>
+              <a href="author.html#7351">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] El nuevo QMdiArea.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20El%20nuevo%20QMdiArea.&In-Reply-To=%3C4CE4E5E4.7000909%40todo-redes.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="004222.html">
+   <LINK REL="Next"  HREF="004225.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] El nuevo QMdiArea. </H1>
+    <B>Fco. Javier M. C.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20El%20nuevo%20QMdiArea.&In-Reply-To=%3C4CE4E5E4.7000909%40todo-redes.com%3E"
+       TITLE="[BulmaGés] El nuevo QMdiArea.">fcojavmc en todo-redes.com
+       </A><BR>
+    <I>Jue Nov 18 09:37:56 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="004222.html">[BulmaGés] r4082 - trunk/bulmages/bulmalib/src
+</A></li>
+        <LI>Próximo mensaje: <A HREF="004225.html">[BulmaGés]El nuevo QMdiArea.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4223">[ fecha ]</a>
+              <a href="thread.html#4223">[ hilo ]</a>
+              <a href="subject.html#4223">[ asunto ]</a>
+              <a href="author.html#4223">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE> Hola.
+
+El último gran cambio ha sido la migración de 'QWorkspace' a 'QMdiArea'
+como gestor de ventanas en el entorno MDI (Interface de múltiples
+documentos). Veo que hay un poco de confusión de como tratar este cambio
+así que explico las líneas generales. La migración se ha hecho de forma
+que no sea traumática con respecto al sistema actual. Poco a poco se
+tendrá que ir puliendo detalles y adecuarnos más a la nueva forma de
+hacer las cosas.
+
+En los 'plugins' la migración es tan simple como cambiar una línea de
+código:
+
+(original) mainCompany() -&gt;m_pWorkspace-&gt;addWindow ( bud );
+(nueva) mainCompany() -&gt;m_pWorkspace-&gt;addSubWindow ( bud );
+
+¡Así de fácil!
+
+Un saludo a todos.
+
+P.D. Si teneis dudas podeis plantearlas en la lista como siempre.
+
+
+-- 
+Javier.
+TODO-REDES
+<A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+C/Begònia 12 - 07010 Palma de Mallorca.
+Tel.: 971499071
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="004222.html">[BulmaGés] r4082 - trunk/bulmages/bulmalib/src
+</A></li>
+	<LI>Próximo mensaje: <A HREF="004225.html">[BulmaGés]El nuevo QMdiArea.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4223">[ fecha ]</a>
+              <a href="thread.html#4223">[ hilo ]</a>
+              <a href="subject.html#4223">[ asunto ]</a>
+              <a href="author.html#4223">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

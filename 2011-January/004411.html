@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] r4151 - in trunk/bulmages: bulmacont/plugins/pluginbc_amortizacion bulmacont/plugins/pluginbc_asiento bulmacont/plugins/pluginbc_balance bulmacont/plugins/pluginbc_bloqueofechas bulmacont/plugins/pluginbc_ccaa2ods bulmacont/plugins/pluginbc_cuenta bulmacont/plugins/pluginbc_cuentasanuales bulmacont/plugins/pluginbc_diario bulmacont/plugins/pluginbc_duplicarasiento bulmacont/plugins/pluginbc_mayor bulmafact/css bulmafact/plugins/pluginbf_actividad bulmafact/plugins/pluginbf_alumno bulmafact/plugins/pluginbf_asociacion bulmafact/plugins/pluginbf_carteracobros bulmafact/plugins/pluginbf_catalogo bulmafact/plugins/pluginbf_cliente bulmafact/plugins/pluginbf_clientealbaran bulmafact/plugins/pluginbf_clientecobro bulmafact/plugins/pluginbf_clientefactura bulmafact/plugins/pluginbf_clientepresupuesto bulmafact/plugins/pluginbf_clienteticket bulmafact/plugins/pluginbf_comercial bulmafact/plugins/pluginbf_compraventa bulmafact/plugins/pluginbf_cuadrante bulmafact/plugins/plug inbf_etiquetado bulmafact/plugins/pluginbf_informecliente bulmafact/plugins/pluginbf_minicontabilidad bulmafact/plugins/pluginbf_profesor bulmafact/plugins/pluginbf_profesor/dbmodels bulmafact/plugins/pluginbf_proveedor bulmafact/plugins/pluginbf_proveedorpedido bulmafact/plugins/pluginbf_q19 bulmafact/plugins/pluginbf_recibo bulmafact/plugins/pluginbf_socio bulmafact/plugins/pluginbf_tallascolores bulmafact/plugins/pluginbf_tutor bulmasetup
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r4151%20-%20in%20trunk/bulmages%3A%0A%20bulmacont/plugins/pluginbc_amortizacion%20bulmacont/plugins/pluginbc_asiento%0A%20bulmacont/plugins/pluginbc_balance%20bulmacont/plugins/pluginbc_bloqueofechas%0A%20bulmacont/plugins/pluginbc_ccaa2ods%20bulmacont/plugins/pluginbc_cuenta%0A%20bulmacont/plugins/pluginbc_cuentasanuales%20bulmacont/plugins/pluginbc_diario%0A%20bulmacont/plugins/pluginbc_duplicarasiento%20bulmacont/plugins/pluginbc_mayor%0A%20bulmafact/css%20bulmafact/plugins/pluginbf_actividad%0A%20bulmafact/plugins/pluginbf_alumno%20bulmafact/plugins/pluginbf_asociacion%0A%20bulmafact/plugins/pluginbf_carteracobros%0A%20bulmafact/plugins/pluginbf_catalogo%20bulmafact/plugins/pluginbf_cliente%0A%20bulmafact/plugins/pluginbf_clientealbaran%0A%20bulmafact/plugins/pluginbf_clientecobro%0A%20bulmafact/plugins/pluginbf_clientefactura%0A%20bulmafact/plugins/pluginbf_clientepresupuesto%0A%20bulmafact/plugins/pluginbf_clienteticket%0A%20bulmafact/plugins/pluginbf_comercial%20bulmafact/plugins/pluginbf_compraventa%0A%20bulmafact/plugins/pluginbf_cuadrante%20bulmafact/plugins/plug%20inbf_etiquetado%0A%20bulmafact/plugins/pluginbf_informecliente%0A%20bulmafact/plugins/pluginbf_minicontabilidad%0A%20bulmafact/plugins/pluginbf_profesor%0A%20bulmafact/plugins/pluginbf_profesor/dbmodels%0A%20bulmafact/plugins/pluginbf_proveedor%0A%20bulmafact/plugins/pluginbf_proveedorpedido%20bulmafact/plugins/pluginbf_q19%0A%20bulmafact/plugins/pluginbf_recibo%20bulmafact/plugins/pluginbf_socio%0A%20bulmafact/plugins/pluginbf_tallascolores%20bulmafact/plugins/pluginbf_tutor%0A%20bulmasetup&In-Reply-To=%3C20110107204931.CC8C34804D8%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="004410.html">
+   <LINK REL="Next"  HREF="004412.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] r4151 - in trunk/bulmages: bulmacont/plugins/pluginbc_amortizacion bulmacont/plugins/pluginbc_asiento bulmacont/plugins/pluginbc_balance bulmacont/plugins/pluginbc_bloqueofechas bulmacont/plugins/pluginbc_ccaa2ods bulmacont/plugins/pluginbc_cuenta bulmacont/plugins/pluginbc_cuentasanuales bulmacont/plugins/pluginbc_diario bulmacont/plugins/pluginbc_duplicarasiento bulmacont/plugins/pluginbc_mayor bulmafact/css bulmafact/plugins/pluginbf_actividad bulmafact/plugins/pluginbf_alumno bulmafact/plugins/pluginbf_asociacion bulmafact/plugins/pluginbf_carteracobros bulmafact/plugins/pluginbf_catalogo bulmafact/plugins/pluginbf_cliente bulmafact/plugins/pluginbf_clientealbaran bulmafact/plugins/pluginbf_clientecobro bulmafact/plugins/pluginbf_clientefactura bulmafact/plugins/pluginbf_clientepresupuesto bulmafact/plugins/pluginbf_clienteticket bulmafact/plugins/pluginbf_comercial bulmafact/plugins/pluginbf_compraventa bulmafact/plugins/pluginbf_cuadrante bulmafact/plugins/plug inbf_etiquetado bulmafact/plugins/pluginbf_informecliente bulmafact/plugins/pluginbf_minicontabilidad bulmafact/plugins/pluginbf_profesor bulmafact/plugins/pluginbf_profesor/dbmodels bulmafact/plugins/pluginbf_proveedor bulmafact/plugins/pluginbf_proveedorpedido bulmafact/plugins/pluginbf_q19 bulmafact/plugins/pluginbf_recibo bulmafact/plugins/pluginbf_socio bulmafact/plugins/pluginbf_tallascolores bulmafact/plugins/pluginbf_tutor bulmasetup </H1>
+    <B>svn en mail.berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r4151%20-%20in%20trunk/bulmages%3A%0A%20bulmacont/plugins/pluginbc_amortizacion%20bulmacont/plugins/pluginbc_asiento%0A%20bulmacont/plugins/pluginbc_balance%20bulmacont/plugins/pluginbc_bloqueofechas%0A%20bulmacont/plugins/pluginbc_ccaa2ods%20bulmacont/plugins/pluginbc_cuenta%0A%20bulmacont/plugins/pluginbc_cuentasanuales%20bulmacont/plugins/pluginbc_diario%0A%20bulmacont/plugins/pluginbc_duplicarasiento%20bulmacont/plugins/pluginbc_mayor%0A%20bulmafact/css%20bulmafact/plugins/pluginbf_actividad%0A%20bulmafact/plugins/pluginbf_alumno%20bulmafact/plugins/pluginbf_asociacion%0A%20bulmafact/plugins/pluginbf_carteracobros%0A%20bulmafact/plugins/pluginbf_catalogo%20bulmafact/plugins/pluginbf_cliente%0A%20bulmafact/plugins/pluginbf_clientealbaran%0A%20bulmafact/plugins/pluginbf_clientecobro%0A%20bulmafact/plugins/pluginbf_clientefactura%0A%20bulmafact/plugins/pluginbf_clientepresupuesto%0A%20bulmafact/plugins/pluginbf_clienteticket%0A%20bulmafact/plugins/pluginbf_comercial%20bulmafact/plugins/pluginbf_compraventa%0A%20bulmafact/plugins/pluginbf_cuadrante%20bulmafact/plugins/plug%20inbf_etiquetado%0A%20bulmafact/plugins/pluginbf_informecliente%0A%20bulmafact/plugins/pluginbf_minicontabilidad%0A%20bulmafact/plugins/pluginbf_profesor%0A%20bulmafact/plugins/pluginbf_profesor/dbmodels%0A%20bulmafact/plugins/pluginbf_proveedor%0A%20bulmafact/plugins/pluginbf_proveedorpedido%20bulmafact/plugins/pluginbf_q19%0A%20bulmafact/plugins/pluginbf_recibo%20bulmafact/plugins/pluginbf_socio%0A%20bulmafact/plugins/pluginbf_tallascolores%20bulmafact/plugins/pluginbf_tutor%0A%20bulmasetup&In-Reply-To=%3C20110107204931.CC8C34804D8%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] r4151 - in trunk/bulmages: bulmacont/plugins/pluginbc_amortizacion bulmacont/plugins/pluginbc_asiento bulmacont/plugins/pluginbc_balance bulmacont/plugins/pluginbc_bloqueofechas bulmacont/plugins/pluginbc_ccaa2ods bulmacont/plugins/pluginbc_cuenta bulmacont/plugins/pluginbc_cuentasanuales bulmacont/plugins/pluginbc_diario bulmacont/plugins/pluginbc_duplicarasiento bulmacont/plugins/pluginbc_mayor bulmafact/css bulmafact/plugins/pluginbf_actividad bulmafact/plugins/pluginbf_alumno bulmafact/plugins/pluginbf_asociacion bulmafact/plugins/pluginbf_carteracobros bulmafact/plugins/pluginbf_catalogo bulmafact/plugins/pluginbf_cliente bulmafact/plugins/pluginbf_clientealbaran bulmafact/plugins/pluginbf_clientecobro bulmafact/plugins/pluginbf_clientefactura bulmafact/plugins/pluginbf_clientepresupuesto bulmafact/plugins/pluginbf_clienteticket bulmafact/plugins/pluginbf_comercial bulmafact/plugins/pluginbf_compraventa bulmafact/plugins/pluginbf_cuadrante bulmafact/plugins/plug inbf_etiquetado bulmafact/plugins/pluginbf_informecliente bulmafact/plugins/pluginbf_minicontabilidad bulmafact/plugins/pluginbf_profesor bulmafact/plugins/pluginbf_profesor/dbmodels bulmafact/plugins/pluginbf_proveedor bulmafact/plugins/pluginbf_proveedorpedido bulmafact/plugins/pluginbf_q19 bulmafact/plugins/pluginbf_recibo bulmafact/plugins/pluginbf_socio bulmafact/plugins/pluginbf_tallascolores bulmafact/plugins/pluginbf_tutor bulmasetup">svn en mail.berlios.de
+       </A><BR>
+    <I>Vie Ene  7 21:49:31 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="004410.html">[BulmaGés] r4150 - in trunk/bulmages:	bulmacont/plugins bulmacont/plugins/pluginbc_ccaa2ods	bulmacont/plugins/pluginbc_ccaa2ods/openreports	bulmacont/plugins/pluginbc_ccaa2ods/po bulmafact	bulmafact/plugins/pluginbf_articulo	bulmafact/plugins/pluginbf_proveedorpedido	bulmafact/plugins/pluginbf_tarifa bulmafact/src	bulmalib/plugins bulmalib/src
+</A></li>
+        <LI>Próximo mensaje: <A HREF="004412.html">[BulmaGés] r4152 - in	trunk/bulmages/bulmafact/plugins: pluginbf_clientecobro	pluginbf_clientecobro/openreports pluginbf_clientefactura	pluginbf_clientefactura/openreports pluginbf_proveedoralbaran	pluginbf_proveedoralbaran/openreports pluginbf_proveedorfactura	pluginbf_proveedorfactura/openreports	pluginbf_proveedorpedido pluginbf_proveedorpedido/openreports
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4411">[ fecha ]</a>
+              <a href="thread.html#4411">[ hilo ]</a>
+              <a href="subject.html#4411">[ asunto ]</a>
+              <a href="author.html#4411">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: tborras
+Date: 2011-01-07 21:49:31 +0100 (Fri, 07 Jan 2011)
+New Revision: 4151
+
+Modified:
+   trunk/bulmages/bulmacont/plugins/pluginbc_amortizacion/CMakeLists.txt
+   trunk/bulmages/bulmacont/plugins/pluginbc_asiento/CMakeLists.txt
+   trunk/bulmages/bulmacont/plugins/pluginbc_balance/CMakeLists.txt
+   trunk/bulmages/bulmacont/plugins/pluginbc_bloqueofechas/CMakeLists.txt
+   trunk/bulmages/bulmacont/plugins/pluginbc_ccaa2ods/CMakeLists.txt
+   trunk/bulmages/bulmacont/plugins/pluginbc_cuenta/CMakeLists.txt
+   trunk/bulmages/bulmacont/plugins/pluginbc_cuentasanuales/CMakeLists.txt
+   trunk/bulmages/bulmacont/plugins/pluginbc_diario/CMakeLists.txt
+   trunk/bulmages/bulmacont/plugins/pluginbc_duplicarasiento/CMakeLists.txt
+   trunk/bulmages/bulmacont/plugins/pluginbc_mayor/CMakeLists.txt
+   trunk/bulmages/bulmafact/css/bulmafact_ca_ES.css
+   trunk/bulmages/bulmafact/css/bulmafact_es_ES.css
+   trunk/bulmages/bulmafact/plugins/pluginbf_actividad/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_alumno/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_asociacion/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_carteracobros/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_catalogo/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_cliente/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientealbaran/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientecobro/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientefactura/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_clienteticket/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_comercial/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_compraventa/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_cuadrante/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_etiquetado/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_informecliente/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_profesor/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_profesor/dbmodels/pluginbf_profesor-rm.sql
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedor/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_q19/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_recibo/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_socio/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_tallascolores/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_tutor/CMakeLists.txt
+   trunk/bulmages/bulmasetup/bulmasetupbase.py
+   trunk/bulmages/bulmasetup/bulmasetupbase.ui
+   trunk/bulmages/bulmasetup/listempresasbase.py
+   trunk/bulmages/bulmasetup/listempresasbase.ui
+Log:
+Arreglo temas de presentacion y hago que se instalen bien los qs en el openreports
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="004410.html">[BulmaGés] r4150 - in trunk/bulmages:	bulmacont/plugins bulmacont/plugins/pluginbc_ccaa2ods	bulmacont/plugins/pluginbc_ccaa2ods/openreports	bulmacont/plugins/pluginbc_ccaa2ods/po bulmafact	bulmafact/plugins/pluginbf_articulo	bulmafact/plugins/pluginbf_proveedorpedido	bulmafact/plugins/pluginbf_tarifa bulmafact/src	bulmalib/plugins bulmalib/src
+</A></li>
+	<LI>Próximo mensaje: <A HREF="004412.html">[BulmaGés] r4152 - in	trunk/bulmages/bulmafact/plugins: pluginbf_clientecobro	pluginbf_clientecobro/openreports pluginbf_clientefactura	pluginbf_clientefactura/openreports pluginbf_proveedoralbaran	pluginbf_proveedoralbaran/openreports pluginbf_proveedorfactura	pluginbf_proveedorfactura/openreports	pluginbf_proveedorpedido pluginbf_proveedorpedido/openreports
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4411">[ fecha ]</a>
+              <a href="thread.html#4411">[ hilo ]</a>
+              <a href="subject.html#4411">[ asunto ]</a>
+              <a href="author.html#4411">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

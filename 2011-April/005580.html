@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Ya funcionan las notificaciones de GIT
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Futf-8%3Fq%3FYa_funcionan_las_notificac%3F%3D%20%3D%3Futf-8%3Fq%3Fiones_de_GIT%3F%3D&In-Reply-To=%3CBANLkTimksZCiVS0OghDO8FmiziJMkMG50g%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005579.html">
+   <LINK REL="Next"  HREF="005581.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Ya funcionan las notificaciones de GIT </H1>
+    <B>Daniel Ripoll Osma</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Futf-8%3Fq%3FYa_funcionan_las_notificac%3F%3D%20%3D%3Futf-8%3Fq%3Fiones_de_GIT%3F%3D&In-Reply-To=%3CBANLkTimksZCiVS0OghDO8FmiziJMkMG50g%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]Ya funcionan las notificaciones de GIT">dripoll.public en gmail.com
+       </A><BR>
+    <I>Mie Abr 13 19:09:06 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="005579.html">[BulmaGés]Ya funcionan las notificaciones de GIT
+</A></li>
+        <LI>Próximo mensaje: <A HREF="005581.html">[BulmaGés] Migrando a GIT (II)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5580">[ fecha ]</a>
+              <a href="thread.html#5580">[ hilo ]</a>
+              <a href="subject.html#5580">[ asunto ]</a>
+              <a href="author.html#5580">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Javi me lo acaba de mostar, el problema de esto reside en que hay una
+conversión de locales y codificaciones enorme.
+El problema es el siguiente:
+
+Entrada por teclado es_ES.UTF-8 -&gt; Shell en BerliOS en_US.UTF-8
+Y luego....
+
+Entrada por teclado es_ES.UTF-8 -&gt; Shell en BerliOS en_US.UTF-8 -&gt;
+sendmail en_US.UTF-8 -&gt;  lista de correo iso-8859-1 (forzado, sin
+convertir) -&gt; pipermail (web) charset=iso-8859-1&quot; ----&gt; Navegador web
+(normalmente es_ES.UTF-8 forzado).
+
+Todas esas conversiones suaves y a la fueza resultan en la rotura de
+las tablas de simbolos.
+
+Mientras que mis correos....
+
+Entrada por teclado es_ES.UTF-8 -&gt; text/plain UTF-8 -&gt; Cliente correo
+( normalmente es_ES.UTF-8 forzado).
+
+Forzar UTF-8 sobre un UTF-8 es resultante a nada, así que solo se
+vería afectado alguien que tuviera ISO u otra codificación forzada, ya
+fuera de parte de su servidor de correo o de su cliente.
+
+Tenemos que el problema entonces corre a cuenta de BerliOS, tendré que
+modicar seguramente los actuales scripts (en perl) para que convierta
+de manera suave, o directamente, no realice ese paso a ISO, ni en los
+correos ni en la web.
+
+Espero que quede claro, porque es algo lioso.
+
+Feliz desarrollo
+
+
+2011/4/13 Toni Asensi Esteve &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">asmond en orange.es</A>&gt;:
+&gt;<i> Hola, Daniel:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Solo era para informaros (como habréis visto con los dos emails), que
+</I>&gt;&gt;<i> ya funcionan los noticiones de GIT cuando hagamos los &quot;push&quot;. Además
+</I>&gt;&gt;<i> ya podemos acentuar libremente en los commits.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Feliz desarrollo
+</I>&gt;<i>
+</I>&gt;<i> Quería comentarte que mientras tus correos me llegan con los acentos
+</I>&gt;<i> correctamente,
+</I>&gt;<i>
+</I>&gt;<i> 1) en el correo
+</I>&gt;<i>        [BulmaGés] [GIT]Project bulmages at BerliOS branch, master, updated.
+</I>&gt;<i> 3af3ea800f235fa67dd6dbb66d73bc3af45b1a24
+</I>&gt;<i> Ha llegado dentro:
+</I>&gt;<i> &#160; &#160; &#160; &#160; PRUEBA DE ACENTOS 2: &#262; &#262;&#8240;&#262; &#262;&#8220;&#262;&#353; &#262;&#8222;&#262;&#8249;&#262; &#262;&#8211;&#262;&#339; &#262;&#8364;&#262;&#710;&#262;&#338;&#262;&#8217;&#262;&#8482;
+</I>&gt;<i>
+</I>&gt;<i> 2) en el correo
+</I>&gt;<i>        [BulmaGés] [GIT]Project bulmages at BerliOS branch, master, updated.
+</I>&gt;<i> 568ec3ad1bae64f5b66087b2c6ebd615f816dac9
+</I>&gt;<i> Ha llegado dentro:
+</I>&gt;<i> &#160; &#160; &#160; &#160;Borrada prueba de acentuaci&#262;&#179;n
+</I>&gt;<i>
+</I>&gt;<i> Saludos:
+</I>&gt;<i> --
+</I>&gt;<i> Toni Asensi Esteve.
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>
+
+
+-- 
+**************************************
+* Daniel Ripoll                           *
+**************************************
+*          Todo-Redes                   *
+*        C/.Begonia, 12                *
+*   07010 Palma de Mallorca.     *
+*      Tel: +34-971499071            *
+*   <A HREF="http://www.todo-redes.com&#160;&#160;&#160;">http://www.todo-redes.com   </A> *
+*  comercial(en)todo-redes.com  *
+***************************************
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="005579.html">[BulmaGés]Ya funcionan las notificaciones de GIT
+</A></li>
+	<LI>Próximo mensaje: <A HREF="005581.html">[BulmaGés] Migrando a GIT (II)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5580">[ fecha ]</a>
+              <a href="thread.html#5580">[ hilo ]</a>
+              <a href="subject.html#5580">[ asunto ]</a>
+              <a href="author.html#5580">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

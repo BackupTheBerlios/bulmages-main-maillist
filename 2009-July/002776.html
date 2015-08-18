@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]warning: operation on 'i' may be undefined
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fwarning%3D3A_operation_%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fon_%3D27i%3D27_may_be_undefined%3F%3D&In-Reply-To=%3C200907220010.51540.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002775.html">
+   <LINK REL="Next"  HREF="002777.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]warning: operation on 'i' may be undefined </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fwarning%3D3A_operation_%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fon_%3D27i%3D27_may_be_undefined%3F%3D&In-Reply-To=%3C200907220010.51540.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]warning: operation on 'i' may be undefined">tborras en conetxia.com
+       </A><BR>
+    <I>Mie Jul 22 00:10:51 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002775.html">[BulmaGés] warning: operation on 'i' may be	undefined
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002777.html">[BulmaGés]warning: operation on 'i' may be undefined
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2776">[ fecha ]</a>
+              <a href="thread.html#2776">[ hilo ]</a>
+              <a href="subject.html#2776">[ asunto ]</a>
+              <a href="author.html#2776">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola:
+
+A mi el código me parece bien. Pero como has preguntado pues .....
+
+Las comprobaciones de buff.end() no son necesarias ya que la comprobacion 
+previa de isHightSurrogate() y isLowSurrogate() garantizan que habrá un 
+caracter siguiente. de hecho y si la codificacion es normal (primero el byte 
+low y luego el high) la parte de isHighSurrogate sobra pq no sucederá nunca.
+
+Para no usar variables intermedias ni hacer que el compilador de el warning de 
+autoincremento usaria la operacion suma sobre el iterador (que creo que lo 
+permite pero no estoy muy seguro).
+
+Con todo yo lo dejaría de esta otra forma:
+
+                    if ( ( *i ).isHighSurrogate() ) {
+                        // sospecho que o este caso o el siguiente nunca se
+                        // dara pero no lo se seguro y si es asi no se cual
+                        codepoint = QChar::surrogateToUcs4 ( *i, *(i+1) );
+			i++;
+                    }  else if ( ( *i ).isLowSurrogate() ) {
+                            // sospecho que o este caso o el anterior nunca se
+                            // dara pero no lo se seguro y si es asi no secual
+                            codepoint = QChar::surrogateToUcs4 ( *(i+1), *i );
+			    i++;
+                        } else {
+                            // este caso es mas normal, caracter entre 0 i2^16
+                            codepoint = ( *i ).unicode();
+                        }
+                    }
+
+Y si quieres dedicarte a hacer pruebas sobre el High y el Low y cual viene 
+primero:
+
+			 if ( ( *i ).isLowSurrogate() ) {
+                            // sospecho que o este caso o el anterior nunca se
+                            // dara pero no lo se seguro y si es asi no secual
+                            codepoint = QChar::surrogateToUcs4 ( *(i+1), *i );
+			    i++;
+                        } else {
+                            // este caso es mas normal, caracter entre 0 i2^16
+                            codepoint = ( *i ).unicode();
+                        }
+
+
+El Tuesday 21 July 2009 23:05:37 Pedro Lopez-Cabanillas escribió:
+&gt;<i> Hola,
+</I>&gt;<i>
+</I>&gt;<i> Seguimos cazando warnings que impiden crear los paquetes RPM para openSuse.
+</I>&gt;<i> Os comento uno de los últimos:
+</I>&gt;<i>
+</I>&gt;<i> I: Program causes undefined operation
+</I>&gt;<i> (likely same variable used twiceand post/pre incremented in the same
+</I>&gt;<i> expression).
+</I>&gt;<i> e.g. x = x++; Split it in two operations.
+</I>&gt;<i> E: bulmages
+</I>&gt;<i> sequence-point /usr/src/packages/BUILD/bulmages/bulmalib/src/bldb.cpp:945,
+</I>&gt;<i> 950
+</I>&gt;<i>
+</I>&gt;<i> Propongo el siguiente parche, que parece que deja contento al compilador, y
+</I>&gt;<i> además clarifica bastante el fuente. Antes del commit, solicito vuestra
+</I>&gt;<i> aprobación o comentarios.
+</I>&gt;<i>
+</I>&gt;<i> --- bulmalib/src/bldb.cpp	(revisión: 3581)
+</I>&gt;<i> +++ bulmalib/src/bldb.cpp	(copia de trabajo)
+</I>&gt;<i> @@ -953,12 +953,22 @@
+</I>&gt;<i>     if ( ( *i ).isHighSurrogate() ) {
+</I>&gt;<i>         // sospecho que o este caso o el siguiente nunca se
+</I>&gt;<i>         // dara pero no lo se seguro y si es asi no se cual
+</I>&gt;<i> -        codepoint = QChar::surrogateToUcs4 ( *i, *++i );
+</I>&gt;<i> +        QChar high = *i;
+</I>&gt;<i> +        i++;
+</I>&gt;<i> +        if ( i == buff.end() )
+</I>&gt;<i> +            break;
+</I>&gt;<i> +        QChar low = *i;
+</I>&gt;<i> +        codepoint = QChar::surrogateToUcs4 ( high, low );
+</I>&gt;<i>     }  else {
+</I>&gt;<i>         if ( ( *i ).isLowSurrogate() ) {
+</I>&gt;<i>             // sospecho que o este caso o el anterior nunca se
+</I>&gt;<i>             // dara pero no lo se seguro y si es asi no se cual
+</I>&gt;<i> -            codepoint = QChar::surrogateToUcs4 ( *++i, *i );
+</I>&gt;<i> +            QChar low = *i;
+</I>&gt;<i> +            i++;
+</I>&gt;<i> +            if ( i == buff.end() )
+</I>&gt;<i> +                break;
+</I>&gt;<i> +            QChar high = *i;
+</I>&gt;<i> +            codepoint = QChar::surrogateToUcs4 ( high, low );
+</I>&gt;<i>         } else {
+</I>&gt;<i>             // este caso es mas normal, caracter entre 0 i 2^16
+</I>&gt;<i>             codepoint = ( *i ).unicode();
+</I>&gt;<i>
+</I>&gt;<i> Saludos,
+</I>&gt;<i> Pedro
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002775.html">[BulmaGés] warning: operation on 'i' may be	undefined
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002777.html">[BulmaGés]warning: operation on 'i' may be undefined
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2776">[ fecha ]</a>
+              <a href="thread.html#2776">[ hilo ]</a>
+              <a href="subject.html#2776">[ asunto ]</a>
+              <a href="author.html#2776">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

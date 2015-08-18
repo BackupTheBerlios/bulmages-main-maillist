@@ -1,0 +1,242 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]lista la primera hornada de paquetes para debian
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Flista_la_primera_horn%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fada_de_paquetes_para_debian%3F%3D&In-Reply-To=%3CAANLkTimfo2BXzNO54tPQx_8BnF0N3M0VfFK4qzymnKHq%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003666.html">
+   <LINK REL="Next"  HREF="003744.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]lista la primera hornada de paquetes para debian </H1>
+    <B>Iker Salmón San Millán</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Flista_la_primera_horn%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fada_de_paquetes_para_debian%3F%3D&In-Reply-To=%3CAANLkTimfo2BXzNO54tPQx_8BnF0N3M0VfFK4qzymnKHq%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]lista la primera hornada de paquetes para debian">shaola en esdebian.org
+       </A><BR>
+    <I>Lun Jun  7 00:55:26 CEST 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003666.html">[BulmaGés]lista la primera hornada de paquetes para debian
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003744.html">[BulmaGés]lista la primera hornada de paquetes para debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3667">[ fecha ]</a>
+              <a href="thread.html#3667">[ hilo ]</a>
+              <a href="subject.html#3667">[ asunto ]</a>
+              <a href="author.html#3667">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola leo, pues justo estaba revisando unas cositas, a ver si lees esto a
+tiempo.
+
+Comprobando las dependencias de los paquetes anteriores he encontrado varios
+problemas con la separación que hemos decidido ahora.
+
+Por ejemplo:
+bulmages-admin 0.11 depende de bulmafact-plugins y bulmacont-plugins con lo
+que meter esos plugins en bulmafact y bulmacont nos obligaría a incluirlos
+como dependencias de bulmages-servers-admin.
+
+No me atrevo con el subversión todavía. Aún estoy con los manuales, pero te
+envío si quieres un tar.gz en un pis pas  y los vas mirando. Mañana por la
+tarde prometo subirlo todo.
+
+He estado un poco liado, pero a ver si ahora me da tiempo a enviartelo para
+que eches un vistazo.
+
+Saludos!
+
+
+
+
+El 7 de junio de 2010 00:47, Leopold Palomo Avellaneda
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">leo en alaxarxa.net</A>&gt;escribió:
+
+&gt;<i> A Divendres 04 Juny 2010, Iker Salmón San Millán va escriure:
+</I>&gt;<i> &gt; Hola,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Pues eso, que por fin he conseguido construir los paquetes.  Eso sí, no
+</I>&gt;<i> os
+</I>&gt;<i> &gt; hagáis ilusiones, aún queda mucho trabajo por hacer.
+</I>&gt;<i>
+</I>&gt;<i> perfecto, muchas grácias.
+</I>&gt;<i>
+</I>&gt;<i> &gt; Para empezar, no se si he metido cada archivo donde corresponde, y además
+</I>&gt;<i> &gt; he tenido varios warnings durante la construcción de los paquetes.  Esos
+</I>&gt;<i> &gt; warnings estan relacionados con los plugins  y CREO que se pueden ignorar
+</I>&gt;<i> &gt; por el propio mensaje &quot;it's probably a plugin&quot;. pero no sé, lo mejor es
+</I>&gt;<i> &gt; que los ponga:
+</I>&gt;<i>
+</I>&gt;<i> me lo miro.
+</I>&gt;<i>
+</I>&gt;<i> [...]
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Otra cosa es que he necesitado exportar LD_LIBRARY_PATH para los
+</I>&gt;<i> &gt; directorios de plugins de bulmafact y bulmacont, porque no he sido capaz
+</I>&gt;<i> &gt; de incluirlos en el archivo rules, se supone que con el parámetro -l
+</I>&gt;<i> puedo
+</I>&gt;<i> &gt; hacerlo con dh_shlibdeps, pero no se si he metido la ruta mal o que.
+</I>&gt;<i>
+</I>&gt;<i> no, va en el postconfig. Lo arreglo yo.
+</I>&gt;<i>
+</I>&gt;<i> &gt; Tampoco he probado todas las posibilidades con las rutas parciales o
+</I>&gt;<i> &gt; completas, pero como me ha funcionado exportandolo y tengo los ojos
+</I>&gt;<i> &gt; llorosos ya de leer, lo he dejado para otro día.
+</I>&gt;<i>
+</I>&gt;<i> :-D
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> &gt; Creo que como tomeu me ha añadido al subversión podría subir os cambios
+</I>&gt;<i> que
+</I>&gt;<i> &gt; he tenido que hacer para que se construya bien los paquetes, pero
+</I>&gt;<i> &gt; sinceramente no me atrevo a hacerlo aún.  Me falta confianza.  Además,
+</I>&gt;<i> &gt; antes de hacerlo quisiera terminar con las cosas pendientes que quedan
+</I>&gt;<i> por
+</I>&gt;<i> &gt; discutir:
+</I>&gt;<i>
+</I>&gt;<i> súbelos ya!!!! ;-)
+</I>&gt;<i>
+</I>&gt;<i> &gt; Voy a intentar sintetizar todo para que quede clarito.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Definitivamente nos quedan cinco paquetes:  bulmages, bulmafact,
+</I>&gt;<i> bulmacont,
+</I>&gt;<i> &gt; bulmatpv y bulmages-servers-admin
+</I>&gt;<i> &gt; La idea que tengo, que no se si es la más correcta, es esta:
+</I>&gt;<i>
+</I>&gt;<i> si, tranquilo.
+</I>&gt;<i>
+</I>&gt;<i> &gt; En cada paquete van las cosas propias de sí mismos (bulmafact, bulmatpv,
+</I>&gt;<i> &gt; bulmacont y bulmages-servers-admin) salvo en bulmages, que he metido lo
+</I>&gt;<i> que
+</I>&gt;<i> &gt; creo que era de bulmalib y de bulmages-common y también la documentación.
+</I>&gt;<i> &gt; Con lo que creo que bulmafact, bulmatpv y bulmacont dependen de ese
+</I>&gt;<i> paquete
+</I>&gt;<i> &gt; también, por lo que lo he añadido como dependencia (antes tenían como
+</I>&gt;<i> &gt; dependencia bulmages-common).
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; La idea es que bulmages-servers-admin pueda funcionar por si mismo sin
+</I>&gt;<i> &gt; otras dependencias.
+</I>&gt;<i>
+</I>&gt;<i> ok, dependrá de postres y qt y pyqt y python si metes el lanzador.
+</I>&gt;<i>
+</I>&gt;<i> &gt; La duda que me queda es si hacer o no un paquete solo para la
+</I>&gt;<i> &gt; documentación. Ya me contaréis.
+</I>&gt;<i>
+</I>&gt;<i> nops, no vale la pena.
+</I>&gt;<i>
+</I>&gt;<i> &gt; Cosas pendientes:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; 1- Confirmar la separación de los paquetes tal y como lo he planteado.
+</I>&gt;<i>
+</I>&gt;<i> por mi ok, pero quiero revisarla.
+</I>&gt;<i>
+</I>&gt;<i> &gt; 2- Verificar que no haya metido la pata a la hora de separar los
+</I>&gt;<i> archivos,
+</I>&gt;<i> &gt; ya que no me se la función de cada uno.  Me he limitado a deducirlo por
+</I>&gt;<i> el
+</I>&gt;<i> &gt; nombre y ruta de cada archivo.  Lo único que tengo claro es que los que
+</I>&gt;<i> he
+</I>&gt;<i> &gt; metido en bulmafact, bulmacont y bulmatpv están bien, ya que se
+</I>&gt;<i> identifican
+</I>&gt;<i> &gt; muy bien.  Creo que puede haber problemas con los otros dos (además
+</I>&gt;<i> estaba
+</I>&gt;<i> &gt; ya muy cansado cuando los puse y probé mil cosas porque no conseguía
+</I>&gt;<i> crear
+</I>&gt;<i> &gt; el paquete).  No quiero incordiar a Tomeu, pero creo que él sería el más
+</I>&gt;<i> &gt; adecuado para comprobar ese listado.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> no puedo verificar nada si no subes los cambios.
+</I>&gt;<i>
+</I>&gt;<i> &gt; 3- Decidir si metemos la documentación en bulmages también o creamos un
+</I>&gt;<i> &gt; bulmages-doc.
+</I>&gt;<i>
+</I>&gt;<i> no, de verdad, no vale la pena.
+</I>&gt;<i>
+</I>&gt;<i> &gt; 4- Decidir la versión que será el paquete.  Creo que nombrarlo como una
+</I>&gt;<i> &gt; versión + subversión no es lo más adecuado para pensar en que llegue a
+</I>&gt;<i> &gt; estable.  ¿Sería posible liberar una especie de postversion ya que ahora
+</I>&gt;<i> ya
+</I>&gt;<i> &gt; no quedan dependencias de las qt3?
+</I>&gt;<i>
+</I>&gt;<i> mira, de verdad, llevo años con esto y renuncio. Versión + svnrevision . No
+</I>&gt;<i> psa nada con debian, tranquilo.
+</I>&gt;<i>
+</I>&gt;<i> &gt; 5- modificar el rules para no tener que exportar la variable de las rutas
+</I>&gt;<i> y
+</I>&gt;<i> &gt; que sea más sencilla la construcción de los paquetes.
+</I>&gt;<i>
+</I>&gt;<i> ok, tranquilo-
+</I>&gt;<i>
+</I>&gt;<i> &gt; Aunque la congelación de squeeze está muy cerca y es prácticamente
+</I>&gt;<i> &gt; imposible que consigamos que entre a tiempo, aún hay una pequeña
+</I>&gt;<i> &gt; posibilidad.
+</I>&gt;<i>
+</I>&gt;<i> venga, lo intentamos.
+</I>&gt;<i>
+</I>&gt;<i> &gt; Como sé que todo el mundo pone de su parte y muchos no tienen casi tiempo
+</I>&gt;<i> &gt; no voy a pedirle a nadie un esfuerzo.  Pero yo tengo tiempo disponible y
+</I>&gt;<i> &gt; muchas ganas, con una pequeña ayudita inicial puedo tener los paquetes
+</I>&gt;<i> &gt; listos en pocos días.
+</I>&gt;<i>
+</I>&gt;<i> sube los cambios !!!!!
+</I>&gt;<i>
+</I>&gt;<i> &gt; Un saludo a todos y ánimo.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; P.S.  Creo que no me dejo nada en el tintero, estoy bastante cansado y ya
+</I>&gt;<i> &gt; no pienso con claridad, pero después de ver los paquetes en formato deb
+</I>&gt;<i> me
+</I>&gt;<i> &gt; siento renovado y feliz.  Gracias a todos por la oportunidad de
+</I>&gt;<i> &gt; aprendizaje que me habéis brindado.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> venga, ahora me toca a mi iteración 2.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Grácias,
+</I>&gt;<i>
+</I>&gt;<i> Leo
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> --
+</I>&gt;<i> Linux User 152692     PGP: 0xF944807E
+</I>&gt;<i> Catalonia
+</I>&gt;<i> -------------------------------------
+</I>&gt;<i> A: Because it messes up the order in which people normally read text.
+</I>&gt;<i> Q: Why is top-posting such a bad thing?
+</I>&gt;<i> A: Top-posting.
+</I>&gt;<i> Q: What is the most annoying thing in e-mail?
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20100607/9bc0c923/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20100607/9bc0c923/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003666.html">[BulmaGés]lista la primera hornada de paquetes para debian
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003744.html">[BulmaGés]lista la primera hornada de paquetes para debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3667">[ fecha ]</a>
+              <a href="thread.html#3667">[ hilo ]</a>
+              <a href="subject.html#3667">[ asunto ]</a>
+              <a href="author.html#3667">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

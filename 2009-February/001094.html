@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Gettext y los gloriosos mensajes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FGettext_y_los_glorios%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fos_mensajes%3F%3D&In-Reply-To=%3C49982A44.5030407%40todo-redes.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001093.html">
+   <LINK REL="Next"  HREF="001096.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Gettext y los gloriosos mensajes </H1>
+    <B>Fco. Javier M. C.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FGettext_y_los_glorios%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fos_mensajes%3F%3D&In-Reply-To=%3C49982A44.5030407%40todo-redes.com%3E"
+       TITLE="[BulmaGés]Gettext y los gloriosos mensajes">fcojavmc en todo-redes.com
+       </A><BR>
+    <I>Dom Feb 15 15:44:20 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001093.html">[BulmaGés] Gettext y los gloriosos mensajes
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001096.html">[BulmaGés]Gettext y los gloriosos mensajes
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1094">[ fecha ]</a>
+              <a href="thread.html#1094">[ hilo ]</a>
+              <a href="subject.html#1094">[ asunto ]</a>
+              <a href="author.html#1094">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Leo.
+
+Ayer Tomeu creó un plugin nuevo (saco la gestión de trabajadores) y no 
+sabía como crear los .po con las traducciones. No se si es la mejor 
+manera de hacerlo o existe algún atajo. Yo le pasé estas instrucciones. 
+Te las mando para que veas como lo hizo y si se puede mejorar el 
+procedimiento porque es muy engorroso.
+
+1)- editar el archivo CMakeLists.txt del directorio del código fuente 
+del plugin y comentar las siguientes líneas de GETTEXT_CREATE_TRANSLATIONS:
+
+if(USE_GETTEXT)
+   set(plugin_i18n ${plugin_SRC} ${plugin_MOC_SRCS} ${plugin_UIS_H}
+                        ${plugin_SRCS} ${plugin_MOCS})
+   GETTEXT_CREATE_TEMPLATE(${plugin} ${CMAKE_CURRENT_BINARY_DIR}
+                                ${CMAKE_CURRENT_SOURCE_DIR} plugin_i18n)
+#   GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/${plugin}.pot
+#                                ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8)
+endif(USE_GETTEXT)
+
+
+2)- cmake (como siempre)
+3)- make
+4)- make translations
+5)- entrar en el directorio del plugin en el directorio de compilación y 
+ejecutar 'make pluginbf_trabajador_pot' para generar el archivo '.pot' 
+con las cadenas a traducir.
+6)- crear directorio 'po' en el directorio del plugin (código fuente).
+7)- copiar el archivo '.pot' desde el directorio de compilación.
+8)- copiar el archivo '.pot' para cada idioma con extensión '.po'. Ej: 
+pluginbf_trabajador_es_ES.UTF-8.po
+9)- descomentar las líneas de CMakeLists.txt
+10)- cambiar, de los archivos '.po' las líneas 16 ...&quot; charser=CHARSET&quot; 
+por &quot;charset=UTF-8&quot; porque sino dará error en el siguiente paso.
+11)- make translations (otra vez. esto traducirá las cadenas que pueda 
+de forma automática, rellenando los archivos '.po' de cada idioma)
+12)- copiar los archivos '.po' del directorio de compilación (que ya 
+está traducido) al directorio del código fuente del plugin.
+
+
+
+Un saludo.
+
+
+
+
+
+
+
+
+Leopold Palomo Avellaneda escribió:
+&gt;<i> Bones,
+</I>&gt;<i>
+</I>&gt;<i> una de las cosas que te permite tener un único catálogo de mensajes es ver los 
+</I>&gt;<i> gloriosos mensajes que se han ido utilizando en Bulmages. para quién no lo 
+</I>&gt;<i> sepa, cada uno de ellos es diferente y se tiene que traducir (*). 
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Apartura tarde
+</I>&gt;<i> Apertura Tarde
+</I>&gt;<i> Apertura tardes
+</I>&gt;<i> Apertura Manyana
+</I>&gt;<i> Apertura manyana
+</I>&gt;<i> Apertura manyanas
+</I>&gt;<i> Apellidos
+</I>&gt;<i> Apellidos:
+</I>&gt;<i> Articulo
+</I>&gt;<i> Articulo:
+</I>&gt;<i> Articulos
+</I>&gt;<i> &amp;Articulos
+</I>&gt;<i> Articulo&amp;s
+</I>&gt;<i>
+</I>&gt;<i> Leo
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> (*) pensar que con qtranslator se habían de traducir TODOS los mensajes, 
+</I>&gt;<i> incluso los repetidos. Por lo que si tenias un mensaje 15 veces, lo tenias 
+</I>&gt;<i> que traducir 15 veces.
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+-- 
+Fco. Javier M. C.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001093.html">[BulmaGés] Gettext y los gloriosos mensajes
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001096.html">[BulmaGés]Gettext y los gloriosos mensajes
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1094">[ fecha ]</a>
+              <a href="thread.html#1094">[ hilo ]</a>
+              <a href="subject.html#1094">[ asunto ]</a>
+              <a href="author.html#1094">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

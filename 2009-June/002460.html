@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][Bug #15888] SMTP INCLUIDO en bulmages.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3F%3D5BBug_%3D2315888%3D5D_SMTP_IN%3F%3D%0A%20%3D%3Futf-8%3Fq%3FCLUIDO_en_bulmages%3D2E%3F%3D&In-Reply-To=%3C200906191907.13594.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002459.html">
+   <LINK REL="Next"  HREF="002461.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][Bug #15888] SMTP INCLUIDO en bulmages. </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3F%3D5BBug_%3D2315888%3D5D_SMTP_IN%3F%3D%0A%20%3D%3Futf-8%3Fq%3FCLUIDO_en_bulmages%3D2E%3F%3D&In-Reply-To=%3C200906191907.13594.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés][Bug #15888] SMTP INCLUIDO en bulmages.">tborras en conetxia.com
+       </A><BR>
+    <I>Vie Jun 19 19:07:13 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002459.html">[BulmaGés] [Bug #15888] SMTP INCLUIDO en bulmages.
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002461.html">[BulmaGés][Bug #15888] SMTP INCLUIDO en bulmages.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2460">[ fecha ]</a>
+              <a href="thread.html#2460">[ hilo ]</a>
+              <a href="subject.html#2460">[ asunto ]</a>
+              <a href="author.html#2460">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Buenas
+
+No soy partidario de implementar un SMTP en el programa. Es una tarea Ã¡rdua, 
+redundante y poco prÃ¡ctica. Tendriamos que contemplar SSL, registar los mail 
+enviados, permitir la edicion de contenidos y en definitiva un montÃ³n de 
+curro para algo que ya estÃ¡ hecho.
+
+Asi que lo que haremos serÃ¡ crear una clase de envio de e-mail que se 
+completarÃ¡ con los plugins de cada programa. (Y por defecto usara sendmail). 
+De esta forma lo que ganamos es que los plugins de envio de correo con el 
+programa X sean mucho mÃ¡s sencillos de hacer.
+
+Es decir la clase blMail tendrÃ¡ su sistema de composicion, adjuntar, subject, 
+mensaje, etc y los plugins lo Ãºnico que implementaran serÃ¡ el mÃ©todo send.
+
+Salut
+
+
+
+
+El Friday 19 June 2009 11:38:51 <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">admin en berlios.de</A> escribiÃ³:
+&gt;<i> Bug #15888, was updated on 2009-Jun-19 11:38
+</I>&gt;<i> Here is a current snapshot of the bug.
+</I>&gt;<i>
+</I>&gt;<i> Project: BulmaGes, Gestión Empresarial Libre
+</I>&gt;<i> Category: bulmafact
+</I>&gt;<i> Status: Open
+</I>&gt;<i> Resolution: None
+</I>&gt;<i> Bug Group: furure request
+</I>&gt;<i> Priority: 5
+</I>&gt;<i> Submitted by: turkil
+</I>&gt;<i> Assigned to : none
+</I>&gt;<i> Summary: SMTP INCLUIDO en bulmages.
+</I>&gt;<i>
+</I>&gt;<i> Details: Creo que en lugar de hacer plugins para todos los clientes de
+</I>&gt;<i> correo (thunderbird, kdemail, ...) y otros no soportadors como outlook,
+</I>&gt;<i> evolution, etc...
+</I>&gt;<i>
+</I>&gt;<i> y mas teniendo en cuenta que cada dia mas gente tiene webmail, ...
+</I>&gt;<i>
+</I>&gt;<i> Bulmages simplemente tendria que tener algun sitio donde informar smtp,
+</I>&gt;<i> usuario, password, e-mail i nombre a mostrar. Tambien estaria bien añadir
+</I>&gt;<i> texto a incluir en el asunto.
+</I>&gt;<i>
+</I>&gt;<i> Y ya se podrian enviar los documentos sin necesidad de configurar clientes
+</I>&gt;<i> de correo.
+</I>&gt;<i>
+</I>&gt;<i> Actulamente a mis clientes lo que hago es configurar-les el smtp del
+</I>&gt;<i> thunderbird para que envien sin poder recibir.
+</I>&gt;<i>
+</I>&gt;<i> For detailed info, follow this link:
+</I>&gt;<i> <A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=15888&amp;group_id=4472">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=15888&amp;group_id=4472</A>
+</I>
+
+
+-- 
+Tomeu BorrÃ¡s Riera
+Conetxia Soluciones InformÃ¡ticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002459.html">[BulmaGés] [Bug #15888] SMTP INCLUIDO en bulmages.
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002461.html">[BulmaGés][Bug #15888] SMTP INCLUIDO en bulmages.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2460">[ fecha ]</a>
+              <a href="thread.html#2460">[ hilo ]</a>
+              <a href="subject.html#2460">[ asunto ]</a>
+              <a href="author.html#2460">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

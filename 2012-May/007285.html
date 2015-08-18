@@ -1,0 +1,244 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120531204109.E947E758F3%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007284.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120531204109.E947E758F3%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Jue Mayo 31 22:41:09 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007284.html">[BulmaGés] [Gitorious] Activity: tborras pushed 3	commits to master...
+</A></li>
+        
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7285">[ fecha ]</a>
+              <a href="thread.html#7285">[ hilo ]</a>
+              <a href="subject.html#7285">[ asunto ]</a>
+              <a href="author.html#7285">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from 9d1c3c6 to 49f6d90
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/9d1c3c6e1d7830c04363ee118c2d739d7716562c/diffs/49f6d90f20a99e89f0881f703d649b3e34ad330e">https://gitorious.org/bulmages/bulmages/commit/9d1c3c6e1d7830c04363ee118c2d739d7716562c/diffs/49f6d90f20a99e89f0881f703d649b3e34ad330e</A>
+
+Diff: 
+
+commit 49f6d90f20a99e89f0881f703d649b3e34ad330e
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu May 31 22:39:42 2012 +0200
+
+    Agrego la funcionalidad de duplicar un pedido de proveedor.
+    
+    Mas adelante la extendere a los demas documentos ya que una forma rapida de utilizar el programa es coger un documento ya hecho,
+    duplicarlo y modificarlo para que se adapte a las necesidades nuevas.
+    
+    Solicitud realizada por Jose Manuel de Granada.
+    
+    Salut
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorbase.ui b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorbase.ui
+index 7b150bc..96c05b3 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorbase.ui
+@@ -91,7 +91,7 @@
+        &lt;/property&gt;
+        &lt;layout class=&quot;QHBoxLayout&quot; name=&quot;horizontalLayout&quot;&gt;
+         &lt;property name=&quot;margin&quot;&gt;
+-         &lt;number&gt;4&lt;/number&gt;
++         &lt;number&gt;0&lt;/number&gt;
+         &lt;/property&gt;
+         &lt;item&gt;
+          &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_guardar&quot;&gt;
+@@ -252,6 +252,44 @@
+          &lt;/widget&gt;
+         &lt;/item&gt;
+         &lt;item&gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_duplicar&quot;&gt;
++          &lt;property name=&quot;minimumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;maximumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;toolTip&quot;&gt;
++           &lt;string&gt;Imprimir pedido&lt;/string&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;whatsThis&quot;&gt;
++           &lt;string&gt;Imprimir pedido&lt;/string&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;text&quot;&gt;
++           &lt;string/&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;icon&quot;&gt;
++           &lt;iconset resource=&quot;../../../bulmages.qrc&quot;&gt;
++            &lt;normaloff&gt;:/BulmaCont32x32/images/png/igualant.xpm&lt;/normaloff&gt;:/BulmaCont32x32/images/png/igualant.xpm&lt;/iconset&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;iconSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;22&lt;/width&gt;
++            &lt;height&gt;22&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;shortcut&quot;&gt;
++           &lt;string&gt;Ctrl+P&lt;/string&gt;
++          &lt;/property&gt;
++         &lt;/widget&gt;
++        &lt;/item&gt;
++        &lt;item&gt;
+          &lt;spacer&gt;
+           &lt;property name=&quot;orientation&quot;&gt;
+            &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorview.cpp b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorview.cpp
+index eace4f4..5f44bf4 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorview.cpp
+@@ -222,4 +222,72 @@ int PedidoProveedorView::afterSave()
+     return 0;
+ }
+ 
++/// Se encarga de generar una factura a partir de un albar&aacute;n.
++/** Primero de todo busca una factura por referencia que tenga este albaran.
++    Si dicha factura existe entonces la cargamos y terminamos.
++    Si no existe dicha factura el sistema avisa y permite crear una poniendo
++    Todos los datos del albaran automaticamente en ella.
++*/
++/**
++\return
++**/
++void PedidoProveedorView::on_mui_duplicar_released()
++{
++    BL_FUNC_DEBUG
++    PedidoProveedorView *fpv = this ;
++
++
++    PedidoProveedorView *bud = NULL;
++    BlDbRecordSet *cur = NULL;
++
++    try {
++        /// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta
++        /// comprobaci&oacute;n la consulta a la base de datos ser&aacute; erronea y al hacer
++        /// el siguiente cur-&gt;eof() el programa fallar&aacute;.
++        /// Comprobamos que existe una factura con esos datos, y en caso afirmativo lo mostramos.
++
++        /// Creamos la factura.
++        PedidoProveedorView *bud = new PedidoProveedorView ( ( BfCompany * ) fpv-&gt;mainCompany(), 0 );
++        fpv-&gt;mainCompany() -&gt;m_pWorkspace-&gt;addSubWindow ( bud );
++
++        /// Cargamos un elemento que no existe para inicializar bien la clase.
++//         bud-&gt;inicialize();
++
++        bud-&gt;setDbValue ( &quot;comentpedidoproveedor&quot;, fpv-&gt;dbValue ( &quot;comentpedidoproveedor&quot; ) );
++        bud-&gt;setDbValue ( &quot;idforma_pago&quot;, fpv-&gt;dbValue ( &quot;idforma_pago&quot; ) );
++        bud-&gt;setDbValue ( &quot;refpedidoproveedor&quot;, fpv-&gt;dbValue ( &quot;refpedidoproveedor&quot; ) );
++        bud-&gt;setDbValue ( &quot;idproveedor&quot;, fpv-&gt;dbValue ( &quot;idproveedor&quot; ) );
++        bud-&gt;pintar();
++        bud-&gt;show();
++
++        /// Traspasamos las lineas de factura
++        QString l;
++        BlDbSubFormRecord *linea, *linea1;
++        for ( int i = 0; i &lt; fpv-&gt;m_listalineas-&gt;rowCount(); ++i ) {
++            linea = fpv-&gt;m_listalineas-&gt;lineaat ( i );
++            if ( linea-&gt;dbValue ( &quot;idarticulo&quot; ) != &quot;&quot; ) {
++                linea1 = bud-&gt;getlistalineas() -&gt;lineaat ( bud-&gt;getlistalineas() -&gt;rowCount() - 1 );
++                bud-&gt;getlistalineas() -&gt;newRecord();
++                bud-&gt;getlistalineas() -&gt;setProcesarCambios ( FALSE );
++                linea1-&gt;setDbValue ( &quot;desclpedidoproveedor&quot;, linea-&gt;dbValue ( &quot;desclpedidoproveedor&quot; ) );
++                linea1-&gt;setDbValue ( &quot;cantlpedidoproveedor&quot;, linea-&gt;dbValue ( &quot;cantlpedidoproveedor&quot; ) );
++                linea1-&gt;setDbValue ( &quot;pvplpedidoproveedor&quot;, linea-&gt;dbValue ( &quot;pvplpedidoproveedor&quot; ) );
++                linea1-&gt;setDbValue ( &quot;descuentolpedidoproveedor&quot;, linea-&gt;dbValue ( &quot;descuentolpedidoproveedor&quot; ) );
++                linea1-&gt;setDbValue ( &quot;idarticulo&quot;, linea-&gt;dbValue ( &quot;idarticulo&quot; ) );
++                linea1-&gt;setDbValue ( &quot;codigocompletoarticulo&quot;, linea-&gt;dbValue ( &quot;codigocompletoarticulo&quot; ) );
++                linea1-&gt;setDbValue ( &quot;nomarticulo&quot;, linea-&gt;dbValue ( &quot;nomarticulo&quot; ) );
++                linea1-&gt;setDbValue ( &quot;ivalpedidoproveedor&quot;, linea-&gt;dbValue ( &quot;ivalpedidoproveedor&quot; ) );
++                linea1-&gt;setDbValue ( &quot;reqeqlpedidoproveedor&quot;, linea-&gt;dbValue ( &quot;reqeqlpedidoproveedor&quot; ) );
++            } // end if
++        } // end for
++        bud-&gt;calculaypintatotales();
++
++    } catch ( ... ) {
++        blMsgInfo ( _ ( &quot;Error inesperado&quot; ), this );
++        if ( cur ) delete cur;
++        if ( bud ) delete bud;
++    } // end try
++
++}
++
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorview.h b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorview.h
+index d581d79..3c6a174 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorview.h
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorview.h
+@@ -51,7 +51,7 @@ class PLUGINBF_PROVEEDORPEDIDO_EXPORT PedidoProveedorView : public BfForm, publi
+ public:
+     PedidoProveedorView ( BfCompany *, QWidget *parent = 0 );
+     ~PedidoProveedorView();
+-    void inicialize();
++//     void inicialize();
+     void pintatotales ( BlFixed iva, BlFixed base, BlFixed total, BlFixed desc, BlFixed irpf, BlFixed reqeq );
+     virtual int cargarPost ( QString );
+     virtual int afterSave();
+@@ -61,6 +61,7 @@ public slots:
+     virtual void on_mui_idproveedor_valueChanged ( QString );
+     virtual void on_mui_descuentos_editFinish ( int, int );
+     virtual void on_mui_lineasDetalle_editFinish ( int, int );
++    virtual void on_mui_duplicar_released();
+ };
+ 
+ #endif
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007284.html">[BulmaGés] [Gitorious] Activity: tborras pushed 3	commits to master...
+</A></li>
+	
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7285">[ fecha ]</a>
+              <a href="thread.html#7285">[ hilo ]</a>
+              <a href="subject.html#7285">[ asunto ]</a>
+              <a href="author.html#7285">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

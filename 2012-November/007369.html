@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Bulmages compila y funciona en Debian Squeeze
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3FBulmages_compila_y_funcion%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fa_en_Debian_Squeeze%3F%3D&In-Reply-To=%3C20121117180544.017436df%40mtelleria.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007368.html">
+   <LINK REL="Next"  HREF="007370.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Bulmages compila y funciona en Debian Squeeze </H1>
+    <B>Miguel Telleria de Esteban</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3FBulmages_compila_y_funcion%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fa_en_Debian_Squeeze%3F%3D&In-Reply-To=%3C20121117180544.017436df%40mtelleria.com%3E"
+       TITLE="[BulmaGés]Bulmages compila y funciona en Debian Squeeze">miguel en mtelleria.com
+       </A><BR>
+    <I>Sab Nov 17 18:05:44 CET 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007368.html">[BulmaGés]Bulmages compila y funciona en Debian Squeeze
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007370.html">[BulmaGés]Bulmages compila y funciona en Debian Squeeze
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7369">[ fecha ]</a>
+              <a href="thread.html#7369">[ hilo ]</a>
+              <a href="subject.html#7369">[ asunto ]</a>
+              <a href="author.html#7369">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Leopold,
+
+Muchas gracias por tu correo, respondo entre lineas a tus cuestiones.
+
+On Sat, 17 Nov 2012 00:53:32 +0100 Leopold Palomo Avellaneda wrote:
+
+[...]
+
+&gt;<i> Hola Miguel,
+</I>&gt;<i> 
+</I>&gt;<i> en primer lugar muchas gracias por ponerte en este tema. Me hubiera
+</I>&gt;<i> gustado haber respondido antes, pero me ha sido bastante difícil. 
+</I>&gt;<i> 
+</I>&gt;<i> Cosas:
+</I>&gt;<i> - en enero de este año hubo unos correos de la lista en que se
+</I>&gt;<i> mencionaba porqué se había tenido que suber la versión de qt a 4.7.
+</I>&gt;<i> Creo recordar que era un tema de la clase QColor que F.J o Tomeu
+</I>&gt;<i> utilizaron en no sé que.
+</I>
+Está claro que si se puede es mejor backportear Qt que hacer cambios en
+Bulmages.
+
+&gt;<i> 
+</I>&gt;<i> - me hace gracia los pasos que has utilizado con el tema de bulmages.
+</I>&gt;<i> Yo hice lo mismo años atrás... no sé si vale la pena. Qué quiero
+</I>&gt;<i> decir? Backportear qt es un mostruo. Puedes tener problemas con las
+</I>&gt;<i> versiones oficiales. Ahora bien, los paquetes són muy buenos y con un
+</I>&gt;<i> debuild tendrías suficiente.
+</I>
+Tengo experiencia backporteando cosas. Qt me ha llevado algo de tiempo
+pero creo que ya lo tengo.  Nota:  Aun no he usado realmente bulmages
+por lo que tampoco puedo decir como de exitoso es el porteo.  Por ahora
+sólo he podido arrancar y parar sin que haya segmentation fault.
+
+&gt;<i> 
+</I>&gt;<i> - Yo me pondría con Wheeze. Debería salir en unas semanas (8, 9?,
+</I>&gt;<i> quien sabe), pero pueden salir cosas como por ejemplo problemas con
+</I>&gt;<i> el compilador, etc.
+</I>
+He empezado con Wheezy y ahí seguiré preferentemente.  El soporte a
+squeeze es secundario y estará en ramas separadas.
+
+&gt;<i> - Creo que debería seguir la idea de tener bulmages empaquetado en
+</I>&gt;<i> paquetes pequeños (bulmafact, bulmacont, etc), pero tanto una cosa
+</I>&gt;<i> como hacer un paquete gordo pueden ser suficientemente efectivos.
+</I>
+Admito ayuda en la separación, se pueden recuperar los
+ficheros .install de René.
+ 
+&gt;<i> - Hacer un backport de cmake és sencillo. Pero lo lógico es que
+</I>&gt;<i> utilices el de <A HREF="http://packages.debian.org/squeeze-backports/cmake.">http://packages.debian.org/squeeze-backports/cmake.</A>
+</I>
+No me ha hecho falta.
+
+&gt;<i> - Donde tienes los paquetes? son públicos?
+</I>
+Por ahora los pienso poner un ramas de mi repositorio Gitorious.
+
+Los de Sid/Wheezy están aquí:
+
+<A HREF="https://gitorious.org/~mtelleria/bulmages/mtelleria-bulmages/trees/paquetes">https://gitorious.org/~mtelleria/bulmages/mtelleria-bulmages/trees/paquetes</A>
+
+Nota:  Al último aún le faltan los últimos commits de Tomeu.
+
+Para los paquetes bulmages de Squeeze crearé una nueva rama.
+
+Para los backporteos de qt, qtwebkit, etc subiré al menos los paquetes
+fuente.
+
+Un saludo,
+
+	Miguel
+
+
+-- 
+
+      (O-O)
+---oOO-(_)-OOo-----------------------------------------------------
+ Miguel TELLERIA DE ESTEBAN               <A HREF="http://www.mtelleria.com">http://www.mtelleria.com</A>
+ Email: miguel at mtelleria.com           Tel GSM:  +34 650 801098
+                                          Tel Fix:  +34 942 280174
+
+ Miembro de <A HREF="http://www.linuca.org">http://www.linuca.org</A>    Membre du <A HREF="http://www.bxlug.be">http://www.bxlug.be</A>
+ ¿Usuario captivo o libre?    <A HREF="http://www.obtengalinux.org/windows/">http://www.obtengalinux.org/windows/</A>
+ Free or  captive user?        <A HREF="http://www.getgnulinux.org/windows/">http://www.getgnulinux.org/windows/</A>
+-------------------------------------------------------------------
+
+------------ próxima parte ------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 198 bytes
+Desc: no disponible
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20121117/cb4dff54/attachment.pgp">https://lists.berlios.de/pipermail/bulmages-main/attachments/20121117/cb4dff54/attachment.pgp</A>&gt;
+</PRE>
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007368.html">[BulmaGés]Bulmages compila y funciona en Debian Squeeze
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007370.html">[BulmaGés]Bulmages compila y funciona en Debian Squeeze
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7369">[ fecha ]</a>
+              <a href="thread.html#7369">[ hilo ]</a>
+              <a href="subject.html#7369">[ asunto ]</a>
+              <a href="author.html#7369">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

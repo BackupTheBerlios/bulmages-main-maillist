@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Total de comanda a null a bulmafact o de la naturalesa impositiva del recàrrec d'equivalència segons la fase de venda.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-March/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FTotal_de_comanda_a_nu%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fll_a_bulmafact_o_de_la_naturalesa_impositiva_del_re%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fc%3DE0rrec_d%3D27equival%3DE8ncia_segons_la_fase_de_venda%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F%3D2E%3F%3D&In-Reply-To=%3C20090320210118.GA10841%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001387.html">
+   <LINK REL="Next"  HREF="001390.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Total de comanda a null a bulmafact o de la naturalesa impositiva del recàrrec d'equivalència segons la fase de venda. </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FTotal_de_comanda_a_nu%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fll_a_bulmafact_o_de_la_naturalesa_impositiva_del_re%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fc%3DE0rrec_d%3D27equival%3DE8ncia_segons_la_fase_de_venda%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F%3D2E%3F%3D&In-Reply-To=%3C20090320210118.GA10841%40localhost%3E"
+       TITLE="[BulmaGés]Total de comanda a null a bulmafact o de la naturalesa impositiva del recàrrec d'equivalència segons la fase de venda.">xdrudis en tinet.cat
+       </A><BR>
+    <I>Vie Mar 20 22:01:18 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001387.html">[BulmaGés] r3154 -	branches/docsMonolitic/bulmages/installbulmages/dbmodels/crear/bulmafact
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001390.html">[BulmaGés] r3155 - trunk/bulmages/bulmasetup
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1388">[ fecha ]</a>
+              <a href="thread.html#1388">[ hilo ]</a>
+              <a href="subject.html#1388">[ asunto ]</a>
+              <a href="author.html#1388">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Fent llistats vaig veure que el camp de total d'import de la taula pedido
+sortia a null encara que a la fitxa de comanda sumava bé, i els camps d'impostos
+i base imponible també els ompia a la taula pedido.
+
+Ara he vist que les funcions de bases de dades que ho calculen tenen alguna 
+cosa que no entenc:
+
+calctotalpres()
+calctotalpedcli()
+calctotalpedpro()
+calctotalalbaran()
+calctotalalbpro()
+calctotalfactura()
+calctotalfacpro()
+
+sumen el recàrrec d'equivalència al total però de manera que si és null el total acaba sent null.
+
+
+calcimpuestospres()
+calcimpuestosalbaran()
+calcimpuestosalbpro()
+calcimpuestospedcli()
+calcimpuestospedpro()
+calcimpuestosfacpro()
+
+No compten el recàrrec d'equivalència per a res.
+
+calcimpuestosfactura()
+
+Sí compta el recàrrec d'equivalència (ho acabo d'arreglar a docsMonolitic, abans feia una cosa rara multiplicant-lo per l'iva)
+Els nulls també es propaguen
+
+
+A les bases imponibles no es compta el recàrrec d'equivalència (correcte).
+
+Però a les taules
+lpresupuesto
+lpedido
+lpedidoproveedor
+lalbaran
+labaranp
+lfactura
+lfacturap
+
+el camp de recàrrec d'equivalència és nullable amb valor per defecte 0
+
+a lpedidocliente el camp de recàrrec d'equivalència és nullable sense valor per defecte.
+
+i perquè hi ha tres taules lpedido, lpedidocliente i lpedidoproveedor ?
+ perquè hi ha tres taules pedido, pedidocliente i pedidoproveedor 
+i perquè hi ha tres taules pedido, pedidocliente i pedidoproveedor ?
+ no ho sé.
+perquè no hi ha dpedido si hi ha dpedidocliente i dpedidoproveedor ? 
+
+els camps pvp, iva, descompte són tots nulables sense valors per defecte.
+
+Total, que la solució al problema original semblaria ser posar un valor per defecte
+a lpedidocliente.reqlpedidocliente 
+
+Però no acabo d'entendre perquè a vegades es suma el recàrrec d'equivalència als impostos
+i a vegades no si sempre se suma al total . 
+Jo em pensava que sempre total = base imponible  + impostos
+
+El fet que si quantitat, pvp , iva o descompte és null el total, bimp i impostos siguin 
+null és buscat, oi ? Perquè si no es podrien omplir aquestes funcions de coalesce(...,0).
+
+Nota: sóc bastant inútil en qüestions fiscals .
+
+Jo entenc que el recàrrec d'equivalència és un extra d'iva que paguen
+alguns clients per no haver de fer balanç i pagaments d'iva
+trimestrals, oi? i també el podem pagar nosaltres als
+proveïdors. Llavors jo ho tractaria igual que l'iva, no ?
+
+Nota: les funcions que he dit es criden des de triggers de les línies i descomptes 
+de documents.
+
+
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>
+Signa per fer Collserola parc natural com cal
+<A HREF="http://www.collserola.org/salvemelparcnatural/">http://www.collserola.org/salvemelparcnatural/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001387.html">[BulmaGés] r3154 -	branches/docsMonolitic/bulmages/installbulmages/dbmodels/crear/bulmafact
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001390.html">[BulmaGés] r3155 - trunk/bulmages/bulmasetup
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1388">[ fecha ]</a>
+              <a href="thread.html#1388">[ hilo ]</a>
+              <a href="subject.html#1388">[ asunto ]</a>
+              <a href="author.html#1388">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

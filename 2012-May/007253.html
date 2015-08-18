@@ -1,0 +1,822 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20master...&In-Reply-To=%3C20120521081354.7B4E8756DF%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007266.html">
+   <LINK REL="Next"  HREF="007255.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20master...&In-Reply-To=%3C20120521081354.7B4E8756DF%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Lun Mayo 21 10:13:54 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007266.html">[BulmaGés]Cambios para funcionar en FreeBSD
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007255.html">[BulmaGés] [Gitorious] Activity: themeph pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7253">[ fecha ]</a>
+              <a href="thread.html#7253">[ hilo ]</a>
+              <a href="subject.html#7253">[ asunto ]</a>
+              <a href="author.html#7253">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 2 commits to master
+master changed from 995afb0 to a5c47dc
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/995afb05a207c6a3cab7e367636ac3718f282707/diffs/a5c47dceaf9cd30c32766a5668868f5c9f888bd4">https://gitorious.org/bulmages/bulmages/commit/995afb05a207c6a3cab7e367636ac3718f282707/diffs/a5c47dceaf9cd30c32766a5668868f5c9f888bd4</A>
+
+Diff: 
+
+commit a5c47dceaf9cd30c32766a5668868f5c9f888bd4
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon May 21 10:06:15 2012 +0200
+
+    Arreglo las plantillas de ticketera y pongo solo una ya que era lo mismo impers_factura.txt que factura_ticket.txt. Ahora queda todo con notación de informes impers_XXXX.txt
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/ca/albaran_ticket.txt b/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/ca/albaran_ticket.txt
+deleted file mode 100644
+index 0022bce..0000000
+--- a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/ca/albaran_ticket.txt
++++ /dev/null
+@@ -1,25 +0,0 @@
+-&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;&lt;!-- IMG SRC=&quot;[CONF_DIR_OPENREPORTS]logo.jpg&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='CIF'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='DireccionCompleta'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='Telefono'&quot; --&gt;Tel. [valor]&lt;!-- END QUERY --&gt;971 91 85 06&lt;!-- SETJUSTIFICATION &quot;LEFT&quot; --&gt;
+-&lt;!-- QUERY=&quot;SELECT now()::DATE AS fecha&quot; --&gt;Fecha: [fecha]&lt;!-- END QUERY --&gt;   &lt;!-- QUERY=&quot;SELECT now()::TIME AS hora&quot; --&gt;[hora]&lt;!-- END QUERY --&gt;
+-Ticket: [numalbaran]
+-&lt;!-- TURNWHITEBLACK &quot;1&quot;--&gt;
+- Uds. PRODUCTO               P.U. IMPORTE
+-&lt;!-- TURNWHITEBLACK &quot;0&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT *, (cantlalbaran*pvpivainclalbaran)::NUMERIC(12,2) AS subtotal FROM lalbaran  WHERE idalbaran=[idalbaran]&quot; --&gt;&lt;!-- RIGHTJUSTIFIED &quot;[cantlalbaran]&quot; &quot;5&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- LEFTJUSTIFIED &quot;[desclalbaran]&quot; &quot;20&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- RIGHTJUSTIFIED &quot;[pvpivainclalbaran]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt; &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-&lt;!-- END QUERY --&gt;
+-
+-&lt;!-- SETJUSTIFICATION &quot;RIGHT&quot; --&gt;&lt;!-- SETUNDERLINEMODE &quot;0&quot; --&gt;&lt;!-- SETCHARACTERSIZE &quot;119&quot; --&gt;&lt;!-- SETCHARACTERPRINTMODE &quot; DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED&quot; --&gt;
+-&lt;!-- IF =&quot;length('[pagado]')=8&quot;--&gt;&lt;!-- QUERY=&quot;SELECT sum(cantlalbaran*pvpivainclalbaran)::NUMERIC(12,2) AS subtotal FROM lalbaran  WHERE idalbaran=[idalbaran]&quot; --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;&lt;!-- END QUERY --&gt;
+-&lt;!-- ELSE --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[total]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-
+-Pagado: &lt;!-- RIGHTJUSTIFIED &quot;[pagado]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-Cambio: &lt;!-- RIGHTJUSTIFIED &quot;[cambio]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-&lt;!-- END IF --&gt;
+-
+-&lt;!-- SETCHARACTERSIZE &quot;0&quot; --&gt;&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;
+-   GRACIAS POR SU VISITA
+-&lt;!-- CUTPAPERANDFEED &quot;TRUE&quot; &quot;5&quot;--&gt;
+-
+-
+diff --git a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/ca/factura_ticket.txt b/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/ca/factura_ticket.txt
+deleted file mode 100644
+index 8ba6925..0000000
+--- a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/ca/factura_ticket.txt
++++ /dev/null
+@@ -1,25 +0,0 @@
+-&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;&lt;!-- IMG SRC=&quot;[CONF_DIR_OPENREPORTS]logo.jpg&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='CIF'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='DireccionCompleta'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='Telefono'&quot; --&gt;Tel. [valor]&lt;!-- END QUERY --&gt;971 91 85 06&lt;!-- SETJUSTIFICATION &quot;LEFT&quot; --&gt;
+-&lt;!-- QUERY=&quot;SELECT now()::DATE AS fecha&quot; --&gt;Fecha: [fecha]&lt;!-- END QUERY --&gt;   &lt;!-- QUERY=&quot;SELECT now()::TIME AS hora&quot; --&gt;[hora]&lt;!-- END QUERY --&gt;
+-Ticket: [numfactura]
+-&lt;!-- TURNWHITEBLACK &quot;1&quot;--&gt;
+- Uds. PRODUCTO               P.U. IMPORTE
+-&lt;!-- TURNWHITEBLACK &quot;0&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT *, (cantlfactura*pvplfactura)::NUMERIC(12,2) AS subtotal FROM lfactura  WHERE idfactura=[idfactura]&quot; --&gt;&lt;!-- RIGHTJUSTIFIED &quot;[cantlfactura]&quot; &quot;5&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- LEFTJUSTIFIED &quot;[desclfactura]&quot; &quot;20&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- RIGHTJUSTIFIED &quot;[pvplfactura]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt; &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-&lt;!-- END QUERY --&gt;
+-
+-&lt;!-- SETJUSTIFICATION &quot;RIGHT&quot; --&gt;&lt;!-- SETUNDERLINEMODE &quot;0&quot; --&gt;&lt;!-- SETCHARACTERSIZE &quot;119&quot; --&gt;&lt;!-- SETCHARACTERPRINTMODE &quot; DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED&quot; --&gt;
+-&lt;!-- IF =&quot;length('[pagado]')=8&quot;--&gt;&lt;!-- QUERY=&quot;SELECT sum(cantlfactura*pvplfactura)::NUMERIC(12,2) AS subtotal FROM lfactura  WHERE idfactura=[idfactura]&quot; --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;&lt;!-- END QUERY --&gt;
+-&lt;!-- ELSE --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[total]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-
+-Pagado: &lt;!-- RIGHTJUSTIFIED &quot;[pagado]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-Cambio: &lt;!-- RIGHTJUSTIFIED &quot;[cambio]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-&lt;!-- END IF --&gt;
+-
+-&lt;!-- SETCHARACTERSIZE &quot;0&quot; --&gt;&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;
+-   GRACIAS POR SU VISITA
+-&lt;!-- CUTPAPERANDFEED &quot;TRUE&quot; &quot;5&quot;--&gt;
+-
+-
+diff --git a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/ca/pedido_ticket.txt b/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/ca/pedido_ticket.txt
+deleted file mode 100644
+index 0022bce..0000000
+--- a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/ca/pedido_ticket.txt
++++ /dev/null
+@@ -1,25 +0,0 @@
+-&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;&lt;!-- IMG SRC=&quot;[CONF_DIR_OPENREPORTS]logo.jpg&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='CIF'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='DireccionCompleta'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='Telefono'&quot; --&gt;Tel. [valor]&lt;!-- END QUERY --&gt;971 91 85 06&lt;!-- SETJUSTIFICATION &quot;LEFT&quot; --&gt;
+-&lt;!-- QUERY=&quot;SELECT now()::DATE AS fecha&quot; --&gt;Fecha: [fecha]&lt;!-- END QUERY --&gt;   &lt;!-- QUERY=&quot;SELECT now()::TIME AS hora&quot; --&gt;[hora]&lt;!-- END QUERY --&gt;
+-Ticket: [numalbaran]
+-&lt;!-- TURNWHITEBLACK &quot;1&quot;--&gt;
+- Uds. PRODUCTO               P.U. IMPORTE
+-&lt;!-- TURNWHITEBLACK &quot;0&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT *, (cantlalbaran*pvpivainclalbaran)::NUMERIC(12,2) AS subtotal FROM lalbaran  WHERE idalbaran=[idalbaran]&quot; --&gt;&lt;!-- RIGHTJUSTIFIED &quot;[cantlalbaran]&quot; &quot;5&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- LEFTJUSTIFIED &quot;[desclalbaran]&quot; &quot;20&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- RIGHTJUSTIFIED &quot;[pvpivainclalbaran]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt; &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-&lt;!-- END QUERY --&gt;
+-
+-&lt;!-- SETJUSTIFICATION &quot;RIGHT&quot; --&gt;&lt;!-- SETUNDERLINEMODE &quot;0&quot; --&gt;&lt;!-- SETCHARACTERSIZE &quot;119&quot; --&gt;&lt;!-- SETCHARACTERPRINTMODE &quot; DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED&quot; --&gt;
+-&lt;!-- IF =&quot;length('[pagado]')=8&quot;--&gt;&lt;!-- QUERY=&quot;SELECT sum(cantlalbaran*pvpivainclalbaran)::NUMERIC(12,2) AS subtotal FROM lalbaran  WHERE idalbaran=[idalbaran]&quot; --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;&lt;!-- END QUERY --&gt;
+-&lt;!-- ELSE --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[total]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-
+-Pagado: &lt;!-- RIGHTJUSTIFIED &quot;[pagado]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-Cambio: &lt;!-- RIGHTJUSTIFIED &quot;[cambio]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-&lt;!-- END IF --&gt;
+-
+-&lt;!-- SETCHARACTERSIZE &quot;0&quot; --&gt;&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;
+-   GRACIAS POR SU VISITA
+-&lt;!-- CUTPAPERANDFEED &quot;TRUE&quot; &quot;5&quot;--&gt;
+-
+-
+diff --git a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/ca/presupuesto_ticket.txt b/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/ca/presupuesto_ticket.txt
+deleted file mode 100644
+index 1929658..0000000
+--- a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/ca/presupuesto_ticket.txt
++++ /dev/null
+@@ -1,25 +0,0 @@
+-&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;&lt;!-- IMG SRC=&quot;[CONF_DIR_OPENREPORTS]logo.jpg&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='CIF'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='DireccionCompleta'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='Telefono'&quot; --&gt;Tel. [valor]&lt;!-- END QUERY --&gt;971 91 85 06&lt;!-- SETJUSTIFICATION &quot;LEFT&quot; --&gt;
+-&lt;!-- QUERY=&quot;SELECT now()::DATE AS fecha&quot; --&gt;Fecha: [fecha]&lt;!-- END QUERY --&gt;   &lt;!-- QUERY=&quot;SELECT now()::TIME AS hora&quot; --&gt;[hora]&lt;!-- END QUERY --&gt;
+-Ticket: [numpresupuesto]
+-&lt;!-- TURNWHITEBLACK &quot;1&quot;--&gt;
+- Uds. PRODUCTO               P.U. IMPORTE
+-&lt;!-- TURNWHITEBLACK &quot;0&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT *, (cantlpresupuesto*pvplpresupuesto)::NUMERIC(12,2) AS subtotal FROM lpresupuesto  WHERE idpresupuesto=[idpresupuesto]&quot; --&gt;&lt;!-- RIGHTJUSTIFIED &quot;[cantlpresupuesto]&quot; &quot;5&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- LEFTJUSTIFIED &quot;[desclpresupuesto]&quot; &quot;20&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- RIGHTJUSTIFIED &quot;[pvplpresupuesto]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt; &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-&lt;!-- END QUERY --&gt;
+-
+-&lt;!-- SETJUSTIFICATION &quot;RIGHT&quot; --&gt;&lt;!-- SETUNDERLINEMODE &quot;0&quot; --&gt;&lt;!-- SETCHARACTERSIZE &quot;119&quot; --&gt;&lt;!-- SETCHARACTERPRINTMODE &quot; DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED&quot; --&gt;
+-&lt;!-- IF =&quot;length('[pagado]')=8&quot;--&gt;&lt;!-- QUERY=&quot;SELECT sum(cantlpresupuesto*pvplpresupuesto)::NUMERIC(12,2) AS subtotal FROM lpresupuesto  WHERE idpresupuesto=[idpresupuesto]&quot; --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;&lt;!-- END QUERY --&gt;
+-&lt;!-- ELSE --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[total]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-
+-Pagado: &lt;!-- RIGHTJUSTIFIED &quot;[pagado]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-Cambio: &lt;!-- RIGHTJUSTIFIED &quot;[cambio]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-&lt;!-- END IF --&gt;
+-
+-&lt;!-- SETCHARACTERSIZE &quot;0&quot; --&gt;&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;
+-   GRACIAS POR SU VISITA
+-&lt;!-- CUTPAPERANDFEED &quot;TRUE&quot; &quot;5&quot;--&gt;
+-
+-
+diff --git a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/en/albaran_ticket.txt b/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/en/albaran_ticket.txt
+deleted file mode 100644
+index 0022bce..0000000
+--- a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/en/albaran_ticket.txt
++++ /dev/null
+@@ -1,25 +0,0 @@
+-&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;&lt;!-- IMG SRC=&quot;[CONF_DIR_OPENREPORTS]logo.jpg&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='CIF'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='DireccionCompleta'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='Telefono'&quot; --&gt;Tel. [valor]&lt;!-- END QUERY --&gt;971 91 85 06&lt;!-- SETJUSTIFICATION &quot;LEFT&quot; --&gt;
+-&lt;!-- QUERY=&quot;SELECT now()::DATE AS fecha&quot; --&gt;Fecha: [fecha]&lt;!-- END QUERY --&gt;   &lt;!-- QUERY=&quot;SELECT now()::TIME AS hora&quot; --&gt;[hora]&lt;!-- END QUERY --&gt;
+-Ticket: [numalbaran]
+-&lt;!-- TURNWHITEBLACK &quot;1&quot;--&gt;
+- Uds. PRODUCTO               P.U. IMPORTE
+-&lt;!-- TURNWHITEBLACK &quot;0&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT *, (cantlalbaran*pvpivainclalbaran)::NUMERIC(12,2) AS subtotal FROM lalbaran  WHERE idalbaran=[idalbaran]&quot; --&gt;&lt;!-- RIGHTJUSTIFIED &quot;[cantlalbaran]&quot; &quot;5&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- LEFTJUSTIFIED &quot;[desclalbaran]&quot; &quot;20&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- RIGHTJUSTIFIED &quot;[pvpivainclalbaran]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt; &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-&lt;!-- END QUERY --&gt;
+-
+-&lt;!-- SETJUSTIFICATION &quot;RIGHT&quot; --&gt;&lt;!-- SETUNDERLINEMODE &quot;0&quot; --&gt;&lt;!-- SETCHARACTERSIZE &quot;119&quot; --&gt;&lt;!-- SETCHARACTERPRINTMODE &quot; DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED&quot; --&gt;
+-&lt;!-- IF =&quot;length('[pagado]')=8&quot;--&gt;&lt;!-- QUERY=&quot;SELECT sum(cantlalbaran*pvpivainclalbaran)::NUMERIC(12,2) AS subtotal FROM lalbaran  WHERE idalbaran=[idalbaran]&quot; --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;&lt;!-- END QUERY --&gt;
+-&lt;!-- ELSE --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[total]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-
+-Pagado: &lt;!-- RIGHTJUSTIFIED &quot;[pagado]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-Cambio: &lt;!-- RIGHTJUSTIFIED &quot;[cambio]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-&lt;!-- END IF --&gt;
+-
+-&lt;!-- SETCHARACTERSIZE &quot;0&quot; --&gt;&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;
+-   GRACIAS POR SU VISITA
+-&lt;!-- CUTPAPERANDFEED &quot;TRUE&quot; &quot;5&quot;--&gt;
+-
+-
+diff --git a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/en/factura_ticket.txt b/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/en/factura_ticket.txt
+deleted file mode 100644
+index 8ba6925..0000000
+--- a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/en/factura_ticket.txt
++++ /dev/null
+@@ -1,25 +0,0 @@
+-&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;&lt;!-- IMG SRC=&quot;[CONF_DIR_OPENREPORTS]logo.jpg&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='CIF'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='DireccionCompleta'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='Telefono'&quot; --&gt;Tel. [valor]&lt;!-- END QUERY --&gt;971 91 85 06&lt;!-- SETJUSTIFICATION &quot;LEFT&quot; --&gt;
+-&lt;!-- QUERY=&quot;SELECT now()::DATE AS fecha&quot; --&gt;Fecha: [fecha]&lt;!-- END QUERY --&gt;   &lt;!-- QUERY=&quot;SELECT now()::TIME AS hora&quot; --&gt;[hora]&lt;!-- END QUERY --&gt;
+-Ticket: [numfactura]
+-&lt;!-- TURNWHITEBLACK &quot;1&quot;--&gt;
+- Uds. PRODUCTO               P.U. IMPORTE
+-&lt;!-- TURNWHITEBLACK &quot;0&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT *, (cantlfactura*pvplfactura)::NUMERIC(12,2) AS subtotal FROM lfactura  WHERE idfactura=[idfactura]&quot; --&gt;&lt;!-- RIGHTJUSTIFIED &quot;[cantlfactura]&quot; &quot;5&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- LEFTJUSTIFIED &quot;[desclfactura]&quot; &quot;20&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- RIGHTJUSTIFIED &quot;[pvplfactura]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt; &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-&lt;!-- END QUERY --&gt;
+-
+-&lt;!-- SETJUSTIFICATION &quot;RIGHT&quot; --&gt;&lt;!-- SETUNDERLINEMODE &quot;0&quot; --&gt;&lt;!-- SETCHARACTERSIZE &quot;119&quot; --&gt;&lt;!-- SETCHARACTERPRINTMODE &quot; DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED&quot; --&gt;
+-&lt;!-- IF =&quot;length('[pagado]')=8&quot;--&gt;&lt;!-- QUERY=&quot;SELECT sum(cantlfactura*pvplfactura)::NUMERIC(12,2) AS subtotal FROM lfactura  WHERE idfactura=[idfactura]&quot; --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;&lt;!-- END QUERY --&gt;
+-&lt;!-- ELSE --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[total]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-
+-Pagado: &lt;!-- RIGHTJUSTIFIED &quot;[pagado]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-Cambio: &lt;!-- RIGHTJUSTIFIED &quot;[cambio]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-&lt;!-- END IF --&gt;
+-
+-&lt;!-- SETCHARACTERSIZE &quot;0&quot; --&gt;&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;
+-   GRACIAS POR SU VISITA
+-&lt;!-- CUTPAPERANDFEED &quot;TRUE&quot; &quot;5&quot;--&gt;
+-
+-
+diff --git a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/en/pedido_ticket.txt b/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/en/pedido_ticket.txt
+deleted file mode 100644
+index 0022bce..0000000
+--- a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/en/pedido_ticket.txt
++++ /dev/null
+@@ -1,25 +0,0 @@
+-&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;&lt;!-- IMG SRC=&quot;[CONF_DIR_OPENREPORTS]logo.jpg&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='CIF'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='DireccionCompleta'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='Telefono'&quot; --&gt;Tel. [valor]&lt;!-- END QUERY --&gt;971 91 85 06&lt;!-- SETJUSTIFICATION &quot;LEFT&quot; --&gt;
+-&lt;!-- QUERY=&quot;SELECT now()::DATE AS fecha&quot; --&gt;Fecha: [fecha]&lt;!-- END QUERY --&gt;   &lt;!-- QUERY=&quot;SELECT now()::TIME AS hora&quot; --&gt;[hora]&lt;!-- END QUERY --&gt;
+-Ticket: [numalbaran]
+-&lt;!-- TURNWHITEBLACK &quot;1&quot;--&gt;
+- Uds. PRODUCTO               P.U. IMPORTE
+-&lt;!-- TURNWHITEBLACK &quot;0&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT *, (cantlalbaran*pvpivainclalbaran)::NUMERIC(12,2) AS subtotal FROM lalbaran  WHERE idalbaran=[idalbaran]&quot; --&gt;&lt;!-- RIGHTJUSTIFIED &quot;[cantlalbaran]&quot; &quot;5&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- LEFTJUSTIFIED &quot;[desclalbaran]&quot; &quot;20&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- RIGHTJUSTIFIED &quot;[pvpivainclalbaran]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt; &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-&lt;!-- END QUERY --&gt;
+-
+-&lt;!-- SETJUSTIFICATION &quot;RIGHT&quot; --&gt;&lt;!-- SETUNDERLINEMODE &quot;0&quot; --&gt;&lt;!-- SETCHARACTERSIZE &quot;119&quot; --&gt;&lt;!-- SETCHARACTERPRINTMODE &quot; DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED&quot; --&gt;
+-&lt;!-- IF =&quot;length('[pagado]')=8&quot;--&gt;&lt;!-- QUERY=&quot;SELECT sum(cantlalbaran*pvpivainclalbaran)::NUMERIC(12,2) AS subtotal FROM lalbaran  WHERE idalbaran=[idalbaran]&quot; --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;&lt;!-- END QUERY --&gt;
+-&lt;!-- ELSE --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[total]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-
+-Pagado: &lt;!-- RIGHTJUSTIFIED &quot;[pagado]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-Cambio: &lt;!-- RIGHTJUSTIFIED &quot;[cambio]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-&lt;!-- END IF --&gt;
+-
+-&lt;!-- SETCHARACTERSIZE &quot;0&quot; --&gt;&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;
+-   GRACIAS POR SU VISITA
+-&lt;!-- CUTPAPERANDFEED &quot;TRUE&quot; &quot;5&quot;--&gt;
+-
+-
+diff --git a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/en/presupuesto_ticket.txt b/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/en/presupuesto_ticket.txt
+deleted file mode 100644
+index 1929658..0000000
+--- a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/en/presupuesto_ticket.txt
++++ /dev/null
+@@ -1,25 +0,0 @@
+-&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;&lt;!-- IMG SRC=&quot;[CONF_DIR_OPENREPORTS]logo.jpg&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='CIF'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='DireccionCompleta'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='Telefono'&quot; --&gt;Tel. [valor]&lt;!-- END QUERY --&gt;971 91 85 06&lt;!-- SETJUSTIFICATION &quot;LEFT&quot; --&gt;
+-&lt;!-- QUERY=&quot;SELECT now()::DATE AS fecha&quot; --&gt;Fecha: [fecha]&lt;!-- END QUERY --&gt;   &lt;!-- QUERY=&quot;SELECT now()::TIME AS hora&quot; --&gt;[hora]&lt;!-- END QUERY --&gt;
+-Ticket: [numpresupuesto]
+-&lt;!-- TURNWHITEBLACK &quot;1&quot;--&gt;
+- Uds. PRODUCTO               P.U. IMPORTE
+-&lt;!-- TURNWHITEBLACK &quot;0&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT *, (cantlpresupuesto*pvplpresupuesto)::NUMERIC(12,2) AS subtotal FROM lpresupuesto  WHERE idpresupuesto=[idpresupuesto]&quot; --&gt;&lt;!-- RIGHTJUSTIFIED &quot;[cantlpresupuesto]&quot; &quot;5&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- LEFTJUSTIFIED &quot;[desclpresupuesto]&quot; &quot;20&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- RIGHTJUSTIFIED &quot;[pvplpresupuesto]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt; &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-&lt;!-- END QUERY --&gt;
+-
+-&lt;!-- SETJUSTIFICATION &quot;RIGHT&quot; --&gt;&lt;!-- SETUNDERLINEMODE &quot;0&quot; --&gt;&lt;!-- SETCHARACTERSIZE &quot;119&quot; --&gt;&lt;!-- SETCHARACTERPRINTMODE &quot; DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED&quot; --&gt;
+-&lt;!-- IF =&quot;length('[pagado]')=8&quot;--&gt;&lt;!-- QUERY=&quot;SELECT sum(cantlpresupuesto*pvplpresupuesto)::NUMERIC(12,2) AS subtotal FROM lpresupuesto  WHERE idpresupuesto=[idpresupuesto]&quot; --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;&lt;!-- END QUERY --&gt;
+-&lt;!-- ELSE --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[total]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-
+-Pagado: &lt;!-- RIGHTJUSTIFIED &quot;[pagado]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-Cambio: &lt;!-- RIGHTJUSTIFIED &quot;[cambio]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-&lt;!-- END IF --&gt;
+-
+-&lt;!-- SETCHARACTERSIZE &quot;0&quot; --&gt;&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;
+-   GRACIAS POR SU VISITA
+-&lt;!-- CUTPAPERANDFEED &quot;TRUE&quot; &quot;5&quot;--&gt;
+-
+-
+diff --git a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/es/albaran_ticket.txt b/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/es/albaran_ticket.txt
+deleted file mode 100644
+index 0022bce..0000000
+--- a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/es/albaran_ticket.txt
++++ /dev/null
+@@ -1,25 +0,0 @@
+-&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;&lt;!-- IMG SRC=&quot;[CONF_DIR_OPENREPORTS]logo.jpg&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='CIF'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='DireccionCompleta'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='Telefono'&quot; --&gt;Tel. [valor]&lt;!-- END QUERY --&gt;971 91 85 06&lt;!-- SETJUSTIFICATION &quot;LEFT&quot; --&gt;
+-&lt;!-- QUERY=&quot;SELECT now()::DATE AS fecha&quot; --&gt;Fecha: [fecha]&lt;!-- END QUERY --&gt;   &lt;!-- QUERY=&quot;SELECT now()::TIME AS hora&quot; --&gt;[hora]&lt;!-- END QUERY --&gt;
+-Ticket: [numalbaran]
+-&lt;!-- TURNWHITEBLACK &quot;1&quot;--&gt;
+- Uds. PRODUCTO               P.U. IMPORTE
+-&lt;!-- TURNWHITEBLACK &quot;0&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT *, (cantlalbaran*pvpivainclalbaran)::NUMERIC(12,2) AS subtotal FROM lalbaran  WHERE idalbaran=[idalbaran]&quot; --&gt;&lt;!-- RIGHTJUSTIFIED &quot;[cantlalbaran]&quot; &quot;5&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- LEFTJUSTIFIED &quot;[desclalbaran]&quot; &quot;20&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- RIGHTJUSTIFIED &quot;[pvpivainclalbaran]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt; &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-&lt;!-- END QUERY --&gt;
+-
+-&lt;!-- SETJUSTIFICATION &quot;RIGHT&quot; --&gt;&lt;!-- SETUNDERLINEMODE &quot;0&quot; --&gt;&lt;!-- SETCHARACTERSIZE &quot;119&quot; --&gt;&lt;!-- SETCHARACTERPRINTMODE &quot; DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED&quot; --&gt;
+-&lt;!-- IF =&quot;length('[pagado]')=8&quot;--&gt;&lt;!-- QUERY=&quot;SELECT sum(cantlalbaran*pvpivainclalbaran)::NUMERIC(12,2) AS subtotal FROM lalbaran  WHERE idalbaran=[idalbaran]&quot; --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;&lt;!-- END QUERY --&gt;
+-&lt;!-- ELSE --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[total]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-
+-Pagado: &lt;!-- RIGHTJUSTIFIED &quot;[pagado]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-Cambio: &lt;!-- RIGHTJUSTIFIED &quot;[cambio]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-&lt;!-- END IF --&gt;
+-
+-&lt;!-- SETCHARACTERSIZE &quot;0&quot; --&gt;&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;
+-   GRACIAS POR SU VISITA
+-&lt;!-- CUTPAPERANDFEED &quot;TRUE&quot; &quot;5&quot;--&gt;
+-
+-
+diff --git a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/es/factura_ticket.txt b/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/es/factura_ticket.txt
+deleted file mode 100644
+index a6904bc..0000000
+--- a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/es/factura_ticket.txt
++++ /dev/null
+@@ -1,27 +0,0 @@
+-&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;&lt;!-- IMG SRC=&quot;[CONF_DIR_OPENREPORTS]logo.jpg&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='CIF'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='DireccionCompleta'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='Telefono'&quot; --&gt;Tel. [valor]&lt;!-- END QUERY --&gt;971 91 85 06&lt;!-- SETJUSTIFICATION &quot;LEFT&quot; --&gt;
+-&lt;!-- QUERY=&quot;SELECT now()::DATE AS fecha&quot; --&gt;Fecha: [fecha]&lt;!-- END QUERY --&gt;   &lt;!-- QUERY=&quot;SELECT now()::TIME AS hora&quot; --&gt;[hora]&lt;!-- END QUERY --&gt;
+-Factura: [codigoserie_factura][numfactura]
+-&lt;!-- TURNWHITEBLACK &quot;1&quot;--&gt;
+- Uds. PRODUCTO               P.U. IMPORTE
+-&lt;!-- TURNWHITEBLACK &quot;0&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT *, (cantlfactura*pvplfactura)::NUMERIC(12,2) AS subtotal FROM lfactura  WHERE idfactura=[idfactura]&quot; --&gt;&lt;!-- RIGHTJUSTIFIED &quot;[cantlfactura]&quot; &quot;5&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- LEFTJUSTIFIED &quot;[desclfactura]&quot; &quot;20&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- RIGHTJUSTIFIED &quot;[pvplfactura]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt; &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-&lt;!-- END QUERY --&gt;
+-
+-&lt;!-- TURNWHITEBLACK &quot;1&quot;--&gt;
+- Base                 iva      total    
+-&lt;!-- TURNWHITEBLACK &quot;0&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM factura  WHERE idfactura=[idfactura]&quot; --&gt;&lt;!-- RIGHTJUSTIFIED &quot;[bimpfactura]&quot; &quot;5&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- LEFTJUSTIFIED &quot; &quot; &quot;10&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- RIGHTJUSTIFIED &quot;[impfactura]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt; &lt;!-- LEFTJUSTIFIED &quot; &quot; &quot;10&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- RIGHTJUSTIFIED &quot;[totalfactura]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;&lt;!-- END QUERY --&gt;
+-
+-
+-&lt;!-- SETJUSTIFICATION &quot;RIGHT&quot; --&gt;&lt;!-- SETUNDERLINEMODE &quot;0&quot; --&gt;&lt;!-- SETCHARACTERSIZE &quot;119&quot; --&gt;&lt;!-- SETCHARACTERPRINTMODE &quot; DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED&quot; --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM factura  WHERE idfactura=[idfactura]&quot; --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[totalfactura]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;&lt;!-- END QUERY --&gt;
+-
+-
+-&lt;!-- SETCHARACTERSIZE &quot;0&quot; --&gt;&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;
+-&lt;!-- SETBARCODEFORMAT &quot;2&quot; &quot;50&quot; &quot;BOTH&quot; &quot;FONTB&quot; --&gt;&lt;!-- PRINTBARCODE &quot;CODE39&quot; &quot;6&quot; &quot;[reffactura]&quot; --&gt;
+-&lt;!-- CUTPAPERANDFEED &quot;TRUE&quot; &quot;5&quot;--&gt;
+-
+-
+diff --git a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/es/impers_albaran.txt b/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/es/impers_albaran.txt
+index b3e9f1e..c8bc8ee 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/es/impers_albaran.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/es/impers_albaran.txt
+@@ -3,15 +3,15 @@
+ &lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='DireccionCompleta'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+ &lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='Telefono'&quot; --&gt;Tel. [valor]&lt;!-- END QUERY --&gt;971 91 85 06&lt;!-- SETJUSTIFICATION &quot;LEFT&quot; --&gt;
+ &lt;!-- QUERY=&quot;SELECT now()::DATE AS fecha&quot; --&gt;Fecha: [fecha]&lt;!-- END QUERY --&gt;   &lt;!-- QUERY=&quot;SELECT now()::TIME AS hora&quot; --&gt;[hora]&lt;!-- END QUERY --&gt;
+-Factura: [numfactura] [idfactura]
++Factura: [numalbaran] [idalbaran]
+ &lt;!-- TURNWHITEBLACK &quot;1&quot;--&gt;
+  Uds. PRODUCTO               P.U. IMPORTE
+ &lt;!-- TURNWHITEBLACK &quot;0&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT *, (cantlfactura*pvplfactura)::NUMERIC(12,2) AS subtotal FROM lfactura  WHERE idfactura=[idfactura]&quot; --&gt;&lt;!-- RIGHTJUSTIFIED &quot;[cantlfactura]&quot; &quot;5&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- LEFTJUSTIFIED &quot;[desclfactura]&quot; &quot;20&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- RIGHTJUSTIFIED &quot;[pvplfactura]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt; &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
++&lt;!-- QUERY=&quot;SELECT *, (cantlalbaran*pvplalbaran)::NUMERIC(12,2) AS subtotal FROM lalbaran  WHERE idalbaran=[idalbaran]&quot; --&gt;&lt;!-- RIGHTJUSTIFIED &quot;[cantlalbaran]&quot; &quot;5&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- LEFTJUSTIFIED &quot;[desclalbaran,a]&quot; &quot;20&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- RIGHTJUSTIFIED &quot;[pvplalbaran]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt; &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+ &lt;!-- END QUERY --&gt;
+ 
+ &lt;!-- SETJUSTIFICATION &quot;RIGHT&quot; --&gt;&lt;!-- SETUNDERLINEMODE &quot;0&quot; --&gt;&lt;!-- SETCHARACTERSIZE &quot;119&quot; --&gt;&lt;!-- SETCHARACTERPRINTMODE &quot; DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED&quot; --&gt;
+-&lt;!-- IF =&quot;length('[pagado]')=8&quot;--&gt;&lt;!-- QUERY=&quot;SELECT sum(cantlfactura*pvplfactura)::NUMERIC(12,2) AS subtotal FROM lfactura  WHERE idfactura=[idfactura]&quot; --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;&lt;!-- END QUERY --&gt;
++&lt;!-- IF =&quot;length('[pagado]')=8&quot;--&gt;&lt;!-- QUERY=&quot;SELECT sum(cantlalbaran*pvplalbaran)::NUMERIC(12,2) AS subtotal FROM lalbaran  WHERE idalbaran=[idalbaran]&quot; --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;&lt;!-- END QUERY --&gt;
+ &lt;!-- ELSE --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[total]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+ 
+ Pagado: &lt;!-- RIGHTJUSTIFIED &quot;[pagado]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/es/impers_factura.txt b/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/es/impers_factura.txt
+index b3e9f1e..59bfadc 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/es/impers_factura.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/es/impers_factura.txt
+@@ -7,7 +7,7 @@ Factura: [numfactura] [idfactura]
+ &lt;!-- TURNWHITEBLACK &quot;1&quot;--&gt;
+  Uds. PRODUCTO               P.U. IMPORTE
+ &lt;!-- TURNWHITEBLACK &quot;0&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT *, (cantlfactura*pvplfactura)::NUMERIC(12,2) AS subtotal FROM lfactura  WHERE idfactura=[idfactura]&quot; --&gt;&lt;!-- RIGHTJUSTIFIED &quot;[cantlfactura]&quot; &quot;5&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- LEFTJUSTIFIED &quot;[desclfactura]&quot; &quot;20&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- RIGHTJUSTIFIED &quot;[pvplfactura]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt; &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
++&lt;!-- QUERY=&quot;SELECT *, (cantlfactura*pvplfactura)::NUMERIC(12,2) AS subtotal FROM lfactura  WHERE idfactura=[idfactura]&quot; --&gt;&lt;!-- RIGHTJUSTIFIED &quot;[cantlfactura]&quot; &quot;5&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- LEFTJUSTIFIED &quot;[desclfactura,a]&quot; &quot;20&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- RIGHTJUSTIFIED &quot;[pvplfactura]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt; &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+ &lt;!-- END QUERY --&gt;
+ 
+ &lt;!-- SETJUSTIFICATION &quot;RIGHT&quot; --&gt;&lt;!-- SETUNDERLINEMODE &quot;0&quot; --&gt;&lt;!-- SETCHARACTERSIZE &quot;119&quot; --&gt;&lt;!-- SETCHARACTERPRINTMODE &quot; DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED&quot; --&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/es/impers_pedidocliente.txt b/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/es/impers_pedidocliente.txt
+index 915327e..482d423 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/es/impers_pedidocliente.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/es/impers_pedidocliente.txt
+@@ -7,7 +7,7 @@ Factura: [numpedidocliente] [idpedidocliente]
+ &lt;!-- TURNWHITEBLACK &quot;1&quot;--&gt;
+  Uds. PRODUCTO               P.U. IMPORTE
+ &lt;!-- TURNWHITEBLACK &quot;0&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT *, (cantlpedidocliente*pvplpedidocliente)::NUMERIC(12,2) AS subtotal FROM lpedidocliente  WHERE idpedidocliente=[idpedidocliente]&quot; --&gt;&lt;!-- RIGHTJUSTIFIED &quot;[cantlpedidocliente]&quot; &quot;5&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- LEFTJUSTIFIED &quot;[desclpedidocliente]&quot; &quot;20&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- RIGHTJUSTIFIED &quot;[pvplpedidocliente]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt; &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
++&lt;!-- QUERY=&quot;SELECT *, (cantlpedidocliente*pvplpedidocliente)::NUMERIC(12,2) AS subtotal FROM lpedidocliente  WHERE idpedidocliente=[idpedidocliente]&quot; --&gt;&lt;!-- RIGHTJUSTIFIED &quot;[cantlpedidocliente]&quot; &quot;5&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- LEFTJUSTIFIED &quot;[desclpedidocliente,a]&quot; &quot;20&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- RIGHTJUSTIFIED &quot;[pvplpedidocliente]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt; &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+ &lt;!-- END QUERY --&gt;
+ 
+ &lt;!-- SETJUSTIFICATION &quot;RIGHT&quot; --&gt;&lt;!-- SETUNDERLINEMODE &quot;0&quot; --&gt;&lt;!-- SETCHARACTERSIZE &quot;119&quot; --&gt;&lt;!-- SETCHARACTERPRINTMODE &quot; DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED&quot; --&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/es/impers_presupuesto.txt b/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/es/impers_presupuesto.txt
+index b3e9f1e..af4d3ac 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/es/impers_presupuesto.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/es/impers_presupuesto.txt
+@@ -1,13 +1,13 @@
+ &lt;!-- COMMENT&gt;title=&quot;Ticket Factura&quot; icon=&quot;/usr/local/share/bulmages/icons/ticket.png&quot;&lt;/COMMENT--&gt;&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;&lt;!-- IMG SRC=&quot;[CONF_DIR_OPENREPORTS]logo.jpg&quot;--&gt;
+ &lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='CIF'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='DireccionCompleta'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
++&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='DireccionCompleta'&quot; --&gt;[valor,a]&lt;!-- END QUERY --&gt;
+ &lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='Telefono'&quot; --&gt;Tel. [valor]&lt;!-- END QUERY --&gt;971 91 85 06&lt;!-- SETJUSTIFICATION &quot;LEFT&quot; --&gt;
+ &lt;!-- QUERY=&quot;SELECT now()::DATE AS fecha&quot; --&gt;Fecha: [fecha]&lt;!-- END QUERY --&gt;   &lt;!-- QUERY=&quot;SELECT now()::TIME AS hora&quot; --&gt;[hora]&lt;!-- END QUERY --&gt;
+ Factura: [numfactura] [idfactura]
+ &lt;!-- TURNWHITEBLACK &quot;1&quot;--&gt;
+  Uds. PRODUCTO               P.U. IMPORTE
+ &lt;!-- TURNWHITEBLACK &quot;0&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT *, (cantlfactura*pvplfactura)::NUMERIC(12,2) AS subtotal FROM lfactura  WHERE idfactura=[idfactura]&quot; --&gt;&lt;!-- RIGHTJUSTIFIED &quot;[cantlfactura]&quot; &quot;5&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- LEFTJUSTIFIED &quot;[desclfactura]&quot; &quot;20&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- RIGHTJUSTIFIED &quot;[pvplfactura]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt; &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
++&lt;!-- QUERY=&quot;SELECT *, (cantlfactura*pvplfactura)::NUMERIC(12,2) AS subtotal FROM lfactura  WHERE idfactura=[idfactura]&quot; --&gt;&lt;!-- RIGHTJUSTIFIED &quot;[cantlfactura]&quot; &quot;5&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- LEFTJUSTIFIED &quot;[desclfactura,a]&quot; &quot;20&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- RIGHTJUSTIFIED &quot;[pvplfactura]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt; &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+ &lt;!-- END QUERY --&gt;
+ 
+ &lt;!-- SETJUSTIFICATION &quot;RIGHT&quot; --&gt;&lt;!-- SETUNDERLINEMODE &quot;0&quot; --&gt;&lt;!-- SETCHARACTERSIZE &quot;119&quot; --&gt;&lt;!-- SETCHARACTERPRINTMODE &quot; DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED&quot; --&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/es/pedido_ticket.txt b/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/es/pedido_ticket.txt
+deleted file mode 100644
+index 0022bce..0000000
+--- a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/es/pedido_ticket.txt
++++ /dev/null
+@@ -1,25 +0,0 @@
+-&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;&lt;!-- IMG SRC=&quot;[CONF_DIR_OPENREPORTS]logo.jpg&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='CIF'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='DireccionCompleta'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='Telefono'&quot; --&gt;Tel. [valor]&lt;!-- END QUERY --&gt;971 91 85 06&lt;!-- SETJUSTIFICATION &quot;LEFT&quot; --&gt;
+-&lt;!-- QUERY=&quot;SELECT now()::DATE AS fecha&quot; --&gt;Fecha: [fecha]&lt;!-- END QUERY --&gt;   &lt;!-- QUERY=&quot;SELECT now()::TIME AS hora&quot; --&gt;[hora]&lt;!-- END QUERY --&gt;
+-Ticket: [numalbaran]
+-&lt;!-- TURNWHITEBLACK &quot;1&quot;--&gt;
+- Uds. PRODUCTO               P.U. IMPORTE
+-&lt;!-- TURNWHITEBLACK &quot;0&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT *, (cantlalbaran*pvpivainclalbaran)::NUMERIC(12,2) AS subtotal FROM lalbaran  WHERE idalbaran=[idalbaran]&quot; --&gt;&lt;!-- RIGHTJUSTIFIED &quot;[cantlalbaran]&quot; &quot;5&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- LEFTJUSTIFIED &quot;[desclalbaran]&quot; &quot;20&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- RIGHTJUSTIFIED &quot;[pvpivainclalbaran]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt; &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-&lt;!-- END QUERY --&gt;
+-
+-&lt;!-- SETJUSTIFICATION &quot;RIGHT&quot; --&gt;&lt;!-- SETUNDERLINEMODE &quot;0&quot; --&gt;&lt;!-- SETCHARACTERSIZE &quot;119&quot; --&gt;&lt;!-- SETCHARACTERPRINTMODE &quot; DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED&quot; --&gt;
+-&lt;!-- IF =&quot;length('[pagado]')=8&quot;--&gt;&lt;!-- QUERY=&quot;SELECT sum(cantlalbaran*pvpivainclalbaran)::NUMERIC(12,2) AS subtotal FROM lalbaran  WHERE idalbaran=[idalbaran]&quot; --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;&lt;!-- END QUERY --&gt;
+-&lt;!-- ELSE --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[total]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-
+-Pagado: &lt;!-- RIGHTJUSTIFIED &quot;[pagado]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-Cambio: &lt;!-- RIGHTJUSTIFIED &quot;[cambio]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-&lt;!-- END IF --&gt;
+-
+-&lt;!-- SETCHARACTERSIZE &quot;0&quot; --&gt;&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;
+-   GRACIAS POR SU VISITA
+-&lt;!-- CUTPAPERANDFEED &quot;TRUE&quot; &quot;5&quot;--&gt;
+-
+-
+diff --git a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/es/presupuesto_ticket.txt b/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/es/presupuesto_ticket.txt
+deleted file mode 100644
+index e496e93..0000000
+--- a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/es/presupuesto_ticket.txt
++++ /dev/null
+@@ -1,21 +0,0 @@
+-&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;&lt;!-- IMG SRC=&quot;[CONF_DIR_OPENREPORTS]logo.jpg&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='CIF'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='DireccionCompleta'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='Telefono'&quot; --&gt;Tel. [valor]&lt;!-- END QUERY --&gt;971 91 85 06&lt;!-- SETJUSTIFICATION &quot;LEFT&quot; --&gt;
+-&lt;!-- QUERY=&quot;SELECT now()::DATE AS fecha&quot; --&gt;Fecha: [fecha]&lt;!-- END QUERY --&gt;   &lt;!-- QUERY=&quot;SELECT now()::TIME AS hora&quot; --&gt;[hora]&lt;!-- END QUERY --&gt;
+-Presupuesto: [numpresupuesto]
+-&lt;!-- TURNWHITEBLACK &quot;1&quot;--&gt;
+- Uds. PRODUCTO               P.U. IMPORTE
+-&lt;!-- TURNWHITEBLACK &quot;0&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT *, (cantlpresupuesto*pvplpresupuesto)::NUMERIC(12,2) AS subtotal FROM lpresupuesto  WHERE idpresupuesto=[idpresupuesto]&quot; --&gt;&lt;!-- RIGHTJUSTIFIED &quot;[cantlpresupuesto]&quot; &quot;5&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- LEFTJUSTIFIED &quot;[desclpresupuesto]&quot; &quot;20&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- RIGHTJUSTIFIED &quot;[pvplpresupuesto]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt; &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-&lt;!-- END QUERY --&gt;
+-
+-&lt;!-- SETJUSTIFICATION &quot;RIGHT&quot; --&gt;&lt;!-- SETUNDERLINEMODE &quot;0&quot; --&gt;&lt;!-- SETCHARACTERSIZE &quot;119&quot; --&gt;&lt;!-- SETCHARACTERPRINTMODE &quot; DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED&quot; --&gt;
+-&lt;!-- QUERY=&quot;SELECT sum(cantlpresupuesto*pvplpresupuesto)::NUMERIC(12,2) AS subtotal FROM lpresupuesto  WHERE idpresupuesto=[idpresupuesto]&quot; --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;&lt;!-- END QUERY --&gt;
+-
+-
+-&lt;!-- SETCHARACTERSIZE &quot;0&quot; --&gt;&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;
+-   GRACIAS POR SU VISITA
+-&lt;!-- CUTPAPERANDFEED &quot;TRUE&quot; &quot;5&quot;--&gt;
+-
+-
+diff --git a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/fr/albaran_ticket.txt b/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/fr/albaran_ticket.txt
+deleted file mode 100644
+index 0022bce..0000000
+--- a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/fr/albaran_ticket.txt
++++ /dev/null
+@@ -1,25 +0,0 @@
+-&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;&lt;!-- IMG SRC=&quot;[CONF_DIR_OPENREPORTS]logo.jpg&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='CIF'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='DireccionCompleta'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='Telefono'&quot; --&gt;Tel. [valor]&lt;!-- END QUERY --&gt;971 91 85 06&lt;!-- SETJUSTIFICATION &quot;LEFT&quot; --&gt;
+-&lt;!-- QUERY=&quot;SELECT now()::DATE AS fecha&quot; --&gt;Fecha: [fecha]&lt;!-- END QUERY --&gt;   &lt;!-- QUERY=&quot;SELECT now()::TIME AS hora&quot; --&gt;[hora]&lt;!-- END QUERY --&gt;
+-Ticket: [numalbaran]
+-&lt;!-- TURNWHITEBLACK &quot;1&quot;--&gt;
+- Uds. PRODUCTO               P.U. IMPORTE
+-&lt;!-- TURNWHITEBLACK &quot;0&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT *, (cantlalbaran*pvpivainclalbaran)::NUMERIC(12,2) AS subtotal FROM lalbaran  WHERE idalbaran=[idalbaran]&quot; --&gt;&lt;!-- RIGHTJUSTIFIED &quot;[cantlalbaran]&quot; &quot;5&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- LEFTJUSTIFIED &quot;[desclalbaran]&quot; &quot;20&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- RIGHTJUSTIFIED &quot;[pvpivainclalbaran]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt; &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-&lt;!-- END QUERY --&gt;
+-
+-&lt;!-- SETJUSTIFICATION &quot;RIGHT&quot; --&gt;&lt;!-- SETUNDERLINEMODE &quot;0&quot; --&gt;&lt;!-- SETCHARACTERSIZE &quot;119&quot; --&gt;&lt;!-- SETCHARACTERPRINTMODE &quot; DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED&quot; --&gt;
+-&lt;!-- IF =&quot;length('[pagado]')=8&quot;--&gt;&lt;!-- QUERY=&quot;SELECT sum(cantlalbaran*pvpivainclalbaran)::NUMERIC(12,2) AS subtotal FROM lalbaran  WHERE idalbaran=[idalbaran]&quot; --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;&lt;!-- END QUERY --&gt;
+-&lt;!-- ELSE --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[total]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-
+-Pagado: &lt;!-- RIGHTJUSTIFIED &quot;[pagado]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-Cambio: &lt;!-- RIGHTJUSTIFIED &quot;[cambio]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-&lt;!-- END IF --&gt;
+-
+-&lt;!-- SETCHARACTERSIZE &quot;0&quot; --&gt;&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;
+-   GRACIAS POR SU VISITA
+-&lt;!-- CUTPAPERANDFEED &quot;TRUE&quot; &quot;5&quot;--&gt;
+-
+-
+diff --git a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/fr/factura_ticket.txt b/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/fr/factura_ticket.txt
+deleted file mode 100644
+index 8ba6925..0000000
+--- a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/fr/factura_ticket.txt
++++ /dev/null
+@@ -1,25 +0,0 @@
+-&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;&lt;!-- IMG SRC=&quot;[CONF_DIR_OPENREPORTS]logo.jpg&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='CIF'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='DireccionCompleta'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='Telefono'&quot; --&gt;Tel. [valor]&lt;!-- END QUERY --&gt;971 91 85 06&lt;!-- SETJUSTIFICATION &quot;LEFT&quot; --&gt;
+-&lt;!-- QUERY=&quot;SELECT now()::DATE AS fecha&quot; --&gt;Fecha: [fecha]&lt;!-- END QUERY --&gt;   &lt;!-- QUERY=&quot;SELECT now()::TIME AS hora&quot; --&gt;[hora]&lt;!-- END QUERY --&gt;
+-Ticket: [numfactura]
+-&lt;!-- TURNWHITEBLACK &quot;1&quot;--&gt;
+- Uds. PRODUCTO               P.U. IMPORTE
+-&lt;!-- TURNWHITEBLACK &quot;0&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT *, (cantlfactura*pvplfactura)::NUMERIC(12,2) AS subtotal FROM lfactura  WHERE idfactura=[idfactura]&quot; --&gt;&lt;!-- RIGHTJUSTIFIED &quot;[cantlfactura]&quot; &quot;5&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- LEFTJUSTIFIED &quot;[desclfactura]&quot; &quot;20&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- RIGHTJUSTIFIED &quot;[pvplfactura]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt; &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-&lt;!-- END QUERY --&gt;
+-
+-&lt;!-- SETJUSTIFICATION &quot;RIGHT&quot; --&gt;&lt;!-- SETUNDERLINEMODE &quot;0&quot; --&gt;&lt;!-- SETCHARACTERSIZE &quot;119&quot; --&gt;&lt;!-- SETCHARACTERPRINTMODE &quot; DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED&quot; --&gt;
+-&lt;!-- IF =&quot;length('[pagado]')=8&quot;--&gt;&lt;!-- QUERY=&quot;SELECT sum(cantlfactura*pvplfactura)::NUMERIC(12,2) AS subtotal FROM lfactura  WHERE idfactura=[idfactura]&quot; --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;&lt;!-- END QUERY --&gt;
+-&lt;!-- ELSE --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[total]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-
+-Pagado: &lt;!-- RIGHTJUSTIFIED &quot;[pagado]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-Cambio: &lt;!-- RIGHTJUSTIFIED &quot;[cambio]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-&lt;!-- END IF --&gt;
+-
+-&lt;!-- SETCHARACTERSIZE &quot;0&quot; --&gt;&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;
+-   GRACIAS POR SU VISITA
+-&lt;!-- CUTPAPERANDFEED &quot;TRUE&quot; &quot;5&quot;--&gt;
+-
+-
+diff --git a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/fr/pedido_ticket.txt b/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/fr/pedido_ticket.txt
+deleted file mode 100644
+index 0022bce..0000000
+--- a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/fr/pedido_ticket.txt
++++ /dev/null
+@@ -1,25 +0,0 @@
+-&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;&lt;!-- IMG SRC=&quot;[CONF_DIR_OPENREPORTS]logo.jpg&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='CIF'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='DireccionCompleta'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='Telefono'&quot; --&gt;Tel. [valor]&lt;!-- END QUERY --&gt;971 91 85 06&lt;!-- SETJUSTIFICATION &quot;LEFT&quot; --&gt;
+-&lt;!-- QUERY=&quot;SELECT now()::DATE AS fecha&quot; --&gt;Fecha: [fecha]&lt;!-- END QUERY --&gt;   &lt;!-- QUERY=&quot;SELECT now()::TIME AS hora&quot; --&gt;[hora]&lt;!-- END QUERY --&gt;
+-Ticket: [numalbaran]
+-&lt;!-- TURNWHITEBLACK &quot;1&quot;--&gt;
+- Uds. PRODUCTO               P.U. IMPORTE
+-&lt;!-- TURNWHITEBLACK &quot;0&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT *, (cantlalbaran*pvpivainclalbaran)::NUMERIC(12,2) AS subtotal FROM lalbaran  WHERE idalbaran=[idalbaran]&quot; --&gt;&lt;!-- RIGHTJUSTIFIED &quot;[cantlalbaran]&quot; &quot;5&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- LEFTJUSTIFIED &quot;[desclalbaran]&quot; &quot;20&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- RIGHTJUSTIFIED &quot;[pvpivainclalbaran]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt; &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-&lt;!-- END QUERY --&gt;
+-
+-&lt;!-- SETJUSTIFICATION &quot;RIGHT&quot; --&gt;&lt;!-- SETUNDERLINEMODE &quot;0&quot; --&gt;&lt;!-- SETCHARACTERSIZE &quot;119&quot; --&gt;&lt;!-- SETCHARACTERPRINTMODE &quot; DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED&quot; --&gt;
+-&lt;!-- IF =&quot;length('[pagado]')=8&quot;--&gt;&lt;!-- QUERY=&quot;SELECT sum(cantlalbaran*pvpivainclalbaran)::NUMERIC(12,2) AS subtotal FROM lalbaran  WHERE idalbaran=[idalbaran]&quot; --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;&lt;!-- END QUERY --&gt;
+-&lt;!-- ELSE --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[total]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-
+-Pagado: &lt;!-- RIGHTJUSTIFIED &quot;[pagado]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-Cambio: &lt;!-- RIGHTJUSTIFIED &quot;[cambio]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-&lt;!-- END IF --&gt;
+-
+-&lt;!-- SETCHARACTERSIZE &quot;0&quot; --&gt;&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;
+-   GRACIAS POR SU VISITA
+-&lt;!-- CUTPAPERANDFEED &quot;TRUE&quot; &quot;5&quot;--&gt;
+-
+-
+diff --git a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/fr/presupuesto_ticket.txt b/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/fr/presupuesto_ticket.txt
+deleted file mode 100644
+index 1929658..0000000
+--- a/bulmages/bulmafact/plugins/pluginbf_ticket/openreports/fr/presupuesto_ticket.txt
++++ /dev/null
+@@ -1,25 +0,0 @@
+-&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;&lt;!-- IMG SRC=&quot;[CONF_DIR_OPENREPORTS]logo.jpg&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='CIF'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='DireccionCompleta'&quot; --&gt;[valor]&lt;!-- END QUERY --&gt;
+-&lt;!-- QUERY=&quot;SELECT * FROM configuracion WHERE nombre='Telefono'&quot; --&gt;Tel. [valor]&lt;!-- END QUERY --&gt;971 91 85 06&lt;!-- SETJUSTIFICATION &quot;LEFT&quot; --&gt;
+-&lt;!-- QUERY=&quot;SELECT now()::DATE AS fecha&quot; --&gt;Fecha: [fecha]&lt;!-- END QUERY --&gt;   &lt;!-- QUERY=&quot;SELECT now()::TIME AS hora&quot; --&gt;[hora]&lt;!-- END QUERY --&gt;
+-Ticket: [numpresupuesto]
+-&lt;!-- TURNWHITEBLACK &quot;1&quot;--&gt;
+- Uds. PRODUCTO               P.U. IMPORTE
+-&lt;!-- TURNWHITEBLACK &quot;0&quot;--&gt;
+-&lt;!-- QUERY=&quot;SELECT *, (cantlpresupuesto*pvplpresupuesto)::NUMERIC(12,2) AS subtotal FROM lpresupuesto  WHERE idpresupuesto=[idpresupuesto]&quot; --&gt;&lt;!-- RIGHTJUSTIFIED &quot;[cantlpresupuesto]&quot; &quot;5&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- LEFTJUSTIFIED &quot;[desclpresupuesto]&quot; &quot;20&quot; &quot; &quot; &quot;TRUE&quot;--&gt; &lt;!-- RIGHTJUSTIFIED &quot;[pvplpresupuesto]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt; &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-&lt;!-- END QUERY --&gt;
+-
+-&lt;!-- SETJUSTIFICATION &quot;RIGHT&quot; --&gt;&lt;!-- SETUNDERLINEMODE &quot;0&quot; --&gt;&lt;!-- SETCHARACTERSIZE &quot;119&quot; --&gt;&lt;!-- SETCHARACTERPRINTMODE &quot; DOUBLE_WIDTH DOUBLE_HEIGHT CHARACTER_FONTA_SELECTED&quot; --&gt;
+-&lt;!-- IF =&quot;length('[pagado]')=8&quot;--&gt;&lt;!-- QUERY=&quot;SELECT sum(cantlpresupuesto*pvplpresupuesto)::NUMERIC(12,2) AS subtotal FROM lpresupuesto  WHERE idpresupuesto=[idpresupuesto]&quot; --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[subtotal]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;&lt;!-- END QUERY --&gt;
+-&lt;!-- ELSE --&gt;Total: &lt;!-- RIGHTJUSTIFIED &quot;[total]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-
+-Pagado: &lt;!-- RIGHTJUSTIFIED &quot;[pagado]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-Cambio: &lt;!-- RIGHTJUSTIFIED &quot;[cambio]&quot; &quot;6&quot; &quot; &quot; &quot;TRUE&quot; --&gt;
+-&lt;!-- END IF --&gt;
+-
+-&lt;!-- SETCHARACTERSIZE &quot;0&quot; --&gt;&lt;!-- SETJUSTIFICATION &quot;CENTER&quot; --&gt;
+-   GRACIAS POR SU VISITA
+-&lt;!-- CUTPAPERANDFEED &quot;TRUE&quot; &quot;5&quot;--&gt;
+-
+-
+diff --git a/bulmages/bulmafact/plugins/pluginbf_ticket/ticketqtoolbutton.cpp b/bulmages/bulmafact/plugins/pluginbf_ticket/ticketqtoolbutton.cpp
+index 8375552..024511e 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_ticket/ticketqtoolbutton.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_ticket/ticketqtoolbutton.cpp
+@@ -100,42 +100,48 @@ void TicketQToolButton::click()
+ 
+        if ( m_presupuestoView != NULL ) {
+     
+-	  m_presupuestoView-&gt;generateRML(&quot;presupuesto_ticket.txt&quot;);
++	  m_presupuestoView-&gt;generateRML(&quot;impers_presupuesto.txt&quot;);
+ 	  
+ 	  if (!g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE).isEmpty() &amp;&amp; g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE) != &quot;/dev/null&quot;) {
+-	      QString comando = &quot;cat &quot; + g_confpr-&gt;value(CONF_DIR_USER) + &quot;presupuesto_ticket.txt&quot; + &quot;  &gt; &quot; + g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE );
++	      QString comando = &quot;cat &quot; + g_confpr-&gt;value(CONF_DIR_USER) + &quot;impers_presupuesto.txt&quot; + &quot;  &gt; &quot; + g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE );
+ 	      system ( comando.toAscii().data() );
+ 	  } else if (!g_confpr-&gt;value( CONF_CASHBOX_FILE).isEmpty() &amp;&amp; g_confpr-&gt;value( CONF_CASHBOX_FILE) != &quot;/dev/null&quot;) {
+-	      QString comando = &quot;cat &quot; + g_confpr-&gt;value(CONF_DIR_USER) + &quot;presupuesto_ticket.txt&quot; + &quot;  &gt; &quot; + g_confpr-&gt;value( CONF_CASHBOX_FILE );
++	      QString comando = &quot;cat &quot; + g_confpr-&gt;value(CONF_DIR_USER) + &quot;impers_presupuesto.txt&quot; + &quot;  &gt; &quot; + g_confpr-&gt;value( CONF_CASHBOX_FILE );
+ 	      system ( comando.toAscii().data() );
+ 	  } else if (!g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER).isEmpty() &amp;&amp; g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER) != &quot;None&quot;) {
+-		      blRawPrint( &quot;presupuesto_ticket.txt&quot;, TRUE, g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE));
++		      blRawPrint( &quot;impers_presupuesto.txt&quot;, TRUE, g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE));
+ 	  } else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER) == &quot;None&quot;) {
+ 	      blMsgError(_(&quot;Debe establecer el parametro 'CONF_CUPS_DEFAULT_PRINTER' o 'CONF_CASHBOX_FILE' para abrir el cajon.&quot;));
+ 	  } else {
+-		      blRawPrint( &quot;presupuesto_ticket.txt&quot;);
++		      blRawPrint( &quot;impers_presupuesto.txt&quot;);
+ 	  } // end if  
+ 	  
+     } else   if ( m_pedidoClienteView != NULL ) {
+     
+-	  m_pedidoClienteView-&gt;generateRML(&quot;pedido_ticket.txt&quot;);
++	  m_pedidoClienteView-&gt;generateRML(&quot;impers_pedidocliente.txt&quot;);
+ 	  
+ 	  if (!g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE).isEmpty() &amp;&amp; g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE) != &quot;/dev/null&quot;) {
+-	      QString comando = &quot;cat &quot; + g_confpr-&gt;value(CONF_DIR_USER) + &quot;pedido_ticket.txt&quot; + &quot;  &gt; &quot; + g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE );
++	      QString comando = &quot;cat &quot; + g_confpr-&gt;value(CONF_DIR_USER) + &quot;impers_pedidocliente.txt&quot; + &quot;  &gt; &quot; + g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE );
+ 	      system ( comando.toAscii().data() );
+ 	  } else if (!g_confpr-&gt;value( CONF_CASHBOX_FILE).isEmpty() &amp;&amp; g_confpr-&gt;value( CONF_CASHBOX_FILE) != &quot;/dev/null&quot;) {
+-	      QString comando = &quot;cat &quot; + g_confpr-&gt;value(CONF_DIR_USER) + &quot;pedido_ticket.txt&quot; + &quot;  &gt; &quot; + g_confpr-&gt;value( CONF_CASHBOX_FILE );
++	      QString comando = &quot;cat &quot; + g_confpr-&gt;value(CONF_DIR_USER) + &quot;impers_pedidocliente.txt&quot; + &quot;  &gt; &quot; + g_confpr-&gt;value( CONF_CASHBOX_FILE );
+ 	      system ( comando.toAscii().data() );
+ 	  } else if (!g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER).isEmpty() &amp;&amp; g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER) != &quot;None&quot;) {
+-		      blRawPrint( &quot;pedido_ticket.txt&quot;, TRUE, g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE));
++		      blRawPrint( &quot;impers_pedidocliente.txt&quot;, TRUE, g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE));
+ 	  } else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER) == &quot;None&quot;) {
+ 	      blMsgError(_(&quot;Debe establecer el parametro 'CONF_CUPS_DEFAULT_PRINTER' o 'CONF_CASHBOX_FILE' para abrir el cajon.&quot;));
+ 	  } else {
+-		      blRawPrint( &quot;pedido_ticket.txt&quot;);
++		      blRawPrint( &quot;impers_pedidocliente.txt&quot;);
+ 	  } // end if  
+ 	  
+     } else   if ( m_albaranClienteView != NULL ) {
+-    
++    /** En este caso estamos tratando con la ventana de tickets (Si esta instalada) es obvio que queremos trabajar
++     * con los tickets realizados en el TPV. Y que si queremos reimprimir un ticket es mediante este botón.
++     * Es por este motivo que utilizamos la plantilla ticket_normal (que será la misma que tiene configurado el TPV)
++     * y la copia que obtendremos será copia exacta del ticket.
++     **/
++      
++      
+ 	  m_albaranClienteView-&gt;generateRML(&quot;ticket_normal.txt&quot;);
+ 	  
+ 	  if (!g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE).isEmpty() &amp;&amp; g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE) != &quot;/dev/null&quot;) {
+@@ -154,37 +160,37 @@ void TicketQToolButton::click()
+ 	  
+     } else     if ( m_albaran1ClienteView != NULL ) {
+     
+-	  m_albaran1ClienteView-&gt;generateRML(&quot;albaran_ticket.txt&quot;);
++	  m_albaran1ClienteView-&gt;generateRML(&quot;impers_albaran.txt&quot;);
+ 	  
+ 	  if (!g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE).isEmpty() &amp;&amp; g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE) != &quot;/dev/null&quot;) {
+-	      QString comando = &quot;cat &quot; + g_confpr-&gt;value(CONF_DIR_USER) + &quot;albaran_ticket.txt&quot; + &quot;  &gt; &quot; + g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE );
++	      QString comando = &quot;cat &quot; + g_confpr-&gt;value(CONF_DIR_USER) + &quot;impers_albaran.txt&quot; + &quot;  &gt; &quot; + g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE );
+ 	      system ( comando.toAscii().data() );
+ 	  } else if (!g_confpr-&gt;value( CONF_CASHBOX_FILE).isEmpty() &amp;&amp; g_confpr-&gt;value( CONF_CASHBOX_FILE) != &quot;/dev/null&quot;) {
+-	      QString comando = &quot;cat &quot; + g_confpr-&gt;value(CONF_DIR_USER) + &quot;albaran_ticket.txt&quot; + &quot;  &gt; &quot; + g_confpr-&gt;value( CONF_CASHBOX_FILE );
++	      QString comando = &quot;cat &quot; + g_confpr-&gt;value(CONF_DIR_USER) + &quot;impers_albaran.txt&quot; + &quot;  &gt; &quot; + g_confpr-&gt;value( CONF_CASHBOX_FILE );
+ 	      system ( comando.toAscii().data() );
+ 	  } else if (!g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER).isEmpty() &amp;&amp; g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER) != &quot;None&quot;) {
+-		      blRawPrint( &quot;albaran_ticket.txt&quot;, TRUE, g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE));
++		      blRawPrint( &quot;impers_albaran.txt&quot;, TRUE, g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE));
+ 	  } else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER) == &quot;None&quot;) {
+ 	      blMsgError(_(&quot;Debe establecer el parametro 'CONF_CUPS_DEFAULT_PRINTER' o 'CONF_CASHBOX_FILE' para abrir el cajon.&quot;));
+ 	  } else {
+-		      blRawPrint( &quot;albaran_ticket.txt&quot;);
++		      blRawPrint( &quot;impers_albaran.txt&quot;);
+ 	  } // end if  
+     } else     if ( m_facturaView != NULL ) {
+     
+-	  m_facturaView-&gt;generateRML(&quot;factura_ticket.txt&quot;);
++	  m_facturaView-&gt;generateRML(&quot;impers_factura.txt&quot;);
+ 	  
+ 	  if (!g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE).isEmpty() &amp;&amp; g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE) != &quot;/dev/null&quot;) {
+-	      QString comando = &quot;cat &quot; + g_confpr-&gt;value(CONF_DIR_USER) + &quot;factura_ticket.txt&quot; + &quot;  &gt; &quot; + g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE );
++	      QString comando = &quot;cat &quot; + g_confpr-&gt;value(CONF_DIR_USER) + &quot;impers_factura.txt&quot; + &quot;  &gt; &quot; + g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE );
+ 	      system ( comando.toAscii().data() );
+ 	  } else if (!g_confpr-&gt;value( CONF_CASHBOX_FILE).isEmpty() &amp;&amp; g_confpr-&gt;value( CONF_CASHBOX_FILE) != &quot;/dev/null&quot;) {
+-	      QString comando = &quot;cat &quot; + g_confpr-&gt;value(CONF_DIR_USER) + &quot;factura_ticket.txt&quot; + &quot;  &gt; &quot; + g_confpr-&gt;value( CONF_CASHBOX_FILE );
++	      QString comando = &quot;cat &quot; + g_confpr-&gt;value(CONF_DIR_USER) + &quot;impers_factura.txt&quot; + &quot;  &gt; &quot; + g_confpr-&gt;value( CONF_CASHBOX_FILE );
+ 	      system ( comando.toAscii().data() );
+ 	  } else if (!g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER).isEmpty() &amp;&amp; g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER) != &quot;None&quot;) {
+-		      blRawPrint( &quot;factura_ticket.txt&quot;, TRUE, g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE));
++		      blRawPrint( &quot;impers_factura.txt&quot;, TRUE, g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE));
+ 	  } else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER) == &quot;None&quot;) {
+ 	      blMsgError(_(&quot;Debe establecer el parametro 'CONF_CUPS_DEFAULT_PRINTER' o 'CONF_CASHBOX_FILE' para abrir el cajon.&quot;));
+ 	  } else {
+-		      blRawPrint( &quot;factura_ticket.txt&quot;);
++		      blRawPrint( &quot;impers_factura.txt&quot;);
+ 	  } // end if  
+     }
+     
+
+commit ccba7c4150b6eb9fd3a087ff359ad569f3b25563
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon May 21 09:50:59 2012 +0200
+
+    Arreglo error en pluginbf_ticket que no sacaba el boton de imprimir ticket en los albaranes. Error reportado por A. Sanchez
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_ticket/pluginbf_ticket.cpp b/bulmages/bulmafact/plugins/pluginbf_ticket/pluginbf_ticket.cpp
+index 9ab3015..0a527d6 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_ticket/pluginbf_ticket.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_ticket/pluginbf_ticket.cpp
+@@ -84,7 +84,6 @@ int PedidoClienteView_PedidoClienteView(PedidoClienteView *l) {
+ int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
+ {
+     BL_FUNC_DEBUG
+-//================================
+     TicketQToolButton *mui_exporta_efactura2 = new TicketQToolButton ( NULL, NULL, NULL, NULL,l, l-&gt;mui_plugbotones );
+ 
+     QHBoxLayout *m_hboxLayout1 = l-&gt;mui_plugbotones-&gt;findChild&lt;QHBoxLayout *&gt; ( &quot;hboxLayout1&quot; );
+@@ -95,7 +94,6 @@ int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
+         m_hboxLayout1-&gt;setObjectName ( QString::fromUtf8 ( &quot;hboxLayout1&quot; ) );
+     } // end if
+     m_hboxLayout1-&gt;addWidget ( mui_exporta_efactura2 );
+-//================================
+     
+     return 0;
+ }
+@@ -109,7 +107,6 @@ int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
+ int TicketClienteView_TicketClienteView ( TicketClienteView *l )
+ {
+     BL_FUNC_DEBUG
+-//================================
+     TicketQToolButton *mui_exporta_efactura2 = new TicketQToolButton ( NULL, NULL, l, NULL,NULL, l-&gt;mui_plugbotones );
+ 
+     QHBoxLayout *m_hboxLayout1 = l-&gt;mui_plugbotones-&gt;findChild&lt;QHBoxLayout *&gt; ( &quot;hboxLayout1&quot; );
+@@ -120,7 +117,6 @@ int TicketClienteView_TicketClienteView ( TicketClienteView *l )
+         m_hboxLayout1-&gt;setObjectName ( QString::fromUtf8 ( &quot;hboxLayout1&quot; ) );
+     } // end if
+     m_hboxLayout1-&gt;addWidget ( mui_exporta_efactura2 );
+-//================================
+     
+     return 0;
+ }
+diff --git a/bulmages/bulmafact/plugins/pluginbf_ticket/pluginbf_ticket.h b/bulmages/bulmafact/plugins/pluginbf_ticket/pluginbf_ticket.h
+index 7ba9a33..d4d9735 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_ticket/pluginbf_ticket.h
++++ b/bulmages/bulmafact/plugins/pluginbf_ticket/pluginbf_ticket.h
+@@ -34,7 +34,7 @@ extern &quot;C&quot; PLUGINBF_TICKET_EXPORT int TicketClienteView_TicketClienteView ( Tick
+ extern &quot;C&quot; PLUGINBF_TICKET_EXPORT int PedidoClienteView_PedidoClienteView(PedidoClienteView *);
+ extern &quot;C&quot; PLUGINBF_TICKET_EXPORT int PresupuestoView_PresupuestoView(PresupuestoView *);
+ extern &quot;C&quot; PLUGINBF_TICKET_EXPORT int FacturaView_FacturaView ( FacturaView * );
+-extern &quot;C&quot; PLUGINBF_TICKET_EXPORT int AlbaranClienteView_AlbaranClienteView(PresupuestoView *);
++extern &quot;C&quot; PLUGINBF_TICKET_EXPORT int AlbaranClienteView_AlbaranClienteView(AlbaranClienteView *);
+ 
+ 
+ extern &quot;C&quot; PLUGINBF_TICKET_EXPORT int entryPoint ( BfBulmaFact * );
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007266.html">[BulmaGés]Cambios para funcionar en FreeBSD
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007255.html">[BulmaGés] [Gitorious] Activity: themeph pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7253">[ fecha ]</a>
+              <a href="thread.html#7253">[ hilo ]</a>
+              <a href="subject.html#7253">[ asunto ]</a>
+              <a href="author.html#7253">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

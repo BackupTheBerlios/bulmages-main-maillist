@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] r4054 - in trunk/bulmages:	bulmacont/plugins/pluginbc_asiento	bulmacont/plugins/pluginbc_cuenta bulmacont/src bulmalib/src
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r4054%20-%20in%20trunk/bulmages%3A%0A%09bulmacont/plugins/pluginbc_asiento%0A%09bulmacont/plugins/pluginbc_cuenta%20bulmacont/src%20bulmalib/src&In-Reply-To=%3C20101030093216.431CD480E99%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="004160.html">
+   <LINK REL="Next"  HREF="004162.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] r4054 - in trunk/bulmages:	bulmacont/plugins/pluginbc_asiento	bulmacont/plugins/pluginbc_cuenta bulmacont/src bulmalib/src </H1>
+    <B>svn en mail.berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r4054%20-%20in%20trunk/bulmages%3A%0A%09bulmacont/plugins/pluginbc_asiento%0A%09bulmacont/plugins/pluginbc_cuenta%20bulmacont/src%20bulmalib/src&In-Reply-To=%3C20101030093216.431CD480E99%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] r4054 - in trunk/bulmages:	bulmacont/plugins/pluginbc_asiento	bulmacont/plugins/pluginbc_cuenta bulmacont/src bulmalib/src">svn en mail.berlios.de
+       </A><BR>
+    <I>Sab Oct 30 11:32:16 CEST 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="004160.html">[BulmaGés] r4053 -	trunk/bulmages/bulmacont/plugins/pluginbc_cuenta
+</A></li>
+        <LI>Próximo mensaje: <A HREF="004162.html">[BulmaGés]r4054 - in trunk/bulmages: bulmacont/plugins/pluginbc_asiento bulmacont/plugins/pluginbc_cuenta bulmacont/src bulmalib/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4161">[ fecha ]</a>
+              <a href="thread.html#4161">[ hilo ]</a>
+              <a href="subject.html#4161">[ asunto ]</a>
+              <a href="author.html#4161">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: fcojavmc
+Date: 2010-10-30 11:32:15 +0200 (Sat, 30 Oct 2010)
+New Revision: 4054
+
+Modified:
+   trunk/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientobase.ui
+   trunk/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientolistbase.ui
+   trunk/bulmages/bulmacont/plugins/pluginbc_cuenta/pluginbc_cuenta.cpp
+   trunk/bulmages/bulmacont/plugins/pluginbc_cuenta/pluginbc_cuenta.h
+   trunk/bulmages/bulmacont/src/bcsubform.cpp
+   trunk/bulmages/bulmalib/src/blplugins.cpp
+Log:
+BulmaCont:
+***********
+Al crea un apunte en la celda 'codigo' de la cuenta, al pulsar F2
+aparece el listado de cuentas disponibles.
+
+
+BulmaLib:
+***********
+Cambios en la gestion de plugins. Supongamos los siguientes casos:
+
+Caso 1:
+PluginA-&gt;funcionX
+
+- En este caso el 'PluginA' tiene la 'funcionX' que se quiere ejecutar.
+
+Caso 2:
+PluginB-&gt;PluginA-&gt;funcionX
+
+- En este caso 'PluginB' tiene como dependencia 'PluginA' que tiene la
+  'funcionX'.
+
+
+Antes de este parche el sistema funcionaba buscando en todos los plugins
+la 'funcionX' para ejecutarla. Si solo se disponia de plugins tipo 'Caso
+1' no hay problemas porque cada plugin tiene su propia 'funcionX' y se
+ejecuta. El problema venia cuando un plugin depende de otro y ese tiene
+la 'funcionX' y se quiere usar al mismo tiempo el 'PluginA' y el
+'PluginB'. En ese caso primero se ejecutaba la 'funcionX' del 'PluginA'
+y luego, a traves de la dependencia del 'PluginB' se volvia a ejecutar
+la 'funcionX' del 'PluginA'. Es decir se duplicaba la ejecucion.
+
+Cada funcion tiene asignada una posicion de memoria cuando se carga.
+Aunque tengan el mismo nombre tienen direcciones diferentes. Se crea una
+lista de direcciones -unicas- para un determinado nombre de funcion y
+asi se asegura la no duplicidad de ejecucion. Incluso funciona bien
+cuando se dispone de una organizacion tipo 'Caso 3'.
+
+Caso 3:
+PluginB-&gt;funcionX-&gt;PluginA-&gt;funcionX
+
+- En este caso tanto 'PluginB' como 'PluginA' tienen una 'funcionX'. Son
+  diferentes pero tienen el mismo nombre.
+
+
+Este arreglo es necesario porque utilizamos un sistema de plugins que
+son realmente librerias. Los plugins no se pueden enlazar, no pueden
+tener dependencias. Por razones de flexibilidad utilizamos librerias que
+se cargan dinamicamente. Por eso este sistema se tiene que controlar
+manualmente. En Windows, por ejemplo, esto no sucede porque la
+exportacion de funciones (acceso desde el exterior de la libreria) no
+esta permitido si es una dependencia.
+
+
+*********************************
+*          Todo-Redes           *
+*        C/.Begonia, 12         *
+*   07010 Palma de Mallorca.    *
+*      Tel: +34-971499071       *
+*   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>   *
+*  comercial(en)todo-redes.com  *
+*********************************
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="004160.html">[BulmaGés] r4053 -	trunk/bulmages/bulmacont/plugins/pluginbc_cuenta
+</A></li>
+	<LI>Próximo mensaje: <A HREF="004162.html">[BulmaGés]r4054 - in trunk/bulmages: bulmacont/plugins/pluginbc_asiento bulmacont/plugins/pluginbc_cuenta bulmacont/src bulmalib/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4161">[ fecha ]</a>
+              <a href="thread.html#4161">[ hilo ]</a>
+              <a href="subject.html#4161">[ asunto ]</a>
+              <a href="author.html#4161">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

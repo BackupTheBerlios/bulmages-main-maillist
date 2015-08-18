@@ -1,0 +1,240 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Bug #16707] Plugin &quot;bf_tutor&quot;: Errors	a la pantalla de nou tutor
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2316707%5D%20Plugin%20%22bf_tutor%22%3A%20Errors%0A%09a%20la%20pantalla%20de%20nou%20tutor&In-Reply-To=%3C201001232354.o0NNsd85011877%40unicorn.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003333.html">
+   <LINK REL="Next"  HREF="003335.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Bug #16707] Plugin &quot;bf_tutor&quot;: Errors	a la pantalla de nou tutor </H1>
+    <B>admin en berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2316707%5D%20Plugin%20%22bf_tutor%22%3A%20Errors%0A%09a%20la%20pantalla%20de%20nou%20tutor&In-Reply-To=%3C201001232354.o0NNsd85011877%40unicorn.berlios.de%3E"
+       TITLE="[BulmaGés] [Bug #16707] Plugin &quot;bf_tutor&quot;: Errors	a la pantalla de nou tutor">admin en berlios.de
+       </A><BR>
+    <I>Dom Ene 24 00:54:39 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003333.html">[Bug #16706] Plugin AMPA: Cerca a la fitxa &quot;Padres&quot; no funciona bé
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003335.html">[BulmaGés] r3736 - in	branches/series-0.12/bulmages: ModulesCMake bulmafact/plugins	bulmafact/plugins/pluginbf_cliente	bulmafact/plugins/pluginbf_clientealbaran	bulmafact/plugins/pluginbf_clientefactura	bulmafact/plugins/pluginbf_clientepedido	bulmafact/plugins/pluginbf_clientepresupuesto bulmafact/src	bulmasetup bulmatpv/plugins/pluginbt_tecladonumerico installbulmages
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3334">[ fecha ]</a>
+              <a href="thread.html#3334">[ hilo ]</a>
+              <a href="subject.html#3334">[ asunto ]</a>
+              <a href="author.html#3334">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bug #16707, was updated on 2010-Jan-24 00:54
+Here is a current snapshot of the bug.
+
+Project: BulmaGes, Gestión Empresarial Libre
+Category: bulmafact
+Status: Open
+Resolution: None
+Bug Group: None
+Priority: 5
+Submitted by: orestes
+Assigned to : none
+Summary: Plugin &quot;bf_tutor&quot;: Errors a la pantalla de nou tutor
+
+Details: Versió: 0.12-svn
+
+El plugin &quot;bf_tutor&quot; s'utilitza per gestionar el concepte de pare/mare del plugin d'associacions.
+
+La pantalla d'entrada de dades del tutor (Nuevo Padre/Socio) té diversos errors de format (cadenes mal aliniades, falten &quot;:&quot;, falten associacions d'etiquetes amb el seu &quot;buddy&quot;, etc.
+
+Adjunto diff per arreglar-ho.
+
+Index: bulmafact/plugins/pluginbf_tutor/tutorbase.ui
+===================================================================
+--- bulmafact/plugins/pluginbf_tutor/tutorbase.ui	(revision 3735)
++++ bulmafact/plugins/pluginbf_tutor/tutorbase.ui	(working copy)
+@@ -7,8 +7,8 @@
+    &lt;rect&gt;
+     &lt;x&gt;0&lt;/x&gt;
+     &lt;y&gt;0&lt;/y&gt;
+-    &lt;width&gt;718&lt;/width&gt;
+-    &lt;height&gt;433&lt;/height&gt;
++    &lt;width&gt;763&lt;/width&gt;
++    &lt;height&gt;445&lt;/height&gt;
+    &lt;/rect&gt;
+   &lt;/property&gt;
+   &lt;property name=&quot;minimumSize&quot;&gt;
+@@ -300,8 +300,11 @@
+        &lt;item row=&quot;0&quot; column=&quot;4&quot; colspan=&quot;2&quot;&gt;
+         &lt;widget class=&quot;QLabel&quot; name=&quot;label_2&quot;&gt;
+          &lt;property name=&quot;text&quot;&gt;
+-          &lt;string&gt;Nº Socio&lt;/string&gt;
++          &lt;string&gt;Nº Socio:&lt;/string&gt;
+          &lt;/property&gt;
++         &lt;property name=&quot;alignment&quot;&gt;
++          &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
++         &lt;/property&gt;
+          &lt;property name=&quot;buddy&quot;&gt;
+           &lt;cstring&gt;mui_numsociocliente&lt;/cstring&gt;
+          &lt;/property&gt;
+@@ -382,32 +385,6 @@
+          &lt;/property&gt;
+         &lt;/widget&gt;
+        &lt;/item&gt;
+-       &lt;item row=&quot;4&quot; column=&quot;2&quot; colspan=&quot;4&quot;&gt;
+-        &lt;widget class=&quot;QLineEdit&quot; name=&quot;mui_poblcliente&quot;&gt;
+-         &lt;property name=&quot;maxLength&quot;&gt;
+-          &lt;number&gt;40&lt;/number&gt;
+-         &lt;/property&gt;
+-        &lt;/widget&gt;
+-       &lt;/item&gt;
+-       &lt;item row=&quot;4&quot; column=&quot;6&quot; colspan=&quot;2&quot;&gt;
+-        &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel2_7&quot;&gt;
+-         &lt;property name=&quot;sizePolicy&quot;&gt;
+-          &lt;sizepolicy hsizetype=&quot;Fixed&quot; vsizetype=&quot;Fixed&quot;&gt;
+-           &lt;horstretch&gt;0&lt;/horstretch&gt;
+-           &lt;verstretch&gt;0&lt;/verstretch&gt;
+-          &lt;/sizepolicy&gt;
+-         &lt;/property&gt;
+-         &lt;property name=&quot;text&quot;&gt;
+-          &lt;string&gt;Codigo postal:&lt;/string&gt;
+-         &lt;/property&gt;
+-         &lt;property name=&quot;alignment&quot;&gt;
+-          &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
+-         &lt;/property&gt;
+-         &lt;property name=&quot;buddy&quot;&gt;
+-          &lt;cstring&gt;mui_cpcliente&lt;/cstring&gt;
+-         &lt;/property&gt;
+-        &lt;/widget&gt;
+-       &lt;/item&gt;
+        &lt;item row=&quot;4&quot; column=&quot;8&quot;&gt;
+         &lt;widget class=&quot;QLineEdit&quot; name=&quot;mui_cpcliente&quot;&gt;
+          &lt;property name=&quot;sizePolicy&quot;&gt;
+@@ -507,43 +484,84 @@
+        &lt;item row=&quot;8&quot; column=&quot;2&quot;&gt;
+         &lt;widget class=&quot;BfBuscarFormaPago&quot; name=&quot;mui_idforma_pago&quot;/&gt;
+        &lt;/item&gt;
+-       &lt;item row=&quot;8&quot; column=&quot;0&quot;&gt;
+-        &lt;widget class=&quot;QLabel&quot; name=&quot;label_3&quot;&gt;
+-         &lt;property name=&quot;text&quot;&gt;
+-          &lt;string&gt;Forma Pago&lt;/string&gt;
+-         &lt;/property&gt;
+-        &lt;/widget&gt;
+-       &lt;/item&gt;
+-       &lt;item row=&quot;9&quot; column=&quot;0&quot;&gt;
++       &lt;item row=&quot;9&quot; column=&quot;0&quot; colspan=&quot;2&quot;&gt;
+         &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel2_4_3&quot;&gt;
+          &lt;property name=&quot;text&quot;&gt;
+           &lt;string&gt;Banco:&lt;/string&gt;
+          &lt;/property&gt;
++         &lt;property name=&quot;alignment&quot;&gt;
++          &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
++         &lt;/property&gt;
+          &lt;property name=&quot;buddy&quot;&gt;
+           &lt;cstring&gt;mui_bancocliente&lt;/cstring&gt;
+          &lt;/property&gt;
+         &lt;/widget&gt;
+        &lt;/item&gt;
+-       &lt;item row=&quot;2&quot; column=&quot;0&quot;&gt;
++       &lt;item row=&quot;2&quot; column=&quot;0&quot; colspan=&quot;2&quot;&gt;
+         &lt;widget class=&quot;QLabel&quot; name=&quot;label_4&quot;&gt;
+          &lt;property name=&quot;text&quot;&gt;
+-          &lt;string&gt;1er apellido&lt;/string&gt;
++          &lt;string&gt;1er apellido:&lt;/string&gt;
+          &lt;/property&gt;
++         &lt;property name=&quot;alignment&quot;&gt;
++          &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
++         &lt;/property&gt;
++         &lt;property name=&quot;buddy&quot;&gt;
++          &lt;cstring&gt;mui_apellido1cliente&lt;/cstring&gt;
++         &lt;/property&gt;
+         &lt;/widget&gt;
+        &lt;/item&gt;
+        &lt;item row=&quot;2&quot; column=&quot;2&quot;&gt;
+         &lt;widget class=&quot;QLineEdit&quot; name=&quot;mui_apellido1cliente&quot;/&gt;
+        &lt;/item&gt;
+-       &lt;item row=&quot;2&quot; column=&quot;3&quot;&gt;
++       &lt;item row=&quot;2&quot; column=&quot;6&quot;&gt;
++        &lt;widget class=&quot;QLineEdit&quot; name=&quot;mui_apellido2cliente&quot;/&gt;
++       &lt;/item&gt;
++       &lt;item row=&quot;2&quot; column=&quot;5&quot;&gt;
+         &lt;widget class=&quot;QLabel&quot; name=&quot;label_5&quot;&gt;
+          &lt;property name=&quot;text&quot;&gt;
+-          &lt;string&gt;2o apellido&lt;/string&gt;
++          &lt;string&gt;2o apellido:&lt;/string&gt;
+          &lt;/property&gt;
++         &lt;property name=&quot;alignment&quot;&gt;
++          &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
++         &lt;/property&gt;
++         &lt;property name=&quot;buddy&quot;&gt;
++          &lt;cstring&gt;mui_apellido2cliente&lt;/cstring&gt;
++         &lt;/property&gt;
+         &lt;/widget&gt;
+        &lt;/item&gt;
+-       &lt;item row=&quot;2&quot; column=&quot;6&quot;&gt;
+-        &lt;widget class=&quot;QLineEdit&quot; name=&quot;mui_apellido2cliente&quot;/&gt;
++       &lt;item row=&quot;8&quot; column=&quot;0&quot; colspan=&quot;2&quot;&gt;
++        &lt;widget class=&quot;QLabel&quot; name=&quot;label_3&quot;&gt;
++         &lt;property name=&quot;text&quot;&gt;
++          &lt;string&gt;Forma Pago:&lt;/string&gt;
++         &lt;/property&gt;
++        &lt;/widget&gt;
+        &lt;/item&gt;
++       &lt;item row=&quot;4&quot; column=&quot;6&quot; colspan=&quot;2&quot;&gt;
++        &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel2_7&quot;&gt;
++         &lt;property name=&quot;sizePolicy&quot;&gt;
++          &lt;sizepolicy hsizetype=&quot;Preferred&quot; vsizetype=&quot;Preferred&quot;&gt;
++           &lt;horstretch&gt;0&lt;/horstretch&gt;
++           &lt;verstretch&gt;0&lt;/verstretch&gt;
++          &lt;/sizepolicy&gt;
++         &lt;/property&gt;
++         &lt;property name=&quot;text&quot;&gt;
++          &lt;string&gt;Codigo postal:&lt;/string&gt;
++         &lt;/property&gt;
++         &lt;property name=&quot;alignment&quot;&gt;
++          &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
++         &lt;/property&gt;
++         &lt;property name=&quot;buddy&quot;&gt;
++          &lt;cstring&gt;mui_cpcliente&lt;/cstring&gt;
++         &lt;/property&gt;
++        &lt;/widget&gt;
++       &lt;/item&gt;
++       &lt;item row=&quot;4&quot; column=&quot;2&quot; colspan=&quot;4&quot;&gt;
++        &lt;widget class=&quot;QLineEdit&quot; name=&quot;mui_poblcliente&quot;&gt;
++         &lt;property name=&quot;maxLength&quot;&gt;
++          &lt;number&gt;40&lt;/number&gt;
++         &lt;/property&gt;
++        &lt;/widget&gt;
++       &lt;/item&gt;
+       &lt;/layout&gt;
+      &lt;/widget&gt;
+      &lt;widget class=&quot;QWidget&quot; name=&quot;tabOtros&quot;&gt;
+
+
+For detailed info, follow this link:
+<A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=16707&amp;group_id=4472">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=16707&amp;group_id=4472</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003333.html">[Bug #16706] Plugin AMPA: Cerca a la fitxa &quot;Padres&quot; no funciona bé
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003335.html">[BulmaGés] r3736 - in	branches/series-0.12/bulmages: ModulesCMake bulmafact/plugins	bulmafact/plugins/pluginbf_cliente	bulmafact/plugins/pluginbf_clientealbaran	bulmafact/plugins/pluginbf_clientefactura	bulmafact/plugins/pluginbf_clientepedido	bulmafact/plugins/pluginbf_clientepresupuesto bulmafact/src	bulmasetup bulmatpv/plugins/pluginbt_tecladonumerico installbulmages
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3334">[ fecha ]</a>
+              <a href="thread.html#3334">[ hilo ]</a>
+              <a href="subject.html#3334">[ asunto ]</a>
+              <a href="author.html#3334">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

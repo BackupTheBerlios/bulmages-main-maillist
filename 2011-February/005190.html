@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]blockTable en la sección pageTemplate de un informe RML (no en story)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FblockTable_en_la_secc%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fi%3DF3n_pageTemplate_de_un_informe_RML_%3D28no_en_story%3D29%3F%3D&In-Reply-To=%3C201102231330.37901.auryn%40wanadoo.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005189.html">
+   <LINK REL="Next"  HREF="005191.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]blockTable en la sección pageTemplate de un informe RML (no en story) </H1>
+    <B>Aron</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FblockTable_en_la_secc%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fi%3DF3n_pageTemplate_de_un_informe_RML_%3D28no_en_story%3D29%3F%3D&In-Reply-To=%3C201102231330.37901.auryn%40wanadoo.es%3E"
+       TITLE="[BulmaGés]blockTable en la sección pageTemplate de un informe RML (no en story)">auryn en wanadoo.es
+       </A><BR>
+    <I>Mie Feb 23 13:30:37 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="005189.html">[BulmaGés] r4572 - in	trunk/bulmages/bulmacont/plugins: pluginbc_cuentasanuales/po	pluginbc_cuentasanuales2ods
+</A></li>
+        <LI>Próximo mensaje: <A HREF="005191.html">[BulmaGés]blockTable en la sección pageTemplate de un informe RML (no en story)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5190">[ fecha ]</a>
+              <a href="thread.html#5190">[ hilo ]</a>
+              <a href="subject.html#5190">[ asunto ]</a>
+              <a href="author.html#5190">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>¿Es posible poner un blockTable antes del story para que sea un elemento fijo?
+
+Yo pruebo esto pero sólo funciona la de story:
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot; ?&gt;
+&lt;!DOCTYPE document SYSTEM &quot;rml_1_0.dtd&quot;&gt;
+&lt;document&gt;
+    &lt;template pageSize=&quot;(29.7cm, 21cm)&quot;
+                      leftMargin=&quot;0.5cm&quot; rightMargin=&quot;0.5cm&quot;
+                      topMargin=&quot;1cm&quot; bottomMargin=&quot;1.5cm&quot;
+                      title=&quot;Viaje&quot; allowSplitting=&quot;20&quot;&gt;
+        &lt;pageTemplate id=&quot;main&quot;&gt;
+
+            &lt;frame id=&quot;fr1&quot;
+                         x1=&quot;1.0cm&quot; y1=&quot;1.0cm&quot;
+                         width=&quot;27cm&quot; height=&quot;15.0cm&quot;/&gt;
+        
+            &lt;pageGraphics&gt;
+
+                &lt;blockTable&gt;
+                    &lt;tr&gt;&lt;td&gt;Texto&lt;/td&gt;&lt;td&gt;en&lt;/td&gt;&lt;/tr&gt;
+                    &lt;tr&gt;&lt;td&gt;tabla&lt;/td&gt;&lt;td&gt;fuera&lt;/td&gt;&lt;/tr&gt;
+                    &lt;tr&gt;&lt;td&gt;de&lt;/td&gt;&lt;td&gt;story&lt;/td&gt;&lt;/tr&gt;
+                &lt;/blockTable&gt;
+
+                &lt;setFont name=&quot;Helvetica&quot; size=&quot;8&quot;/&gt;        
+                &lt;fill color=&quot;(0,0,0)&quot;/&gt; 
+                &lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+                &lt;drawString x=&quot;7.3cm&quot; y=&quot;1.2cm&quot;&gt;TEXTO&lt;/drawString&gt;
+
+            &lt;/pageGraphics&gt;
+        &lt;/pageTemplate&gt;
+    &lt;/template&gt;
+    &lt;story&gt;
+        &lt;blockTable&gt;
+            &lt;tr&gt;&lt;td&gt;Texto&lt;/td&gt;&lt;td&gt;en&lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt;tabla&lt;/td&gt;&lt;td&gt;dentro&lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt;de&lt;/td&gt;&lt;td&gt;story&lt;/td&gt;&lt;/tr&gt;
+        &lt;/blockTable&gt;
+    &lt;/story&gt;
+&lt;/document&gt;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="005189.html">[BulmaGés] r4572 - in	trunk/bulmages/bulmacont/plugins: pluginbc_cuentasanuales/po	pluginbc_cuentasanuales2ods
+</A></li>
+	<LI>Próximo mensaje: <A HREF="005191.html">[BulmaGés]blockTable en la sección pageTemplate de un informe RML (no en story)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5190">[ fecha ]</a>
+              <a href="thread.html#5190">[ hilo ]</a>
+              <a href="subject.html#5190">[ asunto ]</a>
+              <a href="author.html#5190">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

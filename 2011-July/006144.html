@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Dudas de Compilación de BulmaGes bajo Windows
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FDudas_de_Compilaci%3DF3%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fn_de_BulmaGes_bajo_Windows%3F%3D&In-Reply-To=%3C4E11ED40.1000205%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006181.html">
+   <LINK REL="Next"  HREF="006146.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Dudas de Compilación de BulmaGes bajo Windows </H1>
+    <B>Daniel Ripoll</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FDudas_de_Compilaci%3DF3%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fn_de_BulmaGes_bajo_Windows%3F%3D&In-Reply-To=%3C4E11ED40.1000205%40gmail.com%3E"
+       TITLE="[BulmaGés]Dudas de Compilación de BulmaGes bajo Windows">dripoll.public en gmail.com
+       </A><BR>
+    <I>Lun Jul  4 18:41:36 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006181.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, nsis_fapacges,	created. a62eded25ca7bf3ba2e0769e350426d13d6b8396
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006146.html">[BulmaGés]Dudas de Compilación de BulmaGes bajo Windows
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6144">[ fecha ]</a>
+              <a href="thread.html#6144">[ hilo ]</a>
+              <a href="subject.html#6144">[ asunto ]</a>
+              <a href="author.html#6144">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola,
+
+Tengo un &quot;exclavo&quot; (amigo) intentando compilar bajo Windows XP de 32
+bits, y nos encontramos con un problema a la hora de ejecutar el make,
+copio y pego el resultado de error así como PATH y versiones de
+programas. A ver si podéis indicar que nos falta.
+
+OUTPUT:
+C:\Documents and Settings\Administrador\Mis
+documentos\Desarrollo\bulmages\build
+&gt;<i>make
+</I>Linking CXX shared library libbulmalib.dll
+Creating library file: libbulmalib.dll.a
+CMakeFiles\bulmalib.dir/objects.a(bli18n.obj):bli18n.cpp:(.text+0xd):
+undefined
+reference to `libintl_gettext'
+CMakeFiles\bulmalib.dir/objects.a(bli18n.obj):bli18n.cpp:(.text+0x27):
+undefined
+ reference to `libintl_dgettext'
+CMakeFiles\bulmalib.dir/objects.a(bli18n.obj):bli18n.cpp:(.text+0x3a):
+undefined
+ reference to `libintl_textdomain'
+CMakeFiles\bulmalib.dir/objects.a(bli18n.obj):bli18n.cpp:(.text+0x54):
+undefined
+ reference to `libintl_bindtextdomain'
+CMakeFiles\bulmalib.dir/objects.a(bli18n.obj):bli18n.cpp:(.text+0x6e):
+undefined
+ reference to `libintl_bind_textdomain_codeset'
+collect2: ld returned 1 exit status
+make[2]: *** [bulmalib/src/libbulmalib.dll] Error 1
+make[1]: *** [bulmalib/src/CMakeFiles/bulmalib.dir/all] Error 2
+make: *** [all] Error 2
+
+
+PATH
+C:\Python27\Scripts;C:\Python27;C:\Archivos de
+programa\GnuWin32\bin;C:\MinGW\bin;C:\Archivos de
+programa\PostgreSQL\9.0\bin;C:\Archivos de
+programa\PostgreSQL\9.0\lib;C:\Archivos de programa\CMake
+2.8\bin;C:\msysgit\msysgit\mingw\bin;C:\msysgit\msysgit\bin;C:\Tcl\bin;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;C:\intltool_0.40.4-1_win32\bin;C:\Archivos
+de programa\SlikSvn\bin\
+
+
+PostgreSQL 9.0 EntrepriseDB
+Cmake 2.8
+TCL/TK 8.5.9.2
+Python 2.7 (reportlab, easy_install, tcl/tk)
+GetGnuWin32 0.6.3
+Slik-Subversion 1.6.17
+msysGit-fullinstall-1.7.4-preview20110204
+mingw-get-inst-20110530
+make 3.81
+intltool 0.40.4-1
+GetText-0.14.4
+Qt4.7.3
+QtSDK 1.1.2 en
+
+
+Commit de bulmages:
+commit a62eded25ca7bf3ba2e0769e350426d13d6b8396
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sun Jul 3 21:45:30 2011 +0200
+
+(Exaro esta comentado y sin ser candidato a compilar)
+
+-- 
+Daniel Ripoll.
+<A HREF="http://www.linkedin.com/in/themeph">http://www.linkedin.com/in/themeph</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006181.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, nsis_fapacges,	created. a62eded25ca7bf3ba2e0769e350426d13d6b8396
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006146.html">[BulmaGés]Dudas de Compilación de BulmaGes bajo Windows
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6144">[ fecha ]</a>
+              <a href="thread.html#6144">[ hilo ]</a>
+              <a href="subject.html#6144">[ asunto ]</a>
+              <a href="author.html#6144">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

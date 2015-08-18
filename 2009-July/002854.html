@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] i18n de llistats
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20i18n%20de%20llistats&In-Reply-To=%3C47058.80.34.165.131.1248711882.squirrel%40webmail.tinet.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002853.html">
+   <LINK REL="Next"  HREF="002855.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] i18n de llistats </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20i18n%20de%20llistats&In-Reply-To=%3C47058.80.34.165.131.1248711882.squirrel%40webmail.tinet.org%3E"
+       TITLE="[BulmaGés] i18n de llistats">xdrudis en tinet.cat
+       </A><BR>
+    <I>Lun Jul 27 18:24:42 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002853.html">[BulmaGés][BulmaGÃ©s]r3599 - trunk/bulmages/installbulmages/open  reports/ca
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002855.html">[BulmaGés] i18n de llistats
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2854">[ fecha ]</a>
+              <a href="thread.html#2854">[ hilo ]</a>
+              <a href="subject.html#2854">[ asunto ]</a>
+              <a href="author.html#2854">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>
+</I>&gt;&gt;<i> No sé com internacionalitzar llistats. Ni com internacionalitzar els
+</I>&gt;&gt;<i> seus .ui.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Clar, el problema serà que els llistats són modificables sense tindre
+</I>&gt;<i> necessitat de recompilar, i, doncs per això mateix no és possible fer la
+</I>&gt;<i> internacionalització.
+</I>&gt;<i>
+</I>
+Bé, si cal compilar plantilles de llistat no veig problema en fer-ho. És una mica
+de feina, això sí, però pots generar plantilles en n idiomes a partir de plantilles
+internacionalitzables i fitxers de gettext, si cal.
+
+El profe de compiladors deia que tots els programes es poden mirar com un
+compilador, per tant tot és compilable. Si convé.
+
+Falta veure si val la pena.
+
+&gt;<i> Per a mi hi han dues possibilitats:
+</I>&gt;<i>
+</I>&gt;<i> La primera, crear unes plantilles bases no modificables que formen part del
+</I>&gt;<i> codi i que inclouen internacionalització.
+</I>&gt;<i>
+</I>
+No em sembla gaire atractiu. Si de cas afegir algun tipus de tag que busqui
+una traducció a gettext.
+
+&gt;<i> I l'altra (tenint en compte que els programadors/usuaris que les creen
+</I>&gt;<i> tenen la possibilitat de crear varis idiomes) sabent que són plantilles
+</I>&gt;<i> modificables i sense recompilar utilitzaria variables per poder actualitzar
+</I>&gt;<i> els idiomes sense refer la plantilla.
+</I>&gt;<i>
+</I>
+Això seria una opció, especialment ara que hi ha la possibilitat d'incloure
+rml dins d'rml amb substitució de variables (un commit recent del Tomeu
+que encara no he provat). Però em sembla que no pots fer un include
+d'un fitxer de SETVARs perquè es porcessa després l'include que els setvars
+(i fer-ho a l'inrevés podria tenir altres inconvenients).
+
+De tota manera la majoria de text està als .ui, no als rml, potser. Els .ui no sé
+si es podrien traduir amb fitxers de recursos o alguna història...
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002853.html">[BulmaGés][BulmaGÃ©s]r3599 - trunk/bulmages/installbulmages/open  reports/ca
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002855.html">[BulmaGés] i18n de llistats
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2854">[ fecha ]</a>
+              <a href="thread.html#2854">[ hilo ]</a>
+              <a href="subject.html#2854">[ asunto ]</a>
+              <a href="author.html#2854">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

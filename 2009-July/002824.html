@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Configuración del sistema para funcionar con NxSpooler
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FConfiguraci%3DF3n_del_s%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fistema_para_funcionar_con_NxSpooler%3F%3D&In-Reply-To=%3C200907241038.55924.asmond%40orange.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002822.html">
+   <LINK REL="Next"  HREF="002825.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Configuración del sistema para funcionar con NxSpooler </H1>
+    <B>Toni Asensi Esteve</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FConfiguraci%3DF3n_del_s%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fistema_para_funcionar_con_NxSpooler%3F%3D&In-Reply-To=%3C200907241038.55924.asmond%40orange.es%3E"
+       TITLE="[BulmaGés]Configuración del sistema para funcionar con NxSpooler">asmond en orange.es
+       </A><BR>
+    <I>Vie Jul 24 10:38:55 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002822.html">[BulmaGés]NxSpooler. Impresión para FreeNX si se trabaja remotamente con Bulmagés , por ejemplo.
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002825.html">[BulmaGés]Configuración del sistema para funcionar con NxSpooler
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2824">[ fecha ]</a>
+              <a href="thread.html#2824">[ hilo ]</a>
+              <a href="subject.html#2824">[ asunto ]</a>
+              <a href="author.html#2824">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Respecto al programa NxSpooler: éstos son los cambios que recomendamos Arón y 
+yo para realizar en el sistema y que funcione como se espera:
+
+* La primera vez:
+   + En el servidor:
+      - Hacer este cambio de configuración para que Bulmagés no abra los 
+archivos PDF en el servidor (ya que tienen que abrirse en el cliente): editar 
+/etc/bulmages/bulmages.conf y reemplazar &quot;konqueror&quot; por &quot;echo&quot; en el 
+parámetro CONF_PDF.
+      - Nota: el usuario que se va a conectar debe tener su propio $HOME en el 
+servidor.
+ 
+   + En el ordenador cliente:
+      - En Linux: compartir (usando Samba) la carpeta $HOME/.bulmages como 
+&quot;bulmages&quot;, utilizando un nombre de usuario y contraseña particulares.
+      - En Windows: compartir la carpeta %UserProfile%\.bulmages como 
+&quot;bulmages$&quot;, utilizando un nombre de usuario y contraseña particulares.
+      - Nota: al compartir, asegurarse de que el usuario particular que se 
+usará para acceder al recurso compartido tiene permiso de escritura sobre el 
+mismo.
+      - Configurar el programa cliente Nx para que utilizando la conexión  que 
+se usa normalmente para acceder al servidor FreeNX éste pueda acceder al 
+recurso compartido del que hablábamos. Por ejemplo, en el programa &quot;nx client&quot; 
+para Linux se puede ir a una solapa &quot;Services&quot;, activar &quot;enable SMB printing 
+and file sharing&quot; y pulsar en &quot;Add&quot; para añadir el recurso &quot;bulmages&quot;, 
+especificar que su montaje en el servidor se realice en ~/.bulmages para que 
+Bulmagés lo use de forma natural en la sesión remota; especificar el usuario y 
+contraseña particulares.
+ 
+
+* Cada vez que el usuario se conecte al FreeNX del servidor:
+      - Ha de tener NxSpooler ejecutándose en su ordenador, claro :-).
+ 
+
+De esta forma: los informes que hace Bulmagés en el servidor se abrirán en el 
+ordenador cliente, donde puede imprimirlos en la impresora que quiera, 
+guardarlos, enviarlos por correo, etc.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002822.html">[BulmaGés]NxSpooler. Impresión para FreeNX si se trabaja remotamente con Bulmagés , por ejemplo.
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002825.html">[BulmaGés]Configuración del sistema para funcionar con NxSpooler
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2824">[ fecha ]</a>
+              <a href="thread.html#2824">[ hilo ]</a>
+              <a href="subject.html#2824">[ asunto ]</a>
+              <a href="author.html#2824">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

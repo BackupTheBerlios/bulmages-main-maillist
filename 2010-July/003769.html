@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] r3885 - trunk/bulmages/bulmalib/src
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3885%20-%20trunk/bulmages/bulmalib/src&In-Reply-To=%3C20100707164859.CBF7E480DE7%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003770.html">
+   <LINK REL="Next"  HREF="003771.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] r3885 - trunk/bulmages/bulmalib/src </H1>
+    <B>svn en mail.berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3885%20-%20trunk/bulmages/bulmalib/src&In-Reply-To=%3C20100707164859.CBF7E480DE7%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] r3885 - trunk/bulmages/bulmalib/src">svn en mail.berlios.de
+       </A><BR>
+    <I>Mie Jul  7 18:48:59 CEST 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003770.html">[BulmaGés]Acentos en mensaje de commit a Berlios
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003771.html">[BulmaGés] r3886 -	trunk/bulmages/bulmacont/plugins/pluginbc_mayor
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3769">[ fecha ]</a>
+              <a href="thread.html#3769">[ hilo ]</a>
+              <a href="subject.html#3769">[ asunto ]</a>
+              <a href="author.html#3769">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: hilex
+Date: 2010-07-07 18:48:59 +0200 (Wed, 07 Jul 2010)
+New Revision: 3885
+
+Modified:
+   trunk/bulmages/bulmalib/src/blgenericcomboboxdelegate.cpp
+   trunk/bulmages/bulmalib/src/blgenericcomboboxdelegate.h
+Log:
+Como el constructor del delegado ya estaba acumulando demasiados par?\195?\161metros, creo varios m?\195?\169todos &quot;set&quot; y un m?\195?\169todo &quot;initialize&quot; para usar antes de asignar el delegado.
+
+Modo de empleo:
+Agregar estas l?\195?\173neas en el metodo cargar del listado que hereda de BlSubForm,
+justo despu?\195?\169s de BfSubForm::cargar ( consulta ):
+BlGenericComboBoxDelegate *cbd = new BlGenericComboBoxDelegate ( mainCompany(), this );
+cbd-&gt;set_foreign_table ( &lt;tabla ajena&gt;, &lt;nombre del campo identificador&gt;, &lt;valor a mostrar&gt; );
+cbd-&gt;set_foreign_field ( &lt;n?\194?\186 de la columna&gt;, &lt;nombre del campo&gt; );
+cbd-&gt;setAllowNull ( &lt;true | false&gt; );
+cbd-&gt;initialize ( &lt;nombre del campo virtual para el desplegable&gt; );
+mui_list-&gt;setItemDelegateForColumn ( &lt;columna&gt;, cbd );
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003770.html">[BulmaGés]Acentos en mensaje de commit a Berlios
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003771.html">[BulmaGés] r3886 -	trunk/bulmages/bulmacont/plugins/pluginbc_mayor
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3769">[ fecha ]</a>
+              <a href="thread.html#3769">[ hilo ]</a>
+              <a href="subject.html#3769">[ asunto ]</a>
+              <a href="author.html#3769">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

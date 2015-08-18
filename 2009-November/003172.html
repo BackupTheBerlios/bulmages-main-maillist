@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] r3708 - trunk/bulmages/bulmalib/src
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3708%20-%20trunk/bulmages/bulmalib/src&In-Reply-To=%3C200911271609.nARG9vs4008073%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003171.html">
+   <LINK REL="Next"  HREF="003175.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] r3708 - trunk/bulmages/bulmalib/src </H1>
+    <B>svn en mail.berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3708%20-%20trunk/bulmages/bulmalib/src&In-Reply-To=%3C200911271609.nARG9vs4008073%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] r3708 - trunk/bulmages/bulmalib/src">svn en mail.berlios.de
+       </A><BR>
+    <I>Vie Nov 27 17:09:57 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003171.html">[BulmaGés] r3707 - in trunk/bulmages/bulmacont:	plugins plugins/pluginbc_duplicarasiento	plugins/pluginbc_duplicarasiento/po src
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003175.html">[BulmaGés]r3708 - trunk/bulmages/bulmalib/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3172">[ fecha ]</a>
+              <a href="thread.html#3172">[ hilo ]</a>
+              <a href="subject.html#3172">[ asunto ]</a>
+              <a href="author.html#3172">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: hilex
+Date: 2009-11-27 17:09:56 +0100 (dv, 27 nov 2009)
+New Revision: 3708
+
+Modified:
+   trunk/bulmages/bulmalib/src/blformlistfilter.cpp
+   trunk/bulmages/bulmalib/src/blformlistfilter.h
+   trunk/bulmages/bulmalib/src/blformlistfilterbase.ui
+Log:
+Agrego al filtro por tipo de columna dos botones: uno para aplicar el filtro y otro para limpiarlo.
+El botón de aplicar hace lo mismo que el de actualizar, aunque pone en rojo el filtro en caso de no haber coincidencias.
+Para usar este filtro genérico hay que seguir estos pasos:
+1) Agregar un QWidget llamado &quot;mui_filtador&quot; y promocionarlo a BlFormListFilter.
+2) Agregar en la barra de botones un botón para mostrar y ocultar el widget BlFormListFilter (puede usarse el que hay: &quot;mui_filtrar&quot;).
+3) Activarle a dicho bot&oacute;n la propiedad checkable y ponerle el icono i_filter.png.
+4) Para que el filtro funcione, en el constructor del listado concreto, agregar estas 3 líneas:
+ mui_filtrador-&gt;setSubFormList ( mui_list );
+ connect ( mui_filtrar, SIGNAL ( released ( ) ), mui_filtrador, SLOT ( showHideFilter ( ) ) );
+ connect ( mui_filtrador, SIGNAL(aplicar_filtro() ), this, SLOT ( on_mui_actualizar_released() ) );
+5) Para que se aplique el filtrado al actualizar el listado concreto, terminar la consulta SQL de presentar() con esto:
+ ...WHERE 1 = 1 &quot; + mui_filtrador-&gt;generarFiltro() );
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003171.html">[BulmaGés] r3707 - in trunk/bulmages/bulmacont:	plugins plugins/pluginbc_duplicarasiento	plugins/pluginbc_duplicarasiento/po src
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003175.html">[BulmaGés]r3708 - trunk/bulmages/bulmalib/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3172">[ fecha ]</a>
+              <a href="thread.html#3172">[ hilo ]</a>
+              <a href="subject.html#3172">[ asunto ]</a>
+              <a href="author.html#3172">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

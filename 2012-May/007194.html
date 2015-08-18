@@ -1,0 +1,679 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to arreglo...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20arreglo...&In-Reply-To=%3C20120510203003.8871B756D7%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007207.html">
+   <LINK REL="Next"  HREF="007195.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to arreglo... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20arreglo...&In-Reply-To=%3C20120510203003.8871B756D7%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to arreglo...">no-reply en gitorious.org
+       </A><BR>
+    <I>Jue Mayo 10 22:30:03 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007207.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to arreglo...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007195.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7194">[ fecha ]</a>
+              <a href="thread.html#7194">[ hilo ]</a>
+              <a href="subject.html#7194">[ asunto ]</a>
+              <a href="author.html#7194">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 2 commits to arreglobulmacont
+arreglobulmacont changed from 722cf52 to 0162a2a
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/722cf521249caa0adbd36bef36a102e92b6a8830/diffs/0162a2a6bc9759b20e1acbc1e60f2f5d0fe12894">https://gitorious.org/bulmages/bulmages/commit/722cf521249caa0adbd36bef36a102e92b6a8830/diffs/0162a2a6bc9759b20e1acbc1e60f2f5d0fe12894</A>
+
+Diff: 
+
+commit 0162a2a6bc9759b20e1acbc1e60f2f5d0fe12894
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu May 10 22:30:04 2012 +0200
+
+    Pongo los botones de siguiente, anterior, principio y fin en las pantallas que lo utilizan (asientos y extractos) y los quito de la aplicacion
+
+diff --git a/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientobase.ui b/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientobase.ui
+index 344fb29..0a78ac9 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientobase.ui
++++ b/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientobase.ui
+@@ -7,8 +7,8 @@
+    &lt;rect&gt;
+     &lt;x&gt;0&lt;/x&gt;
+     &lt;y&gt;0&lt;/y&gt;
+-    &lt;width&gt;655&lt;/width&gt;
+-    &lt;height&gt;520&lt;/height&gt;
++    &lt;width&gt;1053&lt;/width&gt;
++    &lt;height&gt;607&lt;/height&gt;
+    &lt;/rect&gt;
+   &lt;/property&gt;
+   &lt;property name=&quot;windowTitle&quot;&gt;
+@@ -87,10 +87,7 @@
+        &lt;property name=&quot;frameShadow&quot;&gt;
+         &lt;enum&gt;QFrame::Raised&lt;/enum&gt;
+        &lt;/property&gt;
+-       &lt;layout class=&quot;QHBoxLayout&quot;&gt;
+-        &lt;property name=&quot;margin&quot;&gt;
+-         &lt;number&gt;4&lt;/number&gt;
+-        &lt;/property&gt;
++       &lt;layout class=&quot;QHBoxLayout&quot; name=&quot;horizontalLayout&quot;&gt;
+         &lt;item&gt;
+          &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_abrirAsiento&quot;&gt;
+           &lt;property name=&quot;sizePolicy&quot;&gt;
+@@ -541,6 +538,182 @@
+          &lt;/widget&gt;
+         &lt;/item&gt;
+         &lt;item&gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_inicio&quot;&gt;
++          &lt;property name=&quot;sizePolicy&quot;&gt;
++           &lt;sizepolicy hsizetype=&quot;Fixed&quot; vsizetype=&quot;Fixed&quot;&gt;
++            &lt;horstretch&gt;0&lt;/horstretch&gt;
++            &lt;verstretch&gt;0&lt;/verstretch&gt;
++           &lt;/sizepolicy&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;minimumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;maximumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;toolTip&quot;&gt;
++           &lt;string&gt;Asientos inteligentes&lt;/string&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;whatsThis&quot;&gt;
++           &lt;string&gt;Asientos inteligentes&lt;/string&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;text&quot;&gt;
++           &lt;string/&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;icon&quot;&gt;
++           &lt;iconset resource=&quot;../../../bulmages.qrc&quot;&gt;
++            &lt;normaloff&gt;:/BulmaCont32x32/images/png/i_start.png&lt;/normaloff&gt;:/BulmaCont32x32/images/png/i_start.png&lt;/iconset&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;iconSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;22&lt;/width&gt;
++            &lt;height&gt;22&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;shortcut&quot;&gt;
++           &lt;string&gt;Ctrl+M&lt;/string&gt;
++          &lt;/property&gt;
++         &lt;/widget&gt;
++        &lt;/item&gt;
++        &lt;item&gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_anterior&quot;&gt;
++          &lt;property name=&quot;sizePolicy&quot;&gt;
++           &lt;sizepolicy hsizetype=&quot;Fixed&quot; vsizetype=&quot;Fixed&quot;&gt;
++            &lt;horstretch&gt;0&lt;/horstretch&gt;
++            &lt;verstretch&gt;0&lt;/verstretch&gt;
++           &lt;/sizepolicy&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;minimumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;maximumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;toolTip&quot;&gt;
++           &lt;string&gt;Asientos inteligentes&lt;/string&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;whatsThis&quot;&gt;
++           &lt;string&gt;Asientos inteligentes&lt;/string&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;text&quot;&gt;
++           &lt;string/&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;icon&quot;&gt;
++           &lt;iconset resource=&quot;../../../bulmages.qrc&quot;&gt;
++            &lt;normaloff&gt;:/BulmaCont32x32/images/png/i_back.png&lt;/normaloff&gt;:/BulmaCont32x32/images/png/i_back.png&lt;/iconset&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;iconSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;22&lt;/width&gt;
++            &lt;height&gt;22&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;shortcut&quot;&gt;
++           &lt;string&gt;Ctrl+M&lt;/string&gt;
++          &lt;/property&gt;
++         &lt;/widget&gt;
++        &lt;/item&gt;
++        &lt;item&gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_siguiente&quot;&gt;
++          &lt;property name=&quot;sizePolicy&quot;&gt;
++           &lt;sizepolicy hsizetype=&quot;Fixed&quot; vsizetype=&quot;Fixed&quot;&gt;
++            &lt;horstretch&gt;0&lt;/horstretch&gt;
++            &lt;verstretch&gt;0&lt;/verstretch&gt;
++           &lt;/sizepolicy&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;minimumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;maximumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;toolTip&quot;&gt;
++           &lt;string&gt;Asientos inteligentes&lt;/string&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;whatsThis&quot;&gt;
++           &lt;string&gt;Asientos inteligentes&lt;/string&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;text&quot;&gt;
++           &lt;string/&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;icon&quot;&gt;
++           &lt;iconset resource=&quot;../../../bulmages.qrc&quot;&gt;
++            &lt;normaloff&gt;:/BulmaCont32x32/images/png/i_forward.png&lt;/normaloff&gt;:/BulmaCont32x32/images/png/i_forward.png&lt;/iconset&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;iconSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;22&lt;/width&gt;
++            &lt;height&gt;22&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;shortcut&quot;&gt;
++           &lt;string&gt;Ctrl+M&lt;/string&gt;
++          &lt;/property&gt;
++         &lt;/widget&gt;
++        &lt;/item&gt;
++        &lt;item&gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_fin&quot;&gt;
++          &lt;property name=&quot;sizePolicy&quot;&gt;
++           &lt;sizepolicy hsizetype=&quot;Fixed&quot; vsizetype=&quot;Fixed&quot;&gt;
++            &lt;horstretch&gt;0&lt;/horstretch&gt;
++            &lt;verstretch&gt;0&lt;/verstretch&gt;
++           &lt;/sizepolicy&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;minimumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;maximumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;toolTip&quot;&gt;
++           &lt;string&gt;Asientos inteligentes&lt;/string&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;whatsThis&quot;&gt;
++           &lt;string&gt;Asientos inteligentes&lt;/string&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;text&quot;&gt;
++           &lt;string/&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;icon&quot;&gt;
++           &lt;iconset resource=&quot;../../../bulmages.qrc&quot;&gt;
++            &lt;normaloff&gt;:/BulmaCont32x32/images/png/i_finish.xpm&lt;/normaloff&gt;:/BulmaCont32x32/images/png/i_finish.xpm&lt;/iconset&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;iconSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;22&lt;/width&gt;
++            &lt;height&gt;22&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;shortcut&quot;&gt;
++           &lt;string&gt;Ctrl+M&lt;/string&gt;
++          &lt;/property&gt;
++         &lt;/widget&gt;
++        &lt;/item&gt;
++        &lt;item&gt;
+          &lt;layout class=&quot;QHBoxLayout&quot; name=&quot;mui_plugbotones&quot;&gt;
+           &lt;property name=&quot;spacing&quot;&gt;
+            &lt;number&gt;4&lt;/number&gt;
+@@ -587,7 +760,7 @@
+       &lt;/widget&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+-      &lt;widget class=&quot;BlDateSearch&quot; name=&quot;mui_fecha&quot;&gt;
++      &lt;widget class=&quot;BlDateSearch&quot; name=&quot;mui_fecha&quot; native=&quot;true&quot;&gt;
+        &lt;property name=&quot;minimumSize&quot;&gt;
+         &lt;size&gt;
+          &lt;width&gt;150&lt;/width&gt;
+diff --git a/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientoview.cpp b/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientoview.cpp
+index 89d222a..56f1c37 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientoview.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientoview.cpp
+@@ -548,6 +548,10 @@ void BcAsientoList::cargaAsientos()
+     
+ }
+ 
++void BcAsientoList::on_mui_inicio_released() {
++      BL_FUNC_DEBUG
++      botonInicio();
++}
+ 
+ /// Slot que responde a la pulsaci&oacute;n del bot&oacute;n de inicio.
+ /** Comprueba que existen registros en el cursor de asientos a mostrar y si
+@@ -568,6 +572,10 @@ void BcAsientoList::botonInicio()
+     
+ }
+ 
++void BcAsientoList::on_mui_fin_released() {
++      BL_FUNC_DEBUG
++      botonFin();
++}
+ 
+ /// Slot que responde a la pulsaci&oacute;n del bot&oacute;n de fin.
+ /** Comprueba que existen registros en el cursor de asientos a mostrar y si existen
+@@ -587,6 +595,13 @@ void BcAsientoList::botonFin()
+     
+ }
+ 
++
++
++void BcAsientoList::on_mui_siguiente_released() {
++      BL_FUNC_DEBUG
++      botonSiguiente();
++}
++
+ /// Slot que responde a la pulsaci&oacute;n del bot&oacute;n de siguiente registro.
+ /** Comprueba que existen registros en el cursor de asientos a mostrar y si existen
+     se desplaza al siguiente registro y lo muestra.
+@@ -612,6 +627,11 @@ void BcAsientoList::botonSiguiente()
+ }
+ 
+ 
++void BcAsientoList::on_mui_anterior_released() {
++      BL_FUNC_DEBUG
++      botonAnterior();
++}
++
+ /// Slot que responde a la pulsaci&oacute;n del botÃ³n de anterior registro.
+ /** Comprueba que existen registros en el cursor de asientos a mostrar y si
+     existen se desplaza al registro anterior y lo muestra.
+diff --git a/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientoview.h b/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientoview.h
+index bed8923..fe39681 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientoview.h
++++ b/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientoview.h
+@@ -66,6 +66,10 @@ public slots:
+     void botonFin();
+     void botonSiguiente();
+     void botonAnterior();
++    virtual void on_mui_inicio_released();
++    virtual void on_mui_fin_released();
++    virtual void on_mui_siguiente_released();
++    virtual void on_mui_anterior_released();
+ };
+ 
+ 
+diff --git a/bulmages/bulmacont/plugins/pluginbc_mayor/bcextractobase.ui b/bulmages/bulmacont/plugins/pluginbc_mayor/bcextractobase.ui
+index 7c1bb17..2d56b68 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_mayor/bcextractobase.ui
++++ b/bulmages/bulmacont/plugins/pluginbc_mayor/bcextractobase.ui
+@@ -6,7 +6,7 @@
+    &lt;rect&gt;
+     &lt;x&gt;0&lt;/x&gt;
+     &lt;y&gt;0&lt;/y&gt;
+-    &lt;width&gt;654&lt;/width&gt;
++    &lt;width&gt;699&lt;/width&gt;
+     &lt;height&gt;618&lt;/height&gt;
+    &lt;/rect&gt;
+   &lt;/property&gt;
+@@ -695,13 +695,7 @@
+        &lt;property name=&quot;frameShadow&quot;&gt;
+         &lt;enum&gt;QFrame::Raised&lt;/enum&gt;
+        &lt;/property&gt;
+-       &lt;layout class=&quot;QHBoxLayout&quot;&gt;
+-        &lt;property name=&quot;spacing&quot;&gt;
+-         &lt;number&gt;5&lt;/number&gt;
+-        &lt;/property&gt;
+-        &lt;property name=&quot;margin&quot;&gt;
+-         &lt;number&gt;5&lt;/number&gt;
+-        &lt;/property&gt;
++       &lt;layout class=&quot;QHBoxLayout&quot; name=&quot;horizontalLayout&quot;&gt;
+         &lt;item&gt;
+          &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_imprimir&quot;&gt;
+           &lt;property name=&quot;minimumSize&quot;&gt;
+@@ -861,6 +855,182 @@
+          &lt;/widget&gt;
+         &lt;/item&gt;
+         &lt;item&gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_inicio&quot;&gt;
++          &lt;property name=&quot;sizePolicy&quot;&gt;
++           &lt;sizepolicy hsizetype=&quot;Fixed&quot; vsizetype=&quot;Fixed&quot;&gt;
++            &lt;horstretch&gt;0&lt;/horstretch&gt;
++            &lt;verstretch&gt;0&lt;/verstretch&gt;
++           &lt;/sizepolicy&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;minimumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;maximumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;toolTip&quot;&gt;
++           &lt;string&gt;Asientos inteligentes&lt;/string&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;whatsThis&quot;&gt;
++           &lt;string&gt;Asientos inteligentes&lt;/string&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;text&quot;&gt;
++           &lt;string/&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;icon&quot;&gt;
++           &lt;iconset resource=&quot;../../../bulmages.qrc&quot;&gt;
++            &lt;normaloff&gt;:/BulmaCont32x32/images/png/i_start.png&lt;/normaloff&gt;:/BulmaCont32x32/images/png/i_start.png&lt;/iconset&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;iconSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;22&lt;/width&gt;
++            &lt;height&gt;22&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;shortcut&quot;&gt;
++           &lt;string&gt;Ctrl+M&lt;/string&gt;
++          &lt;/property&gt;
++         &lt;/widget&gt;
++        &lt;/item&gt;
++        &lt;item&gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_anterior&quot;&gt;
++          &lt;property name=&quot;sizePolicy&quot;&gt;
++           &lt;sizepolicy hsizetype=&quot;Fixed&quot; vsizetype=&quot;Fixed&quot;&gt;
++            &lt;horstretch&gt;0&lt;/horstretch&gt;
++            &lt;verstretch&gt;0&lt;/verstretch&gt;
++           &lt;/sizepolicy&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;minimumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;maximumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;toolTip&quot;&gt;
++           &lt;string&gt;Asientos inteligentes&lt;/string&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;whatsThis&quot;&gt;
++           &lt;string&gt;Asientos inteligentes&lt;/string&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;text&quot;&gt;
++           &lt;string/&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;icon&quot;&gt;
++           &lt;iconset resource=&quot;../../../bulmages.qrc&quot;&gt;
++            &lt;normaloff&gt;:/BulmaCont32x32/images/png/i_back.png&lt;/normaloff&gt;:/BulmaCont32x32/images/png/i_back.png&lt;/iconset&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;iconSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;22&lt;/width&gt;
++            &lt;height&gt;22&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;shortcut&quot;&gt;
++           &lt;string&gt;Ctrl+M&lt;/string&gt;
++          &lt;/property&gt;
++         &lt;/widget&gt;
++        &lt;/item&gt;
++        &lt;item&gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_siguiente&quot;&gt;
++          &lt;property name=&quot;sizePolicy&quot;&gt;
++           &lt;sizepolicy hsizetype=&quot;Fixed&quot; vsizetype=&quot;Fixed&quot;&gt;
++            &lt;horstretch&gt;0&lt;/horstretch&gt;
++            &lt;verstretch&gt;0&lt;/verstretch&gt;
++           &lt;/sizepolicy&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;minimumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;maximumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;toolTip&quot;&gt;
++           &lt;string&gt;Asientos inteligentes&lt;/string&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;whatsThis&quot;&gt;
++           &lt;string&gt;Asientos inteligentes&lt;/string&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;text&quot;&gt;
++           &lt;string/&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;icon&quot;&gt;
++           &lt;iconset resource=&quot;../../../bulmages.qrc&quot;&gt;
++            &lt;normaloff&gt;:/BulmaCont32x32/images/png/i_forward.png&lt;/normaloff&gt;:/BulmaCont32x32/images/png/i_forward.png&lt;/iconset&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;iconSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;22&lt;/width&gt;
++            &lt;height&gt;22&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;shortcut&quot;&gt;
++           &lt;string&gt;Ctrl+M&lt;/string&gt;
++          &lt;/property&gt;
++         &lt;/widget&gt;
++        &lt;/item&gt;
++        &lt;item&gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_fin&quot;&gt;
++          &lt;property name=&quot;sizePolicy&quot;&gt;
++           &lt;sizepolicy hsizetype=&quot;Fixed&quot; vsizetype=&quot;Fixed&quot;&gt;
++            &lt;horstretch&gt;0&lt;/horstretch&gt;
++            &lt;verstretch&gt;0&lt;/verstretch&gt;
++           &lt;/sizepolicy&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;minimumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;maximumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;toolTip&quot;&gt;
++           &lt;string&gt;Asientos inteligentes&lt;/string&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;whatsThis&quot;&gt;
++           &lt;string&gt;Asientos inteligentes&lt;/string&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;text&quot;&gt;
++           &lt;string/&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;icon&quot;&gt;
++           &lt;iconset resource=&quot;../../../bulmages.qrc&quot;&gt;
++            &lt;normaloff&gt;:/BulmaCont32x32/images/png/i_finish.xpm&lt;/normaloff&gt;:/BulmaCont32x32/images/png/i_finish.xpm&lt;/iconset&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;iconSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;22&lt;/width&gt;
++            &lt;height&gt;22&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;shortcut&quot;&gt;
++           &lt;string&gt;Ctrl+M&lt;/string&gt;
++          &lt;/property&gt;
++         &lt;/widget&gt;
++        &lt;/item&gt;
++        &lt;item&gt;
+          &lt;spacer&gt;
+           &lt;property name=&quot;orientation&quot;&gt;
+            &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
+diff --git a/bulmages/bulmacont/plugins/pluginbc_mayor/bcextractoview.cpp b/bulmages/bulmacont/plugins/pluginbc_mayor/bcextractoview.cpp
+index b6af892..2910d77 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_mayor/bcextractoview.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_mayor/bcextractoview.cpp
+@@ -991,4 +991,22 @@ void BcExtractoView::imprimir()
+ }
+ 
+ 
++void BcExtractoView::on_mui_inicio_released() {
++      BL_FUNC_DEBUG
++      botonInicio();
++}
++
++void BcExtractoView::on_mui_anterior_released() {
++      BL_FUNC_DEBUG
++      botonAnterior();
++}
++
++void BcExtractoView::on_mui_siguiente_released() {
++      BL_FUNC_DEBUG
++      botonSiguiente();
++}
+ 
++void BcExtractoView::on_mui_fin_released() {
++      BL_FUNC_DEBUG
++      botonFin();
++}
+\ No newline at end of file
+diff --git a/bulmages/bulmacont/plugins/pluginbc_mayor/bcextractoview.h b/bulmages/bulmacont/plugins/pluginbc_mayor/bcextractoview.h
+index cad1d54..d0c99be 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_mayor/bcextractoview.h
++++ b/bulmages/bulmacont/plugins/pluginbc_mayor/bcextractoview.h
+@@ -57,7 +57,6 @@ public:
+     void imprimir();
+ 
+ public slots:
+-//    virtual void on_mui_imprimir_clicked();
+     virtual void on_mui_actualizar_clicked();
+     virtual void accept();
+     virtual void on_mui_casacion_clicked();
+@@ -72,7 +71,10 @@ public slots:
+     virtual void on_mui_configurar_clicked();
+     virtual void on_mui_list_cellDoubleClicked ( int, int columna );
+     virtual void openAsiento();
+-
++    virtual void on_mui_inicio_released();
++    virtual void on_mui_fin_released();
++    virtual void on_mui_siguiente_released();
++    virtual void on_mui_anterior_released();
+ };
+ 
+ 
+diff --git a/bulmages/bulmacont/src/bcbulmacontbase.ui b/bulmages/bulmacont/src/bcbulmacontbase.ui
+index 62282b6..8bb8c59 100644
+--- a/bulmages/bulmacont/src/bcbulmacontbase.ui
++++ b/bulmages/bulmacont/src/bcbulmacontbase.ui
+@@ -30,7 +30,7 @@
+      &lt;x&gt;0&lt;/x&gt;
+      &lt;y&gt;0&lt;/y&gt;
+      &lt;width&gt;800&lt;/width&gt;
+-     &lt;height&gt;19&lt;/height&gt;
++     &lt;height&gt;21&lt;/height&gt;
+     &lt;/rect&gt;
+    &lt;/property&gt;
+    &lt;widget class=&quot;QMenu&quot; name=&quot;menuVentana&quot;&gt;
+@@ -102,11 +102,6 @@
+    &lt;attribute name=&quot;toolBarBreak&quot;&gt;
+     &lt;bool&gt;false&lt;/bool&gt;
+    &lt;/attribute&gt;
+-   &lt;addaction name=&quot;actionConfiguracion&quot;/&gt;
+-   &lt;addaction name=&quot;actionInicio&quot;/&gt;
+-   &lt;addaction name=&quot;actionAnterior&quot;/&gt;
+-   &lt;addaction name=&quot;actionSiguiente&quot;/&gt;
+-   &lt;addaction name=&quot;actionFin&quot;/&gt;
+   &lt;/widget&gt;
+   &lt;action name=&quot;actionConfiguracion&quot;&gt;
+    &lt;property name=&quot;icon&quot;&gt;
+
+commit 63c3b20facbed6a89c8a1852a44bf9cb8d51e1ac
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu May 10 22:06:45 2012 +0200
+
+    Quito el plugin obsoleto de cuentas anuales que ahora son unica y exclusivamente informes en python
+
+diff --git a/bulmages/bulmacont/plugins/CMakeLists.txt b/bulmages/bulmacont/plugins/CMakeLists.txt
+index b974f29..c4fc622 100644
+--- a/bulmages/bulmacont/plugins/CMakeLists.txt
++++ b/bulmages/bulmacont/plugins/CMakeLists.txt
+@@ -32,7 +32,7 @@ add_subdirectory(pluginbc_cuentaresumen)
+ add_subdirectory(pluginbc_duplicarasiento)
+ add_subdirectory(pluginbc_bloqueofechas)
+ add_subdirectory(pluginbc_asiento)
+-add_subdirectory(pluginbc_cuentasanuales)
++#add_subdirectory(pluginbc_cuentasanuales)
+ add_subdirectory(pluginbc_amortizacion)
+ add_subdirectory(pluginbc_cuenta)
+ 
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007207.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to arreglo...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007195.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7194">[ fecha ]</a>
+              <a href="thread.html#7194">[ hilo ]</a>
+              <a href="subject.html#7194">[ asunto ]</a>
+              <a href="author.html#7194">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

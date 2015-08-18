@@ -1,0 +1,237 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][PostgreSQL] De problemas con schemas.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BPostgreSQL%3D5D_De_p%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Froblemas_con_schemas%3D2E%3F%3D&In-Reply-To=%3C4ECF718C.6040202%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006555.html">
+   <LINK REL="Next"  HREF="006610.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][PostgreSQL] De problemas con schemas. </H1>
+    <B>Daniel Ripoll Osma</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BPostgreSQL%3D5D_De_p%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Froblemas_con_schemas%3D2E%3F%3D&In-Reply-To=%3C4ECF718C.6040202%40gmail.com%3E"
+       TITLE="[BulmaGés][PostgreSQL] De problemas con schemas.">dripoll.public en gmail.com
+       </A><BR>
+    <I>Vie Nov 25 11:44:28 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006555.html">[BulmaGés][PostgreSQL] De problemas con schemas.
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006610.html">[BulmaGés][PostgreSQL]  De problemas con schemas.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6599">[ fecha ]</a>
+              <a href="thread.html#6599">[ hilo ]</a>
+              <a href="subject.html#6599">[ asunto ]</a>
+              <a href="author.html#6599">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ese código, lo había comentado temporalmente, porque la ejecución del 
+SQL se quejaba con: &quot;ERROR:  language &quot;plpgsql&quot; already exists&quot; y paraba.
+
+He vuelto a descomentarla, y ya con todos los as,bs,y asd, &quot;Unificados&quot; 
+sin usar palabras reservadas.
+El schema funciona perfectamente en manual, mediante bulmasetup no había 
+manera.
+
+He modificado las sentencias de shell (algo que no me gusta nada, ya lo 
+dije), donde indica 'su postgres -c &quot;psql ' ..................... 
+_schema.sql&quot;' por 'su postgres -c &quot;psql -1 ' .................._schema.sql&quot;'
+
+Avisando a sql de que habrá transaccionales.
+Voy a crear un pseudofork con mi usuario para las salvajadas estas que 
+hago revisarlas profundamente antes de subirlas al código central, y así 
+me evito tener que ir vinculando links de dropbox.
+
+Se encontrará aquí:
+<A HREF="https://gitorious.org/bulmages-experimental/bulmages-experimental">https://gitorious.org/bulmages-experimental/bulmages-experimental</A>
+
+Por ahora los problemas de SQL solucionados, pero sigue fallando algo, y 
+me pierdo con el debug.
+
+Cuando intento crear un artículo, factura, lo que sea. Me salta un 
+mensaje por ventanita con:
+
+ReferenceError: Can't find variable: QTabWidget
+
+
+Recuerdo que me pasó un error parecido en Todo-Redes, pero la solución 
+no ha sido la misma.
+
+Contenido del conf. (Adjunto también, el debug.)
+
+$ cat /etc/bulmages/bulmafact_tester.conf
+CONF_DIR_OPENREPORTS /opt/bulmages/openreports_tester/ca/
+CONF_STYLESHEET /usr/local/share/bulmages/css/bulmafact_ca_ES.css
+CONF_PLUGINS_BULMAFACT libpluginbf_articulo.so; \
+libpluginbf_debug.so; \
+libpluginbf_cliente.so; \
+libpluginbf_clientefactura.so; \
+libpluginbf_iva.so; \
+libpluginbf_correothunderbird.so; \
+libpluginbf_almacen.so; \
+libpluginbl_report.so
+
+
+
+Salut!
+
+
+Al 25/11/11 10:08, En/na Tomeu Borras ha escrit:
+&gt;<i> Bien, he estado comparando los archivos SQL
+</I>&gt;<i>
+</I>&gt;<i> El problema de raiz es el siguiente:
+</I>&gt;<i>
+</I>&gt;<i> \echo -n ':: Establecemos el lenguaje de procedimientos ... '
+</I>&gt;<i> -- CREATE TRUSTED PROCEDURAL LANGUAGE plpgsql HANDLER plpgsql_call_handler;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> No entiendo por que quitas el plpgsql, sin el cual todos los triggers son lanzados en SQL estandar (con lo que la mayoría no funcionan).
+</I>&gt;<i> A partir de aqui todo es posible, ningún  trigger se ejecutará con lo que cualquier transacción terminará en ROLLBACK y en la base de datos no podrás meter nada.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Y claro los problemas que tienes entre AS y BS también vienen de aqui, al suprimir el plpgsql todos los procedimientos dan errores de sintaxis ya que el
+</I>&gt;<i> lenguaje que los procesa no es el mismo.
+</I>&gt;<i>
+</I>&gt;<i> Salut
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> El 25 de noviembre de 2011 02:19, Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A> 
+</I>&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;&gt; escribió:
+</I>&gt;<i>
+</I>&gt;<i>     Esto ...
+</I>&gt;<i>
+</I>&gt;<i>     Se que es una chorrada, pero como se hace un diff de dos archivos
+</I>&gt;<i>     que tienes en el ordenador en lugar de comparar cambios con un
+</I>&gt;<i>     repositorio ?
+</I>&gt;<i>
+</I>&gt;<i>     Salut
+</I>&gt;<i>
+</I>&gt;<i>     El 25 de noviembre de 2011 01:24, Daniel Ripoll Osma
+</I>&gt;<i>     &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">dripoll.public en gmail.com</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">dripoll.public en gmail.com</A>&gt;&gt; escribió:
+</I>&gt;<i>
+</I>&gt;<i>         Al 25/11/11 00:46, En/na Daniel Ripoll Osma ha escrit:
+</I>&gt;<i>
+</I>&gt;<i>         No queriendo hacer una simple rima, si no profundizar en el
+</I>&gt;<i>         tema. He conseguido modificar el bulmafact_schema.sql para que
+</I>&gt;<i>         me cree la base de datos, manualmente, y luego la rellene con
+</I>&gt;<i>         lo encontrado en bulmafact_data.sql.
+</I>&gt;<i>
+</I>&gt;<i>         Aquí tengo el archivo (no lo subo al repo hasta no tener visto
+</I>&gt;<i>         bueno)
+</I>&gt;<i>
+</I>&gt;<i>         <A HREF="http://dl.dropbox.com/u/3754199/bulmafact_schema.sql">http://dl.dropbox.com/u/3754199/bulmafact_schema.sql</A>
+</I>&gt;<i>
+</I>&gt;<i>         Crea perfectamente, no obstante en bulmasetup, sigue sin
+</I>&gt;<i>         crearme los correspondientes schemas, parece que ignora el
+</I>&gt;<i>         archivo completamente.
+</I>&gt;<i>
+</I>&gt;<i>         ¿Alguna idea de que puede pasar?
+</I>&gt;<i>
+</I>&gt;<i>         Salut!
+</I>&gt;<i>
+</I>&gt;&gt;<i>         Hola a todos,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         Bueno, dar la enhorabuena nuevamente por lo de los AutoForms
+</I>&gt;&gt;<i>         a Tomeu, que ya se la dí por twitter y salió por un día en el
+</I>&gt;&gt;<i>         paper.li &lt;<A HREF="http://paper.li">http://paper.li</A>&gt; de San Juan Libre (paper.li
+</I>&gt;&gt;<i>         &lt;<A HREF="http://paper.li">http://paper.li</A>&gt; es un periodico generado, mediante una
+</I>&gt;&gt;<i>         serie de tweets de personas destacadas en el ambito deseado)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         Pero bueno, no todo trata de felicitar, precisamente vengo a
+</I>&gt;&gt;<i>         llorar un poco.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         Resulta que tengo instalada la versión de postgres: psql
+</I>&gt;&gt;<i>         (PostgreSQL) 9.1.1
+</I>&gt;&gt;<i>         Compila todo a la perfección y demás, pero.... ¡bulmasetup no
+</I>&gt;&gt;<i>         crea las bases de datos!
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         He probado a crearlas manualmente, pero tampoco, estan los
+</I>&gt;&gt;<i>         clasicos errores de &quot;as.&quot; cuando debería ser &quot;bs.&quot; o &quot;XXXX.&quot;
+</I>&gt;&gt;<i>         por lo de que as esta reservado, pero a pesar de haberlo
+</I>&gt;&gt;<i>         cambiado todo, sigue sin crearmelas manualmente.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         ¿Alguien tiene el archivo correcto, o una base de datos,
+</I>&gt;&gt;<i>         totalmente en blanco?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>         -- 
+</I>&gt;<i>         Daniel Ripoll Osma
+</I>&gt;<i>         www.danielripoll.es  &lt;<A HREF="http://www.danielripoll.es">http://www.danielripoll.es</A>&gt;
+</I>&gt;<i>         6688.27.4.90
+</I>&gt;<i>
+</I>&gt;<i>         Web&amp;  Desktop Developer
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>         _______________________________________________
+</I>&gt;<i>         Bulmages-main mailing list
+</I>&gt;<i>         <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i>         &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>&gt;
+</I>&gt;<i>         <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     -- 
+</I>&gt;<i>     Tomeu Borrás
+</I>&gt;<i>     Conetxia Soluciones Informáticas
+</I>&gt;<i>     902 88 11 66 - 677 77 44 76
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> -- 
+</I>&gt;<i> Tomeu Borrás
+</I>&gt;<i> Conetxia Soluciones Informáticas
+</I>&gt;<i> 902 88 11 66 - 677 77 44 76
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+
+-- 
+Daniel Ripoll Osma
+www.danielripoll.es
+6688.27.4.90
+
+Web&amp;  Desktop Developer
+
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20111125/6617ba25/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20111125/6617ba25/attachment.html</A>&gt;
+------------ próxima parte ------------
+An embedded and charset-unspecified text was scrubbed...
+Name: bulmagesout.txt
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20111125/6617ba25/attachment.txt">https://lists.berlios.de/pipermail/bulmages-main/attachments/20111125/6617ba25/attachment.txt</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006555.html">[BulmaGés][PostgreSQL] De problemas con schemas.
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006610.html">[BulmaGés][PostgreSQL]  De problemas con schemas.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6599">[ fecha ]</a>
+              <a href="thread.html#6599">[ hilo ]</a>
+              <a href="subject.html#6599">[ asunto ]</a>
+              <a href="author.html#6599">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] r3754 -	trunk/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3754%20-%0A%09trunk/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels&In-Reply-To=%3C201002111213.o1BCDXGE025695%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003415.html">
+   <LINK REL="Next"  HREF="003416.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] r3754 -	trunk/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels </H1>
+    <B>svn en mail.berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3754%20-%0A%09trunk/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels&In-Reply-To=%3C201002111213.o1BCDXGE025695%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] r3754 -	trunk/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels">svn en mail.berlios.de
+       </A><BR>
+    <I>Jue Feb 11 13:13:33 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003415.html">[BulmaGés]r3753 - in trunk/bulmages: bulmafact/plugins bulmafact/plugins/pluginbf_cliente bulmafact/plugins/pluginbf_clientealbaran bulmafact/plugins/pluginbf_clientefactura bulmafact/plugins/pluginbf_clientepedido bulmafact/plugins/pluginbf_clientepresupuesto installbulmages/bgtrml2pdf
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003416.html">[BulmaGés] r3755 -	trunk/bulmages/installbulmages/bgtrml2pdf
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3413">[ fecha ]</a>
+              <a href="thread.html#3413">[ hilo ]</a>
+              <a href="subject.html#3413">[ asunto ]</a>
+              <a href="author.html#3413">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: fcojavmc
+Date: 2010-02-11 13:13:30 +0100 (dj, 11 feb 2010)
+New Revision: 3754
+
+Modified:
+   trunk/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels/pluginbf_sincrobulmacont.sql
+Log:
+En la FUNCTION syncbulmacontfacturau ():
+- Protejo las ejecuciones de dblink dentro de su propia transacción. Se
+  implementa que en caso de error en la transacción de la función se
+hacer primero un ROLLBACK de la conexión dblink.
+- se cambia 'IF NOT FOUND THEN' por 'IF &lt;loquetoque&gt; IS NULL THEN' en
+  las consultas que siempre devuelven una fila aunque sea NULL y que no
+se detectan bien al usar 'IF NOT FOUND THEN'. Esto provocaba fallos al
+no establecerse adecuadamente los valores por defecto en ciertas
+variables.
+- Se corrige la gestión de apunte de IVA y Recargo de equivalencia.
+  Pasaba que se registraban varios apuntes para un mismo tipo de IVA si
+existían líneas en la facturación con recargo de equivalencia. Ahora se
+agrupan y se evita un fallo de desviación de cálculo de IVA (de
+céntimos).
+
+Se crea la gestión automática de cuentas para las familias. Al crear una
+nueva familia en BulmaFact se crean 2 cuentas automáticas en la
+contabilidad, una para VENTAS y otra para COMPRAS. Queda para una
+próxima revisión el establecimiento manual de cuentas para las familias
+de artículos.
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003415.html">[BulmaGés]r3753 - in trunk/bulmages: bulmafact/plugins bulmafact/plugins/pluginbf_cliente bulmafact/plugins/pluginbf_clientealbaran bulmafact/plugins/pluginbf_clientefactura bulmafact/plugins/pluginbf_clientepedido bulmafact/plugins/pluginbf_clientepresupuesto installbulmages/bgtrml2pdf
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003416.html">[BulmaGés] r3755 -	trunk/bulmages/installbulmages/bgtrml2pdf
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3413">[ fecha ]</a>
+              <a href="thread.html#3413">[ hilo ]</a>
+              <a href="subject.html#3413">[ asunto ]</a>
+              <a href="author.html#3413">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

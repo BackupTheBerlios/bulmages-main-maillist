@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Error de compilació
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FError_de_compilaci%3DF3%3F%3D&In-Reply-To=%3C20110119081623.GA3033%40upf.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="004445.html">
+   <LINK REL="Next"  HREF="004450.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Error de compilació </H1>
+    <B>Walter Garcia-Fontes</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FError_de_compilaci%3DF3%3F%3D&In-Reply-To=%3C20110119081623.GA3033%40upf.edu%3E"
+       TITLE="[BulmaGés]Error de compilació">walter.garcia en upf.edu
+       </A><BR>
+    <I>Mie Ene 19 09:16:23 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="004445.html">[BulmaGés]Error de compilació
+</A></li>
+        <LI>Próximo mensaje: <A HREF="004450.html">[BulmaGés] how create an ejercicios ?
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4449">[ fecha ]</a>
+              <a href="thread.html#4449">[ hilo ]</a>
+              <a href="subject.html#4449">[ asunto ]</a>
+              <a href="author.html#4449">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>* aishen [19/01/11 08:06]:
+&gt;<i> I have same problem on ubuntu it looks for qmake but ubuntu is qmake-qt4
+</I>&gt;<i> so i made a link : ln -s /usr/bin/qmake /usr/bin/qmake-qt4 and it works
+</I>&gt;<i> but it's only a work around
+</I>
+Thanks, 
+this seems to be the culprit, but it is strange, first from what Tomeu
+says that the compilation of Bulmages does not use qmake at all, and
+second that there actually is a qmake in Ubuntu 10.10:
+
+lrwxrwxrwx 1 root root 23 2010-07-23 06:30 /usr/bin/qmake -&gt; /etc/alternatives/qmake*
+
+and it is a link to /etc/alternatives/qmake
+
+which in turn
+
+lrwxrwxrwx 1 root root 18 2010-07-23 06:30 /etc/alternatives/qmake -&gt; /usr/bin/qmake-qt3*
+
+is a link to /usr/bin/qmake-qt3
+
+But there is also:
+
+/usr/bin/qmake-qt4
+
+so, quite confusing. I will changed the symbolic link of qmake
+to qmake-qt4 and you are right, now &quot;cmake ../&quot; completes without
+error and with &quot;make&quot; compilation started as usual .
+
+Walter
+
+-- 
+Walter Garcia-Fontes
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="004445.html">[BulmaGés]Error de compilació
+</A></li>
+	<LI>Próximo mensaje: <A HREF="004450.html">[BulmaGés] how create an ejercicios ?
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4449">[ fecha ]</a>
+              <a href="thread.html#4449">[ hilo ]</a>
+              <a href="subject.html#4449">[ asunto ]</a>
+              <a href="author.html#4449">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Encuesta PCH
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-August/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FEncuesta_PCH%3F%3D&In-Reply-To=%3C4A7459B8.6080408%40todo-redes.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002890.html">
+   <LINK REL="Next"  HREF="002892.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Encuesta PCH </H1>
+    <B>Fco. Javier M. C.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FEncuesta_PCH%3F%3D&In-Reply-To=%3C4A7459B8.6080408%40todo-redes.com%3E"
+       TITLE="[BulmaGés]Encuesta PCH">fcojavmc en todo-redes.com
+       </A><BR>
+    <I>Sab Ago  1 17:05:28 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002890.html">[BulmaGés] r3614 -	trunk/bulmages/bulmafact/plugins/pluginbf_profesor/icons
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002892.html">[BulmaGés]Encuesta PCH
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2891">[ fecha ]</a>
+              <a href="thread.html#2891">[ hilo ]</a>
+              <a href="subject.html#2891">[ asunto ]</a>
+              <a href="author.html#2891">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Pedro.
+
+He actualizado a CMake 2.6 para probar la precompilación y no noto un
+gran cambio en el tiempo de compilación total ¿tu que mejoría has
+notado?, casi te diría que me va más lento y además genera un archivo de
+unos 46 megas.
+
+Propones incluir manualmente un include a los .ui, yo no lo veo
+práctico, cada vez que modifiques un .ui con el Designer tienes que
+acordarte de poner el include ¿en serio que no hay otra forma de hacerlo?
+
+
+
+
+Pedro Lopez-Cabanillas escribió:
+&gt;<i> On Friday, July 31, 2009, Fco. Javier M. C. wrote:
+</I>&gt;<i>   
+</I>&gt;&gt;&gt;<i> He tenido que reemplazar la definición de las macros de i18n: '_' y 'N_'
+</I>&gt;&gt;&gt;<i> en la línea de comando del compilador por una cabecera generada, que es
+</I>&gt;&gt;&gt;<i> distinta para cada  biblioteca y plugin, y se ha de incluir en los
+</I>&gt;&gt;&gt;<i> fuentes y definiciones &quot;.ui&quot; que lo requieran. En relación a esto:
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i> No te entiendo: ¿hay que cambiar el código fuente o dentro del cmake? Si
+</I>&gt;&gt;<i> hay que cambiar el código no lo veo práctico ¿qué habría que poner en su
+</I>&gt;&gt;<i> lugar?
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> Hay que añadir cosas al código de los fuentes C++ (.cpp) y diseños de interfaz 
+</I>&gt;<i> de usuario (.ui). Se genera automáticamente un nuevo header (.h) que se ha de 
+</I>&gt;<i> usar manualmente donde sea necesario con un &quot;#include&quot;. Lo mejor es un 
+</I>&gt;<i> ejemplo de dos cambios que ya he hecho en bulmalib:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://svn.berlios.de/viewvc/bulmages/trunk/bulmages/bulmalib/src/blfunctions.cpp?r1=3586&amp;r2=3588">http://svn.berlios.de/viewvc/bulmages/trunk/bulmages/bulmalib/src/blfunctions.cpp?r1=3586&amp;r2=3588</A>
+</I>&gt;<i> --- trunk/bulmages/bulmalib/src/blfunctions.cpp	2009/07/24 10:05:52	3586
+</I>&gt;<i> +++ trunk/bulmages/bulmalib/src/blfunctions.cpp	2009/07/24 21:15:09	3588
+</I>&gt;<i> @@ -34,6 +34,7 @@
+</I>&gt;<i>  #include &quot;blfunctions.h&quot;
+</I>&gt;<i>  #include &quot;blconfiguration.h&quot;
+</I>&gt;<i>  #include &quot;blmainwindow.h&quot;
+</I>&gt;<i> +#include &quot;local_BlI18n.h&quot;
+</I>&gt;<i>   
+</I>&gt;<i>  /// Esta funcion permite editar un texto en un QTextEdit y devuelve el texto 
+</I>&gt;<i> editado.
+</I>&gt;<i>  QString editaTexto ( QString texto )
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://svn.berlios.de/viewvc/bulmages/trunk/bulmages/bulmalib/src/blformconfigbase.ui?r1=3175&amp;r2=3588">http://svn.berlios.de/viewvc/bulmages/trunk/bulmages/bulmalib/src/blformconfigbase.ui?r1=3175&amp;r2=3588</A>
+</I>&gt;<i> --- trunk/bulmages/bulmalib/src/blformconfigbase.ui	2009/03/27 18:46:54	3175
+</I>&gt;<i> +++ trunk/bulmages/bulmalib/src/blformconfigbase.ui	2009/07/24 21:15:09	3588
+</I>&gt;<i> @@ -322,6 +322,9 @@
+</I>&gt;<i>     &lt;/item&gt;
+</I>&gt;<i>    &lt;/layout&gt;
+</I>&gt;<i>   &lt;/widget&gt;
+</I>&gt;<i> + &lt;includes&gt;
+</I>&gt;<i> +  &lt;include location=&quot;local&quot;&gt;local_BlI18n.h&lt;/include&gt;
+</I>&gt;<i> + &lt;/includes&gt;
+</I>&gt;<i>   &lt;layoutdefault spacing=&quot;0&quot; margin=&quot;0&quot; /&gt;
+</I>&gt;<i>   &lt;resources/&gt;
+</I>&gt;<i>   &lt;connections&gt;
+</I>&gt;<i>
+</I>&gt;<i> Se añade sólamente a aquellos fuentes que necesiten usar esas macros, no a 
+</I>&gt;<i> todos los del directorio. Sólamente donde haga falta. Concretamente, en el 
+</I>&gt;<i> directorio bulmalib/src hay 42 fuentes .cpp, y he tenido que añadir el 
+</I>&gt;<i> #include en 9 de ellos. Puede que sea más incomodo que no tener hacer nada, 
+</I>&gt;<i> pero tampoco lo veo tan grave.
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;&gt;&gt;<i> 5) OK a la generación de la cabecera, que se llama 'local_BlI18n.h',
+</I>&gt;&gt;&gt;<i> ¿o generar la cabecera con otro nombre...?
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i> En cualquier caso ese nombre no cumple la regla de nombres. Conste que
+</I>&gt;&gt;<i> no entiendo muy bien lo que planteas. Lo puedes explicar un poco mejor.
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> No conozco ninguna regla de nombres, pero si me dices un nombre que cumpla esa 
+</I>&gt;<i> norma, lo cambio con mucho gusto. Estos ficheros &quot;local_BlI18n.h&quot; se generan 
+</I>&gt;<i> por medio de una macro de cmake, que está declarada 
+</I>&gt;<i> en &quot;ModulesCMake/MacrosBlI18n.cmake&quot;. El resultado lo puedes ver en el 
+</I>&gt;<i> directorio de compilación, por ejemplo en &quot;build/bulmalib/src/local_BlI18n.h&quot;
+</I>&gt;<i> suponiendo que tu directorio de compilación se llame &quot;build&quot;.
+</I>&gt;<i>
+</I>&gt;<i> El motivo por el que las macros tienen que declararse en un header y no en la 
+</I>&gt;<i> línea de mandatos del compilador con -D, es que en caso contrario no es 
+</I>&gt;<i> posible usar cabeceras precompiladas porque en los directorios de cada plugin 
+</I>&gt;<i> se usa una definición distinta (el nombre del plugin va en la macro). Si no 
+</I>&gt;<i> se puede aceptar esta limitación, nos tendremos que olvidar del asunto de las 
+</I>&gt;<i> PCH.
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+
+A ver, si estoy equivocado, corrígeme ¿ok?
+
+Hay que crear un archivo llamado 'local_BlI18n.h' diferente para cada
+plugin, del tipo:
+
+/* Generated file. Please do not edit! */
+/* created by MacrosBlI18n.cmake */
+#ifndef LOCAL_BLI18N
+#define LOCAL_BLI18N
+
+#include &quot;bli18n.h&quot;
+
+#ifndef _
+ #define _(String) BlI18n(&quot;bulmalib&quot;,String)
+#endif
+#ifndef N_
+ #define N_(String,Int) BlI18n(&quot;bulmalib&quot;,String)
+#endif
+
+#endif /*LOCAL_BLI18N*/
+
+
+Pero es que ahora se pone con la opción del compilador -D porque no se
+puede meter en el código como ahora propones. Por ejemplo:
+en bulmalib se definirá 'LOCAL_BLI18N' y cogerá sus valores y al ir a
+evaluar '#ifndef  LOCAL_BLI18N' de cada plugin no se redefinirá porque
+ya lo está en BulmaLib y dejará de funcionar el sistema de traducciones.
+
+
+Un saludo.
+
+-- 
+Fco. Javier M. C.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002890.html">[BulmaGés] r3614 -	trunk/bulmages/bulmafact/plugins/pluginbf_profesor/icons
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002892.html">[BulmaGés]Encuesta PCH
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2891">[ fecha ]</a>
+              <a href="thread.html#2891">[ hilo ]</a>
+              <a href="subject.html#2891">[ asunto ]</a>
+              <a href="author.html#2891">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

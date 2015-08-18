@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Distintos idiomas en los reports
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FDistintos_idiomas_en_%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Flos_reports%3F%3D&In-Reply-To=%3C4D3828B1.5000509%40todo-redes.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="004478.html">
+   <LINK REL="Next"  HREF="004486.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Distintos idiomas en los reports </H1>
+    <B>Fco. Javier M. C.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FDistintos_idiomas_en_%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Flos_reports%3F%3D&In-Reply-To=%3C4D3828B1.5000509%40todo-redes.com%3E"
+       TITLE="[BulmaGés]Distintos idiomas en los reports">fcojavmc en todo-redes.com
+       </A><BR>
+    <I>Jue Ene 20 13:21:05 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="004478.html">[BulmaGés] Distintos idiomas en los reports
+</A></li>
+        <LI>Próximo mensaje: <A HREF="004486.html">[BulmaGés] r4167 - in	trunk/bulmages/bulmafact/plugins: pluginbf_alumno/po	pluginbf_minicontabilidad/po pluginbf_tutor/po
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4484">[ fecha ]</a>
+              <a href="thread.html#4484">[ hilo ]</a>
+              <a href="subject.html#4484">[ asunto ]</a>
+              <a href="author.html#4484">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE> Hola.
+
+
+El tema es que no se dispone de un (1) único tipo de informe. Existen
+los RML tal cual, pero también están los RML que se preprocesan por
+BulmaGes y luego están los PYS. Estos informes a su vez pueden tener
+asociado algún UI. Vamos, que todo se complica todo una barbaridad.
+
+Si se utiliza Gettext en python no funcionará con los UI y puede que
+tampoco con los RML preprocesados. Además que hay que instalar los
+archivos de traducción en el sistema después de ser compilados
+(.po-&gt;.mo) dificultando la distribución de los informes.
+
+Tampoco veo el tema de meter todo en el sistema de traducciones de
+BulmaGes (en los .po del plugin) porque seguirían los mismos problemas
+de instalación y distribución y siempre se tendrían que preprocesar los
+archivos de informes por BulmaGes antes de con 'bgtrml2pdf'.
+
+
+
+Solución idealizada:
+
+- Los informes con toda la estructura necesaria para funcionar en
+diferentes idiomas y demás van dentro de un contenedor (formato) y se
+distribuyen e instalan de forma autónoma (autocontenido). La idea del
+formato puede ser como los archivos ODF que es un ZIP con una estructura
+de directorios y archivos dentro.
+
+
+Un saludo.
+
+
+El 20/01/11 06:01, Tomeu Borras escribió:
+&gt;<i> Bones a tothom:
+</I>&gt;<i>
+</I>&gt;<i> Recientemente una puntualización de Walter me tiene mosca.
+</I>&gt;<i>
+</I>&gt;<i> Tenemos en todo el proyecto los informes almacenados en el directorio
+</I>&gt;<i> openreports de cada plugin y en installbulmages.
+</I>&gt;<i>
+</I>&gt;<i> El tema es que claro, las plantillas cambian entre idiomas y no lo
+</I>&gt;<i> teniamos contemplado. Además ahora con la amplicación de los informes
+</I>&gt;<i> la cosa se vuelve más peliaguda ya que éstos se encastran en la
+</I>&gt;<i> aplicación creando sus propias opciones de menu con lo que si hay
+</I>&gt;<i> problemas de idioma ya no es sólo que el informe sala en idioma
+</I>&gt;<i> incorrecto. Sino que además puede generar entradas de menu incorrectas
+</I>&gt;<i> etc.
+</I>&gt;<i>
+</I>&gt;<i> Para mi que la única solución posible es idimatizar los informes. O
+</I>&gt;<i> por lo menos dejar la estructura que les ponga idioma. Es decir crear
+</I>&gt;<i> los directorios de idiomas en cada openreports.
+</I>&gt;<i>
+</I>&gt;<i> ¿Alguna idea mejor?
+</I>&gt;<i>
+</I>&gt;<i> Salut
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+
+-- 
+Javier.
+TODO-REDES
+<A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+C/Begònia 12 - 07010 Palma de Mallorca.
+Tel.: 971499071
+
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20110120/4561a8c3/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20110120/4561a8c3/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="004478.html">[BulmaGés] Distintos idiomas en los reports
+</A></li>
+	<LI>Próximo mensaje: <A HREF="004486.html">[BulmaGés] r4167 - in	trunk/bulmages/bulmafact/plugins: pluginbf_alumno/po	pluginbf_minicontabilidad/po pluginbf_tutor/po
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4484">[ fecha ]</a>
+              <a href="thread.html#4484">[ hilo ]</a>
+              <a href="subject.html#4484">[ asunto ]</a>
+              <a href="author.html#4484">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

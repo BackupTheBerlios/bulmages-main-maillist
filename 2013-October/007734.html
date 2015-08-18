@@ -1,0 +1,254 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Instalación
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-October/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Futf-8%3Fq%3FInstalaci%3DC3%3DB3n%3F%3D&In-Reply-To=%3C527005E9.9020807%40gnuinos.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007733.html">
+   <LINK REL="Next"  HREF="007735.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Instalación </H1>
+    <B>gnuinos</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Futf-8%3Fq%3FInstalaci%3DC3%3DB3n%3F%3D&In-Reply-To=%3C527005E9.9020807%40gnuinos.org%3E"
+       TITLE="[BulmaGés]Instalación">aitor en gnuinos.org
+       </A><BR>
+    <I>Mar Oct 29 20:00:57 CET 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007733.html">[BulmaGés]Instalación
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007735.html">[BulmaGés]Bulmages.es está caída.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7734">[ fecha ]</a>
+              <a href="thread.html#7734">[ hilo ]</a>
+              <a href="subject.html#7734">[ asunto ]</a>
+              <a href="author.html#7734">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola, Raül, las pruebas de instalación no las hago en una máquina 
+virtual porque acostumbo a hacer particionados (/, /home, swap) para 
+asegurarme de que el instalador no falle tampoco en esos casos. El bug 
+de que te hablaba no consistía en esto que me comentas. Ocurría que, 
+durante el arranque, salía algún aviso de que no se encontraba cierto 
+firmware (la versión server no tiene software privativo, y no están 
+activados los repositorios contrib y non-free). Resulta que uno de esos 
+avisos tardaba en aparecer y se superponía con el prompt del login, 
+donde se pide el nombre de usuario, después del borrado previo de 
+pantalla. Es un tema de hardware. Me ocurría en un portátil en el que no 
+refresca bien la pantalla. Aunque al final no fue necesario meter ningún 
+retardo (como pretendía), porque me encontré con la sorpresa de que 
+instalando postgresql el problema desaparece (debido a que el grub 
+realiza algún paso más tras dicho aviso). No te puedo decir a qué se 
+debe ese comportamiento a saltos de que me hablas. Sólo se me ocurre 
+proponerte que pruebes suerte con otro sistema, o que esperes un par de 
+días a que suba la iso.
+
+Un saludo.
+
+El 29/10/13 17:55, Raül escribió:
+&gt;<i> Hola Aitor. Estaba instalando la versión server de ubuntu, y una vez 
+</I>&gt;<i> instalada (al mismo tiempo que hacía un volcado a un disco externo de 
+</I>&gt;<i> otra información), me he encontrado con la sorpresa de que el sistema 
+</I>&gt;<i> virtual parece ir a saltos y repitiendo mensajes.
+</I>&gt;<i> Como comentaste que tienes un bug en el que el prompt se repetía, me 
+</I>&gt;<i> aventuro a preguntarte: ¿estás realizando las pruebas en una máquina 
+</I>&gt;<i> virtual?
+</I>&gt;<i> A mi me sorprende el comportamiento a saltos de mi ordenador cuando 
+</I>&gt;<i> hago una copia de datos a un disco usb. Mi ordenador tiene 4 cpus, así 
+</I>&gt;<i> que debería verse &quot;olgado&quot; en dichas circunstancias... digo yo.
+</I>&gt;<i> Un saludo.
+</I>&gt;&gt;<i> El 29 de octubre de 2013 a las 10:30 gnuinos &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">aitor en gnuinos.org</A>&gt; 
+</I>&gt;&gt;<i> escribió:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Gracias por tu interés.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> El 29/10/13 08:24, Raül escribió:
+</I>&gt;&gt;&gt;<i> Hola Aitor. Gracias! Esto sí que es un mini-howto en toda regla. :)
+</I>&gt;&gt;&gt;<i> Ahora me han entrado un montón de dudas para empezar, pero eso es 
+</I>&gt;&gt;&gt;<i> bueno.
+</I>&gt;&gt;&gt;<i> Seguramente instalaré la versión server de ubuntu, y gnuinos para 
+</I>&gt;&gt;&gt;<i> cada puesto de trabajo.
+</I>&gt;&gt;&gt;<i> Un saludo.
+</I>&gt;&gt;&gt;&gt;<i> El 28 de octubre de 2013 a las 21:13 gnuinos &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">aitor en gnuinos.org</A>&gt; 
+</I>&gt;&gt;&gt;&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">aitor en gnuinos.org</A>&gt; escribió:
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> El 27/10/13 22:53, Raül escribió:
+</I>&gt;&gt;&gt;&gt;&gt;<i> Hola Aitor.
+</I>&gt;&gt;&gt;&gt;&gt;<i> ¿La iso de gnuinos en versión server 64 bits?
+</I>&gt;&gt;&gt;&gt;&gt;<i> ¿Qué versión de bulmagés lleva integrada la gnuinos-server-64bits?
+</I>&gt;&gt;&gt;&gt;&gt;<i> Cuando dices que está a punto de salir, ¿estamos hablando de días, 
+</I>&gt;&gt;&gt;&gt;&gt;<i> semanas, o meses?
+</I>&gt;&gt;&gt;&gt;&gt;<i> Un saludo.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> El 27 de octubre de 2013 a las 12:36 aitor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">aitor en gnuinos.org</A>&gt; 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">aitor en gnuinos.org</A>&gt; escribió:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Buenas, Raül, te respondo entre líneas:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> :) Linux... bueno, kubuntu y voy a hacer la migración hacia un 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> ubuntu-server, de momento estoy testando en una máquina 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> virtualbox con ubuntu-server.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Bueno, si es en kubuntu lo más fácil es que uses los paquetes deb 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> (suponiendo que hablamos de la rama release, en qt4). Tienes al 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> menos dos repositorios: el de Miguel 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> &lt;<A HREF="http://packages.mtelleria.be/bulmages/">http://packages.mtelleria.be/bulmages/</A>&gt;, que sigue disponible; y 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> el de gnuinos 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> &lt;<A HREF="http://www.gnuinos.org/packages/pool/main/b/bulmages-release/">http://www.gnuinos.org/packages/pool/main/b/bulmages-release/</A>&gt;. 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Son distintas releases, pero no te puedo decir la diferencia. En 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Ubuntu Server probablemente tengas que añadir un paquete más a 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> las dependencias de Miguel Tellería: &quot;xterm&quot;, ya que es requerido 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> por bulmasetup al no tener kdesudo instalado.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Pero, ¿merecería la pena hacer todo el proceso desde una gnuinos 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> instalado desde cero?
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> No sé muy bien a qué te refieres (???). Está a punto de 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> publicarse una versión Server en 32 y 64 bits, pero queda un 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> pequeño bug por resolver: en algunos ordenadores, no en todos, se 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> superpone el último mensaje de texto del grub con el prompt del 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> login. No tiene excesiva importancia, pero queda feo, y estoy 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> buscando el punto donde poder meter un pequeño retardo seguido de 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> un borrado de pantalla.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Voy a ponerlo como servidor de bulmagés, después enlazaré una 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> tienda virtual a bulmagés y finalmente crearé un cloud privado en 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> el servidor.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Espero poder conseguirlo :)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Adelante!!
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Por cierto, creo que la web www.bulmages.es 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> &lt;<A HREF="http://www.bulmages.es/">http://www.bulmages.es/</A>&gt; está en tareas de mantenimiento, porque 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> llevo varios días sin poder acceder a ella.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Saludos.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> El 27/10/13 11:59, Raül escribió:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> :) Linux... bueno, kubuntu y voy a hacer la migración hacia un 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ubuntu-server, de momento estoy testando en una máquina 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> virtualbox con ubuntu-server.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Pero, ¿merecería la pena hacer todo el proceso desde una gnuinos 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> instalado desde cero?
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Voy a ponerlo como servidor de bulmagés, después enlazaré una 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> tienda virtual a bulmagés y finalmente crearé un cloud privado 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> en el servidor.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Espero poder conseguirlo :)
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Un saludo.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> El 27 de octubre de 2013 a las 11:47 aitor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">aitor en gnuinos.org</A>&gt; 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">aitor en gnuinos.org</A>&gt; escribió:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> El 24/10/13 20:57, Raül escribió:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Buenas. Desde la última vez que estuve conectado se ha 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> cambiado el repositorio (se estaba haciendo la migración a 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> git), ¿podéis decirme como bajármelo y los primeros pasos para 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> instalar? Un abrazo.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Raül Martínez i Peris
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Bulmages-main mailing list
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>  &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>&gt;
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Hola, Raül, primero hay que saber el sistema operativo que usas.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Aitor. 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Raül Martínez i Peris
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Bulmages-main mailing list
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>  &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>&gt;
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Raül Martínez i Peris
+</I>&gt;&gt;&gt;&gt;<i> Buenas, Raül, sin querer te he respondido sólo a tí personalmente, 
+</I>&gt;&gt;&gt;&gt;<i> y no a la lista. Así que pego el contenido:
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> La versión server no trae entorno gráfico, y por lo tanto, Bulmagés 
+</I>&gt;&gt;&gt;&gt;<i> no viene integrado en ella. Pero siempre podrá instalarse desde los 
+</I>&gt;&gt;&gt;&gt;<i> repositorios. Para que te hagas una idea: el archivo binario de la 
+</I>&gt;&gt;&gt;&gt;<i> iso (filesystem.squashfs) viene a ocupar unos 200 megas (aunque la 
+</I>&gt;&gt;&gt;&gt;<i> iso completa ocupa más debido a los minipaquetes .udeb del 
+</I>&gt;&gt;&gt;&gt;<i> instalador). La idea es crear un sistema que sirva como base para 
+</I>&gt;&gt;&gt;&gt;<i> los distintos escritorios (los hay para todos los gustos, y no se 
+</I>&gt;&gt;&gt;&gt;<i> puede acertar con todo el mundo), con la ventaja de que se instala 
+</I>&gt;&gt;&gt;&gt;<i> rápido en comparación con una réplica en red de debian, estando los 
+</I>&gt;&gt;&gt;&gt;<i> locales y el teclado configurados, así como network-manager, de 
+</I>&gt;&gt;&gt;&gt;<i> manera que basta conectar un cable de ethernet para empezar a 
+</I>&gt;&gt;&gt;&gt;<i> instalar paquetes desde los repositorios.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> En cuanto a la fecha de publicación, es casi seguro que salga esta 
+</I>&gt;&gt;&gt;&gt;<i> misma semana.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Por otro lado, decirte que sólo existen paquetes .deb 
+</I>&gt;&gt;&gt;&gt;<i> correspondientes a la rama release de Bulmagés. Si haces un:
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> git-clone  --branch release --single-branch 
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="git://gitorious.org/bulmages/bulmages.git">git://gitorious.org/bulmages/bulmages.git</A>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> harás una copia de repositorio git empaquetado por Miguel.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Con esto otro:
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> git-clone  --branch release15 --single-branch 
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="git://gitorious.org/bulmages/bulmages.git">git://gitorious.org/bulmages/bulmages.git</A>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> obtendrás la release empaquetada en los repositorios de gnuinos. 
+</I>&gt;&gt;&gt;&gt;<i> Ambas están en Qt4.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> En Qt5 está la rama master. No he intentado compilarla desde hace 
+</I>&gt;&gt;&gt;&gt;<i> algo más de un mes, pero en cuanto termine con esto otro lo 
+</I>&gt;&gt;&gt;&gt;<i> intentaré de nuevo.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> La versión en Qt5 no puede instalarse en Debian Wheezy o derivadas 
+</I>&gt;&gt;&gt;&gt;<i> (gnuinos entre ellas), a menos que se backportée CMake (estas cosas 
+</I>&gt;&gt;&gt;&gt;<i> le gustan mucho a Miguel ;-). Pero sí puede instalarse en testing y 
+</I>&gt;&gt;&gt;&gt;<i> en sid. Tal vez sid sea más indicado, al ser menos cambiante que 
+</I>&gt;&gt;&gt;&gt;<i> testing. No tiene por qué ir mal... Al fin y al cabo, ubuntu está 
+</I>&gt;&gt;&gt;&gt;<i> basada en sid.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> No estaría mal una versión para desarrolladores. ¿No? Alguna vez ya 
+</I>&gt;&gt;&gt;&gt;<i> lo he pensado.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Saludos,
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Aitor. 
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Raül Martínez i Peris
+</I>&gt;<i>
+</I>&gt;<i> Raül Martínez i Peris
+</I>
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20131029/34bfd35d/attachment-0001.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20131029/34bfd35d/attachment-0001.html</A>&gt;
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007733.html">[BulmaGés]Instalación
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007735.html">[BulmaGés]Bulmages.es está caída.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7734">[ fecha ]</a>
+              <a href="thread.html#7734">[ hilo ]</a>
+              <a href="subject.html#7734">[ asunto ]</a>
+              <a href="author.html#7734">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

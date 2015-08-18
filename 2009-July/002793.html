@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]warning: operation on 'i' may be undefined
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fwarning%3D3A_operation_%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fon_%3D27i%3D27_may_be_undefined%3F%3D&In-Reply-To=%3C200907221150.02892.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002792.html">
+   <LINK REL="Next"  HREF="002794.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]warning: operation on 'i' may be undefined </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fwarning%3D3A_operation_%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fon_%3D27i%3D27_may_be_undefined%3F%3D&In-Reply-To=%3C200907221150.02892.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]warning: operation on 'i' may be undefined">tborras en conetxia.com
+       </A><BR>
+    <I>Mie Jul 22 11:50:02 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002792.html">[BulmaGés]warning: operation on 'i' may be undefined
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002794.html">[BulmaGés]warning: operation on 'i' may be undefined
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2793">[ fecha ]</a>
+              <a href="thread.html#2793">[ hilo ]</a>
+              <a href="subject.html#2793">[ asunto ]</a>
+              <a href="author.html#2793">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Buenas
+
+Tus argumentos son infinitamente más rebuscados que los mios. 
+
+¿ Entonces haces el commit ?
+
+Salut
+
+
+
+
+
+&gt;<i> &gt; &gt; On Wednesday, July 22, 2009, Tomeu Borras wrote:
+</I>&gt;<i> &gt; &gt; &gt; Las comprobaciones de buff.end() no son necesarias ya que la
+</I>&gt;<i> &gt; &gt; &gt; comprobacion previa de isHightSurrogate() y isLowSurrogate()
+</I>&gt;<i> &gt; &gt; &gt; garantizan que habrá un caracter siguiente.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Las comprobaciones las hago después de incrementar el iterator, por lo
+</I>&gt;<i> &gt; &gt; que su valor ha cambiado respecto al momento en que se comprobó el
+</I>&gt;<i> &gt; &gt; isHighSurrogate(). Puede que sea innecesario, pero si después de
+</I>&gt;<i> &gt; &gt; detectar un carácter high surrogate encontramos el final del string
+</I>&gt;<i> &gt; &gt; entonces se ha detectado un error bastante serio ...
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Para mi en esto esta el quiz de la cuestión  (Ya he dicho que me parecia
+</I>&gt;<i> &gt; bien tu código) pero si algo es innecesario y puede quitarse mejor que
+</I>&gt;<i> &gt; mejor ¿no?.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; El tema radica en la codificación de ls UTF8 y UTF16  (cuyos carácteres
+</I>&gt;<i> &gt; especiales tienen 2 o más bytes) y en que el iterador sobre el string lo
+</I>&gt;<i> &gt; recorre byte a byte.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Entonces isHighSurrogate o isLowSurrogate (no se cual de las dos) indica
+</I>&gt;<i> &gt; que se ha encontrado el primer byte de un caracter UTF8 compuesto. Y
+</I>&gt;<i> &gt; claro si el caracter es compuesto y hemos leido el primer byte por fuerza
+</I>&gt;<i> &gt; tiene que haber el segundo byte.
+</I>&gt;<i>
+</I>&gt;<i> Espero que me perdones si soy demasiado pesado, pero siento la necesidad de
+</I>&gt;<i> insistir en este tema. El ejemplo siguiente es un trozo de código tomado de
+</I>&gt;<i> la propia biblioteca Qt4.5, QUtf32Codec::convertFromUnicode()
+</I>&gt;<i>
+</I>&gt;<i> 00496         for (int i = 0; i &lt; len; ++i) {
+</I>&gt;<i> 00497             uint cp = uc[i].unicode();
+</I>&gt;<i> 00498             if (uc[i].isHighSurrogate() &amp;&amp; i &lt; len - 1)
+</I>&gt;<i> 00499                 cp = QChar::surrogateToUcs4(cp, uc[++i].unicode());
+</I>&gt;<i>
+</I>&gt;<i> De este código deduzco un par de cosas: 1.-cuando encontramos un surrogate
+</I>&gt;<i> pair, primero viene el high y luego el low, 2.-antes de acceder al
+</I>&gt;<i> siguiente carácter, mejor comprobar que no se ha alcanzado el límite, en
+</I>&gt;<i> este caso un array de QChar. Hay varios otros ejemplos en Qt.
+</I>&gt;<i>
+</I>&gt;<i> Si miras como está definido QChar::isHighSurrogate(), en qchar.h:276, es
+</I>&gt;<i> una simple comprobación de rango.
+</I>&gt;<i>
+</I>&gt;<i> 00276     inline bool isHighSurrogate() const {
+</I>&gt;<i> 00277         return ((ucs &amp; 0xfc00) == 0xd800);
+</I>&gt;<i> 00278     }
+</I>&gt;<i> 00279     inline bool isLowSurrogate() const {
+</I>&gt;<i> 00280         return ((ucs &amp; 0xfc00) == 0xdc00);
+</I>&gt;<i> 00281     }
+</I>&gt;<i>
+</I>&gt;<i> Además de lo anterior, BlDbRecord::generaRML() está tratando datos que se
+</I>&gt;<i> leen desde un fichero y se tratan por sustitución de tags. Obviamente,
+</I>&gt;<i> muchas cosas pueden ir mal, como por ejemplo corrupción de los datos
+</I>&gt;<i> haciendo que aparezca un HighSurrogate donde no debería. Y como siempre en
+</I>&gt;<i> este oficio, aquí se puede aplicar la ley de Murphy, y prever cualquiera de
+</I>&gt;<i> sus corolarios (<A HREF="http://es.wikipedia.org/wiki/Ley_de_Murphy">http://es.wikipedia.org/wiki/Ley_de_Murphy</A>).
+</I>&gt;<i>
+</I>
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002792.html">[BulmaGés]warning: operation on 'i' may be undefined
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002794.html">[BulmaGés]warning: operation on 'i' may be undefined
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2793">[ fecha ]</a>
+              <a href="thread.html#2793">[ hilo ]</a>
+              <a href="subject.html#2793">[ asunto ]</a>
+              <a href="author.html#2793">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

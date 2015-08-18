@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Bug #15808] ME HA FALLADO EN EL	BULMASETUP
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2315808%5D%20ME%20HA%20FALLADO%20EN%20EL%0A%09BULMASETUP&In-Reply-To=%3C200907192146.n6JLk8SO005525%40unicorn.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002735.html">
+   <LINK REL="Next"  HREF="002737.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Bug #15808] ME HA FALLADO EN EL	BULMASETUP </H1>
+    <B>admin en berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2315808%5D%20ME%20HA%20FALLADO%20EN%20EL%0A%09BULMASETUP&In-Reply-To=%3C200907192146.n6JLk8SO005525%40unicorn.berlios.de%3E"
+       TITLE="[BulmaGés] [Bug #15808] ME HA FALLADO EN EL	BULMASETUP">admin en berlios.de
+       </A><BR>
+    <I>Dom Jul 19 23:46:08 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002735.html">[BulmaGés] [Bug #15827] SINTAXI ERROR
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002737.html">[BulmaGés] r3574 -	trunk/bulmages/bulmafact/plugins/pluginbf_clientefactura
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2736">[ fecha ]</a>
+              <a href="thread.html#2736">[ hilo ]</a>
+              <a href="subject.html#2736">[ asunto ]</a>
+              <a href="author.html#2736">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bug #15808, was updated on 2009-Jun-05 16:56
+Here is a current snapshot of the bug.
+
+Project: BulmaGes, Gestión Empresarial Libre
+Category: bulmasetup
+Status: Closed
+Resolution: Fixed
+Bug Group: None
+Priority: 5
+Submitted by: zhixiong
+Assigned to : tborras
+Summary: ME HA FALLADO EN EL BULMASETUP
+
+Details: Con el Bulmasetup,cuando queria aplicar unos plugins,me ha salido estso mensages de errores
+
+
+
+Traceback (most recent call last):
+  File &quot;/usr/local/share/bulmages/bulmasetup/facturacion.py&quot;, line 311, in on_mui_plugins_cellPressed
+    self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + &quot;&lt;b&gt;&quot; + self.mui_plugins.item(row,10).text() + &quot;&lt;/b&gt;&lt;br&gt;&quot;+ self.mui_plugins.item(row,3).text() + &quot;&lt;br&gt;&lt;b&gt;Categorias:&lt;/b&gt; &quot; + self.mui_plugins.item(row,8).text() + &quot;&lt;br&gt;&lt;br&gt;&lt;b&gt;Dependencias:&lt;/b&gt; &quot; + self.mui_plugins.item(row,5).text() + &quot;&lt;br&gt;&lt;br&gt;&lt;b&gt;Incompatibilidades:&lt;/b&gt; &quot; + self.mui_plugins.item(row,6).text() + &quot;&lt;br&gt;&lt;br&gt;&lt;b&gt;Parches SQL:&lt;/b&gt;&lt;br&gt;&quot; + self.mui_plugins.item(row,4).text() + &quot;&lt;br&gt;&quot; + self.mui_plugins.item(row,9).text())
+AttributeError: 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File &quot;/usr/local/share/bulmages/bulmasetup/facturacion.py&quot;, line 323, in on_mui_plugins_cellClicked
+    self.arr = self.mui_plugins.item(row,6).text().replace(' ;',';').replace('; ',';').split(QString(&quot;;&quot;))
+AttributeError: 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File &quot;/usr/local/share/bulmages/bulmasetup/facturacion.py&quot;, line 311, in on_mui_plugins_cellPressed
+    self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + &quot;&lt;b&gt;&quot; + self.mui_plugins.item(row,10).text() + &quot;&lt;/b&gt;&lt;br&gt;&quot;+ self.mui_plugins.item(row,3).text() + &quot;&lt;br&gt;&lt;b&gt;Categorias:&lt;/b&gt; &quot; + self.mui_plugins.item(row,8).text() + &quot;&lt;br&gt;&lt;br&gt;&lt;b&gt;Dependencias:&lt;/b&gt; &quot; + self.mui_plugins.item(row,5).text() + &quot;&lt;br&gt;&lt;br&gt;&lt;b&gt;Incompatibilidades:&lt;/b&gt; &quot; + self.mui_plugins.item(row,6).text() + &quot;&lt;br&gt;&lt;br&gt;&lt;b&gt;Parches SQL:&lt;/b&gt;&lt;br&gt;&quot; + self.mui_plugins.item(row,4).text() + &quot;&lt;br&gt;&quot; + self.mui_plugins.item(row,9).text())
+AttributeError: 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File &quot;/usr/local/share/bulmages/bulmasetup/facturacion.py&quot;, line 320, in on_mui_plugins_cellClicked
+    self.desmarcar(self.mui_plugins.item(row,10).text(),1,1)
+AttributeError: 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File &quot;/usr/local/share/bulmages/bulmasetup/facturacion.py&quot;, line 311, in on_mui_plugins_cellPressed
+    self.mui_descripcion.setText(self.mui_plugins.item(row,1).text() + &quot;&lt;b&gt;&quot; + self.mui_plugins.item(row,10).text() + &quot;&lt;/b&gt;&lt;br&gt;&quot;+ self.mui_plugins.item(row,3).text() + &quot;&lt;br&gt;&lt;b&gt;Categorias:&lt;/b&gt; &quot; + self.mui_plugins.item(row,8).text() + &quot;&lt;br&gt;&lt;br&gt;&lt;b&gt;Dependencias:&lt;/b&gt; &quot; + self.mui_plugins.item(row,5).text() + &quot;&lt;br&gt;&lt;br&gt;&lt;b&gt;Incompatibilidades:&lt;/b&gt; &quot; + self.mui_plugins.item(row,6).text() + &quot;&lt;br&gt;&lt;br&gt;&lt;b&gt;Parches SQL:&lt;/b&gt;&lt;br&gt;&quot; + self.mui_plugins.item(row,4).text() + &quot;&lt;br&gt;&quot; + self.mui_plugins.item(row,9).text())
+AttributeError: 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File &quot;/usr/local/share/bulmages/bulmasetup/facturacion.py&quot;, line 323, in on_mui_plugins_cellClicked
+    self.arr = self.mui_plugins.item(row,6).text().replace(' ;',';').replace('; ',';').split(QString(&quot;;&quot;))
+AttributeError: 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File &quot;/usr/local/share/bulmages/bulmasetup/modificarfacturacion.py&quot;, line 55, in on_mui_aceptar_released
+    self.actualizarPlugins()
+  File &quot;/usr/local/share/bulmages/bulmasetup/facturacion.py&quot;, line 422, in actualizarPlugins
+    if (len(self.mui_plugins.item(self.i,4).text()) &gt; 4):
+AttributeError: 'NoneType' object has no attribute 'text'
+
+Follow-Ups:
+
+Date: 2009-Jul-19 23:46
+By: tborras
+
+Comment:
+El fallo NoneType se soluciono hace un par de semanas agregando una clausula if que comprobaba la existencia del objeto en los arrays de plugins.
+-------------------------------------------------------
+
+For detailed info, follow this link:
+<A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=15808&amp;group_id=4472">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=15808&amp;group_id=4472</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002735.html">[BulmaGés] [Bug #15827] SINTAXI ERROR
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002737.html">[BulmaGés] r3574 -	trunk/bulmages/bulmafact/plugins/pluginbf_clientefactura
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2736">[ fecha ]</a>
+              <a href="thread.html#2736">[ hilo ]</a>
+              <a href="subject.html#2736">[ asunto ]</a>
+              <a href="author.html#2736">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

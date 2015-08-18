@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] Comportamiento de la tecla tab en las	listas editables
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Comportamiento%20de%20la%20tecla%20tab%20en%20las%0A%09listas%20editables&In-Reply-To=%3C201006181019.37154.auryn%40wanadoo.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003705.html">
+   <LINK REL="Next"  HREF="003707.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] Comportamiento de la tecla tab en las	listas editables </H1>
+    <B>Aron</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Comportamiento%20de%20la%20tecla%20tab%20en%20las%0A%09listas%20editables&In-Reply-To=%3C201006181019.37154.auryn%40wanadoo.es%3E"
+       TITLE="[BulmaGés] Comportamiento de la tecla tab en las	listas editables">auryn en wanadoo.es
+       </A><BR>
+    <I>Vie Jun 18 10:19:37 CEST 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003705.html">[BulmaGés]Receta de orégano
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003707.html">[BulmaGés]Comportamiento de la tecla tab en las listas editables
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3706">[ fecha ]</a>
+              <a href="thread.html#3706">[ hilo ]</a>
+              <a href="subject.html#3706">[ asunto ]</a>
+              <a href="author.html#3706">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola
+
+Parece que esto es algo común a todos: cuando está el usuario editando una 
+lista, en una casilla, y pulsa en la tecla &quot;tab&quot;... él espera editar la 
+casilla de la derecha, pero no es así. ¿Hay algún motivo para este 
+comportamiento?
+
+Si no hay motivo para este comportamiento, podemos ver una programación para 
+que se mueva el &quot;cursor&quot; a la casilla de la derecha, concretamente en 
+	bool BlSubFormDelegate::eventFilter
+hemos estado viendo el añadir
+		emit closeEditor ( (QWidget*)obj, 
+QAbstractItemDelegate::EditNextItem);
+
+Saludos
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003705.html">[BulmaGés]Receta de orégano
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003707.html">[BulmaGés]Comportamiento de la tecla tab en las listas editables
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3706">[ fecha ]</a>
+              <a href="thread.html#3706">[ hilo ]</a>
+              <a href="subject.html#3706">[ asunto ]</a>
+              <a href="author.html#3706">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

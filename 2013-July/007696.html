@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Merge requests
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Futf-8%3Fq%3FMerge_requests%3F%3D&In-Reply-To=%3C20130730132625.243f365b%40patti%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007694.html">
+   <LINK REL="Next"  HREF="007695.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Merge requests </H1>
+    <B>Miguel Telleria de Esteban</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Futf-8%3Fq%3FMerge_requests%3F%3D&In-Reply-To=%3C20130730132625.243f365b%40patti%3E"
+       TITLE="[BulmaGés]Merge requests">miguel en mtelleria.com
+       </A><BR>
+    <I>Mar Jul 30 13:26:25 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007694.html">[BulmaGés]Merge requests
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007695.html">[BulmaGés] Repositorios
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7696">[ fecha ]</a>
+              <a href="thread.html#7696">[ hilo ]</a>
+              <a href="subject.html#7696">[ asunto ]</a>
+              <a href="author.html#7696">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola a todos y perdonar mi retardo en responder :),
+
+De entrada, los merge request ya están OBSOLETOS porque Tomeu en su día
+me dio permisos en el repositorio principal y yo mismo hice los merges
+tanto en master como en release.  Si dichos merge-requests quedan aún
+colgando cuando pueda veré como podré eliminarlos.
+
+Dichos merges hacían dos cosas en las ramas master y release (que yo
+recuerde, porque a mis años, las cosas se olvidan pronto :)))) ):
+
+-  Añadir el directorio tools con scripts en python, que usan
+   python-git (y llamadas shell a git directamente donde python-git no
+   llegaba) para recabar información de git y generar a partir de ella
+   los tags y números de versiones.
+
+-  En la parte de release, borré el directorio debian del
+   empaquetamiento anterior, ya que con git-buildpackage este
+   directorio va en una rama aparte (o quizás pudiera ir en la misma,
+   pero en cualquier caso el contenido ya estaba desfasado).
+
+Por otro lado añadían las ramas gbp-debian-master y gbp-debian-release
+donde está el directorio debian añadido segun git-buildpackage
+(gbp=Git Build Package).
+
+Los paquetes de entonces siguen en la URL mtelleria.be que Aitor
+menciona aunque los suyos son posteriores y probablemente incorporen
+mejoras y avances en el programa.  En cualquier caso podéis estar
+seguros de que mis paquetes seguirán allí por unos cuantos meses ya que
+no me molestan para nada.
+
+Un saludo,
+
+	Miguel
+
+On Tue, 30 Jul 2013 12:59:50 +0200 <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">aitor en gnuinos.org</A> wrote:
+
+&gt;<i> Buenos días, Pablo, efectivamente Miguel Tellería estuvo trabajando a 
+</I>&gt;<i> comienzos de año en el empaquetado para debian. Hizo paquetes para 
+</I>&gt;<i> squeeze y sid (válidos también para wheezy). Si no estoy equivocado,
+</I>&gt;<i> las herramientas que creó Miguel para obtener los números de versión
+</I>&gt;<i> son unos scripts en python ubicados en la carpeta tools a que hace 
+</I>&gt;<i> referencia. Ahora mismo no te sabría decir qué quiso decir con eso de 
+</I>&gt;<i> borrar el directorio debian. Para realizar el empaquetado, todo el 
+</I>&gt;<i> contenido debe estar dentro de una carpeta incluyendo también el 
+</I>&gt;<i> directorio debian donde se encuentran el archivo de control, 
+</I>&gt;<i> postinstalación, etc. Ahora bien, parece que Miguel escribió aquello 
+</I>&gt;<i> cuando todavía estaba trabajando en los paquetes, pues habla de
+</I>&gt;<i> añadir herramientas de versión a master y en su trabajo final figuran
+</I>&gt;<i> tanto los paquetes de release como los de master. Aún puedes
+</I>&gt;<i> encontrarlos en su repositorio:
+</I>&gt;<i> 
+</I>&gt;<i> /<A HREF="http://">http://</A>
+</I>&gt;<i> &lt;<A HREF="http://packages.mtelleria.be/bulmages/">http://packages.mtelleria.be/bulmages/</A>&gt;//packages.mtelleria.be/bulmages/
+</I>&gt;<i> &lt;<A HREF="http://packages.mtelleria.be/bulmages/">http://packages.mtelleria.be/bulmages/</A>&gt;/
+</I>&gt;<i> 
+</I>&gt;<i> Miguel advierte que dichos paquetes estarán disponibles mientras dure
+</I>&gt;<i> el hosting de alojamiento, y que dicho repositorio es temporal.
+</I>&gt;<i> 
+</I>&gt;<i> ¿Cómo está la cosa ahora? Pues decirte que yo retomé aquel trabajo y 
+</I>&gt;<i> empaqueté la release 15(desconozco si alguien más está haciendo algo
+</I>&gt;<i> al respecto), aunque siquiendo un método algo diferente al de Miguel. 
+</I>&gt;<i> Puedes ver el resultado en:
+</I>&gt;<i> /
+</I>&gt;<i> <A HREF="http://packages.gnuinos.org/pool/main/b/bulmages-release">http://packages.gnuinos.org/pool/main/b/bulmages-release</A> 
+</I>&gt;<i> &lt;<A HREF="http://packages.mtelleria.be/bulmages/">http://packages.mtelleria.be/bulmages/</A>&gt;/// 
+</I>&gt;<i> &lt;<A HREF="http://packages.mtelleria.be/bulmages/">http://packages.mtelleria.be/bulmages/</A>&gt;/
+</I>&gt;<i> 
+</I>&gt;<i> El trabajo de Miguel es más minucioso que el mío en el sentido de que 
+</I>&gt;<i> incorporó los scripts de versión y empaquetó también la master. Yo
+</I>&gt;<i> tengo intención de seguir su método. Me gustaría ponerme un poco al
+</I>&gt;<i> día con todo esto en agosto, porque la verdad es que estos dos
+</I>&gt;<i> últimos meses no he tenido tiempo.
+</I>&gt;<i> 
+</I>&gt;<i> Saludos.
+</I>&gt;<i> 
+</I>&gt;<i> El 29/07/13 02:13, Pablo Alvarez de Sotomayor Posadillo escribió:
+</I>&gt;<i> &gt; Buenas a todos,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Repasando los ultimos cambios del repo me he dado cuenta de que hay
+</I>&gt;<i> &gt; un par de merge requests de mtelleria en gitorious
+</I>&gt;<i> &gt; (<A HREF="https://gitorious.org/bulmages/bulmages/merge_requests">https://gitorious.org/bulmages/bulmages/merge_requests</A>) desde hace
+</I>&gt;<i> &gt; 6 meses. El primero dice &quot;agnadir herramientas de version a master&quot;
+</I>&gt;<i> &gt; y el segundo dice &quot;bg release: borrar el directorio Debian, un
+</I>&gt;<i> &gt; fichero backup y agnadir las tools&quot;. Segun veo, los commits
+</I>&gt;<i> &gt; incluyen algunos scripts para obtener el numero de version para los
+</I>&gt;<i> &gt; paquetes de Debian y se borran algunos ficheros que no son
+</I>&gt;<i> &gt; necesarios y que dan conflictos a la hora de generar los paquetes
+</I>&gt;<i> &gt; debian. No recuerdo como esta ahora el tema de los paquetes debian,
+</I>&gt;<i> &gt; si estan incluidos en el mismo repositorio o no (segun recuerdo
+</I>&gt;<i> &gt; no), pero deberiamos de atender esos requests. Alguien los quiere
+</I>&gt;<i> &gt; revisar? Lo mergeo directamente?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; SALUDOS
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Bulmages-main mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i> 
+</I>
+------------ próxima parte ------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 198 bytes
+Desc: no disponible
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20130730/38803658/attachment.pgp">https://lists.berlios.de/pipermail/bulmages-main/attachments/20130730/38803658/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007694.html">[BulmaGés]Merge requests
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007695.html">[BulmaGés] Repositorios
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7696">[ fecha ]</a>
+              <a href="thread.html#7696">[ hilo ]</a>
+              <a href="subject.html#7696">[ asunto ]</a>
+              <a href="author.html#7696">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

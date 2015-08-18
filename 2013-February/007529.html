@@ -1,0 +1,217 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130208170448.C503AF6B%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007528.html">
+   <LINK REL="Next"  HREF="007534.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130208170448.C503AF6B%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Vie Feb  8 18:04:48 CET 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007528.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007534.html">[BulmaGés] Bulmages adaptaciones a Venezuela
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7529">[ fecha ]</a>
+              <a href="thread.html#7529">[ hilo ]</a>
+              <a href="subject.html#7529">[ asunto ]</a>
+              <a href="author.html#7529">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from 448069f to 5a04ab4
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/448069f8876efb448078ae29c3d7de5d3dfcbb13/diffs/5a04ab48ec59e27aeafb801e56358263c65ed518">https://gitorious.org/bulmages/bulmages/commit/448069f8876efb448078ae29c3d7de5d3dfcbb13/diffs/5a04ab48ec59e27aeafb801e56358263c65ed518</A>
+
+Diff: 
+
+commit 5a04ab48ec59e27aeafb801e56358263c65ed518
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri Feb 8 18:04:55 2013 +0100
+
+    Arreglo una excepcion en relacion con el commit anterior
+
+diff --git a/bulmages/bulmalib/src/blform.cpp b/bulmages/bulmalib/src/blform.cpp
+index 7b8557a..b8955cc 100644
+--- a/bulmages/bulmalib/src/blform.cpp
++++ b/bulmages/bulmalib/src/blform.cpp
+@@ -1097,7 +1097,53 @@ int BlForm::load ( QString id, bool paint )
+         if ( g_plugins-&gt;run ( &quot;BlForm_load&quot;, this ) ) return 0;
+         cargarPost ( id );
+ 
++	/// Cargamos los subformularios de specificaciones
++    /// Cargamos el XML de descripcion de autoforms y lo procesamos.
++    QFile file ( CONFIG_DIR_CONFIG + objectName() + &quot;_&quot; + mainCompany() -&gt;dbName() + &quot;_spec.spc&quot;);
++    QDomDocument doc ( &quot;mydocument&quot; );
++    if ( file.open ( QIODevice::ReadOnly ) ) {
++
+ 
++    if ( !doc.setContent ( &amp;file ) ) {
++        file.close();
++	blMsgInfo(&quot;Error al parsear el archivo de especificaciones&quot;);
++        return 0;
++    } // end if
++    file.close();
++    
++    /// Iteramos para cada AutoForm y lo creamos haciendo todo lo necesario para que este funcione.
++    QDomElement docElem = doc.documentElement();
++    
++    QDomNodeList nodos = docElem.elementsByTagName ( &quot;TAB&quot; );
++    for ( int i = 0; i &lt; nodos.count(); i++ ) {
++        QDomNode autoform = nodos.item ( i );
++        QDomElement e1 = autoform.toElement(); /// try to convert the node to an element.
++        if ( !e1.isNull() ) { /// the node was really an element.
++
++		/// Cargamos los subformularios
++		QDomNodeList nodoss = e1.elementsByTagName ( &quot;SUBFORM&quot; );
++		for ( int j = 0; j &lt; nodoss.count(); j++ ) {
++		    QDomNode ventana = nodoss.item ( j );
++		    QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
++		    if ( !e1.isNull() ) { /// the node was really an element.
++			BlDbField::DbType type = BlDbField::DbVarChar;
++			QString nomheader = e1.firstChildElement ( &quot;NOMCAMPO&quot; ).toElement().text();
++			BlSubForm * subform = findChild&lt;BlSubForm *&gt;(&quot;mui_&quot; + nomheader);
++			if (subform) {
++			   /// Ya tenemos el subformulario presente. Y ahora podemos hacer lo que nos plazca.
++			   QString query = e1.firstChildElement ( &quot;QUERY&quot; ).toElement().text();
++			   /// Sustituimos las variables encontradas.
++			   substrVars(query,0);
++			   subform-&gt;load(query);
++			} // end if
++		    } // end if
++		} // end for
++	} // end if
++    } // end form
++    
++    
++    
++        } // end if
+ 	/// Buscamos un titulo adecuado segun los valores que contenga la tabla.
+ 	QString wtitle = m_title + &quot; &quot;;
+ 	if (exists(&quot;num&quot; + tableName())) {
+@@ -1271,9 +1317,7 @@ int BlForm::afterSave()
+     /// Cargamos el XML de descripcion de autoforms y lo procesamos.
+     QFile file (  CONFIG_DIR_CONFIG + objectName() + &quot;_&quot; + mainCompany() -&gt;dbName() + &quot;_spec.spc&quot; );
+     QDomDocument doc ( &quot;mydocument&quot; );
+-    if ( !file.open ( QIODevice::ReadOnly ) ) {
+-        return 0;
+-    } // end if
++    if ( file.open ( QIODevice::ReadOnly ) ) {
+     if ( !doc.setContent ( &amp;file ) ) {
+         file.close();
+ 	blMsgInfo(&quot;Error al parsear el archivo de autoformularios&quot;);
+@@ -1321,7 +1365,8 @@ int BlForm::afterSave()
+ 	} // end if
+     } // end for
+     
+-    
++    } // end if
++
+     
+     return 0;
+ }
+@@ -1334,49 +1379,7 @@ int BlForm::afterSave()
+ int BlForm::cargarPost ( QString )
+ {
+     BL_FUNC_DEBUG
+-	/// Cargamos los subformularios de specificaciones
+-    /// Cargamos el XML de descripcion de autoforms y lo procesamos.
+-    QFile file ( CONFIG_DIR_CONFIG + objectName() + &quot;_&quot; + mainCompany() -&gt;dbName() + &quot;_spec.spc&quot;);
+-    QDomDocument doc ( &quot;mydocument&quot; );
+-    if ( !file.open ( QIODevice::ReadOnly ) ) {
+-        return 0;
+-    } // end if
+-    if ( !doc.setContent ( &amp;file ) ) {
+-        file.close();
+-	blMsgInfo(&quot;Error al parsear el archivo de especificaciones&quot;);
+-        return 0;
+-    } // end if
+-    file.close();
+-    
+-    /// Iteramos para cada AutoForm y lo creamos haciendo todo lo necesario para que este funcione.
+-    QDomElement docElem = doc.documentElement();
+-    
+-    QDomNodeList nodos = docElem.elementsByTagName ( &quot;TAB&quot; );
+-    for ( int i = 0; i &lt; nodos.count(); i++ ) {
+-        QDomNode autoform = nodos.item ( i );
+-        QDomElement e1 = autoform.toElement(); /// try to convert the node to an element.
+-        if ( !e1.isNull() ) { /// the node was really an element.
+ 
+-		/// Cargamos los subformularios
+-		QDomNodeList nodoss = e1.elementsByTagName ( &quot;SUBFORM&quot; );
+-		for ( int j = 0; j &lt; nodoss.count(); j++ ) {
+-		    QDomNode ventana = nodoss.item ( j );
+-		    QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
+-		    if ( !e1.isNull() ) { /// the node was really an element.
+-			BlDbField::DbType type = BlDbField::DbVarChar;
+-			QString nomheader = e1.firstChildElement ( &quot;NOMCAMPO&quot; ).toElement().text();
+-			BlSubForm * subform = findChild&lt;BlSubForm *&gt;(&quot;mui_&quot; + nomheader);
+-			if (subform) {
+-			   /// Ya tenemos el subformulario presente. Y ahora podemos hacer lo que nos plazca.
+-			   QString query = e1.firstChildElement ( &quot;QUERY&quot; ).toElement().text();
+-			   /// Sustituimos las variables encontradas.
+-			   substrVars(query,0);
+-			   subform-&gt;load(query);
+-			} // end if
+-		    } // end if
+-		} // end for
+-	} // end if
+-    } // end for
+     return 0;
+ }
+ 
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007528.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007534.html">[BulmaGés] Bulmages adaptaciones a Venezuela
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7529">[ fecha ]</a>
+              <a href="thread.html#7529">[ hilo ]</a>
+              <a href="subject.html#7529">[ asunto ]</a>
+              <a href="author.html#7529">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

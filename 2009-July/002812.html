@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]mas build system
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fmas_build_system%3F%3D&In-Reply-To=%3C200907231103.33690.leo%40alaxarxa.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002811.html">
+   <LINK REL="Next"  HREF="002813.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]mas build system </H1>
+    <B>Leopold Palomo-Avellaneda</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fmas_build_system%3F%3D&In-Reply-To=%3C200907231103.33690.leo%40alaxarxa.net%3E"
+       TITLE="[BulmaGés]mas build system">leo en alaxarxa.net
+       </A><BR>
+    <I>Jue Jul 23 11:03:33 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002811.html">[BulmaGés]mas build system
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002813.html">[BulmaGés]mas build system
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2812">[ fecha ]</a>
+              <a href="thread.html#2812">[ hilo ]</a>
+              <a href="subject.html#2812">[ asunto ]</a>
+              <a href="author.html#2812">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>A Dijous 23 Juliol 2009, Pedro Lopez-Cabanillas va escriure:
+&gt;<i> On Wednesday, July 22, 2009, Leopold Palomo Avellaneda wrote:
+</I>&gt;<i> &gt; A Dimecres 22 Juliol 2009, Pedro Lopez-Cabanillas va escriure:
+</I>&gt;<i> &gt; &gt; Hola,
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Dos propuestas mas, para el build system. O sea: tocar los
+</I>&gt;<i> &gt; &gt; CMakeLists...
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; 1. Compilación 64 bits. Ya lo comenté hace un par de semanas: en
+</I>&gt;<i> &gt; &gt; algunas distros de 64 bits las bibliotecas van en lib64/ en vez de
+</I>&gt;<i> &gt; &gt; lib/. Me ofrezco para añadir soporte en el build system.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; explica-me tu idea por favor.
+</I>&gt;<i>
+</I>&gt;<i> Propongo una solución parecida a como lo hacen los scripts de KDE4. Dos
+</I>&gt;<i> partes, en primer lugar un search/replace masivo en todos los
+</I>&gt;<i> CMakeLists.txt, cambiando líneas como la siguiente:
+</I>&gt;<i>
+</I>&gt;<i> 	install_targets(/lib bulmalib)
+</I>&gt;<i> por:
+</I>&gt;<i> 	install(TARGETS bulmalib LIBRARY DESTINATION ${LIB_INSTALL_DIR})
+</I>
+OK.
+
+&gt;<i> Por otro lado, en el script del directorio raíz, definir una nueva variable
+</I>&gt;<i> LIB_SUFFIX que se podrá asignar por los empaquetadores o usuarios para
+</I>&gt;<i> ajustar la instalación a las convenciones de cada distro, inicializándola
+</I>&gt;<i> con &quot;&quot; en sistemas de 32 bits y con &quot;64&quot; en sistemas de 64 bits. Algo así:
+</I>&gt;<i>
+</I>&gt;<i> 	set(_Init_LIB_SUFFIX &quot;&quot;)
+</I>&gt;<i> 	IF(CMAKE_SIZEOF_VOID_P MATCHES &quot;8&quot;)
+</I>&gt;<i> 		set(_Init_LIB_SUFFIX &quot;64&quot;)
+</I>&gt;<i> 	ENDIF(CMAKE_SIZEOF_VOID_P MATCHES &quot;8&quot;)
+</I>&gt;<i>
+</I>&gt;<i> 	set(LIB_SUFFIX &quot;${_Init_LIB_SUFFIX}&quot; CACHE STRING &quot;suffix of lib directory
+</I>&gt;<i> name (32/64)&quot;)
+</I>&gt;<i>
+</I>&gt;<i> 	set(LIB_INSTALL_DIR &quot;lib${LIB_SUFFIX}&quot;)
+</I>&gt;<i>
+</I>&gt;<i> Es decir, en el momento de ejecutar la configuración, se podría hacer (por
+</I>&gt;<i> ejemplo):
+</I>&gt;<i>
+</I>&gt;<i> 	$ cmake .. -DLIB_SUFFIX=32
+</I>
+Si me pongo el sombrero de debian no me gusta mucho, pero es aceptable. En 
+debian, las de 64 se ponen donde tu dices, pero hay un link a lib, por lo que 
+siempre encuentras las cosas en el mismo sitio, sean de 32 o no. No entiendo 
+lo del 32 o 64 con el valor de la variable LIB_SUFFIX; más bien seria 
+o &quot;&quot;, &quot;64&quot; por qué tenéis un lib32 en maquinas habituales (32)? 
+Si te simplifica la vida, por mi adelante. El paquete debian se modifica muy 
+fácilmente para esto.
+
+
+&gt;<i> &gt; &gt; 2. La compilación de un proyecto grande como Bulmages tarda un
+</I>&gt;<i> &gt; &gt; mogollón. Se puede llegar a ahorrar alrededor de un 20%, usando
+</I>&gt;<i> &gt; &gt; &quot;precompiled headers&quot;, que están soportadas en GCC desde la versión
+</I>&gt;<i> &gt; &gt; 3.4. Ofrezco implementar dicho soporte en el build system.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; genial!!!!!
+</I>&gt;<i> &gt; hace tiempo que tenia ganas con esto, por lo que por mi adelante.
+</I>&gt;<i>
+</I>&gt;<i> En cuanto pueda me pongo.
+</I>
+Perfecto.
+
+Leo
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002811.html">[BulmaGés]mas build system
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002813.html">[BulmaGés]mas build system
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2812">[ fecha ]</a>
+              <a href="thread.html#2812">[ hilo ]</a>
+              <a href="subject.html#2812">[ asunto ]</a>
+              <a href="author.html#2812">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,389 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to release...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20release...&In-Reply-To=%3C20120530192630.68BB52C2F5%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007282.html">
+   <LINK REL="Next"  HREF="007284.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to release... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20release...&In-Reply-To=%3C20120530192630.68BB52C2F5%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to release...">no-reply en gitorious.org
+       </A><BR>
+    <I>Mie Mayo 30 21:26:30 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007282.html">[BulmaGés] 0.14 rc2
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007284.html">[BulmaGés] [Gitorious] Activity: tborras pushed 3	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7283">[ fecha ]</a>
+              <a href="thread.html#7283">[ hilo ]</a>
+              <a href="subject.html#7283">[ asunto ]</a>
+              <a href="author.html#7283">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 2 commits to release
+release changed from 59265d4 to 16a6e39
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/59265d40bbac4b375e80ccb298ee15ca1b76212d/diffs/16a6e39efc9988d9379dd90fa53579ed3209570a">https://gitorious.org/bulmages/bulmages/commit/59265d40bbac4b375e80ccb298ee15ca1b76212d/diffs/16a6e39efc9988d9379dd90fa53579ed3209570a</A>
+
+Diff: 
+
+commit 16a6e39efc9988d9379dd90fa53579ed3209570a
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Wed May 30 21:26:16 2012 +0200
+
+    Arreglo problema con el commit anterior
+
+diff --git a/bulmages/bulmasetup/functions.py b/bulmages/bulmasetup/functions.py
+index aaf9761..42f1f81 100644
+--- a/bulmages/bulmasetup/functions.py
++++ b/bulmages/bulmasetup/functions.py
+@@ -100,8 +100,7 @@ class multios():
+             return None
+ 
+     def correctFileName(self, filename):
+-        &quot;&quot;&quot; In old Windows Operating Systems can we have problems with filenames and spaces if whe 
+-        &quot;&quot;&quot; do not use &quot;
++        &quot;&quot;&quot; In old Windows Operating Systems can we have problems with filenames and spaces
+         &quot;&quot;&quot;
+         if os.name == 'nt':
+            filename = &quot;\&quot;&quot; + filename + &quot;\&quot;&quot;
+
+commit 84f38c52b64afbb4bad7041714144909dac43fbf
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Wed May 30 18:35:05 2012 +0200
+
+    Corrección a un error detectado hace unas horas:
+    
+    En WinXP al instalar la aplicacion en un directorio conteniendo espacios (&quot;Documents and Settings&quot;) la aplicacion
+    bulmasetup no instalaba bien las empresas sin dar explicacion.
+    
+    El problema era que no se encontraban los archivos de parches ya que los espacios eran considerados parametros de la linea
+    de comandos.
+    
+    La solucion propuesta en este parche es detectar el sistema operativo y en caso de ser Windows XP entrecomillar los  nombres de archivos
+    para que sean reconocidos como un unico parametro.
+
+diff --git a/bulmages/bulmasetup/contabilidad.in b/bulmages/bulmasetup/contabilidad.in
+index 1f56b43..a399f66 100644
+--- a/bulmages/bulmasetup/contabilidad.in
++++ b/bulmages/bulmasetup/contabilidad.in
+@@ -81,7 +81,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
+         os.chdir(gettempdir())
+         #Parcheamos todo lo que hay que parchear
+         for self.parche in self.revisiones:
+-            self.command = functions.psql + ' -t -f ' + plugins.pathdbparches + self.parche + ' ' + self.database  + functions.end_sql
++            self.command = functions.psql + ' -t -f ' + functions.multios().correctFileName(plugins.pathdbparches + self.parche) + ' ' + self.database  + functions.end_sql
+             self.writecommand(self.command)
+             self.process.start(self.command)
+             self.process.waitForFinished(-1)
+@@ -208,7 +208,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
+                         # lugar de comprobar la longitud del archivo.
+                         # Comprueba que el archivo existe.
+                         if (QFile.exists(plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text()) and self.mui_plugins.item(self.i,4).text().size() &gt; 3):
+-                            self.command = functions.psql + ' -t -f ' + plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text() + ' ' + self.database + functions.end_sql
++                            self.command = functions.psql + ' -t -f ' + functions.multios().correctFileName(plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text()) + ' ' + self.database + functions.end_sql
+                             self.writecommand(self.command)
+                             self.process.start(self.command)
+                             self.process.waitForFinished(-1)
+@@ -217,7 +217,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
+                             locale = QtCore.QLocale()
+                             self.filename = plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text().left(self.mui_plugins.item(self.i,4).text().size() - 4) + &quot;_&quot; + locale.name().left(5) + &quot;.sql&quot;
+                             if (QFile.exists(self.filename)):
+-                                self.command = functions.psql + ' -t -f ' + self.filename + ' ' + self.database + functions.end_sql
++                                self.command = functions.psql + ' -t -f ' + functions.multios().correctFileName(self.filename) + ' ' + self.database + functions.end_sql
+                                 self.writecommand(self.command)
+                                 self.process.start(self.command)
+                                 self.process.waitForFinished(-1)
+@@ -240,7 +240,7 @@ class Contabilidad(Ui_ModificarContabilidadBase, Empresa):
+                         # Si no esta chequeado hacemos un borrado del plugin
+                         if (QFile.exists(plugins.pathdbplugins + self.mui_plugins.item(self.i,9).text()) and self.mui_plugins.item(self.i,9).text().size() &gt; 3 ):
+                             # Aplicamos el parche  de borrado.
+-                            self.command = functions.psql + ' -t -f  ' + plugins.pathdbplugins + self.mui_plugins.item(self.i,9).text() +' '+ self.database + functions.end_sql
++                            self.command = functions.psql + ' -t -f  ' + functions.multios().correctFileName(plugins.pathdbplugins + self.mui_plugins.item(self.i,9).text()) +' '+ self.database + functions.end_sql
+                             self.writecommand(self.command)
+                             self.process.start(self.command)
+                             self.process.waitForFinished(-1)
+diff --git a/bulmages/bulmasetup/empresa.py b/bulmages/bulmasetup/empresa.py
+index ee9f390..7b70a39 100644
+--- a/bulmages/bulmasetup/empresa.py
++++ b/bulmages/bulmasetup/empresa.py
+@@ -130,7 +130,8 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
+             self.writecommand(QString(&quot;----&quot;) + self.database + QString(&quot;----&quot;))
+             self.subcomand = query
+             self.guardaQuery(self.subcomand)
+-            os.chdir('/tmp')
++            if os.name != 'nt':
++               os.chdir('/tmp')
+             self.command = functions.psql+' -t -f ' + gettempdir() + '/query.sql' + self.database + functions.end_sql
+             self.writecommand(self.command)
+             self.process.start(self.command)
+@@ -142,7 +143,8 @@ class Empresa(QtGui.QDialog, PluginsBulmaSetup):
+         if (self.database != ''):
+             self.subcomand = query
+             self.guardaQuery(self.subcomand)
+-            os.chdir('/tmp')
++            if os.name != 'nt':
++               os.chdir('/tmp')
+             self.command = functions.psql + ' -t -f ' + gettempdir() + '/query.sql template1' + functions.end_sql
+             self.process.start(self.command)
+             self.process.waitForFinished(-1)
+diff --git a/bulmages/bulmasetup/facturacion.in b/bulmages/bulmasetup/facturacion.in
+index b79015d..58bef4f 100644
+--- a/bulmages/bulmasetup/facturacion.in
++++ b/bulmages/bulmasetup/facturacion.in
+@@ -660,7 +660,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
+                         # En realidad deberia comprobarse si hay archivo para aplicarlo o no en
+                         # lugar de comprobar la longitud del archivo.
+                         if (QFile.exists(plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text()) and self.mui_plugins.item(self.i,4).text().size() &gt; 3 ):
+-                            self.command = functions.psql + ' -t -f  ' + plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text() +' '+ self.database + functions.end_sql
++                            self.command = functions.psql + ' -t -f  ' + functions.multios().correctFileName(plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text()) +' '+ self.database + functions.end_sql
+                             self.writecommand(self.command)
+                             self.process.start(self.command)
+                             self.process.waitForFinished(-1)
+@@ -670,7 +670,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
+                             self.filename = plugins.pathdbplugins + self.mui_plugins.item(self.i,4).text().left(self.mui_plugins.item(self.i,4).text().size()-4) + &quot;_&quot; + locale.name().left(5) + &quot;.sql&quot;
+                             print self.filename
+                             if (QFile.exists(self.filename)):
+-                                self.command = functions.psql + ' -t -f ' + self.filename + ' ' + self.database + functions.end_sql
++                                self.command = functions.psql + ' -t -f ' + functions.multios().correctFileName(self.filename) + ' ' + self.database + functions.end_sql
+                                 self.writecommand(self.command)
+                                 self.process.start(self.command)
+                                 self.process.waitForFinished(-1)
+@@ -693,7 +693,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
+                         # Si no esta chequeado hacemos un borrado del plugin
+                         if (QFile.exists(plugins.pathdbplugins + self.mui_plugins.item(self.i,9).text()) and self.mui_plugins.item(self.i,9).text().size() &gt; 3):
+                             # Aplicamos el parche  de borrado.
+-                            self.command = functions.psql + ' -t -f  ' + plugins.pathdbplugins + self.mui_plugins.item(self.i,9).text() +' '+ self.database + functions.end_sql
++                            self.command = functions.psql + ' -t -f  ' + functions.multios().correctFileName(plugins.pathdbplugins + self.mui_plugins.item(self.i,9).text()) +' '+ self.database + functions.end_sql
+                             self.writecommand(self.command)
+                             self.process.start(self.command)
+                             self.process.waitForFinished(-1)
+@@ -715,7 +715,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
+                         if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked):
+                             if (QFile.exists(plugins.pathdbplugins + self.mui_plugins1.item(self.i,4).text()) and self.mui_plugins1.item(self.i,4).text().size() &gt; 4):
+                                 self.writecommand(QtGui.QApplication.translate(&quot;Facturacion&quot;,'Actualizando ', None, QtGui.QApplication.UnicodeUTF8) + self.mui_plugins1.item(self.i,0).text())
+-                                self.command = functions.psql + ' -t -f  ' + plugins.pathdbplugins + self.mui_plugins1.item(self.i,4).text() +' '+ self.database + functions.end_sql
++                                self.command = functions.psql + ' -t -f  ' + functions.multios().correctFileName(plugins.pathdbplugins + self.mui_plugins1.item(self.i,4).text()) +' '+ self.database + functions.end_sql
+                                 self.writecommand(self.command)
+                                 self.process.start(self.command)
+                                 self.process.waitForFinished(-1)
+@@ -725,7 +725,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
+                                 self.filename = plugins.pathdbplugins + self.mui_plugins1.item(self.i,4).text().left(self.mui_plugins1.item(self.i,4).text().size() -4) + &quot;_&quot; + locale.name().left(5) + &quot;.sql&quot;
+                                 print self.filename
+                                 if (QFile.exists(self.filename)):
+-                                    self.command = functions.psql + ' -t -f ' + self.filename + ' ' + self.database + functions.end_sql
++                                    self.command = functions.psql + ' -t -f ' + functions.multios().correctFileName(self.filename) + ' ' + self.database + functions.end_sql
+                                     self.writecommand(self.command)
+                                     self.process.start(self.command)
+                                     self.process.waitForFinished(-1)
+@@ -748,7 +748,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
+                             # Si no esta chequeado hacemos un borrado del plugin
+                             if (QFile.exists(plugins.pathdbplugins + self.mui_plugins1.item(self.i,9).text()) and self.mui_plugins1.item(self.i,9).text().size() &gt; 3):
+                                 # Aplicamos el parche  de borrado.
+-                                self.command = functions.psql + ' -t -f  ' + plugins.pathdbplugins + self.mui_plugins1.item(self.i,9).text() +' '+ self.database + functions.end_sql
++                                self.command = functions.psql + ' -t -f  ' + functions.multios().correctFileName(plugins.pathdbplugins + self.mui_plugins1.item(self.i,9).text()) +' '+ self.database + functions.end_sql
+                                 self.writecommand(self.command)
+                                 self.process.start(self.command)
+                                 self.process.waitForFinished(-1)
+@@ -899,7 +899,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
+         # Aplicamos el parche de bulmatpv
+         if (self.mui_soporteTPV.isChecked()):
+             #self.command = functions.as_postgres + 'psql ' + self.database + ' &lt; '+ plugins.pathdbbulmatpv+'bulmatpv_schema.sql&quot;' + functions.end_sql
+-            self.command = functions.psql + ' -t -f ' + plugins.pathdbbulmatpv+'bulmatpv_schema.sql ' + self.database + functions.end_sql
++            self.command = functions.psql + ' -t -f ' + functions.multios().correctFileName(plugins.pathdbbulmatpv+'bulmatpv_schema.sql') + ' ' + self.database + functions.end_sql
+             self.writecommand(self.command)
+             self.process.start(self.command)
+             self.process.waitForFinished(-1)
+@@ -908,7 +908,7 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
+         self.revisiones = [&quot;revf-0.5.9.sql&quot;,&quot;revf-0.9.1.sql&quot;, &quot;revf-0.9.3.sql&quot;, &quot;revf-0.10.sql&quot;, &quot;revf-0.11.sql&quot;, &quot;revf-0.12.sql&quot;, &quot;revf-0.13.sql&quot;, &quot;revf-0.14.sql&quot;]
+         #Parcheamos todo lo que hay que parchear
+         for self.parche in self.revisiones:
+-            self.command = functions.psql + ' -t -f  ' + plugins.pathdbparches + self.parche + ' ' + self.database + functions.end_sql
++            self.command = functions.psql + ' -t -f  ' + functions.multios().correctFileName(plugins.pathdbparches + self.parche) + ' ' + self.database + functions.end_sql
+             self.writecommand(self.command)
+             self.process.start(self.command)
+             self.process.waitForFinished(-1)
+diff --git a/bulmages/bulmasetup/functions.py b/bulmages/bulmasetup/functions.py
+index 7e5e755..aaf9761 100644
+--- a/bulmages/bulmasetup/functions.py
++++ b/bulmages/bulmasetup/functions.py
+@@ -98,9 +98,19 @@ class multios():
+             return True
+         except:
+             return None
++
++    def correctFileName(self, filename):
++        &quot;&quot;&quot; In old Windows Operating Systems can we have problems with filenames and spaces if whe 
++        &quot;&quot;&quot; do not use &quot;
++        &quot;&quot;&quot;
++        if os.name == 'nt':
++           filename = &quot;\&quot;&quot; + filename + &quot;\&quot;&quot;
++        return filename
++
+           
+ # Su only exists on posix systems
+ if os.name == 'posix':
++    # LINUX - UNIX
+     as_postgres = 'su postgres -c \&quot;'
+     as_postgres2 = &quot;su postgres -c \'&quot;
+     end_sql = '\&quot;'
+@@ -110,7 +120,20 @@ if os.name == 'posix':
+     pg_dump = multios().search_executable(&quot;pg_dump&quot;)
+     createdb = as_postgres + &quot;createdb&quot; + ' -E UNICODE '
+     createuser = as_postgres + &quot;createuser&quot;
++elif os.name=='nt':
++    #Win XP
++    as_postgres = ''
++    as_postgres2 = as_postgres
++    end_sql = ''
++    end_sql2 = end_sql
++    psql = &quot;\&quot;&quot; + os.getcwd().replace(&quot;bulmasetup&quot;,&quot;pgsql\\bin\\psql.exe&quot;) + &quot;\&quot;&quot;
++    print psql
++    psql2 = &quot;\&quot;&quot; + os.getcwd().replace(&quot;bulmasetup&quot;,&quot;pgsql\\bin\\psql.exe&quot;)  + &quot;\&quot;&quot;
++    pg_dump = &quot;\&quot;&quot; + os.getcwd().replace(&quot;bulmasetup&quot;,&quot;pgsql\\bin\\pg_dump.exe&quot;)  + &quot;\&quot;&quot;
++    createdb = &quot;\&quot;&quot; + os.getcwd().replace(&quot;bulmasetup&quot;,&quot;pgsql\\bin\\createdb.exe&quot;) +&quot;\&quot;&quot; + &quot; &quot;
++    createuser = &quot;\&quot;&quot; + os.getcwd().replace(&quot;bulmasetup&quot;,&quot;pgsql\\bin\\createuser.exe&quot;) + &quot;\&quot;&quot; + &quot; &quot;
+ else:
++    # Other Windows
+     as_postgres = ''
+     as_postgres2 = as_postgres
+     end_sql = ''
+diff --git a/bulmages/bulmasetup/modificarfacturacion.in b/bulmages/bulmasetup/modificarfacturacion.in
+index 640281d..62862fc 100644
+--- a/bulmages/bulmasetup/modificarfacturacion.in
++++ b/bulmages/bulmasetup/modificarfacturacion.in
+@@ -87,7 +87,7 @@ class ModificarFacturacion( Facturacion):
+         # Aplicamos el parche de bulmatpv si es necesario
+         if (self.mui_soporteTPV.isChecked()):
+             #self.command = functions.psql +' ' + self.database + ' &lt; '+ plugins.pathdbbulmatpv+'bulmatpv_schema.sql' + functions.end_sql
+-            self.command = functions.psql + ' -t -f ' + plugins.pathdbbulmatpv+'bulmatpv_schema.sql ' + self.database + functions.end_sql
++            self.command = functions.psql + ' -t -f ' + functions.multios().correctFileName(plugins.pathdbbulmatpv+'bulmatpv_schema.sql') + ' ' + self.database + functions.end_sql
+             self.writecommand(self.command)
+             self.process.start(self.command)
+             self.process.waitForFinished(-1)
+diff --git a/bulmages/bulmasetup/nuevacontabilidad.py b/bulmages/bulmasetup/nuevacontabilidad.py
+index f200494..9c05d0b 100644
+--- a/bulmages/bulmasetup/nuevacontabilidad.py
++++ b/bulmages/bulmasetup/nuevacontabilidad.py
+@@ -52,13 +52,13 @@ class NuevaContabilidad(Contabilidad):
+         self.process.waitForFinished(-1)
+ 
+         # Cargamos la esquematica de la base de datos
+-        self.command = functions.psql + ' ' + ' -f '+ plugins.pathdbbulmacont +'bulmacont_schema.sql ' + self.nomdb + functions.end_sql
++        self.command = functions.psql + ' ' + ' -f '+ functions.multios().correctFileName(plugins.pathdbbulmacont +'bulmacont_schema.sql') + ' ' + self.nomdb + functions.end_sql
+         self.writecommand(self.command)
+         self.process.start(self.command)
+         self.process.waitForFinished(-1)
+ 
+         # Cargamos los datos minimos
+-        self.command = functions.psql + ' ' + ' -f '+ plugins.pathdbbulmacont +'t_configuracion_data.sql ' + self.nomdb + functions.end_sql
++        self.command = functions.psql + ' ' + ' -f '+ functions.multios().correctFileName(plugins.pathdbbulmacont +'t_configuracion_data.sql') + ' ' + self.nomdb + functions.end_sql
+         self.writecommand(self.command)
+         self.process.start(self.command)
+         self.process.waitForFinished(-1)
+diff --git a/bulmages/bulmasetup/nuevafacturacion.py b/bulmages/bulmasetup/nuevafacturacion.py
+index 22adbef..f0b98d1 100644
+--- a/bulmages/bulmasetup/nuevafacturacion.py
++++ b/bulmages/bulmasetup/nuevafacturacion.py
+@@ -51,20 +51,20 @@ class NuevaFacturacion(Facturacion):
+         self.process.waitForFinished(-1)
+ 
+         # Cargamos la esquematica de la base de datos
+-        self.command = functions.psql + ' ' + ' -f '+ plugins.pathdbbulmafact +'bulmafact_schema.sql ' + self.database + functions.end_sql
++        self.command = functions.psql + ' ' + ' -f '+ functions.multios().correctFileName(plugins.pathdbbulmafact +'bulmafact_schema.sql')+ ' ' + self.database + functions.end_sql
+         self.writecommand(self.command)
+         self.process.start(self.command)
+         self.process.waitForFinished(-1)
+ 
+         # Cargamos los datos minimos
+-        self.command = functions.psql + ' ' + ' -f ' + plugins.pathdbbulmafact + 'bulmafact_data.sql ' + self.database + functions.end_sql
++        self.command = functions.psql + ' ' + ' -f ' + functions.multios().correctFileName(plugins.pathdbbulmafact + 'bulmafact_data.sql') + ' ' + self.database + functions.end_sql
+         self.writecommand(self.command)
+         self.process.start(self.command)
+         self.process.waitForFinished(-1)
+ 
+         # Aplicamos el parche de bulmatpv si es necesario
+         if (self.mui_soporteTPV.isChecked()):
+-            self.command = functions.psql + ' ' + ' -f ' + plugins.pathdbbulmatpv + 'bulmatpv_schema.sql ' + self.database + functions.end_sql
++            self.command = functions.psql + ' ' + ' -f ' + functions.multios().correctFileName(plugins.pathdbbulmatpv + 'bulmatpv_schema.sql') + ' ' + self.database + functions.end_sql
+             self.writecommand(self.command)
+             self.process.start(self.command)
+             self.process.waitForFinished(-1)
+diff --git a/bulmages/bulmasetup/restbackup.in b/bulmages/bulmasetup/restbackup.in
+index 81591ea..1706cf0 100644
+--- a/bulmages/bulmasetup/restbackup.in
++++ b/bulmages/bulmasetup/restbackup.in
+@@ -39,13 +39,13 @@ class RestBackup(QtGui.QDialog, Ui_RestBackupBase):
+ 
+         # Cargamos la esquematica de la base de datos
+         if (os.path.exists( plugins.configfiles + self.database + &quot;.sql&quot;)):
+-	    self.command = functions.psql + ' -f ' + plugins.configfiles + self.database + '.sql ' + self.nomdb + functions.end_sql
++	    self.command = functions.psql + ' -f ' + functions.multios().correctFileName(plugins.configfiles + self.database + '.sql') + ' ' + self.nomdb + functions.end_sql
+ 	    self.proceso.start(self.command)
+ 	    self.proceso.waitForFinished(-1)
+ 	    # Borramos el sql recien extraido en @BULMAGES_CONFIG_DIR@, ya que se conserva una copia dentro del backup
+ 	    os.remove(str(plugins.configfiles + self.database + '.sql'))
+ 	elif (os.path.exists (plugins.configfiles + &quot;etc/&quot; + self.database + &quot;.sql&quot;)):
+-	    self.command = functions.psql + ' -f ' + plugins.configfiles + &quot;etc/&quot; +  self.database + '.sql ' + self.nomdb + functions.end_sql
++	    self.command = functions.psql + ' -f ' + functions.multios().correctFileName(plugins.configfiles + &quot;etc/&quot; +  self.database + '.sql') + ' ' + self.nomdb + functions.end_sql
+ 	    self.proceso.start(self.command)
+ 	    self.proceso.waitForFinished(-1)
+ 	    # Borramos el sql recien extraido en @BULMAGES_CONFIG_DIR@, ya que se conserva una copia dentro del backup
+@@ -57,7 +57,7 @@ class RestBackup(QtGui.QDialog, Ui_RestBackupBase):
+ 	    if (os.path.exists(plugins.configfiles + &quot;etc/bulmatpv_&quot; + self.database + '.conf')):
+ 		os.rename(str(plugins.configfiles + &quot;etc/bulmatpv_&quot; + self.database + '.conf'), plugins.configfiles + &quot;bulmatpv_&quot; + self.database + &quot;.conf&quot;)
+ 	elif (os.path.exists (plugins.configfiles + &quot;etc/bulmages/&quot; + self.database + &quot;.sql&quot;)):
+-	    self.command = functions.psql + ' -f ' + plugins.configfiles + &quot;etc/bulmages/&quot; +  self.database + '.sql ' + self.nomdb + functions.end_sql
++	    self.command = functions.psql + ' -f ' + functions.multios().correctFileName(plugins.configfiles + &quot;etc/bulmages/&quot; +  self.database + '.sql') + ' ' + self.nomdb + functions.end_sql
+ 	    self.proceso.start(self.command)
+ 	    self.proceso.waitForFinished(-1)
+ 	    # Borramos el sql recien extraido en @BULMAGES_CONFIG_DIR@, ya que se conserva una copia dentro del backup
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007282.html">[BulmaGés] 0.14 rc2
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007284.html">[BulmaGés] [Gitorious] Activity: tborras pushed 3	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7283">[ fecha ]</a>
+              <a href="thread.html#7283">[ hilo ]</a>
+              <a href="subject.html#7283">[ asunto ]</a>
+              <a href="author.html#7283">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Nou informe de referencies d'un client
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FNou_informe_de_refere%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fncies_d%3D27un_client%3F%3D&In-Reply-To=%3C4971E877.1050907%40todo-redes.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000811.html">
+   <LINK REL="Next"  HREF="000855.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Nou informe de referencies d'un client </H1>
+    <B>Fco. Javier M. C.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FNou_informe_de_refere%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fncies_d%3D27un_client%3F%3D&In-Reply-To=%3C4971E877.1050907%40todo-redes.com%3E"
+       TITLE="[BulmaGés]Nou informe de referencies d'un client">fcojavmc en todo-redes.com
+       </A><BR>
+    <I>Sab Ene 17 15:17:27 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000811.html">[BulmaGés] Nou informe de referencies d'un client
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000855.html">[BulmaGés]Nou informe de referencies d'un client
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#815">[ fecha ]</a>
+              <a href="thread.html#815">[ hilo ]</a>
+              <a href="subject.html#815">[ asunto ]</a>
+              <a href="author.html#815">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola.
+
+Pots crear una nova branca al SVN perque fasis feina allá i quan estigui 
+llest per intergrar-ho ho fas.
+
+Salut.
+
+
+Xavi Drudis Ferran escribió:
+&gt;<i> On Mon, Jan 05, 2009 at 11:54:58PM +0100, Xavi Drudis Ferran wrote:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Jo tinc pendent de fer (si algú sap que ja estigui fet que avisi, si us plau), 
+</I>&gt;&gt;<i> algun llistat que vagi per client. Com si fos agafar la línia de totals 
+</I>&gt;&gt;<i> de cada informe de referència de totes les referències d'un client i posar-les
+</I>&gt;&gt;<i> juntes, sense el detall d'articles. I al final sumar-les.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> Com que ningú va dir que estigués fet ho he fet. Ara tinc un bulmafact que quan 
+</I>&gt;<i> apretes el botó d'imprimir informe a la fitxa de client surt un llistat amb les
+</I>&gt;<i> quatres dades de contacte del client i una llista de les referències que tenen
+</I>&gt;<i> algun document del client (document=pressupost, comanda, albarà, factura o cobrament) 
+</I>&gt;<i>
+</I>&gt;<i> Per a cada referència mostra vàries columnes:
+</I>&gt;<i>
+</I>&gt;<i> Referència
+</I>&gt;<i> Pressupostat
+</I>&gt;<i> Demanat 
+</I>&gt;<i> Lliurat
+</I>&gt;<i> Facturat
+</I>&gt;<i> Cobrat        (cobraments amb previsio=fals)
+</I>&gt;<i> Previst Cobrar (cobraments amb previsio=cert)
+</I>&gt;<i> Pendent    (facturat - cobrat amb previsio=fals)
+</I>&gt;<i>
+</I>&gt;<i> A cada cel·la d'aquesta taula treu:  
+</I>&gt;<i>
+</I>&gt;<i> Import total de la referència
+</I>&gt;<i> Import total dels documents del client (només si és diferent de l'anterior, que m'imagino que 
+</I>&gt;<i> no acostuma a passar, però ves a saber)
+</I>&gt;<i> Rang de dates dels documents corresponents
+</I>&gt;<i> Número de documents (excepte quan és 1) 
+</I>&gt;<i>
+</I>&gt;<i> I a la fila de baix ho suma tot. 
+</I>&gt;<i>
+</I>&gt;<i> Pots triar treure només referències amb pendent&lt;&gt;0,0 
+</I>&gt;<i> o totes. Si tries totes es pot donar un filtre per rang de dates .
+</I>&gt;<i>
+</I>&gt;<i> Per a fer-ho he modificat els llistats de ficha.cpp, on interpreta
+</I>&gt;<i> &lt;!--IFACE...--&gt;. Tal com estava era molt útil, però només podies
+</I>&gt;<i> agafar dades de QLineEdits, i jo en volia agafar de QCalendarWidget,
+</I>&gt;<i> radio buttons i checkboxes (i qualsevol altre widget un altre dia).
+</I>&gt;<i> Ara es mira una propietat del formulari que dissenyes. Al Qt Designer
+</I>&gt;<i> 4 has de picar al Dialog (al widget primer del .ui), anar a l'editor
+</I>&gt;<i> de propietats, i amb el botó + afegir una propietat dinàmica de nom
+</I>&gt;<i> exportaRML i tipus StringList i allà poses una entrada per cada
+</I>&gt;<i> propietat que vulguis &quot;exportar&quot;. Per exemple, si poses
+</I>&gt;<i>
+</I>&gt;<i> pendientes.checked
+</I>&gt;<i> desde.selectedDate 
+</I>&gt;<i>
+</I>&gt;<i> doncs al .rml pots posar [pendientes.checked] i t'ho substitueix pel
+</I>&gt;<i> valor de la propietat checked del widget que sigui fill del dialog i
+</I>&gt;<i> tingui d'objectName 'pendientes' (o, si no existeix, del que hi tingui
+</I>&gt;<i> 'mui_pendientes'), o el mateix per a [desde.selectedDate] si tens un
+</I>&gt;<i> calendari que es digui 'desde'. Li he posat que si poses a.b.c.d
+</I>&gt;<i> busqui la propietat d del fill c del fill b del fill a del dialog,
+</I>&gt;<i> però no estic segur de si farà falta mai i no ho he provat (potser
+</I>&gt;<i> serviria per agafar només l'any del QCalendarWidget ? ) . No he posat
+</I>&gt;<i> tipus, tot ho agafa com un QVariant i li fa un toString(). Per canviar
+</I>&gt;<i> el format de data, per exemple, he hagut d'usar SQL al RML. No he
+</I>&gt;<i> posat accés indexat per propietats de widgets de tipus llista o
+</I>&gt;<i> similars perquè es complicava massa. I haver de posar el ExportaRML al
+</I>&gt;<i> .ui és una mica murga, però no se m'ha acudit cap manera millor. Si
+</I>&gt;<i> exportava automàticament totes les propietats de tots els widgets em
+</I>&gt;<i> sembla que contaminaria massa l'espai de noms, n'hi pot haver un munt
+</I>&gt;<i> en un diàleg petit, i la inmmensa majoria gens interessants des del
+</I>&gt;<i> rml, i els widgets no tenen tots una mateixa propietat value o
+</I>&gt;<i> userInput o alguna cosa així que puguis agafar, són propietats de nom
+</I>&gt;<i> i tipus diferent a cada widget, així que m'ha semblat que era millor
+</I>&gt;<i> patir la incomoditat d'haver de declarar les propietats que exportes
+</I>&gt;<i> al RML.
+</I>&gt;<i>
+</I>&gt;<i> Els LineEdits encara es poden accedir amb la sintaxi anterior.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Ara els inconvenients que fan que no ho pugi al svn : 
+</I>&gt;<i>
+</I>&gt;<i> - Estic estabilitzant una versió per a producció per a ma germana i he partit 
+</I>&gt;<i> de la versió 2867, crec (svnversion a trunk/bulmages diu 2867:2872M ) .
+</I>&gt;<i> No tinc tots els canvis de treure-ho tot a fora amb plugins de factures, 
+</I>&gt;<i> albarans, etc. I no tinc previst tornar a trunk en unes setmanes.
+</I>&gt;<i>
+</I>&gt;<i> - Ho he integrat matusserament. M'he carregat l'informe de client que
+</I>&gt;<i> hi havia abans, que mostrava totals de vendes per article i no sé què
+</I>&gt;<i> més. Ma germana no el feia servir i per a ella ja està bé, però no és
+</I>&gt;<i> la millor manera de compartir-ho. No sé si s'hauria de fer un plugin
+</I>&gt;<i> per tan poca cosa, o algun condicional al codi que faci una cosa o una
+</I>&gt;<i> altra segons la plantilla .rml que trobi, o què.
+</I>&gt;<i>
+</I>&gt;<i> - No segueix les normes de bulmages per a internacionalització. Els 
+</I>&gt;<i> textos estan en català directament. Hi ha textos al .ui i al .rml, 
+</I>&gt;<i> en aquest sovint per dins del SQL. 
+</I>&gt;<i>
+</I>&gt;<i> - No he aconseguit posar widgets propis de bulmages al .ui (com 
+</I>&gt;<i> ara un buscador de client). Tampoc m'hi he matat molt, però estaria bé.
+</I>&gt;<i>
+</I>&gt;<i> - l'SQL del rml és una mica llarg. Potser hi ha millors maneres de fer-ho
+</I>&gt;<i> (especialment fent-lo menys general).
+</I>&gt;<i>
+</I>&gt;<i> Total, que ho deixo així i ara no ho pujo. Si ho pujo serà d'aquí un
+</I>&gt;<i> temps (dos mesos ? ).  Però si algú vol fer la feina que falta per
+</I>&gt;<i> integrar-ho bé i tal, si vol li passo el .ui, el .rml i un pedaç del
+</I>&gt;<i> codi des de la meva svn BASE
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+-- 
+Fco. Javier M. C.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000811.html">[BulmaGés] Nou informe de referencies d'un client
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000855.html">[BulmaGés]Nou informe de referencies d'un client
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#815">[ fecha ]</a>
+              <a href="thread.html#815">[ hilo ]</a>
+              <a href="subject.html#815">[ asunto ]</a>
+              <a href="author.html#815">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

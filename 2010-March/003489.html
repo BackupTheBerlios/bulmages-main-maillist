@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Mantener el mismo registro activo tras recargar un listado
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FMantener_el_mismo_reg%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fistro_activo_tras_recargar_un_listado%3F%3D&In-Reply-To=%3C201003091050.07455.auryn%40wanadoo.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003491.html">
+   <LINK REL="Next"  HREF="003490.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Mantener el mismo registro activo tras recargar un listado </H1>
+    <B>Aron</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FMantener_el_mismo_reg%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fistro_activo_tras_recargar_un_listado%3F%3D&In-Reply-To=%3C201003091050.07455.auryn%40wanadoo.es%3E"
+       TITLE="[BulmaGés]Mantener el mismo registro activo tras recargar un listado">auryn en wanadoo.es
+       </A><BR>
+    <I>Mar Mar  9 10:50:07 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003491.html">[BulmaGés]Mantener el mismo registro activo tras recargar un listado
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003490.html">[BulmaGés]Mantener el mismo registro activo tras recargar un listado
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3489">[ fecha ]</a>
+              <a href="thread.html#3489">[ hilo ]</a>
+              <a href="subject.html#3489">[ asunto ]</a>
+              <a href="author.html#3489">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Mando mejor el código como adjunto.
+-- 
+
+------------ próxima parte ------------
+void BlSubForm::cargar ( QString query )
+{
+    _depura ( &quot;BlSubForm::cargar&quot;, 0 );
+    /// Si el query no existe no hacemos nada.
+    if ( query == &quot;&quot; ) {
+        _depura ( &quot;BlSubForm::cargar&quot;, 0, &quot;Query inexistente&quot; );
+        return;
+    } // end if
+
+    try {
+
+        /// Guardar los valores necesarios para poder mantener la posici&oaucte;n en la lista tras realizar un cambio o borrado
+        int prev_col = -1; /// Columna activa antes de ejecutar la recarga
+        int prev_row = -1; /// Fila activa antes de ejecutar la recarga
+        QString prev_row_id; /// Identificador que había en dicha fila
+        QString prev_prev_row_id; /// Identificador que había en la fila anterior a la activa
+        QString next_prev_row_id; /// Identificador que había en la fila posterior a la activa
+
+        if ( rowCount() &gt; 0 )
+        {
+            prev_row = currentRow();
+            prev_col = currentColumn();
+
+            if ( prev_row &gt; 0 ) {
+                prev_prev_row_id = dbValue(dbFieldId(), prev_row - 1);
+            } // end if
+
+            if (prev_row &lt;rowCount()) {
+                prev_row_id = dbValue(dbFieldId());
+            } // end if
+
+            if (prev_row &lt; rowCount() - 1) {
+                next_prev_row_id =dbValue(dbFieldId(), prev_row + 1);
+            } // end if
+        } // end if
+        /// Fin de Guardar los valores necesarios para poder mantener la posici&oaucte;n en la lista tras realizar un cambio o borrado
+
+        m_query = query;
+        /// Tratramos con la paginacion.
+        int limit = mui_filaspagina-&gt;text().toInt();
+        if ( limit &lt;= 0 ) {
+            limit = 500;
+        } // end if
+
+        int pagact = mui_paginaact-&gt;text().toInt();
+        if ( pagact &lt;= 0 ) {
+            pagact = 1;
+        } // end if
+        int offset = limit * ( pagact - 1 );
+
+        BlDbRecordSet *cur = mainCompany() -&gt;loadQuery ( query, &quot;&quot;, limit, offset );
+
+        if (!cur) throw -1;
+
+        cargar ( cur );
+        delete cur;
+
+        /// Restaurar la posición anterior a la carga si es posible
+        int fila_futura = -1;
+
+        // Al modificar se queda igual, pero al borrar una fila, la siguiente ocupa su mismo lugar
+        if ( ( prev_row &lt; rowCount() )
+        &amp;&amp; ( ( !prev_row_id.isEmpty() &amp;&amp; dbValue ( dbFieldId(), prev_row ) == prev_row_id )
+             || ( !next_prev_row_id.isEmpty() &amp;&amp; dbValue ( dbFieldId(), prev_row ) == next_prev_row_id ) ) ) {
+           fila_futura = prev_row;
+        }
+
+        // Si no hay siguiente fila, usar la que tuviera antes
+        else if ( !prev_prev_row_id.isEmpty() &amp;&amp; dbValue ( dbFieldId(), rowCount() - 1 ) == prev_prev_row_id ) {
+           fila_futura = rowCount() - 1;
+        } // end if
+
+        if ( fila_futura &gt; -1 )
+        {
+            mui_list-&gt;setCurrentCell ( fila_futura, prev_col ) ;
+            mui_list-&gt;scrollToItem ( mui_list-&gt;currentItem(), QAbstractItemView::PositionAtCenter ) ;
+        }
+        /// Fin de Restaurar la posición anterior a la carga si es posible
+
+    } catch ( ... ) {
+        _depura ( &quot;BlSubForm::cargar&quot;, 2, &quot;Error en la carga de datos&quot; );
+    } // end try
+    _depura ( &quot;END BlSubForm::cargar&quot;, 0 );
+}
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003491.html">[BulmaGés]Mantener el mismo registro activo tras recargar un listado
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003490.html">[BulmaGés]Mantener el mismo registro activo tras recargar un listado
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3489">[ fecha ]</a>
+              <a href="thread.html#3489">[ hilo ]</a>
+              <a href="subject.html#3489">[ asunto ]</a>
+              <a href="author.html#3489">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

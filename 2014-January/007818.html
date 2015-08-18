@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Dudas sobre repositorios y versiones
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FDudas_sobre_repositor%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fios_y_versiones%3F%3D&In-Reply-To=%3CCAJWqEtfM_F-B1t7M1H3pKaqeRkxxj1Muinbrh8u7ih-BuUpdRw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007817.html">
+   <LINK REL="Next"  HREF="007819.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Dudas sobre repositorios y versiones </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FDudas_sobre_repositor%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fios_y_versiones%3F%3D&In-Reply-To=%3CCAJWqEtfM_F-B1t7M1H3pKaqeRkxxj1Muinbrh8u7ih-BuUpdRw%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]Dudas sobre repositorios y versiones">tborras en gmail.com
+       </A><BR>
+    <I>Mar Ene  7 23:15:57 CET 2014</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007817.html">[BulmaGés] Dudas sobre repositorios y versiones
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007819.html">[BulmaGés]Dudas sobre repositorios y versiones
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7818">[ fecha ]</a>
+              <a href="thread.html#7818">[ hilo ]</a>
+              <a href="subject.html#7818">[ asunto ]</a>
+              <a href="author.html#7818">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Buenas
+
+No me extraña que tengas un oceano de dudas. A mi también me surgen muchas.
+Pero intentaré aclararte un poco como es la teoría y que es la práctica:
+
+Desarrollo principal en rama master. Supuestamente aqui se incorporan los
+desarrollos que fructifican.
+
+Cada release lleva su numero de versión. release13 release14 release15 y
+contiene el código exacto que se usa en esa versión en concreto.
+
+La rama release se usa para realizar los trabajos de liberalización (se
+mete el master en la rama release (es decir que se congela el master), se
+quita todo lo experimental (limpieza), se ponen los textos correctos y
+numero de versión y se hacen pruebas de estabilidad sobre esta rama) Cuando
+se considera que se puede liberar se pasa esta rama a la rama con su numero
+de version (release15 es la última) luego si hay bugs se podran corregir
+fácilmente. La diferencia fundamental es que cuando se vaya a liberar la
+release16 entonces la rama release ya no será igual que la release15.
+
+Hay ramas que son para temas concretos que luego se juntan con la master o
+se descartan. Por ejemplo la rama QT5 corresponde al trabajo que hizo
+Daniel con la migración a QT5. No la fusionamos de forma ortodoxa con la
+master ya que a mi en Ubuntu no me compilaban bien los cambios realizados
+asi que lo versioné para que compilase en Ubuntu. La rama aun esta alli
+porque igual aun se esta usando (yo no).
+
+Como bien dices la única rama con qt5 en estos momentos es la rama master
+que, por cierto, no consigo compilarla ya que los últimos cambios la
+dejaron bastante tocada. De momento ando haciendo cambios en mi clon y
+seguramente, cuando me desperece, le haga una revisión profunda.
+
+La release15 de Windows es exactamente esta:
+
+<A HREF="https://gitorious.org/bulmages/tborrass-bulmages/source/2cde0c8b66c2b65e5c1236593d7ac2fa3fa941ba">https://gitorious.org/bulmages/tborrass-bulmages/source/2cde0c8b66c2b65e5c1236593d7ac2fa3fa941ba</A>
+:<i>
+</I>
+Y el instalador (script de NSIS):
+
+<A HREF="https://gitorious.org/bulmages-extra/tborrass-nsis_bulmages/source/6c8ea6feeddf0d0a873682a337593e20e7d0a9dd">https://gitorious.org/bulmages-extra/tborrass-nsis_bulmages/source/6c8ea6feeddf0d0a873682a337593e20e7d0a9dd</A>
+:<i>
+</I>
+
+Con esto y un poco de pacienca no es difícil construir el instalador para
+Windows. Aunque tampoco es trivial porque tienes que hacer una instalación
+usando como directorio base ../ y así todas las ubicaciones se vuelven
+relativas y algunos rollos adicionales.
+
+
+Sobre psycopg2, lo verás en empresa.py (que hace la conexión). Las demás
+clases utilizan el método execQuery para trabajar con la base de datos.
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en Neo</A>:~/bulmages/bulmages/bulmasetup$ rgrep psycopg *
+editarusuario.py:import psycopg2
+eliminarempresa.in:import psycopg2
+eliminarusuario.py:import psycopg2
+empresa.py:import psycopg2
+empresa.py:            conn = psycopg2.connect(&quot;dbname='template1'
+user='root' password='password'&quot;)
+empresa.py:            conn = psycopg2.connect(&quot;dbname='template1'
+user='root' password='password'&quot;)
+empresa.py:            self.conn = psycopg2.connect(&quot;dbname='&quot; + db + &quot;'
+user='root'&quot; + &quot;password='password'&quot;)
+empresa.py:            self.conn = psycopg2.connect(&quot;dbname='&quot; + db + &quot;'
+user='root'&quot; + &quot;password='password'&quot;)
+guardarbackup.in:import psycopg2
+modificarusuario.py:import psycopg2
+nuevousuario.py:import psycopg2
+
+
+¿Se debería quitar el import de las otras partes?.
+
+Seguramente.
+
+
+Salut
+
+
+
+El 7 de enero de 2014, 18:46, &quot;Manuel G. Antón Villamil&quot; &lt;
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">mgvillamil en wanadoo.es</A>&gt; escribió:
+
+&gt;<i>  Muy buenas a todos:
+</I>&gt;<i>
+</I>&gt;<i> Sigo explorando el programa y mi mar de dudas se va convirtiendo en
+</I>&gt;<i> océano. Es evidente que el motivo fundamental son mis grandes limitaciones,
+</I>&gt;<i> entre otras otras muchas cosas, en materia terminológica, por lo que os
+</I>&gt;<i> ruego infinita paciencia y os pido disculpas por anticipado por las más que
+</I>&gt;<i> probables meteduras de pata.
+</I>&gt;<i>
+</I>&gt;<i> De los repositorios que hay en gitorious, ¿cuál es la diferencia
+</I>&gt;<i> fundamental entre release y release15?
+</I>&gt;<i>
+</I>&gt;<i> A partir de anteriores comentarios, entiendo que Qt5 sólo se está
+</I>&gt;<i> utilizando en el &quot;master&quot;. No obstante, veo que también hay uno denominado
+</I>&gt;<i> como QT5.
+</I>&gt;<i>
+</I>&gt;<i> Siguiendo la nomenclarura anterior, la release15 equivale a una nueva
+</I>&gt;<i> versión 0.15 o, como me da la impresión, sigue siendo la antigua 0.14.
+</I>&gt;<i>
+</I>&gt;<i> ¿Con cuál de los repositorios estaría más relacionado el instalador para
+</I>&gt;<i> Windows bulmages-1_5.exe?
+</I>&gt;<i>
+</I>&gt;<i> Otra cuestión diferente. Observo que en varios módulos de bulmasetup se
+</I>&gt;<i> importa psycopg2, entre ellos, en &quot;editarusuario&quot;, pero en el análisis del
+</I>&gt;<i> texto no encuentro en donde se utiliza. De hecho, si lo desconecto, el
+</I>&gt;<i> programa sigue funcionando sin problemas. ¿Que es lo que se me escapa?
+</I>&gt;<i>
+</I>&gt;<i> Un saludo.
+</I>&gt;<i>
+</I>&gt;<i> Manuel G. Antón Villamil.
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20140107/36c6d79f/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20140107/36c6d79f/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007817.html">[BulmaGés] Dudas sobre repositorios y versiones
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007819.html">[BulmaGés]Dudas sobre repositorios y versiones
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7818">[ fecha ]</a>
+              <a href="thread.html#7818">[ hilo ]</a>
+              <a href="subject.html#7818">[ asunto ]</a>
+              <a href="author.html#7818">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

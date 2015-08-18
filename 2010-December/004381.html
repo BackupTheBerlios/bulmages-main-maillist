@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Bug #17771] Plugins Associacions:	junta directiva
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2317771%5D%20Plugins%20Associacions%3A%0A%09junta%20directiva&In-Reply-To=%3C201012202347.oBKNlSB2012089%40unicorn.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="004380.html">
+   <LINK REL="Next"  HREF="004382.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Bug #17771] Plugins Associacions:	junta directiva </H1>
+    <B>admin en berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2317771%5D%20Plugins%20Associacions%3A%0A%09junta%20directiva&In-Reply-To=%3C201012202347.oBKNlSB2012089%40unicorn.berlios.de%3E"
+       TITLE="[BulmaGés] [Bug #17771] Plugins Associacions:	junta directiva">admin en berlios.de
+       </A><BR>
+    <I>Mar Dic 21 00:47:28 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="004380.html">[BulmaGés] [Bug #17773] Plugins associacions:	part. comptables
+</A></li>
+        <LI>Próximo mensaje: <A HREF="004382.html">[BulmaGés] r4131 - in	trunk/bulmages/bulmafact/plugins: pluginbf_asociacion pluginbf_tutor
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4381">[ fecha ]</a>
+              <a href="thread.html#4381">[ hilo ]</a>
+              <a href="subject.html#4381">[ asunto ]</a>
+              <a href="author.html#4381">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bug #17771, was updated on 2010-Dec-05 12:42
+Here is a current snapshot of the bug.
+
+Project: BulmaGes, Gestión Empresarial Libre
+Category: None
+Status: Closed
+Resolution: Fixed
+Bug Group: None
+Priority: 5
+Submitted by: wgarcia
+Assigned to : tborras
+Summary: Plugins Associacions: junta directiva
+
+Details: Sembla que l'entrada de membres de la junta directiva no funciona. 
+
+Passos per reproduir:
+
+1) Cliqueu en junta directiva
+
+2) Cliqueu en nova junta directiva
+
+3) Entreu data de constitució i &quot;cessió&quot; (em sembla que hauria de ser &quot;cessació&quot;). 
+
+4) Cliqueu en membres
+
+5) Intenteu afegir nou membre
+
+6) Deseu: el nou membre desapareix.
+
+A més no és possible entrar més d'un membre, no deixa crear més registres. 
+
+Follow-Ups:
+
+Date: 2010-Dec-21 00:47
+By: tborras
+
+Comment:
+Hi ha una funcionalitat que tal volta desconeixeu.
+
+Si feis amb el botó dret sobre el subformulari o feu ver menu de subformulario trobareu les opcions de cercar tutor on es pot seleccionar el tutor per al subformulari de forma bastant mes eficient.
+
+Precisament, si no fos així, per evitar el problema de tutors amb el mateix nom i llinatges ahuriem de fer obligatori el camp NIF.
+
+-------------------------------------------------------
+
+Date: 2010-Dec-07 09:42
+By: wgarcia
+
+Comment:
+Un altre comentari: 
+
+En quant s'entra el primer nom del soci (que ha d'existir, perquè sinó el camp no es desa), apareix automàticament un nou registre a sota, cosa que penso que tampoc es correcte, o la funcionalitat és que aparegui un registre buit i si no s'entra res no queda creat?
+-------------------------------------------------------
+
+Date: 2010-Dec-07 09:38
+By: wgarcia
+
+Comment:
+Ja tenia aquests camps visibles, penso que el problema el tenia en entrar &quot;Soci&quot;. Ara jugant una mica més m'he adonat que s'ha d'entrar el primer nom del soci (no deixa entrar els cognoms). Un cop entrat el primer nom es veu com 
+
+Jordi.-
+
+axií, amb &quot;.-&quot; al final, i un cop es passa al següent camp aquests dos símbols finals desapareixen i queda sols el primer nom. No sé que passa si hi ha dos socis amb el mateix primer nom, i en tot cas no sembla correcte que s'hagi d'identificar el soci sols pel primer nom, hauria de ser cognoms i nom, com en altres camps semblants d'altres formularis. 
+-------------------------------------------------------
+
+Date: 2010-Dec-07 09:06
+By: tborras
+
+Comment:
+Per emplenar els integrants d'una associació s'han de omplir tots els camps
+d'un ambans de introduir el següent.
+
+Els camps requerits son 
+
+data alta
+data baixa
+membre
+carrec
+
+Segurament el que passa es que no tens tots els camps visibles.
+
+Per fer-los visibles has de triar la configuració del subformulari (botó dret a sobre del subformulari) i et sortirà el cuadre de &quot;Columnas visibles&quot; aqui has de triar:
+
+Fecha posesion
+Fecha cese
+Socio
+Cargo
+
+per poder-los veurer.
+
+Una volta introduits tots els camps d'un dels membres sortirá l'espai per el següent membre.
+-------------------------------------------------------
+
+For detailed info, follow this link:
+<A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=17771&amp;group_id=4472">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=17771&amp;group_id=4472</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="004380.html">[BulmaGés] [Bug #17773] Plugins associacions:	part. comptables
+</A></li>
+	<LI>Próximo mensaje: <A HREF="004382.html">[BulmaGés] r4131 - in	trunk/bulmages/bulmafact/plugins: pluginbf_asociacion pluginbf_tutor
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4381">[ fecha ]</a>
+              <a href="thread.html#4381">[ hilo ]</a>
+              <a href="subject.html#4381">[ asunto ]</a>
+              <a href="author.html#4381">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

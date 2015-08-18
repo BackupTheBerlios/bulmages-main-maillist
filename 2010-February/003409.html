@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Mantener el mismo registro activo tras recargar un listado
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FMantener_el_mismo_reg%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fistro_activo_tras_recargar_un_listado%3F%3D&In-Reply-To=%3C4B73152F.6050900%40todo-redes.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003408.html">
+   <LINK REL="Next"  HREF="003411.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Mantener el mismo registro activo tras recargar un listado </H1>
+    <B>Fco. Javier M. C.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FMantener_el_mismo_reg%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fistro_activo_tras_recargar_un_listado%3F%3D&In-Reply-To=%3C4B73152F.6050900%40todo-redes.com%3E"
+       TITLE="[BulmaGés]Mantener el mismo registro activo tras recargar un listado">fcojavmc en todo-redes.com
+       </A><BR>
+    <I>Mie Feb 10 21:21:03 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003408.html">[BulmaGés] Mantener el mismo registro activo tras	recargar un listado
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003411.html">[BulmaGés] r3753 - in trunk/bulmages:	bulmafact/plugins bulmafact/plugins/pluginbf_cliente	bulmafact/plugins/pluginbf_clientealbaran	bulmafact/plugins/pluginbf_clientefactura	bulmafact/plugins/pluginbf_clientepedido	bulmafact/plugins/pluginbf_clientepresupuesto	installbulmages/bgtrml2pdf
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3409">[ fecha ]</a>
+              <a href="thread.html#3409">[ hilo ]</a>
+              <a href="subject.html#3409">[ asunto ]</a>
+              <a href="author.html#3409">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>El 10/02/10 16:51, Aron escribió:
+&gt;<i> Estaría bien que tras recargar un listado se mantuviera activa la misma celda 
+</I>&gt;<i> que hubiera antes seleccionada (a no ser que se haya borrada).
+</I>&gt;<i>
+</I>&gt;<i> Es que ahora, cuando la lista se recarga, vuelve al principio sin ninguna fila 
+</I>&gt;<i> seleccionada.
+</I>&gt;<i>
+</I>&gt;<i> Cuando más molesta esto es al modificar una ficha (con CONF_REFRESH_LIST 
+</I>&gt;<i> habilitado) o al borrar un registro.
+</I>&gt;<i>
+</I>&gt;<i> Igual se podría hacer en BlSubForm::cargar() algo restaure la celda si existe 
+</I>&gt;<i> todavía.
+</I>&gt;<i>
+</I>&gt;<i> Tras cargar, podría ejecutarse algo así:
+</I>&gt;<i> mui_list-&gt;mui_list-&gt;setCurrentCell(previous_row, previous_col);
+</I>&gt;<i> mui_list-&gt;mui_list-&gt;scrollToItem(mui_list-&gt;mui_list-&gt;currentItem(), 
+</I>&gt;<i> QAbstractItemView::PositionAtTop);
+</I>&gt;<i>
+</I>&gt;<i> El problema también es que al actualizar puede cambiar el orden o filtrado... 
+</I>&gt;<i> igual se complicaría demasiado.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Saludos
+</I>&gt;<i>   
+</I>
+Algo parecido se implementó hace tiempo y se tuvo que descatar porque no
+funcionaba bien en según que circunstancias. Pero siempre se puede
+repensar el tema.
+
+Un saludo.
+
+-- 
+Javier.
+TODO-REDES
+<A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+C/Begònia 12 - 07010 Palma de Mallorca.
+Tel.: 971499071
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003408.html">[BulmaGés] Mantener el mismo registro activo tras	recargar un listado
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003411.html">[BulmaGés] r3753 - in trunk/bulmages:	bulmafact/plugins bulmafact/plugins/pluginbf_cliente	bulmafact/plugins/pluginbf_clientealbaran	bulmafact/plugins/pluginbf_clientefactura	bulmafact/plugins/pluginbf_clientepedido	bulmafact/plugins/pluginbf_clientepresupuesto	installbulmages/bgtrml2pdf
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3409">[ fecha ]</a>
+              <a href="thread.html#3409">[ hilo ]</a>
+              <a href="subject.html#3409">[ asunto ]</a>
+              <a href="author.html#3409">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

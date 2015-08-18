@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]BulmaGes en el CD oficial de Ubuntu.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FBulmaGes_en_el_CD_ofi%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fcial_de_Ubuntu%3D2E%3F%3D&In-Reply-To=%3CAANLkTikyHNnwiOZ76u2cKoRbS30Apvzxhi2v1J0ACXvA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="004510.html">
+   <LINK REL="Next"  HREF="004519.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]BulmaGes en el CD oficial de Ubuntu. </H1>
+    <B>Iker Salmón San Millán</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FBulmaGes_en_el_CD_ofi%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fcial_de_Ubuntu%3D2E%3F%3D&In-Reply-To=%3CAANLkTikyHNnwiOZ76u2cKoRbS30Apvzxhi2v1J0ACXvA%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]BulmaGes en el CD oficial de Ubuntu.">shaola en esdebian.org
+       </A><BR>
+    <I>Sab Ene 22 19:32:39 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="004510.html">[BulmaGés]BulmaGes en el CD oficial de Ubuntu.
+</A></li>
+        <LI>Próximo mensaje: <A HREF="004519.html">[BulmaGés]BulmaGes en el CD oficial de Ubuntu.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4517">[ fecha ]</a>
+              <a href="thread.html#4517">[ hilo ]</a>
+              <a href="subject.html#4517">[ asunto ]</a>
+              <a href="author.html#4517">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>La mejor forma de conseguir que bulmages esté en ubuntu, no en el cd
+principal  (de eso olvidaros porque están quitando cosas por problemas de
+espacio,  si han quitado gimp y aptitude...) pero si en el dvd o en los
+repositorios oficiales, es subiendo un paquete a debian.  Yo hace poco
+conseguí un sponsor y subí el paquete wicd-kde y en menos de 4 dias ya
+estaba en los repositorios universe de natty:
+
+<A HREF="http://packages.ubuntu.com/natty/wicd-kde">http://packages.ubuntu.com/natty/wicd-kde</A>
+
+Los paquetes saltan casi automáticamente de debian main a ubuntu universe y
+lo hacen desde unstable. Si no lo hiciera, siempre se puede crear además un
+repositorio en launchpad aunque ese no es el objetivo original.
+
+Como algunos sabréis, yo me puse con la tarea de empaquetarlo, pero
+circunstancias personales me han tenido apartado del tema. Sin embargo gran
+parte del trabajo ya está hecha porque me lo dejaron bastante fácil y solo
+faltan de pulir detalles y adaptarse a ciertos estándares que han cambiado
+en debian.
+
+Mi interés personal con bulmages era por que poseo un restaurante y además
+tengo un par de ideas para un par de plugins que no he tenido tiempo de
+comentar.  Ese interés (dirigido) se ha diluido por circunstancias
+personales y la crisis que puede que me obligue a cerrar el local, sin
+embargo es un proyecto que me parece genial y del cual me siento orgulloso
+de formar parte (por muy poco que contribuya con el) así que en cuanto mi
+familia y yo superemos el trago que nos toca pasar volveré a sumergirme en
+la tarea del empaquetado aunque solo sea por el placer de hacerlo.
+
+Si alguien está interesado en echar una mano se puede suscribir a
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">bulmages-pkg-debian en lists.berlios.de</A> o bien contactar conmigo directamente,
+estaré encantado de ponerle al día y compartir mis escasos conocimientos
+sobre el empaquetado y los estándares de debian actuales.  Por el momento lo
+más complicado (o al menos lo que más dificultades me estaba causando en su
+dia) es saber separar los archivos en los diferentes paquetes.  En concreto
+en lo concerniente a aquellas instalaciones en las que el servidor de la
+base de datos no se encuentra en el mismo equipo que el cliente, es decir
+los archivos de bulmages-servers-admin (si es que al final es posible esa
+separacion de los paquetes)
+
+Aquí podéis encontrar algo de información sobre el tema de separación de los
+paquetes propuesta y así confirmar la viavilidad del mismo.
+
+<A HREF="https://lists.berlios.de/pipermail/bulmages-main/2010-June/003653.html">https://lists.berlios.de/pipermail/bulmages-main/2010-June/003653.html</A>
+
+Creo recordar que lo que dejé hecho ya es un paquete que se construye sin
+errores (aunque si con un monton de warnings del lintian) y solo había que
+modificar el listado de archivos de cada paquete para empezar a hacer
+pruebas.
+
+Un saludo a todos.
+
+Iker
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20110122/8a939da8/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20110122/8a939da8/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="004510.html">[BulmaGés]BulmaGes en el CD oficial de Ubuntu.
+</A></li>
+	<LI>Próximo mensaje: <A HREF="004519.html">[BulmaGés]BulmaGes en el CD oficial de Ubuntu.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4517">[ fecha ]</a>
+              <a href="thread.html#4517">[ hilo ]</a>
+              <a href="subject.html#4517">[ asunto ]</a>
+              <a href="author.html#4517">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

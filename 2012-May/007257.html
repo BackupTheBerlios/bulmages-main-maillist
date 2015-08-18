@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Cambios para funcionar en FreeBSD
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FCambios_para_funciona%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fr_en_FreeBSD%3F%3D&In-Reply-To=%3CCAJWqEteJRiuVDi3mL%2BeM8Gz89PHNF53i%2B725Q6XZPH-jiiuswg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007252.html">
+   <LINK REL="Next"  HREF="007258.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Cambios para funcionar en FreeBSD </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FCambios_para_funciona%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fr_en_FreeBSD%3F%3D&In-Reply-To=%3CCAJWqEteJRiuVDi3mL%2BeM8Gz89PHNF53i%2B725Q6XZPH-jiiuswg%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]Cambios para funcionar en FreeBSD">tborras en conetxia.com
+       </A><BR>
+    <I>Lun Mayo 21 19:58:58 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007252.html">[BulmaGés]Cambios para funcionar en FreeBSD
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007258.html">[BulmaGés]Cambios para funcionar en FreeBSD
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7257">[ fecha ]</a>
+              <a href="thread.html#7257">[ hilo ]</a>
+              <a href="subject.html#7257">[ asunto ]</a>
+              <a href="author.html#7257">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Buenas
+
+Ha ido bien que no lo metieras en la release.
+
+No hay problemas con versiones recientes de cmake, pero en cmake's antiguos
+no esta incluido el CMakeParseArguments , con lo que da un error de CMake y
+deja de compilar.
+
+Igual no estaría mal hacer una distincion de casos estableciendo el
+PYTHON_EXECUTABLE a mano en caso de no existir el archivo.
+
+Algo así como :
+
+115&lt;<A HREF="https://software.lanl.gov/MeshTools/trac/browser/cmake/modules/CMakeParseArguments.cmake#L115">https://software.lanl.gov/MeshTools/trac/browser/cmake/modules/CMakeParseArguments.cmake#L115</A>&gt;
+if(__CMAKE_PARSE_ARGUMENTS_INCLUDED)116&lt;<A HREF="https://software.lanl.gov/MeshTools/trac/browser/cmake/modules/CMakeParseArguments.cmake#L116">https://software.lanl.gov/MeshTools/trac/browser/cmake/modules/CMakeParseArguments.cmake#L116</A>&gt;
++include(${CMAKE_CURRENT_LIST_DIR}/FindPackageHandleStandardArgs.cmake)
++FIND_PACKAGE_HANDLE_STANDARD_ARGS(PythonInterp REQUIRED_VARS
+PYTHON_EXECUTABLE VERSION_VAR PYTHON_VERSION_STRING)
+
+else
+set YPYTHON_EXECUTABLE ....)
+117&lt;<A HREF="https://software.lanl.gov/MeshTools/trac/browser/cmake/modules/CMakeParseArguments.cmake#L117">https://software.lanl.gov/MeshTools/trac/browser/cmake/modules/CMakeParseArguments.cmake#L117</A>&gt;
+endif()
+
+
+Salut
+
+
+El 21 de mayo de 2012 01:48, Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">dripoll.public at gmail.com</A>&gt;escribió:
+
+&gt;<i>  Hola,
+</I>&gt;<i> Ok, pues al master que lo envio.
+</I>&gt;<i> ¿Cada cuanto tenemos pensado lanzar release? Lo suyo sería hacerlas
+</I>&gt;<i> regulares como las distribuciones, y de esta manera con suerte si
+</I>&gt;<i> conseguimos hacer paquetes, poder colocarla en las distribuciones.
+</I>&gt;<i>
+</I>&gt;<i> Al 21/05/12 01:03, En/na Tomeu Borras ha escrit:
+</I>&gt;<i>
+</I>&gt;<i> Hola Daniel
+</I>&gt;<i>
+</I>&gt;<i> En el master no hay problema en ponerlo, el cambio es claro.
+</I>&gt;<i>
+</I>&gt;<i> En la release yo no lo pondría ya que realmente no es el arreglo de un bug
+</I>&gt;<i> (funcionamiento en FreeBSD). Y ya está congelada la entrada de nuevas
+</I>&gt;<i> features.
+</I>&gt;<i>
+</I>&gt;<i> Tampoco pasa nada, en la próxima entrará, espero que no tardemos 2 años.
+</I>&gt;<i>
+</I>&gt;<i> Se que seguramente no se rompería nada (en eso estamos deacuerdo), pero
+</I>&gt;<i> quien puede asegurarlo 100%. Además así ya tenemos una buena característica
+</I>&gt;<i> para la 0.15
+</I>&gt;<i>
+</I>&gt;<i> Salut
+</I>&gt;<i>
+</I>&gt;<i> El 21 de mayo de 2012 00:07, Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">dripoll.public at gmail.com</A>&gt;escribió:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Hola gente,
+</I>&gt;&gt;<i> Un amigo mio ha empezado a implementar BulmaGes en su negocio, pero se
+</I>&gt;&gt;<i> vio con el pequeño problema de que no podia compilarlo bajo FreeBSD, que es
+</I>&gt;&gt;<i> el sistema con el que funcionan sus ordenadores, tras pelearme un rato y
+</I>&gt;&gt;<i> analizar los errores identifiqué que el problema simplemente estaba en que
+</I>&gt;&gt;<i> saltaba error al intentar compilar el archivo bulmages.qrc, que contenia
+</I>&gt;&gt;<i> dos archivos con espacios en los nombres.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Ha sido eliminar los espacios y compilar.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Al ejecutarse me encontré con otros problemas, relacionados nuevamente
+</I>&gt;&gt;<i> con rutas, esta vez de python, los cuales solucione usando el modulo de
+</I>&gt;&gt;<i> CMake FindPythonInterpr y FindPackageHandleStandardArgs.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> En mi fork personal de gitorious he realizado una serie de commits
+</I>&gt;&gt;<i> solucionando este problema, podéis verlos aquí:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> <A HREF="https://gitorious.org/~themeph/bulmages/themephs-bulmages/commit/1b5cf91f11c45e166234ddf838e18200b818cc51">https://gitorious.org/~themeph/bulmages/themephs-bulmages/commit/1b5cf91f11c45e166234ddf838e18200b818cc51</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> <A HREF="https://gitorious.org/~themeph/bulmages/themephs-bulmages/commit/886d221ab8678326dc7e5ca79dc3ef2b4b625e0e">https://gitorious.org/~themeph/bulmages/themephs-bulmages/commit/886d221ab8678326dc7e5ca79dc3ef2b4b625e0e</A>
+</I>&gt;&gt;<i> (este segundo arregla un fallo del primero)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> <A HREF="https://gitorious.org/~themeph/bulmages/themephs-bulmages/commit/b74b01b408c442cb3f67025f877fd57e4a7e7061">https://gitorious.org/~themeph/bulmages/themephs-bulmages/commit/b74b01b408c442cb3f67025f877fd57e4a7e7061</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Si me dais vía libre pasaré a incorporarlos en el master principal, y
+</I>&gt;&gt;<i> creo que también deberían ser incluidos en la release.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Saludos,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> --
+</I>&gt;&gt;<i> Daniel Ripoll Osma
+</I>&gt;&gt;<i> <A HREF="http://danielripoll.es">http://danielripoll.es</A>
+</I>&gt;&gt;<i> 6688.27.4.90
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Web&amp;  Desktop Developer
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Bulmages-main mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Tomeu Borrás
+</I>&gt;<i> Conetxia Soluciones Informáticas
+</I>&gt;<i> 902 88 11 66 - 677 77 44 76
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">listBulmages-main at lists.berlios.dehttps</A>://lists.berlios.de/mailman/listinfo/bulmages-main
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Daniel Ripoll <A HREF="Osmahttp://danielripoll.es">Osmahttp://danielripoll.es</A>
+</I>&gt;<i> 6688.27.4.90
+</I>&gt;<i>
+</I>&gt;<i> Web &amp; Desktop Developer
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>
+
+
+-- 
+Tomeu Borrás
+Conetxia Soluciones Informáticas
+902 88 11 66 - 677 77 44 76
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20120521/ffe95674/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20120521/ffe95674/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007252.html">[BulmaGés]Cambios para funcionar en FreeBSD
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007258.html">[BulmaGés]Cambios para funcionar en FreeBSD
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7257">[ fecha ]</a>
+              <a href="thread.html#7257">[ hilo ]</a>
+              <a href="subject.html#7257">[ asunto ]</a>
+              <a href="author.html#7257">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

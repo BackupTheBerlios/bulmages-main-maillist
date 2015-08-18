@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] Codigo rojo que aparece en bulmasetup cuando creo empresas de fact y cont
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Codigo%20rojo%20que%20aparece%20en%20bulmasetup%0A%20cuando%20creo%20empresas%20de%20fact%20y%20cont&In-Reply-To=%3C20121115133517.24d34030%40namir.ctr.unican.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007356.html">
+   <LINK REL="Next"  HREF="007359.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] Codigo rojo que aparece en bulmasetup cuando creo empresas de fact y cont </H1>
+    <B>Miguel Telleria de Esteban</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Codigo%20rojo%20que%20aparece%20en%20bulmasetup%0A%20cuando%20creo%20empresas%20de%20fact%20y%20cont&In-Reply-To=%3C20121115133517.24d34030%40namir.ctr.unican.es%3E"
+       TITLE="[BulmaGés] Codigo rojo que aparece en bulmasetup cuando creo empresas de fact y cont">miguel en mtelleria.com
+       </A><BR>
+    <I>Jue Nov 15 13:35:17 CET 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007356.html">[BulmaGés] [Gitorious] Activity: tborras pushed 3	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007359.html">[BulmaGés] backporteo de bulmages a Debian	Squeeze: con qt 4.6 hemos topado
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7358">[ fecha ]</a>
+              <a href="thread.html#7358">[ hilo ]</a>
+              <a href="subject.html#7358">[ asunto ]</a>
+              <a href="author.html#7358">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Siguiendo con mi aventura de &quot;compilar y empaquetar la versión
+bleeding-age de bulmages&quot; os comento dos trazas de error mostradas en
+la consola de bulmasetup cuando creo 2 empresas.
+
+Estoy utilizando la versión de bulmages correspondiente al commit:
+
+<A HREF="https://gitorious.org/bulmages/bulmages/commit/f5b2810a64eb24e0986b5e0d8a42a5003ada083a">https://gitorious.org/bulmages/bulmages/commit/f5b2810a64eb24e0986b5e0d8a42a5003ada083a</A>
+
+Al crear una empresa de FACTURACION (con facturación genérica y
+utilidades genéricas) obtengo el siguiente código de error:
+
+----8&lt; Error al crear FACTURACION -------------------------------------
+
+su postgres -c &quot;/usr/bin/psql -t
+-f /usr/share/bulmages/dbmodels/plugins/pluginbf_datosbase_es_ES.sql
+chispasfactdb&quot;
+
+Started.
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE DATOS BASE
+*********&quot; &quot;:: Establecemos los mensajes minimos a avisos y otros
+parametros ... &quot; &quot;:: &quot;SET SET BEGIN CREATE FUNCTION 
+CREATE FUNCTION 
+CREATE FUNCTION 
+error:
+psql:/usr/share/bulmages/dbmodels/plugins/pluginbf_datosbase_es_ES.sql:229:
+&quot;Agregamos los datos de inicializacion.&quot; ROLLBACK error: ERROR: llave
+duplicada viola restricciÃ³n de unicidad
+Â«tasa_iva_idtipo_iva_fechatasa_iva_keyÂ» DETALLE: Ya existe la llave
+(idtipo_iva, fechatasa_iva)=(3, 2010-07-01). CONTEXTO: sentencia SQL:
+Â«INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva,
+porcentretasa_iva) VALUES (bs.idtipo_iva, 10, '01/07/2010', 1.4)Â»
+PL/pgSQL function &quot;aux&quot; line 30 at sentencia SQL
+psql:/usr/share/bulmages/dbmodels/plugins/pluginbf_datosbase_es_ES.sql:230:
+ERROR: transacciÃ³n abortada, las Ã³rdenes serÃ¡n ignoradas hasta el
+fin de bloque de transacciÃ³n
+psql:/usr/share/bulmages/dbmodels/plugins/pluginbf_datosbase_es_ES.sql:237:
+ERROR: transacciÃ³n abortada, las Ã³rdenes serÃ¡n ignoradas hasta el
+fin de bloque de transacciÃ³n
+psql:/usr/share/bulmages/dbmodels/plugins/pluginbf_datosbase_es_ES.sql:238:
+ERROR: transacciÃ³n abortada, las Ã³rdenes serÃ¡n ignoradas hasta el
+fin de bloque de transacciÃ³n Done.
+
+----&gt;8 Error al crear FACTURACION -------------------------------------
+
+
+En cuanto a las empresas de CONTABILIDAD obtengo lo siguiente:
+
+----8&lt; Error al crear CONTABILIDAD -------------------------------------
+
+su postgres -c &quot;/usr/bin/psql
+-f /usr/share/bulmages/dbmodels/crear/bulmacont/t_configuracion_data.sql
+chispascontdb&quot;
+
+Started.
+error: /usr/share/bulmages/dbmodels/crear/bulmacont/t_configuracion_data.sql:
+No existe el fichero o el directorio Done.
+
+----&gt;8 Error al crear CONTABILIDAD -------------------------------------
+
+Respecto a este último error de contabilidad, certifico que el único
+fichero presente en share/bulmages/dbmodels/crear/bulmacont es:
+
+	bulmacont_schema.sql
+
+Saludos,
+
+	Miguel
+
+
+
+-- 
+
+      (O-O)
+---oOO-(_)-OOo-----------------------------------------------------
+ Miguel TELLERIA DE ESTEBAN               <A HREF="http://www.mtelleria.com">http://www.mtelleria.com</A>
+ Email: miguel at mtelleria.com           Tel GSM:  +34 650 801098
+                                          Tel Fix:  +34 942 280174
+
+ Miembro de <A HREF="http://www.linuca.org">http://www.linuca.org</A>    Membre du <A HREF="http://www.bxlug.be">http://www.bxlug.be</A>
+ ¿Usuario captivo o libre?    <A HREF="http://www.obtengalinux.org/windows/">http://www.obtengalinux.org/windows/</A>
+ Free or  captive user?        <A HREF="http://www.getgnulinux.org/windows/">http://www.getgnulinux.org/windows/</A>
+-------------------------------------------------------------------
+
+------------ próxima parte ------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 198 bytes
+Desc: no disponible
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20121115/5adc4753/attachment.pgp">https://lists.berlios.de/pipermail/bulmages-main/attachments/20121115/5adc4753/attachment.pgp</A>&gt;
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007356.html">[BulmaGés] [Gitorious] Activity: tborras pushed 3	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007359.html">[BulmaGés] backporteo de bulmages a Debian	Squeeze: con qt 4.6 hemos topado
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7358">[ fecha ]</a>
+              <a href="thread.html#7358">[ hilo ]</a>
+              <a href="subject.html#7358">[ asunto ]</a>
+              <a href="author.html#7358">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

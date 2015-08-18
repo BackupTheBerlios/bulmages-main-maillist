@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Compilant sota cygwin
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FCompilant_sota_cygwin%3F%3D&In-Reply-To=%3C4C59CB88.80203%40todo-redes.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003880.html">
+   <LINK REL="Next"  HREF="003884.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Compilant sota cygwin </H1>
+    <B>Fco. Javier M. C.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FCompilant_sota_cygwin%3F%3D&In-Reply-To=%3C4C59CB88.80203%40todo-redes.com%3E"
+       TITLE="[BulmaGés]Compilant sota cygwin">fcojavmc en todo-redes.com
+       </A><BR>
+    <I>Mie Ago  4 22:20:24 CEST 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003880.html">[BulmaGés]Compilant sota cygwin
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003884.html">[BulmaGés]Compilant sota cygwin
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3879">[ fecha ]</a>
+              <a href="thread.html#3879">[ hilo ]</a>
+              <a href="subject.html#3879">[ asunto ]</a>
+              <a href="author.html#3879">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola.
+
+¿Has probado a desactivar gettext desde ccmake antes de compilar?
+
+
+
+El 04/08/10 19:42, Walter Garcia-Fontes escribió:
+&gt;<i> Estoy intentando compilar el bulmages bajo cygwin. La compilación peta
+</I>&gt;<i> en las librerías relacionadas con la internacionalización, a pesar de
+</I>&gt;<i> que cygwin permite instalar todos los elementos necesarios. La
+</I>&gt;<i> detección parece correcta, este es el resultado del &quot;cmake ../&quot; en el
+</I>&gt;<i> directorio &quot;build&quot;:
+</I>&gt;<i>
+</I>&gt;<i> $ cmake ../
+</I>&gt;<i> -- The C compiler identification is GNU
+</I>&gt;<i> -- The CXX compiler identification is GNU
+</I>&gt;<i> -- Check for working C compiler: /usr/bin/gcc.exe
+</I>&gt;<i> -- Check for working C compiler: /usr/bin/gcc.exe -- works
+</I>&gt;<i> -- Detecting C compiler ABI info
+</I>&gt;<i> -- Detecting C compiler ABI info - done
+</I>&gt;<i> -- Check for working CXX compiler: /usr/bin/c++.exe
+</I>&gt;<i> -- Check for working CXX compiler: /usr/bin/c++.exe -- works
+</I>&gt;<i> -- Detecting CXX compiler ABI info
+</I>&gt;<i> -- Detecting CXX compiler ABI info - done
+</I>&gt;<i> -- Using cmake version 2.6
+</I>&gt;<i> -- Looking for Q_WS_X11
+</I>&gt;<i> -- Looking for Q_WS_X11 - found
+</I>&gt;<i> -- Looking for Q_WS_WIN
+</I>&gt;<i> -- Looking for Q_WS_WIN - not found.
+</I>&gt;<i> -- Looking for Q_WS_QWS
+</I>&gt;<i> -- Looking for Q_WS_QWS - not found.
+</I>&gt;<i> -- Looking for Q_WS_MAC
+</I>&gt;<i> -- Looking for Q_WS_MAC - not found.
+</I>&gt;<i> -- Found Qt-Version 4.5.3
+</I>&gt;<i> -- Found OpenSSL: /lib/libssl.dll.a
+</I>&gt;<i> -- Found PostgreSQL pg_config: /usr/bin/pg_config.exe
+</I>&gt;<i> -- Found PostgreSQL includedir: /usr/include
+</I>&gt;<i> -- Found PostgreSQL library: /usr/bin/cygpq.dll
+</I>&gt;<i> -- Found PostgreSQL binary utils dir: /usr/bin
+</I>&gt;<i> -- Looking for include files HAVE_LIBINTL_H
+</I>&gt;<i> -- Looking for include files HAVE_LIBINTL_H - found
+</I>&gt;<i> -- Looking for dgettext
+</I>&gt;<i> -- Looking for dgettext - not found
+</I>&gt;<i> -- Looking for dgettext in /lib/libintl.dll.a
+</I>&gt;<i> -- Looking for dgettext in /lib/libintl.dll.a - found
+</I>&gt;<i> -- Found Gettext: in /lib/libintl.dll.a
+</I>&gt;<i> -- Working on bulmalib
+</I>&gt;<i> -- Working on bulmacont
+</I>&gt;<i> -- Working on bulmafact
+</I>&gt;<i> -- Working on bulmages
+</I>&gt;<i> -- Working on bulmatpv
+</I>&gt;<i> -- Working on bulmasetup
+</I>&gt;<i> -- Working on installbulmages
+</I>&gt;<i> -- Working on documentation
+</I>&gt;<i> -- Configuring done
+</I>&gt;<i> -- Generating done
+</I>&gt;<i> -- Build files have been written to: /home/wgarcia/bulmages/build
+</I>&gt;<i>
+</I>&gt;<i> Como se puede ver &quot;gettext&quot; se detecta en libintl.dll.a. Sin embargo
+</I>&gt;<i> después la compilación peta con &quot;undefined reference to
+</I>&gt;<i> _libintl_gettext&quot; en el siguiente paso:
+</I>&gt;<i>
+</I>&gt;<i> Linking CXX shared library cygbulmalib-0.12.0.dll
+</I>&gt;<i> Creating library file: libbulmalib.dll.a
+</I>&gt;<i> CMakeFiles/bulmalib.dir/blconfiguration.o:blconfiguration.cpp:(.text+0x6785):
+</I>&gt;<i> undefined reference to `_libintl_bindtextdomain'
+</I>&gt;<i> CMakeFiles/bulmalib.dir/blconfiguration.o:blconfiguration.cpp:(.text+0x6811):
+</I>&gt;<i> undefined reference to `_libintl_textdomain'
+</I>&gt;<i> CMakeFiles/bulmalib.dir/bli18n.o:bli18n.cpp:(.text+0x29): undefined
+</I>&gt;<i> reference to `_libintl_dgettext'
+</I>&gt;<i> CMakeFiles/bulmalib.dir/bli18n.o:bli18n.cpp:(.text+0x3c3): undefined
+</I>&gt;<i> reference to `_libintl_dgettext'
+</I>&gt;<i> CMakeFiles/bulmalib.dir/bli18n.o:bli18n.cpp:(.text+0x43a): undefined
+</I>&gt;<i> reference to `_libintl_gettext'
+</I>&gt;<i> CMakeFiles/bulmalib.dir/bli18n.o:bli18n.cpp:(.text+0x468): undefined
+</I>&gt;<i> reference to `_libintl_textdomain'
+</I>&gt;<i> CMakeFiles/bulmalib.dir/bli18n.o:bli18n.cpp:(.text+0x7d6): undefined
+</I>&gt;<i> reference to `_libintl_gettext'
+</I>&gt;<i> collect2: ld returned 1 exit status
+</I>&gt;<i> make[2]: *** [bulmalib/src/cygbulmalib-0.12.0.dll] Error 1
+</I>&gt;<i> make[1]: *** [bulmalib/src/CMakeFiles/bulmalib.dir/all] Error 2
+</I>&gt;<i> make: *** [all] Error 2
+</I>&gt;<i>
+</I>&gt;<i> Mirando en las flags que crea cmake, me parece entender que la
+</I>&gt;<i> libreria &quot;libintl.dll.a&quot; no se referencia a pesar de la detección que
+</I>&gt;<i> mencionaba. Por ejemplo al final de
+</I>&gt;<i>
+</I>&gt;<i> ~/bulmages/build/bulmalib/src/CMakeFiles/bulmalib.dir/link.txt
+</I>&gt;<i>
+</I>&gt;<i> encuentro referenciadas las siguientes librerías:
+</I>&gt;<i>
+</I>&gt;<i> -L/usr/lib/qt4/lib
+</I>&gt;<i> -L/usr/bin/usr/lib/qt4/lib/libQtAssistantClient.dll.a
+</I>&gt;<i> /usr/lib/qt4/lib/libQtUiTools.a /usr/lib/qt4/lib/libQtGui.dll.a 
+</I>&gt;<i> -lpng -lSM -lICE -lXi -lXrender -lXrandr -lXcursor -lXinerama
+</I>&gt;<i> -lXfixes -lfreetype -lfontconfig -lXext -lX11
+</I>&gt;<i> -/usr/lib/qt4/lib/libQtXml.dll.a 
+</I>&gt;<i> /usr/lib/qt4/lib/libQtCore.dll.a /usr/bin/cygz.dll -lgthread-2.0
+</I>&gt;<i> --lglib-2.0 -lpthread -ldl /usr/bin/cygpq.dll
+</I>&gt;<i>
+</I>&gt;<i> pero no veo &quot;libintl.dll.a&quot;. 
+</I>&gt;<i>
+</I>&gt;<i> También he comprobado que la cadena &quot;_libintl_gettext&quot; aparece en
+</I>&gt;<i> &quot;libintl.dll.a&quot; 
+</I>&gt;<i>
+</I>&gt;<i> Es un problema del cmake? Puedo meter &quot;a mano&quot; de momento esta
+</I>&gt;<i> librería en &quot;link.txt&quot; a ver si puedo progresar un poco más en la
+</I>&gt;<i> compilación?
+</I>&gt;<i>
+</I>&gt;<i> Por cierto, también he probado de introducir macros tipo &quot;#ifdef
+</I>&gt;<i> __CYGWIN__&quot; similares a las de WIN32 para no usar gettext pero
+</I>&gt;<i> tampoco me funciona, me peta diciendo que &quot;textdomain&quot; y
+</I>&gt;<i> &quot;bindtextdomain&quot; ya están definidas y no puedo redefinirlas. 
+</I>&gt;<i>
+</I>&gt;<i> Walter
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+-- 
+Javier.
+TODO-REDES
+<A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+C/Begònia 12 - 07010 Palma de Mallorca.
+Tel.: 971499071
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003880.html">[BulmaGés]Compilant sota cygwin
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003884.html">[BulmaGés]Compilant sota cygwin
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3879">[ fecha ]</a>
+              <a href="thread.html#3879">[ hilo ]</a>
+              <a href="subject.html#3879">[ asunto ]</a>
+              <a href="author.html#3879">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

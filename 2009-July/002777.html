@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]warning: operation on 'i' may be undefined
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fwarning%3D3A_operation_%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fon_%3D27i%3D27_may_be_undefined%3F%3D&In-Reply-To=%3C200907220027.58631.pedro.lopez.cabanillas%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002776.html">
+   <LINK REL="Next"  HREF="002778.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]warning: operation on 'i' may be undefined </H1>
+    <B>Pedro Lopez-Cabanillas</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fwarning%3D3A_operation_%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fon_%3D27i%3D27_may_be_undefined%3F%3D&In-Reply-To=%3C200907220027.58631.pedro.lopez.cabanillas%40gmail.com%3E"
+       TITLE="[BulmaGés]warning: operation on 'i' may be undefined">pedro.lopez.cabanillas en gmail.com
+       </A><BR>
+    <I>Mie Jul 22 00:27:58 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002776.html">[BulmaGés]warning: operation on 'i' may be undefined
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002778.html">[BulmaGés]warning: operation on 'i' may be undefined
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2777">[ fecha ]</a>
+              <a href="thread.html#2777">[ hilo ]</a>
+              <a href="subject.html#2777">[ asunto ]</a>
+              <a href="author.html#2777">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wednesday, July 22, 2009, Tomeu Borras wrote:
+&gt;<i> Las comprobaciones de buff.end() no son necesarias ya que la comprobacion
+</I>&gt;<i> previa de isHightSurrogate() y isLowSurrogate() garantizan que habrá un
+</I>&gt;<i> caracter siguiente.
+</I>
+Las comprobaciones las hago después de incrementar el iterator, por lo que su 
+valor ha cambiado respecto al momento en que se comprobó el 
+isHighSurrogate(). Puede que sea innecesario, pero si después de detectar un 
+carácter high surrogate encontramos el final del string entonces se ha 
+detectado un error bastante serio ...
+
+Por otra parte, respecto a evitar las variables locales: en mi opinión lo más 
+importante es que el código fuente sea legible y claro. El compilador es 
+mucho más eficiente con las optimizaciones que los humanos, y a cambio a 
+nosotros nos viene bien entender al primer vistazo lo que hace el código. 
+
+Saludos,
+Pedro
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002776.html">[BulmaGés]warning: operation on 'i' may be undefined
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002778.html">[BulmaGés]warning: operation on 'i' may be undefined
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2777">[ fecha ]</a>
+              <a href="thread.html#2777">[ hilo ]</a>
+              <a href="subject.html#2777">[ asunto ]</a>
+              <a href="author.html#2777">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

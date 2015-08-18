@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][.gitignore]  Principalmente a Pablo Alvarez de Sotomayor Posadillo
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3F%3D5B%3D2Egitignore%3D5D__Princi%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fpalmente_a_Pablo_Alvarez_de_Sotomayor_Posadillo%3F%3D&In-Reply-To=%3C20111201215407.GA6874%40ritho.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006656.html">
+   <LINK REL="Next"  HREF="006660.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][.gitignore]  Principalmente a Pablo Alvarez de Sotomayor Posadillo </H1>
+    <B>Pablo Alvarez de Sotomayor Posadillo</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3F%3D5B%3D2Egitignore%3D5D__Princi%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fpalmente_a_Pablo_Alvarez_de_Sotomayor_Posadillo%3F%3D&In-Reply-To=%3C20111201215407.GA6874%40ritho.net%3E"
+       TITLE="[BulmaGés][.gitignore]  Principalmente a Pablo Alvarez de Sotomayor Posadillo">palvarez en iglues.org
+       </A><BR>
+    <I>Jue Dic  1 22:54:07 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006656.html">[BulmaGés] Recordatorio Install Party 19:00
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006660.html">[BulmaGés][.gitignore]  Principalmente a Pablo Alvarez de Sotomayor Posadillo
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6659">[ fecha ]</a>
+              <a href="thread.html#6659">[ hilo ]</a>
+              <a href="subject.html#6659">[ asunto ]</a>
+              <a href="author.html#6659">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola,
+
+&gt;<i> Saludos, he visto que has editado el archivo .gitignore del repositorio,
+</I>&gt;<i> advertirte que ten cuidado lo que tocas...
+</I>
+Precisamente una de las grandes cualidades de cualquier sistema de
+gestor de versiones, y de los distribuidos (como git) especialmente, es
+la facilidad para revertir cambios, lo que facilita precisamente el no
+tener miedo a cambiar cosas, porque si te equivocas puedes subsanarlo
+facilmente.
+
+&gt;<i> Sin ofender pero te has fijado bien en lo que ignoras?
+</I>
+En realidad el &quot;Sin ofender&quot; me molesta bastante, porque precisamente
+quiere decir que estas &quot;dispuesto&quot; a ofender (es decir, no lo estas
+evitando) pero sin asumir las consecuencias. Si no quieres ofender o te
+expresas de manera que creas que no me puedes ofender o asumes que somos
+todos personas maduras y que aceptamos las criticas constructivas, con
+lo que no tendria nada por lo que ofenderme.
+
+Y si, me he fijado en lo que ignoro, en otro caso no lo hubiera incluido
+en el gitignore. Otra cosa es que me haya podido equivocar o no.
+
+&gt;<i> 1) Al ignorar directamente *.css estas impidiendo la revisión de
+</I>&gt;<i> cualquier formato .css, y hay archivos .css que deberían de estar bajo
+</I>&gt;<i> revisión, aunque no se actualicen.
+</I>
+De hecho esto no es cierto. Los archivos que ya estan bajo revision se
+mantienen bajo revision, independientemente si estan en el .gitignore
+como sino, y los cambios que se hagan sobre ellos se veran cuando hagas
+un &quot;git status&quot;, y los que no esten bajo revision puedes forzar a
+incluirlos bajo revision (git add -f archivo.css), con lo cual en ningun
+momento se esta impidiendo poner ningun archivo bajo revision, sino que
+los css que se generen nuevos se tienen que poner explicitamente bajo
+revision, no mostrando, por lo tanto, todos los ficheros css que se
+generen automaticamente durante la compilacion cuando hagas un &quot;git
+status&quot;.
+
+&gt;<i> 2) Estas indicando que applications no debe ser sujeto a GIT, con lo
+</I>&gt;<i> cual estas impidiendo que existan los archivos SVG que nos otorgan los
+</I>&gt;<i> iconos.
+</I>
+Como en el punto anterior, no estoy impidiendo que exista ningun
+archivo. He incluido applications porque automaticamente durante la
+ejecucion de cmake se generan, al menos que yo sepa, dos directorios de
+applications, y esos no deben de ser incluidos en el directorio, ya que
+su contenido depende de la compilacion de cada usuario. Lo que no me di
+cuenta es que en la documentacion de oxygen hay un directorio
+applications con algunas imagenes e iconos (actualmente hay 5 svgs de
+461 que tiene el proyecto), con lo cual, aunque estos ficheros esten en
+la revision de versiones, efectivamente ese directorio no deberia de
+ignorarse.
+
+&gt;<i> 3) ¡Has puesto blconfig.h! ¡Un archivo crítico del sistema de bulmages!
+</I>&gt;<i> ¿que haces animal?
+</I>
+Resulta que ese fichero se genera (tambien) dinamicamente desde
+blconfig.h.in, con lo que nunca deberia de incluirse en el
+repositorio. Y si, soy un animal (homo sapiens, para ser mas
+especifico), exactamente igual que tu, por cierto, pero no por eso hago
+las cosas porque si, sino que tengo una (buena) razon para hacerlo, este
+equivocada o no.
+
+&gt;<i> 4) ¡Has puesto menu! Impidiendo la revisión del menu, y por lo tanto si
+</I>&gt;<i> no hay menu, no hay iconos.
+</I>
+En esto te doy parte de razon, ya que deberia de haber especificado que
+es solo el directorio menu que hay en bulmages/menu, que es el que se
+genera dinamicamente a partir de bulmages/installbulmages/menu, pero
+como te he dicho antes, esto no impide que el menu este bajo
+revision. Ademas, si no hay menu si hay iconos, de hecho quedan mas de
+450 iconos, asi que fijate si hay iconos (su buen trabajo les ha costado
+la mayoria, si no todos, a Raul).
+
+&gt;<i> Además has puesto muchos archivos que ni si quiera existen, como
+</I>&gt;<i> version, update_message_catalog_lang, etc... que son generados al
+</I>&gt;<i> compilar el programa...
+</I>
+Precisamente los he puesto para que nadie los incluya por error en el
+repositorio. Desde mi punto de vista es muy importante revisar los
+ficheros cambiados antes de subirlos al repositorio, ya que puedes
+descubrir errores o cosas que no querias subir antes de subirlas,
+ahorrando tanto tiempo tuyo (en corregir y volver a subir cambios) como
+el de los demas (ya que no tienen que corregir o esperar a que corrijas
+errores accidentales), y como todos todos los ficheros de compilacion
+no se deben de subir por defecto al repositorio creo mas que correcto
+incluirlos en el gitignore, ya que por defecto los va a ignorar (para el
+git status, por ejemplo) y te va a avisar cuando intentes incluir uno de
+estos ficheros en el repositorio por error. Como ves, a pesar de eso de
+vez en cuando me equivoco, aunque en realidad no tanto.
+
+&gt;<i> Si tienes un caos con estos archivos entre el código y demás, lo suyo es
+</I>&gt;<i> que te lo estructures de esta manera (te enseño como lo tengo yo
+</I>&gt;<i> mediante &quot;capturas textuales de la terminal&quot;.
+</I>
+No creo que tenga un caos, creo que se perfectamente lo que queria
+hacer, y, aunque en algun caso aya que especificar mas el
+fichero/directorio a ignorar (como en el de menu, que hay que ignorar
+nada mas que uno de los dos que existen), los ficheros que he puesto en
+el gitignore los he puesto por una razon, paa evitar errores por mi
+parte y por parte de otros.
+
+&gt;<i> Como puedes ver la mayoría de lo que has marcado esta en el build, y por
+</I>&gt;<i> tanto es inutil marcarlo en el .gitignore del repositorio.
+</I>
+Yo no tengo ningun directorio build, suelo compilar en el mismo
+directorio bulmages, con lo cual en mi caso no se puede aplicar lo que
+comentas.
+
+&gt;<i> Como puedes ver es mucho más sencillo y correcto que usar el .gitignore
+</I>&gt;<i> del repositorio, arriesgandote a quitar de versión algo que no deberías
+</I>&gt;<i> quitar
+</I>
+Precisamente creo muy correcto tener un .gitignore del proyecto en
+comun, para no arriesgarse a que alguien incluya por error un
+fichero/directorio autogenerado, obligandole a que lo incluya por una
+buena razon.
+
+Voy a cambiar el gitignore para excluir los dos directorios que deberia
+de tener en cuenta (uno de applications y otro de menu) y lo subo ahora,
+pero el resto creo que se deberia de quedar como estaba.
+
+UN SALUDO
+
+P.D.: La proxima vez si quieres enviarme un correo a mi (como se
+sobreentiende de lo que pones en el subject) no lo envies a la lista
+entera. Entiendo que quieras que la gente aprenda de los errores de otra
+gente, pero si quieres hacer eso no pongas en el subject para tal
+persona ni personalices tanto el correo, porque sino no tiene sentido
+que lo mandes a la lista.
+
+-- 
+    Pablo ?lvarez de Sotomayor Posadillo
+Ingeniero T?cnico en Inform?tica de Sistemas
+	    <A HREF="http://ritho.net">http://ritho.net</A>
+ &quot;De todas las cosas que he perdido la que 
+     mas hecho de menos es mi cerebro&quot;
+------------ próxima parte ------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 198 bytes
+Desc: Digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20111201/f7fb24ea/attachment.pgp">https://lists.berlios.de/pipermail/bulmages-main/attachments/20111201/f7fb24ea/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006656.html">[BulmaGés] Recordatorio Install Party 19:00
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006660.html">[BulmaGés][.gitignore]  Principalmente a Pablo Alvarez de Sotomayor Posadillo
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6659">[ fecha ]</a>
+              <a href="thread.html#6659">[ hilo ]</a>
+              <a href="subject.html#6659">[ asunto ]</a>
+              <a href="author.html#6659">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

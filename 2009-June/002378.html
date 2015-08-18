@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Bug #15837] Se peta el bulmafact al	crear un nuevo cuadrante diario
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2315837%5D%20Se%20peta%20el%20bulmafact%20al%0A%09crear%20un%20nuevo%20cuadrante%20diario&In-Reply-To=%3C200906090737.n597b6C8003746%40unicorn.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002376.html">
+   <LINK REL="Next"  HREF="002379.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Bug #15837] Se peta el bulmafact al	crear un nuevo cuadrante diario </H1>
+    <B>admin en berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2315837%5D%20Se%20peta%20el%20bulmafact%20al%0A%09crear%20un%20nuevo%20cuadrante%20diario&In-Reply-To=%3C200906090737.n597b6C8003746%40unicorn.berlios.de%3E"
+       TITLE="[BulmaGés] [Bug #15837] Se peta el bulmafact al	crear un nuevo cuadrante diario">admin en berlios.de
+       </A><BR>
+    <I>Mar Jun  9 09:37:06 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002376.html">[BulmaGés] r3491 -	trunk/bulmages/bulmafact/plugins/pluginbf_minicontabilidad
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002379.html">[BulmaGés] r3492 - trunk/bulmages
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2378">[ fecha ]</a>
+              <a href="thread.html#2378">[ hilo ]</a>
+              <a href="subject.html#2378">[ asunto ]</a>
+              <a href="author.html#2378">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bug #15837, was updated on 2009-Jun-09 09:37
+Here is a current snapshot of the bug.
+
+Project: BulmaGes, Gestión Empresarial Libre
+Category: bulmafact
+Status: Open
+Resolution: None
+Bug Group: None
+Priority: 5
+Submitted by: zhixiong
+Assigned to : none
+Summary: Se peta el bulmafact al crear un nuevo cuadrante diario
+
+Details: Con el pluginbf_cuadrante de BulmaFact,cuando creamos un nuevo cuadrante diario,el campo &quot;Almacen&quot; es un ComboBox,pero no deja seleccionar almacenes.
+
+En el campo &quot;Nombre Trabajador&quot; es un ComboBox tambien,pero despues de seleccionar un trabajador,si hacemos un click en cualquier campo,se cerrará el programa,con estos mensages en la consola.
+
+
+Object::connect: No such signal CuadranteQTableWidget::contextMenuRequested(int,int,QPoint)
+QMetaObject::connectSlotsByName: No matching signal for on_mui_aceptar_released()
+QMetaObject::connectSlotsByName: No matching signal for on_mui_borrar_released()
+QMetaObject::connectSlotsByName: No matching signal for on_mui_eliminar_released()
+QMetaObject::connectSlotsByName: No matching signal for on_mui_cancelar_released()
+QMetaObject::connectSlotsByName: No matching signal for on_mui_guardar_released()
+QMetaObject::connectSlotsByName: No matching signal for on_customContextMenuRequested(QPoint)
+QMetaObject::connectSlotsByName: No matching signal for on_mui_calendario_released(QDate)
+QMetaObject::connectSlotsByName: No matching signal for on_mui_eliminar_released()
+QMetaObject::connectSlotsByName: No matching signal for on_customContextMenuRequested(QPoint)
+QMetaObject::connectSlotsByName: No matching signal for on_mui_imprimir_released()
+el número de fila 2 está fuera del rango 0..1
+el número de fila 2 está fuera del rango 0..1
+el número de fila 2 está fuera del rango 0..1
+el número de fila 2 está fuera del rango 0..1
+el número de fila 2 está fuera del rango 0..1
+el número de fila 2 está fuera del rango 0..1
+el número de fila 2 está fuera del rango 0..1
+el número de fila 2 está fuera del rango 0..1
+*** glibc detected *** ./src/bulmafact: double free or corruption (!prev): 0x087bafc8 ***
+======= Backtrace: =========
+/lib/libc.so.6[0xb6c0ffc4]
+/lib/libc.so.6(cfree+0x9c)[0xb6c1195c]
+/usr/lib/libpq.so.5(PQclear+0x6d)[0xb6e1639d]
+/home/zhixiong/bg/build/bulmalib/src/libbulmalib.so.0.11(_ZN13BlDbRecordSet6cerrarEv+0xaf)[0xb7acbfb9]
+/home/zhixiong/bg/build/bulmalib/src/libbulmalib.so.0.11(_ZN13BlDbRecordSetD1Ev+0xd6)[0xb7ad0076]
+/home/zhixiong/bg/build/bulmalib/src/libbulmalib.so.0.11(_ZN10BlComboBoxD2Ev+0x121)[0xb7bf08e1]
+/home/zhixiong/bg/build/bulmafact/src/libbulmafact.so.0.11(_ZN26BfBuscarTrabajadorDelegateD0Ev+0x1f1)[0xb7e90b95]
+/usr/lib/libQtCore.so.4(_Z21qDeleteInEventHandlerP7QObject+0x1c)[0xb6f9757c]
+/usr/lib/libQtCore.so.4(_ZN7QObject5eventEP6QEvent+0x263)[0xb6f98f53]
+/usr/lib/libQtGui.so.4(_ZN7QWidget5eventEP6QEvent+0x56)[0xb7460b26]
+/usr/lib/libQtGui.so.4(_ZN9QComboBox5eventEP6QEvent+0x4f)[0xb771f26f]
+/usr/lib/libQtGui.so.4(_ZN19QApplicationPrivate13notify_helperEP7QObjectP6QEvent+0xbc)[0xb740eecc]
+/usr/lib/libQtGui.so.4(_ZN12QApplication6notifyEP7QObjectP6QEvent+0x18a)[0xb74153ea]
+/home/zhixiong/bg/build/bulmalib/src/libbulmalib.so.0.11(_ZN13BlApplication6notifyEP7QObjectP6QEvent+0x2d)[0xb7bbe36d]
+/usr/lib/libQtCore.so.4(_ZN16QCoreApplication14notifyInternalEP7QObjectP6QEvent+0xb1)[0xb6f8abb1]
+/usr/lib/libQtCore.so.4(_ZN23QCoreApplicationPrivate16sendPostedEventsEP7QObjectiP11QThreadData+0x2c1)[0xb6f8b471]
+/usr/lib/libQtCore.so.4(_ZN20QEventDispatcherUNIX13processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE+0x4a)[0xb6fb337a]
+/usr/lib/libQtGui.so.4[0xb74990a2]
+/usr/lib/libQtCore.so.4(_ZN10QEventLoop13processEventsE6QFlagsINS_17ProcessEventsFlagEE+0x4a)[0xb6f8932a]
+/usr/lib/libQtCore.so.4(_ZN10QEventLoop4execE6QFlagsINS_17ProcessEventsFlagEE+0xea)[0xb6f894ea]
+/usr/lib/libQtCore.so.4(_ZN16QCoreApplication4execEv+0xad)[0xb6f8b6cd]
+/usr/lib/libQtGui.so.4(_ZN12QApplication4execEv+0x27)[0xb740ed47]
+./src/bulmafact(main+0x1a59)[0x804c2c9]
+/lib/libc.so.6(__libc_start_main+0xe5)[0xb6bba5f5]
+./src/bulmafact(__gxx_personality_v0+0x2dd)[0x804a781]
+======= Memory map: ========
+08048000-0804e000 r-xp 00000000 03:02 1491423    /home/zhixiong/bg/build/bulmafact/src/bulmafact
+0804e000-0804f000 r--p 00005000 03:02 1491423    /home/zhixiong/bg/build/bulmafact/src/bulmafact
+0804f000-08050000 rw-p 00006000 03:02 1491423    /home/zhixiong/bg/build/bulmafact/src/bulmafact
+08050000-087e7000 rw-p 08050000 00:00 0          [heap]
+b5700000-b5721000 rw-p b5700000 00:00 0
+b5721000-b5800000 ---p b5721000 00:00 0
+b5898000-b589d000 r--p 00000000 03:02 333372     /usr/share/locale/es/LC_MESSAGES/libpq.mo
+b589d000-b58a0000 r--p 00000000 03:02 1499239    /home/zhixiong/bg/usr/local/share/locale/es_ES.UTF-8/LC_MESSAGES/pluginbf_cuadrante.mo
+b58a0000-b58a1000 r--p 00000000 03:02 1499137    /home/zhixiong/bg/usr/local/share/locale/es_ES.UTF-8/LC_MESSAGES/pluginbf_iva.mo
+b58a1000-b58a4000 r--p 00000000 03:02 1498990    /home/zhixiong/bg/usr/local/share/locale/es_ES.UTF-8/LC_MESSAGES/pluginbf_comercial.mo
+b58a4000-b58a7000 r--p 00000000 03:02 1499310    /home/zhixiong/bg/usr/local/share/locale/es_ES.UTF-8/LC_MESSAGES/pluginbf_proveedorfactura.mo
+b58a7000-b58aa000 r--p 00000000 03:02 1499312    /home/zhixiong/bg/usr/local/share/locale/es_ES.UTF-8/LC_MESSAGES/pluginbf_proveedoralbaran.mo
+b58aa000-b58ad000 r--p 00000000 03:02 1499314    /home/zhixiong/bg/usr/local/share/locale/es_ES.UTF-8/LC_MESSAGES/pluginbf_proveedorpedido.mo
+b58ad000-b58b0000 r--p 00000000 03:02 1499299    /home/zhixiong/bg/usr/local/share/locale/es_ES.UTF-8/LC_MESSAGES/pluginbf_clientecobro.mo
+b58b0000-b58b4000 r--p 00000000 03:02 1499308    /home/zhixiong/bg/usr/local/share/locale/es_ES.UTF-8/LC_MESSAGES/pluginbf_clientefactura.mo
+b58b4000-b58b7000 r--p 00000000 03:02 1499305    /home/zhixiong/bg/usr/local/share/locale/es_ES.UTF-8/LC_MESSAGES/pluginbf_clientealbaran.mo
+b58b7000-b58ba000 r--p 00000000 03:02 1499303    /home/zhixiong/bg/usr/local/share/locale/es_ES.UTF-8/LC_MESSAGES/pluginbf_clientepedido.mo
+b58ba000-b58bd000 r--p 00000000 03:02 1498576    /home/zhixiong/bg/usr/local/share/locale/es_ES.UTF-8/LC_MESSAGES/pluginbf_inventario.mo
+b58bd000-b58c0000 r--p 00000000 03:02 1499061    /home/zhixiong/bg/usr/local/share/locale/es_ES.UTF-8/LC_MESSAGES/pluginbf_proveedor.mo
+b58c0000-b58c3000 r--p 00000000 03:02 1499020    /home/zhixiong/bg/usr/local/share/locale/es_ES.UTF-8/LC_MESSAGES/pluginbf_cliente.mo
+b58c3000-b58cb000 r-xp 00000000 03:02 1504922    /home/zhixiong/bg/usr/local/lib/bulmafact/plugins/libpluginbf_asterisk.so.0.11.2
+b58cb000-b58cc000 r--p 00007000 03:02 1504922    /home/zhixiong/bg/usr/local/lib/bulmafact/plugins/libpluginbf_asterisk.so.0.11.2
+b58cc000-b58cd000 rw-p 00008000 03:02 1504922    /home/zhixiong/bg/usr/local/lib/bulmafact/plugins/libpluginbf_asterisk.so.0.11.2
+b58cd000-b58db000 r-xp 00000000 03:02 1505011    /home/zhixiong/bg/usr/local/lib/bulmafact/plugins/libpluginbf_correothunderbird.so.0.11.2
+b58db000-b58dc000 r--p 0000d000 03:02 1505011    /home/zhixiong/bg/usr/local/lib/bulmafact/plugins/libpluginbf_correothunderbird.so.0.11.2
+b58dc000-b58dd000 rw-p 0000e000 03:02 1505011    /home/zhixiong/bg/usr/local/lib/bulmafact/plugins/libpluginbf_correothunderbird.so.0.11.2
+b58dd000-b58ea000 r-xp 00000000 03:02 1505000    /home/zhixiong/bg/usr/local/lib/bulmafact/plugins/libpluginbf_correo.so.0.11.2
+b58ea000-b58eb000 r--p 0000c000 03:02 1505000    /home/zhixiong/bg/usr/local/lib/bulmafact/plugins/libpluginbf_correo.so.0.11.2
+b58eb000-b58ec000 rw-p 0000d000 03:02 1505000    /home/zhixiong/bg/usr/local/lib/bulmafact/plugins/libpluginbf_correo.so.0.11.2
+b58ec000-b593e000 r-xp 00000000 03:02 1504916    /home/zhixiong/bg/usr/local/lib/bulmafact/plugins/libpluginbf_cuadrante.so.0.11.2
+b593e000-b593f000 r--p 00052000 03:02 1504916    /home/zhixiong/bg/usr/local/lib/bulmafact/plugins/libpluginbf_cuadrante.so.0.11.2
+b593f000-b5940000 rw-p 00053000 03:02 1504916    /home/zhixiong/bg/usr/local/lib/bulmafact/plugins/libpluginbf_cuadrante.so.0.11.2
+b5940000-b5979000 r-xp 00000000 03:02 1504865    /home/zhixiong/bg/usr/local/lib/bulmafact/plugins/libpluginbf_contrato.so.0.11.2
+b5979000-b597a000 r--p 00039000 03:02 1504865    /home/zhixiong/bg/usr/local/lib/bulmafact/plugins/libpluginbf_contrato.so.0.11.2
+b597a000-b597b000 rw-p 0003a000 03:02 1504865    /home/zhixiong/bg/usr/local/lib/bulmafact/plugins/libpluginbf_contrato.so.0.11.2
+b597b000-b5987000 r-xp 00000000 03:02 1504889    /home/zhixiong/bg/usr/local/lib/bulmafact/plugins/libpluginbf_promedios.so.0.11.2
+b5987000-b5988000 r--p 0000b000 03:02 1504889    /home/zhixiong/bg/usr/local/lib/bulmafact/plugins/libpluginbf_promedios.so.0.11.2
+b5988000-b5989000 rw-p 0000c000 03:02 1504889    /home/zhixiong/bg/usr/local/lib/bulmafact/plugins/libpluginbf_promedios.so.0.11.2
+b5989000-b59a2000 r-xp 00000000 03:02 1505039    /home/zhixiong/bg/usr/local/lib/bulmafact/plugins/libpluginbf_z2z.so.0.11.2
+b59a2000-b59a3000 r--p 00019000 03:02 1505039    /home/zhixiong/bg/usr/local/lib/bulmafact/plugins/libpluginbf_z2z.so.0.11.2
+b59a3000-b59a4000 rw-p 0001a000 03:02 1505039    /home/zhiAbortado
+
+
+For detailed info, follow this link:
+<A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=15837&amp;group_id=4472">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=15837&amp;group_id=4472</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002376.html">[BulmaGés] r3491 -	trunk/bulmages/bulmafact/plugins/pluginbf_minicontabilidad
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002379.html">[BulmaGés] r3492 - trunk/bulmages
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2378">[ fecha ]</a>
+              <a href="thread.html#2378">[ hilo ]</a>
+              <a href="subject.html#2378">[ asunto ]</a>
+              <a href="author.html#2378">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]¿Cómo ejecutar Bulmacont como usuario normal?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fb%3Fwr9Dw7NtbyBlamVjdXRhciBC%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fulmacont_como_usuario_normal%3D3F%3F%3D&In-Reply-To=%3C201105311553.13759.otilio%40apdo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005890.html">
+   <LINK REL="Next"  HREF="005891.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]¿Cómo ejecutar Bulmacont como usuario normal? </H1>
+    <B>Santos Martinez Estrada</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fb%3Fwr9Dw7NtbyBlamVjdXRhciBC%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fulmacont_como_usuario_normal%3D3F%3F%3D&In-Reply-To=%3C201105311553.13759.otilio%40apdo.com%3E"
+       TITLE="[BulmaGés]¿Cómo ejecutar Bulmacont como usuario normal?">otilio en apdo.com
+       </A><BR>
+    <I>Mar Mayo 31 15:53:13 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="005890.html">[BulmaGés]¿Cómo ejecutar Bulmacont como usuario normal?
+</A></li>
+        <LI>Próximo mensaje: <A HREF="005891.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. a566632b53c9c4f4c8cde08c6223cda27c5e052f
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5894">[ fecha ]</a>
+              <a href="thread.html#5894">[ hilo ]</a>
+              <a href="subject.html#5894">[ asunto ]</a>
+              <a href="author.html#5894">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Lunes 30 Mayo 2011 23:55:06 Fco. Javier M. C. escribió:
+&gt;<i> Hola.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Así a bote pronto puedes probar:
+</I>&gt;<i> 
+</I>&gt;<i> 1) sudo su
+</I>&gt;<i> 2) su postgres
+</I>&gt;<i> 3) cd
+</I>&gt;<i> 4) vi data/pg_hba.conf
+</I>&gt;<i> 
+</I>&gt;<i> 5) cambia todos los METHOD por 'trust' en vez de 'ident'
+</I>
+Con este &quot;apaño&quot; estás dejando que se conecte cualquiera a la base de datos, 
+yo no lo haría.
+
+Prueba con esto antes de abrirte al mundo:
+TYPE  DATABASE   		 USER            CIDR-ADDRESS    METHOD
+host    all       		  all         		127.0.0.1/32         	 md5
+
+Si tienes que atacar la base de datos desde otra máquina:
+host    BD_bulmacont       usuario_bulmacont         0.0.0.0/0             md5
+
+Y en postgresql.conf:
+
+listen_addresses = '*'
+
+&gt;<i> 
+</I>&gt;<i> 6) reinicia el servicio PostgreSQL.
+</I>&gt;<i> # 
+</I>&gt;<i> quizás no es la mejor manera en cuanto a seguridad, pero funciona.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Un saludo.
+</I>&gt;<i> 
+</I>&gt;<i> El 30/05/11 23:41, yyeshua escribió:
+</I>&gt;<i> &gt; Buen día a todos.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; He logrado compilar e instalar Bulmages en mi debian. Ahora, lanzo el
+</I>&gt;<i> &gt; bulmasetup commo superusuario, creé un nuevo usuario y creé una nueva
+</I>&gt;<i> &gt; empresa para probar la contabilidad.
+</I>&gt;<i> &gt; Luego lanzo bulmacont como superusuario, y funciona. Pero no quiero
+</I>&gt;<i> &gt; lanzar bulmacont como un usuario normal, cuando lo hago me solicita un
+</I>&gt;<i> &gt; usuario y contraseña, y no importa la combinación que ingrese, no
+</I>&gt;<i> &gt; funciona.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Pues eso, ¿Cómo hago hacer funcionar bulmacont con un usuario normal?.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Saludos.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Bulmages-main mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="005890.html">[BulmaGés]¿Cómo ejecutar Bulmacont como usuario normal?
+</A></li>
+	<LI>Próximo mensaje: <A HREF="005891.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. a566632b53c9c4f4c8cde08c6223cda27c5e052f
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5894">[ fecha ]</a>
+              <a href="thread.html#5894">[ hilo ]</a>
+              <a href="subject.html#5894">[ asunto ]</a>
+              <a href="author.html#5894">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

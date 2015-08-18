@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] BfBuscarArticuloDelegate ha de ser	filla de BlComboBox ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20BfBuscarArticuloDelegate%20ha%20de%20ser%0A%09filla%20de%20BlComboBox%20%3F&In-Reply-To=%3C20090624121934.GA32223%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002494.html">
+   <LINK REL="Next"  HREF="002502.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] BfBuscarArticuloDelegate ha de ser	filla de BlComboBox ? </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20BfBuscarArticuloDelegate%20ha%20de%20ser%0A%09filla%20de%20BlComboBox%20%3F&In-Reply-To=%3C20090624121934.GA32223%40localhost%3E"
+       TITLE="[BulmaGés] BfBuscarArticuloDelegate ha de ser	filla de BlComboBox ?">xdrudis en tinet.cat
+       </A><BR>
+    <I>Mie Jun 24 14:19:35 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002494.html">[BulmaGés]Nombres
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002502.html">[BulmaGés]BfBuscarArticuloDelegate ha de ser filla de BlComboBox ?
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2499">[ fecha ]</a>
+              <a href="thread.html#2499">[ hilo ]</a>
+              <a href="subject.html#2499">[ asunto ]</a>
+              <a href="author.html#2499">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola. 
+
+Em sembla que ja va això del plugin alias. Ara ho pujaré.
+
+Però em peta (tant amb el plugin alias com sense) quan creo una factura,
+pico a una nova línia de factura, columna codi d'article, escric els
+4 primers caracters d'un article, i llavors m'autocompleta un dels 
+codis d'article que contenenla seqüencia de quatre caracters entrada.
+Llavors si dsplego el combo hi ha els articles que contenen la seqüència,
+i quan pico amb el ratolí a un dels articles del combo es tanca el programa.     
+
+Pelque sembla és per culpa que BlComboBox.m_fieldId és null. 
+
+Però mirant BlComboBox sembla que sigui un combo que es configura amb 
+una consulta i un camp Id i el qu efa és ensenyar tots els registres
+de la consulta. BfBuscarArticuloDelegate hereta de BlComboBox però 
+no defineix la consulta ni el camp Id, i fa les seves coses pel seu compte, 
+com si no fos filla de BlComboBox. I jo diria que la intenció és que 
+el comportament sigui un altre, que vagi canviant els contignuts del combo
+segons el que escriu l'usuari. No sé si hauria d'heretar de BlComboBox
+i per comptes de fer les consultes manualment anar reconfigurant BlComboBox, 
+assignant els seus membres, o si directament hauria de fer el que fa sense
+heretar de BlComboBox sinó de ComboBox. 
+
+Algú enten com va i perquè està fet així ?
+ 
+
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>
+Signa per fer Collserola parc natural com cal
+<A HREF="http://www.collserola.org/salvemelparcnatural/">http://www.collserola.org/salvemelparcnatural/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002494.html">[BulmaGés]Nombres
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002502.html">[BulmaGés]BfBuscarArticuloDelegate ha de ser filla de BlComboBox ?
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2499">[ fecha ]</a>
+              <a href="thread.html#2499">[ hilo ]</a>
+              <a href="subject.html#2499">[ asunto ]</a>
+              <a href="author.html#2499">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]BACKUP con BULMASETUP
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FBACKUP_con_BULMASETUP%3F%3D&In-Reply-To=%3C200902040940.08687.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000923.html">
+   <LINK REL="Next"  HREF="000934.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]BACKUP con BULMASETUP </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FBACKUP_con_BULMASETUP%3F%3D&In-Reply-To=%3C200902040940.08687.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]BACKUP con BULMASETUP">tborras en conetxia.com
+       </A><BR>
+    <I>Mie Feb  4 09:40:08 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000923.html">[BulmaGés] BACKUP con BULMASETUP
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000934.html">[BulmaGés]BACKUP con BULMASETUP
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#924">[ fecha ]</a>
+              <a href="thread.html#924">[ hilo ]</a>
+              <a href="subject.html#924">[ asunto ]</a>
+              <a href="author.html#924">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Y luego va la gente diciendo que los LUG's no hacen falta. Hay que joderse.
+
+
+
+Albert aqui tienes posteado un archivo cutrecillo que tiene algunos comandos. 
+(El pg_dumpall lo puedes cambiar por tantos pg_dump individuales como desees 
+y el rsync hace copias diferenciales de un ordenador a otro.
+
+
+#!/bin/bash
+echo
+echo &quot;Inicio de copia rsync &quot; $1
+echo &quot;========================================&quot;
+date
+echo &quot;Backup de PostGres&quot;
+su postgres -c &quot;pg_dumpall&quot; &gt; /home/pgbackups.pgdump
+echo &quot;Backup de /home&quot;
+rsync -avz /home omicron:/backups_conetxia/pi/home
+echo &quot;Backup de /etc&quot;
+rsync -avz /etc omicron:/backups_conetxia/pi/etc
+echo
+echo &quot;Archivos copiados por rsync&quot;
+echo
+echo &quot;Espacio libre en disco&quot;
+df -h
+echo
+date
+echo &quot;Fin de la copia&quot;
+
+
+Puedes guardarlo en algun sitio y darle permisos de ejecución.
+Luego como root haces crontab -e y pones la siguiente linea:
+
+
+0 0 * * * /root/backups.sh | mailx -s &quot;Backup Pi&quot; 
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">lacuentadecorreo en eldiminioqueteguste</A>
+
+
+
+Hay muy buenos manuales de bash scripting.
+
+(OF TOPIC) Si quieres ahorrarte el estudiar y hacer pruebas yo por 60 leuros 
+te lo hago y lo dejo niquelado.
+
+
+El Wednesday 04 February 2009 02:40:40 Albert Mas escribió:
+&gt;<i> Alguien tiene hecho algun script de backup tal com dice Tomeu?
+</I>&gt;<i> Aunque no fuera tan completo me iria bien.
+</I>&gt;<i>
+</I>&gt;<i> Sino ja hos passare el que utilize yo.
+</I>&gt;<i>
+</I>&gt;<i> Saludos.
+</I>&gt;<i>
+</I>&gt;<i> On 1/29/09, Albert Mas &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">albertmas en termens.cat</A>&gt; wrote:
+</I>&gt;<i> &gt; Hoy queria hacer mi primer backup de bulmafact con bulmasetup y al ver
+</I>&gt;<i> &gt; que no generaba ningun fichero he mirado la consolo y he visto lo
+</I>&gt;<i> &gt; siguiente: Backup
+</I>&gt;<i> &gt; su postgres -c &quot;pg_dump -f /home/20090129 informatica&quot;
+</I>&gt;<i> &gt; Start.
+</I>&gt;<i> &gt; Start.
+</I>&gt;<i> &gt; error: pg_dump: [archiver] could not open output file &quot;/home/20090129&quot;:
+</I>&gt;<i> &gt; Permission denied
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; por lo que veo no se puede crear el fichero de backup, he provado
+</I>&gt;<i> &gt; distintas ubicaciones pero no funciona en ninguna.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; sabeis que puede estar pasando.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Por cierto, para realizar un backup masivo en el caso que tenga varias
+</I>&gt;<i> &gt; empresas, me podeis pasar alguna instruccion.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Gracias.
+</I>
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000923.html">[BulmaGés] BACKUP con BULMASETUP
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000934.html">[BulmaGés]BACKUP con BULMASETUP
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#924">[ fecha ]</a>
+              <a href="thread.html#924">[ hilo ]</a>
+              <a href="subject.html#924">[ asunto ]</a>
+              <a href="author.html#924">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

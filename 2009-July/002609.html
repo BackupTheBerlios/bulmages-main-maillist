@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Definición de listados y mascaras
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FDefinici%3DF3n_de_lista%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fdos_y_mascaras%3F%3D&In-Reply-To=%3C4A50D420.4020806%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002608.html">
+   <LINK REL="Next"  HREF="002611.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Definición de listados y mascaras </H1>
+    <B>adrian15</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FDefinici%3DF3n_de_lista%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fdos_y_mascaras%3F%3D&In-Reply-To=%3C4A50D420.4020806%40gmail.com%3E"
+       TITLE="[BulmaGés]Definición de listados y mascaras">adrian15sgd en gmail.com
+       </A><BR>
+    <I>Dom Jul  5 18:26:08 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002608.html">[BulmaGés]Definición de listados y mascaras
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002611.html">[BulmaGés]Definición de listados y mascaras
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2609">[ fecha ]</a>
+              <a href="thread.html#2609">[ hilo ]</a>
+              <a href="subject.html#2609">[ asunto ]</a>
+              <a href="author.html#2609">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Tomeu Borras escribió:
+&gt;<i> Hola Adrian:
+</I>&gt;<i> 
+</I>&gt;<i> Así a grosso modo los listados estan de forma parecida (quizas un poco mas 
+</I>&gt;<i> potente).
+</I>Vamos a ver.
+&gt;<i> 
+</I>&gt;<i> Los listados son (en general archivos parseados por el programa con macros que 
+</I>&gt;<i> hacen cosas y que luego te detallaré) y que tras ser parseados son procesados 
+</I>&gt;<i> por un agente &quot;externo&quot;. Los agentes externos son 2:
+</I>&gt;<i> 	bgtrml2pdf que es una adaptacion del trml2pdf y que convierte un archivos RML 
+</I>&gt;<i> en un pdf
+</I>&gt;<i> 
+</I>&gt;<i> 	python que puede hacer lo que te de la gana( principalmente escribir un 
+</I>&gt;<i> script ooolib y sacar un documento de openoffice).
+</I>En dos pasos. Interesante
+&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Las principales macros que puedes usar son:
+</I>&gt;<i> 	1.- Variables del bulmages (bien de la ficha, de la configuracion, o algunas 
+</I>&gt;<i> especificas que las pones entre corchetes
+</I>Bien.
+&gt;<i> 
+</I>&gt;<i> 	2.- &lt;!--QUERY = &quot;......&quot;--&gt; que hace una iteracion sobre el query 
+</I>&gt;<i> especificado. (El query es parametrizable mediante las variables disponibles 
+</I>&gt;<i> en el punto 1. Dentro de la clausula QUERY los resultados del mismo son 
+</I>&gt;<i> tratados como variables del punto 1. 
+</I>Aja.
+&gt;<i> 
+</I>&gt;<i> 	3.- &lt;!--IFACE ....&gt; que muestra una pantalla .ui diseñada por ti y recoge el 
+</I>&gt;<i> contenido de sus widgets y los pone como variables de las especificadas en el 
+</I>&gt;<i> punto 1(para ser usadas en otras partes del parseo)
+</I>Interfaz gráfica para preguntar al usuario los limites por ejemplo.
+&gt;<i> 
+</I>&gt;<i> 	4.- &lt;!-- SUBQUERY  y &lt;!--SUBQUERY1 para anidar querys (creo que tienes hasta 
+</I>&gt;<i> 4 niveles de anidamiento
+</I>No le veo utilidad pero supongo que la tendré.
+&gt;<i> 
+</I>&gt;<i> 	5.- &lt;!-- IF EXISTS   &lt;!-- IF QUERY para hacer casos condicionales en el 
+</I>&gt;<i> listado
+</I>Hummm. De acuerdo.
+&gt;<i> 
+</I>&gt;<i> 	6. &lt;!-- INCLUDE FILE=&quot;....&quot; Para hacer inclusion de subplantillas dentro de 
+</I>&gt;<i> las plantillas. (Desde antes de ayer los archivos incluidos tambien soportan 
+</I>&gt;<i> todos los metatags que estoy describiendo.
+</I>Bien. Bien. Se pueden incluir otros listados.
+&gt;<i> 
+</I>&gt;<i> 	Y alguna cosa más que ahora no recuerdo bien. Pero a grosso modo con esto 
+</I>&gt;<i> tienes toda la potencia para hacer buenos informes, parametrizables asi como 
+</I>&gt;<i> quieras y en los formatos mas versatiles (pdf y openoffice). Por ejemplo el 
+</I>&gt;<i> de cuentas anuales de bulmacont es una passada.
+</I>Ajá.
+&gt;<i> 
+</I>&gt;<i> 	Sobre la organizacion también tienes varios puntos de organizacion.
+</I>&gt;<i> 
+</I>&gt;<i> 	Si el archivos se llama igual que la tabla de la ficha que hace la impresion 
+</I>&gt;<i> entonces es el informe que se imprime por defecto al darle a la impresiora.
+</I>&gt;<i> 
+</I>&gt;<i> 	Si el archivos se llama impers_tabla este listado estará en la opcion 
+</I>&gt;<i> Informes Personales que aparece al pulsar con el boton derecho sobre la ficha 
+</I>&gt;<i> en cuestion (es necesario tener el plugin instalado para que funcione)
+</I>&gt;<i> 
+</I>&gt;<i> 	Si el archivos se llama inf_XXXX el informe estara como opcion general del 
+</I>&gt;<i> menu Informes y al darle se pondrá en marcha.
+</I>Ya veo. Cada programa se saca sus propias convenciones para estas cosas.
+&gt;<i> 
+</I>&gt;<i> 	Y segun la extension (rml o pys) sera procesado con bgtrml2pdf o con python 
+</I>&gt;<i> para sacar el openoffice correspondiente.
+</I>Según la extensión. ¿No se puede elegir uno u otro cuando se imprime o 
+en alguna opción?
+&gt;<i> 
+</I>&gt;<i> Enfin que hay para jugar un buen rato. Pq luego puedes coger y enlazar un 
+</I>&gt;<i> script python que lo unico que inicializa es el acceso a la base de datos y 
+</I>&gt;<i> toma el control de todo lo que le interesa para extender funcionalidades con 
+</I>&gt;<i> un programa de script (pero eso ya es algo avanzado).
+</I>Ajá.
+&gt;<i> 
+</I>&gt;<i> Dicho lo dicho, y pensandolo friamente potencia no nos falta.
+</I>Ya te digo.
+ &gt; Sólo que no
+&gt;<i> tenemos una interficie gráfica para controlar tanta potencia. ÇDe hecho  creo 
+</I>&gt;<i> que si la tuviesemos jamás podriamos sacarle el jugo tanto como con la 
+</I>&gt;<i> edicion manual.
+</I>Je, je.
+&gt;<i> 
+</I>&gt;<i> Salut
+</I>
+Bueno. Mirad a ver lo que os propongo. Bueno, es una idea.
+
+Tenemos un fichero incluido que sólo define esto que vamos a llamar: 
+definicion_listado:
+
+2.- &lt;!--QUERY = &quot;......&quot;--&gt;
+3.- &lt;!--IFACE ....&gt;
+4.- &lt;!-- SUBQUERY  y &lt;!--SUBQUERY
+
+Y luego tenemos lo que vosotros hasta ahora llamabais listado tal cual 
+que llamaremos mascara_listado.
+
+Ese listado lo primero que hace es un include de definicion_listado y 
+luegoo puede usar el resto:
+
+1.- Variables del bulmages
+5.- &lt;!-- IF EXISTS  (Siempre y cuando no involucre ni a 2, ni a 3, ni a 4)
+
+Y el 6 de incluir puede que sí, puede que no, no lo veo muy claro.
+
+
+Ahora viene lo bueno si quereis, vosotros podéis pasar la mascar_listado 
+a un diseñador gráfico que medio entienda xml o como narices lo hayais 
+hecho.
+
+Entonces, ¿Véis dónde va todo esto? Tú puedes definir campos como que 
+vienen de la base de datos, o si son variables o si son campos 
+condicionales y definir cual es la condición.
+
+Dónde van los campos y si ocupan más de una linea o no.
+Y esto al no depender de las sentencias sql o depender minimamente (como 
+se quiera ver) ya es más fácil montar el &quot;Entorno Visual de Desarrollo 
+de Informes&quot; o como lo querais llamar.
+
+Yo os aporto mi visión que está condicionada por el programa privativo 
+que uso, y seguro algunos de vosotros tenéis otras visiones, no, pero... 
+lo que está claro es que, de alguna manera habría que hacer respetar eso 
+del MVC... la vista por un lado y el controlador por otro.
+
+¿Como lo veis?
+
+adrian15
+-- 
+Support free software. Donate to Super Grub Disk. Apoya el software 
+libre. Dona a Super Grub Disk. <A HREF="http://www.supergrubdisk.org/index.php?pid=10">http://www.supergrubdisk.org/index.php?pid=10</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002608.html">[BulmaGés]Definición de listados y mascaras
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002611.html">[BulmaGés]Definición de listados y mascaras
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2609">[ fecha ]</a>
+              <a href="thread.html#2609">[ hilo ]</a>
+              <a href="subject.html#2609">[ asunto ]</a>
+              <a href="author.html#2609">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,291 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Cambiar las llamadas a plugins
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FCambiar_las_llamadas_%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fa_plugins%3F%3D&In-Reply-To=%3C51A85D7F.8050203%40free.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007600.html">
+   <LINK REL="Next"  HREF="007603.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Cambiar las llamadas a plugins </H1>
+    <B>aishen</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FCambiar_las_llamadas_%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fa_plugins%3F%3D&In-Reply-To=%3C51A85D7F.8050203%40free.fr%3E"
+       TITLE="[BulmaGés]Cambiar las llamadas a plugins">aishen en free.fr
+       </A><BR>
+    <I>Vie Mayo 31 10:21:19 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007600.html">[BulmaGés]Cambiar las llamadas a plugins
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007603.html">[BulmaGés]Cambiar las llamadas a plugins
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7602">[ fecha ]</a>
+              <a href="thread.html#7602">[ hilo ]</a>
+              <a href="subject.html#7602">[ asunto ]</a>
+              <a href="author.html#7602">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+Sorry to disturb you I got release 15 a tarball, after doing cmake .. it 
+tells me qt5 from raring install is not suitable ?
+Here is the result :
+----------------------------------------------------------
+pc:~/bulmages/bulmages/build$ cmake ..
+-- /usr/lib/x86_64-linux-gnu/cmake
+Must specify package names on the command line
+Must specify package names on the command line
+Must specify package names on the command line
+Must specify package names on the command line
+Must specify package names on the command line
+Must specify package names on the command line
+Must specify package names on the command line
+Must specify package names on the command line
+Must specify package names on the command line
+Must specify package names on the command line
+Must specify package names on the command line
+Must specify package names on the command line
+Must specify package names on the command line
+Must specify package names on the command line
+CMake Error at CMakeLists.txt:85 (INCLUDE):
+   include could not find load file:
+
+     /usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreMacros.cmake
+
+
+CMake Error at CMakeLists.txt:87 (INCLUDE):
+   include could not find load file:
+
+/usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake
+
+
+CMake Error at CMakeLists.txt:88 (INCLUDE):
+   include could not find load file:
+
+/usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake
+
+
+-- Found PostgreSQL pg_config: /usr/bin/pg_config
+-- Found PostgreSQL includedir: /usr/include/postgresql
+-- Found PostgreSQL library: /usr/lib/libpq.so
+-- Found PostgreSQL binary utils dir: /usr/lib/postgresql/9.1/bin
+-- Working on bulmalib
+CMake Error at bulmalib/src/CMakeLists.txt:178 (QT5_WRAP_UI):
+   Unknown CMake command &quot;QT5_WRAP_UI&quot;.
+
+
+-- Configuring incomplete, errors occurred!
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">riri at pc</A>:~/bulmages/bulmages/build$ cd
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">riri at pc</A>:~$ cd bulmages-bulmages/
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">riri at pc</A>:~/bulmages-bulmages$ cd bulmages/
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">riri at pc</A>:~/bulmages-bulmages/bulmages$ cd build/
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">riri at pc</A>:~/bulmages-bulmages/bulmages/build$ cmake ..
+-- Using cmake version 2.8
+CMake Error at /usr/share/cmake-2.8/Modules/FindQt4.cmake:1216 (message):
+   Found unsuitable Qt version &quot;5.0.1&quot; from /usr/bin/qmake, this code 
+requires
+   Qt 4.x
+Call Stack (most recent call first):
+   CMakeLists.txt:73 (find_package)
+
+
+-- Configuring incomplete, errors occurred!
+Help needed,
+Salut
+Henri
+
+Le 31/05/2013 09:01, Tomeu Borras a écrit :
+&gt;<i> Bonjour
+</I>&gt;<i>
+</I>&gt;<i>  v1.5 does not use qt5. It was the last we make in qt4.
+</I>&gt;<i>
+</I>&gt;<i> You can look for this release is in branch release15 of gitorious 
+</I>&gt;<i> (<A HREF="https://gitorious.org/bulmages/bulmages/commits/release15">https://gitorious.org/bulmages/bulmages/commits/release15</A>)
+</I>&gt;<i>
+</I>&gt;<i> Although branch master is now in Qt5 (except BulmaSetup. there is not 
+</I>&gt;<i> pyqt5 released) and works well on Ubuntu raring (because is my current 
+</I>&gt;<i> distro)
+</I>&gt;<i>
+</I>&gt;<i> Au revoir
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> El 30 de mayo de 2013 18:49, aishen &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">aishen at free.fr</A> 
+</I>&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">aishen at free.fr</A>&gt;&gt; escribió:
+</I>&gt;<i>
+</I>&gt;<i>     Salut,
+</I>&gt;<i>     I want to look the new version 1.5 of bulmages to see if there is
+</I>&gt;<i>     any translation to do. Can you help me (remenber ) how to do it
+</I>&gt;<i>     with ubuntu 13.04 (qt5 ) thanks
+</I>&gt;<i>     Henri
+</I>&gt;<i>     Le 30/05/2013 17:04, Tomeu Borras a écrit :
+</I>&gt;&gt;<i>     Buenas, así como lo planteas no acabo de entenderlo.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     Podrias desarrollar un ejemplo detallado del tema, por ejemplo
+</I>&gt;&gt;<i>     con las facturas ?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     Por lo que creo entender lo único que puede funcionar es el uso
+</I>&gt;&gt;<i>     de XML debido a la gran capacidad de mutación que tienen los objetos.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     Ya hay cosas hechas en este sentido. Tenemos funciones de
+</I>&gt;&gt;<i>     exportación e importación desde XML. Son genéricas y funcionan
+</I>&gt;&gt;<i>     mayormente con la sincronización de TPV's y el almacenamiento de
+</I>&gt;&gt;<i>     elementos en disco (Para prevención de caidas de sistema sin
+</I>&gt;&gt;<i>     pérdida de datos).
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     Tal vez lo que buscas es extender la funcionalidad del XML para
+</I>&gt;&gt;<i>     que pueda interactuar con otros programas.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     A mi juicio es menos rígido que una API.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     Salut
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     El 30 de mayo de 2013 15:25, Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">info at danielripoll.es</A>
+</I>&gt;&gt;<i>     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">info at danielripoll.es</A>&gt;&gt; escribió:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         Bones,
+</I>&gt;&gt;<i>         Haciendo aparición espectral...
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         Vereis, yo estoy a punto de junto a un par de compañeros
+</I>&gt;&gt;<i>         mios, fundar una proyecto-empresa (ssssh, todavía es un secreto).
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         No tenemos en mente ofrecer BulmaGés a los clientes, porque
+</I>&gt;&gt;<i>         el area será una muy distinta, no obstante a nivel interno si
+</I>&gt;&gt;<i>         lo vamos a utilizar.
+</I>&gt;&gt;<i>         Ocurre que nuestra empresa utilizará como Frontend web
+</I>&gt;&gt;<i>         Magento, yo como BDFH me encargo de programar los plugins y
+</I>&gt;&gt;<i>         he quedado realmente alucinado con el potencial de la API que
+</I>&gt;&gt;<i>         tiene este bicho.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         Tiras un Mage:loquesea()-&gt; y tienes hasta el café.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         Tal vez sería interesante estructurar una API similar con
+</I>&gt;&gt;<i>         esto, probar primero pequeñas cosas (crear articulos, por
+</I>&gt;&gt;<i>         ejemplo) y luego evoila, esto ahora será mucho más sencillo
+</I>&gt;&gt;<i>         teniendo en cuenta que vamos a fusionar Contabilidad y
+</I>&gt;&gt;<i>         Facturación.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         Si, lo sé. Soy un pesado y me repito como el ajo, pero sin
+</I>&gt;&gt;<i>         API no nos integraremos en la vida con otros sistemas, y si
+</I>&gt;&gt;<i>         no nos integramos, no nos expandiremos :(
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         Por cierto, enhorabuena a Miguel por sus superpaquetes y a
+</I>&gt;&gt;<i>         Tomeu por la integración constante de los cambios que hice
+</I>&gt;&gt;<i>         para Qt5 (aún no he encontrado que me falla del CMake :S)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         Saludos!
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         El 30 de mayo de 2013 12:06, Tomeu Borras
+</I>&gt;&gt;<i>         &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras at conetxia.com</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras at conetxia.com</A>&gt;&gt; escribió:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>             Bones
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>             Tras mirarme lo de los plugins y de como cambiar el
+</I>&gt;&gt;<i>             sistema de llamadas creo que así como esta esta sigue
+</I>&gt;&gt;<i>             siendo la mejor forma.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>             Lo único bueno de usar signals es que evitas hacer
+</I>&gt;&gt;<i>             casting pero tienes que crear un objeto por plugin que
+</I>&gt;&gt;<i>             busque donde conectarse y hacer el connect.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>             En definitiva es mas código para conseguir lo mismo y no
+</I>&gt;&gt;<i>             merece la pena.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>             Asi que nos quedamos con los callbacks que son mas
+</I>&gt;&gt;<i>             eficientes y compatibles.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>             _______________________________________________
+</I>&gt;&gt;<i>             Bulmages-main mailing list
+</I>&gt;&gt;<i>             <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main at lists.berlios.de</A>
+</I>&gt;&gt;<i>             &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main at lists.berlios.de</A>&gt;
+</I>&gt;&gt;<i>             <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         -- 
+</I>&gt;&gt;<i>         Daniel Ripoll Osma
+</I>&gt;&gt;<i>         www.danielripoll.es &lt;<A HREF="http://www.danielripoll.es">http://www.danielripoll.es</A>&gt;
+</I>&gt;&gt;<i>         6688.27.4.90
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         Web &amp; Desktop Developer
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         _______________________________________________
+</I>&gt;&gt;<i>         Bulmages-main mailing list
+</I>&gt;&gt;<i>         <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main at lists.berlios.de</A>
+</I>&gt;&gt;<i>         &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main at lists.berlios.de</A>&gt;
+</I>&gt;&gt;<i>         <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     -- 
+</I>&gt;&gt;<i>     Tomeu Borrás
+</I>&gt;&gt;<i>     Conetxia Soluciones Informáticas
+</I>&gt;&gt;<i>     677 77 44 76
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     _______________________________________________
+</I>&gt;&gt;<i>     Bulmages-main mailing list
+</I>&gt;&gt;<i>     <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main at lists.berlios.de</A>  &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main at lists.berlios.de</A>&gt;
+</I>&gt;&gt;<i>     <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     _______________________________________________
+</I>&gt;<i>     Bulmages-main mailing list
+</I>&gt;<i>     <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main at lists.berlios.de</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main at lists.berlios.de</A>&gt;
+</I>&gt;<i>     <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> -- 
+</I>&gt;<i> Tomeu Borrás
+</I>&gt;<i> Conetxia Soluciones Informáticas
+</I>&gt;<i> 677 77 44 76
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20130531/08235eb3/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20130531/08235eb3/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007600.html">[BulmaGés]Cambiar las llamadas a plugins
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007603.html">[BulmaGés]Cambiar las llamadas a plugins
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7602">[ fecha ]</a>
+              <a href="thread.html#7602">[ hilo ]</a>
+              <a href="subject.html#7602">[ asunto ]</a>
+              <a href="author.html#7602">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

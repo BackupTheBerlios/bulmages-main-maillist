@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][Bug #15949] Elemento predeterminado en campo BlComboBox
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3F%3D5BBug_%3D2315949%3D5D_Element%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fo_predeterminado_en_campo_BlComboBox%3F%3D&In-Reply-To=%3C200907011938.50741.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002576.html">
+   <LINK REL="Next"  HREF="002591.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][Bug #15949] Elemento predeterminado en campo BlComboBox </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3F%3D5BBug_%3D2315949%3D5D_Element%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fo_predeterminado_en_campo_BlComboBox%3F%3D&In-Reply-To=%3C200907011938.50741.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés][Bug #15949] Elemento predeterminado en campo BlComboBox">tborras en conetxia.com
+       </A><BR>
+    <I>Mie Jul  1 19:38:50 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002576.html">[BulmaGés] [Bug #15949] Elemento predeterminado en	campo BlComboBox
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002591.html">[BulmaGés][Bug #15949] Elemento predeterminado en campo BlComboBox
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2585">[ fecha ]</a>
+              <a href="thread.html#2585">[ hilo ]</a>
+              <a href="subject.html#2585">[ asunto ]</a>
+              <a href="author.html#2585">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Aron:
+
+Por lo que comentas el problema esta en que haces el setId demasiado pronto y 
+alguna inicializacion del formulario te machaca el setId(&quot;&quot;). 
+
+Me imagino que lo tienes puesto en el constructor asÃ­ que prueba a ponerlo al 
+final del mismo.
+
+Salut
+
+
+El Wednesday 01 July 2009 13:06:16 <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">admin en berlios.de</A> escribiÃ³:
+&gt;<i> Bug #15949, was updated on 2009-Jul-01 13:06
+</I>&gt;<i> Here is a current snapshot of the bug.
+</I>&gt;<i>
+</I>&gt;<i> Project: BulmaGes, Gestión Empresarial Libre
+</I>&gt;<i> Category: bulmafact
+</I>&gt;<i> Status: Open
+</I>&gt;<i> Resolution: None
+</I>&gt;<i> Bug Group: None
+</I>&gt;<i> Priority: 5
+</I>&gt;<i> Submitted by: hilex
+</I>&gt;<i> Assigned to : none
+</I>&gt;<i> Summary: Elemento predeterminado en campo BlComboBox
+</I>&gt;<i>
+</I>&gt;<i> Details: Cuando intento hacer que un campo desplegable BlComboBox tenga
+</I>&gt;<i> cierto elemento activo por defecto, al guardar se interpreta como nulo.
+</I>&gt;<i>
+</I>&gt;<i> El campo está asociado a una consulta (setQuery), a una tabla (setTable) y
+</I>&gt;<i> le digo el campo identificador (setFieldId).
+</I>&gt;<i>
+</I>&gt;<i> Ejemplo 1:
+</I>&gt;<i> DESPLEGABLE-&gt;setAllowNull( TRUE );
+</I>&gt;<i> DESPLEGABLE-&gt;setId( &quot;1&quot; );
+</I>&gt;<i>
+</I>&gt;<i> Resultado 1:
+</I>&gt;<i> Aparece seleccionada inicialmente la línea &quot;--&quot;.
+</I>&gt;<i>
+</I>&gt;<i> Ejemplo 2:
+</I>&gt;<i> DESPLEGABLE-&gt;setAllowNull( FALSE );
+</I>&gt;<i> DESPLEGABLE-&gt;setId( &quot;1&quot; );
+</I>&gt;<i>
+</I>&gt;<i> Resultado 2:
+</I>&gt;<i> Aparece seleccionada inicialmente la línea deseada, pero al guardar se
+</I>&gt;<i> interpreta como si estuviera vacío.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> For detailed info, follow this link:
+</I>&gt;<i> <A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=15949&amp;group_id=4472">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=15949&amp;group_id=4472</A>
+</I>
+
+
+-- 
+Tomeu BorrÃ¡s Riera
+Conetxia Soluciones InformÃ¡ticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002576.html">[BulmaGés] [Bug #15949] Elemento predeterminado en	campo BlComboBox
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002591.html">[BulmaGés][Bug #15949] Elemento predeterminado en campo BlComboBox
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2585">[ fecha ]</a>
+              <a href="thread.html#2585">[ hilo ]</a>
+              <a href="subject.html#2585">[ asunto ]</a>
+              <a href="author.html#2585">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

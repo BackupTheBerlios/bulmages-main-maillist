@@ -1,0 +1,232 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Compilando en Qt5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-September/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FCompilando_en_Qt5%3F%3D&In-Reply-To=%3C52369C51.4070200%40gnuinos.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007705.html">
+   <LINK REL="Next"  HREF="007706.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Compilando en Qt5 </H1>
+    <B>aitor en gnuinos.org</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FCompilando_en_Qt5%3F%3D&In-Reply-To=%3C52369C51.4070200%40gnuinos.org%3E"
+       TITLE="[BulmaGés]Compilando en Qt5">aitor en gnuinos.org
+       </A><BR>
+    <I>Lun Sep 16 07:51:13 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007705.html">[BulmaGés] Compilando en Qt5
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007706.html">[BulmaGés] Sailfish OS
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7707">[ fecha ]</a>
+              <a href="thread.html#7707">[ hilo ]</a>
+              <a href="subject.html#7707">[ asunto ]</a>
+              <a href="author.html#7707">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bueno, la solución al punto nº2 es hacer:
+
+set(QT_SEARCH_PATH &quot;/opt/Qt5.1.0/5.1.0/gcc&quot;)
+
+para que busque qmake en &quot;/opt/Qt5.1.0/5.1.0/gcc/bin&quot;, y no en &quot;/usr/bin&quot;.
+¡Cómo no se me había ocurrido, xD!
+
+Un saludo.
+
+El 15/09/13 21:39, <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">aitor en gnuinos.org</A> escribió:
+&gt;<i> Buenos días, he avanzado algo compilando BulmaGés en Qt5 (no sé si 
+</I>&gt;<i> mucho o poco).
+</I>&gt;<i>
+</I>&gt;<i> Antes de empezar a exponer nada, quiero aclarar que se trata de mis 
+</I>&gt;<i> primeros intentos, de modo que en algo podré estar equivocado. Lo digo 
+</I>&gt;<i> para que nadie se lo tome al pie de la letra.
+</I>&gt;<i>
+</I>&gt;<i> Bien, aclarado esto, vayamos por pasos:
+</I>&gt;<i>
+</I>&gt;<i>  1) Para que los archivos *.cmake sean encontrados al ejecutar el 
+</I>&gt;<i> cmake, he tenido que añadir al comienzo del CMakeLists.txt las 
+</I>&gt;<i> siguientes líneas (teniendo en cuenta que en mi caso la ruta de 
+</I>&gt;<i> instalación de qt5 es &quot;/opt/Qt5.1.0/5.1.0&quot;):
+</I>&gt;<i>
+</I>&gt;<i>     set(_qt5Core_install_prefix &quot;/opt/Qt5.1.0/5.1.0/gcc&quot;)
+</I>&gt;<i>     set(Qt5Core_DIR &quot;${_qt5Core_install_prefix}/lib/cmake/Qt5Core&quot;)
+</I>&gt;<i>     set(Qt5CoreMacros_DIR &quot;${_qt5Core_install_prefix}/lib/cmake/Qt5Core&quot;)
+</I>&gt;<i>     set(Qt5WidgetsMacros_DIR 
+</I>&gt;<i> &quot;${_qt5Core_install_prefix}/lib/cmake/Qt5Widgets&quot;)
+</I>&gt;<i>     set(Qt5WidgetsConfig_DIR 
+</I>&gt;<i> &quot;${_qt5Core_install_prefix}/lib/cmake/Qt5Widgets&quot;)
+</I>&gt;<i>
+</I>&gt;<i> También he sustituido la línea:
+</I>&gt;<i>
+</I>&gt;<i>     set(QT5_MODULE_PATH 
+</I>&gt;<i> &quot;${_qt5Core_install_prefix}/lib/x86_64-linux-gnu/cmake&quot;)
+</I>&gt;<i>
+</I>&gt;<i> por esta otra:
+</I>&gt;<i>
+</I>&gt;<i>     set(QT5_MODULE_PATH &quot;${_qt5Core_install_prefix}/lib/cmake&quot;)
+</I>&gt;<i>
+</I>&gt;<i> Estos cambios, claro está, son aplicables para mi caso en particular. 
+</I>&gt;<i> En otros casos será diferente.
+</I>&gt;<i>
+</I>&gt;<i> 2) Para que los binarios ubicados en &quot;/opt/Qt5.1.0/5.1.0/gcc/bin&quot; sean 
+</I>&gt;<i> encontrados, el propio instalador de qt5 ha creado unos enlaces 
+</I>&gt;<i> directos dentro la carpeta &quot;/usr/bin&quot;. Ahora bien, dado que podemos 
+</I>&gt;<i> tener instaladas varias versiones de qt, dichos enlaces no apuntan 
+</I>&gt;<i> directamente a los binarios en sí, sino que lo hacen a través de un 
+</I>&gt;<i> intermediario llamado &quot;qtchooser&quot;, ubicado también en &quot;/usr/bin&quot;. Esta 
+</I>&gt;<i> herramienta se encarga de escoger la versión de qt que proceda para 
+</I>&gt;<i> cada caso. Y es aquí donde surge el problema, ya que cuando 
+</I>&gt;<i> &quot;FindQt5.cmake&quot; es invocado, la instrucción:
+</I>&gt;<i>
+</I>&gt;<i>     EXEC_PROGRAM(${QT_QMAKE_EXECUTABLE} ARGS &quot;-query QT_VERSION&quot; 
+</I>&gt;<i> OUTPUT_VARIABLE QTVERSION)
+</I>&gt;<i>
+</I>&gt;<i> no entiende que &quot;/usr/bin/qmake&quot; esté apuntando a 
+</I>&gt;<i> &quot;/opt/Qt5.1.0/5.1.0/gcc/bin/qmake&quot;. En consecuencia, la variable 
+</I>&gt;<i> &quot;QT5_FOUND&quot; adquiere el valor de &quot;FALSE&quot;. Por eso salta la advertencia:
+</I>&gt;<i>
+</I>&gt;<i>     FATAL_ERROR &quot;Bulmages needs QT5 to compile&quot;
+</I>&gt;<i>
+</I>&gt;<i> Esto lo he podido comprobar sustituyendo el &quot;/usr/bin/qmake&quot; en 
+</I>&gt;<i> cuestión, por un enlace directo creado de la siguiente manera:
+</I>&gt;<i>
+</I>&gt;<i>     ln -s /opt/Qt5.1.0/5.1.0/gcc/bin/qmake /usr/bin
+</I>&gt;<i>
+</I>&gt;<i> Hecho lo cual, la advertencia desaparece. Aclarar que este cambio lo 
+</I>&gt;<i> hice sólamente para comprobar que efectivamente así era, pues lo fácil 
+</I>&gt;<i> es comentar con una almohadilla o bien borrar el mensaje de 
+</I>&gt;<i> advertencia dentro del CMakeLists.txt (sabiendo que tenemos Qt5 
+</I>&gt;<i> instalado), para que el proceso pueda seguir adelante. De todas 
+</I>&gt;<i> maneras, si alguien ve que estoy equivocado en este punto le 
+</I>&gt;<i> agradecería que me lo dijese, así me evitaré perder el tiempo en vano.
+</I>&gt;<i>
+</I>&gt;<i> 3) A continuación, ejecuto el cmake con el siguiente resultado:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">aitor en gnuinos</A>:~/bulmages/bulmages/build$ cmake ../
+</I>&gt;<i> -- The C compiler identification is GNU 4.7.3
+</I>&gt;<i> -- The CXX compiler identification is GNU 4.7.3
+</I>&gt;<i> -- Check for working C compiler: /usr/bin/cc
+</I>&gt;<i> -- Check for working C compiler: /usr/bin/cc -- works
+</I>&gt;<i> -- Detecting C compiler ABI info
+</I>&gt;<i> -- Detecting C compiler ABI info - done
+</I>&gt;<i> -- Check for working CXX compiler: /usr/bin/c++
+</I>&gt;<i> -- Check for working CXX compiler: /usr/bin/c++ -- works
+</I>&gt;<i> -- Detecting CXX compiler ABI info
+</I>&gt;<i> -- Detecting CXX compiler ABI info - done
+</I>&gt;<i> -- /opt/Qt5.1.0/5.1.0/gcc/lib/cmake
+</I>&gt;<i> -- Found PkgConfig: /usr/bin/pkg-config (found version &quot;0.26&quot;)
+</I>&gt;<i> Must specify package names on the command line
+</I>&gt;<i> Must specify package names on the command line
+</I>&gt;<i> Must specify package names on the command line
+</I>&gt;<i> Must specify package names on the command line
+</I>&gt;<i> Must specify package names on the command line
+</I>&gt;<i> Must specify package names on the command line
+</I>&gt;<i> Must specify package names on the command line
+</I>&gt;<i> Must specify package names on the command line
+</I>&gt;<i> Must specify package names on the command line
+</I>&gt;<i> Must specify package names on the command line
+</I>&gt;<i> Must specify package names on the command line
+</I>&gt;<i> Must specify package names on the command line
+</I>&gt;<i> Must specify package names on the command line
+</I>&gt;<i> Must specify package names on the command line
+</I>&gt;<i> -- Found PostgreSQL pg_config: /usr/bin/pg_config
+</I>&gt;<i> -- Found PostgreSQL includedir: /usr/include/postgresql
+</I>&gt;<i> -- Found PostgreSQL library: /usr/lib/libpq.so
+</I>&gt;<i> -- Found PostgreSQL binary utils dir: /usr/lib/postgresql/9.3/bin
+</I>&gt;<i> -- Looking for include file libintl.h
+</I>&gt;<i> -- Looking for include file libintl.h - found
+</I>&gt;<i> -- Looking for dgettext
+</I>&gt;<i> -- Looking for dgettext - found
+</I>&gt;<i> -- Found Gettext: built in libc
+</I>&gt;<i> -- Found PythonInterp: /usr/bin/python (found version &quot;2.7.5+&quot;)
+</I>&gt;<i> -- Working on bulmalib
+</I>&gt;<i> -- Working on bulmafact
+</I>&gt;<i> -- Working on bulmatpv
+</I>&gt;<i> -- Working on bulmasetup
+</I>&gt;<i> -- Working on installbulmages
+</I>&gt;<i> -- Working on documentation
+</I>&gt;<i> -- Configuring done
+</I>&gt;<i> -- Generating done
+</I>&gt;<i> -- Build files have been written to: 
+</I>&gt;<i> /home/aitor/bulmages/bulmages/building
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">aitor en gnuinos</A>:~/bulmages/bulmages/build$
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> No sé si el &quot;Must specify package names on the command line&quot; tiene 
+</I>&gt;<i> relevancia o no.
+</I>&gt;<i>
+</I>&gt;<i> 4) Finalmente, ejecuto make y, después de un rato, la compilación se 
+</I>&gt;<i> interrumpe porque no encuentra el archivo de cabecera &quot;ui_abrevsbase.h&quot;:
+</I>&gt;<i>
+</I>&gt;<i> (.....)
+</I>&gt;<i> Scanning dependencies of target pluginbt_clientsync
+</I>&gt;<i> [ 20%] Building CXX object 
+</I>&gt;<i> bulmatpv/plugins/pluginbt_clientsync/CMakeFiles/pluginbt_clientsync.dir/pluginbt_clientsync.cpp.o
+</I>&gt;<i> In file included from 
+</I>&gt;<i> /home/aitor/bulmages/bulmages/bulmatpv/plugins/pluginbt_clientsync/pluginbt_clientsync.h:27:0,
+</I>&gt;<i>                  from 
+</I>&gt;<i> /home/aitor/bulmages/bulmages/bulmatpv/plugins/pluginbt_clientsync/pluginbt_clientsync.cpp:29:
+</I>&gt;<i> /home/aitor/bulmages/bulmages/bulmatpv/plugins/pluginbt_accesobotones/abrevs.h:5:27: 
+</I>&gt;<i> fatal error: ui_abrevsbase.h: No existe el fichero o el directorio
+</I>&gt;<i> compilation terminated.
+</I>&gt;<i> [ 20%] Building CXX object 
+</I>&gt;<i> bulmatpv/plugins/pluginbt_articulograficodb/CMakeFiles/pluginbt_articulograficodb.dir/moc_artgraficosdb.cpp.o
+</I>&gt;<i> Linking CXX shared library libpluginbt_alias.so
+</I>&gt;<i> make[2]: *** 
+</I>&gt;<i> [bulmatpv/plugins/pluginbt_clientsync/CMakeFiles/pluginbt_clientsync.dir/pluginbt_clientsync.cpp.o] 
+</I>&gt;<i> Error 1
+</I>&gt;<i> make[1]: *** 
+</I>&gt;<i> [bulmatpv/plugins/pluginbt_clientsync/CMakeFiles/pluginbt_clientsync.dir/all] 
+</I>&gt;<i> Error 2
+</I>&gt;<i> make[1]: *** Se espera a que terminen otras tareas....
+</I>&gt;<i> [ 20%] Built target pluginbt_alias
+</I>&gt;<i> Linking CXX shared library libpluginbt_visor.so
+</I>&gt;<i> [ 20%] Built target pluginbt_visor
+</I>&gt;<i> Linking CXX shared library libpluginbt_articulograficodb.so
+</I>&gt;<i> [ 20%] Built target pluginbt_articulograficodb
+</I>&gt;<i> make: *** [all] Error 2
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">root en gnuinos</A>:/home/aitor/bulmages/bulmages/build#
+</I>&gt;<i>
+</I>&gt;<i> Eso es todo por el momento, pues aquí ya me he quedado atascado. 
+</I>&gt;<i> ¿Alguna indicación?
+</I>&gt;<i>
+</I>&gt;<i> Saludos.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20130916/41fa8c70/attachment-0001.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20130916/41fa8c70/attachment-0001.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007705.html">[BulmaGés] Compilando en Qt5
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007706.html">[BulmaGés] Sailfish OS
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7707">[ fecha ]</a>
+              <a href="thread.html#7707">[ hilo ]</a>
+              <a href="subject.html#7707">[ asunto ]</a>
+              <a href="author.html#7707">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

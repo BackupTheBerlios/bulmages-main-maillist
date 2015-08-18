@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Ni el cambio más pequeño se libra.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FNi_el_cambio_m%3DE1s_pe%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fque%3DF1o_se_libra%3D2E%3F%3D&In-Reply-To=%3CCACeNGY3OC3bjFJ-7Shcgdw7EiNHLybwdc1DyYKUJeXPjLbs8uQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007132.html">
+   <LINK REL="Next"  HREF="007133.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Ni el cambio más pequeño se libra. </H1>
+    <B>Cristian Garde Zarza</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FNi_el_cambio_m%3DE1s_pe%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fque%3DF1o_se_libra%3D2E%3F%3D&In-Reply-To=%3CCACeNGY3OC3bjFJ-7Shcgdw7EiNHLybwdc1DyYKUJeXPjLbs8uQ%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]Ni el cambio más pequeño se libra.">cristian.garde en gmail.com
+       </A><BR>
+    <I>Vie Abr 27 10:28:37 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007132.html">[BulmaGés] [Gitorious] Activity: cgarde pushed 1	commits to masterm...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007133.html">[BulmaGés] No vi este mensaje.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7134">[ fecha ]</a>
+              <a href="thread.html#7134">[ hilo ]</a>
+              <a href="subject.html#7134">[ asunto ]</a>
+              <a href="author.html#7134">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Tomeu,
+
+Como no indicas qué es lo que está fallando no puedo hacer ninguna prueba
+más allá de comprobar que el uso del valor de IRPF en los documentos como
+albaranes, facturas, etc, funciona correctamente aunque en la base de datos
+haya una 'coma' como separador decimal. Ten en cuenta que el campo 'valor'
+es de tipo 'varchar' y por tanto el programa debería estar preparado para
+recibir este tipo de datos y tratarlos bien. No obstante he cambiado la
+captura de datos del BlDoubleSpinBox de text() a value() que devuelve un
+'double' y por tanto el separador decimal es un punto.
+
+He visto que el siguiente commit de fecha 3/Feb/2011 comentastes un código
+que trataba de solucionar el tema si se usaba text() para capturar el valor
+del BlDoubleSpinBox. No indicas el motivo por el que se comentó el código,
+pero el comentario sigue allí todavía.
+
+COPIO/PEGO:
+
+commit SHA1 ID: 7052c1db4dd37488b15f5c365c99155a499d3250
+
+    Deshago los cambios en BlDoubleSpinBox que convierten los números al
+formato según locales.
+
+------------------ bulmages/bulmalib/src/bldoublespinbox.cpp
+------------------
+index 8ddec8e..c6068ef 100644
+@@ -54,10 +54,10 @@ QString const BlDoubleSpinBox::text()
+     blDebug ( &quot;BlDoubleSpinBox::text&quot;, 0 );
+     QString a = QDoubleSpinBox::text();
+
+-    /// Conversi&oacute;n al formato del locale &quot;C&quot;: un punto separa la
+parte decimal
++/*    /// Conversi&oacute;n al formato del locale &quot;C&quot;: un punto separa la
+parte decimal
+     QLocale locale;
+     a = locale.toString((locale.toDouble(a))); //ARON
+-
++*/
+     blDebug ( &quot;END BlDoubleSpinBox::text&quot;, 0, a );
+     return a;
+ }
+
+
+
+Hago notar que antes de este cambio, en la ficha 'modo experto' de la
+configuración, en el capo 'IRPF' al ser de texto libre también se podría
+haber escrito un número con 'coma' y también hubiese dado el mismo fallo
+que comentas, pero que no se cual es. Ahora está mucho más protegido porque
+el valor del BlDoubleSpinBox tiene prioridad sobre ese campo y evitará que
+se pueda escribir un valor erróneo.
+
+
+Muchas gracias.
+Un saludo.
+
+--
+Cristian.
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20120427/2c803013/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20120427/2c803013/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007132.html">[BulmaGés] [Gitorious] Activity: cgarde pushed 1	commits to masterm...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007133.html">[BulmaGés] No vi este mensaje.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7134">[ fecha ]</a>
+              <a href="thread.html#7134">[ hilo ]</a>
+              <a href="subject.html#7134">[ asunto ]</a>
+              <a href="author.html#7134">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

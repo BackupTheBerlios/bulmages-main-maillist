@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120512215436.45FBB758FB%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007215.html">
+   <LINK REL="Next"  HREF="007217.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120512215436.45FBB758FB%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Sab Mayo 12 23:54:35 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007215.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007217.html">[BulmaGés] Ligar Plantes contables con balances de	cuentas.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7216">[ fecha ]</a>
+              <a href="thread.html#7216">[ hilo ]</a>
+              <a href="subject.html#7216">[ asunto ]</a>
+              <a href="author.html#7216">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from b1df767 to 92433c3
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/b1df7677d8d419f69b4707082890e4e54e1aba76/diffs/92433c3b70ca9eb0290397bd5845926fb9e2f3ce">https://gitorious.org/bulmages/bulmages/commit/b1df7677d8d419f69b4707082890e4e54e1aba76/diffs/92433c3b70ca9eb0290397bd5845926fb9e2f3ce</A>
+
+Diff: 
+
+commit 92433c3b70ca9eb0290397bd5845926fb9e2f3ce
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sat May 12 23:54:38 2012 +0200
+
+    Arreglo curioso problema con las plantillas. Se hacia un replace de los \n por &lt;br/&gt; que no funciona bien segun el RML y que al encerrarse dentro de un &lt;para&gt; produce como resultado lineas en blanco. Mientras que si no se hace el replace el &lt;para&gt; muestra correctamente la informacion. Asi que quito la sustitución para que esta eventualidad no ocurra. Tal vez se haya roto algo con este commit.
+
+diff --git a/bulmages/bulmafact/src/bfform.cpp b/bulmages/bulmafact/src/bfform.cpp
+index 9eee07f..4e226a4 100644
+--- a/bulmages/bulmafact/src/bfform.cpp
++++ b/bulmages/bulmafact/src/bfform.cpp
+@@ -375,7 +375,7 @@ void BfForm::parseTagsBf ( QString &amp;buff, int tipoEscape )
+             
+                         if ( parametros_story[j].trimmed() == &quot;desc&quot; + tableName() ){
+                             ///Impresion del descripcion de los articulos
+-                            fitxersortidatxt += &quot;    &lt;td&gt;&lt;para style=\&quot;paragrafo\&quot;&gt;&quot; + blStringEscape ( linea-&gt;dbValue ( &quot;desc&quot; + m_listalineas-&gt;tableName() ), tipoEscape ).replace ( QChar ( '\n' ), &quot;&lt;br/&gt;&quot; ) + &quot;&lt;/para&gt;&lt;/td&gt;\n&quot;;
++                            fitxersortidatxt += &quot;    &lt;td&gt;&lt;para style=\&quot;paragrafo\&quot;&gt;&quot; + blStringEscape ( linea-&gt;dbValue ( &quot;desc&quot; + m_listalineas-&gt;tableName() ), tipoEscape ) + &quot;&lt;/para&gt;&lt;/td&gt;\n&quot;;
+                         } // end if
+             
+                         if ( parametros_story[j].trimmed() == &quot;cant&quot; + tableName() ){
+@@ -416,7 +416,7 @@ void BfForm::parseTagsBf ( QString &amp;buff, int tipoEscape )
+                     ///Impresion de los contenidos
+                     fitxersortidatxt += &quot;&lt;tr&gt;&quot;;
+                     fitxersortidatxt += &quot;    &lt;td&gt;&quot; + blStringEscape ( linea-&gt;dbValue ( &quot;codigocompletoarticulo&quot; ), tipoEscape ) + &quot;&lt;/td&gt;\n&quot;;
+-                    fitxersortidatxt += &quot;    &lt;td&gt;&lt;para style=\&quot;paragrafo\&quot;&gt;&quot; + blStringEscape ( linea-&gt;dbValue ( &quot;desc&quot; + m_listalineas-&gt;tableName() ), tipoEscape ).replace ( QChar ( '\n' ), &quot;&lt;br/&gt;&quot; ) + &quot;&lt;/para&gt;&lt;/td&gt;\n&quot;;
++                    fitxersortidatxt += &quot;    &lt;td&gt;&lt;para style=\&quot;paragrafo\&quot;&gt;&quot; + blStringEscape ( linea-&gt;dbValue ( &quot;desc&quot; + m_listalineas-&gt;tableName() ), tipoEscape ) + &quot;&lt;/para&gt;&lt;/td&gt;\n&quot;;
+                     fitxersortidatxt += &quot;    &lt;td&gt;&quot; + linea-&gt;dbValue ( &quot;cant&quot; + m_listalineas-&gt;tableName() ) + &quot;&lt;/td&gt;\n&quot;;
+                     fitxersortidatxt += &quot;    &lt;td&gt;&quot; + l.sprintf ( &quot;%s&quot;, blStringEscape ( linea-&gt;dbValue ( &quot;pvp&quot; + m_listalineas-&gt;tableName() ), tipoEscape ).toAscii().constData() ) + &quot;&lt;/td&gt;\n&quot;;
+                     fitxersortidatxt += &quot;    &lt;td&gt;&quot; + l.sprintf ( &quot;%s&quot;, blStringEscape ( linea-&gt;dbValue ( &quot;descuento&quot; + m_listalineas-&gt;tableName() ), tipoEscape ).toAscii().constData() ) + &quot; %&lt;/td&gt;\n&quot;;
+@@ -568,14 +568,10 @@ void BfForm::parseTagsBf ( QString &amp;buff, int tipoEscape )
+         //   buff.replace(&quot;[detallearticulos]&quot;, detalleArticulos());
+ #endif
+ 
+-// a ver. No se porque pongo esto aqui.
+-// Como que he sacado codigo de generateRML(arch) para ponerlo aqui (porque me parece que es parseTags
+-// quien deberia tratar todos los tags y porque asi aprovecho el proceso de escribir el fichero en el
+-// encoding correcto que ya esta hecho en Ficha) pues he copiado tambien esto, pero yo hubiera dicho
+-// que C++ ya haria el delete solito y si
+-// no es asi, porque en generateRML había dos catchs y solo uno hacia delete?
++
+     } catch ( ... ) {
+-    
++	// Tratamiento de errores, en caso de tener alguna incidenca (que es posible al depender de factores externos puede quedar memoria reservada
++	// sin liberar. C++ no tiene recolector de basura con lo que hay que liberar toda la memoria.
+         if ( cur ) delete cur;
+         throw ( -1 );
+         
+diff --git a/bulmages/bulmalib/src/blfunctions.cpp b/bulmages/bulmalib/src/blfunctions.cpp
+index 0af6d31..8a979c7 100644
+--- a/bulmages/bulmalib/src/blfunctions.cpp
++++ b/bulmages/bulmalib/src/blfunctions.cpp
+@@ -291,8 +291,6 @@ QString blXMLEscape ( const QString&amp; param )
+     text.replace ( '&quot;', &quot;&quot;&quot; );
+     text.replace ( &quot;&lt;&quot;, &quot;&lt;&quot; );
+     text.replace ( &quot;&gt;&quot;, &quot;&gt;&quot; );
+-    text.replace ( &quot;\n&quot;, &quot;&lt;br /&gt;&quot; );
+-
+     return text;
+ }
+ 
+@@ -346,13 +344,6 @@ QString blXMLEncode ( const QString &amp;string )
+     QChar *data = cadena.data();
+ 
+     /// Cambia tambien otros caracteres no adecuados.
+-    /*
+-        cadenatmp.replace ( &quot;&amp;&quot;, &quot;&#38;&quot; );
+-        cadenatmp.replace ( &quot;&gt;&quot;, &quot;&#62;&quot; );
+-        cadenatmp.replace ( &quot;&lt;&quot;, &quot;&#60;&quot; );
+-        cadenatmp.replace ( &quot;\&quot;&quot;, &quot;&#34;&quot; );
+-        cadenatmp.replace ( &quot;\'&quot;, &quot;&#39;&quot; );
+-    */
+     int i;
+     for ( i = 0; i &lt; cadena.length(); i++ ) {
+         if ( data-&gt;unicode() &gt; 127 ) {
+@@ -974,7 +965,7 @@ QString blNumberToText ( QString numero, QString moneda, QString singular )
+ 
+     numero = numero.replace ( &quot;,&quot;, &quot;.&quot; );
+     QString decimal_break = &quot;.&quot;;
+-    //echo &quot;test run on &quot;.$numero.&quot;&lt;br&gt;&quot;;
++
+     QString entero = numero.split ( decimal_break ).at ( 0 );
+     QString decimal = numero.split ( decimal_break ).at ( 1 );
+ 
+@@ -987,7 +978,6 @@ QString blNumberToText ( QString numero, QString moneda, QString singular )
+     if ( decimal.size() &gt; 2 ) {
+         decimal = decimal.right ( 2 );
+     } // end if
+-    //echo &quot;entero &quot;.$entero.&quot;&lt;br&gt; decimal &quot;.$decimal.&quot;&lt;br&gt;&quot;;
+ 
+     QString entero_breakdown = entero;
+ 
+@@ -1004,7 +994,6 @@ QString blNumberToText ( QString numero, QString moneda, QString singular )
+         breakdown[&quot;entero&quot; + breakdown_key + &quot;number&quot;] = /*floor(*/ QString::number ( entero_breakdown.toLongLong() / breakdown_key.toLongLong() );
+ 
+         if ( breakdown[&quot;entero&quot; + breakdown_key+&quot;number&quot;].toLongLong() &gt; 0 ) {
+-            //echo &quot; further process &lt;br&gt;&quot;;
+             breakdown[&quot;entero&quot; + breakdown_key+&quot;100&quot;] = /*floor(*/ QString::number ( breakdown[&quot;entero&quot; + breakdown_key + &quot;number&quot;].toLongLong() / 100 );
+             breakdown[&quot;entero&quot; + breakdown_key+&quot;10&quot;] = /*floor( */ QString::number ( ( breakdown[&quot;entero&quot; + breakdown_key + &quot;number&quot;].toLongLong() % 100 ) / 10 );
+             breakdown[&quot;entero&quot; + breakdown_key+&quot;1&quot;] = /*floor(*/   QString::number ( breakdown[&quot;entero&quot; + breakdown_key + &quot;number&quot;].toLongLong() % 10 );
+@@ -1036,7 +1025,6 @@ QString blNumberToText ( QString numero, QString moneda, QString singular )
+                         num_string += numeros[&quot;decenas&quot; + tens + ctens + &quot;0&quot;];
+                     } // end if
+                 } else {
+-                    //echo &quot; decenas &quot;.numeros[&quot;decenas&quot;][$tens][$ctens].&quot;&lt;br&gt;&quot;;
+                     if ( numeros.contains ( &quot;decenas&quot; + tens + ctens ) ) {
+                         num_string += numeros[&quot;decenas&quot; + tens + ctens];
+                     }
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007215.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007217.html">[BulmaGés] Ligar Plantes contables con balances de	cuentas.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7216">[ fecha ]</a>
+              <a href="thread.html#7216">[ hilo ]</a>
+              <a href="subject.html#7216">[ asunto ]</a>
+              <a href="author.html#7216">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

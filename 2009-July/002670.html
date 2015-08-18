@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][BulmaGÃ©s]segfault al lanzar los programas...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaG%3DC3%3DA9s%3D5Dse%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fgfault_al_lanzar_los_programas%3D2E%3D2E%3D2E%3F%3D&In-Reply-To=%3C34554.80.34.165.131.1247141724.squirrel%40webmail.tinet.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002669.html">
+   <LINK REL="Next"  HREF="002671.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][BulmaGÃ©s]segfault al lanzar los programas... </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaG%3DC3%3DA9s%3D5Dse%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fgfault_al_lanzar_los_programas%3D2E%3D2E%3D2E%3F%3D&In-Reply-To=%3C34554.80.34.165.131.1247141724.squirrel%40webmail.tinet.org%3E"
+       TITLE="[BulmaGés][BulmaGÃ©s]segfault al lanzar los programas...">xdrudis en tinet.cat
+       </A><BR>
+    <I>Jue Jul  9 14:15:24 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002669.html">[BulmaGés]segfault al lanzar los programas...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002671.html">[BulmaGés][BulmaGÃ©s]segfault al lanzar los programas...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2670">[ fecha ]</a>
+              <a href="thread.html#2670">[ hilo ]</a>
+              <a href="subject.html#2670">[ asunto ]</a>
+              <a href="author.html#2670">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> Hola Pedro.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Según tu log el fallo está en que no se puede conectar con la base de datos. ¿Has mirado que tengas permisos y eso en Postgres?
+</I>&gt;<i>
+</I>
+Més concretament necessites un usuari que tingui
+permisos per accedir a les bases de dades template1, bulmafact o bulmacont.
+Si no tens aquestes bases de dades o l'usuari que intenta accedir no hi té
+permís fallarà (si no ha canviat el codi últimament).
+Fa temps també hi havia algun altre problema si passaves algun paràmetre de línia de comandes
+a bulmafact però no els passaves tots.
+Has provat
+bulmafact
+sense el -d database ?
+
+Es possible que estigui intentant connectar per socket a aquestes tres bases de dades
+com l'usuari pg amb el mateix nom que l'usuari de la shell i no pugui accedir a cap de les tres.
+
+T'arriba a preguntar login i password ?
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002669.html">[BulmaGés]segfault al lanzar los programas...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002671.html">[BulmaGés][BulmaGÃ©s]segfault al lanzar los programas...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2670">[ fecha ]</a>
+              <a href="thread.html#2670">[ hilo ]</a>
+              <a href="subject.html#2670">[ asunto ]</a>
+              <a href="author.html#2670">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

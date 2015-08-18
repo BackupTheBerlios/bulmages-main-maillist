@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] Bulmages y git-buildpackage
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Bulmages%20y%20git-buildpackage&In-Reply-To=%3C5274DB49.3060605%40gnuinos.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+   <LINK REL="Next"  HREF="007740.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] Bulmages y git-buildpackage </H1>
+    <B>aitor</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Bulmages%20y%20git-buildpackage&In-Reply-To=%3C5274DB49.3060605%40gnuinos.org%3E"
+       TITLE="[BulmaGés] Bulmages y git-buildpackage">aitor en gnuinos.org
+       </A><BR>
+    <I>Sab Nov  2 12:00:25 CET 2013</I>
+    <P><UL>
+        
+        <LI>Próximo mensaje: <A HREF="007740.html">[BulmaGés] Foro en bulmages
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7739">[ fecha ]</a>
+              <a href="thread.html#7739">[ hilo ]</a>
+              <a href="subject.html#7739">[ asunto ]</a>
+              <a href="author.html#7739">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Buenos días, Miguel:
+
+He reempaquetado varias cosas (entre ellas el grub, compton-git, 
+bulmagés-release, firefox y thunderbird) utilizando /git-buildpackage/, 
+con sus utilidades /pristine-tar/ y /pbuilder, y /siguiendo tus apuntes 
+en la wiki del Redmine. Comentarte que también he podido observar el 
+extraño comportamiento de la función /git-dch/a la hora de introducir 
+los cambios en el /debian/changelog/. Comentabas en la wiki que antes de 
+introducir el número de la nueva versión te veías en la necesidad de 
+hacer una copia del archivo. Cito textualmente:
+
+El problema que me encuentro es que, a pesar de especificar una nueva 
+versión, en lugar de generarme una entrada de changelog nueva, git-dch 
+persiste en añadir los cambios a la última entrada de changelog 
+existente machacando incluso el número de versión que tenía.
+
+Sólo he encontrado una manera de evitar esto, y es tageando previamente 
+con git-buildpackage:||
+||<i>
+</I>$ git-buildpackage --git-tag --git-tag-only --git-no-sign-tags 
+--git-ignore-branch
+
+Haciendo esto no se borran datos anteriores. Con todo, hay veces que 
+/git-dch/ edita los cambios pero sin abrir el archivo con /nano/, 
+teniendo que utilizar un editor de texto sencillo para hacer los 
+retoques, o el propio /nano/.
+
+Como probablemente sigamos métodos distintos, te comento el mío por 
+encima: primero hago una copia del repositorio con /git clone/, después 
+creo una carpeta aparte, y dentro de ella, importo los datos con 
+/pristine-tar/ (primero hay que borrar el directorio /.git/ ya que 
+/git-import-orig/ no admite metadatos de /git/, aunque sí de /debian/). 
+Al hacer esto se crea una tarball /.orig.tar.gz/ en el directorio padre. 
+Comparando esta tarball con la creado posteriormente la carpeta 
+/build-area/ puede obtenerse el diferencial /s/i se desea.
+
+Por cierto, igual me animo a hacer una separación de /bulmafact, 
+bulmacont, bulmatpv/... en los paquetes .deb. Aunque creo que para 
+hacerlo bien habría que distinguir unos plugins de otros, y no tengo 
+conocimiento.
+
+Saludos,
+
+Aitor.
+
+
+|<i>
+</I>
+|||<i>
+</I>------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20131102/2c08c62d/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20131102/2c08c62d/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Próximo mensaje: <A HREF="007740.html">[BulmaGés] Foro en bulmages
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7739">[ fecha ]</a>
+              <a href="thread.html#7739">[ hilo ]</a>
+              <a href="subject.html#7739">[ asunto ]</a>
+              <a href="author.html#7739">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

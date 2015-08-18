@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] Project bulmages at BerliOS
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Project%20bulmages%20at%20BerliOS&In-Reply-To=%3C201106240056.20630.asmond%40orange.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006021.html">
+   <LINK REL="Next"  HREF="006022.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] Project bulmages at BerliOS </H1>
+    <B>Toni Asensi Esteve</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Project%20bulmages%20at%20BerliOS&In-Reply-To=%3C201106240056.20630.asmond%40orange.es%3E"
+       TITLE="[BulmaGés] Project bulmages at BerliOS">asmond en orange.es
+       </A><BR>
+    <I>Vie Jun 24 00:56:20 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006021.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 703e6d6e4d557f8728745e46895724a4f0360004
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006022.html">[BulmaGés] Reminder about your invitation from	Tomeu Borras
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6043">[ fecha ]</a>
+              <a href="thread.html#6043">[ hilo ]</a>
+              <a href="subject.html#6043">[ asunto ]</a>
+              <a href="author.html#6043">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>     Empiezo a cambiar el sistema de trazas de depuracion al sistema
+</I>&gt;<i> propuesto por Toni Asensi, que funciona mucho mejor que lo que teniamos
+</I>&gt;<i> hasta ahora
+</I>Encantado :-) gracias :-)
+
+Aparte, hay algo que me gustaría comentar, acerca de lo dicho en un correo 
+anterior, respecto a «escribir el mensaje de &quot;finalizado&quot; en el momento de 
+terminarse la función,  no antes». 
+
+Esto se ve mejor en el ejemplo simple, comentado anteriormente, de ejecución 
+normal de NxSpooler. Vemos que al final de dicha ejecución normal, en 
+su&quot;main.cpp&quot;, se ejecuta :
+
+	qDebug() &lt;&lt; TDebugStartEnd::indentation &lt;&lt; &quot;The result of main(...) is:&quot; &lt;&lt; 
+	     result;
+        return result;
+
+con lo que parece que esas dos órdenes sean las últimas ejecutadas por dicha 
+función, y que cuando veamos escrito &quot;The result of main(...) is:&quot; pensaremos 
+que en ese momento ha terminado dicha función. Pero... según lo que escribe el 
+programa en QDebug():
+
+    / TSystem::TSystem()
+    \ TSystem::TSystem()
+    / int main(int, char**)
+         / QString TSystem::setApplicationName(const QString&amp;)
+         \ QString TSystem::setApplicationName(const QString&amp;)
+         / TTranslator::TTranslator(QCoreApplication&amp;)
+              / QDir TTranslator::folderWhereTheExecutableIs() const
+              \ QDir TTranslator::folderWhereTheExecutableIs() const
+         \ TTranslator::TTranslator(QCoreApplication&amp;)
+         / TSysTrayIcon::TSysTrayIcon()
+         \ TSysTrayIcon::TSysTrayIcon()
+         / TNxSpooler::TNxSpooler(QWidget*)
+              / void TNxSpooler::prepareTrayIconOrShowProgram()
+                   / void TNxSpooler::hide()
+                   \ void TNxSpooler::hide()
+              \ void TNxSpooler::prepareTrayIconOrShowProgram()
+              / void TNxSpooler::initializeSettings()
+              \ void TNxSpooler::initializeSettings()
+              / void TNxSpooler::prepareSharedFolder() const
+              \ void TNxSpooler::prepareSharedFolder() const
+              / void TNxSpooler::prepareTimer()
+              \ void TNxSpooler::prepareTimer()
+         \ TNxSpooler::TNxSpooler(QWidget*)
+         / void TNxSpooler::showOrHide(QSystemTrayIcon::ActivationReason)
+         \ void TNxSpooler::showOrHide(QSystemTrayIcon::ActivationReason)
+         / void TNxSpooler::show()
+         \ void TNxSpooler::show()
+         The result of main(...) is: 0
+         / virtual TNxSpooler::~TNxSpooler()
+         \ virtual TNxSpooler::~TNxSpooler()
+         / virtual TSysTrayIcon::~TSysTrayIcon()
+         \ virtual TSysTrayIcon::~TSysTrayIcon()
+         / virtual TTranslator::~TTranslator()
+         \ virtual TTranslator::~TTranslator()
+    \ int main(int, char**)
+    / virtual TSystem::~TSystem()
+    \ virtual TSystem::~TSystem()
+
+observamos que entre 
+         The result of main(...) is: 0
+y 	
+      \ int main(int, char**)
+se ha ejecutado más código; con lo que de esta forma el desarrollador tiene un 
+mejor conocimiento de cuándo realmente termina de ejecutarse una función.
+
+Saluts:
+-- 
+Toni Asensi Esteve.
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006021.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 703e6d6e4d557f8728745e46895724a4f0360004
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006022.html">[BulmaGés] Reminder about your invitation from	Tomeu Borras
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6043">[ fecha ]</a>
+              <a href="thread.html#6043">[ hilo ]</a>
+              <a href="subject.html#6043">[ asunto ]</a>
+              <a href="author.html#6043">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

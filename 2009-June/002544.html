@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]vida sana i SQL sà
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fvida_sana_i_SQL_s%3DE0%3F%3D&In-Reply-To=%3C20090626213910.GA24885%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002546.html">
+   <LINK REL="Next"  HREF="002545.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]vida sana i SQL sà </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fvida_sana_i_SQL_s%3DE0%3F%3D&In-Reply-To=%3C20090626213910.GA24885%40localhost%3E"
+       TITLE="[BulmaGés]vida sana i SQL sà">xdrudis en tinet.cat
+       </A><BR>
+    <I>Vie Jun 26 23:39:10 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002546.html">[BulmaGés]vida sana i SQL sà
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002545.html">[BulmaGés]vida sana i SQL sà
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2544">[ fecha ]</a>
+              <a href="thread.html#2544">[ hilo ]</a>
+              <a href="subject.html#2544">[ asunto ]</a>
+              <a href="author.html#2544">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Fri, Jun 26, 2009 at 10:54:30PM +0200, Xavi Drudis Ferran wrote:
+&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Limitacions del nou mètode load : 
+</I>&gt;<i> 
+</I>&gt;<i> - no serveix per a $21 i següents, si teniu més de 20 paràmetres useu
+</I>&gt;<i> el loadQuery que accepta un array
+</I>&gt;<i> 
+</I>&gt;<i> - tots els paràmetres han de ser QStrings
+</I>&gt;<i> 
+</I>&gt;<i> - no admet limit ni offset ni nomcursor (però es podria afegir sense
+</I>&gt;<i> massa complicació si es necessita sovint)
+</I>&gt;<i>
+</I>
+
+Perdó perdó perdó. M'he deixat una limitació (com a mínim): 
+
+load() busca $ número per saber quants paràetres hi ha però ho fa sense 
+fer anàlisi sintàctica ni res, i per tant cascarà vilment en casos 
+com ara 
+
+o-&gt;mainCompany()-&gt;load(&quot;select 'preu unitari : $13. Unitats : '||$1||'. Preu total '||$1*13&quot;,unitats);
+
+la &quot;solució&quot; seria 
+
+o-&gt;mainCompany()-&gt;load(&quot;select 'preu unitari : $'||'13. Unitats : '||$1||'. Preu total '||$1*13&quot;,unitats);
+
+o tirar de loadQuery:
+   
+QStrings params[1] = { unitats };
+o-&gt;mainCompany()-&gt;load(&quot;select 'preu unitari : $13. Unitats : '||$1||'. Preu total '||$1*13&quot;,1,params);
+
+
+O sia. load() busca $n per saber quants paràmetres hi ha sense mirar sintaxi SQL,
+però el postgreSQL es mira la sintaxi SQL i només agafa valors pels paràmetres
+que estan en llocs on poden estar (on són permeses les expressions). Si 
+
+Una altra limitació és que l'he provada poc.
+
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>
+Signa per fer Collserola parc natural com cal
+<A HREF="http://www.collserola.org/salvemelparcnatural/">http://www.collserola.org/salvemelparcnatural/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002546.html">[BulmaGés]vida sana i SQL sà
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002545.html">[BulmaGés]vida sana i SQL sà
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2544">[ fecha ]</a>
+              <a href="thread.html#2544">[ hilo ]</a>
+              <a href="subject.html#2544">[ asunto ]</a>
+              <a href="author.html#2544">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

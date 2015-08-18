@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] warning: operation on 'i' may be	undefined
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20warning%3A%20operation%20on%20%27i%27%20may%20be%0A%09undefined&In-Reply-To=%3C200907212305.37206.pedro.lopez.cabanillas%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002774.html">
+   <LINK REL="Next"  HREF="002776.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] warning: operation on 'i' may be	undefined </H1>
+    <B>Pedro Lopez-Cabanillas</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20warning%3A%20operation%20on%20%27i%27%20may%20be%0A%09undefined&In-Reply-To=%3C200907212305.37206.pedro.lopez.cabanillas%40gmail.com%3E"
+       TITLE="[BulmaGés] warning: operation on 'i' may be	undefined">pedro.lopez.cabanillas en gmail.com
+       </A><BR>
+    <I>Mar Jul 21 23:05:37 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002774.html">[BulmaGés]r3581 - in trunk/bulmages: bulmafact/src bulmalib/src
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002776.html">[BulmaGés]warning: operation on 'i' may be undefined
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2775">[ fecha ]</a>
+              <a href="thread.html#2775">[ hilo ]</a>
+              <a href="subject.html#2775">[ asunto ]</a>
+              <a href="author.html#2775">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola,
+
+Seguimos cazando warnings que impiden crear los paquetes RPM para openSuse. Os 
+comento uno de los últimos:
+
+I: Program causes undefined operation
+(likely same variable used twiceand post/pre incremented in the same 
+expression).
+e.g. x = x++; Split it in two operations.
+E: bulmages 
+sequence-point /usr/src/packages/BUILD/bulmages/bulmalib/src/bldb.cpp:945, 
+950
+
+Propongo el siguiente parche, que parece que deja contento al compilador, y 
+además clarifica bastante el fuente. Antes del commit, solicito vuestra 
+aprobación o comentarios.
+
+--- bulmalib/src/bldb.cpp	(revisión: 3581)
++++ bulmalib/src/bldb.cpp	(copia de trabajo)
+@@ -953,12 +953,22 @@
+    if ( ( *i ).isHighSurrogate() ) {
+        // sospecho que o este caso o el siguiente nunca se
+        // dara pero no lo se seguro y si es asi no se cual
+-        codepoint = QChar::surrogateToUcs4 ( *i, *++i );
++        QChar high = *i;
++        i++;
++        if ( i == buff.end() )
++            break;
++        QChar low = *i;
++        codepoint = QChar::surrogateToUcs4 ( high, low );
+    }  else {
+        if ( ( *i ).isLowSurrogate() ) {
+            // sospecho que o este caso o el anterior nunca se
+            // dara pero no lo se seguro y si es asi no se cual
+-            codepoint = QChar::surrogateToUcs4 ( *++i, *i );
++            QChar low = *i;
++            i++;
++            if ( i == buff.end() )
++                break;
++            QChar high = *i;
++            codepoint = QChar::surrogateToUcs4 ( high, low );
+        } else {
+            // este caso es mas normal, caracter entre 0 i 2^16
+            codepoint = ( *i ).unicode();
+
+Saludos,
+Pedro
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002774.html">[BulmaGés]r3581 - in trunk/bulmages: bulmafact/src bulmalib/src
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002776.html">[BulmaGés]warning: operation on 'i' may be undefined
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2775">[ fecha ]</a>
+              <a href="thread.html#2775">[ hilo ]</a>
+              <a href="subject.html#2775">[ asunto ]</a>
+              <a href="author.html#2775">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]ampersand en los informes &quot;listado.rml&quot;
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Futf-8%3Fq%3Fampersand_en_los_informes_%3F%3D%0A%09%3D%3Futf-8%3Fq%3F%3D22listado%3D2Erml%3D22%3F%3D&In-Reply-To=%3C24af1ea71002040506u6e15cbf2s865e653c53d7d211%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003369.html">
+   <LINK REL="Next"  HREF="003371.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]ampersand en los informes &quot;listado.rml&quot; </H1>
+    <B>Joan Miquel Torres Rigo</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Futf-8%3Fq%3Fampersand_en_los_informes_%3F%3D%0A%09%3D%3Futf-8%3Fq%3F%3D22listado%3D2Erml%3D22%3F%3D&In-Reply-To=%3C24af1ea71002040506u6e15cbf2s865e653c53d7d211%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]ampersand en los informes &quot;listado.rml&quot;">joanmiquel en mallorcaweb.net
+       </A><BR>
+    <I>Jue Feb  4 14:06:40 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003369.html">[BulmaGés]ampersand en los informes &quot;listado.rml&quot;
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003371.html">[BulmaGés]ampersand en los informes &quot;listado.rml&quot;
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3370">[ fecha ]</a>
+              <a href="thread.html#3370">[ hilo ]</a>
+              <a href="subject.html#3370">[ asunto ]</a>
+              <a href="author.html#3370">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>2010/2/4 Aron &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">auryn en wanadoo.es</A>&gt;
+
+&gt;<i> Buenos días
+</I>&gt;<i>
+</I>&gt;<i> Cuando en algún campo aparece el símbolo ampersand (&amp;), el informe de
+</I>&gt;<i> listado
+</I>&gt;<i> falla en ese punto.
+</I>&gt;<i>
+</I>&gt;<i> He probado esto en la línea 2367 de blsubform.cpp:
+</I>&gt;<i> fitxersortidarml += &quot;    &lt;td&gt;&lt;![CDATA[&quot; +  valor-&gt;text() + &quot;]]&gt;&lt;/td&gt;\n&quot;;
+</I>&gt;<i>
+</I>&gt;<i> Pero se queda el &quot;&lt;![CDATA[&quot; en el PDF resultante.
+</I>&gt;<i>
+</I>&gt;<i> ¿Cómo podemos hacer funcionar los informes cuando está ese símbolo por ahí?
+</I>&gt;<i>
+</I>
+Rápidamente ese en concreto con '&amp;' en vez de '&amp;'.
+
+Pero tiene que existir una función de libreria que te realice la conversión
+de ese y otros carácteres que pueden ser problemáticos (busca por 'html
+entities').
+
+De todos modos, si la utilidad de conversión a pdf trabaja bien, la manera
+&quot;plenamente correcta&quot; sería añadir la correspondiente cabecera html con la
+codificación de carácteres. Si trabajais con utf-8, por ejemplo, eso sería
+lo ideal. Pero tienes que estar seguro que todo el texto está en el formato
+adecuado.
+
+Si no estas seguro de eso, mejor busca la función que te hace la conversión
+a entidades html porque, aunque haya discordancia de codificación, para los
+carácteres más comunes funcionará correctamente.
+
+
+Saludos.
+
+
+-- 
+Joan Miquel Torres__________________________________
+Linux Registered User #164872
+<A HREF="http://www.mallorcaweb.net/joanmiquel">http://www.mallorcaweb.net/joanmiquel</A>
+BULMA: <A HREF="http://bulma.net">http://bulma.net</A> <A HREF="http://breu.bulma.net/?l2301">http://breu.bulma.net/?l2301</A>
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20100204/5a6a190b/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20100204/5a6a190b/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003369.html">[BulmaGés]ampersand en los informes &quot;listado.rml&quot;
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003371.html">[BulmaGés]ampersand en los informes &quot;listado.rml&quot;
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3370">[ fecha ]</a>
+              <a href="thread.html#3370">[ hilo ]</a>
+              <a href="subject.html#3370">[ asunto ]</a>
+              <a href="author.html#3370">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

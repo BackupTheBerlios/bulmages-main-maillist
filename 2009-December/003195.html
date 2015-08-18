@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Mòdul de la FaPaC en català
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FM%3DF2dul_de_la_FaPaC_e%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fn_catal%3DE0%3F%3D&In-Reply-To=%3C200912031838.21232.orestes%40tsc.upc.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003194.html">
+   <LINK REL="Next"  HREF="003203.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Mòdul de la FaPaC en català </H1>
+    <B>Orestes Mas</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FM%3DF2dul_de_la_FaPaC_e%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fn_catal%3DE0%3F%3D&In-Reply-To=%3C200912031838.21232.orestes%40tsc.upc.edu%3E"
+       TITLE="[BulmaGés]Mòdul de la FaPaC en català">orestes en tsc.upc.edu
+       </A><BR>
+    <I>Jue Dic  3 18:38:21 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003194.html">[BulmaGés]Mòdul de la FaPaC en català
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003203.html">[BulmaGés]Mòdul de la FaPaC en català
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3195">[ fecha ]</a>
+              <a href="thread.html#3195">[ hilo ]</a>
+              <a href="subject.html#3195">[ asunto ]</a>
+              <a href="author.html#3195">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>A Dijous, 3 de desembre de 2009, Walter Garcia-Fontes va escriure:
+&gt;<i> * Orestes Mas [03/12/09 15:37]:
+</I>&gt;<i> &gt; Jo també he observat que el mòdul no sortia en català. Investigant una
+</I>&gt;<i> &gt; mica he vist que hi ha unes línies comentades al codi font. He avisat al
+</I>&gt;<i> &gt; Leo, que és qui ho porta, i m'ha dit que s'ho miraria.
+</I>&gt;<i> 
+</I>&gt;<i> M'acaba de contestar el Tomeu que s'ha de començar tenint el locale de
+</I>&gt;<i> català a l'entorn:
+</I>&gt;<i> 
+</I>&gt;<i> LANGUAGE=ca_ES.UTF-8
+</I>&gt;<i> 
+</I>&gt;<i> &gt; De tota manera, ara que ja el tinc compilat i tal em posaré a contribuir
+</I>&gt;<i> &gt; en la traducció jo mateix, a veure si entre tots aconseguim el 100% amb
+</I>&gt;<i> &gt; la màxima qualitat possible.
+</I>&gt;<i> 
+</I>&gt;<i> Sí, jo també me la miraré, l'altra dia que vaig mirar la versió al
+</I>&gt;<i> colinux a Windows es veien unes quantes coses incompletes i a
+</I>&gt;<i> millorar.
+</I>&gt;<i> 
+</I>&gt;<i> &gt; També he anat notant algun bug, que comunicaré puntualment a la llista
+</I>&gt;<i> &gt; quan arribi a casa (els tinc allí anotats).
+</I>&gt;<i> 
+</I>&gt;<i> Gràcies, ara que sé com es compila i s'engega la versió per a linux
+</I>&gt;<i> posaré unes instruccions a la web de la FaPaC perquè hi ha força gent
+</I>&gt;<i> esperant a provar-ho a Linux i poder fer aportacions.
+</I>&gt;<i> 
+</I>&gt;<i> Postser hauríem de repassar les dependències per compilar-lo, jo tinc
+</I>&gt;<i> aquestes:
+</I>&gt;<i> 
+</I>&gt;<i> sudo apt-get install build-essential cmake-gui translate-toolkit lokate
+</I>&gt;<i> sudo apt-get install qt3-assistant qt4-designer qt4-qtconfig qt4-dev-tools
+</I>&gt;<i> sudo apt-get install postgresql-8.3 postgresql-client libqt4-sql-psql
+</I>&gt;<i>  postgresql-doc-8.3 sudo apt-get install python-minimal python-ooolib
+</I>&gt;<i>  python-qt4 python-reportlab python-psycopg2 gettext
+</I>
+Algunes d'aquestes no són dependències de compilació, sinó d'execució, però 
+vaja, cal tenir-les igualment.
+
+Tanmateix, creus que la gent s'ho compilarà? Suposo que seran una minoria, i 
+els que ho facin potser ja saben resoldre les dependències
+
+Potser podríem preparar un paquet per ubuntu 9.10, que ara per ara és el més 
+popular. Això facilitaria les coses.
+
+&gt;<i> Però també està el tema d'afegir les llibreries /usr/local/lib a
+</I>&gt;<i> /etc/ld.so.conf.d/i486-linux-gnu.conf
+</I>
+Jo això no ho he hagut d'afegir. Diria que en una instal·lació fresca d'ubuntu 
+la hauria d'anar a mirar si hi ha llibreries a /usr/local. Crec que forma part 
+de l'estàndard.
+
+Però igual em confonc, perquè potser ho he posat en algun altre moment i ja no 
+ho recordo. Però de 3 màquines que tinc, no ho he hagut de posar a cap. Vaig a 
+veure...
+
+Ah, mira, resulta que jo ja ho tinc posat, però a /etc/ld.so.conf.d/libc.conf
+
+Simplement cal fer un &quot;sudo ldconfig&quot; (o reiniciar) la primera vegada que 
+s'instal·la i ja està.
+
+-- 
+ Orestes Mas Casals - UPC
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003194.html">[BulmaGés]Mòdul de la FaPaC en català
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003203.html">[BulmaGés]Mòdul de la FaPaC en català
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3195">[ fecha ]</a>
+              <a href="thread.html#3195">[ hilo ]</a>
+              <a href="subject.html#3195">[ asunto ]</a>
+              <a href="author.html#3195">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

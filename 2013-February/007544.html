@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: aron pushed 1	commits to mastermas...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20aron%20pushed%201%0A%09commits%20to%20mastermas...&In-Reply-To=%3C20130221144006.4E89FFC5%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007543.html">
+   <LINK REL="Next"  HREF="007545.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: aron pushed 1	commits to mastermas... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20aron%20pushed%201%0A%09commits%20to%20mastermas...&In-Reply-To=%3C20130221144006.4E89FFC5%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: aron pushed 1	commits to mastermas...">no-reply en gitorious.org
+       </A><BR>
+    <I>Jue Feb 21 15:40:06 CET 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007543.html">[BulmaGés] [Gitorious] Activity: aron pushed 1	commits to mastermas...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007545.html">[BulmaGés]Probando la versión de Qt5
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7544">[ fecha ]</a>
+              <a href="thread.html#7544">[ hilo ]</a>
+              <a href="subject.html#7544">[ asunto ]</a>
+              <a href="author.html#7544">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+aron pushed 1 commits to master
+master changed from 7cfb6ca to a9cf379
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/7cfb6cacc755218c377b422b56ed45aef26009cc/diffs/a9cf3798eb6beb7e2b1120768de9c91167cb080b">https://gitorious.org/bulmages/bulmages/commit/7cfb6cacc755218c377b422b56ed45aef26009cc/diffs/a9cf3798eb6beb7e2b1120768de9c91167cb080b</A>
+
+Diff: 
+
+commit a9cf3798eb6beb7e2b1120768de9c91167cb080b
+Author: Aron &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">auryn en wanadoo.es</A>&gt;
+Date:   Thu Feb 21 15:36:19 2013 +0100
+
+    Limpiar bloqueos de usuarios no conectados.
+    De este modo evitamos que el un fallo del programa o de la conexión deje bloqueos de ficha indefinidos.
+    De momento, dicha limpieza la hago en BlForm_BlForm, es decir, cada vez que alguien carga una ficha.
+    
+    Saludos
+    --
+    Aron Galdón
+    
+    PostgreSQL, Qt4 and PHP developer
+
+diff --git a/bulmages/bulmalib/plugins/pluginbl_formlock/pluginbl_formlock.cpp b/bulmages/bulmalib/plugins/pluginbl_formlock/pluginbl_formlock.cpp
+index 6ae0f02..bb18c8f 100644
+--- a/bulmages/bulmalib/plugins/pluginbl_formlock/pluginbl_formlock.cpp
++++ b/bulmages/bulmalib/plugins/pluginbl_formlock/pluginbl_formlock.cpp
+@@ -45,7 +45,7 @@
+ \param bcont
+ \return
+ **/
+-int entryPoint ( QMainWindow *bcont )
++int entryPoint ( QMainWindow *bges )
+ {
+     BL_FUNC_DEBUG
+ 
+@@ -198,8 +198,12 @@ int BlForm_DesBlForm ( BlForm *ficha )
+ int BlForm_BlForm ( BlForm *l )
+ {
+     BL_FUNC_DEBUG
+-    
++
+     new BloqMenu ( l );
++
++    /// Eliminar los bloqueos de usuarios no conectados (son restos de un cierre precipitado por alg&uacute;n fallo)
++    QString query = QString ( &quot;DELETE FROM bloqueo WHERE usuariobloqueo NOT IN (SELECT usename FROM pg_stat_activity WHERE datname = '%1');&quot; ).arg ( l-&gt;mainCompany()-&gt;dbName() );
++    l-&gt;mainCompany()-&gt;runQuery(query);
+     
+     return 0;
+ }
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007543.html">[BulmaGés] [Gitorious] Activity: aron pushed 1	commits to mastermas...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007545.html">[BulmaGés]Probando la versión de Qt5
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7544">[ fecha ]</a>
+              <a href="thread.html#7544">[ hilo ]</a>
+              <a href="subject.html#7544">[ asunto ]</a>
+              <a href="author.html#7544">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Cambios en BulmaSetup
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FCambios_en_BulmaSetup%3F%3D&In-Reply-To=%3C4ED9748B.5050303%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006679.html">
+   <LINK REL="Next"  HREF="006682.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Cambios en BulmaSetup </H1>
+    <B>Daniel Ripoll Osma</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FCambios_en_BulmaSetup%3F%3D&In-Reply-To=%3C4ED9748B.5050303%40gmail.com%3E"
+       TITLE="[BulmaGés]Cambios en BulmaSetup">dripoll.public en gmail.com
+       </A><BR>
+    <I>Sab Dic  3 01:59:55 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006679.html">[BulmaGés] Cambios en BulmaSetup
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006682.html">[BulmaGés]Cambios en BulmaSetup
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6681">[ fecha ]</a>
+              <a href="thread.html#6681">[ hilo ]</a>
+              <a href="subject.html#6681">[ asunto ]</a>
+              <a href="author.html#6681">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Al 02/12/11 19:57, En/na Tomeu Borras ha escrit:
+&gt;<i> Bones a tothom:
+</I>&gt;<i>
+</I>&gt;<i> Con el AutoForms funcionando, creo que ahora lo más interesante es
+</I>&gt;<i> poder instalarlas (como si de un plugin se tratase).
+</I>&gt;<i> Además que no hay ningún ejemplo de su uso de fácil acceso.
+</I>Cierto, sería interesante poder instalarlo como un plugin.
+&gt;<i>
+</I>&gt;<i> Asi que si no hay nada más urgente, y Daniel no lo migra a C++ antes,
+</I>&gt;<i> me voy a dedicar a que desde bulmasetup se puedan instalar plugins
+</I>&gt;<i> hechos integramente con autoforms.
+</I>&gt;<i> Analizando el tema me salen principalmente tres cosas:
+</I>Lo del bulmasetup C++ fue poco en plan coña, pero vamos si hay que
+hacerlo se haría, eso queda a vox populi.
+&gt;<i>
+</I>&gt;<i> - Ampliar los README para que soporten nuevas directivas de instalación.
+</I>Además de eso, sugiero cambiar la manera de parsear los README, pasar a
+una especie de &quot;requires.xml&quot; que usar XML nos permitiría bastantes
+chulerias, usar un .txt, nose... ya dijimos que era algo chapuza y
+¿llevamos demasiado aplazando no?
+&gt;<i> - Permitir la generación dinámica del autoform_XXXXXXX_spec.spc
+</I>&gt;<i> (juntando varios módulos de autoforms). O tal vez mejor sería permitir
+</I>&gt;<i> algo del estilo autoform_XXXX_YYY_spec.spc para no mezclar un plugin
+</I>&gt;<i> con otro. Esta segunda opción requiere modificar el código del plugin,
+</I>&gt;<i> pero es más útil.
+</I>Creo que me gusta más la segunda opción.
+&gt;<i> - Buscar una buena ubicacion para los autoforms de una empresa.
+</I>&gt;<i> Supongo que /opt/bulmages/autoform_XXXX es un buen sitio si los
+</I>&gt;<i> autoforms van a ser modificables. Aunque otra buena opción es dejarlos
+</I>&gt;<i> en el share y no duplicarlos por cada empresa.
+</I>Difícil elección share nos permitiría tener menos duplicados pero... ¿Y
+si una empresa tiene varias &quot;empresas&quot; y quiere un autoform distinto
+para cada una?
+
+Otra opción (aunque con algo más de curro) sería por ejemplo... dejarlos
+en share, y en el hipotetico caso de que encuentre en
+/opt/bulmages/autoform_XXX, si se que sería pedir mucho... pero creo que
+sería lo más correcto. Algo similar a lo que hacemos con los .conf.
+
+Ideas de un loco, solo sugiero ^^.
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Salut
+</I>&gt;<i>
+</I>&gt;<i> -- 
+</I>&gt;<i> Tomeu Borrás
+</I>&gt;<i> Conetxia Soluciones Informáticas
+</I>&gt;<i> 902 88 11 66 - 677 77 44 76
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+
+-- 
+Daniel Ripoll Osma
+www.danielripoll.es
+6688.27.4.90
+
+Web &amp; Desktop Developer
+
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20111203/938f1041/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20111203/938f1041/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006679.html">[BulmaGés] Cambios en BulmaSetup
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006682.html">[BulmaGés]Cambios en BulmaSetup
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6681">[ fecha ]</a>
+              <a href="thread.html#6681">[ hilo ]</a>
+              <a href="subject.html#6681">[ asunto ]</a>
+              <a href="author.html#6681">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

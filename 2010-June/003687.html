@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]r3858 - in trunk: bulmages debian
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fr3858_-_in_trunk%3D3A_b%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fulmages_debian%3F%3D&In-Reply-To=%3C201006091236.50782.leo%40alaxarxa.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003686.html">
+   <LINK REL="Next"  HREF="003688.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]r3858 - in trunk: bulmages debian </H1>
+    <B>Leopold Palomo-Avellaneda</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fr3858_-_in_trunk%3D3A_b%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fulmages_debian%3F%3D&In-Reply-To=%3C201006091236.50782.leo%40alaxarxa.net%3E"
+       TITLE="[BulmaGés]r3858 - in trunk: bulmages debian">leo en alaxarxa.net
+       </A><BR>
+    <I>Mie Jun  9 12:36:50 CEST 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003686.html">[BulmaGés]r3858 - in trunk: bulmages debian
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003688.html">[BulmaGés]r3858 - in trunk: bulmages debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3687">[ fecha ]</a>
+              <a href="thread.html#3687">[ hilo ]</a>
+              <a href="subject.html#3687">[ asunto ]</a>
+              <a href="author.html#3687">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>A Dimecres 09 Juny 2010, Fco. Javier M. C. va escriure:
+&gt;<i> El 09/06/10 11:58, Leopold Palomo-Avellaneda escribió:
+</I>&gt;<i> &gt; A Dimecres 09 Juny 2010, Iker Salmón San Millán va escriure:
+</I>&gt;<i> &gt;&gt; Pues entonces no se que hacer, porque el warning es este:
+</I>&gt;<i> &gt;&gt; dpkg-shlibdeps: warning: symbol
+</I>&gt;<i> &gt;&gt; _ZN19BcPlanContableArbol14actualizaHojasEP13BlDbRecordSet used by
+</I>&gt;<i> &gt;&gt; debian/bulmacont/usr/lib/bulmacont/plugins/libpluginbc_cuentasanuales.so
+</I>&gt;<i> &gt;&gt;.0. 12.0 found in none of the libraries.
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; Y esa ruta ya está incluida en el rules, así que supongo que podría
+</I>&gt;<i> &gt;&gt; ignorarse ¿no?
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; Creo que entonces ha llegado el momento de subir los paquetes generados
+</I>&gt;<i> &gt;&gt; por si alguien se ofrece a probarlos.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; el problema que hay es que hay un plugin que está linkado contra otro
+</I>&gt;<i> &gt; plugin. Entonces, se queja porque no está en /usr/lib si no
+</I>&gt;<i> &gt; en /usr/lib/bulmacont/plugins.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; No sé como solucionar-lo. Habría que preguntar a altas instancias
+</I>&gt;<i> &gt; debianeras que punyetas dice las policy en éste tema tan preciso. Otra
+</I>&gt;<i> &gt; cosa seria linkar en estático. Com ho veus Tomeu?
+</I>&gt;<i>
+</I>&gt;<i> A ver, respondo yo que me he tenido que pelear bastante con esto.
+</I>&gt;<i>
+</I>&gt;<i> Lo he podido solucionar en tiempo de ejecución modificando la variable
+</I>&gt;<i> de entorno LD_PRELOAD con los plugins que tienen esos símbolos. De esta
+</I>&gt;<i> manera el programa no peta en tiempo de ejecución. Otra solución, no
+</I>&gt;<i> viable, es enlazar los plugins entre ellos, pero después de hablarlo con
+</I>&gt;<i> Tomeu llegamos a la conclusión que no era buena idea.
+</I>
+Que yo sepa esos plugins utilizan código de otros plugins, están linkados a 
+entre ellos. En Linux quizás te funcione con el LD_PRELOAD, pero eso no és 
+muy portable IMHO.
+
+Leo
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003686.html">[BulmaGés]r3858 - in trunk: bulmages debian
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003688.html">[BulmaGés]r3858 - in trunk: bulmages debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3687">[ fecha ]</a>
+              <a href="thread.html#3687">[ hilo ]</a>
+              <a href="subject.html#3687">[ asunto ]</a>
+              <a href="author.html#3687">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

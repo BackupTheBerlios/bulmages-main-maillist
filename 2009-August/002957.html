@@ -1,0 +1,214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]FapacGes v 0.12 &amp; colinux 8.0 &amp; windows version
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-August/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FFapacGes_v_0%3D2E12_%3D26%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F_colinux_8%3D2E0_%3D26_windows_version%3F%3D&In-Reply-To=%3C4A967CF9.3070409%40todo-redes.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002956.html">
+   <LINK REL="Next"  HREF="002958.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]FapacGes v 0.12 &amp; colinux 8.0 &amp; windows version </H1>
+    <B>Fco. Javier M. C.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FFapacGes_v_0%3D2E12_%3D26%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F_colinux_8%3D2E0_%3D26_windows_version%3F%3D&In-Reply-To=%3C4A967CF9.3070409%40todo-redes.com%3E"
+       TITLE="[BulmaGés]FapacGes v 0.12 &amp; colinux 8.0 &amp; windows version">fcojavmc en todo-redes.com
+       </A><BR>
+    <I>Jue Ago 27 14:32:57 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002956.html">[BulmaGés] FapacGes v 0.12 &amp; colinux 8.0 &amp; windows	version
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002958.html">[BulmaGés]FapacGes v 0.12 &amp; colinux 8.0 &amp; windows version
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2957">[ fecha ]</a>
+              <a href="thread.html#2957">[ hilo ]</a>
+              <a href="subject.html#2957">[ asunto ]</a>
+              <a href="author.html#2957">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Tomeu Borras escribió:
+&gt;<i> Bones a tothom:
+</I>&gt;<i>
+</I>&gt;<i> Voy haciendo un poco de resumen y contando el tema este (que es largo).
+</I>&gt;<i>
+</I>&gt;<i> Como algunos ya sabeis y otros no estamos realizando una versión de BulmaGes 
+</I>&gt;<i> destinada a Asociaciones de Padres y Alumnos. (FapacGes).
+</I>&gt;<i>
+</I>&gt;<i> De dicha version tenemos programados todos los plugins necesarios y ahora 
+</I>&gt;<i> estan en fase de testeo y paralelamento estamos en la preparación de la 
+</I>&gt;<i> distribucion.
+</I>&gt;<i>
+</I>&gt;<i> El principal problema de la distribución es que hay que ejecutar bajo Windows 
+</I>&gt;<i> y eso es un problema ya no sólo por la compilacion (que si que compila) como 
+</I>&gt;<i> por el tener que poner posgres sobre Windows, python, reportlab, lector de 
+</I>&gt;<i> PDF, thunderbird etc para windows y todo con un instalador es inviable.
+</I>&gt;<i>
+</I>&gt;<i> Asi que, gracias a Miguel Soler (que hizo la primera versión) conocí la 
+</I>&gt;<i> existencia de colinux y portable ubuntu que es una compilación del kernel de 
+</I>&gt;<i> linux para windows y le ha hecho dispositivos virtuales para que el kernel 
+</I>&gt;<i> pueda tener su disco duro, usb, tarjeta de red etc. Luego lo ha hecho 
+</I>&gt;<i> arrancar con una imagen roots de un disco virtual con la distro que le ha 
+</I>&gt;<i> dado la gana y a ver que pasa .... (Un sobresaliente de proyecto !!!!)
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://www.colinux.org/">http://www.colinux.org/</A>
+</I>&gt;<i>
+</I>&gt;<i> Hace unos 2 meses empezamos a ponerlo en marcha y aunque funcionaba era 
+</I>&gt;<i> leeeento. Ya por entonces imaginaba que la culpa era de algun driver de 
+</I>&gt;<i> interconexión de hardware que estaba dando problemas (o disco o red) (pq 
+</I>&gt;<i> acusar al kernel sin estar seguro es muy feo).
+</I>&gt;<i>
+</I>&gt;<i> El tema es que llevo unos dias mirandomelo y efectivamente la culpa es de la 
+</I>&gt;<i> interfice de red Slirp que tiene muy bueno que no hay que hacer nada para que 
+</I>&gt;<i> funcione pero tira la comunicacion por los suelos y eso redunda en que una 
+</I>&gt;<i> aplicacion corriendo sobre XMing vaya a pedales.
+</I>&gt;<i>
+</I>&gt;<i> Afortunadamente hay muchas otras formas de tener conectividad de red entre el 
+</I>&gt;<i> colinux y el windows que hace de host (a partir de la v 0.8 de colinux que 
+</I>&gt;<i> aun no se ha hecho estable). He estado probando con ndis y la cosa ha 
+</I>&gt;<i> cambiado muuuuuuucho. Y quien dice mucho se queda corto !!! God save de 
+</I>&gt;<i> ndis !!!!
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://colinux.wikia.com/wiki/Network">http://colinux.wikia.com/wiki/Network</A>
+</I>&gt;<i>
+</I>&gt;<i> Luego volveré al tema del ndis para explicar un poco lo que hay que hacer.
+</I>&gt;<i>
+</I>&gt;<i> El otro problema asociado es que el volumen del disco virtual era grande 
+</I>&gt;<i> (entre 4 y 6 Gb) y no permitia una distribución sencilla de todo el conjunto. 
+</I>&gt;<i> Esto no me preocupaba mucho ya que habiamos partido de una portable ubuntu y 
+</I>&gt;<i> metido cosas a saco y ademas habiamos puesto el fuente y compilado sobre la 
+</I>&gt;<i> pseudo maquina virtual y con todo podriamos reducir bastante el volumen.
+</I>&gt;<i>
+</I>&gt;<i> Bueno, a lo que vamos
+</I>&gt;<i>
+</I>&gt;<i> Estoy subiendo un archivo al servidor (153 Mb comprimidos) que contiene una 
+</I>&gt;<i> versión portable de colinux con una imagen de disco que arranca el FapacGes. 
+</I>&gt;<i>
+</I>&gt;<i> La url es la siguiente:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://www.iglues.org/FapacGes_v0_12_pre1.exe">http://www.iglues.org/FapacGes_v0_12_pre1.exe</A>
+</I>&gt;<i>
+</I>&gt;<i> Las instrucciones son las siguientes:
+</I>&gt;<i>
+</I>&gt;<i> 1.- Bajar el archivo
+</I>&gt;<i> 2.- Ejecutarlo y nos pedirá un directorio donde descomprimir (poner uno a 
+</I>&gt;<i> nuestro gusto)
+</I>&gt;<i> 3.- Ejecutar el archivo portable_ubuntu que hay dentro de dicho directorio y 
+</I>&gt;<i> se pondrá en marcha bulmafact con dos empresas para poder ir jugando.
+</I>&gt;<i>
+</I>&gt;<i> OPTIMIZACION
+</I>&gt;<i>
+</I>&gt;<i> La version que he subido tiene el Slirp por defecto (o sea que ira muy, pero 
+</I>&gt;<i> que muy lento) asi que es aconsejable efectuar esta optimizacion para 
+</I>&gt;<i> conseguir velocidades similares a las de una máquina nativa.
+</I>&gt;<i>
+</I>&gt;<i> No esta puesta la optimizacion de entrada porque (de momento) depende de la 
+</I>&gt;<i> configuracion de red local para que funcione. Seguramente estudiando un poco 
+</I>&gt;<i> más podremos sacarlo con TAP, LoopBack o algo similar, o incluso esperando a 
+</I>&gt;<i> que mejoren el Slirp tendremos velocidades buenas.
+</I>&gt;<i>
+</I>&gt;<i> El esquema es el siguiente
+</I>&gt;<i>
+</I>&gt;<i> El host Windows tiene una interficie de red que llamaremos &quot;Conexión de área 
+</I>&gt;<i> local&quot;. Cada uno puede tener un nombre distinto y es necesario saberlo.
+</I>&gt;<i>
+</I>&gt;<i> El host tambien tiene asignada una IP: que por ahora consideraremos que es 
+</I>&gt;<i> 192.168.0.100
+</I>&gt;<i>
+</I>&gt;<i> Ahora iremos a mirar el archivo config/portable_ubuntu.conf  de lo que hemos 
+</I>&gt;<i> instalado.(Es bueno conocer la configuracion pq hay algunos parametros que 
+</I>&gt;<i> estan muy bien como la memoria reservada para el colinux, discos duros 
+</I>&gt;<i> adicionales, etc)
+</I>&gt;<i>
+</I>&gt;<i> y buscaremos estas lineas (Estan separadas por algun comentario)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> eth0=slirp,00:ff:75:39:D3:C1,tcp:22:22
+</I>&gt;<i> #eth0=ndis-bridge,&quot;Conexión de área local&quot; ^
+</I>&gt;<i>
+</I>&gt;<i> Lo que hay que hacer es comentar la primera y descomentar la segunda. Fijaos 
+</I>&gt;<i> que si vuestra conexion de red tieneun nombre distinto a &quot;Conexión de área 
+</I>&gt;<i> local&quot; hay que cambiarlo.
+</I>&gt;<i>
+</I>&gt;<i> Hecho esto podemos arrancar de nuevo el colinux (seguramente bulmafact no 
+</I>&gt;<i> arrancará pero lo que necesitamos es la consola que se obtiene haciendo doble 
+</I>&gt;<i> click sobre el tray icon que aparece en la barra de tareas &quot;es una flecha 
+</I>&gt;<i> verde&quot;).
+</I>&gt;<i>
+</I>&gt;<i> En la consola lo que tenemos que hacer es configurar la red del colinux para 
+</I>&gt;<i> que encuentre al host y asi pueda exportar la pantalla al XMing empotrado que 
+</I>&gt;<i> esta en el archivo descomprimido y que arranca automaticamente.
+</I>&gt;<i>
+</I>&gt;<i> hacemos su (no sudo su)
+</I>&gt;<i> el password es root
+</I>&gt;<i>
+</I>&gt;<i> editamos el archivo /etc/network/interfaces (de momento solo teneis el vi para 
+</I>&gt;<i> editar XDDDD) hay que poner algo acorde a vuestra red. Este es un ejemplo:
+</I>&gt;<i>
+</I>&gt;<i> iface eth0 inet static
+</I>&gt;<i> address 192.168.0.5
+</I>&gt;<i> netmask 255.255.255.0
+</I>&gt;<i> gateway 192.168.0.254
+</I>&gt;<i>
+</I>&gt;<i> y finalmente hay que editar el archivo /home/bulmages/.bashrc
+</I>&gt;<i>
+</I>&gt;<i> y donde dice export DISPLAY=10.0.2.2:0  hay que poner la ip del host de 
+</I>&gt;<i> windows 
+</I>&gt;<i> En nuestro ejemplo:
+</I>&gt;<i> export DISPLAY=192.168.0.100:0.0
+</I>&gt;<i>
+</I>&gt;<i> hecho esto podeis reiniciar el colinux y si todo ha ido bien bulmafact 
+</I>&gt;<i> arrancará a una velocidad buena.
+</I>&gt;<i>
+</I>&gt;<i> Seguramente el bulmafact que hay no imprima pq me falta instalar el kpdf o el 
+</I>&gt;<i> okular y tenga algunas fallas más (lo ire puliendo en estos dias). Tampoco 
+</I>&gt;<i> tiene puesto el bulmasetup con lo que esta algo reducido. Lo bueno es que la 
+</I>&gt;<i> máquina que arrancais es una ubuntu 9.04 y el apt funciona bien para poder 
+</I>&gt;<i> instalar cosas que os hagan falta.
+</I>&gt;<i>
+</I>&gt;<i> Y esto es todo por ahora. Si hay dudas no dudeis en preguntar. 
+</I>&gt;<i>
+</I>&gt;<i> Que lo disfruteis.
+</I>&gt;<i>
+</I>&gt;<i> Salut
+</I>&gt;<i>   
+</I>
+
+&gt;<i>
+</I>&gt;<i> PD: Mamones !!! Ninguno me ha felicitado el santo !!!
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>No es cierto. Yo sí :)
+
+Un saludo.
+
+-- 
+Fco. Javier M. C.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002956.html">[BulmaGés] FapacGes v 0.12 &amp; colinux 8.0 &amp; windows	version
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002958.html">[BulmaGés]FapacGes v 0.12 &amp; colinux 8.0 &amp; windows version
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2957">[ fecha ]</a>
+              <a href="thread.html#2957">[ hilo ]</a>
+              <a href="subject.html#2957">[ asunto ]</a>
+              <a href="author.html#2957">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

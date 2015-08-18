@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20121116094046.B367C758EF%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007360.html">
+   <LINK REL="Next"  HREF="007364.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20121116094046.B367C758EF%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Vie Nov 16 10:40:46 CET 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007360.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007364.html">[BulmaGés] problema de CMake en Debian Squeeze
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7363">[ fecha ]</a>
+              <a href="thread.html#7363">[ hilo ]</a>
+              <a href="subject.html#7363">[ asunto ]</a>
+              <a href="author.html#7363">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from c37da50 to 90a5770
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/c37da5097d2ed7e94e52e4b94a388b16c6e508df/diffs/90a5770dee30721d965af76694582a4c1729730c">https://gitorious.org/bulmages/bulmages/commit/c37da5097d2ed7e94e52e4b94a388b16c6e508df/diffs/90a5770dee30721d965af76694582a4c1729730c</A>
+
+Diff: 
+
+commit 90a5770dee30721d965af76694582a4c1729730c
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri Nov 16 10:39:25 2012 +0100
+
+    Arreglo problema de bulmasetup con las tasas de iva instaladas.
+    Ya que se generaba un error de llave duplicada y las tasas de iva no se instalaban bien.
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_datosbase/dbmodels/pluginbf_datosbase_ca_ES.sql b/bulmages/bulmafact/plugins/pluginbf_datosbase/dbmodels/pluginbf_datosbase_ca_ES.sql
+index a18e9fe..bed03d8 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_datosbase/dbmodels/pluginbf_datosbase_ca_ES.sql
++++ b/bulmages/bulmafact/plugins/pluginbf_datosbase/dbmodels/pluginbf_datosbase_ca_ES.sql
+@@ -81,14 +81,14 @@ BEGIN
+ 	    IF FOUND THEN
+ 	        INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 7, '01/01/1973', 2);
+ 		INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 8, '01/07/2010', 2);
+-		INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 10, '01/07/2010', 1.4);
++		INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 10, '01/09/2012', 1.4);
+ 	    END IF;
+ 
+ 	    SELECT INTO bs idtipo_iva FROM tipo_iva WHERE desctipo_iva='General';
+ 	    IF FOUND THEN
+ 	        INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 16, '01/01/1973', 4);
+ 		INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 18, '01/07/2010', 4);
+-		INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 21, '01/07/2010', 5.2);
++		INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 21, '01/09/2012', 5.2);
+  	    END IF;
+     END IF;
+ 	
+diff --git a/bulmages/bulmafact/plugins/pluginbf_datosbase/dbmodels/pluginbf_datosbase_es_ES.sql b/bulmages/bulmafact/plugins/pluginbf_datosbase/dbmodels/pluginbf_datosbase_es_ES.sql
+index 88174ea..4c1d8fb 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_datosbase/dbmodels/pluginbf_datosbase_es_ES.sql
++++ b/bulmages/bulmafact/plugins/pluginbf_datosbase/dbmodels/pluginbf_datosbase_es_ES.sql
+@@ -81,14 +81,14 @@ BEGIN
+ 	    IF FOUND THEN
+ 	        INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 7, '01/01/1973', 2);
+ 		INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 8, '01/07/2010', 2);
+-		INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 10, '01/07/2010', 1.4);
++		INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 10, '01/09/2012', 1.4);
+ 	    END IF;
+ 
+ 	    SELECT INTO bs idtipo_iva FROM tipo_iva WHERE desctipo_iva='General';
+ 	    IF FOUND THEN
+ 	        INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 16, '01/01/1973', 4);
+ 		INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 18, '01/07/2010', 4);
+-		INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 21, '01/07/2010', 5.2);
++		INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva, porcentretasa_iva) VALUES (bs.idtipo_iva, 21, '01/09/2012', 5.2);
+  	    END IF;
+     END IF;
+ 	
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007360.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007364.html">[BulmaGés] problema de CMake en Debian Squeeze
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7363">[ fecha ]</a>
+              <a href="thread.html#7363">[ hilo ]</a>
+              <a href="subject.html#7363">[ asunto ]</a>
+              <a href="author.html#7363">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

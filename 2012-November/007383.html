@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]backporteo de bulmages a Debian Squeeze: con qt 4.6 hemos topado
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-15%3Fq%3Fbackporteo_de_bulmag%3F%3D%0A%20%3D%3Fiso-8859-15%3Fq%3Fes_a_Debian_Squeeze%3D3A_con_qt_4%3D2E6_hemos_topado%3F%3D&In-Reply-To=%3C201211161053.15572.jmartinez%40acore.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007362.html">
+   <LINK REL="Next"  HREF="007389.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]backporteo de bulmages a Debian Squeeze: con qt 4.6 hemos topado </H1>
+    <B>Juan Martínez Vázquez</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-15%3Fq%3Fbackporteo_de_bulmag%3F%3D%0A%20%3D%3Fiso-8859-15%3Fq%3Fes_a_Debian_Squeeze%3D3A_con_qt_4%3D2E6_hemos_topado%3F%3D&In-Reply-To=%3C201211161053.15572.jmartinez%40acore.es%3E"
+       TITLE="[BulmaGés]backporteo de bulmages a Debian Squeeze: con qt 4.6 hemos topado">jmartinez en acore.es
+       </A><BR>
+    <I>Vie Nov 16 10:53:15 CET 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007362.html">[BulmaGés]backporteo de bulmages a Debian Squeeze: con qt 4.6 hemos topado
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007389.html">[BulmaGés]backporteo de bulmages a Debian Squeeze: con qt 4.6 hemos topado
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7383">[ fecha ]</a>
+              <a href="thread.html#7383">[ hilo ]</a>
+              <a href="subject.html#7383">[ asunto ]</a>
+              <a href="author.html#7383">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Nosotros nos encontramos con el problema de compilar con Qt 4.6 y por lo que 
+vimos sólo había un par de líneas de código que utilizan funciones de Qt 4.7.
+
+Adjunto un parche que las sustituye por llamadas a funciones que sí están en 
+4.6.
+
+Saludos
+-- 
+Juan Martínez Vázquez
+aCore
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">jmartinez en acore.es</A>
+<A HREF="http://www.acore.es">http://www.acore.es</A>
+Tel 881 927 189
+
+
+
+On Viernes 16 Noviembre 2012 00:35:09 Miguel Telleria de Esteban escribió:
+&gt;<i> On Thu, 15 Nov 2012 23:01:12 +0100 Daniel Ripoll wrote:
+</I>&gt;<i> &gt; Hola Miguel,
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Yo personalmente no he conseguido que me funcionase bajo Qt4.6 en
+</I>&gt;<i> &gt; Squeeze, eso si, si haces un backport de Qt4.7 debería funcionar...
+</I>&gt;<i> 
+</I>&gt;<i> Estoy usando el qt4.7 empaquetado por mepis 11.
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="http://forums.debian.net/viewtopic.php?f=17&amp;t=61012&amp;start=30">http://forums.debian.net/viewtopic.php?f=17&amp;t=61012&amp;start=30</A>
+</I>&gt;<i> <A HREF="ftp://ftp.mirrorservice.org/sites/ftp.mepis.org/mepis/pool/main/q/qt4-x11/">ftp://ftp.mirrorservice.org/sites/ftp.mepis.org/mepis/pool/main/q/qt4-x11/</A>
+</I>&gt;<i> 
+</I>&gt;<i> Por si acaso lo he recompilado en mi Debian Squeeze y todo ha ido
+</I>&gt;<i> bien.  Ya tengo qt4.7 instalado!!.
+</I>&gt;<i> 
+</I>&gt;<i> Ahora sólo me queda tener el python-qt4 instalado.  Curiosamente en
+</I>&gt;<i> squeeze es ya la versión 4.7 pero compilada para qt4.6.  Así que
+</I>&gt;<i> procedo a recompilar el paquete de squeeze sin mas...
+</I>&gt;<i> 
+</I>&gt;<i> ... todo va bien hasta que en mitad de la compilación se queja de que
+</I>&gt;<i> necesita python-qt4-assistant.
+</I>&gt;<i> 
+</I>&gt;<i> dh_install: python-qt4 missing files
+</I>&gt;<i> (usr/lib/python*/*-packages/PyQt4/QtAssistant.so), aborting
+</I>&gt;<i> 
+</I>&gt;<i> resulta que hay 2 candidatos para el qtassistant.  El original de
+</I>&gt;<i> squeeze qt4.6 y el de mepis.  Aquí lo dejo porque ya es tarde :).
+</I>&gt;<i> 
+</I>&gt;<i> Mañana más.
+</I>&gt;<i> 
+</I>&gt;<i> Buenas noches,
+</I>&gt;<i> 
+</I>&gt;<i> 	Miguel
+</I>------------ próxima parte ------------
+A non-text attachment was scrubbed...
+Name: bulmages_qt4.6.patch
+Type: text/x-patch
+Size: 2714 bytes
+Desc: no disponible
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20121116/f1b4b166/attachment-0001.bin">https://lists.berlios.de/pipermail/bulmages-main/attachments/20121116/f1b4b166/attachment-0001.bin</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007362.html">[BulmaGés]backporteo de bulmages a Debian Squeeze: con qt 4.6 hemos topado
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007389.html">[BulmaGés]backporteo de bulmages a Debian Squeeze: con qt 4.6 hemos topado
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7383">[ fecha ]</a>
+              <a href="thread.html#7383">[ hilo ]</a>
+              <a href="subject.html#7383">[ asunto ]</a>
+              <a href="author.html#7383">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]plugin sincronización
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Futf-8%3Fq%3Fplugin_sincronizaci%3DC3%3DB3n%3F%3D&In-Reply-To=%3C200810080941.59424.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000139.html">
+   <LINK REL="Next"  HREF="000145.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]plugin sincronización </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Futf-8%3Fq%3Fplugin_sincronizaci%3DC3%3DB3n%3F%3D&In-Reply-To=%3C200810080941.59424.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]plugin sincronización">tborras en conetxia.com
+       </A><BR>
+    <I>Mie Oct  8 09:41:59 CEST 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000139.html">[BulmaGés]Bulagés 0.11.1 en Debian Etch -&gt; plugin de sincronización con bulmacont
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000145.html">[BulmaGés]plugin sincronización
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#140">[ fecha ]</a>
+              <a href="thread.html#140">[ hilo ]</a>
+              <a href="subject.html#140">[ asunto ]</a>
+              <a href="author.html#140">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Freud
+
+Sobre el plugin de sincronización no se instala automaticamente porque es algo 
+complejo de instalar. Te explico los pasos a seguir y si te apetece lo pones 
+en el wiki:
+
+Supongamos que ya tienes dos bases de datos (una bulmafactdb y otra 
+bulmacontdb)
+
+1.- Necesitas el paquete postgresql-contrib para poder usar dblink
+$ sudo aptitude install postgresql-contrib
+
+entro como usuario postgres para manejar bases de datos aunque hay otras 
+formas de hacer esto.
+$ sudo su
+# sudo postgres
+
+
+2.- En la base de datos de bulmafact tienes que instalar el dblink.
+$ psql bulmafactdb &lt; /usr/share/postgresql/8.3/contrib/dblink.sql
+
+3.- En la misma base de datos tienes que instalar el parche que proporciona el 
+plugin (la ruta puede que cambie)
+
+$psql bulmafactdb 
+&lt; /usr/share/bulmages/dbmodels/plugins/revf-pluginsyncbulmacont.sql
+
+4.- Tienes que indicarle a la base de datos de bulmafact cual es la base de 
+datos de contabilidad con la que se sincroniza
+
+$ psql bulmafactdb
+# update configuracion set valor='bulmacontdb' WHERE nombre 
+= 'DataBaseContabilidad'
+
+Una vez hecho esto ya estará en marcha el plugin de sincronización.
+
+
+COSAS MUY A TENER EN CUENTA:
+	1.- Conviene que antes de poner en marcha esto tengas en bulmacont las 
+siguientes cuentas creadas:
+		- 43000...0 (Cliente varios,  sino el plugin empezará a crearte cuentas con 
+sólo 4 dígitos )
+		- 44000...0 (Proveedor varios, sino el plugin empezará creandote cuentas de 
+sólo 4 digitos)
+		- 472....16
+		- 472.....7
+		-472 .....4 (tantas de iva soportado como vayas a utilizar sino  al utilizar 
+un iva que no tiene cuenta el programa dara un error)
+
+		- 477 .....XX (Lo mismo para el iva repercutido)
+		- 7000....00 (La cuenta de ventas para que las facturas vayan bien)
+
+		- Si usas recargos de equivalencia tienes que hacer cuentas del tipo 
+47201...16, 47201......4 para cada iva y lo mismo para las 477
+
+
+		- Seguro que me dejo alguna cuenta que hay que tener (Bancos o cajas)
+
+
+
+
+NOTAS:
+
+	1.- Hay un script de resincronización que es muy útil para sincronizar un 
+sistema que ya está empezado. (no se donde esta instalado pero en el svn es 
+facil de encontrar)
+	2.- Tambien tienes un script de desinstalación por si las moscas.
+	3.- Es muy útil leer el revf-pluginsyncbulmacont.sql No es difícil de 
+entender y si quieres hacer asientos especificos, o diferentes a los que se 
+estan haciendo lo puedes modificar.
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+(71 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000139.html">[BulmaGés]Bulagés 0.11.1 en Debian Etch -&gt; plugin de sincronización con bulmacont
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000145.html">[BulmaGés]plugin sincronización
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#140">[ fecha ]</a>
+              <a href="thread.html#140">[ hilo ]</a>
+              <a href="subject.html#140">[ asunto ]</a>
+              <a href="author.html#140">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

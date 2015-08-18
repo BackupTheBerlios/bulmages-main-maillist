@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]BULMAGES IRPF. ANTES DE ABRIR BUG.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FBULMAGES_IRPF%3D2E_ANTE%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FS_DE_ABRIR_BUG%3D2E%3F%3D&In-Reply-To=%3C1262947327.2677.142.camel%40vaio%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003272.html">
+   <LINK REL="Next"  HREF="003271.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]BULMAGES IRPF. ANTES DE ABRIR BUG. </H1>
+    <B>Albert Mas</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FBULMAGES_IRPF%3D2E_ANTE%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FS_DE_ABRIR_BUG%3D2E%3F%3D&In-Reply-To=%3C1262947327.2677.142.camel%40vaio%3E"
+       TITLE="[BulmaGés]BULMAGES IRPF. ANTES DE ABRIR BUG.">albertmas en termens.cat
+       </A><BR>
+    <I>Vie Ene  8 11:42:07 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003272.html">[BulmaGés]BULMAGES IRPF. ANTES DE ABRIR BUG.
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003271.html">[BulmaGés] Aviso
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3274">[ fecha ]</a>
+              <a href="thread.html#3274">[ hilo ]</a>
+              <a href="subject.html#3274">[ asunto ]</a>
+              <a href="author.html#3274">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>El dv 08 de 01 de 2010 a les 09:30 +0100, en/na Tomeu va escriure:
+
+&gt;<i> &gt; Hola a tots.
+</I>&gt;<i> &gt; Estava jugant amb el tema de les retencions i l'IRPF i volia
+</I>&gt;<i> &gt; comentar-vos unes quantes coses.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 1. És curiós que si informes a les PROPIETATS DE L'EMPRESA el camp
+</I>&gt;<i> &gt; SERIE_FACTURACION_POR_DEFECTO el programa passa de tot i no fa cas
+</I>&gt;<i> &gt; d'aquest camp.
+</I>&gt;<i> &gt; Amb el que hem d'anar de posar la variable
+</I>&gt;<i> &gt; CONF_SERIE_FACTURA_DEFECTO    2010
+</I>&gt;<i> &gt; al fitxer bulmafact.conf
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 2. En canvi amb l'IRPF (retenció) si que s'ha d'informar amb camp IRPF
+</I>&gt;<i> &gt; de les Propietats de l'Empresa.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> 
+</I>&gt;<i> &gt; 3. Però atenció... totes les factures fetes anteriorment al canvi de
+</I>&gt;<i> &gt; l'IRPF del 18 al 19 es canvien soles!!! Això no hauria de passar, mai
+</I>&gt;<i> &gt; poden variar els imports de les factures ja fetes, ja processades i ja
+</I>&gt;<i> &gt; cobrades.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> 
+</I>&gt;<i> Es problema de que les plantilles d'impressió agafen la dade directament de la 
+</I>&gt;<i> configuració i no contemplen un historic de IRPF's (o que la dada estigui 
+</I>&gt;<i> posada a la factura).
+</I>
+Doncs això és un tema important.
+
+&gt;<i> 
+</I>&gt;<i> &gt; 4. Per tant suggereixo fer l'IRPF com a l'IVA amb una taula i una taula
+</I>&gt;<i> &gt; i una data d'efecte.
+</I>&gt;<i> 
+</I>&gt;<i> No es mala idea.
+</I>
+Si, però suposo que deu portar molta feina.
+
+&gt;<i> 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 5. Per últim m'agradaria saber quina és la variable que hauria
+</I>&gt;<i> &gt; d'introduir per a que les factures em sortigués quelcom com això: IRPF
+</I>&gt;<i> &gt; 19%: 23,45&#8364;
+</I>&gt;<i> Ara com ara el més pràctic es modificar la dada de la entrada configuracion de 
+</I>&gt;<i> empresa i modificar la plantilla perque faci la impresió a partir d'aquesta 
+</I>&gt;<i> dada.
+</I>
+però em podeu ajudar a saber quin codi hauria de posar?
+per exemple, amb l'IVA posaria això:
+I.V.A. [tbimp]%:  [iva]
+
+&gt;<i> 
+</I>&gt;<i> Salut
+</I>
+gràcies.
+
+&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20100108/2e292e01/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20100108/2e292e01/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003272.html">[BulmaGés]BULMAGES IRPF. ANTES DE ABRIR BUG.
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003271.html">[BulmaGés] Aviso
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3274">[ fecha ]</a>
+              <a href="thread.html#3274">[ hilo ]</a>
+              <a href="subject.html#3274">[ asunto ]</a>
+              <a href="author.html#3274">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

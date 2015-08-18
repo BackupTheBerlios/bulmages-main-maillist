@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]r2868 - in trunk/bulmages: bulmafact/src bulmalib/src
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fr2868_-_in_trunk/bulm%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fages%3D3A_bulmafact/src_bulmalib/src%3F%3D&In-Reply-To=%3C20081222211651.GA9366%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000648.html">
+   <LINK REL="Next"  HREF="000650.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]r2868 - in trunk/bulmages: bulmafact/src bulmalib/src </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fr2868_-_in_trunk/bulm%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fages%3D3A_bulmafact/src_bulmalib/src%3F%3D&In-Reply-To=%3C20081222211651.GA9366%40localhost%3E"
+       TITLE="[BulmaGés]r2868 - in trunk/bulmages: bulmafact/src bulmalib/src">xdrudis en tinet.cat
+       </A><BR>
+    <I>Lun Dic 22 22:16:51 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000648.html">[BulmaGés]r2868 - in trunk/bulmages: bulmafact/src bulmalib/src
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000650.html">[BulmaGés] r2869 - in trunk/bulmages/bulmafact:	plugins plugins/plugincobros plugins/plugincompraventa	plugins/pluginimpresionesmultiples plugins/pluginpagos	plugins/pluginq19 src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#649">[ fecha ]</a>
+              <a href="thread.html#649">[ hilo ]</a>
+              <a href="subject.html#649">[ asunto ]</a>
+              <a href="author.html#649">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, Dec 22, 2008 at 09:28:30PM +0100, Tomeu Borras wrote:
+&gt;<i> Bones
+</I>&gt;<i> 
+</I>&gt;<i> No vos he demanat la opinió sobre la darrera &quot;millora&quot; que vull portar a 
+</I>&gt;<i> terme.
+</I>&gt;<i> 
+</I>&gt;<i> La idea que persegueixo es anar treïent les clases que no siguin de suport cap 
+</I>&gt;<i> a móduls instalables o no. Ja ho vaig fer amb pagaments i ara vaig per 
+</I>&gt;<i> cobraments i després factures, albarans, etc
+</I>&gt;<i> 
+</I>
+Em perdo una mica. Mòdul que vol dir en concret ? . bulmafact és un mòdul ? 
+comandes és un mòdul ? . Quines classes treuries ?. Pots posar-ne una d'exemple ? 
+
+&gt;<i> Al final vull que quedi com a core de la aplicació una cosa bastant reduida 
+</I>&gt;<i> amb les clases fichaXX, subformXX, busquedaXX i algunes cosestes comuns que 
+</I>&gt;<i> siguin difícils de treurer.
+</I>&gt;<i> 
+</I>
+Això sóna bé. Amb el poc que he vist pot ser que opini per anècdotes, però 
+m'ha semblat que hi ha codi copiat a 60 llocs per imprimir un RML que podria
+estar a un sol lloc, i llavors optimitzar-se i corregir-se a un sol lloc. 
+He intentat reorganitzar una miqueta petita en aquest sentit, però es podria 
+fer molt més. La impressió general és de molt de codi repetit amb petites
+variacions que no justifiquen la reptició perquè sembla que es puguin 
+parametritzar o si de cas sobreescriure en classes filles amb molt menys codi. 
+Però aquesta impressió general a vegades passa que quan t'hi poses no és
+tan fàcil i realment hi ha més diferències de requeriments que les que 
+es veuen a simple vista. 
+
+&gt;<i> Les avantatges son una aplicació principal mes reduida i manejable (també mes 
+</I>&gt;<i> depurable), major adaptació a cada tipus de negoci i mes capacitat de asolir 
+</I>&gt;<i> altres models de negoci.
+</I>&gt;<i> 
+</I>
+Suposo que sí, tot i que no acabo de veure 100% quins canvis vols dir en concret. 
+
+&gt;<i> Les desavantatges podrien esser menor interoperabilitat entre els distints 
+</I>&gt;<i> móduls. Creq que haver passat per un sistema monolític i estructurat abans de 
+</I>&gt;<i> atacar a un sistema modular ens pot ajudar molt en aquest aspecte.
+</I>&gt;<i>
+</I>
+Si? Ajuda ? No sé, em falta experiència amb bulmages, però pel que entenc, 
+sembla desitjable el que proposes. 
+ 
+&gt;<i> Pero abans de fer-ho m'agradaria coneixer la vostra opinió. 
+</I>&gt;<i> 
+</I>
+No sé, potser seria més fàcil amb exemples. 
+Reduir el nombre de classes, o la seva mida, reaprofitar més el codi i 
+tenir implementacions més genèriques sempre es bó. Com fer-ho és el
+que sempre és discutible. 
+
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>
+Signa per fer Collserola parc natural com cal
+<A HREF="http://www.collserola.org/salvemelparcnatural/">http://www.collserola.org/salvemelparcnatural/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000648.html">[BulmaGés]r2868 - in trunk/bulmages: bulmafact/src bulmalib/src
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000650.html">[BulmaGés] r2869 - in trunk/bulmages/bulmafact:	plugins plugins/plugincobros plugins/plugincompraventa	plugins/pluginimpresionesmultiples plugins/pluginpagos	plugins/pluginq19 src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#649">[ fecha ]</a>
+              <a href="thread.html#649">[ hilo ]</a>
+              <a href="subject.html#649">[ asunto ]</a>
+              <a href="author.html#649">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

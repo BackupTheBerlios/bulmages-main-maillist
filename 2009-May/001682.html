@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]r3267 - in branches/docsMonolitic: bulmages/installbulmages/bgtrml2pdf debian
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fr3267_-_in_branches/d%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FocsMonolitic%3D3A_bulmages/installbulmages/bgtrml2pdf%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F_debian%3F%3D&In-Reply-To=%3C20090502151657.GA3988%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001679.html">
+   <LINK REL="Next"  HREF="001707.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]r3267 - in branches/docsMonolitic: bulmages/installbulmages/bgtrml2pdf debian </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fr3267_-_in_branches/d%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FocsMonolitic%3D3A_bulmages/installbulmages/bgtrml2pdf%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F_debian%3F%3D&In-Reply-To=%3C20090502151657.GA3988%40localhost%3E"
+       TITLE="[BulmaGés]r3267 - in branches/docsMonolitic: bulmages/installbulmages/bgtrml2pdf debian">xdrudis en tinet.cat
+       </A><BR>
+    <I>Sab Mayo  2 17:16:58 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001679.html">[BulmaGés]r3267 - in branches/docsMonolitic: bulmages/installbulmages/bgtrml2pdf debian
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001707.html">[BulmaGés]Experiències amb svg als llistats (factures, albarans...)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1682">[ fecha ]</a>
+              <a href="thread.html#1682">[ hilo ]</a>
+              <a href="subject.html#1682">[ asunto ]</a>
+              <a href="author.html#1682">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sat, May 02, 2009 at 10:04:32AM +0200, Tomeu Borras wrote:
+&gt;<i> Te molt bona pinta. L'hem de portar al trunk.
+</I>&gt;<i> 
+</I>&gt;<i> Salut
+</I>&gt;<i> 
+</I>
+Ara mateix no puc. Però amb una mica de sort pot ser fàcil. 
+Són només 4 fitxers i cap de c++. 
+seria comparar la última versió de la branca amb la base de 
+la branca, i la base de la branca amb la última del trunk per 
+a cada un dels 4 fitxers del commit.
+
+De memòria no em sóna que hi hagi hagut canvis en aquests 
+fitxers des de que vaig bifurcar la branca, i si les comparacions
+ho confirmen seria només copiar els fitxers de la branca al 
+trunk (i provar bé els llistats). 
+
+El que falta per fer són dues coses: 
+
+- provar bé svg als llistats per saber què funciona i què no. 
+Jo només he provat text i figures amb arcs, monocroms, sense 
+transparències, ni gradients, ni filigranes. I no sé gaire
+svg per provar bé, però potser hi ha algun joc de proves ja fet...
+
+- Estaria bé poder posar els fitxers a plantilla.rml o algun
+altre fitxer que després es faci include des de diferents llistats.
+Això d'haver de copiar logo.png a ~/.bulmages per a cada llistat
+és una murga i no escala bé a quan tens mútliples imatges diferents
+a cada instal·lació.
+Però des dels rml inclosos no es pot usar [CONF_DIR_OPENREPORTS]
+per indicar el directori on deixes els svgs. bulmafact preprocessa
+el rml incloïdor no el rml inclòs. No es greu, és pot
+escriure explícitament, però havia pensat en fer alguna substitució 
+des de bgtrml2pdf quan resol l'include. Idealment et deixaria especificar
+un xslt dintre de l'elemnt include i llestos. Alternativament podries
+posar simplent n tuples de text-cerca text-substitució. En qualsevol dels 
+dos casos podria haver-hi substitucions implicites com ara [DIRINCLUDE]
+o [FITXERINCLUDE] pels paths del fitxer inclos. Seria semblant 
+a poder fer un include passant parametres al rml inclòs.
+El que passa és que fer-ho per subtitució de text és lleugerament
+cutre, i fer-ho per xslt necessita un motor xslt per python i no tinc
+clar si val la pena afegir un requeriment nou ( o ja esta entre
+els requeriments actuals ? quins moduls de python necessita bulmages ?)
+
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>
+Signa per fer Collserola parc natural com cal
+<A HREF="http://www.collserola.org/salvemelparcnatural/">http://www.collserola.org/salvemelparcnatural/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001679.html">[BulmaGés]r3267 - in branches/docsMonolitic: bulmages/installbulmages/bgtrml2pdf debian
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001707.html">[BulmaGés]Experiències amb svg als llistats (factures, albarans...)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1682">[ fecha ]</a>
+              <a href="thread.html#1682">[ hilo ]</a>
+              <a href="subject.html#1682">[ asunto ]</a>
+              <a href="author.html#1682">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

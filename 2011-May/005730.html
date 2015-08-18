@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][Git]Project bulmages at BerliOS branch, master, updated. 9bf3a7010c1062b0ca9bb39322eeb3bd6ac8344c
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F%3D5BGit%3D5DProject_bulm%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fages_at_BerliOS_branch%3D2C_master%3D2C_updated%3D2E_9bf3%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fa7010c1062b0ca9bb39322eeb3bd6ac8344c%3F%3D&In-Reply-To=%3CBANLkTikm5thCOD4STxYkMnFYx4Sx9uTg5w%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005729.html">
+   <LINK REL="Next"  HREF="005707.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][Git]Project bulmages at BerliOS branch, master, updated. 9bf3a7010c1062b0ca9bb39322eeb3bd6ac8344c </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F%3D5BGit%3D5DProject_bulm%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fages_at_BerliOS_branch%3D2C_master%3D2C_updated%3D2E_9bf3%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fa7010c1062b0ca9bb39322eeb3bd6ac8344c%3F%3D&In-Reply-To=%3CBANLkTikm5thCOD4STxYkMnFYx4Sx9uTg5w%40mail.gmail.com%3E"
+       TITLE="[BulmaGés][Git]Project bulmages at BerliOS branch, master, updated. 9bf3a7010c1062b0ca9bb39322eeb3bd6ac8344c">tborras en gmail.com
+       </A><BR>
+    <I>Vie Mayo  6 10:51:06 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="005729.html">[BulmaGés][Git]Project bulmages at BerliOS branch, master, updated. 9bf3a7010c1062b0ca9bb39322eeb3bd6ac8344c
+</A></li>
+        <LI>Próximo mensaje: <A HREF="005707.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 896174aa684224d0d2221a9dc58a1b43fa1344a4
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5730">[ fecha ]</a>
+              <a href="thread.html#5730">[ hilo ]</a>
+              <a href="subject.html#5730">[ asunto ]</a>
+              <a href="author.html#5730">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola, Seguro que no es suficiente. Pero es que no hay un método estandar
+para lanzar aplicaciones como superusuario en todas las distros.
+
+Estoy falto de ideas y lo único que se me ocurre es ir ampliando el
+runbulmasetup para que funcione en la mayor parte de las distros mientras no
+salga un XDG_SUDO.
+
+La otra opción sería dejar el tema para que lo arregle cada empaquetado,
+pero se me antoja peor solucion.
+
+El otro cambio que creo que sería bueno hacer (porque duplica las cosas y
+tampoco es una buena solución) es cambiar el lanzador de bulmages que se
+dedica a hacer comprobaciones de existencia de los archivos para que lance
+el runbulmasetup.
+
+Salut
+
+El 6 de mayo de 2011 09:51, Daniel Ripoll Osma
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">dripoll.public en gmail.com</A>&gt;escribió:
+
+&gt;<i> Mmmm... No se hasta que punto sería correcto, o mejor dicho suficiente eso.
+</I>&gt;<i>
+</I>&gt;<i> Me explico, aqui observamos que:
+</I>&gt;<i>
+</I>&gt;<i>  if os.environ.get('KDE_FULL_SESSION') == 'true':
+</I>&gt;<i>    os.execv(&quot;/usr/bin/kdesudo&quot;,[&quot;kdesudo&quot;, &quot;bulmasetup&quot;])
+</I>&gt;<i>  else:
+</I>&gt;<i>    os.execv(&quot;/usr/bin/gksudo&quot;,[&quot;gksudo&quot;, &quot;bulmasetup&quot;])
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Si tenemos KDE_FULL_SESSION:
+</I>&gt;<i> Usamos la versión de kdesudo que este en /usr/bin/kdesudo
+</I>&gt;<i> Para lo demás:
+</I>&gt;<i> Usamos el gksudo que este en /usr/bin/gksudo.
+</I>&gt;<i>
+</I>&gt;<i> Esto sería incorrecto, porque ni todos los sistemas instalan kdesudo o
+</I>&gt;<i> gksudo, ni todos los sistemas lo instalan en el mismo sitio.
+</I>&gt;<i> Ejemplo Fedora no instala gksudo ni kdesudo, es más, ni si quiera
+</I>&gt;<i> existen como paquetes en ninguno de sus repositorios.
+</I>&gt;<i>
+</I>&gt;<i> On Thu, May 5, 2011 at 7:29 AM, tborras at BerliOS &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">git en mail.berlios.de</A>&gt;
+</I>&gt;<i> wrote:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; The branch, master has been updated
+</I>&gt;<i> &gt;       via  9bf3a7010c1062b0ca9bb39322eeb3bd6ac8344c (commit)
+</I>&gt;<i> &gt;      from  a57f3f0990f6f3dd02afff0859178c9129e222f9 (commit)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Nuevas revisiones:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; - Log -----------------------------------------------------------------
+</I>&gt;<i> &gt; commit 9bf3a7010c1062b0ca9bb39322eeb3bd6ac8344c
+</I>&gt;<i> &gt; Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+</I>&gt;<i> &gt; Date:   Thu May 5 07:29:39 2011 +0200
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;    Creo la miniap runbulmasetup para lanzar bulmasetup como root usando
+</I>&gt;<i> kdesudo o gksudo segun el escritorio que usamnos
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; -----------------------------------------------------------------------
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Resumen de cambios:
+</I>&gt;<i> &gt;  bulmages/bulmasetup/CMakeLists.txt |    4 ++++
+</I>&gt;<i> &gt;  bulmages/bulmasetup/runbulmasetup  |   21 +++++++++++++++++++++
+</I>&gt;<i> &gt;  2 files changed, 25 insertions(+), 0 deletions(-)
+</I>&gt;<i> &gt;  create mode 100755 bulmages/bulmasetup/runbulmasetup
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; --
+</I>&gt;<i> &gt; Proyecto BulmaGes
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Bulmages-main mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> **************************************
+</I>&gt;<i> Daniel Ripoll
+</I>&gt;<i> **************************************
+</I>&gt;<i>           Todo-Redes
+</I>&gt;<i>         C/.Begonia, 12
+</I>&gt;<i>    07010 Palma de Mallorca.
+</I>&gt;<i>       Tel: +34-971499071
+</I>&gt;<i>    <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+</I>&gt;<i>   comercial(en)todo-redes.com
+</I>&gt;<i> ***************************************
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20110506/ddf63049/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20110506/ddf63049/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="005729.html">[BulmaGés][Git]Project bulmages at BerliOS branch, master, updated. 9bf3a7010c1062b0ca9bb39322eeb3bd6ac8344c
+</A></li>
+	<LI>Próximo mensaje: <A HREF="005707.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 896174aa684224d0d2221a9dc58a1b43fa1344a4
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5730">[ fecha ]</a>
+              <a href="thread.html#5730">[ hilo ]</a>
+              <a href="subject.html#5730">[ asunto ]</a>
+              <a href="author.html#5730">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

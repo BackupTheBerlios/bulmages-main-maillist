@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Problemas de dependencias con dpkg-buildpackage
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FProblemas_de_dependen%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fcias_con_dpkg-buildpackage%3F%3D&In-Reply-To=%3C20110208155057.GA7236%40upf.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="004903.html">
+   <LINK REL="Next"  HREF="004906.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Problemas de dependencias con dpkg-buildpackage </H1>
+    <B>Walter Garcia-Fontes</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FProblemas_de_dependen%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fcias_con_dpkg-buildpackage%3F%3D&In-Reply-To=%3C20110208155057.GA7236%40upf.edu%3E"
+       TITLE="[BulmaGés]Problemas de dependencias con dpkg-buildpackage">walter.garcia en upf.edu
+       </A><BR>
+    <I>Mar Feb  8 16:50:57 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="004903.html">[BulmaGés]Problemas de dependencias con dpkg-buildpackage
+</A></li>
+        <LI>Próximo mensaje: <A HREF="004906.html">[BulmaGés]Problemas de dependencias con dpkg-buildpackage
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4904">[ fecha ]</a>
+              <a href="thread.html#4904">[ hilo ]</a>
+              <a href="subject.html#4904">[ asunto ]</a>
+              <a href="author.html#4904">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Yo conseguí que acabara eliminando de momento las referencias a
+openreports en todos los archivos .install. Esto proviene del cambio
+que ha llevado estos archivos a los correspondientes subdirectorios
+ca, es, fr. 
+
+Walter
+
+* Santos Martinez Estrada [08/02/11 16:48]:
+&gt;<i> Prueba a hacer un dpkg-checkbuilddeps a ver si te da algún error. A mi me 
+</I>&gt;<i> compila 100% pero al final me da este error:
+</I>&gt;<i> &quot;cp: no se puede efectuar `stat' sobre 
+</I>&gt;<i> «debian/tmp/usr/share/bulmages/openreports/canuales.rml»: No existe el fichero 
+</I>&gt;<i> o el directorio
+</I>&gt;<i> dh_install: cp -a debian/tmp/usr/share/bulmages/openreports/canuales.rml 
+</I>&gt;<i> debian/bulmages//usr/share/bulmages/openreports/ returned exit code 1
+</I>&gt;<i> make: *** [binary-arch] Error 2
+</I>&gt;<i> dpkg-buildpackage: fallo: debian/rules binary devolvió un estado de salida de 
+</I>&gt;<i> error 2&quot;
+</I>&gt;<i> 
+</I>&gt;<i> On Martes 08 Febrero 2011 14:06:46 Tomeu Borras escribió:
+</I>&gt;<i> &gt; Si, sin problemas.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Ahora estoy probando un dpkg-buildpackage -nc para ver si se lo traga. Pero
+</I>&gt;<i> &gt; no me convence demasiado como solución.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Salut
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; El 8 de febrero de 2011 13:43, Santos Martinez Estrada
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">otilio en apdo.com</A>&gt;escribió:
+</I>&gt;<i> &gt; &gt; Y eso mismo te lo compila correctamente por el método normal?
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; On Martes 08 Febrero 2011 13:27:06 Tomeu Borras escribió:
+</I>&gt;<i> &gt; &gt; &gt; Bones a tothom
+</I>&gt;<i> &gt; &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; Estoy con el tema paquetes deb
+</I>&gt;<i> &gt; &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; Cuando estoy haciendo el dpkg-buildpackages y se pone a compilar en el
+</I>&gt;<i> &gt; &gt; &gt; debian.build me aparece un error de compilacion:
+</I>&gt;<i> &gt; &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; make[3]: se sale del directorio
+</I>&gt;<i> &gt; &gt; &gt; «/opt/svn-tborras-bulmages/bulmages/build.debian»
+</I>&gt;<i> &gt; &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; [ 27%] Built target pluginbt_visor
+</I>&gt;<i> &gt; &gt; &gt; In file included from
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; /opt/svn-tborras-bulmages/bulmages/bulmatpv/plugins/pluginbt_clientsync/p
+</I>&gt;<i> &gt; &gt; lu
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; ginbt_clientsync.h:27:0, from
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; /opt/svn-tborras-bulmages/bulmages/bulmatpv/plugins/pluginbt_clientsync/p
+</I>&gt;<i> &gt; &gt; lu
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; ginbt_clientsync.cpp:29:
+</I>&gt;<i> &gt; &gt; /opt/svn-tborras-bulmages/bulmages/bulmatpv/plugins/pluginbt_accesobotone
+</I>&gt;<i> &gt; &gt; s
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; /abrevs.h:5:27: fatal error: ui_abrevsbase.h: No existe el fichero o el
+</I>&gt;<i> &gt; &gt; &gt; directorio compilation terminated.
+</I>&gt;<i> &gt; &gt; &gt; make[3]: ***
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; [bulmatpv/plugins/pluginbt_clientsync/CMakeFiles/pluginbt_clientsync.dir/
+</I>&gt;<i> &gt; &gt; pl
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; uginbt_clientsync.o] Error 1
+</I>&gt;<i> &gt; &gt; &gt; make[3]: *** Se espera a que terminen otras tareas....
+</I>&gt;<i> &gt; &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; Seguro que el error es debido a que compila antes pluginbt_clientsync
+</I>&gt;<i> &gt; &gt; &gt; que pluginbt_accesobotones pero
+</I>&gt;<i> &gt; &gt; &gt; he mirado el CMakeLists.txt del pluginbt_clientsync y tiene la
+</I>&gt;<i> &gt; &gt; &gt; directiva:
+</I>&gt;<i> &gt; &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; add_dependencies(${plugin} bulmatpv bulmalib plubinbt_accesobotones)
+</I>&gt;<i> &gt; &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; He probado de hacer un make sobre el build.debian y lo compila bien.
+</I>&gt;<i> &gt; &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; ¿Alguna idea?
+</I>&gt;<i> &gt; &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; Salut
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; _______________________________________________
+</I>&gt;<i> &gt; &gt; Bulmages-main mailing list
+</I>&gt;<i> &gt; &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt; &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+-- 
+Walter Garcia-Fontes
+mailto: <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">walter.garcia en upf.edu</A> - <A HREF="http://puna.upf.edu">http://puna.upf.edu</A>
+Departament d'Economia i Empresa - <A HREF="http://www.econ.upf.edu">http://www.econ.upf.edu</A>
+Universitat Pompeu Fabra
+Ramon Trias Fargas 25-27, 08005 Barcelona, Spain
+Tel. +34 93 542 2722 - Fax. +34 93 542 1746
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="004903.html">[BulmaGés]Problemas de dependencias con dpkg-buildpackage
+</A></li>
+	<LI>Próximo mensaje: <A HREF="004906.html">[BulmaGés]Problemas de dependencias con dpkg-buildpackage
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4904">[ fecha ]</a>
+              <a href="thread.html#4904">[ hilo ]</a>
+              <a href="subject.html#4904">[ asunto ]</a>
+              <a href="author.html#4904">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][Bug #14533] No crea bé usuaris amb majúsucules al nom
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Futf-8%3Fq%3F%3D5BBug_%3D2314533%3D5D_No_crea%3F%3D%0A%09%3D%3Futf-8%3Fq%3F_b%3DC3%3DA9_usuaris_amb_maj%3DC3%3DBAsucules_al_nom%3F%3D&In-Reply-To=%3C200809212026.32451.leo%40alaxarxa.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000054.html">
+   <LINK REL="Next"  HREF="000056.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][Bug #14533] No crea bé usuaris amb majúsucules al nom </H1>
+    <B>Leopold Palomo Avellaneda</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Futf-8%3Fq%3F%3D5BBug_%3D2314533%3D5D_No_crea%3F%3D%0A%09%3D%3Futf-8%3Fq%3F_b%3DC3%3DA9_usuaris_amb_maj%3DC3%3DBAsucules_al_nom%3F%3D&In-Reply-To=%3C200809212026.32451.leo%40alaxarxa.net%3E"
+       TITLE="[BulmaGés][Bug #14533] No crea bé usuaris amb majúsucules al nom">leo en alaxarxa.net
+       </A><BR>
+    <I>Dom Sep 21 20:26:32 CEST 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000054.html">[Bug #14533] No crea bé usuaris amb majúsucules al nom
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000056.html">[BulmaGés] r2717 - in trunk: bulmages	bulmages/bulmacont/plugins/plugincanualesods/po	bulmages/bulmacont/src debian documentos/Presentaciones	documentos/Presentaciones/volcanica-2008
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#55">[ fecha ]</a>
+              <a href="thread.html#55">[ hilo ]</a>
+              <a href="subject.html#55">[ asunto ]</a>
+              <a href="author.html#55">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bones,
+
+tal com vam parlar i comptant amb l'aprovació d'en Tomeu t'he donat d'alta a 
+berlios com a developer, per lo que et prego que puguis tu el canvi o m'ho 
+envies com a patch (-U) ja que no m'he en sortit per aplcar-ho ja que l'he 
+tingut que recuperar del correu.
+
+
+Gràcies i benvingut ... ;-)
+
+Leo
+
+
+A Diumenge 21 Setembre 2008, <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">admin en berlios.de</A> va escriure:
+&gt;<i> --- /usr/share/bulmages/bulmasetup/nuevousuario.py.orig 2008-09-21
+</I>&gt;<i> 11:07:37.0000 00000 +0200
+</I>&gt;<i> +++ /usr/share/bulmages/bulmasetup/nuevousuario.py      2008-09-21
+</I>&gt;<i> 12:28:49.0000 00000 +0200
+</I>&gt;<i> @@ -17,13 +17,13 @@
+</I>&gt;<i>         
+</I>&gt;<i>      def on_mui_botonera_accepted(self):
+</I>&gt;<i>         # Creamos el usuario
+</I>&gt;<i> -       self.command = 'su postgres -c &quot;createuser -s -d -r  ' +
+</I>&gt;<i> self.mui_nombre .text() +'&quot;'
+</I>&gt;<i> +       self.command = 'su postgres -c &quot;createuser -s -d -r  \'' +
+</I>&gt;<i> self.mui_nomb re.text().replace('\\','\\\\').replace('\'','\\\'') +'\'&quot;'
+</I>&gt;<i>         self.process.start(self.command)
+</I>&gt;<i>         self.process.waitForFinished(-1)
+</I>&gt;<i>  
+</I>&gt;<i>         # Cambiamos el password del usuario
+</I>&gt;<i> -       self.subcomand = 'ALTER USER ' +self.mui_nombre.text()+ ' WITH
+</I>&gt;<i> PASSWORD \'\&quot;\'' +self.mui_password.text() +'\'\&quot;\' ;'
+</I>&gt;<i> -       self.command = 'su postgres -c \'psql template1 -c \&quot;'
+</I>&gt;<i> +self.subcomand+ '\&quot;\''
+</I>&gt;<i> +       self.subcomand = 'ALTER USER &quot;'
+</I>&gt;<i> +self.mui_nombre.text().replace('&quot;','&quot;&quot;' )+ '&quot; WITH PASSWORD E\''
+</I>&gt;<i> +self.mui_password.text().replace('\\','\\\\').replace( '\'','\\\'') +'\'
+</I>&gt;<i> ;'
+</I>&gt;<i> +       self.command = 'su postgres -c \'' + ('psql template1 -c \&quot;'
+</I>&gt;<i> +self.subco
+</I>&gt;<i> mand.replace('\\','\\\\').replace('`','\\`').replace('$','\\$').replace('\n
+</I>&gt;<i>','\\ \n').replace('&quot;','\\&quot;')+ '\&quot;' ).replace('\'','\'&quot;\'&quot;\'')+'\''
+</I>&gt;<i>          os.system(self.command.toAscii().data())
+</I>&gt;<i>         
+</I>&gt;<i>         self.accept()
+</I>
+
+
+-- 
+--
+Linux User 152692
+PGP: 0xF944807E
+Catalonia
+------------ próxima parte ------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 197 bytes
+Desc: This is a digitally signed message part.
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20080921/fa3d7e6b/attachment.pgp">https://lists.berlios.de/pipermail/bulmages-main/attachments/20080921/fa3d7e6b/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000054.html">[Bug #14533] No crea bé usuaris amb majúsucules al nom
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000056.html">[BulmaGés] r2717 - in trunk: bulmages	bulmages/bulmacont/plugins/plugincanualesods/po	bulmages/bulmacont/src debian documentos/Presentaciones	documentos/Presentaciones/volcanica-2008
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#55">[ fecha ]</a>
+              <a href="thread.html#55">[ hilo ]</a>
+              <a href="subject.html#55">[ asunto ]</a>
+              <a href="author.html#55">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

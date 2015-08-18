@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Bug #16694] El nom d'empresa no accepta caràcters accentuats
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%5BBug%20%2316694%5D%20El%20nom%20d%27empresa%20no%20accepta%20car%E0cters%20accentuats&In-Reply-To=%3C201001221157.o0MBvSA2017942%40unicorn.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003328.html">
+   <LINK REL="Next"  HREF="003330.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Bug #16694] El nom d'empresa no accepta caràcters accentuats </H1>
+    <B>admin en berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%5BBug%20%2316694%5D%20El%20nom%20d%27empresa%20no%20accepta%20car%E0cters%20accentuats&In-Reply-To=%3C201001221157.o0MBvSA2017942%40unicorn.berlios.de%3E"
+       TITLE="[Bug #16694] El nom d'empresa no accepta caràcters accentuats">admin en berlios.de
+       </A><BR>
+    <I>Vie Ene 22 12:57:28 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003328.html">[BulmaGés]No troba un plugin
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003330.html">[Bug #16704] Bulmafact: La QToolBar &quot;Fichas&quot; no es repinta bé en les Qt 4
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3329">[ fecha ]</a>
+              <a href="thread.html#3329">[ hilo ]</a>
+              <a href="subject.html#3329">[ asunto ]</a>
+              <a href="author.html#3329">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bug #16694, was updated on 2010-Jan-22 12:57
+Here is a current snapshot of the bug.
+
+Project: BulmaGes, Gestión Empresarial Libre
+Category: bulmasetup
+Status: Open
+Resolution: None
+Bug Group: None
+Priority: 5
+Submitted by: orestes
+Assigned to : none
+Summary: El nom d'empresa no accepta caràcters accentuats
+
+Details: Versió: 0.12 i trunk
+Instal·lació: Compilació neta a partir de les fonts del SVN.
+
+En crear una nova empresa, el Bulmasetup no tracta bé els accents en el nom de l'empresa.
+
+Per exemple: &quot;AMPA Progrés&quot; queda emmagatzemat a la base de dades com a &quot;Sin definir&quot;.
+
+Si entrem a la base de dades i inserim la cadena a mà (fent &quot;
+update configuracion set (valor)=('AMPA Progrés') where nombre='NombreEmpresa'\g&quot;), aleshores en tornar a entrar al Bulmasetup i editar l'empresa existent, el nom apareix com &quot;AMPA ProgrÃ©s&quot;.
+
+El meu sistema usa UTF-8 per defecte, o sigui que sembla un problema de codificació de caràcters.
+
+
+For detailed info, follow this link:
+<A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=16694&amp;group_id=4472">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=16694&amp;group_id=4472</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003328.html">[BulmaGés]No troba un plugin
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003330.html">[Bug #16704] Bulmafact: La QToolBar &quot;Fichas&quot; no es repinta bé en les Qt 4
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3329">[ fecha ]</a>
+              <a href="thread.html#3329">[ hilo ]</a>
+              <a href="subject.html#3329">[ asunto ]</a>
+              <a href="author.html#3329">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

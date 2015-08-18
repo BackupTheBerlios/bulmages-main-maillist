@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]ACTUALIZAR POR SVN
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Futf-8%3Fq%3FACTUALIZAR_POR_SVN%3F%3D&In-Reply-To=%3C200811181645.25816.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000352.html">
+   <LINK REL="Next"  HREF="000351.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]ACTUALIZAR POR SVN </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Futf-8%3Fq%3FACTUALIZAR_POR_SVN%3F%3D&In-Reply-To=%3C200811181645.25816.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]ACTUALIZAR POR SVN">tborras en conetxia.com
+       </A><BR>
+    <I>Mar Nov 18 16:45:25 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000352.html">[BulmaGés]ACTUALIZAR POR SVN
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000351.html">[BulmaGés]ACTUALIZAR POR SVN
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#355">[ fecha ]</a>
+              <a href="thread.html#355">[ hilo ]</a>
+              <a href="subject.html#355">[ asunto ]</a>
+              <a href="author.html#355">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola a tothom:
+Yo lo haría de esta forma (que no es como lo hago pero creo que es el método 
+más asequible a un usuario que no quiere liarse con el código):
+
+$ svn update
+$ cd build (o mkdir build si no existe ya)
+$ cmake ../ (por si hay plugins nuevos y hay que refrescar los CMakeList)
+$ sudo make install (Como root y que se instale en el /usr/local por defecto)
+
+Luego
+
+$ sudo bulmasetup
+
+Modificar / Actualizar empresas
+Abrir una a una y darle al boton &quot;Actualizar Base de Datos&quot; (Si hay parche se 
+aplica y si no no hace nada).
+
+  Si quieres ahorrarte este último paso hay que seguir los mensajes de commit 
+para ver si hay cambios en los archivos sql o no.
+
+
+NOTA: Es importante saber que los archivos genericos de configuración se 
+sobreescribiran incorporando los nuevos parametros que se hayan agregado. Sin 
+embargo los archivos de configuración de cada empresa particular quedarán 
+intactos. Así que si eres listo lo que harás es trasladar todos los cambios 
+de configuración a los archivos específicos de empresa para que no se pierdan 
+cada vez que actualizas.
+
+NOTA2: Parece más de lo que és, pero en realidad es muy sencillo.
+
+Salut
+
+
+El Tuesday 18 November 2008 13:58:31 Pablo Alvarez de Sotomayor Posadillo 
+escribió:
+&gt;<i> On Tuesday 18 November 2008 13:32:33 Albert Mas wrote:
+</I>&gt;<i> &gt; Gràcias.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Y cuando se sabe que hay que modificar la base de datos?
+</I>&gt;<i>
+</I>&gt;<i> Pues normalmente lo suele indicar el que hace un cambio en el esquema de la
+</I>&gt;<i> base de datos cuando se hace la actualización del repositorio. Habrás
+</I>&gt;<i> notado que cuando se actualiza el repositorio llega un mensaje a la lista
+</I>&gt;<i> con los ficheros actualizados y un comentario de los cambios hechos por la
+</I>&gt;<i> persona que los realiza, pues normalmente es en ese comentario en el que se
+</I>&gt;<i> avisa de dicho cambio.
+</I>&gt;<i>
+</I>&gt;<i> UN SALUDO
+</I>
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+(71 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000352.html">[BulmaGés]ACTUALIZAR POR SVN
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000351.html">[BulmaGés]ACTUALIZAR POR SVN
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#355">[ fecha ]</a>
+              <a href="thread.html#355">[ hilo ]</a>
+              <a href="subject.html#355">[ asunto ]</a>
+              <a href="author.html#355">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

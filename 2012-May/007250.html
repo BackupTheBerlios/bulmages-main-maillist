@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Cambios para funcionar en FreeBSD
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FCambios_para_funciona%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fr_en_FreeBSD%3F%3D&In-Reply-To=%3CCAJWqEtex2WrPj27qbMb70%3DPvbr_HxQOge2zHRsKrK4mBXZFXRg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007249.html">
+   <LINK REL="Next"  HREF="007252.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Cambios para funcionar en FreeBSD </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FCambios_para_funciona%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fr_en_FreeBSD%3F%3D&In-Reply-To=%3CCAJWqEtex2WrPj27qbMb70%3DPvbr_HxQOge2zHRsKrK4mBXZFXRg%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]Cambios para funcionar en FreeBSD">tborras en conetxia.com
+       </A><BR>
+    <I>Lun Mayo 21 01:03:27 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007249.html">[BulmaGés] Cambios para funcionar en FreeBSD
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007252.html">[BulmaGés]Cambios para funcionar en FreeBSD
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7250">[ fecha ]</a>
+              <a href="thread.html#7250">[ hilo ]</a>
+              <a href="subject.html#7250">[ asunto ]</a>
+              <a href="author.html#7250">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Daniel
+
+En el master no hay problema en ponerlo, el cambio es claro.
+
+En la release yo no lo pondría ya que realmente no es el arreglo de un bug
+(funcionamiento en FreeBSD). Y ya está congelada la entrada de nuevas
+features.
+
+Tampoco pasa nada, en la próxima entrará, espero que no tardemos 2 años.
+
+Se que seguramente no se rompería nada (en eso estamos deacuerdo), pero
+quien puede asegurarlo 100%. Además así ya tenemos una buena característica
+para la 0.15
+
+Salut
+
+El 21 de mayo de 2012 00:07, Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">dripoll.public at gmail.com</A>&gt;escribió:
+
+&gt;<i> Hola gente,
+</I>&gt;<i> Un amigo mio ha empezado a implementar BulmaGes en su negocio, pero se vio
+</I>&gt;<i> con el pequeño problema de que no podia compilarlo bajo FreeBSD, que es el
+</I>&gt;<i> sistema con el que funcionan sus ordenadores, tras pelearme un rato y
+</I>&gt;<i> analizar los errores identifiqué que el problema simplemente estaba en que
+</I>&gt;<i> saltaba error al intentar compilar el archivo bulmages.qrc, que contenia
+</I>&gt;<i> dos archivos con espacios en los nombres.
+</I>&gt;<i>
+</I>&gt;<i> Ha sido eliminar los espacios y compilar.
+</I>&gt;<i>
+</I>&gt;<i> Al ejecutarse me encontré con otros problemas, relacionados nuevamente con
+</I>&gt;<i> rutas, esta vez de python, los cuales solucione usando el modulo de CMake
+</I>&gt;<i> FindPythonInterpr y FindPackageHandleStandardArgs.
+</I>&gt;<i>
+</I>&gt;<i> En mi fork personal de gitorious he realizado una serie de commits
+</I>&gt;<i> solucionando este problema, podéis verlos aquí:
+</I>&gt;<i> <A HREF="https://gitorious.org/~**themeph/bulmages/themephs-**bulmages/commit/**">https://gitorious.org/~**themeph/bulmages/themephs-**bulmages/commit/**</A>
+</I>&gt;<i> 1b5cf91f11c45e166234ddf838e182**00b818cc51&lt;<A HREF="https://gitorious.org/%7Ethemeph/bulmages/themephs-bulmages/commit/1b5cf91f11c45e166234ddf838e18200b818cc51">https://gitorious.org/%7Ethemeph/bulmages/themephs-bulmages/commit/1b5cf91f11c45e166234ddf838e18200b818cc51</A>&gt;
+</I>&gt;<i> <A HREF="https://gitorious.org/~**themeph/bulmages/themephs-**bulmages/commit/**">https://gitorious.org/~**themeph/bulmages/themephs-**bulmages/commit/**</A>
+</I>&gt;<i> 886d221ab8678326dc7e5ca79dc3ef**2b4b625e0e&lt;<A HREF="https://gitorious.org/%7Ethemeph/bulmages/themephs-bulmages/commit/886d221ab8678326dc7e5ca79dc3ef2b4b625e0e">https://gitorious.org/%7Ethemeph/bulmages/themephs-bulmages/commit/886d221ab8678326dc7e5ca79dc3ef2b4b625e0e</A>&gt;
+</I>&gt;<i> (este segundo arregla un fallo del primero)
+</I>&gt;<i> <A HREF="https://gitorious.org/~**themeph/bulmages/themephs-**bulmages/commit/**">https://gitorious.org/~**themeph/bulmages/themephs-**bulmages/commit/**</A>
+</I>&gt;<i> b74b01b408c442cb3f67025f877fd5**7e4a7e7061&lt;<A HREF="https://gitorious.org/%7Ethemeph/bulmages/themephs-bulmages/commit/b74b01b408c442cb3f67025f877fd57e4a7e7061">https://gitorious.org/%7Ethemeph/bulmages/themephs-bulmages/commit/b74b01b408c442cb3f67025f877fd57e4a7e7061</A>&gt;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Si me dais vía libre pasaré a incorporarlos en el master principal, y creo
+</I>&gt;<i> que también deberían ser incluidos en la release.
+</I>&gt;<i>
+</I>&gt;<i> Saludos,
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Daniel Ripoll Osma
+</I>&gt;<i> <A HREF="http://danielripoll.es">http://danielripoll.es</A>
+</I>&gt;<i> 6688.27.4.90
+</I>&gt;<i>
+</I>&gt;<i> Web&amp;  Desktop Developer
+</I>&gt;<i>
+</I>&gt;<i> ______________________________**_________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/**mailman/listinfo/bulmages-main&lt;https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/**mailman/listinfo/bulmages-main&lt;https://lists.berlios.de/mailman/listinfo/bulmages-main</A>&gt;
+</I>&gt;<i>
+</I>
+
+
+-- 
+Tomeu Borrás
+Conetxia Soluciones Informáticas
+902 88 11 66 - 677 77 44 76
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20120521/a435a71a/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20120521/a435a71a/attachment.html</A>&gt;
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007249.html">[BulmaGés] Cambios para funcionar en FreeBSD
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007252.html">[BulmaGés]Cambios para funcionar en FreeBSD
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7250">[ fecha ]</a>
+              <a href="thread.html#7250">[ hilo ]</a>
+              <a href="subject.html#7250">[ asunto ]</a>
+              <a href="author.html#7250">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

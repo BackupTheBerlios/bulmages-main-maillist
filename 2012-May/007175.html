@@ -1,0 +1,420 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120504093124.E5C79756D8%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007174.html">
+   <LINK REL="Next"  HREF="007176.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120504093124.E5C79756D8%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Vie Mayo  4 11:31:24 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007174.html">[BulmaGés]Paginación
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007176.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7175">[ fecha ]</a>
+              <a href="thread.html#7175">[ hilo ]</a>
+              <a href="subject.html#7175">[ asunto ]</a>
+              <a href="author.html#7175">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from 4fd9024 to fdc4ad1
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/4fd9024c73d08f9738004140d3a78ea3d94ae5b1/diffs/fdc4ad140ffb44ccf2b1325433be1c21993c3d1f">https://gitorious.org/bulmages/bulmages/commit/4fd9024c73d08f9738004140d3a78ea3d94ae5b1/diffs/fdc4ad140ffb44ccf2b1325433be1c21993c3d1f</A>
+
+Diff: 
+
+commit fdc4ad140ffb44ccf2b1325433be1c21993c3d1f
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri May 4 11:30:28 2012 +0200
+
+    Cambio el sistema de paginacion de los subformularios. Cambio el numero de registros no configurado a 100 para que la velocidad de carga sea mayor y no aparezcan por defecto las barras de progreso. Cambio los headers verticales para que muestren la numeracion de registro al cambiar de paginas. Pongo los botones primero, anterior, siguiente y ultimo en el la botonera de subformularios, hago que el configurador de subformularios abra el menu de subformularios junto con la configuracion del mismo.
+
+diff --git a/bulmages/bulmalib/src/blformlist.cpp b/bulmages/bulmalib/src/blformlist.cpp
+index cbaf94d..c65548e 100644
+--- a/bulmages/bulmalib/src/blformlist.cpp
++++ b/bulmages/bulmalib/src/blformlist.cpp
+@@ -488,6 +488,8 @@ void BlFormList::on_mui_configurar_toggled ( bool checked )
+     BL_FUNC_DEBUG
+     if ( checked ) {
+         m_listado-&gt;showConfig();
++	m_listado-&gt;showMenu();
++	
+     } else {
+         m_listado-&gt;hideConfig();
+     } // end if
+diff --git a/bulmages/bulmalib/src/blsubform.cpp b/bulmages/bulmalib/src/blsubform.cpp
+index 4468de3..d53350a 100644
+--- a/bulmages/bulmalib/src/blsubform.cpp
++++ b/bulmages/bulmalib/src/blsubform.cpp
+@@ -735,7 +735,7 @@ void BlSubForm::hideConfig()
+ {
+     BL_FUNC_DEBUG
+     mui_configurador-&gt;hide();
+-    
++    emit toogledConfig ( mui_configurador-&gt;isVisible() );
+ }
+ 
+ 
+@@ -746,7 +746,28 @@ void BlSubForm::showConfig()
+ {
+     BL_FUNC_DEBUG
+     mui_configurador-&gt;show();
+-    
++    emit toogledConfig ( mui_configurador-&gt;isVisible() );
++}
++
++///
++/**
++**/
++void BlSubForm::hideMenu()
++{
++    BL_FUNC_DEBUG
++    mui_menusubform-&gt;hide();
++    emit toogledMenuConfig ( mui_menusubform-&gt;isVisible() );
++}
++
++
++///
++/**
++**/
++void BlSubForm::showMenu()
++{
++    BL_FUNC_DEBUG
++    mui_menusubform-&gt;show();
++    emit toogledMenuConfig ( mui_menusubform-&gt;isVisible() );
+ }
+ 
+ 
+@@ -1277,7 +1298,7 @@ int BlSubForm::inicializar()
+ 
+     int filpag = mui_filaspagina-&gt;text().toInt();
+     if ( filpag &lt;= 0 )
+-        filpag = 500;
++        filpag = 100;
+ 
+     int pagact = mui_paginaact-&gt;text().toInt();
+     if ( pagact &lt;= 0 )
+@@ -1448,7 +1469,7 @@ void BlSubForm::load ( BlDbRecordSet *cur )
+     /// Tratamos con la paginacion.
+     int filpag = mui_filaspagina-&gt;text().toInt();
+     if ( filpag &lt;= 0 ) {
+-        filpag = 500;
++        filpag = 100;
+     } // end if
+ 
+     int pagact = mui_paginaact-&gt;text().toInt();
+@@ -1457,23 +1478,9 @@ void BlSubForm::load ( BlDbRecordSet *cur )
+     } // end if
+ 
+     /// Ponemos los datos sobre la consulta.
+-    mui_numfilas-&gt;setText ( QString::number ( cur-&gt;numregistros() ) );
+-    int numpag = cur-&gt;numregistros() / filpag + 1;
++    mui_numfilas-&gt;setText ( QString::number ( m_numtotalregistros ) );
++    int numpag = m_numtotalregistros / filpag + 1;
+     mui_numpaginas-&gt;setText ( QString::number ( numpag ) );
+-
+-    /// Si el numero de elementos es igual al numero de filas por pagina habilitamos la pagina siguiente
+-    if ( filpag == cur-&gt;numregistros() ) {
+-        mui_pagsiguiente-&gt;setEnabled ( TRUE );
+-    } else {
+-        mui_pagsiguiente-&gt;setDisabled ( TRUE );
+-    } // end if
+-
+-    /// Si la pagina actual es 1 deshabilitamos la pagina anterior
+-    if ( pagact ==  1 ) {
+-        mui_paganterior-&gt;setDisabled ( TRUE );
+-    } else {
+-        mui_paganterior-&gt;setEnabled ( TRUE );
+-    } // end if
+     
+     /// Rendimiento: estas variables s&oacute;lo se usan en el bucle, pero no es necesario crearlas en cada iteración
+     QFont bold;
+@@ -1491,8 +1498,9 @@ void BlSubForm::load ( BlDbRecordSet *cur )
+     
+     /// Hay datos que solo precisamos coger una unica vez y almacenarlo en variables.
+     const int ncolumnas = m_lcabecera.size();
++
++    /// Pone en negrita el texto de la cabecera de las columnas editables
+     for ( int j = 0; j &lt; ncolumnas; ++j ) {
+-	/// Pone en negrita el texto de la cabecera de las columnas editables
+ 	if ( ! ( m_lcabecera [ j ] -&gt; options() &amp; BlSubFormHeader::DbNoWrite ) ) {
+ 	  mui_list-&gt;horizontalHeaderItem ( j ) -&gt; setFont( bold );
+ 	} // end if
+@@ -1509,7 +1517,6 @@ void BlSubForm::load ( BlDbRecordSet *cur )
+             camp = ( BlDbSubFormField * ) rec-&gt;lista() -&gt;at ( j );
+             mui_list-&gt;setItem ( reciterate, j, camp );
+         } // end for
+-	
+         cur-&gt;nextRecord();
+ 	barra-&gt;setValue(reciterate++);
+     } // end while
+@@ -1614,6 +1621,29 @@ void BlSubForm::load ( BlDbRecordSet *cur )
+         on_mui_confcol_clicked();
+     } // end if
+ 
++    /// Si no estamos en la ultima pagina habilitamos el boton de ir a la siguiente y a la ultima.
++    if ( pagact &lt; mui_numpaginas-&gt;text().toInt() ) {
++        mui_pagsiguiente-&gt;setEnabled ( TRUE );
++	m_pagsig-&gt;setEnabled( TRUE);
++	m_ultpag-&gt;setEnabled( TRUE);
++    } else {
++        mui_pagsiguiente-&gt;setDisabled ( TRUE );
++	m_pagsig-&gt;setDisabled( TRUE);
++	m_ultpag-&gt;setDisabled( TRUE);
++    } // end if
++
++    /// Si la pagina actual es 1 deshabilitamos la pagina anterior
++    if ( pagact ==  1 ) {
++        mui_paganterior-&gt;setDisabled ( TRUE );
++	m_pripag-&gt;setDisabled( TRUE);
++	m_pagant-&gt;setDisabled( TRUE);
++    } else {
++        mui_paganterior-&gt;setEnabled ( TRUE );
++	m_pripag-&gt;setEnabled( TRUE);
++	m_pagant-&gt;setEnabled( TRUE);
++    } // end if
++
++
+     /// Reactivamos el sorting
+     mui_list-&gt;setSortingEnabled ( m_sorting );
+ 
+@@ -1628,6 +1658,13 @@ void BlSubForm::load ( BlDbRecordSet *cur )
+       resizeRowsToContents();
+     } // end if
+     
++    /// Pintamos las cabeceras Verticales
++    QStringList headers1;
++    int filaspag = (mui_filaspagina-&gt;value() &gt;0 ? mui_filaspagina-&gt;value() : 100);
++    for ( int i = filaspag * (mui_paginaact-&gt;value() -1) +1; i &lt; filaspag * (mui_paginaact-&gt;value()) +1; i++ ) {
++        headers1 &lt;&lt; QString::number(i);
++    } // end for
++    mui_list-&gt;setVerticalHeaderLabels ( headers1 );
+     
+ }
+ 
+@@ -1649,7 +1686,6 @@ void BlSubForm::load ( QString query )
+     BL_FUNC_DEBUG
+     /// Si el query no existe no hacemos nada.
+     if ( query == &quot;&quot; ) {
+-	
+         return;
+     } // end if
+ 
+@@ -1681,13 +1717,34 @@ void BlSubForm::load ( QString query )
+                 next_active_row_id = dbValue(dbFieldId(), active_row + 1);
+             } // end if
+         } // end if
++        
++        
+         /// Fin de Guardar los valores necesarios para poder mantener la posici&oaucte;n en la lista tras realizar un cambio o borrado
+-
+         m_query = query;
++	
++	/// Debemos calcular el numero total de registros que tiene el query (para la paginacion)
++	/// Para ello alteramos el query y hacemos un count de todo igual.
++	QRegExp rx70 ( &quot;^SELECT (.*) FROM .*&quot; );
++	rx70.setMinimal ( TRUE );
++	rx70.setCaseSensitivity(Qt::CaseInsensitive);
++	if ( rx70.indexIn ( query, 0 )  != -1 ) {
++	    QString countQuery = query;
++	    countQuery.replace(rx70.cap(1), &quot; COALESCE(count (*), 0) AS cuenta &quot;);
++
++	    countQuery = countQuery.left(countQuery.indexOf(&quot;ORDER BY&quot;));
++	    
++	    countQuery.replace (rx70.cap(2), &quot;&quot;);
++	    BlDbRecordSet *curcuenta = mainCompany() -&gt;loadQuery ( countQuery, &quot;&quot; );
++	    m_numtotalregistros = curcuenta-&gt;value(&quot;cuenta&quot;).toInt();
++	    delete curcuenta;
++	} // end if
++	
++	
++	
+         /// Tratramos con la paginacion.
+         int limit = mui_filaspagina-&gt;text().toInt();
+         if ( limit &lt;= 0 ) {
+-            limit = 500;
++            limit = 100;
+         } // end if
+ 
+         int pagact = mui_paginaact-&gt;text().toInt();
+@@ -2970,6 +3027,30 @@ void BlSubForm::on_mui_pagsiguiente_clicked()
+ 
+ ///
+ /**
++ * **/
++void BlSubForm::on_mui_ultpag_clicked()
++{
++    BL_FUNC_DEBUG
++    int pag = mui_numpaginas-&gt;text().toInt();
++    mui_paginaact-&gt;setValue ( pag );
++    confquery();
++}
++
++///
++/**
++ * **/
++void BlSubForm::on_mui_pripag_clicked()
++{
++    BL_FUNC_DEBUG
++    int pag = 1;
++    mui_paginaact-&gt;setValue ( pag );
++    confquery();
++}
++
++
++
++///
++/**
+ **/
+ void BlSubForm::on_mui_paganterior_clicked()
+ {
+@@ -3124,6 +3205,46 @@ void BlSubForm::preparaMenu() {
+     m_hboxLayout1-&gt;addWidget ( sel2 );    
+     connect (sel2, SIGNAL(released()), this, SLOT(resizeRowsToContents()));   
+     
++    /// Principio Pagina
++    m_pripag = new QToolButton ( mui_menusubform );
++    m_pripag-&gt;setStatusTip ( &quot;Pagina Anterior&quot; );
++    m_pripag-&gt;setToolTip ( &quot;Pagina Anterior&quot; );
++    m_pripag-&gt;setMinimumSize ( QSize ( 18, 18 ) );
++    m_pripag-&gt;setIcon ( QIcon ( &quot;:/BulmaCont32x32/images/png/i_start.png&quot; ) );
++    m_pripag-&gt;setIconSize ( QSize ( 18, 18 ) );    
++    m_hboxLayout1-&gt;addWidget ( m_pripag );    
++    connect (m_pripag, SIGNAL(released()), this, SLOT(on_mui_pripag_clicked())); 
++    
++    /// Pagina Anterior
++    m_pagant = new QToolButton ( mui_menusubform );
++    m_pagant-&gt;setStatusTip ( &quot;Pagina Anterior&quot; );
++    m_pagant-&gt;setToolTip ( &quot;Pagina Anterior&quot; );
++    m_pagant-&gt;setMinimumSize ( QSize ( 18, 18 ) );
++    m_pagant-&gt;setIcon ( QIcon ( &quot;:/BulmaCont32x32/images/png/i_back.png&quot; ) );
++    m_pagant-&gt;setIconSize ( QSize ( 18, 18 ) );    
++    m_hboxLayout1-&gt;addWidget ( m_pagant );    
++    connect (m_pagant, SIGNAL(released()), this, SLOT(on_mui_paganterior_clicked())); 
++    
++    /// Pagina Siguiente
++    m_pagsig = new QToolButton ( mui_menusubform );
++    m_pagsig-&gt;setStatusTip ( &quot;Pagina Siguiente&quot; );
++    m_pagsig-&gt;setToolTip ( &quot;Pagina Siguiente&quot; );
++    m_pagsig-&gt;setMinimumSize ( QSize ( 18, 18 ) );
++    m_pagsig-&gt;setIcon ( QIcon ( &quot;:/BulmaCont32x32/images/png/i_forward.png&quot; ) );
++    m_pagsig-&gt;setIconSize ( QSize ( 18, 18 ) );    
++    m_hboxLayout1-&gt;addWidget ( m_pagsig );    
++    connect (m_pagsig, SIGNAL(released()), this, SLOT(on_mui_pagsiguiente_clicked())); 
++    
++    /// Ultima Pagina
++    m_ultpag = new QToolButton ( mui_menusubform );
++    m_ultpag-&gt;setStatusTip ( &quot;Ultima Pagina&quot; );
++    m_ultpag-&gt;setToolTip ( &quot;Ultima Pagina&quot; );
++    m_ultpag-&gt;setMinimumSize ( QSize ( 18, 18 ) );
++    m_ultpag-&gt;setIcon ( QIcon ( &quot;:/BulmaCont32x32/images/png/i_finish.png&quot; ) );
++    m_ultpag-&gt;setIconSize ( QSize ( 18, 18 ) );    
++    m_hboxLayout1-&gt;addWidget ( m_ultpag );    
++    connect (m_ultpag, SIGNAL(released()), this, SLOT(on_mui_ultpag_clicked())); 
++    
+     /// Ver configuracion del subformulario
+     QToolButton *sel3 = new QToolButton ( mui_menusubform );
+     sel3-&gt;setStatusTip ( &quot;Ver/Ocultar configurador de subformulario&quot; );
+diff --git a/bulmages/bulmalib/src/blsubform.h b/bulmages/bulmalib/src/blsubform.h
+index 34ccc34..265883b 100644
+--- a/bulmages/bulmalib/src/blsubform.h
++++ b/bulmages/bulmalib/src/blsubform.h
+@@ -31,6 +31,7 @@
+ #include &lt;QWidget&gt;
+ #include &lt;QHeaderView&gt;
+ #include &lt;QPalette&gt;
++#include &lt;QToolButton&gt;
+ 
+ #include &quot;blfunctions.h&quot;
+ #include &quot;ui_blsubformbase.h&quot;
+@@ -141,9 +142,15 @@ private:
+     virtual void load ( BlDbRecordSet *cur );
+     const QString nameFileConfig(); 
+     const QString nameFileDefaultConfig(); 
+-
++    QToolButton *m_pagsig;
++    QToolButton *m_pagant;
++    QToolButton *m_pripag;
++    QToolButton *m_ultpag;
++    /// Contiene el numero total de registros del query establecido.
++    int m_numtotalregistros;
+ 
+ private:
++    /// El query que se va a cargar.
+     QString m_query;
+     /// Indica si es modo consulta o modo edicion. (altera el comportamiento del
+     /// doble click sobre la lista)
+@@ -295,6 +302,11 @@ public:
+     void hideConfig();
+     /// Muestra el configurador del subformulario
+     void showConfig();
++    /// Oculta el menu del subformulario
++    void hideMenu();
++    /// Muestra el menu del subformulario
++    void showMenu();
++    
+     /// Hace la impresion del subformulario en formato de tabla RML.
+     QString imprimir();
+     void sortItems ( int col, Qt::SortOrder orden );
+@@ -369,6 +381,8 @@ public slots:
+     virtual void on_mui_list_ctrlDown ( int row, int col );
+     virtual void on_mui_pagsiguiente_clicked();
+     virtual void on_mui_paganterior_clicked();
++    virtual void on_mui_ultpag_clicked();
++    virtual void on_mui_pripag_clicked();
+     virtual void on_mui_list_itemDoubleClicked ( QTableWidgetItem *item );
+     virtual void on_mui_list_itemClicked ( QTableWidgetItem *item );
+     virtual void on_mui_list_cellDoubleClicked ( int row, int col );
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007174.html">[BulmaGés]Paginación
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007176.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7175">[ fecha ]</a>
+              <a href="thread.html#7175">[ hilo ]</a>
+              <a href="subject.html#7175">[ asunto ]</a>
+              <a href="author.html#7175">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

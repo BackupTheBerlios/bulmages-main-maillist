@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] 	[Bug #16927] La ventana no se maximiza con NX sobre Windows
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%5BBug%20%2316927%5D%20La%20ventana%20no%20se%20maximiza%20con%20NX%20sobre%20Windows&In-Reply-To=%3C201011031824.18653.auryn%40wanadoo.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="004175.html">
+   <LINK REL="Next"  HREF="004177.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] 	[Bug #16927] La ventana no se maximiza con NX sobre Windows </H1>
+    <B>Aron</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%5BBug%20%2316927%5D%20La%20ventana%20no%20se%20maximiza%20con%20NX%20sobre%20Windows&In-Reply-To=%3C201011031824.18653.auryn%40wanadoo.es%3E"
+       TITLE="[BulmaGés] 	[Bug #16927] La ventana no se maximiza con NX sobre Windows">auryn en wanadoo.es
+       </A><BR>
+    <I>Mie Nov  3 18:24:18 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="004175.html">[BulmaGés] r4063 - trunk/bulmages/bulmafact/src
+</A></li>
+        <LI>Próximo mensaje: <A HREF="004177.html">[BulmaGés] [Bug #16927] La ventana no se maximiza	con NX sobre Windows
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4176">[ fecha ]</a>
+              <a href="thread.html#4176">[ hilo ]</a>
+              <a href="subject.html#4176">[ asunto ]</a>
+              <a href="author.html#4176">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Para corregir el desplazamiento vertical que va acumulándose al lanzar el 
+programa mediante NxClient, uso un script que &quot;truca&quot; la configuración justo 
+antes de ejecutar bulmafact:
+sed -r -i 's/&lt;Y&gt;.*&lt;\/Y&gt;/&lt;Y&gt;-4&lt;\/Y&gt;/' ~/.bulmages/bulmafact_{bd}.cfn&quot;
+sed -r -i 's/&lt;X&gt;.*&lt;\/X&gt;/&lt;X&gt;-4&lt;\/X&gt;/' ~/.bulmages/bulmafact_{bd}.cfn&quot;
+
+Al colocar la ventana principal en las coordenadas (-4, -4) consigo que 
+parezca maximizada y ya no tengo el problema de que se descoloque cada vez.
+
+Ya he quitado el código de bfcompany.cpp que agregué al intentar arreglarlo 
+desde ahí.
+
+Saludos
+
+--
+Aron
+
+
+On Miércoles 18 Agosto 2010 12:49:01 <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">admin en berlios.de</A> escribió:
+&gt;<i> Bug #16927, was updated on 2010-Mar-09 12:04
+</I>&gt;<i> Here is a current snapshot of the bug.
+</I>&gt;<i> 
+</I>&gt;<i> Project: BulmaGes, Gestión Empresarial Libre
+</I>&gt;<i> Category: bulmafact
+</I>&gt;<i> Status: Open
+</I>&gt;<i> Resolution: None
+</I>&gt;<i> Bug Group: None
+</I>&gt;<i> Priority: 3
+</I>&gt;<i> Submitted by: hilex
+</I>&gt;<i> Assigned to : hilex
+</I>&gt;<i> Summary: La ventana no se maximiza con NX sobre Windows
+</I>&gt;<i> 
+</I>&gt;<i> Details: Cuando lanzamos el progama desde una sesión NX en Windows y
+</I>&gt;<i> cerramos con la ventana maximizada, el siguiente arranque muestra la
+</I>&gt;<i> ventana sin maximizar. La ventana ocupa todo el espacio menos un espacio
+</I>&gt;<i> del tamaño de la barra de título en la parte superior, resultando confuso
+</I>&gt;<i> a primera vista, ya que si teníamos otra ventana abierta parece que
+</I>&gt;<i> Bulmagés tenga dos barras de título.
+</I>&gt;<i> 
+</I>&gt;<i> Follow-Ups:
+</I>&gt;<i> 
+</I>&gt;<i> Date: 2010-Mar-23 15:56
+</I>&gt;<i> By: hilex
+</I>&gt;<i> 
+</I>&gt;<i> Comment:
+</I>&gt;<i> Bueno, probando la versión compilada en Windows veo que la posición ya es
+</I>&gt;<i> correcta (no se queda maximizada, pero como si lo estuviera).
+</I>&gt;<i> 
+</I>&gt;<i> Donde veo que no se posiciona bien es al usarlo mediante NxClient: cada vez
+</I>&gt;<i> que lo abro la ventana baja un poco más. Será problema del Nx.
+</I>&gt;<i> -------------------------------------------------------
+</I>&gt;<i> 
+</I>&gt;<i> For detailed info, follow this link:
+</I>&gt;<i> <A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=16927&amp;group_id=4472">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=16927&amp;group_id=4472</A>
+</I>------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20101103/bde11830/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20101103/bde11830/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="004175.html">[BulmaGés] r4063 - trunk/bulmages/bulmafact/src
+</A></li>
+	<LI>Próximo mensaje: <A HREF="004177.html">[BulmaGés] [Bug #16927] La ventana no se maximiza	con NX sobre Windows
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4176">[ fecha ]</a>
+              <a href="thread.html#4176">[ hilo ]</a>
+              <a href="subject.html#4176">[ asunto ]</a>
+              <a href="author.html#4176">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Bug #16642] Segmentation Fault al	escribir texto en un BlSearchWidget
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2316642%5D%20Segmentation%20Fault%20al%0A%09escribir%20texto%20en%20un%20BlSearchWidget&In-Reply-To=%3C201001081728.o08HSsWi011387%40unicorn.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003286.html">
+   <LINK REL="Next"  HREF="003279.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Bug #16642] Segmentation Fault al	escribir texto en un BlSearchWidget </H1>
+    <B>admin en berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2316642%5D%20Segmentation%20Fault%20al%0A%09escribir%20texto%20en%20un%20BlSearchWidget&In-Reply-To=%3C201001081728.o08HSsWi011387%40unicorn.berlios.de%3E"
+       TITLE="[BulmaGés] [Bug #16642] Segmentation Fault al	escribir texto en un BlSearchWidget">admin en berlios.de
+       </A><BR>
+    <I>Vie Ene  8 18:28:54 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003286.html">[BulmaGés]Saber nuevo id desde guardarPost en una ficha BfForm
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003279.html">[BulmaGés][Bug #16642] Segmentation Fault al escribir texto en un BlSearchWidget
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3277">[ fecha ]</a>
+              <a href="thread.html#3277">[ hilo ]</a>
+              <a href="subject.html#3277">[ asunto ]</a>
+              <a href="author.html#3277">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bug #16642, was updated on 2010-Jan-08 18:28
+Here is a current snapshot of the bug.
+
+Project: BulmaGes, Gestión Empresarial Libre
+Category: bulmafact
+Status: Open
+Resolution: None
+Bug Group: None
+Priority: 5
+Submitted by: hilex
+Assigned to : none
+Summary: Segmentation Fault al escribir texto en un BlSearchWidget
+
+Details: Tengo un BlSearchWidget que consulta un listado de personas con codi (integer) y nombre (varchar).
+
+Si escribo un número en el campo, me busca el nombre correctamente. También va bien pulsando el botón del listado.
+
+Pero si escribo una letra, el programa se cierra tras intentar una consulta que compara el valor codi con 'c'.
+
+
+ERROR ANTES DEL SEGMENTATION FAULT:
+BlDbRecordSet::BlDbRecordSet: Error en la consulta: SELECT * FROM tabla WHERE  codi = 'c' OR  nombre = 'c'
+
+
+MI DEFINICIÓN DEL BUSCADOR:
+addDbField(&quot;idpersona&quot;, BlDbField::DbInt, BlDbField::DbNothing, _(&quot;Persona&quot;));
+mui_idpersona-&gt;setMainCompany(mainCompany());
+mui_idpersona-&gt;setLabel(_(&quot;Persona&quot;));
+mui_idpersona-&gt;setTableName(&quot;persona&quot;);
+mui_idpersona-&gt;setFieldId(&quot;idpersona&quot;);
+mui_idpersona-&gt;m_valores[&quot;codi&quot;] = &quot;&quot;;
+mui_idpersona-&gt;m_valores[&quot;nombre&quot;] = &quot;&quot;;
+
+
+For detailed info, follow this link:
+<A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=16642&amp;group_id=4472">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=16642&amp;group_id=4472</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003286.html">[BulmaGés]Saber nuevo id desde guardarPost en una ficha BfForm
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003279.html">[BulmaGés][Bug #16642] Segmentation Fault al escribir texto en un BlSearchWidget
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3277">[ fecha ]</a>
+              <a href="thread.html#3277">[ hilo ]</a>
+              <a href="subject.html#3277">[ asunto ]</a>
+              <a href="author.html#3277">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

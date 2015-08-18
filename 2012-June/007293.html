@@ -1,0 +1,401 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120603221049.ED28E756EA%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007292.html">
+   <LINK REL="Next"  HREF="007294.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120603221049.ED28E756EA%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Lun Jun  4 00:10:49 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007292.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007294.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7293">[ fecha ]</a>
+              <a href="thread.html#7293">[ hilo ]</a>
+              <a href="subject.html#7293">[ asunto ]</a>
+              <a href="author.html#7293">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from 6bf4714 to fe25f6a
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/6bf4714e25c32132fe4bd22c5b331916b4fc256b/diffs/fe25f6af7b91e6f9c9f60bb0dc83612f26834fc1">https://gitorious.org/bulmages/bulmages/commit/6bf4714e25c32132fe4bd22c5b331916b4fc256b/diffs/fe25f6af7b91e6f9c9f60bb0dc83612f26834fc1</A>
+
+Diff: 
+
+commit fe25f6af7b91e6f9c9f60bb0dc83612f26834fc1
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon Jun 4 00:10:15 2012 +0200
+
+    Agrego el boton de duplicar a albaranes y facturas de proveedor.
+    
+    Con este cambi quedan todos los documentos importantes con su opción de duplicar.
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/albaranproveedorbase.ui b/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/albaranproveedorbase.ui
+index 6ac859e..a1c676a 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/albaranproveedorbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/albaranproveedorbase.ui
+@@ -71,13 +71,7 @@
+        &lt;property name=&quot;frameShadow&quot;&gt;
+         &lt;enum&gt;QFrame::Raised&lt;/enum&gt;
+        &lt;/property&gt;
+-       &lt;layout class=&quot;QHBoxLayout&quot;&gt;
+-        &lt;property name=&quot;spacing&quot;&gt;
+-         &lt;number&gt;4&lt;/number&gt;
+-        &lt;/property&gt;
+-        &lt;property name=&quot;margin&quot;&gt;
+-         &lt;number&gt;4&lt;/number&gt;
+-        &lt;/property&gt;
++       &lt;layout class=&quot;QHBoxLayout&quot; name=&quot;horizontalLayout&quot;&gt;
+         &lt;item&gt;
+          &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_guardar&quot;&gt;
+           &lt;property name=&quot;sizePolicy&quot;&gt;
+@@ -211,6 +205,50 @@
+          &lt;/widget&gt;
+         &lt;/item&gt;
+         &lt;item&gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_duplicar&quot;&gt;
++          &lt;property name=&quot;sizePolicy&quot;&gt;
++           &lt;sizepolicy hsizetype=&quot;Fixed&quot; vsizetype=&quot;Fixed&quot;&gt;
++            &lt;horstretch&gt;0&lt;/horstretch&gt;
++            &lt;verstretch&gt;0&lt;/verstretch&gt;
++           &lt;/sizepolicy&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;minimumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;maximumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;toolTip&quot;&gt;
++           &lt;string&gt;Duplicar albaran&lt;/string&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;whatsThis&quot;&gt;
++           &lt;string&gt;Duplicar albaran&lt;/string&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;text&quot;&gt;
++           &lt;string/&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;icon&quot;&gt;
++           &lt;iconset resource=&quot;../../../bulmages.qrc&quot;&gt;
++            &lt;normaloff&gt;:/BulmaCont32x32/images/png/igualant.xpm&lt;/normaloff&gt;:/BulmaCont32x32/images/png/igualant.xpm&lt;/iconset&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;iconSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;22&lt;/width&gt;
++            &lt;height&gt;22&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;shortcut&quot;&gt;
++           &lt;string&gt;Ctrl+S&lt;/string&gt;
++          &lt;/property&gt;
++         &lt;/widget&gt;
++        &lt;/item&gt;
++        &lt;item&gt;
+          &lt;spacer&gt;
+           &lt;property name=&quot;orientation&quot;&gt;
+            &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/albaranproveedorview.cpp b/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/albaranproveedorview.cpp
+index 729d30c..131a461 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/albaranproveedorview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/albaranproveedorview.cpp
+@@ -287,3 +287,78 @@ int AlbaranProveedorView::afterSave()
+     return 0;
+ }
+ 
++
++
++
++/// Se encarga de generar una albaran a partir de un albar&aacute;n.
++/** Primero de todo busca una albaran por referencia que tenga este albaran.
++    Si dicha albaran existe entonces la cargamos y terminamos.
++    Si no existe dicha albaran el sistema avisa y permite crear una poniendo
++    Todos los datos del albaran automaticamente en ella.
++*/
++/**
++\return
++**/
++void AlbaranProveedorView::on_mui_duplicar_released()
++{
++    BL_FUNC_DEBUG
++    AlbaranProveedorView *fpv = this ;
++
++
++    AlbaranProveedorView *bud = NULL;
++    BlDbRecordSet *cur = NULL;
++
++    try {
++        /// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta
++        /// comprobaci&oacute;n la consulta a la base de datos ser&aacute; erronea y al hacer
++        /// el siguiente cur-&gt;eof() el programa fallar&aacute;.
++        /// Comprobamos que existe una albaran con esos datos, y en caso afirmativo lo mostramos.
++
++        /// Creamos la albaran.
++        AlbaranProveedorView *bud = new AlbaranProveedorView ( ( BfCompany * ) fpv-&gt;mainCompany(), 0 );
++        fpv-&gt;mainCompany() -&gt;m_pWorkspace-&gt;addSubWindow ( bud );
++	bud-&gt;inicializar();
++
++        bud-&gt;setDbValue ( &quot;comentalbaranp&quot;, fpv-&gt;dbValue ( &quot;comentalbaranp&quot; ) );
++        bud-&gt;setDbValue ( &quot;idforma_pago&quot;, fpv-&gt;dbValue ( &quot;idforma_pago&quot; ) );
++        bud-&gt;setDbValue ( &quot;refalbaranp&quot;, fpv-&gt;dbValue ( &quot;refalbaranp&quot; ) );
++        bud-&gt;setDbValue ( &quot;idproveedor&quot;, fpv-&gt;dbValue ( &quot;idproveedor&quot; ) );
++        bud-&gt;pintar();
++        bud-&gt;show();
++
++        /// Traspasamos las lineas de albaran
++        QString l;
++        BlDbSubFormRecord *linea, *linea1;
++        for ( int i = 0; i &lt; fpv-&gt;m_listalineas-&gt;rowCount(); ++i ) {
++            linea = fpv-&gt;m_listalineas-&gt;lineaat ( i );
++            if ( linea-&gt;dbValue ( &quot;idarticulo&quot; ) != &quot;&quot; ) {
++                linea1 = bud-&gt;getlistalineas() -&gt;lineaat ( bud-&gt;getlistalineas() -&gt;rowCount() - 1 );
++                bud-&gt;getlistalineas() -&gt;newRecord();
++                bud-&gt;getlistalineas() -&gt;setProcesarCambios ( FALSE );
++                linea1-&gt;setDbValue ( &quot;desclalbaranp&quot;, linea-&gt;dbValue ( &quot;desclalbaranp&quot; ) );
++                linea1-&gt;setDbValue ( &quot;cantlalbaranp&quot;, linea-&gt;dbValue ( &quot;cantlalbaranp&quot; ) );
++                linea1-&gt;setDbValue ( &quot;pvplalbaranp&quot;, linea-&gt;dbValue ( &quot;pvplalbaranp&quot; ) );
++                linea1-&gt;setDbValue ( &quot;descuentolalbaranp&quot;, linea-&gt;dbValue ( &quot;descuentolalbaranp&quot; ) );
++                linea1-&gt;setDbValue ( &quot;idarticulo&quot;, linea-&gt;dbValue ( &quot;idarticulo&quot; ) );
++                linea1-&gt;setDbValue ( &quot;codigocompletoarticulo&quot;, linea-&gt;dbValue ( &quot;codigocompletoarticulo&quot; ) );
++                linea1-&gt;setDbValue ( &quot;nomarticulo&quot;, linea-&gt;dbValue ( &quot;nomarticulo&quot; ) );
++                linea1-&gt;setDbValue ( &quot;ivalalbaranp&quot;, linea-&gt;dbValue ( &quot;ivalalbaranp&quot; ) );
++                linea1-&gt;setDbValue ( &quot;reqeqlalbaranp&quot;, linea-&gt;dbValue ( &quot;reqeqlalbaranp&quot; ) );
++            } // end if
++        } // end for
++        bud-&gt;calculaypintatotales();
++
++    } catch ( ... ) {
++        blMsgInfo ( _ ( &quot;Error inesperado&quot; ), this );
++        if ( cur ) delete cur;
++        if ( bud ) delete bud;
++    } // end try
++
++}
++
++
++
++
++
++
++
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/albaranproveedorview.h b/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/albaranproveedorview.h
+index c5dec16..6e45287 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/albaranproveedorview.h
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/albaranproveedorview.h
+@@ -61,6 +61,7 @@ public slots:
+     virtual void on_subform2_editFinish ( int, int );
+     virtual void on_mui_verpedidosproveedor_clicked();
+     virtual void on_mui_idproveedor_valueChanged ( QString );
++    virtual void on_mui_duplicar_released();
+ };
+ 
+ #endif
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturapbase.ui b/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturapbase.ui
+index 0aa10b5..1adf9f2 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturapbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturapbase.ui
+@@ -65,10 +65,10 @@
+        &lt;/property&gt;
+        &lt;layout class=&quot;QHBoxLayout&quot; name=&quot;horizontalLayout&quot;&gt;
+         &lt;property name=&quot;spacing&quot;&gt;
+-         &lt;number&gt;4&lt;/number&gt;
++         &lt;number&gt;0&lt;/number&gt;
+         &lt;/property&gt;
+         &lt;property name=&quot;margin&quot;&gt;
+-         &lt;number&gt;4&lt;/number&gt;
++         &lt;number&gt;0&lt;/number&gt;
+         &lt;/property&gt;
+         &lt;item&gt;
+          &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_guardar&quot;&gt;
+@@ -191,6 +191,44 @@
+          &lt;/widget&gt;
+         &lt;/item&gt;
+         &lt;item&gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_duplicar&quot;&gt;
++          &lt;property name=&quot;minimumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;maximumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;toolTip&quot;&gt;
++           &lt;string&gt;Duplicar factura&lt;/string&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;whatsThis&quot;&gt;
++           &lt;string&gt;Duplicar factura&lt;/string&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;text&quot;&gt;
++           &lt;string/&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;icon&quot;&gt;
++           &lt;iconset resource=&quot;../../../bulmages.qrc&quot;&gt;
++            &lt;normaloff&gt;:/BulmaCont32x32/images/png/igualant.xpm&lt;/normaloff&gt;:/BulmaCont32x32/images/png/igualant.xpm&lt;/iconset&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;iconSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;22&lt;/width&gt;
++            &lt;height&gt;22&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;shortcut&quot;&gt;
++           &lt;string&gt;Ctrl+S&lt;/string&gt;
++          &lt;/property&gt;
++         &lt;/widget&gt;
++        &lt;/item&gt;
++        &lt;item&gt;
+          &lt;spacer&gt;
+           &lt;property name=&quot;orientation&quot;&gt;
+            &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturapview.cpp b/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturapview.cpp
+index 1a08857..393e010 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturapview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturapview.cpp
+@@ -449,4 +449,71 @@ void FacturaProveedorView::imprimirFacturaProveedor()
+ }
+ 
+ 
++/// Se encarga de generar una factura a partir de un albar&aacute;n.
++/** Primero de todo busca una factura por referencia que tenga este albaran.
++    Si dicha factura existe entonces la cargamos y terminamos.
++    Si no existe dicha factura el sistema avisa y permite crear una poniendo
++    Todos los datos del albaran automaticamente en ella.
++*/
++/**
++\return
++**/
++void FacturaProveedorView::on_mui_duplicar_released()
++{
++    BL_FUNC_DEBUG
++    FacturaProveedorView *fpv = this ;
++
++
++    FacturaProveedorView *bud = NULL;
++    BlDbRecordSet *cur = NULL;
++
++    try {
++        /// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta
++        /// comprobaci&oacute;n la consulta a la base de datos ser&aacute; erronea y al hacer
++        /// el siguiente cur-&gt;eof() el programa fallar&aacute;.
++        /// Comprobamos que existe una factura con esos datos, y en caso afirmativo lo mostramos.
++
++        /// Creamos la factura.
++        FacturaProveedorView *bud = new FacturaProveedorView ( ( BfCompany * ) fpv-&gt;mainCompany(), 0 );
++        fpv-&gt;mainCompany() -&gt;m_pWorkspace-&gt;addSubWindow ( bud );
++
++        bud-&gt;setDbValue ( &quot;comentfacturap&quot;, fpv-&gt;dbValue ( &quot;comentfacturap&quot; ) );
++        bud-&gt;setDbValue ( &quot;idforma_pago&quot;, fpv-&gt;dbValue ( &quot;idforma_pago&quot; ) );
++        bud-&gt;setDbValue ( &quot;reffacturap&quot;, fpv-&gt;dbValue ( &quot;reffacturap&quot; ) );
++        bud-&gt;setDbValue ( &quot;idproveedor&quot;, fpv-&gt;dbValue ( &quot;idproveedor&quot; ) );
++        bud-&gt;inicializar();
++        bud-&gt;show();
++
++        /// Traspasamos las lineas de factura
++        QString l;
++        BlDbSubFormRecord *linea, *linea1;
++        for ( int i = 0; i &lt; fpv-&gt;m_listalineas-&gt;rowCount(); ++i ) {
++            linea = fpv-&gt;m_listalineas-&gt;lineaat ( i );
++            if ( linea-&gt;dbValue ( &quot;idarticulo&quot; ) != &quot;&quot; ) {
++                linea1 = bud-&gt;getlistalineas() -&gt;lineaat ( bud-&gt;getlistalineas() -&gt;rowCount() - 1 );
++                bud-&gt;getlistalineas() -&gt;newRecord();
++                bud-&gt;getlistalineas() -&gt;setProcesarCambios ( FALSE );
++                linea1-&gt;setDbValue ( &quot;desclfacturap&quot;, linea-&gt;dbValue ( &quot;desclfacturap&quot; ) );
++                linea1-&gt;setDbValue ( &quot;cantlfacturap&quot;, linea-&gt;dbValue ( &quot;cantlfacturap&quot; ) );
++                linea1-&gt;setDbValue ( &quot;pvplfacturap&quot;, linea-&gt;dbValue ( &quot;pvplfacturap&quot; ) );
++                linea1-&gt;setDbValue ( &quot;descuentolfacturap&quot;, linea-&gt;dbValue ( &quot;descuentolfacturap&quot; ) );
++                linea1-&gt;setDbValue ( &quot;idarticulo&quot;, linea-&gt;dbValue ( &quot;idarticulo&quot; ) );
++                linea1-&gt;setDbValue ( &quot;codigocompletoarticulo&quot;, linea-&gt;dbValue ( &quot;codigocompletoarticulo&quot; ) );
++                linea1-&gt;setDbValue ( &quot;nomarticulo&quot;, linea-&gt;dbValue ( &quot;nomarticulo&quot; ) );
++                linea1-&gt;setDbValue ( &quot;ivalfacturap&quot;, linea-&gt;dbValue ( &quot;ivalfacturap&quot; ) );
++                linea1-&gt;setDbValue ( &quot;reqeqlfacturap&quot;, linea-&gt;dbValue ( &quot;reqeqlfacturap&quot; ) );
++            } // end if
++        } // end for
++        bud-&gt;calculaypintatotales();
++
++    } catch ( ... ) {
++        blMsgInfo ( _ ( &quot;Error inesperado&quot; ), this );
++        if ( cur ) delete cur;
++        if ( bud ) delete bud;
++    } // end try
++
++}
++
++
++
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturapview.h b/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturapview.h
+index 0fc6975..129d0ab 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturapview.h
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturapview.h
+@@ -59,6 +59,7 @@ public slots:
+     virtual void on_subform2_editFinish ( int, int );
+     virtual void on_mui_veralbaranes_clicked();
+     virtual void on_mui_idproveedor_valueChanged ( QString );
++    virtual void on_mui_duplicar_released();
+ };
+ 
+ #endif
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007292.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007294.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7293">[ fecha ]</a>
+              <a href="thread.html#7293">[ hilo ]</a>
+              <a href="subject.html#7293">[ asunto ]</a>
+              <a href="author.html#7293">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

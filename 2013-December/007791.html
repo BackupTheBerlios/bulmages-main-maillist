@@ -1,0 +1,989 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaG�s] problema con bulmasetup en Debian
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20problema%20con%20bulmasetup%20en%20Debian&In-Reply-To=%3C52C07C6E.6000904%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007813.html">
+   <LINK REL="Next"  HREF="007792.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaG�s] problema con bulmasetup en Debian </H1>
+    <B>Miguel �ngel Ord��ez Moya</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20problema%20con%20bulmasetup%20en%20Debian&In-Reply-To=%3C52C07C6E.6000904%40gmail.com%3E"
+       TITLE="[BulmaG�s] problema con bulmasetup en Debian">miguelangel.ordonez en gmail.com
+       </A><BR>
+    <I>Dom Dic 29 20:47:58 CET 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007813.html">[BulmaG�s]Programas de conexi�n IRC
+</A></li>
+        <LI>Pr�ximo mensaje: <A HREF="007792.html">[BulmaG�s]problema con bulmasetup en Debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7791">[ fecha ]</a>
+              <a href="thread.html#7791">[ hilo ]</a>
+              <a href="subject.html#7791">[ asunto ]</a>
+              <a href="author.html#7791">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Muy buenas.
+
+Estoy intentando instalar bulmages en Debian, y no se que estoy haciendo
+mal, pero no lo consigo.
+He modificado los cambios que comentaban Manuel y Tomeu en el fichero
+nuevacontabilidad.py pero sigo teniendo el mismo problema.
+
+En el terminal desde donde lanzo bulmasetup aparece lo siguiente:
+could not change directory to
+&quot;/datos/Programacion/trunk/bulmages/bulmasetup&quot;
+ERROR:  no existe la relación «configuracion»
+L�NEA 1: UPDATE configuracion set valor='cong' WHERE nombre = 'Nombre...
+                ^
+Algo me falla con la codificaci�n, no se si tiene algo que ver, pero
+esto es lo que tengo configurado cuando ejecuto locale:
+LANG=es_ES.UTF-8
+LANGUAGE=
+LC_CTYPE=&quot;es_ES.UTF-8&quot;
+LC_NUMERIC=&quot;es_ES.UTF-8&quot;
+LC_TIME=&quot;es_ES.UTF-8&quot;
+LC_COLLATE=&quot;es_ES.UTF-8&quot;
+LC_MONETARY=&quot;es_ES.UTF-8&quot;
+LC_MESSAGES=&quot;es_ES.UTF-8&quot;
+LC_PAPER=&quot;es_ES.UTF-8&quot;
+LC_NAME=&quot;es_ES.UTF-8&quot;
+LC_ADDRESS=&quot;es_ES.UTF-8&quot;
+LC_TELEPHONE=&quot;es_ES.UTF-8&quot;
+LC_MEASUREMENT=&quot;es_ES.UTF-8&quot;
+LC_IDENTIFICATION=&quot;es_ES.UTF-8&quot;
+LC_ALL=
+
+
+Os pego al final el &quot;chorizo&quot; que aparece en la pesta�a &quot;consola&quot; del
+programa bulmasetup.
+
+
+Un saludo y muchas gracias.
+Miguel �ngel.
+
+
+su postgres -c &quot;createdb -E UNICODE cong&quot;
+
+Started.
+error: could not change directory to
+&quot;/datos/Programacion/trunk/bulmages/bulmasetup&quot;
+Done.
+
+su postgres -c &quot;psql cong
+
+Started.
+error: could not change directory to
+&quot;/datos/Programacion/trunk/bulmages/bulmasetup&quot;
+error:
+********* INICIADO FICHERO DE ESTRUCTURA DE LA BASE DE DATOS DE
+BULMACONT ********* ::
+BEGIN :: Establecemos los mensajes minimos a avisos y otros parametros
+... :: SET :: SET :: SET :: SET :: plpgsql_call_handler ...
+CREATE FUNCTION
+::<i> Establecemos el lenguaje de procedimientos ...
+</I>error: ERROR: no se puede eliminar lenguaje plpgsql porque extensión
+plpgsql lo requiere SUGERENCIA: Puede eliminar extensión plpgsql en su
+lugar.
+::<i> :: :: Configuracion ... :: Pais ... :: Provincia ... :: Canal ...
+</I>error: ERROR: transacción abortada, las órdenes serán ignoradas hasta
+el fin de bloque de transacción ERROR: transacción abortada, las
+órdenes serán ignoradas hasta el fin de bloque de transacción ERROR:
+transacción abortada, las órdenes serán ignoradas hasta el fin de
+bloque de transacción ERROR: transacción abortada, las órdenes serán
+ignoradas hasta el fin de bloque de transacción ERROR: transacción
+abortada, las órdenes serán ignoradas hasta el fin de bloque de
+transacción ERROR: transacción abortada, las órdenes serán ignoradas
+hasta el fin de bloque de transacción ERROR: transacción abortada, las
+órdenes serán ignoradas hasta el fin de bloque de transacción ERROR:
+transacción abortada, las órdenes serán ignoradas hasta el fin de
+bloque de transacción ERROR: transacción abortada, las órdenes serán
+ignoradas hasta el fin de bloque de transacción
+::<i> Centro de coste ... :: Centro de coste distribuido ... :: Cuenta ...
+</I>::<i> Acumulado centro de coste ... :: Acumulado canal ... :: Diario (La
+</I>tabla diario esta en desuso, aunque de momento se crea.) ... :: Asiento
+... :: Archivo documental ... :: Apunte ... :: Borrador ... :: Forma de
+pago ... :: Tipo de IVA ... :: Registro de IVA ... :: Prevision de cobro
+... :: IVA ... :: Asiento inteligente ... :: Linea de asientos
+inteligentes (Pte. borrar)... :: Balance ... :: Masa patrimonial ... ::
+Componente de masa patrimonial ... :: Componente de balance ... ::
+Amortizacion ... :: Linea de amortizacion ... :: Ejercicios ... ::
+Funcion abre asientos ... :: Funcion cambia asiento ... :: Funcion
+calcular contrapartida ... :: Funcion contrapartidas de un asiento ...
+::<i> Funcion buscar contrapartida ... :: Funcion buscar contrapartida
+</I>borrador ... :: Funcion ID cuenta ... :: Funcion nivel de codigo de
+cuenta ... :: Usamos la longitud del codigo para determinarlo ya que los
+sistemas contables usan esa notacion. Podria usarse el nivel en el arbol
+de cuentas y seria mas general y correcto:: Funcion saldo total masa
+patrimonial ... :: Funcion saldo masa patrimonial ... :: Funcion debe de
+masa patrimonial ... :: Funcion haber de masa patrimonial ... :: Funcion
+saldo total ... :: Funcion debe total entre fechas ...
+error: ERROR: transacción abortada, las órdenes serán ignoradas hasta
+el fin de bloque de transacción ERROR: transacción abortada, las
+órdenes serán ignoradas hasta el fin de bloque de transacción ERROR:
+transacción abortada, las órdenes serán ignoradas hasta el fin de
+bloque de transacción ERROR: transacción abortada, las órdenes serán
+ignoradas hasta el fin de bloque de transacción ERROR: transacción
+abortada, las órdenes serán ignoradas hasta el fin de bloque de
+transacción ERROR: transacción abortada, las órdenes serán ignoradas
+hasta el fin de bloque de transacción ERROR: transacción abortada, las
+órdenes serán ignoradas hasta el fin de bloque de transacción ERROR:
+transacción abortada, las órdenes serán ignoradas hasta el fin de
+bloque de transacción ERROR: transacción abortada, las órdenes serán
+ignoradas hasta el fin de bloque de transacción ERROR: transacción
+abortada, las órdenes serán ignoradas hasta el fin de bloque de
+transacción ERROR: transacción abortada, las órdenes serán ignoradas
+hasta el fin de bloque de transacción ERROR: transacción abortada, las
+órdenes serán ignoradas hasta el fin de bloque de transacción ERROR:
+transacción abortada, las órdenes serán ignoradas hasta el fin de
+bloque de transacción ERROR: transacción abortada, las órdenes serán
+ignoradas hasta el fin de bloque de transacción ERROR: transacción
+abortada, las órdenes serán ignoradas hasta el fin de bloque de
+transacción ERROR: transacción abortada, las órdenes serán ignoradas
+hasta el fin de bloque de transacción ERROR: transacción abortada, las
+órdenes serán ignoradas hasta el fin de bloque de transacción ERROR:
+transacción abortada, las órdenes serán ignoradas hasta el fin de
+bloque de transacción ERROR: transacción abortada, las órdenes serán
+ignoradas hasta el fin de bloque de transacción ERROR: transacción
+abortada, las órdenes serán ignoradas hasta el fin de bloque de
+transacción ERROR: transacción abortada, las órdenes serán ignoradas
+hasta el fin de bloque de transacción ERROR: transacción abortada, las
+órdenes serán ignoradas hasta el fin de bloque de transacción ERROR:
+transacción abortada, las órdenes serán ignoradas hasta el fin de
+bloque de transacción ERROR: transacción abortada, las órdenes serán
+ignoradas hasta el fin de bloque de transacción ERROR: transacción
+abortada, las órdenes serán ignoradas hasta el fin de bloque de
+transacción ERROR: transacción abortada, las órdenes serán ignoradas
+hasta el fin de bloque de transacción ERROR: transacción abortada, las
+órdenes serán ignoradas hasta el fin de bloque de transacción ERROR:
+transacción abortada, las órdenes serán ignoradas hasta el fin de
+bloque de transacción ERROR: transacción abortada, las órdenes serán
+ignoradas hasta el fin de bloque de transacción ERROR: transacción
+abortada, las órdenes serán ignoradas hasta el fin de bloque de
+transacción ERROR: transacción abortada, las órdenes serán ignoradas
+hasta el fin de bloque de transacción ERROR: transacción abortada, las
+órdenes serán ignoradas hasta el fin de bloque de transacción ERROR:
+transacción abortada, las órdenes serán ignoradas hasta el fin de
+bloque de transacción ERROR: transacción abortada, las órdenes serán
+ignoradas hasta el fin de bloque de transacción ERROR: transacción
+abortada, las órdenes serán ignoradas hasta el fin de bloque de
+transacción ERROR: transacción abortada, las órdenes serán ignoradas
+hasta el fin de bloque de transacción ERROR: transacción abortada, las
+órdenes serán ignoradas hasta el fin de bloque de transacción ERROR:
+transacción abortada, las órdenes serán ignoradas hasta el fin de
+bloque de transacción ERROR: transacción abortada, las órdenes serán
+ignoradas hasta el fin de bloque de transacción ERROR: transacción
+abortada, las órdenes serán ignoradas hasta el fin de bloque de
+transacción ERROR: transacción abortada, las órdenes serán ignoradas
+hasta el fin de bloque de transacción
+::<i> Funcion debe total ... :: Funcion haber total entre fechas ... ::
+</I>Funcion haber total ... :: Funcion recalcula saldos ... :: Funcion
+recalcula saldos 2 ... :: Funcion tratamiento de acumulados ... ::
+Disparador nuevo apunte aumente valor ... :: Funcion crea cuenta ... ::
+Disparador nueva cuenta ... :: Funcion borra cuenta ... :: Disparador
+borra cuenta ... :: Funcion crea canal ... :: Disparador nuevo canal ...
+::<i> Funcion borra canal ... :: Disparador borra canal ... :: Funcion crea
+</I>centro de coste ... :: Disparador nuevo centro de coste ... :: Funcion
+borra centro de coste ... :: Disparador borra centro de coste ... ::
+Funcion propaga acumulado cuenta ... :: Disparador propaga acumulado
+cuenta ... :: Funcion propaga acumulado centro de coste ... ::
+Disparador propaga acumulado centro de coste ... :: Funcion acumulados
+canal ... :: Disparador acumulados canal ... :: Funcion abre asiento ...
+::<i> Funcion cierra asiento ... :: Funcion reordena asientos por ejercicio
+</I>... :: Funcion reordena todos los asientos ... :: Funcion restricciones
+de cuenta ... :: Disparador restricciones de cuenta ... :: Funcion
+restricciones al borrado de cuenta ... :: Disparador restricciones al
+borrado de cuenta ... :: Funcion restricciones borrador ... ::
+Disparador restricciones borrador ... :: Funcion distribucion centros de
+coste en borrador ... :: Disparador restricciones borrador ... ::
+Funcion restricciones asiento ... :: Disparador restricciones asiento
+... :: Funcion borrado asiento desde un disparador ... :: Disparador
+restricciones borrado de asiento ...
+error: ERROR: transacción abortada, las órdenes serán ignoradas hasta
+el fin de bloque de transacción ERROR: transacción abortada, las
+órdenes serán ignoradas hasta el fin de bloque de transacción ERROR:
+transacción abortada, las órdenes serán ignoradas hasta el fin de
+bloque de transacción ERROR: transacción abortada, las órdenes serán
+ignoradas hasta el fin de bloque de transacción ERROR: transacción
+abortada, las órdenes serán ignoradas hasta el fin de bloque de
+transacción ERROR: transacción abortada, las órdenes serán ignoradas
+hasta el fin de bloque de transacción ERROR: transacción abortada, las
+órdenes serán ignoradas hasta el fin de bloque de transacción ERROR:
+transacción abortada, las órdenes serán ignoradas hasta el fin de
+bloque de transacción ERROR: transacción abortada, las órdenes serán
+ignoradas hasta el fin de bloque de transacción ERROR: transacción
+abortada, las órdenes serán ignoradas hasta el fin de bloque de
+transacción ERROR: transacción abortada, las órdenes serán ignoradas
+hasta el fin de bloque de transacción ERROR: transacción abortada, las
+órdenes serán ignoradas hasta el fin de bloque de transacción ERROR:
+transacción abortada, las órdenes serán ignoradas hasta el fin de
+bloque de transacción ERROR: transacción abortada, las órdenes serán
+ignoradas hasta el fin de bloque de transacción ERROR: transacción
+abortada, las órdenes serán ignoradas hasta el fin de bloque de
+transacción ERROR: transacción abortada, las órdenes serán ignoradas
+hasta el fin de bloque de transacción ERROR: transacción abortada, las
+órdenes serán ignoradas hasta el fin de bloque de transacción ERROR:
+transacción abortada, las órdenes serán ignoradas hasta el fin de
+bloque de transacción ERROR: transacción abortada, las órdenes serán
+ignoradas hasta el fin de bloque de transacción ERROR: transacción
+abortada, las órdenes serán ignoradas hasta el fin de bloque de
+transacción ERROR: transacción abortada, las órdenes serán ignoradas
+hasta el fin de bloque de transacción ERROR: transacción abortada, las
+órdenes serán ignoradas hasta el fin de bloque de transacción ERROR:
+transacción abortada, las órdenes serán ignoradas hasta el fin de
+bloque de transacción ERROR: transacción abortada, las órdenes serán
+ignoradas hasta el fin de bloque de transacción ERROR: transacción
+abortada, las órdenes serán ignoradas hasta el fin de bloque de
+transacción ERROR: transacción abortada, las órdenes serán ignoradas
+hasta el fin de bloque de transacción ERROR: transacción abortada, las
+órdenes serán ignoradas hasta el fin de bloque de transacción ERROR:
+transacción abortada, las órdenes serán ignoradas hasta el fin de
+bloque de transacción ERROR: transacción abortada, las órdenes serán
+ignoradas hasta el fin de bloque de transacción ERROR: transacción
+abortada, las órdenes serán ignoradas hasta el fin de bloque de
+transacción ERROR: transacción abortada, las órdenes serán ignoradas
+hasta el fin de bloque de transacción ERROR: transacción abortada, las
+órdenes serán ignoradas hasta el fin de bloque de transacción ERROR:
+transacción abortada, las órdenes serán ignoradas hasta el fin de
+bloque de transacción ERROR: transacción abortada, las órdenes serán
+ignoradas hasta el fin de bloque de transacción ERROR: transacción
+abortada, las órdenes serán ignoradas hasta el fin de bloque de
+transacción ERROR: transacción abortada, las órdenes serán ignoradas
+hasta el fin de bloque de transacción ERROR: transacción abortada, las
+órdenes serán ignoradas hasta el fin de bloque de transacción ERROR:
+transacción abortada, las órdenes serán ignoradas hasta el fin de
+bloque de transacción ERROR: transacción abortada, las órdenes serán
+ignoradas hasta el fin de bloque de transacción ERROR: transacción
+abortada, las órdenes serán ignoradas hasta el fin de bloque de
+transacción ERROR: transacción abortada, las órdenes serán ignoradas
+hasta el fin de bloque de transacción ERROR: transacción abortada, las
+órdenes serán ignoradas hasta el fin de bloque de transacción ERROR:
+transacción abortada, las órdenes serán ignoradas hasta el fin de
+bloque de transacción ERROR: transacción abortada, las órdenes serán
+ignoradas hasta el fin de bloque de transacción ERROR: transacción
+abortada, las órdenes serán ignoradas hasta el fin de bloque de
+transacción ERROR: transacción abortada, las órdenes serán ignoradas
+hasta el fin de bloque de transacción
+::<i> Funcion inserta tipo de IVA ... :: Disparador nuevo tipo de IVA ...
+</I>::<i> Funcion borra tipo de IVA ... :: Disparador borra tipo de IVA ... ::
+</I>Funcion cambiado IVA ... :: Disparador cambio tipo IVA ... &quot;Actualizada
+la revision de la base de datos a la version 0.13.1&quot; :: :: ROLLBACK
+********* FIN FICHERO DE ESTRUCTURA DE LA BASE DE DATOS DE BULMACONT
+*********
+Done.
+
+su postgres -c &quot;psql cong
+
+Started.
+error: could not change directory to
+&quot;/datos/Programacion/trunk/bulmages/bulmasetup&quot;
+BEGIN
+error: ERROR: no existe la relación «configuracion» LÍNEA 1: INSERT
+INTO configuracion (nombre, valor) VALUES ('CodCuenta... ^
+ROLLBACK
+error: ERROR: transacción abortada, las órdenes serán ignoradas hasta
+el fin de bloque de transacción ERROR: transacción abortada, las
+órdenes serán ignoradas hasta el fin de bloque de transacción ERROR:
+transacción abortada, las órdenes serán ignoradas hasta el fin de
+bloque de transacción ERROR: transacción abortada, las órdenes serán
+ignoradas hasta el fin de bloque de transacción ERROR: transacción
+abortada, las órdenes serán ignoradas hasta el fin de bloque de
+transacción ERROR: transacción abortada, las órdenes serán ignoradas
+hasta el fin de bloque de transacción ERROR: transacción abortada, las
+órdenes serán ignoradas hasta el fin de bloque de transacción ERROR:
+transacción abortada, las órdenes serán ignoradas hasta el fin de
+bloque de transacción ERROR: transacción abortada, las órdenes serán
+ignoradas hasta el fin de bloque de transacción ERROR: transacción
+abortada, las órdenes serán ignoradas hasta el fin de bloque de
+transacción ERROR: transacción abortada, las órdenes serán ignoradas
+hasta el fin de bloque de transacción ERROR: transacción abortada, las
+órdenes serán ignoradas hasta el fin de bloque de transacción ERROR:
+transacción abortada, las órdenes serán ignoradas hasta el fin de
+bloque de transacción ERROR: transacción abortada, las órdenes serán
+ignoradas hasta el fin de bloque de transacción ERROR: transacción
+abortada, las órdenes serán ignoradas hasta el fin de bloque de
+transacción ERROR: transacción abortada, las órdenes serán ignoradas
+hasta el fin de bloque de transacción ERROR: transacción abortada, las
+órdenes serán ignoradas hasta el fin de bloque de transacción ERROR:
+transacción abortada, las órdenes serán ignoradas hasta el fin de
+bloque de transacción ERROR: transacción abortada, las órdenes serán
+ignoradas hasta el fin de bloque de transacción ERROR: transacción
+abortada, las órdenes serán ignoradas hasta el fin de bloque de
+transacción ERROR: transacción abortada, las órdenes serán ignoradas
+hasta el fin de bloque de transacción ERROR: transacción abortada, las
+órdenes serán ignoradas hasta el fin de bloque de transacción ERROR:
+transacción abortada, las órdenes serán ignoradas hasta el fin de
+bloque de transacción ERROR: transacción abortada, las órdenes serán
+ignoradas hasta el fin de bloque de transacción
+Done.
+
+su postgres -c 'psql cong -c &quot;UPDATE configuracion set valor='&quot;'cong'&quot;'
+WHERE nombre = '&quot;'NombreEmpresa'&quot;';&quot;'
+ACTUALIZANDO PLUGINS
+Tratando Asiento
+Tratando Balance Jer�rquico.
+Tratando Duplicar Asientos Contables
+Tratando Mayor
+Tratando Balance
+Tratando Diario
+Tratando Cuentas Contables
+Tratando Importar datos separados por coma
+Tratando Resumen de una cuenta contable
+Tratando Imprimir subformularios
+Tratando Exportar subformularios a ODS.
+Tratando Informes personalizados por ficha
+Tratando Informes personalizados por e-mail
+Tratando Informes personalizados de ficha en ODS
+Tratando Bloquear configuraciones
+Tratando Exportar listados a SXC.
+Tratando Cuentas anuales
+Tratando Pegar desde el portapapeles
+Tratando Corrector Contable
+Tratando Modo Debug
+Tratando Embeber aplicaciones
+Tratando Mostrar el logotipo
+Tratando Adjuntar documentos
+Tratando Proyectos Contables
+Tratando Ejemplo de desarrollo
+Tratando Amortizaciones
+Tratando Cuentas Anuales
+Tratando Bloqueo de fichas
+Tratando Informes personalizados
+Tratando Informes personalizados en ODS
+Tratando Bloqueo de Fechas
+Tratando Registro de IVA
+Tratando Bloqueo de Fechas
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/ cong&quot;
+
+Started.
+error: could not change directory to
+&quot;/datos/Programacion/trunk/bulmages/bulmasetup&quot;
+error: psql:/usr/local/share/bulmages/dbmodels/plugins:0:
+error: could not read from input file: Es un directorio
+Done.
+
+
+Tratando Registro de IVA
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/ cong&quot;
+
+Started.
+error: could not change directory to
+&quot;/datos/Programacion/trunk/bulmages/bulmasetup&quot;
+error:
+error: psql:/usr/local/share/bulmages/dbmodels/plugins:0: could not read
+from input file: Es un directorio
+Done.
+
+
+Tratando Informes personalizados en ODS
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/ cong&quot;
+
+Started.
+error: could not change directory to
+&quot;/datos/Programacion/trunk/bulmages/bulmasetup&quot;
+error:
+error: psql:/usr/local/share/bulmages/dbmodels/plugins:0: could not read
+from input file: Es un directorio
+Done.
+
+
+Tratando Informes personalizados
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/ cong&quot;
+
+Started.
+error: could not change directory to
+&quot;/datos/Programacion/trunk/bulmages/bulmasetup&quot;
+error:
+error: psql:/usr/local/share/bulmages/dbmodels/plugins:0: could not read
+from input file: Es un directorio
+Done.
+
+
+Tratando Bloqueo de fichas
+su postgres -c &quot;psql -t -f
+/usr/local/share/bulmages/dbmodels/plugins/pluginbl_formlock-rm.sql cong&quot;
+
+Started.
+error: could not change directory to
+&quot;/datos/Programacion/trunk/bulmages/bulmasetup&quot;
+error:
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE BLOQUEOS
+*********&quot; &quot;:: Establecemos los mensajes minimos a avisos y otros
+parametros ... &quot; &quot;:: &quot;
+SET
+SET
+BEGIN
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+0
+DROP FUNCTION
+CREATE FUNCTION
+error:
+psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbl_formlock-rm.sql:96:
+ERROR: no existe la relación «configuracion» LÍNEA 1: SELECT * FROM
+configuracion WHERE nombre='PluginBl_F... ^ CONSULTA: SELECT * FROM
+configuracion WHERE nombre='PluginBl_FormLock' CONTEXTO: PL/pgSQL
+function &quot;actualizarevision&quot; line 5 at sentencia SQL
+&quot;Eliminado el plugin de bloqueos de la base de datos.&quot;
+error:
+psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbl_formlock-rm.sql:97:
+ERROR: transacción abortada, las órdenes serán ignoradas hasta el fin
+de bloque de transacción
+error:
+psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbl_formlock-rm.sql:101:
+ERROR: transacción abortada, las órdenes serán ignoradas hasta el fin
+de bloque de transacción
+error:
+psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbl_formlock-rm.sql:102:
+ERROR: transacción abortada, las órdenes serán ignoradas hasta el fin
+de bloque de transacción
+ROLLBACK
+Done.
+
+
+Tratando Cuentas Anuales
+Tratando Amortizaciones
+Tratando Modo Debug
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/ cong&quot;
+
+Started.
+error: could not change directory to
+&quot;/datos/Programacion/trunk/bulmages/bulmasetup&quot;
+error: psql:/usr/local/share/bulmages/dbmodels/plugins:0:
+error: could not read from input file: Es un directorio
+Done.
+
+
+Tratando Embeber aplicaciones
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/ cong&quot;
+
+Started.
+error: could not change directory to
+&quot;/datos/Programacion/trunk/bulmages/bulmasetup&quot;
+error:
+error: psql:/usr/local/share/bulmages/dbmodels/plugins:0:
+error: could not read from input file: Es un directorio
+Done.
+
+
+Tratando Mostrar el logotipo
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/ cong&quot;
+
+Started.
+error: could not change directory to
+&quot;/datos/Programacion/trunk/bulmages/bulmasetup&quot;
+error:
+error: psql:/usr/local/share/bulmages/dbmodels/plugins:0: could not read
+from input file: Es un directorio
+Done.
+
+
+Tratando Adjuntar documentos
+su postgres -c &quot;psql -t -f
+/usr/local/share/bulmages/dbmodels/plugins/pluginbl_attachdocument-rm.sql cong&quot;
+
+Started.
+error: could not change directory to
+&quot;/datos/Programacion/trunk/bulmages/bulmasetup&quot;
+error:
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE ARCHIVOS
+*********&quot; &quot;:: Establecemos los mensajes minimos a avisos y otros
+parametros ... &quot; &quot;:: &quot;
+SET
+SET
+BEGIN
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+0
+DROP FUNCTION
+CREATE FUNCTION
+error:
+psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbl_attachdocument-rm.sql:92:
+ERROR: no existe la relación «configuracion» LÍNEA 1: SELECT * FROM
+configuracion WHERE nombre='PluginBl_A... ^ CONSULTA: SELECT * FROM
+configuracion WHERE nombre='PluginBl_AttachDocument' CONTEXTO: PL/pgSQL
+function &quot;actualizarevision&quot; line 5 at sentencia SQL
+&quot;Eliminada la revision de la base de datos&quot;
+error:
+psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbl_attachdocument-rm.sql:93:
+ERROR: transacción abortada, las órdenes serán ignoradas hasta el fin
+de bloque de transacción
+error:
+psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbl_attachdocument-rm.sql:97:
+ERROR: transacción abortada, las órdenes serán ignoradas hasta el fin
+de bloque de transacción
+error:
+psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbl_attachdocument-rm.sql:98:
+ERROR: transacción abortada, las órdenes serán ignoradas hasta el fin
+de bloque de transacción
+ROLLBACK
+Done.
+
+
+Tratando Proyectos Contables
+su postgres -c &quot;psql -t -f
+/usr/local/share/bulmages/dbmodels/plugins/pluginbc_proyectos-rm.sql cong&quot;
+
+Started.
+error: could not change directory to
+&quot;/datos/Programacion/trunk/bulmages/bulmasetup&quot;
+error:
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE PRESUPUESTOS
+CONTABLES *********&quot;
+&quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot;
+&quot;:: &quot;
+SET
+SET
+BEGIN
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+0
+DROP FUNCTION &quot;Eliminamos las tablas necesarias para presupuestos
+contables&quot;
+CREATE FUNCTION
+error:
+psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbc_proyectos-rm.sql:93:
+ERROR: no existe la relación «configuracion» LÍNEA 1: SELECT * FROM
+configuracion WHERE nombre='PluginBc_P... ^ CONSULTA: SELECT * FROM
+configuracion WHERE nombre='PluginBc_Proyectos' CONTEXTO: PL/pgSQL
+function &quot;actualizarevision&quot; line 5 at sentencia SQL
+&quot;Eliminamos la revision de la base de datos&quot;
+error:
+psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbc_proyectos-rm.sql:94:
+ERROR: transacción abortada, las órdenes serán ignoradas hasta el fin
+de bloque de transacción
+error:
+psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbc_proyectos-rm.sql:98:
+ERROR: transacción abortada, las órdenes serán ignoradas hasta el fin
+de bloque de transacción
+error:
+psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbc_proyectos-rm.sql:99:
+ERROR: transacción abortada, las órdenes serán ignoradas hasta el fin
+de bloque de transacción
+ROLLBACK
+Done.
+
+
+Tratando Ejemplo de desarrollo
+Tratando Corrector Contable
+Tratando Bloquear configuraciones
+Tratando Exportar listados a SXC.
+Tratando Cuentas anuales
+Tratando Pegar desde el portapapeles
+Tratando Informes personalizados por ficha
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/ cong&quot;
+
+Started.
+error: could not change directory to
+&quot;/datos/Programacion/trunk/bulmages/bulmasetup&quot;
+error: psql:/usr/local/share/bulmages/dbmodels/plugins:0:
+error: could not read from input file: Es un directorio
+Done.
+
+
+Tratando Informes personalizados por e-mail
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/ cong&quot;
+
+Started.
+error: could not change directory to
+&quot;/datos/Programacion/trunk/bulmages/bulmasetup&quot;
+error:
+error: psql:/usr/local/share/bulmages/dbmodels/plugins:0: could not read
+from input file: Es un directorio
+Done.
+
+
+Tratando Informes personalizados de ficha en ODS
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/ cong&quot;
+
+Started.
+error: could not change directory to
+&quot;/datos/Programacion/trunk/bulmages/bulmasetup&quot;
+error:
+error: psql:/usr/local/share/bulmages/dbmodels/plugins:0:
+error: could not read from input file: Es un directorio
+Done.
+
+
+Tratando Imprimir subformularios
+Tratando Exportar subformularios a ODS.
+Tratando Importar datos separados por coma
+Tratando Resumen de una cuenta contable
+Tratando Balance Jer�rquico.
+Tratando Duplicar Asientos Contables
+Tratando Mayor
+Tratando Balance
+Tratando Diario
+Tratando Cuentas Contables
+Tratando Asiento
+ESCRIBIENDO CONFIGURACION
+Escribiendo configuracion en /etc/bulmages/
+
+Started.
+Done.
+
+
+
+Started.
+Done.
+
+
+Tratando Asiento
+Tratando Balance Jer�rquico.
+Tratando Duplicar Asientos Contables
+Tratando Mayor
+Tratando Balance
+Tratando Diario
+Tratando Cuentas Contables
+Tratando Importar datos separados por coma
+Tratando Resumen de una cuenta contable
+Tratando Imprimir subformularios
+Tratando Exportar subformularios a ODS.
+Tratando Informes personalizados por ficha
+Tratando Informes personalizados por e-mail
+Tratando Informes personalizados de ficha en ODS
+Tratando Bloquear configuraciones
+Tratando Exportar listados a SXC.
+Tratando Cuentas anuales
+Tratando Pegar desde el portapapeles
+Tratando Corrector Contable
+Tratando Modo Debug
+Tratando Embeber aplicaciones
+Tratando Mostrar el logotipo
+Tratando Adjuntar documentos
+Tratando Proyectos Contables
+Tratando Ejemplo de desarrollo
+Tratando Amortizaciones
+Tratando Cuentas Anuales
+Tratando Bloqueo de fichas
+Tratando Informes personalizados
+Tratando Informes personalizados en ODS
+Tratando Bloqueo de Fechas
+Tratando Registro de IVA
+Generando plantillas RML y PYS
+
+Started.
+Done.
+
+
+Started.
+Done.
+
+
+Started.
+Done.
+
+
+Started.
+Done.
+
+
+Started.
+Done.
+
+
+Started.
+Done.
+
+Generamos backup de las plantillas de impresion en
+/opt/bulmages/openreports_cong_old4
+cp /usr/local/share/bulmages/openreports/es/canuales.rml
+/opt/bulmages/openreports_cong/es
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/es/diario.rml
+/opt/bulmages/openreports_cong/es
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/es/extracto.rml
+/opt/bulmages/openreports_cong/es
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/es/plantilla.rml
+/opt/bulmages/openreports_cong/es
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/es/plantilla1.rml
+/opt/bulmages/openreports_cong/es
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/es/estilos.rml
+/opt/bulmages/openreports_cong/es
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/es/listado.rml
+/opt/bulmages/openreports_cong/es
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/es/logo.jpg
+/opt/bulmages/openreports_cong/es
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/es/ficha.rml
+/opt/bulmages/openreports_cong/es
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/ca/canuales.rml
+/opt/bulmages/openreports_cong/ca
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/ca/diario.rml
+/opt/bulmages/openreports_cong/ca
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/ca/extracto.rml
+/opt/bulmages/openreports_cong/ca
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/ca/plantilla.rml
+/opt/bulmages/openreports_cong/ca
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/ca/plantilla1.rml
+/opt/bulmages/openreports_cong/ca
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/ca/estilos.rml
+/opt/bulmages/openreports_cong/ca
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/ca/listado.rml
+/opt/bulmages/openreports_cong/ca
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/ca/logo.jpg
+/opt/bulmages/openreports_cong/ca
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/ca/ficha.rml
+/opt/bulmages/openreports_cong/ca
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/fr/canuales.rml
+/opt/bulmages/openreports_cong/fr
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/fr/diario.rml
+/opt/bulmages/openreports_cong/fr
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/fr/extracto.rml
+/opt/bulmages/openreports_cong/fr
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/fr/plantilla.rml
+/opt/bulmages/openreports_cong/fr
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/fr/plantilla1.rml
+/opt/bulmages/openreports_cong/fr
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/fr/estilos.rml
+/opt/bulmages/openreports_cong/fr
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/fr/listado.rml
+/opt/bulmages/openreports_cong/fr
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/fr/logo.jpg
+/opt/bulmages/openreports_cong/fr
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/fr/ficha.rml
+/opt/bulmages/openreports_cong/fr
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/en/canuales.rml
+/opt/bulmages/openreports_cong/en
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/en/diario.rml
+/opt/bulmages/openreports_cong/en
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/en/extracto.rml
+/opt/bulmages/openreports_cong/en
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/en/plantilla.rml
+/opt/bulmages/openreports_cong/en
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/en/plantilla1.rml
+/opt/bulmages/openreports_cong/en
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/en/estilos.rml
+/opt/bulmages/openreports_cong/en
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/en/listado.rml
+/opt/bulmages/openreports_cong/en
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/en/logo.jpg
+/opt/bulmages/openreports_cong/en
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/en/ficha.rml
+/opt/bulmages/openreports_cong/en
+
+Started.
+Done.
+
+Tratando Bloqueo de Fechas
+Tratando Cuentas Anuales
+Tratando Corrector Contable
+Tratando Informes personalizados
+Tratando Informes personalizados por ficha
+Tratando Asiento
+Tratando Bloquear configuraciones
+Tratando Importar datos separados por coma
+Tratando Balance Jer�rquico.
+Tratando Modo Debug
+Tratando Imprimir subformularios
+Tratando Duplicar Asientos Contables
+Tratando Exportar listados a SXC.
+Tratando Mayor
+Tratando Balance
+Tratando Embeber aplicaciones
+Tratando Mostrar el logotipo
+Tratando Diario
+Tratando Amortizaciones
+Tratando Registro de IVA
+Tratando Adjuntar documentos
+Tratando Cuentas anuales
+Tratando Bloqueo de fichas
+Tratando Informes personalizados en ODS
+Tratando Exportar subformularios a ODS.
+Tratando Proyectos Contables
+Tratando Ejemplo de desarrollo
+Tratando Informes personalizados por e-mail
+Tratando Cuentas Contables
+Tratando Resumen de una cuenta contable
+Tratando Informes personalizados de ficha en ODS
+Tratando Pegar desde el portapapeles
+
+Started.
+Done.
+
+
+Done.
+
+-- 
+Miguel �ngel
+
+------------ pr�xima parte ------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 897 bytes
+Desc: OpenPGP digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20131229/fcc241bd/attachment-0001.pgp">https://lists.berlios.de/pipermail/bulmages-main/attachments/20131229/fcc241bd/attachment-0001.pgp</A>&gt;
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007813.html">[BulmaG�s]Programas de conexi�n IRC
+</A></li>
+	<LI>Pr�ximo mensaje: <A HREF="007792.html">[BulmaG�s]problema con bulmasetup en Debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7791">[ fecha ]</a>
+              <a href="thread.html#7791">[ hilo ]</a>
+              <a href="subject.html#7791">[ asunto ]</a>
+              <a href="author.html#7791">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">M�s informaci�n sobre la lista de distribuci�n Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,354 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120518112206.9CFD9756E0%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007245.html">
+   <LINK REL="Next"  HREF="007248.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120518112206.9CFD9756E0%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Vie Mayo 18 13:22:06 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007245.html">[BulmaGés] [Gitorious] Activity: tborras pushed 5	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007248.html">[BulmaGés] Propuesta mejoras BulmaTPV
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7246">[ fecha ]</a>
+              <a href="thread.html#7246">[ hilo ]</a>
+              <a href="subject.html#7246">[ asunto ]</a>
+              <a href="author.html#7246">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from 271d4d8 to 995afb0
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/271d4d8169028502b5e6299f85170873e29c0226/diffs/995afb05a207c6a3cab7e367636ac3718f282707">https://gitorious.org/bulmages/bulmages/commit/271d4d8169028502b5e6299f85170873e29c0226/diffs/995afb05a207c6a3cab7e367636ac3718f282707</A>
+
+Diff: 
+
+commit 995afb05a207c6a3cab7e367636ac3718f282707
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri May 18 13:21:50 2012 +0200
+
+    Arreglo la interpretacion de las plantillas para ESC/POS, agrego la especificacion de valores [xxxx,a] que convierten el valor en ASCII127 antes de ser procesados. Esto es debido a que las impresoras ESC/POS antiguas no soportan determinados carácteres
+
+diff --git a/bulmages/bulmalib/src/bldb.cpp b/bulmages/bulmalib/src/bldb.cpp
+index b60d6ed..09cd25c 100644
+--- a/bulmages/bulmalib/src/bldb.cpp
++++ b/bulmages/bulmalib/src/bldb.cpp
+@@ -1082,80 +1082,80 @@ int BlDbRecord::generateRML ( const QString &amp;arch )
+     file.open ( QIODevice::ReadOnly );
+     QTextStream stream ( &amp;file );
+     stream.setCodec ( codec );
+-if (tipoescape != 0) {
+-    QString buff = stream.readAll();
+-    file.close();
++    if (tipoescape != 0) {
++	QString buff = stream.readAll();
++	file.close();
+ 
+-    /// Hacemos el tratamiento avanzado de TAGS
+-    if ( !parseTags ( buff, tipoescape ) ) {
+-        return 0;
+-    } // end if
++	/// Hacemos el tratamiento avanzado de TAGS
++	if ( !parseTags ( buff, tipoescape ) ) {
++	    return 0;
++	} // end if
+ 
+-    if ( file.open ( QIODevice::WriteOnly ) ) {
+-        QTextStream stream ( &amp;file );
+-        stream.setCodec ( codec );
+-        if ( ( !ascii ) &amp;&amp; ( codec-&gt;canEncode ( buff ) ) ) {
+-            // para ficheros UTF-8, UTF-16, UTF-32 asi vale
+-            // para otros sin caracteres ajenos al encoding tambien vale
+-            BlDebug::blDebug ( &quot;Llistat sense referències de caracters&quot;, 0, &quot; &quot; );
+-            stream &lt;&lt; buff;
+-        } else { // para otros con caracteres no codificables
+-            // tenemos que usar referencias numericas de caracteres de XML
+-            BlDebug::blDebug ( &quot;Llistat amb referències de caracters&quot;, 0, &quot; &quot; );
+-            QString::const_iterator i;
+-            for ( i = buff.begin(); i != buff.end(); ++i ) {
+-                if ( ( codec-&gt;canEncode ( *i ) ) &amp;&amp; ( ( !ascii ) || ( ( *i ).unicode() &lt; 128 ) ) ) {
+-                    stream &lt;&lt; *i; // si puedo lo escribo
+-                } else { // si no pogo referencia numerica de caracter &amp;12345;
+-                    uint codepoint = 0;
+-                    // el caracter puede no caber en un QChar.
+-                    if ( ( *i ).isHighSurrogate() ) {
+-                        // sospecho que o este caso o el siguiente nunca se
+-                        // dara pero no lo se seguro y si es asi no se cual
+-                        QChar high = *i;
+-                        i++;
+-                        if ( i == buff.end() )
+-                            break;
+-                        QChar low = *i;
+-                        codepoint = QChar::surrogateToUcs4 ( high, low );
+-                    }  else {
+-                        if ( ( *i ).isLowSurrogate() ) {
+-                            // sospecho que o este caso o el anterior nunca se
+-                            // dara pero no lo se seguro y si es asi no se cual
+-                            QChar low = *i;
+-                            i++;
+-                            if ( i == buff.end() )
+-                                break;
+-                            QChar high = *i;
+-                            codepoint = QChar::surrogateToUcs4 ( high, low );
+-                        } else {
+-                            // este caso es mas normal, caracter entre 0 i 2^16
+-                            codepoint = ( *i ).unicode();
+-                        } // end if
+-                    } // end if
+-                    BlDebug::blDebug ( ( QString ) &quot;escric &quot; + *i + &quot; com &quot; + codepoint, 0 );
+-                    stream &lt;&lt; &quot;&amp;#&quot; &lt;&lt; codepoint &lt;&lt; &quot;;&quot; ;
+-                } // end if
+-            } // end for
+-            
+-        }
+-        file.close();
+-    } // end if
++	if ( file.open ( QIODevice::WriteOnly ) ) {
++	    QTextStream stream ( &amp;file );
++	    stream.setCodec ( codec );
++	    if ( ( !ascii ) &amp;&amp; ( codec-&gt;canEncode ( buff ) ) ) {
++		// para ficheros UTF-8, UTF-16, UTF-32 asi vale
++		// para otros sin caracteres ajenos al encoding tambien vale
++		BlDebug::blDebug ( &quot;Llistat sense referències de caracters&quot;, 0, &quot; &quot; );
++		stream &lt;&lt; buff;
++	    } else { // para otros con caracteres no codificables
++		// tenemos que usar referencias numericas de caracteres de XML
++		BlDebug::blDebug ( &quot;Llistat amb referències de caracters&quot;, 0, &quot; &quot; );
++		QString::const_iterator i;
++		for ( i = buff.begin(); i != buff.end(); ++i ) {
++		    if ( ( codec-&gt;canEncode ( *i ) ) &amp;&amp; ( ( !ascii ) || ( ( *i ).unicode() &lt; 128 ) ) ) {
++			stream &lt;&lt; *i; // si puedo lo escribo
++		    } else { // si no pogo referencia numerica de caracter &amp;12345;
++			uint codepoint = 0;
++			// el caracter puede no caber en un QChar.
++			if ( ( *i ).isHighSurrogate() ) {
++			    // sospecho que o este caso o el siguiente nunca se
++			    // dara pero no lo se seguro y si es asi no se cual
++			    QChar high = *i;
++			    i++;
++			    if ( i == buff.end() )
++				break;
++			    QChar low = *i;
++			    codepoint = QChar::surrogateToUcs4 ( high, low );
++			}  else {
++			    if ( ( *i ).isLowSurrogate() ) {
++				// sospecho que o este caso o el anterior nunca se
++				// dara pero no lo se seguro y si es asi no se cual
++				QChar low = *i;
++				i++;
++				if ( i == buff.end() )
++				    break;
++				QChar high = *i;
++				codepoint = QChar::surrogateToUcs4 ( high, low );
++			    } else {
++				// este caso es mas normal, caracter entre 0 i 2^16
++				codepoint = ( *i ).unicode();
++			    } // end if
++			} // end if
++			BlDebug::blDebug ( ( QString ) &quot;escric &quot; + *i + &quot; com &quot; + codepoint, 0 );
++			stream &lt;&lt; &quot;&amp;#&quot; &lt;&lt; codepoint &lt;&lt; &quot;;&quot; ;
++		    } // end if
++		} // end for
++		
++	    }
++	    file.close();
++	} // end if
+ 
+-} else {
+-    QByteArray buff = file.readAll();
+-    file.close();
++    } else {
++	QByteArray buff = file.readAll();
++	file.close();
+ 
+-    /// Hacemos el tratamiento avanzado de TAGS
+-    if ( !parseTags ( buff, tipoescape ) ) {
+-        return 0;
+-    } // end if
++	/// Hacemos el tratamiento avanzado de TAGS
++	if ( !parseTags ( buff, tipoescape ) ) {
++	    return 0;
++	} // end if
+ 
+-    if ( file.open ( QIODevice::WriteOnly ) ) {
+-        file.write(buff);
+-        file.close();
++	if ( file.open ( QIODevice::WriteOnly ) ) {
++	    file.write(buff);
++	    file.close();
++	} // end if
+     } // end if
+-} // end if
+     
+     return 1;
+ }
+@@ -2035,7 +2035,7 @@ int BlDbRecord::parseTags ( QByteArray &amp;buff, int tipoEscape )
+     rx46.setMinimal ( TRUE );
+     while ( ( pos = rx46.indexIn ( buff, 0 ) ) != -1 ) {
+         QByteArray ldetalle = parseRightJustified( rx46.cap ( 1 ),  rx46.cap ( 2 ), rx46.cap ( 3 ),  rx46.cap ( 4 ),tipoEscape );
+-        buff.replace ( pos, rx46.matchedLength(), ldetalle );
++        buff.replace ( pos, rx46.cap(0).toAscii().size(), ldetalle );
+ 	buff = cadant + buff;
+         pos = buff.indexOf(&quot;&lt;!-- RIGHTJUSTIFIED&quot;);
+ 	cadant = buff.left(pos);
+@@ -2134,7 +2134,7 @@ int BlDbRecord::parseTagsPost ( QByteArray &amp;buff, int tipoEscape )
+     rx46.setMinimal ( TRUE );
+     while ( ( pos = rx46.indexIn ( buff, 0 ) ) != -1 ) {
+         QByteArray ldetalle = parseRightJustified( rx46.cap ( 1 ),  rx46.cap ( 2 ), rx46.cap ( 3 ),  rx46.cap ( 4 ),tipoEscape );
+-        buff.replace ( pos, rx46.matchedLength(), ldetalle );
++        buff.replace ( pos, rx46.cap(0).toAscii().size(), ldetalle );
+ 	buff = cadant + buff;
+         pos = buff.indexOf(&quot;&lt;!-- RIGHTJUSTIFIED&quot;);
+ 	cadant = buff.left(pos);
+@@ -2150,7 +2150,7 @@ int BlDbRecord::parseTagsPost ( QByteArray &amp;buff, int tipoEscape )
+     rx47.setMinimal ( TRUE );
+     while ( ( pos = rx47.indexIn ( buff, 0 ) ) != -1 ) {
+         QByteArray ldetalle = parseLeftJustified( rx47.cap ( 1 ),  rx47.cap ( 2 ), rx47.cap ( 3 ),  rx47.cap ( 4 ),tipoEscape );
+-        buff.replace ( pos, rx47.matchedLength(), ldetalle );
++        buff.replace ( pos, rx47.cap(0).toAscii().size(), ldetalle );
+ 	buff = cadant + buff;
+         pos = buff.indexOf(&quot;&lt;!-- LEFTJUSTIFIED&quot;);
+ 	cadant = buff.left(pos);
+@@ -3144,14 +3144,25 @@ QByteArray BlDbRecord::parseRecordset ( BlDbRecordSet *cur, const QByteArray &amp;da
+     while ( !cur-&gt;eof() ) {
+         QByteArray salidatemp = datos;
+ 
+-	
+         int pos =  0;
+ 	
+-        /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
+-        //BlDebug::blDebug(&quot;salidatemp =&quot;,0,salidatemp);
++        /// Buscamos cadenas que deban ir en ASCII puro (127) por ejemplo en los tickets.
++        QRegExp rx2 ( &quot;\\[(\\w*),a\\]&quot; );
++        while ( ( pos = rx2.indexIn ( salidatemp, pos ) ) != -1 ) {
++            if ( cur-&gt;numcampo ( rx2.cap ( 1 ) ) != -1 ) {
++		    /// Esta salida normalmente es para una ticketera, con lo que no entran, para nada, caracteres especiales.
++                    salidatemp.replace ( pos, rx2.matchedLength(), blStringToUsAscii (cur-&gt;value( rx2.cap ( 1 ), -1, TRUE )).toAscii() );
++                pos = 0;
++            } else {
++                pos += rx2.matchedLength();
++            }
++        } // end while
++	
++        pos =  0;
++	
++        /// Buscamos cadenas que deban ir tal cual estan en la base de datos, sin ningún parseado.
+         QRegExp rx1 ( &quot;\\[(\\w*),l\\]&quot; );
+         while ( ( pos = rx1.indexIn ( salidatemp, pos ) ) != -1 ) {
+-            //BlDebug::blDebug(&quot;substituïm &quot;,0,rx.cap(1));
+             if ( cur-&gt;numcampo ( rx1.cap ( 1 ) ) != -1 ) {
+                 salidatemp.replace ( pos, rx1.matchedLength(), cur-&gt;value( rx1.cap ( 1 ), -1, TRUE ).toAscii() );
+                 pos = 0;
+@@ -3163,10 +3174,8 @@ QByteArray BlDbRecord::parseRecordset ( BlDbRecordSet *cur, const QByteArray &amp;da
+ 	pos = 0;
+ 
+         /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
+-        //BlDebug::blDebug(&quot;salidatemp =&quot;,0,salidatemp);
+         QRegExp rx ( &quot;\\[(\\w*)\\]&quot; );
+         while ( ( pos = rx.indexIn ( salidatemp, pos ) ) != -1 ) {
+-            //BlDebug::blDebug(&quot;substituïm &quot;,0,rx.cap(1));
+             if ( cur-&gt;numcampo ( rx.cap ( 1 ) ) != -1 ) {
+                 switch ( tipoEscape ) {
+                 case 1:
+@@ -3176,7 +3185,7 @@ QByteArray BlDbRecord::parseRecordset ( BlDbRecordSet *cur, const QByteArray &amp;da
+                     salidatemp.replace ( pos, rx.matchedLength(), blPythonEscape ( cur-&gt;value( rx.cap ( 1 ), -1, TRUE ) ).toAscii()  );
+                     break;
+                 default:
+-                    salidatemp.replace ( pos, rx.matchedLength(), cur-&gt;value( rx.cap ( 1 ), -1, TRUE ).toAscii() );
++                    salidatemp.replace ( pos, rx.cap(0).toAscii().size(), cur-&gt;value( rx.cap ( 1 ), -1, TRUE ).toAscii() );
+                     break;
+                 } // emd switch
+                 pos = 0;
+@@ -3194,7 +3203,7 @@ QByteArray BlDbRecord::parseRecordset ( BlDbRecordSet *cur, const QByteArray &amp;da
+ }
+ 
+ 
+-/// Trata las lineas de detalle encontradas dentro de los tags &lt;!--LINEAS DETALLE--&gt;
++/// Trata las lineas de detalle encontradas dentro de los tags &lt;!--EXISTS --&gt;
+ /**
+ \param det Texto de entrada para ser tratado por iteracion.
+ \return Si el query tiene elementos lo devuelve el parametro. En caso contrario no devuelve nada.
+diff --git a/bulmages/bulmalib/src/blform.cpp b/bulmages/bulmalib/src/blform.cpp
+index 6eb6e59..2620a9d 100644
+--- a/bulmages/bulmalib/src/blform.cpp
++++ b/bulmages/bulmalib/src/blform.cpp
+@@ -1595,10 +1595,24 @@ QString BlForm::parseRecordset ( BlDbRecordSet *cur, const QString &amp;datos, int t
+     while ( !cur-&gt;eof() ) {
+         QString salidatemp = datos;
+ 
++        int pos =  0;
++	
++        /// Buscamos cadenas que deban ir en ASCII puro (127) por ejemplo en los tickets.
++        QRegExp rx2 ( &quot;\\[(\\w*),a\\]&quot; );
++        while ( ( pos = rx2.indexIn ( salidatemp, pos ) ) != -1 ) {
++            if ( cur-&gt;numcampo ( rx2.cap ( 1 ) ) != -1 ) {
++		    /// Esta salida normalmente es para una ticketera, con lo que no entran, para nada, caracteres especiales.
++                    salidatemp.replace ( pos, rx2.matchedLength(), blStringToUsAscii (cur-&gt;value( rx2.cap ( 1 ), -1, TRUE )) );
++                pos = 0;
++            } else {
++                pos += rx2.matchedLength();
++            }
++        } // end while
++	
+ 	
+         /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
+         QRegExp rx1 ( &quot;\\[(\\w*),l\\]&quot; );
+-        int pos =  0;
++        pos =  0;
+         while ( ( pos = rx1.indexIn ( salidatemp, pos ) ) != -1 ) {
+             if ( cur-&gt;numcampo ( rx1.cap ( 1 ) ) != -1 ) {
+                 salidatemp.replace ( pos, rx1.matchedLength(), cur-&gt;value( rx1.cap ( 1 ), -1, TRUE ) );
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007245.html">[BulmaGés] [Gitorious] Activity: tborras pushed 5	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007248.html">[BulmaGés] Propuesta mejoras BulmaTPV
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7246">[ fecha ]</a>
+              <a href="thread.html#7246">[ hilo ]</a>
+              <a href="subject.html#7246">[ asunto ]</a>
+              <a href="author.html#7246">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

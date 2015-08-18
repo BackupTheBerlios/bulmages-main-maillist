@@ -1,0 +1,1780 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 4	commits to release...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%204%0A%09commits%20to%20release...&In-Reply-To=%3C20120430164104.DF1FA758F8%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007154.html">
+   <LINK REL="Next"  HREF="007156.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 4	commits to release... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%204%0A%09commits%20to%20release...&In-Reply-To=%3C20120430164104.DF1FA758F8%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 4	commits to release...">no-reply en gitorious.org
+       </A><BR>
+    <I>Lun Abr 30 18:41:04 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007154.html">[BulmaGés] [Gitorious] Activity: tborras pushed 3	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007156.html">[BulmaGés] [Gitorious] Activity: tborras deleted	branch impresionped...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7155">[ fecha ]</a>
+              <a href="thread.html#7155">[ hilo ]</a>
+              <a href="subject.html#7155">[ asunto ]</a>
+              <a href="author.html#7155">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 4 commits to release
+release changed from e9abfe7 to d2772fc
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/e9abfe73a4e8a203ad49e1f70d1532c4dbcc5bda/diffs/d2772fc527f94db02589dcd744e4ee40e56e6304">https://gitorious.org/bulmages/bulmages/commit/e9abfe73a4e8a203ad49e1f70d1532c4dbcc5bda/diffs/d2772fc527f94db02589dcd744e4ee40e56e6304</A>
+
+Diff: 
+
+commit d2772fc527f94db02589dcd744e4ee40e56e6304
+Merge: e9abfe7 a5eff39
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon Apr 30 18:40:56 2012 +0200
+
+    Merge branch 'impresionpedidoproveedor' into release
+
+
+commit a5eff39b3c009b3f371bb0e577a2b10f8f89d251
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sat Apr 28 00:29:41 2012 +0200
+
+    Quito el codigo comentado de la impresion del albaran de cliente. Seguro que ya no se volvera a utilizar nunca
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorview.cpp b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorview.cpp
+index 0dfcaf0..65031e0 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorview.cpp
+@@ -222,175 +222,3 @@ int PedidoProveedorView::afterSave()
+ }
+ 
+ 
+-
+-/// Impresion de un pedido a proveedor
+-/** Usa la plantilla pedidoproveedor.rml */
+-/**
+-**/
+-
+-/*
+-void PedidoProveedorView::imprimir()
+-{
+-    BL_FUNC_DEBUG
+-    BlDbRecordSet *cur = NULL;
+-
+-    try {
+-
+-        QString SQLQuery = &quot;&quot;;
+-
+-        if ( dbValue ( &quot;idproveedor&quot; ).isEmpty() ) {
+-            /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
+-            blMsgInfo ( _ ( &quot;Tiene que guardar el documento antes de poder imprimirlo.&quot; ), this );
+-            return;
+-        } else {
+-            SQLQuery = &quot;SELECT * FROM proveedor WHERE idproveedor = &quot; + dbValue ( &quot;idproveedor&quot; );
+-        } // end if
+-
+-        base basesimp;
+-
+-        /// Copiamos el archivo.
+-        QString archivo = g_confpr-&gt;value( CONF_DIR_OPENREPORTS ) + &quot;pedidoproveedor.rml&quot;;
+-        QString archivod = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;pedidoproveedor.rml&quot;;
+-        blCopyFile(archivo, archivod);
+-
+-        /// Copiamos el logo.
+-        QString archivologo = g_confpr-&gt;value( CONF_DIR_OPENREPORTS ) + &quot;logo.jpg&quot;;
+-        QString logousuario = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;logo.jpg&quot;;
+-        blCopyFile(archivologo, logousuario);
+-
+-        QFile file;
+-        file.setFileName ( archivod );
+-        file.open ( QIODevice::ReadOnly );
+-        QTextStream stream ( &amp;file );
+-        QString buff = stream.readAll();
+-        file.close();
+-        QString fitxersortidatxt = &quot;&quot;;
+-
+-        substrConf ( buff );
+-
+-        /// Linea de totales del pedido.
+-        cur = mainCompany() -&gt;loadQuery ( SQLQuery );
+-        if ( !cur-&gt;eof() ) {
+-            buff.replace ( &quot;[dirproveedor]&quot;, cur-&gt;value( &quot;dirproveedor&quot; ) );
+-            buff.replace ( &quot;[poblproveedor]&quot;, cur-&gt;value( &quot;poblproveedor&quot; ) );
+-            buff.replace ( &quot;[telproveedor]&quot;, cur-&gt;value( &quot;telproveedor&quot; ) );
+-            buff.replace ( &quot;[nomproveedor]&quot;, cur-&gt;value( &quot;nomproveedor&quot; ) );
+-            buff.replace ( &quot;[cifproveedor]&quot;, cur-&gt;value( &quot;cifproveedor&quot; ) );
+-            buff.replace ( &quot;[idproveedor]&quot;, cur-&gt;value( &quot;idproveedor&quot; ) );
+-            buff.replace ( &quot;[cpproveedor]&quot;, cur-&gt;value( &quot;cpproveedor&quot; ) );
+-        } // end if
+-        delete cur;
+-
+-        buff.replace ( &quot;[numpedidoproveedor]&quot;, dbValue ( &quot;numpedidoproveedor&quot; ) );
+-        buff.replace ( &quot;[fechapedidoproveedor]&quot;, dbValue ( &quot;fechapedidoproveedor&quot; ) );
+-        buff.replace ( &quot;[contactpedidoproveedor]&quot;, dbValue ( &quot;contactpedidoproveedor&quot; ) );
+-        buff.replace ( &quot;[telpedidoproveedor]&quot;, dbValue ( &quot;telpedidoproveedor&quot; ) );
+-        buff.replace ( &quot;[comentpedidoproveedor]&quot;, dbValue ( &quot;comentpedidoproveedor&quot; ) );
+-        buff.replace ( &quot;[descpedidoproveedor]&quot;, dbValue ( &quot;descpedidoproveedor&quot; ) );
+-        buff.replace ( &quot;[refpedidoproveedor]&quot;, dbValue ( &quot;refpedidoproveedor&quot; ) );
+-
+-        /// Impresion de la tabla de contenidos.
+-        QString l;
+-
+-        BlDbSubFormRecord *linea;
+-        for ( int i = 0; i &lt; m_listalineas-&gt;rowCount() - 1; ++i ) {
+-            linea = m_listalineas-&gt;lineaat ( i );
+-            BlFixed base = BlFixed ( linea-&gt;dbValue ( &quot;cantlpedidoproveedor&quot; ).toAscii().constData() ) * BlFixed ( linea-&gt;dbValue ( &quot;pvplpedidoproveedor&quot; ).toAscii().constData() );
+-            basesimp[linea-&gt;dbValue ( &quot;ivalpedidoproveedor&quot; ) ] = basesimp[linea-&gt;dbValue ( &quot;ivalpedidoproveedor&quot; ) ] + base - base * BlFixed ( linea-&gt;dbValue ( &quot;descuentolpedidoproveedor&quot; ).toAscii().constData() ) / 100;
+-            fitxersortidatxt += &quot;&lt;tr&gt;\n&quot;;
+-            fitxersortidatxt += &quot;   &lt;td&gt;&quot; + linea-&gt;dbValue ( &quot;codigocompletoarticulo&quot; ) + &quot;&lt;/td&gt;\n&quot;;
+-            fitxersortidatxt += &quot;   &lt;td&gt;&lt;para&gt;&quot; + blXMLEncode ( linea-&gt;dbValue ( &quot;desclpedidoproveedor&quot; ) ) + &quot;&lt;/para&gt;&lt;/td&gt;\n&quot;;
+-            fitxersortidatxt += &quot;   &lt;td&gt;&quot; + l.sprintf ( &quot;%s&quot;, linea-&gt;dbValue ( &quot;cantlpedidoproveedor&quot; ).toAscii().constData() ) + &quot;&lt;/td&gt;\n&quot;;
+-            fitxersortidatxt += &quot;   &lt;td&gt;&quot; + l.sprintf ( &quot;%s&quot;, linea-&gt;dbValue ( &quot;pvplpedidoproveedor&quot; ).toAscii().constData() ) + &quot;&lt;/td&gt;\n&quot;;
+-            fitxersortidatxt += &quot;   &lt;td&gt;&quot; + l.sprintf ( &quot;%s&quot;, linea-&gt;dbValue ( &quot;descuentolpedidoproveedor&quot; ).toAscii().constData() ) + &quot; %&lt;/td&gt;\n&quot;;
+-            fitxersortidatxt += &quot;   &lt;td&gt;&quot; + l.sprintf ( &quot;%s&quot;, ( base - base * BlFixed ( linea-&gt;dbValue ( &quot;descuentolpedidoproveedor&quot; ) ) / 100 ).toQString().toAscii().constData() ) + &quot;&lt;/td&gt;\n&quot;;
+-            fitxersortidatxt += &quot;&lt;/tr&gt;&quot;;
+-        } // end for
+-
+-
+-        buff.replace ( &quot;[story]&quot;, fitxersortidatxt );
+-
+-        BlFixed basei ( &quot;0.00&quot; );
+-        base::Iterator it;
+-        for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+-            basei = basei + it.value();
+-        } // end for
+-
+-        /// Impresion de los descuentos.
+-        fitxersortidatxt = &quot;&quot;;
+-        BlFixed porcentt ( &quot;0.00&quot; );
+-        BlDbSubFormRecord *linea1;
+-        if ( m_listadescuentos-&gt;rowCount() - 1 ) {
+-            fitxersortidatxt += &quot;&lt;blockTable style=\&quot;tabladescuento\&quot; colWidths=\&quot;12cm, 2cm, 3cm\&quot; repeatRows=\&quot;1\&quot;&gt;\n&quot;;
+-            fitxersortidatxt += &quot;&lt;tr&gt;\n&quot;;
+-            fitxersortidatxt += &quot;        &lt;td&gt;&quot; + _ ( &quot;Descuento&quot; ) + &quot;&lt;/td&gt;\n&quot;;
+-            fitxersortidatxt += &quot;        &lt;td&gt;&quot; + _ ( &quot;Porcentaje&quot; ) + &quot;&lt;/td&gt;\n&quot;;
+-            fitxersortidatxt += &quot;        &lt;td&gt;&quot; + _ ( &quot;Total&quot; ) + &quot;&lt;/td&gt;\n&quot;;
+-            fitxersortidatxt += &quot;&lt;/tr&gt;\n&quot;;
+-            for ( int i = 0; i &lt; m_listadescuentos-&gt;rowCount() - 1; ++i ) {
+-                linea1 = m_listadescuentos-&gt;lineaat ( i );
+-                porcentt = porcentt + BlFixed ( linea1-&gt;dbValue ( &quot;proporciondpedidoproveedor&quot; ).toAscii().constData() );
+-                fitxersortidatxt += &quot;&lt;tr&gt;\n&quot;;
+-                fitxersortidatxt += &quot;        &lt;td&gt;&quot; + linea1-&gt;dbValue ( &quot;conceptdpedidoproveedor&quot; ) + &quot;&lt;/td&gt;\n&quot;;
+-                fitxersortidatxt += &quot;        &lt;td&gt;&quot; + l.sprintf ( &quot;%s&quot;, linea1-&gt;dbValue ( &quot;proporciondpedidoproveedor&quot; ).toAscii().constData() ) + &quot; %&lt;/td&gt;\n&quot;;
+-                fitxersortidatxt += &quot;        &lt;td&gt;&quot; + l.sprintf ( &quot;-%s&quot;, ( BlFixed ( linea1-&gt;dbValue ( &quot;proporciondpedidoproveedor&quot; ) ) * basei / 100 ).toQString().toAscii().constData() ) + &quot;&lt;/td&gt;\n&quot;;
+-                fitxersortidatxt += &quot;&lt;/tr&gt;&quot;;
+-            } // end for
+-            fitxersortidatxt += &quot;&lt;/blockTable&gt;\n&quot;;
+-        } // end if
+-        buff.replace ( &quot;[descuentos]&quot;, fitxersortidatxt );
+-
+-        /// Impresion de los totales.
+-        fitxersortidatxt = &quot;&quot;;
+-        QString tr1 = &quot;&quot;; /// Rellena el primer tr de titulares.
+-        QString tr2 = &quot;&quot;; /// Rellena el segundo tr de cantidades.
+-        fitxersortidatxt += &quot;&lt;blockTable style=\&quot;tablatotales\&quot;&gt;\n&quot;;
+-
+-        BlFixed totbaseimp ( &quot;0.00&quot; );
+-        BlFixed parbaseimp ( &quot;0.00&quot; );
+-        for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+-            if ( porcentt &gt; 0 ) {
+-                parbaseimp = it.value() - it.value() * porcentt / 100;
+-            } else {
+-                parbaseimp = it.value();
+-            } // end if
+-            totbaseimp = totbaseimp + parbaseimp;
+-            tr1 += &quot;        &lt;td&gt;&quot; + _ ( &quot;Base &quot; ) + it.key() + &quot; %&lt;/td&gt;\n&quot;;
+-            tr2 += &quot;        &lt;td&gt;&quot; + l.sprintf ( &quot;%s&quot;, parbaseimp.toQString().toAscii().constData() ) + &quot;&lt;/td&gt;\n&quot;;
+-        } // end for
+-
+-        BlFixed totiva ( &quot;0.0&quot; );
+-        BlFixed pariva ( &quot;0.0&quot; );
+-        for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+-            if ( porcentt &gt; 0 ) {
+-                pariva = ( it.value() - it.value() * porcentt / 100 ) * BlFixed ( it.key() ) / 100;
+-            } else {
+-                pariva = it.value() * BlFixed ( it.key() ) / 100;
+-            } // end if
+-            totiva = totiva + pariva;
+-            tr1 += &quot;        &lt;td&gt;&quot; + _ ( &quot;Iva &quot; ) + it.key() + &quot; %&lt;/td&gt;\n&quot;;
+-            tr2 += &quot;        &lt;td&gt;&quot; + l.sprintf ( &quot;%s&quot;, pariva.toQString().toAscii().constData() ) + &quot;&lt;/td&gt;\n&quot;;
+-        } // end for
+-        tr1 += &quot;        &lt;td&gt;&quot; + _ ( &quot;Total &quot; ) + &quot; &lt;/td&gt;\n&quot;;
+-        tr2 += &quot;        &lt;td&gt;&quot; + l.sprintf ( &quot;%s&quot;, ( totiva + totbaseimp ).toQString().toAscii().constData() ) + &quot;&lt;/td&gt;\n&quot;;
+-        fitxersortidatxt += &quot;&lt;tr&gt;&quot; + tr1 + &quot;&lt;/tr&gt;&lt;tr&gt;&quot; + tr2 + &quot;&lt;/tr&gt;&lt;/blockTable&gt;\n&quot;;
+-        buff.replace ( &quot;[totales]&quot;, fitxersortidatxt );
+-
+-        if ( file.open ( QIODevice::WriteOnly ) ) {
+-            QTextStream stream ( &amp;file );
+-            stream &lt;&lt; buff;
+-            file.close();
+-        }
+-
+-        blCreateAndLoadPDF ( &quot;pedidoproveedor&quot; );
+-        
+-        return;
+-
+-    } catch ( ... ) {
+-        if ( cur ) delete cur;
+-        BlDebug::blDebug ( Q_FUNC_INFO, 0, _(&quot;Error.&quot;) );
+-        throw - 1;
+-    } // end try
+-}
+-
+-*/
+
+commit 991a351e59e0e2552d4a6f194ccfdb8ddc91ae42
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sat Apr 28 00:06:52 2012 +0200
+
+    Arreglo la impresion en los pedidos a proveedor, que aun tenia una generación de RML propia y una plantilla anticuada. Ahora imprime a través del BfForm y con plantilla estandar
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientepedido/pedidoclienteview.cpp b/bulmages/bulmafact/plugins/pluginbf_clientepedido/pedidoclienteview.cpp
+index 2db8dab..15945e1 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientepedido/pedidoclienteview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_clientepedido/pedidoclienteview.cpp
+@@ -167,112 +167,6 @@ void PedidoClienteView::on_mui_verpresupuesto_clicked()
+ void PedidoClienteView::generarAlbaran()
+ {
+     BL_FUNC_DEBUG
+-    /*
+-
+-        AlbaranClienteView *bud = NULL;
+-        BlDbRecordSet *cur = NULL;
+-
+-        try {
+-            /// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta
+-            /// comprobaci&oacute;n la consulta a la base de datos ser&aacute; erronea y al hacer
+-            /// el siguiente cur-&gt;eof() el programa fallar&aacute;.
+-            /// Comprobamos que existe el albaran con esos datos, y en caso afirmativo lo mostramos.
+-
+-            QString SQLQuery = &quot;&quot;;
+-
+-            if ( dbValue ( &quot;refpedidocliente&quot; ).isEmpty() || dbValue ( &quot;idcliente&quot; ).isEmpty() ) {
+-                /// El presupuesto no se ha guardado y no se dispone en la base de datos
+-                /// de estos datos. Se utilizan en su lugar los del formulario.
+-                /// Verifica que exista, por lo menos, un cliente seleccionado.
+-                if ( mui_idcliente-&gt;idcliente().isEmpty() ) {
+-                    blMsgInfo ( _( &quot;Tiene que seleccionar un cliente&quot; ), this );
+-                    return;
+-                } else {
+-                    SQLQuery = &quot;SELECT * FROM albaran WHERE refalbaran = '&quot; + mui_refpedidocliente-&gt;text() + &quot;' AND idcliente = &quot; + mui_idcliente-&gt;idcliente();
+-                } // end if
+-            } else {
+-                SQLQuery = &quot;SELECT * FROM albaran WHERE refalbaran = '&quot; + dbValue ( &quot;refpedidocliente&quot; ) + &quot;' AND idcliente = &quot; + dbValue ( &quot;idcliente&quot; );
+-            } // end if
+-
+-            cur = mainCompany() -&gt;loadQuery ( SQLQuery );
+-
+-            if ( !cur-&gt;eof() ) {
+-                /// Informamos que ya hay un albaran y que la abriremos.
+-                /// Si no salimos de la funci&oacute;n.
+-                if ( QMessageBox::question ( this,
+-                                             _( &quot;Albaran ya existe&quot; ),
+-                                             _( &quot;Existe un albaran a este cliente con la misma referencia que este pedido. Desea abrirlo para verificar?&quot; ),
+-                                             _( &quot;&amp;Si&quot; ), _( &quot;&amp;No&quot; ), QString::null, 0, 1 ) ) {
+-                    return;
+-                } // end if
+-                bud = new AlbaranClienteView ( mainCompany(), NULL );
+-                mainCompany() -&gt;m_pWorkspace-&gt;addSubWindow ( bud );
+-                bud-&gt;load ( cur-&gt;value( &quot;idalbaran&quot; ) );
+-                bud-&gt;show();
+-                return;
+-            } // end if
+-            delete cur;
+-
+-            /// Creamos el albaran.
+-            bud = mainCompany() -&gt;newAlbaranClienteView();
+-            mainCompany() -&gt;m_pWorkspace-&gt;addSubWindow ( bud );
+-            bud-&gt;load ( &quot;0&quot; );
+-
+-            /// Traspasamos los datos al albaran.
+-            recogeValores();
+-            bud-&gt;setDbValue ( &quot;comentalbaran&quot;, dbValue ( &quot;comentpedidocliente&quot; ) );
+-            bud-&gt;setDbValue ( &quot;descalbaran&quot;, dbValue ( &quot;descpedidocliente&quot; ) );
+-            bud-&gt;setDbValue ( &quot;idforma_pago&quot;, dbValue ( &quot;idforma_pago&quot; ) );
+-            bud-&gt;setDbValue ( &quot;refalbaran&quot;, dbValue ( &quot;refpedidocliente&quot; ) );
+-            bud-&gt;setDbValue ( &quot;idcliente&quot;, dbValue ( &quot;idcliente&quot; ) );
+-            bud-&gt;setDbValue ( &quot;idalmacen&quot;, dbValue ( &quot;idalmacen&quot; ) );
+-            bud-&gt;setDbValue ( &quot;contactalbaran&quot;, dbValue ( &quot;contactpedidocliente&quot; ) );
+-            bud-&gt;setDbValue ( &quot;telalbaran&quot;, dbValue ( &quot;telpedidocliente&quot; ) );
+-            bud-&gt;setDbValue ( &quot;idtrabajador&quot;, dbValue ( &quot;idtrabajador&quot; ) );
+-
+-            /// Traspasamos las lineas al albaran.
+-            BlDbSubFormRecord *linea, *linea1;
+-            for ( int i = 0; i &lt; m_listalineas-&gt;rowCount(); ++i ) {
+-                linea = m_listalineas-&gt;lineaat ( i );
+-                if ( linea-&gt;dbValue ( &quot;idarticulo&quot; ) != &quot;&quot; ) {
+-                    linea1 = bud-&gt;getlistalineas() -&gt;lineaat ( bud-&gt;getlistalineas() -&gt;rowCount() - 1 );
+-                    bud-&gt;getlistalineas() -&gt;newRecord();
+-                    bud-&gt;getlistalineas() -&gt;setProcesarCambios ( FALSE );
+-                    linea1-&gt;setDbValue ( &quot;desclalbaran&quot;, linea-&gt;dbValue ( &quot;desclpedidocliente&quot; ) );
+-                    linea1-&gt;setDbValue ( &quot;cantlalbaran&quot;, linea-&gt;dbValue ( &quot;cantlpedidocliente&quot; ) );
+-                    linea1-&gt;setDbValue ( &quot;pvplalbaran&quot;, linea-&gt;dbValue ( &quot;pvplpedidocliente&quot; ) );
+-                    linea1-&gt;setDbValue ( &quot;ivalalbaran&quot;, linea-&gt;dbValue ( &quot;ivalpedidocliente&quot; ) );
+-                    linea1-&gt;setDbValue ( &quot;descuentolalbaran&quot;, linea-&gt;dbValue ( &quot;descuentolpedidocliente&quot; ) );
+-                    linea1-&gt;setDbValue ( &quot;idarticulo&quot;, linea-&gt;dbValue ( &quot;idarticulo&quot; ) );
+-                    linea1-&gt;setDbValue ( &quot;codigocompletoarticulo&quot;, linea-&gt;dbValue ( &quot;codigocompletoarticulo&quot; ) );
+-                    linea1-&gt;setDbValue ( &quot;nomarticulo&quot;, linea-&gt;dbValue ( &quot;nomarticulo&quot; ) );
+-                    bud-&gt;getlistalineas() -&gt;setProcesarCambios ( TRUE );
+-                } // end if
+-            } // end for
+-
+-            /// Traspasamos los descuentos.
+-            for ( int i = 0; i &lt; m_listadescuentos-&gt;rowCount(); ++i ) {
+-                linea1 = m_listadescuentos-&gt;lineaat ( i );
+-                if ( linea1-&gt;dbValue ( &quot;proporciondpedidocliente&quot; ) != &quot;&quot; ) {
+-                    linea = bud-&gt;getlistadescuentos() -&gt;lineaat ( bud-&gt;getlistadescuentos() -&gt;rowCount() - 1 );
+-                    bud-&gt;getlistadescuentos() -&gt;setProcesarCambios ( FALSE );
+-                    linea-&gt;setDbValue ( &quot;conceptdalbaran&quot;, linea1-&gt;dbValue ( &quot;conceptdpedidocliente&quot; ) );
+-                    linea-&gt;setDbValue ( &quot;proporciondalbaran&quot;, linea1-&gt;dbValue ( &quot;proporciondpedidocliente&quot; ) );
+-                    bud-&gt;getlistadescuentos() -&gt;setProcesarCambios ( TRUE );
+-                    bud-&gt;getlistadescuentos() -&gt;newRecord();
+-                } // end if
+-            } // end for
+-            /// Pintamos el pedido y lo presentamos.
+-            bud-&gt;pintar();
+-            bud-&gt;calculaypintatotales();
+-            bud-&gt;show();
+-
+-        } catch ( ... ) {
+-            blMsgInfo ( _( &quot;Error inesperado&quot; ), this );
+-            if ( cur ) delete cur;
+-            if ( bud ) delete bud;
+-        } // end try
+-    */
+     
+ }
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/openreports/ca/pedidoproveedor.rml b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/openreports/ca/pedidoproveedor.rml
+index 9842d92..e34aa49 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/openreports/ca/pedidoproveedor.rml
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/openreports/ca/pedidoproveedor.rml
+@@ -1,136 +1,208 @@
+-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot; ?&gt;
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;no&quot; ?&gt;
+ &lt;!DOCTYPE document SYSTEM &quot;rml_1_0.dtd&quot;&gt;
+ &lt;document&gt;
+-&lt;template pageSize=&quot;(21cm, 29.7cm)&quot; leftMargin=&quot;0cm&quot; rightMargin=&quot;0cm&quot; topMargin=&quot;1.0cm&quot; bottomMargin=&quot;2.0cm&quot; title=&quot;Pedido a proveedor&quot; author=&quot;Tomeu Borras&quot; allowSplitting=&quot;20&quot;&gt;
++&lt;template pageSize=&quot;(21cm, 29.7cm)&quot; leftMargin=&quot;0cm&quot; rightMargin=&quot;0cm&quot; topMargin=&quot;1.0cm&quot; bottomMargin=&quot;2.0cm&quot; title=&quot;Pedido&quot; author=&quot;&quot;&gt;
+ 	&lt;pageTemplate id=&quot;main&quot;&gt;
+ 		&lt;pageGraphics&gt;
+ 		&lt;include src=&quot;[CONF_DIR_OPENREPORTS]plantilla.rml&quot;/&gt;
+ 
+ 		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
+ 		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;16&quot;/&gt;
+-		&lt;drawString x=&quot;1.5cm&quot; y=&quot;24.5cm&quot;&gt;PEDIDO A PROVEEDOR&lt;/drawString&gt;
++		
++&lt;!--IF QUERY=&quot;SELECT nomproveedor, cifproveedor, dirproveedor, poblproveedor, telproveedor, emailproveedor FROM PROVEEDOR WHERE idproveedor = [idproveedor]&quot;--&gt;
++&lt;!--QUERY=&quot;SELECT  nomproveedor, cifproveedor, dirproveedor, poblproveedor, telproveedor, emailproveedor AS eml1 FROM proveedor WHERE idproveedor=[idproveedor]&quot;--&gt;
+ 
+-&lt;!--IF QUERY=&quot;SELECT * FROM PROVEEDOR WHERE idproveedor = [idproveedor]&quot;--&gt;
+-&lt;!--QUERY=&quot;SELECT * FROM proveedor WHERE idproveedor=[idproveedor]&quot;--&gt;
++		&lt;setFont name=&quot;Helvetica-Bold&quot; size=&quot;11&quot;/&gt;
++		&lt;fill color=&quot;(1,1,1)&quot;/&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;26.53cm&quot;&gt;Datos del proveedor:&lt;/drawString&gt;
+ 
+ 		&lt;!-- LOS DATOS DEL PROVEEDOR --&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;12&quot;/&gt;
+-		&lt;drawString x=&quot;8.5cm&quot; y=&quot;24cm&quot;&gt;[nomproveedor] -- [telproveedor]&lt;/drawString&gt;
+-		&lt;drawString x=&quot;8.5cm&quot; y=&quot;23.5cm&quot;&gt;[dirproveedor]&lt;/drawString&gt;
+-		&lt;drawString x=&quot;8.5cm&quot; y=&quot;23cm&quot;&gt;[poblproveedor]&lt;/drawString&gt;
+-
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;12&quot;/&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;10&quot;/&gt;
++		&lt;fill color=&quot;(0,0,0)&quot;/&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;26.05cm&quot;&gt;[idproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;25.6cm&quot;&gt;[nomproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;25.15cm&quot;&gt;[cifproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;24.7cm&quot;&gt;[dirproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;24.25cm&quot;&gt;[poblproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;23.8cm&quot;&gt;[telproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;23.35cm&quot;&gt;[eml1]&lt;/drawString&gt;
++
++
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;10&quot;/&gt;
+ 		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
+-		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+-		&lt;drawCentredString x=&quot;5.5cm&quot; y=&quot;21.2cm&quot;&gt;NIF&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;8.5cm&quot; y=&quot;21.2cm&quot;&gt;Cliente&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;11.5cm&quot; y=&quot;21.2cm&quot;&gt;Fecha&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;14.5cm&quot; y=&quot;21.2cm&quot;&gt;N. Ped.&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;17.5cm&quot; y=&quot;21.2cm&quot;&gt;Ref&lt;/drawCentredString&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;12&quot;/&gt;
+-		&lt;drawCentredString x=&quot;5.5cm&quot; y=&quot;20.4cm&quot;&gt;[cifproveedor]&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;8.5cm&quot; y=&quot;20.4cm&quot;&gt;[idproveedor]&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;11.5cm&quot; y=&quot;20.4cm&quot;&gt;[fechapedidoproveedor]&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;14.5cm&quot; y=&quot;20.4cm&quot;&gt;[numpedidoproveedor]&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;17.5cm&quot; y=&quot;20.4cm&quot;&gt;[refpedidoproveedor]&lt;/drawCentredString&gt;
+-		&lt;/pageGraphics&gt;
+-		&lt;!-- FRAME DE CONTENIDOS --&gt;
+-		&lt;frame id=&quot;column&quot; x1=&quot;1cm&quot; y1=&quot;5cm&quot; width=&quot;19cm&quot; height=&quot;15cm&quot;/&gt;
+-	&lt;/pageTemplate&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;26.05cm&quot;&gt;Nº Cliente:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;25.6cm&quot;&gt;Nombre/Empresa:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;25.15cm&quot;&gt;NIF/CIF:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;24.7cm&quot;&gt;Dirección:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;24.25cm&quot;&gt;Población:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;23.8cm&quot;&gt;Teléfono:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;23.35cm&quot;&gt;Dirección Email:&lt;/drawString&gt;
++
++		&lt;!--Fecha pedidoproveedor--&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;11&quot;/&gt;
++
++		&lt;drawString x=&quot;10cm&quot; y=&quot;27.95cm&quot;&gt;Fecha pedido:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;27.5cm&quot;&gt;Nº pedido:&lt;/drawString&gt;
++		&lt;drawString x=&quot;17.0cm&quot; y=&quot;27.95cm&quot;&gt;Referencia:&lt;/drawString&gt;
++
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;27.95cm&quot;&gt;[fechapedidoproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;27.5cm&quot;&gt;[numpedidoproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;17.0cm&quot; y=&quot;27.5cm&quot;&gt;[refpedidoproveedor]&lt;/drawString&gt;
++
++		&lt;!-- INCLUDE FILE=&quot;[CONF_DIR_OPENREPORTS]plantilla_empresa.rml&quot; --&gt;
++
++		&lt;setFont name=&quot;Helvetica-Bold&quot; size=&quot;12&quot;/&gt;
++		&lt;drawCentredString x=&quot;5.3cm&quot; y=&quot;26.3cm&quot;&gt;- PEDIDO A PROVEEDOR -&lt;/drawCentredString&gt;
+ 
+ &lt;!--END QUERY--&gt;
+ &lt;!--END IF QUERY--&gt;
+ 
+-	&lt;pageTemplate id=&quot;main&quot;&gt;
+-		&lt;pageGraphics&gt;
+-		&lt;!-- EL LOGO DE CABECERA --&gt;
+-		&lt;image x=&quot;3cm&quot; y=&quot;26cm&quot; width=&quot;17cm&quot; file=&quot;logo.jpg&quot;/&gt;
+-
+-		&lt;!-- EL DRAFT --&gt;
+-			&lt;!--setFont name=&quot;Helvetica&quot; size=&quot;100&quot;/&gt;
+-			&lt;fill color=&quot;(1,0.9,0.9)&quot;/&gt;
+-			&lt;stroke color=&quot;(1,0.9,0.9)&quot;/&gt;
+-			&lt;translate dx=&quot;15cm&quot; dy=&quot;-5.5cm&quot;/&gt;
+-			&lt;rotate degrees=&quot;50&quot;/&gt;
+-			&lt;drawString x=&quot;23mm&quot; y=&quot;15.7cm&quot;&gt;BORRADOR&lt;/drawString&gt;
+-			&lt;lineMode width=&quot;4mm&quot;/&gt;
+-			&lt;rect round=&quot;1cm&quot; x=&quot;18mm&quot; y=&quot;15cm&quot; width=&quot;21cm&quot; height=&quot;4cm&quot; fill=&quot;no&quot; stroke=&quot;yes&quot;/&gt;	
+-		&lt;rotate degrees=&quot;-50&quot;/&gt;
+-		&lt;translate dx=&quot;-15cm&quot; dy=&quot;5.5cm&quot;/--&gt;
+-
+-		&lt;!-- EL PIE DE PAGINA --&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;8&quot;/&gt;		
+-		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
+-		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+-		&lt;drawString x=&quot;7.3cm&quot; y=&quot;1.2cm&quot;&gt;www.iglues.org -- <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">info en iglues.org</A> --&lt;/drawString&gt;
+ 
+-		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
+-		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;22&quot;/&gt;
+-		&lt;drawString x=&quot;1.5cm&quot; y=&quot;24.5cm&quot;&gt;PEDIDO A PROVEEDOR&lt;/drawString&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;7&quot;/&gt;
++		&lt;drawString x=&quot;15cm&quot; y=&quot;22.7cm&quot;&gt;Los importes están expresados en euros. [idforma_pago] [totalpedidoproveedor]&lt;/drawString&gt;
+ 
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;10&quot;/&gt;
++		&lt;drawCentredString x=&quot;5.3cm&quot; y=&quot;25.85cm&quot;&gt;Forma de pago: &lt;!--QUERY=&quot;SELECT descforma_pago FROM forma_pago WHERE idforma_pago = [idforma_pago] LIMIT 1&quot;--&gt;[descforma_pago]&lt;!--END QUERY--&gt;&lt;/drawCentredString&gt;
+ 
+-		&lt;!-- EL RECUADRO DONDE VA EL CLIENTE --&gt;
+-		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+-		&lt;lineMode width=&quot;0.3mm&quot;/&gt;
+-		&lt;rect round=&quot;0.25cm&quot; x=&quot;8cm&quot; y=&quot;22.4cm&quot; width=&quot;11cm&quot; height=&quot;2.5cm&quot; fill=&quot;no&quot; stroke=&quot;yes&quot;/&gt;
++	&lt;/pageGraphics&gt;
+ 
+-		&lt;!-- LOS DATOS DEL CLIENTE --&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;12&quot;/&gt;
+-		&lt;drawString x=&quot;8.5cm&quot; y=&quot;24cm&quot;&gt;[nomproveedor] -- [telproveedor]&lt;/drawString&gt;
+-		&lt;drawString x=&quot;8.5cm&quot; y=&quot;23.5cm&quot;&gt;[dirproveedor]&lt;/drawString&gt;
+-		&lt;drawString x=&quot;8.5cm&quot; y=&quot;23cm&quot;&gt;[poblproveedor]&lt;/drawString&gt;
+-		&lt;/pageGraphics&gt;
+ 
+ 		&lt;!-- FRAME DE CONTENIDOS --&gt;
+-		&lt;frame id=&quot;column&quot; x1=&quot;1cm&quot; y1=&quot;2cm&quot; width=&quot;19cm&quot; height=&quot;20cm&quot;/&gt;
++		&lt;frame id=&quot;column&quot; x1=&quot;1cm&quot; y1=&quot;8cm&quot; width=&quot;19cm&quot; height=&quot;14.6cm&quot; /&gt;
++
++		
+ 	&lt;/pageTemplate&gt;
+-&lt;/template&gt;
+ 
++&lt;/template&gt;
+ 
+ &lt;include src=&quot;[CONF_DIR_OPENREPORTS]estilos.rml&quot;/&gt;
+ 
+-&lt;story&gt;
+-&lt;blockTable style=&quot;tablacontenido&quot; colWidths=&quot;1.75cm, 8.55cm, 1.2cm, 1.7cm, 1.8cm, 2.25cm&quot; repeatRows=&quot;1&quot;&gt;
+-&lt;tr&gt;
+-&lt;td&gt;Codigo&lt;/td&gt;
+-&lt;td&gt;Concepto&lt;/td&gt;
+-&lt;td&gt;Und&lt;/td&gt;
+-&lt;td&gt;Precio&lt;/td&gt;
+-&lt;td&gt;Dto&lt;/td&gt;
+-&lt;td&gt;Total&lt;/td&gt;
+-&lt;/tr&gt;
+-[story]
+-&lt;/blockTable&gt;
+-
+-&lt;storyPlace x=&quot;0cm&quot; y=&quot;0cm&quot; width=&quot;15cm&quot; height=&quot;1cm&quot;&gt;
+-	&lt;place x=&quot;4cm&quot; y=&quot;3.5cm&quot; width=&quot;15cm&quot; height=&quot;2.5cm&quot;&gt;
+-&lt;blockTable&gt;
+-&lt;tr&gt;
+-&lt;td align=&quot;right&quot;&gt;
+-	[descuentos]
+-&lt;/td&gt;
+-&lt;/tr&gt;
+-&lt;/blockTable&gt;
+-&lt;/place&gt;
+-&lt;/storyPlace&gt;
++&lt;story&gt;	
++	&lt;blockTable style=&quot;tablacontenido&quot; colWidths=&quot;3.00cm, 8.5cm, 1.8cm, 2cm, 2.9cm&quot; splitByRow=&quot;2&quot; rowheights=&quot;2&quot; repeatRows=&quot;1&quot;&gt;
++		&lt;tr&gt;
++			&lt;td&gt;Codigo&lt;/td&gt;
++			&lt;td&gt;Concepto&lt;/td&gt;
++			&lt;td&gt;Unid:&lt;/td&gt;
++			&lt;td&gt;Precio/u:&lt;/td&gt;
++			&lt;td&gt;Subtotal s/iva:&lt;/td&gt;
++		&lt;/tr&gt;
++		[story codigocompletoarticulo, descpedidoproveedor, cantpedidoproveedor, pvppedidoproveedor, subtotalpedidoproveedor]
++	
++&lt;!--IF DESCUENTOS--&gt;
++		&lt;tr&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++		&lt;/tr&gt;
++
++		&lt;tr&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;para style=&quot;paragrafo2&quot;&gt;&lt;b&gt;&lt;u&gt;Descuento/s:&lt;/u&gt;&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;para style=&quot;paragrafo2der&quot;&gt;&lt;b&gt;&lt;u&gt;% Dto:&lt;/u&gt;&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;para style=&quot;paragrafo2der&quot;&gt;&lt;b&gt;&lt;u&gt;Total dto:&lt;/u&gt;&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++		&lt;/tr&gt;
++
++&lt;!--LINEAS DESCUENTO--&gt;
++		&lt;tr&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;para style=&quot;paragrafo2&quot;&gt;[conceptdpedidoproveedor]&lt;/para&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;[proporciondpedidoproveedor]%&lt;/td&gt;
++			&lt;td&gt;[totaldescdpedidoproveedor]&lt;/td&gt;
++		&lt;/tr&gt;
++&lt;!--END LINEAS DESCUENTO--&gt;
++&lt;!--END IF DESCUENTOS--&gt;
++
++
++&lt;!--IF QUERY=&quot;SELECT comentpedidoproveedor FROM pedidoproveedor WHERE length(comentpedidoproveedor) &gt; 0 AND idpedidoproveedor = [idpedidoproveedor]&quot;--&gt;
++&lt;!--QUERY=&quot;SELECT comentpedidoproveedor FROM pedidoproveedor WHERE length(comentpedidoproveedor) &gt; 0 AND idpedidoproveedor = [idpedidoproveedor]&quot;--&gt;
++		&lt;tr&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++		&lt;/tr&gt;
++
++		&lt;tr&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;para style=&quot;paragrafo2&quot;&gt;&lt;b&gt;&lt;u&gt;Comentario/s:&lt;/u&gt;&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++		&lt;/tr&gt;
++
++		&lt;tr&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;para style=&quot;paragrafo2&quot;&gt;[comentpedidoproveedor]&lt;/para&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++		&lt;/tr&gt;
++&lt;!--END QUERY--&gt;
++&lt;!--END IF QUERY--&gt;
+ 
+-&lt;storyPlace x=&quot;0cm&quot; y=&quot;0cm&quot; width=&quot;15cm&quot; height=&quot;1cm&quot;&gt;
+-&lt;place x=&quot;12cm&quot; y=&quot;2cm&quot; width=&quot;8cm&quot; height=&quot;2.5cm&quot;&gt;
+-&lt;blockTable&gt;
+-&lt;tr&gt;
+-&lt;td align=&quot;right&quot;&gt;
+-	[totales]
+-&lt;/td&gt;
+-&lt;/tr&gt;
+-&lt;/blockTable&gt;
++	&lt;/blockTable&gt;
++
++	
++	&lt;storyPlace x=&quot;0cm&quot; y=&quot;0cm&quot; width=&quot;20cm&quot; height=&quot;1cm&quot;&gt;
++		&lt;place x=&quot;1cm&quot; y=&quot;4cm&quot; width=&quot;19cm&quot; height=&quot;4cm&quot;&gt;
++			&lt;blockTable style=&quot;total&quot; colWidths=&quot;16.3cm,2.7cm&quot; &gt;
++				&lt;tr&gt;
++					&lt;td colspan=&quot;2&quot;&gt;
++						&lt;blockTable style=&quot;titulo&quot; colWidths=&quot;5.5cm, 3.2cm, 1.4cm, 1.75cm, 1.4cm, 1.9cm, 1.15cm, 2.7cm&quot;&gt;
++							&lt;tr&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;Base Imponible:&lt;/td&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;I.V.A.%:&lt;/td&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;Tot I.V.A.:&lt;/td&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;Total:&lt;/td&gt;
++							&lt;/tr&gt;
++						&lt;/blockTable&gt;
++					&lt;/td&gt;
++				&lt;/tr&gt;
++				&lt;tr&gt;
++					&lt;td&gt;
++						&lt;blockTable style=&quot;contenido&quot; colWidths=&quot;5.5cm, 3.2cm, 1.4cm, 1.75cm, 1.4cm, 1.9cm, 1.15cm&quot; &gt;
++						&lt;!--TOTALES--&gt;
++							&lt;tr&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;[bimp]&lt;/td&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;[tbimp]%&lt;/td&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;[iva]&lt;/td&gt;
++								&lt;td&gt;  &lt;/td&gt;
++							&lt;/tr&gt;
++						&lt;!--END TOTALES--&gt;
++						&lt;/blockTable&gt;
++					&lt;/td&gt;
++					&lt;td&gt;
++						&lt;blockTable style=&quot;preciofinal&quot; colWidths=&quot;2.7cm&quot; &gt;
++							&lt;tr&gt;
++								&lt;td&gt;[total] &#8364;&lt;/td&gt;
++							&lt;/tr&gt;
++						&lt;/blockTable&gt;
++					&lt;/td&gt;
++				&lt;/tr&gt;
++			&lt;/blockTable&gt;
++		&lt;/place&gt;
++	&lt;/storyPlace&gt;
++
++
++&lt;storyPlace x=&quot;15cm&quot; y=&quot;1cm&quot; width=&quot;15cm&quot; height=&quot;1cm&quot;&gt;
++&lt;place x=&quot;15cm&quot; y=&quot;0cm&quot; width=&quot;15cm&quot; height=&quot;2.5cm&quot;&gt;
++&lt;barCode code=&quot;code128&quot; height=&quot;1cm&quot;&gt;PEDP [numpedidoproveedor] [refpedidoproveedor]&lt;/barCode&gt;
+ &lt;/place&gt;
+ &lt;/storyPlace&gt;
+-&lt;!-- storyPlace x=&quot;12cm&quot; y=&quot;27cm&quot; width=&quot;15cm&quot; height=&quot;1cm&quot;&gt;
+-&lt;place x=&quot;12cm&quot; y=&quot;27cm&quot; width=&quot;15cm&quot; height=&quot;2.5cm&quot;&gt;
+-&lt;barCode code=&quot;code128&quot; height=&quot;1cm&quot;&gt;PEDP [idpedidoproveedor] [numpedidoproveedor] [refpedidoproveedor]&lt;/barCode&gt;
+-&lt;/place&gt;
+-&lt;/storyPlace --&gt;
++
++
+ &lt;/story&gt;
+ &lt;/document&gt;
++
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/openreports/en/pedidoproveedor.rml b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/openreports/en/pedidoproveedor.rml
+index 9842d92..e34aa49 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/openreports/en/pedidoproveedor.rml
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/openreports/en/pedidoproveedor.rml
+@@ -1,136 +1,208 @@
+-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot; ?&gt;
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;no&quot; ?&gt;
+ &lt;!DOCTYPE document SYSTEM &quot;rml_1_0.dtd&quot;&gt;
+ &lt;document&gt;
+-&lt;template pageSize=&quot;(21cm, 29.7cm)&quot; leftMargin=&quot;0cm&quot; rightMargin=&quot;0cm&quot; topMargin=&quot;1.0cm&quot; bottomMargin=&quot;2.0cm&quot; title=&quot;Pedido a proveedor&quot; author=&quot;Tomeu Borras&quot; allowSplitting=&quot;20&quot;&gt;
++&lt;template pageSize=&quot;(21cm, 29.7cm)&quot; leftMargin=&quot;0cm&quot; rightMargin=&quot;0cm&quot; topMargin=&quot;1.0cm&quot; bottomMargin=&quot;2.0cm&quot; title=&quot;Pedido&quot; author=&quot;&quot;&gt;
+ 	&lt;pageTemplate id=&quot;main&quot;&gt;
+ 		&lt;pageGraphics&gt;
+ 		&lt;include src=&quot;[CONF_DIR_OPENREPORTS]plantilla.rml&quot;/&gt;
+ 
+ 		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
+ 		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;16&quot;/&gt;
+-		&lt;drawString x=&quot;1.5cm&quot; y=&quot;24.5cm&quot;&gt;PEDIDO A PROVEEDOR&lt;/drawString&gt;
++		
++&lt;!--IF QUERY=&quot;SELECT nomproveedor, cifproveedor, dirproveedor, poblproveedor, telproveedor, emailproveedor FROM PROVEEDOR WHERE idproveedor = [idproveedor]&quot;--&gt;
++&lt;!--QUERY=&quot;SELECT  nomproveedor, cifproveedor, dirproveedor, poblproveedor, telproveedor, emailproveedor AS eml1 FROM proveedor WHERE idproveedor=[idproveedor]&quot;--&gt;
+ 
+-&lt;!--IF QUERY=&quot;SELECT * FROM PROVEEDOR WHERE idproveedor = [idproveedor]&quot;--&gt;
+-&lt;!--QUERY=&quot;SELECT * FROM proveedor WHERE idproveedor=[idproveedor]&quot;--&gt;
++		&lt;setFont name=&quot;Helvetica-Bold&quot; size=&quot;11&quot;/&gt;
++		&lt;fill color=&quot;(1,1,1)&quot;/&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;26.53cm&quot;&gt;Datos del proveedor:&lt;/drawString&gt;
+ 
+ 		&lt;!-- LOS DATOS DEL PROVEEDOR --&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;12&quot;/&gt;
+-		&lt;drawString x=&quot;8.5cm&quot; y=&quot;24cm&quot;&gt;[nomproveedor] -- [telproveedor]&lt;/drawString&gt;
+-		&lt;drawString x=&quot;8.5cm&quot; y=&quot;23.5cm&quot;&gt;[dirproveedor]&lt;/drawString&gt;
+-		&lt;drawString x=&quot;8.5cm&quot; y=&quot;23cm&quot;&gt;[poblproveedor]&lt;/drawString&gt;
+-
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;12&quot;/&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;10&quot;/&gt;
++		&lt;fill color=&quot;(0,0,0)&quot;/&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;26.05cm&quot;&gt;[idproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;25.6cm&quot;&gt;[nomproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;25.15cm&quot;&gt;[cifproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;24.7cm&quot;&gt;[dirproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;24.25cm&quot;&gt;[poblproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;23.8cm&quot;&gt;[telproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;23.35cm&quot;&gt;[eml1]&lt;/drawString&gt;
++
++
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;10&quot;/&gt;
+ 		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
+-		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+-		&lt;drawCentredString x=&quot;5.5cm&quot; y=&quot;21.2cm&quot;&gt;NIF&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;8.5cm&quot; y=&quot;21.2cm&quot;&gt;Cliente&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;11.5cm&quot; y=&quot;21.2cm&quot;&gt;Fecha&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;14.5cm&quot; y=&quot;21.2cm&quot;&gt;N. Ped.&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;17.5cm&quot; y=&quot;21.2cm&quot;&gt;Ref&lt;/drawCentredString&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;12&quot;/&gt;
+-		&lt;drawCentredString x=&quot;5.5cm&quot; y=&quot;20.4cm&quot;&gt;[cifproveedor]&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;8.5cm&quot; y=&quot;20.4cm&quot;&gt;[idproveedor]&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;11.5cm&quot; y=&quot;20.4cm&quot;&gt;[fechapedidoproveedor]&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;14.5cm&quot; y=&quot;20.4cm&quot;&gt;[numpedidoproveedor]&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;17.5cm&quot; y=&quot;20.4cm&quot;&gt;[refpedidoproveedor]&lt;/drawCentredString&gt;
+-		&lt;/pageGraphics&gt;
+-		&lt;!-- FRAME DE CONTENIDOS --&gt;
+-		&lt;frame id=&quot;column&quot; x1=&quot;1cm&quot; y1=&quot;5cm&quot; width=&quot;19cm&quot; height=&quot;15cm&quot;/&gt;
+-	&lt;/pageTemplate&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;26.05cm&quot;&gt;Nº Cliente:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;25.6cm&quot;&gt;Nombre/Empresa:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;25.15cm&quot;&gt;NIF/CIF:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;24.7cm&quot;&gt;Dirección:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;24.25cm&quot;&gt;Población:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;23.8cm&quot;&gt;Teléfono:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;23.35cm&quot;&gt;Dirección Email:&lt;/drawString&gt;
++
++		&lt;!--Fecha pedidoproveedor--&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;11&quot;/&gt;
++
++		&lt;drawString x=&quot;10cm&quot; y=&quot;27.95cm&quot;&gt;Fecha pedido:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;27.5cm&quot;&gt;Nº pedido:&lt;/drawString&gt;
++		&lt;drawString x=&quot;17.0cm&quot; y=&quot;27.95cm&quot;&gt;Referencia:&lt;/drawString&gt;
++
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;27.95cm&quot;&gt;[fechapedidoproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;27.5cm&quot;&gt;[numpedidoproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;17.0cm&quot; y=&quot;27.5cm&quot;&gt;[refpedidoproveedor]&lt;/drawString&gt;
++
++		&lt;!-- INCLUDE FILE=&quot;[CONF_DIR_OPENREPORTS]plantilla_empresa.rml&quot; --&gt;
++
++		&lt;setFont name=&quot;Helvetica-Bold&quot; size=&quot;12&quot;/&gt;
++		&lt;drawCentredString x=&quot;5.3cm&quot; y=&quot;26.3cm&quot;&gt;- PEDIDO A PROVEEDOR -&lt;/drawCentredString&gt;
+ 
+ &lt;!--END QUERY--&gt;
+ &lt;!--END IF QUERY--&gt;
+ 
+-	&lt;pageTemplate id=&quot;main&quot;&gt;
+-		&lt;pageGraphics&gt;
+-		&lt;!-- EL LOGO DE CABECERA --&gt;
+-		&lt;image x=&quot;3cm&quot; y=&quot;26cm&quot; width=&quot;17cm&quot; file=&quot;logo.jpg&quot;/&gt;
+-
+-		&lt;!-- EL DRAFT --&gt;
+-			&lt;!--setFont name=&quot;Helvetica&quot; size=&quot;100&quot;/&gt;
+-			&lt;fill color=&quot;(1,0.9,0.9)&quot;/&gt;
+-			&lt;stroke color=&quot;(1,0.9,0.9)&quot;/&gt;
+-			&lt;translate dx=&quot;15cm&quot; dy=&quot;-5.5cm&quot;/&gt;
+-			&lt;rotate degrees=&quot;50&quot;/&gt;
+-			&lt;drawString x=&quot;23mm&quot; y=&quot;15.7cm&quot;&gt;BORRADOR&lt;/drawString&gt;
+-			&lt;lineMode width=&quot;4mm&quot;/&gt;
+-			&lt;rect round=&quot;1cm&quot; x=&quot;18mm&quot; y=&quot;15cm&quot; width=&quot;21cm&quot; height=&quot;4cm&quot; fill=&quot;no&quot; stroke=&quot;yes&quot;/&gt;	
+-		&lt;rotate degrees=&quot;-50&quot;/&gt;
+-		&lt;translate dx=&quot;-15cm&quot; dy=&quot;5.5cm&quot;/--&gt;
+-
+-		&lt;!-- EL PIE DE PAGINA --&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;8&quot;/&gt;		
+-		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
+-		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+-		&lt;drawString x=&quot;7.3cm&quot; y=&quot;1.2cm&quot;&gt;www.iglues.org -- <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">info en iglues.org</A> --&lt;/drawString&gt;
+ 
+-		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
+-		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;22&quot;/&gt;
+-		&lt;drawString x=&quot;1.5cm&quot; y=&quot;24.5cm&quot;&gt;PEDIDO A PROVEEDOR&lt;/drawString&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;7&quot;/&gt;
++		&lt;drawString x=&quot;15cm&quot; y=&quot;22.7cm&quot;&gt;Los importes están expresados en euros. [idforma_pago] [totalpedidoproveedor]&lt;/drawString&gt;
+ 
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;10&quot;/&gt;
++		&lt;drawCentredString x=&quot;5.3cm&quot; y=&quot;25.85cm&quot;&gt;Forma de pago: &lt;!--QUERY=&quot;SELECT descforma_pago FROM forma_pago WHERE idforma_pago = [idforma_pago] LIMIT 1&quot;--&gt;[descforma_pago]&lt;!--END QUERY--&gt;&lt;/drawCentredString&gt;
+ 
+-		&lt;!-- EL RECUADRO DONDE VA EL CLIENTE --&gt;
+-		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+-		&lt;lineMode width=&quot;0.3mm&quot;/&gt;
+-		&lt;rect round=&quot;0.25cm&quot; x=&quot;8cm&quot; y=&quot;22.4cm&quot; width=&quot;11cm&quot; height=&quot;2.5cm&quot; fill=&quot;no&quot; stroke=&quot;yes&quot;/&gt;
++	&lt;/pageGraphics&gt;
+ 
+-		&lt;!-- LOS DATOS DEL CLIENTE --&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;12&quot;/&gt;
+-		&lt;drawString x=&quot;8.5cm&quot; y=&quot;24cm&quot;&gt;[nomproveedor] -- [telproveedor]&lt;/drawString&gt;
+-		&lt;drawString x=&quot;8.5cm&quot; y=&quot;23.5cm&quot;&gt;[dirproveedor]&lt;/drawString&gt;
+-		&lt;drawString x=&quot;8.5cm&quot; y=&quot;23cm&quot;&gt;[poblproveedor]&lt;/drawString&gt;
+-		&lt;/pageGraphics&gt;
+ 
+ 		&lt;!-- FRAME DE CONTENIDOS --&gt;
+-		&lt;frame id=&quot;column&quot; x1=&quot;1cm&quot; y1=&quot;2cm&quot; width=&quot;19cm&quot; height=&quot;20cm&quot;/&gt;
++		&lt;frame id=&quot;column&quot; x1=&quot;1cm&quot; y1=&quot;8cm&quot; width=&quot;19cm&quot; height=&quot;14.6cm&quot; /&gt;
++
++		
+ 	&lt;/pageTemplate&gt;
+-&lt;/template&gt;
+ 
++&lt;/template&gt;
+ 
+ &lt;include src=&quot;[CONF_DIR_OPENREPORTS]estilos.rml&quot;/&gt;
+ 
+-&lt;story&gt;
+-&lt;blockTable style=&quot;tablacontenido&quot; colWidths=&quot;1.75cm, 8.55cm, 1.2cm, 1.7cm, 1.8cm, 2.25cm&quot; repeatRows=&quot;1&quot;&gt;
+-&lt;tr&gt;
+-&lt;td&gt;Codigo&lt;/td&gt;
+-&lt;td&gt;Concepto&lt;/td&gt;
+-&lt;td&gt;Und&lt;/td&gt;
+-&lt;td&gt;Precio&lt;/td&gt;
+-&lt;td&gt;Dto&lt;/td&gt;
+-&lt;td&gt;Total&lt;/td&gt;
+-&lt;/tr&gt;
+-[story]
+-&lt;/blockTable&gt;
+-
+-&lt;storyPlace x=&quot;0cm&quot; y=&quot;0cm&quot; width=&quot;15cm&quot; height=&quot;1cm&quot;&gt;
+-	&lt;place x=&quot;4cm&quot; y=&quot;3.5cm&quot; width=&quot;15cm&quot; height=&quot;2.5cm&quot;&gt;
+-&lt;blockTable&gt;
+-&lt;tr&gt;
+-&lt;td align=&quot;right&quot;&gt;
+-	[descuentos]
+-&lt;/td&gt;
+-&lt;/tr&gt;
+-&lt;/blockTable&gt;
+-&lt;/place&gt;
+-&lt;/storyPlace&gt;
++&lt;story&gt;	
++	&lt;blockTable style=&quot;tablacontenido&quot; colWidths=&quot;3.00cm, 8.5cm, 1.8cm, 2cm, 2.9cm&quot; splitByRow=&quot;2&quot; rowheights=&quot;2&quot; repeatRows=&quot;1&quot;&gt;
++		&lt;tr&gt;
++			&lt;td&gt;Codigo&lt;/td&gt;
++			&lt;td&gt;Concepto&lt;/td&gt;
++			&lt;td&gt;Unid:&lt;/td&gt;
++			&lt;td&gt;Precio/u:&lt;/td&gt;
++			&lt;td&gt;Subtotal s/iva:&lt;/td&gt;
++		&lt;/tr&gt;
++		[story codigocompletoarticulo, descpedidoproveedor, cantpedidoproveedor, pvppedidoproveedor, subtotalpedidoproveedor]
++	
++&lt;!--IF DESCUENTOS--&gt;
++		&lt;tr&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++		&lt;/tr&gt;
++
++		&lt;tr&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;para style=&quot;paragrafo2&quot;&gt;&lt;b&gt;&lt;u&gt;Descuento/s:&lt;/u&gt;&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;para style=&quot;paragrafo2der&quot;&gt;&lt;b&gt;&lt;u&gt;% Dto:&lt;/u&gt;&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;para style=&quot;paragrafo2der&quot;&gt;&lt;b&gt;&lt;u&gt;Total dto:&lt;/u&gt;&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++		&lt;/tr&gt;
++
++&lt;!--LINEAS DESCUENTO--&gt;
++		&lt;tr&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;para style=&quot;paragrafo2&quot;&gt;[conceptdpedidoproveedor]&lt;/para&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;[proporciondpedidoproveedor]%&lt;/td&gt;
++			&lt;td&gt;[totaldescdpedidoproveedor]&lt;/td&gt;
++		&lt;/tr&gt;
++&lt;!--END LINEAS DESCUENTO--&gt;
++&lt;!--END IF DESCUENTOS--&gt;
++
++
++&lt;!--IF QUERY=&quot;SELECT comentpedidoproveedor FROM pedidoproveedor WHERE length(comentpedidoproveedor) &gt; 0 AND idpedidoproveedor = [idpedidoproveedor]&quot;--&gt;
++&lt;!--QUERY=&quot;SELECT comentpedidoproveedor FROM pedidoproveedor WHERE length(comentpedidoproveedor) &gt; 0 AND idpedidoproveedor = [idpedidoproveedor]&quot;--&gt;
++		&lt;tr&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++		&lt;/tr&gt;
++
++		&lt;tr&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;para style=&quot;paragrafo2&quot;&gt;&lt;b&gt;&lt;u&gt;Comentario/s:&lt;/u&gt;&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++		&lt;/tr&gt;
++
++		&lt;tr&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;para style=&quot;paragrafo2&quot;&gt;[comentpedidoproveedor]&lt;/para&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++		&lt;/tr&gt;
++&lt;!--END QUERY--&gt;
++&lt;!--END IF QUERY--&gt;
+ 
+-&lt;storyPlace x=&quot;0cm&quot; y=&quot;0cm&quot; width=&quot;15cm&quot; height=&quot;1cm&quot;&gt;
+-&lt;place x=&quot;12cm&quot; y=&quot;2cm&quot; width=&quot;8cm&quot; height=&quot;2.5cm&quot;&gt;
+-&lt;blockTable&gt;
+-&lt;tr&gt;
+-&lt;td align=&quot;right&quot;&gt;
+-	[totales]
+-&lt;/td&gt;
+-&lt;/tr&gt;
+-&lt;/blockTable&gt;
++	&lt;/blockTable&gt;
++
++	
++	&lt;storyPlace x=&quot;0cm&quot; y=&quot;0cm&quot; width=&quot;20cm&quot; height=&quot;1cm&quot;&gt;
++		&lt;place x=&quot;1cm&quot; y=&quot;4cm&quot; width=&quot;19cm&quot; height=&quot;4cm&quot;&gt;
++			&lt;blockTable style=&quot;total&quot; colWidths=&quot;16.3cm,2.7cm&quot; &gt;
++				&lt;tr&gt;
++					&lt;td colspan=&quot;2&quot;&gt;
++						&lt;blockTable style=&quot;titulo&quot; colWidths=&quot;5.5cm, 3.2cm, 1.4cm, 1.75cm, 1.4cm, 1.9cm, 1.15cm, 2.7cm&quot;&gt;
++							&lt;tr&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;Base Imponible:&lt;/td&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;I.V.A.%:&lt;/td&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;Tot I.V.A.:&lt;/td&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;Total:&lt;/td&gt;
++							&lt;/tr&gt;
++						&lt;/blockTable&gt;
++					&lt;/td&gt;
++				&lt;/tr&gt;
++				&lt;tr&gt;
++					&lt;td&gt;
++						&lt;blockTable style=&quot;contenido&quot; colWidths=&quot;5.5cm, 3.2cm, 1.4cm, 1.75cm, 1.4cm, 1.9cm, 1.15cm&quot; &gt;
++						&lt;!--TOTALES--&gt;
++							&lt;tr&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;[bimp]&lt;/td&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;[tbimp]%&lt;/td&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;[iva]&lt;/td&gt;
++								&lt;td&gt;  &lt;/td&gt;
++							&lt;/tr&gt;
++						&lt;!--END TOTALES--&gt;
++						&lt;/blockTable&gt;
++					&lt;/td&gt;
++					&lt;td&gt;
++						&lt;blockTable style=&quot;preciofinal&quot; colWidths=&quot;2.7cm&quot; &gt;
++							&lt;tr&gt;
++								&lt;td&gt;[total] &#8364;&lt;/td&gt;
++							&lt;/tr&gt;
++						&lt;/blockTable&gt;
++					&lt;/td&gt;
++				&lt;/tr&gt;
++			&lt;/blockTable&gt;
++		&lt;/place&gt;
++	&lt;/storyPlace&gt;
++
++
++&lt;storyPlace x=&quot;15cm&quot; y=&quot;1cm&quot; width=&quot;15cm&quot; height=&quot;1cm&quot;&gt;
++&lt;place x=&quot;15cm&quot; y=&quot;0cm&quot; width=&quot;15cm&quot; height=&quot;2.5cm&quot;&gt;
++&lt;barCode code=&quot;code128&quot; height=&quot;1cm&quot;&gt;PEDP [numpedidoproveedor] [refpedidoproveedor]&lt;/barCode&gt;
+ &lt;/place&gt;
+ &lt;/storyPlace&gt;
+-&lt;!-- storyPlace x=&quot;12cm&quot; y=&quot;27cm&quot; width=&quot;15cm&quot; height=&quot;1cm&quot;&gt;
+-&lt;place x=&quot;12cm&quot; y=&quot;27cm&quot; width=&quot;15cm&quot; height=&quot;2.5cm&quot;&gt;
+-&lt;barCode code=&quot;code128&quot; height=&quot;1cm&quot;&gt;PEDP [idpedidoproveedor] [numpedidoproveedor] [refpedidoproveedor]&lt;/barCode&gt;
+-&lt;/place&gt;
+-&lt;/storyPlace --&gt;
++
++
+ &lt;/story&gt;
+ &lt;/document&gt;
++
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/openreports/es/pedidoproveedor.rml b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/openreports/es/pedidoproveedor.rml
+index 9842d92..e34aa49 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/openreports/es/pedidoproveedor.rml
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/openreports/es/pedidoproveedor.rml
+@@ -1,136 +1,208 @@
+-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot; ?&gt;
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;no&quot; ?&gt;
+ &lt;!DOCTYPE document SYSTEM &quot;rml_1_0.dtd&quot;&gt;
+ &lt;document&gt;
+-&lt;template pageSize=&quot;(21cm, 29.7cm)&quot; leftMargin=&quot;0cm&quot; rightMargin=&quot;0cm&quot; topMargin=&quot;1.0cm&quot; bottomMargin=&quot;2.0cm&quot; title=&quot;Pedido a proveedor&quot; author=&quot;Tomeu Borras&quot; allowSplitting=&quot;20&quot;&gt;
++&lt;template pageSize=&quot;(21cm, 29.7cm)&quot; leftMargin=&quot;0cm&quot; rightMargin=&quot;0cm&quot; topMargin=&quot;1.0cm&quot; bottomMargin=&quot;2.0cm&quot; title=&quot;Pedido&quot; author=&quot;&quot;&gt;
+ 	&lt;pageTemplate id=&quot;main&quot;&gt;
+ 		&lt;pageGraphics&gt;
+ 		&lt;include src=&quot;[CONF_DIR_OPENREPORTS]plantilla.rml&quot;/&gt;
+ 
+ 		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
+ 		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;16&quot;/&gt;
+-		&lt;drawString x=&quot;1.5cm&quot; y=&quot;24.5cm&quot;&gt;PEDIDO A PROVEEDOR&lt;/drawString&gt;
++		
++&lt;!--IF QUERY=&quot;SELECT nomproveedor, cifproveedor, dirproveedor, poblproveedor, telproveedor, emailproveedor FROM PROVEEDOR WHERE idproveedor = [idproveedor]&quot;--&gt;
++&lt;!--QUERY=&quot;SELECT  nomproveedor, cifproveedor, dirproveedor, poblproveedor, telproveedor, emailproveedor AS eml1 FROM proveedor WHERE idproveedor=[idproveedor]&quot;--&gt;
+ 
+-&lt;!--IF QUERY=&quot;SELECT * FROM PROVEEDOR WHERE idproveedor = [idproveedor]&quot;--&gt;
+-&lt;!--QUERY=&quot;SELECT * FROM proveedor WHERE idproveedor=[idproveedor]&quot;--&gt;
++		&lt;setFont name=&quot;Helvetica-Bold&quot; size=&quot;11&quot;/&gt;
++		&lt;fill color=&quot;(1,1,1)&quot;/&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;26.53cm&quot;&gt;Datos del proveedor:&lt;/drawString&gt;
+ 
+ 		&lt;!-- LOS DATOS DEL PROVEEDOR --&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;12&quot;/&gt;
+-		&lt;drawString x=&quot;8.5cm&quot; y=&quot;24cm&quot;&gt;[nomproveedor] -- [telproveedor]&lt;/drawString&gt;
+-		&lt;drawString x=&quot;8.5cm&quot; y=&quot;23.5cm&quot;&gt;[dirproveedor]&lt;/drawString&gt;
+-		&lt;drawString x=&quot;8.5cm&quot; y=&quot;23cm&quot;&gt;[poblproveedor]&lt;/drawString&gt;
+-
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;12&quot;/&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;10&quot;/&gt;
++		&lt;fill color=&quot;(0,0,0)&quot;/&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;26.05cm&quot;&gt;[idproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;25.6cm&quot;&gt;[nomproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;25.15cm&quot;&gt;[cifproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;24.7cm&quot;&gt;[dirproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;24.25cm&quot;&gt;[poblproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;23.8cm&quot;&gt;[telproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;23.35cm&quot;&gt;[eml1]&lt;/drawString&gt;
++
++
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;10&quot;/&gt;
+ 		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
+-		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+-		&lt;drawCentredString x=&quot;5.5cm&quot; y=&quot;21.2cm&quot;&gt;NIF&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;8.5cm&quot; y=&quot;21.2cm&quot;&gt;Cliente&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;11.5cm&quot; y=&quot;21.2cm&quot;&gt;Fecha&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;14.5cm&quot; y=&quot;21.2cm&quot;&gt;N. Ped.&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;17.5cm&quot; y=&quot;21.2cm&quot;&gt;Ref&lt;/drawCentredString&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;12&quot;/&gt;
+-		&lt;drawCentredString x=&quot;5.5cm&quot; y=&quot;20.4cm&quot;&gt;[cifproveedor]&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;8.5cm&quot; y=&quot;20.4cm&quot;&gt;[idproveedor]&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;11.5cm&quot; y=&quot;20.4cm&quot;&gt;[fechapedidoproveedor]&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;14.5cm&quot; y=&quot;20.4cm&quot;&gt;[numpedidoproveedor]&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;17.5cm&quot; y=&quot;20.4cm&quot;&gt;[refpedidoproveedor]&lt;/drawCentredString&gt;
+-		&lt;/pageGraphics&gt;
+-		&lt;!-- FRAME DE CONTENIDOS --&gt;
+-		&lt;frame id=&quot;column&quot; x1=&quot;1cm&quot; y1=&quot;5cm&quot; width=&quot;19cm&quot; height=&quot;15cm&quot;/&gt;
+-	&lt;/pageTemplate&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;26.05cm&quot;&gt;Nº Cliente:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;25.6cm&quot;&gt;Nombre/Empresa:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;25.15cm&quot;&gt;NIF/CIF:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;24.7cm&quot;&gt;Dirección:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;24.25cm&quot;&gt;Población:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;23.8cm&quot;&gt;Teléfono:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;23.35cm&quot;&gt;Dirección Email:&lt;/drawString&gt;
++
++		&lt;!--Fecha pedidoproveedor--&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;11&quot;/&gt;
++
++		&lt;drawString x=&quot;10cm&quot; y=&quot;27.95cm&quot;&gt;Fecha pedido:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;27.5cm&quot;&gt;Nº pedido:&lt;/drawString&gt;
++		&lt;drawString x=&quot;17.0cm&quot; y=&quot;27.95cm&quot;&gt;Referencia:&lt;/drawString&gt;
++
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;27.95cm&quot;&gt;[fechapedidoproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;27.5cm&quot;&gt;[numpedidoproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;17.0cm&quot; y=&quot;27.5cm&quot;&gt;[refpedidoproveedor]&lt;/drawString&gt;
++
++		&lt;!-- INCLUDE FILE=&quot;[CONF_DIR_OPENREPORTS]plantilla_empresa.rml&quot; --&gt;
++
++		&lt;setFont name=&quot;Helvetica-Bold&quot; size=&quot;12&quot;/&gt;
++		&lt;drawCentredString x=&quot;5.3cm&quot; y=&quot;26.3cm&quot;&gt;- PEDIDO A PROVEEDOR -&lt;/drawCentredString&gt;
+ 
+ &lt;!--END QUERY--&gt;
+ &lt;!--END IF QUERY--&gt;
+ 
+-	&lt;pageTemplate id=&quot;main&quot;&gt;
+-		&lt;pageGraphics&gt;
+-		&lt;!-- EL LOGO DE CABECERA --&gt;
+-		&lt;image x=&quot;3cm&quot; y=&quot;26cm&quot; width=&quot;17cm&quot; file=&quot;logo.jpg&quot;/&gt;
+-
+-		&lt;!-- EL DRAFT --&gt;
+-			&lt;!--setFont name=&quot;Helvetica&quot; size=&quot;100&quot;/&gt;
+-			&lt;fill color=&quot;(1,0.9,0.9)&quot;/&gt;
+-			&lt;stroke color=&quot;(1,0.9,0.9)&quot;/&gt;
+-			&lt;translate dx=&quot;15cm&quot; dy=&quot;-5.5cm&quot;/&gt;
+-			&lt;rotate degrees=&quot;50&quot;/&gt;
+-			&lt;drawString x=&quot;23mm&quot; y=&quot;15.7cm&quot;&gt;BORRADOR&lt;/drawString&gt;
+-			&lt;lineMode width=&quot;4mm&quot;/&gt;
+-			&lt;rect round=&quot;1cm&quot; x=&quot;18mm&quot; y=&quot;15cm&quot; width=&quot;21cm&quot; height=&quot;4cm&quot; fill=&quot;no&quot; stroke=&quot;yes&quot;/&gt;	
+-		&lt;rotate degrees=&quot;-50&quot;/&gt;
+-		&lt;translate dx=&quot;-15cm&quot; dy=&quot;5.5cm&quot;/--&gt;
+-
+-		&lt;!-- EL PIE DE PAGINA --&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;8&quot;/&gt;		
+-		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
+-		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+-		&lt;drawString x=&quot;7.3cm&quot; y=&quot;1.2cm&quot;&gt;www.iglues.org -- <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">info en iglues.org</A> --&lt;/drawString&gt;
+ 
+-		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
+-		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;22&quot;/&gt;
+-		&lt;drawString x=&quot;1.5cm&quot; y=&quot;24.5cm&quot;&gt;PEDIDO A PROVEEDOR&lt;/drawString&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;7&quot;/&gt;
++		&lt;drawString x=&quot;15cm&quot; y=&quot;22.7cm&quot;&gt;Los importes están expresados en euros. [idforma_pago] [totalpedidoproveedor]&lt;/drawString&gt;
+ 
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;10&quot;/&gt;
++		&lt;drawCentredString x=&quot;5.3cm&quot; y=&quot;25.85cm&quot;&gt;Forma de pago: &lt;!--QUERY=&quot;SELECT descforma_pago FROM forma_pago WHERE idforma_pago = [idforma_pago] LIMIT 1&quot;--&gt;[descforma_pago]&lt;!--END QUERY--&gt;&lt;/drawCentredString&gt;
+ 
+-		&lt;!-- EL RECUADRO DONDE VA EL CLIENTE --&gt;
+-		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+-		&lt;lineMode width=&quot;0.3mm&quot;/&gt;
+-		&lt;rect round=&quot;0.25cm&quot; x=&quot;8cm&quot; y=&quot;22.4cm&quot; width=&quot;11cm&quot; height=&quot;2.5cm&quot; fill=&quot;no&quot; stroke=&quot;yes&quot;/&gt;
++	&lt;/pageGraphics&gt;
+ 
+-		&lt;!-- LOS DATOS DEL CLIENTE --&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;12&quot;/&gt;
+-		&lt;drawString x=&quot;8.5cm&quot; y=&quot;24cm&quot;&gt;[nomproveedor] -- [telproveedor]&lt;/drawString&gt;
+-		&lt;drawString x=&quot;8.5cm&quot; y=&quot;23.5cm&quot;&gt;[dirproveedor]&lt;/drawString&gt;
+-		&lt;drawString x=&quot;8.5cm&quot; y=&quot;23cm&quot;&gt;[poblproveedor]&lt;/drawString&gt;
+-		&lt;/pageGraphics&gt;
+ 
+ 		&lt;!-- FRAME DE CONTENIDOS --&gt;
+-		&lt;frame id=&quot;column&quot; x1=&quot;1cm&quot; y1=&quot;2cm&quot; width=&quot;19cm&quot; height=&quot;20cm&quot;/&gt;
++		&lt;frame id=&quot;column&quot; x1=&quot;1cm&quot; y1=&quot;8cm&quot; width=&quot;19cm&quot; height=&quot;14.6cm&quot; /&gt;
++
++		
+ 	&lt;/pageTemplate&gt;
+-&lt;/template&gt;
+ 
++&lt;/template&gt;
+ 
+ &lt;include src=&quot;[CONF_DIR_OPENREPORTS]estilos.rml&quot;/&gt;
+ 
+-&lt;story&gt;
+-&lt;blockTable style=&quot;tablacontenido&quot; colWidths=&quot;1.75cm, 8.55cm, 1.2cm, 1.7cm, 1.8cm, 2.25cm&quot; repeatRows=&quot;1&quot;&gt;
+-&lt;tr&gt;
+-&lt;td&gt;Codigo&lt;/td&gt;
+-&lt;td&gt;Concepto&lt;/td&gt;
+-&lt;td&gt;Und&lt;/td&gt;
+-&lt;td&gt;Precio&lt;/td&gt;
+-&lt;td&gt;Dto&lt;/td&gt;
+-&lt;td&gt;Total&lt;/td&gt;
+-&lt;/tr&gt;
+-[story]
+-&lt;/blockTable&gt;
+-
+-&lt;storyPlace x=&quot;0cm&quot; y=&quot;0cm&quot; width=&quot;15cm&quot; height=&quot;1cm&quot;&gt;
+-	&lt;place x=&quot;4cm&quot; y=&quot;3.5cm&quot; width=&quot;15cm&quot; height=&quot;2.5cm&quot;&gt;
+-&lt;blockTable&gt;
+-&lt;tr&gt;
+-&lt;td align=&quot;right&quot;&gt;
+-	[descuentos]
+-&lt;/td&gt;
+-&lt;/tr&gt;
+-&lt;/blockTable&gt;
+-&lt;/place&gt;
+-&lt;/storyPlace&gt;
++&lt;story&gt;	
++	&lt;blockTable style=&quot;tablacontenido&quot; colWidths=&quot;3.00cm, 8.5cm, 1.8cm, 2cm, 2.9cm&quot; splitByRow=&quot;2&quot; rowheights=&quot;2&quot; repeatRows=&quot;1&quot;&gt;
++		&lt;tr&gt;
++			&lt;td&gt;Codigo&lt;/td&gt;
++			&lt;td&gt;Concepto&lt;/td&gt;
++			&lt;td&gt;Unid:&lt;/td&gt;
++			&lt;td&gt;Precio/u:&lt;/td&gt;
++			&lt;td&gt;Subtotal s/iva:&lt;/td&gt;
++		&lt;/tr&gt;
++		[story codigocompletoarticulo, descpedidoproveedor, cantpedidoproveedor, pvppedidoproveedor, subtotalpedidoproveedor]
++	
++&lt;!--IF DESCUENTOS--&gt;
++		&lt;tr&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++		&lt;/tr&gt;
++
++		&lt;tr&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;para style=&quot;paragrafo2&quot;&gt;&lt;b&gt;&lt;u&gt;Descuento/s:&lt;/u&gt;&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;para style=&quot;paragrafo2der&quot;&gt;&lt;b&gt;&lt;u&gt;% Dto:&lt;/u&gt;&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;para style=&quot;paragrafo2der&quot;&gt;&lt;b&gt;&lt;u&gt;Total dto:&lt;/u&gt;&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++		&lt;/tr&gt;
++
++&lt;!--LINEAS DESCUENTO--&gt;
++		&lt;tr&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;para style=&quot;paragrafo2&quot;&gt;[conceptdpedidoproveedor]&lt;/para&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;[proporciondpedidoproveedor]%&lt;/td&gt;
++			&lt;td&gt;[totaldescdpedidoproveedor]&lt;/td&gt;
++		&lt;/tr&gt;
++&lt;!--END LINEAS DESCUENTO--&gt;
++&lt;!--END IF DESCUENTOS--&gt;
++
++
++&lt;!--IF QUERY=&quot;SELECT comentpedidoproveedor FROM pedidoproveedor WHERE length(comentpedidoproveedor) &gt; 0 AND idpedidoproveedor = [idpedidoproveedor]&quot;--&gt;
++&lt;!--QUERY=&quot;SELECT comentpedidoproveedor FROM pedidoproveedor WHERE length(comentpedidoproveedor) &gt; 0 AND idpedidoproveedor = [idpedidoproveedor]&quot;--&gt;
++		&lt;tr&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++		&lt;/tr&gt;
++
++		&lt;tr&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;para style=&quot;paragrafo2&quot;&gt;&lt;b&gt;&lt;u&gt;Comentario/s:&lt;/u&gt;&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++		&lt;/tr&gt;
++
++		&lt;tr&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;para style=&quot;paragrafo2&quot;&gt;[comentpedidoproveedor]&lt;/para&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++		&lt;/tr&gt;
++&lt;!--END QUERY--&gt;
++&lt;!--END IF QUERY--&gt;
+ 
+-&lt;storyPlace x=&quot;0cm&quot; y=&quot;0cm&quot; width=&quot;15cm&quot; height=&quot;1cm&quot;&gt;
+-&lt;place x=&quot;12cm&quot; y=&quot;2cm&quot; width=&quot;8cm&quot; height=&quot;2.5cm&quot;&gt;
+-&lt;blockTable&gt;
+-&lt;tr&gt;
+-&lt;td align=&quot;right&quot;&gt;
+-	[totales]
+-&lt;/td&gt;
+-&lt;/tr&gt;
+-&lt;/blockTable&gt;
++	&lt;/blockTable&gt;
++
++	
++	&lt;storyPlace x=&quot;0cm&quot; y=&quot;0cm&quot; width=&quot;20cm&quot; height=&quot;1cm&quot;&gt;
++		&lt;place x=&quot;1cm&quot; y=&quot;4cm&quot; width=&quot;19cm&quot; height=&quot;4cm&quot;&gt;
++			&lt;blockTable style=&quot;total&quot; colWidths=&quot;16.3cm,2.7cm&quot; &gt;
++				&lt;tr&gt;
++					&lt;td colspan=&quot;2&quot;&gt;
++						&lt;blockTable style=&quot;titulo&quot; colWidths=&quot;5.5cm, 3.2cm, 1.4cm, 1.75cm, 1.4cm, 1.9cm, 1.15cm, 2.7cm&quot;&gt;
++							&lt;tr&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;Base Imponible:&lt;/td&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;I.V.A.%:&lt;/td&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;Tot I.V.A.:&lt;/td&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;Total:&lt;/td&gt;
++							&lt;/tr&gt;
++						&lt;/blockTable&gt;
++					&lt;/td&gt;
++				&lt;/tr&gt;
++				&lt;tr&gt;
++					&lt;td&gt;
++						&lt;blockTable style=&quot;contenido&quot; colWidths=&quot;5.5cm, 3.2cm, 1.4cm, 1.75cm, 1.4cm, 1.9cm, 1.15cm&quot; &gt;
++						&lt;!--TOTALES--&gt;
++							&lt;tr&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;[bimp]&lt;/td&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;[tbimp]%&lt;/td&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;[iva]&lt;/td&gt;
++								&lt;td&gt;  &lt;/td&gt;
++							&lt;/tr&gt;
++						&lt;!--END TOTALES--&gt;
++						&lt;/blockTable&gt;
++					&lt;/td&gt;
++					&lt;td&gt;
++						&lt;blockTable style=&quot;preciofinal&quot; colWidths=&quot;2.7cm&quot; &gt;
++							&lt;tr&gt;
++								&lt;td&gt;[total] &#8364;&lt;/td&gt;
++							&lt;/tr&gt;
++						&lt;/blockTable&gt;
++					&lt;/td&gt;
++				&lt;/tr&gt;
++			&lt;/blockTable&gt;
++		&lt;/place&gt;
++	&lt;/storyPlace&gt;
++
++
++&lt;storyPlace x=&quot;15cm&quot; y=&quot;1cm&quot; width=&quot;15cm&quot; height=&quot;1cm&quot;&gt;
++&lt;place x=&quot;15cm&quot; y=&quot;0cm&quot; width=&quot;15cm&quot; height=&quot;2.5cm&quot;&gt;
++&lt;barCode code=&quot;code128&quot; height=&quot;1cm&quot;&gt;PEDP [numpedidoproveedor] [refpedidoproveedor]&lt;/barCode&gt;
+ &lt;/place&gt;
+ &lt;/storyPlace&gt;
+-&lt;!-- storyPlace x=&quot;12cm&quot; y=&quot;27cm&quot; width=&quot;15cm&quot; height=&quot;1cm&quot;&gt;
+-&lt;place x=&quot;12cm&quot; y=&quot;27cm&quot; width=&quot;15cm&quot; height=&quot;2.5cm&quot;&gt;
+-&lt;barCode code=&quot;code128&quot; height=&quot;1cm&quot;&gt;PEDP [idpedidoproveedor] [numpedidoproveedor] [refpedidoproveedor]&lt;/barCode&gt;
+-&lt;/place&gt;
+-&lt;/storyPlace --&gt;
++
++
+ &lt;/story&gt;
+ &lt;/document&gt;
++
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/openreports/fr/pedidoproveedor.rml b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/openreports/fr/pedidoproveedor.rml
+index 9842d92..e34aa49 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/openreports/fr/pedidoproveedor.rml
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/openreports/fr/pedidoproveedor.rml
+@@ -1,136 +1,208 @@
+-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot; ?&gt;
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;no&quot; ?&gt;
+ &lt;!DOCTYPE document SYSTEM &quot;rml_1_0.dtd&quot;&gt;
+ &lt;document&gt;
+-&lt;template pageSize=&quot;(21cm, 29.7cm)&quot; leftMargin=&quot;0cm&quot; rightMargin=&quot;0cm&quot; topMargin=&quot;1.0cm&quot; bottomMargin=&quot;2.0cm&quot; title=&quot;Pedido a proveedor&quot; author=&quot;Tomeu Borras&quot; allowSplitting=&quot;20&quot;&gt;
++&lt;template pageSize=&quot;(21cm, 29.7cm)&quot; leftMargin=&quot;0cm&quot; rightMargin=&quot;0cm&quot; topMargin=&quot;1.0cm&quot; bottomMargin=&quot;2.0cm&quot; title=&quot;Pedido&quot; author=&quot;&quot;&gt;
+ 	&lt;pageTemplate id=&quot;main&quot;&gt;
+ 		&lt;pageGraphics&gt;
+ 		&lt;include src=&quot;[CONF_DIR_OPENREPORTS]plantilla.rml&quot;/&gt;
+ 
+ 		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
+ 		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;16&quot;/&gt;
+-		&lt;drawString x=&quot;1.5cm&quot; y=&quot;24.5cm&quot;&gt;PEDIDO A PROVEEDOR&lt;/drawString&gt;
++		
++&lt;!--IF QUERY=&quot;SELECT nomproveedor, cifproveedor, dirproveedor, poblproveedor, telproveedor, emailproveedor FROM PROVEEDOR WHERE idproveedor = [idproveedor]&quot;--&gt;
++&lt;!--QUERY=&quot;SELECT  nomproveedor, cifproveedor, dirproveedor, poblproveedor, telproveedor, emailproveedor AS eml1 FROM proveedor WHERE idproveedor=[idproveedor]&quot;--&gt;
+ 
+-&lt;!--IF QUERY=&quot;SELECT * FROM PROVEEDOR WHERE idproveedor = [idproveedor]&quot;--&gt;
+-&lt;!--QUERY=&quot;SELECT * FROM proveedor WHERE idproveedor=[idproveedor]&quot;--&gt;
++		&lt;setFont name=&quot;Helvetica-Bold&quot; size=&quot;11&quot;/&gt;
++		&lt;fill color=&quot;(1,1,1)&quot;/&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;26.53cm&quot;&gt;Datos del proveedor:&lt;/drawString&gt;
+ 
+ 		&lt;!-- LOS DATOS DEL PROVEEDOR --&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;12&quot;/&gt;
+-		&lt;drawString x=&quot;8.5cm&quot; y=&quot;24cm&quot;&gt;[nomproveedor] -- [telproveedor]&lt;/drawString&gt;
+-		&lt;drawString x=&quot;8.5cm&quot; y=&quot;23.5cm&quot;&gt;[dirproveedor]&lt;/drawString&gt;
+-		&lt;drawString x=&quot;8.5cm&quot; y=&quot;23cm&quot;&gt;[poblproveedor]&lt;/drawString&gt;
+-
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;12&quot;/&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;10&quot;/&gt;
++		&lt;fill color=&quot;(0,0,0)&quot;/&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;26.05cm&quot;&gt;[idproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;25.6cm&quot;&gt;[nomproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;25.15cm&quot;&gt;[cifproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;24.7cm&quot;&gt;[dirproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;24.25cm&quot;&gt;[poblproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;23.8cm&quot;&gt;[telproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;23.35cm&quot;&gt;[eml1]&lt;/drawString&gt;
++
++
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;10&quot;/&gt;
+ 		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
+-		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+-		&lt;drawCentredString x=&quot;5.5cm&quot; y=&quot;21.2cm&quot;&gt;NIF&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;8.5cm&quot; y=&quot;21.2cm&quot;&gt;Cliente&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;11.5cm&quot; y=&quot;21.2cm&quot;&gt;Fecha&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;14.5cm&quot; y=&quot;21.2cm&quot;&gt;N. Ped.&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;17.5cm&quot; y=&quot;21.2cm&quot;&gt;Ref&lt;/drawCentredString&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;12&quot;/&gt;
+-		&lt;drawCentredString x=&quot;5.5cm&quot; y=&quot;20.4cm&quot;&gt;[cifproveedor]&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;8.5cm&quot; y=&quot;20.4cm&quot;&gt;[idproveedor]&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;11.5cm&quot; y=&quot;20.4cm&quot;&gt;[fechapedidoproveedor]&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;14.5cm&quot; y=&quot;20.4cm&quot;&gt;[numpedidoproveedor]&lt;/drawCentredString&gt;
+-		&lt;drawCentredString x=&quot;17.5cm&quot; y=&quot;20.4cm&quot;&gt;[refpedidoproveedor]&lt;/drawCentredString&gt;
+-		&lt;/pageGraphics&gt;
+-		&lt;!-- FRAME DE CONTENIDOS --&gt;
+-		&lt;frame id=&quot;column&quot; x1=&quot;1cm&quot; y1=&quot;5cm&quot; width=&quot;19cm&quot; height=&quot;15cm&quot;/&gt;
+-	&lt;/pageTemplate&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;26.05cm&quot;&gt;Nº Cliente:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;25.6cm&quot;&gt;Nombre/Empresa:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;25.15cm&quot;&gt;NIF/CIF:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;24.7cm&quot;&gt;Dirección:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;24.25cm&quot;&gt;Población:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;23.8cm&quot;&gt;Teléfono:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;23.35cm&quot;&gt;Dirección Email:&lt;/drawString&gt;
++
++		&lt;!--Fecha pedidoproveedor--&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;11&quot;/&gt;
++
++		&lt;drawString x=&quot;10cm&quot; y=&quot;27.95cm&quot;&gt;Fecha pedido:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;27.5cm&quot;&gt;Nº pedido:&lt;/drawString&gt;
++		&lt;drawString x=&quot;17.0cm&quot; y=&quot;27.95cm&quot;&gt;Referencia:&lt;/drawString&gt;
++
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;27.95cm&quot;&gt;[fechapedidoproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;27.5cm&quot;&gt;[numpedidoproveedor]&lt;/drawString&gt;
++		&lt;drawString x=&quot;17.0cm&quot; y=&quot;27.5cm&quot;&gt;[refpedidoproveedor]&lt;/drawString&gt;
++
++		&lt;!-- INCLUDE FILE=&quot;[CONF_DIR_OPENREPORTS]plantilla_empresa.rml&quot; --&gt;
++
++		&lt;setFont name=&quot;Helvetica-Bold&quot; size=&quot;12&quot;/&gt;
++		&lt;drawCentredString x=&quot;5.3cm&quot; y=&quot;26.3cm&quot;&gt;- PEDIDO A PROVEEDOR -&lt;/drawCentredString&gt;
+ 
+ &lt;!--END QUERY--&gt;
+ &lt;!--END IF QUERY--&gt;
+ 
+-	&lt;pageTemplate id=&quot;main&quot;&gt;
+-		&lt;pageGraphics&gt;
+-		&lt;!-- EL LOGO DE CABECERA --&gt;
+-		&lt;image x=&quot;3cm&quot; y=&quot;26cm&quot; width=&quot;17cm&quot; file=&quot;logo.jpg&quot;/&gt;
+-
+-		&lt;!-- EL DRAFT --&gt;
+-			&lt;!--setFont name=&quot;Helvetica&quot; size=&quot;100&quot;/&gt;
+-			&lt;fill color=&quot;(1,0.9,0.9)&quot;/&gt;
+-			&lt;stroke color=&quot;(1,0.9,0.9)&quot;/&gt;
+-			&lt;translate dx=&quot;15cm&quot; dy=&quot;-5.5cm&quot;/&gt;
+-			&lt;rotate degrees=&quot;50&quot;/&gt;
+-			&lt;drawString x=&quot;23mm&quot; y=&quot;15.7cm&quot;&gt;BORRADOR&lt;/drawString&gt;
+-			&lt;lineMode width=&quot;4mm&quot;/&gt;
+-			&lt;rect round=&quot;1cm&quot; x=&quot;18mm&quot; y=&quot;15cm&quot; width=&quot;21cm&quot; height=&quot;4cm&quot; fill=&quot;no&quot; stroke=&quot;yes&quot;/&gt;	
+-		&lt;rotate degrees=&quot;-50&quot;/&gt;
+-		&lt;translate dx=&quot;-15cm&quot; dy=&quot;5.5cm&quot;/--&gt;
+-
+-		&lt;!-- EL PIE DE PAGINA --&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;8&quot;/&gt;		
+-		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
+-		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+-		&lt;drawString x=&quot;7.3cm&quot; y=&quot;1.2cm&quot;&gt;www.iglues.org -- <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">info en iglues.org</A> --&lt;/drawString&gt;
+ 
+-		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
+-		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;22&quot;/&gt;
+-		&lt;drawString x=&quot;1.5cm&quot; y=&quot;24.5cm&quot;&gt;PEDIDO A PROVEEDOR&lt;/drawString&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;7&quot;/&gt;
++		&lt;drawString x=&quot;15cm&quot; y=&quot;22.7cm&quot;&gt;Los importes están expresados en euros. [idforma_pago] [totalpedidoproveedor]&lt;/drawString&gt;
+ 
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;10&quot;/&gt;
++		&lt;drawCentredString x=&quot;5.3cm&quot; y=&quot;25.85cm&quot;&gt;Forma de pago: &lt;!--QUERY=&quot;SELECT descforma_pago FROM forma_pago WHERE idforma_pago = [idforma_pago] LIMIT 1&quot;--&gt;[descforma_pago]&lt;!--END QUERY--&gt;&lt;/drawCentredString&gt;
+ 
+-		&lt;!-- EL RECUADRO DONDE VA EL CLIENTE --&gt;
+-		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+-		&lt;lineMode width=&quot;0.3mm&quot;/&gt;
+-		&lt;rect round=&quot;0.25cm&quot; x=&quot;8cm&quot; y=&quot;22.4cm&quot; width=&quot;11cm&quot; height=&quot;2.5cm&quot; fill=&quot;no&quot; stroke=&quot;yes&quot;/&gt;
++	&lt;/pageGraphics&gt;
+ 
+-		&lt;!-- LOS DATOS DEL CLIENTE --&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;12&quot;/&gt;
+-		&lt;drawString x=&quot;8.5cm&quot; y=&quot;24cm&quot;&gt;[nomproveedor] -- [telproveedor]&lt;/drawString&gt;
+-		&lt;drawString x=&quot;8.5cm&quot; y=&quot;23.5cm&quot;&gt;[dirproveedor]&lt;/drawString&gt;
+-		&lt;drawString x=&quot;8.5cm&quot; y=&quot;23cm&quot;&gt;[poblproveedor]&lt;/drawString&gt;
+-		&lt;/pageGraphics&gt;
+ 
+ 		&lt;!-- FRAME DE CONTENIDOS --&gt;
+-		&lt;frame id=&quot;column&quot; x1=&quot;1cm&quot; y1=&quot;2cm&quot; width=&quot;19cm&quot; height=&quot;20cm&quot;/&gt;
++		&lt;frame id=&quot;column&quot; x1=&quot;1cm&quot; y1=&quot;8cm&quot; width=&quot;19cm&quot; height=&quot;14.6cm&quot; /&gt;
++
++		
+ 	&lt;/pageTemplate&gt;
+-&lt;/template&gt;
+ 
++&lt;/template&gt;
+ 
+ &lt;include src=&quot;[CONF_DIR_OPENREPORTS]estilos.rml&quot;/&gt;
+ 
+-&lt;story&gt;
+-&lt;blockTable style=&quot;tablacontenido&quot; colWidths=&quot;1.75cm, 8.55cm, 1.2cm, 1.7cm, 1.8cm, 2.25cm&quot; repeatRows=&quot;1&quot;&gt;
+-&lt;tr&gt;
+-&lt;td&gt;Codigo&lt;/td&gt;
+-&lt;td&gt;Concepto&lt;/td&gt;
+-&lt;td&gt;Und&lt;/td&gt;
+-&lt;td&gt;Precio&lt;/td&gt;
+-&lt;td&gt;Dto&lt;/td&gt;
+-&lt;td&gt;Total&lt;/td&gt;
+-&lt;/tr&gt;
+-[story]
+-&lt;/blockTable&gt;
+-
+-&lt;storyPlace x=&quot;0cm&quot; y=&quot;0cm&quot; width=&quot;15cm&quot; height=&quot;1cm&quot;&gt;
+-	&lt;place x=&quot;4cm&quot; y=&quot;3.5cm&quot; width=&quot;15cm&quot; height=&quot;2.5cm&quot;&gt;
+-&lt;blockTable&gt;
+-&lt;tr&gt;
+-&lt;td align=&quot;right&quot;&gt;
+-	[descuentos]
+-&lt;/td&gt;
+-&lt;/tr&gt;
+-&lt;/blockTable&gt;
+-&lt;/place&gt;
+-&lt;/storyPlace&gt;
++&lt;story&gt;	
++	&lt;blockTable style=&quot;tablacontenido&quot; colWidths=&quot;3.00cm, 8.5cm, 1.8cm, 2cm, 2.9cm&quot; splitByRow=&quot;2&quot; rowheights=&quot;2&quot; repeatRows=&quot;1&quot;&gt;
++		&lt;tr&gt;
++			&lt;td&gt;Codigo&lt;/td&gt;
++			&lt;td&gt;Concepto&lt;/td&gt;
++			&lt;td&gt;Unid:&lt;/td&gt;
++			&lt;td&gt;Precio/u:&lt;/td&gt;
++			&lt;td&gt;Subtotal s/iva:&lt;/td&gt;
++		&lt;/tr&gt;
++		[story codigocompletoarticulo, descpedidoproveedor, cantpedidoproveedor, pvppedidoproveedor, subtotalpedidoproveedor]
++	
++&lt;!--IF DESCUENTOS--&gt;
++		&lt;tr&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++		&lt;/tr&gt;
++
++		&lt;tr&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;para style=&quot;paragrafo2&quot;&gt;&lt;b&gt;&lt;u&gt;Descuento/s:&lt;/u&gt;&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;para style=&quot;paragrafo2der&quot;&gt;&lt;b&gt;&lt;u&gt;% Dto:&lt;/u&gt;&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;para style=&quot;paragrafo2der&quot;&gt;&lt;b&gt;&lt;u&gt;Total dto:&lt;/u&gt;&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++		&lt;/tr&gt;
++
++&lt;!--LINEAS DESCUENTO--&gt;
++		&lt;tr&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;para style=&quot;paragrafo2&quot;&gt;[conceptdpedidoproveedor]&lt;/para&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;[proporciondpedidoproveedor]%&lt;/td&gt;
++			&lt;td&gt;[totaldescdpedidoproveedor]&lt;/td&gt;
++		&lt;/tr&gt;
++&lt;!--END LINEAS DESCUENTO--&gt;
++&lt;!--END IF DESCUENTOS--&gt;
++
++
++&lt;!--IF QUERY=&quot;SELECT comentpedidoproveedor FROM pedidoproveedor WHERE length(comentpedidoproveedor) &gt; 0 AND idpedidoproveedor = [idpedidoproveedor]&quot;--&gt;
++&lt;!--QUERY=&quot;SELECT comentpedidoproveedor FROM pedidoproveedor WHERE length(comentpedidoproveedor) &gt; 0 AND idpedidoproveedor = [idpedidoproveedor]&quot;--&gt;
++		&lt;tr&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++		&lt;/tr&gt;
++
++		&lt;tr&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;para style=&quot;paragrafo2&quot;&gt;&lt;b&gt;&lt;u&gt;Comentario/s:&lt;/u&gt;&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++		&lt;/tr&gt;
++
++		&lt;tr&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;para style=&quot;paragrafo2&quot;&gt;[comentpedidoproveedor]&lt;/para&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++		&lt;/tr&gt;
++&lt;!--END QUERY--&gt;
++&lt;!--END IF QUERY--&gt;
+ 
+-&lt;storyPlace x=&quot;0cm&quot; y=&quot;0cm&quot; width=&quot;15cm&quot; height=&quot;1cm&quot;&gt;
+-&lt;place x=&quot;12cm&quot; y=&quot;2cm&quot; width=&quot;8cm&quot; height=&quot;2.5cm&quot;&gt;
+-&lt;blockTable&gt;
+-&lt;tr&gt;
+-&lt;td align=&quot;right&quot;&gt;
+-	[totales]
+-&lt;/td&gt;
+-&lt;/tr&gt;
+-&lt;/blockTable&gt;
++	&lt;/blockTable&gt;
++
++	
++	&lt;storyPlace x=&quot;0cm&quot; y=&quot;0cm&quot; width=&quot;20cm&quot; height=&quot;1cm&quot;&gt;
++		&lt;place x=&quot;1cm&quot; y=&quot;4cm&quot; width=&quot;19cm&quot; height=&quot;4cm&quot;&gt;
++			&lt;blockTable style=&quot;total&quot; colWidths=&quot;16.3cm,2.7cm&quot; &gt;
++				&lt;tr&gt;
++					&lt;td colspan=&quot;2&quot;&gt;
++						&lt;blockTable style=&quot;titulo&quot; colWidths=&quot;5.5cm, 3.2cm, 1.4cm, 1.75cm, 1.4cm, 1.9cm, 1.15cm, 2.7cm&quot;&gt;
++							&lt;tr&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;Base Imponible:&lt;/td&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;I.V.A.%:&lt;/td&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;Tot I.V.A.:&lt;/td&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;Total:&lt;/td&gt;
++							&lt;/tr&gt;
++						&lt;/blockTable&gt;
++					&lt;/td&gt;
++				&lt;/tr&gt;
++				&lt;tr&gt;
++					&lt;td&gt;
++						&lt;blockTable style=&quot;contenido&quot; colWidths=&quot;5.5cm, 3.2cm, 1.4cm, 1.75cm, 1.4cm, 1.9cm, 1.15cm&quot; &gt;
++						&lt;!--TOTALES--&gt;
++							&lt;tr&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;[bimp]&lt;/td&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;[tbimp]%&lt;/td&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;[iva]&lt;/td&gt;
++								&lt;td&gt;  &lt;/td&gt;
++							&lt;/tr&gt;
++						&lt;!--END TOTALES--&gt;
++						&lt;/blockTable&gt;
++					&lt;/td&gt;
++					&lt;td&gt;
++						&lt;blockTable style=&quot;preciofinal&quot; colWidths=&quot;2.7cm&quot; &gt;
++							&lt;tr&gt;
++								&lt;td&gt;[total] &#8364;&lt;/td&gt;
++							&lt;/tr&gt;
++						&lt;/blockTable&gt;
++					&lt;/td&gt;
++				&lt;/tr&gt;
++			&lt;/blockTable&gt;
++		&lt;/place&gt;
++	&lt;/storyPlace&gt;
++
++
++&lt;storyPlace x=&quot;15cm&quot; y=&quot;1cm&quot; width=&quot;15cm&quot; height=&quot;1cm&quot;&gt;
++&lt;place x=&quot;15cm&quot; y=&quot;0cm&quot; width=&quot;15cm&quot; height=&quot;2.5cm&quot;&gt;
++&lt;barCode code=&quot;code128&quot; height=&quot;1cm&quot;&gt;PEDP [numpedidoproveedor] [refpedidoproveedor]&lt;/barCode&gt;
+ &lt;/place&gt;
+ &lt;/storyPlace&gt;
+-&lt;!-- storyPlace x=&quot;12cm&quot; y=&quot;27cm&quot; width=&quot;15cm&quot; height=&quot;1cm&quot;&gt;
+-&lt;place x=&quot;12cm&quot; y=&quot;27cm&quot; width=&quot;15cm&quot; height=&quot;2.5cm&quot;&gt;
+-&lt;barCode code=&quot;code128&quot; height=&quot;1cm&quot;&gt;PEDP [idpedidoproveedor] [numpedidoproveedor] [refpedidoproveedor]&lt;/barCode&gt;
+-&lt;/place&gt;
+-&lt;/storyPlace --&gt;
++
++
+ &lt;/story&gt;
+ &lt;/document&gt;
++
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorview.cpp b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorview.cpp
+index d7e699e..0dfcaf0 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorview.cpp
+@@ -222,10 +222,13 @@ int PedidoProveedorView::afterSave()
+ }
+ 
+ 
++
+ /// Impresion de un pedido a proveedor
+ /** Usa la plantilla pedidoproveedor.rml */
+ /**
+ **/
++
++/*
+ void PedidoProveedorView::imprimir()
+ {
+     BL_FUNC_DEBUG
+@@ -390,4 +393,4 @@ void PedidoProveedorView::imprimir()
+     } // end try
+ }
+ 
+-
++*/
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorview.h b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorview.h
+index e47cda9..b59eb5b 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorview.h
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorview.h
+@@ -56,7 +56,6 @@ public:
+     virtual int cargarPost ( QString );
+     virtual int afterSave();
+     virtual int beforeDelete();
+-    virtual void imprimir();
+ 
+ public slots:
+     virtual void on_mui_proveedor_valueChanged ( QString );
+
+commit 18f51f15996eb5e8527a01e297dd6549c6774341
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri Apr 27 00:00:42 2012 +0200
+
+    Agrego opciones de filtrado para proveedores
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedor/providerslist.cpp b/bulmages/bulmafact/plugins/pluginbf_proveedor/providerslist.cpp
+index 3234b43..1efee23 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedor/providerslist.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedor/providerslist.cpp
+@@ -151,6 +151,14 @@ const QString ProveedorList::generaFiltro()
+     /// Hacemos el filtrado like del campo m_filtro
+     filtro += mui_list-&gt;likeFilterSQL(m_filtro-&gt;text());
+     
++    if ( m_facturas-&gt;isChecked()) {
++        filtro += &quot; AND idproveedor IN (SELECT DISTINCT idproveedor FROM facturap WHERE procesadafacturap = FALSE)&quot;;
++    } // end if
++
++    if ( m_albaranes-&gt;isChecked()) {
++        filtro += &quot; AND idproveedor IN (SELECT DISTINCT idproveedor FROM albaranp WHERE procesadoalbaranp = FALSE)&quot;;
++    } // end if
++    
+     
+     return ( filtro );
+ }
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedor/providerslistbase.ui b/bulmages/bulmafact/plugins/pluginbf_proveedor/providerslistbase.ui
+index dd06af9..0d2e3c4 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedor/providerslistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedor/providerslistbase.ui
+@@ -471,19 +471,27 @@
+      &lt;property name=&quot;frameShadow&quot;&gt;
+       &lt;enum&gt;QFrame::Raised&lt;/enum&gt;
+      &lt;/property&gt;
+-     &lt;layout class=&quot;QHBoxLayout&quot;&gt;
+-      &lt;property name=&quot;spacing&quot;&gt;
+-       &lt;number&gt;4&lt;/number&gt;
+-      &lt;/property&gt;
+-      &lt;property name=&quot;margin&quot;&gt;
+-       &lt;number&gt;4&lt;/number&gt;
+-      &lt;/property&gt;
++     &lt;layout class=&quot;QHBoxLayout&quot; name=&quot;horizontalLayout&quot;&gt;
+       &lt;item&gt;
+-       &lt;widget class=&quot;QCheckBox&quot; name=&quot;m_procesados&quot;&gt;
+-        &lt;property name=&quot;text&quot;&gt;
+-         &lt;string&gt;Procesa&amp;dos&lt;/string&gt;
++       &lt;layout class=&quot;QVBoxLayout&quot; name=&quot;verticalLayout&quot;&gt;
++        &lt;property name=&quot;spacing&quot;&gt;
++         &lt;number&gt;4&lt;/number&gt;
+         &lt;/property&gt;
+-       &lt;/widget&gt;
++        &lt;item&gt;
++         &lt;widget class=&quot;QCheckBox&quot; name=&quot;m_facturas&quot;&gt;
++          &lt;property name=&quot;text&quot;&gt;
++           &lt;string&gt;Proveedores con facturas sin procesar.&lt;/string&gt;
++          &lt;/property&gt;
++         &lt;/widget&gt;
++        &lt;/item&gt;
++        &lt;item&gt;
++         &lt;widget class=&quot;QCheckBox&quot; name=&quot;m_albaranes&quot;&gt;
++          &lt;property name=&quot;text&quot;&gt;
++           &lt;string&gt;Proveedores con albaranes sin procesar.&lt;/string&gt;
++          &lt;/property&gt;
++         &lt;/widget&gt;
++        &lt;/item&gt;
++       &lt;/layout&gt;
+       &lt;/item&gt;
+       &lt;item&gt;
+        &lt;spacer&gt;
+@@ -502,6 +510,10 @@
+        &lt;/spacer&gt;
+       &lt;/item&gt;
+      &lt;/layout&gt;
++     &lt;zorder&gt;layoutWidget&lt;/zorder&gt;
++     &lt;zorder&gt;m_facturas&lt;/zorder&gt;
++     &lt;zorder&gt;m_facturas&lt;/zorder&gt;
++     &lt;zorder&gt;m_facturas&lt;/zorder&gt;
+     &lt;/widget&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007154.html">[BulmaGés] [Gitorious] Activity: tborras pushed 3	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007156.html">[BulmaGés] [Gitorious] Activity: tborras deleted	branch impresionped...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7155">[ fecha ]</a>
+              <a href="thread.html#7155">[ hilo ]</a>
+              <a href="subject.html#7155">[ asunto ]</a>
+              <a href="author.html#7155">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

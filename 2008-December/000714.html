@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] traspaso de punteros entre plugins.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20traspaso%20de%20punteros%20entre%20plugins.&In-Reply-To=%3C200812311547.42789.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000712.html">
+   <LINK REL="Next"  HREF="000715.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] traspaso de punteros entre plugins. </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20traspaso%20de%20punteros%20entre%20plugins.&In-Reply-To=%3C200812311547.42789.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés] traspaso de punteros entre plugins.">tborras en conetxia.com
+       </A><BR>
+    <I>Mie Dic 31 15:47:42 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000712.html">[BulmaGés] r2878 - trunk/bulmages/bulmalib/src
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000715.html">[BulmaGés] r2879 - in trunk/bulmages:	bulmafact/plugins bulmafact/plugins/plugin_tc_articulos	bulmafact/plugins/pluginalbaranprov	bulmafact/plugins/pluginbarcodeopen bulmafact/plugins/plugincobros	bulmafact/plugins/plugincompraventa	bulmafact/plugins/plugincontratos	bulmafact/plugins/plugincorrectorbf	bulmafact/plugins/plugincuadrante bulmafact/plugins/pluginetiquetado	bulmafact/plugins/pluginfactura bulmafact/plugins/pluginfacturaprov	bulmafact/plugins/pluginimpresionesmultiples	bulmafact/plugins/pluginmail bulmafact/plugins/pluginmailthunderbird	bulmafact/plugins/pluginpagos bulmafact/plugins/pluginpedidoprov	bulmafact/plugins/pluginq19 bulmafact/plugins/pluginticket	bulmafact/plugins/plugintrazabilidad bulmafact/src bulmalib/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#714">[ fecha ]</a>
+              <a href="thread.html#714">[ hilo ]</a>
+              <a href="subject.html#714">[ asunto ]</a>
+              <a href="author.html#714">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola
+
+Con todo lo que estoy haciendo tenía que surgir un problemilla.
+
+Imaginemos un algoritmo esférico ...... essstooooo no, que estos son los 
+chistes de NocheVieja ......
+
+Supongamos tres librerías dinámicas L1 L2 y L3
+
+En cualquier ejecución podemos garantizar que L1 estará cargada pero no 
+sabemos nada sobre L2 y L3
+
+Imaginemos que L3 quiere instanciar un objeto _X declarado en L2 y que 
+garantizamos mediante programacion que L3 sólo pedirá la instancia si L2 esta 
+cargado pero no si no lo está. Bien pués el problema es que L3 no puede (la 
+instanciación entre librerias no enlazadas directamente no es posible). 
+Curiosamente si es posible hacer lo que quieras con sus clases y objetos pero 
+no crear uno nuevo ya que te da un bonito Undefined Symbol.
+
+Soluciones al problema hay 2 (o infinitas según se mire).
+	1.- Usar L1 para el traspaso de parámetros. Esto es L2 instancia en L1 y L3 
+recupera el dato.
+	2.- Enlazar fuertemente L3 con L2 estableciendo que L3 necesita forzosamente 
+a L2 para funcionar.
+
+Enfin, a lo que iba:
+	He tenido que crear una variable global para intercomunicación entre plugins 
+(Se verá en la clase plugins y en impresionesmultiples del proximo commit). 
+Mientras no haya una solución mejor tendremos que convivir con ella.
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000712.html">[BulmaGés] r2878 - trunk/bulmages/bulmalib/src
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000715.html">[BulmaGés] r2879 - in trunk/bulmages:	bulmafact/plugins bulmafact/plugins/plugin_tc_articulos	bulmafact/plugins/pluginalbaranprov	bulmafact/plugins/pluginbarcodeopen bulmafact/plugins/plugincobros	bulmafact/plugins/plugincompraventa	bulmafact/plugins/plugincontratos	bulmafact/plugins/plugincorrectorbf	bulmafact/plugins/plugincuadrante bulmafact/plugins/pluginetiquetado	bulmafact/plugins/pluginfactura bulmafact/plugins/pluginfacturaprov	bulmafact/plugins/pluginimpresionesmultiples	bulmafact/plugins/pluginmail bulmafact/plugins/pluginmailthunderbird	bulmafact/plugins/pluginpagos bulmafact/plugins/pluginpedidoprov	bulmafact/plugins/pluginq19 bulmafact/plugins/pluginticket	bulmafact/plugins/plugintrazabilidad bulmafact/src bulmalib/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#714">[ fecha ]</a>
+              <a href="thread.html#714">[ hilo ]</a>
+              <a href="subject.html#714">[ asunto ]</a>
+              <a href="author.html#714">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

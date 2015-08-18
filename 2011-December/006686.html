@@ -1,0 +1,235 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Cambios en BulmaSetup
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FCambios_en_BulmaSetup%3F%3D&In-Reply-To=%3CCAJWqEtcjnk_MrTfdpDHqhKOUhZ5dgmEpZ%3DaSY0vtm5jhpFXMAQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006685.html">
+   <LINK REL="Next"  HREF="006687.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Cambios en BulmaSetup </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FCambios_en_BulmaSetup%3F%3D&In-Reply-To=%3CCAJWqEtcjnk_MrTfdpDHqhKOUhZ5dgmEpZ%3DaSY0vtm5jhpFXMAQ%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]Cambios en BulmaSetup">tborras en conetxia.com
+       </A><BR>
+    <I>Sab Dic  3 15:31:00 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006685.html">[BulmaGés]Cambios en BulmaSetup
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006687.html">[BulmaGés] AutoForms instalables desde BulmaSetup
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6686">[ fecha ]</a>
+              <a href="thread.html#6686">[ hilo ]</a>
+              <a href="subject.html#6686">[ asunto ]</a>
+              <a href="author.html#6686">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Pués habrá que consultarlo con la almohada y medir bien las fuerzas.
+
+El su no te lo podrás quitar de enmedio mientras postgres no cambie el
+sistema ya que por defecto el usuario postgres (el único que puede trabajar
+con la base de datos) sólo es accesible a través de root y con su.
+
+Se me antoja que al final compatibilidad multisistema va a ser sinónimo de
+hacer versionado:
+  1.- Las plantillas .conf no serán compatibles entre sistemas.
+  2.- La administración de la base de datos también será diferente. O
+acabaremos con el típico &quot;Para poder trabajar necesito que me des las
+credenciales de autentificacion con la base de datos&quot;. Que no es
+aconsejable tampoco
+
+Igual lo que deberíamos hacer es un bulmasetup para Windows, con miras a
+ser compatible con ambos sistemas si se puede. Pero si ya no me apetecía el
+bulmasetup imaginaté este.
+
+
+En cualquier caso no nos precipitemos. Hay tiempo, para pensarlo
+detenidamente y seguro que salen cosas por implementar que son mucho más
+importantes.
+
+
+El 3 de diciembre de 2011 12:05, Daniel Ripoll Osma &lt;
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">dripoll.public en gmail.com</A>&gt; escribió:
+
+&gt;<i>  Al 03/12/11 09:33, En/na Tomeu Borras ha escrit:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>  Yo pienso que dejarlos en el share es lo correcto ya que la empresa que
+</I>&gt;<i> quiera modificarlos puede copiar el directorio donde desee y modificar
+</I>&gt;<i> allí. Además puede hacerlo tantas veces como quiera.
+</I>&gt;<i>
+</I>&gt;<i> Otro tema que me viene ahora a la cabeza es que distintitos usuarios
+</I>&gt;<i> puedan usar distintas configuaciones de autoforms. Esto lo pueden hacer con
+</I>&gt;<i> los plugins pero así como esta planteado el autoforms no. Tendría que
+</I>&gt;<i> mirarse primero si existe en autoforms_XXX_YYY_spec.spc en el ./bulmages
+</I>&gt;<i> del usuario que está ejecutando.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Esa también es una muy buena opción siguiendo el:
+</I>&gt;<i> share/...
+</I>&gt;<i> .bulmages/...
+</I>&gt;<i> Aunque si no esta planteado así, supone un pequeño problema :S
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> &gt;&gt;&gt;&gt;El 3 de diciembre de 2011 07:42, Walter Garcia-Fontes &lt;
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">walter.garcia en upf.edu</A>&gt; escribió:
+</I>&gt;<i> &gt;&gt;&gt;* Daniel Ripoll Osma [03/12/11 02:02]:
+</I>&gt;<i> &gt;&gt;&gt;&gt; Lo del bulmasetup C++ fue poco en plan coña, pero vamos si hay que
+</I>&gt;<i> hacerlo se
+</I>&gt;<i> &gt;&gt;&gt;&gt; haría, eso queda a vox populi.
+</I>&gt;<i>
+</I>&gt;<i>  &gt;&gt;Siguiendo con la vox populi, para que bulmagés completara su carácter
+</I>&gt;<i> &gt;&gt;multiplataforma habría que conseguir un bulmasetup multiplataforma,
+</I>&gt;<i> &gt;&gt;con este o cualquier otro cambio necesario.
+</I>&gt;<i>
+</I>&gt;<i> &gt;Es posible, pero necesitaría una reestructuración completa, con un más
+</I>&gt;<i> que probable cambio de &gt;tecnología  (PyQt y psycopg2 deberían desaparecer).
+</I>&gt;<i> O igual y mucho mejor un cambio de lenguaje.
+</I>&gt;<i>
+</I>&gt;<i> &gt;En definitiva ya saldría más a cuenta reescribirlo de nuevo.
+</I>&gt;<i>
+</I>&gt;<i> La razón se ha despertado pronto hoy.
+</I>&gt;<i> Efectivamente, lo del bulmasetup es algo que me esta echando en cara
+</I>&gt;<i> demasiada gente (4/7).
+</I>&gt;<i>
+</I>&gt;<i> El proceso a multiplataforma con python puede lograrse pero hay que
+</I>&gt;<i> observar algunos pros y contras, ignorando lo que ya discutí con Javier,
+</I>&gt;<i> Tomeu y René (en la cena del chino) y posteriormente con Leo hace unos días.
+</I>&gt;<i>
+</I>&gt;<i> 0º Python es una dependencia bastante grande. Que no nos la podemos quitar
+</I>&gt;<i> de encima, aunque queramos, fácilmente. bgtrml depende de Python.
+</I>&gt;<i>
+</I>&gt;<i> 1º Si queremos deshacernos de python al 100%, deberíamos reescribir
+</I>&gt;<i> bgtrml, PyFriBibi and PyICU y otras dependencias son bindings de C/C++ y
+</I>&gt;<i> reportlab existe en C/C++.
+</I>&gt;<i> No obstante, ya poco se como funciona bgtrml (que sería mirarselo a fondo,
+</I>&gt;<i> aparte de Tomeu ¿quien más lo ha tratado?), como para ver como
+</I>&gt;<i> implementarlo en C/C++.
+</I>&gt;<i>
+</I>&gt;<i> 2º PyQt esta en multiplataforma pero...:
+</I>&gt;<i> Si bien existen &quot;click &amp; use&quot; para casi toda distro, en Windows la release
+</I>&gt;<i> suele llegar tarde y en MacOsX ya ni existe (y eso que ya tienen QT4.8), no
+</I>&gt;<i> hay ningún DMG. Manda tu un cliente de MacOsX a compilar paquetes, te va a
+</I>&gt;<i> mandar a freir esparragos.
+</I>&gt;<i>
+</I>&gt;<i> 3º DEPENDECIAS:
+</I>&gt;<i> Dependencia automática de SIP. Pese a que es muy bonito eso de poder
+</I>&gt;<i> desarrollar un SIPhone a partir de PyQt con los ojos cerrados, de hecho
+</I>&gt;<i> PyQt surgio con esa idea, y no entiendo como siguen arrastrando esa
+</I>&gt;<i> dependencia. Pero que yo sepa, esa no es nuestra meta. Así que tenemos UNA
+</I>&gt;<i> DEPENDENCIA INUTIL. Además ocurre lo mismo que antes con PyQt y los &quot;click
+</I>&gt;<i> &amp; run&quot;.
+</I>&gt;<i>
+</I>&gt;<i> 4º PSYCOPG2:
+</I>&gt;<i> Le ocurre exactamente lo mismo que a PyQt pero más exagerado. En Linux
+</I>&gt;<i> cada distro tiene una versión diferente de Psycopg2 y tenemos normalmente
+</I>&gt;<i> que hacer &quot;sudo easy_install psycopg2&quot;. Luego hay varios &quot;click &amp; run&quot; para
+</I>&gt;<i> Windows (&quot;oh, no me gusta tu compilado, me hago yo mi installer&quot; ¬¬),
+</I>&gt;<i> volvemos a que para MacOsX no hay nada, es más, psycopg2 para macosx esta
+</I>&gt;<i> más verde que el billete de un dolar.
+</I>&gt;<i>
+</I>&gt;<i> 5º SYSTEM():
+</I>&gt;<i> Para hacerlo multiplataforma habría que reescribir mucho código,
+</I>&gt;<i> eliminando al máximo las llamadas de sistema, las que hubiera que hacer a
+</I>&gt;<i> programas como &quot;psql&quot; y demás, pueden lograrse gracias al
+</I>&gt;<i> search_file(filename, search_path) que escribí para xdg-sudo, las de
+</I>&gt;<i> directorios y copiados pueden realizarse con python y no lo estan.
+</I>&gt;<i>
+</I>&gt;<i> 6º Escalado de permisos:
+</I>&gt;<i> Pese a que el programa funcione bien ahora con los cambios realizados, el
+</I>&gt;<i> escalado de permisos en bulmasetup es caotico e incorrecto, usa &quot;su&quot; en su
+</I>&gt;<i> nucleo, y eso es incorrecto de cara a la multiplataforma, además de
+</I>&gt;<i> contraproducente. En Windows y MacOsX (aunque puede usarse en este) existen
+</I>&gt;<i> otras maneras de lograr el escalado de permisos.
+</I>&gt;<i>
+</I>&gt;<i> 7º Python es un reclamo (Ya lo dijo Tomeu) pero falso (ya lo dijo Javi):
+</I>&gt;<i> Además lo hablé con algunos de la UC3M y de la UOC, Python tiene las 3
+</I>&gt;<i> B&amp;F, bueno, bonito, barato y rápido. Esto a veces es un reclamo para
+</I>&gt;<i> aquellos programadores que &quot;tienen ganas de colaborar pero no se atreven
+</I>&gt;<i> con C++&quot;, vamos gente como yo al principio, pero sin tenerlos tan bien
+</I>&gt;<i> puestos :P (modestia aparte).
+</I>&gt;<i>
+</I>&gt;<i> Se instalan el programa y ven bulmasetup, dicen: ¡Ostia, funciona! y al
+</I>&gt;<i> ver que no tiene ni plugins ni nada - que no debería tenerlos - ya no hacen
+</I>&gt;<i> nada.
+</I>&gt;<i>
+</I>&gt;<i> Si documentamos bien (y si llegamos a migrarlo todo -en caso de que haya
+</I>&gt;<i> GIT- a la forja de morfeo), cuidamos bien de la WIKI, comentamos bien el
+</I>&gt;<i> código, y subimos el doxygen y vamos actualizando, que con git no nos
+</I>&gt;<i> cuesta nada. La gente no le va a tener miedo a C++, o al menos no tanto y
+</I>&gt;<i> python ya no sería más nuestro caramelo de envoltorio de chocolate y sabor
+</I>&gt;<i> a menta y guindilla.
+</I>&gt;<i>
+</I>&gt;<i> En cualquier caso, lo dejamos en Python tendremos que lidiar con esos
+</I>&gt;<i> problemas, que en mi opinión son bastante jodidos.
+</I>&gt;<i>
+</I>&gt;<i> Y tanto lo dejemos en Python, como en C++ estaremos sujetos a:
+</I>&gt;<i> Reescritura, total y absoluta del código.
+</I>&gt;<i>
+</I>&gt;<i> Por estas 8 razones, y sintiendolo por el trabajo llevado por Tomeu (y
+</I>&gt;<i> demás) en bulmasetup.
+</I>&gt;<i> Sugiero iniciar bulmasetup2 en C++ y mantener bulmasetup hasta que este
+</I>&gt;<i> este terminado.
+</I>&gt;<i>
+</I>
+A mi también me encantaría verlo desaparecer, no siento pena por él.
+
+&gt;<i>
+</I>&gt;<i> Vox populi, vox Dei
+</I>&gt;<i>
+</I>&gt;<i> Salut!
+</I>&gt;<i>
+</I>&gt;<i> PD: Disculpad por el tocho.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Daniel Ripoll Osmawww.danielripoll.es
+</I>&gt;<i> 6688.27.4.90
+</I>&gt;<i>
+</I>&gt;<i> Web &amp; Desktop Developer
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+
+-- 
+Tomeu Borrás
+Conetxia Soluciones Informáticas
+902 88 11 66 - 677 77 44 76
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20111203/19a7535e/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20111203/19a7535e/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006685.html">[BulmaGés]Cambios en BulmaSetup
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006687.html">[BulmaGés] AutoForms instalables desde BulmaSetup
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6686">[ fecha ]</a>
+              <a href="thread.html#6686">[ hilo ]</a>
+              <a href="subject.html#6686">[ asunto ]</a>
+              <a href="author.html#6686">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

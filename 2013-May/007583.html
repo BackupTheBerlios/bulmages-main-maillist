@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130527083424.325C1178%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007582.html">
+   <LINK REL="Next"  HREF="007585.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130527083424.325C1178%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Lun Mayo 27 10:34:24 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007582.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007585.html">[BulmaGés] Qt5 y Windows
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7583">[ fecha ]</a>
+              <a href="thread.html#7583">[ hilo ]</a>
+              <a href="subject.html#7583">[ asunto ]</a>
+              <a href="author.html#7583">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from f4d7a1b to a1d4fe6
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/f4d7a1b2d4d43ea5d91a48db48ea9847d8f634f4/diffs/a1d4fe63826b0041217551d8d4df9ceb7343e00a">https://gitorious.org/bulmages/bulmages/commit/f4d7a1b2d4d43ea5d91a48db48ea9847d8f634f4/diffs/a1d4fe63826b0041217551d8d4df9ceb7343e00a</A>
+
+Diff: 
+
+commit a1d4fe63826b0041217551d8d4df9ceb7343e00a
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon May 27 10:34:02 2013 +0200
+
+    Quito la necesidad de poner la ruta de instalacion de las Qt
+
+diff --git a/bulmages/CMakeLists.txt b/bulmages/CMakeLists.txt
+index 3611311..428e26e 100644
+--- a/bulmages/CMakeLists.txt
++++ b/bulmages/CMakeLists.txt
+@@ -31,7 +31,18 @@ SET( BULMAGES_VERSION 1.5.0 )
+ 
+ set(CMAKE_CXX_FLAGS &quot;-fPIC&quot;)
+ 
+-set(QT5_MODULE_PATH &quot;/usr/lib/x86_64-linux-gnu/cmake&quot;)
++find_package(Qt5Core REQUIRED)
++
++  message(STATUS &quot;El root: ${Qt5Core_LIBRARIES}&quot;)
++
++  message(STATUS &quot;El root: ${_qt5Core_install_prefix}&quot;)
++
++IF(WIN32)
++set(QT5_MODULE_PATH &quot;${_qt5Core_install_prefix}/lib/cmake&quot;)
++ELSE(WIN32)
++set(QT5_MODULE_PATH &quot;${_qt5Core_install_prefix}/lib/x86_64-linux-gnu/cmake&quot;)
++ENDIF(WIN32)
++
+ set(CMAKE_MODULE_PATH &quot;${CMAKE_SOURCE_DIR}/ModulesCMake&quot;)
+ 
+ STRING( REGEX MATCHALL &quot;[0-9]+&quot; BULMAGES_VERSIONS ${BULMAGES_VERSION} )
+@@ -83,9 +94,6 @@ INCLUDE(${QT5_MODULE_PATH}/Qt5Widgets/Qt5WidgetsConfig.cmake)
+ 
+ # ######### General setup ##########
+ INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR})
+-#find_package(Qt5)
+-
+-
+ 
+ if(NOT QT5_FOUND)
+   message(FATAL_ERROR &quot;Bulmages needs QT5 to compile&quot;)
+@@ -93,11 +101,6 @@ endif(NOT QT5_FOUND)
+ 
+ IF (QT5_FOUND)
+  find_package(Qt5Core REQUIRED)
+-# find_package(Qt5Widgets REQUIRED)
+-
+-# find_package(Qt5Gui REQUIRED)
+-# find_package(Qt5Network REQUIRED)
+-# find_package(Qt5Script REQUIRED)
+ ENDIF(QT5_FOUND)
+ 
+ 
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007582.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007585.html">[BulmaGés] Qt5 y Windows
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7583">[ fecha ]</a>
+              <a href="thread.html#7583">[ hilo ]</a>
+              <a href="subject.html#7583">[ asunto ]</a>
+              <a href="author.html#7583">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

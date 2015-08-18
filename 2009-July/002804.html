@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Sobre los plugins
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FSobre_los_plugins%3F%3D&In-Reply-To=%3C200907221900.34793.pedro.lopez.cabanillas%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002803.html">
+   <LINK REL="Next"  HREF="002806.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Sobre los plugins </H1>
+    <B>Pedro Lopez-Cabanillas</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FSobre_los_plugins%3F%3D&In-Reply-To=%3C200907221900.34793.pedro.lopez.cabanillas%40gmail.com%3E"
+       TITLE="[BulmaGés]Sobre los plugins">pedro.lopez.cabanillas en gmail.com
+       </A><BR>
+    <I>Mie Jul 22 19:00:34 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002803.html">[BulmaGés]Sobre los plugins
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002806.html">[BulmaGés] mas build system
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2804">[ fecha ]</a>
+              <a href="thread.html#2804">[ hilo ]</a>
+              <a href="subject.html#2804">[ asunto ]</a>
+              <a href="author.html#2804">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wednesday, July 22, 2009, Leopold Palomo-Avellaneda wrote:
+&gt;<i> A Dimecres 22 Juliol 2009, Pedro Lopez-Cabanillas va escriure:
+</I>&gt;<i> &gt; Hola,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Los plugins están compilados ahora mismo como shared libraries, con sus
+</I>&gt;<i> &gt; atributos SONAME, version y symlinks. Esto no es necesario, ya que los
+</I>&gt;<i> &gt; plugins se cargan con QLibrary::load() y por otra parte esta política
+</I>&gt;<i> &gt; obliga a empaquetarlos en formato RPM con una serie de paquetes -devel
+</I>&gt;<i> &gt; innecesarios. Por este motivo, propongo un cambio en los scripts de
+</I>&gt;<i> &gt; CMake. En vez de:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; 	add_library(${plugin} SHARED ${plugin_SRC} ${plugin_MOC_SRCS}
+</I>&gt;<i> &gt;         	${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; 	set_target_properties( ${plugin} PROPERTIES
+</I>&gt;<i> &gt; 	  SOVERSION &quot;${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}&quot;
+</I>&gt;<i> &gt; 	  VERSION &quot;${BULMAGES_VERSION}&quot;)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Quedarían de esta forma:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; 	add_library(${plugin} MODULE ${plugin_SRC} ${plugin_MOC_SRCS}
+</I>&gt;<i> &gt;         	${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; 	#set_target_properties( ${plugin} PROPERTIES
+</I>&gt;<i> &gt; 	#  SOVERSION &quot;${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}&quot;
+</I>&gt;<i> &gt; 	#  VERSION &quot;${BULMAGES_VERSION}&quot;)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Esto generaría por cada plugin solamente un archivo .so sin ningun enlace
+</I>&gt;<i> &gt; simbólico. Una mejora adicional sería evitar el prefijo &quot;lib&quot; en todos
+</I>&gt;<i> &gt; los plugins, para lo cual se puede hacer a nivel global:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; 	SET(CMAKE_SHARED_MODULE_PREFIX &quot;&quot;)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Pero esto obligaría a modificar en la base de datos la nomenclatura de
+</I>&gt;<i> &gt; los plugins, así como en la actualización de instalaciones de los
+</I>&gt;<i> &gt; usuarios. La edición masiva de los CMakeLists.txt puedo hacerla
+</I>&gt;<i> &gt; fácilmente con un script.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ¿Opiniones?
+</I>&gt;<i>
+</I>&gt;<i> necesito tiempo para meditarlo i consultar. En principio no tiene mala
+</I>&gt;<i> pinta, pero .... déjame unos dias.
+</I>
+OK. Por si quereis probar, para los directorios de plugins:
+
+$ perl -i.old -ple 's/SHARED/MODULE/ if m/^\s*add_library/; s/.*/#$_/ if 
+m/^\s*(set_target_properties|SOVERSION|VERSION)/' CMakeLists.txt
+
+Saludos,
+Pedro
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002803.html">[BulmaGés]Sobre los plugins
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002806.html">[BulmaGés] mas build system
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2804">[ fecha ]</a>
+              <a href="thread.html#2804">[ hilo ]</a>
+              <a href="subject.html#2804">[ asunto ]</a>
+              <a href="author.html#2804">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

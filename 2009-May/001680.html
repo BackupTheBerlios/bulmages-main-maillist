@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]error al compilar la ultima version
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Ferror_al_compilar_la_%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fultima_version%3F%3D&In-Reply-To=%3C8c64fb150905020200n23328ae3l7e9fdb79f513f6d1%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001666.html">
+   <LINK REL="Next"  HREF="001667.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]error al compilar la ultima version </H1>
+    <B>Albert Mas</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Ferror_al_compilar_la_%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fultima_version%3F%3D&In-Reply-To=%3C8c64fb150905020200n23328ae3l7e9fdb79f513f6d1%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]error al compilar la ultima version">albertmas en termens.cat
+       </A><BR>
+    <I>Sab Mayo  2 11:00:29 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001666.html">[BulmaGés]error al compilar la ultima version
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001667.html">[BulmaGés]Compilación con errores en los archivos .po
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1680">[ fecha ]</a>
+              <a href="thread.html#1680">[ hilo ]</a>
+              <a href="subject.html#1680">[ asunto ]</a>
+              <a href="author.html#1680">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Gràcies! Ara ja compila!
+
+2009/5/1 Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;:
+&gt;<i> Hola Albert:
+</I>&gt;<i>
+</I>&gt;<i> El error es debido a que la version de Qt ha cambiado y el formato de los
+</I>&gt;<i> archivos moc no es igual en la version posterior.
+</I>&gt;<i>
+</I>&gt;<i> Haz un make clean o borral el build y vuelve a empezar.
+</I>&gt;<i>
+</I>&gt;<i> Salut
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> El Thursday 30 April 2009 23:48:11 Albert Mas escribió:
+</I>&gt;&gt;<i> alguien sabe a que se debe este error al compilar?
+</I>&gt;&gt;<i> he actualizado a ubuntu 9.04 y ahora no si este error es que la
+</I>&gt;&gt;<i> version de svn no compila o es algo de la actualización de ubuntu.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Saludos.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">administrador en 330</A>:~/Bulmages/trunk/bulmages/build$ sudo make install
+</I>&gt;&gt;<i> [  0%] Built target translations
+</I>&gt;&gt;<i> [  0%] Generating qrc_bulmages.cxx
+</I>&gt;&gt;<i> [  0%] Generating moc_bldatesearch.cxx
+</I>&gt;&gt;<i> [  0%] Generating moc_blsubform.cxx
+</I>&gt;&gt;<i> Scanning dependencies of target bulmalib
+</I>&gt;&gt;<i> [  0%] Building CXX object
+</I>&gt;&gt;<i> bulmalib/src/CMakeFiles/bulmalib.dir/moc_bldblogindialog.o
+</I>&gt;&gt;<i> /home/administrador/Bulmages/trunk/bulmages/build/bulmalib/src/moc_bldblogi
+</I>&gt;&gt;<i>ndialog.cxx:14:2: error: #error &quot;This file was generated using the moc from
+</I>&gt;&gt;<i> 4.4.3. It&quot;
+</I>&gt;&gt;<i> /home/administrador/Bulmages/trunk/bulmages/build/bulmalib/src/moc_bldblogi
+</I>&gt;&gt;<i>ndialog.cxx:15:2: error: #error &quot;cannot be used with the include files from
+</I>&gt;&gt;<i> this version of Qt.&quot;
+</I>&gt;&gt;<i> /home/administrador/Bulmages/trunk/bulmages/build/bulmalib/src/moc_bldblogi
+</I>&gt;&gt;<i>ndialog.cxx:16:2: error: #error &quot;(The moc has changed too much.)&quot;
+</I>&gt;&gt;<i> make[2]: *** [bulmalib/src/CMakeFiles/bulmalib.dir/moc_bldblogindialog.o]
+</I>&gt;&gt;<i> Error 1
+</I>&gt;&gt;<i> make[1]: *** [bulmalib/src/CMakeFiles/bulmalib.dir/all] Error 2
+</I>&gt;&gt;<i> make: *** [all] Error 2
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Tomeu Borrás Riera
+</I>&gt;<i> Conetxia Soluciones Informáticas
+</I>&gt;<i> 902 88 11 66
+</I>&gt;<i> 971 29 06 29
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>
+
+
+-- 
+__________________
+Albert Mas
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">albertmas en termens.cat</A>
+blog: <A HREF="http://www.turkil.net">http://www.turkil.net</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001666.html">[BulmaGés]error al compilar la ultima version
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001667.html">[BulmaGés]Compilación con errores en los archivos .po
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1680">[ fecha ]</a>
+              <a href="thread.html#1680">[ hilo ]</a>
+              <a href="subject.html#1680">[ asunto ]</a>
+              <a href="author.html#1680">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

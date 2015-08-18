@@ -1,0 +1,712 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120505214944.85234756E0%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007176.html">
+   <LINK REL="Next"  HREF="007178.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120505214944.85234756E0%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Sab Mayo  5 23:49:44 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007176.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007178.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to release...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7177">[ fecha ]</a>
+              <a href="thread.html#7177">[ hilo ]</a>
+              <a href="subject.html#7177">[ asunto ]</a>
+              <a href="author.html#7177">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from ee0f3c7 to d5ce075
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/ee0f3c7c337b1b6872ffab4e40216016854aa892/diffs/d5ce0750025fe90c359788b145a4dca776feec5a">https://gitorious.org/bulmages/bulmages/commit/ee0f3c7c337b1b6872ffab4e40216016854aa892/diffs/d5ce0750025fe90c359788b145a4dca776feec5a</A>
+
+Diff: 
+
+commit d5ce0750025fe90c359788b145a4dca776feec5a
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sat May 5 23:49:40 2012 +0200
+
+    Cambio los strings de los informes pys para que usen unicode. Debido al problema que produce tener caracteres especiales en la base de datos
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_biblioteca/openreports/ca/impers_autor_algo.pys b/bulmages/bulmafact/plugins/pluginbf_biblioteca/openreports/ca/impers_autor_algo.pys
+index 3ce2136..7d50ced 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_biblioteca/openreports/ca/impers_autor_algo.pys
++++ b/bulmages/bulmafact/plugins/pluginbf_biblioteca/openreports/ca/impers_autor_algo.pys
+@@ -12,8 +12,8 @@ doc.set_column_property(1, 'width', '0.5in')
+ doc.set_column_property(2, 'width', '5in')
+ doc.set_cell_property('bold', True)
+ doc.set_cell_value(2, 2, 'string', 'Libros de un Autor')
+-doc.set_cell_value(3, 2, 'string', '[idautor]')
+-doc.set_cell_value(4, 2, 'string', '[nomautor]')
++doc.set_cell_value(3, 2, 'string', u'[idautor]')
++doc.set_cell_value(4, 2, 'string', u'[nomautor]')
+ 
+ i=4
+ doc.set_cell_value(1,i,'string','ISBN')
+@@ -22,7 +22,7 @@ doc.set_cell_value(2,i,'string','TITULO')
+ 
+ &lt;!-- QUERY=&quot;SELECT * FROM libro WHERE idautor = [idautor]&quot; --&gt;
+ doc.set_cell_value(1,i,'string','isblibro')
+-doc.set_cell_value(2,i,'string','[titulolibro]')
++doc.set_cell_value(2,i,'string', u'[titulolibro]')
+ i =  i + 1
+ &lt;!-- END QUERY --&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_biblioteca/openreports/en/impers_autor_algo.pys b/bulmages/bulmafact/plugins/pluginbf_biblioteca/openreports/en/impers_autor_algo.pys
+index 3ce2136..7d50ced 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_biblioteca/openreports/en/impers_autor_algo.pys
++++ b/bulmages/bulmafact/plugins/pluginbf_biblioteca/openreports/en/impers_autor_algo.pys
+@@ -12,8 +12,8 @@ doc.set_column_property(1, 'width', '0.5in')
+ doc.set_column_property(2, 'width', '5in')
+ doc.set_cell_property('bold', True)
+ doc.set_cell_value(2, 2, 'string', 'Libros de un Autor')
+-doc.set_cell_value(3, 2, 'string', '[idautor]')
+-doc.set_cell_value(4, 2, 'string', '[nomautor]')
++doc.set_cell_value(3, 2, 'string', u'[idautor]')
++doc.set_cell_value(4, 2, 'string', u'[nomautor]')
+ 
+ i=4
+ doc.set_cell_value(1,i,'string','ISBN')
+@@ -22,7 +22,7 @@ doc.set_cell_value(2,i,'string','TITULO')
+ 
+ &lt;!-- QUERY=&quot;SELECT * FROM libro WHERE idautor = [idautor]&quot; --&gt;
+ doc.set_cell_value(1,i,'string','isblibro')
+-doc.set_cell_value(2,i,'string','[titulolibro]')
++doc.set_cell_value(2,i,'string', u'[titulolibro]')
+ i =  i + 1
+ &lt;!-- END QUERY --&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_biblioteca/openreports/es/impers_autor_algo.pys b/bulmages/bulmafact/plugins/pluginbf_biblioteca/openreports/es/impers_autor_algo.pys
+index 3ce2136..7d50ced 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_biblioteca/openreports/es/impers_autor_algo.pys
++++ b/bulmages/bulmafact/plugins/pluginbf_biblioteca/openreports/es/impers_autor_algo.pys
+@@ -12,8 +12,8 @@ doc.set_column_property(1, 'width', '0.5in')
+ doc.set_column_property(2, 'width', '5in')
+ doc.set_cell_property('bold', True)
+ doc.set_cell_value(2, 2, 'string', 'Libros de un Autor')
+-doc.set_cell_value(3, 2, 'string', '[idautor]')
+-doc.set_cell_value(4, 2, 'string', '[nomautor]')
++doc.set_cell_value(3, 2, 'string', u'[idautor]')
++doc.set_cell_value(4, 2, 'string', u'[nomautor]')
+ 
+ i=4
+ doc.set_cell_value(1,i,'string','ISBN')
+@@ -22,7 +22,7 @@ doc.set_cell_value(2,i,'string','TITULO')
+ 
+ &lt;!-- QUERY=&quot;SELECT * FROM libro WHERE idautor = [idautor]&quot; --&gt;
+ doc.set_cell_value(1,i,'string','isblibro')
+-doc.set_cell_value(2,i,'string','[titulolibro]')
++doc.set_cell_value(2,i,'string', u'[titulolibro]')
+ i =  i + 1
+ &lt;!-- END QUERY --&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_biblioteca/openreports/fr/impers_autor_algo.pys b/bulmages/bulmafact/plugins/pluginbf_biblioteca/openreports/fr/impers_autor_algo.pys
+index 3ce2136..7d50ced 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_biblioteca/openreports/fr/impers_autor_algo.pys
++++ b/bulmages/bulmafact/plugins/pluginbf_biblioteca/openreports/fr/impers_autor_algo.pys
+@@ -12,8 +12,8 @@ doc.set_column_property(1, 'width', '0.5in')
+ doc.set_column_property(2, 'width', '5in')
+ doc.set_cell_property('bold', True)
+ doc.set_cell_value(2, 2, 'string', 'Libros de un Autor')
+-doc.set_cell_value(3, 2, 'string', '[idautor]')
+-doc.set_cell_value(4, 2, 'string', '[nomautor]')
++doc.set_cell_value(3, 2, 'string', u'[idautor]')
++doc.set_cell_value(4, 2, 'string', u'[nomautor]')
+ 
+ i=4
+ doc.set_cell_value(1,i,'string','ISBN')
+@@ -22,7 +22,7 @@ doc.set_cell_value(2,i,'string','TITULO')
+ 
+ &lt;!-- QUERY=&quot;SELECT * FROM libro WHERE idautor = [idautor]&quot; --&gt;
+ doc.set_cell_value(1,i,'string','isblibro')
+-doc.set_cell_value(2,i,'string','[titulolibro]')
++doc.set_cell_value(2,i,'string', u'[titulolibro]')
+ i =  i + 1
+ &lt;!-- END QUERY --&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/ca/inf_clientes.pys b/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/ca/inf_clientes.pys
+index cf44bb5..c3d61cf 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/ca/inf_clientes.pys
++++ b/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/ca/inf_clientes.pys
+@@ -16,9 +16,9 @@ doc.set_cell_value(2, 2, 'string', 'LISTADO CLIENTES')
+ i = 5
+ &lt;!--QUERY=&quot;SELECT * FROM cliente&quot;--&gt;
+ 
+-doc.set_cell_value(1,i,'string','[cifcliente]')
+-doc.set_cell_value(2,i,'string',&quot;[nomcliente]&quot;)
+-doc.set_cell_value(3,i,'string','[telcliente]')
++doc.set_cell_value(1,i,'string', u'[cifcliente]')
++doc.set_cell_value(2,i,'string', u&quot;[nomcliente]&quot;)
++doc.set_cell_value(3,i,'string', u'[telcliente]')
+ i = i + 1
+ &lt;!--END QUERY--&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/ca/inf_detalleventascliente.pys b/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/ca/inf_detalleventascliente.pys
+index 0441f14..14ece3b 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/ca/inf_detalleventascliente.pys
++++ b/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/ca/inf_detalleventascliente.pys
+@@ -16,11 +16,11 @@ doc.set_cell_value(2, 2, 'string', 'DETALLE DE VENTAS (POR CLIENTE)')
+ i = 5
+ &lt;!--QUERY=&quot;SELECT cliente.nomcliente, articulo.nomarticulo, albaran.fechaalbaran, lalbaran.desclalbaran, lalbaran.pvplalbaran FROM cliente, articulo, albaran, lalbaran WHERE cliente.idcliente = albaran.idcliente AND lalbaran.idalbaran = albaran.idalbaran AND lalbaran.idarticulo = articulo.idarticulo ORDER BY cliente.nomcliente, albaran.fechaalbaran desc&quot;--&gt;
+ 
+-doc.set_cell_value(1,i,'string','[nomcliente]')
+-doc.set_cell_value(2,i,'string',&quot;[nomarticulo]&quot;)
+-doc.set_cell_value(3, i, 'string', '[fechaalbaran]')
+-doc.set_cell_value(4, i, 'string', &quot;[desclalbaran]&quot;)
+-doc.set_cell_value(5, i, 'string', '[pvplalbaran]')
++doc.set_cell_value(1,i,'string', u'[nomcliente]')
++doc.set_cell_value(2,i,'string', u&quot;[nomarticulo]&quot;)
++doc.set_cell_value(3, i, 'string', u'[fechaalbaran]')
++doc.set_cell_value(4, i, 'string', u&quot;[desclalbaran]&quot;)
++doc.set_cell_value(5, i, 'string', u'[pvplalbaran]')
+ i = i + 1
+ &lt;!--END QUERY--&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/en/inf_clientes.pys b/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/en/inf_clientes.pys
+index cf44bb5..c3d61cf 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/en/inf_clientes.pys
++++ b/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/en/inf_clientes.pys
+@@ -16,9 +16,9 @@ doc.set_cell_value(2, 2, 'string', 'LISTADO CLIENTES')
+ i = 5
+ &lt;!--QUERY=&quot;SELECT * FROM cliente&quot;--&gt;
+ 
+-doc.set_cell_value(1,i,'string','[cifcliente]')
+-doc.set_cell_value(2,i,'string',&quot;[nomcliente]&quot;)
+-doc.set_cell_value(3,i,'string','[telcliente]')
++doc.set_cell_value(1,i,'string', u'[cifcliente]')
++doc.set_cell_value(2,i,'string', u&quot;[nomcliente]&quot;)
++doc.set_cell_value(3,i,'string', u'[telcliente]')
+ i = i + 1
+ &lt;!--END QUERY--&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/en/inf_detalleventascliente.pys b/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/en/inf_detalleventascliente.pys
+index 0441f14..14ece3b 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/en/inf_detalleventascliente.pys
++++ b/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/en/inf_detalleventascliente.pys
+@@ -16,11 +16,11 @@ doc.set_cell_value(2, 2, 'string', 'DETALLE DE VENTAS (POR CLIENTE)')
+ i = 5
+ &lt;!--QUERY=&quot;SELECT cliente.nomcliente, articulo.nomarticulo, albaran.fechaalbaran, lalbaran.desclalbaran, lalbaran.pvplalbaran FROM cliente, articulo, albaran, lalbaran WHERE cliente.idcliente = albaran.idcliente AND lalbaran.idalbaran = albaran.idalbaran AND lalbaran.idarticulo = articulo.idarticulo ORDER BY cliente.nomcliente, albaran.fechaalbaran desc&quot;--&gt;
+ 
+-doc.set_cell_value(1,i,'string','[nomcliente]')
+-doc.set_cell_value(2,i,'string',&quot;[nomarticulo]&quot;)
+-doc.set_cell_value(3, i, 'string', '[fechaalbaran]')
+-doc.set_cell_value(4, i, 'string', &quot;[desclalbaran]&quot;)
+-doc.set_cell_value(5, i, 'string', '[pvplalbaran]')
++doc.set_cell_value(1,i,'string', u'[nomcliente]')
++doc.set_cell_value(2,i,'string', u&quot;[nomarticulo]&quot;)
++doc.set_cell_value(3, i, 'string', u'[fechaalbaran]')
++doc.set_cell_value(4, i, 'string', u&quot;[desclalbaran]&quot;)
++doc.set_cell_value(5, i, 'string', u'[pvplalbaran]')
+ i = i + 1
+ &lt;!--END QUERY--&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/es/inf_clientes.pys b/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/es/inf_clientes.pys
+index cf44bb5..c3d61cf 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/es/inf_clientes.pys
++++ b/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/es/inf_clientes.pys
+@@ -16,9 +16,9 @@ doc.set_cell_value(2, 2, 'string', 'LISTADO CLIENTES')
+ i = 5
+ &lt;!--QUERY=&quot;SELECT * FROM cliente&quot;--&gt;
+ 
+-doc.set_cell_value(1,i,'string','[cifcliente]')
+-doc.set_cell_value(2,i,'string',&quot;[nomcliente]&quot;)
+-doc.set_cell_value(3,i,'string','[telcliente]')
++doc.set_cell_value(1,i,'string', u'[cifcliente]')
++doc.set_cell_value(2,i,'string', u&quot;[nomcliente]&quot;)
++doc.set_cell_value(3,i,'string', u'[telcliente]')
+ i = i + 1
+ &lt;!--END QUERY--&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/es/inf_detalleventascliente.pys b/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/es/inf_detalleventascliente.pys
+index 0441f14..14ece3b 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/es/inf_detalleventascliente.pys
++++ b/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/es/inf_detalleventascliente.pys
+@@ -16,11 +16,11 @@ doc.set_cell_value(2, 2, 'string', 'DETALLE DE VENTAS (POR CLIENTE)')
+ i = 5
+ &lt;!--QUERY=&quot;SELECT cliente.nomcliente, articulo.nomarticulo, albaran.fechaalbaran, lalbaran.desclalbaran, lalbaran.pvplalbaran FROM cliente, articulo, albaran, lalbaran WHERE cliente.idcliente = albaran.idcliente AND lalbaran.idalbaran = albaran.idalbaran AND lalbaran.idarticulo = articulo.idarticulo ORDER BY cliente.nomcliente, albaran.fechaalbaran desc&quot;--&gt;
+ 
+-doc.set_cell_value(1,i,'string','[nomcliente]')
+-doc.set_cell_value(2,i,'string',&quot;[nomarticulo]&quot;)
+-doc.set_cell_value(3, i, 'string', '[fechaalbaran]')
+-doc.set_cell_value(4, i, 'string', &quot;[desclalbaran]&quot;)
+-doc.set_cell_value(5, i, 'string', '[pvplalbaran]')
++doc.set_cell_value(1,i,'string', u'[nomcliente]')
++doc.set_cell_value(2,i,'string', u&quot;[nomarticulo]&quot;)
++doc.set_cell_value(3, i, 'string', u'[fechaalbaran]')
++doc.set_cell_value(4, i, 'string', u&quot;[desclalbaran]&quot;)
++doc.set_cell_value(5, i, 'string', u'[pvplalbaran]')
+ i = i + 1
+ &lt;!--END QUERY--&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/fr/inf_clientes.pys b/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/fr/inf_clientes.pys
+index cf44bb5..c3d61cf 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/fr/inf_clientes.pys
++++ b/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/fr/inf_clientes.pys
+@@ -16,9 +16,9 @@ doc.set_cell_value(2, 2, 'string', 'LISTADO CLIENTES')
+ i = 5
+ &lt;!--QUERY=&quot;SELECT * FROM cliente&quot;--&gt;
+ 
+-doc.set_cell_value(1,i,'string','[cifcliente]')
+-doc.set_cell_value(2,i,'string',&quot;[nomcliente]&quot;)
+-doc.set_cell_value(3,i,'string','[telcliente]')
++doc.set_cell_value(1,i,'string', u'[cifcliente]')
++doc.set_cell_value(2,i,'string', u&quot;[nomcliente]&quot;)
++doc.set_cell_value(3,i,'string', u'[telcliente]')
+ i = i + 1
+ &lt;!--END QUERY--&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/fr/inf_detalleventascliente.pys b/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/fr/inf_detalleventascliente.pys
+index 0441f14..14ece3b 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/fr/inf_detalleventascliente.pys
++++ b/bulmages/bulmafact/plugins/pluginbf_cliente/openreports/fr/inf_detalleventascliente.pys
+@@ -16,11 +16,11 @@ doc.set_cell_value(2, 2, 'string', 'DETALLE DE VENTAS (POR CLIENTE)')
+ i = 5
+ &lt;!--QUERY=&quot;SELECT cliente.nomcliente, articulo.nomarticulo, albaran.fechaalbaran, lalbaran.desclalbaran, lalbaran.pvplalbaran FROM cliente, articulo, albaran, lalbaran WHERE cliente.idcliente = albaran.idcliente AND lalbaran.idalbaran = albaran.idalbaran AND lalbaran.idarticulo = articulo.idarticulo ORDER BY cliente.nomcliente, albaran.fechaalbaran desc&quot;--&gt;
+ 
+-doc.set_cell_value(1,i,'string','[nomcliente]')
+-doc.set_cell_value(2,i,'string',&quot;[nomarticulo]&quot;)
+-doc.set_cell_value(3, i, 'string', '[fechaalbaran]')
+-doc.set_cell_value(4, i, 'string', &quot;[desclalbaran]&quot;)
+-doc.set_cell_value(5, i, 'string', '[pvplalbaran]')
++doc.set_cell_value(1,i,'string', u'[nomcliente]')
++doc.set_cell_value(2,i,'string', u&quot;[nomarticulo]&quot;)
++doc.set_cell_value(3, i, 'string', u'[fechaalbaran]')
++doc.set_cell_value(4, i, 'string', u&quot;[desclalbaran]&quot;)
++doc.set_cell_value(5, i, 'string', u'[pvplalbaran]')
+ i = i + 1
+ &lt;!--END QUERY--&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/ca/inf_detalleventasarticulo.pys b/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/ca/inf_detalleventasarticulo.pys
+index 8d4a992..92808cd 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/ca/inf_detalleventasarticulo.pys
++++ b/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/ca/inf_detalleventasarticulo.pys
+@@ -16,11 +16,11 @@ doc.set_cell_value(2, 2, 'string', u'DETALLE DE VENTAS (POR ARTÍCULO)')
+ i = 5
+ &lt;!--QUERY=&quot;select articulo.idarticulo, articulo.nomarticulo, cliente.nomcliente, albaran.fechaalbaran, lalbaran.desclalbaran, lalbaran.pvplalbaran from lalbaran, albaran, cliente, articulo where cliente.idcliente = albaran.idcliente AND lalbaran.idalbaran = albaran.idalbaran AND lalbaran.idarticulo = articulo.idarticulo order by articulo.nomarticulo&quot;--&gt;
+ 
+-doc.set_cell_value(1, i, 'string', '[nomarticulo]')
+-doc.set_cell_value(2, i, 'string', &quot;[nomcliente]&quot;)
+-doc.set_cell_value(3, i, 'string', '[fechaalbaran]')
+-doc.set_cell_value(4, i, 'string', &quot;[desclalbaran]&quot;)
+-doc.set_cell_value(5, i, 'string', '[pvplalbaran]')
++doc.set_cell_value(1, i, 'string', u'[nomarticulo]')
++doc.set_cell_value(2, i, 'string', u&quot;[nomcliente]&quot;)
++doc.set_cell_value(3, i, 'string', u'[fechaalbaran]')
++doc.set_cell_value(4, i, 'string', u&quot;[desclalbaran]&quot;)
++doc.set_cell_value(5, i, 'string', u'[pvplalbaran]')
+ i = i + 1
+ &lt;!--END QUERY--&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/ca/inf_resumcompras.pys b/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/ca/inf_resumcompras.pys
+index a6025a6..d651b6f 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/ca/inf_resumcompras.pys
++++ b/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/ca/inf_resumcompras.pys
+@@ -33,11 +33,11 @@ i = 5
+ &lt;!--SUBQUERY=&quot;SELECT SUM (cantlfacturap * pvplfacturap * (100 - descuentolfacturap)/100 )::NUMERIC(12,2) AS base, SUM(cantlfacturap * pvplfacturap * (100 - descuentolfacturap)/100 *  ivalfacturap/100 )::NUMERIC(12,2) AS impuestos FROM lfacturap NATURAL LEFT JOIN facturap WHERE facturap.idproveedor = [idproveedor] AND ffacturap &gt;= '[fecha_inicial]' AND ffacturap&lt;= '[fecha_final]'&quot;--&gt;
+ 
+ 
+-doc.set_cell_value(1,i,'string','[cifproveedor]')
+-doc.set_cell_value(2,i,'string','[nomproveedor]')
+-doc.set_cell_value(3,i,'string','[dirproveedor]')
+-doc.set_cell_value(4,i,'string','[cpproveedor]')
+-doc.set_cell_value(5,i,'string','[poblproveedor]')
++doc.set_cell_value(1,i,'string', u'[cifproveedor]')
++doc.set_cell_value(2,i,'string', u'[nomproveedor]')
++doc.set_cell_value(3,i,'string', u'[dirproveedor]')
++doc.set_cell_value(4,i,'string', u'[cpproveedor]')
++doc.set_cell_value(5,i,'string', u'[poblproveedor]')
+ 
+ 
+ doc.set_cell_value(6,i,'float','[base]')
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/en/inf_detalleventasarticulo.pys b/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/en/inf_detalleventasarticulo.pys
+index 8d4a992..92808cd 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/en/inf_detalleventasarticulo.pys
++++ b/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/en/inf_detalleventasarticulo.pys
+@@ -16,11 +16,11 @@ doc.set_cell_value(2, 2, 'string', u'DETALLE DE VENTAS (POR ARTÍCULO)')
+ i = 5
+ &lt;!--QUERY=&quot;select articulo.idarticulo, articulo.nomarticulo, cliente.nomcliente, albaran.fechaalbaran, lalbaran.desclalbaran, lalbaran.pvplalbaran from lalbaran, albaran, cliente, articulo where cliente.idcliente = albaran.idcliente AND lalbaran.idalbaran = albaran.idalbaran AND lalbaran.idarticulo = articulo.idarticulo order by articulo.nomarticulo&quot;--&gt;
+ 
+-doc.set_cell_value(1, i, 'string', '[nomarticulo]')
+-doc.set_cell_value(2, i, 'string', &quot;[nomcliente]&quot;)
+-doc.set_cell_value(3, i, 'string', '[fechaalbaran]')
+-doc.set_cell_value(4, i, 'string', &quot;[desclalbaran]&quot;)
+-doc.set_cell_value(5, i, 'string', '[pvplalbaran]')
++doc.set_cell_value(1, i, 'string', u'[nomarticulo]')
++doc.set_cell_value(2, i, 'string', u&quot;[nomcliente]&quot;)
++doc.set_cell_value(3, i, 'string', u'[fechaalbaran]')
++doc.set_cell_value(4, i, 'string', u&quot;[desclalbaran]&quot;)
++doc.set_cell_value(5, i, 'string', u'[pvplalbaran]')
+ i = i + 1
+ &lt;!--END QUERY--&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/en/inf_resumcompras.pys b/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/en/inf_resumcompras.pys
+index a6025a6..d651b6f 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/en/inf_resumcompras.pys
++++ b/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/en/inf_resumcompras.pys
+@@ -33,11 +33,11 @@ i = 5
+ &lt;!--SUBQUERY=&quot;SELECT SUM (cantlfacturap * pvplfacturap * (100 - descuentolfacturap)/100 )::NUMERIC(12,2) AS base, SUM(cantlfacturap * pvplfacturap * (100 - descuentolfacturap)/100 *  ivalfacturap/100 )::NUMERIC(12,2) AS impuestos FROM lfacturap NATURAL LEFT JOIN facturap WHERE facturap.idproveedor = [idproveedor] AND ffacturap &gt;= '[fecha_inicial]' AND ffacturap&lt;= '[fecha_final]'&quot;--&gt;
+ 
+ 
+-doc.set_cell_value(1,i,'string','[cifproveedor]')
+-doc.set_cell_value(2,i,'string','[nomproveedor]')
+-doc.set_cell_value(3,i,'string','[dirproveedor]')
+-doc.set_cell_value(4,i,'string','[cpproveedor]')
+-doc.set_cell_value(5,i,'string','[poblproveedor]')
++doc.set_cell_value(1,i,'string', u'[cifproveedor]')
++doc.set_cell_value(2,i,'string', u'[nomproveedor]')
++doc.set_cell_value(3,i,'string', u'[dirproveedor]')
++doc.set_cell_value(4,i,'string', u'[cpproveedor]')
++doc.set_cell_value(5,i,'string', u'[poblproveedor]')
+ 
+ 
+ doc.set_cell_value(6,i,'float','[base]')
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/es/inf_detalleventasarticulo.pys b/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/es/inf_detalleventasarticulo.pys
+index 8d4a992..92808cd 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/es/inf_detalleventasarticulo.pys
++++ b/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/es/inf_detalleventasarticulo.pys
+@@ -16,11 +16,11 @@ doc.set_cell_value(2, 2, 'string', u'DETALLE DE VENTAS (POR ARTÍCULO)')
+ i = 5
+ &lt;!--QUERY=&quot;select articulo.idarticulo, articulo.nomarticulo, cliente.nomcliente, albaran.fechaalbaran, lalbaran.desclalbaran, lalbaran.pvplalbaran from lalbaran, albaran, cliente, articulo where cliente.idcliente = albaran.idcliente AND lalbaran.idalbaran = albaran.idalbaran AND lalbaran.idarticulo = articulo.idarticulo order by articulo.nomarticulo&quot;--&gt;
+ 
+-doc.set_cell_value(1, i, 'string', '[nomarticulo]')
+-doc.set_cell_value(2, i, 'string', &quot;[nomcliente]&quot;)
+-doc.set_cell_value(3, i, 'string', '[fechaalbaran]')
+-doc.set_cell_value(4, i, 'string', &quot;[desclalbaran]&quot;)
+-doc.set_cell_value(5, i, 'string', '[pvplalbaran]')
++doc.set_cell_value(1, i, 'string', u'[nomarticulo]')
++doc.set_cell_value(2, i, 'string', u&quot;[nomcliente]&quot;)
++doc.set_cell_value(3, i, 'string', u'[fechaalbaran]')
++doc.set_cell_value(4, i, 'string', u&quot;[desclalbaran]&quot;)
++doc.set_cell_value(5, i, 'string', u'[pvplalbaran]')
+ i = i + 1
+ &lt;!--END QUERY--&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/es/inf_resumcompras.pys b/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/es/inf_resumcompras.pys
+index a6025a6..d651b6f 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/es/inf_resumcompras.pys
++++ b/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/es/inf_resumcompras.pys
+@@ -33,11 +33,11 @@ i = 5
+ &lt;!--SUBQUERY=&quot;SELECT SUM (cantlfacturap * pvplfacturap * (100 - descuentolfacturap)/100 )::NUMERIC(12,2) AS base, SUM(cantlfacturap * pvplfacturap * (100 - descuentolfacturap)/100 *  ivalfacturap/100 )::NUMERIC(12,2) AS impuestos FROM lfacturap NATURAL LEFT JOIN facturap WHERE facturap.idproveedor = [idproveedor] AND ffacturap &gt;= '[fecha_inicial]' AND ffacturap&lt;= '[fecha_final]'&quot;--&gt;
+ 
+ 
+-doc.set_cell_value(1,i,'string','[cifproveedor]')
+-doc.set_cell_value(2,i,'string','[nomproveedor]')
+-doc.set_cell_value(3,i,'string','[dirproveedor]')
+-doc.set_cell_value(4,i,'string','[cpproveedor]')
+-doc.set_cell_value(5,i,'string','[poblproveedor]')
++doc.set_cell_value(1,i,'string', u'[cifproveedor]')
++doc.set_cell_value(2,i,'string', u'[nomproveedor]')
++doc.set_cell_value(3,i,'string', u'[dirproveedor]')
++doc.set_cell_value(4,i,'string', u'[cpproveedor]')
++doc.set_cell_value(5,i,'string', u'[poblproveedor]')
+ 
+ 
+ doc.set_cell_value(6,i,'float','[base]')
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/fr/inf_detalleventasarticulo.pys b/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/fr/inf_detalleventasarticulo.pys
+index 8d4a992..92808cd 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/fr/inf_detalleventasarticulo.pys
++++ b/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/fr/inf_detalleventasarticulo.pys
+@@ -16,11 +16,11 @@ doc.set_cell_value(2, 2, 'string', u'DETALLE DE VENTAS (POR ARTÍCULO)')
+ i = 5
+ &lt;!--QUERY=&quot;select articulo.idarticulo, articulo.nomarticulo, cliente.nomcliente, albaran.fechaalbaran, lalbaran.desclalbaran, lalbaran.pvplalbaran from lalbaran, albaran, cliente, articulo where cliente.idcliente = albaran.idcliente AND lalbaran.idalbaran = albaran.idalbaran AND lalbaran.idarticulo = articulo.idarticulo order by articulo.nomarticulo&quot;--&gt;
+ 
+-doc.set_cell_value(1, i, 'string', '[nomarticulo]')
+-doc.set_cell_value(2, i, 'string', &quot;[nomcliente]&quot;)
+-doc.set_cell_value(3, i, 'string', '[fechaalbaran]')
+-doc.set_cell_value(4, i, 'string', &quot;[desclalbaran]&quot;)
+-doc.set_cell_value(5, i, 'string', '[pvplalbaran]')
++doc.set_cell_value(1, i, 'string', u'[nomarticulo]')
++doc.set_cell_value(2, i, 'string', u&quot;[nomcliente]&quot;)
++doc.set_cell_value(3, i, 'string', u'[fechaalbaran]')
++doc.set_cell_value(4, i, 'string', u&quot;[desclalbaran]&quot;)
++doc.set_cell_value(5, i, 'string', u'[pvplalbaran]')
+ i = i + 1
+ &lt;!--END QUERY--&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/fr/inf_resumcompras.pys b/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/fr/inf_resumcompras.pys
+index a6025a6..d651b6f 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/fr/inf_resumcompras.pys
++++ b/bulmages/bulmafact/plugins/pluginbf_clientefactura/openreports/fr/inf_resumcompras.pys
+@@ -33,11 +33,11 @@ i = 5
+ &lt;!--SUBQUERY=&quot;SELECT SUM (cantlfacturap * pvplfacturap * (100 - descuentolfacturap)/100 )::NUMERIC(12,2) AS base, SUM(cantlfacturap * pvplfacturap * (100 - descuentolfacturap)/100 *  ivalfacturap/100 )::NUMERIC(12,2) AS impuestos FROM lfacturap NATURAL LEFT JOIN facturap WHERE facturap.idproveedor = [idproveedor] AND ffacturap &gt;= '[fecha_inicial]' AND ffacturap&lt;= '[fecha_final]'&quot;--&gt;
+ 
+ 
+-doc.set_cell_value(1,i,'string','[cifproveedor]')
+-doc.set_cell_value(2,i,'string','[nomproveedor]')
+-doc.set_cell_value(3,i,'string','[dirproveedor]')
+-doc.set_cell_value(4,i,'string','[cpproveedor]')
+-doc.set_cell_value(5,i,'string','[poblproveedor]')
++doc.set_cell_value(1,i,'string', u'[cifproveedor]')
++doc.set_cell_value(2,i,'string', u'[nomproveedor]')
++doc.set_cell_value(3,i,'string', u'[dirproveedor]')
++doc.set_cell_value(4,i,'string', u'[cpproveedor]')
++doc.set_cell_value(5,i,'string', u'[poblproveedor]')
+ 
+ 
+ doc.set_cell_value(6,i,'float','[base]')
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/openreports/ca/impers_presupuesto_excel.pys b/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/openreports/ca/impers_presupuesto_excel.pys
+index 32e2e76..97855a9 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/openreports/ca/impers_presupuesto_excel.pys
++++ b/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/openreports/ca/impers_presupuesto_excel.pys
+@@ -13,8 +13,8 @@ doc.set_column_property(1, 'width', '0.5in')
+ doc.set_column_property(2, 'width', '5in')
+ doc.set_cell_property('bold', True)
+ doc.set_cell_value(2, 2, 'string', 'PRESUPUESTO')
+-doc.set_cell_value(3, 2, 'string', '[numpresupuesto]')
+-doc.set_cell_value(4, 2, 'string', '[refpresupuesto]')
++doc.set_cell_value(3, 2, 'string', u'[numpresupuesto]')
++doc.set_cell_value(4, 2, 'string', u'[refpresupuesto]')
+ 
+ i=4
+ doc.set_cell_value(1,i,'string','CIF')
+@@ -28,11 +28,11 @@ doc.set_cell_value(8,i,'string','TOTAL')
+ 
+ #i=7
+ &lt;!-- QUERY=&quot;SELECT * FROM lpresupuesto where idpresupuesto=[idpresupuesto]&quot;--&gt;
+-doc.set_cell_value(1,i,'string','[codigocompletoarticulo]')
+-doc.set_cell_value(2,i,'string','[desclpresupuesto]')
+-doc.set_cell_value(3,i,'string','[cantlpresupuesto]')
+-doc.set_cell_value(4,i,'string','[pvplpresupuesto]')
+-doc.set_cell_value(6,i,'string','[ivalpresupuesto]')
++doc.set_cell_value(1,i,'string', u'[codigocompletoarticulo]')
++doc.set_cell_value(2,i,'string', u'[desclpresupuesto]')
++doc.set_cell_value(3,i,'string', u'[cantlpresupuesto]')
++doc.set_cell_value(4,i,'string', u'[pvplpresupuesto]')
++doc.set_cell_value(6,i,'string', u'[ivalpresupuesto]')
+ i = i + 1
+ &lt;!--END QUERY--&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/openreports/en/impers_presupuesto_excel.pys b/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/openreports/en/impers_presupuesto_excel.pys
+index 32e2e76..97855a9 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/openreports/en/impers_presupuesto_excel.pys
++++ b/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/openreports/en/impers_presupuesto_excel.pys
+@@ -13,8 +13,8 @@ doc.set_column_property(1, 'width', '0.5in')
+ doc.set_column_property(2, 'width', '5in')
+ doc.set_cell_property('bold', True)
+ doc.set_cell_value(2, 2, 'string', 'PRESUPUESTO')
+-doc.set_cell_value(3, 2, 'string', '[numpresupuesto]')
+-doc.set_cell_value(4, 2, 'string', '[refpresupuesto]')
++doc.set_cell_value(3, 2, 'string', u'[numpresupuesto]')
++doc.set_cell_value(4, 2, 'string', u'[refpresupuesto]')
+ 
+ i=4
+ doc.set_cell_value(1,i,'string','CIF')
+@@ -28,11 +28,11 @@ doc.set_cell_value(8,i,'string','TOTAL')
+ 
+ #i=7
+ &lt;!-- QUERY=&quot;SELECT * FROM lpresupuesto where idpresupuesto=[idpresupuesto]&quot;--&gt;
+-doc.set_cell_value(1,i,'string','[codigocompletoarticulo]')
+-doc.set_cell_value(2,i,'string','[desclpresupuesto]')
+-doc.set_cell_value(3,i,'string','[cantlpresupuesto]')
+-doc.set_cell_value(4,i,'string','[pvplpresupuesto]')
+-doc.set_cell_value(6,i,'string','[ivalpresupuesto]')
++doc.set_cell_value(1,i,'string', u'[codigocompletoarticulo]')
++doc.set_cell_value(2,i,'string', u'[desclpresupuesto]')
++doc.set_cell_value(3,i,'string', u'[cantlpresupuesto]')
++doc.set_cell_value(4,i,'string', u'[pvplpresupuesto]')
++doc.set_cell_value(6,i,'string', u'[ivalpresupuesto]')
+ i = i + 1
+ &lt;!--END QUERY--&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/openreports/es/impers_presupuesto_excel.pys b/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/openreports/es/impers_presupuesto_excel.pys
+index 32e2e76..97855a9 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/openreports/es/impers_presupuesto_excel.pys
++++ b/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/openreports/es/impers_presupuesto_excel.pys
+@@ -13,8 +13,8 @@ doc.set_column_property(1, 'width', '0.5in')
+ doc.set_column_property(2, 'width', '5in')
+ doc.set_cell_property('bold', True)
+ doc.set_cell_value(2, 2, 'string', 'PRESUPUESTO')
+-doc.set_cell_value(3, 2, 'string', '[numpresupuesto]')
+-doc.set_cell_value(4, 2, 'string', '[refpresupuesto]')
++doc.set_cell_value(3, 2, 'string', u'[numpresupuesto]')
++doc.set_cell_value(4, 2, 'string', u'[refpresupuesto]')
+ 
+ i=4
+ doc.set_cell_value(1,i,'string','CIF')
+@@ -28,11 +28,11 @@ doc.set_cell_value(8,i,'string','TOTAL')
+ 
+ #i=7
+ &lt;!-- QUERY=&quot;SELECT * FROM lpresupuesto where idpresupuesto=[idpresupuesto]&quot;--&gt;
+-doc.set_cell_value(1,i,'string','[codigocompletoarticulo]')
+-doc.set_cell_value(2,i,'string','[desclpresupuesto]')
+-doc.set_cell_value(3,i,'string','[cantlpresupuesto]')
+-doc.set_cell_value(4,i,'string','[pvplpresupuesto]')
+-doc.set_cell_value(6,i,'string','[ivalpresupuesto]')
++doc.set_cell_value(1,i,'string', u'[codigocompletoarticulo]')
++doc.set_cell_value(2,i,'string', u'[desclpresupuesto]')
++doc.set_cell_value(3,i,'string', u'[cantlpresupuesto]')
++doc.set_cell_value(4,i,'string', u'[pvplpresupuesto]')
++doc.set_cell_value(6,i,'string', u'[ivalpresupuesto]')
+ i = i + 1
+ &lt;!--END QUERY--&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/openreports/fr/impers_presupuesto_excel.pys b/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/openreports/fr/impers_presupuesto_excel.pys
+index 32e2e76..97855a9 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/openreports/fr/impers_presupuesto_excel.pys
++++ b/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/openreports/fr/impers_presupuesto_excel.pys
+@@ -13,8 +13,8 @@ doc.set_column_property(1, 'width', '0.5in')
+ doc.set_column_property(2, 'width', '5in')
+ doc.set_cell_property('bold', True)
+ doc.set_cell_value(2, 2, 'string', 'PRESUPUESTO')
+-doc.set_cell_value(3, 2, 'string', '[numpresupuesto]')
+-doc.set_cell_value(4, 2, 'string', '[refpresupuesto]')
++doc.set_cell_value(3, 2, 'string', u'[numpresupuesto]')
++doc.set_cell_value(4, 2, 'string', u'[refpresupuesto]')
+ 
+ i=4
+ doc.set_cell_value(1,i,'string','CIF')
+@@ -28,11 +28,11 @@ doc.set_cell_value(8,i,'string','TOTAL')
+ 
+ #i=7
+ &lt;!-- QUERY=&quot;SELECT * FROM lpresupuesto where idpresupuesto=[idpresupuesto]&quot;--&gt;
+-doc.set_cell_value(1,i,'string','[codigocompletoarticulo]')
+-doc.set_cell_value(2,i,'string','[desclpresupuesto]')
+-doc.set_cell_value(3,i,'string','[cantlpresupuesto]')
+-doc.set_cell_value(4,i,'string','[pvplpresupuesto]')
+-doc.set_cell_value(6,i,'string','[ivalpresupuesto]')
++doc.set_cell_value(1,i,'string', u'[codigocompletoarticulo]')
++doc.set_cell_value(2,i,'string', u'[desclpresupuesto]')
++doc.set_cell_value(3,i,'string', u'[cantlpresupuesto]')
++doc.set_cell_value(4,i,'string', u'[pvplpresupuesto]')
++doc.set_cell_value(6,i,'string', u'[ivalpresupuesto]')
+ i = i + 1
+ &lt;!--END QUERY--&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_tallascolores/openreports/ca/inf_ventas.pys b/bulmages/bulmafact/plugins/pluginbf_tallascolores/openreports/ca/inf_ventas.pys
+index 87b09e2..caaaf39 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_tallascolores/openreports/ca/inf_ventas.pys
++++ b/bulmages/bulmafact/plugins/pluginbf_tallascolores/openreports/ca/inf_ventas.pys
+@@ -33,11 +33,11 @@ doc.set_cell_value(5,4,'string','cant')
+ 
+ &lt;!-- SUBQUERY=&quot;SELECT sum(cantlalbaran) AS cant FROM lalbaran NATURAL LEFT JOIN albaran WHERE idarticulo=[idarticulo] AND idtc_talla=[idtc_talla] AND idtc_color=[idtc_color] AND fechaalbaran&gt;='[fecha_inicial]' AND fechaalbaran&lt;='[fecha_final]'&quot;--&gt;
+ 
+-doc.set_cell_value(1,i,'string','[codigocompletoarticulo]')
+-doc.set_cell_value(2,i,'string','[nomarticulo]')
+-doc.set_cell_value(3,i,'string','[nomtc_talla]')
+-doc.set_cell_value(4,i,'string','[nomtc_color]')
+-doc.set_cell_value(5,i,'string','[cant]')
++doc.set_cell_value(1,i,'string', u'[codigocompletoarticulo]')
++doc.set_cell_value(2,i,'string', u'[nomarticulo]')
++doc.set_cell_value(3,i,'string', u'[nomtc_talla]')
++doc.set_cell_value(4,i,'string', u'[nomtc_color]')
++doc.set_cell_value(5,i,'string', u'[cant]')
+ i = i + 1
+ 
+ &lt;!-- END SUBQUERY--&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_tallascolores/openreports/en/inf_ventas.pys b/bulmages/bulmafact/plugins/pluginbf_tallascolores/openreports/en/inf_ventas.pys
+index 87b09e2..caaaf39 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_tallascolores/openreports/en/inf_ventas.pys
++++ b/bulmages/bulmafact/plugins/pluginbf_tallascolores/openreports/en/inf_ventas.pys
+@@ -33,11 +33,11 @@ doc.set_cell_value(5,4,'string','cant')
+ 
+ &lt;!-- SUBQUERY=&quot;SELECT sum(cantlalbaran) AS cant FROM lalbaran NATURAL LEFT JOIN albaran WHERE idarticulo=[idarticulo] AND idtc_talla=[idtc_talla] AND idtc_color=[idtc_color] AND fechaalbaran&gt;='[fecha_inicial]' AND fechaalbaran&lt;='[fecha_final]'&quot;--&gt;
+ 
+-doc.set_cell_value(1,i,'string','[codigocompletoarticulo]')
+-doc.set_cell_value(2,i,'string','[nomarticulo]')
+-doc.set_cell_value(3,i,'string','[nomtc_talla]')
+-doc.set_cell_value(4,i,'string','[nomtc_color]')
+-doc.set_cell_value(5,i,'string','[cant]')
++doc.set_cell_value(1,i,'string', u'[codigocompletoarticulo]')
++doc.set_cell_value(2,i,'string', u'[nomarticulo]')
++doc.set_cell_value(3,i,'string', u'[nomtc_talla]')
++doc.set_cell_value(4,i,'string', u'[nomtc_color]')
++doc.set_cell_value(5,i,'string', u'[cant]')
+ i = i + 1
+ 
+ &lt;!-- END SUBQUERY--&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_tallascolores/openreports/es/inf_ventas.pys b/bulmages/bulmafact/plugins/pluginbf_tallascolores/openreports/es/inf_ventas.pys
+index 87b09e2..caaaf39 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_tallascolores/openreports/es/inf_ventas.pys
++++ b/bulmages/bulmafact/plugins/pluginbf_tallascolores/openreports/es/inf_ventas.pys
+@@ -33,11 +33,11 @@ doc.set_cell_value(5,4,'string','cant')
+ 
+ &lt;!-- SUBQUERY=&quot;SELECT sum(cantlalbaran) AS cant FROM lalbaran NATURAL LEFT JOIN albaran WHERE idarticulo=[idarticulo] AND idtc_talla=[idtc_talla] AND idtc_color=[idtc_color] AND fechaalbaran&gt;='[fecha_inicial]' AND fechaalbaran&lt;='[fecha_final]'&quot;--&gt;
+ 
+-doc.set_cell_value(1,i,'string','[codigocompletoarticulo]')
+-doc.set_cell_value(2,i,'string','[nomarticulo]')
+-doc.set_cell_value(3,i,'string','[nomtc_talla]')
+-doc.set_cell_value(4,i,'string','[nomtc_color]')
+-doc.set_cell_value(5,i,'string','[cant]')
++doc.set_cell_value(1,i,'string', u'[codigocompletoarticulo]')
++doc.set_cell_value(2,i,'string', u'[nomarticulo]')
++doc.set_cell_value(3,i,'string', u'[nomtc_talla]')
++doc.set_cell_value(4,i,'string', u'[nomtc_color]')
++doc.set_cell_value(5,i,'string', u'[cant]')
+ i = i + 1
+ 
+ &lt;!-- END SUBQUERY--&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_tallascolores/openreports/fr/inf_ventas.pys b/bulmages/bulmafact/plugins/pluginbf_tallascolores/openreports/fr/inf_ventas.pys
+index 87b09e2..caaaf39 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_tallascolores/openreports/fr/inf_ventas.pys
++++ b/bulmages/bulmafact/plugins/pluginbf_tallascolores/openreports/fr/inf_ventas.pys
+@@ -33,11 +33,11 @@ doc.set_cell_value(5,4,'string','cant')
+ 
+ &lt;!-- SUBQUERY=&quot;SELECT sum(cantlalbaran) AS cant FROM lalbaran NATURAL LEFT JOIN albaran WHERE idarticulo=[idarticulo] AND idtc_talla=[idtc_talla] AND idtc_color=[idtc_color] AND fechaalbaran&gt;='[fecha_inicial]' AND fechaalbaran&lt;='[fecha_final]'&quot;--&gt;
+ 
+-doc.set_cell_value(1,i,'string','[codigocompletoarticulo]')
+-doc.set_cell_value(2,i,'string','[nomarticulo]')
+-doc.set_cell_value(3,i,'string','[nomtc_talla]')
+-doc.set_cell_value(4,i,'string','[nomtc_color]')
+-doc.set_cell_value(5,i,'string','[cant]')
++doc.set_cell_value(1,i,'string', u'[codigocompletoarticulo]')
++doc.set_cell_value(2,i,'string', u'[nomarticulo]')
++doc.set_cell_value(3,i,'string', u'[nomtc_talla]')
++doc.set_cell_value(4,i,'string', u'[nomtc_color]')
++doc.set_cell_value(5,i,'string', u'[cant]')
+ i = i + 1
+ 
+ &lt;!-- END SUBQUERY--&gt;
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007176.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007178.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to release...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7177">[ fecha ]</a>
+              <a href="thread.html#7177">[ hilo ]</a>
+              <a href="subject.html#7177">[ asunto ]</a>
+              <a href="author.html#7177">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

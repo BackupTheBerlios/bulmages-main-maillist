@@ -1,0 +1,745 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to arreglo...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20arreglo...&In-Reply-To=%3C20120511211612.07A53756D7%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007206.html">
+   <LINK REL="Next"  HREF="007211.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to arreglo... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20arreglo...&In-Reply-To=%3C20120511211612.07A53756D7%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to arreglo...">no-reply en gitorious.org
+       </A><BR>
+    <I>Vie Mayo 11 23:16:11 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007206.html">[BulmaGés]Reporte de fallo para el selector de familias en BulmaTPV
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007211.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to arreglo...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7210">[ fecha ]</a>
+              <a href="thread.html#7210">[ hilo ]</a>
+              <a href="subject.html#7210">[ asunto ]</a>
+              <a href="author.html#7210">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 2 commits to arreglobulmacont
+arreglobulmacont changed from 0162a2a to 729c643
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/0162a2a6bc9759b20e1acbc1e60f2f5d0fe12894/diffs/729c643ceb338aefa8dbe1b1a1f09466c040d52d">https://gitorious.org/bulmages/bulmages/commit/0162a2a6bc9759b20e1acbc1e60f2f5d0fe12894/diffs/729c643ceb338aefa8dbe1b1a1f09466c040d52d</A>
+
+Diff: 
+
+commit 729c643ceb338aefa8dbe1b1a1f09466c040d52d
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri May 11 23:16:07 2012 +0200
+
+    Arreglo los botones del extracto en los subformularios
+
+diff --git a/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientolistsubform.cpp b/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientolistsubform.cpp
+index 49bb77f..8a7134b 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientolistsubform.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientolistsubform.cpp
+@@ -96,13 +96,7 @@ void BcAsientoListSubForm::s_trataMenu ( QAction *action )
+     if ( action-&gt;text() == _ ( &quot;Mostrar asiento&quot; ) )
+       
+ 	emit cellDoubleClicked ( 0, 0);
+-    
+-    if ( action-&gt;text() == _ ( &quot;Mostrar extracto (dia)&quot; ) )
+-        boton_extracto1 ( 0 );
+-    if ( action-&gt;text() == _ ( &quot;Mostrar extracto (mes)&quot; ) )
+-        boton_extracto1 ( 1 );
+-    if ( action-&gt;text() == _ ( &quot;Mostrar extracto (ano)&quot; ) )
+-        boton_extracto1 ( 2 );
++   
+ 
+     
+ }
+@@ -128,9 +122,7 @@ void BcAsientoListSubForm::contextMenuEvent ( QContextMenuEvent * )
+     QMenu *popup = new QMenu ( this );
+     QAction *mostapunte = popup-&gt;addAction ( &quot;Mostrar asiento&quot; );
+     popup-&gt;addSeparator();
+-    QAction *mostextractodia = popup-&gt;addAction ( &quot;Mostrar extracto (dia)&quot; );
+-    QAction *mostextractomes = popup-&gt;addAction ( &quot;Mostrar extracto (mes)&quot; );
+-    QAction *mostextractoano = popup-&gt;addAction ( &quot;Mostrar extracto (ano)&quot; );
++
+ 
+     if ( m_delete ) {
+         del = popup-&gt;addAction ( _( &quot;Borrar registro&quot; ) );
+@@ -148,15 +140,6 @@ void BcAsientoListSubForm::contextMenuEvent ( QContextMenuEvent * )
+     if ( opcion == mostapunte ) {
+         boton_asiento();
+     } // end if
+-    if ( opcion == mostextractodia ) {
+-        boton_extracto1 ( 0 );
+-    } // end if
+-    if ( opcion == mostextractomes ) {
+-        boton_extracto1 ( 1 );
+-    } // end if
+-    if ( opcion == mostextractoano ) {
+-        boton_extracto1 ( 2 );
+-    } // end if
+     if ( opcion == ajust ) {
+         resizeColumnsToContents();
+     } // end if
+diff --git a/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientosubform.cpp b/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientosubform.cpp
+index 814a235..20dda78 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientosubform.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientosubform.cpp
+@@ -87,11 +87,6 @@ void BcAsientoSubForm::s_pintaMenu ( QMenu *menu )
+     BL_FUNC_DEBUG
+     menu-&gt;addSeparator();
+     menu-&gt;addAction ( _ ( &quot;Mostrar asiento&quot; ) );
+-    menu-&gt;addSeparator();
+-    menu-&gt;addAction ( _ ( &quot;Mostrar extracto (dia)&quot; ) );
+-    menu-&gt;addAction ( _ ( &quot;Mostrar extracto (mes)&quot; ) );
+-    menu-&gt;addAction ( _ ( &quot;Mostrar extracto (ano)&quot; ) );
+-    
+ }
+ 
+ /// Slot que trata la activacion de un elemento en el menu contextual.
+@@ -105,14 +100,7 @@ void BcAsientoSubForm::s_trataMenu ( QAction *action )
+     if ( !action ) return;
+     if ( action-&gt;text() == _ ( &quot;Mostrar asiento&quot; ) )
+         boton_asiento();
+-    if ( action-&gt;text() == _ ( &quot;Mostrar extracto (dia)&quot; ) )
+-        boton_extracto1 ( 0 );
+-    if ( action-&gt;text() == _ ( &quot;Mostrar extracto (mes)&quot; ) )
+-        boton_extracto1 ( 1 );
+-    if ( action-&gt;text() == _ ( &quot;Mostrar extracto (ano)&quot; ) )
+-        boton_extracto1 ( 2 );
+-
+-    
++   
+ }
+ 
+ /// Carga lineas de asiento (apuntes).
+diff --git a/bulmages/bulmacont/plugins/pluginbc_balance/balancesubform.cpp b/bulmages/bulmacont/plugins/pluginbc_balance/balancesubform.cpp
+index 5b3b70f..dec7c6f 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_balance/balancesubform.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_balance/balancesubform.cpp
+@@ -67,10 +67,6 @@ void BalanceSubForm::contextMenuEvent ( QContextMenuEvent * )
+     } // end if
+     QMenu *popup = new QMenu ( this );
+     QAction *mostapunte = popup-&gt;addAction ( &quot;Mostrar asiento&quot; );
+-    popup-&gt;addSeparator();
+-    QAction *mostextractodia = popup-&gt;addAction ( &quot;Mostrar extracto (dia)&quot; );
+-    QAction *mostextractomes = popup-&gt;addAction ( &quot;Mostrar extracto (mes)&quot; );
+-    QAction *mostextractoano = popup-&gt;addAction ( &quot;Mostrar extracto (ano)&quot; );
+ 
+ 
+     if ( m_delete )
+@@ -105,15 +101,6 @@ void BalanceSubForm::contextMenuEvent ( QContextMenuEvent * )
+     if ( opcion == verconfig ) {
+         showConfig();
+     } // end if
+-    if ( opcion == mostextractodia ) {
+-        boton_extracto1 ( 0 );
+-    } // end if
+-    if ( opcion == mostextractomes ) {
+-        boton_extracto1 ( 1 );
+-    } // end if
+-    if ( opcion == mostextractoano ) {
+-        boton_extracto1 ( 2 );
+-    } // end if
+     delete popup;
+     
+ }
+diff --git a/bulmages/bulmacont/plugins/pluginbc_cuenta/pluginbc_cuenta.cpp b/bulmages/bulmacont/plugins/pluginbc_cuenta/pluginbc_cuenta.cpp
+index 37a6ae8..3e43f35 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_cuenta/pluginbc_cuenta.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_cuenta/pluginbc_cuenta.cpp
+@@ -97,7 +97,7 @@ int BlAction_actionTriggered(BlAction *accion) {
+ 
+ 
+ /// --------------------------------------------------------------
+-/// --------- Implemento la edicion de articulos -----------------
++/// --------- Implemento la edicion de cuentas -----------------
+ /// Con esta funcionalidad creamos menus contextuales en todos los subformularios donde
+ /// Aparezca el identificador de articulo como elemento y permite de forma sencilla
+ /// La creacion, la edicion, y la seleccion.
+diff --git a/bulmages/bulmacont/plugins/pluginbc_diario/bcdiariosubform.cpp b/bulmages/bulmacont/plugins/pluginbc_diario/bcdiariosubform.cpp
+index be813bc..42a8324 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_diario/bcdiariosubform.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_diario/bcdiariosubform.cpp
+@@ -93,12 +93,7 @@ void BcDiarioSubForm::s_pintaMenu ( QMenu *menu )
+ {
+     BL_FUNC_DEBUG
+     menu-&gt;addSeparator();
+-    menu-&gt;addAction ( _ ( &quot;Mostrar asiento&quot; ) );
+-    menu-&gt;addSeparator();
+-    menu-&gt;addAction ( _ ( &quot;Mostrar extracto (dia)&quot; ) );
+-    menu-&gt;addAction ( _ ( &quot;Mostrar extracto (mes)&quot; ) );
+-    menu-&gt;addAction ( _ ( &quot;Mostrar extracto (ano)&quot; ) );
+-    
++    menu-&gt;addAction ( _ ( &quot;Mostrar asiento&quot; ) );    
+ }
+ 
+ /// Slot que trata la activacion de un elemento en el menu contextual.
+@@ -111,15 +106,7 @@ void BcDiarioSubForm::s_trataMenu ( QAction *action )
+     BL_FUNC_DEBUG
+     if ( !action ) return;
+     if ( action-&gt;text() == _ ( &quot;Mostrar asiento&quot; ) )
+-	emit openAsiento();
+-    if ( action-&gt;text() == _ ( &quot;Mostrar extracto (dia)&quot; ) )
+-        boton_extracto1 ( 0 );
+-    if ( action-&gt;text() == _ ( &quot;Mostrar extracto (mes)&quot; ) )
+-        boton_extracto1 ( 1 );
+-    if ( action-&gt;text() == _ ( &quot;Mostrar extracto (ano)&quot; ) )
+-        boton_extracto1 ( 2 );
+-
+-    
++	emit openAsiento();    
+ }
+ 
+ 
+diff --git a/bulmages/bulmacont/plugins/pluginbc_mayor/bcextractoview.h b/bulmages/bulmacont/plugins/pluginbc_mayor/bcextractoview.h
+index d0c99be..54d1210 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_mayor/bcextractoview.h
++++ b/bulmages/bulmacont/plugins/pluginbc_mayor/bcextractoview.h
+@@ -78,5 +78,26 @@ public slots:
+ };
+ 
+ 
++
++
++
++class SubForm_Mayor : public QObject
++{
++    Q_OBJECT
++
++public:
++    SubForm_Mayor ( BlSubForm * );
++    ~SubForm_Mayor();
++    void boton_extracto1 ( int );
++public slots:
++    virtual void s_pintaMenu ( QMenu * );
++    virtual void s_trataMenu ( QAction * );
++    virtual void botonera();
++    virtual void botonera1();
++    virtual void botonera2();
++};
++
++
++
+ #endif
+ 
+diff --git a/bulmages/bulmacont/plugins/pluginbc_mayor/pluginbc_mayor.cpp b/bulmages/bulmacont/plugins/pluginbc_mayor/pluginbc_mayor.cpp
+index 67dcf4b..19580dc 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_mayor/pluginbc_mayor.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_mayor/pluginbc_mayor.cpp
+@@ -33,6 +33,9 @@
+ #include &quot;pluginbc_mayor.h&quot;
+ #include &quot;bcextractoview.h&quot;
+ 
++
++
++
+ BcExtractoView *g_mayor;
+ BcBulmaCont *g_pluginbc_mayor = NULL;
+ 
+@@ -60,7 +63,6 @@ int entryPoint ( BcBulmaCont *bcont )
+     accionA-&gt;setObjectName(&quot;mui_actionMayor&quot;);
+     accionA-&gt;setIcon(QIcon(QString::fromUtf8(&quot;:/Images/bank-statement.png&quot;)));
+     bcont-&gt;toolBar-&gt;addAction ( accionA );
+-    //connect ( accionA, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+     pPluginMenu-&gt;addAction ( accionA );
+ 
+     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
+@@ -89,3 +91,235 @@ int BlAction_actionTriggered(BlAction *accion) {
+ 
+     return 0;
+ }
++
++
++
++
++
++
++
++/// --------------------------------------------------------------
++/// --------- Implemento la seleccion de extractos -----------------
++/// Con esta funcionalidad creamos menus contextuales en todos los subformularios donde
++/// Aparezca el identificador de articulo como elemento y permite de forma sencilla
++/// La creacion, la edicion, y la seleccion.
++///
++
++/**
++\param parent
++**/
++SubForm_Mayor::SubForm_Mayor ( BlSubForm *parent ) : QObject ( parent )
++{
++    BL_FUNC_DEBUG
++    
++}
++
++///
++/**
++**/
++SubForm_Mayor::~SubForm_Mayor()
++{
++    BL_FUNC_DEBUG
++    
++}
++
++
++///
++/**
++\param menu
++**/
++void SubForm_Mayor::s_pintaMenu ( QMenu *menu )
++{
++    BL_FUNC_DEBUG
++    BlSubForm *sub = ( BlSubForm * ) parent();
++    BlSubFormHeader *header = sub-&gt;header ( &quot;codigo&quot; );
++    if ( header ) {
++        menu-&gt;addSeparator();
++        QString idcuenta = sub-&gt;dbValue ( &quot;idcuenta&quot; );
++        if ( idcuenta != &quot;&quot; )  {
++	    menu-&gt;addAction ( _ ( &quot;Extracto (dia)&quot; ) );
++	    menu-&gt;addAction ( _ ( &quot;Extracto (mes)&quot; ) );
++	    menu-&gt;addAction ( _ ( &quot;Extracto (año)&quot; ) );
++	} // end if
++    } // end if
++}
++
++
++///
++/**
++\param action
++**/
++void SubForm_Mayor::s_trataMenu ( QAction *action )
++{
++    BL_FUNC_DEBUG
++    BlSubForm *sub = ( BlSubForm * ) parent();
++    QString idcuenta = sub-&gt;dbValue ( &quot;idcuenta&quot; );
++
++    if ( idcuenta != &quot;&quot; ) {
++	if ( action-&gt;text() == _ ( &quot;Extracto (dia)&quot; ) ) {
++            boton_extracto1 ( 0 );
++	} // end if
++
++	if ( action-&gt;text() == _ ( &quot;Extracto (mes)&quot; ) ) {
++            boton_extracto1 ( 1 );
++	} // end if
++	
++	if ( action-&gt;text() == _ ( &quot;Extracto (año)&quot; ) ) {
++            boton_extracto1 ( 2 );
++	} // end if
++    } // end if
++}
++
++///
++/**
++\param action
++**/
++void SubForm_Mayor::botonera ( )
++{
++    BL_FUNC_DEBUG
++            boton_extracto1 ( 0 );
++}
++
++
++///
++/**
++\param action
++**/
++void SubForm_Mayor::botonera1 ( )
++{
++    BL_FUNC_DEBUG
++            boton_extracto1 ( 1 );
++}
++
++
++///
++/**
++\param action
++**/
++void SubForm_Mayor::botonera2 ( )
++{
++    BL_FUNC_DEBUG
++            boton_extracto1 ( 2 );
++}
++
++
++/// Si el parametro pasado es un:
++/// 0 -&gt; del d&iacute;a actual
++/// 1 -&gt; del mes actual
++/// 2 -&gt; del a&ntilde;o actual
++/**
++\param tipo
++**/
++void SubForm_Mayor::boton_extracto1 ( int tipo )
++{
++    BL_FUNC_DEBUG
++
++    BlSubForm *sub = ( BlSubForm * ) parent();
++    QDate fecha1, fecha2, fechaact;
++    QString fecha = sub-&gt;dbValue ( &quot;fecha&quot; ).left ( 10 );
++    
++    QString codigo = sub-&gt;dbValue ( &quot;codigo&quot; );
++    if ( codigo != &quot;&quot; ) {
++        fechaact = blNormalizeDate ( fecha );
++        switch ( tipo ) {
++        case 0:
++            fecha1.setYMD ( fechaact.year(), fechaact.month(), fechaact.day() );
++            fecha2.setYMD ( fechaact.year(), fechaact.month(), fechaact.day() );
++            break;
++        case 1:
++            fecha1.setYMD ( fechaact.year(), fechaact.month(), 1 );
++            fecha2.setYMD ( fechaact.year(), fechaact.month(), fechaact.daysInMonth() );
++            break;
++        case 2:
++            fecha1.setYMD ( fechaact.year(), 1, 1 );
++            fecha2.setYMD ( fechaact.year(), 12, 31 );
++            break;
++        } // end switch
++        
++        if ( !g_mayor) {
++            g_mayor = new BcExtractoView ( g_pluginbc_mayor-&gt;company(), 0 );
++	    g_mayor-&gt;setObjectName(&quot;BcExtractoView&quot;);
++            g_pluginbc_mayor-&gt;company()-&gt;pWorkspace()-&gt;addSubWindow ( g_mayor );
++	} // end if
++        
++        g_mayor -&gt;inicializa1 ( codigo, codigo, fecha1.toString ( &quot;dd/MM/yyyy&quot; ), fecha2.toString ( &quot;dd/MM/yyyy&quot; ), 0 );
++        g_mayor -&gt;accept();
++	g_mayor-&gt;hide();
++	g_mayor-&gt;show();
++    } // end if
++    
++}
++
++
++
++///
++/**
++\param sub
++\return
++**/
++int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
++{
++    BL_FUNC_DEBUG
++    SubForm_Mayor *subformods = new SubForm_Mayor ( sub );
++    sub-&gt;QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
++    sub-&gt;QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
++    
++    return 0;
++}
++
++
++
++/// Miramos de poner los iconos del menu de subformularios
++///
++/**
++\param sub
++\return
++**/
++int BlSubForm_preparaMenu ( BlSubForm *sub ) {
++    BL_FUNC_DEBUG
++    BlSubFormHeader *header = sub-&gt;header ( &quot;codigo&quot; );
++    if ( header ) {
++	SubForm_Mayor *subformods = new SubForm_Mayor ( sub );
++	
++	QHBoxLayout *m_hboxLayout1 = sub-&gt;mui_menusubform-&gt;findChild&lt;QHBoxLayout *&gt; ( &quot;hboxLayout1&quot; );
++	if ( !m_hboxLayout1 ) {
++	    m_hboxLayout1 = new QHBoxLayout ( sub-&gt;mui_menusubform );
++	    m_hboxLayout1-&gt;setSpacing (0 );
++	    m_hboxLayout1-&gt;setMargin ( 0 );
++	    m_hboxLayout1-&gt;setObjectName ( QString::fromUtf8 ( &quot;hboxLayout1&quot; ) );
++	} // end if
++	
++
++	  QToolButton *sel = new QToolButton ( sub-&gt;mui_menusubform );
++	  sel-&gt;setStatusTip ( &quot;Extracto (dia)&quot; );
++	  sel-&gt;setToolTip ( &quot;Extracto (dia)&quot; );
++	  sel-&gt;setMinimumSize ( QSize ( 18, 18 ) );
++	  sel-&gt;setIcon ( QIcon ( &quot;:/Images/bank-statement.png&quot; ) );
++	  sel-&gt;setIconSize ( QSize ( 18, 18 ) );    
++	  m_hboxLayout1-&gt;addWidget ( sel );
++	  sel-&gt;connect (sel, SIGNAL(released()), subformods, SLOT(botonera()));
++	
++	  QToolButton *sel1 = new QToolButton ( sub-&gt;mui_menusubform );
++	  sel1-&gt;setStatusTip ( &quot;Extracto (mes)&quot; );
++	  sel1-&gt;setToolTip ( &quot;Extracto (mes)&quot; );
++	  sel1-&gt;setMinimumSize ( QSize ( 18, 18 ) );
++	  sel1-&gt;setIcon ( QIcon ( &quot;:/Images/bank-statement.png&quot; ) );
++	  sel1-&gt;setIconSize ( QSize ( 18, 18 ) );    
++	  m_hboxLayout1-&gt;addWidget ( sel1 );
++	  sel1-&gt;connect (sel1, SIGNAL(released()), subformods, SLOT(botonera1()));
++	  
++	  QToolButton *sel2 = new QToolButton ( sub-&gt;mui_menusubform );
++	  sel2-&gt;setStatusTip ( &quot;Extracto (año)&quot; );
++	  sel2-&gt;setToolTip ( &quot;Extracto (año)&quot; );
++	  sel2-&gt;setMinimumSize ( QSize ( 18, 18 ) );
++	  sel2-&gt;setIcon ( QIcon ( &quot;:/Images/bank-statement.png&quot; ) );
++	  sel2-&gt;setIconSize ( QSize ( 18, 18 ) );    
++	  m_hboxLayout1-&gt;addWidget ( sel2 );
++	  sel2-&gt;connect (sel2, SIGNAL(released()), subformods, SLOT(botonera2()));
++
++    } // end if
++    return 0;
++}
++
++
++
+diff --git a/bulmages/bulmacont/plugins/pluginbc_mayor/pluginbc_mayor.h b/bulmages/bulmacont/plugins/pluginbc_mayor/pluginbc_mayor.h
+index fee4b26..95d1e6c 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_mayor/pluginbc_mayor.h
++++ b/bulmages/bulmacont/plugins/pluginbc_mayor/pluginbc_mayor.h
+@@ -26,10 +26,13 @@
+ #include &quot;blmaincompany.h&quot;
+ #include &quot;pdefs_pluginbc_mayor.h&quot;
+ #include &quot;blaction.h&quot;
++#include &quot;blsubform.h&quot;
++
+ 
+ extern &quot;C&quot; PLUGINBC_MAYOR_EXPORT int entryPoint ( BcBulmaCont * );
+ extern &quot;C&quot; PLUGINBC_MAYOR_EXPORT int BlAction_actionTriggered(BlAction *);
+-
++extern &quot;C&quot; PLUGINBC_MAYOR_EXPORT int BlSubForm_preparaMenu ( BlSubForm * );
++extern &quot;C&quot; PLUGINBC_MAYOR_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
+ 
+ #endif
+ 
+diff --git a/bulmages/bulmacont/src/bcsubform.cpp b/bulmages/bulmacont/src/bcsubform.cpp
+index fce96dc..3defefb 100644
+--- a/bulmages/bulmacont/src/bcsubform.cpp
++++ b/bulmages/bulmacont/src/bcsubform.cpp
+@@ -337,44 +337,7 @@ void BcSubForm::boton_asiento()
+ }
+ 
+ 
+-/// Si el parametro pasado es un:
+-/// 0 -&gt; del d&iacute;a actual
+-/// 1 -&gt; del mes actual
+-/// 2 -&gt; del a&ntilde;o actual
+-/**
+-\param tipo
+-**/
+-void BcSubForm::boton_extracto1 ( int tipo )
+-{
+-    BL_FUNC_DEBUG
+-/*
+-    BcCompany *companyact = ( BcCompany * ) mainCompany();
+-    QDate fecha1, fecha2, fechaact;
+-    QString fecha = dbValue ( &quot;fecha&quot; ).left ( 10 );
+-    QString codigo = dbValue ( &quot;codigo&quot; );
+-    if ( fecha != &quot;&quot; &amp;&amp; codigo != &quot;&quot; ) {
+-        fechaact = blNormalizeDate ( fecha );
+-        switch ( tipo ) {
+-        case 0:
+-            fecha1.setYMD ( fechaact.year(), fechaact.month(), fechaact.day() );
+-            fecha2.setYMD ( fechaact.year(), fechaact.month(), fechaact.day() );
+-            break;
+-        case 1:
+-            fecha1.setYMD ( fechaact.year(), fechaact.month(), 1 );
+-            fecha2.setYMD ( fechaact.year(), fechaact.month(), fechaact.daysInMonth() );
+-            break;
+-        case 2:
+-            fecha1.setYMD ( fechaact.year(), 1, 1 );
+-            fecha2.setYMD ( fechaact.year(), 12, 31 );
+-            break;
+-        } // end switch
+-        companyact-&gt;extractoempresa() -&gt;inicializa1 ( codigo, codigo, fecha1.toString ( &quot;dd/MM/yyyy&quot; ), fecha2.toString ( &quot;dd/MM/yyyy&quot; ), 0 );
+-        companyact-&gt;extractoempresa() -&gt;accept();
+-        companyact-&gt;libromayor();
+-    } // end if
+-*/
+-    
+-}
++
+ 
+ 
+ /// Si el parametro pasado es un:
+diff --git a/bulmages/bulmacont/src/bcsubform.h b/bulmages/bulmacont/src/bcsubform.h
+index f543ee8..e8e8db2 100644
+--- a/bulmages/bulmacont/src/bcsubform.h
++++ b/bulmages/bulmacont/src/bcsubform.h
+@@ -58,7 +58,6 @@ public:
+     BcSubForm ( QWidget *parent = 0 );
+     virtual ~BcSubForm();
+     virtual void boton_asiento();
+-    virtual void boton_extracto1 ( int );
+     virtual void boton_diario1 ( int );
+     virtual void createMenu ( QMenu * );
+     virtual void execMenuAction ( QAction * );
+
+commit 7b679ba7358c19fed18a388d6756bdb394b18334
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri May 11 22:09:39 2012 +0200
+
+    El balance ahora se muestra en la botonera
+
+diff --git a/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientosubform.cpp b/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientosubform.cpp
+index 00f2c18..814a235 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientosubform.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientosubform.cpp
+@@ -37,7 +37,7 @@ BcAsientoSubForm::BcAsientoSubForm ( QWidget *parent, const char * )
+     setFileConfig ( &quot;asientotabla&quot; );
+     setDbFieldId ( &quot;idborrador&quot; );
+     addSubFormHeader ( &quot;idapunte&quot;, BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( &quot;Id apunte&quot; ) );
+-    addSubFormHeader ( &quot;fecha&quot;, BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( &quot;Fecha&quot; ) );
++    addSubFormHeader ( &quot;fecha&quot;, BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( &quot;Fecha&quot; ) );
+     addSubFormHeader ( &quot;codigo&quot;, BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( &quot;Codigo&quot; ) );
+     addSubFormHeader ( &quot;descripcioncuenta&quot;, BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite, _ ( &quot;Nombre de la cuenta&quot; ) );
+     addSubFormHeader ( &quot;descripcion&quot;, BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( &quot;Descripcion del apunte&quot; ) );
+diff --git a/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientoview.cpp b/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientoview.cpp
+index 56f1c37..8111c0f 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientoview.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientoview.cpp
+@@ -291,7 +291,7 @@ void BcAsientoView::on_mui_fecha_enterPressed()
+     /// Cambiar la fecha del asiento.
+     if ( estadoBcAsientoForm() != BcAsientoForm::AsientoCerrado &amp;&amp; estadoBcAsientoForm() != BcAsientoForm::AsientoVacio ) {
+         setDbValue ( &quot;fecha&quot;, mui_fecha-&gt;text() );
+-        BcAsientoForm::save();
++        save();
+     } else {
+         iniciar_asiento_nuevo();
+     } // end if
+@@ -383,7 +383,7 @@ void BcAsientoView::muestraAsiento ( QString v )
+ /// Prepara para guardar.
+ /**
+ **/
+-void BcAsientoView::prepareSave()
++int BcAsientoView::save()
+ {
+     BL_FUNC_DEBUG
+     setDbValue ( &quot;fecha&quot;, mui_fecha-&gt;text() );
+@@ -391,6 +391,16 @@ void BcAsientoView::prepareSave()
+     setDbValue ( &quot;comentariosasiento&quot;, mui_comentariosAsiento-&gt;toPlainText() );
+     setDbValue ( &quot;clase&quot;, QString::number ( mui_claseAsiento-&gt;currentIndex() ) );
+     
++    /// Miramos el campo fecha y lo completamos.
++    for (int i =0; i &lt; mui_list-&gt;rowCount() ; i++) {
++	QString fecha = mui_list-&gt;dbValue(&quot;fecha&quot;,i);
++	if (fecha == &quot;&quot;) {
++	    mui_list-&gt;setDbValue(&quot;fecha&quot;, i, mui_fecha-&gt;text());
++	} // end if
++    } // end for
++    
++    return BcAsientoForm::save();
++    
+ }
+ 
+ 
+@@ -564,10 +574,10 @@ void BcAsientoList::botonInicio()
+ {
+     BL_FUNC_DEBUG
+     if(mainCompany()-&gt;pWorkspace()-&gt;activeWindow() == this) {
+-    if ( m_cursorAsientos-&gt;numregistros() != 0 ) {
+-        m_cursorAsientos-&gt;firstRecord();
+-        load ( m_cursorAsientos-&gt;value( &quot;idasiento&quot; ) );
+-    } // end if
++	if ( m_cursorAsientos-&gt;numregistros() != 0 ) {
++	    m_cursorAsientos-&gt;firstRecord();
++	    load ( m_cursorAsientos-&gt;value( &quot;idasiento&quot; ) );
++	} // end if
+     } // end if
+     
+ }
+@@ -587,10 +597,10 @@ void BcAsientoList::botonFin()
+ {
+     BL_FUNC_DEBUG
+     if(mainCompany()-&gt;pWorkspace()-&gt;activeWindow() == this) {
+-    if ( m_cursorAsientos-&gt;numregistros() != 0 ) {
+-        m_cursorAsientos-&gt;lastRecord();
+-        load ( m_cursorAsientos-&gt;value( &quot;idasiento&quot; ) );
+-    } // end if
++	if ( m_cursorAsientos-&gt;numregistros() != 0 ) {
++	    m_cursorAsientos-&gt;lastRecord();
++	    load ( m_cursorAsientos-&gt;value( &quot;idasiento&quot; ) );
++	} // end if
+     } // end if
+     
+ }
+@@ -895,7 +905,6 @@ void BcAsientoView::on_mui_cerrarAsiento_clicked()
+         blMsgInfo ( _(&quot;Asiento descuadrado, no se puede cerrar.&quot;) );
+         return;
+     } // end if
+-    prepareSave();
+     cerrar();
+ }
+ 
+@@ -906,8 +915,7 @@ void BcAsientoView::on_mui_cerrarAsiento_clicked()
+ void BcAsientoView::on_mui_guardarAsiento_clicked()
+ {
+     BL_FUNC_DEBUG
+-    prepareSave();
+-    BcAsientoForm::save();
++    save();
+     
+ }
+ 
+diff --git a/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientoview.h b/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientoview.h
+index fe39681..796d494 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientoview.h
++++ b/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientoview.h
+@@ -83,7 +83,7 @@ private:
+     void pintaClase ( QString val );
+     void pintaComentariosAsiento ( QString text );
+     virtual void calculaPintaTotales();
+-    void prepareSave();
++    virtual int save();
+ 
+ public:
+     BcAsientoView ( BcCompany *, QWidget *parent = 0, int flags = 0 );
+diff --git a/bulmages/bulmacont/plugins/pluginbc_balance/pluginbc_balance.cpp b/bulmages/bulmacont/plugins/pluginbc_balance/pluginbc_balance.cpp
+index 97d1279..dce602d 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_balance/pluginbc_balance.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_balance/pluginbc_balance.cpp
+@@ -59,7 +59,8 @@ int entryPoint ( BcBulmaCont *bcont )
+     accionA-&gt;setIcon ( QIcon ( QString::fromUtf8 ( &quot;:/BulmaCont32x32/images/png/i_balance.xpm&quot; ) ) );
+     accionA-&gt;setObjectName(&quot;mui_actionBalance&quot;);
+     pPluginMenu-&gt;addAction ( accionA );
+-
++    bcont-&gt;toolBar-&gt;addAction ( accionA );
++    
+     return 0;
+ }
+ 
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007206.html">[BulmaGés]Reporte de fallo para el selector de familias en BulmaTPV
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007211.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to arreglo...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7210">[ fecha ]</a>
+              <a href="thread.html#7210">[ hilo ]</a>
+              <a href="subject.html#7210">[ asunto ]</a>
+              <a href="author.html#7210">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

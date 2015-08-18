@@ -1,0 +1,275 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Separador millares (thousands separator)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-15%3Fq%3FSeparador_millares_%3F%3D%0A%20%3D%3Fiso-8859-15%3Fq%3F%3D28thousands_separator%3D29%3F%3D&In-Reply-To=%3C4D3F1DE4.2010507%40todo-redes.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="004596.html">
+   <LINK REL="Next"  HREF="004600.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Separador millares (thousands separator) </H1>
+    <B>Fco. Javier M. C.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-15%3Fq%3FSeparador_millares_%3F%3D%0A%20%3D%3Fiso-8859-15%3Fq%3F%3D28thousands_separator%3D29%3F%3D&In-Reply-To=%3C4D3F1DE4.2010507%40todo-redes.com%3E"
+       TITLE="[BulmaGés]Separador millares (thousands separator)">fcojavmc en todo-redes.com
+       </A><BR>
+    <I>Mar Ene 25 20:00:52 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="004596.html">[BulmaGés]Separador millares (thousands separator)
+</A></li>
+        <LI>Próximo mensaje: <A HREF="004600.html">[BulmaGés]Separador millares (thousands separator)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4599">[ fecha ]</a>
+              <a href="thread.html#4599">[ hilo ]</a>
+              <a href="subject.html#4599">[ asunto ]</a>
+              <a href="author.html#4599">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE> Si quieres pasarme el diff antes para probarlo o crea una rama en el
+SVN, como prefieras.
+
+El 25/01/11 19:33, Aron escribió:
+&gt;<i>
+</I>&gt;<i> He hecho unos pequeños cambios en bldb.cpp, blfixed.cpp,
+</I>&gt;<i> blpostgresqlclient y blsubform.cpp y ya aparecen los separadores de
+</I>&gt;<i> millar.
+</I>&gt;<i>
+</I>&gt;<i> En los SpinBox todavía no salen al editar.
+</I>&gt;<i>
+</I>&gt;<i> Sin embargo, no me atrevo a subir los cambios, ya que igual falla algo
+</I>&gt;<i> en ejecución y a alguien puede perder datos... dilema... ¿subir
+</I>&gt;<i> cambios parciales al repositorio, o seguir testeando y perfeccionando?
+</I>&gt;<i>
+</I>&gt;<i> On Martes 25 Enero 2011 15:27:17 Aron escribió:
+</I>&gt;<i>
+</I>&gt;<i> &gt; Vale. Ya sé por dónde tirar, a ver si me sale.
+</I>&gt;<i>
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; Gracias
+</I>&gt;<i>
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; On Martes 25 Enero 2011 14:25:04 Tomeu Borras escribió:
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; Hola Aron
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; Esto es el tema de las Locales. No es muy buena idea hacer que sea la
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; Base de Datos la que trabaje segun locales ya que entonces
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; se complica mucho la gestión de todo. Principalmente la gestión de las
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; fechas.
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; Sin embargo se puede hacer relativamente fácil modificar la clase
+</I>&gt;<i> BlFixed
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; y alguna otra funcion para que presenten los números en el formato
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; descrito por QLocale. Y hacer que la clase BlDbRecord reinterprete los
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; numeros con el formato estandar (punto decimal y sin separadores de
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; miles).
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; Con los números no habría muchos problemas.
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; El principal problema esta en las fechas ya que el manejo de fechas es
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; muy muy muy (he dicho muy ?) dependiente de las locales ES
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; y acepta DDMMYY DDMM DD/MM/YY DDMMYYYY DD/MM y otras combinaciones de
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; escritura de fecha que son perfectamente interpretadas con las
+</I>&gt;<i> locales ES
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; pero que en otro tipo de locales seran mal interpretadas.
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; Ahora mismo no podría ponerme con este tema ni aunque los dias
+</I>&gt;<i> tuviesen
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; 100 horas pero si quieres intentarlo cuenta con mi ayuda en lo que
+</I>&gt;<i> sea.
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; Salut
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; El 25 de enero de 2011 13:27, Fco. Javier M. C.
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;escribió:
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; Hola.
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; Que yo sepa no hay nada hecho al respecto.
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; Se tendría que hacer en BulmaGes, no en PostgreSQL.
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; Un saludo.
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; El 25/01/11 12:56, Aron escribió:
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; Hola
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; ¿Sabéis si se puede tener separación de millares globalmente con
+</I>&gt;<i> algún
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; ajuste de PostgreSQL o BulmaGés?
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; Sería interesante poder activarlo o desactivarlo para todos los
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; formularios e informes.
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; Saludos
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; ---
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; Hello
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; Do you know if we can hace thousands separators globally with some
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; setting of PostgreSQL or Bulmages?
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; It would be interesting to enable o disable for all forms and
+</I>&gt;<i> reports.
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; Thanks
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; --
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; Aron
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; _______________________________________________
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; Bulmages-main mailing
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">listBulmages-main en lists.berlios.dehttps</A>://lists.berlios.de/mailman/list
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; i nfo/bulmages-main
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; --
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; Javier.
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; TODO-<A HREF="REDEShttp://www.todo-redes.com">REDEShttp://www.todo-redes.com</A>
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; C/Begònia 12 - 07010 Palma de Mallorca.
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; Tel.: 971499071
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; _______________________________________________
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; Bulmages-main mailing list
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+
+-- 
+Javier.
+TODO-REDES
+<A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+C/Begònia 12 - 07010 Palma de Mallorca.
+Tel.: 971499071
+
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20110125/847f05ba/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20110125/847f05ba/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="004596.html">[BulmaGés]Separador millares (thousands separator)
+</A></li>
+	<LI>Próximo mensaje: <A HREF="004600.html">[BulmaGés]Separador millares (thousands separator)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4599">[ fecha ]</a>
+              <a href="thread.html#4599">[ hilo ]</a>
+              <a href="subject.html#4599">[ asunto ]</a>
+              <a href="author.html#4599">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

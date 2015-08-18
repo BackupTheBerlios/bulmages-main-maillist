@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Problemas con el nombre de la empresa
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FProblemas_con_el_nomb%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fre_de_la_empresa%3F%3D&In-Reply-To=%3CCAJWqEtdb6__uqDZbgNj7%3DeQxvSRk2bKVY%2BN1t3bt-AjuGLGtRg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007786.html">
+   <LINK REL="Next"  HREF="007788.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Problemas con el nombre de la empresa </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FProblemas_con_el_nomb%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fre_de_la_empresa%3F%3D&In-Reply-To=%3CCAJWqEtdb6__uqDZbgNj7%3DeQxvSRk2bKVY%2BN1t3bt-AjuGLGtRg%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]Problemas con el nombre de la empresa">tborras en gmail.com
+       </A><BR>
+    <I>Jue Dic 26 18:54:41 CET 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007786.html">[BulmaGés]Problemas con el nombre de la empresa
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007788.html">[BulmaGés] 	Problemas con el nombre de la empresa
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7787">[ fecha ]</a>
+              <a href="thread.html#7787">[ hilo ]</a>
+              <a href="subject.html#7787">[ asunto ]</a>
+              <a href="author.html#7787">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Arreglado.
+
+Hay que cambiar
+
+        os.system(self.command.toLatin1().data())
+
+por
+
+        self.process.start(self.command)
+        self.process.waitForFinished(-1)
+
+
+Probablemente al llamar a os.system se crea una nueva instancia de shell
+que no copia los valores de la sesión en la que esta corriendo bulmasetup
+(probablemente PG_USER) y falla al ejecutar la sentencia sin avisar.
+
+De esta otra forma creamos un proceso nuevo y lo lanzamos esperando a que
+termine sin duplicar la sesion de shell y entonces si que funciona.
+
+En la proxima versión ya estará arreglado.
+
+Salut
+
+
+
+El 26 de diciembre de 2013, 18:11, Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en gmail.com</A>&gt;escribió:
+
+&gt;<i> Hola
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Es cierto, y aun no se cual es el motivo del error, voy a ver si lo
+</I>&gt;<i> encuentro.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> El 25 de diciembre de 2013, 21:51, &quot;Manuel G. Antón Villamil&quot; &lt;
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">mgvillamil en wanadoo.es</A>&gt; escribió:
+</I>&gt;<i>
+</I>&gt;<i> Muy buenas a todos:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Esta es mi primera incursión en este territorio. Estoy analizando las
+</I>&gt;&gt;<i> posibilidades de Bulmages como herramienta de trabajo y, la verdad, me
+</I>&gt;&gt;<i> parece realmente interesante.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Instalé hace unos días la versión de Bulmages 1.5 en Windows 7
+</I>&gt;&gt;<i> (bulmages-1_5.exe) y detecté problemas en bulmasetup con la grabación y la
+</I>&gt;&gt;<i> modificación del nombre de la empresa en la tabla configuración.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> El origen aparentemente está en el archivo nuevacontabilidad.py,
+</I>&gt;&gt;<i> concretamente en &quot;# Cambiamos el nombre de la empresa&quot;. Con self.command =
+</I>&gt;&gt;<i> &quot;C:\Users\manuelanton\Bulmages\pgsql\bin\psql.exe&quot; -c &quot;UPDATE
+</I>&gt;&gt;<i> configuracion set valor='xxxx' WHERE nombre = 'NombreEmpresa';&quot; dbxxxx,
+</I>&gt;&gt;<i> aparentemente correctamente construido, os.system(self.command.toAscii().data())
+</I>&gt;&gt;<i> deja el valor de NombreEmpresa en la tabla configuración en blanco. En
+</I>&gt;&gt;<i> principio sospeché que podría ser algún problema de path o de permisos,
+</I>&gt;&gt;<i> pero el mismo comando (copiado y pegado) ejecutado directamente en el shell
+</I>&gt;&gt;<i> o mediante subprocess.call(self.command.toAscii().data(), shell=True)
+</I>&gt;&gt;<i> del módulo subprocess funciona perfectamente.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Gracias por vuestro fenomenal trabajo.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Un saludo.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Manuel G. Antón Villamil.
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Bulmages-main mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20131226/1ea1f14b/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20131226/1ea1f14b/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007786.html">[BulmaGés]Problemas con el nombre de la empresa
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007788.html">[BulmaGés] 	Problemas con el nombre de la empresa
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7787">[ fecha ]</a>
+              <a href="thread.html#7787">[ hilo ]</a>
+              <a href="subject.html#7787">[ asunto ]</a>
+              <a href="author.html#7787">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

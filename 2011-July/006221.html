@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] Plugins de correo,	facturas en PDF y otras consultas
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Plugins%20de%20correo%2C%0A%09facturas%20en%20PDF%20y%20otras%20consultas&In-Reply-To=%3C4E1C8534.2070805%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006245.html">
+   <LINK REL="Next"  HREF="006224.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] Plugins de correo,	facturas en PDF y otras consultas </H1>
+    <B>Daniel Ripoll</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Plugins%20de%20correo%2C%0A%09facturas%20en%20PDF%20y%20otras%20consultas&In-Reply-To=%3C4E1C8534.2070805%40gmail.com%3E"
+       TITLE="[BulmaGés] Plugins de correo,	facturas en PDF y otras consultas">dripoll.public en gmail.com
+       </A><BR>
+    <I>Mar Jul 12 19:32:36 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006245.html">[BulmaGés][Git]Project bulmages at BerliOS =?iso-8859-15?q?_=3D=3Fiso-8859-15=3Fq=3F=5Fbranch=3F=3D?=, master, updated. 2326a3ebe79dcffb783fbece4693e204ae29592d
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006224.html">[BulmaGés]Plugins de correo, facturas en PDF y otras consultas
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6221">[ fecha ]</a>
+              <a href="thread.html#6221">[ hilo ]</a>
+              <a href="subject.html#6221">[ asunto ]</a>
+              <a href="author.html#6221">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola lista,
+
+Vayamos por partes...
+
+1)-----------------------------------------------------------------------------------------------------------------------------------------------------
+Estoy desarrollando código para bulmages bajo demanda, y tengo permiso
+para publicar bajo GPL al terminar.
+
+Este código serviría de substitución al plubinbf_correo y
+plubinbf_correothunderbird y similares, básicamente actuaría como
+&quot;framework de clientes email&quot; evitando un plugin para cada programa que
+es realmente engorroso y aumenta mucho el código.
+
+Por defecto usaría el cliente predeterminado del usuario.
+En caso de existir en la configuración la variable CONF_CLIENTE_EMAIL
+usaría el indicado ahí independientemente de la plataforma donde
+estuviera ejecutandose.
+
+Además serviría para cualquier cliente de email, al seguir los
+estándares RFC, incluso para los clientes propios de Microsoft, que
+modifican el estándar y ya se por donde cojean.
+
+Como podéis ver, la idea es algo similar a lo que hice para los
+navegadores web: blWebBrowser (en blfunctions), pero para email y luego
+podría usarse en cualquier plugin o código.
+
+Por otra parte, permitiría el uso de plantillas en text/plain y
+text/html, mucho más cómodo que modificar el código y recompilar cada vez.
+
+Creo que puedo afirmar que interesa a todos.
+
+
+
+2)-----------------------------------------------------------------------------------------------------------------------------------------------------
+En este afan de desarrollo, me he encontrado un enorme freno, he estado
+&quot;jugueteando&quot; con el plubinbf_correothunderbird y pluginbf_correo,
+supuestamente crean un archivo pdf y lo adjunta.
+Problema: los archivos PDF que crea estan completamente vacios 0 bytes.
+(adjunto el PDF para los excepticos).
+
+Por terminal se queja de varias cosas...
+
+cp: no se puede efectuar `stat' sobre
+«/opt/bulmages/openreports_demo_fact/factura.rml»: No existe el fichero
+o el directorio
+cp: no se puede efectuar `stat' sobre
+«/opt/bulmages/openreports_demo_fact/logo.jpg»: No existe el fichero o
+el directorio
+Traceback (most recent call last):
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 1116, in &lt;module&gt;
+    print parseString(file(sys.argv[1], 'r').read()),
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 1096, in parseString
+    r = _rml_doc(node, localcontext, images, path, title=title)
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 151, in __init__
+    doc =  etree.XML(file(filename, 'r').read())
+IOError: [Errno 2] No such file or directory:
+'/opt/bulmages/openreports_demo_fact/estilos.rml'
+
+
+
+Al insertar esa carpeta, en base a los .rml que hay en bulmages y que
+supuestamente serían correctos, cantan otros errores.
+
+Traceback (most recent call last):
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 1116, in &lt;module&gt;
+    print parseString(file(sys.argv[1], 'r').read()),
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 1104, in parseString
+    r.render(fp)
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 207, in render
+    pt_obj.render(el)
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 852, in render
+    self.doc_tmpl.build(fis)
+  File
+&quot;/usr/lib/python2.7/site-packages/reportlab-2.5-py2.7-linux-i686.egg/reportlab/platypus/doctemplate.py&quot;,
+line 880, in build
+    self.handle_flowable(flowables)
+  File
+&quot;/usr/lib/python2.7/site-packages/reportlab-2.5-py2.7-linux-i686.egg/reportlab/platypus/doctemplate.py&quot;,
+line 763, in handle_flowable
+    if frame.add(f, canv, trySplit=self.allowSplitting):
+  File
+&quot;/usr/lib/python2.7/site-packages/reportlab-2.5-py2.7-linux-i686.egg/reportlab/platypus/frames.py&quot;,
+line 174, in _add
+    flowable.drawOn(canv, self._x + self._leftExtraIndent, y, _sW=aW-w)
+  File
+&quot;/usr/lib/python2.7/site-packages/reportlab-2.5-py2.7-linux-i686.egg/reportlab/platypus/flowables.py&quot;,
+line 108, in drawOn
+    self._drawOn(canvas)
+  File
+&quot;/usr/lib/python2.7/site-packages/reportlab-2.5-py2.7-linux-i686.egg/reportlab/platypus/flowables.py&quot;,
+line 89, in _drawOn
+    self.draw()#this is the bit you overload
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 584, in draw
+    drw.render(self.canv, self.self2.doc)
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 463, in render
+    cnv.render(self.node)
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 448, in render
+    tags[n.tag](n)
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 332, in _place
+    raise ValueError, &quot;Not enough space&quot;
+ValueError: Not enough space
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+OS: Fedora Linux 15
+uname -r: Linux Hyde 3.0-rc7.fc15.i686
+python --version: Python 2.7.1
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+¿Alguna idea?
+
+-- 
+Daniel Ripoll.
+<A HREF="http://www.linkedin.com/in/themeph">http://www.linkedin.com/in/themeph</A>
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">dripoll.public en gmail.com</A>
+669714580
+668827490
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006245.html">[BulmaGés][Git]Project bulmages at BerliOS =?iso-8859-15?q?_=3D=3Fiso-8859-15=3Fq=3F=5Fbranch=3F=3D?=, master, updated. 2326a3ebe79dcffb783fbece4693e204ae29592d
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006224.html">[BulmaGés]Plugins de correo, facturas en PDF y otras consultas
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6221">[ fecha ]</a>
+              <a href="thread.html#6221">[ hilo ]</a>
+              <a href="subject.html#6221">[ asunto ]</a>
+              <a href="author.html#6221">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Anteponer ceros a una cadena que contiene un número
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FAnteponer_ceros_a_una%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F_cadena_que_contiene_un_n%3DFAmero%3F%3D&In-Reply-To=%3C4B21F54C.8020202%40todo-redes.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003211.html">
+   <LINK REL="Next"  HREF="003213.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Anteponer ceros a una cadena que contiene un número </H1>
+    <B>Fco. Javier M. C.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FAnteponer_ceros_a_una%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F_cadena_que_contiene_un_n%3DFAmero%3F%3D&In-Reply-To=%3C4B21F54C.8020202%40todo-redes.com%3E"
+       TITLE="[BulmaGés]Anteponer ceros a una cadena que contiene un número">fcojavmc en todo-redes.com
+       </A><BR>
+    <I>Vie Dic 11 08:31:24 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003211.html">[BulmaGés]Anteponer ceros a una cadena que contiene un número
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003213.html">[BulmaGés]Anteponer ceros a una cadena que contiene un número
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3212">[ fecha ]</a>
+              <a href="thread.html#3212">[ hilo ]</a>
+              <a href="subject.html#3212">[ asunto ]</a>
+              <a href="author.html#3212">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Tomeu escribió:
+&gt;<i> Hola Arona
+</I>&gt;<i>
+</I>&gt;<i> Creo que la función que mejor se ajusta es QString::rightJustify
+</I>&gt;<i>
+</I>&gt;<i> De todos modos si quieres poner alguna función en blfunctions no te prives.
+</I>&gt;<i>
+</I>&gt;<i> Salut
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+Algunas reflexiones al respecto que se me han ido ocurriendo para este y
+cualquier otro código que se quiera introducir en BulmaLib:
+
+
+1) Hace tiempo que se decidió ir pasando el nombre de clases, métodos y
+funciones de BulmaLib al inglés. Ya se que aún no se ha completado este
+proceso, pero hay que tenerlo en cuenta al hacer cosas nuevas en la
+librería. Por este motivo, el nombre no sería el correcto,
+
+2) Si la función no se va a utilizar en el código público (uso en
+plugins privados, por ejemplo), puede que en un futuro, cuando haya
+revisión de funciones y reestructuración puede que se borre este código.
+Y sé por experiencia lo que fastidia que alguien borre tu código, por
+eso quiero evitar que le pase a otro. Así que si sólo lo vas a usar tu
+en tu código, comentalo adecuadamente o crea un plugin para BulmaLib,
+que también es posible.
+
+3) BulmaLib es el núcleo de la aplicación y tiene que tener el código
+necesario y compartido a todos los proyectos. Por razones de rendimiento
+y administración tiene que ser lo más simple y pequeño posible. En el
+caso de este código no afecta a nada, pero hay que tenerlo en cuenta
+también.
+
+4) ¿Es realmente útil? pregúntate si aporta algo que no se pueda hacer
+de otra menera. Concretamente, lo que propones con este código se puede
+hacer de otras maneras sin tocar BulmaLib, como te propone Tomeu o yo mismo.
+
+
+Ahora si quieres ponerlo, por supuesto que eres libre de hacerlo. El
+código es de quien lo usa, de nadie más.
+
+Un saludo.
+
+
+&gt;&gt;<i> ¿Hay algo implementado en Bulmages que teniendo por ejemplo la cadena &quot;26&quot;
+</I>&gt;&gt;<i>  nos genere &quot;00026&quot;?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> En caso de que no, ¿puedo agregar esta función en blfunctions.h?
+</I>&gt;&gt;<i> Es para poder usarla en varios plugins que estoy haciendo, y no sé como
+</I>&gt;&gt;<i> compartir una clase de funciones comunes a dichos plugins.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> QString anteponerCeros( QString num, int digis )
+</I>&gt;&gt;<i> {
+</I>&gt;&gt;<i>    QString retorno;
+</I>&gt;&gt;<i>    int tam = num.length();
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>    if ( tam &gt; digis ) {
+</I>&gt;&gt;<i>       retorno = num;
+</I>&gt;&gt;<i>    }
+</I>&gt;&gt;<i>    else {
+</I>&gt;&gt;<i>       retorno = QString( digis - tam, '0' );
+</I>&gt;&gt;<i>       retorno += num;
+</I>&gt;&gt;<i>    }
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>    return retorno;
+</I>&gt;&gt;<i> }
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Gracias
+</I>&gt;&gt;<i> &quot;
+</I>&gt;&gt;<i>     
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+-- 
+Fco. Javier M. C.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003211.html">[BulmaGés]Anteponer ceros a una cadena que contiene un número
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003213.html">[BulmaGés]Anteponer ceros a una cadena que contiene un número
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3212">[ fecha ]</a>
+              <a href="thread.html#3212">[ hilo ]</a>
+              <a href="subject.html#3212">[ asunto ]</a>
+              <a href="author.html#3212">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]backporteo de bulmages a Debian Squeeze: con qt 4.6 hemos topado
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fbackporteo_de_bulmage%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fs_a_Debian_Squeeze%3D3A_con_qt_4%3D2E6_hemos_topado%3F%3D&In-Reply-To=%3C50A56628.7010601%40danielripoll.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007359.html">
+   <LINK REL="Next"  HREF="007362.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]backporteo de bulmages a Debian Squeeze: con qt 4.6 hemos topado </H1>
+    <B>Daniel Ripoll</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fbackporteo_de_bulmage%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fs_a_Debian_Squeeze%3D3A_con_qt_4%3D2E6_hemos_topado%3F%3D&In-Reply-To=%3C50A56628.7010601%40danielripoll.es%3E"
+       TITLE="[BulmaGés]backporteo de bulmages a Debian Squeeze: con qt 4.6 hemos topado">info en danielripoll.es
+       </A><BR>
+    <I>Jue Nov 15 23:01:12 CET 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007359.html">[BulmaGés] backporteo de bulmages a Debian	Squeeze: con qt 4.6 hemos topado
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007362.html">[BulmaGés]backporteo de bulmages a Debian Squeeze: con qt 4.6 hemos topado
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7361">[ fecha ]</a>
+              <a href="thread.html#7361">[ hilo ]</a>
+              <a href="subject.html#7361">[ asunto ]</a>
+              <a href="author.html#7361">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Miguel,
+
+Yo personalmente no he conseguido que me funcionase bajo Qt4.6 en 
+Squeeze, eso si, si haces un backport de Qt4.7 debería funcionar...
+
+Si otros programas te dan problemas, eso ya lo desconozco.
+
+Suerte con ello y mantennos informado.
+
+Ah, y si puedes errores y demás estaría bien comunicarlos también (si, 
+aquí y ahí, un copy paste no cuesta nada :D ) en el redmine que creé 
+aposta para el proyecto:
+
+<A HREF="http://redmine.bulmages.es">http://redmine.bulmages.es</A>
+
+Ya dicho sea de paso, si quieres acceso de escritura a la wiki de ahí, 
+para ir poniendote una &quot;guia&quot; de como vas empaquetando, solo dilo y será 
+hecho :D
+
+Ale, dicho esto... si no lo dije ya antes, bienvenido al club.
+
+On 15/11/12 19:07, Miguel Telleria de Esteban wrote:
+&gt;<i> Hola otra vez,
+</I>&gt;<i>
+</I>&gt;<i> El siguiente paso que me planteo es hacer funcionar bulmages en Debian
+</I>&gt;<i> Squeeze (que es lo que tengo instalado en mi portátil de emergencia).
+</I>&gt;<i> Aunque el README.es ya me lo advertía, lanzando la compilación me
+</I>&gt;<i> encuentro con el mensaje nada más ejecutar CMake:
+</I>&gt;<i>
+</I>&gt;<i> -- Found Qt-Version 4.6.3 (using /usr/bin/qmake-qt4)
+</I>&gt;<i> CMake Error at CMakeLists.txt:88 (message):
+</I>&gt;<i>     Bulmages needs &gt;= QT4.7 to compile
+</I>&gt;<i>
+</I>&gt;<i> Frente a esto tenemos como opciones el dilema de Mahoma y la montaña.
+</I>&gt;<i>
+</I>&gt;<i> Mahora va a la montaña:
+</I>&gt;<i>
+</I>&gt;<i> Op1:  Seguir forzando con CMake (no sé como) el que use qt4.6 suponiendo
+</I>&gt;<i>        que el código lo permita.
+</I>&gt;<i>
+</I>&gt;<i> Op2:  Buscar un commit estable antiguo de cuando se usaba qt4.6
+</I>&gt;<i>
+</I>&gt;<i> La montaña va a Mahoma:
+</I>&gt;<i>
+</I>&gt;<i> Op3:  Backportear qt4.7 (o qt4.8 que está en wheezy) a Debian Squeeze.
+</I>&gt;<i>        Espero que esto no afecte a las aplicaciones qt que tenga o pueda
+</I>&gt;<i>        instalar después (por ahora no son muchas y ninguna crítica).
+</I>&gt;<i>
+</I>&gt;<i> Todo el continente va a Mahoma:
+</I>&gt;<i>
+</I>&gt;<i> Op4:  Actualizar la distribución entera a Debian Wheezy.
+</I>&gt;<i>
+</I>&gt;<i> En principio voy a explorar la Op3, backportear qt4.7 (o al menos la
+</I>&gt;<i> parte que usa bulmages).
+</I>&gt;<i>
+</I>&gt;<i> Cualquier ayuda en las otras opciones es bienvenida.
+</I>&gt;<i>
+</I>&gt;<i> Un saludo,
+</I>&gt;<i>
+</I>&gt;<i> 	Miguel
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+
+-- 
+Daniel Ripoll Osma
+<A HREF="http://danielripoll.es">http://danielripoll.es</A>
+<A HREF="http://bulmages.es">http://bulmages.es</A>
+<A HREF="http://manualencatala.tk">http://manualencatala.tk</A>
+6688.27.4.90
+
+Web &amp; Desktop Developer
+
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20121115/742d3c8e/attachment-0001.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20121115/742d3c8e/attachment-0001.html</A>&gt;
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007359.html">[BulmaGés] backporteo de bulmages a Debian	Squeeze: con qt 4.6 hemos topado
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007362.html">[BulmaGés]backporteo de bulmages a Debian Squeeze: con qt 4.6 hemos topado
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7361">[ fecha ]</a>
+              <a href="thread.html#7361">[ hilo ]</a>
+              <a href="subject.html#7361">[ asunto ]</a>
+              <a href="author.html#7361">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

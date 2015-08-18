@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]postgresiface2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fpostgresiface2%3F%3D&In-Reply-To=%3C20081103215125.GA7346%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000246.html">
+   <LINK REL="Next"  HREF="000315.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]postgresiface2 </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fpostgresiface2%3F%3D&In-Reply-To=%3C20081103215125.GA7346%40localhost%3E"
+       TITLE="[BulmaGés]postgresiface2">xdrudis en tinet.cat
+       </A><BR>
+    <I>Lun Nov  3 22:51:25 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000246.html">[BulmaGés]postgresiface2
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000315.html">[BulmaGés] postgresiface2
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#250">[ fecha ]</a>
+              <a href="thread.html#250">[ hilo ]</a>
+              <a href="subject.html#250">[ asunto ]</a>
+              <a href="author.html#250">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, Nov 03, 2008 at 10:26:23AM +0100, Tomeu Borras wrote:
+&gt;<i> Hola Xavi
+</I>&gt;<i> 
+</I>&gt;<i> El canvi que proposes es molt interessant, quan vam començar no existia això i 
+</I>&gt;<i> la ampliació de la clase postgresiface2 no creq que sigui gaire difícil de 
+</I>&gt;<i> fer.
+</I>&gt;<i> 
+</I>
+Si, diria que posar un nou mètode sense treure l'anterior hauria de ser fàcil.Com a molt 
+es pot fer que la implementació del métode amb la signatura anterior cridi al 
+nou passant un array de parametres null, per no tenir dues implementacions 
+del mateix. 
+
+Si puc miraré de fer-ho a veure què passa. Si em sembla que va, ho pujo a svn 
+o millor ho envio a la llista perquè algú ho provi millor, tenint en compte que 
+és una classe una mica central ? 
+ 
+&gt;<i> Amb el que si hem tingut molts de problemes a postgres amb el tipus de dades 
+</I>&gt;<i> es en la codificació dels QString (UTF-8, ASCII i LATIN1). Sobretot el UTF-8 
+</I>&gt;<i> que augmentaba la longitut dels strings i guardava menys caracters dels que 
+</I>&gt;<i> hi havia. També hem tingut problemes amb el punt decimal dels camps numérics.
+</I>&gt;<i> Hem de fer algunes proves amb el PQExecParams per veurer si realment fa la 
+</I>&gt;<i> conversió bé o no.
+</I>&gt;<i>
+</I>
+Pel que tinc entès bulmasetup crea les bases de dades sempre amb codificació UTF-8.
+Quan li dius al postgres que un camp és varchar(n) vol dir n caracters, no n bytes
+(o char(n) igual). Llavors la única manera que se m'acud de que passi això és que 
+li passis cadenes codificades en UTF-8 havent declarat la codificació del client 
+com a ASCII o LATIN1, però a 
+int postgresiface2::formatofecha()
+posa 
+   query = &quot;SET client_encoding = 'UTF8'&quot;;
+Per tant no pot ser aquest cas.    
+
+&gt;<i> Com ha dit en Fco.  Javier tenim el SanearCadena que es que arregla els 
+</I>&gt;<i> strings abans de anar a la base de dades.
+</I>&gt;<i> 
+</I>
+Gràcies Fco. Javier i Tomeu. No l'havia vist, curt de mi. I en el poc codi de
+bulma que m'he mirat casualment no es feia servir. 
+Ara que me la miro no entenc una cosa. 
+Si a formatofecha() posen client_Encodig a UTF8 i Qstring enmmagatema 
+cadenes en UTF8, perquè fem a sanearCadena() 
+
+   PQescapeString ( buffer, cadena.toAscii().constData(), cadena.toAscii().size() );
+    cadenaLimpia = QString::fromAscii ( buffer );
+ 
+El toAscii no passa de la QString en utf8 a un array de bytes en latin1 ? 
+Si li passem un char* en latin1 tenint el client_Encoding a utf8 com interpreta
+els codis 128-255 que no són UTF8 ? 
+
+&gt;<i>  Normalment procuram no carregar de query's la aplicació tot i que a vegades 
+</I>&gt;<i> es la sol·lució més ràpida. Tenim la clase  DBRecord que fa la composició 
+</I>&gt;<i> dels querys, detecta si son INSERT o UPDATE i demés.
+</I>&gt;<i> 
+</I>
+Ah!. No ho havia vist. M'ho miraré quan estigui més despert. 
+
+&gt;<i> Lo dels SELECT es més complicat ja que com bé dius volem arribar a fer 
+</I>&gt;<i> consultes predefinides i això significa poder treballar a baix nivell desde 
+</I>&gt;<i> bon principi i aqui si que ens pot esser molt útil el canvi.
+</I>&gt;<i>
+</I>
+Baix nivell ? L'únic que caldria fer (un cop tinguis les consultes amb 
+paràmetres en arrays, i no els valors dintre la consulta) seria montar-se
+una cache en memòria de consultes SQL i quan torni a venir una que ja 
+hem fet usar la precompilada, però el codi que cridi postgresiface ni ho 
+sabria, si hi ha consultes precompilades o no, no ?  Només sabria que 
+passa els paràmetres a part, i la consulta amb &quot;$1, $2...&quot; 
+
+
+No entenc què tenen d'especial els SELECT. 
+
+&gt;<i> Jo faría la ampliació de postgresiface2 i cercaría la compatibilitat de ambdos 
+</I>&gt;<i> sistemes per anar migrant de forma pausada.
+</I>&gt;<i>
+</I>
+Ok.
+ 
+&gt;<i> Sobre lo del requeriment de postgres &gt; 7.4 creq que no ha de esser problema. 
+</I>&gt;<i> Migrar a una nova versió de postgres no costa doblers, si de cas una mica de 
+</I>&gt;<i> temps.
+</I>&gt;<i> 
+</I>
+Cert. I diria que el 7.4 ja és vellet, suposo que molta gent ja haurà migrat. 
+
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>
+Signa per fer Collserola parc natural com cal
+<A HREF="http://www.collserola.org/salvemelparcnatural/">http://www.collserola.org/salvemelparcnatural/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000246.html">[BulmaGés]postgresiface2
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000315.html">[BulmaGés] postgresiface2
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#250">[ fecha ]</a>
+              <a href="thread.html#250">[ hilo ]</a>
+              <a href="subject.html#250">[ asunto ]</a>
+              <a href="author.html#250">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][.gitignore]   Principalmente a Pablo Alvarez de Sotomayor Posadillo
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3F%3D5B%3D2Egitignore%3D5D___Princ%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fipalmente_a_Pablo_Alvarez_de_Sotomayor_Posadillo%3F%3D&In-Reply-To=%3C4ED8807E.8010205%40todo-redes.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006664.html">
+   <LINK REL="Next"  HREF="006680.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][.gitignore]   Principalmente a Pablo Alvarez de Sotomayor Posadillo </H1>
+    <B>Fco. Javier M. C.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3F%3D5B%3D2Egitignore%3D5D___Princ%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fipalmente_a_Pablo_Alvarez_de_Sotomayor_Posadillo%3F%3D&In-Reply-To=%3C4ED8807E.8010205%40todo-redes.com%3E"
+       TITLE="[BulmaGés][.gitignore]   Principalmente a Pablo Alvarez de Sotomayor Posadillo">fcojavmc en todo-redes.com
+       </A><BR>
+    <I>Vie Dic  2 08:38:38 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006664.html">[BulmaGés]Sobre .gitignore
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006680.html">[BulmaGés][.gitignore]    Principalmente a Pablo Alvarez de Sotomayor Posadillo
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6666">[ fecha ]</a>
+              <a href="thread.html#6666">[ hilo ]</a>
+              <a href="subject.html#6666">[ asunto ]</a>
+              <a href="author.html#6666">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Pablo.
+
+El tema parece ser de procedimiento. Yo personalmente no veo
+problemas. Si tienes el directorio 'bulmages.git' donde está el código
+fuente del programa. Sólo tienes que crear allí mismo un nuevo
+directorio 'build' y, desde dentro, hacer 'cmake ../bulmages'. De esta
+manera lo tienes todo centralizado y el '.gitignore' sólo habría que
+poner 'build' y es todo mucho más limpio. ¿no crees?
+
+
+Un saludo.
+
+
+El 02/12/11 00:31, Pablo Alvarez de Sotomayor Posadillo escribió:
+&gt;&gt;&gt;<i> De hecho esto no es cierto. Los archivos que ya estan bajo
+</I>&gt;&gt;&gt;<i> revision se mantienen bajo revision, independientemente si
+</I>&gt;&gt;&gt;<i> estan en el .gitignore como sino, y los cambios que se hagan
+</I>&gt;&gt;&gt;<i> sobre ellos se veran cuando hagas un &quot;git status&quot;, y los que no
+</I>&gt;&gt;&gt;<i> esten bajo revision puedes forzar a incluirlos bajo revision
+</I>&gt;&gt;&gt;<i> (git add -f archivo.css), con lo cual en ningun momento se esta
+</I>&gt;&gt;&gt;<i> impidiendo poner ningun archivo bajo revision, sino que los css
+</I>&gt;&gt;&gt;<i> que se generen nuevos se tienen que poner explicitamente bajo 
+</I>&gt;&gt;&gt;<i> revision, no mostrando, por lo tanto, todos los ficheros css
+</I>&gt;&gt;&gt;<i> que se generen automaticamente durante la compilacion cuando
+</I>&gt;&gt;&gt;<i> hagas un &quot;git status&quot;.
+</I>&gt;&gt;<i> Para empezar decir que me gusta ver que dominas y entiendes git
+</I>&gt;&gt;<i> pero digo que lo suyo es no compilar en el mismo lugar (ya lo he
+</I>&gt;&gt;<i> explicad previamente), no se.. lo veo mal, una de las ventajas de
+</I>&gt;&gt;<i> cmake es tener el código alejado de la compilación.
+</I>&gt;<i> 
+</I>&gt;<i> Bueno, es cuestion de gustos. Yo personalmente cuando desarrollo en
+</I>&gt;<i> un proyecto si que compilo en el mismo directorio y cuando lo que
+</I>&gt;<i> quiero es mantener un programa en un sistema desde el codigo fuente
+</I>&gt;<i> si que lo hago en directorios separados. Suelo hacer esto porque
+</I>&gt;<i> cuando estoy desarrollando no tengo nada mas que una instalacion
+</I>&gt;<i> del programa, la de desarrollo, que se va actualizando
+</I>&gt;<i> progresivamente, con lo que no me aporta mucho tener un directorio
+</I>&gt;<i> de compilacion separado. Sin embargo, en entornos de produccion si
+</I>&gt;<i> que puede ser bastante util tener un directorio separado de
+</I>&gt;<i> compilacion, ya que te permite mantener una o varias versiones de
+</I>&gt;<i> un mismo programa con la misma configuracion de CMake. De todas
+</I>&gt;<i> maneras, como comentaba, es cuestion de gustos.
+</I>&gt;<i> 
+</I>&gt;&gt;<i> Y vale, si bien los que ya estaban, continuarán bajo revisión y 
+</I>&gt;&gt;<i> aparecerán con el &quot;git status&quot;. Pero si yo ahora creo un
+</I>&gt;&gt;<i> &quot;archivo.conf&quot; o un &quot;archivo.css&quot; (ahora este no porque lo quité
+</I>&gt;&gt;<i> del .gitignore), no me lo va a reconocer con &quot;git status&quot; y eso
+</I>&gt;&gt;<i> me lleva un problema, porque si he creado varios css, a lo mejor
+</I>&gt;&gt;<i> no se cual es realmente el que &quot;queria originalmente tener en
+</I>&gt;&gt;<i> revisión&quot;. (que conste que yo lo haría así, pero lo veo mal de
+</I>&gt;&gt;<i> cara a otros usuarios)
+</I>&gt;<i> 
+</I>&gt;<i> Si, eso puede llegar a ser incomodo. Lo que tenemos que evaluar es
+</I>&gt;<i> que nos merece la pena mas, si que se nos olvide cada cierto tiempo
+</I>&gt;<i> incluir en el repositorio algun archivo o no estemos seguros de que
+</I>&gt;<i> archivo tenemos que incluir o si cada vez que hagamos un nuevo
+</I>&gt;<i> paquete (debian, rpm, tgz, ...) tenemos que acordarnos de quitar
+</I>&gt;<i> los css que se han generado automaticamente. Personalmente prefiero
+</I>&gt;<i> la primera opcion, aunque si decidimos la segunda opcion con
+</I>&gt;<i> personalizar mi gitignore en local tengo suficiente.
+</I>&gt;<i> 
+</I>&gt;&gt;<i> Ahí no me has entendido, lo que yo me refería es que si por
+</I>&gt;&gt;<i> ejemplo, en el caso de que estuviera applications en .gitignore,
+</I>&gt;&gt;<i> si yo ahora create una nueva &quot;application&quot; y la metiera ahí, no
+</I>&gt;&gt;<i> aparecería. Y efectivamente, tu dices que se autogenera,
+</I>&gt;&gt;<i> correcto, pero lo hace desde
+</I>&gt;&gt;<i> ./bulmages/installbulmages/applications.
+</I>&gt;<i> 
+</I>&gt;<i> Aqui creo que tenemos dos opciones, o dejar applications en el 
+</I>&gt;<i> .gitignore principal e incluir en el/los directorio(s) que
+</I>&gt;<i> queramos tener un subdirectorio applications en la revision un
+</I>&gt;<i> .gitignore que tenga una entrada !applications/ para que no lo
+</I>&gt;<i> ignore o al reves, en los directorios que se genere automaticamente
+</I>&gt;<i> un directorio .applications incluir un .gitignore con la entrada
+</I>&gt;<i> applications/
+</I>&gt;<i> 
+</I>&gt;&gt;<i> ¿Por otro lado... como has contado los SVG?
+</I>&gt;<i> 
+</I>&gt;<i> find . -name *.svg | wc -l
+</I>&gt;<i> 
+</I>&gt;&gt;<i> Ahí me disculpo, pensaba que el archivo se llamaba directamente 
+</I>&gt;&gt;<i> blconfig.h, pero tienes razón. Y sapiens serás tu, yo soy
+</I>&gt;&gt;<i> &quot;sapiens sapiens&quot; ^^ (es un detalle que nadie tiene en
+</I>&gt;&gt;<i> importancia, pero me lo acaba de recordar mi hermano xD)
+</I>&gt;<i> 
+</I>&gt;<i> Cierto :).
+</I>&gt;<i> 
+</I>&gt;&gt;&gt;<i> Precisamente creo muy correcto tener un .gitignore del proyecto
+</I>&gt;&gt;&gt;<i> en comun, para no arriesgarse a que alguien incluya por error
+</I>&gt;&gt;&gt;<i> un fichero/directorio autogenerado, obligandole a que lo
+</I>&gt;&gt;&gt;<i> incluya por una buena razon.
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> Por supuesto, solo eran esas pequeñas excepciones que te
+</I>&gt;&gt;<i> comentaba, esta claro que un .gitignore del proyecto es útil, de
+</I>&gt;&gt;<i> hecho creo que podríamos meter la extensión &quot;.o&quot; y &quot;.so&quot; por si
+</I>&gt;&gt;<i> las moscas, no?.
+</I>&gt;<i> 
+</I>&gt;<i> Si, de hecho pensaba hacerlo, pero empece por los primeros que fui 
+</I>&gt;<i> viendo y luego no me dio tiempo a continuar (he estado bastante
+</I>&gt;<i> ocupado la ultima semana en una conferencia).
+</I>&gt;<i> 
+</I>&gt;&gt;&gt;<i> P.D.: La proxima vez si quieres enviarme un correo a mi (como
+</I>&gt;&gt;&gt;<i> se sobreentiende de lo que pones en el subject) no lo envies a
+</I>&gt;&gt;&gt;<i> la lista entera. Entiendo que quieras que la gente aprenda de
+</I>&gt;&gt;&gt;<i> los errores de otra gente, pero si quieres hacer eso no pongas
+</I>&gt;&gt;&gt;<i> en el subject para tal persona ni personalices tanto el correo,
+</I>&gt;&gt;&gt;<i> porque sino no tiene sentido que lo mandes a la lista.
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> Efectivamente esa era mi intención, no la de humillar ni nada.
+</I>&gt;&gt;<i> Admito que no ha sido la manera más ética, pero de esa manera me
+</I>&gt;&gt;<i> aseguraba que lo leías. :)
+</I>&gt;<i> 
+</I>&gt;<i> No te preocupes, tampoco me lo he tomado como que quisieras
+</I>&gt;<i> avergonzarme ni nada por el estilo (al fin y al cabo llevo en esto
+</I>&gt;<i> del software libre varios a&#65533;os y ya he recibido antes criticas),
+</I>&gt;<i> pero si es verdad que a otra persona a lo mejor le podria haber
+</I>&gt;<i> sentado peor.
+</I>&gt;<i> 
+</I>&gt;<i> De todas maneras hoy tampoco me has pillado en mi mejor dia, ya
+</I>&gt;<i> que, como he comentado antes, he estado en una conferencia una
+</I>&gt;<i> semana (he llegado esta tarde) y entre el cansancio acumulado de
+</I>&gt;<i> dormir poco y los viajes de ida y vuelta (de 19 horas de avion cada
+</I>&gt;<i> uno) no me pillas con el buen humor que suelo tener normalmente.
+</I>&gt;<i> 
+</I>&gt;<i> Bueno, me voy a la cama, que a todo esto ma&#65533;ana hay que trabajar
+</I>&gt;<i> para ganarse el sustento :).
+</I>&gt;<i> 
+</I>&gt;<i> UN SALUDO
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________ Bulmages-main
+</I>&gt;<i> mailing list <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A> 
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+
+-- 
+Javier.
+TODO-REDES
+<A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+C/Begònia 12 - 07010 Palma de Mallorca.
+Tel.: 971499071
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006664.html">[BulmaGés]Sobre .gitignore
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006680.html">[BulmaGés][.gitignore]    Principalmente a Pablo Alvarez de Sotomayor Posadillo
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6666">[ fecha ]</a>
+              <a href="thread.html#6666">[ hilo ]</a>
+              <a href="subject.html#6666">[ asunto ]</a>
+              <a href="author.html#6666">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

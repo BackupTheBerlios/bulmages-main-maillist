@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]BACKUP con BULMASETUP
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Futf-8%3Fq%3FBACKUP_con_BULMASETUP%3F%3D&In-Reply-To=%3C200902040137.52839.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000920.html">
+   <LINK REL="Next"  HREF="000923.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]BACKUP con BULMASETUP </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Futf-8%3Fq%3FBACKUP_con_BULMASETUP%3F%3D&In-Reply-To=%3C200902040137.52839.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]BACKUP con BULMASETUP">tborras en conetxia.com
+       </A><BR>
+    <I>Mie Feb  4 01:37:52 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000920.html">[BulmaGés] r2952 - in trunk/bulmages: bulmacont/plugins/pluginadocumental bulmacont/plugins/pluginbalance bulmacont/plugins/pluginbalance-old bulmacont/plugins/pluginbalancetree bulmacont/plugins/plugincorrector bulmacont/plugins/pluginestadisticas bulmacont/plugins/pluginproyectos bulmacont/plugins/pluginregistroiva bulmacont/src bulmages/src bulmages/src/comun bulmalib/plugins/pluginarchivos bulmalib/plugins/pluginbloqueos bulmalib/plugins/pluginclipboardbf bulmalib/plugins/plugindocked bulmalib/plugins/pluginimpers bulmalib/plugins/pluginimpersmail bulmalib/plugins/pluginimpersods bulmalib/plugins/pluginimportcsv bulmalib/plugins/plugininformes bulmalib/plugins/plugininformesods bulmalib/plugins/pluginsubformods bulmalib/plugins/pluginsubformprint bulmalib/plugins/pluginsubformsxc bulmatpv/plugins/pluginabrevs bulmatpv/plugins/pluginadmin bulmatpv/plugins/pluginaliastpv bulmatpv/plugins/pluginartsubform bulmatpv/plugins/plugindevolucion2 bulmatpv/plugins/plugintcaliastpv bu! lmatpv/plugins/plugintpvivainc bulmatpv/src
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000923.html">[BulmaGés] BACKUP con BULMASETUP
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#921">[ fecha ]</a>
+              <a href="thread.html#921">[ hilo ]</a>
+              <a href="subject.html#921">[ asunto ]</a>
+              <a href="author.html#921">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>El problema es que el usuario postgres no tiene permisos de escritura en 
+el /home y por añadidura en casi ningun directorio.
+
+Crea un directorio con permiso de lectura/escritura para todo el mundo. O 
+intenta hacer la copia en el /tmp que suele dar permisos a todo el mundo.
+
+De todos modos si quieres un sistema de copias útil no te plantees usar la 
+chapuzilla de bulmasetup (No es práctico, y esta pensado solo para usuarios 
+muy muy novatos). Con el cron y un script de 5 lineas puedes conseguir copias 
+diarias, semanales, mensuales, completamente desatendidas, mandarte por 
+e-mail los resultados de la copia, agregar los archivos de plantilla y del 
+etc (tambien muy importantes), mandar la copia a otra máquina situada en otro 
+extremo del mundo y, en definitiva, vivir muuuucho más tranquilo.
+
+Salut
+
+El Thursday 29 January 2009 01:37:31 Albert Mas escribió:
+&gt;<i> Hoy queria hacer mi primer backup de bulmafact con bulmasetup y al ver que
+</I>&gt;<i> no generaba ningun fichero he mirado la consolo y he visto lo siguiente:
+</I>&gt;<i> Backup
+</I>&gt;<i> su postgres -c &quot;pg_dump -f /home/20090129 informatica&quot;
+</I>&gt;<i> Start.
+</I>&gt;<i> Start.
+</I>&gt;<i> error: pg_dump: [archiver] could not open output file &quot;/home/20090129&quot;:
+</I>&gt;<i> Permission denied
+</I>&gt;<i>
+</I>&gt;<i> por lo que veo no se puede crear el fichero de backup, he provado distintas
+</I>&gt;<i> ubicaciones pero no funciona en ninguna.
+</I>&gt;<i>
+</I>&gt;<i> sabeis que puede estar pasando.
+</I>&gt;<i>
+</I>&gt;<i> Por cierto, para realizar un backup masivo en el caso que tenga varias
+</I>&gt;<i> empresas, me podeis pasar alguna instruccion.
+</I>&gt;<i>
+</I>&gt;<i> Gracias.
+</I>
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000920.html">[BulmaGés] r2952 - in trunk/bulmages: bulmacont/plugins/pluginadocumental bulmacont/plugins/pluginbalance bulmacont/plugins/pluginbalance-old bulmacont/plugins/pluginbalancetree bulmacont/plugins/plugincorrector bulmacont/plugins/pluginestadisticas bulmacont/plugins/pluginproyectos bulmacont/plugins/pluginregistroiva bulmacont/src bulmages/src bulmages/src/comun bulmalib/plugins/pluginarchivos bulmalib/plugins/pluginbloqueos bulmalib/plugins/pluginclipboardbf bulmalib/plugins/plugindocked bulmalib/plugins/pluginimpers bulmalib/plugins/pluginimpersmail bulmalib/plugins/pluginimpersods bulmalib/plugins/pluginimportcsv bulmalib/plugins/plugininformes bulmalib/plugins/plugininformesods bulmalib/plugins/pluginsubformods bulmalib/plugins/pluginsubformprint bulmalib/plugins/pluginsubformsxc bulmatpv/plugins/pluginabrevs bulmatpv/plugins/pluginadmin bulmatpv/plugins/pluginaliastpv bulmatpv/plugins/pluginartsubform bulmatpv/plugins/plugindevolucion2 bulmatpv/plugins/plugintcaliastpv bu! lmatpv/plugins/plugintpvivainc bulmatpv/src
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000923.html">[BulmaGés] BACKUP con BULMASETUP
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#921">[ fecha ]</a>
+              <a href="thread.html#921">[ hilo ]</a>
+              <a href="subject.html#921">[ asunto ]</a>
+              <a href="author.html#921">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

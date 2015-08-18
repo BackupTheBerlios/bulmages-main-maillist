@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]plugin sincronización
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Futf-8%3Fq%3Fplugin_sincronizaci%3DC3%3DB3n%3F%3D&In-Reply-To=%3C200810112330.12870.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000148.html">
+   <LINK REL="Next"  HREF="000141.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]plugin sincronización </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Futf-8%3Fq%3Fplugin_sincronizaci%3DC3%3DB3n%3F%3D&In-Reply-To=%3C200810112330.12870.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]plugin sincronización">tborras en conetxia.com
+       </A><BR>
+    <I>Sab Oct 11 23:30:12 CEST 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000148.html">[BulmaGés]plugin sincronización
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000141.html">[BulmaGés] r2742 - trunk/bulmages/bulmafact/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#149">[ fecha ]</a>
+              <a href="thread.html#149">[ hilo ]</a>
+              <a href="subject.html#149">[ asunto ]</a>
+              <a href="author.html#149">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Freud.
+
+Tienes razón. Lo que no sé es si esta arreglado o no. De todos modos es muy 
+sencillo cambiar el script sql para que coja unas cuentas u otras.
+
+Salut
+
+El Saturday 11 October 2008 23:03:16 escribió:
+&gt;<i> Hola Tomeu.
+</I>&gt;<i>
+</I>&gt;<i> Una duda con respecto a la cuenta de Proveedores Varios.
+</I>&gt;<i>
+</I>&gt;<i> El 8 de octubre de 2008 9:41, Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt; escribió:
+</I>&gt;<i> &gt; Hola Freud
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Sobre el plugin de sincronización no se instala automaticamente porque es
+</I>&gt;<i> &gt; algo
+</I>&gt;<i> &gt; complejo de instalar. Te explico los pasos a seguir y si te apetece lo
+</I>&gt;<i> &gt; pones
+</I>&gt;<i> &gt; en el wiki:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Supongamos que ya tienes dos bases de datos (una bulmafactdb y otra
+</I>&gt;<i> &gt; bulmacontdb)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; 1.- Necesitas el paquete postgresql-contrib para poder usar dblink
+</I>&gt;<i> &gt; $ sudo aptitude install postgresql-contrib
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; entro como usuario postgres para manejar bases de datos aunque hay otras
+</I>&gt;<i> &gt; formas de hacer esto.
+</I>&gt;<i> &gt; $ sudo su
+</I>&gt;<i> &gt; # sudo postgres
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; 2.- En la base de datos de bulmafact tienes que instalar el dblink.
+</I>&gt;<i> &gt; $ psql bulmafactdb &lt; /usr/share/postgresql/8.3/contrib/dblink.sql
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; 3.- En la misma base de datos tienes que instalar el parche que
+</I>&gt;<i> &gt; proporciona el
+</I>&gt;<i> &gt; plugin (la ruta puede que cambie)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; $psql bulmafactdb
+</I>&gt;<i> &gt; &lt; /usr/share/bulmages/dbmodels/plugins/revf-pluginsyncbulmacont.sql
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; 4.- Tienes que indicarle a la base de datos de bulmafact cual es la base
+</I>&gt;<i> &gt; de datos de contabilidad con la que se sincroniza
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; $ psql bulmafactdb
+</I>&gt;<i> &gt; # update configuracion set valor='bulmacontdb' WHERE nombre
+</I>&gt;<i> &gt; = 'DataBaseContabilidad'
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Una vez hecho esto ya estará en marcha el plugin de sincronización.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; COSAS MUY A TENER EN CUENTA:
+</I>&gt;<i> &gt;        1.- Conviene que antes de poner en marcha esto tengas en bulmacont
+</I>&gt;<i> &gt; las
+</I>&gt;<i> &gt; siguientes cuentas creadas:
+</I>&gt;<i> &gt;                - 43000...0 (Cliente varios,  sino el plugin empezará a
+</I>&gt;<i> &gt; crearte cuentas con
+</I>&gt;<i> &gt; sólo 4 dígitos )
+</I>&gt;<i> &gt;                - 44000...0 (Proveedor varios, sino el plugin empezará
+</I>&gt;<i> &gt; creandote cuentas de
+</I>&gt;<i> &gt; sólo 4 digitos)
+</I>&gt;<i>
+</I>&gt;<i> ¿Esta cuenta no debería ser la 400? Según el PGC 2008 la 440 es de
+</I>&gt;<i> &quot;Deudores&quot;. Si estoy equivocado dímelo.
+</I>&gt;<i>
+</I>&gt;<i> Gracias por todo.
+</I>&gt;<i>
+</I>&gt;<i>     Un saludo,
+</I>&gt;<i>
+</I>&gt;<i>         - Freud -
+</I>
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+(71 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000148.html">[BulmaGés]plugin sincronización
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000141.html">[BulmaGés] r2742 - trunk/bulmages/bulmafact/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#149">[ fecha ]</a>
+              <a href="thread.html#149">[ hilo ]</a>
+              <a href="subject.html#149">[ asunto ]</a>
+              <a href="author.html#149">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

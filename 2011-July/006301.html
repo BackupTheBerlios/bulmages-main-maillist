@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 68694d606dd0e7729794d1285920e5b7a441789d
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%5BGit%5DProject%20bulmages%20at%20BerliOS%20branch%2C%20master%2C%0A%09updated.%2068694d606dd0e7729794d1285920e5b7a441789d&In-Reply-To=%3C20110723143027.15CE8480EC9%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006300.html">
+   <LINK REL="Next"  HREF="006302.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 68694d606dd0e7729794d1285920e5b7a441789d </H1>
+    <B>fcojavmc at BerliOS</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%5BGit%5DProject%20bulmages%20at%20BerliOS%20branch%2C%20master%2C%0A%09updated.%2068694d606dd0e7729794d1285920e5b7a441789d&In-Reply-To=%3C20110723143027.15CE8480EC9%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 68694d606dd0e7729794d1285920e5b7a441789d">git en mail.berlios.de
+       </A><BR>
+    <I>Sab Jul 23 16:30:25 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006300.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. ab7b0ba85b31f42aef628d67080514ed44bf3a26
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006302.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. b8e871e39f87b9404e3bb535dde3833659b370c8
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6301">[ fecha ]</a>
+              <a href="thread.html#6301">[ hilo ]</a>
+              <a href="subject.html#6301">[ asunto ]</a>
+              <a href="author.html#6301">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+The branch, master has been updated
+       via  68694d606dd0e7729794d1285920e5b7a441789d (commit)
+       via  49efece50819eacf87e2ee7a88ef55b0b8b91fed (commit)
+       via  bc6c8c9f0579da95cd19d44a5e07825b65414584 (commit)
+       via  939be78b8c5682fdce6d0631f6080988daca09a5 (commit)
+       via  6579ea43cd2080e826d0a22fae50befa93ed8654 (commit)
+       via  e0d77d6111b6ff0c0596ca2ca02e6be80037a8b5 (commit)
+       via  f251f61eec59c18171e642673145e7d95b665d4e (commit)
+      from  ab7b0ba85b31f42aef628d67080514ed44bf3a26 (commit)
+
+Nuevas revisiones:
+
+- Log -----------------------------------------------------------------
+commit 68694d606dd0e7729794d1285920e5b7a441789d
+Merge: ab7b0ba 49efece
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Sat Jul 23 16:35:42 2011 +0200
+
+    Merge branch 'master-fix'
+
+commit 49efece50819eacf87e2ee7a88ef55b0b8b91fed
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Sat Jul 23 16:34:58 2011 +0200
+
+    Creo CONF_REPLACE_STRING.
+    
+    Añado la posibilidad de configurar la variable CONF_REPLACE_STRING en
+    los archivos de configuración &quot;.conf&quot; para que sirva para sustituir
+    todas las ocurrencias de ${CONF_REPLACE_STRING} dentro de los valores de
+    otras variables.
+    
+    También se puede especificar una variable de entorno (export
+    CONF_REPLACE_STRING=&quot;valor&quot;) y que coja el valor de allí con el
+    parámetro &quot;--replace&quot; o &quot;-R&quot;, por ejemplo &quot;bulmafact -R&quot;.
+    
+    Ejemplo de uso:
+    
+    CONF_REPLACE_STRING /usr/local/lib/bulmafact/plugins
+    
+    CONF_PLUGINS_BULMAFACT ${CONF_REPLACE_STRING}/libpluginbf_cliente.so; \
+                           ${CONF_REPLACE_STRING}/libpluginbf_clientepresupuesto.so
+    
+    se interpretaría como:
+    
+    CONF_PLUGINS_BULMAFACT
+    /usr/local/lib/bulmafact/plugins/libpluginbf_cliente.so; \
+                           /usr/local/lib/bulmafact/plugins/libpluginbf_clientepresupuesto.so
+    
+    *********************************
+    Fco. Javier M. C.
+    *********************************
+              Todo-Redes
+            C/.Begonia, 12
+       07010 Palma de Mallorca.
+          Tel: +34-971499071
+       <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+      comercial(en)todo-redes.com
+    *********************************
+
+commit bc6c8c9f0579da95cd19d44a5e07825b65414584
+Merge: 939be78 59dd2a6
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Mon Jul 18 16:51:24 2011 +0200
+
+    Merge branch 'master' into master-fix
+
+commit 939be78b8c5682fdce6d0631f6080988daca09a5
+Merge: 6579ea4 2326a3e
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Mon Jul 18 16:47:46 2011 +0200
+
+    Merge branch 'master' into master-fix
+
+commit 6579ea43cd2080e826d0a22fae50befa93ed8654
+Merge: e0d77d6 dbbf16a
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Wed Jun 29 13:15:22 2011 +0200
+
+    Merge branch 'master' into master-fix
+
+commit e0d77d6111b6ff0c0596ca2ca02e6be80037a8b5
+Merge: f251f61 1ada948
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Tue Jun 28 17:22:52 2011 +0200
+
+    Merge branch 'master' into master-fix
+
+commit f251f61eec59c18171e642673145e7d95b665d4e
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Sun Jun 26 22:35:55 2011 +0200
+
+    na
+
+-----------------------------------------------------------------------
+
+Resumen de cambios:
+ .../pluginbc_registroiva/listregistroivabase.ui    |  317 +++++++++++---------
+ bulmages/bulmacont/src/main.cxx                    |    8 +-
+ bulmages/bulmafact/src/main.cxx                    |    8 +-
+ bulmages/bulmalib/src/blargparser.cpp              |   26 +-
+ bulmages/bulmalib/src/blargparser.h                |   18 +-
+ bulmages/bulmalib/src/blconfiguration.cpp          |   13 +-
+ bulmages/bulmalib/src/blconfiguration.h            |    3 +-
+ bulmages/bulmatpv/src/main.cxx                     |    6 +-
+ 8 files changed, 230 insertions(+), 169 deletions(-)
+
+
+-- 
+Proyecto BulmaGes
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006300.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. ab7b0ba85b31f42aef628d67080514ed44bf3a26
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006302.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. b8e871e39f87b9404e3bb535dde3833659b370c8
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6301">[ fecha ]</a>
+              <a href="thread.html#6301">[ hilo ]</a>
+              <a href="subject.html#6301">[ asunto ]</a>
+              <a href="author.html#6301">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

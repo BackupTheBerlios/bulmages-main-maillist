@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] Sugerencia para las clases List	(definir las cadenas nombretabla e idtabla una sola vez)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-September/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Sugerencia%20para%20las%20clases%20List%0A%09%28definir%20las%20cadenas%20nombretabla%20e%20idtabla%20una%20sola%20vez%29&In-Reply-To=%3C200909071658.07664.auryn%40wanadoo.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002978.html">
+   <LINK REL="Next"  HREF="002979.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] Sugerencia para las clases List	(definir las cadenas nombretabla e idtabla una sola vez) </H1>
+    <B>Auryn</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Sugerencia%20para%20las%20clases%20List%0A%09%28definir%20las%20cadenas%20nombretabla%20e%20idtabla%20una%20sola%20vez%29&In-Reply-To=%3C200909071658.07664.auryn%40wanadoo.es%3E"
+       TITLE="[BulmaGés] Sugerencia para las clases List	(definir las cadenas nombretabla e idtabla una sola vez)">auryn en wanadoo.es
+       </A><BR>
+    <I>Lun Sep  7 16:58:07 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002978.html">[BulmaGés]Listado BfSubForm de un listado con campos editables directamente
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002979.html">[BulmaGés]Sugerencia para las clases List (definir las cadenas nombretabla e idtabla una sola vez)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2975">[ fecha ]</a>
+              <a href="thread.html#2975">[ hilo ]</a>
+              <a href="subject.html#2975">[ asunto ]</a>
+              <a href="author.html#2975">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>En las clases que heredan de BlFormList se usan varias veces literales que 
+contienen el nombre de la tabla o el identificar.
+
+Por ejemplo, en articulolist.cpp tenemos muchas ocurrencias de la cadena 
+&quot;idarticulo&quot;:
+mdb_idarticulo = mui_list-&gt;dbValue ( &quot;idarticulo&quot;, row );
+QString SQLQuery = &quot;DELETE FROM articulo WHERE idarticulo = &quot; + idarticulo;
+query += &quot; AND idarticulo IN (SELECT DISTINCT idarticulo FROM lpresupuesto&quot;
+ &quot; UNION SELECT DISTINCT idarticulo FROM lpedidocliente&quot;
+&quot; UNION SELECT DISTINCT idarticulo FROM lalbaran&quot;
+&quot; UNION SELECT DISTINCT idarticulo FROM lfactura&quot;
+&quot; UNION SELECT DISTINCT idarticulo FROM lpedidoproveedor&quot;
+&quot; UNION SELECT DISTINCT idarticulo FROM lalbaranp&quot;
+&quot; UNION SELECT DISTINCT idarticulo FROM lfacturap&quot;
+&quot;) &quot;;
+QString idarticulo = mui_list-&gt;dbValue ( &quot;idarticulo&quot; );
+setDbFieldId ( &quot;idarticulo&quot; );
+addSubFormHeader ( &quot;idarticulo&quot;, BlDbField::DbInt, BlDbField::DbNotNull | 
+BlDbField::DbPrimaryKey, BlSubFormHeader::DbHideView | 
+BlSubFormHeader::DbNoWrite, _ ( &quot;ID articulo&quot; ) );
+
+También otras tantas de la cadena con el nombre de la tabla &quot;articulo&quot;:
+trataPermisos ( &quot;articulo&quot; );
+QString SQLQuery = &quot;DELETE FROM articulo WHERE idarticulo = &quot; + idarticulo;
+query += &quot;SELECT * FROM articulo NATURAL LEFT JOIN tipo_iva NATURAL LEFT JOIN 
+tipo_articulo WHERE 1 = 1 &quot;;
+setDbTableName ( &quot;articulo&quot; );
+
+¿Y si se usara una variable miembro en cada ArticuloList, o mejor en 
+BlFormList para que la hereden siempre?
+Creo que así sería más sencillo crear nuevos listados basándose en otros.
+
+Por ejemplo, en el constructor de la lista podrían ponerse las cadenas una 
+sóla vez:
+m_nombretablalista = &quot;articulo&quot;
+m_idtablalista = &quot;idarticulo&quot;
+
+-- 
+Aron
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20090907/46626709/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20090907/46626709/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002978.html">[BulmaGés]Listado BfSubForm de un listado con campos editables directamente
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002979.html">[BulmaGés]Sugerencia para las clases List (definir las cadenas nombretabla e idtabla una sola vez)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2975">[ fecha ]</a>
+              <a href="thread.html#2975">[ hilo ]</a>
+              <a href="subject.html#2975">[ asunto ]</a>
+              <a href="author.html#2975">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

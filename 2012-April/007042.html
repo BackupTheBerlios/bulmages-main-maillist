@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Modelo de desarrollo
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FModelo_de_desarrollo%3F%3D&In-Reply-To=%3CCAJWqEtfDai_RStd-jEDmngXPh3KK_GNWZNRGpDvujL_%3DL6K89A%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007041.html">
+   <LINK REL="Next"  HREF="007040.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Modelo de desarrollo </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FModelo_de_desarrollo%3F%3D&In-Reply-To=%3CCAJWqEtfDai_RStd-jEDmngXPh3KK_GNWZNRGpDvujL_%3DL6K89A%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]Modelo de desarrollo">tborras en conetxia.com
+       </A><BR>
+    <I>Vie Abr 13 09:49:26 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007041.html">[BulmaGés]Modelo de desarrollo
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007040.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7042">[ fecha ]</a>
+              <a href="thread.html#7042">[ hilo ]</a>
+              <a href="subject.html#7042">[ asunto ]</a>
+              <a href="author.html#7042">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>El 13 de abril de 2012 08:13, Fco. Javier M. C.
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc at todo-redes.com</A>&gt;escribió:
+
+&gt;<i>  Hola Tomeu.
+</I>&gt;<i>
+</I>&gt;<i> Me parece un modelo de trabajo interesante. La rama master se toca poco y
+</I>&gt;<i> haces que pueda estar todo el código &quot;oficial&quot; un poco más estable. Pero el
+</I>&gt;<i> problema no se soluciona sólo con ese modelo, porque si se van haciendo mal
+</I>&gt;<i> las cosas (de forma poco cuidada) en la rama de desarrollo, al final eso
+</I>&gt;<i> afectará a la master o estará todo tan &quot;mal&quot; que no habrá manera de
+</I>&gt;<i> estabilizar nada que sea &quot;digno&quot; de ir a la master. Ya se que estoy
+</I>&gt;<i> poniéndome en el peor escenario posible.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>Seguro que problemas los hay a cientos. Pero es un sistema en teoría más
+estable que el que usamos hasta ahora y no añade mucho overhead.
+
+
+&gt;<i> Llevo días pensando que estaría bien algo como tienen los de Qt, que son
+</I>&gt;<i> programas de test automáticos al código que aseguran que cierta
+</I>&gt;<i> funcionalidad hace lo que se supone que tiene que hacer. En Qt hay una
+</I>&gt;<i> librería de test para este fin, pero está algo limitada y no sirve para
+</I>&gt;<i> todo lo que hacemos. Jeje! también es cierto que primero hay que saber qué
+</I>&gt;<i> hace cada cosa y eso pasa por documentar muy bien y redactar procedimientos
+</I>&gt;<i> claros y en eso también fallamos.
+</I>&gt;<i>
+</I>
+No podemos hacer funciones de test. Nuestro proyecto difiere de Qt en que
+no es una libreria con lo que más del 60% del código se queda fuera de los
+tests. Además el funcionamiento es bastante más arbitrario y no responde a
+unas especificaciones bien definidas. Por no hablar de lo difícil que es
+testear la interfaz de usuario (60% del código) con funciones de test.
+
+Toda documentación que aportes será bien recibida.
+
+
+&gt;<i> Creo que hay que dirigir el proyecto a un desarrollo mucho más
+</I>&gt;<i> profesional, personalmente me gusta el modelo de Linux, pero require que
+</I>&gt;<i> sólo una persona o un núcleo muy reducido de desarrolladores pueda hacer
+</I>&gt;<i> cambios en la rama master, pero es que ya somos pocos :)
+</I>&gt;<i>
+</I>&gt;<i> Aun siendo pocos. No está bien que de repente un cambio lo convierta todo
+</I>en inestable y condicione el trabajo de todos. Si queremos sacar una
+release14 no deberían entrar según que cambios como por ejemplo el cambiar
+los mui_XXXX de los .ui
+
+Personalmente creo que el cambio a Git era para arreglar estos temas (svn
+era más limitado). Ya estamos en Git y ahora toca renovarse (sin morir).
+
+
+&gt;<i>
+</I>&gt;<i> Resumiendo, disponemos de pocos recursos y hay mucho trabajo por hacer
+</I>&gt;<i> ¿cómo nos organizamos para que el proyecto pueda avanzar? Personalmente no
+</I>&gt;<i> me sirven ideas que pinten bien por escrito y que la gente no se
+</I>&gt;<i> compromenta a realizar. Cada uno que valore lo que pueda aportar y no cree
+</I>&gt;<i> castillos en el aire.
+</I>&gt;<i>
+</I>
+¿Prefieres quedarte como hasta ahora?
+
+
+&gt;<i>
+</I>&gt;<i> Uf! que largo me ha quedado el correo.
+</I>&gt;<i>
+</I>&gt;<i> Muchas gracias.
+</I>&gt;<i> Un saludo.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20120413/9f4b2efc/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20120413/9f4b2efc/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007041.html">[BulmaGés]Modelo de desarrollo
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007040.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7042">[ fecha ]</a>
+              <a href="thread.html#7042">[ hilo ]</a>
+              <a href="subject.html#7042">[ asunto ]</a>
+              <a href="author.html#7042">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

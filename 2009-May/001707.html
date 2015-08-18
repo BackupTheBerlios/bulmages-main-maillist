@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Experiències amb svg als llistats (factures, albarans...)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FExperi%3DE8ncies_amb_sv%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fg_als_llistats_%3D28factures%3D2C_albarans%3D2E%3D2E%3D2E%3D29%3F%3D&In-Reply-To=%3C20090504060530.GA3651%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001682.html">
+   <LINK REL="Next"  HREF="001708.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Experiències amb svg als llistats (factures, albarans...) </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FExperi%3DE8ncies_amb_sv%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fg_als_llistats_%3D28factures%3D2C_albarans%3D2E%3D2E%3D2E%3D29%3F%3D&In-Reply-To=%3C20090504060530.GA3651%40localhost%3E"
+       TITLE="[BulmaGés]Experiències amb svg als llistats (factures, albarans...)">xdrudis en tinet.cat
+       </A><BR>
+    <I>Lun Mayo  4 08:05:30 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001682.html">[BulmaGés]r3267 - in branches/docsMonolitic: bulmages/installbulmages/bgtrml2pdf debian
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001708.html">[BulmaGés]Experiències amb svg als llistats (factures, albarans...)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1707">[ fecha ]</a>
+              <a href="thread.html#1707">[ hilo ]</a>
+              <a href="subject.html#1707">[ asunto ]</a>
+              <a href="author.html#1707">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Al final resulta que el que vaig fer a docsMonolitic requereix 
+python-uniconvertor 1.3 . Amb 1.2 (la versió de lenny) no va. 
+La &quot;bona&quot; notícia és que pel que sembla el paquet 1.3-4 de testing
+es pot instal·lar a lenny només baixant-lo i fent dpkg -i , 
+sense més complicacions. 
+
+
+On Sat, May 02, 2009 at 05:16:58PM +0200, Xavi Drudis Ferran wrote:
+&gt;<i> On Sat, May 02, 2009 at 10:04:32AM +0200, Tomeu Borras wrote:
+</I>&gt;<i> 
+</I>&gt;<i> - provar bé svg als llistats per saber què funciona i què no. 
+</I>&gt;<i> Jo només he provat text i figures amb arcs, monocroms, sense 
+</I>&gt;<i> transparències, ni gradients, ni filigranes. I no sé gaire
+</I>&gt;<i> svg per provar bé, però potser hi ha algun joc de proves ja fet...
+</I>&gt;<i>
+</I>
+Em sembla que no ho deia bé. Vaig provar un fitxer amb text que 
+vaig escriure amb l'scribus, però aparentment el devia passar 
+a arcs o camins o el que sigui, perquè no he trobat cap element &lt;text&gt; al fitxer. 
+
+Després el vaig retocar amb inkscape i hi vaig posar text (elements &lt;text&gt;9 i se'm
+va queixa el python-uniconvertor de que no trobava la font.  Es queixava fins 
+i tot després de treure el text, perquè quedaven elements text buits, sense 
+lletres però amb la font especificada. Els vaig haver de treure amb emacs.
+De fet la documentació diu: 
+
+-- Font support ---
+UniConvertor doesn't have font support yet and should be used against path-based files only.
+
+See: <A HREF="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=504223">http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=504223</A>
+
+SVG (and possibly other files as well) can be converted to path-based files in inkscape.
+
+
+Però no dec haver sabut fer la conversió a l'inkscape (tampoc he tingut 
+molt temps i no l'havia fet servir mai, i no tinc gaire facilitat per
+aquestes coses gràfiques).
+
+Altres coses que m'he trobat: 
+
+- Els colors no eren exactament iguals a la pantalla del portàtil que a la impressora
+de tinta, però quan vaig provar amb la HP Colorjet 2600 n  (laser a color) de
+&quot;producció&quot; el rosa passava a marró, el lila a vermell, i en fí, no hi havia manera
+d'encertar els colors, quedaven molt diferents. Vaig provar diferents correccions
+de color al controlador de la impressora (foomatic) però ni cas. En canvi des d'altres
+programes o el propi full de prova de cups, sembla molt correcte el color imprés. 
+Això del color ho feia tant imprimint des de l'inkScape com des de bulmafact (vaig
+provar evince, kpdf i kghostview, no vaig provar xpdf). En pantalla es veuen bé
+els colors al pdf.
+
+- Hi ha una marca d'aigua que s'hauria d'imprimir des del límit del paper (el full 
+ha d'incloure una part d'un dibuix que se surt del full). Amb algunes impressores
+queda un marge blanc al full que la impresora no sap escriure. Fa molt lleig, però 
+són límits físics de la impressora (crec). Amb la HP Colorjet 2600 n, si imprimeixo
+des de l'inkScape, no queda marge a la dreta, queda molt bé, tot i que queda una
+mica de marge blanc a dalt. Però el mateix fitxer svg, posat a la factura de bulmafact
+i imprés des de evince, kpdf o kghostview, deixa un marge blanc a la dreta. Això 
+segur que no és per la impressora, perquè la mateixa impressora ho fa bé amb l'inkScape.
+En panalla es veu el pdf correcte, sense marges. No sé encara on pot estar posant aquest 
+marc, no ho he mirat prou. Curiosament canviant una opció d'impressió el marge passava
+de dos milímetres més o menys a quatre imprimint el pdf i de 0 a 2 imprimint amb inkSCape.
+L'opció era &quot;2 bits plane&quot; pel marge gran i &quot;1 bit plane&quot; pel marge petit o sense marge, crec.
+No sé què vol dir. 
+
+- Les transparències no semblen sortir impreses (he de canviar el color per un més blanc).
+Però ni des de inkScape ni des de evince, per tant potser sóc jo que no les faig bé.
+
+- Serà una evidència banal, però l'escalat és perfecte, gens pixelat. 
+
+Apa, si descobreixo res més ja ho aniré dient. 
+
+
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>
+Signa per fer Collserola parc natural com cal
+<A HREF="http://www.collserola.org/salvemelparcnatural/">http://www.collserola.org/salvemelparcnatural/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001682.html">[BulmaGés]r3267 - in branches/docsMonolitic: bulmages/installbulmages/bgtrml2pdf debian
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001708.html">[BulmaGés]Experiències amb svg als llistats (factures, albarans...)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1707">[ fecha ]</a>
+              <a href="thread.html#1707">[ hilo ]</a>
+              <a href="subject.html#1707">[ asunto ]</a>
+              <a href="author.html#1707">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

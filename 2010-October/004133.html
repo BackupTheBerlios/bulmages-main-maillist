@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] r4037 - in trunk/bulmages:	bulmacont/plugins/pluginbc_corrector	bulmafact/plugins/pluginbf_actividad	bulmafact/plugins/pluginbf_alumno	bulmafact/plugins/pluginbf_formasdepago	bulmafact/plugins/pluginbf_trabajador bulmafact/src	bulmalib/plugins/pluginbl_attachdocument/dbmodels bulmalib/src
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r4037%20-%20in%20trunk/bulmages%3A%0A%09bulmacont/plugins/pluginbc_corrector%0A%09bulmafact/plugins/pluginbf_actividad%0A%09bulmafact/plugins/pluginbf_alumno%0A%09bulmafact/plugins/pluginbf_formasdepago%0A%09bulmafact/plugins/pluginbf_trabajador%20bulmafact/src%0A%09bulmalib/plugins/pluginbl_attachdocument/dbmodels%20bulmalib/src&In-Reply-To=%3C20101009144245.21601480F5C%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="004132.html">
+   <LINK REL="Next"  HREF="004134.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] r4037 - in trunk/bulmages:	bulmacont/plugins/pluginbc_corrector	bulmafact/plugins/pluginbf_actividad	bulmafact/plugins/pluginbf_alumno	bulmafact/plugins/pluginbf_formasdepago	bulmafact/plugins/pluginbf_trabajador bulmafact/src	bulmalib/plugins/pluginbl_attachdocument/dbmodels bulmalib/src </H1>
+    <B>svn en mail.berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r4037%20-%20in%20trunk/bulmages%3A%0A%09bulmacont/plugins/pluginbc_corrector%0A%09bulmafact/plugins/pluginbf_actividad%0A%09bulmafact/plugins/pluginbf_alumno%0A%09bulmafact/plugins/pluginbf_formasdepago%0A%09bulmafact/plugins/pluginbf_trabajador%20bulmafact/src%0A%09bulmalib/plugins/pluginbl_attachdocument/dbmodels%20bulmalib/src&In-Reply-To=%3C20101009144245.21601480F5C%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] r4037 - in trunk/bulmages:	bulmacont/plugins/pluginbc_corrector	bulmafact/plugins/pluginbf_actividad	bulmafact/plugins/pluginbf_alumno	bulmafact/plugins/pluginbf_formasdepago	bulmafact/plugins/pluginbf_trabajador bulmafact/src	bulmalib/plugins/pluginbl_attachdocument/dbmodels bulmalib/src">svn en mail.berlios.de
+       </A><BR>
+    <I>Sab Oct  9 16:42:45 CEST 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="004132.html">[BulmaGés] r4036 -	trunk/bulmages/bulmafact/plugins/pluginbf_alias
+</A></li>
+        <LI>Próximo mensaje: <A HREF="004134.html">[BulmaGés] r4038 - in	trunk/bulmages/bulmatpv/plugins: pluginbt_modificadores	pluginbt_ticketivaincluido
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4133">[ fecha ]</a>
+              <a href="thread.html#4133">[ hilo ]</a>
+              <a href="subject.html#4133">[ asunto ]</a>
+              <a href="author.html#4133">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: fcojavmc
+Date: 2010-10-09 16:42:44 +0200 (Sat, 09 Oct 2010)
+New Revision: 4037
+
+Modified:
+   trunk/bulmages/bulmacont/plugins/pluginbc_corrector/correctorbase.ui
+   trunk/bulmages/bulmacont/plugins/pluginbc_corrector/correctorwidget.cpp
+   trunk/bulmages/bulmafact/plugins/pluginbf_actividad/tipoactividadview.cpp
+   trunk/bulmages/bulmafact/plugins/pluginbf_alumno/claseview.cpp
+   trunk/bulmages/bulmafact/plugins/pluginbf_formasdepago/fpagoview.cpp
+   trunk/bulmages/bulmafact/plugins/pluginbf_trabajador/trabajadorview.cpp
+   trunk/bulmages/bulmafact/src/bfcompany.h
+   trunk/bulmages/bulmafact/src/bfform.cpp
+   trunk/bulmages/bulmalib/plugins/pluginbl_attachdocument/dbmodels/pluginbl_attachdocument.sql
+   trunk/bulmages/bulmalib/src/blapplication.cpp
+   trunk/bulmages/bulmalib/src/blapplication.h
+   trunk/bulmages/bulmalib/src/blcombobox.cpp
+   trunk/bulmages/bulmalib/src/blcombobox.h
+   trunk/bulmages/bulmalib/src/blcomboboxdelegate.h
+   trunk/bulmages/bulmalib/src/bldb.cpp
+Log:
+El corrector no vuelve al principio de la lista cuando se hace click
+para ver un asiento.
+
+Borro la variable 'm_semaforo' de 'blcomboboxdelegate.h' y
+'blcombobox.h' porque no se usan.
+
+
+Cambio de nombres:
+
+'tablaCambiada' por 'dbTableChanged' (function)
+'tablaCambiada1' por 'emitDbTableChanged' (signal)
+'onTablaCambiada' por 'onDbTableChanged' (slot)
+
+
+*********************************
+*          Todo-Redes           *
+*        C/.Begonia, 12         *
+*   07010 Palma de Mallorca.    *
+*      Tel: +34-971499071       *
+*   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>   *
+*  comercial(en)todo-redes.com  *
+*********************************
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="004132.html">[BulmaGés] r4036 -	trunk/bulmages/bulmafact/plugins/pluginbf_alias
+</A></li>
+	<LI>Próximo mensaje: <A HREF="004134.html">[BulmaGés] r4038 - in	trunk/bulmages/bulmatpv/plugins: pluginbt_modificadores	pluginbt_ticketivaincluido
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4133">[ fecha ]</a>
+              <a href="thread.html#4133">[ hilo ]</a>
+              <a href="subject.html#4133">[ asunto ]</a>
+              <a href="author.html#4133">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

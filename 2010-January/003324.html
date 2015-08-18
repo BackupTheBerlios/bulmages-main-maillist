@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Al poner imágenes en la sección &quot;story&quot; de un informe RML no es visible en el PDF
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3FAl_poner_im%3DC3%3DA1genes_en_%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fla_secci%3DC3%3DB3n_%3D22story%3D22_de_un_informe_RML_no_es_visible_en_%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fel_PDF%3F%3D&In-Reply-To=%3C201001211042.07788.auryn%40wanadoo.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003323.html">
+   <LINK REL="Next"  HREF="003325.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Al poner imágenes en la sección &quot;story&quot; de un informe RML no es visible en el PDF </H1>
+    <B>Aron</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3FAl_poner_im%3DC3%3DA1genes_en_%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fla_secci%3DC3%3DB3n_%3D22story%3D22_de_un_informe_RML_no_es_visible_en_%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fel_PDF%3F%3D&In-Reply-To=%3C201001211042.07788.auryn%40wanadoo.es%3E"
+       TITLE="[BulmaGés]Al poner imágenes en la sección &quot;story&quot; de un informe RML no es visible en el PDF">auryn en wanadoo.es
+       </A><BR>
+    <I>Jue Ene 21 10:42:07 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003323.html">[BulmaGés]Al poner imágenes en la sección &quot;story&quot; de un informe RML no es visible en el PDF
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003325.html">[BulmaGés] No troba un plugin
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3324">[ fecha ]</a>
+              <a href="thread.html#3324">[ hilo ]</a>
+              <a href="subject.html#3324">[ asunto ]</a>
+              <a href="author.html#3324">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Me respondo:
+usando esta forma ya me funciona (sin &lt;para&gt; ni posición absoluta):
+&lt;image file=&quot;[imagen]&quot; width=&quot;1cm&quot; height=&quot;1cm&quot;/&gt;
+
+On Jueves 21 Enero 2010 10:35:18 Aron escribió:
+&gt;<i> Hola
+</I>&gt;<i> Estoy haciendo un informe que muestra datos en una tabla.
+</I>&gt;<i> Uno de los datos es la ruta absoluta a una imagen en el mismo PC con Linux.
+</I>&gt;<i> Pero en el PDF resultante no se ve la imagen.
+</I>&gt;<i> 
+</I>&gt;<i> He hecho algo así:
+</I>&gt;<i> 
+</I>&gt;<i> &lt;story&gt;
+</I>&gt;<i> &lt;spacer length=&quot;2.5cm&quot; /&gt;
+</I>&gt;<i> &lt;blockTable style=&quot;cabecera&quot;
+</I>&gt;<i> colWidths=&quot;1.0cm,1.0cm,2.8cm,2.8cm,2.8cm,2.8cm,2.8cm,2.8cm&quot; repeatRows=&quot;0&quot;&gt;
+</I>&gt;<i> 	&lt;tr&gt;
+</I>&gt;<i> 		&lt;td&gt;&lt;para&gt;Ref.&lt;/para&gt;&lt;/td&gt;
+</I>&gt;<i> 		&lt;td&gt;&lt;para&gt;Canti-&lt;br/&gt;dad&lt;/para&gt;&lt;/td&gt;
+</I>&gt;<i> 		&lt;td&gt;&lt;para&gt;Coste 1&lt;/para&gt;&lt;/td&gt;
+</I>&gt;<i> 		&lt;td&gt;&lt;para&gt;Coste 2&lt;/para&gt;&lt;/td&gt;
+</I>&gt;<i> 		&lt;td&gt;&lt;para&gt;Precio Venta&lt;/para&gt;&lt;/td&gt;
+</I>&gt;<i> 		&lt;td&gt;&lt;para&gt;Total&lt;br/&gt;Coste 1&lt;/para&gt;&lt;/td&gt;
+</I>&gt;<i> 		&lt;td&gt;&lt;para&gt;Total&lt;br/&gt;Coste 2&lt;/para&gt;&lt;/td&gt;
+</I>&gt;<i> 		&lt;td&gt;&lt;para&gt;Total&lt;br/&gt;Precio Venta&lt;/para&gt;&lt;/td&gt;
+</I>&gt;<i> 	&lt;/tr&gt;
+</I>&gt;<i> &lt;/blockTable&gt;
+</I>&gt;<i> 
+</I>&gt;<i> &lt;!--QUERY=&quot;
+</I>&gt;<i> 	SELECT *
+</I>&gt;<i> 	FROM pra.lin_presupuesto__vista
+</I>&gt;<i> 	WHERE id_presupuesto = [id]&quot;
+</I>&gt;<i> --&gt;
+</I>&gt;<i> &lt;blockTable style=&quot;tablacontenido&quot;
+</I>&gt;<i> colWidths=&quot;1.0cm,1.0cm,2.8cm,2.8cm,2.8cm,2.8cm,2.8cm,2.8cm&quot; repeatRows=&quot;0&quot;&gt;
+</I>&gt;<i> 	&lt;tr multiline=&quot;1&quot;&gt;
+</I>&gt;<i> 		&lt;td&gt;&lt;para&gt;[cod]&lt;/para&gt;&lt;/td&gt;
+</I>&gt;<i> 		&lt;td&gt;&lt;para&gt;[cantidad]&lt;/para&gt;&lt;/td&gt;
+</I>&gt;<i> 		&lt;td&gt;&lt;para&gt;[coste_1] &#8364;&lt;/para&gt;&lt;/td&gt;
+</I>&gt;<i> 		&lt;td&gt;&lt;para&gt;[coste_2] &#8364;&lt;/para&gt;&lt;/td&gt;
+</I>&gt;<i> 		&lt;td&gt;&lt;para&gt;[precio_venta] &#8364;&lt;/para&gt;&lt;/td&gt;
+</I>&gt;<i> 		&lt;td&gt;&lt;para&gt;[coste_total_1] &#8364;&lt;/para&gt;&lt;/td&gt;
+</I>&gt;<i> 		&lt;td&gt;&lt;para&gt;[coste_total_2] &#8364;&lt;/para&gt;&lt;/td&gt;
+</I>&gt;<i> 		&lt;td&gt;&lt;para&gt;[precio_total_venta] &#8364;&lt;/para&gt;&lt;/td&gt;
+</I>&gt;<i> 	&lt;/tr&gt;
+</I>&gt;<i> &lt;/blockTable&gt;
+</I>&gt;<i> &lt;para&gt;&lt;image file=&quot;[imagen]&quot; x=&quot;100&quot; y=&quot;100&quot; width=&quot;100&quot;
+</I>&gt;<i>  height=&quot;100&quot;/&gt;&lt;/para&gt; &lt;!--END QUERY--&gt;
+</I>&gt;<i> &lt;/story&gt;
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> En el resultado sale la ruta donde espero:
+</I>&gt;<i> 
+</I>&gt;<i> &lt;para&gt;&lt;image file=&quot;/ruta/imagen.jpg&quot; x=&quot;100&quot; y=&quot;100&quot; width=&quot;100&quot;
+</I>&gt;<i> height=&quot;100&quot;/&gt;&lt;/para&gt;
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Pero, aunque se genera el PDF correctamente, la imagen no es visible por
+</I>&gt;<i> ninguna parte.
+</I>&gt;<i> 
+</I>&gt;<i> ¿Qué habré hecho mal?
+</I>&gt;<i> 
+</I>
+-- 
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003323.html">[BulmaGés]Al poner imágenes en la sección &quot;story&quot; de un informe RML no es visible en el PDF
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003325.html">[BulmaGés] No troba un plugin
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3324">[ fecha ]</a>
+              <a href="thread.html#3324">[ hilo ]</a>
+              <a href="subject.html#3324">[ asunto ]</a>
+              <a href="author.html#3324">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

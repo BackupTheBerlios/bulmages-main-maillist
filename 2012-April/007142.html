@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to arreglo...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20arreglo...&In-Reply-To=%3C20120430070249.7C0F3758F8%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007141.html">
+   <LINK REL="Next"  HREF="007143.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to arreglo... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20arreglo...&In-Reply-To=%3C20120430070249.7C0F3758F8%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to arreglo...">no-reply en gitorious.org
+       </A><BR>
+    <I>Lun Abr 30 09:02:49 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007141.html">[BulmaGés] [Gitorious] Activity: tborras created	branch arreglobibli...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007143.html">[BulmaGés] [Gitorious] Activity: tborras created	branch plantillasim...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7142">[ fecha ]</a>
+              <a href="thread.html#7142">[ hilo ]</a>
+              <a href="subject.html#7142">[ asunto ]</a>
+              <a href="author.html#7142">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to arreglobiblioteca
+arreglobiblioteca changed from 3234dae to 15e08e1
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/3234dae5ece48c1bf8298e84cd4939f3fda4f91e/diffs/15e08e1eaa73bd8fb6a74172e614d611f66f0a59">https://gitorious.org/bulmages/bulmages/commit/3234dae5ece48c1bf8298e84cd4939f3fda4f91e/diffs/15e08e1eaa73bd8fb6a74172e614d611f66f0a59</A>
+
+Diff: 
+
+commit 15e08e1eaa73bd8fb6a74172e614d611f66f0a59
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon Apr 30 09:02:42 2012 +0200
+
+    Arreglos en el SQL del plugin de biblioteca
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_biblioteca/dbmodels/pluginbf_biblioteca-rm.sql b/bulmages/bulmafact/plugins/pluginbf_biblioteca/dbmodels/pluginbf_biblioteca-rm.sql
+index 84a2df9..2db6345 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_biblioteca/dbmodels/pluginbf_biblioteca-rm.sql
++++ b/bulmages/bulmafact/plugins/pluginbf_biblioteca/dbmodels/pluginbf_biblioteca-rm.sql
+@@ -1,7 +1,7 @@
+ --
+--- Modificacion de campos y funciones de la BD para la adaptacion para el plugin de profesores
++-- Modificacion de campos y funciones de la BD para la adaptacion para el plugin de biblioteca
+ --
+-\echo &quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE VARIACION TARIFA POR CANTIDAD *********&quot;
++\echo &quot;********* ELIMINADO DEL SQL PARA EL PLUGIN DE GESTION DE BIBLIOTECA *********&quot;
+ 
+ \echo &quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot;
+ \echo -n &quot;:: &quot;
+@@ -43,10 +43,6 @@ END;
+ '
+ language 'plpgsql';
+ 
+-DROP FUNCTION IF EXISTS actualizacantrecibo_insert() CASCADE;
+-DROP FUNCTION IF EXISTS actualizacantrecibo_update() CASCADE;
+-DROP FUNCTION IF EXISTS actualizacantrecibo_delete() CASCADE;
+-
+ -- ========================== VARIACION DE TARIFA =======================
+ 
+ CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+@@ -54,7 +50,7 @@ DECLARE
+ 	rs  RECORD;
+ 
+ BEGIN
+-    SELECT INTO rs * FROM pg_tables  WHERE tablename=''zcomercial'';
++    SELECT INTO rs * FROM pg_tables  WHERE tablename=''prestamo'';
+ 
+     IF FOUND THEN
+ 	ALTER TABLE cliente DROP COLUMN idzcomercial;
+@@ -79,12 +75,12 @@ END;
+ '   LANGUAGE plpgsql;
+ SELECT aux();
+ DROP FUNCTION aux() CASCADE;
+-\echo &quot;Creamos las tablas para la gestion de biblioteca&quot;
++\echo &quot;Eliminamos las tablas de la gestion de biblioteca&quot;
+ 
+--- ======================== Actualizada la revision de la base de datos a la version. =====================
++-- ======================== Elimina la revision de la base de datos en la tabla de configuracion. =====================
+ 
+ 
+--- Agregamos nuevos parametros de configuracion.
++-- Eliminamos parametros de configuracion.
+ --
+ CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
+ DECLARE
+@@ -104,7 +100,7 @@ END;
+ SELECT actualizarevision();
+ DROP FUNCTION actualizarevision() CASCADE;
+ 
+-\echo &quot;Actualizada la revision de la base de datos a la version&quot;
++\echo &quot;Actualizada la revision de la base de datos&quot;
+ 
+ DROP FUNCTION drop_if_exists_table(text) CASCADE;
+ DROP FUNCTION drop_if_exists_proc(text,text) CASCADE;
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007141.html">[BulmaGés] [Gitorious] Activity: tborras created	branch arreglobibli...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007143.html">[BulmaGés] [Gitorious] Activity: tborras created	branch plantillasim...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7142">[ fecha ]</a>
+              <a href="thread.html#7142">[ hilo ]</a>
+              <a href="subject.html#7142">[ asunto ]</a>
+              <a href="author.html#7142">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

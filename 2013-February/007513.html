@@ -1,0 +1,2678 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: mtelleria pushed	7 commits to relea...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20mtelleria%20pushed%0A%097%20commits%20to%20relea...&In-Reply-To=%3C20130206152203.2D13AF82%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007512.html">
+   <LINK REL="Next"  HREF="007514.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: mtelleria pushed	7 commits to relea... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20mtelleria%20pushed%0A%097%20commits%20to%20relea...&In-Reply-To=%3C20130206152203.2D13AF82%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: mtelleria pushed	7 commits to relea...">no-reply en gitorious.org
+       </A><BR>
+    <I>Mie Feb  6 16:22:03 CET 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007512.html">[BulmaGés] [Gitorious] Activity: mtelleria pushed	6 commits to maste...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007514.html">[BulmaGés] [Gitorious] Activity: mtelleria created	branch gbp-debian...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7513">[ fecha ]</a>
+              <a href="thread.html#7513">[ hilo ]</a>
+              <a href="subject.html#7513">[ asunto ]</a>
+              <a href="author.html#7513">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+mtelleria pushed 7 commits to release
+release changed from ec73437 to 1fa1cab
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/ec73437f3d9d35fe038ce71bd09758ab48d14560/diffs/1fa1cab1cfc6cada9e7b60ba4f6dfcf34b02360a">https://gitorious.org/bulmages/bulmages/commit/ec73437f3d9d35fe038ce71bd09758ab48d14560/diffs/1fa1cab1cfc6cada9e7b60ba4f6dfcf34b02360a</A>
+
+Diff: 
+
+commit 1fa1cab1cfc6cada9e7b60ba4f6dfcf34b02360a
+Author: Miguel Telleria de Esteban &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">miguel en mtelleria.com</A>&gt;
+Date:   Fri Jan 11 13:34:46 2013 +0100
+
+    changing commit_date to authored_date when returning the commit
+    timestamp
+
+diff --git a/tools/bgversion.py b/tools/bgversion.py
+index fbe0dda..90bb5c0 100644
+--- a/tools/bgversion.py
++++ b/tools/bgversion.py
+@@ -115,7 +115,7 @@ class BgVersion:
+             return (&quot;&quot;, &quot;&quot;, &quot;&quot;)
+ 
+         commit = self.repo.commit(target_commit)
+-        timestamp_gmt = time.gmtime(commit.committed_date)
++        timestamp_gmt = time.gmtime(commit.authored_date)
+         ts_date = time.strftime(&quot;%Y%m%d&quot;, timestamp_gmt)
+         ts_time = time.strftime(&quot;%H%M&quot;, timestamp_gmt)
+         short_hash = commit.hexsha[:8]
+
+commit c3bb476812a2a5dc857e50dd97c1d5df23053972
+Author: Miguel Telleria de Esteban &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">miguel en mtelleria.com</A>&gt;
+Date:   Wed Jan 9 20:19:51 2013 +0100
+
+    tools:  no longer required to be on git (use --force-version then)
+    
+    Besides the debian dir is also excluded from generate_orig_tar
+
+diff --git a/tools/bgversion.py b/tools/bgversion.py
+index f6b9193..fbe0dda 100644
+--- a/tools/bgversion.py
++++ b/tools/bgversion.py
+@@ -32,13 +32,18 @@ class BgVersion:
+         # We see current git parameters
+ 
+         # See <A HREF="http://packages.python.org/GitPython/0.3.1/tutorial.html">http://packages.python.org/GitPython/0.3.1/tutorial.html</A>
+-        self.repo = git.Repo(git_dir)
+-        self.active_commit = self.repo.commit().hexsha
++        try:
++            self.repo = git.Repo(git_dir)
++            self.active_commit = self.repo.commit().hexsha
+ 
+-        if self.repo.head.is_detached:
+-            self.active_branch = None
+-        else:
+-            self.active_branch = self.repo.active_branch.name
++            if self.repo.head.is_detached:
++                self.active_branch = None
++            else:
++                self.active_branch = self.repo.active_branch.name
++        except git.InvalidRepositoryError:
++            self.repo = None
++            self.active_commit = &quot;&quot;
++            self.active_branch = &quot;&quot;
+ 
+     def get_git_info(self):
+         return (self.active_branch, self.active_commit)
+@@ -106,6 +111,9 @@ class BgVersion:
+         if not target_commit:
+             target_commit = self.active_commit
+ 
++        if not self.repo :
++            return (&quot;&quot;, &quot;&quot;, &quot;&quot;)
++
+         commit = self.repo.commit(target_commit)
+         timestamp_gmt = time.gmtime(commit.committed_date)
+         ts_date = time.strftime(&quot;%Y%m%d&quot;, timestamp_gmt)
+diff --git a/tools/compute_and_set_version.py b/tools/compute_and_set_version.py
+index 3f85c5c..ef3e923 100755
+--- a/tools/compute_and_set_version.py
++++ b/tools/compute_and_set_version.py
+@@ -6,9 +6,6 @@ sys.dont_write_bytecode = True
+ import argparse
+ import bgversion
+ 
+-# From python-git package
+-import git
+-
+ class opt:
+     commit = &quot;&quot;
+     force_version = &quot;&quot;
+diff --git a/tools/generate_orig_tar_gz.py b/tools/generate_orig_tar_gz.py
+index cbd726b..904e95a 100755
+--- a/tools/generate_orig_tar_gz.py
++++ b/tools/generate_orig_tar_gz.py
+@@ -37,8 +37,13 @@ def main():
+     # tar --exclude=.git -z -c -v -f ../bulmages_0.14.0.20121128.1132-f070fef1.orig.tar.gz \
+     # ../mtelleria-bulmages
+ 
++
+     cur_basedir = os.path.basename(os.getcwd())
+-    cmdline = &quot;tar --exclude=.git -z -c -v -f ../bulmages_%s.orig.tar.gz ../%s&quot; % (full_version, cur_basedir)
++    cmdline = &quot;tar --exclude=.git --exclude=debian -z -c -v -f ../bulmages_%s.orig.tar.gz ../%s&quot; % (full_version, cur_basedir)
++
++    if opt.print_only :
++        print cmdline
++        sys.exit(0)
+ 
+     print &quot;Cmdline: %s&quot; % cmdline
+     try:
+
+commit 3748109539ec197ba58cd52738155615a4e56b56
+Author: Miguel Telleria de Esteban &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">miguel en mtelleria.com</A>&gt;
+Date:   Fri Dec 21 13:09:07 2012 +0100
+
+    renaming version variables
+
+diff --git a/tools/bgversion.py b/tools/bgversion.py
+index e8aaa0b..f6b9193 100644
+--- a/tools/bgversion.py
++++ b/tools/bgversion.py
+@@ -43,8 +43,8 @@ class BgVersion:
+     def get_git_info(self):
+         return (self.active_branch, self.active_commit)
+ 
+-    def obtain_code_version(self, filename, target_commit = None):
+-        &quot;&quot;&quot;Get version from CMakeLists.txt in this commit or another&quot;&quot;&quot;
++    def obtain_cmakelists_version(self, filename, target_commit = None):
++        &quot;&quot;&quot;Get cmakelists_version from CMakeLists.txt in this commit or another&quot;&quot;&quot;
+ 
+         # By default we use the active_commit
+         if not target_commit:
+@@ -72,7 +72,7 @@ class BgVersion:
+             checkout_cmd = &quot;git checkout %s -- %s&quot; % (target_commit, filename)
+             _do_command_or_exit(checkout_cmd)
+ 
+-        version = &quot;&quot;
++        cmakelists_version = &quot;&quot;
+ 
+         with open(filename, 'r') as file:
+             for line in file:
+@@ -82,11 +82,11 @@ class BgVersion:
+                 match = BgVersion.regexp_ver.search(line) # search instead of match because it is not 
+                                                     # anchored at the beginning of the line
+                 if match :
+-                    version = match.groups()[0]
++                    cmakelists_version = match.groups()[0]
+                     break
+             file.close()
+ 
+-        # We backtrack the commit and restore a possibly changed work version
++        # We backtrack the commit and restore a possibly changed work cmakelists_version
+         if tempdir:
+             checkout_cmd = &quot;git checkout %s -- %s&quot; % (self.active_commit, filename)
+             _do_command_or_exit(checkout_cmd)
+@@ -96,11 +96,11 @@ class BgVersion:
+ 
+             shutil.rmtree(tempdir)
+ 
+-        if not version:
+-            print(&quot;version no encontrada en %s&quot; % filename)
++        if not cmakelists_version:
++            print(&quot;CMakeLists cmakelists_version no encontrada en %s&quot; % filename)
+             sys.exit(-1)
+ 
+-        return version
++        return cmakelists_version
+ 
+     def obtain_git_version_info(self, target_commit = None):
+         if not target_commit:
+@@ -114,9 +114,16 @@ class BgVersion:
+ 
+         return (ts_date, ts_time, short_hash)
+     
+-    def set_code_version(self, filename, version, create_debian_patch = False):
++    def set_cmakelists_version(self, filename, version, create_debian_patch = False):
+ 
+         if create_debian_patch :
++            auto_patch_name = &quot;bgversion_auto_codeversion_upgrade.patch&quot;
++            
++            # If the patch exists we remove it
++            if os.path.isfile(&quot;debian/patches/&quot;+auto_patch_name):
++                # The -r removes the patch file as well (otherwise only the series file would be changed)
++                cmdline = &quot;QUILT_PATCHES=debian/patches quilt delete -r %s&quot; % auto_patch_name
++                _do_command_or_exit(cmdline)
+             
+             # First we do quilt push -a if we have a patch
+             cmdline = &quot;QUILT_PATCHES=debian/patches quilt series&quot;
+@@ -126,7 +133,7 @@ class BgVersion:
+                 _do_command_or_exit(cmdline)
+ 
+             # Now we start a new patch and mark CMakeLists.txt to be modified
+-            cmdline = &quot;QUILT_PATCHES=debian/patches quilt new bgversion_auto_codeversion_upgrade.patch&quot;
++            cmdline = &quot;QUILT_PATCHES=debian/patches quilt new %s&quot; % auto_patch_name
+             _do_command_or_exit(cmdline)
+             
+             cmdline = &quot;QUILT_PATCHES=debian/patches quilt add %s&quot; % filename
+@@ -163,7 +170,7 @@ class BgVersion:
+             cmdline = &quot;QUILT_PATCHES=debian/patches quilt pop -a&quot;
+             _do_command_or_exit(cmdline)
+ 
+-    def reset_code_version(self, filename):
++    def reset_cmakelists_version(self, filename):
+         if not filename:
+             print &quot;Filename CMakeLists.txt not specified&quot;
+             sys.exit(-1)
+@@ -183,21 +190,18 @@ class BgVersion:
+ # ADAPT THIS TO COMPUTE THE VERSION
+ # This is a library function not belonging to bg_version class
+ 
+-def assemble_version_and_revision(code_version, ts_date, ts_time, commit_short_hexsha, mode):
+-    version = &quot;&quot;
++def assemble_code_and_full_versions(cmakelists_version, ts_date, ts_time, commit_short_hexsha, mode):
+     if mode == 'master':
+-        version = &quot;%s.%s.%s&quot; % (code_version, ts_date, ts_time)
+-        revision = commit_short_hexsha
++        code_version = &quot;%s.%s.%s&quot; % (cmakelists_version, ts_date, ts_time)
++        full_version = &quot;%s-%s&quot; % (code_version, commit_short_hexsha)
+     elif mode == &quot;release&quot;:
+-        version = code_version
+-        revision = commit_short_hexsha
++        code_version = cmakelists_version
++        full_version = &quot;%s-%s&quot; % (code_version, commit_short_hexsha)
+     else:
+         print &quot;mode master/release not specified&quot;
+         sys.exit(-1)
+ 
+-    full_version = &quot;%s-%s&quot; % (version, revision)
+-
+-    return (version, full_version)
++    return (code_version, full_version)
+ # -------------------------------------------------------------------------------------------
+ 
+ def _do_command_or_exit(cmdline, verbose=False):
+diff --git a/tools/compute_and_set_version.py b/tools/compute_and_set_version.py
+index ce34f0e..3f85c5c 100755
+--- a/tools/compute_and_set_version.py
++++ b/tools/compute_and_set_version.py
+@@ -19,7 +19,7 @@ class opt:
+ 
+ class glb:
+     commit = &quot;&quot;
+-    version = &quot;&quot;
++    code_version = &quot;&quot;
+     mode = &quot;&quot;
+     filename = &quot;&quot;
+     bg_version = None
+@@ -34,25 +34,27 @@ def main():
+     
+     if opt.reset :
+         # We reset the value to git's content
+-        glb.bg_version.reset_code_version(glb.filename)
++        glb.bg_version.reset_cmakelists_version(glb.filename)
+         sys.exit(0)
+ 
+-    if glb.version :
+-        full_version = glb.version
++    if glb.code_version :
++        full_version = glb.code_version
+     else:
+         # We look at the version in bulmages/CMakeLists.txt
+         # (temporary checkout included)
+-        code_version = glb.bg_version.obtain_code_version(glb.filename, glb.commit)
++        cmakelists_version = glb.bg_version.obtain_cmakelists_version(glb.filename, glb.commit)
+         (ts_date, ts_time, short_hash) = glb.bg_version.obtain_git_version_info(glb.commit)
+ 
+-        glb.version, full_version = bgversion.assemble_version_and_revision(code_version, ts_date, ts_time, short_hash, glb.mode)
++        glb.code_version, full_version = bgversion.assemble_code_and_full_versions(cmakelists_version, 
++                                                                                   ts_date, ts_time, short_hash, glb.mode)
+ 
+     if opt.print_only:
+-        print glb.version
++        print glb.code_version
+         print full_version
+         sys.exit(0)
+ 
+-    glb.bg_version.set_code_version(glb.filename, glb.version)
++    if glb.code_version != cmakelists_version:
++        glb.bg_version.set_cmakelists_version(glb.filename, glb.code_version)
+ 
+ 
+ def consolidate_glb():
+@@ -60,7 +62,7 @@ def consolidate_glb():
+         glb.commit = opt.commit
+ 
+     if opt.force_version:
+-        glb.version = opt.force_version
++        glb.code_version = opt.force_version
+ 
+     if opt.mode:
+         glb.mode = opt.mode
+@@ -85,7 +87,7 @@ def consolidate_glb():
+     if not glb.commit:
+         glb.commit = active_commit
+ 
+-    # NOTE 1: glb.version is left intentionally unchanged either defined or not
++    # NOTE 1: glb.code_version is left intentionally unchanged either defined or not
+         
+ # ----------------------------------------------------------------------
+ 
+@@ -94,7 +96,7 @@ def consolidate_glb():
+ # Missing point: nargs='?' for optional position arguments
+ def parse_argv():
+ 
+-    parser = argparse.ArgumentParser(description='Computes the version and revision and updates CMakeLists.txt.')
++    parser = argparse.ArgumentParser(description='Computes the code and full versions and updates CMakeLists.txt.')
+ 
+     parser.add_argument(&quot;commit&quot;, 
+                         help = &quot;commit reference used in the computation, defaults to the current checked out work-copy&quot;,
+@@ -115,7 +117,7 @@ def parse_argv():
+ 
+     parser.add_argument('--print-only',
+                         action = 'store_true',
+-                        help = 'Compute the version and revision and print to stdout')
++                        help = 'Compute the code and full versions print to stdout')
+ 
+     args = parser.parse_args()
+ 
+diff --git a/tools/generate_orig_tar_gz.py b/tools/generate_orig_tar_gz.py
+index e7c5cba..cbd726b 100755
+--- a/tools/generate_orig_tar_gz.py
++++ b/tools/generate_orig_tar_gz.py
+@@ -14,7 +14,7 @@ class opt:
+     print_only = &quot;&quot;
+ 
+ class glb:
+-    version = &quot;&quot;
++    code_version = &quot;&quot;
+     mode = &quot;&quot;
+     filename = &quot;&quot;
+     bg_version = None
+@@ -25,12 +25,13 @@ def main():
+     parsea_argv()
+     consolidate_glb()
+ 
+-    if glb.version:
+-        full_version = glb.version
++    if glb.code_version:
++        full_version = glb.code_version
+     else:
+-        code_version = glb.bg_version.obtain_code_version(glb.filename)
++        cmakelists_version = glb.bg_version.obtain_cmakelists_version(glb.filename)
+         (ts_date, ts_time, short_hash) = glb.bg_version.obtain_git_version_info()
+-        glb.version, full_version = bgversion.assemble_version_and_revision(code_version, ts_date, ts_time, short_hash, glb.mode)
++        glb.code_version, full_version = bgversion.assemble_code_and_full_versions(cmakelists_version, 
++                                                                                   ts_date, ts_time, short_hash, glb.mode)
+ 
+     # Now we create the .orig.tar.gz
+     # tar --exclude=.git -z -c -v -f ../bulmages_0.14.0.20121128.1132-f070fef1.orig.tar.gz \
+@@ -50,7 +51,7 @@ def main():
+ 
+ def consolidate_glb() :
+     if opt.force_version:
+-        glb.version = opt.force_version
++        glb.code_version = opt.force_version
+ 
+     if opt.mode:
+         glb.mode = opt.mode
+@@ -81,7 +82,7 @@ def parsea_argv() :
+                         help = 'print only version number and do not launch tar')
+ 
+     parser.add_argument(&quot;--force-version&quot;, 
+-                        help = &quot;force this version to be used in CMakesList&quot;)
++                        help = &quot;force this version to be used as full version in the orig.tar.gz file&quot;)
+ 
+     parser.add_argument(&quot;--mode&quot;, choices = [&quot;master&quot;, &quot;release&quot;],
+                         help = &quot;master or release mode (default: search in active branch or master if not found)&quot;)
+
+commit 6a2982ad1ac3c2fdab7ad2771cab7977a2149cc2
+Author: Miguel Telleria de Esteban &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">miguel en mtelleria.com</A>&gt;
+Date:   Tue Dec 18 10:15:11 2012 +0100
+
+    Adding bgversion.py as a common library for version tools
+    
+    Used by compute_and_set_version.py, generate_orig_tar_gz.py y
+    version_and_tag_upstream.py (this one in gbp-debian branches)
+
+diff --git a/tools/bgversion.py b/tools/bgversion.py
+new file mode 100644
+index 0000000..e8aaa0b
+--- /dev/null
++++ b/tools/bgversion.py
+@@ -0,0 +1,230 @@
++# Module bulmages_version.py
++import re
++import sys
++import os
++import time
++import shutil
++import tempfile
++import fileinput
++import subprocess
++
++import git
++
++class BgVersion:
++    # You can test the regexp with
++    # /usr/share/doc/python2.7/examples/Tools/scripts/redemo.py
++    # example_str:  &quot;SET( BULMAGES_VERSION 0.14.0 )&quot;
++    regexp_ver_str = r&quot;BULMAGES_VERSION ([^\s]+)&quot;
++    regexp_ver = re.compile(regexp_ver_str)
++    regexp_ver_repl = &quot;BULMAGES_VERSION %s&quot; # To be % with version value
++
++    # Just to detect comments
++    regexp_comm_str = r'^\s*#'
++    regexp_comm = re.compile(regexp_comm_str)
++
++    # Git Data
++    repo = None
++    active_commit = &quot;&quot;
++    active_branch = &quot;&quot;
++
++
++    def __init__(self, git_dir = '.'):
++        # We see current git parameters
++
++        # See <A HREF="http://packages.python.org/GitPython/0.3.1/tutorial.html">http://packages.python.org/GitPython/0.3.1/tutorial.html</A>
++        self.repo = git.Repo(git_dir)
++        self.active_commit = self.repo.commit().hexsha
++
++        if self.repo.head.is_detached:
++            self.active_branch = None
++        else:
++            self.active_branch = self.repo.active_branch.name
++
++    def get_git_info(self):
++        return (self.active_branch, self.active_commit)
++
++    def obtain_code_version(self, filename, target_commit = None):
++        &quot;&quot;&quot;Get version from CMakeLists.txt in this commit or another&quot;&quot;&quot;
++
++        # By default we use the active_commit
++        if not target_commit:
++            target_commit = self.active_commit
++
++        tempdir = &quot;&quot;
++        if self.active_commit != target_commit :
++            # We do a temporary checkout of bulmages/CMakeLists.txt
++            #
++            # There is no way to checkout the file in a external dir
++            # without modifying the local copy.  Attemps tried:
++            #
++            # -  --work-tree=tempdir
++            # -  cd tempdir &amp;&amp; --git-dir=&lt;curdir/.git&gt; --work-tree=tempdir
++            # -  cd tempdir &amp;&amp;  (as above) with --bare
++            #
++            # So what we do is temporary copy CMakeLists to the external
++            # dir, re-checkout and then copying it again
++            tempdir = tempfile.mkdtemp()
++            shutil.copy2(filename, tempdir)
++
++            # python-git does not support this yet
++            # Cmd:
++            # git checkout 7f7787fc9bc4a3f01bb89e9ebf3d0ea0921b157c -- bulmages/CMakeLists.txt
++            checkout_cmd = &quot;git checkout %s -- %s&quot; % (target_commit, filename)
++            _do_command_or_exit(checkout_cmd)
++
++        version = &quot;&quot;
++
++        with open(filename, 'r') as file:
++            for line in file:
++                if BgVersion.regexp_comm.match(line):
++                    # Comment line
++                    continue
++                match = BgVersion.regexp_ver.search(line) # search instead of match because it is not 
++                                                    # anchored at the beginning of the line
++                if match :
++                    version = match.groups()[0]
++                    break
++            file.close()
++
++        # We backtrack the commit and restore a possibly changed work version
++        if tempdir:
++            checkout_cmd = &quot;git checkout %s -- %s&quot; % (self.active_commit, filename)
++            _do_command_or_exit(checkout_cmd)
++
++            temp_filename = os.path.join(tempdir, os.path.basename(filename) )
++            shutil.copy2(temp_filename, filename)
++
++            shutil.rmtree(tempdir)
++
++        if not version:
++            print(&quot;version no encontrada en %s&quot; % filename)
++            sys.exit(-1)
++
++        return version
++
++    def obtain_git_version_info(self, target_commit = None):
++        if not target_commit:
++            target_commit = self.active_commit
++
++        commit = self.repo.commit(target_commit)
++        timestamp_gmt = time.gmtime(commit.committed_date)
++        ts_date = time.strftime(&quot;%Y%m%d&quot;, timestamp_gmt)
++        ts_time = time.strftime(&quot;%H%M&quot;, timestamp_gmt)
++        short_hash = commit.hexsha[:8]
++
++        return (ts_date, ts_time, short_hash)
++    
++    def set_code_version(self, filename, version, create_debian_patch = False):
++
++        if create_debian_patch :
++            
++            # First we do quilt push -a if we have a patch
++            cmdline = &quot;QUILT_PATCHES=debian/patches quilt series&quot;
++            patch_list = _run_command_capture_stdout(cmdline, shell=True)
++            if patch_list:
++                cmdline = &quot;QUILT_PATCHES=debian/patches quilt push -a&quot;
++                _do_command_or_exit(cmdline)
++
++            # Now we start a new patch and mark CMakeLists.txt to be modified
++            cmdline = &quot;QUILT_PATCHES=debian/patches quilt new bgversion_auto_codeversion_upgrade.patch&quot;
++            _do_command_or_exit(cmdline)
++            
++            cmdline = &quot;QUILT_PATCHES=debian/patches quilt add %s&quot; % filename
++            _do_command_or_exit(cmdline)
++
++        else:
++            # We do it interactively
++            print &quot;About to modify file %s to set the version as %s&quot; % (filename, version)
++            try:
++                raw_input(&quot;Press ENTER to proceed or Ctrl^C to cancel\n&quot;)
++            except KeyboardInterrupt:
++                print &quot;Aborted!&quot;
++                sys.exit(0)
++
++        # Second answer in
++        # <A HREF="http://stackoverflow.com/questions/39086/search-and-replace-a-line-in-a-file-in-python">http://stackoverflow.com/questions/39086/search-and-replace-a-line-in-a-file-in-python</A>
++        for line in fileinput.FileInput(filename, inplace = 1):
++            if BgVersion.regexp_comm.match(line):
++                # Comment line
++                new_line = line
++            elif BgVersion.regexp_ver.search(line) : # search instead of match because it is not 
++                                             # anchored at the beginning of the line
++                # example_str:  &quot;SET( BULMAGES_VERSION 0.14.0 )&quot;
++                # regexp_ver_str = r&quot;BULMAGES_VERSION ([^\s]+)&quot;
++                new_line = BgVersion.regexp_ver.sub( BgVersion.regexp_ver_repl % version, line)
++            else:
++                new_line = line
++            print new_line,
++
++        if create_debian_patch:
++            cmdline = &quot;QUILT_PATCHES=debian/patches quilt refresh&quot;
++            _do_command_or_exit(cmdline)
++
++            cmdline = &quot;QUILT_PATCHES=debian/patches quilt pop -a&quot;
++            _do_command_or_exit(cmdline)
++
++    def reset_code_version(self, filename):
++        if not filename:
++            print &quot;Filename CMakeLists.txt not specified&quot;
++            sys.exit(-1)
++
++        print &quot;About to RESET file %s to git contents&quot; % filename
++        try:
++            raw_input(&quot;Press ENTER to proceed or Ctrl^C to cancel\n&quot;)
++        except KeyboardInterrupt:
++            print &quot;Aborted!&quot;
++            sys.exit(0)
++
++        checkout_cmd = &quot;git checkout %s -- %s&quot; % (self.active_commit, filename)
++        _do_command_or_exit(checkout_cmd)
++
++
++# ------------------------------------------------------------------------------------------
++# ADAPT THIS TO COMPUTE THE VERSION
++# This is a library function not belonging to bg_version class
++
++def assemble_version_and_revision(code_version, ts_date, ts_time, commit_short_hexsha, mode):
++    version = &quot;&quot;
++    if mode == 'master':
++        version = &quot;%s.%s.%s&quot; % (code_version, ts_date, ts_time)
++        revision = commit_short_hexsha
++    elif mode == &quot;release&quot;:
++        version = code_version
++        revision = commit_short_hexsha
++    else:
++        print &quot;mode master/release not specified&quot;
++        sys.exit(-1)
++
++    full_version = &quot;%s-%s&quot; % (version, revision)
++
++    return (version, full_version)
++# -------------------------------------------------------------------------------------------
++
++def _do_command_or_exit(cmdline, verbose=False):
++    if verbose:
++        print(&quot;About to execute: %s&quot; % cmdline)
++
++    status = os.system(cmdline)
++    if status != 0 :
++        print(&quot;Error executing cmdline: %s &quot; % cmdline)
++        sys.exit(-1)
++
++# A simple thing that ehemmm PERL has out of the box with the ``
++# strings but that python needs to do more carefully
++#
++# Taken from
++# <A HREF="http://stackoverflow.com/questions/4760215/running-shell-command-from-python-and-capturing-the-output">http://stackoverflow.com/questions/4760215/running-shell-command-from-python-and-capturing-the-output</A>
++def _run_command_capture_stdout(cmdline, shell=False):
++    
++    if not shell:
++        prog = cmdline.split()
++    else:
++        prog = cmdline
++
++    p = subprocess.Popen(prog, stdout=subprocess.PIPE,
++                         stderr=subprocess.PIPE, shell=shell)
++
++    out, err = p.communicate()
++
++    return out
++    
+diff --git a/tools/compute_and_set_version.py b/tools/compute_and_set_version.py
+index 16cbbd1..ce34f0e 100755
+--- a/tools/compute_and_set_version.py
++++ b/tools/compute_and_set_version.py
+@@ -1,191 +1,61 @@
+ #!/usr/bin/env python
+ 
+-import re
+ import sys
+-import time
+-import os
++# Prevent cluttering with bgversion.pyc &amp; co
++sys.dont_write_bytecode = True
+ import argparse
+-import tempfile
+-import fileinput
+-import shutil
+-
++import bgversion
+ 
+ # From python-git package
+ import git
+ 
+-# From python standard lib, but only for python2
+-# python3 has the same name in lowercase letters
+-import ConfigParser
+-
+ class opt:
+     commit = &quot;&quot;
+     force_version = &quot;&quot;
+     mode = &quot;&quot;
+     print_only = &quot;&quot;
++    reset = &quot;&quot;
+ 
+ 
+ class glb:
+     commit = &quot;&quot;
+-    active_commit = &quot;&quot;
+     version = &quot;&quot;
+     mode = &quot;&quot;
+-    repo = None
+-    active_branch = &quot;&quot;
+     filename = &quot;&quot;
+-
+-    # You can test the regexp with
+-    # /usr/share/doc/python2.7/examples/Tools/scripts/redemo.py
+-    # example_str:  &quot;SET( BULMAGES_VERSION 0.14.0 )&quot;
+-    regexp_ver_str = r&quot;BULMAGES_VERSION ([^\s]+)&quot;
+-    regexp_ver = re.compile(regexp_ver_str)
+-
+-    # Just to detect comments
+-    regexp_comm_str = r'^\s*#'
+-    regexp_comm = re.compile(regexp_comm_str)
+-
+-
++    bg_version = None
+ 
+ def main():
+ 
++    glb.bg_version = bgversion.BgVersion()
++
+     parse_argv()
+ 
+-    # Get the date and hash of the latest commit
+-    # ------------------------------------------
+-    # See <A HREF="http://packages.python.org/GitPython/0.3.1/tutorial.html">http://packages.python.org/GitPython/0.3.1/tutorial.html</A>
+-    glb.repo = git.Repo('.')
+     consolidate_glb()
+     
+-    if glb.version :
+-        revision = &quot;&quot;
++    if opt.reset :
++        # We reset the value to git's content
++        glb.bg_version.reset_code_version(glb.filename)
++        sys.exit(0)
+ 
+-    if not glb.version:
++    if glb.version :
++        full_version = glb.version
++    else:
+         # We look at the version in bulmages/CMakeLists.txt
+         # (temporary checkout included)
+-        code_version = obtain_code_version(glb.filename)
+-
+-        commit = glb.repo.commit(glb.commit)
+-        timestamp = time.strftime(&quot;%Y%m%d.%H%M&quot;, time.gmtime(commit.committed_date))
+-        short_hash = commit.hexsha[:8]
++        code_version = glb.bg_version.obtain_code_version(glb.filename, glb.commit)
++        (ts_date, ts_time, short_hash) = glb.bg_version.obtain_git_version_info(glb.commit)
+ 
+-        glb.version, revision = assemble_version_and_revision(code_version, timestamp, short_hash, glb.mode)
++        glb.version, full_version = bgversion.assemble_version_and_revision(code_version, ts_date, ts_time, short_hash, glb.mode)
+ 
+     if opt.print_only:
+         print glb.version
+-        if revision:
+-            print &quot;%s-%s&quot; % (glb.version, revision)
++        print full_version
+         sys.exit(0)
+ 
+-    if glb.active_commit == glb.commit:
+-        reset_code_version()
+-    else:
+-        print &quot;NOT RESETTING %s because we are looking at a different commit&quot; % glb.filename
+-        print &quot;Version: %s       Version-Revision: %s-%s&quot; % (glb.version, glb.version, revision)
+-
+-# ---------------------------------------------------------------------------------------
+-
+-# ADAPT THIS TO COMPUTE THE VERSION
+-def assemble_version_and_revision(code_version, commit_timestamp, commit_short_hexsha, mode):
+-    version = &quot;&quot;
+-    if mode == 'master':
+-        version = &quot;%s.%s&quot; % (code_version, commit_timestamp)
+-        revision = commit_short_hexsha
+-    elif mode == &quot;release&quot;:
+-        version = code_version
+-        revision = commit_short_hexsha
+-    else:
+-        print &quot;mode master/release not specified&quot;
+-        sys.exit(-1)
+-
+-    return (version, revision)
+-
+-# -----------------------------------------------------
+-
+-def obtain_code_version(filename):
+-    &quot;&quot;&quot;Get version from CMakeLists.txt&quot;&quot;&quot;
+-
+-    tempdir = &quot;&quot;
+-    if glb.active_commit != glb.commit :
+-        # We do a temporary checkout of bulmages/CMakeLists.txt
+-        #
+-        # There is no way to checkout the file in a external dir
+-        # without modifying the local copy.  Attemps tried:
+-        #
+-        # -  --work-tree=tempdir
+-        # -  cd tempdir &amp;&amp; --git-dir=&lt;curdir/.git&gt; --work-tree=tempdir
+-        # -  cd tempdir &amp;&amp;  (as above) with --bare
+-        #
+-        # So what we do is temporary copy CMakeLists to the external
+-        # dir, re-checkout and then copying it again
+-        tempdir = tempfile.mkdtemp()
+-        shutil.copy2(filename, tempdir)
+-
+-        # python-git does not support this yet
+-        # Cmd:
+-        # git checkout 7f7787fc9bc4a3f01bb89e9ebf3d0ea0921b157c -- bulmages/CMakeLists.txt
+-        checkout_cmd = &quot;git checkout %s -- %s&quot; % (glb.commit, filename)
+-        do_command_or_exit(checkout_cmd)
+-
+-    version = &quot;&quot;
+-
+-    with open(filename, 'r') as file:
+-        for line in file:
+-            if glb.regexp_comm.match(line):
+-                # Comment line
+-                continue
+-            match = glb.regexp_ver.search(line) # search instead of match because it is not 
+-                                                # anchored at the beginning of the line
+-            if match :
+-                version = match.groups()[0]
+-                break
+-        file.close()
+-
+-    # We backtrack the commit and restore a possibly changed work version
+-    if tempdir:
+-        checkout_cmd = &quot;git checkout %s -- %s&quot; % (glb.active_commit, filename)
+-        do_command_or_exit(checkout_cmd)
+-
+-        temp_filename = os.path.join(tempdir, os.path.basename(filename) )
+-        shutil.copy2(temp_filename, filename)
+-
+-        shutil.rmtree(tempdir)
+-
+-    if not version:
+-        print(&quot;version no encontrada en %s&quot; % filename)
+-        sys.exit(-1)
+-
+-    return version
+-
+-# --------------------------------------------------------------------
+-
+-def reset_code_version():
+-    
+-    print &quot;About to modify file %s to set the version as %s&quot; % (glb.filename, glb.version)
+-    try:
+-        raw_input(&quot;Press ENTER to proceed or Ctrl^C to cancel\n&quot;)
+-    except KeyboardInterrupt:
+-        print &quot;Aborted!&quot;
+-        sys.exit(0)
++    glb.bg_version.set_code_version(glb.filename, glb.version)
+ 
+-    # Second answer in
+-    # <A HREF="http://stackoverflow.com/questions/39086/search-and-replace-a-line-in-a-file-in-python">http://stackoverflow.com/questions/39086/search-and-replace-a-line-in-a-file-in-python</A>
+-    for line in fileinput.FileInput(glb.filename, inplace = 1):
+-        if glb.regexp_comm.match(line):
+-            # Comment line
+-            new_line = line
+-        elif glb.regexp_ver.search(line) : # search instead of match because it is not 
+-                                         # anchored at the beginning of the line
+-            # example_str:  &quot;SET( BULMAGES_VERSION 0.14.0 )&quot;
+-            # regexp_ver_str = r&quot;BULMAGES_VERSION ([^\s]+)&quot;
+-            new_line = glb.regexp_ver.sub(&quot;BULMAGES_VERSION %s&quot; % glb.version, line)
+-        else:
+-            new_line = line
+-        print new_line,
+-
+-# --------------------------------------------------------------------
+ 
+ def consolidate_glb():
+-    
+-
+     if opt.commit:
+         glb.commit = opt.commit
+ 
+@@ -195,22 +65,17 @@ def consolidate_glb():
+     if opt.mode:
+         glb.mode = opt.mode
+ 
+-    # git state
+-    if glb.repo.head.is_detached:
+-        glb.active_branch = None
+-    else:
+-        glb.active_branch = glb.repo.active_branch.name
++    (active_branch, active_commit) = glb.bg_version.get_git_info()
+ 
+-    glb.active_commit = glb.repo.commit().hexsha
+ 
+     # First we decide if we are in mode master or mode release
+     # --------------------------------------------------------
+ 
+     # First preference active_branch (unless we are detached)
+-    if not glb.mode and glb.active_branch:
+-        if 'release' in glb.active_branch:
++    if not glb.mode and active_branch:
++        if 'release' in active_branch:
+             glb.mode = 'release'
+-        elif 'master' in glb.active_branch:
++        elif 'master' in active_branch:
+             glb.mode = 'master'
+     else:
+         # Default mode
+@@ -218,7 +83,7 @@ def consolidate_glb():
+ 
+     # If the commit is not specified we look at the current commit
+     if not glb.commit:
+-        glb.commit = glb.active_commit
++        glb.commit = active_commit
+ 
+     # NOTE 1: glb.version is left intentionally unchanged either defined or not
+         
+@@ -235,6 +100,10 @@ def parse_argv():
+                         help = &quot;commit reference used in the computation, defaults to the current checked out work-copy&quot;,
+                         default = &quot;&quot;, nargs='?')
+ 
++    parser.add_argument('--reset',
++                        action = 'store_true',
++                        help = 'Reset the CMakeLists.txt file to its original git contents')
++
+     parser.add_argument(&quot;--force-version&quot;, 
+                         help = &quot;force this version to be used in CMakesList&quot;)
+ 
+@@ -254,17 +123,9 @@ def parse_argv():
+     opt.force_version = args.force_version
+     opt.mode = args.mode
+     opt.print_only = args.print_only
++    opt.reset = args.reset
+     glb.filename = args.filename
+ 
+-def do_command_or_exit(cmdline, verbose=False):
+-    if verbose:
+-        print(&quot;About to execute: %s&quot; % cmdline)
+-
+-    status = os.system(cmdline)
+-    if status != 0 :
+-        print(&quot;Unable to checkout the requested commit&quot;)
+-        sys.exit(-1)
+-
+ 
+ if __name__ == '__main__':
+     main()
+diff --git a/tools/generate_orig_tar_gz.py b/tools/generate_orig_tar_gz.py
+index eab6e8d..e7c5cba 100755
+--- a/tools/generate_orig_tar_gz.py
++++ b/tools/generate_orig_tar_gz.py
+@@ -1,76 +1,43 @@
+ #!/usr/bin/env python
+ 
+-import re
+ import sys
+-import time
++# Prevent cluttering with bgversion.pyc &amp; co
++sys.dont_write_bytecode = True
+ import os
+ import argparse
+ 
+-# From python-git package
+-import git
++import bgversion
+ 
+ class opt:
+-    version_only = False
++    force_version = &quot;&quot;
++    mode = &quot;&quot;
++    print_only = &quot;&quot;
++
++class glb:
++    version = &quot;&quot;
++    mode = &quot;&quot;
++    filename = &quot;&quot;
++    bg_version = None
+ 
+ def main():
++    
++    glb.bg_version = bgversion.BgVersion()
+     parsea_argv()
++    consolidate_glb()
+ 
+-    # Get the upstream version from CMakelists
+-    # ----------------------------------------
+-    #
+-    # You can test the regexp with
+-    # /usr/share/doc/python2.7/examples/Tools/scripts/redemo.py
+-    #
+-    # example_str:  &quot;SET( BULMAGES_VERSION 0.14.0 )&quot;
+-    regexp_ver_str = r&quot;BULMAGES_VERSION ([^\s]+)&quot;
+-
+-    filename = 'bulmages/CMakeLists.txt'
+-    regexp_ver = re.compile(regexp_ver_str)
+-
+-    # Just to detect comments
+-    regexp_comm_str = r'^\s*#'
+-    regexp_comm = re.compile(regexp_comm_str)
+-
+-    upstream_version = &quot;&quot;
+-
+-    with open(filename, 'r') as file:
+-        for line in file:
+-            if regexp_comm.match(line):
+-                # Comment line
+-                continue
+-            match = regexp_ver.search(line) # search instead of match because it is not 
+-                                            # anchored at the beginning of the line
+-            if match :
+-                upstream_version = match.groups()[0]
+-                break
+-        file.close()
+-
+-    if not upstream_version:
+-        print(&quot;upstream version no encontrada en %s&quot; % filename)
+-        sys.exit(-1)
+-
+-    # Get the date and hash of the latest commit
+-    # ------------------------------------------
+-    # See <A HREF="http://packages.python.org/GitPython/0.3.1/tutorial.html">http://packages.python.org/GitPython/0.3.1/tutorial.html</A>
+-    repo = git.Repo('.')
+-    commit = repo.commit(&quot;HEAD&quot;)
+-    timestamp = time.strftime(&quot;%Y%m%d.%H%M&quot;, time.gmtime(commit.committed_date))
+-    hash = commit.hexsha[:8]
+-
+-    debian_orig_version = upstream_version + &quot;.&quot; + timestamp + &quot;.&quot; + hash
+-
+-    if opt.version_only:
+-        print debian_orig_version
+-        sys.exit(0)
+-
+-    print &quot;Version: &quot; + debian_orig_version
++    if glb.version:
++        full_version = glb.version
++    else:
++        code_version = glb.bg_version.obtain_code_version(glb.filename)
++        (ts_date, ts_time, short_hash) = glb.bg_version.obtain_git_version_info()
++        glb.version, full_version = bgversion.assemble_version_and_revision(code_version, ts_date, ts_time, short_hash, glb.mode)
+ 
+     # Now we create the .orig.tar.gz
+-    # tar --exclude=.git -z -c -v -f ../bulmages_0.14.0.20121128.1132.f070fef1.orig.tar.gz \
++    # tar --exclude=.git -z -c -v -f ../bulmages_0.14.0.20121128.1132-f070fef1.orig.tar.gz \
+     # ../mtelleria-bulmages
+ 
+     cur_basedir = os.path.basename(os.getcwd())
+-    cmdline = &quot;tar --exclude=.git -z -c -v -f ../bulmages_%s.orig.tar.gz ../%s&quot; % (debian_orig_version, cur_basedir)
++    cmdline = &quot;tar --exclude=.git -z -c -v -f ../bulmages_%s.orig.tar.gz ../%s&quot; % (full_version, cur_basedir)
+ 
+     print &quot;Cmdline: %s&quot; % cmdline
+     try:
+@@ -81,17 +48,53 @@ def main():
+     
+     os.system(cmdline)
+ 
++def consolidate_glb() :
++    if opt.force_version:
++        glb.version = opt.force_version
++
++    if opt.mode:
++        glb.mode = opt.mode
++
++    (active_branch, active_commit) = glb.bg_version.get_git_info()
++
++
++    # First we decide if we are in mode master or mode release
++    # --------------------------------------------------------
++
++    # First preference active_branch (unless we are detached)
++    if not glb.mode and active_branch:
++        if 'release' in active_branch:
++            glb.mode = 'release'
++        elif 'master' in active_branch:
++            glb.mode = 'master'
++    else:
++        # Default mode
++        glb.mode = 'master'
++    
++
+ def parsea_argv() :
+ 
+     parser = argparse.ArgumentParser(description='Generates the orig.tar.gz with version info from CMakeLists and git.')
+ 
+-    parser.add_argument('--version-only',
++    parser.add_argument('--print-only',
+                         action = 'store_true',
+                         help = 'print only version number and do not launch tar')
+ 
++    parser.add_argument(&quot;--force-version&quot;, 
++                        help = &quot;force this version to be used in CMakesList&quot;)
++
++    parser.add_argument(&quot;--mode&quot;, choices = [&quot;master&quot;, &quot;release&quot;],
++                        help = &quot;master or release mode (default: search in active branch or master if not found)&quot;)
++
++    parser.add_argument(&quot;--filename&quot;, default=&quot;bulmages/CMakeLists.txt&quot;,
++                        help = &quot;CMakeLists.txt file to be used for parsing and replacing&quot;)
++
+     args = parser.parse_args()
+ 
+-    opt.version_only = args.version_only
++    opt.force_version = args.force_version
++    opt.mode = args.mode
++    opt.print_only = args.print_only
++    glb.filename = args.filename
+ 
+ if __name__ == '__main__':
+     main()
+
+commit 7ed0f249ff5287fb8662ed6b815eee73534631b0
+Author: Miguel Telleria de Esteban &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">miguel en mtelleria.com</A>&gt;
+Date:   Mon Dec 17 13:36:55 2012 +0100
+
+    Adding tools/compute_and_set_version.py
+
+diff --git a/tools/compute_and_set_version.py b/tools/compute_and_set_version.py
+new file mode 100755
+index 0000000..16cbbd1
+--- /dev/null
++++ b/tools/compute_and_set_version.py
+@@ -0,0 +1,277 @@
++#!/usr/bin/env python
++
++import re
++import sys
++import time
++import os
++import argparse
++import tempfile
++import fileinput
++import shutil
++
++
++# From python-git package
++import git
++
++# From python standard lib, but only for python2
++# python3 has the same name in lowercase letters
++import ConfigParser
++
++class opt:
++    commit = &quot;&quot;
++    force_version = &quot;&quot;
++    mode = &quot;&quot;
++    print_only = &quot;&quot;
++
++
++class glb:
++    commit = &quot;&quot;
++    active_commit = &quot;&quot;
++    version = &quot;&quot;
++    mode = &quot;&quot;
++    repo = None
++    active_branch = &quot;&quot;
++    filename = &quot;&quot;
++
++    # You can test the regexp with
++    # /usr/share/doc/python2.7/examples/Tools/scripts/redemo.py
++    # example_str:  &quot;SET( BULMAGES_VERSION 0.14.0 )&quot;
++    regexp_ver_str = r&quot;BULMAGES_VERSION ([^\s]+)&quot;
++    regexp_ver = re.compile(regexp_ver_str)
++
++    # Just to detect comments
++    regexp_comm_str = r'^\s*#'
++    regexp_comm = re.compile(regexp_comm_str)
++
++
++
++def main():
++
++    parse_argv()
++
++    # Get the date and hash of the latest commit
++    # ------------------------------------------
++    # See <A HREF="http://packages.python.org/GitPython/0.3.1/tutorial.html">http://packages.python.org/GitPython/0.3.1/tutorial.html</A>
++    glb.repo = git.Repo('.')
++    consolidate_glb()
++    
++    if glb.version :
++        revision = &quot;&quot;
++
++    if not glb.version:
++        # We look at the version in bulmages/CMakeLists.txt
++        # (temporary checkout included)
++        code_version = obtain_code_version(glb.filename)
++
++        commit = glb.repo.commit(glb.commit)
++        timestamp = time.strftime(&quot;%Y%m%d.%H%M&quot;, time.gmtime(commit.committed_date))
++        short_hash = commit.hexsha[:8]
++
++        glb.version, revision = assemble_version_and_revision(code_version, timestamp, short_hash, glb.mode)
++
++    if opt.print_only:
++        print glb.version
++        if revision:
++            print &quot;%s-%s&quot; % (glb.version, revision)
++        sys.exit(0)
++
++    if glb.active_commit == glb.commit:
++        reset_code_version()
++    else:
++        print &quot;NOT RESETTING %s because we are looking at a different commit&quot; % glb.filename
++        print &quot;Version: %s       Version-Revision: %s-%s&quot; % (glb.version, glb.version, revision)
++
++# ---------------------------------------------------------------------------------------
++
++# ADAPT THIS TO COMPUTE THE VERSION
++def assemble_version_and_revision(code_version, commit_timestamp, commit_short_hexsha, mode):
++    version = &quot;&quot;
++    if mode == 'master':
++        version = &quot;%s.%s&quot; % (code_version, commit_timestamp)
++        revision = commit_short_hexsha
++    elif mode == &quot;release&quot;:
++        version = code_version
++        revision = commit_short_hexsha
++    else:
++        print &quot;mode master/release not specified&quot;
++        sys.exit(-1)
++
++    return (version, revision)
++
++# -----------------------------------------------------
++
++def obtain_code_version(filename):
++    &quot;&quot;&quot;Get version from CMakeLists.txt&quot;&quot;&quot;
++
++    tempdir = &quot;&quot;
++    if glb.active_commit != glb.commit :
++        # We do a temporary checkout of bulmages/CMakeLists.txt
++        #
++        # There is no way to checkout the file in a external dir
++        # without modifying the local copy.  Attemps tried:
++        #
++        # -  --work-tree=tempdir
++        # -  cd tempdir &amp;&amp; --git-dir=&lt;curdir/.git&gt; --work-tree=tempdir
++        # -  cd tempdir &amp;&amp;  (as above) with --bare
++        #
++        # So what we do is temporary copy CMakeLists to the external
++        # dir, re-checkout and then copying it again
++        tempdir = tempfile.mkdtemp()
++        shutil.copy2(filename, tempdir)
++
++        # python-git does not support this yet
++        # Cmd:
++        # git checkout 7f7787fc9bc4a3f01bb89e9ebf3d0ea0921b157c -- bulmages/CMakeLists.txt
++        checkout_cmd = &quot;git checkout %s -- %s&quot; % (glb.commit, filename)
++        do_command_or_exit(checkout_cmd)
++
++    version = &quot;&quot;
++
++    with open(filename, 'r') as file:
++        for line in file:
++            if glb.regexp_comm.match(line):
++                # Comment line
++                continue
++            match = glb.regexp_ver.search(line) # search instead of match because it is not 
++                                                # anchored at the beginning of the line
++            if match :
++                version = match.groups()[0]
++                break
++        file.close()
++
++    # We backtrack the commit and restore a possibly changed work version
++    if tempdir:
++        checkout_cmd = &quot;git checkout %s -- %s&quot; % (glb.active_commit, filename)
++        do_command_or_exit(checkout_cmd)
++
++        temp_filename = os.path.join(tempdir, os.path.basename(filename) )
++        shutil.copy2(temp_filename, filename)
++
++        shutil.rmtree(tempdir)
++
++    if not version:
++        print(&quot;version no encontrada en %s&quot; % filename)
++        sys.exit(-1)
++
++    return version
++
++# --------------------------------------------------------------------
++
++def reset_code_version():
++    
++    print &quot;About to modify file %s to set the version as %s&quot; % (glb.filename, glb.version)
++    try:
++        raw_input(&quot;Press ENTER to proceed or Ctrl^C to cancel\n&quot;)
++    except KeyboardInterrupt:
++        print &quot;Aborted!&quot;
++        sys.exit(0)
++
++    # Second answer in
++    # <A HREF="http://stackoverflow.com/questions/39086/search-and-replace-a-line-in-a-file-in-python">http://stackoverflow.com/questions/39086/search-and-replace-a-line-in-a-file-in-python</A>
++    for line in fileinput.FileInput(glb.filename, inplace = 1):
++        if glb.regexp_comm.match(line):
++            # Comment line
++            new_line = line
++        elif glb.regexp_ver.search(line) : # search instead of match because it is not 
++                                         # anchored at the beginning of the line
++            # example_str:  &quot;SET( BULMAGES_VERSION 0.14.0 )&quot;
++            # regexp_ver_str = r&quot;BULMAGES_VERSION ([^\s]+)&quot;
++            new_line = glb.regexp_ver.sub(&quot;BULMAGES_VERSION %s&quot; % glb.version, line)
++        else:
++            new_line = line
++        print new_line,
++
++# --------------------------------------------------------------------
++
++def consolidate_glb():
++    
++
++    if opt.commit:
++        glb.commit = opt.commit
++
++    if opt.force_version:
++        glb.version = opt.force_version
++
++    if opt.mode:
++        glb.mode = opt.mode
++
++    # git state
++    if glb.repo.head.is_detached:
++        glb.active_branch = None
++    else:
++        glb.active_branch = glb.repo.active_branch.name
++
++    glb.active_commit = glb.repo.commit().hexsha
++
++    # First we decide if we are in mode master or mode release
++    # --------------------------------------------------------
++
++    # First preference active_branch (unless we are detached)
++    if not glb.mode and glb.active_branch:
++        if 'release' in glb.active_branch:
++            glb.mode = 'release'
++        elif 'master' in glb.active_branch:
++            glb.mode = 'master'
++    else:
++        # Default mode
++        glb.mode = 'master'
++
++    # If the commit is not specified we look at the current commit
++    if not glb.commit:
++        glb.commit = glb.active_commit
++
++    # NOTE 1: glb.version is left intentionally unchanged either defined or not
++        
++# ----------------------------------------------------------------------
++
++# useful tutorial for argparse
++# <A HREF="http://docs.python.org/2/howto/argparse.html">http://docs.python.org/2/howto/argparse.html</A>
++# Missing point: nargs='?' for optional position arguments
++def parse_argv():
++
++    parser = argparse.ArgumentParser(description='Computes the version and revision and updates CMakeLists.txt.')
++
++    parser.add_argument(&quot;commit&quot;, 
++                        help = &quot;commit reference used in the computation, defaults to the current checked out work-copy&quot;,
++                        default = &quot;&quot;, nargs='?')
++
++    parser.add_argument(&quot;--force-version&quot;, 
++                        help = &quot;force this version to be used in CMakesList&quot;)
++
++    parser.add_argument(&quot;--mode&quot;, choices = [&quot;master&quot;, &quot;release&quot;],
++                        help = &quot;master or release mode (default: search in active branch or master if not found)&quot;)
++
++    parser.add_argument(&quot;--filename&quot;, default=&quot;bulmages/CMakeLists.txt&quot;,
++                        help = &quot;CMakeLists.txt file to be used for parsing and replacing&quot;)
++
++    parser.add_argument('--print-only',
++                        action = 'store_true',
++                        help = 'Compute the version and revision and print to stdout')
++
++    args = parser.parse_args()
++
++    opt.commit = args.commit
++    opt.force_version = args.force_version
++    opt.mode = args.mode
++    opt.print_only = args.print_only
++    glb.filename = args.filename
++
++def do_command_or_exit(cmdline, verbose=False):
++    if verbose:
++        print(&quot;About to execute: %s&quot; % cmdline)
++
++    status = os.system(cmdline)
++    if status != 0 :
++        print(&quot;Unable to checkout the requested commit&quot;)
++        sys.exit(-1)
++
++
++if __name__ == '__main__':
++    main()
++
++
++
++
++    
++
++            
+
+commit 07ff8f98ad475af099c7cd9f6aa2654a8ac1b093
+Author: Miguel Telleria de Esteban &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">miguel en mtelleria.com</A>&gt;
+Date:   Wed Nov 28 10:18:40 2012 +0100
+
+    Creando generate_orig_tar_gz
+
+diff --git a/tools/generate_orig_tar_gz.py b/tools/generate_orig_tar_gz.py
+new file mode 100755
+index 0000000..eab6e8d
+--- /dev/null
++++ b/tools/generate_orig_tar_gz.py
+@@ -0,0 +1,104 @@
++#!/usr/bin/env python
++
++import re
++import sys
++import time
++import os
++import argparse
++
++# From python-git package
++import git
++
++class opt:
++    version_only = False
++
++def main():
++    parsea_argv()
++
++    # Get the upstream version from CMakelists
++    # ----------------------------------------
++    #
++    # You can test the regexp with
++    # /usr/share/doc/python2.7/examples/Tools/scripts/redemo.py
++    #
++    # example_str:  &quot;SET( BULMAGES_VERSION 0.14.0 )&quot;
++    regexp_ver_str = r&quot;BULMAGES_VERSION ([^\s]+)&quot;
++
++    filename = 'bulmages/CMakeLists.txt'
++    regexp_ver = re.compile(regexp_ver_str)
++
++    # Just to detect comments
++    regexp_comm_str = r'^\s*#'
++    regexp_comm = re.compile(regexp_comm_str)
++
++    upstream_version = &quot;&quot;
++
++    with open(filename, 'r') as file:
++        for line in file:
++            if regexp_comm.match(line):
++                # Comment line
++                continue
++            match = regexp_ver.search(line) # search instead of match because it is not 
++                                            # anchored at the beginning of the line
++            if match :
++                upstream_version = match.groups()[0]
++                break
++        file.close()
++
++    if not upstream_version:
++        print(&quot;upstream version no encontrada en %s&quot; % filename)
++        sys.exit(-1)
++
++    # Get the date and hash of the latest commit
++    # ------------------------------------------
++    # See <A HREF="http://packages.python.org/GitPython/0.3.1/tutorial.html">http://packages.python.org/GitPython/0.3.1/tutorial.html</A>
++    repo = git.Repo('.')
++    commit = repo.commit(&quot;HEAD&quot;)
++    timestamp = time.strftime(&quot;%Y%m%d.%H%M&quot;, time.gmtime(commit.committed_date))
++    hash = commit.hexsha[:8]
++
++    debian_orig_version = upstream_version + &quot;.&quot; + timestamp + &quot;.&quot; + hash
++
++    if opt.version_only:
++        print debian_orig_version
++        sys.exit(0)
++
++    print &quot;Version: &quot; + debian_orig_version
++
++    # Now we create the .orig.tar.gz
++    # tar --exclude=.git -z -c -v -f ../bulmages_0.14.0.20121128.1132.f070fef1.orig.tar.gz \
++    # ../mtelleria-bulmages
++
++    cur_basedir = os.path.basename(os.getcwd())
++    cmdline = &quot;tar --exclude=.git -z -c -v -f ../bulmages_%s.orig.tar.gz ../%s&quot; % (debian_orig_version, cur_basedir)
++
++    print &quot;Cmdline: %s&quot; % cmdline
++    try:
++        raw_input(&quot;Press ENTER to proceed or Ctrl^C to cancel\n&quot;)
++    except KeyboardInterrupt:
++        print &quot;Aborted!&quot;
++        sys.exit(0)
++    
++    os.system(cmdline)
++
++def parsea_argv() :
++
++    parser = argparse.ArgumentParser(description='Generates the orig.tar.gz with version info from CMakeLists and git.')
++
++    parser.add_argument('--version-only',
++                        action = 'store_true',
++                        help = 'print only version number and do not launch tar')
++
++    args = parser.parse_args()
++
++    opt.version_only = args.version_only
++
++if __name__ == '__main__':
++    main()
++
++
++
++
++    
++
++            
+
+commit 824aabfc5f98a21b7e68e0dca5e2059df33c76bd
+Author: Miguel Telleria de Esteban &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">miguel en mtelleria.com</A>&gt;
+Date:   Wed Dec 19 13:30:06 2012 +0100
+
+    Quitando un fichero innecesario e incomodo para empaquetar
+
+diff --git a/nsis_bulmages/NSIS_includes_comunes/python/Python26 - copia/Lib/site-packages/reportlab/pdfbase/ttfonts.py~ b/nsis_bulmages/NSIS_includes_comunes/python/Python26 - copia/Lib/site-packages/reportlab/pdfbase/ttfonts.py~
+deleted file mode 100644
+index e044c90..0000000
+--- a/nsis_bulmages/NSIS_includes_comunes/python/Python26 - copia/Lib/site-packages/reportlab/pdfbase/ttfonts.py~	
++++ /dev/null
+@@ -1,1135 +0,0 @@
+-#Copyright ReportLab Europe Ltd. 2000-2009
+-#see license.txt for license details
+-__version__ = '$Id: ttfonts.py 3608 2009-12-04 16:12:34Z rgbecker $'
+-__doc__=&quot;&quot;&quot;TrueType font support
+-
+-This defines classes to represent TrueType fonts.  They know how to calculate
+-their own width and how to write themselves into PDF files.  They support
+-subsetting and embedding and can represent all 16-bit Unicode characters.
+-
+-Note on dynamic fonts
+----------------------
+-
+-Usually a Font in ReportLab corresponds to a fixed set of PDF objects (Font,
+-FontDescriptor, Encoding).  But with dynamic font subsetting a single TTFont
+-will result in a number of Font/FontDescriptor/Encoding object sets, and the
+-contents of those will depend on the actual characters used for printing.
+-
+-To support dynamic font subsetting a concept of &quot;dynamic font&quot; was introduced.
+-Dynamic Fonts have a _dynamicFont attribute set to 1.
+-
+-Dynamic fonts have the following additional functions::
+-
+-    def splitString(self, text, doc):
+-        '''Splits text into a number of chunks, each of which belongs to a
+-        single subset.  Returns a list of tuples (subset, string).  Use
+-        subset numbers with getSubsetInternalName.  Doc is used to identify
+-        a document so that different documents may have different dynamically
+-        constructed subsets.'''
+-
+-    def getSubsetInternalName(self, subset, doc):
+-        '''Returns the name of a PDF Font object corresponding to a given
+-        subset of this dynamic font.  Use this function instead of
+-        PDFDocument.getInternalFontName.'''
+-
+-You must never call PDFDocument.getInternalFontName for dynamic fonts.
+-
+-If you have a traditional static font, mapping to PDF text output operators
+-is simple::
+-
+-   '%s 14 Tf (%s) Tj' % (getInternalFontName(psfontname), text)
+-
+-If you have a dynamic font, use this instead::
+-
+-   for subset, chunk in font.splitString(text, doc):
+-       '%s 14 Tf (%s) Tj' % (font.getSubsetInternalName(subset, doc), chunk)
+-
+-(Tf is a font setting operator and Tj is a text ouput operator.  You should
+-also escape invalid characters in Tj argument, see TextObject._formatText.
+-Oh, and that 14 up there is font size.)
+-
+-Canvas and TextObject have special support for dynamic fonts.
+-&quot;&quot;&quot;
+-
+-import string
+-from struct import pack, unpack, error as structError
+-from reportlab.lib.utils import getStringIO
+-from reportlab.pdfbase import pdfmetrics, pdfdoc
+-
+-class TTFError(pdfdoc.PDFError):
+-    &quot;TrueType font exception&quot;
+-    pass
+-
+-
+-def SUBSETN(n,table=string.maketrans('0123456789','ABCDEFGHIJ')):
+-    return ('%6.6d'%n).translate(table)
+-#
+-# Helpers
+-#
+-
+-from codecs import utf_8_encode, utf_8_decode, latin_1_decode
+-parse_utf8=lambda x, decode=utf_8_decode: map(ord,decode(x)[0])
+-parse_latin1 = lambda x, decode=latin_1_decode: map(ord,decode(x)[0])
+-def latin1_to_utf8(text):
+-    &quot;helper to convert when needed from latin input&quot;
+-    return utf_8_encode(latin_1_decode(text)[0])[0]
+-
+-def makeToUnicodeCMap(fontname, subset):
+-    &quot;&quot;&quot;Creates a ToUnicode CMap for a given subset.  See Adobe
+-    _PDF_Reference (ISBN 0-201-75839-3) for more information.&quot;&quot;&quot;
+-    cmap = [
+-        &quot;/CIDInit /ProcSet findresource begin&quot;,
+-        &quot;12 dict begin&quot;,
+-        &quot;begincmap&quot;,
+-        &quot;/CIDSystemInfo&quot;,
+-        &quot;&lt;&lt; /Registry (%s)&quot; % fontname,
+-        &quot;/Ordering (%s)&quot; % fontname,
+-        &quot;/Supplement 0&quot;,
+-        &quot;&gt;&gt; def&quot;,
+-        &quot;/CMapName /%s def&quot; % fontname,
+-        &quot;/CMapType 2 def&quot;,
+-        &quot;1 begincodespacerange&quot;,
+-        &quot;&lt;00&gt; &lt;%02X&gt;&quot; % (len(subset) - 1),
+-        &quot;endcodespacerange&quot;,
+-        &quot;%d beginbfchar&quot; % len(subset)
+-        ] + [&quot;&lt;%02X&gt; &lt;%04X&gt;&quot; % (i,v) for i,v in enumerate(subset)] + [
+-        &quot;endbfchar&quot;,
+-        &quot;endcmap&quot;,
+-        &quot;CMapName currentdict /CMap defineresource pop&quot;,
+-        &quot;end&quot;,
+-        &quot;end&quot;
+-        ]
+-    return string.join(cmap, &quot;\n&quot;)
+-
+-def splice(stream, offset, value):
+-    &quot;&quot;&quot;Splices the given value into stream at the given offset and
+-    returns the resulting stream (the original is unchanged)&quot;&quot;&quot;
+-    return stream[:offset] + value + stream[offset + len(value):]
+-
+-def _set_ushort(stream, offset, value):
+-    &quot;&quot;&quot;Writes the given unsigned short value into stream at the given
+-    offset and returns the resulting stream (the original is unchanged)&quot;&quot;&quot;
+-    return splice(stream, offset, pack(&quot;&gt;H&quot;, value))
+-
+-try:
+-    import _rl_accel
+-except ImportError:
+-    try:
+-        from reportlab.lib import _rl_accel
+-    except ImportError:
+-        _rl_accel = None
+-
+-try:
+-    hex32 = _rl_accel.hex32
+-except:
+-    def hex32(i):
+-        return '0X%8.8X' % (long(i)&amp;0xFFFFFFFFL)
+-try:
+-    add32 = _rl_accel.add32L
+-    calcChecksum = _rl_accel.calcChecksumL
+-except:
+-    def add32(x, y):
+-        &quot;Calculate (x + y) modulo 2**32&quot;
+-        return (x+y) &amp; 0xFFFFFFFFL
+-
+-    def calcChecksum(data):
+-        &quot;&quot;&quot;Calculates TTF-style checksums&quot;&quot;&quot;
+-        if len(data)&amp;3: data = data + (4-(len(data)&amp;3))*&quot;\0&quot;
+-        return sum(unpack(&quot;&gt;%dl&quot; % (len(data)&gt;&gt;2), data)) &amp; 0xFFFFFFFFL
+-del _rl_accel
+-#
+-# TrueType font handling
+-#
+-
+-GF_ARG_1_AND_2_ARE_WORDS        = 1 &lt;&lt; 0
+-GF_ARGS_ARE_XY_VALUES           = 1 &lt;&lt; 1
+-GF_ROUND_XY_TO_GRID             = 1 &lt;&lt; 2
+-GF_WE_HAVE_A_SCALE              = 1 &lt;&lt; 3
+-GF_RESERVED                     = 1 &lt;&lt; 4
+-GF_MORE_COMPONENTS              = 1 &lt;&lt; 5
+-GF_WE_HAVE_AN_X_AND_Y_SCALE     = 1 &lt;&lt; 6
+-GF_WE_HAVE_A_TWO_BY_TWO         = 1 &lt;&lt; 7
+-GF_WE_HAVE_INSTRUCTIONS         = 1 &lt;&lt; 8
+-GF_USE_MY_METRICS               = 1 &lt;&lt; 9
+-GF_OVERLAP_COMPOUND             = 1 &lt;&lt; 10
+-GF_SCALED_COMPONENT_OFFSET      = 1 &lt;&lt; 11
+-GF_UNSCALED_COMPONENT_OFFSET    = 1 &lt;&lt; 12
+-
+-def TTFOpenFile(fn):
+-    '''Opens a TTF file possibly after searching TTFSearchPath
+-    returns (filename,file)
+-    '''
+-    from reportlab.lib.utils import rl_isfile, open_for_read
+-    try:
+-        f = open_for_read(fn,'rb')
+-        return fn, f
+-    except IOError:
+-        import os
+-        if not os.path.isabs(fn):
+-            from reportlab import rl_config
+-            for D in rl_config.TTFSearchPath:
+-                tfn = os.path.join(D,fn)
+-                if rl_isfile(tfn):
+-                    f = open_for_read(tfn,'rb')
+-                    return tfn, f
+-        raise TTFError('Can\'t open file &quot;%s&quot;' % D)
+-
+-class TTFontParser:
+-    &quot;Basic TTF file parser&quot;
+-    ttfVersions = (0x00010000,0x74727565,0x74746366)
+-    ttcVersions = (0x00010000,0x00020000)
+-    fileKind='TTF'
+-
+-    def __init__(self, file, validate=0,subfontIndex=0):
+-        &quot;&quot;&quot;Loads and parses a TrueType font file.  file can be a filename or a
+-        file object.  If validate is set to a false values, skips checksum
+-        validation.  This can save time, especially if the font is large.
+-        &quot;&quot;&quot;
+-        self.validate = validate
+-        self.readFile(file)
+-        isCollection = self.readHeader()
+-        if isCollection:
+-            self.readTTCHeader()
+-            self.getSubfont(subfontIndex)
+-        else:
+-            if self.validate: self.checksumFile()
+-            self.readTableDirectory()
+-            self.subfontNameX = ''
+-
+-    def readTTCHeader(self):
+-        self.ttcVersion = self.read_ulong()
+-        self.fileKind = 'TTC'
+-        self.ttfVersions = self.ttfVersions[:-1]
+-        if self.ttcVersion not in self.ttcVersions: 
+-            raise TTFError('&quot;%s&quot; is not a %s file: can\'t read version 0x%8.8x' %(self.filename,self.fileKind,self.ttcVersion))
+-        self.numSubfonts = self.read_ulong()
+-        self.subfontOffsets = []
+-        a = self.subfontOffsets.append
+-        for i in xrange(self.numSubfonts):
+-            a(self.read_ulong())
+-
+-    def getSubfont(self,subfontIndex):
+-        if self.fileKind!='TTC':
+-            raise TTFError('&quot;%s&quot; is not a TTC file: use this method' % (self.filename,self.fileKind))
+-        try:
+-            pos = self.subfontOffsets[subfontIndex]
+-        except IndexError:
+-            raise TTFError('TTC file &quot;%s&quot;: bad subfontIndex %s not in [0,%d]' % (self.filename,subfontIndex,self.numSubfonts-1))
+-        self.seek(pos)
+-        self.readHeader()
+-        self.readTableDirectory()
+-        self.subfontNameX = '-'+str(subfontIndex)
+-
+-    def readTableDirectory(self):
+-        try:
+-            self.numTables = self.read_ushort()
+-            self.searchRange = self.read_ushort()
+-            self.entrySelector = self.read_ushort()
+-            self.rangeShift = self.read_ushort()
+-
+-            # Read table directory
+-            self.table = {}
+-            self.tables = []
+-            for n in xrange(self.numTables):
+-                record = {}
+-                record['tag'] = self.read_tag()
+-                record['checksum'] = self.read_ulong()
+-                record['offset'] = self.read_ulong()
+-                record['length'] = self.read_ulong()
+-                self.tables.append(record)
+-                self.table[record['tag']] = record
+-        except:
+-            raise TTFError('Corrupt %s file &quot;%s&quot; cannot read Table Directory' % (self.fileKind, self.filename))
+-        if self.validate: self.checksumTables()
+-
+-    def readHeader(self):
+-        '''read the sfnt header at the current position'''
+-        try:
+-            self.version = version = self.read_ulong()
+-        except:
+-            raise TTFError('&quot;%s&quot; is not a %s file: can\'t read version' %(self.filename,self.fileKind))
+-
+-        if version==0x4F54544F:
+-            raise TTFError('%s file &quot;%s&quot;: postscript outlines are not supported'%(self.fileKind,self.filename))
+-
+-        if version not in self.ttfVersions:
+-            raise TTFError('Not a TrueType font: version=0x%8.8X' % version)
+-        return version==self.ttfVersions[-1]
+-
+-    def readFile(self,f):
+-        if hasattr(f,'read'):
+-            self.filename = '(ttf)'
+-        else:
+-            self.filename, f = TTFOpenFile(f)
+-
+-        self._ttf_data = f.read()
+-        self._pos = 0
+-
+-    def checksumTables(self):
+-        # Check the checksums for all tables
+-        for t in self.tables:
+-            table = self.get_chunk(t['offset'], t['length'])
+-            checksum = calcChecksum(table)
+-            if t['tag'] == 'head':
+-                adjustment = unpack('&gt;l', table[8:8+4])[0]
+-                checksum = add32(checksum, -adjustment)
+-            xchecksum = t['checksum']
+-            if xchecksum != checksum:
+-                raise TTFError('TTF file &quot;%s&quot;: invalid checksum %s table: %s (expected %s)' % (self.filename,hex32(checksum),t['tag'],hex32(xchecksum)))
+-
+-    def checksumFile(self):
+-        # Check the checksums for the whole file
+-        checksum = calcChecksum(self._ttf_data)
+-        if 0xB1B0AFBAL!=checksum:
+-            raise TTFError('TTF file &quot;%s&quot;: invalid checksum %s (expected 0xB1B0AFBA) len: %d &amp;3: %d' % (self.filename,hex32(checksum),len(self._ttf_data),(len(self._ttf_data)&amp;3)))
+-
+-    def get_table_pos(self, tag):
+-        &quot;Returns the offset and size of a given TTF table.&quot;
+-        offset = self.table[tag]['offset']
+-        length = self.table[tag]['length']
+-        return (offset, length)
+-
+-    def seek(self, pos):
+-        &quot;Moves read pointer to a given offset in file.&quot;
+-        self._pos = pos
+-
+-    def skip(self, delta):
+-        &quot;Skip the given number of bytes.&quot;
+-        self._pos = self._pos + delta
+-
+-    def seek_table(self, tag, offset_in_table = 0):
+-        &quot;&quot;&quot;Moves read pointer to the given offset within a given table and
+-        returns absolute offset of that position in the file.&quot;&quot;&quot;
+-        self._pos = self.get_table_pos(tag)[0] + offset_in_table
+-        return self._pos
+-
+-    def read_tag(self):
+-        &quot;Read a 4-character tag&quot;
+-        self._pos += 4
+-        return self._ttf_data[self._pos - 4:self._pos]
+-
+-    def read_ushort(self):
+-        &quot;Reads an unsigned short&quot;
+-        self._pos += 2
+-        return unpack('&gt;H',self._ttf_data[self._pos-2:self._pos])[0]
+-
+-    def read_ulong(self):
+-        &quot;Reads an unsigned long&quot;
+-        self._pos += 4
+-        return unpack('&gt;L',self._ttf_data[self._pos - 4:self._pos])[0]
+-
+-    def read_short(self):
+-        &quot;Reads a signed short&quot;
+-        self._pos += 2
+-        try:
+-            return unpack('&gt;h',self._ttf_data[self._pos-2:self._pos])[0]
+-        except structError, error:
+-            raise TTFError, error
+-
+-    def get_ushort(self, pos):
+-        &quot;Return an unsigned short at given position&quot;
+-        return unpack('&gt;H',self._ttf_data[pos:pos+2])[0]
+-
+-    def get_ulong(self, pos):
+-        &quot;Return an unsigned long at given position&quot;
+-        return unpack('&gt;L',self._ttf_data[pos:pos+4])[0]
+-
+-    def get_chunk(self, pos, length):
+-        &quot;Return a chunk of raw data at given position&quot;
+-        return self._ttf_data[pos:pos+length]
+-
+-    def get_table(self, tag):
+-        &quot;Return the given TTF table&quot;
+-        pos, length = self.get_table_pos(tag)
+-        return self._ttf_data[pos:pos+length]
+-
+-class TTFontMaker:
+-    &quot;Basic TTF file generator&quot;
+-
+-    def __init__(self):
+-        &quot;Initializes the generator.&quot;
+-        self.tables = {}
+-
+-    def add(self, tag, data):
+-        &quot;Adds a table to the TTF file.&quot;
+-        if tag == 'head':
+-            data = splice(data, 8, '\0\0\0\0')
+-        self.tables[tag] = data
+-
+-    def makeStream(self):
+-        &quot;Finishes the generation and returns the TTF file as a string&quot;
+-        stm = getStringIO()
+-        write = stm.write
+-
+-        numTables = len(self.tables)
+-        searchRange = 1
+-        entrySelector = 0
+-        while searchRange * 2 &lt;= numTables:
+-            searchRange = searchRange * 2
+-            entrySelector = entrySelector + 1
+-        searchRange = searchRange * 16
+-        rangeShift = numTables * 16 - searchRange
+-
+-        # Header
+-        write(pack(&quot;&gt;lHHHH&quot;, 0x00010000, numTables, searchRange,
+-                                 entrySelector, rangeShift))
+-
+-        # Table directory
+-        tables = self.tables.items()
+-        tables.sort()     # XXX is this the correct order?
+-        offset = 12 + numTables * 16
+-        for tag, data in tables:
+-            if tag == 'head':
+-                head_start = offset
+-            checksum = calcChecksum(data)
+-            write(tag)
+-            write(pack(&quot;&gt;LLL&quot;, checksum, offset, len(data)))
+-            paddedLength = (len(data)+3)&amp;~3
+-            offset = offset + paddedLength
+-
+-        # Table data
+-        for tag, data in tables:
+-            data += &quot;\0\0\0&quot;
+-            write(data[:len(data)&amp;~3])
+-
+-        checksum = calcChecksum(stm.getvalue())
+-        checksum = add32(0xB1B0AFBAL, -checksum)
+-        stm.seek(head_start + 8)
+-        write(pack('&gt;L', checksum))
+-
+-        return stm.getvalue()
+-
+-class TTFontFile(TTFontParser):
+-    &quot;TTF file parser and generator&quot;
+-
+-    def __init__(self, file, charInfo=1, validate=0,subfontIndex=0):
+-        &quot;&quot;&quot;Loads and parses a TrueType font file.
+-
+-        file can be a filename or a file object.  If validate is set to a false
+-        values, skips checksum validation.  This can save time, especially if
+-        the font is large.  See TTFontFile.extractInfo for more information.
+-        &quot;&quot;&quot;
+-        TTFontParser.__init__(self, file, validate=validate,subfontIndex=subfontIndex)
+-        self.extractInfo(charInfo)
+-
+-    def extractInfo(self, charInfo=1):
+-        &quot;&quot;&quot;
+-        Extract typographic information from the loaded font file.
+-
+-        The following attributes will be set::
+-        
+-            name         PostScript font name
+-            flags        Font flags
+-            ascent       Typographic ascender in 1/1000ths of a point
+-            descent      Typographic descender in 1/1000ths of a point
+-            capHeight    Cap height in 1/1000ths of a point (0 if not available)
+-            bbox         Glyph bounding box [l,t,r,b] in 1/1000ths of a point
+-            _bbox        Glyph bounding box [l,t,r,b] in unitsPerEm
+-            unitsPerEm   Glyph units per em
+-            italicAngle  Italic angle in degrees ccw
+-            stemV        stem weight in 1/1000ths of a point (approximate)
+-        
+-        If charInfo is true, the following will also be set::
+-        
+-            defaultWidth   default glyph width in 1/1000ths of a point
+-            charWidths     dictionary of character widths for every supported UCS character
+-                           code
+-        
+-        This will only work if the font has a Unicode cmap (platform 3,
+-        encoding 1, format 4 or platform 0 any encoding format 4).  Setting
+-        charInfo to false avoids this requirement
+-        
+-        &quot;&quot;&quot;
+-        # name - Naming table
+-        name_offset = self.seek_table(&quot;name&quot;)
+-        format = self.read_ushort()
+-        if format != 0:
+-            raise TTFError, &quot;Unknown name table format (%d)&quot; % format
+-        numRecords = self.read_ushort()
+-        string_data_offset = name_offset + self.read_ushort()
+-        names = {1:None,2:None,3:None,4:None,6:None}
+-        K = names.keys()
+-        nameCount = len(names)
+-        for i in xrange(numRecords):
+-            platformId = self.read_ushort()
+-            encodingId = self.read_ushort()
+-            languageId = self.read_ushort()
+-            nameId = self.read_ushort()
+-            length = self.read_ushort()
+-            offset = self.read_ushort()
+-            if nameId not in K: continue
+-            N = None
+-            if platformId == 3 and encodingId == 1 and languageId == 0x409: # Microsoft, Unicode, US English, PS Name
+-                opos = self._pos
+-                try:
+-                    self.seek(string_data_offset + offset)
+-                    if length % 2 != 0:
+-                        raise TTFError, &quot;PostScript name is UTF-16BE string of odd length&quot;
+-                    length /= 2
+-                    N = []
+-                    A = N.append
+-                    while length &gt; 0:
+-                        char = self.read_ushort()
+-                        A(chr(char))
+-                        length -= 1
+-                    N = ''.join(N)
+-                finally:
+-                    self._pos = opos
+-            elif platformId == 1 and encodingId == 0 and languageId == 0: # Macintosh, Roman, English, PS Name
+-                # According to OpenType spec, if PS name exists, it must exist
+-                # both in MS Unicode and Macintosh Roman formats.  Apparently,
+-                # you can find live TTF fonts which only have Macintosh format.
+-                N = self.get_chunk(string_data_offset + offset, length)
+-            if N and names[nameId]==None:
+-                names[nameId] = N
+-                nameCount -= 1
+-                if nameCount==0: break
+-        if names[6] is not None:
+-            psName = names[6].replace(&quot; &quot;, &quot;-&quot;)  #Dinu Gherman's fix for font names with spaces
+-        elif names[4] is not None:
+-            psName = names[4].replace(&quot; &quot;, &quot;-&quot;)
+-        # Fine, one last try before we bail.
+-        elif names[1] is not None:
+-            psName = names[1].replace(&quot; &quot;, &quot;-&quot;)
+-        else:
+-            psName = None
+-
+-        # Don't just assume, check for None since some shoddy fonts cause crashes here...
+-        if not psName:
+-            raise TTFError, &quot;Could not find PostScript font name&quot;
+-        for c in psName:
+-            oc = ord(c)
+-            if oc&gt;126 or c in ' [](){}&lt;&gt;/%':
+-                raise TTFError, &quot;psName=%r contains invalid character '%s' ie U+%04X&quot; % (psName,c,ord(c))
+-        self.name = psName
+-        self.familyName = names[1] or psName
+-        self.styleName = names[2] or 'Regular'
+-        self.fullName = names[4] or psName
+-        self.uniqueFontID = names[3] or psName
+-
+-        # head - Font header table
+-        self.seek_table(&quot;head&quot;)
+-        ver_maj, ver_min = self.read_ushort(), self.read_ushort()
+-        if ver_maj != 1:
+-            raise TTFError, 'Unknown head table version %d.%04x' % (ver_maj, ver_min)
+-        self.fontRevision = self.read_ushort(), self.read_ushort()
+-
+-        self.skip(4)
+-        magic = self.read_ulong()
+-        if magic != 0x5F0F3CF5:
+-            raise TTFError, 'Invalid head table magic %04x' % magic
+-        self.skip(2)
+-        self.unitsPerEm = unitsPerEm = self.read_ushort()
+-        scale = lambda x, unitsPerEm=unitsPerEm: x * 1000. / unitsPerEm
+-        self.skip(16)
+-        xMin = self.read_short()
+-        yMin = self.read_short()
+-        xMax = self.read_short()
+-        yMax = self.read_short()
+-        self.bbox = map(scale, [xMin, yMin, xMax, yMax])
+-        self.skip(3*2)
+-        indexToLocFormat = self.read_ushort()
+-        glyphDataFormat = self.read_ushort()
+-
+-        # OS/2 - OS/2 and Windows metrics table
+-        # (needs data from head table)
+-        if self.table.has_key(&quot;OS/2&quot;):
+-            self.seek_table(&quot;OS/2&quot;)
+-            version = self.read_ushort()
+-            self.skip(2)
+-            usWeightClass = self.read_ushort()
+-            self.skip(2)
+-            fsType = self.read_ushort()
+-            if fsType == 0x0002 or (fsType &amp; 0x0300) != 0:
+-                raise TTFError, 'Font does not allow subsetting/embedding (%04X)' % fsType
+-            self.skip(58)   #11*2 + 10 + 4*4 + 4 + 3*2
+-            sTypoAscender = self.read_short()
+-            sTypoDescender = self.read_short()
+-            self.ascent = scale(sTypoAscender)      # XXX: for some reason it needs to be multiplied by 1.24--1.28
+-            self.descent = scale(sTypoDescender)
+-
+-            if version &gt; 1:
+-                self.skip(16)   #3*2 + 2*4 + 2
+-                sCapHeight = self.read_short()
+-                self.capHeight = scale(sCapHeight)
+-            else:
+-                self.capHeight = self.ascent
+-        else:
+-            # Microsoft TTFs require an OS/2 table; Apple ones do not.  Try to
+-            # cope.  The data is not very important anyway.
+-            usWeightClass = 500
+-            self.ascent = scale(yMax)
+-            self.descent = scale(yMin)
+-            self.capHeight = self.ascent
+-
+-        # There's no way to get stemV from a TTF file short of analyzing actual outline data
+-        # This fuzzy formula is taken from pdflib sources, but we could just use 0 here
+-        self.stemV = 50 + int((usWeightClass / 65.0) ** 2)
+-
+-        # post - PostScript table
+-        # (needs data from OS/2 table)
+-        self.seek_table(&quot;post&quot;)
+-        ver_maj, ver_min = self.read_ushort(), self.read_ushort()
+-        if ver_maj not in (1, 2, 3, 4):
+-            # Adobe/MS documents 1, 2, 2.5, 3; Apple also has 4.
+-            # From Apple docs it seems that we do not need to care
+-            # about the exact version, so if you get this error, you can
+-            # try to remove this check altogether.
+-            raise TTFError, 'Unknown post table version %d.%04x' % (ver_maj, ver_min)
+-        self.italicAngle = self.read_short() + self.read_ushort() / 65536.0
+-        self.underlinePosition = self.read_short()
+-        self.underlineThickness = self.read_short()
+-        isFixedPitch = self.read_ulong()
+-
+-        self.flags = FF_SYMBOLIC        # All fonts that contain characters
+-                                        # outside the original Adobe character
+-                                        # set are considered &quot;symbolic&quot;.
+-        if self.italicAngle!= 0:
+-            self.flags = self.flags | FF_ITALIC
+-        if usWeightClass &gt;= 600:        # FW_REGULAR == 500, FW_SEMIBOLD == 600
+-            self.flags = self.flags | FF_FORCEBOLD
+-        if isFixedPitch:
+-            self.flags = self.flags | FF_FIXED
+-        # XXX: FF_SERIF?  FF_SCRIPT?  FF_ALLCAP?  FF_SMALLCAP?
+-
+-        # hhea - Horizontal header table
+-        self.seek_table(&quot;hhea&quot;)
+-        ver_maj, ver_min = self.read_ushort(), self.read_ushort()
+-        if ver_maj != 1:
+-            raise TTFError, 'Unknown hhea table version %d.%04x' % (ver_maj, ver_min)
+-        self.skip(28)
+-        metricDataFormat = self.read_ushort()
+-        if metricDataFormat != 0:
+-            raise TTFError, 'Unknown horizontal metric data format (%d)' % metricDataFormat
+-        numberOfHMetrics = self.read_ushort()
+-        if numberOfHMetrics == 0:
+-            raise TTFError, 'Number of horizontal metrics is 0'
+-
+-        # maxp - Maximum profile table
+-        self.seek_table(&quot;maxp&quot;)
+-        ver_maj, ver_min = self.read_ushort(), self.read_ushort()
+-        if ver_maj != 1:
+-            raise TTFError, 'Unknown maxp table version %d.%04x' % (ver_maj, ver_min)
+-        numGlyphs = self.read_ushort()
+-
+-        if not charInfo:
+-            self.charToGlyph = None
+-            self.defaultWidth = None
+-            self.charWidths = None
+-            return
+-
+-        if glyphDataFormat != 0:
+-            raise TTFError, 'Unknown glyph data format (%d)' % glyphDataFormat
+-
+-        # cmap - Character to glyph index mapping table
+-        cmap_offset = self.seek_table(&quot;cmap&quot;)
+-        self.skip(2)
+-        cmapTableCount = self.read_ushort()
+-        unicode_cmap_offset = None
+-        for n in xrange(cmapTableCount):
+-            platformID = self.read_ushort()
+-            encodingID = self.read_ushort()
+-            offset = self.read_ulong()
+-            if platformID == 3 and encodingID == 1: # Microsoft, Unicode
+-                format = self.get_ushort(cmap_offset + offset)
+-                if format == 4:
+-                    unicode_cmap_offset = cmap_offset + offset
+-                    break
+-            elif platformID == 0: # Unicode -- assume all encodings are compatible
+-                format = self.get_ushort(cmap_offset + offset)
+-                if format == 4:
+-                    unicode_cmap_offset = cmap_offset + offset
+-                    break
+-        if unicode_cmap_offset is None:
+-            raise TTFError, 'Font does not have cmap for Unicode (platform 3, encoding 1, format 4 or platform 0 any encoding format 4)'
+-        self.seek(unicode_cmap_offset + 2)
+-        length = self.read_ushort()
+-        limit = unicode_cmap_offset + length
+-        self.skip(2)
+-        segCount = self.read_ushort() / 2
+-        self.skip(6)
+-        endCount = map(lambda x, self=self: self.read_ushort(), xrange(segCount))
+-        self.skip(2)
+-        startCount = map(lambda x, self=self: self.read_ushort(), xrange(segCount))
+-        idDelta = map(lambda x, self=self: self.read_short(), xrange(segCount))
+-        idRangeOffset_start = self._pos
+-        idRangeOffset = map(lambda x, self=self: self.read_ushort(), xrange(segCount))
+-
+-        # Now it gets tricky.
+-        glyphToChar = {}
+-        charToGlyph = {}
+-        for n in xrange(segCount):
+-            for unichar in xrange(startCount[n], endCount[n] + 1):
+-                if idRangeOffset[n] == 0:
+-                    glyph = (unichar + idDelta[n]) &amp; 0xFFFF
+-                else:
+-                    offset = (unichar - startCount[n]) * 2 + idRangeOffset[n]
+-                    offset = idRangeOffset_start + 2 * n + offset
+-                    if offset &gt;= limit:
+-                        # workaround for broken fonts (like Thryomanes)
+-                        glyph = 0
+-                    else:
+-                        glyph = self.get_ushort(offset)
+-                        if glyph != 0:
+-                            glyph = (glyph + idDelta[n]) &amp; 0xFFFF
+-                charToGlyph[unichar] = glyph
+-                if glyphToChar.has_key(glyph):
+-                    glyphToChar[glyph].append(unichar)
+-                else:
+-                    glyphToChar[glyph] = [unichar]
+-        self.charToGlyph = charToGlyph
+-
+-        # hmtx - Horizontal metrics table
+-        # (needs data from hhea, maxp, and cmap tables)
+-        self.seek_table(&quot;hmtx&quot;)
+-        aw = None
+-        self.charWidths = {}
+-        self.hmetrics = []
+-        for glyph in xrange(numberOfHMetrics):
+-            # advance width and left side bearing.  lsb is actually signed
+-            # short, but we don't need it anyway (except for subsetting)
+-            aw, lsb = self.read_ushort(), self.read_ushort()
+-            self.hmetrics.append((aw, lsb))
+-            aw = scale(aw)
+-            if glyph == 0:
+-                self.defaultWidth = aw
+-            if glyphToChar.has_key(glyph):
+-                for char in glyphToChar[glyph]:
+-                    self.charWidths[char] = aw
+-        for glyph in xrange(numberOfHMetrics, numGlyphs):
+-            # the rest of the table only lists advance left side bearings.
+-            # so we reuse aw set by the last iteration of the previous loop
+-            lsb = self.read_ushort()
+-            self.hmetrics.append((aw, lsb))
+-            if glyphToChar.has_key(glyph):
+-                for char in glyphToChar[glyph]:
+-                    self.charWidths[char] = aw
+-
+-        # loca - Index to location
+-        self.seek_table('loca')
+-        self.glyphPos = []
+-        if indexToLocFormat == 0:
+-            for n in xrange(numGlyphs + 1):
+-                self.glyphPos.append(self.read_ushort() &lt;&lt; 1)
+-        elif indexToLocFormat == 1:
+-            for n in xrange(numGlyphs + 1):
+-                self.glyphPos.append(self.read_ulong())
+-        else:
+-            raise TTFError, 'Unknown location table format (%d)' % indexToLocFormat
+-
+-    # Subsetting
+-
+-    def makeSubset(self, subset):
+-        &quot;&quot;&quot;Create a subset of a TrueType font&quot;&quot;&quot;
+-        output = TTFontMaker()
+-
+-        # Build a mapping of glyphs in the subset to glyph numbers in
+-        # the original font.  Also build a mapping of UCS codes to
+-        # glyph values in the new font.
+-
+-        # Start with 0 -&gt; 0: &quot;missing character&quot;
+-        glyphMap = [0]                  # new glyph index -&gt; old glyph index
+-        glyphSet = {0:0}                # old glyph index -&gt; new glyph index
+-        codeToGlyph = {}                # unicode -&gt; new glyph index
+-        for code in subset:
+-            if self.charToGlyph.has_key(code):
+-                originalGlyphIdx = self.charToGlyph[code]
+-            else:
+-                originalGlyphIdx = 0
+-            if not glyphSet.has_key(originalGlyphIdx):
+-                glyphSet[originalGlyphIdx] = len(glyphMap)
+-                glyphMap.append(originalGlyphIdx)
+-            codeToGlyph[code] = glyphSet[originalGlyphIdx]
+-
+-        # Also include glyphs that are parts of composite glyphs
+-        start = self.get_table_pos('glyf')[0]
+-        n = 0
+-        while n &lt; len(glyphMap):
+-            originalGlyphIdx = glyphMap[n]
+-            glyphPos = self.glyphPos[originalGlyphIdx]
+-            glyphLen = self.glyphPos[originalGlyphIdx + 1] - glyphPos
+-            n += 1
+-            if not glyphLen: continue
+-            self.seek(start + glyphPos)
+-            numberOfContours = self.read_short()
+-            if numberOfContours &lt; 0:
+-                # composite glyph
+-                self.skip(8)
+-                flags = GF_MORE_COMPONENTS
+-                while flags &amp; GF_MORE_COMPONENTS:
+-                    flags = self.read_ushort()
+-                    glyphIdx = self.read_ushort()
+-                    if not glyphSet.has_key(glyphIdx):
+-                        glyphSet[glyphIdx] = len(glyphMap)
+-                        glyphMap.append(glyphIdx)
+-                    if flags &amp; GF_ARG_1_AND_2_ARE_WORDS:
+-                        self.skip(4)
+-                    else:
+-                        self.skip(2)
+-                    if flags &amp; GF_WE_HAVE_A_SCALE:
+-                        self.skip(2)
+-                    elif flags &amp; GF_WE_HAVE_AN_X_AND_Y_SCALE:
+-                        self.skip(4)
+-                    elif flags &amp; GF_WE_HAVE_A_TWO_BY_TWO:
+-                        self.skip(8)
+-
+-        numGlyphs = n = len(glyphMap)
+-        while n &gt; 1 and self.hmetrics[n][0] == self.hmetrics[n - 1][0]:
+-            n -= 1
+-        numberOfHMetrics = n
+-
+-        # The following tables are simply copied from the original
+-        for tag in ('name', 'OS/2', 'cvt ', 'fpgm', 'prep'):
+-            try:
+-                output.add(tag, self.get_table(tag))
+-            except KeyError:
+-                # Apparently some of the tables are optional (cvt, fpgm, prep).
+-                # The lack of the required ones (name, OS/2) would have already
+-                # been caught before.
+-                pass
+-
+-        # post - PostScript
+-        post = &quot;\x00\x03\x00\x00&quot; + self.get_table('post')[4:16] + &quot;\x00&quot; * 16
+-        output.add('post', post)
+-
+-        # hhea - Horizontal Header
+-        hhea = self.get_table('hhea')
+-        hhea = _set_ushort(hhea, 34, numberOfHMetrics)
+-        output.add('hhea', hhea)
+-
+-        # maxp - Maximum Profile
+-        maxp = self.get_table('maxp')
+-        maxp = _set_ushort(maxp, 4, numGlyphs)
+-        output.add('maxp', maxp)
+-
+-        # cmap - Character to glyph mapping
+-        # XXX maybe use format 0 if possible, not 6?
+-        entryCount = len(subset)
+-        length = 10 + entryCount * 2
+-        cmap = [0, 1,           # version, number of tables
+-                1, 0, 0,12,     # platform, encoding, offset (hi,lo)
+-                6, length, 0,   # format, length, language
+-                0,
+-                entryCount] + \
+-               map(codeToGlyph.get, subset)
+-        cmap = apply(pack, [&quot;&gt;%dH&quot; % len(cmap)] + cmap)
+-        output.add('cmap', cmap)
+-
+-        # hmtx - Horizontal Metrics
+-        hmtx = []
+-        for n in xrange(numGlyphs):
+-            originalGlyphIdx = glyphMap[n]
+-            aw, lsb = self.hmetrics[originalGlyphIdx]
+-            if n &lt; numberOfHMetrics:
+-                hmtx.append(int(aw))
+-            hmtx.append(int(lsb))
+-        hmtx = apply(pack, [&quot;&gt;%dH&quot; % len(hmtx)] + hmtx)
+-        output.add('hmtx', hmtx)
+-
+-        # glyf - Glyph data
+-        glyphData = self.get_table('glyf')
+-        offsets = []
+-        glyf = []
+-        pos = 0
+-        for n in xrange(numGlyphs):
+-            offsets.append(pos)
+-            originalGlyphIdx = glyphMap[n]
+-            glyphPos = self.glyphPos[originalGlyphIdx]
+-            glyphLen = self.glyphPos[originalGlyphIdx + 1] - glyphPos
+-            data = glyphData[glyphPos:glyphPos+glyphLen]
+-            # Fix references in composite glyphs
+-            if glyphLen &gt; 2 and unpack(&quot;&gt;h&quot;, data[:2])[0] &lt; 0:
+-                # composite glyph
+-                pos_in_glyph = 10
+-                flags = GF_MORE_COMPONENTS
+-                while flags &amp; GF_MORE_COMPONENTS:
+-                    flags = unpack(&quot;&gt;H&quot;, data[pos_in_glyph:pos_in_glyph+2])[0]
+-                    glyphIdx = unpack(&quot;&gt;H&quot;, data[pos_in_glyph+2:pos_in_glyph+4])[0]
+-                    data = _set_ushort(data, pos_in_glyph + 2, glyphSet[glyphIdx])
+-                    pos_in_glyph = pos_in_glyph + 4
+-                    if flags &amp; GF_ARG_1_AND_2_ARE_WORDS:
+-                        pos_in_glyph = pos_in_glyph + 4
+-                    else:
+-                        pos_in_glyph = pos_in_glyph + 2
+-                    if flags &amp; GF_WE_HAVE_A_SCALE:
+-                        pos_in_glyph = pos_in_glyph + 2
+-                    elif flags &amp; GF_WE_HAVE_AN_X_AND_Y_SCALE:
+-                        pos_in_glyph = pos_in_glyph + 4
+-                    elif flags &amp; GF_WE_HAVE_A_TWO_BY_TWO:
+-                        pos_in_glyph = pos_in_glyph + 8
+-            glyf.append(data)
+-            pos = pos + glyphLen
+-            if pos % 4 != 0:
+-                padding = 4 - pos % 4
+-                glyf.append('\0' * padding)
+-                pos = pos + padding
+-        offsets.append(pos)
+-        output.add('glyf', string.join(glyf, &quot;&quot;))
+-
+-        # loca - Index to location
+-        loca = []
+-        if (pos + 1) &gt;&gt; 1 &gt; 0xFFFF:
+-            indexToLocFormat = 1        # long format
+-            for offset in offsets:
+-                loca.append(offset)
+-            loca = apply(pack, [&quot;&gt;%dL&quot; % len(loca)] + loca)
+-        else:
+-            indexToLocFormat = 0        # short format
+-            for offset in offsets:
+-                loca.append(offset &gt;&gt; 1)
+-            loca = apply(pack, [&quot;&gt;%dH&quot; % len(loca)] + loca)
+-        output.add('loca', loca)
+-
+-        # head - Font header
+-        head = self.get_table('head')
+-        head = _set_ushort(head, 50, indexToLocFormat)
+-        output.add('head', head)
+-
+-        return output.makeStream()
+-
+-
+-#
+-# TrueType font embedding
+-#
+-
+-# PDF font flags (see PDF Reference Guide table 5.19)
+-FF_FIXED        = 1 &lt;&lt;  1-1
+-FF_SERIF        = 1 &lt;&lt;  2-1
+-FF_SYMBOLIC     = 1 &lt;&lt;  3-1
+-FF_SCRIPT       = 1 &lt;&lt;  4-1
+-FF_NONSYMBOLIC  = 1 &lt;&lt;  6-1
+-FF_ITALIC       = 1 &lt;&lt;  7-1
+-FF_ALLCAP       = 1 &lt;&lt; 17-1
+-FF_SMALLCAP     = 1 &lt;&lt; 18-1
+-FF_FORCEBOLD    = 1 &lt;&lt; 19-1
+-
+-class TTFontFace(TTFontFile, pdfmetrics.TypeFace):
+-    &quot;&quot;&quot;TrueType typeface.
+-
+-    Conceptually similar to a single byte typeface, but the glyphs are
+-    identified by UCS character codes instead of glyph names.&quot;&quot;&quot;
+-
+-    def __init__(self, filename, validate=0, subfontIndex=0):
+-        &quot;Loads a TrueType font from filename.&quot;
+-        pdfmetrics.TypeFace.__init__(self, None)
+-        TTFontFile.__init__(self, filename, validate=validate, subfontIndex=subfontIndex)
+-
+-    def getCharWidth(self, code):
+-        &quot;Returns the width of character U+&lt;code&gt;&quot;
+-        return self.charWidths.get(code, self.defaultWidth)
+-
+-    def addSubsetObjects(self, doc, fontname, subset):
+-        &quot;&quot;&quot;Generate a TrueType font subset and add it to the PDF document.
+-        Returns a PDFReference to the new FontDescriptor object.&quot;&quot;&quot;
+-
+-        fontFile = pdfdoc.PDFStream()
+-        fontFile.content = self.makeSubset(subset)
+-        fontFile.dictionary['Length1'] = len(fontFile.content)
+-        if doc.compression:
+-            fontFile.filters = [pdfdoc.PDFZCompress]
+-        fontFileRef = doc.Reference(fontFile, 'fontFile:%s(%s)' % (self.filename, fontname))
+-
+-        flags = self.flags &amp; ~ FF_NONSYMBOLIC
+-        flags = flags | FF_SYMBOLIC
+-
+-        fontDescriptor = pdfdoc.PDFDictionary({
+-            'Type': '/FontDescriptor',
+-            'Ascent': self.ascent,
+-            'CapHeight': self.capHeight,
+-            'Descent': self.descent,
+-            'Flags': flags,
+-            'FontBBox': pdfdoc.PDFArray(self.bbox),
+-            'FontName': pdfdoc.PDFName(fontname),
+-            'ItalicAngle': self.italicAngle,
+-            'StemV': self.stemV,
+-            'FontFile2': fontFileRef,
+-            })
+-        return doc.Reference(fontDescriptor, 'fontDescriptor:' + fontname)
+-
+-class TTEncoding:
+-    &quot;&quot;&quot;Encoding for TrueType fonts (always UTF-8).
+-
+-    TTEncoding does not directly participate in PDF object creation, since
+-    we need a number of different 8-bit encodings for every generated font
+-    subset.  TTFont itself cares about that.&quot;&quot;&quot;
+-
+-    def __init__(self):
+-        self.name = &quot;UTF-8&quot;
+-
+-class TTFont:
+-    &quot;&quot;&quot;Represents a TrueType font.
+-
+-    Its encoding is always UTF-8.
+-
+-    Note: you cannot use the same TTFont object for different documents
+-    at the same time.
+-
+-    Example of usage:
+-
+-        font = ttfonts.TTFont('PostScriptFontName', '/path/to/font.ttf')
+-        pdfmetrics.registerFont(font)
+-
+-        canvas.setFont('PostScriptFontName', size)
+-        canvas.drawString(x, y, &quot;Some text encoded in UTF-8&quot;)
+-    &quot;&quot;&quot;
+-    class State:
+-        namePrefix = 'F'
+-        def __init__(self,asciiReadable=1):
+-            self.assignments = {}
+-            self.nextCode = 0
+-            self.internalName = None
+-            self.frozen = 0
+-
+-            if asciiReadable:
+-                # Let's add the first 128 unicodes to the 0th subset, so ' '
+-                # always has code 32 (for word spacing to work) and the ASCII
+-                # output is readable
+-                subset0 = range(128)
+-                self.subsets = [subset0]
+-                for n in subset0:
+-                    self.assignments[n] = n
+-                self.nextCode = 128
+-            else:
+-                self.subsets = [[32]*33]
+-                self.assignments[32] = 32
+-
+-    _multiByte = 1      # We want our own stringwidth
+-    _dynamicFont = 1    # We want dynamic subsetting
+-
+-    def __init__(self, name, filename, validate=0, subfontIndex=0,asciiReadable=1):
+-        &quot;&quot;&quot;Loads a TrueType font from filename.
+-
+-        If validate is set to a false values, skips checksum validation.  This
+-        can save time, especially if the font is large.
+-        &quot;&quot;&quot;
+-        self.fontName = name
+-        self.face = TTFontFace(filename, validate=validate, subfontIndex=subfontIndex)
+-        self.encoding = TTEncoding()
+-        from weakref import WeakKeyDictionary
+-        self.state = WeakKeyDictionary()
+-        self._asciiReadable = asciiReadable
+-
+-    def _py_stringWidth(self, text, size, encoding='utf-8'):
+-        &quot;Calculate text width&quot;
+-        if not isinstance(text,unicode):
+-            text = unicode(text, encoding or 'utf-8')   # encoding defaults to utf-8
+-        g = self.face.charWidths.get
+-        dw = self.face.defaultWidth
+-        return 0.001*size*sum([g(ord(u),dw) for u in text])
+-    stringWidth = _py_stringWidth
+-
+-    def _assignState(self,doc,asciiReadable=None,namePrefix=None):
+-        '''convenience function for those wishing to roll their own state properties'''
+-        if asciiReadable is None:
+-            asciiReadable = self._asciiReadable
+-        try:
+-            state = self.state[doc]
+-        except KeyError:
+-            state = self.state[doc] = TTFont.State(asciiReadable)
+-            if namePrefix is not None:
+-                state.namePrefix = namePrefix
+-        return state
+-
+-    def splitString(self, text, doc, encoding='utf-8'):
+-        &quot;&quot;&quot;Splits text into a number of chunks, each of which belongs to a
+-        single subset.  Returns a list of tuples (subset, string).  Use subset
+-        numbers with getSubsetInternalName.  Doc is needed for distinguishing
+-        subsets when building different documents at the same time.&quot;&quot;&quot;
+-        asciiReadable = self._asciiReadable
+-        try: state = self.state[doc]
+-        except KeyError: state = self.state[doc] = TTFont.State(asciiReadable)
+-        curSet = -1
+-        cur = []
+-        results = []
+-        if not isinstance(text,unicode):
+-            text = unicode(text, encoding or 'utf-8')   # encoding defaults to utf-8
+-        assignments = state.assignments
+-        subsets = state.subsets
+-        for code in map(ord,text):
+-            if assignments.has_key(code):
+-                n = assignments[code]
+-            else:
+-                if state.frozen:
+-                    raise pdfdoc.PDFError, &quot;Font %s is already frozen, cannot add new character U+%04X&quot; % (self.fontName, code)
+-                n = state.nextCode
+-                if n&amp;0xFF==32:
+-                    # make code 32 always be a space character
+-                    if n!=32: subsets[n &gt;&gt; 8].append(32)
+-                    state.nextCode += 1
+-                    n = state.nextCode
+-                state.nextCode += 1
+-                assignments[code] = n
+-                if n&gt;32:
+-                    if not(n&amp;0xFF): subsets.append([])
+-                    subsets[n &gt;&gt; 8].append(code)
+-                else:
+-                    subsets[0][n] = code
+-            if (n &gt;&gt; 8) != curSet:
+-                if cur:
+-                    results.append((curSet, ''.join(map(chr,cur))))
+-                curSet = (n &gt;&gt; 8)
+-                cur = []
+-            cur.append(n &amp; 0xFF)
+-        if cur:
+-            results.append((curSet,''.join(map(chr,cur))))
+-        return results
+-
+-    def getSubsetInternalName(self, subset, doc):
+-        &quot;&quot;&quot;Returns the name of a PDF Font object corresponding to a given
+-        subset of this dynamic font.  Use this function instead of
+-        PDFDocument.getInternalFontName.&quot;&quot;&quot;
+-        try: state = self.state[doc]
+-        except KeyError: state = self.state[doc] = TTFont.State(self._asciiReadable)
+-        if subset &lt; 0 or subset &gt;= len(state.subsets):
+-            raise IndexError, 'Subset %d does not exist in font %s' % (subset, self.fontName)
+-        if state.internalName is None:
+-            state.internalName = state.namePrefix +`(len(doc.fontMapping) + 1)`
+-            doc.fontMapping[self.fontName] = '/' + state.internalName
+-            doc.delayedFonts.append(self)
+-        return '/%s+%d' % (state.internalName, subset)
+-
+-    def addObjects(self, doc):
+-        &quot;&quot;&quot;Makes  one or more PDF objects to be added to the document.  The
+-        caller supplies the internal name to be used (typically F1, F2, ... in
+-        sequence).
+-
+-        This method creates a number of Font and FontDescriptor objects.  Every
+-        FontDescriptor is a (no more than) 256 character subset of the original
+-        TrueType font.&quot;&quot;&quot;
+-        try: state = self.state[doc]
+-        except KeyError: state = self.state[doc] = TTFont.State(self._asciiReadable)
+-        state.frozen = 1
+-        for n,subset in enumerate(state.subsets):
+-            internalName = self.getSubsetInternalName(n, doc)[1:]
+-            baseFontName = &quot;%s+%s%s&quot; % (SUBSETN(n),self.face.name,self.face.subfontNameX)
+-
+-            pdfFont = pdfdoc.PDFTrueTypeFont()
+-            pdfFont.__Comment__ = 'Font %s subset %d' % (self.fontName, n)
+-            pdfFont.Name = internalName
+-            pdfFont.BaseFont = baseFontName
+-
+-            pdfFont.FirstChar = 0
+-            pdfFont.LastChar = len(subset) - 1
+-
+-            widths = map(self.face.getCharWidth, subset)
+-            pdfFont.Widths = pdfdoc.PDFArray(widths)
+-
+-            cmapStream = pdfdoc.PDFStream()
+-            cmapStream.content = makeToUnicodeCMap(baseFontName, subset)
+-            if doc.compression:
+-                cmapStream.filters = [pdfdoc.PDFZCompress]
+-            pdfFont.ToUnicode = doc.Reference(cmapStream, 'toUnicodeCMap:' + baseFontName)
+-
+-            pdfFont.FontDescriptor = self.face.addSubsetObjects(doc, baseFontName, subset)
+-
+-            # link it in
+-            ref = doc.Reference(pdfFont, internalName)
+-            fontDict = doc.idToObject['BasicFonts'].dict
+-            fontDict[internalName] = pdfFont
+-        del self.state[doc]
+-try:
+-    from _rl_accel import _instanceStringWidthTTF
+-    import new
+-    TTFont.stringWidth = new.instancemethod(_instanceStringWidthTTF,None,TTFont)
+-except ImportError:
+-    pass
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007512.html">[BulmaGés] [Gitorious] Activity: mtelleria pushed	6 commits to maste...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007514.html">[BulmaGés] [Gitorious] Activity: mtelleria created	branch gbp-debian...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7513">[ fecha ]</a>
+              <a href="thread.html#7513">[ hilo ]</a>
+              <a href="subject.html#7513">[ asunto ]</a>
+              <a href="author.html#7513">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

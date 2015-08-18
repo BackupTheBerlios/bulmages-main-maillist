@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][Git]Project bulmages at BerliOS branch, master, updated. f02c992ffc14ab33150a361e4a754362c88dcd5d
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BGit%3D5DProject_bulm%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fages_at_BerliOS_branch%3D2C_master%3D2C_updated%3D2E_f02c992ffc1%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F4ab33150a361e4a754362c88dcd5d%3F%3D&In-Reply-To=%3C20110512185948.GB5709%40upf.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005783.html">
+   <LINK REL="Next"  HREF="005785.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][Git]Project bulmages at BerliOS branch, master, updated. f02c992ffc14ab33150a361e4a754362c88dcd5d </H1>
+    <B>Walter Garcia-Fontes</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BGit%3D5DProject_bulm%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fages_at_BerliOS_branch%3D2C_master%3D2C_updated%3D2E_f02c992ffc1%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F4ab33150a361e4a754362c88dcd5d%3F%3D&In-Reply-To=%3C20110512185948.GB5709%40upf.edu%3E"
+       TITLE="[BulmaGés][Git]Project bulmages at BerliOS branch, master, updated. f02c992ffc14ab33150a361e4a754362c88dcd5d">walter.garcia en upf.edu
+       </A><BR>
+    <I>Jue Mayo 12 20:59:48 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="005783.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. f02c992ffc14ab33150a361e4a754362c88dcd5d
+</A></li>
+        <LI>Próximo mensaje: <A HREF="005785.html">[BulmaGés][Git]Project bulmages at BerliOS branch, master, updated. f02c992ffc14ab33150a361e4a754362c88dcd5d
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5784">[ fecha ]</a>
+              <a href="thread.html#5784">[ hilo ]</a>
+              <a href="subject.html#5784">[ asunto ]</a>
+              <a href="author.html#5784">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Buen cambio este, estando en gnome fallaban algunas cosas si no estaba
+instalado konqueror.
+
+Walter
+
+* mph2 at BerliOS [12/05/11 19:34]:
+&gt;<i> 
+</I>&gt;<i> The branch, master has been updated
+</I>&gt;<i>        via  f02c992ffc14ab33150a361e4a754362c88dcd5d (commit)
+</I>&gt;<i>       from  e037649d1503511cab0a611d9efe6a41cecd8176 (commit)
+</I>&gt;<i> 
+</I>&gt;<i> Nuevas revisiones:
+</I>&gt;<i> 
+</I>&gt;<i> - Log -----------------------------------------------------------------
+</I>&gt;<i> commit f02c992ffc14ab33150a361e4a754362c88dcd5d
+</I>&gt;<i> Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+</I>&gt;<i> Date:   Thu May 12 19:06:38 2011 +0200
+</I>&gt;<i> 
+</I>&gt;<i>     Cambio llamadas a system(konqueror `ruta al archivo o url `) por lo aconsejado seg?n QT.
+</I>&gt;<i>     
+</I>&gt;<i>     No es correcto hacer llamadas a sytem(konqueror), cuando no sabemos ni
+</I>&gt;<i>     el sistema que ejecutamos, y mucho menos si esta instalado este
+</I>&gt;<i>     navegador.
+</I>&gt;<i>     
+</I>&gt;<i>     El sistema ahora implementado, permite hacer llamadas al navegador por
+</I>&gt;<i>     defecto del usuario, independientemente del sistema operativo.
+</I>&gt;<i>     
+</I>&gt;<i>     Sigue esta l?gica:
+</I>&gt;<i>      #include &lt;QDesktopServices&gt;
+</I>&gt;<i>      #include &lt;QUrl&gt;
+</I>&gt;<i>     QDesktopServices::openUrl(QUrl(&quot;RUTA&quot;, QUrl::TolerantMode))
+</I>&gt;<i>     
+</I>&gt;<i>     Funciona bajo GNU/Linux Maemo/Meego/Moblin Linux, Windows XP,Vista,7 y MacOsX, etc...
+</I>&gt;<i>     Proximamente con la inclusi?n de Android en QT4.8 tambi?n deber?a funcionar.
+</I>&gt;<i>     
+</I>&gt;<i>     *********************************
+</I>&gt;<i>     ? Daniel Ripoll
+</I>&gt;<i>     *********************************
+</I>&gt;<i>     ?          Todo-Redes
+</I>&gt;<i>     ?        C/.Begonia, 12
+</I>&gt;<i>     ?   07010 Palma de Mallorca
+</I>&gt;<i>     ?      Tel: +34-971499071
+</I>&gt;<i>     ?   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+</I>&gt;<i>     ?  comercial(en)todo-redes.com
+</I>&gt;<i>     *********************************
+</I>&gt;<i> 
+</I>&gt;<i> -----------------------------------------------------------------------
+</I>&gt;<i> 
+</I>&gt;<i> Resumen de cambios:
+</I>&gt;<i>  .../pluginbc_documentoadjunto/adocumental.cpp      |    8 ++++++--
+</I>&gt;<i>  bulmages/bulmacont/src/bcbulmacont.cpp             |    5 ++++-
+</I>&gt;<i>  bulmages/bulmafact/src/bfbulmafact.cpp             |    6 +++++-
+</I>&gt;<i>  .../plugins/pluginbl_attachdocument/archmenu.cpp   |    8 ++++++--
+</I>&gt;<i>  4 files changed, 21 insertions(+), 6 deletions(-)
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+
+-- 
+Walter Garcia-Fontes
+mailto: <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">walter.garcia en upf.edu</A> - <A HREF="http://puna.upf.edu">http://puna.upf.edu</A>
+Departament d'Economia i Empresa - <A HREF="http://www.econ.upf.edu">http://www.econ.upf.edu</A>
+Universitat Pompeu Fabra
+Ramon Trias Fargas 25-27, 08005 Barcelona, Spain
+Tel. +34 93 542 2722 - Fax. +34 93 542 1746
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="005783.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. f02c992ffc14ab33150a361e4a754362c88dcd5d
+</A></li>
+	<LI>Próximo mensaje: <A HREF="005785.html">[BulmaGés][Git]Project bulmages at BerliOS branch, master, updated. f02c992ffc14ab33150a361e4a754362c88dcd5d
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5784">[ fecha ]</a>
+              <a href="thread.html#5784">[ hilo ]</a>
+              <a href="subject.html#5784">[ asunto ]</a>
+              <a href="author.html#5784">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

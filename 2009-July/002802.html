@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] Sobre los plugins
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Sobre%20los%20plugins&In-Reply-To=%3C200907221754.14603.pedro.lopez.cabanillas%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002805.html">
+   <LINK REL="Next"  HREF="002803.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] Sobre los plugins </H1>
+    <B>Pedro Lopez-Cabanillas</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Sobre%20los%20plugins&In-Reply-To=%3C200907221754.14603.pedro.lopez.cabanillas%40gmail.com%3E"
+       TITLE="[BulmaGés] Sobre los plugins">pedro.lopez.cabanillas en gmail.com
+       </A><BR>
+    <I>Mie Jul 22 17:54:14 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002805.html">[BulmaGés]Detección de cambios en campos QPlainTextEdit
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002803.html">[BulmaGés]Sobre los plugins
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2802">[ fecha ]</a>
+              <a href="thread.html#2802">[ hilo ]</a>
+              <a href="subject.html#2802">[ asunto ]</a>
+              <a href="author.html#2802">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola,
+
+Los plugins están compilados ahora mismo como shared libraries, con sus 
+atributos SONAME, version y symlinks. Esto no es necesario, ya que los 
+plugins se cargan con QLibrary::load() y por otra parte esta política obliga 
+a empaquetarlos en formato RPM con una serie de paquetes -devel innecesarios. 
+Por este motivo, propongo un cambio en los scripts de CMake. En vez de:
+
+	add_library(${plugin} SHARED ${plugin_SRC} ${plugin_MOC_SRCS}
+        	${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
+
+	set_target_properties( ${plugin} PROPERTIES
+	  SOVERSION &quot;${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}&quot;
+	  VERSION &quot;${BULMAGES_VERSION}&quot;)
+
+Quedarían de esta forma:
+
+	add_library(${plugin} MODULE ${plugin_SRC} ${plugin_MOC_SRCS}
+        	${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
+
+	#set_target_properties( ${plugin} PROPERTIES
+	#  SOVERSION &quot;${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}&quot;
+	#  VERSION &quot;${BULMAGES_VERSION}&quot;)
+
+Esto generaría por cada plugin solamente un archivo .so sin ningun enlace 
+simbólico. Una mejora adicional sería evitar el prefijo &quot;lib&quot; en todos los 
+plugins, para lo cual se puede hacer a nivel global:
+
+	SET(CMAKE_SHARED_MODULE_PREFIX &quot;&quot;)
+  
+Pero esto obligaría a modificar en la base de datos la nomenclatura de los 
+plugins, así como en la actualización de instalaciones de los usuarios. La 
+edición masiva de los CMakeLists.txt puedo hacerla fácilmente con un script.
+
+¿Opiniones?
+
+Saludos,
+Pedro
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002805.html">[BulmaGés]Detección de cambios en campos QPlainTextEdit
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002803.html">[BulmaGés]Sobre los plugins
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2802">[ fecha ]</a>
+              <a href="thread.html#2802">[ hilo ]</a>
+              <a href="subject.html#2802">[ asunto ]</a>
+              <a href="author.html#2802">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

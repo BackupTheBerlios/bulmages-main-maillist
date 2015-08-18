@@ -1,0 +1,194 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]vida sana i SQL sà
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fvida_sana_i_SQL_s%3DE0%3F%3D&In-Reply-To=%3C200906262305.32460.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002538.html">
+   <LINK REL="Next"  HREF="002543.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]vida sana i SQL sà </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fvida_sana_i_SQL_s%3DE0%3F%3D&In-Reply-To=%3C200906262305.32460.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]vida sana i SQL sà">tborras en conetxia.com
+       </A><BR>
+    <I>Vie Jun 26 23:05:32 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002538.html">[BulmaGés]vida sana i SQL sà
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002543.html">[BulmaGés]vida sana i SQL sà
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2541">[ fecha ]</a>
+              <a href="thread.html#2541">[ hilo ]</a>
+              <a href="subject.html#2541">[ asunto ]</a>
+              <a href="author.html#2541">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bones
+
+Tens raó.
+Tens més raó que un sant.
+
+Me pots pegar clotellada si a partir d'ara no faig cas. (Pero no molt forta si 
+us plau).
+
+&gt;<i> &quot;Total que m'he emprenyat. I quan m'emprenyo pico codi i escric correus.&quot;
+</I>
+PD: Tens un punt maco quan t'emprenyes.
+
+Salut
+
+El Friday 26 June 2009 22:54:30 Xavi Drudis Ferran escribió:
+&gt;<i> Estic una mica de tip d'errors per tot arreu amb SQL que concatena de
+</I>&gt;<i> qualsevol manera l'entrada de l'usuari (l'últim és aquest dels
+</I>&gt;<i> apòstrofs al codi d'article que ha arreglat el Tomeu).
+</I>&gt;<i>
+</I>&gt;<i> És un mal costum perquè un usuari pot entrar qualsevol cosa i si entra
+</I>&gt;<i> un apòstrof (però hi pot haver altres casos, no sé, contrabarres, o
+</I>&gt;<i> text en un camp numèric o similars) va i peta el programa per error
+</I>&gt;<i> sintàctic a l'SQL. És molt frustrant per a l'usuari perquè pot perdre
+</I>&gt;<i> dades sense cap avís previ i ha d'esperar a tornar a engegar
+</I>&gt;<i> l'aplicació, etc., sense haver fet res mal fet.  I és frustrant per
+</I>&gt;<i> qui vé darera a mirar el codi i es troba que no ha de corregir una
+</I>&gt;<i> casuísitica rebuscada que no s'havia previst, o afegir una
+</I>&gt;<i> funcionalitat o optimitzar alguna cosa, sinó que ha de fet neteja de
+</I>&gt;<i> codi matusser.
+</I>&gt;<i>
+</I>&gt;<i> Total que m'he emprenyat. I quan m'emprenyo pico codi i escric correus.
+</I>&gt;<i>
+</I>&gt;<i> A partir d'ara hi ha un mètode load a BlPostgreSqlClient que accepta
+</I>&gt;<i> una sentència SQL amb pàrametres ($1, $2, $3...) i entre 0 i 20 valors
+</I>&gt;<i> QString dels paràmetres. En casos senzills, que són el 95% picar SQL
+</I>&gt;<i> correcte entri el que entri l'usuari és tan fàcil com un printf, i en
+</I>&gt;<i> casos més complicats es pot usar el loadQuery amb un array de valors o
+</I>&gt;<i> el sanearCadena.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Codi malsà (que decreto prohibit sota pena d'estirada d'orelles virtual):
+</I>&gt;<i>
+</I>&gt;<i> rs = o-&gt;mainCompany()-&gt;loadQuery(&quot;SELECT columna, '&quot;+nom+&quot;' as nomcercat,
+</I>&gt;<i> '&quot;+coment+&quot;' as comentari FROM taula WHERE nom = '&quot;+nom+&quot;' &quot;)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Codi més senzill, més net, més curt, més sà, més assenyat, tan fàcil
+</I>&gt;<i> com un printf, més segur i que no provoca petades espontànies de
+</I>&gt;<i> l'aplicació:
+</I>&gt;<i>
+</I>&gt;<i> rs = o-&gt;mainCompany()-&gt;load(&quot;SELECT columna, $1 as nomcercat, $2 as
+</I>&gt;<i> comentari FROM taula WHERE nom = $1&quot;,nom,coment)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Les alternatives també correctes però més complicades serien :
+</I>&gt;<i>
+</I>&gt;<i> rs = o-&gt;mainCompany()-&gt;loadQuery(&quot;SELECT columna,
+</I>&gt;<i> '&quot;+o-&gt;mainCompany()-&gt;sanearCadena(nom)+&quot;' as nomcercat, '&quot;
+</I>&gt;<i> +o-&gt;mainCompany()-&gt;sanearCadena(coment)+&quot;' as comentari FROM taula WHERE
+</I>&gt;<i> nom = '&quot;+o-&gt;mainCompany()-&gt;sanearCadena(nom)+&quot;' &quot;)
+</I>&gt;<i>
+</I>&gt;<i> o
+</I>&gt;<i>
+</I>&gt;<i> QString valors[2] = { nom, comentari };
+</I>&gt;<i> rs = o-&gt;mainCompany()-&gt;loadQuery(&quot;SELECT columna, $1 as nomcercat, $2 as
+</I>&gt;<i> comentari FROM taula WHERE nom = $1&quot;,2,valors);
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Si el valor que introduim al SQL és numèric, i sabem que mai pot no
+</I>&gt;<i> ser-ho (perquè prové d'un càlcul, o d'un camp numèric de la BD o
+</I>&gt;<i> alguna cosa així, es pot concatenar tal qual (&quot;SELECT * FROM t WHERE
+</I>&gt;<i> ID = &quot;+valorId), però és més feina pensar si és segur concatenar-ho
+</I>&gt;<i> que optar per posar sempre $1 i passar-ho sense concatenar.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Avantatges de $1, $2 ... sobre sanearCadena (poques a bulmages):
+</I>&gt;<i>
+</I>&gt;<i> - Evita possibles dobles escapaments si per qualsevol casúistica
+</I>&gt;<i> s'aplica sanearCadena al resultat de sanearCadena
+</I>&gt;<i>
+</I>&gt;<i> - És millor costum perquè en altres entorns (per exemple aplicacions
+</I>&gt;<i> web) no escapar bé l'entrada pot ser un error de seguretat greu. A més
+</I>&gt;<i> amb altres llibreries passant els paràmetres fora del text de la
+</I>&gt;<i> sentència SQL es pot aconseguir portabilitat a altres BD, conversió
+</I>&gt;<i> automàtica de tipus de dades, etc.
+</I>&gt;<i>
+</I>&gt;<i> - Si crides sentències SQL amb $1 , $2 , $3 prepares el codi perquè en
+</I>&gt;<i> un futur es puguin preparar sentències SQL (vol dir enviar la
+</I>&gt;<i> sentència a la BD una vegada perquè l'analitzi i planegi l'execució i
+</I>&gt;<i> després executar-la n vegades amb paràmetres diferents, cosa que en
+</I>&gt;<i> versions recents de postrgreSQL i en totes les versions d'altres BD
+</I>&gt;<i> hauria de donar més rendiment). Avui en dia bulmalib no prepara
+</I>&gt;<i> sentències, però un dia es podria muntar alguna mena de cache de
+</I>&gt;<i> sentències que aprofiti les que tingui preparades. Però si cada
+</I>&gt;<i> sentència és diferent perquè porta els valors dels paràmetres
+</I>&gt;<i> concatenats, la cache no serveix de res, si porta sempre els mateixos
+</I>&gt;<i> $1, $2 , $3 és molt més probable trobar-la a la hipotètica cache
+</I>&gt;<i> futura i estalviar-se anàlisi sintàctica i planificació d'execució).
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Inconvenients de $1, $2 ... sobre sanearCadena :
+</I>&gt;<i>
+</I>&gt;<i> - quan la consulta és dinàmica i es van construint afegint camps o
+</I>&gt;<i> condicions a un where, mantenir l'array de valors pot ser més
+</I>&gt;<i> complicat que anar concatenant cadenes passant els valors per
+</I>&gt;<i> sanearCadena.  Es pot fer amb $1, $2, etc. però sovint no paga la
+</I>&gt;<i> pena.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Limitacions del nou mètode load :
+</I>&gt;<i>
+</I>&gt;<i> - no serveix per a $21 i següents, si teniu més de 20 paràmetres useu
+</I>&gt;<i> el loadQuery que accepta un array
+</I>&gt;<i>
+</I>&gt;<i> - tots els paràmetres han de ser QStrings
+</I>&gt;<i>
+</I>&gt;<i> - no admet limit ni offset ni nomcursor (però es podria afegir sense
+</I>&gt;<i> massa complicació si es necessita sovint)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Ho vaig provar fa sis mesos i no me'n vaig sortir, n ho va fer servir
+</I>&gt;<i> ningú. Espero tenir més sort ara i que algú faci cas. Ara caldria fer
+</I>&gt;<i> una auditoria de codi i anar arreglant sentències per tot arreu,
+</I>&gt;<i> perquè la gent no programa sinó que &quot;copia, pega y colorea &quot; i per
+</I>&gt;<i> tant el codi xungo que queda es va escampant, però no sé si tindré
+</I>&gt;<i> esma.
+</I>&gt;<i>
+</I>&gt;<i> Apa, ja ho he dit. Bona nit.
+</I>
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002538.html">[BulmaGés]vida sana i SQL sà
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002543.html">[BulmaGés]vida sana i SQL sà
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2541">[ fecha ]</a>
+              <a href="thread.html#2541">[ hilo ]</a>
+              <a href="subject.html#2541">[ asunto ]</a>
+              <a href="author.html#2541">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

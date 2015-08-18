@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaFact_y_BulmaT%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FPV%3D5D_Dudas_variadas_y_fallos_variados%3F%3D&In-Reply-To=%3C49062B89.9000504%40todo-redes.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000227.html">
+   <LINK REL="Next"  HREF="000229.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados </H1>
+    <B>Fco. Javier M. C.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaFact_y_BulmaT%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FPV%3D5D_Dudas_variadas_y_fallos_variados%3F%3D&In-Reply-To=%3C49062B89.9000504%40todo-redes.com%3E"
+       TITLE="[BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados">fcojavmc en todo-redes.com
+       </A><BR>
+    <I>Lun Oct 27 21:58:49 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000227.html">[BulmaGés] [BulmaFact y BulmaTPV] Dudas variadas y	fallos variados
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000229.html">[BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#228">[ fecha ]</a>
+              <a href="thread.html#228">[ hilo ]</a>
+              <a href="subject.html#228">[ asunto ]</a>
+              <a href="author.html#228">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Daniel Bustos Fernández escribió:
+&gt;<i> Hola
+</I>&gt;<i>
+</I>&gt;<i> Estoy aprendiendo a usar ambos programas con la ayuda web. Tengo 
+</I>&gt;<i> instalados BulmaFact y BulmaTPV, y una empresa creada sin ningún plugin.
+</I>&gt;<i>
+</I>&gt;<i> Veamos si estos pasos son los correctos para comenzar con BulmaFact:
+</I>&gt;<i>
+</I>&gt;<i> - Creo una empresa y defino sus propiedades (SerieFacturaDefecto no la 
+</I>&gt;<i> he cambiado aun)
+</I>&gt;<i> - Luego en Maestro defino: Iva, tasas de iva, almacenes, 
+</I>&gt;<i> paises/provincias.
+</I>&gt;<i> - Defino al menos un artículo (creo su familia, su tipo y finalmente 
+</I>&gt;<i> lo creo).
+</I>&gt;<i>
+</I>&gt;<i>           Aqui una duda. No puedo agregar una imagen al artículo, me 
+</I>&gt;<i> dice que &quot;no tengo permisos o espacio de disco insuficiente&quot;.
+</I>&gt;<i>
+</I>En /etc/bulmages/bulmafact.conf defines el lugar donde se guardan las 
+imagenes. Revisa que tengas los permisos adecuados.
+
+
+&gt;<i> - Creo un cliente.
+</I>&gt;<i> - Creo un proveedor.
+</I>&gt;<i> - Creo un trabajador.
+</I>&gt;<i>
+</I>&gt;<i> Ahora puedo hacer pedidos al proveedor y pagarle, con lo cual la 
+</I>&gt;<i> cantidad de artículos en stock sube.
+</I>&gt;<i> Ahora bien, a la hora de pagar, puedo hacerlo tantas veces como 
+</I>&gt;<i> quiera!! Es decir, si hago un pedido de 10 artículos, al stock suben 
+</I>&gt;<i> esos 10, y aunque pague mas veces el mismo pedido, no van a ser más de 
+</I>&gt;<i> esos 10, en cambio, los pagos sí que se acumulan.
+</I>&gt;<i>
+</I>&gt;<i> Otra cosa que no va bien es que, al crear un albarán, la 2a y 
+</I>&gt;<i> siguientes veces que lo edito, me da el siguiente fallo al tratar de 
+</I>&gt;<i> grabar:
+</I>&gt;<i> &quot;Error al intentar modificar la base de datos.
+</I>&gt;<i> Error: No existe la columna &lt;&lt;lotelalbaranp&gt;&gt; en la relación &lt;&lt;lalbaranp&gt;&gt;
+</I>&gt;<i> LINE 1 UPDATE lalbaranp ...............................
+</I>&gt;<i>
+</I>'lotelalbaranp' y que te cuente el 'stock' indica que tienes instalados 
+estos plugins. Así que parece que tienes plugins en marcha aunque veo 
+que no lo sabes. Revisa /etc/bulmages/bulmafact.conf y deja la línea 
+CONF_PLUGINS_BULMAFACT con la lista vacía. Puede ser que hayas 
+encontrado un bug :)
+
+&gt;<i> Por ello una vez creo un albarán no puedo editarlo sin que me de error 
+</I>&gt;<i> y no se graben los cambios.
+</I>&gt;<i> Bueno, inexplicablemente si cambio la descripción eso sí que se 
+</I>&gt;<i> guarda, pero si p.e. añado artículos al albarán, pues no.
+</I>&gt;<i>
+</I>&gt;<i> Hoy he abierto BulmaTPV por curiosidad, y veo que al iniciarlo me pide 
+</I>&gt;<i> el usuario y luego aparece todo vacío (sin artículos para vender).
+</I>&gt;<i> Supongo que tengo que editar el archivo pantallastpv.xml y añadir a 
+</I>&gt;<i> mano mis artículos.
+</I>
+Sí.
+
+&gt;<i> ¿Se puede automatizar el proceso?
+</I>&gt;<i>
+</I>No.
+
+&gt;<i> Por otro lado, una vez abierto BulmaTPV, ocupa toda la pantalla, y no 
+</I>&gt;<i> puedo ni minimizar ni cerrar el programa. Quiero decir, no veo el 
+</I>&gt;<i> botón de cerrar por ningún sitio, y  tengo que cerrarlo matando el 
+</I>&gt;<i> proceso!! Supongo que algo hago mal.
+</I>&gt;<i>
+</I>Alt+F4 es tu amigo :)
+
+BulmaTPV es todo plugeable por lo que hasta los botones de salir hay que 
+instalarlos aposta.
+
+&gt;<i> A ver si sabeis responder mis consultas de newbie :)
+</I>&gt;<i>
+</I>Gracias por colaborar probando el programa. Seguimos avanzando con la 
+colaboración de todos.
+
+Un saludo.
+
+
+--
+Fco. Javier M. C.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000227.html">[BulmaGés] [BulmaFact y BulmaTPV] Dudas variadas y	fallos variados
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000229.html">[BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#228">[ fecha ]</a>
+              <a href="thread.html#228">[ hilo ]</a>
+              <a href="subject.html#228">[ asunto ]</a>
+              <a href="author.html#228">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

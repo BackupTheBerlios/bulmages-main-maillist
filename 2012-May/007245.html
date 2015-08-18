@@ -1,0 +1,479 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 5	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%205%0A%09commits%20to%20master...&In-Reply-To=%3C20120517215127.87027756DD%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007244.html">
+   <LINK REL="Next"  HREF="007246.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 5	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%205%0A%09commits%20to%20master...&In-Reply-To=%3C20120517215127.87027756DD%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 5	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Jue Mayo 17 23:51:27 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007244.html">[BulmaGés] [Gitorious] Activity: tborras pushed 4	commits to arreglo...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007246.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7245">[ fecha ]</a>
+              <a href="thread.html#7245">[ hilo ]</a>
+              <a href="subject.html#7245">[ asunto ]</a>
+              <a href="author.html#7245">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 5 commits to master
+master changed from c2eb442 to 271d4d8
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/c2eb4421d1371f0b3017ce5d55a0efcc6fc9d8db/diffs/271d4d8169028502b5e6299f85170873e29c0226">https://gitorious.org/bulmages/bulmages/commit/c2eb4421d1371f0b3017ce5d55a0efcc6fc9d8db/diffs/271d4d8169028502b5e6299f85170873e29c0226</A>
+
+Diff: 
+
+commit 271d4d8169028502b5e6299f85170873e29c0226
+Merge: c2eb442 cea0d66
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu May 17 23:51:04 2012 +0200
+
+    Arreglo un problema con las tasas de iva en el pluginbf_preciocoste ya que no hacia el ordenado correcto y cogia los valores anteriores de la tasa de iva
+
+diff --cc bulmages/bulmacont/plugins/pluginbc_diario/bcdiarioview.cpp
+index ab0936f,41e28c8..aa4962b
+--- a/bulmages/bulmacont/plugins/pluginbc_diario/bcdiarioview.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_diario/bcdiarioview.cpp
+@@@ -103,13 -103,19 +103,19 @@@ void BcDiarioView::on_mui_actualizar_re
+  
+  ///
+  /**
++ \param checked
+  **/
+- void BcDiarioView::on_mui_configurar_clicked()
++ void BcDiarioView::on_mui_configurar_toggled ( bool checked )
+  {
+      BL_FUNC_DEBUG
+-     mui_list-&gt;showConfig();
+-     mui_list-&gt;showMenu();
+-     
+++
++     if ( checked ) {
++         mui_list-&gt;showConfig();
+ -	//mui_list-&gt;showMenu();
+++	mui_list-&gt;showMenu();
++ 	
++     } else {
++         mui_list-&gt;hideConfig();
+ -    } // end if
+ -    
+++    } // end if  
+  }
+  
+  
+diff --cc bulmages/bulmafact/plugins/pluginbf_preciocoste/pluginbf_preciocoste.cpp
+index a5c5471,a5c5471..c75a95f
+--- a/bulmages/bulmafact/plugins/pluginbf_preciocoste/pluginbf_preciocoste.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_preciocoste/pluginbf_preciocoste.cpp
+@@@ -177,7 -177,7 +177,7 @@@ int BfSubForm_on_mui_list_editFinished 
+              return -1;
+          } // end if
+  
+--        cur1 = subform-&gt;mainCompany() -&gt;loadQuery ( &quot;SELECT * FROM tasa_iva WHERE idtipo_iva = &quot; + cur-&gt;value( &quot;idtipo_iva&quot; ) + &quot; ORDER BY fechatasa_iva LIMIT 1&quot; );
+++        cur1 = subform-&gt;mainCompany() -&gt;loadQuery ( &quot;SELECT * FROM tasa_iva WHERE idtipo_iva = &quot; + cur-&gt;value( &quot;idtipo_iva&quot; ) + &quot; ORDER BY fechatasa_iva DESC LIMIT 1&quot; );
+          if ( !cur-&gt;eof() ) {
+              if ( subform-&gt;tableName() == &quot;lpedidoproveedor&quot;
+                      || subform-&gt;tableName() == &quot;lalbaranp&quot;
+
+commit cea0d6685bca1e74f29250083b6635d559de295d
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu May 17 17:17:49 2012 +0200
+
+    Arreglo problema con las amortizaciones y los asientos inteligentes. No se podian generar automaticamente los asientos de amortizacion. Ahora ya se puede mediante el menu contextual
+
+diff --git a/bulmages/bulmacont/plugins/pluginbc_amortizacion/bcamortizacionview.cpp b/bulmages/bulmacont/plugins/pluginbc_amortizacion/bcamortizacionview.cpp
+index 96b74cb..2b4ccb5 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_amortizacion/bcamortizacionview.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_amortizacion/bcamortizacionview.cpp
+@@ -95,6 +95,7 @@ BcAmortizacionView::BcAmortizacionView ( BcCompany *company, QWidget *parent )
+     mui_listaCuotas-&gt;addSubFormHeader ( &quot;fechaprevista&quot;, BlDbField::DbDate, BlDbField::DbNotNull, BlSubFormHeader::DbNone , _ ( &quot;Fecha prevista&quot; ) );
+     mui_listaCuotas-&gt;addSubFormHeader ( &quot;cantidad&quot;, BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( &quot;Cantidad&quot; ) );
+     mui_listaCuotas-&gt;addSubFormHeader ( &quot;idasiento&quot;, BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite , _ ( &quot;Id asiento&quot; ) );
++    mui_listaCuotas-&gt;addSubFormHeader ( &quot;ordenasiento&quot;, BlDbField::DbInt, BlDbField::DbNoSave, BlSubFormHeader::DbNoWrite , _ ( &quot;Num. asiento&quot; ) );
+     mui_listaCuotas-&gt;addSubFormHeader ( &quot;idlinamortizacion&quot;, BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoWrite , _ ( &quot;Id lineas de amortizacion&quot; ) );
+     mui_listaCuotas-&gt;addSubFormHeader ( &quot;idamortizacion&quot;, BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite , _ ( &quot;Id amortizacion&quot; ) );
+     mui_listaCuotas-&gt;setInsert ( FALSE );
+@@ -524,9 +525,7 @@ void BcAmortizacionSubForm::execMenuAction ( QAction *opcion )
+     if ( opcion-&gt;text() == _ ( &quot;Generar asiento&quot; ) ) {
+         /// Se va a generar el asiento.
+         QString fecha = dbValue ( &quot;fechaprevista&quot; );
+-        //            fprintf(stderr, &quot;Fecha: %s\n&quot;, fecha.toAscii().constData());
+         QString cant = dbValue ( &quot;cantidad&quot; );
+-        //            fprintf(stderr, &quot;Cuota: %s\n&quot;, cant.toAscii().constData());
+ 
+         QString cuenta, cuentaamort;
+         QString query = &quot;SELECT idcuentaactivo, idcuentaamortizacion FROM amortizacion WHERE idamortizacion=&quot; + dbValue ( &quot;idamortizacion&quot; );
+@@ -558,8 +557,6 @@ void BcAmortizacionSubForm::execMenuAction ( QAction *opcion )
+ 	
+ 	nueva-&gt;show();
+ 	
+-	blMsgInfo(&quot;Aqui estoy&quot;);
+-	
+         nueva-&gt;inicializa ( 0 );
+ 
+         nueva-&gt;muestraPlantilla ( &quot;amortizacion&quot; );
+@@ -600,7 +597,10 @@ void BcAmortizacionSubForm::execMenuAction ( QAction *opcion )
+         QString idlinamortizacion = dbValue ( &quot;idlinamortizacion&quot; );
+         SQLQuery = &quot;UPDATE linamortizacion set idasiento = &quot; + QString::number ( numasiento1 ) + &quot; WHERE idlinamortizacion = &quot; + idlinamortizacion;
+         mainCompany() -&gt;runQuery ( SQLQuery );
++	
++	setDbValue(&quot;idasiento&quot;, currentRow(), QString::number ( numasiento1 ));
++	setDbValue(&quot;ordenasiento&quot;,currentRow(), ordenasiento);
++	
+     } // end if
+-//    on_mui_confquery_clicked();
+ }
+ 
+
+commit 563724eb159cdd2c6f30c266dc808b4bb5831a35
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue May 15 21:34:16 2012 +0200
+
+    Arreglo problemas en las amortizaciones
+
+diff --git a/bulmages/bulmacont/plugins/pluginbc_amortizacion/CMakeLists.txt b/bulmages/bulmacont/plugins/pluginbc_amortizacion/CMakeLists.txt
+index aeb2255..549d844 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_amortizacion/CMakeLists.txt
++++ b/bulmages/bulmacont/plugins/pluginbc_amortizacion/CMakeLists.txt
+@@ -4,6 +4,7 @@
+ #pluginbc_amortizacion
+ 
+ set (plugin pluginbc_amortizacion)
++ADD_DEFINITIONS(-D${plugin})
+ 
+ file(GLOB plugin_SRC *.c *.cpp *.cxx)
+ file(GLOB plugin_MOCS *.hpp *.h)
+@@ -52,7 +53,7 @@ ENDIF(WIN32)
+ 
+ #ADD_DEFINITIONS(${QT_DEFINITIONS})
+ ADD_DEFINITIONS(-DQT_SHARED)
+-ADD_DEFINITIONS(-DQT_PLUGIN)
++#ADD_DEFINITIONS(-DQT_PLUGIN)
+ 
+ if(APPLE)
+   set(CMAKE_SHARED_LINKER_FLAGS &quot;${CMAKE_SHARED_LINKER_FLAGS} -undefined dynamic_lookup&quot;)
+@@ -89,9 +90,9 @@ set_target_properties( ${plugin} PROPERTIES
+   VERSION &quot;${BULMAGES_VERSION}&quot;)
+ 
+ if(WIN32)
+-target_link_libraries(${plugin} libbulmacont bulmalib pluginbc_asiento ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+-else(WIN32)
+ target_link_libraries(${plugin} libbulmacont bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
++else(WIN32)
++target_link_libraries(${plugin} libbulmacont bulmalib pluginbc_asiento ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+ endif(WIN32)
+ 
+ add_dependencies(${plugin} bulmacont bulmalib pluginbc_asiento)
+diff --git a/bulmages/bulmacont/plugins/pluginbc_amortizacion/bcamortizacionview.cpp b/bulmages/bulmacont/plugins/pluginbc_amortizacion/bcamortizacionview.cpp
+index c4ce0e0..96b74cb 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_amortizacion/bcamortizacionview.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_amortizacion/bcamortizacionview.cpp
+@@ -473,6 +473,8 @@ void BcAmortizacionSubForm::execMenuAction ( QAction *opcion )
+ {
+     BL_FUNC_DEBUG
+ 
++    int resur;
++
+     /// Si no se ha seleccionado ninguna accion salimos.
+     if ( ! opcion )
+         return;
+@@ -509,7 +511,7 @@ void BcAmortizacionSubForm::execMenuAction ( QAction *opcion )
+     if ( opcion-&gt;text() == _ ( &quot;Borrar asiento&quot; ) ) {
+         /// Si se va a borrar el asiento.
+ 
+-        int resur = g_plugins-&gt;run ( &quot;SNewBcAsientoView&quot;, (BcCompany *) mainCompany() );
++        resur = g_plugins-&gt;run ( &quot;SNewBcAsientoView&quot;, (BcCompany *) mainCompany() );
+         if ( ! resur) {
+             blMsgInfo(_(&quot;No se pudo crear instancia de asientos&quot;));
+             return;
+@@ -547,7 +549,17 @@ void BcAmortizacionSubForm::execMenuAction ( QAction *opcion )
+         } // end if
+         delete cur;
+ 
+-        BcAsientoInteligenteView *nueva = new BcAsientoInteligenteView ( ( ( BcCompany * ) mainCompany() ), 0 );
++	resur =   g_plugins-&gt;run ( &quot;SNewBcAsientoInteligenteView&quot;, (BcCompany *) mainCompany() );
++        if ( ! resur) {
++            blMsgInfo(_(&quot;No se pudo crear instancia de asientos inteligentes&quot;));
++            return;
++        } // end if
++        BcAsientoInteligenteView *nueva = (BcAsientoInteligenteView *) g_plugParams;
++	
++	nueva-&gt;show();
++	
++	blMsgInfo(&quot;Aqui estoy&quot;);
++	
+         nueva-&gt;inicializa ( 0 );
+ 
+         nueva-&gt;muestraPlantilla ( &quot;amortizacion&quot; );
+@@ -565,7 +577,7 @@ void BcAmortizacionSubForm::execMenuAction ( QAction *opcion )
+         nueva-&gt;on_mui_aceptar_clicked();
+ 
+         /// Cogemos los datos del asiento recien creado.
+-        int resur = g_plugins-&gt;run ( &quot;SNewBcAsientoView&quot;, (BcCompany *) mainCompany() );
++        resur = g_plugins-&gt;run ( &quot;SNewBcAsientoView&quot;, (BcCompany *) mainCompany() );
+         if ( ! resur) {
+             blMsgInfo(_(&quot;No se pudo crear instancia de asientos&quot;));
+             return;
+diff --git a/bulmages/bulmacont/plugins/pluginbc_amortizacion/pluginbc_amortizacion.cpp b/bulmages/bulmacont/plugins/pluginbc_amortizacion/pluginbc_amortizacion.cpp
+index 9324422..8eab671 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_amortizacion/pluginbc_amortizacion.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_amortizacion/pluginbc_amortizacion.cpp
+@@ -33,6 +33,10 @@
+ #include &quot;pluginbc_amortizacion.h&quot;
+ #include &quot;bcamortizacionlistview.h&quot;
+ 
++#include &quot;bcasientointeligenteview.h&quot;
++#include &quot;bcasientoview.h&quot;
++
++
+ BcBulmaCont *g_pluginbc_amortizacion = NULL;
+ 
+ ///
+diff --git a/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientointeligenteview.h b/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientointeligenteview.h
+index 80d771d..9a97c47 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientointeligenteview.h
++++ b/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientointeligenteview.h
+@@ -46,6 +46,7 @@
+ #include &quot;pdefs_pluginbc_asiento.h&quot;
+ 
+ 
++
+ /// Formulario para la introducci&oacute;n de asientos mediante las plantillas.
+ /** Clase que sirve para introducir asientos en el sistema mediante el uso de plantillas
+     predefinidas, o asientos plantilla (\ref ainteligentesview).
+diff --git a/bulmages/bulmacont/plugins/pluginbc_asiento/pluginbc_asiento.cpp b/bulmages/bulmacont/plugins/pluginbc_asiento/pluginbc_asiento.cpp
+index 33a4301..309b2e8 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_asiento/pluginbc_asiento.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_asiento/pluginbc_asiento.cpp
+@@ -35,10 +35,11 @@
+ #include &quot;bcasientoview.h&quot;
+ #include &quot;bccompany.h&quot;
+ #include &quot;bcasientolistview.h&quot;
++#include &quot;bcasientointeligenteview.h&quot;
+ 
+ BcAsientoView *g_asiento;
+ BcBulmaCont *g_pluginbc_asiento = NULL;
+-
++BcAsientoInteligenteView *g_asientoInteligente = NULL;
+ 
+ ///
+ /**
+@@ -252,7 +253,14 @@ int SNewBcAsientoView ( BcCompany * )
+     return 1;
+ }
+ 
+-
++/// Esta llamada de plugin es bastante novedosa ya es una llamada que no responde a una funcion
++/// Sino que se llama desde multiples partes del sistema.
++int SNewBcAsientoInteligenteView ( BcCompany *company )
++{
++    BcAsientoInteligenteView *nueva = new BcAsientoInteligenteView ( company, 0 );
++    g_plugParams = nueva;
++    return 1;
++}
+ 
+ 
+ 
+diff --git a/bulmages/bulmacont/plugins/pluginbc_asiento/pluginbc_asiento.h b/bulmages/bulmacont/plugins/pluginbc_asiento/pluginbc_asiento.h
+index 8474b5e..74d00a3 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_asiento/pluginbc_asiento.h
++++ b/bulmages/bulmacont/plugins/pluginbc_asiento/pluginbc_asiento.h
+@@ -26,11 +26,14 @@
+ #include &quot;bccompany.h&quot;
+ #include &quot;pdefs_pluginbc_asiento.h&quot;
+ #include &quot;bcasientoview.h&quot;
++#include &quot;bcasientointeligenteview.h&quot;
+ #include &quot;blaction.h&quot;
+ 
+ extern &quot;C&quot; PLUGINBC_ASIENTO_EXPORT BcAsientoView *g_asiento;
++extern &quot;C&quot; PLUGINBC_ASIENTO_EXPORT BcAsientoInteligenteView *g_asientoInteligente;
+ extern &quot;C&quot; PLUGINBC_ASIENTO_EXPORT int entryPoint ( BcBulmaCont * );
+ extern &quot;C&quot; PLUGINBC_ASIENTO_EXPORT int SNewBcAsientoView ( BcCompany * );
++extern &quot;C&quot; PLUGINBC_ASIENTO_EXPORT int SNewBcAsientoInteligenteView ( BcCompany *);
+ extern &quot;C&quot; PLUGINBC_ASIENTO_EXPORT int BlAction_actionTriggered(BlAction *);
+ extern &quot;C&quot; PLUGINBC_ASIENTO_EXPORT int BlSubForm_preparaMenu ( BlSubForm * );
+ extern &quot;C&quot; PLUGINBC_ASIENTO_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
+
+commit c4d8c7bf3c9359193e57b2e1ec6cc80f1ed3733e
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon May 14 10:19:55 2012 +0200
+
+    Arreglo la configuracion del menu en el libro diario
+
+diff --git a/bulmages/bulmacont/plugins/pluginbc_diario/bcdiarioview.cpp b/bulmages/bulmacont/plugins/pluginbc_diario/bcdiarioview.cpp
+index 13fb10e..41e28c8 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_diario/bcdiarioview.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_diario/bcdiarioview.cpp
+@@ -103,11 +103,18 @@ void BcDiarioView::on_mui_actualizar_released()
+ 
+ ///
+ /**
++\param checked
+ **/
+-void BcDiarioView::on_mui_configurar_released()
++void BcDiarioView::on_mui_configurar_toggled ( bool checked )
+ {
+     BL_FUNC_DEBUG
+-    mui_list-&gt;showConfig();
++    if ( checked ) {
++        mui_list-&gt;showConfig();
++	//mui_list-&gt;showMenu();
++	
++    } else {
++        mui_list-&gt;hideConfig();
++    } // end if
+     
+ }
+ 
+diff --git a/bulmages/bulmacont/plugins/pluginbc_diario/bcdiarioview.h b/bulmages/bulmacont/plugins/pluginbc_diario/bcdiarioview.h
+index 057fd3c..2da8a49 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_diario/bcdiarioview.h
++++ b/bulmages/bulmacont/plugins/pluginbc_diario/bcdiarioview.h
+@@ -64,7 +64,7 @@ public slots:
+     virtual void botonGuardar();
+     /// SLOT que responde a la activaci&oacute;n del bot&oacute;n de configurar listado.
+     /// Muestra el configurador de subform3 \ref subform3
+-    virtual void on_mui_configurar_released();
++    virtual void on_mui_configurar_toggled ( bool checked );
+     virtual void on_mui_list_cellDoubleClicked ( int, int columna );
+     virtual void openAsiento();
+ };
+
+commit 5ee68a3a7df01bc5dd334027c4e2430c83be7e2b
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon May 14 09:41:13 2012 +0200
+
+    Quito lineas que no se utilizaban en el diario y cambio los clicked por released
+
+diff --git a/bulmages/bulmacont/plugins/pluginbc_diario/bcdiarioview.cpp b/bulmages/bulmacont/plugins/pluginbc_diario/bcdiarioview.cpp
+index dc9aeb8..13fb10e 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_diario/bcdiarioview.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_diario/bcdiarioview.cpp
+@@ -93,7 +93,7 @@ BcDiarioView::~BcDiarioView()
+ 
+ /**
+ **/
+-void BcDiarioView::on_mui_actualizar_clicked()
++void BcDiarioView::on_mui_actualizar_released()
+ {
+     BL_FUNC_DEBUG
+     accept();
+@@ -104,7 +104,7 @@ void BcDiarioView::on_mui_actualizar_clicked()
+ ///
+ /**
+ **/
+-void BcDiarioView::on_mui_configurar_clicked()
++void BcDiarioView::on_mui_configurar_released()
+ {
+     BL_FUNC_DEBUG
+     mui_list-&gt;showConfig();
+@@ -221,7 +221,6 @@ void BcDiarioView::presentar()
+ 
+         QString query = &quot;SELECT *, cuenta.descripcion AS descripcioncuenta FROM &quot; + tabla2 + tabla + &quot; LEFT JOIN cuenta ON cuenta.idcuenta = &quot; + tabla + &quot;.idcuenta &quot;;
+         query += &quot; LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste FROM c_coste) AS t1 ON t1.idc_coste = &quot; + tabla + &quot;.idc_coste &quot;;
+-//         query += &quot; LEFT JOIN (SELECT (ordenasiento || ' - ' || fecha) AS ordenasientoconfecha, ordenasiento, idasiento, fecha FROM asiento) AS t5 ON t5.idasiento = &quot; + tabla + &quot;.idasiento&quot;;
+         query += &quot; LEFT JOIN (SELECT ordenasiento, fecha, idasiento FROM asiento) AS t5 ON t5.idasiento = &quot; + tabla + &quot;.idasiento&quot;;
+         query += &quot; LEFT JOIN (SELECT idcanal, nombre as nombrecanal FROM canal) AS t2 ON t2.idcanal = &quot; + tabla + &quot;.idcanal&quot;;
+         if ( mui_asAbiertos-&gt;isChecked() ) {
+@@ -305,7 +304,7 @@ void BcDiarioView::presentar()
+ /// Boton de impresion del diario.
+ /**
+ **/
+-void BcDiarioView::on_mui_imprimir_clicked()
++void BcDiarioView::on_mui_imprimir_released()
+ {
+     BL_FUNC_DEBUG
+     mui_list-&gt;printPDF ( &quot;diario&quot; );
+@@ -320,7 +319,6 @@ void BcDiarioView::on_mui_imprimir_clicked()
+ void BcDiarioView::on_mui_list_cellDoubleClicked ( int, int columna )
+ {
+     BL_FUNC_DEBUG
+-
+     openAsiento();
+ }
+ 
+diff --git a/bulmages/bulmacont/plugins/pluginbc_diario/bcdiarioview.h b/bulmages/bulmacont/plugins/pluginbc_diario/bcdiarioview.h
+index 4230df9..057fd3c 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_diario/bcdiarioview.h
++++ b/bulmages/bulmacont/plugins/pluginbc_diario/bcdiarioview.h
+@@ -45,7 +45,7 @@ public:
+     void inicializa1 ( QString, QString, int );
+     /// Slot que responde a la pulsaci&oacute;n del bot&oacute;n imprimir en el formulario.
+     /// Realiza la impresi&oacute;n del listado que tenemos en pantalla.
+-    virtual void on_mui_imprimir_clicked();
++    virtual void on_mui_imprimir_released();
+ 
+ private:
+     /// Muestra en pantalla los resultados para los datos introducidos.
+@@ -55,7 +55,7 @@ public slots:
+     /// Slot que responde a la pulsaci&oacute;n del bot&oacute;n actualizar en el formulario.
+     /// Supuestamente debe repintar el formulario con las nuevas opciones de filtrado
+     /// que se hayan elegido.
+-    virtual void on_mui_actualizar_clicked();
++    virtual void on_mui_actualizar_released();
+     /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n imprimir.
+     /// Es invocado desde la clase \ref empresa
+     virtual void boton_imprimir();
+@@ -64,7 +64,7 @@ public slots:
+     virtual void botonGuardar();
+     /// SLOT que responde a la activaci&oacute;n del bot&oacute;n de configurar listado.
+     /// Muestra el configurador de subform3 \ref subform3
+-    virtual void on_mui_configurar_clicked();
++    virtual void on_mui_configurar_released();
+     virtual void on_mui_list_cellDoubleClicked ( int, int columna );
+     virtual void openAsiento();
+ };
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007244.html">[BulmaGés] [Gitorious] Activity: tborras pushed 4	commits to arreglo...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007246.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7245">[ fecha ]</a>
+              <a href="thread.html#7245">[ hilo ]</a>
+              <a href="subject.html#7245">[ asunto ]</a>
+              <a href="author.html#7245">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

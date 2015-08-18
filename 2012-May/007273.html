@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20master...&In-Reply-To=%3C20120525080251.A310C756D4%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007272.html">
+   <LINK REL="Next"  HREF="007274.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20master...&In-Reply-To=%3C20120525080251.A310C756D4%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Vie Mayo 25 10:02:51 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007272.html">[BulmaGés][Gitorious] Activity: tborras pushed 2 commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007274.html">[BulmaGés]¿Para que se usa el +set(QT_USE_QTNETWORK true) ?
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7273">[ fecha ]</a>
+              <a href="thread.html#7273">[ hilo ]</a>
+              <a href="subject.html#7273">[ asunto ]</a>
+              <a href="author.html#7273">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 2 commits to master
+master changed from 0c893f1 to e6b1bf9
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/0c893f1bf0365b415a5fe52f18c8afdc1a265597/diffs/e6b1bf9d8bfa3bf0f75532120d4dd849ba806c9e">https://gitorious.org/bulmages/bulmages/commit/0c893f1bf0365b415a5fe52f18c8afdc1a265597/diffs/e6b1bf9d8bfa3bf0f75532120d4dd849ba806c9e</A>
+
+Diff: 
+
+commit e6b1bf9d8bfa3bf0f75532120d4dd849ba806c9e
+Merge: dcc2c4f 0c893f1
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri May 25 09:59:30 2012 +0200
+
+    Merge branch 'master' of gitorious.org:bulmages/bulmages
+
+
+commit dcc2c4f907a1343ea10f8d7e2e6d7ee4c1475540
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri May 25 09:56:28 2012 +0200
+
+    Agrego los README del pluginbf_cliente al directorio de modulos de BulmaTPV para que pueda ser instalado como componente de éste.
+    
+    Arreglo BUG en albaranes y facturas de proveedor que no trasladaban el recargo de equivalencia al crearse desde los pedidos de proveedor.
+    
+    Bug reportado por Irma de Granada.
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cliente/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_cliente/CMakeLists.txt
+index f382819..33a9d87 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cliente/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_cliente/CMakeLists.txt
+@@ -100,6 +100,19 @@ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.fr DESTINATION share/bulmages/
+ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.en ${CMAKE_CURRENT_BINARY_DIR}/README.en @ONLY)
+ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.en DESTINATION share/bulmages/bulmafact-plugins/ RENAME README.en.${plugin})
+ 
++#Este plugin tambien lo puede instalar el TPV con lo que lo agregamos como plugin de BulmaTPV
++configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)
++install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/bulmatpv-plugins/ RENAME README.es.${plugin})
++
++configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.ca ${CMAKE_CURRENT_BINARY_DIR}/README.ca @ONLY)
++install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.ca DESTINATION share/bulmages/bulmatpv-plugins/ RENAME README.ca.${plugin})
++
++configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.fr ${CMAKE_CURRENT_BINARY_DIR}/README.fr @ONLY)
++install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.fr DESTINATION share/bulmages/bulmatpv-plugins/ RENAME README.fr.${plugin})
++
++configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.en ${CMAKE_CURRENT_BINARY_DIR}/README.en @ONLY)
++install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.en DESTINATION share/bulmages/bulmatpv-plugins/ RENAME README.en.${plugin})
++
+ 
+ add_dependencies(${plugin} bulmafact bulmalib)
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/genalbpqtoolbutton.cpp b/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/genalbpqtoolbutton.cpp
+index e7d98e5..25b1c7b 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/genalbpqtoolbutton.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/genalbpqtoolbutton.cpp
+@@ -91,7 +91,6 @@ void GenAlbProQToolButton::click()
+     BL_FUNC_DEBUG
+ 
+     if ( m_object-&gt;objectName() == &quot;PedidoProveedorBase&quot; ) {
+-//        PedidoProveedorView *fpv = ( PedidoProveedorView * ) m_object;
+         generarAlbaranProveedor();
+     }// end if
+ 
+@@ -188,6 +187,7 @@ void GenAlbProQToolButton::generarAlbaranProveedor()
+                 linea1-&gt;setDbValue ( &quot;codigocompletoarticulo&quot;, linea-&gt;dbValue ( &quot;codigocompletoarticulo&quot; ) );
+                 linea1-&gt;setDbValue ( &quot;nomarticulo&quot;, linea-&gt;dbValue ( &quot;nomarticulo&quot; ) );
+                 linea1-&gt;setDbValue ( &quot;ivalalbaranp&quot;, linea-&gt;dbValue ( &quot;ivalpedidoproveedor&quot; ) );
++                linea1-&gt;setDbValue ( &quot;reqeqlalbaranp&quot;, linea-&gt;dbValue ( &quot;reqeqlpedidoproveedor&quot; ) );
+                 bud-&gt;getlistalineas() -&gt;setProcesarCambios ( TRUE );
+             } // end if
+         } // end for
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/genfactqtoolbutton.cpp b/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/genfactqtoolbutton.cpp
+index 756bbb8..b274047 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/genfactqtoolbutton.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/genfactqtoolbutton.cpp
+@@ -300,6 +300,7 @@ void GenFacProQToolButton::generarFacturaProveedor1()
+                 linea1-&gt;setDbValue ( &quot;codigocompletoarticulo&quot;, linea-&gt;dbValue ( &quot;codigocompletoarticulo&quot; ) );
+                 linea1-&gt;setDbValue ( &quot;nomarticulo&quot;, linea-&gt;dbValue ( &quot;nomarticulo&quot; ) );
+                 linea1-&gt;setDbValue ( &quot;ivalfacturap&quot;, linea-&gt;dbValue ( &quot;ivalpedidoproveedor&quot; ) );
++                linea1-&gt;setDbValue ( &quot;reqeqlfacturap&quot;, linea-&gt;dbValue ( &quot;reqeqlpedidoproveedor&quot; ) );
+                 bud-&gt;getlistalineas() -&gt;setProcesarCambios ( TRUE );
+             } // end if
+         } // end for
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007272.html">[BulmaGés][Gitorious] Activity: tborras pushed 2 commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007274.html">[BulmaGés]¿Para que se usa el +set(QT_USE_QTNETWORK true) ?
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7273">[ fecha ]</a>
+              <a href="thread.html#7273">[ hilo ]</a>
+              <a href="subject.html#7273">[ asunto ]</a>
+              <a href="author.html#7273">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

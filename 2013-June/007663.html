@@ -1,0 +1,240 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130627043726.49720165%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007661.html">
+   <LINK REL="Next"  HREF="007664.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130627043726.49720165%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Jue Jun 27 06:37:26 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007661.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007664.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7663">[ fecha ]</a>
+              <a href="thread.html#7663">[ hilo ]</a>
+              <a href="subject.html#7663">[ asunto ]</a>
+              <a href="author.html#7663">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from a11adae to 342ca1e
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/a11adaed9386a030b0ed330e91ad5c79dc599fc0/diffs/342ca1e701dc7e578052505b49adc16a1f75bf47">https://gitorious.org/bulmages/bulmages/commit/a11adaed9386a030b0ed330e91ad5c79dc599fc0/diffs/342ca1e701dc7e578052505b49adc16a1f75bf47</A>
+
+Diff: 
+
+commit 342ca1e701dc7e578052505b49adc16a1f75bf47
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu Jun 27 06:37:02 2013 +0200
+
+    Elimino warnings de cmake y arreglo problema derivado de la version portable y Thunderbird para Windows
+
+diff --git a/bulmages/CMakeLists.txt b/bulmages/CMakeLists.txt
+index 13ba887..07a7e99 100644
+--- a/bulmages/CMakeLists.txt
++++ b/bulmages/CMakeLists.txt
+@@ -221,6 +221,7 @@ message(STATUS &quot;Working on bulmasetup&quot;)
+ add_subdirectory(bulmasetup)
+ 
+ 
++
+ ########### private code ########
+ if(EXISTS &quot;${CMAKE_SOURCE_DIR}/CMakeLists.txt.private&quot;)
+    message(STATUS &quot;Private code inserted&quot;)
+@@ -285,3 +286,4 @@ MARK_AS_ADVANCED(
+ 	BULMAGES_VERSION
+ )
+ 
++
+diff --git a/bulmages/ModulesCMake/FindQt5.cmake b/bulmages/ModulesCMake/FindQt5.cmake
+index 1957f60..a594be8 100644
+--- a/bulmages/ModulesCMake/FindQt5.cmake
++++ b/bulmages/ModulesCMake/FindQt5.cmake
+@@ -108,7 +108,8 @@ FOREACH(_COMPONENT ${_COMPONENTS})
+     #MESSAGE(STATUS &quot;  QT_${_COMPONENT_UPPER}_FOUND: ${QT_${_COMPONENT_UPPER}_FOUND}&quot;)
+ 
+     SET(QT_INCLUDES ${QT_INCLUDES} ${QT_${_COMPONENT_UPPER}_INCLUDE_DIR})
+-    SET(QT_LIBRARIES ${QT_LIBRARIES} ${QT_${_COMPONENT_UPPER}_INCLUDE_DIR})
++    #SET(QT_LIBRARIES ${QT_LIBRARIES} ${QT_${_COMPONENT_UPPER}_INCLUDE_DIR})
++    #SET(QT_LIBRARIES ${QT_LIBRARIES} ${QT_${_COMPONENT_UPPER}_LIBRARY})
+     MARK_AS_ADVANCED(QT_${_COMPONENT_UPPER}_LIBRARY QT_${_COMPONENT_UPPER}_INCLUDE_DIR)
+   ENDIF(NOT QT_${_COMPONENT_UPPER}_FOUND)
+ ENDFOREACH(_COMPONENT)
+diff --git a/bulmages/bulmafact/plugins/pluginbf_correo/impqtoolbutton.cpp b/bulmages/bulmafact/plugins/pluginbf_correo/impqtoolbutton.cpp
+index a8ad816..f928e9c 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_correo/impqtoolbutton.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_correo/impqtoolbutton.cpp
+@@ -131,8 +131,13 @@ void EmailQToolButton::click()
+             body = _(&quot;Adjunto le enviamos el presupuesto numero &quot;) + num + _(&quot; con referencia &quot;) + ref +&quot;\n&quot;;
+ 
+             body += _(&quot;Atentamente\n\n\n&quot;);
++#ifdef Q_OS_WIN32
++	    /// En windows las rutas relativas no funcionan bien con algunos sistemas de e-mail
++	    /// Por eso pasamos una posible ruta relativa a absoluta.
++            attached = QDir(g_confpr-&gt;value( CONF_DIR_USER )).absolutePath() + &quot;/presupuesto&quot; + num + &quot;.pdf&quot;;
++#else
+             attached = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;presupuesto&quot; + num + &quot;.pdf&quot;;
+-
++#endif
+             blSendEmail( email, bcc, subject, body, attached );
+         } // end if
+     } // end if
+@@ -163,8 +168,13 @@ void EmailQToolButton::click()
+             QString body = _(&quot;Adjunto le enviamos el pedido numero &quot;) + num + _(&quot; con referencia &quot;) + ref +&quot;\n&quot;;
+ 
+             body += _(&quot;Atentamente\n\n\n&quot;);
+-            QString attached = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;pedidocliente&quot; + num + &quot;.pdf&quot;;
+-
++#ifdef Q_OS_WIN32
++	    /// En windows las rutas relativas no funcionan bien con algunos sistemas de e-mail
++	    /// Por eso pasamos una posible ruta relativa a absoluta.
++            attached = QDir(g_confpr-&gt;value( CONF_DIR_USER )).absolutePath() + &quot;/pedidocliente&quot; + num + &quot;.pdf&quot;;
++#else
++            attached = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;pedidocliente&quot; + num + &quot;.pdf&quot;;
++#endif
+             blSendEmail( email, bcc, subject, body, attached );
+ 
+         } // end if
+@@ -197,7 +207,13 @@ void EmailQToolButton::click()
+             body = _(&quot;Adjunto le enviamos el albaran numero &quot;) + num + _(&quot; con referencia &quot;) + ref +&quot;\n&quot;;
+ 
+             body += _( &quot;Atentamente\n\n\n&quot;);
++#ifdef Q_OS_WIN32
++	    /// En windows las rutas relativas no funcionan bien con algunos sistemas de e-mail
++	    /// Por eso pasamos una posible ruta relativa a absoluta.
++            attached = QDir(g_confpr-&gt;value( CONF_DIR_USER )).absolutePath() + &quot;/albaran&quot; + num + &quot;.pdf&quot;;
++#else
+             attached = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;albaran&quot; + num + &quot;.pdf&quot;;
++#endif
+ 
+             blSendEmail( email, bcc, subject, body, attached );
+ 
+@@ -233,7 +249,13 @@ void EmailQToolButton::click()
+             body = _(&quot;Adjunto le enviamos la factura numero &quot;) + serie + num + _(&quot; con fecha &quot;) + fecha +&quot;\n&quot;;
+ 
+             body += _(&quot;Sin otro particular, reciba un cordial saludo\n\n\n&quot;);
++#ifdef Q_OS_WIN32
++	    /// En windows las rutas relativas no funcionan bien con algunos sistemas de e-mail
++	    /// Por eso pasamos una posible ruta relativa a absoluta.
++            attached = QDir(g_confpr-&gt;value( CONF_DIR_USER )).absolutePath() + &quot;/factura&quot; + serie + num + &quot;.pdf&quot;;
++#else
+             attached = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;factura&quot; + serie + num + &quot;.pdf&quot;;
++#endif
+             
+ 
+             blSendEmail( email, bcc, subject, body, attached );
+diff --git a/bulmages/bulmalib/plugins/pluginbl_template2mail/eqtoolbutton.cpp b/bulmages/bulmalib/plugins/pluginbl_template2mail/eqtoolbutton.cpp
+index a765f95..7938dc2 100644
+--- a/bulmages/bulmalib/plugins/pluginbl_template2mail/eqtoolbutton.cpp
++++ b/bulmages/bulmalib/plugins/pluginbl_template2mail/eqtoolbutton.cpp
+@@ -161,7 +161,11 @@ void EQToolButtonMail::trataMenu ( QAction *action )
+                 QString oldName = g_confpr-&gt;value( CONF_DIR_USER ) + doc + &quot;.pdf&quot;;
+                 QString newName = g_confpr-&gt;value( CONF_DIR_USER ) +   doc  + num + &quot;.pdf&quot;;
+                 blMoveFile(oldName,newName);
+-		
++#ifdef Q_OS_WIN32
++		/// En windows las rutas relativas no funcionan bien con algunos sistemas de e-mail
++		/// Por eso pasamos una posible ruta relativa a absoluta.
++		newName = QDir(g_confpr-&gt;value( CONF_DIR_USER )).absolutePath() + &quot;/&quot;+ doc + num + &quot;.pdf&quot;;
++#endif
+ 		QString subject = doc + num;
+ 		QString body = &quot;Adjunto remito &quot; + doc + &quot; numero &quot; + num + &quot;. Con referencia &quot; + ref + &quot;\n Atentamente\n&quot;;
+ 		QString bcc= &quot;&quot;;
+diff --git a/bulmages/bulmalib/src/blfunctions.cpp b/bulmages/bulmalib/src/blfunctions.cpp
+index 9a53d56..60423f7 100644
+--- a/bulmages/bulmalib/src/blfunctions.cpp
++++ b/bulmages/bulmalib/src/blfunctions.cpp
+@@ -1538,13 +1538,16 @@ int Thunderbird ( QString &amp;recipient, QString &amp;bcc, QString &amp;subject, QString &amp;b
+     #endif
+     runcommand += &quot;body='&quot; + body + &quot;',&quot;;
+     if (attached != &quot;&quot;) {
+-        runcommand += &quot;attachment='&quot; + attached + &quot;'&quot;;
++      #ifdef Q_OS_WIN32
++      attached.replace(&quot;/&quot;,&quot;\\&quot;);
++      #endif
++      runcommand += &quot;attachment='&quot; + attached + &quot;'&quot;;
+     } // end if
+     
+     #ifdef Q_OS_WIN32
+     runcommand.replace(&quot;\n&quot;,&quot; &quot;);
+     #endif
+-            
++       
+     system(QString( runcommand + background).toLatin1());
+     
+     return 0;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_accesobotones/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_accesobotones/CMakeLists.txt
+index 1707a7f..dbf6f18 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_accesobotones/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_accesobotones/CMakeLists.txt
+@@ -65,8 +65,7 @@ if(APPLE)
+   set(CMAKE_SHARED_LINKER_FLAGS &quot;${CMAKE_SHARED_LINKER_FLAGS} -undefined dynamic_lookup&quot;)
+ endif(APPLE)
+ 
+-add_library(${plugin} SHARED ${plugin_SRC} ${plugin_MOC_SRCS}
+-	${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
++add_library(${plugin} SHARED ${plugin_SRC} ${plugin_MOC_SRCS}	${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
+ 
+ 
+ set_target_properties( ${plugin} PROPERTIES 
+@@ -80,6 +79,7 @@ target_link_libraries(${plugin} libbulmatpv bulmalib)
+ qt5_use_modules(${plugin} Widgets)
+ ENDIF(WIN32)
+ 
++
+ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)
+ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/bulmatpv-plugins/ RENAME README.es.${plugin})
+ 
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007661.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007664.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7663">[ fecha ]</a>
+              <a href="thread.html#7663">[ hilo ]</a>
+              <a href="subject.html#7663">[ asunto ]</a>
+              <a href="author.html#7663">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

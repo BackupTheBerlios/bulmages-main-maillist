@@ -1,0 +1,1538 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130628170227.C5533167%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007665.html">
+   <LINK REL="Next"  HREF="007667.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130628170227.C5533167%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Vie Jun 28 19:02:27 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007665.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007667.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7666">[ fecha ]</a>
+              <a href="thread.html#7666">[ hilo ]</a>
+              <a href="subject.html#7666">[ asunto ]</a>
+              <a href="author.html#7666">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from 226b468 to 0c81977
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/226b468ba3e3fc2d5a15ecfaacc82872bed10917/diffs/0c819775a32f22542f71caae2e9ddf189ca400ce">https://gitorious.org/bulmages/bulmages/commit/226b468ba3e3fc2d5a15ecfaacc82872bed10917/diffs/0c819775a32f22542f71caae2e9ddf189ca400ce</A>
+
+Diff: 
+
+commit 0c819775a32f22542f71caae2e9ddf189ca400ce
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri Jun 28 19:02:03 2013 +0200
+
+    Arreglo los problemas de signals/slots no activados debido a la migracion a Qt5
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_articulo/familiasbase.ui b/bulmages/bulmafact/plugins/pluginbf_articulo/familiasbase.ui
+index e421822..c8df812 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_articulo/familiasbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_articulo/familiasbase.ui
+@@ -519,7 +519,7 @@
+    &lt;sender&gt;mui_detalles&lt;/sender&gt;
+    &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+    &lt;receiver&gt;mui_tab&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
++   &lt;slot&gt;setVisible(bool)&lt;/slot&gt;
+    &lt;hints&gt;
+     &lt;hint type=&quot;sourcelabel&quot;&gt;
+      &lt;x&gt;116&lt;/x&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_articulo/tiposarticulobase.ui b/bulmages/bulmafact/plugins/pluginbf_articulo/tiposarticulobase.ui
+index aac5aeb..d8ede63 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_articulo/tiposarticulobase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_articulo/tiposarticulobase.ui
+@@ -377,7 +377,7 @@
+    &lt;sender&gt;mui_detalles&lt;/sender&gt;
+    &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+    &lt;receiver&gt;groupBox1&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
++   &lt;slot&gt;setVisible(bool)&lt;/slot&gt;
+    &lt;hints&gt;
+     &lt;hint type=&quot;sourcelabel&quot;&gt;
+      &lt;x&gt;17&lt;/x&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientolistbase.ui b/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientolistbase.ui
+index 0e34ea5..321ccb5 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientolistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientolistbase.ui
+@@ -867,7 +867,7 @@
+    &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+    &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+    &lt;receiver&gt;frame&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
++   &lt;slot&gt;setVisible(bool)&lt;/slot&gt;
+    &lt;hints&gt;
+     &lt;hint type=&quot;sourcelabel&quot;&gt;
+      &lt;x&gt;113&lt;/x&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientosubform.cpp b/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientosubform.cpp
+index 0293c59..14d57f7 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientosubform.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientosubform.cpp
+@@ -60,9 +60,7 @@ BcAsientoSubForm::BcAsientoSubForm ( QWidget *parent, const char * )
+     setInsert ( true );
+     setOrdenEnabled ( true );
+     setOrdenPorQuery ( false );
+-    connect ( this, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( s_pintaMenu ( QMenu * ) ) );
+-    connect ( this, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( s_trataMenu ( QAction * ) ) );
+-    
++
+ }
+ 
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_balance/balancetreebase.ui b/bulmages/bulmafact/plugins/pluginbf_balance/balancetreebase.ui
+index 3b9c9e1..18e8c85 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_balance/balancetreebase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_balance/balancetreebase.ui
+@@ -738,7 +738,7 @@
+    &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+    &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+    &lt;receiver&gt;frame&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
++   &lt;slot&gt;setVisible(bool)&lt;/slot&gt;
+    &lt;hints&gt;
+     &lt;hint type=&quot;sourcelabel&quot;&gt;
+      &lt;x&gt;148&lt;/x&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocostebase.ui b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocostebase.ui
+index 217c5f7..21f60d5 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocostebase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocostebase.ui
+@@ -382,7 +382,7 @@
+    &lt;sender&gt;mui_detalles&lt;/sender&gt;
+    &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+    &lt;receiver&gt;tabWidget&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
++   &lt;slot&gt;setVisible(bool)&lt;/slot&gt;
+    &lt;hints&gt;
+     &lt;hint type=&quot;sourcelabel&quot;&gt;
+      &lt;x&gt;20&lt;/x&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cliente/clienteview.cpp b/bulmages/bulmafact/plugins/pluginbf_cliente/clienteview.cpp
+index e487506..606878b 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cliente/clienteview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_cliente/clienteview.cpp
+@@ -215,7 +215,7 @@ void ClienteView::on_mui_informe_clicked()
+ */
+ /**
+ **/
+-void ClienteView::on_mui_cifcliente_lostFocus()
++void ClienteView::on_mui_cifcliente_editingFinished()
+ {
+     BL_FUNC_DEBUG
+     QChar digito;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cliente/clienteview.h b/bulmages/bulmafact/plugins/pluginbf_cliente/clienteview.h
+index 972d655..ffc3e1f 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cliente/clienteview.h
++++ b/bulmages/bulmafact/plugins/pluginbf_cliente/clienteview.h
+@@ -50,7 +50,7 @@ public:
+ public slots:
+     /// \TODO: Muchos metodos aqui implementados deberian estar en Ficha.
+     virtual void on_mui_informe_clicked();
+-    virtual void on_mui_cifcliente_lostFocus();
++    virtual void on_mui_cifcliente_editingFinished();
+ };
+ 
+ #endif
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientealbaran/albaranclientebase.ui b/bulmages/bulmafact/plugins/pluginbf_clientealbaran/albaranclientebase.ui
+index 17354ec..f0890a7 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientealbaran/albaranclientebase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_clientealbaran/albaranclientebase.ui
+@@ -1509,7 +1509,7 @@
+    &lt;sender&gt;mui_detalles&lt;/sender&gt;
+    &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+    &lt;receiver&gt;frame&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
++   &lt;slot&gt;setVisible(bool)&lt;/slot&gt;
+    &lt;hints&gt;
+     &lt;hint type=&quot;sourcelabel&quot;&gt;
+      &lt;x&gt;14&lt;/x&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturabase.ui b/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturabase.ui
+index 07ad299..a75a2d1 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturabase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturabase.ui
+@@ -1383,7 +1383,7 @@
+    &lt;sender&gt;mui_detalles&lt;/sender&gt;
+    &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+    &lt;receiver&gt;frame&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
++   &lt;slot&gt;setVisible(bool)&lt;/slot&gt;
+    &lt;hints&gt;
+     &lt;hint type=&quot;sourcelabel&quot;&gt;
+      &lt;x&gt;25&lt;/x&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientepedido/pedidoclientebase.ui b/bulmages/bulmafact/plugins/pluginbf_clientepedido/pedidoclientebase.ui
+index 13cf6b3..374bc0e 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientepedido/pedidoclientebase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_clientepedido/pedidoclientebase.ui
+@@ -1372,7 +1372,7 @@
+    &lt;sender&gt;mui_detalles&lt;/sender&gt;
+    &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+    &lt;receiver&gt;frame&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
++   &lt;slot&gt;setVisible(bool)&lt;/slot&gt;
+    &lt;hints&gt;
+     &lt;hint type=&quot;sourcelabel&quot;&gt;
+      &lt;x&gt;25&lt;/x&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/presupuestoclientebase.ui b/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/presupuestoclientebase.ui
+index 2813dfb..5ee8b8f 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/presupuestoclientebase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/presupuestoclientebase.ui
+@@ -1552,7 +1552,7 @@
+    &lt;sender&gt;mui_detalles&lt;/sender&gt;
+    &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+    &lt;receiver&gt;frame&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
++   &lt;slot&gt;setVisible(bool)&lt;/slot&gt;
+    &lt;hints&gt;
+     &lt;hint type=&quot;sourcelabel&quot;&gt;
+      &lt;x&gt;27&lt;/x&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clienteticket/ticketclientebase.ui b/bulmages/bulmafact/plugins/pluginbf_clienteticket/ticketclientebase.ui
+index 278b68f..8e26530 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clienteticket/ticketclientebase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_clienteticket/ticketclientebase.ui
+@@ -1531,7 +1531,7 @@
+    &lt;sender&gt;mui_detalles&lt;/sender&gt;
+    &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+    &lt;receiver&gt;frame&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
++   &lt;slot&gt;setVisible(bool)&lt;/slot&gt;
+    &lt;hints&gt;
+     &lt;hint type=&quot;sourcelabel&quot;&gt;
+      &lt;x&gt;14&lt;/x&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_compraventa/compraventabase.ui b/bulmages/bulmafact/plugins/pluginbf_compraventa/compraventabase.ui
+index 57bbaaa..cb9f5fa 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_compraventa/compraventabase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_compraventa/compraventabase.ui
+@@ -1674,7 +1674,7 @@
+    &lt;sender&gt;mui_detalles&lt;/sender&gt;
+    &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+    &lt;receiver&gt;frame&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
++   &lt;slot&gt;setVisible(bool)&lt;/slot&gt;
+    &lt;hints&gt;
+     &lt;hint type=&quot;sourcelabel&quot;&gt;
+      &lt;x&gt;14&lt;/x&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_contrato/contratobase.ui b/bulmages/bulmafact/plugins/pluginbf_contrato/contratobase.ui
+index bf48d00..a9b82fc 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_contrato/contratobase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_contrato/contratobase.ui
+@@ -736,7 +736,7 @@
+    &lt;sender&gt;mui_detalles&lt;/sender&gt;
+    &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+    &lt;receiver&gt;frame&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
++   &lt;slot&gt;setVisible(bool)&lt;/slot&gt;
+    &lt;hints&gt;
+     &lt;hint type=&quot;sourcelabel&quot;&gt;
+      &lt;x&gt;27&lt;/x&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cuadrante/cuadrantebase.ui b/bulmages/bulmafact/plugins/pluginbf_cuadrante/cuadrantebase.ui
+index 0a64dfb..7da9ae8 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cuadrante/cuadrantebase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_cuadrante/cuadrantebase.ui
+@@ -535,7 +535,7 @@
+    &lt;sender&gt;mui_ocultar&lt;/sender&gt;
+    &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+    &lt;receiver&gt;frame_2&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
++   &lt;slot&gt;setVisible(bool)&lt;/slot&gt;
+    &lt;hints&gt;
+     &lt;hint type=&quot;sourcelabel&quot; &gt;
+      &lt;x&gt;279&lt;/x&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cuadrante/cuadrantediariobase.ui b/bulmages/bulmafact/plugins/pluginbf_cuadrante/cuadrantediariobase.ui
+index 35e97a0..66543b4 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cuadrante/cuadrantediariobase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_cuadrante/cuadrantediariobase.ui
+@@ -578,7 +578,7 @@
+    &lt;sender&gt;mui_ocultar&lt;/sender&gt;
+    &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+    &lt;receiver&gt;frame_2&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
++   &lt;slot&gt;setVisible(bool)&lt;/slot&gt;
+    &lt;hints&gt;
+     &lt;hint type=&quot;sourcelabel&quot; &gt;
+      &lt;x&gt;279&lt;/x&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cuenta/pluginbf_cuenta.cpp b/bulmages/bulmafact/plugins/pluginbf_cuenta/pluginbf_cuenta.cpp
+index 7673749..351e1be 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cuenta/pluginbf_cuenta.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_cuenta/pluginbf_cuenta.cpp
+@@ -401,11 +401,11 @@ void SubForm_Cuenta::s_pintaMenu ( QMenu *menu )
+     BlSubFormHeader *header = sub-&gt;header ( &quot;codigocuenta&quot; );
+     if ( header ) {
+         menu-&gt;addSeparator();
+-        menu-&gt;addAction ( QIcon ( &quot;:/ImgGestionAula/icons/cuenta.png&quot; ), _ ( &quot;Nuevo cuenta&quot; ) );
++        menu-&gt;addAction ( QIcon ( &quot;:/Images/account.png&quot; ), _ ( &quot;Nueva cuenta&quot; ) );
+         QString idcuenta = sub-&gt;dbValue ( &quot;idcuenta&quot; );
+-        if ( idcuenta != &quot;&quot; ) menu-&gt;addAction ( QIcon ( &quot;:/ImgGestionAula/icons/cuenta.png&quot; ), _ ( &quot;Editar cuenta&quot; ) );
++        if ( idcuenta != &quot;&quot; ) menu-&gt;addAction ( QIcon ( &quot;:/Images/account.png&quot; ), _ ( &quot;Editar cuenta&quot; ) );
+         if ( ! ( header-&gt;options() &amp; BlSubFormHeader::DbNoWrite ) )  {
+-            menu-&gt;addAction ( QIcon ( &quot;:/ImgGestionAula/icons/cuenta-list.png&quot; ), _ ( &quot;Seleccionar cuenta&quot; ) );
++            menu-&gt;addAction ( QIcon ( &quot;:/Images/account_plan.png&quot; ), _ ( &quot;Seleccionar cuenta&quot; ) );
+         } // end if
+     } // end if
+     
+@@ -485,6 +485,11 @@ void SubForm_Cuenta::nuevoCuenta( )
+ }
+ 
+ 
++void SubForm_Cuenta::seleccionarCuenta ( ) 
++{
++  seleccionarCuenta(NULL);
++}
++
+ ///
+ /**
+ **/
+@@ -563,7 +568,7 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
+           sel-&gt;setStatusTip ( _(&quot;Nueva cuenta&quot;) );
+           sel-&gt;setToolTip ( _(&quot;Nueva cuenta&quot;) );
+           sel-&gt;setMinimumSize ( QSize ( 18, 18 ) );
+-          sel-&gt;setIcon ( QIcon ( &quot;:/ImgGestionAula/icons/cuenta.png&quot; ) );
++          sel-&gt;setIcon ( QIcon ( &quot;:/Images/account.png&quot; ) );
+           sel-&gt;setIconSize ( QSize ( 18, 18 ) );    
+           m_hboxLayout1-&gt;addWidget ( sel );
+           sel-&gt;connect (sel, SIGNAL(released()), subformods, SLOT(nuevoCuenta()));
+@@ -572,7 +577,7 @@ int BlSubForm_preparaMenu ( BlSubForm *sub ) {
+           sel1-&gt;setStatusTip ( _(&quot;Seleccionar cuenta&quot;) );
+           sel1-&gt;setToolTip ( _(&quot;Seleccionar cuenta&quot;) );
+           sel1-&gt;setMinimumSize ( QSize ( 18, 18 ) );
+-          sel1-&gt;setIcon ( QIcon ( &quot;:/ImgGestionAula/icons/cuenta-list.png&quot; ) );
++          sel1-&gt;setIcon ( QIcon ( &quot;:/Images/account_plan.png&quot; ) );
+           sel1-&gt;setIconSize ( QSize ( 18, 18 ) );
+           m_hboxLayout1-&gt;addWidget ( sel1 );
+           sel1-&gt;connect (sel1, SIGNAL(released()), subformods, SLOT(seleccionarCuenta()));
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cuenta/pluginbf_cuenta.h b/bulmages/bulmafact/plugins/pluginbf_cuenta/pluginbf_cuenta.h
+index 0697c6e..5be03f0 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cuenta/pluginbf_cuenta.h
++++ b/bulmages/bulmafact/plugins/pluginbf_cuenta/pluginbf_cuenta.h
+@@ -71,6 +71,7 @@ public slots:
+     void editarCuenta( QString);
+     void nuevoCuenta();
+     void seleccionarCuenta(BlSubForm *);
++    void seleccionarCuenta();
+ 
+     virtual void s_pintaMenu ( QMenu * );
+     virtual void s_trataMenu ( QAction * );
+diff --git a/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/partidasbase.ui b/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/partidasbase.ui
+index 6aa383c..451f6c0 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/partidasbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/partidasbase.ui
+@@ -489,7 +489,7 @@
+    &lt;sender&gt;mui_detalles&lt;/sender&gt;
+    &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+    &lt;receiver&gt;groupBox1&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
++   &lt;slot&gt;setVisible(bool)&lt;/slot&gt;
+    &lt;hints&gt;
+     &lt;hint type=&quot;sourcelabel&quot;&gt;
+      &lt;x&gt;21&lt;/x&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/presupuestocontablebase.ui b/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/presupuestocontablebase.ui
+index 6a54df1..32e4feb 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/presupuestocontablebase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/presupuestocontablebase.ui
+@@ -537,7 +537,7 @@
+    &lt;sender&gt;mui_detalles&lt;/sender&gt;
+    &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+    &lt;receiver&gt;frame&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
++   &lt;slot&gt;setVisible(bool)&lt;/slot&gt;
+    &lt;hints&gt;
+     &lt;hint type=&quot;sourcelabel&quot;&gt;
+      &lt;x&gt;27&lt;/x&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedor/provedit.cpp b/bulmages/bulmafact/plugins/pluginbf_proveedor/provedit.cpp
+index ee6ca96..7a76c62 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedor/provedit.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedor/provedit.cpp
+@@ -156,7 +156,7 @@ int ProveedorView::afterSave()
+ */
+ /**
+ **/
+-void ProveedorView::on_mui_cifproveedor_lostFocus()
++void ProveedorView::on_mui_cifproveedor_editingFinished()
+ {
+     BL_FUNC_DEBUG
+     QChar digito;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedor/provedit.h b/bulmages/bulmafact/plugins/pluginbf_proveedor/provedit.h
+index 951565e..7419a8c 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedor/provedit.h
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedor/provedit.h
+@@ -42,7 +42,7 @@ public:
+     virtual void pintarPost();
+ 
+ public slots:
+-    virtual void on_mui_cifproveedor_lostFocus();
++    virtual void on_mui_cifproveedor_editingFinished();
+ 
+ public:
+     virtual int cargarPost ( QString );
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/albaranproveedorbase.ui b/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/albaranproveedorbase.ui
+index a1c676a..2b406ed 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/albaranproveedorbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/albaranproveedorbase.ui
+@@ -1254,7 +1254,7 @@
+    &lt;sender&gt;mui_detalles&lt;/sender&gt;
+    &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+    &lt;receiver&gt;frame&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
++   &lt;slot&gt;setVisible(bool)&lt;/slot&gt;
+    &lt;hints&gt;
+     &lt;hint type=&quot;sourcelabel&quot;&gt;
+      &lt;x&gt;21&lt;/x&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturapbase.ui b/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturapbase.ui
+index 1adf9f2..7c45829 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturapbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturapbase.ui
+@@ -1273,7 +1273,7 @@
+    &lt;sender&gt;mui_detalles&lt;/sender&gt;
+    &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+    &lt;receiver&gt;frame&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
++   &lt;slot&gt;setVisible(bool)&lt;/slot&gt;
+    &lt;hints&gt;
+     &lt;hint type=&quot;sourcelabel&quot;&gt;
+      &lt;x&gt;156&lt;/x&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorbase.ui b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorbase.ui
+index ad22dca..105d78f 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorbase.ui
+@@ -1383,7 +1383,7 @@
+    &lt;sender&gt;mui_detalles&lt;/sender&gt;
+    &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+    &lt;receiver&gt;frame&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
++   &lt;slot&gt;setVisible(bool)&lt;/slot&gt;
+    &lt;hints&gt;
+     &lt;hint type=&quot;sourcelabel&quot;&gt;
+      &lt;x&gt;14&lt;/x&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_vehiculo/vehiculobase.ui b/bulmages/bulmafact/plugins/pluginbf_vehiculo/vehiculobase.ui
+index 28771f8..c1ba989 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_vehiculo/vehiculobase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_vehiculo/vehiculobase.ui
+@@ -490,7 +490,7 @@
+    &lt;sender&gt;mui_detalles&lt;/sender&gt;
+    &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+    &lt;receiver&gt;frame&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
++   &lt;slot&gt;setVisible(bool)&lt;/slot&gt;
+    &lt;hints&gt;
+     &lt;hint type=&quot;sourcelabel&quot;&gt;
+      &lt;x&gt;25&lt;/x&gt;
+diff --git a/bulmages/bulmafact/src/bfbuscarreferencia.cpp b/bulmages/bulmafact/src/bfbuscarreferencia.cpp
+index c66116b..b7a8675 100644
+--- a/bulmages/bulmafact/src/bfbuscarreferencia.cpp
++++ b/bulmages/bulmafact/src/bfbuscarreferencia.cpp
+@@ -36,7 +36,7 @@ BfBuscarReferencia::BfBuscarReferencia ( QWidget *parent )
+ {
+     BL_FUNC_DEBUG
+     setupUi ( this );
+-    connect ( mui_referencia, SIGNAL ( returnPressed() ), this, SLOT ( on_mui_rferencia_returnPressed() ) );
++    connect ( mui_referencia, SIGNAL ( returnPressed() ), this, SLOT ( mui_rferencia_returnPressed() ) );
+ 
+     /// Establecemos el focusProxy
+     setFocusProxy (mui_referencia);
+@@ -61,7 +61,7 @@ BfBuscarReferencia::~BfBuscarReferencia()
+ */
+ /**
+ **/
+-void BfBuscarReferencia::on_mui_informe_clicked()
++void BfBuscarReferencia::on_mui_informe_released()
+ {
+     BL_FUNC_DEBUG
+ 
+@@ -96,11 +96,11 @@ void BfBuscarReferencia::on_mui_referencia_editingFinished()
+ */
+ /**
+ **/
+-void BfBuscarReferencia::on_mui_rferencia_returnPressed()
++void BfBuscarReferencia::mui_rferencia_returnPressed()
+ {
+     BL_FUNC_DEBUG
+     /// Disparamos los plugins
+-    int res = g_plugins-&gt;run ( &quot;BfBuscarReferencia_on_mui_rferencia_returnPressed&quot;, this );
++    int res = g_plugins-&gt;run ( &quot;BfBuscarReferencia_mui_rferencia_returnPressed&quot;, this );
+     if ( res == 0 ) {
+         emit ( returnPressed ( ) );
+     } // end if
+@@ -115,114 +115,10 @@ void BfBuscarReferencia::on_mui_rferencia_returnPressed()
+ */
+ /**
+ **/
+-void BfBuscarReferencia::on_mui_abrirtodo_clicked()
++void BfBuscarReferencia::on_mui_abrirtodo_released()
+ {
+     BL_FUNC_DEBUG
+-    /// Empezamos con los presupuestos.
+-    /*
+-        QString SQLQuery = &quot;SELECT * FROM presupuesto WHERE refpresupuesto = '&quot; + mui_referencia-&gt;text() + &quot;'&quot;;
+-        BlDbRecordSet *cur = mainCompany() -&gt;loadQuery ( SQLQuery );
+-        while ( !cur-&gt;eof() ) {
+-            PresupuestoView * bud = ( ( BfCompany * ) mainCompany() ) -&gt;nuevoPresupuestoView();
+-            mainCompany() -&gt;m_pWorkspace-&gt;addSubWindow ( bud );
+-            bud-&gt;load ( cur-&gt;value( &quot;idpresupuesto&quot; ) );
+-            bud-&gt;show();
+-            cur-&gt;nextRecord();
+-        } // end while
+-        delete cur;
+-    */
+-    /*
+-        SQLQuery = &quot;SELECT * FROM pedidocliente WHERE refpedidocliente = '&quot; + mui_referencia-&gt;text() + &quot;'&quot;;
+-        cur = mainCompany() -&gt;loadQuery ( SQLQuery );
+-        while ( !cur-&gt;eof() ) {
+-            PedidoClienteView * bud = ( ( BfCompany * ) mainCompany() ) -&gt;newPedidoClienteView();
+-            mainCompany() -&gt;m_pWorkspace-&gt;addSubWindow ( bud );
+-            bud-&gt;load ( cur-&gt;value( &quot;idpedidocliente&quot; ) );
+-            bud-&gt;show();
+-            cur-&gt;nextRecord();
+-        } // end while
+-        delete cur;
+-    */
+-    /*
+-        SQLQuery = &quot;SELECT * FROM albaran WHERE refalbaran = '&quot; + mui_referencia-&gt;text() + &quot;'&quot;;
+-        cur = mainCompany() -&gt;loadQuery ( SQLQuery );
+-        while ( !cur-&gt;eof() ) {
+-            AlbaranClienteView * bud = ( ( BfCompany * ) mainCompany() ) -&gt;newAlbaranClienteView();
+-            mainCompany() -&gt;m_pWorkspace-&gt;addSubWindow ( bud );
+-            bud-&gt;load ( cur-&gt;value( &quot;idalbaran&quot; ) );
+-            bud-&gt;show();
+-            cur-&gt;nextRecord();
+-        } // end while
+-        delete cur;
+-    */
+-
+-    /*
+-        SQLQuery = &quot;SELECT * FROM factura WHERE reffactura = '&quot; + mui_referencia-&gt;text() + &quot;'&quot;;
+-        cur = mainCompany() -&gt;loadQuery ( SQLQuery );
+-        while ( !cur-&gt;eof() ) {
+-            FacturaView * bud = ( ( BfCompany * ) mainCompany() ) -&gt;newFacturaView();
+-            mainCompany() -&gt;m_pWorkspace-&gt;addSubWindow ( bud );
+-            bud-&gt;load ( cur-&gt;value( &quot;idfactura&quot; ) );
+-            bud-&gt;show();
+-            cur-&gt;nextRecord();
+-        } // end while
+-        delete cur;
+-    */
+-
+-    /*
+-        SQLQuery = &quot;SELECT * FROM cobro WHERE refcobro = '&quot; + mui_referencia-&gt;text() + &quot;'&quot;;
+-        cur = mainCompany() -&gt;loadQuery ( SQLQuery );
+-        while ( !cur-&gt;eof() ) {
+-            CobroView * bud = ( ( BfCompany * ) mainCompany() ) -&gt;newCobroView();
+-            mainCompany() -&gt;m_pWorkspace-&gt;addSubWindow ( bud );
+-            bud-&gt;load ( cur-&gt;value( &quot;idcobro&quot; ) );
+-            bud-&gt;show();
+-            cur-&gt;nextRecord();
+-        } // end while
+-        delete cur;
+-    */
+-
+-    /*
+-        SQLQuery = &quot;SELECT * FROM pedidoproveedor WHERE refpedidoproveedor = '&quot; + mui_referencia-&gt;text() + &quot;'&quot;;
+-        cur = mainCompany() -&gt;loadQuery ( SQLQuery );
+-        while ( !cur-&gt;eof() ) {
+-            PedidoProveedorView * bud = ( ( BfCompany * ) mainCompany() ) -&gt;nuevoPedidoProveedorView();
+-            mainCompany() -&gt;m_pWorkspace-&gt;addSubWindow ( bud );
+-            bud-&gt;load ( cur-&gt;value( &quot;idpedidoproveedor&quot; ) );
+-            bud-&gt;show();
+-            cur-&gt;nextRecord();
+-        } // end while
+-        delete cur;
+-    */
+-
+-    /*
+-        SQLQuery = &quot;SELECT * FROM albaranp WHERE refalbaranp = '&quot; + mui_referencia-&gt;text() + &quot;'&quot;;
+-        cur = mainCompany() -&gt;loadQuery ( SQLQuery );
+-        while ( !cur-&gt;eof() ) {
+-            AlbaranProveedorView * bud = ( ( BfCompany * ) mainCompany() ) -&gt;newAlbaranProveedorView();
+-            mainCompany() -&gt;m_pWorkspace-&gt;addSubWindow ( bud );
+-            bud-&gt;load ( cur-&gt;value( &quot;idalbaranp&quot; ) );
+-            bud-&gt;show();
+-            cur-&gt;nextRecord();
+-        } // end while
+-        delete cur;
+-    */
+-
+-    /*
+-        SQLQuery = &quot;SELECT * FROM facturap WHERE reffacturap = '&quot; + mui_referencia-&gt;text() + &quot;'&quot;;
+-        cur = mainCompany() -&gt;loadQuery ( SQLQuery );
+-        while ( !cur-&gt;eof() ) {
+-            FacturaProveedorView * bud = ( ( BfCompany * ) mainCompany() ) -&gt;newFacturaProveedorView();
+-            mainCompany() -&gt;m_pWorkspace-&gt;addSubWindow ( bud );
+-            bud-&gt;load ( cur-&gt;value( &quot;idfacturap&quot; ) );
+-            bud-&gt;show();
+-            cur-&gt;nextRecord();
+-        } // end while
+-        delete cur;
+-    */
+     g_plugins-&gt;run ( &quot;BfBuscarReferencia_on_mui_abrirtodo_clicked_Post&quot;, this );
+-
+-    
+ }
+ 
+ 
+diff --git a/bulmages/bulmafact/src/bfbuscarreferencia.h b/bulmages/bulmafact/src/bfbuscarreferencia.h
+index d77481a..e648451 100644
+--- a/bulmages/bulmafact/src/bfbuscarreferencia.h
++++ b/bulmages/bulmafact/src/bfbuscarreferencia.h
+@@ -45,10 +45,10 @@ public:
+     virtual QString fieldValue();
+ 
+ public slots:
+-    virtual void on_mui_informe_clicked();
++    virtual void on_mui_informe_released();
+     virtual void on_mui_referencia_editingFinished();
+-    virtual void on_mui_rferencia_returnPressed();
+-    virtual void on_mui_abrirtodo_clicked();
++    virtual void mui_rferencia_returnPressed();
++    virtual void on_mui_abrirtodo_released();
+ 
+ signals:
+     void valueChanged ( const QString &amp;);
+diff --git a/bulmages/bulmalib/src/blcountrybase.ui b/bulmages/bulmalib/src/blcountrybase.ui
+index b054ddd..aee4994 100644
+--- a/bulmages/bulmalib/src/blcountrybase.ui
++++ b/bulmages/bulmalib/src/blcountrybase.ui
+@@ -1,7 +1,8 @@
+-&lt;ui version=&quot;4.0&quot; &gt;
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
++&lt;ui version=&quot;4.0&quot;&gt;
+  &lt;class&gt;BlCountryBase&lt;/class&gt;
+- &lt;widget class=&quot;QWidget&quot; name=&quot;BlCountryBase&quot; &gt;
+-  &lt;property name=&quot;geometry&quot; &gt;
++ &lt;widget class=&quot;QWidget&quot; name=&quot;BlCountryBase&quot;&gt;
++  &lt;property name=&quot;geometry&quot;&gt;
+    &lt;rect&gt;
+     &lt;x&gt;0&lt;/x&gt;
+     &lt;y&gt;0&lt;/y&gt;
+@@ -9,68 +10,68 @@
+     &lt;height&gt;578&lt;/height&gt;
+    &lt;/rect&gt;
+   &lt;/property&gt;
+-  &lt;property name=&quot;windowTitle&quot; &gt;
++  &lt;property name=&quot;windowTitle&quot;&gt;
+    &lt;string&gt;Paises&lt;/string&gt;
+   &lt;/property&gt;
+-  &lt;property name=&quot;windowIcon&quot; &gt;
+-   &lt;iconset resource=&quot;../../bulmages.qrc&quot; &gt;
++  &lt;property name=&quot;windowIcon&quot;&gt;
++   &lt;iconset resource=&quot;../../bulmages.qrc&quot;&gt;
+     &lt;normaloff&gt;:/Images/flag-world.png&lt;/normaloff&gt;:/Images/flag-world.png&lt;/iconset&gt;
+   &lt;/property&gt;
+-  &lt;layout class=&quot;QGridLayout&quot; &gt;
+-   &lt;property name=&quot;margin&quot; &gt;
++  &lt;layout class=&quot;QGridLayout&quot;&gt;
++   &lt;property name=&quot;margin&quot;&gt;
+     &lt;number&gt;5&lt;/number&gt;
+    &lt;/property&gt;
+-   &lt;property name=&quot;spacing&quot; &gt;
++   &lt;property name=&quot;spacing&quot;&gt;
+     &lt;number&gt;5&lt;/number&gt;
+    &lt;/property&gt;
+-   &lt;item row=&quot;2&quot; column=&quot;0&quot; &gt;
+-    &lt;widget class=&quot;BlSubForm&quot; name=&quot;mui_list&quot; &gt;
+-     &lt;property name=&quot;sizePolicy&quot; &gt;
+-      &lt;sizepolicy vsizetype=&quot;Expanding&quot; hsizetype=&quot;Expanding&quot; &gt;
++   &lt;item row=&quot;2&quot; column=&quot;0&quot;&gt;
++    &lt;widget class=&quot;BlSubForm&quot; name=&quot;mui_list&quot;&gt;
++     &lt;property name=&quot;sizePolicy&quot;&gt;
++      &lt;sizepolicy hsizetype=&quot;Expanding&quot; vsizetype=&quot;Expanding&quot;&gt;
+        &lt;horstretch&gt;0&lt;/horstretch&gt;
+        &lt;verstretch&gt;0&lt;/verstretch&gt;
+       &lt;/sizepolicy&gt;
+      &lt;/property&gt;
+     &lt;/widget&gt;
+    &lt;/item&gt;
+-   &lt;item row=&quot;3&quot; column=&quot;0&quot; &gt;
+-    &lt;widget class=&quot;QGroupBox&quot; name=&quot;mui_datospais&quot; &gt;
+-     &lt;property name=&quot;title&quot; &gt;
++   &lt;item row=&quot;3&quot; column=&quot;0&quot;&gt;
++    &lt;widget class=&quot;QGroupBox&quot; name=&quot;mui_datospais&quot;&gt;
++     &lt;property name=&quot;title&quot;&gt;
+       &lt;string&gt;Datos del pais:&lt;/string&gt;
+      &lt;/property&gt;
+-     &lt;layout class=&quot;QGridLayout&quot; &gt;
+-      &lt;property name=&quot;margin&quot; &gt;
++     &lt;layout class=&quot;QGridLayout&quot;&gt;
++      &lt;property name=&quot;margin&quot;&gt;
+        &lt;number&gt;5&lt;/number&gt;
+       &lt;/property&gt;
+-      &lt;property name=&quot;spacing&quot; &gt;
++      &lt;property name=&quot;spacing&quot;&gt;
+        &lt;number&gt;5&lt;/number&gt;
+       &lt;/property&gt;
+-      &lt;item row=&quot;0&quot; column=&quot;0&quot; &gt;
+-       &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1&quot; &gt;
+-        &lt;property name=&quot;text&quot; &gt;
++      &lt;item row=&quot;0&quot; column=&quot;0&quot;&gt;
++       &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1&quot;&gt;
++        &lt;property name=&quot;text&quot;&gt;
+          &lt;string&gt;Nombre del pais:&lt;/string&gt;
+         &lt;/property&gt;
+-        &lt;property name=&quot;alignment&quot; &gt;
++        &lt;property name=&quot;alignment&quot;&gt;
+          &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
+         &lt;/property&gt;
+        &lt;/widget&gt;
+       &lt;/item&gt;
+-      &lt;item row=&quot;1&quot; column=&quot;2&quot; &gt;
+-       &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_3&quot; &gt;
+-        &lt;property name=&quot;text&quot; &gt;
++      &lt;item row=&quot;1&quot; column=&quot;2&quot;&gt;
++       &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_3&quot;&gt;
++        &lt;property name=&quot;text&quot;&gt;
+          &lt;string&gt;Codigo 3 letras:&lt;/string&gt;
+         &lt;/property&gt;
+-        &lt;property name=&quot;alignment&quot; &gt;
++        &lt;property name=&quot;alignment&quot;&gt;
+          &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
+         &lt;/property&gt;
+        &lt;/widget&gt;
+       &lt;/item&gt;
+-      &lt;item row=&quot;1&quot; column=&quot;4&quot; &gt;
++      &lt;item row=&quot;1&quot; column=&quot;4&quot;&gt;
+        &lt;spacer&gt;
+-        &lt;property name=&quot;orientation&quot; &gt;
++        &lt;property name=&quot;orientation&quot;&gt;
+          &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
+         &lt;/property&gt;
+-        &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot; &gt;
++        &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
+          &lt;size&gt;
+           &lt;width&gt;71&lt;/width&gt;
+           &lt;height&gt;20&lt;/height&gt;
+@@ -78,53 +79,53 @@
+         &lt;/property&gt;
+        &lt;/spacer&gt;
+       &lt;/item&gt;
+-      &lt;item row=&quot;1&quot; column=&quot;3&quot; &gt;
+-       &lt;widget class=&quot;QLineEdit&quot; name=&quot;mui_cod3pais&quot; &gt;
+-        &lt;property name=&quot;maxLength&quot; &gt;
++      &lt;item row=&quot;1&quot; column=&quot;3&quot;&gt;
++       &lt;widget class=&quot;QLineEdit&quot; name=&quot;mui_cod3pais&quot;&gt;
++        &lt;property name=&quot;maxLength&quot;&gt;
+          &lt;number&gt;3&lt;/number&gt;
+         &lt;/property&gt;
+        &lt;/widget&gt;
+       &lt;/item&gt;
+-      &lt;item row=&quot;1&quot; column=&quot;1&quot; &gt;
+-       &lt;widget class=&quot;QLineEdit&quot; name=&quot;mui_cod2pais&quot; &gt;
+-        &lt;property name=&quot;maxLength&quot; &gt;
++      &lt;item row=&quot;1&quot; column=&quot;1&quot;&gt;
++       &lt;widget class=&quot;QLineEdit&quot; name=&quot;mui_cod2pais&quot;&gt;
++        &lt;property name=&quot;maxLength&quot;&gt;
+          &lt;number&gt;2&lt;/number&gt;
+         &lt;/property&gt;
+        &lt;/widget&gt;
+       &lt;/item&gt;
+-      &lt;item row=&quot;0&quot; column=&quot;1&quot; colspan=&quot;3&quot; &gt;
+-       &lt;widget class=&quot;QLineEdit&quot; name=&quot;mui_descpais&quot; &gt;
+-        &lt;property name=&quot;maxLength&quot; &gt;
++      &lt;item row=&quot;0&quot; column=&quot;1&quot; colspan=&quot;3&quot;&gt;
++       &lt;widget class=&quot;QLineEdit&quot; name=&quot;mui_descpais&quot;&gt;
++        &lt;property name=&quot;maxLength&quot;&gt;
+          &lt;number&gt;50&lt;/number&gt;
+         &lt;/property&gt;
+        &lt;/widget&gt;
+       &lt;/item&gt;
+-      &lt;item row=&quot;2&quot; column=&quot;0&quot; colspan=&quot;5&quot; &gt;
+-       &lt;widget class=&quot;BlSubForm&quot; name=&quot;mui_listprovincias&quot; &gt;
+-        &lt;property name=&quot;sizePolicy&quot; &gt;
+-         &lt;sizepolicy vsizetype=&quot;Expanding&quot; hsizetype=&quot;Expanding&quot; &gt;
++      &lt;item row=&quot;2&quot; column=&quot;0&quot; colspan=&quot;5&quot;&gt;
++       &lt;widget class=&quot;BlSubForm&quot; name=&quot;mui_listprovincias&quot;&gt;
++        &lt;property name=&quot;sizePolicy&quot;&gt;
++         &lt;sizepolicy hsizetype=&quot;Expanding&quot; vsizetype=&quot;Expanding&quot;&gt;
+           &lt;horstretch&gt;0&lt;/horstretch&gt;
+           &lt;verstretch&gt;0&lt;/verstretch&gt;
+          &lt;/sizepolicy&gt;
+         &lt;/property&gt;
+        &lt;/widget&gt;
+       &lt;/item&gt;
+-      &lt;item row=&quot;1&quot; column=&quot;0&quot; &gt;
+-       &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_2&quot; &gt;
+-        &lt;property name=&quot;text&quot; &gt;
++      &lt;item row=&quot;1&quot; column=&quot;0&quot;&gt;
++       &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_2&quot;&gt;
++        &lt;property name=&quot;text&quot;&gt;
+          &lt;string&gt;Codigo 2 letras:&lt;/string&gt;
+         &lt;/property&gt;
+-        &lt;property name=&quot;alignment&quot; &gt;
++        &lt;property name=&quot;alignment&quot;&gt;
+          &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
+         &lt;/property&gt;
+        &lt;/widget&gt;
+       &lt;/item&gt;
+-      &lt;item row=&quot;0&quot; column=&quot;4&quot; &gt;
++      &lt;item row=&quot;0&quot; column=&quot;4&quot;&gt;
+        &lt;spacer&gt;
+-        &lt;property name=&quot;orientation&quot; &gt;
++        &lt;property name=&quot;orientation&quot;&gt;
+          &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
+         &lt;/property&gt;
+-        &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot; &gt;
++        &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
+          &lt;size&gt;
+           &lt;width&gt;71&lt;/width&gt;
+           &lt;height&gt;20&lt;/height&gt;
+@@ -135,61 +136,61 @@
+      &lt;/layout&gt;
+     &lt;/widget&gt;
+    &lt;/item&gt;
+-   &lt;item row=&quot;1&quot; column=&quot;0&quot; &gt;
+-    &lt;layout class=&quot;QHBoxLayout&quot; &gt;
+-     &lt;property name=&quot;spacing&quot; &gt;
++   &lt;item row=&quot;1&quot; column=&quot;0&quot;&gt;
++    &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++     &lt;property name=&quot;spacing&quot;&gt;
+       &lt;number&gt;5&lt;/number&gt;
+      &lt;/property&gt;
+-     &lt;property name=&quot;margin&quot; &gt;
++     &lt;property name=&quot;margin&quot;&gt;
+       &lt;number&gt;0&lt;/number&gt;
+      &lt;/property&gt;
+      &lt;item&gt;
+-      &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_detalles&quot; &gt;
+-       &lt;property name=&quot;minimumSize&quot; &gt;
++      &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_detalles&quot;&gt;
++       &lt;property name=&quot;minimumSize&quot;&gt;
+         &lt;size&gt;
+          &lt;width&gt;22&lt;/width&gt;
+          &lt;height&gt;22&lt;/height&gt;
+         &lt;/size&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;maximumSize&quot; &gt;
++       &lt;property name=&quot;maximumSize&quot;&gt;
+         &lt;size&gt;
+          &lt;width&gt;22&lt;/width&gt;
+          &lt;height&gt;22&lt;/height&gt;
+         &lt;/size&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;toolTip&quot; &gt;
++       &lt;property name=&quot;toolTip&quot;&gt;
+         &lt;string&gt;Mostrar/ocultar detalle&lt;/string&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;whatsThis&quot; &gt;
++       &lt;property name=&quot;whatsThis&quot;&gt;
+         &lt;string&gt;Mostrar/ocultar detalle&lt;/string&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;text&quot; &gt;
++       &lt;property name=&quot;text&quot;&gt;
+         &lt;string/&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;icon&quot; &gt;
+-        &lt;iconset resource=&quot;../../bulmages.qrc&quot; &gt;
++       &lt;property name=&quot;icon&quot;&gt;
++        &lt;iconset resource=&quot;../../bulmages.qrc&quot;&gt;
+          &lt;normaloff&gt;:/Images/document-open.png&lt;/normaloff&gt;:/Images/document-open.png&lt;/iconset&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;iconSize&quot; &gt;
++       &lt;property name=&quot;iconSize&quot;&gt;
+         &lt;size&gt;
+          &lt;width&gt;32&lt;/width&gt;
+          &lt;height&gt;32&lt;/height&gt;
+         &lt;/size&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;checkable&quot; &gt;
++       &lt;property name=&quot;checkable&quot;&gt;
+         &lt;bool&gt;true&lt;/bool&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;checked&quot; &gt;
++       &lt;property name=&quot;checked&quot;&gt;
+         &lt;bool&gt;true&lt;/bool&gt;
+        &lt;/property&gt;
+       &lt;/widget&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+       &lt;spacer&gt;
+-       &lt;property name=&quot;orientation&quot; &gt;
++       &lt;property name=&quot;orientation&quot;&gt;
+         &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot; &gt;
++       &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
+         &lt;size&gt;
+          &lt;width&gt;40&lt;/width&gt;
+          &lt;height&gt;20&lt;/height&gt;
+@@ -199,23 +200,23 @@
+      &lt;/item&gt;
+     &lt;/layout&gt;
+    &lt;/item&gt;
+-   &lt;item row=&quot;4&quot; column=&quot;0&quot; &gt;
+-    &lt;layout class=&quot;QHBoxLayout&quot; &gt;
+-     &lt;property name=&quot;spacing&quot; &gt;
++   &lt;item row=&quot;4&quot; column=&quot;0&quot;&gt;
++    &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++     &lt;property name=&quot;spacing&quot;&gt;
+       &lt;number&gt;5&lt;/number&gt;
+      &lt;/property&gt;
+-     &lt;property name=&quot;margin&quot; &gt;
++     &lt;property name=&quot;margin&quot;&gt;
+       &lt;number&gt;0&lt;/number&gt;
+      &lt;/property&gt;
+      &lt;item&gt;
+       &lt;spacer&gt;
+-       &lt;property name=&quot;orientation&quot; &gt;
++       &lt;property name=&quot;orientation&quot;&gt;
+         &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;sizeType&quot; &gt;
++       &lt;property name=&quot;sizeType&quot;&gt;
+         &lt;enum&gt;QSizePolicy::Expanding&lt;/enum&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot; &gt;
++       &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
+         &lt;size&gt;
+          &lt;width&gt;191&lt;/width&gt;
+          &lt;height&gt;21&lt;/height&gt;
+@@ -224,182 +225,182 @@
+       &lt;/spacer&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+-      &lt;widget class=&quot;QPushButton&quot; name=&quot;pushButton&quot; &gt;
+-       &lt;property name=&quot;text&quot; &gt;
++      &lt;widget class=&quot;QPushButton&quot; name=&quot;pushButton&quot;&gt;
++       &lt;property name=&quot;text&quot;&gt;
+         &lt;string&gt;Cancelar&lt;/string&gt;
+        &lt;/property&gt;
+       &lt;/widget&gt;
+      &lt;/item&gt;
+     &lt;/layout&gt;
+    &lt;/item&gt;
+-   &lt;item row=&quot;0&quot; column=&quot;0&quot; &gt;
+-    &lt;layout class=&quot;QHBoxLayout&quot; &gt;
+-     &lt;property name=&quot;spacing&quot; &gt;
++   &lt;item row=&quot;0&quot; column=&quot;0&quot;&gt;
++    &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++     &lt;property name=&quot;spacing&quot;&gt;
+       &lt;number&gt;5&lt;/number&gt;
+      &lt;/property&gt;
+-     &lt;property name=&quot;margin&quot; &gt;
++     &lt;property name=&quot;margin&quot;&gt;
+       &lt;number&gt;0&lt;/number&gt;
+      &lt;/property&gt;
+      &lt;item&gt;
+-      &lt;widget class=&quot;QLabel&quot; name=&quot;label&quot; &gt;
+-       &lt;property name=&quot;minimumSize&quot; &gt;
++      &lt;widget class=&quot;QLabel&quot; name=&quot;label&quot;&gt;
++       &lt;property name=&quot;minimumSize&quot;&gt;
+         &lt;size&gt;
+          &lt;width&gt;48&lt;/width&gt;
+          &lt;height&gt;48&lt;/height&gt;
+         &lt;/size&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;maximumSize&quot; &gt;
++       &lt;property name=&quot;maximumSize&quot;&gt;
+         &lt;size&gt;
+          &lt;width&gt;48&lt;/width&gt;
+          &lt;height&gt;48&lt;/height&gt;
+         &lt;/size&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;pixmap&quot; &gt;
+-        &lt;pixmap resource=&quot;../../bulmages.qrc&quot; &gt;:/Images/flag-world.png&lt;/pixmap&gt;
++       &lt;property name=&quot;pixmap&quot;&gt;
++        &lt;pixmap resource=&quot;../../bulmages.qrc&quot;&gt;:/Images/flag-world.png&lt;/pixmap&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;scaledContents&quot; &gt;
++       &lt;property name=&quot;scaledContents&quot;&gt;
+         &lt;bool&gt;true&lt;/bool&gt;
+        &lt;/property&gt;
+       &lt;/widget&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+-      &lt;widget class=&quot;QFrame&quot; name=&quot;frame&quot; &gt;
+-       &lt;property name=&quot;frameShape&quot; &gt;
++      &lt;widget class=&quot;QFrame&quot; name=&quot;frame&quot;&gt;
++       &lt;property name=&quot;frameShape&quot;&gt;
+         &lt;enum&gt;QFrame::StyledPanel&lt;/enum&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;frameShadow&quot; &gt;
++       &lt;property name=&quot;frameShadow&quot;&gt;
+         &lt;enum&gt;QFrame::Plain&lt;/enum&gt;
+        &lt;/property&gt;
+-       &lt;layout class=&quot;QGridLayout&quot; &gt;
+-        &lt;property name=&quot;margin&quot; &gt;
++       &lt;layout class=&quot;QGridLayout&quot;&gt;
++        &lt;property name=&quot;margin&quot;&gt;
+          &lt;number&gt;5&lt;/number&gt;
+         &lt;/property&gt;
+-        &lt;property name=&quot;spacing&quot; &gt;
++        &lt;property name=&quot;spacing&quot;&gt;
+          &lt;number&gt;5&lt;/number&gt;
+         &lt;/property&gt;
+-        &lt;item row=&quot;0&quot; column=&quot;0&quot; &gt;
+-         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_crear&quot; &gt;
+-          &lt;property name=&quot;minimumSize&quot; &gt;
++        &lt;item row=&quot;0&quot; column=&quot;0&quot;&gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_crear&quot;&gt;
++          &lt;property name=&quot;minimumSize&quot;&gt;
+            &lt;size&gt;
+             &lt;width&gt;32&lt;/width&gt;
+             &lt;height&gt;32&lt;/height&gt;
+            &lt;/size&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;maximumSize&quot; &gt;
++          &lt;property name=&quot;maximumSize&quot;&gt;
+            &lt;size&gt;
+             &lt;width&gt;32&lt;/width&gt;
+             &lt;height&gt;32&lt;/height&gt;
+            &lt;/size&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;toolTip&quot; &gt;
++          &lt;property name=&quot;toolTip&quot;&gt;
+            &lt;string&gt;Nuevo pais&lt;/string&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;whatsThis&quot; &gt;
++          &lt;property name=&quot;whatsThis&quot;&gt;
+            &lt;string&gt;Nuevo pais&lt;/string&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;text&quot; &gt;
++          &lt;property name=&quot;text&quot;&gt;
+            &lt;string/&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;icon&quot; &gt;
+-           &lt;iconset resource=&quot;../../bulmages.qrc&quot; &gt;
++          &lt;property name=&quot;icon&quot;&gt;
++           &lt;iconset resource=&quot;../../bulmages.qrc&quot;&gt;
+             &lt;normaloff&gt;:/Images/document-new.png&lt;/normaloff&gt;:/Images/document-new.png&lt;/iconset&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;iconSize&quot; &gt;
++          &lt;property name=&quot;iconSize&quot;&gt;
+            &lt;size&gt;
+             &lt;width&gt;32&lt;/width&gt;
+             &lt;height&gt;32&lt;/height&gt;
+            &lt;/size&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;shortcut&quot; &gt;
++          &lt;property name=&quot;shortcut&quot;&gt;
+            &lt;string&gt;Ctrl+N&lt;/string&gt;
+           &lt;/property&gt;
+          &lt;/widget&gt;
+         &lt;/item&gt;
+-        &lt;item row=&quot;0&quot; column=&quot;1&quot; &gt;
+-         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_borrar&quot; &gt;
+-          &lt;property name=&quot;minimumSize&quot; &gt;
++        &lt;item row=&quot;0&quot; column=&quot;1&quot;&gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_borrar&quot;&gt;
++          &lt;property name=&quot;minimumSize&quot;&gt;
+            &lt;size&gt;
+             &lt;width&gt;32&lt;/width&gt;
+             &lt;height&gt;32&lt;/height&gt;
+            &lt;/size&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;maximumSize&quot; &gt;
++          &lt;property name=&quot;maximumSize&quot;&gt;
+            &lt;size&gt;
+             &lt;width&gt;32&lt;/width&gt;
+             &lt;height&gt;32&lt;/height&gt;
+            &lt;/size&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;toolTip&quot; &gt;
++          &lt;property name=&quot;toolTip&quot;&gt;
+            &lt;string&gt;Borrar pais&lt;/string&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;whatsThis&quot; &gt;
++          &lt;property name=&quot;whatsThis&quot;&gt;
+            &lt;string&gt;Borrar pais&lt;/string&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;text&quot; &gt;
++          &lt;property name=&quot;text&quot;&gt;
+            &lt;string/&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;icon&quot; &gt;
++          &lt;property name=&quot;icon&quot;&gt;
+            &lt;iconset&gt;
+             &lt;normaloff&gt;:Images/edit-delete.png&lt;/normaloff&gt;:Images/edit-delete.png&lt;/iconset&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;iconSize&quot; &gt;
++          &lt;property name=&quot;iconSize&quot;&gt;
+            &lt;size&gt;
+             &lt;width&gt;32&lt;/width&gt;
+             &lt;height&gt;32&lt;/height&gt;
+            &lt;/size&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;shortcut&quot; &gt;
++          &lt;property name=&quot;shortcut&quot;&gt;
+            &lt;string&gt;Ctrl+D&lt;/string&gt;
+           &lt;/property&gt;
+          &lt;/widget&gt;
+         &lt;/item&gt;
+-        &lt;item row=&quot;0&quot; column=&quot;2&quot; &gt;
+-         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_guardar&quot; &gt;
+-          &lt;property name=&quot;minimumSize&quot; &gt;
++        &lt;item row=&quot;0&quot; column=&quot;2&quot;&gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_guardar&quot;&gt;
++          &lt;property name=&quot;minimumSize&quot;&gt;
+            &lt;size&gt;
+             &lt;width&gt;32&lt;/width&gt;
+             &lt;height&gt;32&lt;/height&gt;
+            &lt;/size&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;maximumSize&quot; &gt;
++          &lt;property name=&quot;maximumSize&quot;&gt;
+            &lt;size&gt;
+             &lt;width&gt;32&lt;/width&gt;
+             &lt;height&gt;32&lt;/height&gt;
+            &lt;/size&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;toolTip&quot; &gt;
++          &lt;property name=&quot;toolTip&quot;&gt;
+            &lt;string&gt;Guardar pais&lt;/string&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;whatsThis&quot; &gt;
++          &lt;property name=&quot;whatsThis&quot;&gt;
+            &lt;string&gt;Guardar pais&lt;/string&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;text&quot; &gt;
++          &lt;property name=&quot;text&quot;&gt;
+            &lt;string/&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;icon&quot; &gt;
+-           &lt;iconset resource=&quot;../../bulmages.qrc&quot; &gt;
++          &lt;property name=&quot;icon&quot;&gt;
++           &lt;iconset resource=&quot;../../bulmages.qrc&quot;&gt;
+             &lt;normaloff&gt;:/Images/edit-save.png&lt;/normaloff&gt;:/Images/edit-save.png&lt;/iconset&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;iconSize&quot; &gt;
++          &lt;property name=&quot;iconSize&quot;&gt;
+            &lt;size&gt;
+             &lt;width&gt;32&lt;/width&gt;
+             &lt;height&gt;32&lt;/height&gt;
+            &lt;/size&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;shortcut&quot; &gt;
++          &lt;property name=&quot;shortcut&quot;&gt;
+            &lt;string&gt;Ctrl+S&lt;/string&gt;
+           &lt;/property&gt;
+          &lt;/widget&gt;
+         &lt;/item&gt;
+-        &lt;item row=&quot;0&quot; column=&quot;5&quot; &gt;
++        &lt;item row=&quot;0&quot; column=&quot;5&quot;&gt;
+          &lt;spacer&gt;
+-          &lt;property name=&quot;orientation&quot; &gt;
++          &lt;property name=&quot;orientation&quot;&gt;
+            &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;sizeType&quot; &gt;
++          &lt;property name=&quot;sizeType&quot;&gt;
+            &lt;enum&gt;QSizePolicy::Expanding&lt;/enum&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot; &gt;
++          &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
+            &lt;size&gt;
+             &lt;width&gt;171&lt;/width&gt;
+             &lt;height&gt;34&lt;/height&gt;
+@@ -414,10 +415,7 @@
+    &lt;/item&gt;
+   &lt;/layout&gt;
+  &lt;/widget&gt;
+- &lt;includes&gt;
+-  &lt;include location=&quot;local&quot;&gt;local_blI18n.h&lt;/include&gt;
+- &lt;/includes&gt;
+- &lt;layoutdefault spacing=&quot;6&quot; margin=&quot;11&quot; /&gt;
++ &lt;layoutdefault spacing=&quot;6&quot; margin=&quot;11&quot;/&gt;
+  &lt;customwidgets&gt;
+   &lt;customwidget&gt;
+    &lt;class&gt;BlSubForm&lt;/class&gt;
+@@ -425,8 +423,11 @@
+    &lt;header&gt;blsubform.h&lt;/header&gt;
+   &lt;/customwidget&gt;
+  &lt;/customwidgets&gt;
++ &lt;includes&gt;
++  &lt;include location=&quot;local&quot;&gt;local_blI18n.h&lt;/include&gt;
++ &lt;/includes&gt;
+  &lt;resources&gt;
+-  &lt;include location=&quot;../../bulmages.qrc&quot; /&gt;
++  &lt;include location=&quot;../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+  &lt;connections&gt;
+   &lt;connection&gt;
+@@ -435,11 +436,11 @@
+    &lt;receiver&gt;BlCountryBase&lt;/receiver&gt;
+    &lt;slot&gt;close()&lt;/slot&gt;
+    &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot; &gt;
++    &lt;hint type=&quot;sourcelabel&quot;&gt;
+      &lt;x&gt;564&lt;/x&gt;
+      &lt;y&gt;557&lt;/y&gt;
+     &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot; &gt;
++    &lt;hint type=&quot;destinationlabel&quot;&gt;
+      &lt;x&gt;549&lt;/x&gt;
+      &lt;y&gt;539&lt;/y&gt;
+     &lt;/hint&gt;
+@@ -449,13 +450,13 @@
+    &lt;sender&gt;mui_detalles&lt;/sender&gt;
+    &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+    &lt;receiver&gt;mui_datospais&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
++   &lt;slot&gt;setVisible(bool)&lt;/slot&gt;
+    &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot; &gt;
++    &lt;hint type=&quot;sourcelabel&quot;&gt;
+      &lt;x&gt;31&lt;/x&gt;
+      &lt;y&gt;72&lt;/y&gt;
+     &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot; &gt;
++    &lt;hint type=&quot;destinationlabel&quot;&gt;
+      &lt;x&gt;67&lt;/x&gt;
+      &lt;y&gt;99&lt;/y&gt;
+     &lt;/hint&gt;
+diff --git a/bulmages/bulmalib/src/blform.cpp b/bulmages/bulmalib/src/blform.cpp
+index 9ea63cf..008a4fa 100644
+--- a/bulmages/bulmalib/src/blform.cpp
++++ b/bulmages/bulmalib/src/blform.cpp
+@@ -61,7 +61,7 @@ BlForm::BlForm ( QWidget *parent, Qt::WindowFlags f, edmode modo ) : BlWidget (
+ 
+     m_title = windowTitle();
+     setContextMenuPolicy ( Qt::CustomContextMenu );
+-    connect ( this, SIGNAL ( customContextMenuRequested ( const QPoint &amp; ) ), this, SLOT ( on_customContextMenuRequested ( const QPoint &amp; ) ) );
++    connect ( this, SIGNAL ( customContextMenuRequested ( const QPoint &amp; ) ), this, SLOT ( popMenu ( const QPoint &amp; ) ) );
+     m_modo = modo;
+     m_firstLoad = true;
+     dialogChanges_readValues();
+@@ -137,7 +137,7 @@ BlForm::BlForm ( BlMainCompany *emp, QWidget *parent, Qt::WindowFlags f, edmode
+     } // end if
+ 
+     setContextMenuPolicy ( Qt::CustomContextMenu );
+-    connect ( this, SIGNAL ( customContextMenuRequested ( const QPoint &amp; ) ), this, SLOT ( on_customContextMenuRequested ( const QPoint &amp; ) ) );
++    connect ( this, SIGNAL ( customContextMenuRequested ( const QPoint &amp; ) ), this, SLOT ( popMenu ( const QPoint &amp; ) ) );
+     m_modo = modo;
+     m_firstLoad = true;
+     dialogChanges_readValues();    
+@@ -801,7 +801,7 @@ void BlForm::insertWindow ( QString nom, QObject *obj, bool compdup, QString tit
+ ///
+ /**
+ **/
+-void BlForm::on_customContextMenuRequested ( const QPoint &amp; )
++void BlForm::popMenu ( const QPoint &amp; )
+ {
+     BL_FUNC_DEBUG
+     
+diff --git a/bulmages/bulmalib/src/blform.h b/bulmages/bulmalib/src/blform.h
+index ad8262c..6b7b620 100644
+--- a/bulmages/bulmalib/src/blform.h
++++ b/bulmages/bulmalib/src/blform.h
+@@ -101,7 +101,7 @@ public slots:
+     virtual void on_mui_borrar_clicked();
+     virtual void on_mui_cancelar_clicked();
+     virtual void on_mui_guardar_clicked();
+-    virtual void on_customContextMenuRequested ( const QPoint &amp;pos );
++    virtual void popMenu ( const QPoint &amp;pos );
+     virtual void on_mui_imprimir_clicked();
+ 
+ signals:
+diff --git a/bulmages/bulmalib/src/blmaincompany.cpp b/bulmages/bulmalib/src/blmaincompany.cpp
+index 8ad210c..c3c7da0 100644
+--- a/bulmages/bulmalib/src/blmaincompany.cpp
++++ b/bulmages/bulmalib/src/blmaincompany.cpp
+@@ -71,8 +71,6 @@ void BlMainCompany::setWorkspace ( BlWorkspace *qw )
+ {
+     BL_FUNC_DEBUG
+     m_pWorkspace = qw;
+-    connect( qw, SIGNAL( deselectDockAll() ), this, SLOT( deselectWindow() ) );
+-    
+ }
+ 
+ 
+diff --git a/bulmages/bulmalib/src/blsearchwidget.cpp b/bulmages/bulmalib/src/blsearchwidget.cpp
+index de5b0c5..aaec09e 100644
+--- a/bulmages/bulmalib/src/blsearchwidget.cpp
++++ b/bulmages/bulmalib/src/blsearchwidget.cpp
+@@ -50,6 +50,7 @@ BlSearchWidget::BlSearchWidget ( QWidget *parent )
+     m_semaforo = false;
+     m_mask = &quot;&quot;;
+     
++
+     /// Establecemos la delegacion del foco en el texto
+     setFocusProxy(m_textBusqueda);
+     
+@@ -503,6 +504,7 @@ BlDbCompleterComboBox::BlDbCompleterComboBox ( QWidget *parent )
+     /// Desconectamos el activated ya que en los subformularios no tiene que funcionar.
+     disconnect ( this, SIGNAL ( activated ( int ) ), 0, 0 );
+     connect ( this, SIGNAL ( editTextChanged ( const QString &amp; ) ), this, SLOT ( s_editTextChanged ( const QString &amp; ) ) );
++    connect ( this, SIGNAL (customContextMenuRequested( const QPoint &amp; )), this, SLOT ( popMenu(const QPoing &amp;)));
+     setContextMenuPolicy ( Qt::CustomContextMenu );
+     
+ }
+@@ -642,7 +644,7 @@ QString BlDbCompleterComboBox::entrada()
+ ///
+ /**
+ **/
+-void BlDbCompleterComboBox::on_customContextMenuRequested ( const QPoint &amp; )
++void BlDbCompleterComboBox::popMenu ( const QPoint &amp; )
+ {
+     BL_FUNC_DEBUG
+     QMenu *popup = new QMenu ( this );
+@@ -689,6 +691,7 @@ BlDbEditComboBox::BlDbEditComboBox ( QWidget *parent )
+     setEditable ( true );
+     /// Desconectamos el activated ya que en los subformularios no tiene que funcionar.
+     disconnect ( this, SIGNAL ( activated ( int ) ), 0, 0 );
++    connect ( this, SIGNAL (customContextMenuRequested( const QPoint &amp; )), this, SLOT ( popMenu(const QPoing &amp;)));
+     setContextMenuPolicy ( Qt::CustomContextMenu );
+ }
+ 
+@@ -781,7 +784,7 @@ QString BlDbEditComboBox::entrada()
+ ///
+ /**
+ **/
+-void BlDbEditComboBox::on_customContextMenuRequested ( const QPoint &amp; )
++void BlDbEditComboBox::popMenu ( const QPoint &amp; )
+ {
+     BL_FUNC_DEBUG
+     QMenu *popup = new QMenu ( this );
+diff --git a/bulmages/bulmalib/src/blsearchwidget.h b/bulmages/bulmalib/src/blsearchwidget.h
+index 681e169..91cd48d 100644
+--- a/bulmages/bulmalib/src/blsearchwidget.h
++++ b/bulmages/bulmalib/src/blsearchwidget.h
+@@ -121,7 +121,7 @@ public:
+ public slots:
+     virtual void s_editTextChanged ( const QString &amp; );
+     virtual void focusOutEvent ( QFocusEvent * event );
+-    virtual void on_customContextMenuRequested ( const QPoint &amp;pos );
++    virtual void popMenu ( const QPoint &amp;pos );
+     
+ signals:
+     void pintaMenu ( QMenu * );
+@@ -158,7 +158,7 @@ public:
+     virtual void setQuery ( const QString &amp; );
+ public slots:
+     virtual void focusOutEvent ( QFocusEvent * event );
+-    virtual void on_customContextMenuRequested ( const QPoint &amp;pos );
++    virtual void popMenu ( const QPoint &amp;pos );
+     
+ signals:
+     void pintaMenu ( QMenu * );
+diff --git a/bulmages/bulmalib/src/blsubform.cpp b/bulmages/bulmalib/src/blsubform.cpp
+index 953f2a1..75f456d 100644
+--- a/bulmages/bulmalib/src/blsubform.cpp
++++ b/bulmages/bulmalib/src/blsubform.cpp
+@@ -591,7 +591,7 @@ void BlSubForm::showColumn ( int i )
+ 
+     QString field = mui_listcolumnas-&gt;item ( i, 1)-&gt;text();
+     mui_listcolumnas-&gt;item ( i, 0 )-&gt;setCheckState ( Qt::Checked );
+-    on_mui_confcol_clicked();
++    on_mui_confcol_released();
+ }
+ 
+ 
+@@ -631,7 +631,7 @@ void BlSubForm::hideColumn ( int i )
+ 
+     QString field = mui_listcolumnas-&gt;item ( i, 1)-&gt;text();
+     mui_listcolumnas-&gt;item ( i, 0 )-&gt;setCheckState ( Qt::Unchecked );
+-    on_mui_confcol_clicked();
++    on_mui_confcol_released();
+ }
+ 
+ 
+@@ -1334,7 +1334,7 @@ int BlSubForm::inicializar()
+     /// Ordenamos la tabla.
+     mui_list-&gt;ordenar();
+     /// configuramos que registros son visibles y que registros no lo son.
+-    on_mui_confcol_clicked();
++    on_mui_confcol_released();
+     m_procesacambios = true;
+ 
+     return 0;
+@@ -1606,7 +1606,7 @@ void BlSubForm::load ( BlDbRecordSet *cur )
+         /// Preparamos el menu de subformulario
+         preparaMenu();
+     } else {
+-        on_mui_confcol_clicked();
++        on_mui_confcol_released();
+     } // end if
+ 
+     /// Si no estamos en la ultima pagina habilitamos el boton de ir a la siguiente y a la ultima.
+@@ -2696,7 +2696,7 @@ void BlSubForm::loadConfigXML()
+         mui_menusubform-&gt;setVisible(false);
+     } // end if
+ 
+-    on_mui_confcol_clicked();
++    on_mui_confcol_released();
+ 
+     m_primero = false;
+ 
+@@ -2707,7 +2707,7 @@ void BlSubForm::loadConfigXML()
+ ///
+ /**
+ **/
+-void BlSubForm::on_mui_confcol_clicked()
++void BlSubForm::on_mui_confcol_released()
+ {
+     BL_FUNC_DEBUG
+ 
+@@ -2970,7 +2970,7 @@ QString BlSubForm::formatFieldTableStory(BlDbSubFormField *value, QLocale spanis
+ /**
+ \return
+ **/
+-void BlSubForm::on_mui_confquery_clicked()
++void BlSubForm::on_mui_confquery_released()
+ {
+     BL_FUNC_DEBUG
+     if ( mainCompany() == NULL ) {
+@@ -3077,7 +3077,7 @@ void BlSubForm::on_mui_list_ctrlDown ( int row, int col )
+ ///
+ /**
+ **/
+-void BlSubForm::on_mui_pagsiguiente_clicked()
++void BlSubForm::bPagSig()
+ {
+     BL_FUNC_DEBUG
+     int pag = mui_paginaact-&gt;text().toInt();
+@@ -3090,7 +3090,7 @@ void BlSubForm::on_mui_pagsiguiente_clicked()
+ ///
+ /**
+  * **/
+-void BlSubForm::on_mui_ultpag_clicked()
++void BlSubForm::bUltPag()
+ {
+     BL_FUNC_DEBUG
+     int pag = mui_numpaginas-&gt;text().toInt();
+@@ -3101,7 +3101,7 @@ void BlSubForm::on_mui_ultpag_clicked()
+ ///
+ /**
+  * **/
+-void BlSubForm::on_mui_pripag_clicked()
++void BlSubForm::bPriPag()
+ {
+     BL_FUNC_DEBUG
+     int pag = 1;
+@@ -3114,7 +3114,7 @@ void BlSubForm::on_mui_pripag_clicked()
+ ///
+ /**
+ **/
+-void BlSubForm::on_mui_paganterior_clicked()
++void BlSubForm::bPagAnt()
+ {
+     BL_FUNC_DEBUG
+     int pag = mui_paginaact-&gt;text().toInt();
+@@ -3283,7 +3283,7 @@ void BlSubForm::preparaMenu()
+     m_pripag-&gt;setIcon ( QIcon ( &quot;:/BulmaCont32x32/images/png/i_start.png&quot; ) );
+     m_pripag-&gt;setIconSize ( QSize ( 18, 18 ) );
+     m_hboxLayout1-&gt;addWidget ( m_pripag );
+-    connect (m_pripag, SIGNAL(released()), this, SLOT(on_mui_pripag_clicked()));
++    connect (m_pripag, SIGNAL(released()), this, SLOT(bPriPag()));
+ 
+     /// Pagina Anterior
+     m_pagant = new QToolButton ( mui_menusubform );
+@@ -3293,7 +3293,7 @@ void BlSubForm::preparaMenu()
+     m_pagant-&gt;setIcon ( QIcon ( &quot;:/BulmaCont32x32/images/png/i_back.png&quot; ) );
+     m_pagant-&gt;setIconSize ( QSize ( 18, 18 ) );
+     m_hboxLayout1-&gt;addWidget ( m_pagant );
+-    connect (m_pagant, SIGNAL(released()), this, SLOT(on_mui_paganterior_clicked()));
++    connect (m_pagant, SIGNAL(released()), this, SLOT(bPagAnt()));
+ 
+     /// Pagina Siguiente
+     m_pagsig = new QToolButton ( mui_menusubform );
+@@ -3303,7 +3303,7 @@ void BlSubForm::preparaMenu()
+     m_pagsig-&gt;setIcon ( QIcon ( &quot;:/BulmaCont32x32/images/png/i_forward.png&quot; ) );
+     m_pagsig-&gt;setIconSize ( QSize ( 18, 18 ) );
+     m_hboxLayout1-&gt;addWidget ( m_pagsig );
+-    connect (m_pagsig, SIGNAL(released()), this, SLOT(on_mui_pagsiguiente_clicked()));
++    connect (m_pagsig, SIGNAL(released()), this, SLOT(bPagSig()));
+ 
+     /// Ultima Pagina
+     m_ultpag = new QToolButton ( mui_menusubform );
+@@ -3313,7 +3313,7 @@ void BlSubForm::preparaMenu()
+     m_ultpag-&gt;setIcon ( QIcon ( &quot;:/BulmaCont32x32/images/png/i_finish.png&quot; ) );
+     m_ultpag-&gt;setIconSize ( QSize ( 18, 18 ) );
+     m_hboxLayout1-&gt;addWidget ( m_ultpag );
+-    connect (m_ultpag, SIGNAL(released()), this, SLOT(on_mui_ultpag_clicked()));
++    connect (m_ultpag, SIGNAL(released()), this, SLOT(bUltPag()));
+ 
+     /// Ver configuracion del subformulario
+     QToolButton *sel3 = new QToolButton ( mui_menusubform );
+@@ -3486,7 +3486,7 @@ void BlSubForm::toogleMenuConfig()
+ ///
+ /**
+ **/
+-void BlSubForm::on_mui_botonCerrar_clicked()
++void BlSubForm::on_mui_botonCerrar_released()
+ {
+     BL_FUNC_DEBUG
+     toogleConfig();
+diff --git a/bulmages/bulmalib/src/blsubform.h b/bulmages/bulmalib/src/blsubform.h
+index 475c916..d69414e 100644
+--- a/bulmages/bulmalib/src/blsubform.h
++++ b/bulmages/bulmalib/src/blsubform.h
+@@ -373,22 +373,22 @@ public slots:
+     virtual void on_mui_list_cellRePosition ( int, int );
+     void on_mui_list_cellChanged ( int, int );
+     virtual void contextMenuEvent ( QContextMenuEvent * );
+-    virtual void on_mui_confcol_clicked();
+-    virtual void on_mui_confquery_clicked();
++    virtual void on_mui_confcol_released();
++    virtual void on_mui_confquery_released();
+     void on_mui_list_pressedSlash ( int row, int col );
+     void on_mui_list_pressedAsterisk ( int row, int col );
+     void on_mui_list_pressedPlus ( int row, int col );
+     void on_mui_list_pressedMinus ( int row, int col );
+     virtual void on_mui_list_ctrlUp ( int row, int col );
+     virtual void on_mui_list_ctrlDown ( int row, int col );
+-    virtual void on_mui_pagsiguiente_clicked();
+-    virtual void on_mui_paganterior_clicked();
+-    virtual void on_mui_ultpag_clicked();
+-    virtual void on_mui_pripag_clicked();
++    virtual void bPagSig();
++    virtual void bPagAnt();
++    virtual void bUltPag();
++    virtual void bPriPag();
+     virtual void on_mui_list_itemDoubleClicked ( QTableWidgetItem *item );
+     virtual void on_mui_list_itemClicked ( QTableWidgetItem *item );
+     virtual void on_mui_list_cellDoubleClicked ( int row, int col );
+-    virtual void on_mui_botonCerrar_clicked();
++    virtual void on_mui_botonCerrar_released();
+     virtual void on_mui_list_itemChanged ( QTableWidgetItem *it );
+     virtual void editFinished ( int, int, BlDbSubFormRecord *, BlDbSubFormField * );
+     virtual void pressedAsterisk ( int, int, BlDbSubFormRecord *, BlDbSubFormField * );
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007665.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007667.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7666">[ fecha ]</a>
+              <a href="thread.html#7666">[ hilo ]</a>
+              <a href="subject.html#7666">[ asunto ]</a>
+              <a href="author.html#7666">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

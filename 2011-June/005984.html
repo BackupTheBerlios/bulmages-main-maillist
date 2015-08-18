@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Problema en los blDebug
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FProblema_en_los_blDeb%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fug%3F%3D&In-Reply-To=%3C201106092109.46073.asmond%40orange.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005983.html">
+   <LINK REL="Next"  HREF="005964.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Problema en los blDebug </H1>
+    <B>Toni Asensi Esteve</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FProblema_en_los_blDeb%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fug%3F%3D&In-Reply-To=%3C201106092109.46073.asmond%40orange.es%3E"
+       TITLE="[BulmaGés]Problema en los blDebug">asmond en orange.es
+       </A><BR>
+    <I>Jue Jun  9 21:09:45 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="005983.html">[BulmaGés]Problema en los blDebug
+</A></li>
+        <LI>Próximo mensaje: <A HREF="005964.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 3a44d9d867543cef16b0fd68b245795d1d74e801
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5984">[ fecha ]</a>
+              <a href="thread.html#5984">[ hilo ]</a>
+              <a href="subject.html#5984">[ asunto ]</a>
+              <a href="author.html#5984">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Respecto a lo comentado acerca de 
+    &quot;sangría&quot; (&quot;indentation&quot;) automática de los mensajes de depurado, lo que 
+     mejora mucho su legibilidad.
+para verse mejor, se puede ver un ejemplo de ejecución de NxSpooler, con dicho 
+control de márgenes (que en NxSpooler incluye unos signos &quot;/&quot; y &quot;\&quot; para 
+indicar el principio y el fin de una función), donde se entiende con más 
+claridad lo que está pasando:
+
+    / TSystem::TSystem()
+    \ TSystem::TSystem()
+    / int main(int, char**)
+    / QString TSystem::setApplicationName(const QString&amp;)
+    \ QString TSystem::setApplicationName(const QString&amp;)
+    / TTranslator::TTranslator(QCoreApplication&amp;)
+        / QDir TTranslator::folderWhereTheExecutableIs() const
+        \ QDir TTranslator::folderWhereTheExecutableIs() const
+    \ TTranslator::TTranslator(QCoreApplication&amp;)
+    / TSysTrayIcon::TSysTrayIcon()
+    \ TSysTrayIcon::TSysTrayIcon()
+    / TNxSpooler::TNxSpooler(QWidget*)
+        / void TNxSpooler::prepareTrayIconOrShowProgram()
+        / void TNxSpooler::hide()
+        \ void TNxSpooler::hide()
+        \ void TNxSpooler::prepareTrayIconOrShowProgram()
+        / void TNxSpooler::initializeSettings()
+        \ void TNxSpooler::initializeSettings()
+        / void TNxSpooler::prepareSharedFolder() const
+        \ void TNxSpooler::prepareSharedFolder() const
+        / void TNxSpooler::prepareTimer()
+        \ void TNxSpooler::prepareTimer()
+    \ TNxSpooler::TNxSpooler(QWidget*)
+    / void TNxSpooler::showOrHide(QSystemTrayIcon::ActivationReason)
+    \ void TNxSpooler::showOrHide(QSystemTrayIcon::ActivationReason)
+    / void TNxSpooler::show()
+    \ void TNxSpooler::show()
+    The result of main(...) is: 0
+    / virtual TNxSpooler::~TNxSpooler()
+    \ virtual TNxSpooler::~TNxSpooler()
+    / virtual TSysTrayIcon::~TSysTrayIcon()
+    \ virtual TSysTrayIcon::~TSysTrayIcon()
+    / virtual TTranslator::~TTranslator()
+    \ virtual TTranslator::~TTranslator()
+    \ int main(int, char**)
+    / virtual TSystem::~TSystem()
+    \ virtual TSystem::~TSystem()
+
+y el mismo ejemplo pero sin dichas ayudas, lo que dificulta la visión de lo que 
+está pasando:
+    TSystem::TSystem()
+    END TSystem::TSystem()
+    int main(int, char**)
+    QString TSystem::setApplicationName(const QString&amp;)
+    END QString TSystem::setApplicationName(const QString&amp;)
+    TTranslator::TTranslator(QCoreApplication&amp;)
+    QDir TTranslator::folderWhereTheExecutableIs() const
+    END QDir TTranslator::folderWhereTheExecutableIs() const
+    END TTranslator::TTranslator(QCoreApplication&amp;)
+    TSysTrayIcon::TSysTrayIcon()
+    END TSysTrayIcon::TSysTrayIcon()
+    TNxSpooler::TNxSpooler(QWidget*)
+    void TNxSpooler::prepareTrayIconOrShowProgram()
+    void TNxSpooler::hide()
+    END void TNxSpooler::hide()
+    END void TNxSpooler::prepareTrayIconOrShowProgram()
+    void TNxSpooler::initializeSettings()
+    END void TNxSpooler::initializeSettings()
+    void TNxSpooler::prepareSharedFolder() const
+    END void TNxSpooler::prepareSharedFolder() const
+    void TNxSpooler::prepareTimer()
+    END void TNxSpooler::prepareTimer()
+    END TNxSpooler::TNxSpooler(QWidget*)
+    void TNxSpooler::showOrHide(QSystemTrayIcon::ActivationReason)
+    END void TNxSpooler::showOrHide(QSystemTrayIcon::ActivationReason)
+    void TNxSpooler::show()
+    END void TNxSpooler::show()
+    The result of main(...) is: 0
+    virtual TNxSpooler::~TNxSpooler()
+    END virtual TNxSpooler::~TNxSpooler()
+    virtual TSysTrayIcon::~TSysTrayIcon()
+    END virtual TSysTrayIcon::~TSysTrayIcon()
+    virtual TTranslator::~TTranslator()
+    END virtual TTranslator::~TTranslator()
+    END int main(int, char**)
+    virtual TSystem::~TSystem()
+    END virtual TSystem::~TSystem()
+
+Saludos:
+--
+Toni Asensi Esteve.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="005983.html">[BulmaGés]Problema en los blDebug
+</A></li>
+	<LI>Próximo mensaje: <A HREF="005964.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 3a44d9d867543cef16b0fd68b245795d1d74e801
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5984">[ fecha ]</a>
+              <a href="thread.html#5984">[ hilo ]</a>
+              <a href="subject.html#5984">[ asunto ]</a>
+              <a href="author.html#5984">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

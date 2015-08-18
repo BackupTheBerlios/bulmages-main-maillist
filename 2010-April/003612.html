@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] r3828 - in trunk/bulmages:	bulmafact/plugins/pluginbf_banco	bulmafact/plugins/pluginbf_formasdepago	bulmafact/plugins/pluginbf_sincrobulmacont	bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels	bulmatpv/plugins/pluginbt_accesobotones
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3828%20-%20in%20trunk/bulmages%3A%0A%09bulmafact/plugins/pluginbf_banco%0A%09bulmafact/plugins/pluginbf_formasdepago%0A%09bulmafact/plugins/pluginbf_sincrobulmacont%0A%09bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels%0A%09bulmatpv/plugins/pluginbt_accesobotones&In-Reply-To=%3C201004222250.o3MMoU66006488%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003611.html">
+   <LINK REL="Next"  HREF="003613.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] r3828 - in trunk/bulmages:	bulmafact/plugins/pluginbf_banco	bulmafact/plugins/pluginbf_formasdepago	bulmafact/plugins/pluginbf_sincrobulmacont	bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels	bulmatpv/plugins/pluginbt_accesobotones </H1>
+    <B>svn en mail.berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3828%20-%20in%20trunk/bulmages%3A%0A%09bulmafact/plugins/pluginbf_banco%0A%09bulmafact/plugins/pluginbf_formasdepago%0A%09bulmafact/plugins/pluginbf_sincrobulmacont%0A%09bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels%0A%09bulmatpv/plugins/pluginbt_accesobotones&In-Reply-To=%3C201004222250.o3MMoU66006488%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] r3828 - in trunk/bulmages:	bulmafact/plugins/pluginbf_banco	bulmafact/plugins/pluginbf_formasdepago	bulmafact/plugins/pluginbf_sincrobulmacont	bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels	bulmatpv/plugins/pluginbt_accesobotones">svn en mail.berlios.de
+       </A><BR>
+    <I>Vie Abr 23 00:50:30 CEST 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003611.html">[BulmaGés] r3827 -	trunk/documentos/desarrollador/Manuales
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003613.html">[BulmaGés] r3829 -	trunk/bulmages/bulmatpv/plugins/pluginbt_articulograficodb
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3612">[ fecha ]</a>
+              <a href="thread.html#3612">[ hilo ]</a>
+              <a href="subject.html#3612">[ asunto ]</a>
+              <a href="author.html#3612">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: fcojavmc
+Date: 2010-04-23 00:50:27 +0200 (dv, 23 abr 2010)
+New Revision: 3828
+
+Added:
+   trunk/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/bancocuenta.cpp
+   trunk/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/bancocuenta.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/fpagocuenta.cpp
+   trunk/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/fpagocuenta.h
+Modified:
+   trunk/bulmages/bulmafact/plugins/pluginbf_banco/bancobase.ui
+   trunk/bulmages/bulmafact/plugins/pluginbf_banco/bancoview.cpp
+   trunk/bulmages/bulmafact/plugins/pluginbf_banco/bancoview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_formasdepago/fpagobase.ui
+   trunk/bulmages/bulmafact/plugins/pluginbf_formasdepago/fpagoview.cpp
+   trunk/bulmages/bulmafact/plugins/pluginbf_formasdepago/fpagoview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels/pluginbf_sincrobulmacont-rm.sql
+   trunk/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels/pluginbf_sincrobulmacont.sql
+   trunk/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/pluginbf_sincrobulmacont.cpp
+   trunk/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/pluginbf_sincrobulmacont.h
+   trunk/bulmages/bulmatpv/plugins/pluginbt_accesobotones/abrevs.cpp
+Log:
+- BulmaFact:
+Se mejora la sincronización BulmaFact-&gt;BulmaCont y se añade la
+posiblidad de establecer manualmente (personalizar) la cuenta contable
+para las formas de pago y los bancos para el registro de cobros y pagos.
+
+
+- BulmaTPV: 'pluginbt_accesobotones':
+Se evita que aparezca, por error, en el 'display' el texto establecido
+en la condición que evita que el nombre del ticket esté vacio.
+
+
+*********************************
+*          Todo-Redes           *
+*        C/.Begònia, 12         *
+*   07010 Palma de Mallorca.    *
+*      Tel: +34-971499071       *
+*   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>   *
+*  comercial(en)todo-redes.com  *
+*********************************
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003611.html">[BulmaGés] r3827 -	trunk/documentos/desarrollador/Manuales
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003613.html">[BulmaGés] r3829 -	trunk/bulmages/bulmatpv/plugins/pluginbt_articulograficodb
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3612">[ fecha ]</a>
+              <a href="thread.html#3612">[ hilo ]</a>
+              <a href="subject.html#3612">[ asunto ]</a>
+              <a href="author.html#3612">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

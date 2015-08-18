@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Ayuda para compilar, por favor...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FAyuda_para_compilar%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D2C_por_favor%3D2E%3D2E%3D2E%3F%3D&In-Reply-To=%3C4943B7C4.3090003%40todo-redes.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000503.html">
+   <LINK REL="Next"  HREF="000522.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Ayuda para compilar, por favor... </H1>
+    <B>Fco. Javier M. C.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FAyuda_para_compilar%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D2C_por_favor%3D2E%3D2E%3D2E%3F%3D&In-Reply-To=%3C4943B7C4.3090003%40todo-redes.com%3E"
+       TITLE="[BulmaGés]Ayuda para compilar, por favor...">fcojavmc en todo-redes.com
+       </A><BR>
+    <I>Sab Dic 13 14:25:24 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000503.html">[BulmaGés] Ayuda para compilar, por favor...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000522.html">[BulmaGés]Ayuda para compilar, por favor...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#504">[ fecha ]</a>
+              <a href="thread.html#504">[ hilo ]</a>
+              <a href="subject.html#504">[ asunto ]</a>
+              <a href="author.html#504">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola.
+
+Es evidente que algo está mal en tu sistema. Primero asegurate que has 
+bajado correctamente el trunk.
+
+Luego haces:
+
+cd ./trunk/bulmages/
+mkdir build
+cd build
+cmake ../
+make
+make install
+
+Si te da algun fallo, envia un correo con lo que te dice
+
+Un saludo.
+
+
+Marcos Mezo escribió:
+&gt;<i> Hola a todos,
+</I>&gt;<i>
+</I>&gt;<i> hace un par de años estuve pegandome un poco con bulmacont (cuando aún no 
+</I>&gt;<i> estaba en berlios) y lo estuve compilando y modificando algo. De lo que hice 
+</I>&gt;<i> que no fue casi nada porque no encontraba tiempo, lo único que subí y queda 
+</I>&gt;<i> aún es la función para &quot;sanitizar&quot; las cadenas antes de enviarlas al 
+</I>&gt;<i> postgresql.
+</I>&gt;<i>
+</I>&gt;<i> El caso es que ahora quería al menos volver a compilar el proyecto y ver lo 
+</I>&gt;<i> mucho que ha avanzado, pero me estoy dando de cabeza con un error al 
+</I>&gt;<i> compilar. He actualizado varias veces estos dos últimos días a la última 
+</I>&gt;<i> versión del trunk.
+</I>&gt;<i>
+</I>&gt;<i> Después del cmake ../ y make, me empieza a compilar correctamente pero luego 
+</I>&gt;<i> se para en cada directorio de bulmafact y sus plugins, porque no encuentra el 
+</I>&gt;<i> archivo &quot;ui_.h&quot;
+</I>&gt;<i>
+</I>&gt;<i> El error se puede corregir borrando la referencia a esos archivos en los 
+</I>&gt;<i> ficheros &quot;build.make&quot; y  &quot;cmake_clean.cmake&quot;. Por ejemplo uno de los archivos 
+</I>&gt;<i> afectados es:
+</I>&gt;<i> /trunk/bulmages/build/bulmafact/src/CMakeFiles/bulmafact.dir/build.make
+</I>&gt;<i>
+</I>&gt;<i> pero como digo pasa en todos los directorios de los plugins de bulmafact 
+</I>&gt;<i> también (y sólo de bulmafact, no ocurre en bulmalib ni en bulmacont ni en 
+</I>&gt;<i> ningún otro)
+</I>&gt;<i>
+</I>&gt;<i> Por lo que he deducido debe haber algún script que le diga al cmake o al make 
+</I>&gt;<i> que los ficheros ui a compilar son todos los de algún directorio o algún 
+</I>&gt;<i> array y algún elemento debe estar vacío y por eso da el fallo. Creía haberlo 
+</I>&gt;<i> encontrado en la carpeta scripts y pensaba que era el 
+</I>&gt;<i> bulmafact-genera_uicqt4, que parece que convierte el nombre de una lista de 
+</I>&gt;<i> archivos.ui al ui_{array[x]}.h y define array[1]=&quot;&quot;, pero parece que no es el 
+</I>&gt;<i> caso. He comentado las líneas de ese archivo, e incluso lo he cambiado de 
+</I>&gt;<i> nombre y hecho no ejecutable, y después de hacer el cmake de nuevo sigue todo 
+</I>&gt;<i> igual. 
+</I>&gt;<i>
+</I>&gt;<i> Se que puedo arreglarlo a mano borrando todos las referencias ui_.h en los 
+</I>&gt;<i> archivos build.make que he comentado antes, pero si me pudierais echar una 
+</I>&gt;<i> man para ver por dónde van los tiros e intentar solucionarlo de raiz os lo 
+</I>&gt;<i> agradecería. (además de que son unos cuantos archivos y no estoy muy puesto 
+</I>&gt;<i> con sed :-) )
+</I>&gt;<i>
+</I>&gt;<i> Un saludo y gracias,
+</I>&gt;<i> Marcos Mezo
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+-- 
+Fco. Javier M. C.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000503.html">[BulmaGés] Ayuda para compilar, por favor...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000522.html">[BulmaGés]Ayuda para compilar, por favor...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#504">[ fecha ]</a>
+              <a href="thread.html#504">[ hilo ]</a>
+              <a href="subject.html#504">[ asunto ]</a>
+              <a href="author.html#504">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

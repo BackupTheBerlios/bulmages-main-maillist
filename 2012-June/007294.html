@@ -1,0 +1,271 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120604065524.BFD59758F3%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007293.html">
+   <LINK REL="Next"  HREF="007295.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120604065524.BFD59758F3%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Lun Jun  4 08:55:24 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007293.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007295.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7294">[ fecha ]</a>
+              <a href="thread.html#7294">[ hilo ]</a>
+              <a href="subject.html#7294">[ asunto ]</a>
+              <a href="author.html#7294">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from fe25f6a to fe1ce0c
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/fe25f6af7b91e6f9c9f60bb0dc83612f26834fc1/diffs/fe1ce0cd77cc7d0753263b1e8767ec2929f8689a">https://gitorious.org/bulmages/bulmages/commit/fe25f6af7b91e6f9c9f60bb0dc83612f26834fc1/diffs/fe1ce0cd77cc7d0753263b1e8767ec2929f8689a</A>
+
+Diff: 
+
+commit fe1ce0cd77cc7d0753263b1e8767ec2929f8689a
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon Jun 4 08:55:00 2012 +0200
+
+    Quito codigo obsoleto de las facturas de proveedores.
+    
+    En concreto el metodo de imprimir factura de proveedor.
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturapview.cpp b/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturapview.cpp
+index 393e010..72b7242 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturapview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturapview.cpp
+@@ -285,168 +285,7 @@ int FacturaProveedorView::afterSave()
+ }
+ 
+ 
+-/** Imprime una factura de proveedor
+-*/
+-/// \DEPRECATED: No se prevee que se tengan que imprimir facturas de proveedor.
+-/**
+-\return
+-**/
+-void FacturaProveedorView::imprimirFacturaProveedor()
+-{
+-    /// Hacemos el lanzamiento de plugins para este caso.
+-    int res = g_plugins-&gt;run ( &quot;imprimirFacturaProveedor&quot;, this );
+-    if ( res )
+-        return;
+-
+-    base basesimp;
+ 
+-    /// Copiamos el archivo.
+-    QString archivo = g_confpr-&gt;value( CONF_DIR_OPENREPORTS ) + &quot;facturap.rml&quot;;
+-    QString archivod = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;facturap.rml&quot;;
+-    blCopyFile(archivo, archivod);
+-    
+-    /// Copiamos el logo
+-    QString archivologo = g_confpr-&gt;value( CONF_DIR_OPENREPORTS ) + &quot;logo.jpg&quot;;
+-    QString logousuario = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;logo.jpg&quot;;
+-    blCopyFile(archivologo, logousuario);
+-
+-    QFile file;
+-    file.setFileName ( archivod );
+-    file.open ( QIODevice::ReadOnly );
+-    QTextStream stream ( &amp;file );
+-    QString buff = stream.readAll();
+-    file.close();
+-    QString fitxersortidatxt = &quot;&quot;;
+-
+-    /// Linea de totales del presupuesto
+-    QString SQLQuery = &quot;SELECT * FROM proveedor WHERE idproveedor = &quot; + dbValue ( &quot;idproveedor&quot; );
+-    BlDbRecordSet *cur = mainCompany() -&gt;loadQuery ( SQLQuery );
+-    if ( !cur-&gt;eof() ) {
+-        buff.replace ( &quot;[dirproveedor]&quot;, cur-&gt;value( &quot;dirproveedor&quot; ) );
+-        buff.replace ( &quot;[poblproveedor]&quot;, cur-&gt;value( &quot;poblproveedor&quot; ) );
+-        buff.replace ( &quot;[telproveedor]&quot;, cur-&gt;value( &quot;telproveedor&quot; ) );
+-        buff.replace ( &quot;[nomproveedor]&quot;, cur-&gt;value( &quot;nomproveedor&quot; ) );
+-        buff.replace ( &quot;[cifproveedor]&quot;, cur-&gt;value( &quot;cifproveedor&quot; ) );
+-    } // end if
+-    delete cur;
+-
+-    buff.replace ( &quot;[numfacturap]&quot;, dbValue ( &quot;numfacturap&quot; ) );
+-    buff.replace ( &quot;[ffacturap]&quot;, dbValue ( &quot;ffacturap&quot; ) );
+-    buff.replace ( &quot;[comentfacturap]&quot;, dbValue ( &quot;comentfacturap&quot; ) );
+-    buff.replace ( &quot;[descfacturap]&quot;, dbValue ( &quot;descfacturap&quot; ) );
+-    buff.replace ( &quot;[reffacturap]&quot;, dbValue ( &quot;reffacturap&quot; ) );
+-
+-    /// Impresion de la tabla de contenidos.
+-    fitxersortidatxt += &quot;&lt;blockTable style=\&quot;tablacontenido\&quot; colWidths=\&quot;1.75cm, 8.75cm, 1.5cm, 1.5cm, 1.5cm, 2.25cm\&quot; repeatRows=\&quot;1\&quot;&gt;\n&quot;;
+-    fitxersortidatxt += &quot;&lt;tr&gt;\n&quot;;
+-    fitxersortidatxt += &quot;        &lt;td&gt;&quot; + _ ( &quot;Codigo&quot; ) + &quot;&lt;/td&gt;\n&quot;;
+-    fitxersortidatxt += &quot;        &lt;td&gt;&quot; + _ ( &quot;Concepto&quot; ) + &quot;&lt;/td&gt;\n&quot;;
+-    fitxersortidatxt += &quot;        &lt;td&gt;&quot; + _ ( &quot;Cant.&quot; ) + &quot;&lt;/td&gt;\n&quot;;
+-    fitxersortidatxt += &quot;        &lt;td&gt;&quot; + _ ( &quot;Precio&quot; ) + &quot;&lt;/td&gt;\n&quot;;
+-    fitxersortidatxt += &quot;        &lt;td&gt;&quot; + _ ( &quot;Desc.&quot; ) + &quot;&lt;/td&gt;\n&quot;;
+-    fitxersortidatxt += &quot;        &lt;td&gt;&quot; + _ ( &quot;Total&quot; ) + &quot;&lt;/td&gt;\n&quot;;
+-    fitxersortidatxt += &quot;&lt;/tr&gt;\n&quot;;
+-    QString l;
+-
+-    /// Contador que sirve para poner lineas de mas en caso de que sea preciso.
+-    int i = 0;
+-
+-    BlDbSubFormRecord *linea;
+-    for ( int i = 0; i &lt; m_listalineas-&gt;rowCount(); ++i ) {
+-        linea = m_listalineas-&gt;lineaat ( i );
+-        BlFixed base = BlFixed ( linea-&gt;dbValue ( &quot;cantlfacturap&quot; ).toAscii().constData() ) * BlFixed ( linea-&gt;dbValue ( &quot;pvplfacturap&quot; ).toAscii().constData() );
+-        basesimp[linea-&gt;dbValue ( &quot;ivalfacturap&quot; ) ] = basesimp[linea-&gt;dbValue ( &quot;ivalfacturap&quot; ) ] + base - base * BlFixed ( linea-&gt;dbValue ( &quot;descuentolfacturap&quot; ).toAscii().constData() ) / 100;
+-
+-        fitxersortidatxt += &quot;&lt;tr&gt;\n&quot;;
+-        fitxersortidatxt += &quot;        &lt;td&gt;&quot; + linea-&gt;dbValue ( &quot;codigocompletoarticulo&quot; ) + &quot;&lt;/td&gt;\n&quot;;
+-        fitxersortidatxt += &quot;        &lt;td&gt;&quot; + linea-&gt;dbValue ( &quot;desclfacturap&quot; ) + &quot;&lt;/td&gt;\n&quot;;
+-        fitxersortidatxt += &quot;        &lt;td&gt;&quot; + linea-&gt;dbValue ( &quot;cantlfacturap&quot; ) + &quot;&lt;/td&gt;\n&quot;;
+-        fitxersortidatxt += &quot;        &lt;td&gt;&quot; + linea-&gt;dbValue ( &quot;pvplfacturap&quot; ) + &quot;&lt;/td&gt;\n&quot;;
+-        fitxersortidatxt += &quot;        &lt;td&gt;&quot; + linea-&gt;dbValue ( &quot;descuentolfacturap&quot; ) + &quot; %&lt;/td&gt;\n&quot;;
+-        fitxersortidatxt += &quot;        &lt;td&gt;&quot; + ( base - base * BlFixed ( linea-&gt;dbValue ( &quot;descuentolfacturap&quot; ) ) / 100 ).toQString() + &quot;&lt;/td&gt;\n&quot;;
+-        fitxersortidatxt += &quot;&lt;/tr&gt;&quot;;
+-        i++;
+-    } // end for
+-
+-    while ( i++ &lt; 15 )
+-        fitxersortidatxt += &quot;&lt;tr&gt;&lt;/tr&gt;&quot;;
+-
+-    fitxersortidatxt += &quot;&lt;/blockTable&gt;\n&quot;;
+-    buff.replace ( &quot;[story]&quot;, fitxersortidatxt );
+-
+-    BlFixed basei ( &quot;0.00&quot; );
+-    base::Iterator it;
+-    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+-        basei = basei + it.value();
+-    } // end for
+-
+-    /// Impresion de los descuentos.
+-    fitxersortidatxt = &quot;&quot;;
+-    BlFixed porcentt ( &quot;0.00&quot; );
+-    BlDbSubFormRecord *linea1;
+-    if ( m_listadescuentos-&gt;rowCount() ) {
+-        fitxersortidatxt += &quot;&lt;blockTable style=\&quot;tabladescuento\&quot; colWidths=\&quot;12cm, 2cm, 3cm\&quot; repeatRows=\&quot;1\&quot;&gt;\n&quot;;
+-        fitxersortidatxt += &quot;&lt;tr&gt;\n&quot;;
+-        fitxersortidatxt += &quot;        &lt;td&gt;&quot; + _ ( &quot;Descuento&quot; ) + &quot;&lt;/td&gt;\n&quot;;
+-        fitxersortidatxt += &quot;        &lt;td&gt;&quot; + _ ( &quot;Porcentaje&quot; ) + &quot;&lt;/td&gt;\n&quot;;
+-        fitxersortidatxt += &quot;        &lt;td&gt;&quot; + _ ( &quot;Total&quot; ) + &quot;&lt;/td&gt;\n&quot;;
+-        fitxersortidatxt += &quot;&lt;/tr&gt;\n&quot;;
+-        for ( int i = 0; i &lt; m_listadescuentos-&gt;rowCount(); ++i ) {
+-            linea1 = m_listadescuentos-&gt;lineaat ( i );
+-            porcentt = porcentt + BlFixed ( linea1-&gt;dbValue ( &quot;proporciondfacturap&quot; ).toAscii().constData() );
+-            fitxersortidatxt += &quot;&lt;tr&gt;\n&quot;;
+-            fitxersortidatxt += &quot;        &lt;td&gt;&quot; + linea1-&gt;dbValue ( &quot;conceptdfacturap&quot; ) + &quot;&lt;/td&gt;\n&quot;;
+-            fitxersortidatxt += &quot;        &lt;td&gt;&quot; + linea1-&gt;dbValue ( &quot;proporciondfacturap&quot; ) + &quot; %&lt;/td&gt;\n&quot;;
+-            fitxersortidatxt += &quot;        &lt;td&gt;&quot; + l.sprintf ( &quot;-%s&quot;, ( BlFixed ( linea1-&gt;dbValue ( &quot;proporciondfacturap&quot; ) ) * basei / 100 ).toQString().toAscii().constData() ) + &quot;&lt;/td&gt;\n&quot;;
+-            fitxersortidatxt += &quot;&lt;/tr&gt;&quot;;
+-        } // end for
+-        fitxersortidatxt += &quot;&lt;/blockTable&gt;\n&quot;;
+-    } // end if
+-    buff.replace ( &quot;[descuentos]&quot;, fitxersortidatxt );
+-
+-    /// Impresion de los totales.
+-    fitxersortidatxt = &quot;&quot;;
+-    QString tr1 = &quot;&quot;;   /// Rellena el primer tr de titulares.
+-    QString tr2 = &quot;&quot;;   /// Rellena el segundo tr de cantidades.
+-    fitxersortidatxt += &quot;&lt;blockTable style=\&quot;tablatotales\&quot;&gt;\n&quot;;
+-
+-    BlFixed totbaseimp ( &quot;0.00&quot; );
+-    BlFixed parbaseimp ( &quot;0.00&quot; );
+-    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+-        if ( porcentt &gt; 0 ) {
+-            parbaseimp = it.value() - it.value() * porcentt / 100;
+-        } else {
+-            parbaseimp = it.value();
+-        } // end if
+-        totbaseimp = totbaseimp + parbaseimp;
+-        tr1 += &quot;        &lt;td&gt;&quot; + _ ( &quot;Base &quot; ) + it.key() + &quot; %&lt;/td&gt;\n&quot;;
+-        tr2 += &quot;        &lt;td&gt;&quot; + l.sprintf ( &quot;%s&quot;, parbaseimp.toQString().toAscii().constData() ) + &quot;&lt;/td&gt;\n&quot;;
+-    } // end for
+-
+-    BlFixed totiva ( &quot;0.0&quot; );
+-    BlFixed pariva ( &quot;0.0&quot; );
+-    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+-        if ( porcentt &gt; 0 ) {
+-            pariva = ( it.value() - it.value() * porcentt / 100 ) * BlFixed ( it.key() ) / 100;
+-        } else {
+-            pariva = it.value() * BlFixed ( it.key() ) / 100;
+-        } // end if
+-        totiva = totiva + pariva;
+-        tr1 += &quot;        &lt;td&gt;&quot; + _ ( &quot;IVA &quot; ) + it.key() + &quot; %&lt;/td&gt;\n&quot;;
+-        tr2 += &quot;        &lt;td&gt;&quot; + l.sprintf ( &quot;%s&quot;, pariva.toQString().toAscii().constData() ) + &quot;&lt;/td&gt;\n&quot;;
+-    } // end for
+-    tr1 += &quot;        &lt;td&gt;&quot; + _ ( &quot;Total &quot; ) + &quot;&lt;/td&gt;\n&quot;;
+-    tr2 += &quot;        &lt;td&gt;&quot; + l.sprintf ( &quot;%s&quot;, ( totiva + totbaseimp ).toQString().toAscii().constData() ) + &quot;&lt;/td&gt;\n&quot;;
+-    fitxersortidatxt += &quot;&lt;tr&gt;&quot; + tr1 + &quot;&lt;/tr&gt;&lt;tr&gt;&quot; + tr2 + &quot;&lt;/tr&gt;&lt;/blockTable&gt;\n&quot;;
+-    buff.replace ( &quot;[totales]&quot;, fitxersortidatxt );
+-
+-    if ( file.open ( QIODevice::WriteOnly ) ) {
+-        QTextStream stream ( &amp;file ) ;
+-        stream &lt;&lt; buff;
+-        file.close();
+-    } // end if
+-    blCreateAndLoadPDF ( &quot;facturap&quot; );
+-}
+ 
+ 
+ /// Se encarga de generar una factura a partir de un albar&aacute;n.
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturapview.h b/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturapview.h
+index 129d0ab..00dcc7c 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturapview.h
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturapview.h
+@@ -52,7 +52,6 @@ public:
+     virtual int afterSave();
+     virtual int cargarPost ( QString id );
+     virtual int beforeDelete();
+-    virtual void imprimirFacturaProveedor();
+ 
+ public slots:
+     virtual void on_m_descuentos_editFinish ( int, int );
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007293.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007295.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7294">[ fecha ]</a>
+              <a href="thread.html#7294">[ hilo ]</a>
+              <a href="subject.html#7294">[ asunto ]</a>
+              <a href="author.html#7294">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

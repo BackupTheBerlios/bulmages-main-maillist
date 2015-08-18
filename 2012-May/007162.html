@@ -1,0 +1,351 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to release...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20release...&In-Reply-To=%3C20120501101532.BA3FB756DD%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007161.html">
+   <LINK REL="Next"  HREF="007163.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to release... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20release...&In-Reply-To=%3C20120501101532.BA3FB756DD%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to release...">no-reply en gitorious.org
+       </A><BR>
+    <I>Mar Mayo  1 12:15:32 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007161.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007163.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to listado...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7162">[ fecha ]</a>
+              <a href="thread.html#7162">[ hilo ]</a>
+              <a href="subject.html#7162">[ asunto ]</a>
+              <a href="author.html#7162">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to release
+release changed from 536fd8c to 3267088
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/536fd8cf8d1d9414e14bd118a5df1ce0125456a4/diffs/32670885912177ebce22fbcfe3c52170004bbf9b">https://gitorious.org/bulmages/bulmages/commit/536fd8cf8d1d9414e14bd118a5df1ce0125456a4/diffs/32670885912177ebce22fbcfe3c52170004bbf9b</A>
+
+Diff: 
+
+commit 32670885912177ebce22fbcfe3c52170004bbf9b
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue May 1 12:14:05 2012 +0200
+
+    Arreglo el depurator para que trabaje con los nuevos archivos XML
+
+diff --git a/bulmages/scripts/depurator/depurator.py b/bulmages/scripts/depurator/depurator.py
+index ba790e5..1446882 100644
+--- a/bulmages/scripts/depurator/depurator.py
++++ b/bulmages/scripts/depurator/depurator.py
+@@ -26,21 +26,63 @@ class Clase:
+ 		self. m_listaMetodos = {}
+ 
+ 	def procesaMensaje(self, mens):
+-		mensaje = mens
+-		if mensaje.startswith(&quot;END &quot;):
+-			mensaje = mensaje[4:]
++		inicial = 1
++		final = 1
++		mensaje = mens.strip()
++		# Descartamos el sistema de comentarios.
++		if mensaje.startswith(&quot;&lt;comment&quot;):
++			return
++		if mensaje.startswith(&quot;&lt;/comment&quot;):
++			return
++		if mensaje.startswith(&quot;&lt;/&quot;):
++			inicial = 0
++			# Es un mensaje de cierre
++			partmsg = mensaje.split(&quot; &quot;)
++			if len ( partmsg) &gt; 3:
++			  mensaje = partmsg[3]
++			else:
++			  return
++			if not &quot;::&quot; in mensaje:
++			  mensaje = partmsg[2]
++			if not &quot;::&quot; in mensaje:
++			  mensaje = partmsg[1]
++			if not &quot;::&quot; in mensaje:
++			  return
++		else:
++			final = 0
++			# Es un mensaje de cierre
++			partmsg = mensaje.split(&quot; &quot;)
++			if len ( partmsg) &gt; 3:
++			  mensaje = partmsg[3]
++			else:
++			  return
++
++			if not &quot;::&quot; in mensaje:
++			  mensaje = partmsg[2]
++			if not &quot;::&quot; in mensaje:
++			  mensaje = partmsg[1]
++			if not &quot;::&quot; in mensaje:
++			  return
++			  
+ 		lmensaje = mensaje.split(&quot;::&quot;)
++		if len(lmensaje) &lt; 2:
++			return
++			
+ 		submens = lmensaje[1].split(&quot; &quot;)
+-		lmensaje[1] = submens[0]
++		lmensaje[1] = submens[0].split(&quot;(&quot;)[0]
++		
++		print &quot;Metodo es: &quot;+ lmensaje[1]
+ 
+ 		if lmensaje[1] in self.m_listaMetodos:
+ 			a = self.m_listaMetodos[lmensaje[1]]
+-			a.m_invocacionesInit = a.m_invocacionesInit + 1
++			a.m_invocacionesInit = a.m_invocacionesInit + inicial
++			a.m_invocacionesEnd = a.m_invocacionesEnd + final
+ 			self.m_listaMetodos[lmensaje[1]] = a
+ 		else:
++			# los cierres no los contamos, aunque si los mostramos y asi no descuadramos el computo.
+ 			a = Metodo()
+ 			a.m_nombreMetodo = lmensaje[1]
+-			a.m_invocacionesInit = 1
++			a.m_invocacionesInit = inicial
+ 			self.m_listaMetodos[lmensaje[1]] = a
+ 
+ 	def imprimir(self):
+@@ -55,13 +97,50 @@ class ListaClases:
+ 
+ 	def procesaMensaje(self, mens):
+ 		# Buscamos la clase del mensaje.
+-		mensaje = mens
+-		if mensaje.startswith(&quot;END &quot;):
+-			mensaje = mensaje[4:]
++		mensaje = mens.strip()
++		#Quitamos espacios en blanco.
++		# print mensaje
++		
++		
++		# Descartamos el sistema de comentarios.
++		if mensaje.startswith(&quot;&lt;comment&quot;):
++			return
++		if mensaje.startswith(&quot;&lt;/comment&quot;):
++			return
++		if mensaje.startswith(&quot;&lt;/&quot;):
++			# Es un mensaje de cierre
++			partmsg = mensaje.split(&quot; &quot;)
++			if len ( partmsg) &gt; 3:
++			  mensaje = partmsg[3]
++			else:
++			  return
++
++			if not &quot;::&quot; in mensaje:
++			  mensaje = partmsg[2]
++			if not &quot;::&quot; in mensaje:
++			  mensaje = partmsg[1]
++			if not &quot;::&quot; in mensaje:
++			  return
++		else:
++			# Es un mensaje de cierre
++			partmsg = mensaje.split(&quot; &quot;)
++			if len ( partmsg) &gt; 3:
++			  mensaje = partmsg[3]
++			else:
++			  return
++
++			if not &quot;::&quot; in mensaje:
++			  mensaje = partmsg[2]
++			if not &quot;::&quot; in mensaje:
++			  mensaje = partmsg[1]
++			if not &quot;::&quot; in mensaje:
++			  return
++			  
+ 		lmensaje = mensaje.split(&quot;::&quot;)
+ 		if len(lmensaje) &lt; 2:
+ 			return
+-
++		print &quot;La clase es: &quot; + lmensaje[0]
++		
+ 		if lmensaje[0] in self.m_listaClases:
+ 			a = self.m_listaClases[lmensaje[0]]
+ 			a.m_invocaciones = a.m_invocaciones +1
+@@ -83,13 +162,13 @@ if (__name__=='__main__'):
+ 	lmen = ListaClases()
+ 		
+ #	f = open(&quot;~/.bulmages/bulmagesout.txt&quot;, 'r')
+-	f = open(&quot;/home/tborras/.bulmages/bulmagesout.txt&quot;, 'r')
+-	f.seek(0,2)
++	f = open(&quot;/home/tborras/.bulmages/bulmagesout.xml&quot;, 'r')
++#	f.seek(0,2)
+ 	while 1:
+ 		line = f.readline(300)
+ 		if line != &quot;&quot;:
++			print line.strip()
+ 			lmen.procesaMensaje(line.replace(&quot;\n&quot;, &quot;&quot;))
+-			print line
+ 
+ 	lmen.imprimir()
+ 	
+\ No newline at end of file
+diff --git a/bulmages/scripts/depurator/main.py b/bulmages/scripts/depurator/main.py
+index 74d8ff0..4cd5884 100644
+--- a/bulmages/scripts/depurator/main.py
++++ b/bulmages/scripts/depurator/main.py
+@@ -23,6 +23,8 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
+ 	self.table.hideColumn(2)
+ 	self.table.setColumnWidth(0,450)
+ 	
++	self.semaforo = 0
++	
+ #	self.lmen = ListaClases()
+ 	
+ #	self.tree.setColumnCount(3)
+@@ -31,7 +33,6 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
+ #	self.tree.setColumnWidth(2,20)
+ 	
+ 	
+-#	self.f = open(&quot;~/.bulmages/bulmagesout.txt&quot;, 'r')
+ 	self.f = open(&quot;/home/tborras/.bulmages/bulmagesout.xml&quot;, 'r')
+ 	self.f.seek(0,2)
+ 
+@@ -43,7 +44,6 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
+ 
+     def on_mui_conectar_clicked(self):
+ 	print &quot;Conexion !!&quot;
+-#	self.f = open(&quot;~/.bulmages/bulmagesout.txt&quot;, 'r')
+ 	self.f = open(&quot;/home/tborras/.bulmages/bulmagesout.xml&quot;, 'r')	
+ 	self.f.seek(0,2)
+ 	
+@@ -73,6 +73,10 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
+ 		self.lmen.procesaMensaje(line.replace(&quot;\n&quot;, &quot;&quot;))
+ 
+     def hazalgo(self):
++        if (self.semaforo == 0):
++	  self.semaforo=1
++	else:
++	  return
+ 	if self.table.rowCount() &gt; 500:
+ 		self.table.clear()
+ 		self.table.setRowCount(0)
+@@ -81,12 +85,13 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
+ 		self.table.removeRow(0)
+ 		
+ 	line = self.f.readline(300)
+-	i = 0
+-	while line != &quot;&quot; and i &lt; 100:
++	i=0
++	while line != &quot;&quot; and i &lt; 1000:
+ 		line = self.f.readline(300)
+ 		if line != &quot;&quot;:
+ 			self.procesaMensaje(line)
+-		i = i +1
++		i = i + 1
++	self.semaforo=0
+ 
+     def sacaMensaje(self, mens):
+ 	self.table.insertRow(self.table.rowCount())
+@@ -102,23 +107,50 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
+     def procesaMensaje(self, mens):
+ 	sacamensaje = 0	
+ 	mensajefin = 1
+-	
+-	while mens.startswith(&quot; &quot;):
+-		mens = mens[1:]
+-		
+-	mensaje = mens
+-	
+-	if mensaje.startswith(&quot;END &quot;):
+-		mensaje = mensaje[4:]
++
++	mensaje = mens.strip()
++	# Descartamos el sistema de comentarios.
++	if mensaje.startswith(&quot;&lt;comment&quot;):
++		return
++	if mensaje.startswith(&quot;&lt;/comment&quot;):
++		return
++	if mensaje.startswith(&quot;&lt;/&quot;):
+ 		mensajefin = 2
+-		
+-		
++		# Es un mensaje de cierre
++		partmsg = mensaje.split(&quot; &quot;)
++		if len ( partmsg) &gt; 3:
++		  mensaje = partmsg[3]
++		else:
++		  return
++		if not &quot;::&quot; in mensaje:
++		  mensaje = partmsg[2]
++		if not &quot;::&quot; in mensaje:
++		  mensaje = partmsg[1]
++		if not &quot;::&quot; in mensaje:
++		  return
++	else:
++
++		# Es un mensaje de cierre
++		partmsg = mensaje.split(&quot; &quot;)
++		if len ( partmsg) &gt; 3:
++		  mensaje = partmsg[3]
++		else:
++		  return
++
++		if not &quot;::&quot; in mensaje:
++		  mensaje = partmsg[2]
++		if not &quot;::&quot; in mensaje:
++		  mensaje = partmsg[1]
++		if not &quot;::&quot; in mensaje:
++		  return
++		  
+ 	lmensaje = mensaje.split(&quot;::&quot;)
+ 	if len(lmensaje) &lt; 2:
+ 		return
++		
+ 	submens = lmensaje[1].split(&quot; &quot;)
+-	lmensaje[1] = submens[0]
+-	
++	lmensaje[1] = submens[0].split(&quot;(&quot;)[0]
++
+ 	lis = QtCore.QStringList(lmensaje[0])
+ 	lis1 = QtCore.QStringList(lmensaje[1])
+ 	if mensajefin == 2:
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007161.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007163.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to listado...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7162">[ fecha ]</a>
+              <a href="thread.html#7162">[ hilo ]</a>
+              <a href="subject.html#7162">[ asunto ]</a>
+              <a href="author.html#7162">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

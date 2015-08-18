@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] r2958 -	branches/docsMonolitic/bulmages/bulmafact/plugins/pluginq19
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r2958%20-%0A%09branches/docsMonolitic/bulmages/bulmafact/plugins/pluginq19&In-Reply-To=%3C200902042341.n14NfZNq011323%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000930.html">
+   <LINK REL="Next"  HREF="000937.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] r2958 -	branches/docsMonolitic/bulmages/bulmafact/plugins/pluginq19 </H1>
+    <B>svn en mail.berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r2958%20-%0A%09branches/docsMonolitic/bulmages/bulmafact/plugins/pluginq19&In-Reply-To=%3C200902042341.n14NfZNq011323%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] r2958 -	branches/docsMonolitic/bulmages/bulmafact/plugins/pluginq19">svn en mail.berlios.de
+       </A><BR>
+    <I>Jue Feb  5 00:41:35 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000930.html">[BulmaGés] r2957 -	trunk/bulmages/bulmatpv/plugins/plugincambio
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000937.html">[BulmaGés]r2958 - branches/docsMonolitic/bulmages/bulmafact/plugins/pluginq19
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#935">[ fecha ]</a>
+              <a href="thread.html#935">[ hilo ]</a>
+              <a href="subject.html#935">[ asunto ]</a>
+              <a href="author.html#935">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: xdrudis
+Date: 2009-02-05 00:41:34 +0100 (Thu, 05 Feb 2009)
+New Revision: 2958
+
+Added:
+   branches/docsMonolitic/bulmages/bulmafact/plugins/pluginq19/gen_taula_h.pl
+   branches/docsMonolitic/bulmages/bulmafact/plugins/pluginq19/taula.h
+Modified:
+   branches/docsMonolitic/bulmages/bulmafact/plugins/pluginq19/q19qtoolbutton.cpp
+   branches/docsMonolitic/bulmages/bulmafact/plugins/pluginq19/q19qtoolbutton.h
+Log:
+Arreglo (espero) les remeses banc?\195?\160ries de la llista de cobraments. Les de la llista de factures ni les he tocat. Mirant per sobre per?\195?\178 sense provar gaire diria que tenen els seg?\195?\188ents errors: 
+- El joc de caacters no ?\195?\169s el que diu la norma 19
+- Els imports sembla que no es posen amb dos decimals sempre, no s?\195?\169. Hauria de provar si genera 1.45 EUR per comptes de 145.00 EUR quan els decimals son 00.
+- Posa un mateix sufixe per tots els bancs
+- Posa una mateixa data de c?\195?\160rrec per totes les factures, perqu?\195?\168 nom?\195?\169s genera un registre d'ordenant en tot el fitxer, 
+encara que les dates de les altres factures siguin diferents.
+
+A la generaci?\195?\179 de q19 per a cobraments arreglo aquests errors, per?\195?\178: 
+0.- Encara no he provat d'enviar el fitxer resultant a cap banc. A veure qu?\195?\168 passar?\195?\160. Si alg?\195?\186 ho t?\195?\169 f?\195?\160cil per provar-ho, com m?\195?\169s bancs es provin m?\195?\169s confian?\195?\167a tindrem que funcioni. 
+1.- Si els rebuts seleccionats per enviar
+al banc s?\195?\179n de bancs diferents, genero un fitxer per cada banc.
+
+2.- Si hi ha dos rebuts de la mateixa clienta i data els podria
+ajuntar en un per?\195?\178 no ho faig (queda una mica tergiversat, si els
+ajunto en un rebut per?\195?\178 al programa surten com a dos cobraments). Si
+pagues m?\195?\169s al banc per dos rebuts que per un i preveiem que pots tenir
+m?\195?\169s d'un rebut per persona i data, ho podria canviar.
+
+3.- Al concepte he posat la referencia i el comentari del rebut. Suposo que
+l'empresa i aix?\195?\178 ja surt a part al rebut i no cal repetir-ho al concepte.
+A un exemple que vaig veure, generat amb un programa d'un banc, posava
+de concepte: &quot;IMPORT FRA. N.5                    89,62
+IMPORT FRA. N.10                   67,88&quot;. Per?\195?\178 a bulmafact no puc garantir que un rebut tingui factures, ni quantes en t?\195?\169 ni si hi ha n rebuts i m factures
+amb la mateixa refer?\195?\168ncia, quina part de l'import de cada factura correspon
+a cada rebut. Si l'usuari ho vol posar ho hauria d'escriure manualment al comentari
+del cobrament.
+
+4.- La data de c?\195?\160rrec del rebut ser?\195?\160 la data del venciment del
+cobrament, no la data de cobrament. Per aqu?\195?\173 ens ha sonat m?\195?\169s l?\195?\178gic.
+
+5.- Hi ha la possibilitat d'afegir un registre opcional amb m?\195?\169s dades
+del pagador, per?\195?\178 a l'especificaci?\195?\179 que tinc posa &quot;titular de la
+cuenta de domiciliaci?\195?\179n&quot; (optatiu).  Ara he omplert nom?\195?\169s el camp
+obligatori que diu &quot;titular de domiciliaci?\195?\179n&quot;, perqu?\195?\168 m'ha semblat que
+les dades de nom, poblaci?\195?\179, cp i tal del titular del compte no les
+tenim, nom?\195?\169s de la persona a qui es fa el rebut, i com que era
+opcional he pensat que millor no posar res del titular del
+compte. 
+6.- No miro si els rebuts estan marcats com a previsi?\195?\179 o no. Per?\195?\178
+abans de marcar-los pots filtrar per previsi?\195?\179 o no previsi?\195?\179 i aix?\195?\173
+despr?\195?\169s els marques tots, per tant ho pots fer manualment.
+
+7.- No s?\195?\169 si falten eines per seleccionar cobraments i poder-los marcar.
+
+8.- No guardo enlloc quins cobraments he incl?\195?\178s al fitxer del banc que
+he generat.  La propera vegada que generis rebuts pel banc haur?\195?\160s de
+saber pel teu compte quins vas generar la vegada anterior i no tornar-los a generar. No tinc clar el millor flux de treball
+
+9.- En teoria el banc et pot generar un fitxer amb els rebuts retornats.
+Per?\195?\178 jo no he fet res perqu?\195?\168 li puguis donar aquest fitxer al bulmafact i
+et faci res amb ell.
+
+P.S. Els fitxers de rebuts bancaris no admeten accents ni ce trencada ni punt
+volat ni ortografia correcta en general (ni tan sols admeten min?\195?\186scules). Nom?\195?\169s
+admeten lletres anglosaxones i la enye. Per tant si als noms de clients, empresa
+o comentaris de rebuts hi ha aquestes lltres les transformo com puc. ?\195?\137s una limitaci?\195?\179
+pat?\195?\168tica que imposa l'Associaci?\195?\179 Espanyola de Banca (nov. 2003), no hi puc fer m?\195?\169s. M'agradaria saber que ja no existeix la limitaci?\195?\179, per?\195?\178 pel poc que s?\195?\169 hi ?\195?\169s. 
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000930.html">[BulmaGés] r2957 -	trunk/bulmages/bulmatpv/plugins/plugincambio
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000937.html">[BulmaGés]r2958 - branches/docsMonolitic/bulmages/bulmafact/plugins/pluginq19
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#935">[ fecha ]</a>
+              <a href="thread.html#935">[ hilo ]</a>
+              <a href="subject.html#935">[ asunto ]</a>
+              <a href="author.html#935">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: themeph pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20themeph%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20121104224204.715E32C117%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+   <LINK REL="Next"  HREF="007348.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: themeph pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20themeph%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20121104224204.715E32C117%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: themeph pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Dom Nov  4 23:42:04 CET 2012</I>
+    <P><UL>
+        
+        <LI>Próximo mensaje: <A HREF="007348.html">[BulmaGés] [Gitorious] Activity: themeph pushed 1	commits to release...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7347">[ fecha ]</a>
+              <a href="thread.html#7347">[ hilo ]</a>
+              <a href="subject.html#7347">[ asunto ]</a>
+              <a href="author.html#7347">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+themeph pushed 1 commits to master
+master changed from b43c8c5 to 7c17666
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/b43c8c5976c180f8185e3ac3343b415b5d46e6e2/diffs/7c1766673505592d9cf4a16dad9b41d853f7d1a0">https://gitorious.org/bulmages/bulmages/commit/b43c8c5976c180f8185e3ac3343b415b5d46e6e2/diffs/7c1766673505592d9cf4a16dad9b41d853f7d1a0</A>
+
+Diff: 
+
+commit 7c1766673505592d9cf4a16dad9b41d853f7d1a0
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">info en danielripoll.es</A>&gt;
+Date:   Sun Nov 4 23:41:15 2012 +0100
+
+    Arreglo warning en la función blWebBrowser
+    
+    --
+    Daniel Ripoll Osma
+    <A HREF="http://danielripoll.es">http://danielripoll.es</A>
+    <A HREF="http://bulmages.es">http://bulmages.es</A>
+    <A HREF="http://manualencatala.tk">http://manualencatala.tk</A>
+    6688.27.4.90
+    
+    Web &amp; Desktop Developer
+
+diff --git a/bulmages/bulmalib/src/blfunctions.cpp b/bulmages/bulmalib/src/blfunctions.cpp
+index 3fcedd7..f52cb6a 100644
+--- a/bulmages/bulmalib/src/blfunctions.cpp
++++ b/bulmages/bulmalib/src/blfunctions.cpp
+@@ -1310,7 +1310,7 @@ void blRawPrint(const QString &amp;archivo, bool diruser, const QString &amp;defprinter)
+ }
+ 
+ 
+-void blWebBrowser(const QString &amp;uri, const QString &amp;defbrowser) {
++int blWebBrowser(const QString &amp;uri, const QString &amp;defbrowser) {
+     BL_FUNC_DEBUG
+     QString browser = &quot;&quot;;
+     if (browser.isEmpty()) {
+@@ -1327,11 +1327,13 @@ void blWebBrowser(const QString &amp;uri, const QString &amp;defbrowser) {
+     
+     if (browser.isEmpty()) {
+         QDesktopServices::openUrl(QUrl(uri, QUrl::TolerantMode));
++        return 0;
+     }
+     
+     else {
+         QString webcommand = commas + browser + commas + QUrl(uri, QUrl::TolerantMode).toString() + inbackground;
+-        system ( webcommand.toAscii().data() );
++        int result = system ( webcommand.toAscii().data() );
++        return result;
+     } // end if
+ 
+ }
+diff --git a/bulmages/bulmalib/src/blfunctions.h b/bulmages/bulmalib/src/blfunctions.h
+index 47f6b4c..19dc155 100644
+--- a/bulmages/bulmalib/src/blfunctions.h
++++ b/bulmages/bulmalib/src/blfunctions.h
+@@ -151,7 +151,7 @@ bool BL_EXPORT blValidateSpainCIFNIFCode(QString nifcif, QChar &amp;digit);
+ 
+ void BL_EXPORT blRawPrint(const QString &amp;archivo, bool diruser=TRUE, const QString &amp;defprinter=&quot;&quot;);
+ 
+-void BL_EXPORT blWebBrowser(const QString &amp;uri, const QString &amp;defbrowser=&quot;&quot;);
++int BL_EXPORT blWebBrowser(const QString &amp;uri, const QString &amp;defbrowser=&quot;&quot;);
+ 
+ QString BL_EXPORT blGetEnv( const char *varName );
+ 
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Próximo mensaje: <A HREF="007348.html">[BulmaGés] [Gitorious] Activity: themeph pushed 1	commits to release...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7347">[ fecha ]</a>
+              <a href="thread.html#7347">[ hilo ]</a>
+              <a href="subject.html#7347">[ asunto ]</a>
+              <a href="author.html#7347">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

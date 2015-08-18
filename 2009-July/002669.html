@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]segfault al lanzar los programas...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fsegfault_al_lanzar_lo%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fs_programas%3D2E%3D2E%3D2E%3F%3D&In-Reply-To=%3C4A55D4A7.4040603%40todo-redes.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002665.html">
+   <LINK REL="Next"  HREF="002670.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]segfault al lanzar los programas... </H1>
+    <B>Fco. Javier M. C.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fsegfault_al_lanzar_lo%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fs_programas%3D2E%3D2E%3D2E%3F%3D&In-Reply-To=%3C4A55D4A7.4040603%40todo-redes.com%3E"
+       TITLE="[BulmaGés]segfault al lanzar los programas...">fcojavmc en todo-redes.com
+       </A><BR>
+    <I>Jue Jul  9 13:29:43 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002665.html">[BulmaGés]segfault al lanzar los programas...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002670.html">[BulmaGés][BulmaGÃ©s]segfault al lanzar los programas...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2669">[ fecha ]</a>
+              <a href="thread.html#2669">[ hilo ]</a>
+              <a href="subject.html#2669">[ asunto ]</a>
+              <a href="author.html#2669">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Pedro.
+
+
+Según tu log el fallo está en que no se puede conectar con la base de datos. ¿Has mirado que tengas permisos y eso en Postgres?
+
+Un saludo.
+
+
+           END BlPostgreSqlClient::BlPostgreSqlClient 
+            BlPostgreSqlClient::inicializa bulmafact
+             port = 5432 dbname = bulmafact 
+            La conexion con la base de datos 'bulmafact' ha fallado.
+ 
+            FATAL:  no existe la base de datos Â«bulmafactÂ»
+ 
+                BlPostgreSqlClient::~BlPostgreSqlClient 
+                END BlPostgreSqlClient::~BlPostgreSqlClient 
+                BlPostgreSqlClient::BlPostgreSqlClient 
+                END BlPostgreSqlClient::BlPostgreSqlClient 
+                BlPostgreSqlClient::inicializa bulmacont
+                 port = 5432 dbname = bulmacont 
+                La conexion con la base de datos 'bulmacont' ha fallado.
+ 
+                FATAL:  no existe la base de datos Â«bulmacontÂ»
+ 
+                    BlPostgreSqlClient::~BlPostgreSqlClient 
+                    END BlPostgreSqlClient::~BlPostgreSqlClient 
+                    BlPostgreSqlClient::BlPostgreSqlClient 
+                    END BlPostgreSqlClient::BlPostgreSqlClient 
+                    BlPostgreSqlClient::inicializa template1
+                     port = 5432 dbname = template1 
+                    La conexion con la base de datos ha ido bien, ahora vamos a por la fecha 
+                        BlPostgreSqlClient::formatofecha 
+                        END BlPostgreSqlClient::formatofecha 
+                        BlPostgreSqlClient::loadQuery SELECT current_user
+                            BlDbRecordSet::BlDbRecordSet SELECT current_user
+                            SELECT current_user 
+                                BlDbRecordSet::nomcampo 
+                                END BlDbRecordSet::nomcampo 
+                                BlDbRecordSet::nomcampo 
+                                END BlDbRecordSet::nomcampo 
+                            ------------ RESULTADO DE LA CONSULTA ----------------- 
+                            Numero de registros: 1, Numero de campos: 1 
+                            --------- FIN RESULTADO DE LA CONSULTA ---------------- 
+                            END BlDbRecordSet::BlDbRecordSet  Numero de registros: 1, Numero de campos: 1
+                        END BlPostgreSqlClient::loadQuery 
+                        BlDbRecordSet::eof 
+                        END BlDbRecordSet::eof 
+                        BlDbRecordSet::valor current_user -1
+                            BlDbRecordSet::numcampo 
+                            END BlDbRecordSet::numcampo 0
+                        END BlDbRecordSet::valor  campo:current_user ----- Valor:pedro
+                        BlDbRecordSet::valor 00
+                        END BlDbRecordSet::valor 
+                        BlDbRecordSet::~BlDbRecordSet 
+                            BlDbRecordSet::cerrar 
+                            END BlDbRecordSet::cerrar 
+                        END BlDbRecordSet::~BlDbRecordSet 
+                    END BlPostgreSqlClient::inicial
+
+
+
+-- 
+Fco. Javier M. C.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002665.html">[BulmaGés]segfault al lanzar los programas...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002670.html">[BulmaGés][BulmaGÃ©s]segfault al lanzar los programas...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2669">[ fecha ]</a>
+              <a href="thread.html#2669">[ hilo ]</a>
+              <a href="subject.html#2669">[ asunto ]</a>
+              <a href="author.html#2669">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

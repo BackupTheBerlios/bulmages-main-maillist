@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]BACKUP BULMAGES
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FBACKUP_BULMAGES%3F%3D&In-Reply-To=%3CCANdfMDeT9O_nn-RqVHW5SHnShn94ktPNQ%3DMReTr_mcuza_D5Ew%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006963.html">
+   <LINK REL="Next"  HREF="006964.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]BACKUP BULMAGES </H1>
+    <B>Aron</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FBACKUP_BULMAGES%3F%3D&In-Reply-To=%3CCANdfMDeT9O_nn-RqVHW5SHnShn94ktPNQ%3DMReTr_mcuza_D5Ew%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]BACKUP BULMAGES">auryn en wanadoo.es
+       </A><BR>
+    <I>Lun Feb 27 17:34:45 CET 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006963.html">[BulmaGés]BACKUP BULMAGES
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006964.html">[BulmaGés]BACKUP BULMAGES
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6965">[ fecha ]</a>
+              <a href="thread.html#6965">[ hilo ]</a>
+              <a href="subject.html#6965">[ asunto ]</a>
+              <a href="author.html#6965">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>(corrección, no excluyamos public o no se hace copia de nada jeje)
+
+Yo suelo usar esto para crear el backup:
+sudo pg_dump --format=c --data-only --disable-triggers
+--file=&lt;origen&gt;_datos.dump &lt;origen&gt;
+
+Y esto para restaurar sobre una base de datos VACÍA:
+sudo pg_restore --format=c --data-only --disable-triggers --verbose
+--no-owner --dbname=&lt;destino&gt; &lt;origen&gt;_datos.dump
+
+
+
+2012/2/27 Aron &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">auryn en wanadoo.es</A>&gt;
+
+&gt;<i> Hola.
+</I>&gt;<i>
+</I>&gt;<i> Yo suelo usar esto para crear el backup:
+</I>&gt;<i> sudo pg_dump --format=c --data-only --disable-triggers
+</I>&gt;<i> --exclude-schema=public --file=&lt;origen&gt;_datos.dump &lt;origen&gt;
+</I>&gt;<i>
+</I>&gt;<i> Y esto para restaurar sobre una base de datos VACÍA:
+</I>&gt;<i> sudo pg_restore --format=c --data-only --disable-triggers --verbose
+</I>&gt;<i> --no-owner --dbname=&lt;destino&gt; &lt;origen&gt;_datos.dump
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Aron Galdón
+</I>&gt;<i>
+</I>&gt;<i> PostgreSQL, Qt4 and PHP developer
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> 2012/2/27 Albert Mas &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">albertmas en termens.cat</A>&gt;
+</I>&gt;<i>
+</I>&gt;&gt;<i> Hola a todos.
+</I>&gt;&gt;<i> Tengo una consulta, alguien sabe que instruccion utiliza bulmasetup para
+</I>&gt;&gt;<i> hacer un backup?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Teóricamente tendria que ejecutar: pg_dump basededatos &gt; fichero.sql
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> lo que me extranya es que esto genera un fichero .sql, eso quiere decir
+</I>&gt;&gt;<i> que para restaurarlo con bulmasetup tendria que comprimirlo en tar.gz ?
+</I>&gt;&gt;<i> ya que bulmasetup solo restaura de .tar.gz
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> es para crear un script que cada noche me envieu un e-mail con la copia.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> gracias.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ______________________
+</I>&gt;&gt;<i> Albert Mas
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">albertmas en termens.cat</A>
+</I>&gt;&gt;<i> twitter: @turkil
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Bulmages-main mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20120227/79d386d6/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20120227/79d386d6/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006963.html">[BulmaGés]BACKUP BULMAGES
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006964.html">[BulmaGés]BACKUP BULMAGES
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6965">[ fecha ]</a>
+              <a href="thread.html#6965">[ hilo ]</a>
+              <a href="subject.html#6965">[ asunto ]</a>
+              <a href="author.html#6965">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

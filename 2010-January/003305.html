@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Error de compilació a la branca estable
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3FError_de_compilaci%3DC3%3DB3_a%3F%3D%0A%20%3D%3Futf-8%3Fq%3F_la_branca_estable%3F%3D&In-Reply-To=%3C201001192139.14459.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003304.html">
+   <LINK REL="Next"  HREF="003306.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Error de compilació a la branca estable </H1>
+    <B>Tomeu</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3FError_de_compilaci%3DC3%3DB3_a%3F%3D%0A%20%3D%3Futf-8%3Fq%3F_la_branca_estable%3F%3D&In-Reply-To=%3C201001192139.14459.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]Error de compilació a la branca estable">tborras en conetxia.com
+       </A><BR>
+    <I>Mar Ene 19 21:39:14 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003304.html">[BulmaGés]Error de compilació a la branca estable
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003306.html">[BulmaGés]Error de compilació a la branca estable
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3305">[ fecha ]</a>
+              <a href="thread.html#3305">[ hilo ]</a>
+              <a href="subject.html#3305">[ asunto ]</a>
+              <a href="author.html#3305">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Orestes
+
+Es bastant probable que la diferencia de versió entre les Qt sigui la causa.
+
+Ara provaré d'actualitzar les qt a veurer si puc reproduir l'error.
+
+Salut
+
+
+
+&gt;<i> Hola,
+</I>&gt;<i> 
+</I>&gt;<i> Em passa una cosa molt estranya:
+</I>&gt;<i> 
+</I>&gt;<i> He compilat, instal·lat i executat correctament el bulmages (versió 0.12.0
+</I>&gt;<i> baixada del svn) en un &quot;netbook&quot;. Fins aquí cap problema.
+</I>&gt;<i> 
+</I>&gt;<i> Ara vull fer el mateix en un ordinador d'escriptori. Segueixo les mateixes
+</I>&gt;<i> passes per baixar-me les fonts, crido el CMake, faig el &quot;make&quot; i...
+</I>&gt;<i>  patapam! Peta la compilació.
+</I>&gt;<i> 
+</I>&gt;<i> Concretament diu:
+</I>&gt;<i> 
+</I>&gt;<i> [ 23%] Building CXX object
+</I>&gt;<i> bulmacont/src/CMakeFiles/libbulmacont.dir/moc_bcmodelo300imprimir2ps.o
+</I>&gt;<i> 
+</I>&gt;<i> /home/orestes/develop/bulmages/v0.12-
+</I>&gt;<i> release/build/bulmacont/src/moc_bcmodelo300imprimir2ps.cxx: In member
+</I>&gt;<i>  function &#8216;virtual const QMetaObject* BcModelo300Imprimir2PS::metaObject()
+</I>&gt;<i>  const&#8217;:
+</I>&gt;<i> 
+</I>&gt;<i> /home/orestes/develop/bulmages/v0.12-
+</I>&gt;<i> release/build/bulmacont/src/moc_bcmodelo300imprimir2ps.cxx:51: error:
+</I>&gt;<i> &#8216;QObject&#8217; is an ambiguous base of &#8216;BcModelo300Imprimir2PS&#8217;
+</I>&gt;<i> 
+</I>&gt;<i> /home/orestes/develop/bulmages/v0.12-
+</I>&gt;<i> release/build/bulmacont/src/moc_bcmodelo300imprimir2ps.cxx:51: error:
+</I>&gt;<i> &#8216;QObject&#8217; is an ambiguous base of &#8216;BcModelo300Imprimir2PS&#8217;
+</I>&gt;<i> 
+</I>&gt;<i> make[2]: ***
+</I>&gt;<i> [bulmacont/src/CMakeFiles/libbulmacont.dir/moc_bcmodelo300imprimir2ps.o]
+</I>&gt;<i>  Error 1
+</I>&gt;<i> 
+</I>&gt;<i> make[1]: *** [bulmacont/src/CMakeFiles/libbulmacont.dir/all] Error 2
+</I>&gt;<i> 
+</I>&gt;<i> make: *** [all] Error 2
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Segons el Google, aquest error es dóna quan una classe hereta un objecte
+</I>&gt;<i>  (en aquest cas QObject) per dues bandes diferents. Però és el mateix codi
+</I>&gt;<i>  que abans, i en el netbook compila sense problemes!
+</I>&gt;<i> 
+</I>&gt;<i> Com pot ser? No sé veure el motiu.
+</I>&gt;<i> 
+</I>&gt;<i> ==Diferències entre els dos ordinadors==
+</I>&gt;<i> 
+</I>&gt;<i> El netbook és un Intel Atom que porta una Ubuntu Karmic (amb Gnome). He
+</I>&gt;<i> instal·lat les dependències necessàries per compilar i executar.
+</I>&gt;<i> 
+</I>&gt;<i> El Desktop és una Kubuntu Karmic (per tant amb KDE) però que porta els
+</I>&gt;<i>  paquets del KDE 4.4 beta del repositori PPA d'ubuntu. Això implica que les
+</I>&gt;<i>  Qt són de la versió 4.6.0 (quan en una karmic tenim les 4.5.2). Pot ser
+</I>&gt;<i>  aquesta la causa?
+</I>&gt;<i> &quot;
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003304.html">[BulmaGés]Error de compilació a la branca estable
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003306.html">[BulmaGés]Error de compilació a la branca estable
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3305">[ fecha ]</a>
+              <a href="thread.html#3305">[ hilo ]</a>
+              <a href="subject.html#3305">[ asunto ]</a>
+              <a href="author.html#3305">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

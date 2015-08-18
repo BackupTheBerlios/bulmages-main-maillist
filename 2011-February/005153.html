@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]erreur plan comptable
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Ferreur_plan_comptable%3F%3D&In-Reply-To=%3C4D637B8A.2030903%40todo-redes.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005152.html">
+   <LINK REL="Next"  HREF="005154.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]erreur plan comptable </H1>
+    <B>Fco. Javier M. C.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Ferreur_plan_comptable%3F%3D&In-Reply-To=%3C4D637B8A.2030903%40todo-redes.com%3E"
+       TITLE="[BulmaGés]erreur plan comptable">fcojavmc en todo-redes.com
+       </A><BR>
+    <I>Mar Feb 22 10:02:02 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="005152.html">[BulmaGés]erreur plan comptable
+</A></li>
+        <LI>Próximo mensaje: <A HREF="005154.html">[BulmaGés]erreur plan comptable
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5153">[ fecha ]</a>
+              <a href="thread.html#5153">[ hilo ]</a>
+              <a href="subject.html#5153">[ asunto ]</a>
+              <a href="author.html#5153">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE> Hello. Good! with this description of the problem I can work on it :)
+
+- First I try to load the file and for me is working well.
+- Second, I try to search this account in PlanComptable.xml file to
+correct it. But, I don't find this account. It's not in the file.
+
+Tip: Try to clean all accounts in the program before reload the file.
+
+Procedure:
+
+0) Make a backup of your database.
+1) psql &lt;database&gt;
+2) truncate cuenta cascade;
+
+
+regards!
+
+
+El 22/02/11 09:11, aishen escribió:
+&gt;<i> Usually I load the french plan comptable you installed in the french
+</I>&gt;<i> repertory :
+</I>&gt;<i> Now if i try loading it from menu compta&gt;plan comptable (as i always did
+</I>&gt;<i> it) i got this message erreur (even with spanish plan comptable : i
+</I>&gt;<i> tried it too) then in the windows plan comptable i choose import account
+</I>&gt;<i> and i
+</I>&gt;<i> got /usr/local/share/bulmages/planescontables/fr_FR-UTF-8/PlanComptable.xml
+</I>&gt;<i> i got the error message dialogue i send to you :
+</I>&gt;<i> Details are 
+</I>&gt;<i> INSERT INTO cuenta (codigo, descripcion) VALUES ('AUX', 'Una descripcion
+</I>&gt;<i> auxiliar de cuenta')
+</I>&gt;<i> ERREUR:  une valeur NULL viole la contrainte NOT NULL de la colonne «
+</I>&gt;<i> padre »
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Le lundi 21 février 2011 à 22:56 +0100, Fco. Javier M. C. a écrit :
+</I>&gt;&gt;<i> Hello. I need more info. What data are you using?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> El 21/02/11 16:10, aishen escribió: 
+</I>&gt;&gt;&gt;<i> Can't save plan contable in database ?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> Bulmages-main mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- 
+</I>&gt;&gt;<i> Javier.
+</I>&gt;&gt;<i> TODO-REDES
+</I>&gt;&gt;<i> <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+</I>&gt;&gt;<i> C/Begònia 12 - 07010 Palma de Mallorca.
+</I>&gt;&gt;<i> Tel.: 971499071
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Bulmages-main mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>
+
+-- 
+Javier.
+TODO-REDES
+<A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+C/Begònia 12 - 07010 Palma de Mallorca.
+Tel.: 971499071
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="005152.html">[BulmaGés]erreur plan comptable
+</A></li>
+	<LI>Próximo mensaje: <A HREF="005154.html">[BulmaGés]erreur plan comptable
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5153">[ fecha ]</a>
+              <a href="thread.html#5153">[ hilo ]</a>
+              <a href="subject.html#5153">[ asunto ]</a>
+              <a href="author.html#5153">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

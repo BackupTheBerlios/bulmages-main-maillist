@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] r2862 - in trunk/bulmages/bulmafact:	plugins plugins/pluginmail plugins/pluginpagos src
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r2862%20-%20in%20trunk/bulmages/bulmafact%3A%0A%09plugins%20plugins/pluginmail%20plugins/pluginpagos%20src&In-Reply-To=%3C200812211208.mBLC8XrP015187%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000626.html">
+   <LINK REL="Next"  HREF="000634.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] r2862 - in trunk/bulmages/bulmafact:	plugins plugins/pluginmail plugins/pluginpagos src </H1>
+    <B>svn en mail.berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r2862%20-%20in%20trunk/bulmages/bulmafact%3A%0A%09plugins%20plugins/pluginmail%20plugins/pluginpagos%20src&In-Reply-To=%3C200812211208.mBLC8XrP015187%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] r2862 - in trunk/bulmages/bulmafact:	plugins plugins/pluginmail plugins/pluginpagos src">svn en mail.berlios.de
+       </A><BR>
+    <I>Dom Dic 21 13:08:33 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000626.html">[BulmaGés] [Bug #14947] impostos a 0 al llistat de	factures
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000634.html">[BulmaGés] r2863 - in trunk/bulmages: .	bulmacont/src bulmafact/plugins/plugin_tc_articulos	bulmafact/plugins/pluginivainc bulmafact/plugins/pluginpagos	bulmafact/plugins/pluginresarticulos bulmafact/src bulmalib/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#627">[ fecha ]</a>
+              <a href="thread.html#627">[ hilo ]</a>
+              <a href="subject.html#627">[ asunto ]</a>
+              <a href="author.html#627">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: tborras
+Date: 2008-12-21 13:08:11 +0100 (Sun, 21 Dec 2008)
+New Revision: 2862
+
+Added:
+   trunk/bulmages/bulmafact/plugins/pluginpagos/
+   trunk/bulmages/bulmafact/plugins/pluginpagos/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginpagos/README.es
+   trunk/bulmages/bulmafact/plugins/pluginpagos/impqtoolbutton.cpp
+   trunk/bulmages/bulmafact/plugins/pluginpagos/impqtoolbutton.h
+   trunk/bulmages/bulmafact/plugins/pluginpagos/pagobase.ui
+   trunk/bulmages/bulmafact/plugins/pluginpagos/pagoslist.cpp
+   trunk/bulmages/bulmafact/plugins/pluginpagos/pagoslist.h
+   trunk/bulmages/bulmafact/plugins/pluginpagos/pagoslistbase.ui
+   trunk/bulmages/bulmafact/plugins/pluginpagos/pagoview.cpp
+   trunk/bulmages/bulmafact/plugins/pluginpagos/pagoview.h
+   trunk/bulmages/bulmafact/plugins/pluginpagos/pluginpagos.cpp
+   trunk/bulmages/bulmafact/plugins/pluginpagos/pluginpagos.h
+Removed:
+   trunk/bulmages/bulmafact/src/pagobase.ui
+   trunk/bulmages/bulmafact/src/pagoslist.cpp
+   trunk/bulmages/bulmafact/src/pagoslist.h
+   trunk/bulmages/bulmafact/src/pagoslistbase.ui
+   trunk/bulmages/bulmafact/src/pagoview.cpp
+   trunk/bulmages/bulmafact/src/pagoview.h
+Modified:
+   trunk/bulmages/bulmafact/plugins/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginmail/pluginmail.cpp
+   trunk/bulmages/bulmafact/src/albaranproveedorbase.ui
+   trunk/bulmages/bulmafact/src/albaranproveedorview.cpp
+   trunk/bulmages/bulmafact/src/bulmafact.cpp
+   trunk/bulmages/bulmafact/src/bulmafact.h
+   trunk/bulmages/bulmafact/src/bulmafactbase.ui
+   trunk/bulmages/bulmafact/src/busquedareferencia.cpp
+   trunk/bulmages/bulmafact/src/company.cpp
+   trunk/bulmages/bulmafact/src/company.h
+   trunk/bulmages/bulmafact/src/facturapbase.ui
+   trunk/bulmages/bulmafact/src/facturapview.cpp
+   trunk/bulmages/bulmafact/src/pedidoproveedorbase.ui
+   trunk/bulmages/bulmafact/src/pedidoproveedorview.cpp
+   trunk/bulmages/bulmafact/src/provedit.cpp
+   trunk/bulmages/bulmafact/src/proveditbase.ui
+Log:
+He quitado de bulmafact la gestion de pagos y la he metido en forma de ohhhh sorpresa !!! plugin.
+Mi intencion es reducir tanto como sea posible el core del programa y sacar casi todo en forma de plugin para hacer
+al programa aun m?\195?\161s modular.
+NOTA: Recordar que si se quieren los pagos a proveedores a partir de ahora hay que activar este plugin.
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000626.html">[BulmaGés] [Bug #14947] impostos a 0 al llistat de	factures
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000634.html">[BulmaGés] r2863 - in trunk/bulmages: .	bulmacont/src bulmafact/plugins/plugin_tc_articulos	bulmafact/plugins/pluginivainc bulmafact/plugins/pluginpagos	bulmafact/plugins/pluginresarticulos bulmafact/src bulmalib/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#627">[ fecha ]</a>
+              <a href="thread.html#627">[ hilo ]</a>
+              <a href="subject.html#627">[ asunto ]</a>
+              <a href="author.html#627">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Scripts de Miguel Tellería
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-September/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FScripts_de_Miguel_Tel%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fler%3DEDa%3F%3D&In-Reply-To=%3C52394C8A.8030604%40gnuinos.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007715.html">
+   <LINK REL="Next"  HREF="007717.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Scripts de Miguel Tellería </H1>
+    <B>aitor en gnuinos.org</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FScripts_de_Miguel_Tel%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fler%3DEDa%3F%3D&In-Reply-To=%3C52394C8A.8030604%40gnuinos.org%3E"
+       TITLE="[BulmaGés]Scripts de Miguel Tellería">aitor en gnuinos.org
+       </A><BR>
+    <I>Mie Sep 18 08:47:38 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007715.html">[BulmaGés]Scripts de Miguel Tellería
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007717.html">[BulmaGés]Saludos y algún tema mas
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7716">[ fecha ]</a>
+              <a href="thread.html#7716">[ hilo ]</a>
+              <a href="subject.html#7716">[ asunto ]</a>
+              <a href="author.html#7716">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola, Miguel, estoy haciendo intentos en Qt5, pero aún no consigo 
+compilar al 100%. He dejado algunos comentarios en la lista al respecto. 
+Pero tus scripts funcionan bien independientemente de la versión. Lo 
+importante es que ahora ya veo como generar los números de versión.
+
+Otra cosa: he hecho mi primera prueba con git-buildpackage siguiendo tus 
+apuntes en la wiki del Redmine. Recuerda que hasta ahora yo empaquetaba 
+con dpkg-buildpackage y reprepro, algo que tú rechazaste porque tenía 
+una limitación en los dígitos del número de versión asignado. El 
+resultado ha sido satisfactorio. Se ha generado la carpeta build-area 
+con todo el contenido. Aunque la prueba la he hecho con la rama release, 
+que todavía va por la 1.4. La he bajado con:
+
+git clone  --branch release --single-branch 
+<A HREF="git://gitorious.org/bulmages/bulmages.git">git://gitorious.org/bulmages/bulmages.git</A>
+
+y ha resultado ser la misma versión que está actualmente en tus 
+repositorios.
+
+Seguiré haciendo pruebas en Qt5, y también familiarizándome con git, ya 
+que hay detalles en tus explicaciones que todavía se me escapan.
+
+Un saludo.
+
+El 18/09/13 00:20, Miguel Telleria de Esteban escribió:
+&gt;<i> Hola Aitor,
+</I>&gt;<i>
+</I>&gt;<i> Me alegro que &quot;resucites&quot; mis scripts :).
+</I>&gt;<i>
+</I>&gt;<i> On Tue, 17 Sep 2013 23:16:50 +0200 <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">aitor en gnuinos.org</A> wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Me contesto a mí mismo diciendo que la manera en que lo he hecho no
+</I>&gt;&gt;<i> es la correcta. He descomprimido el orig.tar.gz, y sólo contiene la
+</I>&gt;&gt;<i> carpeta &quot;tools&quot;. Nada de las fuentes. ¡Así que lo hacía  tan rápido!
+</I>&gt;&gt;<i> Bueno, ni caso de lo que he dicho, entonces. Ya lo miraré con un poco
+</I>&gt;&gt;<i> de tiempo. Quizá haya que pasarle argumentos...
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Sorry, sorry.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> El 17/09/13 20:46, <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">aitor en gnuinos.org</A> escribió:
+</I>&gt;&gt;&gt;<i> Buenas tardes, hoy he probado los scripts en python que hizo
+</I>&gt;&gt;&gt;<i> Miguel, los cuales están ubicados en la carpeta tools. Al principio
+</I>&gt;&gt;&gt;<i> no me funcionaban porque me había olvidado de instalar python-git.
+</I>&gt;&gt;&gt;<i> Bien, copio y pego el resultado para la versión que yo tengo ahora
+</I>&gt;&gt;&gt;<i> mismo en el ordenador:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>      <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">aitor en gnuinos</A>:~/bulmages/tools$ python generate_orig_tar_gz.py
+</I>&gt;&gt;&gt;<i>      Cmdline: tar --exclude=.git --exclude=debian -z -c -v -f
+</I>&gt;&gt;&gt;<i> ../bulmages_1.5.0.20130904.2119-322345f4.orig.tar.gz ../tools
+</I>&gt;&gt;&gt;<i>      Press ENTER to proceed or Ctrl^C to cancel
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>      tar: Eliminando la `../' inicial de los nombres
+</I>&gt;&gt;&gt;<i>      ../tools/
+</I>&gt;&gt;&gt;<i>      ../tools/compute_and_set_version.py
+</I>&gt;&gt;&gt;<i>      ../tools/compute_and_set_version.py~
+</I>&gt;&gt;&gt;<i>      ../tools/generate_orig_tar_gz.py~
+</I>&gt;&gt;&gt;<i>      ../tools/generate_orig_tar_gz.py
+</I>&gt;&gt;&gt;<i>      ../tools/bgversion.py
+</I>&gt;&gt;&gt;<i>      <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">aitor en gnuinos</A>:~/bulmages/tools$
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Perfecto. Me ha generado el orig.tar.gz con su correspondiente
+</I>&gt;&gt;&gt;<i> versión en el directorio superior.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Tan sólo un pequeño matiz: hay que ejecutarlos fuera de la carpeta
+</I>&gt;&gt;&gt;<i> tools (probablemente sería donde los tenía alojados Miguel a la
+</I>&gt;&gt;&gt;<i> hora de programarlos), ya que busca &quot;bulmages/CMakeLists.txt&quot; y no
+</I>&gt;&gt;&gt;<i> &quot;../bulmages/CMakeLists.txt&quot;, o bien hacer esa sustitución en el
+</I>&gt;&gt;&gt;<i> propio código.
+</I>&gt;<i> Algunas cosillas:
+</I>&gt;<i>
+</I>&gt;<i> *  Supongo que los scripts los escribi para ser ejecutados en el
+</I>&gt;<i>     directorio de arriba (el que contiene el .git y el debian si tuviese
+</I>&gt;<i>     el metadata del empaquetado).  Habría que ejecutarlo con el path
+</I>&gt;<i>     relativo:
+</I>&gt;<i>
+</I>&gt;<i>     $ tools/generate_orig_tar_gz
+</I>&gt;<i>
+</I>&gt;<i> *  Prueba a hacer --help para ver las opciones y comandos (están
+</I>&gt;<i>     puestos con la librería python-argparse).
+</I>&gt;<i>
+</I>&gt;<i> *  En concreto el generate_orig_tar_gz fue el primero que hice, pero
+</I>&gt;<i>     luego lo dejé de utilizar al usar la funcionalidad de pristine-tar de
+</I>&gt;<i>     git-buildpackage que genera el orig.tar.gz a partir de la rama o una
+</I>&gt;<i>     tag de git.
+</I>&gt;<i>
+</I>&gt;<i>     Aunque intenté mantener los 3 scripts funcionanado:
+</I>&gt;<i>     generate_orig_tar_gz, compute_and_set_version y
+</I>&gt;<i>     version_and_tag_upstream (en el directorio debian de
+</I>&gt;<i>     gbp-debian-master), es posible que el generate_orig_tar_gz no se
+</I>&gt;<i>     haya testeado con los últimos cambios de bgversion.py
+</I>&gt;<i>
+</I>&gt;&gt;&gt;<i> En fin, eso es todo: sólo quería comentar que los he probado, y que
+</I>&gt;&gt;&gt;<i> funcionan perfectamente... Y, cómo no, agradecerle a Miguel su
+</I>&gt;&gt;&gt;<i> trabajo.
+</I>&gt;<i> Me alegro de que los scripts sigan siendo útiles para la versión 1.5
+</I>&gt;<i> (con qt5 ya, no?).
+</I>&gt;<i>
+</I>&gt;<i> Saludos,
+</I>&gt;<i>
+</I>&gt;<i> 	Miguel
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20130918/044a0798/attachment-0001.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20130918/044a0798/attachment-0001.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007715.html">[BulmaGés]Scripts de Miguel Tellería
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007717.html">[BulmaGés]Saludos y algún tema mas
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7716">[ fecha ]</a>
+              <a href="thread.html#7716">[ hilo ]</a>
+              <a href="subject.html#7716">[ asunto ]</a>
+              <a href="author.html#7716">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

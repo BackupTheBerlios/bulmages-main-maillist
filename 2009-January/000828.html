@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] r2913 - in	trunk/bulmages/bulmafact/plugins: pluginalbaran	pluginalbaranprov plugincobros pluginfactura	pluginfacturaprov pluginpagos pluginpedido pluginpedidoprov	pluginpresupuesto
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r2913%20-%20in%0A%09trunk/bulmages/bulmafact/plugins%3A%20pluginalbaran%0A%09pluginalbaranprov%20plugincobros%20pluginfactura%0A%09pluginfacturaprov%20pluginpagos%20pluginpedido%20pluginpedidoprov%0A%09pluginpresupuesto&In-Reply-To=%3C200901201449.n0KEnkjm006856%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000827.html">
+   <LINK REL="Next"  HREF="000830.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] r2913 - in	trunk/bulmages/bulmafact/plugins: pluginalbaran	pluginalbaranprov plugincobros pluginfactura	pluginfacturaprov pluginpagos pluginpedido pluginpedidoprov	pluginpresupuesto </H1>
+    <B>svn en mail.berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r2913%20-%20in%0A%09trunk/bulmages/bulmafact/plugins%3A%20pluginalbaran%0A%09pluginalbaranprov%20plugincobros%20pluginfactura%0A%09pluginfacturaprov%20pluginpagos%20pluginpedido%20pluginpedidoprov%0A%09pluginpresupuesto&In-Reply-To=%3C200901201449.n0KEnkjm006856%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] r2913 - in	trunk/bulmages/bulmafact/plugins: pluginalbaran	pluginalbaranprov plugincobros pluginfactura	pluginfacturaprov pluginpagos pluginpedido pluginpedidoprov	pluginpresupuesto">svn en mail.berlios.de
+       </A><BR>
+    <I>Mar Ene 20 15:49:46 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000827.html">[BulmaGés] r2912 - in trunk/bulmages:	bulmafact/plugins/plugincorrectorbf	bulmafact/plugins/pluginfactura bulmafact/plugins/plugintpv	bulmafact/plugins/pluginz2z bulmafact/src bulmalib/src
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000830.html">[BulmaGés]r2913 - in trunk/bulmages/bulmafact/plugins: pluginalbaran pluginalbaranprov plugincobros pluginfactura pluginfacturaprov pluginpagos pluginpedido pluginpedidoprov pluginpresupuesto
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#828">[ fecha ]</a>
+              <a href="thread.html#828">[ hilo ]</a>
+              <a href="subject.html#828">[ asunto ]</a>
+              <a href="author.html#828">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: tborras
+Date: 2009-01-20 15:49:37 +0100 (Tue, 20 Jan 2009)
+New Revision: 2913
+
+Modified:
+   trunk/bulmages/bulmafact/plugins/pluginalbaran/pluginalbaran.cpp
+   trunk/bulmages/bulmafact/plugins/pluginalbaranprov/albaranesproveedor.cpp
+   trunk/bulmages/bulmafact/plugins/pluginalbaranprov/albaranesproveedor.h
+   trunk/bulmages/bulmafact/plugins/pluginalbaranprov/pluginalbaranprov.cpp
+   trunk/bulmages/bulmafact/plugins/plugincobros/plugincobros.cpp
+   trunk/bulmages/bulmafact/plugins/pluginfactura/pluginfactura.cpp
+   trunk/bulmages/bulmafact/plugins/pluginfacturaprov/facturasplist.cpp
+   trunk/bulmages/bulmafact/plugins/pluginfacturaprov/facturasplist.h
+   trunk/bulmages/bulmafact/plugins/pluginfacturaprov/pluginfacturaprov.cpp
+   trunk/bulmages/bulmafact/plugins/pluginpagos/pagoslist.cpp
+   trunk/bulmages/bulmafact/plugins/pluginpagos/pagoslist.h
+   trunk/bulmages/bulmafact/plugins/pluginpagos/pluginpagos.cpp
+   trunk/bulmages/bulmafact/plugins/pluginpedido/pedidosclientelist.cpp
+   trunk/bulmages/bulmafact/plugins/pluginpedido/pedidosclientelist.h
+   trunk/bulmages/bulmafact/plugins/pluginpedido/pluginpedido.cpp
+   trunk/bulmages/bulmafact/plugins/pluginpedidoprov/pedidosproveedorlist.cpp
+   trunk/bulmages/bulmafact/plugins/pluginpedidoprov/pedidosproveedorlist.h
+   trunk/bulmages/bulmafact/plugins/pluginpedidoprov/pluginpedidoprov.cpp
+   trunk/bulmages/bulmafact/plugins/pluginpresupuesto/pluginpresupuesto.cpp
+   trunk/bulmages/bulmafact/plugins/pluginpresupuesto/presupuestolist.cpp
+   trunk/bulmages/bulmafact/plugins/pluginpresupuesto/presupuestolist.h
+Log:
+Arreglo un error surgido a partir de los plugins que hacia que al abrir
+un cliente o un proveedor se mostrasen en la lista de ventanas los presupuestos, pedidos, albaranes
+facturas y cobros asociados a dicho cliente o proveedor.
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000827.html">[BulmaGés] r2912 - in trunk/bulmages:	bulmafact/plugins/plugincorrectorbf	bulmafact/plugins/pluginfactura bulmafact/plugins/plugintpv	bulmafact/plugins/pluginz2z bulmafact/src bulmalib/src
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000830.html">[BulmaGés]r2913 - in trunk/bulmages/bulmafact/plugins: pluginalbaran pluginalbaranprov plugincobros pluginfactura pluginfacturaprov pluginpagos pluginpedido pluginpedidoprov pluginpresupuesto
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#828">[ fecha ]</a>
+              <a href="thread.html#828">[ hilo ]</a>
+              <a href="subject.html#828">[ asunto ]</a>
+              <a href="author.html#828">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

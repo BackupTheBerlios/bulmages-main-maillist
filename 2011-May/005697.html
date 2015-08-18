@@ -1,0 +1,226 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaG&#233;s][Bug #18043] Ubuntu 11.04 - Bulmages no t&#65533; una icona per iniciar
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Futf-8%3Fq%3F%3D5BBug_%3D2318043%3D5D_Ubuntu_%3F%3D%0A%09%3D%3Futf-8%3Fq%3F11%3D2E04_-_Bulmages_no_t%3DEF%3DBF%3DBD_una_icona_per_iniciar%3F%3D&In-Reply-To=%3CBANLkTimd41o%2Bgx4VHL_yg5GLfK4t3%3DBV%3Dg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005698.html">
+   <LINK REL="Next"  HREF="005699.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaG&#233;s][Bug #18043] Ubuntu 11.04 - Bulmages no t&#65533; una icona per iniciar </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Futf-8%3Fq%3F%3D5BBug_%3D2318043%3D5D_Ubuntu_%3F%3D%0A%09%3D%3Futf-8%3Fq%3F11%3D2E04_-_Bulmages_no_t%3DEF%3DBF%3DBD_una_icona_per_iniciar%3F%3D&In-Reply-To=%3CBANLkTimd41o%2Bgx4VHL_yg5GLfK4t3%3DBV%3Dg%40mail.gmail.com%3E"
+       TITLE="[BulmaG&#233;s][Bug #18043] Ubuntu 11.04 - Bulmages no t&#65533; una icona per iniciar">tborras en gmail.com
+       </A><BR>
+    <I>Mie Mayo  4 17:30:04 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="005698.html">[BulmaG&#233;s][Bug #18043] Ubuntu 11.04 - Bulmages no t&#65533; una icona per iniciar
+</A></li>
+        <LI>Próximo mensaje: <A HREF="005699.html">[BulmaG&#233;s][Bug #18043] Ubuntu 11.04 - Bulmages no t&#65533; una icona per iniciar
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5697">[ fecha ]</a>
+              <a href="thread.html#5697">[ hilo ]</a>
+              <a href="subject.html#5697">[ asunto ]</a>
+              <a href="author.html#5697">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bones, vaig aclarint el tema.
+
+Segons el que puc veurer encara es diferent a GNOME i a KDE
+
+s'han de fer servir els directoris /usr/share/menu/ i
+/usr/share/applications i per fer-ho bé bé bé /usr/share/pixmaps i
+/usr/share/docs
+
+I segons pareix no esta exent de problemes.
+
+Els analegs /usr/local/share/.... no funcionen  .... cosa que me pareix molt
+malament ja que no se pot fer servir el INSTALL_PREFIX sino que s'ha d'anar
+a rutes absolutes (amb un paquet esta clar que no passa res pero amb un make
+install desde els fonts es una mica barruer fer-ho) això me planteja dos
+dubtes:
+
+¿Instalem els icones només amb el paquet debian o els instalem amb els
+CMakeLists? Entenc que lo seu es els CMakeLists pero aqui hi ha un segon
+problema.
+
+¿Feim servir el INSTALL_PREFIX i només sortiran menus quan el INSTALL_PREFIX
+sigui /usr o feim servir les rutes absolutes i els menus sortiran sempre
+pero se instal·laran coses fora del directori establert com a insal·lació?
+
+A judici personal creq que lo que toca es enviar un reportbug a la gent de
+KDE (GNOME si que ho fa) dient que per als menus també es tengui en compte
+directori /usr/local (pero igual ens envien a pastar fang).
+
+
+Adjunto traducción (resumida) dada la importancia del tema:
+
+El problema de las entradas de menu (Esto es que al instalar bulmages no hay
+menus para lanzarlo y se tiene que tirar de Alt+F2 o de consola). Para hacer
+los menus hay que poner algunos arxivos en localizaciones concretas pero
+algo impide ser puristas con el tema y obliga a usar rutas absolutas si se
+quieren instalar los menus desde el CMake. Si se instalan desde los paquetes
+no sucede porque los paquetes siempre instalan en rutas absolutas. Entonces
+hay que tomar una decisión:
+
+1.- Se crean las entradas con make install o sólo con los paquetes ?
+
+2.- Si se crean las entradas con el make install es preciso usar rutas
+absolutas y salirse del INSTALL_PREFIX así funcionará siempre o usar el
+INSTALL_PREFIX y que sólo funcione en el caso de que el directorio de
+instalacion sea /usr
+
+Lo correctísimo es usar el INSTALL_PREFIX y poner las entradas en
+/usr/local/share y hacer que KDE busque los menus también en este directorio
+... claro que si uno cambia el directorio de instalación y lo hace en /opt
+tampoco funcionará pero segun el estandar Unix el directorio adecuado es
+/usr/local
+
+Enfin una historia ....
+
+Salut
+
+
+
+2011/5/4 Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en gmail.com</A>&gt;
+
+&gt;<i> Bones
+</I>&gt;<i>
+</I>&gt;<i> Segons entenc el que s'ha de fer es seguir aquest tutorial
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://library.gnome.org/admin/system-admin-guide/stable/menustructure-13.html.en">http://library.gnome.org/admin/system-admin-guide/stable/menustructure-13.html.en</A>
+</I>&gt;<i>
+</I>&gt;<i> i crear els arxius de menu al $XDG_CONFIG_DIRS/menus/applications.menu
+</I>&gt;<i>
+</I>&gt;<i> Imagin que aquesta localització es compatible amb KDE, GNOME i XFCE pero no
+</I>&gt;<i> he fet les proves pertinents.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Clar que ho miro i ho torno a mirar i no existeix la variable de sessió
+</I>&gt;<i> XDG_CONFIG_DIR al Ubuntu amb lo que el tutorial queda invalidat. Pero si que
+</I>&gt;<i> existeix un XDG_DATA_DIRS i un subdirectori menu
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Ara ho provaré i si funciona faré que el make install posi els arxius aqui
+</I>&gt;<i> on toca amb relació al directori de instal·lació.
+</I>&gt;<i>
+</I>&gt;<i> De fet fa estona que ho volia fer però entre una cosa i l'altre no m'hi he
+</I>&gt;<i> posat mai (vaig de bòlid). El reportbug es la excusa perfecte per no deixar
+</I>&gt;<i> passar mes temps, gracies.
+</I>&gt;<i>
+</I>&gt;<i> Salut
+</I>&gt;<i>
+</I>&gt;<i> 2011/5/4 Walter Garcia-Fontes &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">walter.garcia en upf.edu</A>&gt;
+</I>&gt;<i>
+</I>&gt;&gt;<i> * <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">admin en berlios.de</A> [04/05/11 11:25]:
+</I>&gt;&gt;<i> &gt; Submitted by: wgarcia
+</I>&gt;&gt;<i> &gt; Assigned to : none
+</I>&gt;&gt;<i> &gt; Summary: Ubuntu 11.04 - Bulmages no t? una icona per iniciar
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; Details: Al nou Ubuntu 11.04 l'escriptori per defecte ?s el nou Unity.
+</I>&gt;&gt;<i> Aquest escriptori (basat en Gnome) no t? un gnome-panel a dalt, sin? un
+</I>&gt;&gt;<i> panell propi que no t? l'indicador cl?ssic i per tant no mostra avisos
+</I>&gt;&gt;<i> d'aplicacions.
+</I>&gt;&gt;<i> &gt; Aix? implica que Bulmages no t? indicador al panell per iniciar el
+</I>&gt;&gt;<i> llen?ador. L'?nica manera d'iniciar les diferents parts de la suite ?s des
+</I>&gt;&gt;<i> d'una terminal.
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; S'hauria de considerar abandonar l'inici &quot;r?pid&quot; a trav?s de l'indicador
+</I>&gt;&gt;<i> i iniciar Bulmages des de men?s ?nicament.
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; Aix? tamb? passar? a les distribucions que adoptin Gnome 3 perqu? el
+</I>&gt;&gt;<i> Gnome Shell tampoc t? indicadors al panell, tot que Gnome 3 s'apla?at per
+</I>&gt;&gt;<i> n?ssima vegada a setembre.
+</I>&gt;&gt;<i> &gt; A Unity s'usa una barretja aberrant de GTK2+, GTK3 i Qt4.6.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Em sembla que a l'Unity actual sols s'usa GTK 2, a l'Unity 2D (sense
+</I>&gt;&gt;<i> Compiz) s'usa QT4.6, i per la versió 10.10 es passarà l'Unity a GTK
+</I>&gt;&gt;<i> 3.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> &gt; Gnome 3, usa el nou GTK3 (Que per cert, al final no s'ha apla?at, ja
+</I>&gt;&gt;<i> &gt; que GTK3 i Gnome3 ja figuren com a estable, excepte per a Debian i
+</I>&gt;&gt;<i> &gt; Ubuntu).
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Lo del l'aplaçament va ser un acudit d' &quot;April Fool's Day&quot; que em vaig
+</I>&gt;&gt;<i> empassar com un beneit (fool=beneit).
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> &gt; A m?s a m?s, afirmar que ja no existeixen &quot;indicadors&quot; es totalment
+</I>&gt;&gt;<i> incorrecte.
+</I>&gt;&gt;<i> &gt; Tant el panell de el Unity com Gnome 3 complets (shell i panels),
+</I>&gt;&gt;<i> &gt; han estat redisenyats, i segueixen existint indicadors, la
+</I>&gt;&gt;<i> &gt; diferencia, es que fins ara existien tres conceptes: &quot;Applet&quot;,
+</I>&gt;&gt;<i> &gt; &quot;Systray&quot;, &quot;AppIndicator&quot; i ara tant sols existeix un unic
+</I>&gt;&gt;<i> &gt; &quot;AppIndicator&quot; totalment redissenyat.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Aquí totalment d'acord, a més de moment a Unity s'han permès els
+</I>&gt;&gt;<i> indicadors clàssics (els &quot;systray&quot;) i per tant no afecta a  Bulmagès,
+</I>&gt;&gt;<i> que amb una petita configuració continua sortint al quadre d'Unity.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> &gt; L''inici r?pid de BulmaGes no es un indicador com dius, si no es una
+</I>&gt;&gt;<i> icona de systray.
+</I>&gt;&gt;<i> &gt; Ja que si fos un indicador apareixeria a Unity, ja que usa una
+</I>&gt;&gt;<i> &gt; versio lleugerament modificada del &quot;AppIndicator&quot; de Gnome2.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Com deia es pot fer, i de fet tothom ho està fent perquè de moment hi
+</I>&gt;&gt;<i> ha un munt d'aplicacions que no s'han adaptat, que apareguin els
+</I>&gt;&gt;<i> &quot;systray&quot; a Unity, i per tant la de Bulmagès pot continuar apareixent.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> &gt; No se fins a quin punt abandonar l'inici r?pid, pero si es mant?
+</I>&gt;&gt;<i> &gt; posiblement requereixi una mica de feina, per fer que funcioni per
+</I>&gt;&gt;<i> &gt; tot.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Això potser és objecte d'una discussió més àmplia. Jo com a usuari
+</I>&gt;&gt;<i> penso que l'inici ràpid de Bulmagès no és indispensable, però suposo
+</I>&gt;&gt;<i> que un/a usuari/a que gestioni una comptabilitat, facturació i punt de
+</I>&gt;&gt;<i> venda i hagi d'anar fent diverses tasques al llarg de la seva jornada
+</I>&gt;&gt;<i> ho pot trobar útil.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Walter
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> --
+</I>&gt;&gt;<i> Walter Garcia-Fontes
+</I>&gt;&gt;<i> mailto: <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">walter.garcia en upf.edu</A> - <A HREF="http://puna.upf.edu">http://puna.upf.edu</A>
+</I>&gt;&gt;<i> Departament d'Economia i Empresa - <A HREF="http://www.econ.upf.edu">http://www.econ.upf.edu</A>
+</I>&gt;&gt;<i> Universitat Pompeu Fabra
+</I>&gt;&gt;<i> Ramon Trias Fargas 25-27, 08005 Barcelona, Spain
+</I>&gt;&gt;<i> Tel. +34 93 542 2722 - Fax. +34 93 542 1746
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Bulmages-main mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20110504/aa120677/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20110504/aa120677/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="005698.html">[BulmaG&#233;s][Bug #18043] Ubuntu 11.04 - Bulmages no t&#65533; una icona per iniciar
+</A></li>
+	<LI>Próximo mensaje: <A HREF="005699.html">[BulmaG&#233;s][Bug #18043] Ubuntu 11.04 - Bulmages no t&#65533; una icona per iniciar
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5697">[ fecha ]</a>
+              <a href="thread.html#5697">[ hilo ]</a>
+              <a href="subject.html#5697">[ asunto ]</a>
+              <a href="author.html#5697">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

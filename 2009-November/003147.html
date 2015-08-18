@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]PROBLEMA BULMAGES.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FPROBLEMA_BULMAGES%3D2E%3F%3D&In-Reply-To=%3C200911181249.02869.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003146.html">
+   <LINK REL="Next"  HREF="003148.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]PROBLEMA BULMAGES. </H1>
+    <B>Tomeu</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FPROBLEMA_BULMAGES%3D2E%3F%3D&In-Reply-To=%3C200911181249.02869.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]PROBLEMA BULMAGES.">tborras en conetxia.com
+       </A><BR>
+    <I>Mie Nov 18 12:49:02 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003146.html">[BulmaGés] PROBLEMA BULMAGES.
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003148.html">[BulmaGés]PROBLEMA BULMAGES.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3147">[ fecha ]</a>
+              <a href="thread.html#3147">[ hilo ]</a>
+              <a href="subject.html#3147">[ asunto ]</a>
+              <a href="author.html#3147">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Albert
+
+Lo primer de tot fes un backup de les bases de dades. (Imagin que ja el tens).
+
+Després prova de conectar-te al postgres amb
+
+$psql basededades
+
+aqui el cursor canviará al mode psql (per sortir has de escriurer \q)
+
+Prova a fer alguna sentencia com :
+
+UPDATE configuracion SET valor = valor;
+
+o 
+
+INSERT into configuracion (nombre, valor) VALUES ('prova', 'prova');
+
+I el mes important. Quan doni l'error fes copy/paste i l'envies perque poguem 
+esbrinar que falla i perque falla.
+
+PD: El mes probable es que Ubuntu hagi migrat de postgres 8.3 a 8.4 i hagi 
+deixat les bases de dades en mode de només lectura.
+
+&gt;<i> Hola a tots.
+</I>&gt;<i> Ahir vaig actualitzar un servidor de bulmages que tenia ubuntu 9.04 a
+</I>&gt;<i> 9.10
+</I>&gt;<i> 
+</I>&gt;<i> Ara em trobo que el programa sol em deixa consultar, no puc entrar nous
+</I>&gt;<i> clients, noves factures, nous, proveidos, nous pagaments, processar
+</I>&gt;<i> factures existents....
+</I>&gt;<i> 
+</I>&gt;<i> dona un error de sentència SQL.
+</I>&gt;<i> He revisat els permisos dels usuaris, etc... i sembla que tot està
+</I>&gt;<i> correcte i fins hi tot he fet un GRANT ALL
+</I>&gt;<i> 
+</I>&gt;<i> Alguna idea?
+</I>&gt;<i> Gràcies!
+</I>&gt;<i> &quot;
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003146.html">[BulmaGés] PROBLEMA BULMAGES.
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003148.html">[BulmaGés]PROBLEMA BULMAGES.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3147">[ fecha ]</a>
+              <a href="thread.html#3147">[ hilo ]</a>
+              <a href="subject.html#3147">[ asunto ]</a>
+              <a href="author.html#3147">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

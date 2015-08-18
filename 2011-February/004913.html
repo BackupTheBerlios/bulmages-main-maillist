@@ -1,0 +1,226 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Problemas de dependencias con dpkg-buildpackage
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FProblemas_de_dependen%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fcias_con_dpkg-buildpackage%3F%3D&In-Reply-To=%3CAANLkTimjTBCFvvn5Bubf8Uj3CuhNE5POg2jfJePQvM%2BF%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="004907.html">
+   <LINK REL="Next"  HREF="004900.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Problemas de dependencias con dpkg-buildpackage </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FProblemas_de_dependen%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fcias_con_dpkg-buildpackage%3F%3D&In-Reply-To=%3CAANLkTimjTBCFvvn5Bubf8Uj3CuhNE5POg2jfJePQvM%2BF%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]Problemas de dependencias con dpkg-buildpackage">tborras en gmail.com
+       </A><BR>
+    <I>Mie Feb  9 07:17:59 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="004907.html">[BulmaGés]Problemas de dependencias con dpkg-buildpackage
+</A></li>
+        <LI>Próximo mensaje: <A HREF="004900.html">[BulmaGés] r4369 - in	trunk/bulmages/bulmafact/plugins/pluginbf_profesor: . css	images images/ca_ES images/es_ES
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4913">[ fecha ]</a>
+              <a href="thread.html#4913">[ hilo ]</a>
+              <a href="subject.html#4913">[ asunto ]</a>
+              <a href="author.html#4913">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Buenas
+
+Ya he hecho &quot;unos&quot; paquetes. Un gran trabajo el de Leo.
+
+He arreglado los install para que la instalacion sea completa y he cambiado
+un par de cosas de sitio porque sino el bulmasetup no funcionaria con solo
+usar el bulmages-server-admin.
+
+También he agregado una dependencia de bulmages-server-admin del bulmages.
+
+
+Por lo poco que los he probado estan funcionando. Eso si, no he visto que
+metiesen los ejecutables en el menu de KDE así que lo suyo es currarlo un
+poco más.
+
+El tema es subir cambios o no. Porque tampoco soy muy experto en esto del
+empaquetado.
+
+El 8 de febrero de 2011 17:47, Walter Garcia-Fontes
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">walter.garcia en upf.edu</A>&gt;escribió:
+
+&gt;<i> La versión del svn simlemente la coge del chagelog, se ha de entrar
+</I>&gt;<i> ahí la versión que se quiere producir, porque se monta en base al
+</I>&gt;<i> último commit pero no actualiza automáticamente el changelog, se tiene
+</I>&gt;<i> que hacer manualmente,
+</I>&gt;<i>
+</I>&gt;<i> Walter
+</I>&gt;<i>
+</I>&gt;<i> * Tomeu Borras [08/02/11 17:44]:
+</I>&gt;<i> &gt; Hola
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; El dpkg-checkbuilddeps no saca nada.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Con el dpkg-buildpackage -nc ha terminado sin errores (seguramente es
+</I>&gt;<i> algun
+</I>&gt;<i> &gt; problema con el distcc). Los paquetes se han hecho a partir del svn3849
+</I>&gt;<i> lo
+</I>&gt;<i> &gt; primero toca actualizar la version del svn.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Salut
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; El 8 de febrero de 2011 16:46, Santos Martinez Estrada &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">otilio en apdo.com</A>&gt;
+</I>&gt;<i> &gt; escribió:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     Prueba a hacer un dpkg-checkbuilddeps a ver si te da algún error. A
+</I>&gt;<i> mi me
+</I>&gt;<i> &gt;     compila 100% pero al final me da este error:
+</I>&gt;<i> &gt;     &quot;cp: no se puede efectuar `stat' sobre
+</I>&gt;<i> &gt;     «debian/tmp/usr/share/bulmages/openreports/canuales.rml»: No existe
+</I>&gt;<i> el
+</I>&gt;<i> &gt;     fichero
+</I>&gt;<i> &gt;     o el directorio
+</I>&gt;<i> &gt;     dh_install: cp -a
+</I>&gt;<i> debian/tmp/usr/share/bulmages/openreports/canuales.rml
+</I>&gt;<i> &gt;     debian/bulmages//usr/share/bulmages/openreports/ returned exit code 1
+</I>&gt;<i> &gt;     make: *** [binary-arch] Error 2
+</I>&gt;<i> &gt;     dpkg-buildpackage: fallo: debian/rules binary devolvió un estado de
+</I>&gt;<i> salida
+</I>&gt;<i> &gt;     de
+</I>&gt;<i> &gt;     error 2&quot;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     On Martes 08 Febrero 2011 14:06:46 Tomeu Borras escribió:
+</I>&gt;<i> &gt;     &gt; Si, sin problemas.
+</I>&gt;<i> &gt;     &gt;
+</I>&gt;<i> &gt;     &gt; Ahora estoy probando un dpkg-buildpackage -nc para ver si se lo
+</I>&gt;<i> traga.
+</I>&gt;<i> &gt;     Pero
+</I>&gt;<i> &gt;     &gt; no me convence demasiado como solución.
+</I>&gt;<i> &gt;     &gt;
+</I>&gt;<i> &gt;     &gt; Salut
+</I>&gt;<i> &gt;     &gt;
+</I>&gt;<i> &gt;     &gt; El 8 de febrero de 2011 13:43, Santos Martinez Estrada
+</I>&gt;<i> &gt;     &gt;
+</I>&gt;<i> &gt;     &gt; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">otilio en apdo.com</A>&gt;escribió:
+</I>&gt;<i> &gt;     &gt; &gt; Y eso mismo te lo compila correctamente por el método normal?
+</I>&gt;<i> &gt;     &gt; &gt;
+</I>&gt;<i> &gt;     &gt; &gt; On Martes 08 Febrero 2011 13:27:06 Tomeu Borras escribió:
+</I>&gt;<i> &gt;     &gt; &gt; &gt; Bones a tothom
+</I>&gt;<i> &gt;     &gt; &gt; &gt;
+</I>&gt;<i> &gt;     &gt; &gt; &gt; Estoy con el tema paquetes deb
+</I>&gt;<i> &gt;     &gt; &gt; &gt;
+</I>&gt;<i> &gt;     &gt; &gt; &gt; Cuando estoy haciendo el dpkg-buildpackages y se pone a
+</I>&gt;<i> compilar en
+</I>&gt;<i> &gt;     el
+</I>&gt;<i> &gt;     &gt; &gt; &gt; debian.build me aparece un error de compilacion:
+</I>&gt;<i> &gt;     &gt; &gt; &gt;
+</I>&gt;<i> &gt;     &gt; &gt; &gt;
+</I>&gt;<i> &gt;     &gt; &gt; &gt; make[3]: se sale del directorio
+</I>&gt;<i> &gt;     &gt; &gt; &gt; «/opt/svn-tborras-bulmages/bulmages/build.debian»
+</I>&gt;<i> &gt;     &gt; &gt; &gt;
+</I>&gt;<i> &gt;     &gt; &gt; &gt; [ 27%] Built target pluginbt_visor
+</I>&gt;<i> &gt;     &gt; &gt; &gt; In file included from
+</I>&gt;<i> &gt;     &gt; &gt;
+</I>&gt;<i> &gt;     &gt; &gt;
+</I>&gt;<i> /opt/svn-tborras-bulmages/bulmages/bulmatpv/plugins/pluginbt_clientsync
+</I>&gt;<i> &gt;     /p
+</I>&gt;<i> &gt;     &gt; &gt; lu
+</I>&gt;<i> &gt;     &gt; &gt;
+</I>&gt;<i> &gt;     &gt; &gt; &gt; ginbt_clientsync.h:27:0, from
+</I>&gt;<i> &gt;     &gt; &gt;
+</I>&gt;<i> &gt;     &gt; &gt;
+</I>&gt;<i> /opt/svn-tborras-bulmages/bulmages/bulmatpv/plugins/pluginbt_clientsync
+</I>&gt;<i> &gt;     /p
+</I>&gt;<i> &gt;     &gt; &gt; lu
+</I>&gt;<i> &gt;     &gt; &gt;
+</I>&gt;<i> &gt;     &gt; &gt; &gt; ginbt_clientsync.cpp:29:
+</I>&gt;<i> &gt;     &gt; &gt; /opt/svn-tborras-bulmages/bulmages/bulmatpv/plugins/
+</I>&gt;<i> &gt;     pluginbt_accesobotone
+</I>&gt;<i> &gt;     &gt; &gt; s
+</I>&gt;<i> &gt;     &gt; &gt;
+</I>&gt;<i> &gt;     &gt; &gt; &gt; /abrevs.h:5:27: fatal error: ui_abrevsbase.h: No existe el
+</I>&gt;<i> fichero o
+</I>&gt;<i> &gt;     el
+</I>&gt;<i> &gt;     &gt; &gt; &gt; directorio compilation terminated.
+</I>&gt;<i> &gt;     &gt; &gt; &gt; make[3]: ***
+</I>&gt;<i> &gt;     &gt; &gt;
+</I>&gt;<i> &gt;     &gt; &gt; [bulmatpv/plugins/pluginbt_clientsync/CMakeFiles/
+</I>&gt;<i> &gt;     pluginbt_clientsync.dir/
+</I>&gt;<i> &gt;     &gt; &gt; pl
+</I>&gt;<i> &gt;     &gt; &gt;
+</I>&gt;<i> &gt;     &gt; &gt; &gt; uginbt_clientsync.o] Error 1
+</I>&gt;<i> &gt;     &gt; &gt; &gt; make[3]: *** Se espera a que terminen otras tareas....
+</I>&gt;<i> &gt;     &gt; &gt; &gt;
+</I>&gt;<i> &gt;     &gt; &gt; &gt; Seguro que el error es debido a que compila antes
+</I>&gt;<i> pluginbt_clientsync
+</I>&gt;<i> &gt;     &gt; &gt; &gt; que pluginbt_accesobotones pero
+</I>&gt;<i> &gt;     &gt; &gt; &gt; he mirado el CMakeLists.txt del pluginbt_clientsync y tiene la
+</I>&gt;<i> &gt;     &gt; &gt; &gt; directiva:
+</I>&gt;<i> &gt;     &gt; &gt; &gt;
+</I>&gt;<i> &gt;     &gt; &gt; &gt; add_dependencies(${plugin} bulmatpv bulmalib
+</I>&gt;<i> plubinbt_accesobotones)
+</I>&gt;<i> &gt;     &gt; &gt; &gt;
+</I>&gt;<i> &gt;     &gt; &gt; &gt; He probado de hacer un make sobre el build.debian y lo compila
+</I>&gt;<i> bien.
+</I>&gt;<i> &gt;     &gt; &gt; &gt;
+</I>&gt;<i> &gt;     &gt; &gt; &gt; ¿Alguna idea?
+</I>&gt;<i> &gt;     &gt; &gt; &gt;
+</I>&gt;<i> &gt;     &gt; &gt; &gt; Salut
+</I>&gt;<i> &gt;     &gt; &gt;
+</I>&gt;<i> &gt;     &gt; &gt; _______________________________________________
+</I>&gt;<i> &gt;     &gt; &gt; Bulmages-main mailing list
+</I>&gt;<i> &gt;     &gt; &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt;     &gt; &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i> &gt;     _______________________________________________
+</I>&gt;<i> &gt;     Bulmages-main mailing list
+</I>&gt;<i> &gt;     <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt;     <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Bulmages-main mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Walter Garcia-Fontes
+</I>&gt;<i> mailto: <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">walter.garcia en upf.edu</A> - <A HREF="http://puna.upf.edu">http://puna.upf.edu</A>
+</I>&gt;<i> Departament d'Economia i Empresa - <A HREF="http://www.econ.upf.edu">http://www.econ.upf.edu</A>
+</I>&gt;<i> Universitat Pompeu Fabra
+</I>&gt;<i> Ramon Trias Fargas 25-27, 08005 Barcelona, Spain
+</I>&gt;<i> Tel. +34 93 542 2722 - Fax. +34 93 542 1746
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20110209/490d65b8/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20110209/490d65b8/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="004907.html">[BulmaGés]Problemas de dependencias con dpkg-buildpackage
+</A></li>
+	<LI>Próximo mensaje: <A HREF="004900.html">[BulmaGés] r4369 - in	trunk/bulmages/bulmafact/plugins/pluginbf_profesor: . css	images images/ca_ES images/es_ES
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4913">[ fecha ]</a>
+              <a href="thread.html#4913">[ hilo ]</a>
+              <a href="subject.html#4913">[ asunto ]</a>
+              <a href="author.html#4913">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

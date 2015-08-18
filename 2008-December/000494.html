@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]última línia d'albarans
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F%3DFAltima_l%3DEDnia_d%3D27%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Falbarans%3F%3D&In-Reply-To=%3C200812110930.19573.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000493.html">
+   <LINK REL="Next"  HREF="000495.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]última línia d'albarans </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F%3DFAltima_l%3DEDnia_d%3D27%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Falbarans%3F%3D&In-Reply-To=%3C200812110930.19573.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]última línia d'albarans">tborras en conetxia.com
+       </A><BR>
+    <I>Jue Dic 11 09:30:19 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000493.html">[BulmaGés]última línia d'albarans
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000495.html">[BulmaGés]última línia d'albarans
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#494">[ fecha ]</a>
+              <a href="thread.html#494">[ hilo ]</a>
+              <a href="subject.html#494">[ asunto ]</a>
+              <a href="author.html#494">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Xavi
+
+El tema es que la darrera linia de l'albarà, factura, presupost, etc sempre 
+toca estar en blanc i per tant no toca entrar dins la impressió perque es 
+redundant.
+
+Normalment un no imprimeix abans de haver guardat el document i si guardes 
+abans de imprimir sempre tindràs la famosa linia en blanc.
+
+Quan la linia en blanc surt es perque la linia anterior està completa, mentres 
+tant roman en blanc.
+
+Jo el que li dic als clients es que mentres no surti la linia nova no han 
+acabat de omplir les dades de la linia actual. I també que abans de imprimir 
+han de guardar el document. (De fet estic per implementar que quan es prem 
+imprimir se faci un guardat previ).
+
+De las tres opcions que has posat hem quedo amb la 2 (forçar que existeixi una 
+linia en blanc).
+
+No creq haver aportat res nou, pero tenia ganes de escriurer.
+
+
+El Wednesday 10 December 2008 22:40:55 Xavi Drudis Ferran escribió:
+&gt;<i> Hola.
+</I>&gt;<i>
+</I>&gt;<i> Ve't aquí una vegada que un poble gamarús va voler traduir les
+</I>&gt;<i> plantilles d'informes de bulmafact al català. I quan les va tenir
+</I>&gt;<i> traduïdes les va voler provar. I no va passar del albaran.rml, que és
+</I>&gt;<i> la primera en ordre alfabètic :(
+</I>&gt;<i>
+</I>&gt;<i> A part d'alguns problemes amb accents, ara he detectat una cosa que no
+</I>&gt;<i> entenc. Sembla un bug però si ho fos seria massa evident per
+</I>&gt;<i> sobreviure, o sia que segurament sóc jo que no m'assabento del que
+</I>&gt;<i> passa, o potser és alguna cosa que hagi tocat i només em passa a
+</I>&gt;<i> mi. Podria mirar més el codi, els bugs reportats i el historial de
+</I>&gt;<i> svn, però estic cansat, i si algú s'ho sap de memòria i em dóna un cop
+</I>&gt;<i> de mà m'ajudaria força.
+</I>&gt;<i>
+</I>&gt;<i> Res, que em trobo que quan imprimeixo un albarà (fitxa de l'albarà,
+</I>&gt;<i> botó d'imprimir, tant amb l'albaran.rml original del svn com amb el
+</I>&gt;<i> meu modificat)no m'imprimeix la última línia de l'albarà. Si per exemple
+</I>&gt;<i> la graela en pantalla té 20 línies, l'albarà imprès (o el PDF) en té 19.
+</I>&gt;<i> A vegades l'última línia de l'albarà està en blanc, i llavors no es
+</I>&gt;<i> nota que no s'imprimeixi.
+</I>&gt;<i>
+</I>&gt;<i> Però a vegades no està en blanc i llavors l'albarà imprés és incorrecte.
+</I>&gt;<i> Depén de com s'ha entrat, crec que si has apretat tabulador deixa una línia
+</I>&gt;<i> en blanc al final i si has apretat return no. En qualsevol cas la línia
+</I>&gt;<i> en blanc del final es pot esborrar i llavors la última queda amb dades que
+</I>&gt;<i> no s'imprimeixen.
+</I>&gt;<i>
+</I>&gt;<i> Mirant el codi de fichabf.cpp sembla clar que no es vol imprimir la última
+</I>&gt;<i> línia (el bucle va de variable = 0 &quot;a&quot; variable &lt; numLinies - 1).
+</I>&gt;<i>
+</I>&gt;<i> Llavors la pregunta és:
+</I>&gt;<i>
+</I>&gt;<i> - s'ha d'arreglar el codi que imprimeix perquè imprimeixi totes les línies
+</I>&gt;<i> (potser posant un filtre que no imprimeixi les línies en blanc)?
+</I>&gt;<i>
+</I>&gt;<i> - s'ha de forçar que sempre hi hagi una última línia en blanc a cada albarà
+</I>&gt;<i> ?
+</I>&gt;<i>
+</I>&gt;<i> - Estic colló i això només em passa a mí ?
+</I>&gt;<i>
+</I>&gt;<i> Gràcies.
+</I>
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000493.html">[BulmaGés]última línia d'albarans
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000495.html">[BulmaGés]última línia d'albarans
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#494">[ fecha ]</a>
+              <a href="thread.html#494">[ hilo ]</a>
+              <a href="subject.html#494">[ asunto ]</a>
+              <a href="author.html#494">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

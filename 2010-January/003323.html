@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Al poner imágenes en la sección &quot;story&quot; de un informe RML no es visible en el PDF
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Futf-8%3Fq%3FAl_poner_im%3DC3%3DA1genes_en_%3F%3D%0A%09%3D%3Futf-8%3Fq%3Fla_secci%3DC3%3DB3n_%3D22story%3D22_de_un_informe_RML_no_es_visi%3F%3D%0A%09%3D%3Futf-8%3Fq%3Fble_en_el_PDF%3F%3D&In-Reply-To=%3C201001211035.18123.auryn%40wanadoo.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003322.html">
+   <LINK REL="Next"  HREF="003324.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Al poner imágenes en la sección &quot;story&quot; de un informe RML no es visible en el PDF </H1>
+    <B>Aron</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Futf-8%3Fq%3FAl_poner_im%3DC3%3DA1genes_en_%3F%3D%0A%09%3D%3Futf-8%3Fq%3Fla_secci%3DC3%3DB3n_%3D22story%3D22_de_un_informe_RML_no_es_visi%3F%3D%0A%09%3D%3Futf-8%3Fq%3Fble_en_el_PDF%3F%3D&In-Reply-To=%3C201001211035.18123.auryn%40wanadoo.es%3E"
+       TITLE="[BulmaGés]Al poner imágenes en la sección &quot;story&quot; de un informe RML no es visible en el PDF">auryn en wanadoo.es
+       </A><BR>
+    <I>Jue Ene 21 10:35:18 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003322.html">[BulmaGés] r3735 -	trunk/bulmages/bulmafact/plugins/pluginbf_formasdepago
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003324.html">[BulmaGés]Al poner imágenes en la sección &quot;story&quot; de un informe RML no es visible en el PDF
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3323">[ fecha ]</a>
+              <a href="thread.html#3323">[ hilo ]</a>
+              <a href="subject.html#3323">[ asunto ]</a>
+              <a href="author.html#3323">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola
+Estoy haciendo un informe que muestra datos en una tabla.
+Uno de los datos es la ruta absoluta a una imagen en el mismo PC con Linux.
+Pero en el PDF resultante no se ve la imagen.
+
+He hecho algo así:
+
+&lt;story&gt;
+&lt;spacer length=&quot;2.5cm&quot; /&gt;
+&lt;blockTable style=&quot;cabecera&quot; 
+colWidths=&quot;1.0cm,1.0cm,2.8cm,2.8cm,2.8cm,2.8cm,2.8cm,2.8cm&quot; repeatRows=&quot;0&quot;&gt;
+	&lt;tr&gt;
+		&lt;td&gt;&lt;para&gt;Ref.&lt;/para&gt;&lt;/td&gt;
+		&lt;td&gt;&lt;para&gt;Canti-&lt;br/&gt;dad&lt;/para&gt;&lt;/td&gt;
+		&lt;td&gt;&lt;para&gt;Coste 1&lt;/para&gt;&lt;/td&gt;
+		&lt;td&gt;&lt;para&gt;Coste 2&lt;/para&gt;&lt;/td&gt;
+		&lt;td&gt;&lt;para&gt;Precio Venta&lt;/para&gt;&lt;/td&gt;
+		&lt;td&gt;&lt;para&gt;Total&lt;br/&gt;Coste 1&lt;/para&gt;&lt;/td&gt;
+		&lt;td&gt;&lt;para&gt;Total&lt;br/&gt;Coste 2&lt;/para&gt;&lt;/td&gt;
+		&lt;td&gt;&lt;para&gt;Total&lt;br/&gt;Precio Venta&lt;/para&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/blockTable&gt;
+
+&lt;!--QUERY=&quot;
+	SELECT *
+	FROM pra.lin_presupuesto__vista
+	WHERE id_presupuesto = [id]&quot;
+--&gt;
+&lt;blockTable style=&quot;tablacontenido&quot; 
+colWidths=&quot;1.0cm,1.0cm,2.8cm,2.8cm,2.8cm,2.8cm,2.8cm,2.8cm&quot; repeatRows=&quot;0&quot;&gt;
+	&lt;tr multiline=&quot;1&quot;&gt;
+		&lt;td&gt;&lt;para&gt;[cod]&lt;/para&gt;&lt;/td&gt;
+		&lt;td&gt;&lt;para&gt;[cantidad]&lt;/para&gt;&lt;/td&gt;
+		&lt;td&gt;&lt;para&gt;[coste_1] &#8364;&lt;/para&gt;&lt;/td&gt;
+		&lt;td&gt;&lt;para&gt;[coste_2] &#8364;&lt;/para&gt;&lt;/td&gt;
+		&lt;td&gt;&lt;para&gt;[precio_venta] &#8364;&lt;/para&gt;&lt;/td&gt;
+		&lt;td&gt;&lt;para&gt;[coste_total_1] &#8364;&lt;/para&gt;&lt;/td&gt;
+		&lt;td&gt;&lt;para&gt;[coste_total_2] &#8364;&lt;/para&gt;&lt;/td&gt;
+		&lt;td&gt;&lt;para&gt;[precio_total_venta] &#8364;&lt;/para&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/blockTable&gt;
+&lt;para&gt;&lt;image file=&quot;[imagen]&quot; x=&quot;100&quot; y=&quot;100&quot; width=&quot;100&quot; height=&quot;100&quot;/&gt;&lt;/para&gt;
+&lt;!--END QUERY--&gt;
+&lt;/story&gt;
+
+
+
+
+En el resultado sale la ruta donde espero:
+
+&lt;para&gt;&lt;image file=&quot;/ruta/imagen.jpg&quot; x=&quot;100&quot; y=&quot;100&quot; width=&quot;100&quot; 
+height=&quot;100&quot;/&gt;&lt;/para&gt;
+
+
+
+
+Pero, aunque se genera el PDF correctamente, la imagen no es visible por 
+ninguna parte.
+
+¿Qué habré hecho mal?
+
+-- 
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003322.html">[BulmaGés] r3735 -	trunk/bulmages/bulmafact/plugins/pluginbf_formasdepago
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003324.html">[BulmaGés]Al poner imágenes en la sección &quot;story&quot; de un informe RML no es visible en el PDF
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3323">[ fecha ]</a>
+              <a href="thread.html#3323">[ hilo ]</a>
+              <a href="subject.html#3323">[ asunto ]</a>
+              <a href="author.html#3323">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

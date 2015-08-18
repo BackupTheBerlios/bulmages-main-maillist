@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]última línia d'albarans
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3F%3DFAltima_l%3DEDnia_d%3D27%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Falbarans%3F%3D&In-Reply-To=%3C20081210214055.GB6043%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000540.html">
+   <LINK REL="Next"  HREF="000494.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]última línia d'albarans </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3F%3DFAltima_l%3DEDnia_d%3D27%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Falbarans%3F%3D&In-Reply-To=%3C20081210214055.GB6043%40localhost%3E"
+       TITLE="[BulmaGés]última línia d'albarans">xdrudis en tinet.cat
+       </A><BR>
+    <I>Mie Dic 10 22:40:55 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000540.html">[BulmaGés]accents als llistats per RML
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000494.html">[BulmaGés]última línia d'albarans
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#493">[ fecha ]</a>
+              <a href="thread.html#493">[ hilo ]</a>
+              <a href="subject.html#493">[ asunto ]</a>
+              <a href="author.html#493">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola. 
+
+Ve't aquí una vegada que un poble gamarús va voler traduir les
+plantilles d'informes de bulmafact al català. I quan les va tenir
+traduïdes les va voler provar. I no va passar del albaran.rml, que és
+la primera en ordre alfabètic :(
+
+A part d'alguns problemes amb accents, ara he detectat una cosa que no
+entenc. Sembla un bug però si ho fos seria massa evident per
+sobreviure, o sia que segurament sóc jo que no m'assabento del que
+passa, o potser és alguna cosa que hagi tocat i només em passa a
+mi. Podria mirar més el codi, els bugs reportats i el historial de
+svn, però estic cansat, i si algú s'ho sap de memòria i em dóna un cop
+de mà m'ajudaria força.
+
+Res, que em trobo que quan imprimeixo un albarà (fitxa de l'albarà, 
+botó d'imprimir, tant amb l'albaran.rml original del svn com amb el 
+meu modificat)no m'imprimeix la última línia de l'albarà. Si per exemple
+la graela en pantalla té 20 línies, l'albarà imprès (o el PDF) en té 19. 
+A vegades l'última línia de l'albarà està en blanc, i llavors no es 
+nota que no s'imprimeixi. 
+
+Però a vegades no està en blanc i llavors l'albarà imprés és incorrecte. 
+Depén de com s'ha entrat, crec que si has apretat tabulador deixa una línia
+en blanc al final i si has apretat return no. En qualsevol cas la línia 
+en blanc del final es pot esborrar i llavors la última queda amb dades que 
+no s'imprimeixen.
+
+Mirant el codi de fichabf.cpp sembla clar que no es vol imprimir la última 
+línia (el bucle va de variable = 0 &quot;a&quot; variable &lt; numLinies - 1).
+
+Llavors la pregunta és: 
+
+- s'ha d'arreglar el codi que imprimeix perquè imprimeixi totes les línies
+(potser posant un filtre que no imprimeixi les línies en blanc)? 
+  
+- s'ha de forçar que sempre hi hagi una última línia en blanc a cada albarà ? 
+
+- Estic colló i això només em passa a mí ? 
+
+Gràcies. 
+
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>
+Signa per fer Collserola parc natural com cal
+<A HREF="http://www.collserola.org/salvemelparcnatural/">http://www.collserola.org/salvemelparcnatural/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000540.html">[BulmaGés]accents als llistats per RML
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000494.html">[BulmaGés]última línia d'albarans
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#493">[ fecha ]</a>
+              <a href="thread.html#493">[ hilo ]</a>
+              <a href="subject.html#493">[ asunto ]</a>
+              <a href="author.html#493">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

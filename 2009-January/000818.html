@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Variable provincia.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FVariable_provincia%3D2E%3F%3D&In-Reply-To=%3C20090117200112.GA5200%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000801.html">
+   <LINK REL="Next"  HREF="000803.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Variable provincia. </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FVariable_provincia%3D2E%3F%3D&In-Reply-To=%3C20090117200112.GA5200%40localhost%3E"
+       TITLE="[BulmaGés]Variable provincia.">xdrudis en tinet.cat
+       </A><BR>
+    <I>Sab Ene 17 21:01:12 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000801.html">[BulmaGés]Variable provincia.
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000803.html">[BulmaGés]Variable provincia.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#818">[ fecha ]</a>
+              <a href="thread.html#818">[ hilo ]</a>
+              <a href="subject.html#818">[ asunto ]</a>
+              <a href="author.html#818">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, Jan 15, 2009 at 06:38:46PM +0100, Albert Mas wrote:
+&gt;<i> Disculpad, pero no nos entendemos.
+</I>&gt;<i> 
+</I>&gt;<i> Entiendo que bulmages tiene unos documentos horribles...
+</I>
+Así me gusta, siempre positivo, nunca negativo... :) 
+
+&gt;<i> - no aparecen los datos fiscales de la empresa.
+</I>
+En l'única empresa on he provat, les dades fiscals estan al paper 
+preimprés de l'empresa.
+
+&gt;<i> - aparece un telefono al lado del nombre!!!
+</I>
+Si, bastant incomprensible.
+
+&gt;<i> - el requadro de los datos no cabe en ningun sobre ventana.
+</I>
+Ah!. Bé, no ho sabia. Aprofito per recomanar els sobres sense 
+plàstic (poden tenir simplement un forat o imprimir l'adreça
+al sobre). Els que porten plàstic són un desastre per al
+reciclatge de paper si acaben als contenidors de paper. 
+
+
+&gt;<i> - no hay forma de quitar la columna descuento
+</I>
+Sí, diria que amb alguns canvis que vaig fer hi hauria d'haver forma, 
+però no n'estic segur. M'ho hauria de mirar. La cosa és que podria 
+requerir un &lt;!--QUERY --&gt; que ara no hi ha i sortirien les dades 
+de la base de dades, no les de pantalla, si hi ha diferència.
+
+&gt;<i> - no aparece el codipostal en los documentos.
+</I>&gt;<i> 
+</I>
+Doncs li poses...
+
+&gt;<i> así que me he diseñado unos documentos mucho mejores, sin descuentos,
+</I>&gt;<i> con codigo postal, datos fiscales, tipos de letra mas depurados,
+</I>&gt;<i> etc...
+</I>&gt;<i> que entiendo que seran buenos para todos.
+</I>&gt;<i>
+</I>
+Si, gràcies. 
+ 
+&gt;<i> ya que no puedo entender como bulmafact no sale con unos documentos
+</I>&gt;<i> medianamente conseguidos.
+</I>&gt;<i>
+</I>
+Tenint en compte que porten un text enorme que diu &quot;esborrany&quot; jo vaig 
+entendre que la idea és que cada empresa té necessitats diferents, i bulmafact
+s'ha preocupat com a pogut de fer llistats configurables suposant 
+que cada empresa se'ls configurarà. Jo potser ho hauria fet d'una altra
+manera, com tu suggereixes, però no em sembla tampoc eixelebrat tal com 
+ho fan. Al final aquesta mena de coses acostumen a necessitar personalització.
+ 
+&gt;<i> pero entiendo que pedir que tenga la provincia del cliente en los
+</I>&gt;<i> documentos no deberia ser tant complicado. O es que aquí nadie pone la
+</I>&gt;<i> provincia en sus facturas???
+</I>&gt;<i>
+</I>
+No. No crec en les províncies. Normalment poso codi postal i ciutat.
+Les dues primeres xifres del codi postal són la província, si algú la
+necessita. A vegades poso la comarca i el país.
+ 
+&gt;<i> Por tanto solo quiero añadir aquí la provincia:
+</I>&gt;<i> 
+</I>&gt;<i> &lt;!--IF QUERY=&quot;SELECT * FROM CLIENTE WHERE idcliente = [idcliente]&quot;--&gt;
+</I>&gt;<i> &lt;!--QUERY=&quot;SELECT * FROM cliente WHERE idcliente=[idcliente]&quot;--&gt;
+</I>&gt;<i> 
+</I>&gt;<i>                 &lt;!-- LOS DATOS DEL CLIENTE --&gt;
+</I>&gt;<i>                 &lt;setFont name=&quot;Helvetica&quot; size=&quot;10&quot;/&gt;
+</I>&gt;<i>                 &lt;drawString x=&quot;10.0cm&quot; y=&quot;24cm&quot;&gt;[nomcliente]&lt;/drawString&gt;
+</I>&gt;<i>                 &lt;drawString x=&quot;10.0cm&quot; y=&quot;23.5cm&quot;&gt;[dircliente]&lt;/drawString&gt;
+</I>&gt;<i>                 &lt;drawString x=&quot;10.0cm&quot; y=&quot;23cm&quot;&gt;[cpcliente] -
+</I>&gt;<i> [poblcliente]&lt;/drawString&gt;
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> nada mas, si alguien me pasa un texto copy/paste senzillo lo meto.
+</I>&gt;<i> Ya que el de Francisco no me funciona y lo he mirado de todas formas.
+</I>&gt;<i> 
+</I>
+No puc afegir res al que ja t'han dit. Hauria de funcionar. Jo m'he fet
+plantilles a mida per adaptar-les al paper preimprès que tenien, però 
+no crec que siguin d'interès general. 
+
+&gt;<i> Gracias a todos.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> P.D. Os podrian interesar mis plantillas?
+</I>&gt;<i>
+</I>
+Si, estaria bé que les enviessis, potser així veuríem perquè no et van, i 
+qui vulgui les podria aprofitar. 
+
+Com veieu oferir plantilles alternatives? A on del svn les posaríem ?
+ 
+
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>
+Signa per fer Collserola parc natural com cal
+<A HREF="http://www.collserola.org/salvemelparcnatural/">http://www.collserola.org/salvemelparcnatural/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000801.html">[BulmaGés]Variable provincia.
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000803.html">[BulmaGés]Variable provincia.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#818">[ fecha ]</a>
+              <a href="thread.html#818">[ hilo ]</a>
+              <a href="subject.html#818">[ asunto ]</a>
+              <a href="author.html#818">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

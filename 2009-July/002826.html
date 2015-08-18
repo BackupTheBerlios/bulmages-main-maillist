@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Configuración del sistema para funcionar con NxSpooler
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FConfiguraci%3DF3n_del_s%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fistema_para_funcionar_con_NxSpooler%3F%3D&In-Reply-To=%3C200907241122.19485.auryn%40wanadoo.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002825.html">
+   <LINK REL="Next"  HREF="002827.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Configuración del sistema para funcionar con NxSpooler </H1>
+    <B>Aron</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FConfiguraci%3DF3n_del_s%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fistema_para_funcionar_con_NxSpooler%3F%3D&In-Reply-To=%3C200907241122.19485.auryn%40wanadoo.es%3E"
+       TITLE="[BulmaGés]Configuración del sistema para funcionar con NxSpooler">auryn en wanadoo.es
+       </A><BR>
+    <I>Vie Jul 24 11:22:18 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002825.html">[BulmaGés]Configuración del sistema para funcionar con NxSpooler
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002827.html">[BulmaGés]Configuración del sistema para funcionar con NxSpooler
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2826">[ fecha ]</a>
+              <a href="thread.html#2826">[ hilo ]</a>
+              <a href="subject.html#2826">[ asunto ]</a>
+              <a href="author.html#2826">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>El Viernes 24 Julio 2009, Tomeu Borras escribió:
+&gt;<i> Una pregunta/sugerencia/mejora:
+</I>&gt;<i>
+</I>&gt;<i> BulmaGés también trabaja mucho con ods y sxc
+</I>&gt;<i> ¿Es muy difícil cambiar el programa para que también abra este tipo de
+</I>&gt;<i> archivos?
+</I>No, no debe ser muy difícil.
+Sería una opción nueva: tipos de ficheros a detectar.
+Lo intentaré
+
+
+&gt;<i> Salut
+</I>&gt;<i>
+</I>&gt;<i> El Friday 24 July 2009 10:38:55 Toni Asensi Esteve escribió:
+</I>&gt;<i> &gt; Respecto al programa NxSpooler: éstos son los cambios que recomendamos
+</I>&gt;<i> &gt; Arón y yo para realizar en el sistema y que funcione como se espera:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; * La primera vez:
+</I>&gt;<i> &gt;    + En el servidor:
+</I>&gt;<i> &gt;       - Hacer este cambio de configuración para que Bulmagés no abra los
+</I>&gt;<i> &gt; archivos PDF en el servidor (ya que tienen que abrirse en el cliente):
+</I>&gt;<i> &gt; editar /etc/bulmages/bulmages.conf y reemplazar &quot;konqueror&quot; por &quot;echo&quot; en
+</I>&gt;<i> &gt; el parámetro CONF_PDF.
+</I>&gt;<i> &gt;       - Nota: el usuario que se va a conectar debe tener su propio $HOME
+</I>&gt;<i> &gt; en el servidor.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;    + En el ordenador cliente:
+</I>&gt;<i> &gt;       - En Linux: compartir (usando Samba) la carpeta $HOME/.bulmages
+</I>&gt;<i> &gt; como &quot;bulmages&quot;, utilizando un nombre de usuario y contraseña
+</I>&gt;<i> &gt; particulares. - En Windows: compartir la carpeta %UserProfile%\.bulmages
+</I>&gt;<i> &gt; como &quot;bulmages$&quot;, utilizando un nombre de usuario y contraseña
+</I>&gt;<i> &gt; particulares. - Nota: al compartir, asegurarse de que el usuario
+</I>&gt;<i> &gt; particular que se usará para acceder al recurso compartido tiene permiso
+</I>&gt;<i> &gt; de escritura sobre el mismo.
+</I>&gt;<i> &gt;       - Configurar el programa cliente Nx para que utilizando la conexión
+</I>&gt;<i> &gt; que se usa normalmente para acceder al servidor FreeNX éste pueda acceder
+</I>&gt;<i> &gt; al recurso compartido del que hablábamos. Por ejemplo, en el programa &quot;nx
+</I>&gt;<i> &gt; client&quot; para Linux se puede ir a una solapa &quot;Services&quot;, activar &quot;enable
+</I>&gt;<i> &gt; SMB printing and file sharing&quot; y pulsar en &quot;Add&quot; para añadir el recurso
+</I>&gt;<i> &gt; &quot;bulmages&quot;, especificar que su montaje en el servidor se realice en
+</I>&gt;<i> &gt; ~/.bulmages para que Bulmagés lo use de forma natural en la sesión
+</I>&gt;<i> &gt; remota; especificar el usuario y contraseña particulares.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; * Cada vez que el usuario se conecte al FreeNX del servidor:
+</I>&gt;<i> &gt;       - Ha de tener NxSpooler ejecutándose en su ordenador, claro :-).
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; De esta forma: los informes que hace Bulmagés en el servidor se abrirán
+</I>&gt;<i> &gt; en el ordenador cliente, donde puede imprimirlos en la impresora que
+</I>&gt;<i> &gt; quiera, guardarlos, enviarlos por correo, etc.
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Bulmages-main mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+
+-- 
+Aron
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20090724/7f307fd7/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20090724/7f307fd7/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002825.html">[BulmaGés]Configuración del sistema para funcionar con NxSpooler
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002827.html">[BulmaGés]Configuración del sistema para funcionar con NxSpooler
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2826">[ fecha ]</a>
+              <a href="thread.html#2826">[ hilo ]</a>
+              <a href="subject.html#2826">[ asunto ]</a>
+              <a href="author.html#2826">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

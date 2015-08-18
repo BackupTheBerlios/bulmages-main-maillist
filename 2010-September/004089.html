@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Bug #17536] No puedo instalar bulmages	en Ubuntu Lucid
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2317536%5D%20No%20puedo%20instalar%20bulmages%0A%09en%20Ubuntu%20Lucid&In-Reply-To=%3C201009252131.o8PLVG8v017674%40unicorn.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="004088.html">
+   <LINK REL="Next"  HREF="004091.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Bug #17536] No puedo instalar bulmages	en Ubuntu Lucid </H1>
+    <B>admin en berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2317536%5D%20No%20puedo%20instalar%20bulmages%0A%09en%20Ubuntu%20Lucid&In-Reply-To=%3C201009252131.o8PLVG8v017674%40unicorn.berlios.de%3E"
+       TITLE="[BulmaGés] [Bug #17536] No puedo instalar bulmages	en Ubuntu Lucid">admin en berlios.de
+       </A><BR>
+    <I>Sab Sep 25 23:31:16 CEST 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="004088.html">[BulmaGés] [Bug #17536] No puedo instalar bulmages	en Ubuntu Lucid
+</A></li>
+        <LI>Próximo mensaje: <A HREF="004091.html">[BulmaGés] r4025 -	trunk/bulmages/bulmafact/plugins/pluginbf_modificadores/dbmodels
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4089">[ fecha ]</a>
+              <a href="thread.html#4089">[ hilo ]</a>
+              <a href="subject.html#4089">[ asunto ]</a>
+              <a href="author.html#4089">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bug #17536, was updated on 2010-Sep-25 23:00
+Here is a current snapshot of the bug.
+
+Project: BulmaGes, Gestión Empresarial Libre
+Category: None
+Status: Open
+Resolution: None
+Bug Group: None
+Priority: 5
+Submitted by: hielos
+Assigned to : none
+Summary: No puedo instalar bulmages en Ubuntu Lucid
+
+Details: Hola, muchas gracias por generar un software para todos nosotros. He intentado instalar BulmaGés 0.12. Primero bajé el svn usando el comando --&gt; svn checkout <A HREF="svn://svn.berlios.de/bulmages/trunk">svn://svn.berlios.de/bulmages/trunk</A> &lt;--. Después he seguido los comandos --&gt; mkdir build &amp;&amp; cd build &amp;&amp; cmake ../ &lt;-- y todo ha resultado bien. El problema aparece cuando hago el --&gt; make &lt;-- . Llega al 7% y después me marca el siguiente error:
+
+[  7%] Building CXX object bulmalib/src/CMakeFiles/bulmalib.dir/qrc_bulmages.o
+Linking CXX shared library libbulmalib.so
+CMake Error: cmake_symlink_library: System Error: Operation not permitted
+CMake Error: cmake_symlink_library: System Error: Operation not permitted
+make[2]: *** [bulmalib/src/libbulmalib.so.0.12.0] Error 1
+make[1]: *** [bulmalib/src/CMakeFiles/bulmalib.dir/all] Error 2
+make: *** [all] Error 2
+
+No sé qué hacer realmente. Habilité el repositorio &quot;karmic universe&quot; para instalar la versión anterior y probarla. Ahí he visto que se tiene que instalar la librería &quot;libbulmalib0.11&quot;. De ahí se me ocurrió que quizá necesito compilar la librería &quot;libbulmalib.so&quot; antes de instalar BulmaGés.
+Sobre la versión anterior, pude arrancar el &quot;bulmasetup&quot;. Al principio, trataba de configurar la empresa, pero sólo generaba una nueva entrada &quot;Sin título&quot; y sin ningún plugin. Después me di cuenta que no podía generar la empresa, porque estaba usando acentos (también le quité las comas y los puntos). Al escribir el nombre sin ellos, se creó correctamente con los plugins de contabilidad. Sin embargo, ¿acaso la compañía para contabilidad debe tener un nombre o base de datos diferente que la de facturación?
+Finalmente, se me ocurre sugerirles que hicieran un liveCD para todos nosotros que somos iletrados en la compilación de software :P :D . Muchas gracias.
+
+P.D. si no debí suscribirme, a esta página, por favor díganme.
+
+Follow-Ups:
+
+Date: 2010-Sep-25 23:31
+By: tborras
+
+Comment:
+Hola, realmente es mejor suscribirse a la lista de distribución de bulmages.
+<A HREF="http://www.iglues.org">http://www.iglues.org</A>
+
+Parece, aunque no puedo asegurarlo que no estas haciendo la instalación como superusuario.
+
+prueba con sudo make
+
+Salut
+-------------------------------------------------------
+
+For detailed info, follow this link:
+<A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=17536&amp;group_id=4472">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=17536&amp;group_id=4472</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="004088.html">[BulmaGés] [Bug #17536] No puedo instalar bulmages	en Ubuntu Lucid
+</A></li>
+	<LI>Próximo mensaje: <A HREF="004091.html">[BulmaGés] r4025 -	trunk/bulmages/bulmafact/plugins/pluginbf_modificadores/dbmodels
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4089">[ fecha ]</a>
+              <a href="thread.html#4089">[ hilo ]</a>
+              <a href="subject.html#4089">[ asunto ]</a>
+              <a href="author.html#4089">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

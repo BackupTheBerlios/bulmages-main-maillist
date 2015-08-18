@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] Paquetes Debian: Ya lo podemos poner en	el git de Bulmages
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Paquetes%20Debian%3A%20Ya%20lo%20podemos%20poner%20en%0A%09el%20git%20de%20Bulmages&In-Reply-To=%3C20130112211447.7fd5b41a%40mtelleria.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007497.html">
+   <LINK REL="Next"  HREF="007499.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] Paquetes Debian: Ya lo podemos poner en	el git de Bulmages </H1>
+    <B>Miguel Telleria de Esteban</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Paquetes%20Debian%3A%20Ya%20lo%20podemos%20poner%20en%0A%09el%20git%20de%20Bulmages&In-Reply-To=%3C20130112211447.7fd5b41a%40mtelleria.com%3E"
+       TITLE="[BulmaGés] Paquetes Debian: Ya lo podemos poner en	el git de Bulmages">miguel en mtelleria.com
+       </A><BR>
+    <I>Sab Ene 12 21:14:47 CET 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007497.html">[BulmaGés]BulmaGés Qt5 source available / BulmaGés Código Qt5 disponible
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007499.html">[BulmaGés] Estare en el FOSDEM de Bruselas el 2-3	de Febrero
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7498">[ fecha ]</a>
+              <a href="thread.html#7498">[ hilo ]</a>
+              <a href="subject.html#7498">[ asunto ]</a>
+              <a href="author.html#7498">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola a todos,
+
+Ya he hecho una limpieza a mi clon de Bulmages y he dejado lo
+estrictamente ligado al empaquetamiento:
+<A HREF="https://gitorious.org/~mtelleria/bulmages/mtelleria-bulmages/commits/gbp-debian-master">https://gitorious.org/~mtelleria/bulmages/mtelleria-bulmages/commits/gbp-debian-master</A>
+
+*  Rama master (que sigue a la homónimo en el clon principal)
+*  Rama release (idem)
+
+*  Ramas master-rebased y release-rebased.  Alojan diferentes
+   commits para que sean incorporados al repositorio principal.
+
+*  Ramas gbp-* que son las ramas de git-buildpackage donde está
+   el directorio debian.
+
+*  Rama pristine-tar que aloja los xdelta de los .orig.tar.gz
+
+*  Tags master/0.14.0*** que representan referencias de empaquetado de
+   la rama master.
+
+*  Tags release/0.14.0*** que representan referencias de empaquetado de
+   la rama release.
+
+*  Tags master-debian/xxx, master-squeeze/xxx, release-debian/xxx que
+   representan diferentes resultados de empaquetado para debian wheezy
+   y debian squeeze.
+
+LO QUE OS PIDO
+
+No tengo permisos de escritura en el repositorio de bulmages, por lo
+que me gustaría pediros las siguientes acciones:
+
+*  Realizar los merge-requests siguientes en master y release:
+
+   <A HREF="https://gitorious.org/bulmages/bulmages/merge_requests/1">https://gitorious.org/bulmages/bulmages/merge_requests/1</A>
+   <A HREF="https://gitorious.org/bulmages/bulmages/merge_requests/2">https://gitorious.org/bulmages/bulmages/merge_requests/2</A>
+   (la primera vez que hago esto de una &quot;merge request&quot; :) )
+
+   Contienen el directorio tools y para release además borrar el
+   directorio debian y un fichero ttf~ de las profundidades de NSIS que
+   me daba problemas.
+
+*  Añadir las ramas:
+
+   gbp-debian-master
+   gbp-debian-release
+   pristine-tar
+
+   al repositorio bulmages.  Las de Squeeze (por ahora sólo he creado
+   la de master) como lo veáis.
+
+*  Y luego otra cosa que tengo duda.  Las tags.  
+
+   Estas tags son la base para recrear los paquetes a partir de las
+   ramas de git-buildpackage y master/release.  Sin dichas tags habría
+   que hacer búsquedas en los logs para localizar los commits de
+   referencia en los empaquetados.  Además entiendo que dichas tags
+   hacen que posibles commits huérfanos no sean eliminados por el
+   garbage collector de git.
+
+   El problema que veo es que segun se vayan generando paquetes se
+   multiplicarán estas tags hasta hacer una cosa inviable (y
+   confundirse con otras tags de otra razón más clara).
+
+   Soluciones que se me ocurren:
+   -  Mantener las tags en mi clone mtelleria-bulmages
+
+   -  Crear un fichero de lista de tags (en una rama nueva) en donde se
+      listen las tags y sus commits.  Con scripts de python se podrían
+      recrear dichas tags &quot;bajo demanda&quot;, aunque habrá que tener
+      cuidado con los commits huérfanos si es que queremos mantener
+      todo el historial.
+
+Para terminar de &quot;picarme&quot; veré si en los próximos días puedo montarme
+un reprepro para almacenar los paquetes fuente y binarios que es al
+final lo que estamos buscando :).
+
+Saludos,
+
+	Miguel
+
+-- 
+
+      (O-O)
+---oOO-(_)-OOo-----------------------------------------------------
+ Miguel TELLERIA DE ESTEBAN               <A HREF="http://www.mtelleria.com">http://www.mtelleria.com</A>
+ Email: miguel at mtelleria.com           Tel GSM:  +34 650 801098
+                                          Tel Fix:  +34 942 280174
+
+ Miembro de <A HREF="http://www.linuca.org">http://www.linuca.org</A>    Membre du <A HREF="http://www.bxlug.be">http://www.bxlug.be</A>
+ ¿Usuario captivo o libre?    <A HREF="http://www.obtengalinux.org/windows/">http://www.obtengalinux.org/windows/</A>
+ Free or  captive user?        <A HREF="http://www.getgnulinux.org/windows/">http://www.getgnulinux.org/windows/</A>
+-------------------------------------------------------------------
+
+------------ próxima parte ------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 198 bytes
+Desc: no disponible
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20130112/66930758/attachment.pgp">https://lists.berlios.de/pipermail/bulmages-main/attachments/20130112/66930758/attachment.pgp</A>&gt;
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007497.html">[BulmaGés]BulmaGés Qt5 source available / BulmaGés Código Qt5 disponible
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007499.html">[BulmaGés] Estare en el FOSDEM de Bruselas el 2-3	de Febrero
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7498">[ fecha ]</a>
+              <a href="thread.html#7498">[ hilo ]</a>
+              <a href="subject.html#7498">[ asunto ]</a>
+              <a href="author.html#7498">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Modificar permisos a usuarios y grupos de usuarios
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-September/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3FModificar_permisos_a_usuar%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fios_y_grupos_de_usuarios%3F%3D&In-Reply-To=%3C200909181718.41849.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003005.html">
+   <LINK REL="Next"  HREF="003007.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Modificar permisos a usuarios y grupos de usuarios </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3FModificar_permisos_a_usuar%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fios_y_grupos_de_usuarios%3F%3D&In-Reply-To=%3C200909181718.41849.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]Modificar permisos a usuarios y grupos de usuarios">tborras en conetxia.com
+       </A><BR>
+    <I>Vie Sep 18 17:18:41 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003005.html">[BulmaGés]Modificar permisos a usuarios y grupos de usuarios
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003007.html">[BulmaGés] r3651 - trunk/bulmages/bulmasetup
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3006">[ fecha ]</a>
+              <a href="thread.html#3006">[ hilo ]</a>
+              <a href="subject.html#3006">[ asunto ]</a>
+              <a href="author.html#3006">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Creo que funcionará bien pq luego en el establecimiento de permisos se usa 
+ALTER ROLE que afecta tanto a usuarios como a grupos y es más moderno.
+
+PD: No se por qué pero me parece que tras este &quot;ligero&quot; cambio alguien pedirá 
+que bulmasetup pueda hacer la gestión de grupos.
+
+Salut
+
+PD: Por mi parte puedes hacer el commit cuando quieras.
+
+
+El Friday 18 September 2009 16:38:53 Auryn escribió:
+&gt;<i> Hola
+</I>&gt;<i>
+</I>&gt;<i> Para que BulmaSetup muestre tanto usuarios como grupos en el modificador de
+</I>&gt;<i> permisos, he probado esto en la línea 85 de modificausuario.py:
+</I>&gt;<i>
+</I>&gt;<i> usuarios = self.execute(&quot;SELECT * FROM pg_user UNION SELECT groname,
+</I>&gt;<i> grosysid, false, false, false, null, null, null from pg_group&quot;)
+</I>&gt;<i>
+</I>&gt;<i> Si no le veis pegas, igual se puede dejar así.
+</I>
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003005.html">[BulmaGés]Modificar permisos a usuarios y grupos de usuarios
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003007.html">[BulmaGés] r3651 - trunk/bulmages/bulmasetup
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3006">[ fecha ]</a>
+              <a href="thread.html#3006">[ hilo ]</a>
+              <a href="subject.html#3006">[ asunto ]</a>
+              <a href="author.html#3006">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][BulmaGÃ©s]&quot;Error en el bus&quot; al ejecutar el programa  (Recomenat per a Xavi Drudis)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaG%3DC3%3DA9s%3D5D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D22Error_en_el_bus%3D22_al_ejecutar_el_programa__%3D28Recomena%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Ft_per_a_Xavi_Drudis%3D29%3F%3D&In-Reply-To=%3C34440.80.34.165.131.1229348572.squirrel%40webmail.tinet.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000539.html">
+   <LINK REL="Next"  HREF="000546.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][BulmaGÃ©s]&quot;Error en el bus&quot; al ejecutar el programa  (Recomenat per a Xavi Drudis) </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaG%3DC3%3DA9s%3D5D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D22Error_en_el_bus%3D22_al_ejecutar_el_programa__%3D28Recomena%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Ft_per_a_Xavi_Drudis%3D29%3F%3D&In-Reply-To=%3C34440.80.34.165.131.1229348572.squirrel%40webmail.tinet.org%3E"
+       TITLE="[BulmaGés][BulmaGÃ©s]&quot;Error en el bus&quot; al ejecutar el programa  (Recomenat per a Xavi Drudis)">xdrudis en tinet.cat
+       </A><BR>
+    <I>Lun Dic 15 14:42:52 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000539.html">[BulmaGés]&quot;Error en el bus&quot; al ejecutar el programa (Recomenat per a Xavi Drudis)
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000546.html">[BulmaGés][BulmaGÃ(c)s]&quot;Error en el bus&quot; al ejecutar el programa (Recomenat per a Xavi Drudis)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#541">[ fecha ]</a>
+              <a href="thread.html#541">[ hilo ]</a>
+              <a href="subject.html#541">[ asunto ]</a>
+              <a href="author.html#541">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> Hola !!!
+</I>&gt;<i>
+</I>&gt;<i> Pués tienes el mismo error que estuvimos detectando en la Termes Lan Party con
+</I>&gt;<i> Albert Mas.
+</I>&gt;<i>
+</I>&gt;<i> Además estoy seguro de que usas SUSE pq a mi con Ubuntu no me pasa (y es un
+</I>&gt;<i> misterio).
+</I>&gt;<i>
+</I>&gt;<i> El origen del error está en unos cambios recientes sobre la clase
+</I>&gt;<i> postgresiface2.cpp que generan este error en SUSE y no en Ubuntu.
+</I>&gt;<i>
+</I>&gt;<i> Mientras no tenga el tema controlado puedes hacer un svn update -r 2830
+</I>&gt;<i> y compilar (esta revision no genera el error de bus).
+</I>&gt;<i>
+</I>&gt;<i> PD: Xavi, no se perque falla i tampoc se perque falla només a una distro i a
+</I>&gt;<i> una altre no. Creq que té a veurer amb el pas dels punters dels arrays de
+</I>&gt;<i> parametres de postgresiface2::cargacursor cap a cursor2::cursor2 pero no ho
+</I>&gt;<i> he pogut verificar. (Tampoc l'hi he dedicat tot el temps que cal)
+</I>&gt;<i> També he mogut el try de lloc per englobar la interpretació de l'array pero la
+</I>&gt;<i> excepció no salta (es veu que es un problema de baix nivell com acces a una
+</I>&gt;<i> direcció de memoria que no existeix).
+</I>&gt;<i>
+</I>
+
+Ah, doncs no sabia que hi havia aquest problema. Em sap greu haver-vos fet
+treballar tant. Segur que és per ser openSUSE ?
+No pot ser la versió de libpq ? Això de les consultes amb paràmetres necessita una
+pq mínima, no molt nova, però potser superior a la que necessitava abans. Vaig mirar
+que els paquets per a lenny ja ho complíen, però si instal·les de svn no ho deu comprovar.
+Ara no sóc a casa. La versió mínima crec que la vaig dir en un missatge a la llista fa mesos, no
+la recordo.  De tota manera suposo que si fos això ja no compilaria
+
+&gt;<i> PD2: Jo migraria els char *  a QString's ja que en tot el codi només feim
+</I>&gt;<i> servir QString i així ho tenim una mica més uniforme.
+</I>&gt;<i>
+</I>
+Es que no acabo d'entendre on vols dir. A la llibreria pq no li pots passar QStrings,
+necessita char *. Vols dir fer el pas a char * més tard. Doncs d'acord.
+Sabeu a quina línia fallava ? .
+
+Aquesta nit m'ho miro.
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000539.html">[BulmaGés]&quot;Error en el bus&quot; al ejecutar el programa (Recomenat per a Xavi Drudis)
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000546.html">[BulmaGés][BulmaGÃ(c)s]&quot;Error en el bus&quot; al ejecutar el programa (Recomenat per a Xavi Drudis)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#541">[ fecha ]</a>
+              <a href="thread.html#541">[ hilo ]</a>
+              <a href="subject.html#541">[ asunto ]</a>
+              <a href="author.html#541">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

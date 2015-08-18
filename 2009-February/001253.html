@@ -1,0 +1,428 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]r3104 - in trunk/bulmages: bulmacont/plugins/pluginadocumental bulmacont/plugins/pluginbalance bulmacont/plugins/pluginbalance-old bulmacont/plugins/pluginbc_example bulmacont/plugins/plugincanualesods bulmacont/plugins/plugincorrector bulmacont/plugins/pluginestadisticas bulmacont/plugins/pluginonline bulmacont/plugins/pluginproyectos bulmacont/plugins/pluginpychart bulmacont/plugins/pluginregistroiva bulmacont/plugins/pluginresumcta bulmacont/src bulmafact/plugins/efacturabf bulmafact/plugins/plugin_tc_articulos bulmafact/plugins/pluginactividad bulmafact/plugins/pluginalbaran bulmafact/plugins/pluginalbaranprov bulmafact/plugins/pluginalias bulmafact/plugins/pluginalmacen bulmafact/plugins/pluginalumno bulmafact/plugins/pluginasterisk bulmafact/plugins/pluginbf_almacen bulmafact/plugins/pluginbf_articulo bulmafact/plugins/pluginbf_cliente bulmafact/plugins/pluginbf_comercial bulmafact/plugins/pluginbf_example bulmafact/plugins/pluginbf_iva bulmafact/plugins/plugi! nbf_proveedor bulmafact/plugins/pluginbf_seriesfactura bulmafact/plugins/pluginclientprov bulmafact/plugins/plugincobros bulmafact/plugins/plugincompraventa bulmafact/plugins/plugincontratos bulmafact/plugins/plugincuadrante bulmafact/plugins/pluginetiquetado bulmafact/plugins/pluginetiquetas bulmafact/plugins/pluginfactura bulmafact/plugins/pluginfacturaprov bulmafact/plugins/pluginfacturar bulmafact/plugins/pluginimpresionesmultiples bulmafact/plugins/plugininventario bulmafact/plugins/pluginivainc bulmafact/plugins/pluginmail bulmafact/plugins/pluginmailthunderbird bulmafact/plugins/pluginopenref bulmafact/plugins/pluginpagos bulmafact/plugins/pluginpedido bulmafact/plugins/pluginpedidoprov bulmafact/plugins/pluginpreciocoste bulmafact/plugins/pluginpresupuesto bulmafact/plugins/pluginprofesor bulmafact/plugins/pluginpromedios bulmafact/plugins/pluginq19 bulmafact/plugins/pluginqwebcam bulmafact/plugins/pluginresarticulos bulmafact/plugins/plugintarifas bulmafact/plugins! /pluginticket bulmafact/plugins/plugintipostrabajo bulmafact/p! lugins/p
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fr3104_-_in_trunk/bulm%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fages%3D3A_bulmacont/plugins/pluginadocumental_bulmacont/plug%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fins/pluginbalance_bulmacont/plugins/pluginbalance-old_bulm%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Facont/plugins/pluginbc%3D5Fexample_bulmacont/plugins/pluginc%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fanualesods_bulmacont/plugins/plugincorrector_bulmacont/plu%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fgins/pluginestadisticas_bulmacont/plugins/pluginonline_bul%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fmacont/plugins/pluginproyectos_bulmacont/plugins/pluginpyc%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fhart_bulmacont/plugins/pluginregistroiva_bulmacont/plugins%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F/pluginresumcta_bulmacont/src_bulmafact/plugins/efacturabf%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F_bulmafact/plugins/plugin%3D5Ftc%3D5Farticulos_bulmafact/plugi%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fns/pluginactividad_bulmafact/plugins/pluginalbaran_bulmafa%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fct/plugins/pluginalbaranprov_bulmafact/plugins/pluginalias%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F_bulmafact/plugins/pluginalmacen_bulmafact/plugins/plugina%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Flumno_bulmafact/plugins/pluginasterisk_bulmafact/plugins/p%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fluginbf%3D5Falmacen_bulmafact/plugins/pluginbf%3D5Farticulo_bu%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Flmafact/plugins/pluginbf%3D5Fcliente_bulmafact/plugins/plugi%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fnbf%3D5Fcomercial_bulmafact/plugins/pluginbf%3D5Fexample_bulma%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Ffact/plugins/pluginbf%3D5Fiva_bulmafact/plugins/plugi%21_nbf%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5Fproveedor_bulmafact/plugins/pluginbf%3D5Fseriesfactura_bu%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Flmafact/plugins/pluginclientprov_bulmafact/plugins/pluginc%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fobros_bulmafact/plugins/plugincompraventa_bulmafact/plugin%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fs/plugincontratos_bulmafact/plugins/plugincuadrante_bulmaf%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fact/plugins/pluginetiquetado_bulmafact/plugins/pluginetiqu%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fetas_bulmafact/plugins/pluginfactura_bulmafact/plugins/plu%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fginfacturaprov_bulmafact/plugins/pluginfacturar_bulmafact/%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fplugins/pluginimpresionesmultiples_bulmafact/plugins/plugi%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fninventario_bulmafact/plugins/pluginivainc_bulmafact/plugi%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fns/pluginmail_bulmafact/plugins/pluginmailthunderbird_bulm%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fafact/plugins/pluginopenref_bulmafact/plugins/pluginpagos_%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fbulmafact/plugins/pluginpedido_bulmafact/plugins/pluginped%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fidoprov_bulmafact/plugins/pluginpreciocoste_bulmafact/plug%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fins/pluginpresupuesto_bulmafact/plugins/pluginprofesor_bul%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fmafact/plugins/pluginpromedios_bulmafact/plugins/pluginq19%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F_bulmafact/plugins/pluginqwebcam_bulmafact/plugins/pluginr%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fesarticulos_bulmafact/plugins/plugintarifas_bulmafact/plug%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fins%21_/pluginticket_bulmafact/plugins/plugintipostrabajo_bu%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Flmafact/p%21_lugins/p%3F%3D&In-Reply-To=%3C49A52ACC.5070904%40todo-redes.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001252.html">
+   <LINK REL="Next"  HREF="001234.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]r3104 - in trunk/bulmages: bulmacont/plugins/pluginadocumental bulmacont/plugins/pluginbalance bulmacont/plugins/pluginbalance-old bulmacont/plugins/pluginbc_example bulmacont/plugins/plugincanualesods bulmacont/plugins/plugincorrector bulmacont/plugins/pluginestadisticas bulmacont/plugins/pluginonline bulmacont/plugins/pluginproyectos bulmacont/plugins/pluginpychart bulmacont/plugins/pluginregistroiva bulmacont/plugins/pluginresumcta bulmacont/src bulmafact/plugins/efacturabf bulmafact/plugins/plugin_tc_articulos bulmafact/plugins/pluginactividad bulmafact/plugins/pluginalbaran bulmafact/plugins/pluginalbaranprov bulmafact/plugins/pluginalias bulmafact/plugins/pluginalmacen bulmafact/plugins/pluginalumno bulmafact/plugins/pluginasterisk bulmafact/plugins/pluginbf_almacen bulmafact/plugins/pluginbf_articulo bulmafact/plugins/pluginbf_cliente bulmafact/plugins/pluginbf_comercial bulmafact/plugins/pluginbf_example bulmafact/plugins/pluginbf_iva bulmafact/plugins/plugi! nbf_proveedor bulmafact/plugins/pluginbf_seriesfactura bulmafact/plugins/pluginclientprov bulmafact/plugins/plugincobros bulmafact/plugins/plugincompraventa bulmafact/plugins/plugincontratos bulmafact/plugins/plugincuadrante bulmafact/plugins/pluginetiquetado bulmafact/plugins/pluginetiquetas bulmafact/plugins/pluginfactura bulmafact/plugins/pluginfacturaprov bulmafact/plugins/pluginfacturar bulmafact/plugins/pluginimpresionesmultiples bulmafact/plugins/plugininventario bulmafact/plugins/pluginivainc bulmafact/plugins/pluginmail bulmafact/plugins/pluginmailthunderbird bulmafact/plugins/pluginopenref bulmafact/plugins/pluginpagos bulmafact/plugins/pluginpedido bulmafact/plugins/pluginpedidoprov bulmafact/plugins/pluginpreciocoste bulmafact/plugins/pluginpresupuesto bulmafact/plugins/pluginprofesor bulmafact/plugins/pluginpromedios bulmafact/plugins/pluginq19 bulmafact/plugins/pluginqwebcam bulmafact/plugins/pluginresarticulos bulmafact/plugins/plugintarifas bulmafact/plugins! /pluginticket bulmafact/plugins/plugintipostrabajo bulmafact/p! lugins/p </H1>
+    <B>Fco. Javier M. C.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fr3104_-_in_trunk/bulm%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fages%3D3A_bulmacont/plugins/pluginadocumental_bulmacont/plug%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fins/pluginbalance_bulmacont/plugins/pluginbalance-old_bulm%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Facont/plugins/pluginbc%3D5Fexample_bulmacont/plugins/pluginc%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fanualesods_bulmacont/plugins/plugincorrector_bulmacont/plu%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fgins/pluginestadisticas_bulmacont/plugins/pluginonline_bul%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fmacont/plugins/pluginproyectos_bulmacont/plugins/pluginpyc%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fhart_bulmacont/plugins/pluginregistroiva_bulmacont/plugins%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F/pluginresumcta_bulmacont/src_bulmafact/plugins/efacturabf%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F_bulmafact/plugins/plugin%3D5Ftc%3D5Farticulos_bulmafact/plugi%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fns/pluginactividad_bulmafact/plugins/pluginalbaran_bulmafa%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fct/plugins/pluginalbaranprov_bulmafact/plugins/pluginalias%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F_bulmafact/plugins/pluginalmacen_bulmafact/plugins/plugina%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Flumno_bulmafact/plugins/pluginasterisk_bulmafact/plugins/p%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fluginbf%3D5Falmacen_bulmafact/plugins/pluginbf%3D5Farticulo_bu%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Flmafact/plugins/pluginbf%3D5Fcliente_bulmafact/plugins/plugi%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fnbf%3D5Fcomercial_bulmafact/plugins/pluginbf%3D5Fexample_bulma%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Ffact/plugins/pluginbf%3D5Fiva_bulmafact/plugins/plugi%21_nbf%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5Fproveedor_bulmafact/plugins/pluginbf%3D5Fseriesfactura_bu%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Flmafact/plugins/pluginclientprov_bulmafact/plugins/pluginc%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fobros_bulmafact/plugins/plugincompraventa_bulmafact/plugin%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fs/plugincontratos_bulmafact/plugins/plugincuadrante_bulmaf%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fact/plugins/pluginetiquetado_bulmafact/plugins/pluginetiqu%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fetas_bulmafact/plugins/pluginfactura_bulmafact/plugins/plu%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fginfacturaprov_bulmafact/plugins/pluginfacturar_bulmafact/%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fplugins/pluginimpresionesmultiples_bulmafact/plugins/plugi%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fninventario_bulmafact/plugins/pluginivainc_bulmafact/plugi%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fns/pluginmail_bulmafact/plugins/pluginmailthunderbird_bulm%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fafact/plugins/pluginopenref_bulmafact/plugins/pluginpagos_%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fbulmafact/plugins/pluginpedido_bulmafact/plugins/pluginped%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fidoprov_bulmafact/plugins/pluginpreciocoste_bulmafact/plug%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fins/pluginpresupuesto_bulmafact/plugins/pluginprofesor_bul%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fmafact/plugins/pluginpromedios_bulmafact/plugins/pluginq19%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F_bulmafact/plugins/pluginqwebcam_bulmafact/plugins/pluginr%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fesarticulos_bulmafact/plugins/plugintarifas_bulmafact/plug%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fins%21_/pluginticket_bulmafact/plugins/plugintipostrabajo_bu%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Flmafact/p%21_lugins/p%3F%3D&In-Reply-To=%3C49A52ACC.5070904%40todo-redes.com%3E"
+       TITLE="[BulmaGés]r3104 - in trunk/bulmages: bulmacont/plugins/pluginadocumental bulmacont/plugins/pluginbalance bulmacont/plugins/pluginbalance-old bulmacont/plugins/pluginbc_example bulmacont/plugins/plugincanualesods bulmacont/plugins/plugincorrector bulmacont/plugins/pluginestadisticas bulmacont/plugins/pluginonline bulmacont/plugins/pluginproyectos bulmacont/plugins/pluginpychart bulmacont/plugins/pluginregistroiva bulmacont/plugins/pluginresumcta bulmacont/src bulmafact/plugins/efacturabf bulmafact/plugins/plugin_tc_articulos bulmafact/plugins/pluginactividad bulmafact/plugins/pluginalbaran bulmafact/plugins/pluginalbaranprov bulmafact/plugins/pluginalias bulmafact/plugins/pluginalmacen bulmafact/plugins/pluginalumno bulmafact/plugins/pluginasterisk bulmafact/plugins/pluginbf_almacen bulmafact/plugins/pluginbf_articulo bulmafact/plugins/pluginbf_cliente bulmafact/plugins/pluginbf_comercial bulmafact/plugins/pluginbf_example bulmafact/plugins/pluginbf_iva bulmafact/plugins/plugi! nbf_proveedor bulmafact/plugins/pluginbf_seriesfactura bulmafact/plugins/pluginclientprov bulmafact/plugins/plugincobros bulmafact/plugins/plugincompraventa bulmafact/plugins/plugincontratos bulmafact/plugins/plugincuadrante bulmafact/plugins/pluginetiquetado bulmafact/plugins/pluginetiquetas bulmafact/plugins/pluginfactura bulmafact/plugins/pluginfacturaprov bulmafact/plugins/pluginfacturar bulmafact/plugins/pluginimpresionesmultiples bulmafact/plugins/plugininventario bulmafact/plugins/pluginivainc bulmafact/plugins/pluginmail bulmafact/plugins/pluginmailthunderbird bulmafact/plugins/pluginopenref bulmafact/plugins/pluginpagos bulmafact/plugins/pluginpedido bulmafact/plugins/pluginpedidoprov bulmafact/plugins/pluginpreciocoste bulmafact/plugins/pluginpresupuesto bulmafact/plugins/pluginprofesor bulmafact/plugins/pluginpromedios bulmafact/plugins/pluginq19 bulmafact/plugins/pluginqwebcam bulmafact/plugins/pluginresarticulos bulmafact/plugins/plugintarifas bulmafact/plugins! /pluginticket bulmafact/plugins/plugintipostrabajo bulmafact/p! lugins/p">fcojavmc en todo-redes.com
+       </A><BR>
+    <I>Mie Feb 25 12:26:04 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001252.html">[BulmaGés]r3104 - in trunk/bulmages: bulmacont/plugins/pluginadocumental bulmacont/plugins/pluginbalance bulmacont/plugins/pluginbalance-old bulmacont/plugins/pluginbc_example bulmacont/plugins/plugincanualesods bulmacont/plugins/plugincorrector bulmacont/plugins/pluginestadisticas bulmacont/plugins/pluginonline bulmacont/plugins/pluginproyectos bulmacont/plugins/pluginpychart bulmacont/plugins/pluginregistroiva bulmacont/plugins/pluginresumcta bulmacont/src bulmafact/plugins/efacturabf bulmafact/plugins/plugin_tc_articulos bulmafact/plugins/pluginactividad bulmafact/plugins/pluginalbaran bulmafact/plugins/pluginalbaranprov bulmafact/plugins/pluginalias bulmafact/plugins/pluginalmacen bulmafact/plugins/pluginalumno bulmafact/plugins/pluginasterisk bulmafact/plugins/pluginbf_almacen bulmafact/plugins/pluginbf_articulo bulmafact/plugins/pluginbf_cliente bulmafact/plugins/pluginbf_comercial bulmafact/plugins/pluginbf_example bulmafact/plugins/pluginbf_iva bulmafact/plugins/plugi! nbf_proveedor bulmafact/plugins/pluginbf_seriesfactura bulmafact/plugins/pluginclientprov bulmafact/plugins/plugincobros bulmafact/plugins/plugincompraventa bulmafact/plugins/plugincontratos bulmafact/plugins/plugincuadrante bulmafact/plugins/pluginetiquetado bulmafact/plugins/pluginetiquetas bulmafact/plugins/pluginfactura bulmafact/plugins/pluginfacturaprov bulmafact/plugins/pluginfacturar bulmafact/plugins/pluginimpresionesmultiples bulmafact/plugins/plugininventario bulmafact/plugins/pluginivainc bulmafact/plugins/pluginmail bulmafact/plugins/pluginmailthunderbird bulmafact/plugins/pluginopenref bulmafact/plugins/pluginpagos bulmafact/plugins/pluginpedido bulmafact/plugins/pluginpedidoprov bulmafact/plugins/pluginpreciocoste bulmafact/plugins/pluginpresupuesto bulmafact/plugins/pluginprofesor bulmafact/plugins/pluginpromedios bulmafact/plugins/pluginq19 bulmafact/plugins/pluginqwebcam bulmafact/plugins/pluginresarticulos bulmafact/plugins/plugintarifas bulmafact/plugins! /pluginticket bulmafact/plugins/plugintipostrabajo bulmafact/p! lugins/p
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001234.html">[BulmaGés] r3105 - in trunk/bulmages:	bulmacont/src bulmafact/plugins/pluginalumno	bulmafact/plugins/pluginbf_cliente	bulmafact/plugins/pluginbf_proveedor	bulmafact/plugins/pluginprofesor	bulmafact/plugins/plugintutor bulmafact/src bulmalib/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1253">[ fecha ]</a>
+              <a href="thread.html#1253">[ hilo ]</a>
+              <a href="subject.html#1253">[ asunto ]</a>
+              <a href="author.html#1253">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Vale, ya se lo que falla. Fallo mio :) Lo dejaré arreglado para esta 
+tarde. Perdón por las molestias.
+
+Un saludo.
+
+
+Fco. Javier M. C. escribió:
+&gt;<i> Estoy en ello desde ayer, pero no encuentro el porqué. Seguiré investigando.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Tomeu Borras escribió:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Buenas Fco. Javier:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Con este commit  creo que se ha colado un bug que hace que
+</I>&gt;&gt;<i> cualquier campo de tipo booleano de un subformulario no saque el CheckBox 
+</I>&gt;&gt;<i> correspondiente para que puedas activarlo o desactivarlo. A partir de aqui 
+</I>&gt;&gt;<i> sale solo el campo en blanco. (Tienes campos de este tipo en el 
+</I>&gt;&gt;<i> pluginimpresionesmultiples y en los pedidosdeproveedor).
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Estoy seguro de que es en este commit pq he compilado la revision 3103 y no 
+</I>&gt;&gt;<i> pasa.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> No he profundizado más sobre donde está el error pq has tocado mucho e igual a 
+</I>&gt;&gt;<i> ti te resulta más facil encontrarlo que a mi.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Salut
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> El Tuesday 24 February 2009 01:37:54 <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">svn en mail.berlios.de</A> escribió:
+</I>&gt;&gt;<i>   
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i> Author: fcojavmc
+</I>&gt;&gt;&gt;<i> Date: 2009-02-24 01:32:40 +0100 (Tue, 24 Feb 2009)
+</I>&gt;&gt;&gt;<i> New Revision: 3104
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Modified:
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/plugins/pluginadocumental/adocumental.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/plugins/pluginadocumental/adocumental.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/plugins/pluginbalance-old/balancesubform.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/plugins/pluginbalance/balancesubform.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/plugins/pluginbc_example/pluginbc_example.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/plugins/plugincanualesods/plugincanualesods.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/plugins/plugincanualesods/plugincanualesods.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/plugins/plugincorrector/correctorwidget.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/plugins/plugincorrector/correctorwidget.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/plugins/pluginestadisticas/estadisticasview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/plugins/pluginestadisticas/estadisticasview.h
+</I>&gt;&gt;&gt;<i>   
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmacont/plugins/pluginestadisticas/pluginestadisticas.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmacont/plugins/pluginestadisticas/pluginestadisticas.h
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmacont/plugins/pluginestadisticas/resmensualview.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmacont/plugins/pluginestadisticas/resmensualview.h
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmacont/plugins/pluginonline/pluginonline.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/plugins/pluginproyectos/listproyectosview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/plugins/pluginproyectos/pluginproyectos.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/plugins/pluginproyectos/proyectoview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/plugins/pluginpychart/estadisticasview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/plugins/pluginpychart/estadisticasview.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/plugins/pluginpychart/pluginestadisticas.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/plugins/pluginregistroiva/cobropagoview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/plugins/pluginregistroiva/iva.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/plugins/pluginregistroiva/iva.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/plugins/pluginregistroiva/linprevcobro.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/plugins/pluginregistroiva/linprevcobro.h
+</I>&gt;&gt;&gt;<i>   
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmacont/plugins/pluginregistroiva/listregistroivaview.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmacont/plugins/pluginregistroiva/pluginregistroiva.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmacont/plugins/pluginregistroiva/registroiva.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmacont/plugins/pluginregistroiva/registroiva.h
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmacont/plugins/pluginregistroiva/registroivaview.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmacont/plugins/pluginregistroiva/regivaqtoolbutton.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmacont/plugins/pluginresumcta/pluginresumcta.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmacont/src/amortizacionesview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/src/amortizacionview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/src/arbol.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/src/asiento1.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/src/asientolistsubform.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/src/asientosview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/src/bcsubform.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/src/busquedacanal.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/src/busquedacanal.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/src/busquedaccoste.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/src/busquedaccoste.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/src/busquedacuenta.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/src/busquedacuenta.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/src/ccosteview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/src/cuentalistview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/src/cuentaview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/src/diariosubform.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/src/extractoprintview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/src/extractosubform.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/src/extractoview1.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/src/importainteligente.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/src/listlinasiento1view.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/src/propiedadesempresa.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmacont/src/tipoivaview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/efacturabf/efqtoolbutton.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/efacturabf/efqtoolbutton_importar.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/busquedacolor.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/busquedacolor.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/busquedatalla.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/busquedatalla.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/listcoloresview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/listtallasview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugarticulos.h
+</I>&gt;&gt;&gt;<i>   
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/plugin_tc_articulos/plugin_tc_articulos.cp
+</I>&gt;&gt;&gt;<i> p trunk/bulmages/bulmafact/plugins/pluginactividad/actividadeslist.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginactividad/actividadview.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginactividad/convocatoriaslist.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginactividad/convocatoriaview.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginalbaran/albaranclientelist.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginalbaran/albaranclienteview.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginalbaran/genalbqtoolbutton.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginalbaran/pluginalbaran.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginalbaranprov/albaranesproveedor.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginalbaranprov/albaranproveedorview.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginalbaranprov/genalbpqtoolbutton.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginalbaranprov/listdescalbaranprovview.
+</I>&gt;&gt;&gt;<i> cpp trunk/bulmages/bulmafact/plugins/pluginalbaranprov/pluginalbaranprov.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginalias/pluginalias.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginalmacen/almaceneslistview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginalmacen/almacenview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginalumno/alumnoslist.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginalumno/alumnoview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginasterisk/pluginasterisk.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginbf_almacen/listalmacenview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginbf_articulo/articulolist.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginbf_articulo/articuloview.cpp
+</I>&gt;&gt;&gt;<i>   
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginbf_articulo/comparticulolistview.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginbf_cliente/clienteview.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginbf_cliente/clientslist.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginbf_comercial/comercialbf.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginbf_comercial/incidenciacomercial.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginbf_comercial/incidenciacomercialview
+</I>&gt;&gt;&gt;<i> .cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginbf_comercial/listzonacomercialview.c
+</I>&gt;&gt;&gt;<i> pp trunk/bulmages/bulmafact/plugins/pluginbf_comercial/rutacomercial.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginbf_comercial/rutacomercialincview.cp
+</I>&gt;&gt;&gt;<i> p trunk/bulmages/bulmafact/plugins/pluginbf_comercial/rutacomerciallist.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginbf_comercial/rutacomercialview.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginbf_example/pluginbf_example.h
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginbf_iva/listtasaivaview.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginbf_iva/listtipoivaview.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginbf_proveedor/provedit.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginbf_proveedor/providerslist.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginbf_seriesfactura/listseriefacturavie
+</I>&gt;&gt;&gt;<i> w.cpp trunk/bulmages/bulmafact/plugins/pluginclientprov/pluginclientprov.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginclientprov/pluginclientprov.h
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/plugincobros/cobroslist.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/plugincobros/cobroview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/plugincobros/impqtoolbutton.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/plugincobros/plugincobros.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/plugincompraventa/compraventaview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/plugincontratos/contrato.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/plugincontratos/contratoslist.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/plugincontratos/contratoslist.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/plugincontratos/contratoview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/plugincontratos/listlincontratoview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/plugincontratos/plugincontratos.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/plugincuadrante/cuadrante1view.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/plugincuadrante/cuadrantediarioview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/plugincuadrante/plugincuadrante.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginetiquetado/pluginetiquetado.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginetiquetado/ticketqtoolbutton.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginetiquetas/pluginetiquetas.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginetiquetas/pluginetiquetas.h.orig
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginfactura/facturaslist.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginfactura/facturaview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginfactura/genfacqtoolbutton.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginfactura/listdescfacturaview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginfactura/listlinfacturaview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginfactura/pluginfactura.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginfacturaprov/facturapview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginfacturaprov/facturasplist.cpp
+</I>&gt;&gt;&gt;<i>   
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginfacturaprov/genfactqtoolbutton.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginfacturaprov/listdescfacturaprovview.
+</I>&gt;&gt;&gt;<i> cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginfacturaprov/listlinfacturapview.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginfacturaprov/pluginfacturaprov.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginfacturar/impqtoolbutton.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginfacturar/impqtoolbutton.cpp.orig
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginfacturar/pluginfacturar.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginfacturar/pluginfacturar.cpp.orig
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginimpresionesmultiples/impmultqtoolbut
+</I>&gt;&gt;&gt;<i> ton.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginimpresionesmultiples/pluginimpresion
+</I>&gt;&gt;&gt;<i> esmultiples.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginimpresionesmultiples/pluginimpresion
+</I>&gt;&gt;&gt;<i> esmultiples.h
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/plugininventario/inventario.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/plugininventario/inventariosview.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/plugininventario/inventarioview.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/plugininventario/listcontrolstockview.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/plugininventario/plugininventario.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginivainc/pluginivainc.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginmail/impqtoolbutton.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginmail/pluginmail.h
+</I>&gt;&gt;&gt;<i>   
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginmailthunderbird/impqtoolbutton.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginopenref/pluginopenref.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginpagos/impqtoolbutton.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginpagos/pagoslist.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginpagos/pagoview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginpagos/pluginpagos.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginpedido/genpedqtoolbutton.cpp
+</I>&gt;&gt;&gt;<i>   
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginpedido/listdescpedidoclienteview.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginpedido/listlinpedidoclienteview.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginpedido/pedidoclienteview.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginpedido/pedidosclientelist.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginpedido/pluginpedido.cpp
+</I>&gt;&gt;&gt;<i>   
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginpedidoprov/listdescpedidoproveedorvi
+</I>&gt;&gt;&gt;<i> ew.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginpedidoprov/listlinpedidoproveedorvie
+</I>&gt;&gt;&gt;<i> w.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginpedidoprov/pedidoproveedorview.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginpedidoprov/pedidosproveedorlist.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginpedidoprov/pluginpedidoprov.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginpreciocoste/pluginpreciocoste.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginpresupuesto/genpreqtoolbutton.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginpresupuesto/listdescpresupuestoview.
+</I>&gt;&gt;&gt;<i> cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginpresupuesto/listlinpresupuestoview.c
+</I>&gt;&gt;&gt;<i> pp trunk/bulmages/bulmafact/plugins/pluginpresupuesto/pluginpresupuesto.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginpresupuesto/presupuestolist.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginpresupuesto/presupuestoview.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginprofesor/profesoreslist.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginprofesor/profesorview.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginpromedios/pluginpromedios.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginq19/q19qtoolbutton.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginq19/q19qtoolbutton1.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginq19/q19view.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginqwebcam/pluginqwebcamp.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginresarticulos/listlresarticulo.cpp
+</I>&gt;&gt;&gt;<i>   
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/pluginresarticulos/pluginresarticulos.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/plugintarifas/busquedatarifa.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/plugintarifas/busquedatarifa.h
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/plugintarifas/listltarifaview.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/plugintarifas/listlvartarifaview.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/plugintarifas/plugintarifas.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/plugintarifas/tarifalistsubform.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/plugintarifas/tarifalistview.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/plugintarifas/tarifaview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginticket/pluginticket.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginticket/ticketqtoolbutton.cpp
+</I>&gt;&gt;&gt;<i>   
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/plugintipostrabajo/listtipostrabajoview.cp
+</I>&gt;&gt;&gt;<i> p trunk/bulmages/bulmafact/plugins/plugintipostrabajo/plugintipostrabajo.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/plugintpv/plugintpv.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/plugintpv/zlist.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/plugintpv/zlist.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/plugintpv/zview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/plugintrazabilidad/movimientosview.cpp
+</I>&gt;&gt;&gt;<i>   
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/plugintrazabilidad/plugintrazabilidad.cpp
+</I>&gt;&gt;&gt;<i> trunk/bulmages/bulmafact/plugins/plugintutor/tutoreslist.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/plugintutor/tutorview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginvehiculosbf/pluginvehiculosbf.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginvehiculosbf/pluginvehiculosbf.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginvehiculosbf/vehiculoview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/src/bfsubform.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/src/busquedabanco.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/src/busquedabanco.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/src/busquedareferencia.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/src/busquedareferencia.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/src/busquedaregimenfiscal.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/src/busquedaregimenfiscal.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/src/fichabf.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/src/listconfiguracionview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/src/listdescalbaranclienteview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/src/listlinalbaranclienteview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/src/listlinalbaranproveedorview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmafact/src/listseriefacturaview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmages/src/importContaplus.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmages/src/importContaplus.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmages/src/importexportbulmafactview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmages/src/importexportbulmafactview.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/plugins/pluginarchivos/archmenu.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/plugins/pluginarchivos/pluginarchivos.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/plugins/pluginbloqueos/bloqmenu.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/plugins/pluginbloqueos/pluginbloqueos.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/plugins/pluginimpersmail/eqtoolbutton.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/plugins/pluginsubformods/pluginsubformods.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/src/blbancoedit.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/src/blbancoedit.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/src/blcombobox.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/src/blcombobox.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/src/bldb.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/src/bldb.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/src/bldbsubform.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/src/bldbsubform.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/src/blform.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/src/blpostgresqlclient.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/src/blpostgresqlclient.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/src/blradiobutton.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/src/blradiobutton.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/src/blsubform.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/src/blsubform.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/src/blwidget.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/src/blwidget.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/src/busqueda.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/src/busqueda.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/src/busquedafecha.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/src/busquedafecha.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/src/busquedafecha2.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/src/busquedafecha2.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/src/busquedaperiodo.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/src/busquedaperiodo.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/src/fichacfg.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/src/paisview.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/src/pgimportfiles.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmalib/src/pgimportfiles.h
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmatpv/plugins/pluginabrevs/abrevs.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmatpv/plugins/pluginabrevs/tickets.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmatpv/plugins/pluginabrevs/trabajadores.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmatpv/plugins/pluginaliastpv/pluginaliastpv.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmatpv/plugins/pluginartsubform/articulolisttpv.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmatpv/plugins/pluginartsubform/mticket.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmatpv/plugins/plugincambio/cambio.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmatpv/plugins/plugincambioivainc/cambio.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmatpv/plugins/plugindevolucion/devolucion.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmatpv/plugins/plugindevolucion2/devolucion2.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmatpv/plugins/plugintcaliastpv/plugintcaliastpv.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmatpv/plugins/plugintccompras/compra.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmatpv/plugins/pluginticketbasico/mticket.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmatpv/plugins/pluginticketbasicoivainc/mticket.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmatpv/plugins/pluginticketdesglose/mticket.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmatpv/plugins/plugintotal/plugintotal.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmatpv/plugins/plugintotalivainc/plugintotalivainc.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmatpv/plugins/plugintpvivainc/plugintpvivainc.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmatpv/plugins/pluginvisor/pluginvisor.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmatpv/src/btcompany.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmatpv/src/btsubform.cpp
+</I>&gt;&gt;&gt;<i>    trunk/bulmages/bulmatpv/src/ticket.cpp
+</I>&gt;&gt;&gt;<i> Log:
+</I>&gt;&gt;&gt;<i> Relacion de cambios:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> (no todos porque son muchos)
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> conexionbase() -&gt; dbConnection()
+</I>&gt;&gt;&gt;<i> setconexionbase() -&gt; setDbConnection()
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> DBint -&gt; DbInt y con el mismo criterio (como en QT4) todos los enum DbType,
+</I>&gt;&gt;&gt;<i> DbRestrict, DbOptions.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> valorCampo -&gt; fieldValue
+</I>&gt;&gt;&gt;<i> setValorCampo -&gt; setFieldValue
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> .. etc ...
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> Bulmages-main mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+-- 
+Fco. Javier M. C.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001252.html">[BulmaGés]r3104 - in trunk/bulmages: bulmacont/plugins/pluginadocumental bulmacont/plugins/pluginbalance bulmacont/plugins/pluginbalance-old bulmacont/plugins/pluginbc_example bulmacont/plugins/plugincanualesods bulmacont/plugins/plugincorrector bulmacont/plugins/pluginestadisticas bulmacont/plugins/pluginonline bulmacont/plugins/pluginproyectos bulmacont/plugins/pluginpychart bulmacont/plugins/pluginregistroiva bulmacont/plugins/pluginresumcta bulmacont/src bulmafact/plugins/efacturabf bulmafact/plugins/plugin_tc_articulos bulmafact/plugins/pluginactividad bulmafact/plugins/pluginalbaran bulmafact/plugins/pluginalbaranprov bulmafact/plugins/pluginalias bulmafact/plugins/pluginalmacen bulmafact/plugins/pluginalumno bulmafact/plugins/pluginasterisk bulmafact/plugins/pluginbf_almacen bulmafact/plugins/pluginbf_articulo bulmafact/plugins/pluginbf_cliente bulmafact/plugins/pluginbf_comercial bulmafact/plugins/pluginbf_example bulmafact/plugins/pluginbf_iva bulmafact/plugins/plugi! nbf_proveedor bulmafact/plugins/pluginbf_seriesfactura bulmafact/plugins/pluginclientprov bulmafact/plugins/plugincobros bulmafact/plugins/plugincompraventa bulmafact/plugins/plugincontratos bulmafact/plugins/plugincuadrante bulmafact/plugins/pluginetiquetado bulmafact/plugins/pluginetiquetas bulmafact/plugins/pluginfactura bulmafact/plugins/pluginfacturaprov bulmafact/plugins/pluginfacturar bulmafact/plugins/pluginimpresionesmultiples bulmafact/plugins/plugininventario bulmafact/plugins/pluginivainc bulmafact/plugins/pluginmail bulmafact/plugins/pluginmailthunderbird bulmafact/plugins/pluginopenref bulmafact/plugins/pluginpagos bulmafact/plugins/pluginpedido bulmafact/plugins/pluginpedidoprov bulmafact/plugins/pluginpreciocoste bulmafact/plugins/pluginpresupuesto bulmafact/plugins/pluginprofesor bulmafact/plugins/pluginpromedios bulmafact/plugins/pluginq19 bulmafact/plugins/pluginqwebcam bulmafact/plugins/pluginresarticulos bulmafact/plugins/plugintarifas bulmafact/plugins! /pluginticket bulmafact/plugins/plugintipostrabajo bulmafact/p! lugins/p
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001234.html">[BulmaGés] r3105 - in trunk/bulmages:	bulmacont/src bulmafact/plugins/pluginalumno	bulmafact/plugins/pluginbf_cliente	bulmafact/plugins/pluginbf_proveedor	bulmafact/plugins/pluginprofesor	bulmafact/plugins/plugintutor bulmafact/src bulmalib/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1253">[ fecha ]</a>
+              <a href="thread.html#1253">[ hilo ]</a>
+              <a href="subject.html#1253">[ asunto ]</a>
+              <a href="author.html#1253">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

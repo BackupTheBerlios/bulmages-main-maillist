@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] bulmafact i el plugin d'impressions	personalitzades
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20bulmafact%20i%20el%20plugin%20d%27impressions%0A%09personalitzades&In-Reply-To=%3C20090221202718.GF4569%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001183.html">
+   <LINK REL="Next"  HREF="001186.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] bulmafact i el plugin d'impressions	personalitzades </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20bulmafact%20i%20el%20plugin%20d%27impressions%0A%09personalitzades&In-Reply-To=%3C20090221202718.GF4569%40localhost%3E"
+       TITLE="[BulmaGés] bulmafact i el plugin d'impressions	personalitzades">xdrudis en tinet.cat
+       </A><BR>
+    <I>Sab Feb 21 21:27:18 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001183.html">[BulmaGés] r3090 - in trunk/bulmages: .	bulmalauncher bulmalauncher/src bulmalauncher/src/images
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001186.html">[BulmaGés]bulmafact i el plugin d'impressions personalitzades
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1184">[ fecha ]</a>
+              <a href="thread.html#1184">[ hilo ]</a>
+              <a href="subject.html#1184">[ asunto ]</a>
+              <a href="author.html#1184">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola. 
+
+Finalment he entés com funciona el pluginimpers i el plugininformes i he entés que no 
+hauria calgut que em carregués el vell llistat de clients per posar el llistat de
+vendes a un client per referència. Ja ho arreglaré més tard. 
+
+Però ara he entés un problema que havia vist fa temps i m'havia semblat que devia
+ser jo que no ho entenia. 
+
+1.- El plugin d'informes crea un menú a la barra de menú de bulmafact que té una 
+opció per cada fitxer inf_*.rml que hi hagi al directori de plantilles OPENREPORTS. 
+
+2.- El pluginimpers crea una opció amb un submenu a cada ficha que té una entrada 
+per cada fitxer del directori de plantilles OPENREPORTS que tingui un nom que
+coincideixi amb el nom de la taula que mostra la fitxa. Per exemple si tens el 
+puginimpers instal·lat i et fas un informe que es digui articulo_oferta_del_dia.rml,
+i un altre que es digui sugerencias_compradores_articulo.rml, quan facis botó 
+dret del ratolí a la fitxa d'article et sortirà una opció &quot;informes personalizados&quot;
+amb dues opcions de submenú que llançaran aquests informes. 
+
+3.- El fichabf que és pare de les fiches d'albarans, factures, etc. per imprimir el 
+document pel client busca un informe que es digui igual que la taula amb sufix .rml.
+Per exemple per modificar com imprimeix les factures has de modificar el fitxer facturacliente.rml.
+
+El 3 ja el sabia, ho he fet servir per personalitzar les factures, albarans, etc. 
+El 1 i el 2 està bé. M'he fet un informe que es diu inf_VendesFamilia_cliente.rml 
+i ara el mateix fitxer rml i .ui em serveix per tenir una opció al menu informes 
+de la barra de menú de la finestra principal que dóna les vendes (albarans) sumades
+per a cada familia d'articles entre dues dates (a tots els clients) i una altra opció 
+al submenú de fitxa de client que imprimeix les vendes (albarans) entre dues dates
+d'aquell client, sumades per famílie d'articles. Els llistats són molt semblants, 
+només canvia el lloc on surten les dades del client i una petita condició al where. 
+Está bé poder tenir un sol fitxer d'informe per les dues opcions, que tregui 
+un resultat o un altre segons bulmfact substitueixi [idcliente] per un valor o 
+el deixi sense substituir. Així no s'han de mantenir dos llistats, només un 
+amb un paràmetre idcliente opcional.    
+
+Però:
+
+Si tens instal·lat el pluginimpers a bulmafact (branca docsMonolitic
+però potser passa el mateix a trunk si tens pressupostos, comandes,
+albarans factures i cobraments) quan vas a la fitxa de client pots
+picar amb el botó dret de ratolí i et surt l'opció &quot;Informes Personales&quot;.
+Al submenú que et surt si la tries hi ha l'informe que he fet però també 
+els de albarancliente.rml i pedidocliente.rml, informecliente 
+i informeclientes.rml perquè el nom conté &quot;cliente&quot;.
+
+Molts d'aquests no funcionen bé i el de pedidocliente.rml fins i tot em
+tanca el bulmafact perquè deu generar algun SQL invàlid, imagino, en ser
+cridat des de la fitxa de client per comptes de des de la fitxa de comanda. 
+
+Llavors el dubte és: quina de les possibles solucions us agrada més:
+
+a. deixar el pluginimpers igual i canviar el nom dels fitxers albarancliente.rml, 
+pedidocliente.rml i informeclientes.rml per albarancl.rml pedidocl.rml i informecls.rml,
+per exemple, modificant les fitxes corresponents perque els busquin amb aquest nom. 
+
+b. modificar el plugin_impers perquè només posi al submenu els fitxers que 
+tingui un nom que sigui per exemple impers_*nomtaula*.rml o *_nomtaula*.rml
+o *nomtaula_*.rml o algun altre conveni que separi el nom de la taula de la 
+resta del nomdel fitxer, o requereixi alguna marca per evitar colisions amb 
+noms d'altres informes que no són de la taula en qüestió sinó d'una que té 
+el nom com a subcadena. 
+
+c.- Posar alguna marca al contingut del fitxer que el pluginimpers busqui per
+saber si pot incloure el fitxer al submenu d'informes personals de la 
+fitxa.
+
+d.- establir un subdirectori d'OPENREPORTS per als informes personals. 
+
+e.- altres ... 
+
+Totes poden funcionar, amb una n'hi ha prou, a, b i d potser són més fàcils,    
+totes tenen alguna mena d'impacte sobre les instal·lacions fetes, no molt 
+gran però deixarien de funcionar coses fins que es modifiquessin el nom el 
+contingut o l'ubicació de les plantilles d'informes... 
+
+opinions ? 
+
+
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>
+Signa per fer Collserola parc natural com cal
+<A HREF="http://www.collserola.org/salvemelparcnatural/">http://www.collserola.org/salvemelparcnatural/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001183.html">[BulmaGés] r3090 - in trunk/bulmages: .	bulmalauncher bulmalauncher/src bulmalauncher/src/images
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001186.html">[BulmaGés]bulmafact i el plugin d'impressions personalitzades
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1184">[ fecha ]</a>
+              <a href="thread.html#1184">[ hilo ]</a>
+              <a href="subject.html#1184">[ asunto ]</a>
+              <a href="author.html#1184">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Plugin alies ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FPlugin_alies_%3D3F%3F%3D&In-Reply-To=%3C20081102111046.GB7315%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000239.html">
+   <LINK REL="Next"  HREF="000241.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Plugin alies ? </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FPlugin_alies_%3D3F%3F%3D&In-Reply-To=%3C20081102111046.GB7315%40localhost%3E"
+       TITLE="[BulmaGés]Plugin alies ?">xdrudis en tinet.cat
+       </A><BR>
+    <I>Dom Nov  2 12:10:46 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000239.html">[BulmaGés] r2765 -	trunk/bulmages/images/oxygen/actions
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000241.html">[BulmaGés] postgresiface2
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#240">[ fecha ]</a>
+              <a href="thread.html#240">[ hilo ]</a>
+              <a href="subject.html#240">[ asunto ]</a>
+              <a href="author.html#240">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Fri, Sep 26, 2008 at 02:54:07PM +0200, Fco. Javier M. C. wrote:
+&gt;<i> Xavi Drudis Ferran escribió:
+</I>&gt;<i> &gt; On Wed, Sep 24, 2008 at 08:39:21PM +0200, Tomeu Borras wrote:
+</I>&gt;<i> &gt;   
+</I>&gt;<i> &gt;&gt; Hola.
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; Doncs si que es pel que dius. Els alias, pel que sembla els introdueixes bé i 
+</I>&gt;<i> &gt;&gt; el que tocaría passar es que a qualsevol graella on demani el codi d'article 
+</I>&gt;<i> &gt;&gt; si hi introdueixes un alias (i prems enter) toca agafar el article 
+</I>&gt;<i> &gt;&gt; correctament. Es molt semblant al fet de llegir el codi de article desde un 
+</I>&gt;<i> &gt;&gt; lector tipus Metrologic que fa la simulació de un teclat.
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; Fa estona que no ho provo i potser quelcom s'ha fet malbé. Pero tocava anar 
+</I>&gt;<i> &gt;&gt; així.
+</I>&gt;<i> &gt;&gt;
+</I>
+M'ho he estat mirant i des de la meva ignorància de bulmages dedueixo: 
+
+a. El plugin modifica les cerques del BusquedaArticulos, no del
+BusquedaArticulosDelegate, ni dels llistats d'articles.
+
+b. Pel que sembla hi ha un BusquedaArticulos al formulari de cerca que
+surt a la finestra de llista d'albarans o factures, però aquest fa
+vàries cerques cada cop que apretes una tecla, mentre vas escrivint el
+contingut del camp de cerca d'article. Primer busca per codi d'article
+idèntic al que has escrit. Si no troba res busca per codi d'article
+que comenci pel que que portes escrit sense distingir majúscules i si
+tampoc troba res busca per codi d'article que contingui el que has
+escrit sense distingir majúscules. Només si res d'això troba res i hi
+ha el plugin d'alies instal·lat cerca per alies.
+
+El problema segons com és que si mentre estas escrivint un codi o un
+àlies troba un únic article, posa al camp on estas escrivint el codi
+de l'article, de manera que la següent lletra que escrius, amb la
+intenció que vagi a parar a ontinuació de la lletra que has escrit
+abans, va a parar al final del codi complet de l'article que ha escrit
+el buscador i fa que ja no trobi res. És una mica desconcertat,
+diria. No sé si m'explico, si voleu us poso un exemple concret del que
+fa lletra per lletra. El cas és que segons com només troba l'àlies si
+l'escrius fora del bulmages, el copies i l'enganxes a a casella de
+bulmages, perquè llavors escrius totes les lletres de cop sense
+donar-li oportunitat al BusquedaArticulo a canviar el contingut de la
+casella on escrius mentre escrius.
+
+Llavors pel punt a, el plugin d'àlies no és el que jo buscava. La idea
+era que en entrar un albarà, pressupost, o factura poguessis posar el
+codi de barres (llegit amb el lector de codi de barres) per comptes
+del codi d'article, i el bulmafact te'l trobés si havies entrat el
+codi de barres com a àlies de l'article. Però això no funciona perquè 
+utilitza un BusquedaArticuloDelegate (un combo que mostra els articles
+amb codis començats pel que portes escrit). 
+
+Crec que una possible solució seria posar un punt d'extensió
+(lanza()) a BusquedaArticuloDelegate i modificar el plugin d'alies per
+a redefinir la cerca del BusquedaArticuloDelegate. Això encara no resol
+el poder buscar per àlies a la llista d'articles, que no sé si es
+vol fer.
+
+El punt b no m'afecta directament, però potser estaria bé trobar-li una 
+solució. Se me n'acuden cinc: 
+
+b.1 una és posar un retard entre l'entrada de tecles i la cerca, de
+manera que donessis temps d'escriure més d'una tecla seguida i només
+comencessis a buscar quan passés un segon o no sé quant de temps des
+de la última tecla premuda (quan l'usuari pari d'escriure). La
+dificultat és trobar un temps que vagi bé a tothom. Un lector de codi
+de barres escriu molt de pressa però hi ha gent que escriu molt poc a
+poc, i si poses un temps molt llarg pot semblar que no faci res
+
+b.2 L'altra possible solució és semblant al que feia abans l'iceweasel
+per completar urls. Que el text que escriu el cercador per completar
+el que has escrit tu el deixa seleccionat, i llavors la següent tecla
+que escrius l'esborra (si escrius amb text seleccionat substitueix la 
+selecció pel caràcter escrit). Però això té una dificultat: una de les 
+cerques busca per like %text%, o sia codis que continguin el que has
+escrit, per tant quan posa el codi trobat a la casella de cerca, pot 
+estar afegint text al que tu has escrit per davant i per darrera, i 
+no sé si la selecció d'un camp de text permet tenir àrees discontinues i en
+esciure una nova tecles substituir-les totes. Suposo que una variació 
+seria mantenir una còpia del que escriu l'usuari i cada cop que escriu
+alguna cosa afegir-ho al que ha escrit, no al codi trobat que hem mostrat
+a la casella de cerca. Però ho trobo díficil de programar i d'entendre per
+l'usuari. Si tens el plugin d'àlies és pitjor, perquè l'àlies pot no 
+tenir ni una lletra en comú amb el codi d'article, i si substitueixes
+l'àlies que ha escrit pel codi d'article no li deixes acabar d'escriure 
+l'àlies.
+
+b.3 La tercera solució és més senzilla. Consisteix en no escriure el codi
+trobat a la casella de cerca i deixar el que escriu l'usuari. Total el nom
+de l'article apareix a baix quan el troba.
+
+b.4 També es podria substituir el camp de text per un combo. Només hi hauria
+el que escriu l'usuari i tots els resultats de les cerques omplirien la llista
+per seleccionar el que volgués amb fletxa avall n vegades i enter. Com fan les
+versions recents d'iceweasel al camp d'URL.
+
+b.5 Una altra opció és no buscar res fins que apreti enter o un botó i així el 
+deixes escriure tranquil.
+
+Passa que no sé exactament com 
+fer b1,b2 ni b4  perquè no sé prou qt ni C++. La que m'agrada més és b4,
+però encara no sé com va això dels .ui. El Kdevelop m'ompla un editor de 
+diàlegs, però no hi veig camp component, i en canvi al codi sembla que en tingui.
+
+
+De moment deixo estar b i intento arreglar a, al meu ritme de caragol,
+si us sembla, tot i que em fa por que quan ho hagi fet em quedi un problema
+semblant a b, ja veurem...
+
+Perdó pel rotllo, no sé resumir...
+
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>
+Signa per fer Collserola parc natural com cal
+<A HREF="http://www.collserola.org/salvemelparcnatural/">http://www.collserola.org/salvemelparcnatural/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000239.html">[BulmaGés] r2765 -	trunk/bulmages/images/oxygen/actions
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000241.html">[BulmaGés] postgresiface2
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#240">[ fecha ]</a>
+              <a href="thread.html#240">[ hilo ]</a>
+              <a href="subject.html#240">[ asunto ]</a>
+              <a href="author.html#240">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

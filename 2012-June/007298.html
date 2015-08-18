@@ -1,0 +1,214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to release...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20release...&In-Reply-To=%3C20120605193006.DC1D2756EA%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007297.html">
+   <LINK REL="Next"  HREF="007299.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to release... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20release...&In-Reply-To=%3C20120605193006.DC1D2756EA%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to release...">no-reply en gitorious.org
+       </A><BR>
+    <I>Mar Jun  5 21:30:06 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007297.html">[BulmaGés][Bug #18630] Error regimen fiscal
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007299.html">[BulmaGés] [Bug #18630] Error regimen fiscal
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7298">[ fecha ]</a>
+              <a href="thread.html#7298">[ hilo ]</a>
+              <a href="subject.html#7298">[ asunto ]</a>
+              <a href="author.html#7298">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 2 commits to release
+release changed from f7b3240 to 7ce3afd
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/f7b3240f8219ecaea7f8d90b51650c1d52602d83/diffs/7ce3afdd819b089f628d32e72cd80e9828092041">https://gitorious.org/bulmages/bulmages/commit/f7b3240f8219ecaea7f8d90b51650c1d52602d83/diffs/7ce3afdd819b089f628d32e72cd80e9828092041</A>
+
+Diff: 
+
+commit 7ce3afdd819b089f628d32e72cd80e9828092041
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue Jun 5 21:26:38 2012 +0200
+
+    Arreglo error reportado en el bug #18630 por santosme
+    
+    El error era que se había cambiado el nombre del metodo en la clase BlComboBox pero no se habia hecho el pertinente cambio en
+    la clase hija BfBuscaRegimenFiscal.
+    
+    Salut
+
+diff --git a/bulmages/bulmafact/src/bfbuscarregimenfiscal.cpp b/bulmages/bulmafact/src/bfbuscarregimenfiscal.cpp
+index 2be4d5e..aede22e 100644
+--- a/bulmages/bulmafact/src/bfbuscarregimenfiscal.cpp
++++ b/bulmages/bulmafact/src/bfbuscarregimenfiscal.cpp
+@@ -34,7 +34,8 @@ BfBuscarRegimenFiscal::BfBuscarRegimenFiscal ( QWidget *parent )
+         : BlComboBox ( parent )
+ {
+     BL_FUNC_DEBUG
+-    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
++    // El activatedItem esta en la clase padre con lo que aqui no es muy necesario.
++    // connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( activatedItem ( int ) ) );
+     addItem ( &quot;Normal&quot; );
+     addItem ( &quot;Intracomunitario&quot; );
+     addItem ( &quot;Extracomunitario&quot; );
+@@ -91,7 +92,7 @@ void BfBuscarRegimenFiscal::setFieldValue ( QString regimen )
+ /**
+ \param index
+ **/
+-void BfBuscarRegimenFiscal::m_activated ( int index )
++void BfBuscarRegimenFiscal::activatedItem ( int index )
+ {
+     BL_FUNC_DEBUG
+     if ( index &gt; 0 ) {
+diff --git a/bulmages/bulmafact/src/bfbuscarregimenfiscal.h b/bulmages/bulmafact/src/bfbuscarregimenfiscal.h
+index 6d06516..8b4a56e 100644
+--- a/bulmages/bulmafact/src/bfbuscarregimenfiscal.h
++++ b/bulmages/bulmafact/src/bfbuscarregimenfiscal.h
+@@ -42,7 +42,7 @@ public:
+     virtual void setFieldValue ( QString regimen );
+ 
+ public slots:
+-    virtual void m_activated ( int index );
++    virtual void activatedItem ( int index );
+ 
+ signals:
+     void valueChanged ( QString );
+
+commit 34d2e48d0aac831a82c377510379eaf6e5a35122
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sat Jun 2 09:42:51 2012 +0200
+
+    Arreglo problema en la base de datos con los recargos de equivalencia en las lineas de pedido ya que no estaban por defecto a cero.
+    
+    Conflicts:
+    
+    	bulmages/installbulmages/dbmodels/crear/bulmafact/bulmafact_schema.sql
+    
+    Arreglo el problema de los recargos de equivalencia en la rama estable.
+
+diff --git a/bulmages/installbulmages/dbmodels/actualizar/revf-0.13.sql b/bulmages/installbulmages/dbmodels/actualizar/revf-0.13.sql
+index 0ea72f8..0cbae5f 100644
+--- a/bulmages/installbulmages/dbmodels/actualizar/revf-0.13.sql
++++ b/bulmages/installbulmages/dbmodels/actualizar/revf-0.13.sql
+@@ -233,6 +233,25 @@ CREATE TRIGGER calculacodigocompletoarticulotrigger
+ 
+ 
+ 
++
++-- Cambiamos la tabla lpedidocliente para que tenga el default 0 en el recargo de equivalencia
++\echo -n ':: Cambiamos la tabla lpedidocliente para que tenga el default 0 en el recargo de equivalencia '
++CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
++
++BEGIN
++
++   ALTER TABLE lpedidocliente ALTER COLUMN reqeqlpedidocliente SET DEFAULT 0;
++   UPDATE lpedidocliente SET reqeqlpedidocliente = 0 WHERE reqeqlpedidocliente IS NULL;
++
++   RETURN 0;
++END;
++' LANGUAGE plpgsql;
++SELECT aux();
++DROP FUNCTION aux() CASCADE;
++
++
++
++
+ -- =====================================================================================
+ 
+ -- Agregamos nuevos parametros de configuracion
+@@ -243,9 +262,9 @@ DECLARE
+ BEGIN
+ 	SELECT INTO rs * FROM configuracion WHERE nombre = ''DatabaseRevision'';
+ 	IF FOUND THEN
+-		UPDATE CONFIGURACION SET valor = ''0.13.1-0005'' WHERE nombre = ''DatabaseRevision'';
++		UPDATE CONFIGURACION SET valor = ''0.13.1-0006'' WHERE nombre = ''DatabaseRevision'';
+ 	ELSE
+-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.13.1-0005'');
++		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.13.1-0006'');
+ 	END IF;
+ 	RETURN 0;
+ END;
+diff --git a/bulmages/installbulmages/dbmodels/actualizar/revf-0.14.sql b/bulmages/installbulmages/dbmodels/actualizar/revf-0.14.sql
+index 46c4e06..8ea8a6b 100644
+--- a/bulmages/installbulmages/dbmodels/actualizar/revf-0.14.sql
++++ b/bulmages/installbulmages/dbmodels/actualizar/revf-0.14.sql
+@@ -59,7 +59,7 @@ CREATE OR REPLACE FUNCTION compruebarevision() RETURNS INTEGER AS '
+ DECLARE
+ 	rs RECORD;
+ BEGIN
+-	SELECT INTO rs * FROM configuracion WHERE nombre=''DatabaseRevision'' AND ( valor LIKE ''0.14.1%'' OR valor = ''0.13.1-0005'');
++	SELECT INTO rs * FROM configuracion WHERE nombre=''DatabaseRevision'' AND ( valor LIKE ''0.14.1%'' OR valor = ''0.13.1-0006'');
+ 	IF FOUND THEN
+ 		RETURN 0;
+ 	ELSE
+diff --git a/bulmages/installbulmages/dbmodels/crear/bulmafact/bulmafact_schema.sql b/bulmages/installbulmages/dbmodels/crear/bulmafact/bulmafact_schema.sql
+index 1b8e6e0..32b7293 100644
+--- a/bulmages/installbulmages/dbmodels/crear/bulmafact/bulmafact_schema.sql
++++ b/bulmages/installbulmages/dbmodels/crear/bulmafact/bulmafact_schema.sql
+@@ -1213,7 +1213,7 @@ CREATE TABLE lpedidocliente (
+     pvplpedidocliente numeric(12, 2),
+     prevlpedidocliente date,
+     ivalpedidocliente numeric(12, 2),
+-    reqeqlpedidocliente NUMERIC(12,2),
++    reqeqlpedidocliente NUMERIC(12,2) DEFAULT 0,
+     descuentolpedidocliente numeric(12, 2),
+     idpedidocliente integer NOT NULL REFERENCES pedidocliente(idpedidocliente),
+     ordenlpedidocliente integer,
+@@ -3298,6 +3298,7 @@ BEGIN
+ 	UPDATE CONFIGURACION SET valor = ''0.14.1-0001'' WHERE nombre = ''DatabaseRevision'';
+     ELSE
+ 	INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.14.1-0001'');
++
+     END IF;
+ 
+     RETURN 0;
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007297.html">[BulmaGés][Bug #18630] Error regimen fiscal
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007299.html">[BulmaGés] [Bug #18630] Error regimen fiscal
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7298">[ fecha ]</a>
+              <a href="thread.html#7298">[ hilo ]</a>
+              <a href="subject.html#7298">[ asunto ]</a>
+              <a href="author.html#7298">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

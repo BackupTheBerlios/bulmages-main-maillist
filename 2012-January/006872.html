@@ -1,0 +1,349 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Migración de datos
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Futf-8%3Fq%3FMigraci%3DC3%3DB3n_de_datos%3F%3D&In-Reply-To=%3C201201301528.44652.otilio%40apdo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006869.html">
+   <LINK REL="Next"  HREF="006873.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Migración de datos </H1>
+    <B>Santos Martinez Estrada</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Futf-8%3Fq%3FMigraci%3DC3%3DB3n_de_datos%3F%3D&In-Reply-To=%3C201201301528.44652.otilio%40apdo.com%3E"
+       TITLE="[BulmaGés]Migración de datos">otilio en apdo.com
+       </A><BR>
+    <I>Lun Ene 30 15:28:44 CET 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006869.html">[BulmaGés]Migración de datos
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006873.html">[BulmaGés]Migración de datos
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6872">[ fecha ]</a>
+              <a href="thread.html#6872">[ hilo ]</a>
+              <a href="subject.html#6872">[ asunto ]</a>
+              <a href="author.html#6872">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Eso es que no está cargando ningún plugin, vamos que el archivo 
+bulmafact_empresa.conf no existe o está vacío.
+
+On Domingo, 29 de Enero de 2012 17:55:51 pappland asd escribió:
+&gt;<i> Tratando de analizar un  poco más me he dado cuenta que se me ha creado
+</I>&gt;<i> dentro de /etc/bulmages, otro directorio /etc/bulmages con los archivos de
+</I>&gt;<i> la copia de seguridad, ¿tal vez por ahí venga algún problema?
+</I>&gt;<i> 
+</I>&gt;<i> corrección: ya puedo ver la empresa al ejecutar &quot;bulmafact&quot;, pero tan solo
+</I>&gt;<i> me aparecen cuatro botones &quot;paises y provincias&quot;, Salir del programa&quot;,
+</I>&gt;<i> &quot;Indexador&quot; y &quot;ventana completa&quot;
+</I>&gt;<i> 
+</I>&gt;<i> El 29 de enero de 2012 17:32, pappland asd &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">pappland en gmail.com</A>&gt; escribió:
+</I>&gt;<i> &gt; jeje, ok, bueno, sea como fuere finalmente, he conseguido compilar sin
+</I>&gt;<i> &gt; problemas.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Ejecuto bulmasetup como super usuario y cuando he querido restaurar la
+</I>&gt;<i> &gt; copia de seguridad he obtenido un error por la consola en la que decía
+</I>&gt;<i> &gt; que no se encontraba el archivo sql de la empresa en /etc/bulmages.
+</I>&gt;<i> &gt; Viendo el error, he puesto manualmente el fichero SQL en la ruta y me ha
+</I>&gt;<i> &gt; restaurado la copia de seguridad.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; He hecho clic sobre &quot;Administrar Empresas Existentes&quot; y me ha aparecido
+</I>&gt;<i> &gt; la empresa. Entro en ella y activo el check box de &quot;Actualizar la base
+</I>&gt;<i> &gt; de datos&quot;. Cuando aplico los cambios se me muestra la consola donde
+</I>&gt;<i> &gt; obtendo el error de abajo y el proeso se para cuando la barra de
+</I>&gt;<i> &gt; progreso esta en 48%
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; A parte de este error en la actualización de la BBDD, cuando ejecuto
+</I>&gt;<i> &gt; &quot;fulmafact&quot; no puedo ver mi empresa, ¿tendía que hacer una copia de los
+</I>&gt;<i> &gt; archivos .conf que hay dentro del tar.gz a la ruta en la que tuve que
+</I>&gt;<i> &gt; poner el archivo SQL?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Gracias, saludos!!
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; .
+</I>&gt;<i> &gt; .
+</I>&gt;<i> &gt; .
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; DROP FUNCTION
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; :: Agregamos los campos y tablas para el plugin PluginContratos ...
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; CREATE FUNCTION
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; error:
+</I>&gt;<i> &gt; psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_contrato.sql:115
+</I>&gt;<i> &gt; : ERROR: &quot;rs&quot; is not a known variable LINE 50: SELECT INTO rs idcontrato
+</I>&gt;<i> &gt; FROM contrato WHERE refcontrato ... ^ QUERY: DECLARE asd RECORD; result
+</I>&gt;<i> &gt; character varying(15); efound boolean; BEGIN efound := FALSE; WHILE
+</I>&gt;<i> &gt; efound = FALSE LOOP result := random_string(6); efound := TRUE; SELECT
+</I>&gt;<i> &gt; INTO asd idpresupuesto FROM presupuesto WHERE refpresupuesto = result;
+</I>&gt;<i> &gt; IF FOUND THEN efound := FALSE; END IF; SELECT INTO asd idpedidocliente
+</I>&gt;<i> &gt; FROM pedidocliente WHERE refpedidocliente = result; IF FOUND THEN efound
+</I>&gt;<i> &gt; := FALSE; END IF; SELECT INTO asd idalbaran FROM albaran WHERE
+</I>&gt;<i> &gt; refalbaran = result; IF FOUND THEN efound := FALSE; END IF; SELECT INTO
+</I>&gt;<i> &gt; asd idfactura FROM factura WHERE reffactura = result; IF FOUND THEN
+</I>&gt;<i> &gt; efound := FALSE; END IF; SELECT INTO asd idcobro FROM cobro WHERE
+</I>&gt;<i> &gt; refcobro = result; IF FOUND THEN efound := FALSE; END IF; SELECT INTO
+</I>&gt;<i> &gt; asd idpedidoproveedor FROM pedidoproveedor WHERE refpedidoproveedor =
+</I>&gt;<i> &gt; result; IF FOUND THEN efound := FALSE; END IF; SELECT INTO asd
+</I>&gt;<i> &gt; idalbaranp FROM albaranp WHERE refalbaranp = result; IF FOUND THEN
+</I>&gt;<i> &gt; efound := FALSE; END IF; SELECT INTO asd idfacturap FROM facturap WHERE
+</I>&gt;<i> &gt; reffacturap = result; IF FOUND THEN efound := FALSE; END IF; SELECT INTO
+</I>&gt;<i> &gt; asd idpago FROM pago WHERE refpago = result; IF FOUND THEN efound :=
+</I>&gt;<i> &gt; FALSE; END IF; -- MODIFICACION PLUGINCONTRATOS SELECT INTO rs idcontrato
+</I>&gt;<i> &gt; FROM contrato WHERE refcontrato = result; IF FOUND THEN efound := FALSE;
+</I>&gt;<i> &gt; END IF; -- END MODIFICACION PLUGINCONTRATOS -- PLUGINS END LOOP; RETURN
+</I>&gt;<i> &gt; result; END; CONTEXT: SQL statement &quot;CREATE OR REPLACE FUNCTION
+</I>&gt;<i> &gt; crearef() RETURNS character varying(15) AS $BB$ DECLARE asd RECORD;
+</I>&gt;<i> &gt; result character varying(15); efound boolean; BEGIN efound := FALSE;
+</I>&gt;<i> &gt; WHILE efound = FALSE LOOP result := random_string(6); efound := TRUE;
+</I>&gt;<i> &gt; SELECT INTO asd idpresupuesto FROM presupuesto WHERE refpresupuesto =
+</I>&gt;<i> &gt; result; IF FOUND THEN efound := FALSE; END IF; SELECT INTO asd
+</I>&gt;<i> &gt; idpedidocliente FROM pedidocliente WHERE refpedidocliente = result; IF
+</I>&gt;<i> &gt; FOUND THEN efound := FALSE; END IF; SELECT INTO asd idalbaran FROM
+</I>&gt;<i> &gt; albaran WHERE refalbaran = result; IF FOUND THEN efound := FALSE; END
+</I>&gt;<i> &gt; IF; SELECT INTO asd idfactura FROM factura WHERE reffactura = result; IF
+</I>&gt;<i> &gt; FOUND THEN efound := FALSE; END IF; SELECT INTO asd idcobro FROM cobro
+</I>&gt;<i> &gt; WHERE refcobro = result; IF FOUND THEN efound := FALSE; END IF; SELECT
+</I>&gt;<i> &gt; INTO asd idpedidoproveedor FROM pedidoproveedor WHERE refpedidoproveedor
+</I>&gt;<i> &gt; = result; IF FOUND THEN efound := FALSE; END IF; SELECT INTO asd
+</I>&gt;<i> &gt; idalbaranp FROM albaranp WHERE refalbaranp = result; IF FOUND THEN
+</I>&gt;<i> &gt; efound := FALSE; END IF; SELECT INTO asd idfacturap FROM facturap WHERE
+</I>&gt;<i> &gt; reffacturap = result; IF FOUND THEN efound := FALSE; END IF; SELECT INTO
+</I>&gt;<i> &gt; asd idpago FROM pago WHERE refpago = result; IF FOUND THEN efound :=
+</I>&gt;<i> &gt; FALSE; END IF; -- MODIFICACION PLUGINCONTRATOS SELECT INTO rs idcontrato
+</I>&gt;<i> &gt; FROM contrato WHERE refcontrato = result; IF FOUND THEN efound := FALSE;
+</I>&gt;<i> &gt; END IF; -- END MODIFICACION PLUGINCONTRATOS -- PLUGINS END LOOP; RETURN
+</I>&gt;<i> &gt; result; END; $BB$ LANGUAGE 'plpgsql' ;&quot; PL/pgSQL function &quot;aux&quot; line 10
+</I>&gt;<i> &gt; at EXECUTE statement
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; &quot;Parcheo la funcion crearef para que contemple la nueva referencia.&quot; ::
+</I>&gt;<i> &gt; Funcion que crea restricciones en los contratos ... &quot;Actualizada la
+</I>&gt;<i> &gt; revision de la base de datos a la version 0.9.1&quot; ROLLBACK
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; error:
+</I>&gt;<i> &gt; psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_contrato.sql:116
+</I>&gt;<i> &gt; : ERROR: current transaction is aborted, commands ignored until end of
+</I>&gt;<i> &gt; transaction block
+</I>&gt;<i> &gt; psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_contrato.sql:123
+</I>&gt;<i> &gt; : ERROR: current transaction is aborted, commands ignored until end of
+</I>&gt;<i> &gt; transaction block
+</I>&gt;<i> &gt; psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_contrato.sql:140
+</I>&gt;<i> &gt; : ERROR: current transaction is aborted, commands ignored until end of
+</I>&gt;<i> &gt; transaction block
+</I>&gt;<i> &gt; psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_contrato.sql:146
+</I>&gt;<i> &gt; : ERROR: current transaction is aborted, commands ignored until end of
+</I>&gt;<i> &gt; transaction block
+</I>&gt;<i> &gt; psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_contrato.sql:167
+</I>&gt;<i> &gt; : ERROR: current transaction is aborted, commands ignored until end of
+</I>&gt;<i> &gt; transaction block
+</I>&gt;<i> &gt; psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_contrato.sql:168
+</I>&gt;<i> &gt; : ERROR: current transaction is aborted, commands ignored until end of
+</I>&gt;<i> &gt; transaction block
+</I>&gt;<i> &gt; psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_contrato.sql:169
+</I>&gt;<i> &gt; : ERROR: current transaction is aborted, commands ignored until end of
+</I>&gt;<i> &gt; transaction block
+</I>&gt;<i> &gt; psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_contrato.sql:173
+</I>&gt;<i> &gt; : ERROR: current transaction is aborted, commands ignored until end of
+</I>&gt;<i> &gt; transaction block
+</I>&gt;<i> &gt; psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_contrato.sql:174
+</I>&gt;<i> &gt; : ERROR: current transaction is aborted, commands ignored until end of
+</I>&gt;<i> &gt; transaction block
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Done.
+</I>&gt;<i> &gt; .
+</I>&gt;<i> &gt; .
+</I>&gt;<i> &gt; .
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; El 28 de enero de 2012 23:41, Fco. Javier M. C. &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-</A>
+</I>redes.com&gt;escribió:
+&gt;<i> &gt;  El 28/01/12 20:25, Tomeu Borras escribió:
+</I>&gt;<i> &gt;&gt; El 28 de enero de 2012 17:46, Fco. Javier M. C. &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-</A>
+</I>redes.com&gt;escribió:
+&gt;<i> &gt;&gt;&gt;  El 28/01/12 17:45, Fco. Javier M. C. escribió:
+</I>&gt;<i> &gt;&gt;&gt; Hola.
+</I>&gt;<i> &gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt; Lo que te ocurre es que no tienes tu copia de GIT actualizada ;)
+</I>&gt;<i> &gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt;  Uf! no se si queda claro lo que quiero decir... me refiero a tu copia
+</I>&gt;<i> &gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt; del repositorio de Bulmages.
+</I>&gt;<i> &gt;&gt; 
+</I>&gt;<i> &gt;&gt; Venga, reconoceloooooooooo, se te escapó una r.
+</I>&gt;<i> &gt;&gt; 
+</I>&gt;<i> &gt;&gt; De buen rollete !!!
+</I>&gt;<i> &gt;&gt; 
+</I>&gt;<i> &gt;&gt; Salut
+</I>&gt;<i> &gt;&gt; 
+</I>&gt;<i> &gt;&gt; 
+</I>&gt;<i> &gt;&gt; 
+</I>&gt;<i> &gt;&gt; Tenía hambre y me la comí ;)
+</I>&gt;<i> &gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt;  Un saludo.
+</I>&gt;<i> &gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt; El 28/01/12 15:55, pappland asd escribió:
+</I>&gt;<i> &gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt; Hola,
+</I>&gt;<i> &gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt; Durante el proceso de compilación obtengo el siguiente error:
+</I>&gt;<i> &gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt; /home/pablo/Escritorio/git-bulmages/bulmages/bulmages/bulmacont/plugins
+</I>&gt;<i> &gt;&gt;&gt; /pluginbc_mayor/bcextractoview.cpp: En la funci&#243;n miembro &#8216;virtual void
+</I>&gt;<i> &gt;&gt;&gt; BcExtractoView::vaciar()&#8217;:
+</I>&gt;<i> &gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt; /home/pablo/Escritorio/git-bulmages/bulmages/bulmages/bulmacont/plugins
+</I>&gt;<i> &gt;&gt;&gt; /pluginbc_mayor/bcextractoview.cpp:327:5: error: &#8216;mui_totalParcialDebe&#8217;
+</I>&gt;<i> &gt;&gt;&gt; no se declaró en este ámbito
+</I>&gt;<i> &gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt; /home/pablo/Escritorio/git-bulmages/bulmages/bulmages/bulmacont/plugins
+</I>&gt;<i> &gt;&gt;&gt; /pluginbc_mayor/bcextractoview.cpp: En la funci&#243;n miembro &#8216;void
+</I>&gt;<i> &gt;&gt;&gt; BcExtractoView::presentar()&#8217;:
+</I>&gt;<i> &gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt; /home/pablo/Escritorio/git-bulmages/bulmages/bulmages/bulmacont/plugins
+</I>&gt;<i> &gt;&gt;&gt; /pluginbc_mayor/bcextractoview.cpp:504:13: error:
+</I>&gt;<i> &gt;&gt;&gt; &#8216;mui_totalParcialDebe&#8217; no se declar&#243; en este &#225;mbito
+</I>&gt;<i> &gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt; make[2]: ***
+</I>&gt;<i> &gt;&gt;&gt; [bulmacont/plugins/pluginbc_mayor/CMakeFiles/pluginbc_mayor.dir/bcextra
+</I>&gt;<i> &gt;&gt;&gt; ctoview.o] Error 1
+</I>&gt;<i> &gt;&gt;&gt; make[1]: ***
+</I>&gt;<i> &gt;&gt;&gt; [bulmacont/plugins/pluginbc_mayor/CMakeFiles/pluginbc_mayor.dir/all]
+</I>&gt;<i> &gt;&gt;&gt; Error 2 make: *** [all] Error 2
+</I>&gt;<i> &gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt; Creo haber instalado todas las dependencias, pero parece que aun me
+</I>&gt;<i> &gt;&gt;&gt; falta algo.
+</I>&gt;<i> &gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt; Saludos
+</I>&gt;<i> &gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt; El 24 de enero de 2012 14:34, Daniel Ripoll 
+</I>&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">dripoll.public en gmail.com</A>&gt;escribió:
+&gt;<i> &gt;&gt;&gt;&gt;  Al 24/01/12 07:47, En/na Tomeu Borras ha escrit:
+</I>&gt;<i> &gt;&gt;&gt;&gt; El 23 de enero de 2012 23:18, pappland asd 
+</I>&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">pappland en gmail.com</A>&gt;escribió:
+&gt;<i> &gt;&gt;&gt;&gt;&gt; Buenas noches,
+</I>&gt;<i> &gt;&gt;&gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt;&gt;&gt; me acaban de pasar una copia de seguridad de una empresa con la que
+</I>&gt;<i> &gt;&gt;&gt;&gt;&gt; ahora mismo estan trabajando en la versión 0.12 de bulmages, y me han
+</I>&gt;<i> &gt;&gt;&gt;&gt;&gt; pedido que migre los datos a la úlitima versión.
+</I>&gt;<i> &gt;&gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt;&gt; Supongo que no debería haber muchos problemas.
+</I>&gt;<i> &gt;&gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt;&gt;&gt; Me pondré a trabajar con ello mañana, pero mi duda es sobre la última
+</I>&gt;<i> &gt;&gt;&gt;&gt;&gt; versión estable del programa. Entiendo que la versión que haya en git
+</I>&gt;<i> &gt;&gt;&gt;&gt;&gt; esta en continuo desarrollo, pero intuyo que la versión 0.13 de
+</I>&gt;<i> &gt;&gt;&gt;&gt;&gt; berilos se dajará muchas cosas fuera. ¿que versión sería más
+</I>&gt;<i> &gt;&gt;&gt;&gt;&gt; conveniente para utilizar?¿existe alguna versiñon estable pre
+</I>&gt;<i> &gt;&gt;&gt;&gt;&gt; compilada para simplificar todo el proceso?
+</I>&gt;<i> &gt;&gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt;&gt; Yo creo que si te vas a dedicar a dar servicio, como mínimo, debes
+</I>&gt;<i> &gt;&gt;&gt;&gt; saber compilar ya que si hay errores se solucionan más rápidamente.
+</I>&gt;<i> &gt;&gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt;&gt; Sobre cual elegir es un dilema. La estable nunca está lo
+</I>&gt;<i> &gt;&gt;&gt;&gt; suficientemente testeada y la de desarrollo tiene  sus riesgos. En
+</I>&gt;<i> &gt;&gt;&gt;&gt; estos momentos yo creo que la de desarrollo no esta sufriendo
+</I>&gt;<i> &gt;&gt;&gt;&gt; alteraciones graves por lo que es viable ponerla.
+</I>&gt;<i> &gt;&gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt;&gt; Eso si, siempre es bueno tener una versión en producción y otra en
+</I>&gt;<i> &gt;&gt;&gt;&gt; pruebas para poder volver atrás migraciones fallidas.
+</I>&gt;<i> &gt;&gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt;&gt;  Tal y como te informan Javier y Tomeu, no deberías tener muchos
+</I>&gt;<i> &gt;&gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt;&gt; problemas, aunque es recomendable usar siempre compilar todo a manita
+</I>&gt;<i> &gt;&gt;&gt;&gt; (y no requiere ser ingeniero).
+</I>&gt;<i> &gt;&gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt;&gt; Por otro lado, la versión no es la de BerliOS si no la de Gitorious,
+</I>&gt;<i> &gt;&gt;&gt;&gt; que puedes encontrar en:
+</I>&gt;<i> &gt;&gt;&gt;&gt; <A HREF="https://gitorious.org/bulmages/bulmages">https://gitorious.org/bulmages/bulmages</A>
+</I>&gt;<i> &gt;&gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt;&gt; --
+</I>&gt;<i> &gt;&gt;&gt;&gt; Daniel Ripoll Osmawww.danielripoll.es
+</I>&gt;<i> &gt;&gt;&gt;&gt; 6688.27.4.90
+</I>&gt;<i> &gt;&gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt;&gt; Web &amp; Desktop Developer
+</I>&gt;<i> &gt;&gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt;&gt; _______________________________________________
+</I>&gt;<i> &gt;&gt;&gt;&gt; Bulmages-main mailing list
+</I>&gt;<i> &gt;&gt;&gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt;&gt;&gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i> &gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt; _______________________________________________
+</I>&gt;<i> &gt;&gt;&gt; Bulmages-main mailing
+</I>&gt;<i> &gt;&gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">listBulmages-main en lists.berlios.dehttps</A>://lists.berlios.de/mailman/lis
+</I>&gt;<i> &gt;&gt;&gt; tinfo/bulmages-main
+</I>&gt;<i> &gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt; --
+</I>&gt;<i> &gt;&gt;&gt; Javier.
+</I>&gt;<i> &gt;&gt;&gt; TODO-<A HREF="REDEShttp://www.todo-redes.com">REDEShttp://www.todo-redes.com</A>
+</I>&gt;<i> &gt;&gt;&gt; C/Begònia 12 - 07010 Palma de Mallorca.
+</I>&gt;<i> &gt;&gt;&gt; Tel.: 971499071
+</I>&gt;<i> &gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt; --
+</I>&gt;<i> &gt;&gt;&gt; Javier.
+</I>&gt;<i> &gt;&gt;&gt; TODO-<A HREF="REDEShttp://www.todo-redes.com">REDEShttp://www.todo-redes.com</A>
+</I>&gt;<i> &gt;&gt;&gt; C/Begònia 12 - 07010 Palma de Mallorca.
+</I>&gt;<i> &gt;&gt;&gt; Tel.: 971499071
+</I>&gt;<i> &gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt; 
+</I>&gt;<i> &gt;&gt;&gt; _______________________________________________
+</I>&gt;<i> &gt;&gt;&gt; Bulmages-main mailing list
+</I>&gt;<i> &gt;&gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt;&gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i> &gt;&gt; 
+</I>&gt;<i> &gt;&gt; --
+</I>&gt;<i> &gt;&gt; Tomeu Borrás
+</I>&gt;<i> &gt;&gt; Conetxia Soluciones Informáticas
+</I>&gt;<i> &gt;&gt; 902 88 11 66 - 677 77 44 76
+</I>&gt;<i> &gt;&gt; 
+</I>&gt;<i> &gt;&gt; 
+</I>&gt;<i> &gt;&gt; 
+</I>&gt;<i> &gt;&gt; _______________________________________________
+</I>&gt;<i> &gt;&gt; Bulmages-main mailing
+</I>&gt;<i> &gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">listBulmages-main en lists.berlios.dehttps</A>://lists.berlios.de/mailman/list
+</I>&gt;<i> &gt;&gt; info/bulmages-main
+</I>&gt;<i> &gt;&gt; 
+</I>&gt;<i> &gt;&gt; 
+</I>&gt;<i> &gt;&gt; 
+</I>&gt;<i> &gt;&gt; --
+</I>&gt;<i> &gt;&gt; Javier.
+</I>&gt;<i> &gt;&gt; TODO-<A HREF="REDEShttp://www.todo-redes.com">REDEShttp://www.todo-redes.com</A>
+</I>&gt;<i> &gt;&gt; C/Begònia 12 - 07010 Palma de Mallorca.
+</I>&gt;<i> &gt;&gt; Tel.: 971499071
+</I>&gt;<i> &gt;&gt; 
+</I>&gt;<i> &gt;&gt; 
+</I>&gt;<i> &gt;&gt; _______________________________________________
+</I>&gt;<i> &gt;&gt; Bulmages-main mailing list
+</I>&gt;<i> &gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006869.html">[BulmaGés]Migración de datos
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006873.html">[BulmaGés]Migración de datos
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6872">[ fecha ]</a>
+              <a href="thread.html#6872">[ hilo ]</a>
+              <a href="subject.html#6872">[ asunto ]</a>
+              <a href="author.html#6872">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

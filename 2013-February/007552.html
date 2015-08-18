@@ -1,0 +1,325 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Probando la versión de Qt5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3FProbando_la_versi%3DC3%3DB3n_d%3F%3D%20%3D%3Futf-8%3Fq%3Fe_Qt5%3F%3D&In-Reply-To=%3C20130228101127.34ec755b%40namir.ctr.unican.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007551.html">
+   <LINK REL="Next"  HREF="007553.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Probando la versión de Qt5 </H1>
+    <B>Miguel Telleria de Esteban</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3FProbando_la_versi%3DC3%3DB3n_d%3F%3D%20%3D%3Futf-8%3Fq%3Fe_Qt5%3F%3D&In-Reply-To=%3C20130228101127.34ec755b%40namir.ctr.unican.es%3E"
+       TITLE="[BulmaGés]Probando la versión de Qt5">miguel en mtelleria.com
+       </A><BR>
+    <I>Jue Feb 28 10:11:27 CET 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007551.html">[BulmaGés]me presento
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007553.html">[BulmaGés] C++11
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7552">[ fecha ]</a>
+              <a href="thread.html#7552">[ hilo ]</a>
+              <a href="subject.html#7552">[ asunto ]</a>
+              <a href="author.html#7552">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola a todos,
+
+Mi pequeña aportación a este debate que además de tardía (solo ahora he
+podido sacar un poco de tiempo) tampoco será muy amplia ya que estoy
+muy lejos aún de conocer bien la funcionalidad del proyecto y tener una
+visión global.
+
+De lo que controlo (paquetes Debian):
+====================================
+
+Sobre Qt5
+---------
+
+Aunque Debian, que está en pleno freeze luchando por liberar Wheezy, no
+considere qt5 en sus repositorios oficiales, detrás de las cortinas se
+lleva trabajando con qt5 desde hace tiempo.
+
+*  En Ubuntu acaba de salir (el 5 de febrero) qt5 como paquete para
+   raring.
+   <A HREF="http://packages.ubuntu.com/source/raring/qtbase-opensource-src">http://packages.ubuntu.com/source/raring/qtbase-opensource-src</A>
+
+*  Desde dicho paquete se ve el git (de Debian) donde están trabajando.
+   <A HREF="http://anonscm.debian.org/gitweb/?p=pkg-kde/qt/qtbase.git;a=summary">http://anonscm.debian.org/gitweb/?p=pkg-kde/qt/qtbase.git;a=summary</A>
+
+*  También hay un PPA de Ubuntu con más cosas.
+   <A HREF="https://launchpad.net/~canonical-qt5-edgers/+archive/qt5-proper?field.series_filter=quantal">https://launchpad.net/~canonical-qt5-edgers/+archive/qt5-proper?field.series_filter=quantal</A>
+
+Vamos que por falta de paquetes no va a ser :) al menos para distros
+modernas.  
+
+Para los nostálgicos (como yo) de distribuciones antiguas LTS no sé si
+podrá ser (más que nada porque parece que se requieren compiladores
+modernos del C++ 11 y backportear un compilador es mucho más complicado
+que un paquete en sí).  Pero en cualquier caso en el software libre no
+nos podemos oponer al progreso así que: 
+
+	¡¡ adelante con qt5 y C++ 11 !!.
+
+Sí que estoy de acuerdo con Tomeu en que habría que publicar una
+release final de qt4 (MODIFICANDO EL CMakeLists.txt para que sea
+bulmages 1.4 o 1.4.1 !!).
+
+
+Sobre entrar en Debian o en Ubuntu (si interesase)
+--------------------------------------------------
+
+Como hemos visto las librerías y las versiones no son problema
+(actualmente ni en qt5) para entrar oficialmente en Debian o en Ubuntu
+(como al parecer ya se hizo en la Ubuntu 07.10).
+
+El problema para mí más delicado es adecuar algunos aspectos de
+Bulmages a la &quot;política de Debian&quot; o llamándolo más claro &quot;la
+ortodoxia&quot;.  A poco que veo en Bulmages veo que algunas configuraciones
+quizás necesitasen adaptar como por ejemplo:
+
+*  Utilizar /var/lib/bulmages en vez de /opt/bulmages
+
+*  Poner bulmasetup en sbin (ya que requiere permisos de root).
+
+*  Resolver un montón de errores de lintian (o asentirlos con
+   lintian-override).
+
+Como aún no tengo la visión global de la aplicación no me atrevo a
+decir más, simplemente dejo esto abierto (y abriré bugs en redmine
+cuando tenga ideas más concretas).
+
+De lo que no controlo (todo lo demás):
+=====================================
+
+*  Me parecen lógicos los 6 pasos propuestos por Fco Javier.
+
+*  Tablets y smartphones: yo aún no tengo ninguno ni los he usado
+   nunca con lo cual el peso de lo que digo probablemente no valga
+   nada.  Pero aún así me gusta opinar :):
+
+   -  Habría que seguir a Tizen, Meego y quizás Ubuntu phone.
+   -  También quizás meterse con Android o replicant.
+
+Y bueno, pues aquí está mi humilde contribución.
+
+Saludos,
+
+	Miguel
+
+
+On Wed, 27 Feb 2013 22:16:20 +0100 Tomeu Borras wrote:
+
+&gt;<i> También hay que considerar que, tarde o temprano, aparecerá una
+</I>&gt;<i> versión nativa de linux para dispositivos móviles.
+</I>&gt;<i> 
+</I>&gt;<i> Llegan tarde, pero aun no está toda la carne sobre el asador.
+</I>&gt;<i> Evidentemente nos beneficiaria mucho un linux nativo sobre tablets y
+</I>&gt;<i> móviles. Por no tener que cambiar las herramientas de desarrollo y
+</I>&gt;<i> por poder portar cosas. Un bulmatpv sobre tablet es perfecto para
+</I>&gt;<i> muchas tareas.
+</I>&gt;<i> 
+</I>&gt;<i> La migración a qt5 es claramente el siguiente paso que dará pie a
+</I>&gt;<i> cambiar muchas cosas. C++ 11 no requerirá tanto esfuerzo.
+</I>&gt;<i> 
+</I>&gt;<i> Yo crearía la rama qt5 en el git principal para mergear los cambios
+</I>&gt;<i> pero aun no la convertiría en máster por lo menos no hasta sacar una
+</I>&gt;<i> última release en qt4.
+</I>&gt;<i> 
+</I>&gt;<i> Pd. He trabajado un poco en la parte de nsis y ahora prácticamente sin
+</I>&gt;<i> cambiar nada se pueden hacer instala les desde los fuentes, Así que he
+</I>&gt;<i> sacado un instalador de la rama master. Incorpora una nueva versión de
+</I>&gt;<i> reportlab con soporte a los códigos Qr y tampoco hay que modificar las
+</I>&gt;<i> plantillas para Windows. Esta en www.bulmages.com mi idea es sacarlos
+</I>&gt;<i> mas a menudo por si ayuda en el testing.
+</I>&gt;<i> 
+</I>&gt;<i> Salut
+</I>&gt;<i> El 23 de febrero de 2013 11:42, Fco. Javier M. C.
+</I>&gt;<i> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;escribió:
+</I>&gt;<i> 
+</I>&gt;<i> &gt;  Hola.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Ciertamente el futuro de Bulmages pasa por la migración a Qt5 y
+</I>&gt;<i> &gt; C++11 y esto me lleva a reflexionar sobre todos los cambios que
+</I>&gt;<i> &gt; habría que realizar para poder beneficiarnos de las ventajas que
+</I>&gt;<i> &gt; supondría esta migración.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; - Los retos se acumulan:
+</I>&gt;<i> &gt; Hace 10 años cuando se inició Bulmages el mundo móvil NO había
+</I>&gt;<i> &gt; explotado todavía, ahora hay tabletas, 'smart phones' casi más
+</I>&gt;<i> &gt; potentes que ordenadores, y la movilidad y el intercambio de datos
+</I>&gt;<i> &gt; es algo a tener en cuenta. El comercio electrónico, la interacción
+</I>&gt;<i> &gt; con sistemas de venta online, sistemas automáticos con proveedores,
+</I>&gt;<i> &gt; Hacienda (Webservices) y otras empresas (factura electrónica), etc.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Todo junto hace que la tentación de reprogramación completa sea
+</I>&gt;<i> &gt; tentadora, pero supone un esfuerzo muy importante y los recursos
+</I>&gt;<i> &gt; disponibles siempre son limitados. No sólo económicos, que también,
+</I>&gt;<i> &gt; sino de programadores experimentados, no sólo hábiles a la hora de
+</I>&gt;<i> &gt; programar sino capaces de entender las necesidades de los usuarios
+</I>&gt;<i> &gt; de los programas de gestión (tienen que entender cómo funcionan las
+</I>&gt;<i> &gt; empresas por dentro).
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; - ¿Qué se está haciendo?:
+</I>&gt;<i> &gt; Como bien dices Tomeu, Daniel ha realizado una primera aproximación
+</I>&gt;<i> &gt; de portación de Bulmages a Qt5. ¿Es esto suficiente? Es un
+</I>&gt;<i> &gt; comienzo. Teniendo en cuenta los recursos disponibles es mucho.
+</I>&gt;<i> &gt; Se organizan cada 2 domingos reuniones para intentar acercar este
+</I>&gt;<i> &gt; tipo de programación a las personas interesadas (que por cierto
+</I>&gt;<i> &gt; toca reunión mañana). Es un proceso lento, pero se intenta dar un
+</I>&gt;<i> &gt; poco de forma a un tipo de formación sobre Bulmages hasta disponer
+</I>&gt;<i> &gt; de algún sistema mejor.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; - ¿Y ahora qué?:
+</I>&gt;<i> &gt; Creo que no nos podemos permitir el lujo de reescribir todo el
+</I>&gt;<i> &gt; código de cero alegremente, pero sí dar pasos y que de forma
+</I>&gt;<i> &gt; progresiva se vayan introduciendo los cambios necesarios en el
+</I>&gt;<i> &gt; programa. Propongo realizar los siguientes pasos:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; 1) Completar la migración a Qt5 con los cambios de Daniel.
+</I>&gt;<i> &gt; 2) Discontinuar el desarrollo de la rama Qt4.
+</I>&gt;<i> &gt; 3) Migrar a C++11 completamente sin introducir nuevos cambios (en
+</I>&gt;<i> &gt; modo compatibilidad).
+</I>&gt;<i> &gt; 4) Disponer en ese momento de 2 ramas: estable y desarrollo.
+</I>&gt;<i> &gt; 5) Comenzar a desarrollar en la rama de desarrollo utilizando las
+</I>&gt;<i> &gt; ventajas propias de Qt5 y C++11.
+</I>&gt;<i> &gt; 6) Sincronizar código estabilizado en la rama estable.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Creo que hacerlo de esta manera no es traumático para nadie y la
+</I>&gt;<i> &gt; carga de trabajo es asumible en un tiempo razonable por los que
+</I>&gt;<i> &gt; somos.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; - ¿Qué pasa con las distribuciones GNU/Linux?
+</I>&gt;<i> &gt; Esta es la eterna lucha, sobre todo con Debian que es más lenta que
+</I>&gt;<i> &gt; un caracol para introducir mejoras. Creo sinceramente que no
+</I>&gt;<i> &gt; debería de preocuparnos en absoluto puesto que hay maneras de
+</I>&gt;<i> &gt; solventar el problema incluso incluyendo las librerías necesarias
+</I>&gt;<i> &gt; junto con el programa y hacelo independiente de las librerías
+</I>&gt;<i> &gt; instaladas en el sistema. Es lo que hago con BulmagesPlus y va
+</I>&gt;<i> &gt; perfecto. Siempre habrá alguien al que no le guste esta solución,
+</I>&gt;<i> &gt; pues que proponga otra que sea factible (o se calle para siempre ;)
+</I>&gt;<i> &gt; )
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Como conclusión me gustaría resaltar que se haga lo que se haga es
+</I>&gt;<i> &gt; mejor hacerlo por consenso porque sino me veo 20 versiones
+</I>&gt;<i> &gt; diferentes del programa, y eso no es que sea malo (es Software
+</I>&gt;<i> &gt; Libre), es que es poco práctico. Es mejor disponer de una rama
+</I>&gt;<i> &gt; común genérica y luego que cada uno se lo personalice como le venga
+</I>&gt;<i> &gt; en gana.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ¡Buá! creo que me ha quedado un correo un poco largo.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Creo que es importante que los programadores de Bulmages se
+</I>&gt;<i> &gt; involucren en esta discusión que ha iniciado Tomeu y que es de
+</I>&gt;<i> &gt; vital importancia para el futuro del proyecto.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Muchas gracias.
+</I>&gt;<i> &gt; Un saludo.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; El 22/02/13 11:01, Tomeu Borras escribió:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Hola
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Estoy empezando a mirarme todo el tema de Qt5 y lo veo genial. Muy
+</I>&gt;<i> &gt; buen trabajo Daniel.
+</I>&gt;<i> &gt; El tema es que hoy por hoy migrar a Qt5 es algo precipitado ya que
+</I>&gt;<i> &gt; no esta oficialmente en las distros (y menos aun en Debian).
+</I>&gt;<i> &gt; Otro tema importante es que con Qt5 casi que nos han abierto la
+</I>&gt;<i> &gt; puerta a cambiar el sistema de llamadas a plugins haciendo un
+</I>&gt;<i> &gt; cambio muy radical en todo el sistema y mucho trabajo también. Ya
+</I>&gt;<i> &gt; podrían habérselo pensado antes. Y por otro lado tenemos que
+</I>&gt;<i> &gt; estamos modificando la rama de desarrollo en Qt4 y no traspasamos
+</I>&gt;<i> &gt; los cambios a Qt5.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Pienso que deberíamos sacar una ultima release con Qt4 y dejar
+</I>&gt;<i> &gt; tiempo para que se vaya incorporando bien Qt5 en los sistemas y
+</I>&gt;<i> &gt; luego pasar a Qt5 la rama de desarrollo. El tema es que tampoco
+</I>&gt;<i> &gt; esta mal ir trabajando en una rama Qt5 mientras tanto.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ¿Alguna idea sobre como abordamos este tema?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Salut
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; --
+</I>&gt;<i> &gt; Tomeu Borrás
+</I>&gt;<i> &gt; Conetxia Soluciones Informáticas
+</I>&gt;<i> &gt; 677 77 44 76
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Bulmages-main mailing
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">listBulmages-main en lists.berlios.dehttps</A>://lists.berlios.de/mailman/listinfo/bulmages-main
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; --
+</I>&gt;<i> &gt; Fco. Javier M. C.
+</I>&gt;<i> &gt; *************************<A HREF="http://todo-redes.comhttp://bulmagesplus.com">http://todo-redes.comhttp://bulmagesplus.com</A>
+</I>&gt;<i> &gt; *************************
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Bulmages-main mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+
+-- 
+
+      (O-O)
+---oOO-(_)-OOo-----------------------------------------------------
+ Miguel TELLERIA DE ESTEBAN               <A HREF="http://www.mtelleria.com">http://www.mtelleria.com</A>
+ Email: miguel at mtelleria.com           Tel GSM:  +34 650 801098
+                                          Tel Fix:  +34 942 280174
+
+ Miembro de <A HREF="http://www.linuca.org">http://www.linuca.org</A>    Membre du <A HREF="http://www.bxlug.be">http://www.bxlug.be</A>
+ ¿Usuario captivo o libre?    <A HREF="http://www.obtengalinux.org/windows/">http://www.obtengalinux.org/windows/</A>
+ Free or  captive user?        <A HREF="http://www.getgnulinux.org/windows/">http://www.getgnulinux.org/windows/</A>
+-------------------------------------------------------------------
+
+------------ próxima parte ------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 198 bytes
+Desc: no disponible
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20130228/02c2cefd/attachment.pgp">https://lists.berlios.de/pipermail/bulmages-main/attachments/20130228/02c2cefd/attachment.pgp</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007551.html">[BulmaGés]me presento
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007553.html">[BulmaGés] C++11
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7552">[ fecha ]</a>
+              <a href="thread.html#7552">[ hilo ]</a>
+              <a href="subject.html#7552">[ asunto ]</a>
+              <a href="author.html#7552">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

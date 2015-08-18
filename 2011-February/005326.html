@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]r4629 - trunk/bulmages/bulmalib/src
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fr4629_-_trunk/bulmage%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fs/bulmalib/src%3F%3D&In-Reply-To=%3C4D6C14C0.7020107%40todo-redes.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005324.html">
+   <LINK REL="Next"  HREF="005321.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]r4629 - trunk/bulmages/bulmalib/src </H1>
+    <B>Fco. Javier M. C.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fr4629_-_trunk/bulmage%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fs/bulmalib/src%3F%3D&In-Reply-To=%3C4D6C14C0.7020107%40todo-redes.com%3E"
+       TITLE="[BulmaGés]r4629 - trunk/bulmages/bulmalib/src">fcojavmc en todo-redes.com
+       </A><BR>
+    <I>Lun Feb 28 22:33:52 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="005324.html">[BulmaGés]r4629 - trunk/bulmages/bulmalib/src
+</A></li>
+        <LI>Próximo mensaje: <A HREF="005321.html">[BulmaGés] r4630 - trunk/bulmages/bulmacont/src/po
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5326">[ fecha ]</a>
+              <a href="thread.html#5326">[ hilo ]</a>
+              <a href="subject.html#5326">[ asunto ]</a>
+              <a href="author.html#5326">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE> Sólo afecta para el caso en el que no se vería ninguna columna. En
+cualquier otro caso carga la configuración guardada.
+
+El 28/02/11 21:46, Tomeu Borras escribió:
+&gt;<i> Esto no afecta a las configuraciones por defecto ?
+</I>&gt;<i>
+</I>&gt;<i> Imagino que no porque aplicarán el resto y el blob sólo en el caso de
+</I>&gt;<i> que el numero de columnas coincidan.
+</I>&gt;<i>
+</I>&gt;<i> Pero queria asegurarme.
+</I>
+Asegurado, entonces :)
+
+&gt;<i>
+</I>&gt;<i> Salut
+</I>&gt;<i>
+</I>&gt;<i> 2011/2/28 &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">svn en mail.berlios.de</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">svn en mail.berlios.de</A>&gt;&gt;
+</I>&gt;<i>
+</I>&gt;<i>     Author: fcojavmc
+</I>&gt;<i>     Date: 2011-02-28 20:28:38 +0100 (Mon, 28 Feb 2011)
+</I>&gt;<i>     New Revision: 4629
+</I>&gt;<i>
+</I>&gt;<i>     Modified:
+</I>&gt;<i>       trunk/bulmages/bulmalib/src/blsubform.cpp
+</I>&gt;<i>     Log:
+</I>&gt;<i>     BUG: En los subformularios las columnas desaparecian sin
+</I>&gt;<i>     posibilidad de
+</I>&gt;<i>     hacer nada para que vuelvan a aprecer.
+</I>&gt;<i>
+</I>&gt;<i>     El problema venia de las funciones 'saveState()' y
+</I>&gt;<i>     'restoreState()' que
+</I>&gt;<i>     guardan un BLOB en los archivos de configuracion para restaurar el
+</I>&gt;<i>     estado anterior de las columnas. Si la configuracion de la tabla nunca
+</I>&gt;<i>     se habia guardado o en caso de que el numero de columnas no
+</I>&gt;<i>     coincida con
+</I>&gt;<i>     el estado guardado, por ejemplo al aplicar un parche a la base de
+</I>&gt;<i>     datos,
+</I>&gt;<i>     en estos casos no se mostraban las columnas.
+</I>&gt;<i>
+</I>&gt;<i>     Como solucion hago una doble comprobacion antes y despues de restaurar
+</I>&gt;<i>     el estado para saber a cuantas columnas se aplica la restauracion.
+</I>&gt;<i>     Si no
+</I>&gt;<i>     se restauran todas las columna que tienen que mostrarse en la tabla
+</I>&gt;<i>     entonces ninguna columna se mostraria, por tanto reseteo la
+</I>&gt;<i>     configuracion de las todas las columnas.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     *********************************
+</I>&gt;<i>     *          Todo-Redes           *
+</I>&gt;<i>     *        C/.Begonia, 12         *
+</I>&gt;<i>     *   07010 Palma de Mallorca.    *
+</I>&gt;<i>     *      Tel: +34-971499071       *
+</I>&gt;<i>     *   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>   *
+</I>&gt;<i>     *  comercial(en)todo-redes.com &lt;<A HREF="http://todo-redes.com">http://todo-redes.com</A>&gt;  *
+</I>&gt;<i>     *********************************
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     _______________________________________________
+</I>&gt;<i>     Bulmages-main mailing list
+</I>&gt;<i>     <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>&gt;
+</I>&gt;<i>     <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+
+-- 
+Javier.
+TODO-REDES
+<A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+C/Begònia 12 - 07010 Palma de Mallorca.
+Tel.: 971499071
+
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20110228/5f0118e6/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20110228/5f0118e6/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="005324.html">[BulmaGés]r4629 - trunk/bulmages/bulmalib/src
+</A></li>
+	<LI>Próximo mensaje: <A HREF="005321.html">[BulmaGés] r4630 - trunk/bulmages/bulmacont/src/po
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5326">[ fecha ]</a>
+              <a href="thread.html#5326">[ hilo ]</a>
+              <a href="subject.html#5326">[ asunto ]</a>
+              <a href="author.html#5326">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

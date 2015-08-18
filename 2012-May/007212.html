@@ -1,0 +1,763 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to arreglo...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20arreglo...&In-Reply-To=%3C20120511224517.E59F0756DF%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007211.html">
+   <LINK REL="Next"  HREF="007213.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to arreglo... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20arreglo...&In-Reply-To=%3C20120511224517.E59F0756DF%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to arreglo...">no-reply en gitorious.org
+       </A><BR>
+    <I>Sab Mayo 12 00:45:17 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007211.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to arreglo...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007213.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to arreglo...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7212">[ fecha ]</a>
+              <a href="thread.html#7212">[ hilo ]</a>
+              <a href="subject.html#7212">[ asunto ]</a>
+              <a href="author.html#7212">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to arreglobulmacont
+arreglobulmacont changed from 9a4536d to e63e285
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/9a4536dd9e087e8d6ce14417e07e44dbee2133eb/diffs/e63e2852a5691216111ced65f9bcae413b55ac4f">https://gitorious.org/bulmages/bulmages/commit/9a4536dd9e087e8d6ce14417e07e44dbee2133eb/diffs/e63e2852a5691216111ced65f9bcae413b55ac4f</A>
+
+Diff: 
+
+commit e63e2852a5691216111ced65f9bcae413b55ac4f
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sat May 12 00:45:10 2012 +0200
+
+    Arreglo la opcion de editar asiento
+
+diff --git a/bulmages/bulmacont/plugins/pluginbc_amortizacion/bcamortizacionview.cpp b/bulmages/bulmacont/plugins/pluginbc_amortizacion/bcamortizacionview.cpp
+index 442d977..c4ce0e0 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_amortizacion/bcamortizacionview.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_amortizacion/bcamortizacionview.cpp
+@@ -495,7 +495,7 @@ void BcAmortizacionSubForm::execMenuAction ( QAction *opcion )
+                 QString idasiento = dbValue(&quot;idasiento&quot;);
+                 ((BcCompany *)mainCompany())-&gt;intapuntsempresa()-&gt;muestraAsiento(idasiento.toInt());
+         */
+-        boton_asiento();
++//        boton_asiento();
+     } // end if
+ 
+     if ( opcion-&gt;text() == _ ( &quot;Desvincular asiento&quot; ) || opcion-&gt;text() == _ ( &quot;Borrar asiento&quot; ) ) {
+diff --git a/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientolistsubform.cpp b/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientolistsubform.cpp
+index 8a7134b..5134c36 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientolistsubform.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientolistsubform.cpp
+@@ -68,94 +68,3 @@ BcAsientoListSubForm::~BcAsientoListSubForm()
+ 
+ 
+ 
+-/// Slot que trata la solicitud de pintar el menu contextual sobre el subformulario.
+-/**
+-\param menu
+-**/
+-void BcAsientoListSubForm::s_pintaMenu ( QMenu *menu )
+-{
+-    BL_FUNC_DEBUG
+-    menu-&gt;addSeparator();
+-    menu-&gt;addAction ( _ ( &quot;Mostrar asiento&quot; ) );
+-    menu-&gt;addSeparator();
+-    menu-&gt;addAction ( _ ( &quot;Mostrar extracto (dia)&quot; ) );
+-    menu-&gt;addAction ( _ ( &quot;Mostrar extracto (mes)&quot; ) );
+-    menu-&gt;addAction ( _ ( &quot;Mostrar extracto (ano)&quot; ) );
+-    
+-}
+-
+-/// Slot que trata la activacion de un elemento en el menu contextual.
+-/**
+-\param action
+-/return
+-**/
+-void BcAsientoListSubForm::s_trataMenu ( QAction *action )
+-{
+-    BL_FUNC_DEBUG
+-    if ( !action ) return;
+-    if ( action-&gt;text() == _ ( &quot;Mostrar asiento&quot; ) )
+-      
+-	emit cellDoubleClicked ( 0, 0);
+-   
+-
+-    
+-}
+-
+-///
+-/**
+-\return
+-**/
+-
+-/*
+-void BcAsientoListSubForm::contextMenuEvent ( QContextMenuEvent * )
+-{
+-    BL_FUNC_DEBUG
+-    QAction *del = NULL;
+-    int row = currentRow();
+-    if ( row &lt; 0 ) {
+-        return;
+-    } // end if
+-    int col = currentColumn();
+-    if ( row &lt; 0 ) {
+-        return;
+-    } // end if
+-    QMenu *popup = new QMenu ( this );
+-    QAction *mostapunte = popup-&gt;addAction ( &quot;Mostrar asiento&quot; );
+-    popup-&gt;addSeparator();
+-
+-
+-    if ( m_delete ) {
+-        del = popup-&gt;addAction ( _( &quot;Borrar registro&quot; ) );
+-    } // end if
+-    popup-&gt;addSeparator();
+-    QAction *ajustc = popup-&gt;addAction ( _( &quot;Ajustar columa&quot; ) );
+-    QAction *ajustac = popup-&gt;addAction ( _( &quot;Ajustar altura&quot; ) );
+-    QAction *ajust = popup-&gt;addAction ( _( &quot;Ajustar columnas&quot; ) );
+-    QAction *ajusta = popup-&gt;addAction ( _( &quot;Ajustar alturas&quot; ) );
+-    popup-&gt;addSeparator();
+-    QAction *verconfig = popup-&gt;addAction ( _( &quot;Ver configurador de subformulario&quot; ) );
+-
+-    QAction *opcion = popup-&gt;exec ( QCursor::pos() );
+-
+-    if ( opcion == mostapunte ) {
+-        boton_asiento();
+-    } // end if
+-    if ( opcion == ajust ) {
+-        resizeColumnsToContents();
+-    } // end if
+-    if ( opcion == ajusta ) {
+-        resizeRowsToContents();
+-    } // end if
+-    if ( opcion == ajustc ) {
+-        resizeColumnToContents ( col );
+-    } // end if
+-    if ( opcion == ajustac ) {
+-        resizeRowToContents ( row );
+-    } // end if
+-    if ( opcion == verconfig ) {
+-        showConfig();
+-    } // end if
+-    delete popup;
+-    
+-}
+-*/
+diff --git a/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientolistsubform.h b/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientolistsubform.h
+index 0a3b548..f220e06 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientolistsubform.h
++++ b/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientolistsubform.h
+@@ -36,11 +36,6 @@ class PLUGINBC_ASIENTO_EXPORT BcAsientoListSubForm : public BcSubForm
+ public:
+     BcAsientoListSubForm ( QWidget *parent = 0, const char *name = 0 );
+     virtual ~BcAsientoListSubForm();
+-
+-public slots:
+-//    virtual void contextMenuEvent ( QContextMenuEvent * );
+-    virtual void s_pintaMenu ( QMenu *menu );
+-    virtual void s_trataMenu ( QAction *action );
+ };
+ 
+ #endif
+diff --git a/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientosubform.cpp b/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientosubform.cpp
+index 20dda78..d9a835d 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientosubform.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientosubform.cpp
+@@ -78,31 +78,6 @@ BcAsientoSubForm::~BcAsientoSubForm()
+ }
+ 
+ 
+-/// Slot que trata la solicitud de pintar el menu contextual sobre el subformulario.
+-/**
+-\param menu
+-**/
+-void BcAsientoSubForm::s_pintaMenu ( QMenu *menu )
+-{
+-    BL_FUNC_DEBUG
+-    menu-&gt;addSeparator();
+-    menu-&gt;addAction ( _ ( &quot;Mostrar asiento&quot; ) );
+-}
+-
+-/// Slot que trata la activacion de un elemento en el menu contextual.
+-/**
+-\param action
+-/return
+-**/
+-void BcAsientoSubForm::s_trataMenu ( QAction *action )
+-{
+-    BL_FUNC_DEBUG
+-    if ( !action ) return;
+-    if ( action-&gt;text() == _ ( &quot;Mostrar asiento&quot; ) )
+-        boton_asiento();
+-   
+-}
+-
+ /// Carga lineas de asiento (apuntes).
+ /**
+ \param idasiento
+diff --git a/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientosubform.h b/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientosubform.h
+index 8ef733d..72ec1c5 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientosubform.h
++++ b/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientosubform.h
+@@ -41,10 +41,6 @@ public:
+     virtual void load ( QString );
+     BlFixed totalDebe ( QString );
+     BlFixed totalHaber ( QString );
+-
+-public slots:
+-    virtual void s_pintaMenu ( QMenu *menu );
+-    virtual void s_trataMenu ( QAction *action );
+ };
+ 
+ #endif
+diff --git a/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientoview.h b/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientoview.h
+index 796d494..7101740 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientoview.h
++++ b/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientoview.h
+@@ -140,5 +140,23 @@ protected:
+     bool eventFilter ( QObject *obj, QEvent *event );
+ };
+ 
++
++
++
++class SubForm_Asiento : public QObject
++{
++    Q_OBJECT
++
++public:
++    SubForm_Asiento ( BlSubForm * );
++    ~SubForm_Asiento();
++public slots:
++    void mostrarAsiento ();
++    virtual void s_pintaMenu ( QMenu * );
++    virtual void s_trataMenu ( QAction * );
++};
++
++
++
+ #endif
+ 
+diff --git a/bulmages/bulmacont/plugins/pluginbc_asiento/pluginbc_asiento.cpp b/bulmages/bulmacont/plugins/pluginbc_asiento/pluginbc_asiento.cpp
+index 1105746..912f0f8 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_asiento/pluginbc_asiento.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_asiento/pluginbc_asiento.cpp
+@@ -252,3 +252,158 @@ int SNewBcAsientoView ( BcCompany * )
+     return 1;
+ }
+ 
++
++
++
++
++
++
++
++
++/// --------------------------------------------------------------
++/// --------- Implemento la seleccion de diarios -----------------
++/// Con esta funcionalidad creamos menus contextuales en todos los subformularios donde
++/// Aparezca el identificador de articulo como elemento y permite de forma sencilla
++/// La creacion, la edicion, y la seleccion.
++///
++
++/**
++\param parent
++**/
++SubForm_Asiento::SubForm_Asiento ( BlSubForm *parent ) : QObject ( parent )
++{
++    BL_FUNC_DEBUG
++    
++}
++
++///
++/**
++**/
++SubForm_Asiento::~SubForm_Asiento()
++{
++    BL_FUNC_DEBUG
++    
++}
++
++
++///
++/**
++\param menu
++**/
++void SubForm_Asiento::s_pintaMenu ( QMenu *menu )
++{
++    BL_FUNC_DEBUG
++    BlSubForm *sub = ( BlSubForm * ) parent();
++    BlSubFormHeader *header = sub-&gt;header ( &quot;idasiento&quot; );
++    if ( header ) {
++        menu-&gt;addSeparator();
++        QString idcuenta = sub-&gt;dbValue ( &quot;idasiento&quot; );
++        if ( idcuenta != &quot;&quot; )  {
++	    menu-&gt;addAction ( _ ( &quot;Mostrar Asiento&quot; ) );
++	} // end if
++    } // end if
++}
++
++
++///
++/**
++\param action
++**/
++void SubForm_Asiento::s_trataMenu ( QAction *action )
++{
++    BL_FUNC_DEBUG
++    BlSubForm *sub = ( BlSubForm * ) parent();
++    QString idcuenta = sub-&gt;dbValue ( &quot;idasiento&quot; );
++
++    if ( idcuenta != &quot;&quot; ) {
++	if ( action-&gt;text() == _ ( &quot;Mostrar Asiento&quot; ) ) {
++            mostrarAsiento ();
++	} // end if
++    } // end if
++}
++
++
++
++/// Si el parametro pasado es un:
++/// 0 -&gt; del d&iacute;a actual
++/// 1 -&gt; del mes actual
++/// 2 -&gt; del a&ntilde;o actual
++/**
++\param tipo
++**/
++void SubForm_Asiento::mostrarAsiento (  )
++{
++    BL_FUNC_DEBUG
++
++    BlSubForm *sub = ( BlSubForm * ) parent();
++    
++    QString numasiento = sub-&gt;dbValue ( &quot;idasiento&quot; );
++    if ( numasiento != &quot;&quot; ) {
++        g_asiento -&gt;muestraAsiento ( numasiento.toInt() );
++        g_asiento-&gt;hide();
++	g_asiento-&gt;show();
++    } // end if  
++}
++
++
++
++///
++/**
++\param sub
++\return
++**/
++int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
++{
++    BL_FUNC_DEBUG
++    SubForm_Asiento *subformods = new SubForm_Asiento ( sub );
++    sub-&gt;QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
++    sub-&gt;QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
++    
++    return 0;
++}
++
++
++
++/// Miramos de poner los iconos del menu de subformularios
++///
++/**
++\param sub
++\return
++**/
++int BlSubForm_preparaMenu ( BlSubForm *sub ) {
++    BL_FUNC_DEBUG
++    BlSubFormHeader *header = sub-&gt;header ( &quot;codigo&quot; );
++    if ( header ) {
++	SubForm_Asiento *subformods = new SubForm_Asiento ( sub );
++	
++	QHBoxLayout *m_hboxLayout1 = sub-&gt;mui_menusubform-&gt;findChild&lt;QHBoxLayout *&gt; ( &quot;hboxLayout1&quot; );
++	if ( !m_hboxLayout1 ) {
++	    m_hboxLayout1 = new QHBoxLayout ( sub-&gt;mui_menusubform );
++	    m_hboxLayout1-&gt;setSpacing (0 );
++	    m_hboxLayout1-&gt;setMargin ( 0 );
++	    m_hboxLayout1-&gt;setObjectName ( QString::fromUtf8 ( &quot;hboxLayout1&quot; ) );
++	} // end if
++	
++
++	  QToolButton *sel = new QToolButton ( sub-&gt;mui_menusubform );
++	  sel-&gt;setStatusTip ( &quot;Diario (dia)&quot; );
++	  sel-&gt;setToolTip ( &quot;Diario (dia)&quot; );
++	  sel-&gt;setMinimumSize ( QSize ( 18, 18 ) );
++	  sel-&gt;setIcon ( QIcon ( &quot;:/Images/book.png&quot; ) );
++	  sel-&gt;setIconSize ( QSize ( 18, 18 ) );    
++	  m_hboxLayout1-&gt;addWidget ( sel );
++	  sel-&gt;connect (sel, SIGNAL(released()), subformods, SLOT(mostrarAsiento()));
++	
++    } // end if
++    return 0;
++}
++
++
++
++
++
++
++
++
++
++
+diff --git a/bulmages/bulmacont/plugins/pluginbc_asiento/pluginbc_asiento.h b/bulmages/bulmacont/plugins/pluginbc_asiento/pluginbc_asiento.h
+index 1c43574..8474b5e 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_asiento/pluginbc_asiento.h
++++ b/bulmages/bulmacont/plugins/pluginbc_asiento/pluginbc_asiento.h
+@@ -32,6 +32,8 @@ extern &quot;C&quot; PLUGINBC_ASIENTO_EXPORT BcAsientoView *g_asiento;
+ extern &quot;C&quot; PLUGINBC_ASIENTO_EXPORT int entryPoint ( BcBulmaCont * );
+ extern &quot;C&quot; PLUGINBC_ASIENTO_EXPORT int SNewBcAsientoView ( BcCompany * );
+ extern &quot;C&quot; PLUGINBC_ASIENTO_EXPORT int BlAction_actionTriggered(BlAction *);
++extern &quot;C&quot; PLUGINBC_ASIENTO_EXPORT int BlSubForm_preparaMenu ( BlSubForm * );
++extern &quot;C&quot; PLUGINBC_ASIENTO_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
+ 
+ #endif
+ 
+diff --git a/bulmages/bulmacont/plugins/pluginbc_balance/balancesubform.cpp b/bulmages/bulmacont/plugins/pluginbc_balance/balancesubform.cpp
+index dec7c6f..d5258ac 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_balance/balancesubform.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_balance/balancesubform.cpp
+@@ -48,60 +48,3 @@ BalanceSubForm::BalanceSubForm ( QWidget *parent, const char * ) : BcSubForm ( p
+     
+ }
+ 
+-
+-///
+-/**
+-\return
+-**/
+-void BalanceSubForm::contextMenuEvent ( QContextMenuEvent * )
+-{
+-    BL_FUNC_DEBUG
+-    QAction *del = NULL;
+-    int row = currentRow();
+-    if ( row &lt; 0 ) {
+-        return;
+-    } // end if
+-    int col = currentColumn();
+-    if ( row &lt; 0 ) {
+-        return;
+-    } // end if
+-    QMenu *popup = new QMenu ( this );
+-    QAction *mostapunte = popup-&gt;addAction ( &quot;Mostrar asiento&quot; );
+-
+-
+-    if ( m_delete )
+-        del = popup-&gt;addAction ( _ ( &quot;Borrar registro&quot; ) );
+-    popup-&gt;addSeparator();
+-    QAction *ajustc = popup-&gt;addAction ( _ ( &quot;Ajustar columa&quot; ) );
+-    QAction *ajustac = popup-&gt;addAction ( _ ( &quot;Ajustar altura&quot; ) );
+-    QAction *ajust = popup-&gt;addAction ( _ ( &quot;Ajustar columnas&quot; ) );
+-    QAction *ajusta = popup-&gt;addAction ( _ ( &quot;Ajustar alturas&quot; ) );
+-    popup-&gt;addSeparator();
+-    QAction *verconfig = popup-&gt;addAction ( _ ( &quot;Ver configurador de subformulario&quot; ) );
+-    QAction *opcion = popup-&gt;exec ( QCursor::pos() );
+-
+-    if ( opcion == mostapunte ) {
+-        boton_asiento();
+-    } // end if
+-    if ( opcion == del ) {
+-        remove ( row );
+-    } // end if
+-    if ( opcion == ajust ) {
+-        resizeColumnsToContents();
+-    } // end if
+-    if ( opcion == ajusta ) {
+-        resizeRowsToContents();
+-    } // end if
+-    if ( opcion == ajustc ) {
+-        resizeColumnToContents ( col );
+-    } // end if
+-    if ( opcion == ajustac ) {
+-        resizeRowToContents ( row );
+-    } // end if
+-    if ( opcion == verconfig ) {
+-        showConfig();
+-    } // end if
+-    delete popup;
+-    
+-}
+-
+diff --git a/bulmages/bulmacont/plugins/pluginbc_balance/balancesubform.h b/bulmages/bulmacont/plugins/pluginbc_balance/balancesubform.h
+index e2c9744..ee98be8 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_balance/balancesubform.h
++++ b/bulmages/bulmacont/plugins/pluginbc_balance/balancesubform.h
+@@ -34,9 +34,6 @@ class BalanceSubForm : public BcSubForm
+ public:
+     BalanceSubForm ( QWidget *parent = 0, const char *name = 0 );
+     virtual ~BalanceSubForm() {};
+-
+-public slots:
+-    virtual void contextMenuEvent ( QContextMenuEvent * );
+ };
+ 
+ #endif
+diff --git a/bulmages/bulmacont/plugins/pluginbc_cuenta/pluginbc_cuenta.cpp b/bulmages/bulmacont/plugins/pluginbc_cuenta/pluginbc_cuenta.cpp
+index 3e43f35..3e5ab9b 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_cuenta/pluginbc_cuenta.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_cuenta/pluginbc_cuenta.cpp
+@@ -348,7 +348,6 @@ int BlSubForm_editFinished ( BlSubForm *sub )
+     BL_FUNC_DEBUG
+     if ( sub-&gt;m_campoactual-&gt;fieldName() == &quot;codigo&quot; ) {
+    QString query = &quot;SELECT idcuenta FROM cuenta WHERE upper (descripcion ||  ' ' || codigo) LIKE upper('&quot; + sub-&gt;m_campoactual-&gt;text() + &quot;%')&quot;;
+-// blMsgInfo(query);
+         BlDbRecordSet *cur = sub-&gt;mainCompany() -&gt;loadQuery ( query );
+         if ( !cur-&gt;eof() ) {
+             sub-&gt;m_registrolinea-&gt;setDbValue ( &quot;idcuenta&quot;, cur-&gt;value( &quot;idcuenta&quot; ) );
+diff --git a/bulmages/bulmacont/plugins/pluginbc_diario/bcdiariosubform.cpp b/bulmages/bulmacont/plugins/pluginbc_diario/bcdiariosubform.cpp
+index 42a8324..7d41071 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_diario/bcdiariosubform.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_diario/bcdiariosubform.cpp
+@@ -68,9 +68,6 @@ BcDiarioSubForm::BcDiarioSubForm ( QWidget *parent, const char * ) : BcSubForm (
+     setOrdenEnabled ( FALSE );
+     setOrdenPorQuery ( TRUE );
+     setDelete ( FALSE );
+-    /// Preparamos el sistema de menus contextuales
+-    connect ( this, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( s_pintaMenu ( QMenu * ) ) );
+-    connect ( this, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( s_trataMenu ( QAction * ) ) );
+     
+ }
+ 
+@@ -85,28 +82,5 @@ BcDiarioSubForm::~BcDiarioSubForm()
+ }
+ 
+ 
+-/// Slot que trata la solicitud de pintar el menu contextual sobre el subformulario.
+-/**
+-\param menu
+-**/
+-void BcDiarioSubForm::s_pintaMenu ( QMenu *menu )
+-{
+-    BL_FUNC_DEBUG
+-    menu-&gt;addSeparator();
+-    menu-&gt;addAction ( _ ( &quot;Mostrar asiento&quot; ) );    
+-}
+-
+-/// Slot que trata la activacion de un elemento en el menu contextual.
+-/**
+-\param action
+-/return
+-**/
+-void BcDiarioSubForm::s_trataMenu ( QAction *action )
+-{
+-    BL_FUNC_DEBUG
+-    if ( !action ) return;
+-    if ( action-&gt;text() == _ ( &quot;Mostrar asiento&quot; ) )
+-	emit openAsiento();    
+-}
+ 
+ 
+diff --git a/bulmages/bulmacont/plugins/pluginbc_diario/bcdiariosubform.h b/bulmages/bulmacont/plugins/pluginbc_diario/bcdiariosubform.h
+index 7fe46e8..e70b62e 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_diario/bcdiariosubform.h
++++ b/bulmages/bulmacont/plugins/pluginbc_diario/bcdiariosubform.h
+@@ -39,13 +39,6 @@ class PLUGINBC_DIARIO_EXPORT BcDiarioSubForm : public BcSubForm
+ public:
+     BcDiarioSubForm ( QWidget *parent = 0, const char *name = 0 );
+     virtual ~BcDiarioSubForm();
+-
+-public slots:
+-    virtual void s_pintaMenu ( QMenu *menu );
+-    virtual void s_trataMenu ( QAction *action );
+-    
+-signals:
+-    void openAsiento();
+ };
+ 
+ #endif
+diff --git a/bulmages/bulmacont/plugins/pluginbc_mayor/bcextractosubform.cpp b/bulmages/bulmacont/plugins/pluginbc_mayor/bcextractosubform.cpp
+index 192e2c9..03d3920 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_mayor/bcextractosubform.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_mayor/bcextractosubform.cpp
+@@ -75,35 +75,7 @@ BcExtractoSubForm::BcExtractoSubForm ( QWidget *parent, const char * ) : BcSubFo
+     setOrdenEnabled ( FALSE );
+     setOrdenPorQuery ( FALSE );
+     setDelete ( FALSE );
+-    connect ( this, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( s_pintaMenu ( QMenu * ) ) );
+-    connect ( this, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( s_trataMenu ( QAction * ) ) );
+-
+-    
++ 
+ }
+ 
+ 
+-
+-/// Slot que trata la solicitud de pintar el menu contextual sobre el subformulario.
+-/**
+-\param menu
+-**/
+-void BcExtractoSubForm::s_pintaMenu ( QMenu *menu )
+-{
+-    BL_FUNC_DEBUG
+-    menu-&gt;addSeparator();
+-    menu-&gt;addAction ( _ ( &quot;Mostrar asiento&quot; ) );
+-}
+-
+-/// Slot que trata la activacion de un elemento en el menu contextual.
+-/**
+-\param action
+-/return
+-**/
+-void BcExtractoSubForm::s_trataMenu ( QAction *action )
+-{
+-    BL_FUNC_DEBUG
+-    if ( !action ) return;
+-    if ( action-&gt;text() == _ ( &quot;Mostrar asiento&quot; ) )
+-	emit openAsiento();
+-}
+-
+diff --git a/bulmages/bulmacont/plugins/pluginbc_mayor/bcextractosubform.h b/bulmages/bulmacont/plugins/pluginbc_mayor/bcextractosubform.h
+index 4e831ff..6c87495 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_mayor/bcextractosubform.h
++++ b/bulmages/bulmacont/plugins/pluginbc_mayor/bcextractosubform.h
+@@ -36,13 +36,6 @@ class PLUGINBC_MAYOR_EXPORT BcExtractoSubForm : public BcSubForm
+ public:
+     BcExtractoSubForm ( QWidget *parent = 0, const char *name = 0 );
+     virtual ~BcExtractoSubForm();
+-
+-public slots:
+-    virtual void s_pintaMenu ( QMenu *menu );
+-    virtual void s_trataMenu ( QAction *action );
+-    
+-signals:
+-    void openAsiento();
+ };
+ 
+ 
+diff --git a/bulmages/bulmacont/src/bcsubform.cpp b/bulmages/bulmacont/src/bcsubform.cpp
+index ba8adb9..0a02632 100644
+--- a/bulmages/bulmacont/src/bcsubform.cpp
++++ b/bulmages/bulmacont/src/bcsubform.cpp
+@@ -319,68 +319,6 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
+ }
+ 
+ 
+-/// Muestra la ventana de asiento.
+-/**
+-**/
+-void BcSubForm::boton_asiento()
+-{
+-    BL_FUNC_DEBUG
+-/*
+-    BcCompany *companyact = ( BcCompany * ) mainCompany();
+-    QString numasiento = dbValue ( &quot;idasiento&quot; );
+-    if ( numasiento != &quot;&quot; ) {
+-        companyact-&gt;intapuntsempresa() -&gt;muestraAsiento ( numasiento.toInt() );
+-        companyact-&gt;muestraapuntes1();
+-    } // end if
+-*/
+-    
+-}
+-
+-
+-
+-
+-
+-
+-
+-/// Si el parametro pasado es un:
+-/// 0 -&gt; del per&iacute;odo actual.
+-/// 1 -&gt; del mes actual mirado a partir de la fecha de inicio.
+-/// 2 -&gt; del a&ntilde;o actual mirado a partir de la fecha de inicio.
+-/**
+-\param tipo
+-**/
+-/*
+-void BcSubForm::boton_balance1 ( int tipo )
+-{
+-    BL_FUNC_DEBUG
+-    BcCompany *companyact = ( BcCompany * ) mainCompany();
+-    QString fecha = dbValue ( &quot;fecha&quot; ).left ( 10 );
+-    QString codigo = dbValue ( &quot;codigo&quot; );
+-    QDate fecha1, fecha2, fechaact, fechaact1;
+-    if ( fecha != &quot;&quot; &amp;&amp; codigo != &quot;&quot; ) {
+-        fechaact = blNormalizeDate ( fecha );
+-        switch ( tipo ) {
+-        case 0:
+-            fecha1.setYMD ( fechaact.year(), fechaact.month(), fechaact.day() );
+-            fecha2.setYMD ( fechaact1.year(), fechaact.month(), fechaact.day() );
+-            break;
+-        case 1:
+-            fecha1.setYMD ( fechaact.year(), fechaact.month(), 1 );
+-            fecha2.setYMD ( fechaact.year(), fechaact.month(), fechaact.daysInMonth() );
+-            break;
+-        case 2:
+-            fecha1.setYMD ( fechaact.year(), 1, 1 );
+-            fecha2.setYMD ( fechaact.year(), 12, 31 );
+-            break;
+-        } // end switch
+-        mainCompany() -&gt;balanceempresa() -&gt;inicializa1 ( codigo, codigo, fecha1.toString ( &quot;dd/MM/yyyy&quot; ), fecha2.toString ( &quot;dd/MM/yyyy&quot; ), &quot;0&quot; );
+-        companyact-&gt;balanceempresa() -&gt;accept();
+-        companyact-&gt;librobalance();
+-    } // end if
+-    
+-}
+-*/
+-
+ 
+ /// Se ha dado la orden de crear el menu contextual. Y esta funcion funciona con
+ /// Un sistema en cascada en lugar del tipico signal-slot
+diff --git a/bulmages/bulmacont/src/bcsubform.h b/bulmages/bulmacont/src/bcsubform.h
+index 12672ce..c542d47 100644
+--- a/bulmages/bulmacont/src/bcsubform.h
++++ b/bulmages/bulmacont/src/bcsubform.h
+@@ -57,7 +57,6 @@ public:
+     BcCompany *mainCompany();
+     BcSubForm ( QWidget *parent = 0 );
+     virtual ~BcSubForm();
+-    virtual void boton_asiento();
+     virtual void createMenu ( QMenu * );
+     virtual void execMenuAction ( QAction * );
+     virtual void setMainCompany ( BlMainCompany *c );
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007211.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to arreglo...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007213.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to arreglo...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7212">[ fecha ]</a>
+              <a href="thread.html#7212">[ hilo ]</a>
+              <a href="subject.html#7212">[ asunto ]</a>
+              <a href="author.html#7212">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

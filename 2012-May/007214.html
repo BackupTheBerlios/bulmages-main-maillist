@@ -1,0 +1,275 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to arreglo...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20arreglo...&In-Reply-To=%3C20120512202923.1A5FD756DF%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007213.html">
+   <LINK REL="Next"  HREF="007215.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to arreglo... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20arreglo...&In-Reply-To=%3C20120512202923.1A5FD756DF%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to arreglo...">no-reply en gitorious.org
+       </A><BR>
+    <I>Sab Mayo 12 22:29:22 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007213.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to arreglo...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007215.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7214">[ fecha ]</a>
+              <a href="thread.html#7214">[ hilo ]</a>
+              <a href="subject.html#7214">[ asunto ]</a>
+              <a href="author.html#7214">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to arreglobulmacont
+arreglobulmacont changed from 6d020e7 to e4e33b2
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/6d020e70e7d345b06510253beacd5e99e7224114/diffs/e4e33b2c72aae6ef457745c44b3c1b3bb441b42b">https://gitorious.org/bulmages/bulmages/commit/6d020e70e7d345b06510253beacd5e99e7224114/diffs/e4e33b2c72aae6ef457745c44b3c1b3bb441b42b</A>
+
+Diff: 
+
+commit e4e33b2c72aae6ef457745c44b3c1b3bb441b42b
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sat May 12 22:29:15 2012 +0200
+
+    Extiendo el uso del Ctrl + + a BlSubForm para que por defecto tenga el funcionamiento de copiar el contenido de la fila inmediatamente superior en el subformulario
+
+diff --git a/bulmages/bulmacont/src/bcsubform.cpp b/bulmages/bulmacont/src/bcsubform.cpp
+index 0a02632..e033817 100644
+--- a/bulmages/bulmacont/src/bcsubform.cpp
++++ b/bulmages/bulmacont/src/bcsubform.cpp
+@@ -93,13 +93,6 @@ void BcSubForm::pressedPlus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubF
+     BL_FUNC_DEBUG
+ 
+     /// Si no es un campo de tipo debe o haber salimos.
+-    /*
+-        if ( camp-&gt;fieldName() != &quot;debe&quot; &amp;&amp; camp-&gt;fieldName() != &quot;haber&quot; &amp;&amp; camp-&gt;fieldName() != &quot;fecha&quot; ) {
+-	    
+-            return;
+-        } // end if
+-    */
+-
+     if ( camp-&gt;fieldName() == &quot;fecha&quot; ) {
+         BlDbSubFormRecord *recant = lineaat ( row - 1 );
+         if ( recant ) {
+@@ -131,14 +124,8 @@ void BcSubForm::pressedPlus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubF
+         return;
+     } // end if
+ 
+-    BlDbSubFormRecord *recant = lineaat ( row - 1 );
+-    if ( recant ) {
+-        rec-&gt;setDbValue ( camp-&gt;fieldName(), recant-&gt;dbValue ( camp-&gt;fieldName() ) );
+-        return;
+-    } // end if
++    BlSubForm::pressedPlus(row, col, rec, camp);
+ 
+-
+-    
+ }
+ 
+ /// Se ha pulsado la combinacion de teclas Ctrl + *
+@@ -328,9 +315,6 @@ void BcSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
+ void BcSubForm::createMenu ( QMenu *menu )
+ {
+     BL_FUNC_DEBUG
+-    menu-&gt;addAction ( _ ( &quot;Submenu de contabilidad&quot; ) );
+-    menu-&gt;addSeparator();
+-    
+ }
+ 
+ 
+@@ -354,9 +338,6 @@ void BcSubForm::execMenuAction ( QAction * )
+ BcSubFormDelegate::BcSubFormDelegate ( QObject *parent = 0 ) : BlSubFormDelegate ( parent )
+ {
+     BL_FUNC_DEBUG
+-//    m_subform = ( BlSubForm * ) parent;
+-//    installEventFilter ( this );
+-    
+ }
+ 
+ 
+@@ -409,17 +390,7 @@ QWidget *BcSubFormDelegate::createEditor ( QWidget *parent, const QStyleOptionVi
+ 	
+         return editor;
+     } else {
+-        /// DbInt = 1, DbVarChar = 2, DbDate = 3, DbNumeric = 4, DbBoolean
+-        //if (linea-&gt;fieldType() == BlDbField::DbInt) {
+-        //QSpinBox *editor = new QSpinBox(parent);
+-        //return editor;
+-        /*        QLineEdit *editor = new QLineEdit ( parent );
+-		
+-                return editor;
+-        */
+-        //} else {
+         return BlSubFormDelegate::createEditor ( parent, opcion, index );
+-        //} // end if
+     } // end if
+ }
+ 
+@@ -437,25 +408,14 @@ void BcSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
+ 
+     /// Si la fila o columna pasadas son invalidas salimos.
+     if ( index.column() &lt; 0 || index.row() &lt; 0 ) {
+-	
+         return;
+     } // end if
+ 
+     BlSubFormHeader *linea;
+     linea = m_subform-&gt;headerList() -&gt;at ( index.column() );
+     if ( linea-&gt;fieldName().startsWith ( &quot;desc&quot; ) ) {
+-
+-//    if (linea-&gt;fieldName() == &quot;desc&quot; + m_subform-&gt;tableName()) {
+         BlTextEditDelegate * textedit = qobject_cast&lt;BlTextEditDelegate *&gt; ( editor );
+         model-&gt;setData ( index, textedit-&gt;toPlainText() );
+-
+-//    Este return sobra.
+-//        return;
+-
+-        // TODO: 04/05/07 Se quita esta linea porque hacia que los valores en la celda &quot;haber&quot; no apareciese
+-        //        con decimales. Ademas no se que es lo que tiene que hacer
+-        //
+-        //    } else if (linea-&gt;fieldName() == &quot;debe&quot; || linea-&gt;fieldName() == &quot;haber&quot; + m_subform-&gt;tableName()) {
+     } else if ( linea-&gt;fieldName() == &quot;debe&quot; || linea-&gt;fieldName() == &quot;haber&quot; ) {
+         BlDoubleSpinBox * spinBox = static_cast&lt;BlDoubleSpinBox*&gt; ( editor );
+         spinBox-&gt;interpretText();
+@@ -476,24 +436,8 @@ void BcSubFormDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mode
+         QString value = ( ( QLineEdit * ) comboBox ) -&gt;text();
+         model-&gt;setData ( index, value );
+     } else {
+-        /// DbInt = 1, DbVarChar = 2, DbDate = 3, DbNumeric = 4, DbBoolean
+-        //if (linea-&gt;fieldType() == BlDbField::DbInt) {
+-        //    QSpinBox *spinBox = static_cast&lt;QSpinBox*&gt;(editor);
+-        //    spinBox-&gt;interpretText();
+-        //    int value = spinBox-&gt;value();
+-        //    model-&gt;setData(index, value);
+-        //} else {
+         BlSubFormDelegate::setModelData ( editor, model, index );
+-        //} // end if
+-
+-        /*QLineEdit *lineedit = static_cast&lt;QLineEdit*&gt; ( editor );
+-                QString value = lineedit-&gt;text();
+-                model-&gt;setData ( index, value );
+-        */
+     } // end if
+-
+-
+-    
+ }
+ 
+ 
+@@ -507,7 +451,6 @@ void BcSubFormDelegate::setEditorData ( QWidget *editor, const QModelIndex &amp;inde
+     BL_FUNC_DEBUG
+     BlSubFormHeader *linea;
+     linea = m_subform-&gt;headerList() -&gt;at ( index.column() );
+-    //if (linea-&gt;fieldName() == &quot;desc&quot; + m_subform-&gt;tableName()) {
+     if ( linea-&gt;fieldName().startsWith ( &quot;desc&quot; ) ) {
+         QString data = index.model() -&gt;data ( index, Qt::DisplayRole ).toString();
+         BlTextEditDelegate *textedit = qobject_cast&lt;BlTextEditDelegate*&gt; ( editor );
+@@ -532,20 +475,8 @@ void BcSubFormDelegate::setEditorData ( QWidget *editor, const QModelIndex &amp;inde
+         ( ( QLineEdit * ) bf ) -&gt;setText ( value );
+         ( ( QLineEdit * ) bf ) -&gt;selectAll();
+     } else {
+-        /// DbInt = 1, DbVarChar = 2, DbDate = 3, DbNumeric = 4, DbBoolean
+-        //if (linea-&gt;fieldType() == BlDbField::DbInt) {
+-        //    int value = index.model()-&gt;data(index, Qt::DisplayRole).toInt();
+-        //    QSpinBox *spinBox = static_cast&lt;QSpinBox*&gt;(editor);
+-        //    spinBox-&gt;setValue(value);
+-        //} else {
+         BlSubFormDelegate::setEditorData ( editor, index );
+-        //} // end if
+-        /*        QString value = index.model() -&gt;data ( index, Qt::DisplayRole ).toString();
+-                QLineEdit *lineedit = static_cast&lt;QLineEdit*&gt; ( editor );
+-                lineedit-&gt;setText ( value );
+-        */
+     } // end if
+-    
+ }
+ 
+ 
+diff --git a/bulmages/bulmalib/src/blsubform.cpp b/bulmages/bulmalib/src/blsubform.cpp
+index 761bd87..d7531bd 100644
+--- a/bulmages/bulmalib/src/blsubform.cpp
++++ b/bulmages/bulmalib/src/blsubform.cpp
+@@ -2621,7 +2621,7 @@ void BlSubForm::bBajar ( ) {
+ }
+ 
+ 
+-///
++/// Pulsación de la / para que sea propagada y reimplementada en las clases derivadas.
+ /**
+ **/
+ void BlSubForm::on_mui_list_pressedSlash ( int row, int col )
+@@ -2652,7 +2652,7 @@ void BlSubForm::on_mui_list_pressedSlash ( int row, int col )
+ }
+ 
+ 
+-///
++/// Pulsacion del * para que sea propagado y reimplementado en las clases derivadas
+ /**
+ **/
+ void BlSubForm::on_mui_list_pressedAsterisk ( int row, int col )
+@@ -3403,9 +3403,15 @@ void BlSubForm::pressedAsterisk ( int, int, BlDbSubFormRecord *rec, BlDbSubFormF
+ 
+ 
+ /// Para ser derivado, permite a las clases derivadas y a esta el tratamiento de cambio de celda.
+-void BlSubForm::pressedPlus ( int, int, BlDbSubFormRecord *, BlDbSubFormField * )
++/// Incorpora el funcionamiento por defecto que es copiar el contenido de la celda superior.
++void BlSubForm::pressedPlus ( int row, int col, BlDbSubFormRecord *rec, BlDbSubFormField *camp )
+ {
+     BL_FUNC_DEBUG
++    BlDbSubFormRecord *recant = lineaat ( row - 1 );
++    if ( recant ) {
++        rec-&gt;setDbValue ( camp-&gt;fieldName(), recant-&gt;dbValue ( camp-&gt;fieldName() ) );
++        return;
++    } // end if
+     
+ }
+ 
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007213.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to arreglo...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007215.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7214">[ fecha ]</a>
+              <a href="thread.html#7214">[ hilo ]</a>
+              <a href="subject.html#7214">[ asunto ]</a>
+              <a href="author.html#7214">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

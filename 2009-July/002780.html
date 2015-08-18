@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Campo &quot;m_filtro&quot; y nomenclatura &quot;mui_&quot;
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Futf-8%3Fq%3FCampo_%3D22m%3D5Ffiltro%3D22_y_n%3F%3D%0A%09%3D%3Futf-8%3Fq%3Fomenclatura_%3D22mui%3D5F%3D22%3F%3D&In-Reply-To=%3C200907221021.47799.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002779.html">
+   <LINK REL="Next"  HREF="002781.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Campo &quot;m_filtro&quot; y nomenclatura &quot;mui_&quot; </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Futf-8%3Fq%3FCampo_%3D22m%3D5Ffiltro%3D22_y_n%3F%3D%0A%09%3D%3Futf-8%3Fq%3Fomenclatura_%3D22mui%3D5F%3D22%3F%3D&In-Reply-To=%3C200907221021.47799.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]Campo &quot;m_filtro&quot; y nomenclatura &quot;mui_&quot;">tborras en conetxia.com
+       </A><BR>
+    <I>Mie Jul 22 10:21:47 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002779.html">[BulmaGés] Campo &quot;m_filtro&quot; y nomenclatura &quot;mui_&quot;
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002781.html">[BulmaGés] [Bug #14929] Ventanas se solapan al	generarlas desde indexador
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2780">[ fecha ]</a>
+              <a href="thread.html#2780">[ hilo ]</a>
+              <a href="subject.html#2780">[ asunto ]</a>
+              <a href="author.html#2780">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Aron
+
+El tema de nomenclatura es el siguiente:
+
+Los campos mui_XXXXXXXXX son tratados automaticamente como campos 
+pertenecientes a un registro de la ficha de base de datos.
+
+Esto significa que si creas un .ui y pones un campo (por ejemplo un QLineEdit) 
+cuyo nombre es mui_campotabla y esta interficie se usa con un BlForm o 
+derivado entonces el campo es directamente ligado con la tabla a la que hace 
+referencia el formulario y en los guardados, modificaciones y demás todo 
+funcionará automáticamente con este campo.
+
+El campo filtro no tiene estas características ya que en realidad se usa su 
+contenido para la clausula WHERE de un query. Asi que para evitar problemas 
+en el automatizador de campos la idea es dejarlo como m_filtro
+
+Tambien es cierto que los campos muy_XXXXXXX son los unicos que afectan a la 
+detección de cambios (BlDialogChanges) que se encarga de sacar el dialogo 
+de &quot;desea guardar los cambios&quot; si se cierra la ventana. Y nuevamente el campo 
+filtro no debe afectar a estas funcionalidades.
+
+O sea que va a ser m_filtro durante bastante tiempo y en cualquier caso nunca 
+será mui_XXXXXXX
+
+Salut
+
+
+El Wednesday 22 July 2009 09:54:54 Aron escribió:
+&gt;<i> Buenos días
+</I>&gt;<i>
+</I>&gt;<i> ¿Los campos &quot;m_filtro&quot; van a quedarse con ese nombre, o deberán renombrarse
+</I>&gt;<i> con &quot;mui_filtro&quot;?
+</I>&gt;<i>
+</I>&gt;<i> Yo había usado &quot;mui_filtro&quot; y sólo se activaba el filtro al pulsar el botón
+</I>&gt;<i> de releer el listado.
+</I>
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002779.html">[BulmaGés] Campo &quot;m_filtro&quot; y nomenclatura &quot;mui_&quot;
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002781.html">[BulmaGés] [Bug #14929] Ventanas se solapan al	generarlas desde indexador
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2780">[ fecha ]</a>
+              <a href="thread.html#2780">[ hilo ]</a>
+              <a href="subject.html#2780">[ asunto ]</a>
+              <a href="author.html#2780">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] No vi este mensaje.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20No%20vi%20este%20mensaje.&In-Reply-To=%3CCAJWqEtezbmBDzmY3bgBUuZdLO%2BONokTP8YEoynUeiLvaH4BsBA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007134.html">
+   <LINK REL="Next"  HREF="007137.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] No vi este mensaje. </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20No%20vi%20este%20mensaje.&In-Reply-To=%3CCAJWqEtezbmBDzmY3bgBUuZdLO%2BONokTP8YEoynUeiLvaH4BsBA%40mail.gmail.com%3E"
+       TITLE="[BulmaGés] No vi este mensaje.">tborras en conetxia.com
+       </A><BR>
+    <I>Vie Abr 27 14:38:38 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007134.html">[BulmaGés]Ni el cambio más pequeño se libra.
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007137.html">[BulmaGés]No vi este mensaje.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7133">[ fecha ]</a>
+              <a href="thread.html#7133">[ hilo ]</a>
+              <a href="subject.html#7133">[ asunto ]</a>
+              <a href="author.html#7133">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>
+</I>&gt;<i> Hola Tomeu,
+</I>&gt;<i>
+</I>&gt;<i> Como no indicas qué es lo que está fallando no puedo hacer ninguna prueba
+</I>&gt;<i> más allá de comprobar que el uso del valor de IRPF en los documentos como
+</I>&gt;<i> albaranes, facturas, etc, funciona correctamente aunque en la base de datos
+</I>&gt;<i> haya una 'coma' como separador decimal. Ten en cuenta que el campo 'valor'
+</I>&gt;<i> es de tipo 'varchar' y por tanto el programa debería estar preparado para
+</I>&gt;<i> recibir este tipo de datos y tratarlos bien. No obstante he cambiado la
+</I>&gt;<i> captura de datos del BlDoubleSpinBox de text() a value() que devuelve un
+</I>&gt;<i> 'double' y por tanto el separador decimal es un punto.
+</I>&gt;<i>
+</I>
+Creo que dije que fallaba todo. Era literal.
+No se pueden guardar presupuestos, pedidos, albarantes ni facturas. No se
+puede pasar de presupuesto a factura ni ninguna de las transferencias
+soportadas.
+El problema se deriva de las funciones calctotal.... que son disparadas en
+la base de datos y hacen un casting del valor del irpf a punto fijo
+(numeric 12,2). Al encontrar una coma no pueden traducir el valor  y fallan
+los disparadores (consecuentemente falla todo).
+
+Te dije exactamente cual era el problema y además añadí como solventarlo,
+deduzco que las pruebas que has realizado son &quot;escuetas&quot; si no has podido
+darte cuenta.
+
+Y ya de paso dejamé comentar que la solución subida no es correcta porque
+el tipo Double no es convertible en String y puede devolver un valor del
+tipo 3.45577888E89 (notación científica) la cual tampoco va a funcionar. Es
+preferible un text().replace(',','.'), usar las locales o derivar el
+SpinBox para que devuelva los valores como toca.
+
+Igual resulta difícil de entender que el punto flotante es lo peor que
+puedes usar para expresar valores en punto fijo y que el punto fijo no esta
+soportado en C++, y que no es preciso.
+
+
+
+&gt;<i>
+</I>&gt;<i> He visto que el siguiente commit de fecha 3/Feb/2011 comentastes un código
+</I>&gt;<i> que trataba de solucionar el tema si se usaba text() para capturar el valor
+</I>&gt;<i> del BlDoubleSpinBox. No indicas el motivo por el que se comentó el código,
+</I>&gt;<i> pero el comentario sigue allí todavía.
+</I>&gt;<i>
+</I>&gt;<i> COPIO/PEGO:
+</I>&gt;<i>
+</I>&gt;<i> commit SHA1 ID: 7052c1db4dd37488b15f5c365c99155a499d3250
+</I>&gt;<i>
+</I>&gt;<i>     Deshago los cambios en BlDoubleSpinBox que convierten los números al
+</I>&gt;<i> formato según locales.
+</I>&gt;<i>
+</I>&gt;<i> ------------------ bulmages/bulmalib/src/bldoublespinbox.cpp
+</I>&gt;<i> ------------------
+</I>&gt;<i> index 8ddec8e..c6068ef 100644
+</I>&gt;<i> @@ -54,10 +54,10 @@ QString const BlDoubleSpinBox::text()
+</I>&gt;<i>      blDebug ( &quot;BlDoubleSpinBox::text&quot;, 0 );
+</I>&gt;<i>      QString a = QDoubleSpinBox::text();
+</I>&gt;<i>
+</I>&gt;<i> -    /// Conversi&oacute;n al formato del locale &quot;C&quot;: un punto separa la
+</I>&gt;<i> parte decimal
+</I>&gt;<i> +/*    /// Conversi&oacute;n al formato del locale &quot;C&quot;: un punto separa la
+</I>&gt;<i> parte decimal
+</I>&gt;<i>      QLocale locale;
+</I>&gt;<i>      a = locale.toString((locale.toDouble(a))); //ARON
+</I>&gt;<i> -
+</I>&gt;<i> +*/
+</I>&gt;<i>      blDebug ( &quot;END BlDoubleSpinBox::text&quot;, 0, a );
+</I>&gt;<i>      return a;
+</I>&gt;<i>  }
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>Exactamente por el mismo motivo que te he comentado. No se puede pasar de
+Double a String esperando que devuelva un valor entendible por los humanos
+o en el formato adecuado, y aun así no puedes esperar que éste sea preciso.
+En gestión se requiere exactitud y no precisión milimétrica.
+De hecho no se pueden usar los Doubles, los Float ni nada de punto flotante
+porque no son exactos, de ahi que usemos la clase BlFixed.
+
+
+&gt;<i>
+</I>&gt;<i> Hago notar que antes de este cambio, en la ficha 'modo experto' de la
+</I>&gt;<i> configuración, en el capo 'IRPF' al ser de texto libre también se podría
+</I>&gt;<i> haber escrito un número con 'coma' y también hubiese dado el mismo fallo
+</I>&gt;<i> que comentas, pero que no se cual es. Ahora está mucho más protegido porque
+</I>&gt;<i> el valor del BlDoubleSpinBox tiene prioridad sobre ese campo y evitará que
+</I>&gt;<i> se pueda escribir un valor erróneo.
+</I>&gt;<i>
+</I>
+Precisamente por ese motivo lo puse en modo experto, es algo que si lo
+tocas te puede dar muchos problemas, y soy de la opinión que debería seguir
+en el modo experto.
+
+
+Y ya que te quejas de que sea un texto, explicame como lo solucionarías de
+forma que la complejidad resultante sea menor que la solución actual
+contemplando la inconveniencia de hacer casting.
+
+
+
+Salut
+
+
+-- 
+Tomeu Borrás
+Conetxia Soluciones Informáticas
+902 88 11 66 - 677 77 44 76
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20120427/cb8b2620/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20120427/cb8b2620/attachment.html</A>&gt;
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007134.html">[BulmaGés]Ni el cambio más pequeño se libra.
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007137.html">[BulmaGés]No vi este mensaje.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7133">[ fecha ]</a>
+              <a href="thread.html#7133">[ hilo ]</a>
+              <a href="subject.html#7133">[ asunto ]</a>
+              <a href="author.html#7133">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

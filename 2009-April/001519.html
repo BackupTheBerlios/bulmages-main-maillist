@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]BUG al importar plan de cuentas en bulmacont (SVN 9/4/2009)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FBUG_al_importar_plan_%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fde_cuentas_en_bulmacont_%3D28SVN_9/4/2009%3D29%3F%3D&In-Reply-To=%3C200904121124.00224.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001516.html">
+   <LINK REL="Next"  HREF="001515.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]BUG al importar plan de cuentas en bulmacont (SVN 9/4/2009) </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FBUG_al_importar_plan_%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fde_cuentas_en_bulmacont_%3D28SVN_9/4/2009%3D29%3F%3D&In-Reply-To=%3C200904121124.00224.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]BUG al importar plan de cuentas en bulmacont (SVN 9/4/2009)">tborras en conetxia.com
+       </A><BR>
+    <I>Dom Abr 12 11:24:00 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001516.html">[BulmaGés]BUG al importar plan de cuentas en bulmacont (SVN 9/4/2009)
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001515.html">[BulmaGés] r3218 - in	trunk/bulmages/bulmafact/plugins: pluginbf_profesor/dbmodels	pluginbf_recibo pluginbf_tutor
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1519">[ fecha ]</a>
+              <a href="thread.html#1519">[ hilo ]</a>
+              <a href="subject.html#1519">[ asunto ]</a>
+              <a href="author.html#1519">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Marcos
+
+Pués deberia ser como dices. Permitir NULL y tener la restriccion REFERENCES a 
+si mismo de tal modo que todos los que son NULL son nodos raiz. 
+
+Tiene (sin embargo) dos problemas:
+
+	1.- Para acelerar la creación grafica del árbol ordenas los items por este 
+campo ya que esta garantizado idpadre &lt; idhijo y por tanto al recorrer el 
+recordset todos los nodos que encuentres tienen garantizado que ya has 
+procesado su padre. El problema de los NULL es que no ordenan bien en una 
+clausula ORDER BY y entonces tienes que hacer distinción de casos.
+
+	2.- No hay forma de evitar las referencias cíclicas que no sea en el programa 
+o con un trigger algo costoso.
+
+	Yo creo (hace ya algun tiempo que no lo toco) que al final hay  algo híbrido 
+donde los padres pueden valer NULL o 0 indistintamente y de vez en cuando se 
+hace un UPDATE padre set padre=0 where padre IS NULL; Lo cual se podria 
+arreglar fácilmente poniendo un DEFAULT 0 a este campo en la creacion de la 
+tabla y quitando el NOT NULL.
+
+
+
+
+El Saturday 11 April 2009 11:59:07 Marcos Mezo escribió:
+&gt;<i> &gt; El problema parece ser que el campo &quot;padre&quot; de la tabla &quot;cuenta&quot; está
+</I>&gt;<i> &gt; marcado como NOT NULL (sin valor por defecto) y en la importación del
+</I>&gt;<i> &gt; plan contable hay una comprobación que no sé muy bien por qué se hace,
+</I>&gt;<i> &gt; pero el caso es que inserta en la tabla cuentas un valor de prueba y no
+</I>&gt;<i> &gt; inserta el campo &quot;padre&quot;.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Es la línea 1490 del archivo bulmalib/src/pgimportfiles.cpp
+</I>&gt;<i> &gt; QString query = &quot;INSERT INTO cuenta (codigo, descripcion) VALUES ('AUX',
+</I>&gt;<i> &gt; 'Una descripcion auxiliar de cuenta')&quot;;
+</I>&gt;<i>
+</I>&gt;<i> Por cierto, que haciendo pruebas quité en la base de datos la restricción
+</I>&gt;<i> &quot;NOT NULL&quot; en el campo padre y se importó correctamente el plan contable.
+</I>&gt;<i>
+</I>&gt;<i> Mirando luego en la tabla postgres directamente todas las cuentas &quot;raiz&quot; de
+</I>&gt;<i> 2 cifras (10 CAPITAL, 11 RESERVAS,....) tienen padre=NULL, por lo que la
+</I>&gt;<i> restricción NOT NULL no se puede cumplir.
+</I>&gt;<i>
+</I>&gt;<i> ¿Cual es la solución correcta? Dejar el campo sin la restricción o adoptar
+</I>&gt;<i> un convenio para las cuentas &quot;raiz&quot; como poner padre=0 o algo así? ¿Cómo lo
+</I>&gt;<i> tenéis el resto?
+</I>&gt;<i>
+</I>&gt;<i> Gracias,
+</I>&gt;<i> Marcos
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001516.html">[BulmaGés]BUG al importar plan de cuentas en bulmacont (SVN 9/4/2009)
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001515.html">[BulmaGés] r3218 - in	trunk/bulmages/bulmafact/plugins: pluginbf_profesor/dbmodels	pluginbf_recibo pluginbf_tutor
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1519">[ fecha ]</a>
+              <a href="thread.html#1519">[ hilo ]</a>
+              <a href="subject.html#1519">[ asunto ]</a>
+              <a href="author.html#1519">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

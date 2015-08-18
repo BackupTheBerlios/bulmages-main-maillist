@@ -1,0 +1,214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20master...&In-Reply-To=%3C20120430164558.7F9B4756DD%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007156.html">
+   <LINK REL="Next"  HREF="007158.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20master...&In-Reply-To=%3C20120430164558.7F9B4756DD%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Lun Abr 30 18:45:58 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007156.html">[BulmaGés] [Gitorious] Activity: tborras deleted	branch impresionped...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007158.html">[BulmaGés] [Gitorious] Activity: tborras deleted	branch filtrosz in ...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7157">[ fecha ]</a>
+              <a href="thread.html#7157">[ hilo ]</a>
+              <a href="subject.html#7157">[ asunto ]</a>
+              <a href="author.html#7157">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 2 commits to master
+master changed from 9eebee3 to eeffb73
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/9eebee386fe35830509c29b4573939e29e624cb3/diffs/eeffb7345c8c9779700773a78cde68f5e80d910b">https://gitorious.org/bulmages/bulmages/commit/9eebee386fe35830509c29b4573939e29e624cb3/diffs/eeffb7345c8c9779700773a78cde68f5e80d910b</A>
+
+Diff: 
+
+commit eeffb7345c8c9779700773a78cde68f5e80d910b
+Merge: 9eebee3 fe496ae
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon Apr 30 18:45:53 2012 +0200
+
+    Merge branch 'filtrosz'
+
+
+commit fe496ae3b514640301d9e03d62432553fb67c17f
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon Apr 30 12:57:23 2012 +0200
+
+    Agreglo campos de filtrado por fecha en el listado de cuadres de caja
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/zlist.cpp b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/zlist.cpp
+index 75dc675..269b609 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/zlist.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/zlist.cpp
+@@ -134,7 +134,7 @@ void ZList::presentar()
+     BL_FUNC_DEBUG
+ 
+     /// Hacemos el listado y lo presentamos.
+-    mui_list-&gt;load ( &quot;SELECT idz, fechaz, TO_CHAR(horaz, 'HH24:MI:SS') AS horaz, totalz, idalmacen, numtickets, codigoalmacen, nomalmacen, diralmacen, poblalmacen, cpalmacen, telalmacen, faxalmacen, emailalmacen, tipoalmacen, inactivoalmacen FROM z NATURAL JOIN almacen&quot; );
++    mui_list-&gt;load ( &quot;SELECT idz, fechaz, TO_CHAR(horaz, 'HH24:MI:SS') AS horaz, totalz, idalmacen, numtickets, codigoalmacen, nomalmacen, diralmacen, poblalmacen, cpalmacen, telalmacen, faxalmacen, emailalmacen, tipoalmacen, inactivoalmacen FROM z NATURAL JOIN almacen WHERE 1=1 &quot; + generaFiltro() );
+ 
+     
+ }
+@@ -153,6 +153,13 @@ const QString ZList::generaFiltro()
+     /// Hacemos el filtrado like del campo m_filtro
+     filtro += mui_list-&gt;likeFilterSQL(m_filtro-&gt;text());
+     
++    
++    if ( m_fechain-&gt;text() != &quot;&quot; )
++        filtro += &quot; AND fechaz &gt;= '&quot; + m_fechain-&gt;text() + &quot;' &quot;;
++    if ( m_fechafin-&gt;text() != &quot;&quot; )
++        filtro += &quot; AND fechaz &lt;= '&quot; + m_fechafin-&gt;text() + &quot;' &quot;;
++    
++    
+     return ( filtro );
+ }
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/zlistbase.ui b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/zlistbase.ui
+index 407d03e..1966c69 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/zlistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/zlistbase.ui
+@@ -395,21 +395,18 @@
+      &lt;property name=&quot;frameShadow&quot;&gt;
+       &lt;enum&gt;QFrame::Raised&lt;/enum&gt;
+      &lt;/property&gt;
+-     &lt;layout class=&quot;QHBoxLayout&quot;&gt;
+-      &lt;property name=&quot;spacing&quot;&gt;
+-       &lt;number&gt;4&lt;/number&gt;
+-      &lt;/property&gt;
+-      &lt;property name=&quot;margin&quot;&gt;
+-       &lt;number&gt;4&lt;/number&gt;
+-      &lt;/property&gt;
+-      &lt;item&gt;
+-       &lt;widget class=&quot;QCheckBox&quot; name=&quot;mui_caducados&quot;&gt;
++     &lt;layout class=&quot;QGridLayout&quot; name=&quot;gridLayout&quot;&gt;
++      &lt;item row=&quot;0&quot; column=&quot;0&quot;&gt;
++       &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_4&quot;&gt;
+         &lt;property name=&quot;text&quot;&gt;
+-         &lt;string&gt;Caducados&lt;/string&gt;
++         &lt;string&gt;Fecha inicial:&lt;/string&gt;
++        &lt;/property&gt;
++        &lt;property name=&quot;alignment&quot;&gt;
++         &lt;set&gt;Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter&lt;/set&gt;
+         &lt;/property&gt;
+        &lt;/widget&gt;
+       &lt;/item&gt;
+-      &lt;item&gt;
++      &lt;item row=&quot;0&quot; column=&quot;1&quot; rowspan=&quot;2&quot;&gt;
+        &lt;spacer&gt;
+         &lt;property name=&quot;orientation&quot;&gt;
+          &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
+@@ -425,6 +422,48 @@
+         &lt;/property&gt;
+        &lt;/spacer&gt;
+       &lt;/item&gt;
++      &lt;item row=&quot;1&quot; column=&quot;0&quot;&gt;
++       &lt;widget class=&quot;BlDateSearch&quot; name=&quot;m_fechain&quot; native=&quot;true&quot;&gt;
++        &lt;property name=&quot;sizePolicy&quot;&gt;
++         &lt;sizepolicy hsizetype=&quot;Fixed&quot; vsizetype=&quot;Preferred&quot;&gt;
++          &lt;horstretch&gt;0&lt;/horstretch&gt;
++          &lt;verstretch&gt;0&lt;/verstretch&gt;
++         &lt;/sizepolicy&gt;
++        &lt;/property&gt;
++        &lt;property name=&quot;minimumSize&quot;&gt;
++         &lt;size&gt;
++          &lt;width&gt;200&lt;/width&gt;
++          &lt;height&gt;21&lt;/height&gt;
++         &lt;/size&gt;
++        &lt;/property&gt;
++       &lt;/widget&gt;
++      &lt;/item&gt;
++      &lt;item row=&quot;2&quot; column=&quot;0&quot;&gt;
++       &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_4_2&quot;&gt;
++        &lt;property name=&quot;text&quot;&gt;
++         &lt;string&gt;Fecha final:&lt;/string&gt;
++        &lt;/property&gt;
++        &lt;property name=&quot;alignment&quot;&gt;
++         &lt;set&gt;Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter&lt;/set&gt;
++        &lt;/property&gt;
++       &lt;/widget&gt;
++      &lt;/item&gt;
++      &lt;item row=&quot;3&quot; column=&quot;0&quot;&gt;
++       &lt;widget class=&quot;BlDateSearch&quot; name=&quot;m_fechafin&quot; native=&quot;true&quot;&gt;
++        &lt;property name=&quot;sizePolicy&quot;&gt;
++         &lt;sizepolicy hsizetype=&quot;Fixed&quot; vsizetype=&quot;Preferred&quot;&gt;
++          &lt;horstretch&gt;0&lt;/horstretch&gt;
++          &lt;verstretch&gt;0&lt;/verstretch&gt;
++         &lt;/sizepolicy&gt;
++        &lt;/property&gt;
++        &lt;property name=&quot;minimumSize&quot;&gt;
++         &lt;size&gt;
++          &lt;width&gt;200&lt;/width&gt;
++          &lt;height&gt;21&lt;/height&gt;
++         &lt;/size&gt;
++        &lt;/property&gt;
++       &lt;/widget&gt;
++      &lt;/item&gt;
+      &lt;/layout&gt;
+     &lt;/widget&gt;
+    &lt;/item&gt;
+@@ -440,6 +479,11 @@
+    &lt;extends&gt;QTableWidget&lt;/extends&gt;
+    &lt;header&gt;bfsubform.h&lt;/header&gt;
+   &lt;/customwidget&gt;
++  &lt;customwidget&gt;
++   &lt;class&gt;BlDateSearch&lt;/class&gt;
++   &lt;extends&gt;QWidget&lt;/extends&gt;
++   &lt;header&gt;bldatesearch.h&lt;/header&gt;
++  &lt;/customwidget&gt;
+  &lt;/customwidgets&gt;
+  &lt;resources&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007156.html">[BulmaGés] [Gitorious] Activity: tborras deleted	branch impresionped...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007158.html">[BulmaGés] [Gitorious] Activity: tborras deleted	branch filtrosz in ...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7157">[ fecha ]</a>
+              <a href="thread.html#7157">[ hilo ]</a>
+              <a href="subject.html#7157">[ asunto ]</a>
+              <a href="author.html#7157">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

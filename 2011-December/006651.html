@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Problemas] No puedo generar facturas
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BProblemas%5D%20No%20puedo%20generar%20facturas&In-Reply-To=%3C4ED79C49.2010407%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006697.html">
+   <LINK REL="Next"  HREF="006652.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Problemas] No puedo generar facturas </H1>
+    <B>Daniel Ripoll Osma</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BProblemas%5D%20No%20puedo%20generar%20facturas&In-Reply-To=%3C4ED79C49.2010407%40gmail.com%3E"
+       TITLE="[BulmaGés] [Problemas] No puedo generar facturas">dripoll.public en gmail.com
+       </A><BR>
+    <I>Jue Dic  1 16:24:57 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006697.html">[BulmaGés]Atencion a todos
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006652.html">[BulmaGés][Problemas] No puedo generar facturas
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6651">[ fecha ]</a>
+              <a href="thread.html#6651">[ hilo ]</a>
+              <a href="subject.html#6651">[ asunto ]</a>
+              <a href="author.html#6651">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Me han pedido actualizar el código de un &quot;ex-cliente&quot;...
+Pese a mi descontento con ellos un contrato, es un contrato, así que hay
+que pringar.
+
+Resulta que al intentar hacer una factura, y enviarla como PDF, me salta
+un bonico error desde bgtrml2pdf, el cual desgraciadamente no soy capaz
+de asimilar y saber de donde falla.
+
+Os pego el traceback que responde, a ver si tenéis una idea alguno.
+
+IVA
+Traceback (most recent call last):
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 1116, in &lt;module&gt;
+    print parseString(file(sys.argv[1], 'r').read()),
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 1104, in parseString
+    r.render(fp)
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 207, in render
+    pt_obj.render(el)
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 852, in render
+    self.doc_tmpl.build(fis)
+  File
+&quot;/usr/lib/python2.7/site-packages/reportlab-2.5-py2.7-linux-i686.egg/reportlab/platypus/doctemplate.py&quot;,
+line 880, in build
+    self.handle_flowable(flowables)
+  File
+&quot;/usr/lib/python2.7/site-packages/reportlab-2.5-py2.7-linux-i686.egg/reportlab/platypus/doctemplate.py&quot;,
+line 763, in handle_flowable
+    if frame.add(f, canv, trySplit=self.allowSplitting):
+  File
+&quot;/usr/lib/python2.7/site-packages/reportlab-2.5-py2.7-linux-i686.egg/reportlab/platypus/frames.py&quot;,
+line 174, in _add
+    flowable.drawOn(canv, self._x + self._leftExtraIndent, y, _sW=aW-w)
+  File
+&quot;/usr/lib/python2.7/site-packages/reportlab-2.5-py2.7-linux-i686.egg/reportlab/platypus/flowables.py&quot;,
+line 108, in drawOn
+    self._drawOn(canvas)
+  File
+&quot;/usr/lib/python2.7/site-packages/reportlab-2.5-py2.7-linux-i686.egg/reportlab/platypus/flowables.py&quot;,
+line 89, in _drawOn
+    self.draw()#this is the bit you overload
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 584, in draw
+    drw.render(self.canv, self.self2.doc)
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 463, in render
+    cnv.render(self.node)
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 448, in render
+    tags[n.tag](n)
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 332, in _place
+    raise ValueError, &quot;Not enough space&quot;
+ValueError: Not enough space
+
+
+Salut!
+
+-- 
+Daniel Ripoll Osma
+www.danielripoll.es
+6688.27.4.90
+
+Web &amp; Desktop Developer
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006697.html">[BulmaGés]Atencion a todos
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006652.html">[BulmaGés][Problemas] No puedo generar facturas
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6651">[ fecha ]</a>
+              <a href="thread.html#6651">[ hilo ]</a>
+              <a href="subject.html#6651">[ asunto ]</a>
+              <a href="author.html#6651">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

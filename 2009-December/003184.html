@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Error &quot;vtable&quot; compilando &quot;libbulmacont&quot;
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FError_%3D22vtable%3D22_co%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fmpilando_%3D22libbulmacont%3D22%3F%3D&In-Reply-To=%3C200912021428.51676.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003183.html">
+   <LINK REL="Next"  HREF="003185.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Error &quot;vtable&quot; compilando &quot;libbulmacont&quot; </H1>
+    <B>Tomeu</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FError_%3D22vtable%3D22_co%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fmpilando_%3D22libbulmacont%3D22%3F%3D&In-Reply-To=%3C200912021428.51676.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]Error &quot;vtable&quot; compilando &quot;libbulmacont&quot;">tborras en conetxia.com
+       </A><BR>
+    <I>Mie Dic  2 14:28:51 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003183.html">[BulmaGés]Error &quot;vtable&quot; compilando &quot;libbulmacont&quot;
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003185.html">[BulmaGés] r3711 - trunk/bulmages/bulmacont/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3184">[ fecha ]</a>
+              <a href="thread.html#3184">[ hilo ]</a>
+              <a href="subject.html#3184">[ asunto ]</a>
+              <a href="author.html#3184">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Cierto
+
+Y creo que también ocurre cuando delcaras un objeto y a la hora de implementar 
+el constructor no pones  pones dos veces el nombre de la clase de la forma 
+&quot;clase::clase&quot;
+
+Jode un poco que sean los errores más tontos con los que más tiempo se pierde.
+
+Salut
+
+
+&gt;<i> On Wednesday, December 2, 2009, Aron wrote:
+</I>&gt;<i> &gt; Hola, me está saliendo un error al compilar que no entiendo:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; [ 73%] Built target libbulmacont
+</I>&gt;<i> 
+</I>&gt;<i> ...
+</I>&gt;<i> 
+</I>&gt;<i> &gt; libbulmacont.so.0.12.0: undefined reference to `vtable for
+</I>&gt;<i> &gt; DuplicarAsientoView'
+</I>&gt;<i> &gt; libbulmacont.so.0.12.0: undefined reference to `vtable for
+</I>&gt;<i> &gt; BcBloqueaFechaView' collect2: ld returned 1 exit status
+</I>&gt;<i> 
+</I>&gt;<i> Ese error suele deberse a no incluir la macro Q_OBJECT en la clase, o
+</I>&gt;<i>  cuando la macro está incluida, no pasar el .h en CMakeLists.txt por
+</I>&gt;<i>  QT4_WRAP_CPP.
+</I>&gt;<i> 
+</I>&gt;<i> Saludos,
+</I>&gt;<i> Pedro
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i> &quot;
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003183.html">[BulmaGés]Error &quot;vtable&quot; compilando &quot;libbulmacont&quot;
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003185.html">[BulmaGés] r3711 - trunk/bulmages/bulmacont/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3184">[ fecha ]</a>
+              <a href="thread.html#3184">[ hilo ]</a>
+              <a href="subject.html#3184">[ asunto ]</a>
+              <a href="author.html#3184">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,331 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Problema de compilacion.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-October/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FProblema_de_compilaci%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fon%3D2E%3F%3D&In-Reply-To=%3C52727C95.1040409%40gnuinos.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007737.html">
+   <LINK REL="Next"  HREF="007724.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Problema de compilacion. </H1>
+    <B>gnuinos</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FProblema_de_compilaci%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fon%3D2E%3F%3D&In-Reply-To=%3C52727C95.1040409%40gnuinos.org%3E"
+       TITLE="[BulmaGés]Problema de compilacion.">aitor en gnuinos.org
+       </A><BR>
+    <I>Jue Oct 31 16:51:49 CET 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007737.html">[BulmaGés]Problema de compilacion.
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007724.html">[BulmaGés]Instalación
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7738">[ fecha ]</a>
+              <a href="thread.html#7738">[ hilo ]</a>
+              <a href="subject.html#7738">[ asunto ]</a>
+              <a href="author.html#7738">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola, Javier, te pego el contenido de aquello que escribí:
+
+He avanzado algo compilando BulmaGés en Qt5 (no sé si mucho o poco).
+
+Antes de empezar a exponer nada, quiero aclarar que se trata de mis 
+primeros intentos, de modo que en algo podré estar equivocado. Lo digo 
+para que nadie se lo tome al pie de la letra.
+
+Bien, aclarado esto, vayamos por pasos:
+
+  1) Para que los archivos *.cmake sean encontrados al ejecutar el 
+cmake, he tenido que añadir al comienzo del CMakeLists.txt las 
+siguientes líneas (teniendo en cuenta que en mi caso la ruta de 
+instalación de qt5 es &quot;/opt/Qt5.1.0/5.1.0&quot;):
+
+     set(_qt5Core_install_prefix &quot;/opt/Qt5.1.0/5.1.0/gcc&quot;)
+     set(Qt5Core_DIR &quot;${_qt5Core_install_prefix}/lib/cmake/Qt5Core&quot;)
+     set(Qt5CoreMacros_DIR &quot;${_qt5Core_install_prefix}/lib/cmake/Qt5Core&quot;)
+     set(Qt5WidgetsMacros_DIR 
+&quot;${_qt5Core_install_prefix}/lib/cmake/Qt5Widgets&quot;)
+     set(Qt5WidgetsConfig_DIR 
+&quot;${_qt5Core_install_prefix}/lib/cmake/Qt5Widgets&quot;)
+
+También he sustituido la línea:
+
+     set(QT5_MODULE_PATH 
+&quot;${_qt5Core_install_prefix}/lib/x86_64-linux-gnu/cmake&quot;)
+
+por esta otra:
+
+     set(QT5_MODULE_PATH &quot;${_qt5Core_install_prefix}/lib/cmake&quot;)
+
+Estos cambios, claro está, son aplicables para mi caso en particular. En 
+otros casos será diferente.
+
+2) Para que los binarios ubicados en &quot;/opt/Qt5.1.0/5.1.0/gcc/bin&quot; sean 
+encontrados, el propio instalador de qt5 ha creado unos enlaces directos 
+dentro la carpeta &quot;/usr/bin&quot;. Ahora bien, dado que podemos tener 
+instaladas varias versiones de qt, dichos enlaces no apuntan 
+directamente a los binarios en sí, sino que lo hacen a través de un 
+intermediario llamado &quot;qtchooser&quot;, ubicado también en &quot;/usr/bin&quot;. Esta 
+herramienta se encarga de escoger la versión de qt que proceda para cada 
+caso. Y es aquí donde surge el problema, ya que cuando &quot;FindQt5.cmake&quot; 
+es invocado, la instrucción:
+
+     EXEC_PROGRAM(${QT_QMAKE_EXECUTABLE} ARGS &quot;-query QT_VERSION&quot; 
+OUTPUT_VARIABLE QTVERSION)
+
+no entiende que &quot;/usr/bin/qmake&quot; esté apuntando a 
+&quot;/opt/Qt5.1.0/5.1.0/gcc/bin/qmake&quot;. En consecuencia, la variable 
+&quot;QT5_FOUND&quot; adquiere el valor de &quot;FALSE&quot;. Por eso salta la advertencia:
+
+     FATAL_ERROR &quot;Bulmages needs QT5 to compile&quot;
+
+Esto lo he podido comprobar sustituyendo el &quot;/usr/bin/qmake&quot; en 
+cuestión, por un enlace directo creado de la siguiente manera:
+
+     ln -s /opt/Qt5.1.0/5.1.0/gcc/bin/qmake /usr/bin
+
+Hecho lo cual, la advertencia desaparece. Aclarar que este cambio lo 
+hice sólamente para comprobar que efectivamente así era, pues lo fácil 
+es comentar con una almohadilla o bien borrar el mensaje de advertencia 
+dentro del CMakeLists.txt (sabiendo que tenemos Qt5 instalado), para que 
+el proceso pueda seguir adelante. De todas maneras, si alguien ve que 
+estoy equivocado en este punto le agradecería que me lo dijese, así me 
+evitaré perder el tiempo en vano.
+
+3) A continuación, ejecuto el cmake con el siguiente resultado:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">aitor en gnuinos</A>:~/bulmages/bulmages/build$ cmake ../
+-- The C compiler identification is GNU 4.7.3
+-- The CXX compiler identification is GNU 4.7.3
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- /opt/Qt5.1.0/5.1.0/gcc/lib/cmake
+-- Found PkgConfig: /usr/bin/pkg-config (found version &quot;0.26&quot;)
+Must specify package names on the command line
+Must specify package names on the command line
+Must specify package names on the command line
+Must specify package names on the command line
+Must specify package names on the command line
+Must specify package names on the command line
+Must specify package names on the command line
+Must specify package names on the command line
+Must specify package names on the command line
+Must specify package names on the command line
+Must specify package names on the command line
+Must specify package names on the command line
+Must specify package names on the command line
+Must specify package names on the command line
+-- Found PostgreSQL pg_config: /usr/bin/pg_config
+-- Found PostgreSQL includedir: /usr/include/postgresql
+-- Found PostgreSQL library: /usr/lib/libpq.so
+-- Found PostgreSQL binary utils dir: /usr/lib/postgresql/9.3/bin
+-- Looking for include file libintl.h
+-- Looking for include file libintl.h - found
+-- Looking for dgettext
+-- Looking for dgettext - found
+-- Found Gettext: built in libc
+-- Found PythonInterp: /usr/bin/python (found version &quot;2.7.5+&quot;)
+-- Working on bulmalib
+-- Working on bulmafact
+-- Working on bulmatpv
+-- Working on bulmasetup
+-- Working on installbulmages
+-- Working on documentation
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/aitor/bulmages/bulmages/building
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">aitor en gnuinos</A>:~/bulmages/bulmages/build$
+
+
+No sé si el &quot;Must specify package names on the command line&quot; tiene 
+relevancia o no.
+
+4) Finalmente, ejecuto make y, después de un rato, la compilación se 
+interrumpe porque no encuentra el archivo de cabecera &quot;ui_abrevsbase.h&quot;:
+
+(.....)
+Scanning dependencies of target pluginbt_clientsync
+[ 20%] Building CXX object 
+bulmatpv/plugins/pluginbt_clientsync/CMakeFiles/pluginbt_clientsync.dir/pluginbt_clientsync.cpp.o
+In file included from 
+/home/aitor/bulmages/bulmages/bulmatpv/plugins/pluginbt_clientsync/pluginbt_clientsync.h:27:0,
+                  from 
+/home/aitor/bulmages/bulmages/bulmatpv/plugins/pluginbt_clientsync/pluginbt_clientsync.cpp:29:
+/home/aitor/bulmages/bulmages/bulmatpv/plugins/pluginbt_accesobotones/abrevs.h:5:27: 
+fatal error: ui_abrevsbase.h: No existe el fichero o el directorio
+compilation terminated.
+[ 20%] Building CXX object 
+bulmatpv/plugins/pluginbt_articulograficodb/CMakeFiles/pluginbt_articulograficodb.dir/moc_artgraficosdb.cpp.o
+Linking CXX shared library libpluginbt_alias.so
+make[2]: *** 
+[bulmatpv/plugins/pluginbt_clientsync/CMakeFiles/pluginbt_clientsync.dir/pluginbt_clientsync.cpp.o] 
+Error 1
+make[1]: *** 
+[bulmatpv/plugins/pluginbt_clientsync/CMakeFiles/pluginbt_clientsync.dir/all] 
+Error 2
+make[1]: *** Se espera a que terminen otras tareas....
+[ 20%] Built target pluginbt_alias
+Linking CXX shared library libpluginbt_visor.so
+[ 20%] Built target pluginbt_visor
+Linking CXX shared library libpluginbt_articulograficodb.so
+[ 20%] Built target pluginbt_articulograficodb
+make: *** [all] Error 2
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">root en gnuinos</A>:/home/aitor/bulmages/bulmages/build#
+
+Eso es todo por el momento, pues aquí ya me he quedado atascado. ¿Alguna 
+indicación?
+
+Saludos.
+
+
+El 31/10/13 09:29, Javier Pacheco Nogueira escribió:
+&gt;<i> Hola, gracias por vuestras respuestas mirare a ver si encuentro lo de 
+</I>&gt;<i> aitor. Mientras tanto instale la version deb del repositorio: 
+</I>&gt;<i> <A HREF="http://packages.mtelleria.be/bulmages">http://packages.mtelleria.be/bulmages</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> El 18 de octubre de 2013 08:15, <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">aitor en gnuinos.org</A> 
+</I>&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">aitor en gnuinos.org</A>&gt; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">aitor en gnuinos.org</A> 
+</I>&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">aitor en gnuinos.org</A>&gt;&gt; escribió:
+</I>&gt;<i>
+</I>&gt;<i>     Buenos días, Javier, escribí algo referente a esto el día 15/09.
+</I>&gt;<i>     Busca en la lista por esas fechas. No sé si te servirá de algo.
+</I>&gt;<i>     Mis intentos fueron de debian Jessie, por al versión de cmake. En
+</I>&gt;<i>     mi caso empezaba a compilar sin problemas, pero se detenía en un
+</I>&gt;<i>     punto por falta de archivos. Desconozco lo avanzada que está la
+</I>&gt;<i>     versión en Qt5.
+</I>&gt;<i>     Pero me ha entrado el gusanillo, y volveré a intentarlo este fin
+</I>&gt;<i>     de semana.
+</I>&gt;<i>
+</I>&gt;<i>     Un saludo.
+</I>&gt;<i>
+</I>&gt;<i>     El 17/10/13 13:28, Javier Pacheco Nogueira escribió:
+</I>&gt;&gt;<i>     Buenos dias, tal como un compañero vuestro me comento por email,
+</I>&gt;&gt;<i>     os escribo a esta lista de distribucion porque estoy teniendo
+</I>&gt;&gt;<i>     problemas a la hora de instalar Bulmages en Debian 7 64 bit. Los
+</I>&gt;&gt;<i>     pasos que he seguido han sido:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     -Instalar CMake 2.8.12 desde la pagina web, debido a que no sirve
+</I>&gt;&gt;<i>     el que viene con debian
+</I>&gt;&gt;<i>     -Instalado el QT5 a traves del run de la pagina web.
+</I>&gt;&gt;<i>     -Instalado postgre y demas librerias a traves de apt-get
+</I>&gt;&gt;<i>     -Descargado los fuentes por git del repositorio de bulmages
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     Configuradas las rutas de PATH en  CMakeLists.txt
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     y cuando voy a intentar compilar esto es lo que obtengo.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>      cmake bulmages/
+</I>&gt;&gt;<i>     -- /opt/Qt5.1.1/5.1.1/gcc_64/lib/cmake
+</I>&gt;&gt;<i>     CMake Error at CMakeLists.txt:97 (message):
+</I>&gt;&gt;<i>       Bulmages needs QT5 to compile
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     -- Configuring incomplete, errors occurred!
+</I>&gt;&gt;<i>     See also &quot;/home/javi/bulmages/bulmages/CMakeFiles/CMakeOutput.log&quot;.
+</I>&gt;&gt;<i>     See also &quot;/home/javi/bulmages/bulmages/CMakeFiles/CMakeError.log&quot;.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     O si tuvieran algun manual un poco mas completo de instalacion
+</I>&gt;&gt;<i>     preferiblemente en debian.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     Gracias
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     El 16 de octubre de 2013 14:57, Javier Pacheco Nogueira
+</I>&gt;&gt;<i>     &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">javierpacheconogueira en gmail.com</A>
+</I>&gt;&gt;<i>     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">javierpacheconogueira en gmail.com</A>&gt;&gt; escribió:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         Buenos dias, tal como un compañero vuestro me comento por
+</I>&gt;&gt;<i>         email, os escribo a esta lista de distribucion porque estoy
+</I>&gt;&gt;<i>         teniendo problemas a la hora de instalar Bulmages en Debian 7
+</I>&gt;&gt;<i>         64 bit. Los pasos que he seguido han sido:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         -Instalar CMake 2.8.12 desde la pagina web, debido a que no
+</I>&gt;&gt;<i>         sirve el que viene con debian
+</I>&gt;&gt;<i>         -Instalado el QT5 a traves del run de la pagina web.
+</I>&gt;&gt;<i>         -Instalado postgre y demas librerias a traves de apt-get
+</I>&gt;&gt;<i>         -Descargado los fuentes por git del repositorio de bulmages
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         Configuradas las rutas de PATH en  CMakeLists.txt
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         y cuando voy a intentar compilar esto es lo que obtengo.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>          cmake bulmages/
+</I>&gt;&gt;<i>         -- /opt/Qt5.1.1/5.1.1/gcc_64/lib/cmake
+</I>&gt;&gt;<i>         CMake Error at CMakeLists.txt:97 (message):
+</I>&gt;&gt;<i>           Bulmages needs QT5 to compile
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         -- Configuring incomplete, errors occurred!
+</I>&gt;&gt;<i>         See also
+</I>&gt;&gt;<i>         &quot;/home/javi/bulmages/bulmages/CMakeFiles/CMakeOutput.log&quot;.
+</I>&gt;&gt;<i>         See also
+</I>&gt;&gt;<i>         &quot;/home/javi/bulmages/bulmages/CMakeFiles/CMakeError.log&quot;.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         O si tuvieran algun manual un poco mas completo de
+</I>&gt;&gt;<i>         instalacion preferiblemente en debian.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         Gracias
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     _______________________________________________
+</I>&gt;&gt;<i>     Bulmages-main mailing list
+</I>&gt;&gt;<i>     <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>  &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>&gt;
+</I>&gt;&gt;<i>     <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     _______________________________________________
+</I>&gt;<i>     Bulmages-main mailing list
+</I>&gt;<i>     <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>&gt;
+</I>&gt;<i>     <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20131031/286f7492/attachment-0001.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20131031/286f7492/attachment-0001.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007737.html">[BulmaGés]Problema de compilacion.
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007724.html">[BulmaGés]Instalación
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7738">[ fecha ]</a>
+              <a href="thread.html#7738">[ hilo ]</a>
+              <a href="subject.html#7738">[ asunto ]</a>
+              <a href="author.html#7738">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

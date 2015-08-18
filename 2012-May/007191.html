@@ -1,0 +1,943 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120509152211.15B6A756D4%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007190.html">
+   <LINK REL="Next"  HREF="007192.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120509152211.15B6A756D4%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Mie Mayo  9 17:22:10 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007190.html">[BulmaGés] [Gitorious] Activity: tborras created	branch cambiobgtrml...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007192.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7191">[ fecha ]</a>
+              <a href="thread.html#7191">[ hilo ]</a>
+              <a href="subject.html#7191">[ asunto ]</a>
+              <a href="author.html#7191">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from 29c8fe3 to bfcd43f
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/29c8fe31cb1ce724310e9eef94237f45aa13bb6d/diffs/bfcd43f389e4c7c51c98bed474430e4f4298009c">https://gitorious.org/bulmages/bulmages/commit/29c8fe31cb1ce724310e9eef94237f45aa13bb6d/diffs/bfcd43f389e4c7c51c98bed474430e4f4298009c</A>
+
+Diff: 
+
+commit bfcd43f389e4c7c51c98bed474430e4f4298009c
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Wed May 9 17:21:24 2012 +0200
+
+    Agrego el informe de cuadres de caja
+
+diff --git a/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientoview.cpp b/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientoview.cpp
+index 89d222a..bebdfd6 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientoview.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientoview.cpp
+@@ -200,11 +200,9 @@ void BcAsientoView::on_mui_nuevoAsiento_clicked()
+                                         | QMessageBox::Cancel,
+                                         QMessageBox::Save ) ) {
+         case QMessageBox::Save: // The user clicked the Retry again button or pressed Enter
+-            // try again
+             save();
+             break;
+         case QMessageBox::Discard: // The user clicked the Quit or pressed Escape
+-            // exit
+             break;
+         case QMessageBox::Cancel:
+ 	default:
+@@ -238,10 +236,22 @@ void BcAsientoView::iniciar_asiento_nuevo ( QString nuevoordenasiento )
+             QString query = &quot;SELECT COALESCE(MAX(ordenasiento) + 1, 1) AS orden FROM asiento WHERE EXTRACT(YEAR FROM fecha) = '&quot; + fecha.left ( 10 ).right ( 4 ) + &quot;'&quot;;
+             cur = mainCompany() -&gt;loadQuery ( query );
+             ordenasiento = cur-&gt;value( &quot;orden&quot; );
++	    delete cur;
+         } else {
+             ordenasiento = nuevoordenasiento;
+         } // end if
+ 
++	/// Revisamos la existencia del ejercicio
++	query = &quot;SELECT * FROM ejercicios where ejercicio = extract('year' FROM '&quot;+ mainCompany() -&gt;sanearCadena ( fecha ) +&quot;'::date)&quot;;
++	cur = mainCompany() -&gt;loadQuery ( query );
++        if ( cur-&gt;eof() ) {
++	    blMsgInfo(&quot;Debe crear el ejercicio antes de poder introducir asientos con esta fecha. Vaya a Herramientas-&gt;Bloqueo de Fechas para crearlo&quot;);
++	    mainCompany() -&gt;rollback();
++	    delete cur;
++	    return;
++	} // end if
++        delete cur;
++
+         /// Creamos el asiento en la base de datos.
+         query = &quot;INSERT INTO asiento ( fecha, ordenasiento) VALUES ('&quot; + mainCompany() -&gt;sanearCadena ( fecha ) + &quot;', &quot; + ordenasiento + &quot;)&quot;;
+         mainCompany() -&gt;runQuery ( query );
+diff --git a/bulmages/bulmacont/plugins/pluginbc_cuenta/pluginbc_cuenta.cpp b/bulmages/bulmacont/plugins/pluginbc_cuenta/pluginbc_cuenta.cpp
+index 4bac996..6ccf22a 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_cuenta/pluginbc_cuenta.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_cuenta/pluginbc_cuenta.cpp
+@@ -96,155 +96,6 @@ int BlAction_actionTriggered(BlAction *accion) {
+ }
+ 
+ 
+-/// --------------------------------------------------------------
+-/// --------- Implemento la edicion de articulos -----------------
+-/// Con esta funcionalidad creamos menus contextuales en todos los subformularios donde
+-/// Aparezca el identificador de articulo como elemento y permite de forma sencilla
+-/// La creacion, la edicion, y la seleccion.
+-///
+-
+-/**
+-\param parent
+-**/
+-Subform_Cuenta::Subform_Cuenta ( BlSubForm *parent ) : QObject ( parent )
+-{
+-    BL_FUNC_DEBUG
+-    
+-}
+-
+-///
+-/**
+-**/
+-Subform_Cuenta::~Subform_Cuenta()
+-{
+-    BL_FUNC_DEBUG
+-    
+-}
+-
+-
+-///
+-/**
+-\param menu
+-**/
+-void Subform_Cuenta::s_pintaMenu ( QMenu *menu )
+-{
+-    BL_FUNC_DEBUG
+-    BlSubForm *sub = ( BlSubForm * ) parent();
+-    BlSubFormHeader *header = sub-&gt;header ( &quot;codigo&quot; );
+-    if ( header ) {
+-        menu-&gt;addSeparator();
+-        menu-&gt;addAction ( _ ( &quot;Nueva cuenta&quot; ) );
+-        QString idcuenta = sub-&gt;dbValue ( &quot;idcuenta&quot; );
+-        if ( idcuenta != &quot;&quot; ) menu-&gt;addAction ( _ ( &quot;Editar cuenta&quot; ) );
+-        if ( ! ( header-&gt;options() &amp; BlSubFormHeader::DbNoWrite ) )  {
+-            menu-&gt;addAction ( _ ( &quot;Seleccionar cuenta&quot; ) );
+-        } // end if
+-    } // end if
+-    
+-}
+-
+-
+-///
+-/**
+-\param action
+-**/
+-void Subform_Cuenta::s_trataMenu ( QAction *action )
+-{
+-    BL_FUNC_DEBUG
+-    BlSubForm *sub = ( BlSubForm * ) parent();
+-    if ( action-&gt;text() == _ ( &quot;Editar cuenta&quot; ) ) {
+-        QString idcuenta = sub-&gt;dbValue ( &quot;idcuenta&quot; );
+-        if ( idcuenta != &quot;&quot; )
+-            editarCuenta ( idcuenta );
+-    } else if ( action-&gt;text() == _ ( &quot;Seleccionar cuenta&quot; ) ) {
+-        seleccionarCuenta ( sub );
+-    } else if ( action-&gt;text() == _ ( &quot;Nueva cuenta&quot; )  ) {
+-        nuevoCuenta();
+-    } // end if
+-
+-    
+-}
+-
+-
+-///
+-/**
+-**/
+-void Subform_Cuenta::editarCuenta ( QString idcuenta )
+-{
+-    BL_FUNC_DEBUG
+-        BcCuentaView * nuevae = new BcCuentaView ( ((BcBulmaCont *)g_main)-&gt;company(), 0 );
+-        nuevae-&gt;load ( idcuenta );
+-        ((BcBulmaCont *)g_main)-&gt;company() -&gt;pWorkspace() -&gt;addSubWindow ( nuevae );
+-        nuevae-&gt;show();
+-    
+-}
+-
+-
+-///
+-/**
+-**/
+-void Subform_Cuenta::nuevoCuenta( )
+-{
+-    BL_FUNC_DEBUG
+-        BcCuentaView * nuevae = new BcCuentaView ( ((BcBulmaCont *)g_main)-&gt;company(), 0 );
+-        ((BcBulmaCont *)g_main)-&gt;company() -&gt;pWorkspace() -&gt;addSubWindow ( nuevae );
+-        nuevae-&gt;mui_padre-&gt;setEnabled(TRUE);
+-        nuevae-&gt;show();
+-    
+-}
+-
+-
+-///
+-/**
+-**/
+-void Subform_Cuenta::seleccionarCuenta ( BlSubForm *sub )
+-{
+-    BL_FUNC_DEBUG
+-/*
+-    CuentaList *artlist = new CuentaList ( ( BcCompany * ) sub-&gt;mainCompany(), NULL, 0, BL_SELECT_MODE );
+-    /// Esto es convertir un QWidget en un sistema modal de dialogo.
+-    sub-&gt;setEnabled ( false );
+-    artlist-&gt;show();
+-    while ( !artlist-&gt;isHidden() )
+-        g_theApp-&gt;processEvents();
+-    sub-&gt;setEnabled ( true );
+-    QString idArticle = artlist-&gt;idcuenta();
+-    delete artlist;
+-
+-    /// Si no tenemos un idcuenta salimos ya que significa que no se ha seleccionado ninguno.
+-    if ( idArticle == &quot;&quot; ) {
+-        
+-        return;
+-    } // end if
+-
+-    BlDbRecordSet *cur = sub-&gt;mainCompany() -&gt;loadQuery ( &quot;SELECT * FROM articulo WHERE idcuenta = &quot; + idArticle );
+-    if ( !cur-&gt;eof() ) {
+-        sub-&gt;lineaact()-&gt;setDbValue ( &quot;idcuenta&quot;, idArticle );
+-        sub-&gt;lineaact()-&gt;setDbValue ( &quot;codigocompletoarticulo&quot;, cur-&gt;value( &quot;codigocompletoarticulo&quot; ) );
+-        sub-&gt;lineaact()-&gt;setDbValue ( &quot;nomarticulo&quot;, cur-&gt;value( &quot;nomarticulo&quot; ) );
+-    } // end if
+-    delete cur;
+-*/
+-    
+-}
+-
+-
+-///
+-/**
+-\param sub
+-\return
+-**/
+-int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
+-{
+-    BL_FUNC_DEBUG
+-    Subform_Cuenta *subformods = new Subform_Cuenta ( sub );
+-    sub-&gt;QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
+-    sub-&gt;QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
+-    
+-    return 0;
+-}
+-
+-
+ int Busqueda_on_mui_buscar_clicked ( BlSearchWidget *busq )
+ {
+     BL_FUNC_DEBUG
+@@ -451,3 +302,234 @@ int Busqueda_on_m_inputBusqueda_textChanged (BlSearchWidget *wid) {
+ }
+ 
+ 
++
++
++
++
++/// --------------------------------------------------------------
++/// --------- Implemento la edicion de cuentas -----------------
++/// Con esta funcionalidad creamos menus contextuales en todos los subformularios donde
++/// Aparezca el identificador de cuenta como elemento y permite de forma sencilla
++/// La creacion, la edicion, y la seleccion.
++///
++
++
++/**
++\param parent
++**/
++SubForm_Cuenta::SubForm_Cuenta ( BlSubForm *parent ) : QObject ( parent )
++{
++    BL_FUNC_DEBUG
++    
++}
++
++///
++/**
++**/
++SubForm_Cuenta::~SubForm_Cuenta()
++{
++    BL_FUNC_DEBUG
++    
++}
++
++
++///
++/**
++\param menu
++**/
++void SubForm_Cuenta::s_pintaMenu ( QMenu *menu )
++{
++    BL_FUNC_DEBUG
++    BcSubForm *sub = ( BcSubForm * ) parent();
++    BlSubFormHeader *header = sub-&gt;header ( &quot;codigocuenta&quot; );
++    if ( header ) {
++        menu-&gt;addSeparator();
++        menu-&gt;addAction ( QIcon ( &quot;:/ImgGestionAula/icons/cuenta.png&quot; ), _ ( &quot;Nuevo cuenta&quot; ) );
++        QString idcuenta = sub-&gt;dbValue ( &quot;idcuenta&quot; );
++        if ( idcuenta != &quot;&quot; ) menu-&gt;addAction ( QIcon ( &quot;:/ImgGestionAula/icons/cuenta.png&quot; ), _ ( &quot;Editar cuenta&quot; ) );
++        if ( ! ( header-&gt;options() &amp; BlSubFormHeader::DbNoWrite ) )  {
++            menu-&gt;addAction ( QIcon ( &quot;:/ImgGestionAula/icons/cuenta-list.png&quot; ), _ ( &quot;Seleccionar cuenta&quot; ) );
++        } // end if
++    } // end if
++    
++}
++
++
++///
++/**
++\param action
++**/
++void SubForm_Cuenta::s_trataMenu ( QAction *action )
++{
++    BL_FUNC_DEBUG
++    BcSubForm *sub = ( BcSubForm * ) parent();
++    if ( action-&gt;text() == _ ( &quot;Editar cuenta&quot; ) ) {
++        QString idcuenta = sub-&gt;dbValue ( &quot;idcuenta&quot; );
++        if ( idcuenta != &quot;&quot; )
++            editarCuenta ( idcuenta );
++    } else if ( action-&gt;text() == _ ( &quot;Seleccionar cuenta&quot; ) ) {
++        seleccionarCuenta ( sub );
++    } else if ( action-&gt;text() == _ ( &quot;Nueva cuenta&quot; )  ) {
++        nuevoCuenta();
++    } // end if
++
++    
++}
++
++
++///
++/**
++**/
++void SubForm_Cuenta::editarCuenta ( QString idcuenta )
++{
++    BL_FUNC_DEBUG
++    BlSubForm * subf = ( BlSubForm * ) parent();
++    BcCuentaView * art = new BcCuentaView ( ( BcCompany * ) subf-&gt;mainCompany(), 0 );
++    subf-&gt;mainCompany() -&gt;m_pWorkspace-&gt;addSubWindow ( art );
++    /// Si la carga no va bien entonces terminamos.
++    if ( art-&gt;load ( idcuenta ) ) {
++        delete art;
++        return;
++    } // end if
++    art-&gt;hide();
++    art-&gt;show();
++    
++}
++
++
++
++///
++/**
++**/
++void SubForm_Cuenta::nuevoCuenta( )
++{
++    BL_FUNC_DEBUG
++    BlSubForm * subf = ( BlSubForm * ) parent();
++    BcCuentaView * art = new BcCuentaView ( ( BcCompany * ) subf-&gt;mainCompany(), 0 );
++    art-&gt;setAttribute ( Qt::WA_DeleteOnClose, FALSE );
++    
++    subf-&gt;mainCompany() -&gt;m_pWorkspace-&gt;addSubWindow ( art );
++    subf-&gt;setEnabled(false);
++    art-&gt;hide();
++    art-&gt;show();
++    
++    while ( !art-&gt;isHidden() )
++        g_theApp-&gt;processEvents();
++    subf-&gt;setEnabled ( true );
++    QString idCuenta = art-&gt;dbValue(&quot;idcuenta&quot;);
++    if (idCuenta != &quot;&quot;) {
++        subf-&gt;lineaact()-&gt;setDbValue ( &quot;idcuenta&quot;, idCuenta );
++        subf-&gt;lineaact()-&gt;setDbValue ( &quot;descripcion&quot;, art-&gt;dbValue ( &quot;descripcion&quot; ) );      
++        subf-&gt;lineaact()-&gt;setDbValue ( &quot;codigo&quot;, art-&gt;dbValue ( &quot;codigo&quot; ) );      
++    } // end if
++    delete art;    
++    
++    
++}
++
++
++///
++/**
++**/
++void SubForm_Cuenta::seleccionarCuenta ( BlSubForm *sub )
++{
++    BL_FUNC_DEBUG
++    
++    if (!sub) sub= (BcSubForm *) parent();
++    
++    BcPlanContableListView *artlist = new BcPlanContableListView ( ( BcCompany * ) sub-&gt;mainCompany(), NULL, 0, BL_SELECT_MODE );
++    /// Esto es convertir un QWidget en un sistema modal de dialogo.
++    sub-&gt;setEnabled ( false );
++    artlist-&gt;show();
++    while ( !artlist-&gt;isHidden() )
++        g_theApp-&gt;processEvents();
++    sub-&gt;setEnabled ( true );
++    QString idCuenta = artlist-&gt;idcuenta();
++    delete artlist;
++
++    /// Si no tenemos un idcuenta salimos ya que significa que no se ha seleccionado ninguno.
++    if ( idCuenta == &quot;&quot; ) {
++        
++        return;
++    } // end if
++
++    BlDbRecordSet *cur = sub-&gt;mainCompany() -&gt;loadQuery ( &quot;SELECT * FROM cuenta WHERE idcuenta = &quot; + idCuenta );
++    if ( !cur-&gt;eof() ) {
++        sub-&gt;lineaact()-&gt;setDbValue ( &quot;idcuenta&quot;, idCuenta );
++        sub-&gt;lineaact()-&gt;setDbValue ( &quot;codigo&quot;, cur-&gt;value( &quot;codigo&quot; ) );
++        sub-&gt;lineaact()-&gt;setDbValue ( &quot;descripcion&quot;, cur-&gt;value( &quot;descripcion&quot; ) );
++    } // end if
++    delete cur;
++}
++
++
++///
++/**
++\param sub
++\return
++**/
++int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
++{
++    BL_FUNC_DEBUG
++    SubForm_Cuenta *subformods = new SubForm_Cuenta ( sub );
++    sub-&gt;QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
++    sub-&gt;QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
++    
++    return 0;
++}
++
++
++
++/// Miramos de poner los iconos del menu de subformularios
++///
++/**
++\param sub
++\return
++**/
++int BlSubForm_preparaMenu ( BlSubForm *sub ) {
++    BL_FUNC_DEBUG
++
++    BlSubFormHeader *header = sub-&gt;header ( &quot;codigo1&quot; );
++    if (!header) 
++        header = sub-&gt;header ( &quot;codigo&quot; );
++    if ( header ) {
++        SubForm_Cuenta *subformods = new SubForm_Cuenta ( sub );
++        
++        QHBoxLayout *m_hboxLayout1 = sub-&gt;mui_menusubform-&gt;findChild&lt;QHBoxLayout *&gt; ( &quot;hboxLayout1&quot; );
++        if ( !m_hboxLayout1 ) {
++            m_hboxLayout1 = new QHBoxLayout ( sub-&gt;mui_menusubform );
++            m_hboxLayout1-&gt;setSpacing (0 );
++            m_hboxLayout1-&gt;setMargin ( 0 );
++            m_hboxLayout1-&gt;setObjectName ( QString::fromUtf8 ( &quot;hboxLayout1&quot; ) );
++        } // end if
++        
++        if ( ! ( header-&gt;options() &amp; BlSubFormHeader::DbNoWrite ) )  {
++          QToolButton *sel = new QToolButton ( sub-&gt;mui_menusubform );
++          sel-&gt;setStatusTip ( _(&quot;Nueva cuenta&quot;) );
++          sel-&gt;setToolTip ( _(&quot;Nueva cuenta&quot;) );
++          sel-&gt;setMinimumSize ( QSize ( 18, 18 ) );
++          sel-&gt;setIcon ( QIcon ( &quot;:/ImgGestionAula/icons/cuenta.png&quot; ) );
++          sel-&gt;setIconSize ( QSize ( 18, 18 ) );    
++          m_hboxLayout1-&gt;addWidget ( sel );
++          sel-&gt;connect (sel, SIGNAL(released()), subformods, SLOT(nuevoCuenta()));
++        
++          QToolButton *sel1 = new QToolButton ( sub-&gt;mui_menusubform );
++          sel1-&gt;setStatusTip ( _(&quot;Seleccionar cuenta&quot;) );
++          sel1-&gt;setToolTip ( _(&quot;Seleccionar cuenta&quot;) );
++          sel1-&gt;setMinimumSize ( QSize ( 18, 18 ) );
++          sel1-&gt;setIcon ( QIcon ( &quot;:/ImgGestionAula/icons/cuenta-list.png&quot; ) );
++          sel1-&gt;setIconSize ( QSize ( 18, 18 ) );
++          m_hboxLayout1-&gt;addWidget ( sel1 );
++          sel1-&gt;connect (sel1, SIGNAL(released()), subformods, SLOT(seleccionarCuenta()));
++        } // end if
++    } // end if
++
++    return 0;
++}
++
++
++
++
++
++
++
+diff --git a/bulmages/bulmacont/plugins/pluginbc_cuenta/pluginbc_cuenta.h b/bulmages/bulmacont/plugins/pluginbc_cuenta/pluginbc_cuenta.h
+index 78509bd..b3864ab 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_cuenta/pluginbc_cuenta.h
++++ b/bulmages/bulmacont/plugins/pluginbc_cuenta/pluginbc_cuenta.h
+@@ -42,23 +42,27 @@ extern &quot;C&quot; PLUGINBC_CUENTA_EXPORT int BlDbCompleterComboBox_textChanged (BlDbCom
+ extern &quot;C&quot; PLUGINBC_CUENTA_EXPORT int BcSubForm_pressedAsterisk ( BcSubForm *, void **);
+ extern &quot;C&quot; PLUGINBC_CUENTA_EXPORT int Busqueda_on_m_inputBusqueda_textChanged (BlSearchWidget *);
+ extern &quot;C&quot; PLUGINBC_CUENTA_EXPORT int BlAction_actionTriggered ( BlAction *);
++extern &quot;C&quot; PLUGINBC_CUENTA_EXPORT int BlSubForm_preparaMenu ( BlSubForm * );
+ 
+-class Subform_Cuenta : public QObject
++
++class SubForm_Cuenta : public QObject
+ {
+     Q_OBJECT
+ 
+ public:
+-    Subform_Cuenta ( BlSubForm * );
+-    ~Subform_Cuenta();
++    SubForm_Cuenta ( BlSubForm * );
++    ~SubForm_Cuenta();
++public slots:
+     void editarCuenta( QString);
+     void nuevoCuenta();
+     void seleccionarCuenta(BlSubForm *);
+ 
+-public slots:
++
+     virtual void s_pintaMenu ( QMenu * );
+     virtual void s_trataMenu ( QAction * );
+ };
+ 
+ 
++
+ #endif
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.ca b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.ca
+index 681de4e..2969825 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.ca
++++ b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.ca
+@@ -28,6 +28,6 @@ Categorias: Facturació avançada;
+ 
+ Orden: 900
+ 
+-Reports: listado_z.rml
++Reports: listado_z.rml; inf_cuadrescaja.rml
+ 
+ Comentarios: És imprescindible tenir la funcionalitat de TPV instal·lada o sinó aquest plugin no funcionarà.
+diff --git a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.en b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.en
+index 3b78954..bdb60db 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.en
++++ b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.en
+@@ -28,6 +28,6 @@ Categorias: Advanced invoicing;
+ 
+ Orden: 900
+ 
+-Reports: listado_z.rml
++Reports: listado_z.rml; inf_cuadrescaja.rml
+ 
+ Comentarios: It is essential to have the POS functionality installed or otherwise this plugin will not work.
+diff --git a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.es b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.es
+index aeb4b31..731a42d 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.es
++++ b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.es
+@@ -29,6 +29,6 @@ Categorias: Facturacion avanzada;
+ 
+ Orden: 900
+ 
+-Reports: listado_z.rml
++Reports: listado_z.rml; inf_cuadrescaja.rml
+ 
+ Comentarios: Es imprescindible tener la funcionalidad de TPV instalada o sino este plugin no funcionará.
+\ No newline at end of file
+diff --git a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.fr b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.fr
+index 16bba36..b42c936 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.fr
++++ b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.fr
+@@ -28,6 +28,6 @@ Categorias: Facturation avancees;
+ 
+ Orden: 900
+ 
+-Reports: listado_z.rml
++Reports: listado_z.rml; inf_cuadrescaja.rml
+ 
+ Comentarios: On doit avoir la fonctionalité de TPV installée sinon ce plugin ne fonctionnera pas
+diff --git a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/openreports/ca/inf_cuadrescaja.rml b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/openreports/ca/inf_cuadrescaja.rml
+new file mode 100644
+index 0000000..0a10b1d
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/openreports/ca/inf_cuadrescaja.rml
+@@ -0,0 +1,79 @@
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot; ?&gt;
++&lt;!--IFACE SRC=&quot;[CONF_DIR_OPENREPORTS]inf_ventas.ui&quot;--&gt;                                                                                    
++&lt;!--PARAM NAME=&quot;fecha_inicial&quot; TYPE=&quot;date&quot;--&gt;                                                                                             
++&lt;!--PARAM NAME=&quot;fecha_final&quot; TYPE=&quot;date&quot;--&gt;  
++
++&lt;!DOCTYPE document SYSTEM &quot;rml_1_0.dtd&quot;&gt;
++&lt;!-- # pathtitle=&quot;&amp;Ventas\Informes\Cuadres de Caja&quot; --&gt;  
++&lt;document&gt;
++Q&lt;template pageSize=&quot;(29.7cm, 21cm)&quot; leftMargin=&quot;0cm&quot; rightMargin=&quot;0cm&quot; topMargin=&quot;2.0cm&quot; bottomMargin=&quot;2.0cm&quot; title=&quot;Listado&quot; author=&quot;&quot; allowSplitting=&quot;20&quot;&gt;
++	&lt;pageTemplate id=&quot;main&quot;&gt;
++		&lt;pageGraphics&gt;
++		&lt;!-- EL LOGO DE CABECERA --&gt;
++		&lt;image x=&quot;0.5cm&quot; y=&quot;18.2cm&quot; width=&quot;7cm&quot; file=&quot;logo.jpg&quot;/&gt;
++
++		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
++		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;22&quot;/&gt;
++		&lt;drawString x=&quot;18cm&quot; y=&quot;19.5cm&quot;&gt;Cuadres de Caja&lt;/drawString&gt;
++		&lt;/pageGraphics&gt;
++	&lt;frame id=&quot;column&quot; x1=&quot;1cm&quot; y1=&quot;1cm&quot; width=&quot;27cm&quot; height=&quot;17.5cm&quot;/&gt;
++	&lt;/pageTemplate&gt;
++&lt;/template&gt;
++&lt;stylesheet&gt;
++	&lt;blockTableStyle id=&quot;tabla4&quot;&gt;
++		&lt;blockAlignment value=&quot;RIGHT&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockAlignment value=&quot;CENTER&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++	&lt;/blockTableStyle&gt;
++&lt;/stylesheet&gt;
++
++&lt;story&gt;
++
++&lt;blockTable colWidths=&quot;4.00cm, 4.0cm, 4.0cm, 4cm, 4cm, 4cm&quot;  repeatRows=&quot;1&quot;&gt;
++&lt;tr&gt;
++&lt;td&gt; Fecha&gt;&lt;/td&gt;
++&lt;td&gt; Hora &lt;/td&gt;
++&lt;td&gt; Tickets &lt;/td&gt;
++&lt;td&gt; Base Imponible &lt;/td&gt;
++&lt;td&gt; Impuestos &lt;/td&gt;
++&lt;td&gt; Total &lt;/td&gt;
++&lt;/tr&gt;
++&lt;!-- QUERY=&quot;SELECT * from z  LEFT JOIN
++(SELECT COALESCE(SUM(bimpalbaran),0) AS sb1, COALESCE(sum(impalbaran),0) AS sb2, idz FROM albaran group by idz) AS t1
++ON z.idz = t1.idz WHERE fechaz &gt;= '[fecha_inicial]' AND fechaz&lt;= '[fecha_final]' order by fechaz DESC&quot; --&gt;
++&lt;tr&gt;
++&lt;td&gt;[fechaz]&lt;/td&gt;
++&lt;td&gt;[horaz]&lt;/td&gt;
++&lt;td&gt;[numtickets]&lt;/td&gt;
++&lt;td&gt;[sb1]&lt;/td&gt;
++&lt;td&gt;[sb2]&lt;/td&gt;
++&lt;td&gt;[totalz]&lt;/td&gt;
++&lt;/tr&gt;
++&lt;!-- END QUERY --&gt;
++
++&lt;!-- QUERY=&quot;SELECT sum(numtickets) AS tnumtickets, sum(sb1) AS tsb1, sum(sb2) AS tsb2, sum (sb1 + sb2) AS ttot from z  LEFT JOIN
++(SELECT COALESCE(SUM(bimpalbaran),0) AS sb1, COALESCE(sum(impalbaran),0) AS sb2, idz FROM albaran group by idz) AS t1
++ON z.idz = t1.idz
++WHERE fechaz &gt;= '[fecha_inicial]' AND fechaz&lt;= '[fecha_final]'&quot; --&gt;
++&lt;tr&gt;
++&lt;td&gt; &lt;/td&gt;
++&lt;td&gt; &lt;/td&gt;
++&lt;td&gt; &lt;/td&gt;
++&lt;td&gt; &lt;/td&gt;
++&lt;td&gt; &lt;/td&gt;
++&lt;td&gt; &lt;/td&gt;
++&lt;/tr&gt;
++&lt;tr&gt;
++&lt;td&gt;&lt;para&gt;&lt;b&gt;Totales:&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++&lt;td&gt; &lt;/td&gt;
++&lt;td&gt;&lt;para&gt;&lt;b&gt;[tnumtickets]&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++&lt;td&gt;&lt;para&gt;&lt;b&gt;[tsb1]&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++&lt;td&gt;&lt;para&gt;&lt;b&gt;[tsb2]&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++&lt;td&gt;&lt;para&gt;&lt;b&gt;[ttot]&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++&lt;/tr&gt;
++
++&lt;!-- END QUERY --&gt;
++&lt;/blockTable&gt;
++	&lt;spacer length=&quot;5mm&quot; width=&quot;1mm&quot;/&gt;		
++&lt;/story&gt;
++&lt;/document&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/openreports/en/inf_cuadrescaja.rml b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/openreports/en/inf_cuadrescaja.rml
+new file mode 100644
+index 0000000..0a10b1d
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/openreports/en/inf_cuadrescaja.rml
+@@ -0,0 +1,79 @@
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot; ?&gt;
++&lt;!--IFACE SRC=&quot;[CONF_DIR_OPENREPORTS]inf_ventas.ui&quot;--&gt;                                                                                    
++&lt;!--PARAM NAME=&quot;fecha_inicial&quot; TYPE=&quot;date&quot;--&gt;                                                                                             
++&lt;!--PARAM NAME=&quot;fecha_final&quot; TYPE=&quot;date&quot;--&gt;  
++
++&lt;!DOCTYPE document SYSTEM &quot;rml_1_0.dtd&quot;&gt;
++&lt;!-- # pathtitle=&quot;&amp;Ventas\Informes\Cuadres de Caja&quot; --&gt;  
++&lt;document&gt;
++Q&lt;template pageSize=&quot;(29.7cm, 21cm)&quot; leftMargin=&quot;0cm&quot; rightMargin=&quot;0cm&quot; topMargin=&quot;2.0cm&quot; bottomMargin=&quot;2.0cm&quot; title=&quot;Listado&quot; author=&quot;&quot; allowSplitting=&quot;20&quot;&gt;
++	&lt;pageTemplate id=&quot;main&quot;&gt;
++		&lt;pageGraphics&gt;
++		&lt;!-- EL LOGO DE CABECERA --&gt;
++		&lt;image x=&quot;0.5cm&quot; y=&quot;18.2cm&quot; width=&quot;7cm&quot; file=&quot;logo.jpg&quot;/&gt;
++
++		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
++		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;22&quot;/&gt;
++		&lt;drawString x=&quot;18cm&quot; y=&quot;19.5cm&quot;&gt;Cuadres de Caja&lt;/drawString&gt;
++		&lt;/pageGraphics&gt;
++	&lt;frame id=&quot;column&quot; x1=&quot;1cm&quot; y1=&quot;1cm&quot; width=&quot;27cm&quot; height=&quot;17.5cm&quot;/&gt;
++	&lt;/pageTemplate&gt;
++&lt;/template&gt;
++&lt;stylesheet&gt;
++	&lt;blockTableStyle id=&quot;tabla4&quot;&gt;
++		&lt;blockAlignment value=&quot;RIGHT&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockAlignment value=&quot;CENTER&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++	&lt;/blockTableStyle&gt;
++&lt;/stylesheet&gt;
++
++&lt;story&gt;
++
++&lt;blockTable colWidths=&quot;4.00cm, 4.0cm, 4.0cm, 4cm, 4cm, 4cm&quot;  repeatRows=&quot;1&quot;&gt;
++&lt;tr&gt;
++&lt;td&gt; Fecha&gt;&lt;/td&gt;
++&lt;td&gt; Hora &lt;/td&gt;
++&lt;td&gt; Tickets &lt;/td&gt;
++&lt;td&gt; Base Imponible &lt;/td&gt;
++&lt;td&gt; Impuestos &lt;/td&gt;
++&lt;td&gt; Total &lt;/td&gt;
++&lt;/tr&gt;
++&lt;!-- QUERY=&quot;SELECT * from z  LEFT JOIN
++(SELECT COALESCE(SUM(bimpalbaran),0) AS sb1, COALESCE(sum(impalbaran),0) AS sb2, idz FROM albaran group by idz) AS t1
++ON z.idz = t1.idz WHERE fechaz &gt;= '[fecha_inicial]' AND fechaz&lt;= '[fecha_final]' order by fechaz DESC&quot; --&gt;
++&lt;tr&gt;
++&lt;td&gt;[fechaz]&lt;/td&gt;
++&lt;td&gt;[horaz]&lt;/td&gt;
++&lt;td&gt;[numtickets]&lt;/td&gt;
++&lt;td&gt;[sb1]&lt;/td&gt;
++&lt;td&gt;[sb2]&lt;/td&gt;
++&lt;td&gt;[totalz]&lt;/td&gt;
++&lt;/tr&gt;
++&lt;!-- END QUERY --&gt;
++
++&lt;!-- QUERY=&quot;SELECT sum(numtickets) AS tnumtickets, sum(sb1) AS tsb1, sum(sb2) AS tsb2, sum (sb1 + sb2) AS ttot from z  LEFT JOIN
++(SELECT COALESCE(SUM(bimpalbaran),0) AS sb1, COALESCE(sum(impalbaran),0) AS sb2, idz FROM albaran group by idz) AS t1
++ON z.idz = t1.idz
++WHERE fechaz &gt;= '[fecha_inicial]' AND fechaz&lt;= '[fecha_final]'&quot; --&gt;
++&lt;tr&gt;
++&lt;td&gt; &lt;/td&gt;
++&lt;td&gt; &lt;/td&gt;
++&lt;td&gt; &lt;/td&gt;
++&lt;td&gt; &lt;/td&gt;
++&lt;td&gt; &lt;/td&gt;
++&lt;td&gt; &lt;/td&gt;
++&lt;/tr&gt;
++&lt;tr&gt;
++&lt;td&gt;&lt;para&gt;&lt;b&gt;Totales:&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++&lt;td&gt; &lt;/td&gt;
++&lt;td&gt;&lt;para&gt;&lt;b&gt;[tnumtickets]&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++&lt;td&gt;&lt;para&gt;&lt;b&gt;[tsb1]&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++&lt;td&gt;&lt;para&gt;&lt;b&gt;[tsb2]&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++&lt;td&gt;&lt;para&gt;&lt;b&gt;[ttot]&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++&lt;/tr&gt;
++
++&lt;!-- END QUERY --&gt;
++&lt;/blockTable&gt;
++	&lt;spacer length=&quot;5mm&quot; width=&quot;1mm&quot;/&gt;		
++&lt;/story&gt;
++&lt;/document&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/openreports/es/inf_cuadrescaja.rml b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/openreports/es/inf_cuadrescaja.rml
+new file mode 100644
+index 0000000..0a10b1d
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/openreports/es/inf_cuadrescaja.rml
+@@ -0,0 +1,79 @@
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot; ?&gt;
++&lt;!--IFACE SRC=&quot;[CONF_DIR_OPENREPORTS]inf_ventas.ui&quot;--&gt;                                                                                    
++&lt;!--PARAM NAME=&quot;fecha_inicial&quot; TYPE=&quot;date&quot;--&gt;                                                                                             
++&lt;!--PARAM NAME=&quot;fecha_final&quot; TYPE=&quot;date&quot;--&gt;  
++
++&lt;!DOCTYPE document SYSTEM &quot;rml_1_0.dtd&quot;&gt;
++&lt;!-- # pathtitle=&quot;&amp;Ventas\Informes\Cuadres de Caja&quot; --&gt;  
++&lt;document&gt;
++Q&lt;template pageSize=&quot;(29.7cm, 21cm)&quot; leftMargin=&quot;0cm&quot; rightMargin=&quot;0cm&quot; topMargin=&quot;2.0cm&quot; bottomMargin=&quot;2.0cm&quot; title=&quot;Listado&quot; author=&quot;&quot; allowSplitting=&quot;20&quot;&gt;
++	&lt;pageTemplate id=&quot;main&quot;&gt;
++		&lt;pageGraphics&gt;
++		&lt;!-- EL LOGO DE CABECERA --&gt;
++		&lt;image x=&quot;0.5cm&quot; y=&quot;18.2cm&quot; width=&quot;7cm&quot; file=&quot;logo.jpg&quot;/&gt;
++
++		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
++		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;22&quot;/&gt;
++		&lt;drawString x=&quot;18cm&quot; y=&quot;19.5cm&quot;&gt;Cuadres de Caja&lt;/drawString&gt;
++		&lt;/pageGraphics&gt;
++	&lt;frame id=&quot;column&quot; x1=&quot;1cm&quot; y1=&quot;1cm&quot; width=&quot;27cm&quot; height=&quot;17.5cm&quot;/&gt;
++	&lt;/pageTemplate&gt;
++&lt;/template&gt;
++&lt;stylesheet&gt;
++	&lt;blockTableStyle id=&quot;tabla4&quot;&gt;
++		&lt;blockAlignment value=&quot;RIGHT&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockAlignment value=&quot;CENTER&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++	&lt;/blockTableStyle&gt;
++&lt;/stylesheet&gt;
++
++&lt;story&gt;
++
++&lt;blockTable colWidths=&quot;4.00cm, 4.0cm, 4.0cm, 4cm, 4cm, 4cm&quot;  repeatRows=&quot;1&quot;&gt;
++&lt;tr&gt;
++&lt;td&gt; Fecha&gt;&lt;/td&gt;
++&lt;td&gt; Hora &lt;/td&gt;
++&lt;td&gt; Tickets &lt;/td&gt;
++&lt;td&gt; Base Imponible &lt;/td&gt;
++&lt;td&gt; Impuestos &lt;/td&gt;
++&lt;td&gt; Total &lt;/td&gt;
++&lt;/tr&gt;
++&lt;!-- QUERY=&quot;SELECT * from z  LEFT JOIN
++(SELECT COALESCE(SUM(bimpalbaran),0) AS sb1, COALESCE(sum(impalbaran),0) AS sb2, idz FROM albaran group by idz) AS t1
++ON z.idz = t1.idz WHERE fechaz &gt;= '[fecha_inicial]' AND fechaz&lt;= '[fecha_final]' order by fechaz DESC&quot; --&gt;
++&lt;tr&gt;
++&lt;td&gt;[fechaz]&lt;/td&gt;
++&lt;td&gt;[horaz]&lt;/td&gt;
++&lt;td&gt;[numtickets]&lt;/td&gt;
++&lt;td&gt;[sb1]&lt;/td&gt;
++&lt;td&gt;[sb2]&lt;/td&gt;
++&lt;td&gt;[totalz]&lt;/td&gt;
++&lt;/tr&gt;
++&lt;!-- END QUERY --&gt;
++
++&lt;!-- QUERY=&quot;SELECT sum(numtickets) AS tnumtickets, sum(sb1) AS tsb1, sum(sb2) AS tsb2, sum (sb1 + sb2) AS ttot from z  LEFT JOIN
++(SELECT COALESCE(SUM(bimpalbaran),0) AS sb1, COALESCE(sum(impalbaran),0) AS sb2, idz FROM albaran group by idz) AS t1
++ON z.idz = t1.idz
++WHERE fechaz &gt;= '[fecha_inicial]' AND fechaz&lt;= '[fecha_final]'&quot; --&gt;
++&lt;tr&gt;
++&lt;td&gt; &lt;/td&gt;
++&lt;td&gt; &lt;/td&gt;
++&lt;td&gt; &lt;/td&gt;
++&lt;td&gt; &lt;/td&gt;
++&lt;td&gt; &lt;/td&gt;
++&lt;td&gt; &lt;/td&gt;
++&lt;/tr&gt;
++&lt;tr&gt;
++&lt;td&gt;&lt;para&gt;&lt;b&gt;Totales:&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++&lt;td&gt; &lt;/td&gt;
++&lt;td&gt;&lt;para&gt;&lt;b&gt;[tnumtickets]&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++&lt;td&gt;&lt;para&gt;&lt;b&gt;[tsb1]&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++&lt;td&gt;&lt;para&gt;&lt;b&gt;[tsb2]&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++&lt;td&gt;&lt;para&gt;&lt;b&gt;[ttot]&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++&lt;/tr&gt;
++
++&lt;!-- END QUERY --&gt;
++&lt;/blockTable&gt;
++	&lt;spacer length=&quot;5mm&quot; width=&quot;1mm&quot;/&gt;		
++&lt;/story&gt;
++&lt;/document&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/openreports/fr/inf_cuadrescaja.rml b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/openreports/fr/inf_cuadrescaja.rml
+new file mode 100644
+index 0000000..0a10b1d
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/openreports/fr/inf_cuadrescaja.rml
+@@ -0,0 +1,79 @@
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot; ?&gt;
++&lt;!--IFACE SRC=&quot;[CONF_DIR_OPENREPORTS]inf_ventas.ui&quot;--&gt;                                                                                    
++&lt;!--PARAM NAME=&quot;fecha_inicial&quot; TYPE=&quot;date&quot;--&gt;                                                                                             
++&lt;!--PARAM NAME=&quot;fecha_final&quot; TYPE=&quot;date&quot;--&gt;  
++
++&lt;!DOCTYPE document SYSTEM &quot;rml_1_0.dtd&quot;&gt;
++&lt;!-- # pathtitle=&quot;&amp;Ventas\Informes\Cuadres de Caja&quot; --&gt;  
++&lt;document&gt;
++Q&lt;template pageSize=&quot;(29.7cm, 21cm)&quot; leftMargin=&quot;0cm&quot; rightMargin=&quot;0cm&quot; topMargin=&quot;2.0cm&quot; bottomMargin=&quot;2.0cm&quot; title=&quot;Listado&quot; author=&quot;&quot; allowSplitting=&quot;20&quot;&gt;
++	&lt;pageTemplate id=&quot;main&quot;&gt;
++		&lt;pageGraphics&gt;
++		&lt;!-- EL LOGO DE CABECERA --&gt;
++		&lt;image x=&quot;0.5cm&quot; y=&quot;18.2cm&quot; width=&quot;7cm&quot; file=&quot;logo.jpg&quot;/&gt;
++
++		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
++		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;22&quot;/&gt;
++		&lt;drawString x=&quot;18cm&quot; y=&quot;19.5cm&quot;&gt;Cuadres de Caja&lt;/drawString&gt;
++		&lt;/pageGraphics&gt;
++	&lt;frame id=&quot;column&quot; x1=&quot;1cm&quot; y1=&quot;1cm&quot; width=&quot;27cm&quot; height=&quot;17.5cm&quot;/&gt;
++	&lt;/pageTemplate&gt;
++&lt;/template&gt;
++&lt;stylesheet&gt;
++	&lt;blockTableStyle id=&quot;tabla4&quot;&gt;
++		&lt;blockAlignment value=&quot;RIGHT&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockAlignment value=&quot;CENTER&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++	&lt;/blockTableStyle&gt;
++&lt;/stylesheet&gt;
++
++&lt;story&gt;
++
++&lt;blockTable colWidths=&quot;4.00cm, 4.0cm, 4.0cm, 4cm, 4cm, 4cm&quot;  repeatRows=&quot;1&quot;&gt;
++&lt;tr&gt;
++&lt;td&gt; Fecha&gt;&lt;/td&gt;
++&lt;td&gt; Hora &lt;/td&gt;
++&lt;td&gt; Tickets &lt;/td&gt;
++&lt;td&gt; Base Imponible &lt;/td&gt;
++&lt;td&gt; Impuestos &lt;/td&gt;
++&lt;td&gt; Total &lt;/td&gt;
++&lt;/tr&gt;
++&lt;!-- QUERY=&quot;SELECT * from z  LEFT JOIN
++(SELECT COALESCE(SUM(bimpalbaran),0) AS sb1, COALESCE(sum(impalbaran),0) AS sb2, idz FROM albaran group by idz) AS t1
++ON z.idz = t1.idz WHERE fechaz &gt;= '[fecha_inicial]' AND fechaz&lt;= '[fecha_final]' order by fechaz DESC&quot; --&gt;
++&lt;tr&gt;
++&lt;td&gt;[fechaz]&lt;/td&gt;
++&lt;td&gt;[horaz]&lt;/td&gt;
++&lt;td&gt;[numtickets]&lt;/td&gt;
++&lt;td&gt;[sb1]&lt;/td&gt;
++&lt;td&gt;[sb2]&lt;/td&gt;
++&lt;td&gt;[totalz]&lt;/td&gt;
++&lt;/tr&gt;
++&lt;!-- END QUERY --&gt;
++
++&lt;!-- QUERY=&quot;SELECT sum(numtickets) AS tnumtickets, sum(sb1) AS tsb1, sum(sb2) AS tsb2, sum (sb1 + sb2) AS ttot from z  LEFT JOIN
++(SELECT COALESCE(SUM(bimpalbaran),0) AS sb1, COALESCE(sum(impalbaran),0) AS sb2, idz FROM albaran group by idz) AS t1
++ON z.idz = t1.idz
++WHERE fechaz &gt;= '[fecha_inicial]' AND fechaz&lt;= '[fecha_final]'&quot; --&gt;
++&lt;tr&gt;
++&lt;td&gt; &lt;/td&gt;
++&lt;td&gt; &lt;/td&gt;
++&lt;td&gt; &lt;/td&gt;
++&lt;td&gt; &lt;/td&gt;
++&lt;td&gt; &lt;/td&gt;
++&lt;td&gt; &lt;/td&gt;
++&lt;/tr&gt;
++&lt;tr&gt;
++&lt;td&gt;&lt;para&gt;&lt;b&gt;Totales:&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++&lt;td&gt; &lt;/td&gt;
++&lt;td&gt;&lt;para&gt;&lt;b&gt;[tnumtickets]&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++&lt;td&gt;&lt;para&gt;&lt;b&gt;[tsb1]&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++&lt;td&gt;&lt;para&gt;&lt;b&gt;[tsb2]&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++&lt;td&gt;&lt;para&gt;&lt;b&gt;[ttot]&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++&lt;/tr&gt;
++
++&lt;!-- END QUERY --&gt;
++&lt;/blockTable&gt;
++	&lt;spacer length=&quot;5mm&quot; width=&quot;1mm&quot;/&gt;		
++&lt;/story&gt;
++&lt;/document&gt;
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007190.html">[BulmaGés] [Gitorious] Activity: tborras created	branch cambiobgtrml...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007192.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7191">[ fecha ]</a>
+              <a href="thread.html#7191">[ hilo ]</a>
+              <a href="subject.html#7191">[ asunto ]</a>
+              <a href="author.html#7191">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

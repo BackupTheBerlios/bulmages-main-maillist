@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] r3756 -	trunk/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3756%20-%0A%09trunk/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels&In-Reply-To=%3C201002120955.o1C9t2Vn025670%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003416.html">
+   <LINK REL="Next"  HREF="003418.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] r3756 -	trunk/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels </H1>
+    <B>svn en mail.berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3756%20-%0A%09trunk/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels&In-Reply-To=%3C201002120955.o1C9t2Vn025670%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] r3756 -	trunk/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels">svn en mail.berlios.de
+       </A><BR>
+    <I>Vie Feb 12 10:55:02 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003416.html">[BulmaGés] r3755 -	trunk/bulmages/installbulmages/bgtrml2pdf
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003418.html">[BulmaGés] r3757 - in	trunk/bulmages/bulmafact/plugins: pluginbf_cliente	pluginbf_clientealbaran pluginbf_clientefactura	pluginbf_clientepedido pluginbf_clientepresupuesto
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3417">[ fecha ]</a>
+              <a href="thread.html#3417">[ hilo ]</a>
+              <a href="subject.html#3417">[ asunto ]</a>
+              <a href="author.html#3417">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: fcojavmc
+Date: 2010-02-12 10:55:02 +0100 (dv, 12 feb 2010)
+New Revision: 3756
+
+Modified:
+   trunk/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels/pluginbf_sincrobulmacont.sql
+Log:
+Se establece un nombre a la conexión dblink  [
+dblink_connect('bulmafact2cont', quer); ] para poder controlar si ya
+existía previamente. De esta manera podemos encerrar una transacción
+dblink entre un 'trigger' BEFORE y otro AFTER y controlar si algo ha
+fallado entre medias y llamar a un ROLLBACK de la transacción dblink.
+Ejemplo (INSERT/UPDATE de un cliente):
+
+Trigger BEFORE UPDATE OR INSERT ON cliente
+- Se establece conexión dblink (*1)
+- Se hacen operaciones dblink (INSERT)
+
+
+Trigger AFTER UPDATE OR INSERT ON cliente
+- Aquí se establece únicamente un COMMIT de la transacción dblink
+  iniciada en el 'trigger' BEFORE y se cierra la conexión dblink.
+- Si después del trigger anterior (BEFORE) algo va mal al hacer el
+  UPDATE del cliente nunca se ejecutará este 'trigger'. En este caso la
+conexión quedaría abierta sin aplicar los cambios realizados.
+
+
+(*1) Al volver a iniciar una nueva conexión dblink (para un nuevo INSERT
+o UPDATE) se comprueba si existe una conexión dblink previa. Si es así
+es que algo ha ido mal y se hace un ROLLBACK de la transacción dblink
+fallida.
+
+---
+
+Se mejora el cálculo de código de la cuenta al dar de alta un cliente.
+Como estaba limitaba el número de cuentas de cliente a sólo 100.
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003416.html">[BulmaGés] r3755 -	trunk/bulmages/installbulmages/bgtrml2pdf
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003418.html">[BulmaGés] r3757 - in	trunk/bulmages/bulmafact/plugins: pluginbf_cliente	pluginbf_clientealbaran pluginbf_clientefactura	pluginbf_clientepedido pluginbf_clientepresupuesto
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3417">[ fecha ]</a>
+              <a href="thread.html#3417">[ hilo ]</a>
+              <a href="subject.html#3417">[ asunto ]</a>
+              <a href="author.html#3417">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

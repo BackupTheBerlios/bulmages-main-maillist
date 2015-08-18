@@ -1,0 +1,329 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120510224028.40BBD756DD%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007198.html">
+   <LINK REL="Next"  HREF="007200.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120510224028.40BBD756DD%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Vie Mayo 11 00:40:28 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007198.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007200.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7199">[ fecha ]</a>
+              <a href="thread.html#7199">[ hilo ]</a>
+              <a href="subject.html#7199">[ asunto ]</a>
+              <a href="author.html#7199">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from ca5637a to 60d6cf8
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/ca5637a878e004bbe51884ef2529f360e54e16e4/diffs/60d6cf884aa704a6e7d77faaa546376a08cef037">https://gitorious.org/bulmages/bulmages/commit/ca5637a878e004bbe51884ef2529f360e54e16e4/diffs/60d6cf884aa704a6e7d77faaa546376a08cef037</A>
+
+Diff: 
+
+commit 60d6cf884aa704a6e7d77faaa546376a08cef037
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri May 11 00:40:31 2012 +0200
+
+    Agrego plantillas de un informe nuevo
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/openreports/ca/inf_resumenventasarticulo.pys b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/openreports/ca/inf_resumenventasarticulo.pys
+new file mode 100644
+index 0000000..0d7c9b8
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/openreports/ca/inf_resumenventasarticulo.pys
+@@ -0,0 +1,55 @@
++#!/usr/bin/python
++# -*- coding: utf8 -*-
++
++#&lt;!--IFACE SRC=&quot;[CONF_DIR_OPENREPORTS]inf_ventas.ui&quot;--&gt;
++#&lt;!--PARAM NAME=&quot;fecha_inicial&quot; TYPE=&quot;date&quot;--&gt;
++#&lt;!--PARAM NAME=&quot;fecha_final&quot; TYPE=&quot;date&quot;--&gt;
++
++# pathtitle=&quot;&amp;Ventas\Informes\Resumen de ventas por articulo&quot;
++# title=&quot;Resumen de ventas por articulo&quot;
++
++import ooolib
++
++# Crea el documento
++doc = ooolib.Calc(&quot;Resumen de ventas (por articulo)&quot;)
++
++doc.set_column_property(1, 'width', '0.5in')
++doc.set_column_property(2, 'width', '5in')
++doc.set_cell_property('bold', True)
++doc.set_cell_value(2, 2, 'string', 'RESUMEN DE VENTAS (POR ARTICULO) [fecha_inicial] - [fecha_final]')
++
++
++doc.set_cell_value(1, 4, 'string', 'Codigo')
++doc.set_cell_value(2, 4, 'string', &quot;Articulo&quot;)
++doc.set_cell_value(3, 4, 'string', 'Cantidad')
++doc.set_cell_value(4, 4, 'string', 'Precio Medio')
++doc.set_cell_value(5, 4, 'string', 'Total Base Imponible')
++doc.set_cell_value(6, 4, 'string', 'Total Impuestos')
++doc.set_cell_value(7, 4, 'string', 'Total')
++
++i = 5
++
++&lt;!-- QUERY = &quot;SELECT bimp, imp, codigocompletoarticulo, sinacentos(nomarticulo) AS nomarticulo, total, numero, preciomedio FROM articulo
++LEFT JOIN
++    (SELECT   sum(cantlalbaran * pvpivainclalbaran) - sum(cantlalbaran * pvpivainclalbaran / (1 + ivalalbaran / 100)) ::numeric(12,2) AS imp
++     , sum (cantlalbaran * pvpivainclalbaran / (1 + ivalalbaran / 100)) ::numeric(12,2) AS bimp
++     ,sum(cantlalbaran * pvpivainclalbaran) AS total, idarticulo, sum(cantlalbaran) AS numero, avg(pvpivainclalbaran) AS preciomedio FROM lalbaran
++     WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE fechaalbaran &gt;= '[fecha_inicial]' AND fechaalbaran &lt;= '[fecha_final]')  GROUP BY idarticulo
++    ) AS t1 ON t1.idarticulo = articulo.idarticulo ORDER BY codigocompletoarticulo&quot;--&gt;
++
++doc.set_cell_value(1, i, 'string', '[codigocompletoarticulo]')
++doc.set_cell_value(2, i, 'string', &quot;[nomarticulo]&quot;)
++doc.set_cell_value(3, i, 'float', '[numero]')
++doc.set_cell_value(4, i, 'float', '[preciomedio]')
++doc.set_cell_value(5, i, 'float', '[bimp]')
++doc.set_cell_value(6, i, 'float', '[imp]')
++doc.set_cell_value(7, i, 'float', '[total]')
++
++i = i + 1
++&lt;!--END QUERY--&gt;
++
++doc.set_cell_value(5, i+1, 'formula', &quot;=SUM(E4:E&quot;+str(i-1)+&quot;)&quot;)
++
++
++# Guardamos el documento
++doc.save(&quot;inf_resumenventasarticulo.ods&quot;)
+diff --git a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/openreports/en/inf_resumenventasarticulo.pys b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/openreports/en/inf_resumenventasarticulo.pys
+new file mode 100644
+index 0000000..0d7c9b8
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/openreports/en/inf_resumenventasarticulo.pys
+@@ -0,0 +1,55 @@
++#!/usr/bin/python
++# -*- coding: utf8 -*-
++
++#&lt;!--IFACE SRC=&quot;[CONF_DIR_OPENREPORTS]inf_ventas.ui&quot;--&gt;
++#&lt;!--PARAM NAME=&quot;fecha_inicial&quot; TYPE=&quot;date&quot;--&gt;
++#&lt;!--PARAM NAME=&quot;fecha_final&quot; TYPE=&quot;date&quot;--&gt;
++
++# pathtitle=&quot;&amp;Ventas\Informes\Resumen de ventas por articulo&quot;
++# title=&quot;Resumen de ventas por articulo&quot;
++
++import ooolib
++
++# Crea el documento
++doc = ooolib.Calc(&quot;Resumen de ventas (por articulo)&quot;)
++
++doc.set_column_property(1, 'width', '0.5in')
++doc.set_column_property(2, 'width', '5in')
++doc.set_cell_property('bold', True)
++doc.set_cell_value(2, 2, 'string', 'RESUMEN DE VENTAS (POR ARTICULO) [fecha_inicial] - [fecha_final]')
++
++
++doc.set_cell_value(1, 4, 'string', 'Codigo')
++doc.set_cell_value(2, 4, 'string', &quot;Articulo&quot;)
++doc.set_cell_value(3, 4, 'string', 'Cantidad')
++doc.set_cell_value(4, 4, 'string', 'Precio Medio')
++doc.set_cell_value(5, 4, 'string', 'Total Base Imponible')
++doc.set_cell_value(6, 4, 'string', 'Total Impuestos')
++doc.set_cell_value(7, 4, 'string', 'Total')
++
++i = 5
++
++&lt;!-- QUERY = &quot;SELECT bimp, imp, codigocompletoarticulo, sinacentos(nomarticulo) AS nomarticulo, total, numero, preciomedio FROM articulo
++LEFT JOIN
++    (SELECT   sum(cantlalbaran * pvpivainclalbaran) - sum(cantlalbaran * pvpivainclalbaran / (1 + ivalalbaran / 100)) ::numeric(12,2) AS imp
++     , sum (cantlalbaran * pvpivainclalbaran / (1 + ivalalbaran / 100)) ::numeric(12,2) AS bimp
++     ,sum(cantlalbaran * pvpivainclalbaran) AS total, idarticulo, sum(cantlalbaran) AS numero, avg(pvpivainclalbaran) AS preciomedio FROM lalbaran
++     WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE fechaalbaran &gt;= '[fecha_inicial]' AND fechaalbaran &lt;= '[fecha_final]')  GROUP BY idarticulo
++    ) AS t1 ON t1.idarticulo = articulo.idarticulo ORDER BY codigocompletoarticulo&quot;--&gt;
++
++doc.set_cell_value(1, i, 'string', '[codigocompletoarticulo]')
++doc.set_cell_value(2, i, 'string', &quot;[nomarticulo]&quot;)
++doc.set_cell_value(3, i, 'float', '[numero]')
++doc.set_cell_value(4, i, 'float', '[preciomedio]')
++doc.set_cell_value(5, i, 'float', '[bimp]')
++doc.set_cell_value(6, i, 'float', '[imp]')
++doc.set_cell_value(7, i, 'float', '[total]')
++
++i = i + 1
++&lt;!--END QUERY--&gt;
++
++doc.set_cell_value(5, i+1, 'formula', &quot;=SUM(E4:E&quot;+str(i-1)+&quot;)&quot;)
++
++
++# Guardamos el documento
++doc.save(&quot;inf_resumenventasarticulo.ods&quot;)
+diff --git a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/openreports/es/inf_resumenventasarticulo.pys b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/openreports/es/inf_resumenventasarticulo.pys
+new file mode 100644
+index 0000000..0d7c9b8
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/openreports/es/inf_resumenventasarticulo.pys
+@@ -0,0 +1,55 @@
++#!/usr/bin/python
++# -*- coding: utf8 -*-
++
++#&lt;!--IFACE SRC=&quot;[CONF_DIR_OPENREPORTS]inf_ventas.ui&quot;--&gt;
++#&lt;!--PARAM NAME=&quot;fecha_inicial&quot; TYPE=&quot;date&quot;--&gt;
++#&lt;!--PARAM NAME=&quot;fecha_final&quot; TYPE=&quot;date&quot;--&gt;
++
++# pathtitle=&quot;&amp;Ventas\Informes\Resumen de ventas por articulo&quot;
++# title=&quot;Resumen de ventas por articulo&quot;
++
++import ooolib
++
++# Crea el documento
++doc = ooolib.Calc(&quot;Resumen de ventas (por articulo)&quot;)
++
++doc.set_column_property(1, 'width', '0.5in')
++doc.set_column_property(2, 'width', '5in')
++doc.set_cell_property('bold', True)
++doc.set_cell_value(2, 2, 'string', 'RESUMEN DE VENTAS (POR ARTICULO) [fecha_inicial] - [fecha_final]')
++
++
++doc.set_cell_value(1, 4, 'string', 'Codigo')
++doc.set_cell_value(2, 4, 'string', &quot;Articulo&quot;)
++doc.set_cell_value(3, 4, 'string', 'Cantidad')
++doc.set_cell_value(4, 4, 'string', 'Precio Medio')
++doc.set_cell_value(5, 4, 'string', 'Total Base Imponible')
++doc.set_cell_value(6, 4, 'string', 'Total Impuestos')
++doc.set_cell_value(7, 4, 'string', 'Total')
++
++i = 5
++
++&lt;!-- QUERY = &quot;SELECT bimp, imp, codigocompletoarticulo, sinacentos(nomarticulo) AS nomarticulo, total, numero, preciomedio FROM articulo
++LEFT JOIN
++    (SELECT   sum(cantlalbaran * pvpivainclalbaran) - sum(cantlalbaran * pvpivainclalbaran / (1 + ivalalbaran / 100)) ::numeric(12,2) AS imp
++     , sum (cantlalbaran * pvpivainclalbaran / (1 + ivalalbaran / 100)) ::numeric(12,2) AS bimp
++     ,sum(cantlalbaran * pvpivainclalbaran) AS total, idarticulo, sum(cantlalbaran) AS numero, avg(pvpivainclalbaran) AS preciomedio FROM lalbaran
++     WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE fechaalbaran &gt;= '[fecha_inicial]' AND fechaalbaran &lt;= '[fecha_final]')  GROUP BY idarticulo
++    ) AS t1 ON t1.idarticulo = articulo.idarticulo ORDER BY codigocompletoarticulo&quot;--&gt;
++
++doc.set_cell_value(1, i, 'string', '[codigocompletoarticulo]')
++doc.set_cell_value(2, i, 'string', &quot;[nomarticulo]&quot;)
++doc.set_cell_value(3, i, 'float', '[numero]')
++doc.set_cell_value(4, i, 'float', '[preciomedio]')
++doc.set_cell_value(5, i, 'float', '[bimp]')
++doc.set_cell_value(6, i, 'float', '[imp]')
++doc.set_cell_value(7, i, 'float', '[total]')
++
++i = i + 1
++&lt;!--END QUERY--&gt;
++
++doc.set_cell_value(5, i+1, 'formula', &quot;=SUM(E4:E&quot;+str(i-1)+&quot;)&quot;)
++
++
++# Guardamos el documento
++doc.save(&quot;inf_resumenventasarticulo.ods&quot;)
+diff --git a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/openreports/fr/inf_resumenventasarticulo.pys b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/openreports/fr/inf_resumenventasarticulo.pys
+new file mode 100644
+index 0000000..0d7c9b8
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/openreports/fr/inf_resumenventasarticulo.pys
+@@ -0,0 +1,55 @@
++#!/usr/bin/python
++# -*- coding: utf8 -*-
++
++#&lt;!--IFACE SRC=&quot;[CONF_DIR_OPENREPORTS]inf_ventas.ui&quot;--&gt;
++#&lt;!--PARAM NAME=&quot;fecha_inicial&quot; TYPE=&quot;date&quot;--&gt;
++#&lt;!--PARAM NAME=&quot;fecha_final&quot; TYPE=&quot;date&quot;--&gt;
++
++# pathtitle=&quot;&amp;Ventas\Informes\Resumen de ventas por articulo&quot;
++# title=&quot;Resumen de ventas por articulo&quot;
++
++import ooolib
++
++# Crea el documento
++doc = ooolib.Calc(&quot;Resumen de ventas (por articulo)&quot;)
++
++doc.set_column_property(1, 'width', '0.5in')
++doc.set_column_property(2, 'width', '5in')
++doc.set_cell_property('bold', True)
++doc.set_cell_value(2, 2, 'string', 'RESUMEN DE VENTAS (POR ARTICULO) [fecha_inicial] - [fecha_final]')
++
++
++doc.set_cell_value(1, 4, 'string', 'Codigo')
++doc.set_cell_value(2, 4, 'string', &quot;Articulo&quot;)
++doc.set_cell_value(3, 4, 'string', 'Cantidad')
++doc.set_cell_value(4, 4, 'string', 'Precio Medio')
++doc.set_cell_value(5, 4, 'string', 'Total Base Imponible')
++doc.set_cell_value(6, 4, 'string', 'Total Impuestos')
++doc.set_cell_value(7, 4, 'string', 'Total')
++
++i = 5
++
++&lt;!-- QUERY = &quot;SELECT bimp, imp, codigocompletoarticulo, sinacentos(nomarticulo) AS nomarticulo, total, numero, preciomedio FROM articulo
++LEFT JOIN
++    (SELECT   sum(cantlalbaran * pvpivainclalbaran) - sum(cantlalbaran * pvpivainclalbaran / (1 + ivalalbaran / 100)) ::numeric(12,2) AS imp
++     , sum (cantlalbaran * pvpivainclalbaran / (1 + ivalalbaran / 100)) ::numeric(12,2) AS bimp
++     ,sum(cantlalbaran * pvpivainclalbaran) AS total, idarticulo, sum(cantlalbaran) AS numero, avg(pvpivainclalbaran) AS preciomedio FROM lalbaran
++     WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE fechaalbaran &gt;= '[fecha_inicial]' AND fechaalbaran &lt;= '[fecha_final]')  GROUP BY idarticulo
++    ) AS t1 ON t1.idarticulo = articulo.idarticulo ORDER BY codigocompletoarticulo&quot;--&gt;
++
++doc.set_cell_value(1, i, 'string', '[codigocompletoarticulo]')
++doc.set_cell_value(2, i, 'string', &quot;[nomarticulo]&quot;)
++doc.set_cell_value(3, i, 'float', '[numero]')
++doc.set_cell_value(4, i, 'float', '[preciomedio]')
++doc.set_cell_value(5, i, 'float', '[bimp]')
++doc.set_cell_value(6, i, 'float', '[imp]')
++doc.set_cell_value(7, i, 'float', '[total]')
++
++i = i + 1
++&lt;!--END QUERY--&gt;
++
++doc.set_cell_value(5, i+1, 'formula', &quot;=SUM(E4:E&quot;+str(i-1)+&quot;)&quot;)
++
++
++# Guardamos el documento
++doc.save(&quot;inf_resumenventasarticulo.ods&quot;)
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007198.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007200.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7199">[ fecha ]</a>
+              <a href="thread.html#7199">[ hilo ]</a>
+              <a href="subject.html#7199">[ asunto ]</a>
+              <a href="author.html#7199">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

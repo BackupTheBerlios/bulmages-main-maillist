@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]r4750 - in trunk/bulmages: bulmacont/src bulmatpv/src installbulmages
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Futf-8%3Fq%3Fr4750_-_in_trunk/bulmages%3F%3D%0A%09%3D%3Futf-8%3Fq%3F%3D3A_bulmacont/src_bulmatpv/src_installbulmages%3F%3D&In-Reply-To=%3CBANLkTikutmztvdAUHkemcDEUt%3DWaDxQdJQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005604.html">
+   <LINK REL="Next"  HREF="005608.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]r4750 - in trunk/bulmages: bulmacont/src bulmatpv/src installbulmages </H1>
+    <B>Daniel Ripoll Osma</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Futf-8%3Fq%3Fr4750_-_in_trunk/bulmages%3F%3D%0A%09%3D%3Futf-8%3Fq%3F%3D3A_bulmacont/src_bulmatpv/src_installbulmages%3F%3D&In-Reply-To=%3CBANLkTikutmztvdAUHkemcDEUt%3DWaDxQdJQ%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]r4750 - in trunk/bulmages: bulmacont/src bulmatpv/src installbulmages">dripoll.public en gmail.com
+       </A><BR>
+    <I>Jue Abr 14 19:54:51 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="005604.html">[BulmaGés]r4750 - in trunk/bulmages: bulmacont/src bulmatpv/src installbulmages
+</A></li>
+        <LI>Próximo mensaje: <A HREF="005608.html">[BulmaGés]r4750 - in trunk/bulmages: bulmacont/src bulmatpv/src installbulmages
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5606">[ fecha ]</a>
+              <a href="thread.html#5606">[ hilo ]</a>
+              <a href="subject.html#5606">[ asunto ]</a>
+              <a href="author.html#5606">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Aron,
+
+Con la nueva modificación de hilex, esto se encuentra el los
+*company.cpp del programa en cuestión.
+
+Si tomemos a bulmafact, en el archivo:
+
+bulmages.git/bulmages/bulmafact/src/bfcompany.cpp
+b/bulmages/bulmafact/src/bfcompany.cpp
+
+
+En la linea 99 nos encontramos:
+
+(...............) g_confpr-&gt;valor ( CONF_MAIN_WINDOW_TITLE ) + &quot; :: &quot;
++ currentUser() + &quot;@&quot; + dbName() );
+
+
+
+Teóricamente, solo habría que modificar y añadir un cadena.
+
+g_confpr-&gt;valor ( CONF_MAIN_WINDOW_TITLE ) + &quot; :: &lt; &quot; + currentUser()
++ &quot;@&quot; + dbName() + &quot;&gt;&quot; );
+
+
+Corregidme si me equivoco.
+
+
+2011/4/14 Aron &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">auryn en wanadoo.es</A>&gt;:
+&gt;<i> En los títulos ahora pone:
+</I>&gt;<i>
+</I>&gt;<i> &quot;Facturación GPL :: <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">usuario en empresa</A> - [nombre de subventana] &lt;@servidor&gt;&quot;
+</I>&gt;<i>
+</I>&gt;<i> He personalizado la parte anterior a &quot;::&quot;.
+</I>&gt;<i>
+</I>&gt;<i> No parece correcto poner &quot;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">usuario en empresa</A>&quot;, igual sería mejor
+</I>&gt;<i> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">usuario en servidor</A>&gt;, pero esa parte del título no la encuentro en el código.
+</I>&gt;<i>
+</I>&gt;<i> Un saludo.
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i>
+</I>&gt;<i> Aron
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+
+
+-- 
+**************************************
+Daniel Ripoll
+**************************************
+          Todo-Redes
+        C/.Begonia, 12
+   07010 Palma de Mallorca.
+      Tel: +34-971499071
+   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+  comercial(en)todo-redes.com
+***************************************
+***************************************
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="005604.html">[BulmaGés]r4750 - in trunk/bulmages: bulmacont/src bulmatpv/src installbulmages
+</A></li>
+	<LI>Próximo mensaje: <A HREF="005608.html">[BulmaGés]r4750 - in trunk/bulmages: bulmacont/src bulmatpv/src installbulmages
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5606">[ fecha ]</a>
+              <a href="thread.html#5606">[ hilo ]</a>
+              <a href="subject.html#5606">[ asunto ]</a>
+              <a href="author.html#5606">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

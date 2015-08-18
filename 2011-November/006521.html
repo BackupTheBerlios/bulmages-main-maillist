@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Cambio de repositorio y subir cambios
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FCambio_de_repositorio%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F_y_subir_cambios%3F%3D&In-Reply-To=%3CCAJWqEtc3OEFipkYZmBJJfEqtWJDE1urRFoTscEqu6CNFuBxBpA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006520.html">
+   <LINK REL="Next"  HREF="006522.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Cambio de repositorio y subir cambios </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FCambio_de_repositorio%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F_y_subir_cambios%3F%3D&In-Reply-To=%3CCAJWqEtc3OEFipkYZmBJJfEqtWJDE1urRFoTscEqu6CNFuBxBpA%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]Cambio de repositorio y subir cambios">tborras en conetxia.com
+       </A><BR>
+    <I>Vie Nov 11 23:05:29 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006520.html">[BulmaGés]Cambio de repositorio y subir cambios
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006522.html">[BulmaGés]Cambio de repositorio y subir cambios
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6521">[ fecha ]</a>
+              <a href="thread.html#6521">[ hilo ]</a>
+              <a href="subject.html#6521">[ asunto ]</a>
+              <a href="author.html#6521">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>No va bien, me da un error inesperado !!!
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en Neo</A>:~/bulmages$ git pull origin master
+The authenticity of host 'gitorious.org (87.238.52.168)' can't be
+established.
+RSA key fingerprint is 7e:af:8d:ec:f0:39:5e:ba:52:16:ce:19:fa:d4:b8:7d.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'gitorious.org,87.238.52.168' (RSA) to the list
+of known hosts.
+Permission denied (publickey).
+fatal: The remote end hung up unexpectedly
+
+
+Salut
+
+El 11 de noviembre de 2011 22:51, Fco. Javier M. C. &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>
+&gt;<i> escribió:
+</I>
+&gt;<i>  Hola Tomeu.
+</I>&gt;<i>
+</I>&gt;<i> Los pasos son los siguientes:
+</I>&gt;<i>
+</I>&gt;<i> 1) Entra en tu directorio GIT y ejecutas &quot;git remote -v&quot; para ver el
+</I>&gt;<i> listado de repositorios remotos configurados. Verás que te sale el de
+</I>&gt;<i> Berlios con el alias &quot;origin&quot;.
+</I>&gt;<i>
+</I>&gt;<i> 2) Borra el repositorio de Berlios (origin) con &quot;git remote rm origin&quot;.
+</I>&gt;<i>
+</I>&gt;<i> 3) Añade el nuevo repositorio de Gitorious con &quot;git remote add -t master
+</I>&gt;<i> origin <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">git en gitorious.org</A>:bulmages/bulmages.git&quot;.
+</I>&gt;<i> (Poner -t master es para sólo sincronizar con esa rama).
+</I>&gt;<i>
+</I>&gt;<i> 4) Sincroniza con el nuevo repositorio con &quot;git pull origin master&quot;.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Si todo va bien se hará un &quot;merge&quot; con tu copia local y luego ya puedes
+</I>&gt;<i> hacer &quot;git commit -a&quot; y &quot;git push&quot; de forma normal.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Un saludo.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> El 11/11/11 16:21, Tomeu Borras escribió:
+</I>&gt;<i>
+</I>&gt;<i> Bones a tothom
+</I>&gt;<i>
+</I>&gt;<i> Estoy por subir los cambios hechos al nuevo repositorio de gitorious, pero
+</I>&gt;<i> me encuentro que estoy con el antiguo repositorio de Berlios y no lo tengo
+</I>&gt;<i> cambiado.
+</I>&gt;<i>
+</I>&gt;<i> Alguien me explica como se puede hacer para cambiar de uno a otro sin
+</I>&gt;<i> tener que bajar todo, y hacer los cambios uno a uno ?
+</I>&gt;<i>
+</I>&gt;<i> Salut
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Tomeu Borrás
+</I>&gt;<i> Conetxia Soluciones Informáticas
+</I>&gt;<i> 902 88 11 66 - 677 77 44 76
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">listBulmages-main en lists.berlios.dehttps</A>://lists.berlios.de/mailman/listinfo/bulmages-main
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Javier.
+</I>&gt;<i> TODO-<A HREF="REDEShttp://www.todo-redes.com">REDEShttp://www.todo-redes.com</A>
+</I>&gt;<i> C/Begònia 12 - 07010 Palma de Mallorca.
+</I>&gt;<i> Tel.: 971499071
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+
+-- 
+Tomeu Borrás
+Conetxia Soluciones Informáticas
+902 88 11 66 - 677 77 44 76
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20111111/de47e6d6/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20111111/de47e6d6/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006520.html">[BulmaGés]Cambio de repositorio y subir cambios
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006522.html">[BulmaGés]Cambio de repositorio y subir cambios
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6521">[ fecha ]</a>
+              <a href="thread.html#6521">[ hilo ]</a>
+              <a href="subject.html#6521">[ asunto ]</a>
+              <a href="author.html#6521">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

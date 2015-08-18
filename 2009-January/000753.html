@@ -1,0 +1,324 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]r2884 - in trunk/bulmages/bulmafact: plugins plugins/pluginalbaran plugins/pluginalbaranprov plugins/pluginbarcodeopen plugins/plugincobros plugins/plugincompraventa plugins/pluginetiquetado plugins/pluginetiquetas plugins/pluginfactura
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fr2884_-_in_trunk/bulm%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fages/bulmafact%3D3A_plugins_plugins/pluginalbaran_plu%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fgins/pluginalbaranprov_plugins/pluginbarcodeopen_pl%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fugins/plugincobros_plugins/plugincompraventa_plugin%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fs/pluginetiquetado_plugins/pluginetiquetas_plugins/%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fpluginfactura%3F%3D&In-Reply-To=%3Cc42865c40901080816o2c0d573fw6cbf1e3115fd0b52%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000843.html">
+   <LINK REL="Next"  HREF="000754.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]r2884 - in trunk/bulmages/bulmafact: plugins plugins/pluginalbaran plugins/pluginalbaranprov plugins/pluginbarcodeopen plugins/plugincobros plugins/plugincompraventa plugins/pluginetiquetado plugins/pluginetiquetas plugins/pluginfactura </H1>
+    <B>Raül Martínez i Peris</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fr2884_-_in_trunk/bulm%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fages/bulmafact%3D3A_plugins_plugins/pluginalbaran_plu%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fgins/pluginalbaranprov_plugins/pluginbarcodeopen_pl%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fugins/plugincobros_plugins/plugincompraventa_plugin%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fs/pluginetiquetado_plugins/pluginetiquetas_plugins/%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fpluginfactura%3F%3D&In-Reply-To=%3Cc42865c40901080816o2c0d573fw6cbf1e3115fd0b52%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]r2884 - in trunk/bulmages/bulmafact: plugins plugins/pluginalbaran plugins/pluginalbaranprov plugins/pluginbarcodeopen plugins/plugincobros plugins/plugincompraventa plugins/pluginetiquetado plugins/pluginetiquetas plugins/pluginfactura">elferrer en gmail.com
+       </A><BR>
+    <I>Jue Ene  8 17:16:01 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000843.html">[BulmaGés]Nou pla comptable fundacions i associacions catalanes
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000754.html">[BulmaGés] r2887 - trunk/bulmages/bulmacont/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#753">[ fecha ]</a>
+              <a href="thread.html#753">[ hilo ]</a>
+              <a href="subject.html#753">[ asunto ]</a>
+              <a href="author.html#753">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Me anticipo pidiendo disculpas si los comentarios son una tontería, lo mío
+no es programar.
+
+
+2009/1/7 Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+
+&gt;<i> Buenas.
+</I>&gt;<i>
+</I>&gt;<i> Con este commit creo que ya dejo, por el momento, de sacar cosas fuera y me
+</I>&gt;<i> centraré en probar como se comporta el sistema con esta vuelta de tuerca.
+</I>&gt;<i>
+</I>&gt;<i> Quiero comentar los aspectos negativos (pifias) y las cosas a mejorar.
+</I>&gt;<i>
+</I>&gt;<i> Problema con los UIC
+</I>&gt;<i> ============
+</I>&gt;<i>
+</I>&gt;<i>        - Una de las cosas que más problemas ha dado esta en las
+</I>&gt;<i> interdependencias
+</I>&gt;<i> entre plugins y en el orden de compilado.
+</I>&gt;<i> Hay que entender como trabaja Qt primero procesando los ui's con uic i
+</I>&gt;<i> luego
+</I>&gt;<i> procesando el codigo con moc para finalmente compilar.
+</I>&gt;<i> El uic genera archivos .h de descripcion de la interfaz (ui_xxxxxx.h) que a
+</I>&gt;<i> su
+</I>&gt;<i> vez son incluidos por los archivos de clase y eso genera el siguiente
+</I>&gt;<i> problema.
+</I>&gt;<i>
+</I>&gt;<i> PluginFactura tiene:
+</I>&gt;<i> facturabase.ui que generará ui_facturabase.h
+</I>&gt;<i> factura.h tiene un include de ui_facturabase.h
+</I>&gt;<i>
+</I>
+¿y si se cambia la forma de nombrar los archivos?
+ej: basefactura.ui, genericofactura.ui, pluginfactura.ui;
+o también &quot;engañar&quot; al sistema duplicando facturabase.ui (se genera
+ui_facturabase.h) y la llamada del include de factura.h a
+duplicadofacturabase.ui (generando ui_duplicadofacturabase.h), aquí el
+problema sería el mantenimiento de dos archivos porque no sé si un linkado
+sería viable.
+
+
+
+&gt;<i>
+</I>&gt;<i> PluginPresupuesto tiene una inclusión de factura.h y por tanto tambien
+</I>&gt;<i> tiene
+</I>&gt;<i> una inclusion de ui_facturabase.h
+</I>&gt;<i>
+</I>&gt;<i> cmake compila cada directorio del proyecto por separado pasando en cada
+</I>&gt;<i> directorio el uic, luego el moc y finalmente compila.
+</I>&gt;<i>
+</I>&gt;<i> Por tanto si compilamos PluginPresupuesto sin antes haber compilado
+</I>&gt;<i> PluginFactura nos encontraremos con un error de compilación en el hecho de
+</I>&gt;<i> que ui_facturabase.h aun no existe.
+</I>&gt;<i>
+</I>&gt;<i> El problema es, casi siempre salvable, estableciendo ordenes de compilacion
+</I>&gt;<i> y
+</I>&gt;<i> dependencias entre plugins. Pero, como no, podemos tener dependencias
+</I>&gt;<i> cíclicas que nos fastidian todo el tinglado.
+</I>&gt;<i>
+</I>&gt;<i> Por esto me he visto obligado a hacer una guarrada en los CMakeList para
+</I>&gt;<i> que
+</I>&gt;<i> en algun caso concreto el uic genere tambien las pantallas de otro plugin.
+</I>&gt;<i> Aunque la mejor forma de solucionarlo es conseguir que cmake haga uic en
+</I>&gt;<i> todos los subproyectos para luego compilar.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Casting Obligatorio en los Plugins + variable global
+</I>&gt;<i> ==============================
+</I>&gt;<i>
+</I>&gt;<i> Este es el tema que mencioné en un correo anterior que nos obligaba a tener
+</I>&gt;<i> una variable global adicional en plugins.h para poder recuperar punteros
+</I>&gt;<i> (void *) y reformarlos con un casting a la clase que nos interesa.
+</I>&gt;<i> Me preocupa porque asi como esta ahora podría ser un foco de errores con
+</I>&gt;<i> multiples Threads.
+</I>&gt;<i>
+</I>
+
+¿sería muy complicado crear un interlocutor en la aplicación que se encargue
+de comunicar los plug-ins entre sí?
+de estar forma el &quot;interlocutor&quot; sería quien autorizara las acciones entre
+plug-in, aunque ello obligaría a que todos los plug-ins se comunicaran
+siempre a través del &quot;interlocutor&quot; y nunca directamente.
+Este plug-in sería un la variable global que mencionas pero no sería
+estática y sería quien antes de dar la información al información al plug-in
+se encargaría de comprobar su viabilidad.
+
+
+
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> No estan arreglados los menus de primer nivel
+</I>&gt;<i> ============================
+</I>&gt;<i>
+</I>&gt;<i> Si no cargamos ningún plugin de compras o de ventas nos quedaran en el
+</I>&gt;<i> programa los menus de primer nivel &quot;Compras&quot; o &quot;Ventas&quot; que estarán vacios
+</I>&gt;<i> (Sin opciones seleccionabgles). No es un problema de funcionamiento pero si
+</I>&gt;<i> es nefasto a nivel visual.
+</I>&gt;<i>
+</I>&gt;<i> La solución al problema  pasa por quitar dichas opciones de menu y que cada
+</I>&gt;<i> uno de los plugins que se adieren al menu comprueben la existencia de dicho
+</I>&gt;<i> menu y si estuviese creado colgarse del creado y si no estuviese creado
+</I>&gt;<i> crear
+</I>&gt;<i> el menu y colgarse de este.
+</I>&gt;<i>
+</I>&gt;<i> Esto ya se hace en plugininformes y en plugininformesODS con las opciones
+</I>&gt;<i> de
+</I>&gt;<i> informes.
+</I>&gt;<i>
+</I>&gt;<i> Sin embargo hay un problema que aun no he logrado arreglar y es que al
+</I>&gt;<i> crear
+</I>&gt;<i> el menu lo queremos poser en una posición determinada y no al final. Si se
+</I>&gt;<i> tratase de intercalar un solo menu esta chupado saber en que posicion debe
+</I>&gt;<i> ir. Pero al tratarse de intercalar multiples menus adivinar la posición que
+</I>&gt;<i> le corresponde es muy difícil ya que dependiendo del orden en que esten
+</I>&gt;<i> colocados los plugins en el archivo de configuracion las posiciones tambien
+</I>&gt;<i> variarán.
+</I>&gt;<i>
+</I>
+¿Se pueden ocultar menús si no se habilitan ciertas características?
+quiero decir: ¿se pueden crear todos los menús y con posterioridad que la
+aplicación compruebe los que tienen plug-in cargados y el resto ocultarlos o
+dejarlos inhabilitados?
+
+
+
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Bueno, quitando estas tres cosillas (que no parecen muy graves) el tema va
+</I>&gt;<i> bien. Además hemos quitado una clase centralizadora (Company ) que marcaba
+</I>&gt;<i> demasiado las diferencias entre lo que era plugin y lo que no.
+</I>&gt;<i>
+</I>&gt;<i> Salut
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+Un saludo a todos.
+
+
+
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> El Wednesday 07 January 2009 01:52:02 <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">svn en mail.berlios.de</A> escribió:
+</I>&gt;<i> &gt; Author: tborras
+</I>&gt;<i> &gt; Date: 2009-01-07 01:51:44 +0100 (Wed, 07 Jan 2009)
+</I>&gt;<i> &gt; New Revision: 2884
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Added:
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/plugins/pluginpresupuesto/
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/plugins/pluginpresupuesto/CMakeLists.txt
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/plugins/pluginpresupuesto/README.es
+</I>&gt;<i> &gt;
+</I>&gt;<i>  trunk/bulmages/bulmafact/plugins/pluginpresupuesto/genpreqtoolbutton.cpp
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/plugins/pluginpresupuesto/genpreqtoolbutton.h
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> trunk/bulmages/bulmafact/plugins/pluginpresupuesto/listdescpresupuestoview.
+</I>&gt;<i> &gt;cpp
+</I>&gt;<i> &gt;
+</I>&gt;<i> trunk/bulmages/bulmafact/plugins/pluginpresupuesto/listdescpresupuestoview.
+</I>&gt;<i> &gt;h
+</I>&gt;<i> &gt;
+</I>&gt;<i> trunk/bulmages/bulmafact/plugins/pluginpresupuesto/listlinpresupuestoview.c
+</I>&gt;<i> &gt;pp
+</I>&gt;<i> &gt;
+</I>&gt;<i> trunk/bulmages/bulmafact/plugins/pluginpresupuesto/listlinpresupuestoview.h
+</I>&gt;<i> &gt; trunk/bulmages/bulmafact/plugins/pluginpresupuesto/pluginpresupuesto.cpp
+</I>&gt;<i> &gt; trunk/bulmages/bulmafact/plugins/pluginpresupuesto/pluginpresupuesto.h
+</I>&gt;<i> &gt;
+</I>&gt;<i> trunk/bulmages/bulmafact/plugins/pluginpresupuesto/presupuestoclientebase.u
+</I>&gt;<i> &gt;i trunk/bulmages/bulmafact/plugins/pluginpresupuesto/presupuestolist.cpp
+</I>&gt;<i> &gt; trunk/bulmages/bulmafact/plugins/pluginpresupuesto/presupuestolist.h
+</I>&gt;<i> &gt;
+</I>&gt;<i> trunk/bulmages/bulmafact/plugins/pluginpresupuesto/presupuestoslistbase.ui
+</I>&gt;<i> &gt; trunk/bulmages/bulmafact/plugins/pluginpresupuesto/presupuestoview.cpp
+</I>&gt;<i> &gt; trunk/bulmages/bulmafact/plugins/pluginpresupuesto/presupuestoview.h
+</I>&gt;<i> &gt; Removed:
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/src/listdescpresupuestoview.cpp
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/src/listdescpresupuestoview.h
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/src/listlinpresupuestoview.cpp
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/src/listlinpresupuestoview.h
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/src/presupuestoclientebase.ui
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/src/presupuestolist.cpp
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/src/presupuestolist.h
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/src/presupuestoslistbase.ui
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/src/presupuestoview.cpp
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/src/presupuestoview.h
+</I>&gt;<i> &gt; Modified:
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/plugins/CMakeLists.txt
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/plugins/pluginalbaran/CMakeLists.txt
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/plugins/pluginalbaran/albaranclienteview.cpp
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/plugins/pluginalbaran/albaranclienteview.h
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; trunk/bulmages/bulmafact/plugins/pluginalbaranprov/albaranesproveedor.cpp
+</I>&gt;<i> &gt;
+</I>&gt;<i> trunk/bulmages/bulmafact/plugins/pluginalbaranprov/albaranproveedorview.cpp
+</I>&gt;<i> &gt; trunk/bulmages/bulmafact/plugins/pluginbarcodeopen/CMakeLists.txt
+</I>&gt;<i> &gt; trunk/bulmages/bulmafact/plugins/pluginbarcodeopen/pluginbarcodeopen.cpp
+</I>&gt;<i> &gt; trunk/bulmages/bulmafact/plugins/plugincobros/CMakeLists.txt
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/plugins/plugincompraventa/compraventaview.cpp
+</I>&gt;<i> &gt;
+</I>&gt;<i>  trunk/bulmages/bulmafact/plugins/pluginetiquetado/ticketqtoolbutton.cpp
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/plugins/pluginetiquetas/pluginetiquetas.cpp
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/plugins/pluginetiquetas/ticketqtoolbutton.cpp
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/plugins/pluginfactura/CMakeLists.txt
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/plugins/pluginfactura/facturaview.cpp
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/plugins/pluginfactura/facturaview.h
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/plugins/pluginfacturaprov/facturapview.cpp
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/plugins/pluginfacturar/CMakeLists.txt
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> trunk/bulmages/bulmafact/plugins/pluginimpresionesmultiples/CMakeLists.txt
+</I>&gt;<i> &gt;
+</I>&gt;<i> trunk/bulmages/bulmafact/plugins/pluginimpresionesmultiples/impmultqtoolbut
+</I>&gt;<i> &gt;ton.cpp trunk/bulmages/bulmafact/plugins/pluginmail/CMakeLists.txt
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/plugins/pluginmailthunderbird/CMakeLists.txt
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/plugins/pluginpedido/CMakeLists.txt
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/plugins/pluginpedido/pedidoclientebase.ui
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/plugins/pluginpedido/pedidoclienteview.cpp
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; trunk/bulmages/bulmafact/plugins/pluginpedidoprov/pedidoproveedorview.cpp
+</I>&gt;<i> &gt; trunk/bulmages/bulmafact/plugins/pluginpedidoprov/pedidoproveedorview.h
+</I>&gt;<i> &gt; trunk/bulmages/bulmafact/plugins/pluginq19/pluginq19.cpp
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/plugins/pluginticket/CMakeLists.txt
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/plugins/plugintrazabilidad/movimientosview.h
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/src/bulmafact.cpp
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/src/bulmafact.h
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/src/bulmafactbase.ui
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/src/busquedareferencia.cpp
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/src/clientebase.ui
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/src/clienteview.cpp
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/src/company.cpp
+</I>&gt;<i> &gt;    trunk/bulmages/bulmafact/src/company.h
+</I>&gt;<i> &gt; Log:
+</I>&gt;<i> &gt; Saco la parte de presupuestos a plugin. Y con esto termino de momento de
+</I>&gt;<i> &gt; sacar cosas. Tambien hago limpieza en las clases company y bulmafact que
+</I>&gt;<i> &gt; quedan mucho mas reducidas y pierden la mayor parte de referencias a
+</I>&gt;<i> clases
+</I>&gt;<i> &gt; que ahora estan distribuidas.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Bulmages-main mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Tomeu Borrás Riera
+</I>&gt;<i> Conetxia Soluciones Informáticas
+</I>&gt;<i> 902 88 11 66
+</I>&gt;<i> 971 29 06 29
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>
+
+
+-- 
+Raül Martínez i Peris
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20090108/238bbe92/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20090108/238bbe92/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000843.html">[BulmaGés]Nou pla comptable fundacions i associacions catalanes
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000754.html">[BulmaGés] r2887 - trunk/bulmages/bulmacont/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#753">[ fecha ]</a>
+              <a href="thread.html#753">[ hilo ]</a>
+              <a href="subject.html#753">[ asunto ]</a>
+              <a href="author.html#753">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

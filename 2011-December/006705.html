@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Algunas novedades (bulmasetup: multiplataforma python)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FAlgunas_novedades_%3D28%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fbulmasetup%3D3A_multiplataforma_python%3D29%3F%3D&In-Reply-To=%3C4EE0F095.5030607%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006702.html">
+   <LINK REL="Next"  HREF="006706.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Algunas novedades (bulmasetup: multiplataforma python) </H1>
+    <B>Daniel Ripoll Osma</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FAlgunas_novedades_%3D28%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fbulmasetup%3D3A_multiplataforma_python%3D29%3F%3D&In-Reply-To=%3C4EE0F095.5030607%40gmail.com%3E"
+       TITLE="[BulmaGés]Algunas novedades (bulmasetup: multiplataforma python)">dripoll.public en gmail.com
+       </A><BR>
+    <I>Jue Dic  8 18:15:01 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006702.html">[BulmaGés]Algunas novedades (bulmasetup)
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006706.html">[BulmaGés]Algunas  novedades (bulmasetup: multiplataforma python)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6705">[ fecha ]</a>
+              <a href="thread.html#6705">[ hilo ]</a>
+              <a href="subject.html#6705">[ asunto ]</a>
+              <a href="author.html#6705">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>¡Hola lista!,
+
+Vengo a anunciaros una cosilla interesante, vayamos por partes.
+
+1) Bulmasetup ya es multiplataforma (con python).
+
+Con todos los cambios introducidos, ya debería funcionar correctamente
+bajo Windows.
+Requisitos no incluidos en python:
+python-psycopg2
+python-QT4
+
+Usa llamadas de sistema solo para pg_dump e importar bases de datos,
+pero de forma multiplataforma, es decir, buscando el programa dentro del
+PATH y ejecutando por ruta absoluta, de esta manera conseguimos que se
+ejecute tanto la versión de windows, como la de *ix.
+
+2) Debe estar psql y pg_dump dentro de vuestro PATH.
+
+Si no es así añadidla, de no tener permisos para hacerlo, podéis
+indicarlo en la siguiente variable:
+
+expand_pathlist = ['/tengo/aqui/psqlarchivos','/aqui/tengo/pgdumparchivos']
+
+3) Debe ejecutarse la terminal (o bulmasetup) con permisos de
+Administrador (solo Windows), ya que es imposible escalar -legalmente-
+desde bulmasetup en Windows.
+
+4) Necesito alguna victima/conejillo de indias que se ofrezca a probarlo
+y me de algo de feedback.
+
+Saludos
+
+-- 
+Daniel Ripoll Osma
+www.danielripoll.es
+6688.27.4.90
+
+Web &amp; Desktop Developer
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006702.html">[BulmaGés]Algunas novedades (bulmasetup)
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006706.html">[BulmaGés]Algunas  novedades (bulmasetup: multiplataforma python)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6705">[ fecha ]</a>
+              <a href="thread.html#6705">[ hilo ]</a>
+              <a href="subject.html#6705">[ asunto ]</a>
+              <a href="author.html#6705">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

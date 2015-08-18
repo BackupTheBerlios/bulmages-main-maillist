@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][BulmaGÃ©s]warning: operation on 'i' may be undefined
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaG%3DC3%3DA9s%3D5Dwa%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Frning%3D3A_operation_on_%3D27i%3D27_may_be_undefined%3F%3D&In-Reply-To=%3C38599.80.34.165.131.1248266849.squirrel%40webmail.tinet.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002794.html">
+   <LINK REL="Next"  HREF="002810.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][BulmaGÃ©s]warning: operation on 'i' may be undefined </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaG%3DC3%3DA9s%3D5Dwa%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Frning%3D3A_operation_on_%3D27i%3D27_may_be_undefined%3F%3D&In-Reply-To=%3C38599.80.34.165.131.1248266849.squirrel%40webmail.tinet.org%3E"
+       TITLE="[BulmaGés][BulmaGÃ©s]warning: operation on 'i' may be undefined">xdrudis en tinet.cat
+       </A><BR>
+    <I>Mie Jul 22 14:47:29 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002794.html">[BulmaGés]warning: operation on 'i' may be undefined
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002810.html">[BulmaGés][BulmaGÃ©s]warning: operation on 'i' may be undefined
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2798">[ fecha ]</a>
+              <a href="thread.html#2798">[ hilo ]</a>
+              <a href="subject.html#2798">[ asunto ]</a>
+              <a href="author.html#2798">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>
+</I>&gt;<i> El tema radica en la codificación de ls UTF8 y UTF16  (cuyos carácteres
+</I>&gt;<i> especiales tienen 2 o más bytes) y en que el iterador sobre el string lo
+</I>&gt;<i> recorre byte a byte.
+</I>&gt;<i>
+</I>&gt;<i> Entonces isHighSurrogate o isLowSurrogate (no se cual de las dos) indica que
+</I>&gt;<i> se ha encontrado el primer byte de un caracter UTF8 compuesto. Y claro si el
+</I>&gt;<i> caracter es compuesto y hemos leido el primer byte por fuerza tiene que haber
+</I>&gt;<i> el segundo byte.
+</I>&gt;<i>
+</I>
+Només hi ha ha d'haver el segon byte si la suposició de que és text en UTF-8 és correcta.
+Ara no recordo el context, però potser no sempre sigui així (un fitxer mal codificat o que
+declari una codificció i n'usi una altra, etc.). No està de més comprovar-ho i donar un error
+(però no m'agrada comprovar-ho i no fer res si hi ha un problema). No estic segur
+si no vaig posar la comprovació perquè sabia que era impossible o perquè em feia mandra.
+Ja em miraré el context quan pugui.
+
+&gt;<i>
+</I>&gt;<i> Personalmente a mi me gusta usar pocas variables, que los bucles y funciones
+</I>&gt;<i> tengan un punto de entrada y uno de salida evitando (en la medida de lo
+</I>&gt;<i> posible) multiples return y breaks enmedio del código. Aunque son mis
+</I>&gt;<i> preferencias personales y no una norma universal.
+</I>&gt;<i>
+</I>
+A mi tampoc m'agraden els breaks ni els returns a mitja funció, però amb l'edat
+em torno més tolerant.
+
+&gt;<i> PD: Que conste que el trozo de código que comentamos no es mio. A juzgar por
+</I>&gt;<i> el uso de punteros, la forma de las llaves, los comentarios el espaciado y la
+</I>&gt;<i> estructura que sigue tiene que ser de Xavi.
+</I>&gt;<i>
+</I>
+Sí, mea culpa.
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002794.html">[BulmaGés]warning: operation on 'i' may be undefined
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002810.html">[BulmaGés][BulmaGÃ©s]warning: operation on 'i' may be undefined
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2798">[ fecha ]</a>
+              <a href="thread.html#2798">[ hilo ]</a>
+              <a href="subject.html#2798">[ asunto ]</a>
+              <a href="author.html#2798">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

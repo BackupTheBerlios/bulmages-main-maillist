@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to release...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20release...&In-Reply-To=%3C20120420145855.85A61756D9%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007089.html">
+   <LINK REL="Next"  HREF="007091.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to release... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20release...&In-Reply-To=%3C20120420145855.85A61756D9%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to release...">no-reply en gitorious.org
+       </A><BR>
+    <I>Vie Abr 20 16:58:55 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007089.html">[BulmaGés]Gitorious caido
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007091.html">[BulmaGés][Gitorious] Activity: tborras pushed 1 commits to release...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7088">[ fecha ]</a>
+              <a href="thread.html#7088">[ hilo ]</a>
+              <a href="subject.html#7088">[ asunto ]</a>
+              <a href="author.html#7088">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to release
+release changed from d20799c to 3e65893
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/d20799cd1b0f4ed8df7a562ed0754c2dd7f1e9ea/diffs/3e658936f5d819b012408b8737efa93c3bc39a62">https://gitorious.org/bulmages/bulmages/commit/d20799cd1b0f4ed8df7a562ed0754c2dd7f1e9ea/diffs/3e658936f5d819b012408b8737efa93c3bc39a62</A>
+
+Diff: 
+
+commit 3e658936f5d819b012408b8737efa93c3bc39a62
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri Apr 20 16:33:57 2012 +0200
+
+    Arreglo cambios de la comprobacion de version de la base de datos
+
+diff --git a/bulmages/bulmacont/src/main.cxx b/bulmages/bulmacont/src/main.cxx
+index 4caea9c..fef6956 100644
+--- a/bulmages/bulmacont/src/main.cxx
++++ b/bulmages/bulmacont/src/main.cxx
+@@ -130,7 +130,7 @@ int main ( int argc, char **argv )
+       delete argParser;
+ 
+       /// Verifica la version de la base de datos para funcionar adecuadamente.
+-      bges-&gt;company()-&gt;dbVersionCheck(&quot;DatabaseRevision&quot;, &quot;0.13.1-0001&quot;);
++      bges-&gt;company()-&gt;dbVersionCheck(&quot;DatabaseRevision&quot;, &quot;0.14.1-0001&quot;);
+ 
+       splashScr-&gt;show();
+       splashScr-&gt;setMessage ( _( &quot;Leyendo configuracion&quot; ) );
+diff --git a/bulmages/bulmafact/src/main.cxx b/bulmages/bulmafact/src/main.cxx
+index 7348d95..62312cf 100644
+--- a/bulmages/bulmafact/src/main.cxx
++++ b/bulmages/bulmafact/src/main.cxx
+@@ -128,7 +128,7 @@ int main ( int argc, char **argv )
+       delete argParser;
+ 
+       /// Verifica la version de la base de datos para funcionar adecuadamente.
+-      bges-&gt;company()-&gt;dbVersionCheck(&quot;DatabaseRevision&quot;, &quot;0.13.1-0004&quot;);
++      bges-&gt;company()-&gt;dbVersionCheck(&quot;DatabaseRevision&quot;, &quot;0.14.1-0001&quot;);
+ 
+       splashScr-&gt;show();
+       splashScr-&gt;setMessage ( _( &quot;Leyendo configuracion&quot; ) );
+diff --git a/bulmages/bulmatpv/src/main.cxx b/bulmages/bulmatpv/src/main.cxx
+index 0631a8e..ac36e22 100644
+--- a/bulmages/bulmatpv/src/main.cxx
++++ b/bulmages/bulmatpv/src/main.cxx
+@@ -132,7 +132,7 @@ int main ( int argc, char **argv )
+         delete argParser;
+ 
+         /// Verifica la version de la base de datos para funcionar adecuadamente.
+-        bges-&gt;company()-&gt;dbVersionCheck(&quot;DBRev-BulmaTPV&quot;, &quot;0.13.1-0000&quot;);
++        bges-&gt;company()-&gt;dbVersionCheck(&quot;DBRev-BulmaTPV&quot;, &quot;0.14.1-0001&quot;);
+ 
+         splashScr-&gt;show();
+         splashScr-&gt;setMessage ( _( &quot;Leyendo configuracion&quot; ) );
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007089.html">[BulmaGés]Gitorious caido
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007091.html">[BulmaGés][Gitorious] Activity: tborras pushed 1 commits to release...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7088">[ fecha ]</a>
+              <a href="thread.html#7088">[ hilo ]</a>
+              <a href="subject.html#7088">[ asunto ]</a>
+              <a href="author.html#7088">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] r3674 - trunk/bulmages/bulmalib/src
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-October/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3674%20-%20trunk/bulmages/bulmalib/src&In-Reply-To=%3C200910200856.n9K8uAOC004638%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003078.html">
+   <LINK REL="Next"  HREF="003080.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] r3674 - trunk/bulmages/bulmalib/src </H1>
+    <B>svn en mail.berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3674%20-%20trunk/bulmages/bulmalib/src&In-Reply-To=%3C200910200856.n9K8uAOC004638%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] r3674 - trunk/bulmages/bulmalib/src">svn en mail.berlios.de
+       </A><BR>
+    <I>Mar Oct 20 10:56:10 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003078.html">[BulmaGés]Filtro por tipo de columna
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003080.html">[BulmaGés] r3675 - in trunk/bulmages:	bulmafact/plugins bulmafact/plugins/pluginbf_actividad	bulmafact/plugins/pluginbf_alumno	bulmafact/plugins/pluginbf_alumno/po	bulmafact/plugins/pluginbf_inventariosimple	bulmafact/plugins/pluginbf_inventariosimple/dbmodels	bulmafact/plugins/pluginbf_inventariosimple/po	bulmafact/plugins/pluginbf_profesor/dbmodels	bulmafact/plugins/pluginbf_profesor/po	bulmafact/plugins/pluginbf_tutor/po bulmafact/src/po	bulmalib/plugins/pluginbl_bloqconf	bulmalib/plugins/pluginbl_bloqconf/po installbulmages/i18n
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3079">[ fecha ]</a>
+              <a href="thread.html#3079">[ hilo ]</a>
+              <a href="subject.html#3079">[ asunto ]</a>
+              <a href="author.html#3079">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: hilex
+Date: 2009-10-20 10:56:10 +0200 (dt, 20 oct 2009)
+New Revision: 3674
+
+Added:
+   trunk/bulmages/bulmalib/src/blformlistfilter.cpp
+   trunk/bulmages/bulmalib/src/blformlistfilter.h
+   trunk/bulmages/bulmalib/src/blformlistfilterbase.ui
+Modified:
+   trunk/bulmages/bulmalib/src/CMakeLists.txt
+Log:
+Nueva clase BlFormListFilter: widget que permite filtrar un listado.
+Dependiendo del tipo de la columna en la que se encuentra el cursor, el filtro cambia.
+
+Los tipos contemplados son:
+- intervalo de fechas
+- valor numérico
+- booleano
+- texto
+
+Forma de uso en un listado concreto:
+1) Agregar un QWidget llamado &quot;mui_filtador&quot; y promocionarlo a BlFormFieldFilter.
+2) Agregar en la barra de botones un botón &quot;mui_filtrar&quot;.
+3) Activarle a dicho botón la propiedad checkable y ponerle el icono i_filter.png.
+4) Para que el filtro pueda acceder al listado y se muestre u oculte al pulsar el botón, agregar al constructor del listado concreto:
+mui_filtrador-&gt;setSubFormList(mui_list);
+connect(mui_filtrar, SIGNAL(released()), mui_filtrador, SLOT(showHideFilter()));
+5) Para que se aplique el filtrado al actualizar el listado, concatenar a la consulta de presentar() esto:
++ mui_filtrador-&gt;generarFiltro()
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003078.html">[BulmaGés]Filtro por tipo de columna
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003080.html">[BulmaGés] r3675 - in trunk/bulmages:	bulmafact/plugins bulmafact/plugins/pluginbf_actividad	bulmafact/plugins/pluginbf_alumno	bulmafact/plugins/pluginbf_alumno/po	bulmafact/plugins/pluginbf_inventariosimple	bulmafact/plugins/pluginbf_inventariosimple/dbmodels	bulmafact/plugins/pluginbf_inventariosimple/po	bulmafact/plugins/pluginbf_profesor/dbmodels	bulmafact/plugins/pluginbf_profesor/po	bulmafact/plugins/pluginbf_tutor/po bulmafact/src/po	bulmalib/plugins/pluginbl_bloqconf	bulmalib/plugins/pluginbl_bloqconf/po installbulmages/i18n
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3079">[ fecha ]</a>
+              <a href="thread.html#3079">[ hilo ]</a>
+              <a href="subject.html#3079">[ asunto ]</a>
+              <a href="author.html#3079">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

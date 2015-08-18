@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Error de compilació a la branca estable
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Futf-8%3Fq%3FError_de_compilaci%3DC3%3DB3_a%3F%3D%0A%09%3D%3Futf-8%3Fq%3F_la_branca_estable%3F%3D&In-Reply-To=%3C201001191952.43905.orestes%40tsc.upc.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003302.html">
+   <LINK REL="Next"  HREF="003305.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Error de compilació a la branca estable </H1>
+    <B>Orestes Mas</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Futf-8%3Fq%3FError_de_compilaci%3DC3%3DB3_a%3F%3D%0A%09%3D%3Futf-8%3Fq%3F_la_branca_estable%3F%3D&In-Reply-To=%3C201001191952.43905.orestes%40tsc.upc.edu%3E"
+       TITLE="[BulmaGés]Error de compilació a la branca estable">orestes en tsc.upc.edu
+       </A><BR>
+    <I>Mar Ene 19 19:52:43 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003302.html">[BulmaGés] FELICITATS!
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003305.html">[BulmaGés]Error de compilació a la branca estable
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3304">[ fecha ]</a>
+              <a href="thread.html#3304">[ hilo ]</a>
+              <a href="subject.html#3304">[ asunto ]</a>
+              <a href="author.html#3304">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola,
+
+Em passa una cosa molt estranya:
+
+He compilat, instal·lat i executat correctament el bulmages (versió 0.12.0 
+baixada del svn) en un &quot;netbook&quot;. Fins aquí cap problema.
+
+Ara vull fer el mateix en un ordinador d'escriptori. Segueixo les mateixes 
+passes per baixar-me les fonts, crido el CMake, faig el &quot;make&quot; i... patapam! 
+Peta la compilació.
+
+Concretament diu:
+
+[ 23%] Building CXX object 
+bulmacont/src/CMakeFiles/libbulmacont.dir/moc_bcmodelo300imprimir2ps.o
+
+/home/orestes/develop/bulmages/v0.12-
+release/build/bulmacont/src/moc_bcmodelo300imprimir2ps.cxx: In member function 
+&#8216;virtual const QMetaObject* BcModelo300Imprimir2PS::metaObject() const&#8217;:
+
+/home/orestes/develop/bulmages/v0.12-
+release/build/bulmacont/src/moc_bcmodelo300imprimir2ps.cxx:51: error: 
+&#8216;QObject&#8217; is an ambiguous base of &#8216;BcModelo300Imprimir2PS&#8217;
+
+/home/orestes/develop/bulmages/v0.12-
+release/build/bulmacont/src/moc_bcmodelo300imprimir2ps.cxx:51: error: 
+&#8216;QObject&#8217; is an ambiguous base of &#8216;BcModelo300Imprimir2PS&#8217;
+
+make[2]: *** 
+[bulmacont/src/CMakeFiles/libbulmacont.dir/moc_bcmodelo300imprimir2ps.o] Error 
+1
+
+make[1]: *** [bulmacont/src/CMakeFiles/libbulmacont.dir/all] Error 2
+
+make: *** [all] Error 2
+
+
+Segons el Google, aquest error es dóna quan una classe hereta un objecte (en 
+aquest cas QObject) per dues bandes diferents. Però és el mateix codi que 
+abans, i en el netbook compila sense problemes!
+
+Com pot ser? No sé veure el motiu.
+
+==Diferències entre els dos ordinadors==
+
+El netbook és un Intel Atom que porta una Ubuntu Karmic (amb Gnome). He 
+instal·lat les dependències necessàries per compilar i executar.
+
+El Desktop és una Kubuntu Karmic (per tant amb KDE) però que porta els paquets 
+del KDE 4.4 beta del repositori PPA d'ubuntu. Això implica que les Qt són de 
+la versió 4.6.0 (quan en una karmic tenim les 4.5.2). Pot ser aquesta la 
+causa?
+
+-- 
+ Orestes Mas Casals - UPC
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003302.html">[BulmaGés] FELICITATS!
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003305.html">[BulmaGés]Error de compilació a la branca estable
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3304">[ fecha ]</a>
+              <a href="thread.html#3304">[ hilo ]</a>
+              <a href="subject.html#3304">[ asunto ]</a>
+              <a href="author.html#3304">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

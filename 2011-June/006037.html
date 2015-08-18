@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Número de revisión GIT
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FN%3DFAmero_de_revisi%3DF3%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fn_GIT%3F%3D&In-Reply-To=%3CBANLkTimY0HM8AtbYMtLoCTK4%3D9s81qFU8w%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006031.html">
+   <LINK REL="Next"  HREF="006038.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Número de revisión GIT </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FN%3DFAmero_de_revisi%3DF3%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fn_GIT%3F%3D&In-Reply-To=%3CBANLkTimY0HM8AtbYMtLoCTK4%3D9s81qFU8w%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]Número de revisión GIT">tborras en gmail.com
+       </A><BR>
+    <I>Jue Jun 23 11:06:07 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006031.html">[BulmaGés]Número de revisión GIT
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006038.html">[BulmaGés]Número de revisión GIT
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6037">[ fecha ]</a>
+              <a href="thread.html#6037">[ hilo ]</a>
+              <a href="subject.html#6037">[ asunto ]</a>
+              <a href="author.html#6037">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Walter
+
+Segun parece en git se usa el sistema fecha-hora para determinar una
+revisión más que el identificador de la revisión.
+
+Lo cual me parece bastante válido y aporta algo más de información al
+archivo.
+
+Salut
+
+El 23 de junio de 2011 09:01, Walter Garcia-Fontes
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">walter.garcia en upf.edu</A>&gt;escribió:
+
+&gt;<i> Así como en SVN se obtiene un número de revisión en cada commit, en
+</I>&gt;<i> GIT no está tan claro.
+</I>&gt;<i>
+</I>&gt;<i> El código de revisión aparece junto con la sha1 a la parte de arriba
+</I>&gt;<i> del los mails de commit, y se puede obtener con &quot;git describe&quot;. En el
+</I>&gt;<i> HEAD actual sería:
+</I>&gt;<i>
+</I>&gt;<i> 0ace036e31d41516594ea507bfb88757e538008d
+</I>&gt;<i>
+</I>&gt;<i> Claro que esta es una cadena demasiado larga para poner en los nombres
+</I>&gt;<i> de los archivos. Se puede eliminar la parte del sha1 mediante
+</I>&gt;<i> &quot;git rev-parse --short HEAD&quot; y se obtendría:
+</I>&gt;<i>
+</I>&gt;<i> 0ace036
+</I>&gt;<i>
+</I>&gt;<i> Otra posibilidad es un hack para contar las líneas del registro de
+</I>&gt;<i> commits con &quot;git shortlog | grep -E '^[ ]+\w+' | wc -l&quot;
+</I>&gt;<i>
+</I>&gt;<i> y aquí se obtendría:
+</I>&gt;<i>
+</I>&gt;<i> 4323
+</I>&gt;<i>
+</I>&gt;<i> Esto es lo más parecido al revision number del svn que obteníamos
+</I>&gt;<i> antes, pero como es simplemente un conteo de líneas tiene el
+</I>&gt;<i> inconveniente que a diferencia del svn si se borra un commit el número
+</I>&gt;<i> baja (en svn haga lo que se haga siempre sube) y se reasignan los
+</I>&gt;<i> números posteriores, por lo que en el futuro 4323 podría referir a una
+</I>&gt;<i> revisión diferente de la que refiere ahora.
+</I>&gt;<i>
+</I>&gt;<i> Por lo tanto yo sugiero usar:
+</I>&gt;<i>
+</I>&gt;<i> git rev-parse --short HEAD&quot;
+</I>&gt;<i>
+</I>&gt;<i> cuando se quiere obtener una marca para la revisión, porque esta sí
+</I>&gt;<i> permite volver a la revisión sin ambigüedad en el futuro, aunque no
+</I>&gt;<i> sea un número bonito &quot;0ace036&quot;.
+</I>&gt;<i>
+</I>&gt;<i> Si alguien tiene alguna solución mejor para obtener una marca de la
+</I>&gt;<i> revisión: adelante... De momento uso esta para los deb.
+</I>&gt;<i>
+</I>&gt;<i> Walter
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Walter Garcia-Fontes
+</I>&gt;<i> L'Hospitalet de Llobregat
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20110623/831669b7/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20110623/831669b7/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006031.html">[BulmaGés]Número de revisión GIT
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006038.html">[BulmaGés]Número de revisión GIT
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6037">[ fecha ]</a>
+              <a href="thread.html#6037">[ hilo ]</a>
+              <a href="subject.html#6037">[ asunto ]</a>
+              <a href="author.html#6037">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

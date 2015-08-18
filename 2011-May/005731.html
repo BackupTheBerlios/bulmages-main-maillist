@@ -1,0 +1,330 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][Git]Project bulmages at BerliOS branch, master, updated. 9bba65c1bb10a53ac8fec448b145ec71c231c909
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F%3D5BGit%3D5DProject_bulm%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fages_at_BerliOS_branch%3D2C_master%3D2C_updated%3D2E_9bba%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F65c1bb10a53ac8fec448b145ec71c231c909%3F%3D&In-Reply-To=%3CBANLkTim5YQZ4-fKEfEzndwST69p7-iyNTA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005728.html">
+   <LINK REL="Next"  HREF="005734.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][Git]Project bulmages at BerliOS branch, master, updated. 9bba65c1bb10a53ac8fec448b145ec71c231c909 </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F%3D5BGit%3D5DProject_bulm%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fages_at_BerliOS_branch%3D2C_master%3D2C_updated%3D2E_9bba%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F65c1bb10a53ac8fec448b145ec71c231c909%3F%3D&In-Reply-To=%3CBANLkTim5YQZ4-fKEfEzndwST69p7-iyNTA%40mail.gmail.com%3E"
+       TITLE="[BulmaGés][Git]Project bulmages at BerliOS branch, master, updated. 9bba65c1bb10a53ac8fec448b145ec71c231c909">tborras en gmail.com
+       </A><BR>
+    <I>Vie Mayo  6 11:00:19 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="005728.html">[BulmaGés][Git]Project bulmages at BerliOS branch, master, updated. 9bba65c1bb10a53ac8fec448b145ec71c231c909
+</A></li>
+        <LI>Próximo mensaje: <A HREF="005734.html">[BulmaGés][Git]Project bulmages at BerliOS branch, master, updated. 9bba65c1bb10a53ac8fec448b145ec71c231c909
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5731">[ fecha ]</a>
+              <a href="thread.html#5731">[ hilo ]</a>
+              <a href="subject.html#5731">[ asunto ]</a>
+              <a href="author.html#5731">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Curiosamente ayer en el maquinón virtualizado el Unity no arrancó. Me dijo
+no se que del soporte gráfico no soportado y salió el GNome clásico (Tampoco
+perdí mucho tiempo con ello). De todas formas no me voy a poner con ello
+porque veo que lo llevas bien y me dedicaré a cambiar el dpkg-buildpackage
+para que coja los iconos y tenga la libbulmalib-0.13 para probarlo desde los
+paquetes.
+
+
+Lo que si me fijé es que en KDE el directorio /usr/local/share/applications
+es tenido en cuenta (siempre tras hacer el update-menus y esperando un rato
+hasta que se da cuenta) pero el /usr/local/share/pixmaps no. Así que puse la
+ruta absoluta hacia los iconos haciendo que los .menu y .desktop pasasen por
+reconversión a través del make (Para mi que queda mejor).
+
+
+
+Salut
+
+El 6 de mayo de 2011 09:37, Daniel Ripoll Osma
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">dripoll.public en gmail.com</A>&gt;escribió:
+
+&gt;<i> Ah, ¡se me olvidaba! Después de eso, hay que hacer un reboot SI o SI.
+</I>&gt;<i>
+</I>&gt;<i> 2011/5/6 Daniel Ripoll Osma &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">dripoll.public en gmail.com</A>&gt;:
+</I>&gt;<i> &gt; ¡Vaya bicho! Eso seguro que hasta hace cafés mientras compila.
+</I>&gt;<i> &gt; Con los iconos, me ocurre un problema.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Ubuntu 11.04 + Gnome 2  (No oficial) = ICONOS
+</I>&gt;<i> &gt; Ubuntu 11.04 + Gnome 3 (No oficial) = NO ICONOS
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Fedora 15 + Gnome 3 = ICONOS
+</I>&gt;<i> &gt; Fedora 14 + Gnome 2 = ICONOS
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Quizá Ubuntu + Gnome3 no tiene fast-reload de iconos por defecto,
+</I>&gt;<i> &gt; además cabe decir que Gnome 3.
+</I>&gt;<i> &gt; Lo probé ayer cuando llegue a casa (2:00 AM) y isofacto fui a dormir,
+</I>&gt;<i> &gt; al llegar a casa ya confirmaré si estan o no.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Si quieres probarlo en el monstruo virtual ese:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; sudo add-apt-repository ppa:gnome3-team/gnome3 &amp;&amp; sudo apt-get update
+</I>&gt;<i> &gt; &amp;&amp; sudo apt-get dist-upgrade &amp;&amp; sudo apt-get install gnome-shell
+</I>&gt;<i> &gt; gnome-session
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Todavía no he probado con el oficial Ubuntu + Unity.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Saludos,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; 2011/5/5 Fco. Javier M. C. &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;:
+</I>&gt;<i> &gt;&gt; Jejeje. Ahora se me cae la baba a mi ;)
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; ¿El reactor nuclear ese que te has comprado es para alimentar eso, no?
+</I>&gt;<i> :DD
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; El 05/05/11 16:57, Tomeu Borras escribió:
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; Te he comentado ya que he montado un I7 con 16Gb
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; mira mira ....
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; $sudo time make -j10
+</I>&gt;<i> &gt;&gt; 1489.96user 106.07system 5:27.09elapsed 487%CPU (0avgtext+0avgdata
+</I>&gt;<i> &gt;&gt; 1643344maxresident)k
+</I>&gt;<i> &gt;&gt; 38216inputs+510808outputs (0major+40924309minor)pagefaults 0swaps
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; El 5 de mayo de 2011 16:28, Fco. Javier M. C. &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+</I>&gt;<i> &gt;&gt; escribió:
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt; No mientas que vi como se te caía la baba por probarla :)
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt; Un saludo.
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt; El 05/05/11 16:23, Tomeu Borras escribió:
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt; Ahora mismo estoy instalando una Ubuntu Natty en un virtualbox para
+</I>&gt;<i> &gt;&gt;&gt; probarlo yo también.
+</I>&gt;<i> &gt;&gt;&gt; Aunque con lo que me enseñasteis ayer ya tengo claro que no va a ser mi
+</I>&gt;<i> &gt;&gt;&gt; próxima distro.
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt; Salut
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt; El 5 de mayo de 2011 14:26, Daniel Ripoll Osma &lt;
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">dripoll.public en gmail.com</A>&gt;
+</I>&gt;<i> &gt;&gt;&gt; escribió:
+</I>&gt;<i> &gt;&gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;&gt; Cuando llegue a casa probaré si funcionan con Gnome3, a primera vista,
+</I>&gt;<i> &gt;&gt;&gt;&gt; deberian funcionar.
+</I>&gt;<i> &gt;&gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;&gt; Escrito desde mi Motorola Milestone (Android 2.2.2 TheFroyoMod 2.6).
+</I>&gt;<i> &gt;&gt;&gt;&gt; Daniel Ripoll
+</I>&gt;<i> &gt;&gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;&gt; El 05/05/2011 13:35, &quot;tborras at BerliOS&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">git en mail.berlios.de</A>&gt;
+</I>&gt;<i> escribió:
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt;
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; The branch, master has been updated
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; via 9bba65c1bb10a53ac8fec448b145ec71c231c909 (commit)
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; via b1c860dcd59aa736cc12b3b4cc2e65a3f90d6759 (commit)
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; from d8924dc0b30e2957cf2d507ca58c3e213345ae00 (commit)
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt;
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; Nuevas revisiones:
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt;
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; - Log
+</I>&gt;<i> -----------------------------------------------------------------
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; commit 9bba65c1bb10a53ac8fec448b145ec71c231c909
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; Merge: b1c860d d8924dc
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; Date: Thu May 5 13:34:58 2011 +0200
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt;
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; Merge branch 'master' of <A HREF="ssh://git.berlios.de/gitroot/bulmages">ssh://git.berlios.de/gitroot/bulmages</A>
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt;
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; commit b1c860dcd59aa736cc12b3b4cc2e65a3f90d6759
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; Author: tborras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; Date: Thu May 5 13:34:40 2011 +0200
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt;
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; Agrego las entradas de menu tanto para KDE como para GNOME y XFCE
+</I>&gt;<i> que
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; cambian segun el directorio de instalacion. Teoricamente funcionaran
+</I>&gt;<i> bien si
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; se hace instalacion en /usr/local o en /usr. Necesito que algun
+</I>&gt;<i> usuario de
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; Gnome los pruebe
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt;
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt;
+</I>&gt;<i> -----------------------------------------------------------------------
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt;
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; Resumen de cambios:
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; bulmages/installbulmages/CMakeLists.txt | 18 +-
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; .../applications/bulmacont.desktop.in | 63 ++
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; .../applications/bulmafact.desktop.in | 63 ++
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; .../applications/bulmages.desktop.in | 63 ++
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; .../applications/bulmages.desktop.in~ | 63 ++
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; .../applications/bulmasetup.desktop.in | 63 ++
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; .../applications/bulmatpv.desktop.in | 63 ++
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; .../applications/bulmatpv.desktop.in~ | 63 ++
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; .../installbulmages/{ =&gt; doc/bulmages}/COPYING.txt | 0
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; .../installbulmages/{ =&gt; doc/bulmages}/README.es | 0
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; bulmages/installbulmages/menu/bulmacont.menu.in | 6 +
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; bulmages/installbulmages/menu/bulmafact.menu.in | 6 +
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; bulmages/installbulmages/menu/bulmages.menu.in | 6 +
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; bulmages/installbulmages/menu/bulmasetup.menu.in | 6 +
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; bulmages/installbulmages/menu/bulmatpv.menu.in | 6 +
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; bulmages/installbulmages/pixmaps/.directory | 4 +
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; bulmages/installbulmages/pixmaps/bulmacont.xpm | 648 +++++++++++
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; bulmages/installbulmages/pixmaps/bulmafact.xpm | 1123
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; ++++++++++++++++++++
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; bulmages/installbulmages/pixmaps/bulmages.xpm | 1031
+</I>&gt;<i> ++++++++++++++++++
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; bulmages/installbulmages/pixmaps/bulmasetup.xpm | 309 ++++++
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; bulmages/installbulmages/pixmaps/bulmatpv.xpm | 622 +++++++++++
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; 21 files changed, 4225 insertions(+), 1 deletions(-)
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; create mode 100644
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; bulmages/installbulmages/applications/bulmacont.desktop.in
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; create mode 100644
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; bulmages/installbulmages/applications/bulmafact.desktop.in
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; create mode 100644
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; bulmages/installbulmages/applications/bulmages.desktop.in
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; create mode 100644
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; bulmages/installbulmages/applications/bulmages.desktop.in~
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; create mode 100644
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; bulmages/installbulmages/applications/bulmasetup.desktop.in
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; create mode 100644
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; bulmages/installbulmages/applications/bulmatpv.desktop.in
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; create mode 100644
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; bulmages/installbulmages/applications/bulmatpv.desktop.in~
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; copy bulmages/installbulmages/{ =&gt; doc/bulmages}/COPYING.txt (100%)
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; copy bulmages/installbulmages/{ =&gt; doc/bulmages}/README.es (100%)
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; create mode 100644 bulmages/installbulmages/menu/bulmacont.menu.in
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; create mode 100644 bulmages/installbulmages/menu/bulmafact.menu.in
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; create mode 100644 bulmages/installbulmages/menu/bulmages.menu.in
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; create mode 100644 bulmages/installbulmages/menu/bulmasetup.menu.in
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; create mode 100644 bulmages/installbulmages/menu/bulmatpv.menu.in
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; create mode 100644 bulmages/installbulmages/pixmaps/.directory
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; create mode 100644 bulmages/installbulmages/pixmaps/bulmacont.xpm
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; create mode 100644 bulmages/installbulmages/pixmaps/bulmafact.xpm
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; create mode 100644 bulmages/installbulmages/pixmaps/bulmages.xpm
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; create mode 100644 bulmages/installbulmages/pixmaps/bulmasetup.xpm
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; create mode 100644 bulmages/installbulmages/pixmaps/bulmatpv.xpm
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt;
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt;
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; --
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; Proyecto BulmaGes
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; _______________________________________________
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; Bulmages-main mailing list
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt;&gt;&gt;&gt; &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i> &gt;&gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;&gt; _______________________________________________
+</I>&gt;<i> &gt;&gt;&gt;&gt; Bulmages-main mailing list
+</I>&gt;<i> &gt;&gt;&gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt;&gt;&gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i> &gt;&gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt; _______________________________________________
+</I>&gt;<i> &gt;&gt;&gt; Bulmages-main mailing list
+</I>&gt;<i> &gt;&gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt;&gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt; --
+</I>&gt;<i> &gt;&gt;&gt; Javier.
+</I>&gt;<i> &gt;&gt;&gt; TODO-REDES
+</I>&gt;<i> &gt;&gt;&gt; <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+</I>&gt;<i> &gt;&gt;&gt; C/Begònia 12 - 07010 Palma de Mallorca.
+</I>&gt;<i> &gt;&gt;&gt; Tel.: 971499071
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt; _______________________________________________
+</I>&gt;<i> &gt;&gt;&gt; Bulmages-main mailing list
+</I>&gt;<i> &gt;&gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt;&gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; _______________________________________________
+</I>&gt;<i> &gt;&gt; Bulmages-main mailing list
+</I>&gt;<i> &gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; --
+</I>&gt;<i> &gt;&gt; Javier.
+</I>&gt;<i> &gt;&gt; TODO-REDES
+</I>&gt;<i> &gt;&gt; <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+</I>&gt;<i> &gt;&gt; C/Begònia 12 - 07010 Palma de Mallorca.
+</I>&gt;<i> &gt;&gt; Tel.: 971499071
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; _______________________________________________
+</I>&gt;<i> &gt;&gt; Bulmages-main mailing list
+</I>&gt;<i> &gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; --
+</I>&gt;<i> &gt; **************************************
+</I>&gt;<i> &gt; Daniel Ripoll
+</I>&gt;<i> &gt; **************************************
+</I>&gt;<i> &gt;           Todo-Redes
+</I>&gt;<i> &gt;         C/.Begonia, 12
+</I>&gt;<i> &gt;    07010 Palma de Mallorca.
+</I>&gt;<i> &gt;       Tel: +34-971499071
+</I>&gt;<i> &gt;    <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+</I>&gt;<i> &gt;   comercial(en)todo-redes.com
+</I>&gt;<i> &gt; ***************************************
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> **************************************
+</I>&gt;<i> Daniel Ripoll
+</I>&gt;<i> **************************************
+</I>&gt;<i>           Todo-Redes
+</I>&gt;<i>         C/.Begonia, 12
+</I>&gt;<i>    07010 Palma de Mallorca.
+</I>&gt;<i>       Tel: +34-971499071
+</I>&gt;<i>    <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+</I>&gt;<i>   comercial(en)todo-redes.com
+</I>&gt;<i> ***************************************
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20110506/852663c8/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20110506/852663c8/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="005728.html">[BulmaGés][Git]Project bulmages at BerliOS branch, master, updated. 9bba65c1bb10a53ac8fec448b145ec71c231c909
+</A></li>
+	<LI>Próximo mensaje: <A HREF="005734.html">[BulmaGés][Git]Project bulmages at BerliOS branch, master, updated. 9bba65c1bb10a53ac8fec448b145ec71c231c909
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5731">[ fecha ]</a>
+              <a href="thread.html#5731">[ hilo ]</a>
+              <a href="subject.html#5731">[ asunto ]</a>
+              <a href="author.html#5731">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

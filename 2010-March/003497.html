@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Mantener el mismo registro activo tras recargar un listado
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FMantener_el_mismo_reg%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fistro_activo_tras_recargar_un_listado%3F%3D&In-Reply-To=%3C201003091739.37380.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003498.html">
+   <LINK REL="Next"  HREF="003493.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Mantener el mismo registro activo tras recargar un listado </H1>
+    <B>Tomeu</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FMantener_el_mismo_reg%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fistro_activo_tras_recargar_un_listado%3F%3D&In-Reply-To=%3C201003091739.37380.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]Mantener el mismo registro activo tras recargar un listado">tborras en conetxia.com
+       </A><BR>
+    <I>Mar Mar  9 17:39:37 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003498.html">[BulmaGés]Mantener el mismo registro activo tras recargar un listado
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003493.html">[BulmaGés] [Bug #16927] El programa no se abre	maximizado en Windows
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3497">[ fecha ]</a>
+              <a href="thread.html#3497">[ hilo ]</a>
+              <a href="subject.html#3497">[ asunto ]</a>
+              <a href="author.html#3497">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Lo he estado probando y funciona, creo bastante bien.
+
+Asi que lo he subido.
+
+Salut
+
+&gt;<i> On Miércoles 10 Febrero 2010 21:21:03 Fco. Javier M. C. escribió:
+</I>&gt;<i> &gt; El 10/02/10 16:51, Aron escribió:
+</I>&gt;<i> &gt; &gt; Estaría bien que tras recargar un listado se mantuviera activa la misma
+</I>&gt;<i> &gt; &gt; celda que hubiera antes seleccionada (a no ser que se haya borrada).
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Es que ahora, cuando la lista se recarga, vuelve al principio sin
+</I>&gt;<i> &gt; &gt; ninguna fila seleccionada.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Cuando más molesta esto es al modificar una ficha (con
+</I>&gt;<i> &gt; &gt; CONF_REFRESH_LIST habilitado) o al borrar un registro.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Igual se podría hacer en BlSubForm::cargar() algo restaure la celda si
+</I>&gt;<i> &gt; &gt; existe todavía.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Tras cargar, podría ejecutarse algo así:
+</I>&gt;<i> &gt; &gt; mui_list-&gt;mui_list-&gt;setCurrentCell(previous_row, previous_col);
+</I>&gt;<i> &gt; &gt; mui_list-&gt;mui_list-&gt;scrollToItem(mui_list-&gt;mui_list-&gt;currentItem(),
+</I>&gt;<i> &gt; &gt; QAbstractItemView::PositionAtTop);
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; El problema también es que al actualizar puede cambiar el orden o
+</I>&gt;<i> &gt; &gt; filtrado... igual se complicaría demasiado.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Saludos
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Algo parecido se implementó hace tiempo y se tuvo que descatar porque no
+</I>&gt;<i> &gt; funcionaba bien en según que circunstancias. Pero siempre se puede
+</I>&gt;<i> &gt; repensar el tema.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Un saludo.
+</I>&gt;<i> 
+</I>&gt;<i> Hola Tomeu, parece que hoy la lista de Berlios tarda en recibir mis
+</I>&gt;<i>  mensajes.
+</I>&gt;<i> 
+</I>&gt;<i> Tengo una implementación que parece funcionar bien por lo que he probado.
+</I>&gt;<i> Os dejo el código por si queréis comprobar más casos donde podría dar
+</I>&gt;<i> problemas, ya que es un método muy importante para el programa.
+</I>&gt;<i> 
+</I>&gt;<i> Un saludo
+</I>&gt;<i> &quot;
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003498.html">[BulmaGés]Mantener el mismo registro activo tras recargar un listado
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003493.html">[BulmaGés] [Bug #16927] El programa no se abre	maximizado en Windows
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3497">[ fecha ]</a>
+              <a href="thread.html#3497">[ hilo ]</a>
+              <a href="subject.html#3497">[ asunto ]</a>
+              <a href="author.html#3497">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

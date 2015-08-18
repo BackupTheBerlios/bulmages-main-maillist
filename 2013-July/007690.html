@@ -1,0 +1,236 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130723143121.DDC211A4%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007689.html">
+   <LINK REL="Next"  HREF="007691.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130723143121.DDC211A4%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Mar Jul 23 16:31:21 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007689.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007691.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7690">[ fecha ]</a>
+              <a href="thread.html#7690">[ hilo ]</a>
+              <a href="subject.html#7690">[ asunto ]</a>
+              <a href="author.html#7690">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from 00c8a1c to 2654036
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/00c8a1cdaff8532bee4ab48115931eec8e2934fc/diffs/2654036e7127b26c807fb7272bba731f3949c1e4">https://gitorious.org/bulmages/bulmages/commit/00c8a1cdaff8532bee4ab48115931eec8e2934fc/diffs/2654036e7127b26c807fb7272bba731f3949c1e4</A>
+
+Diff: 
+
+commit 2654036e7127b26c807fb7272bba731f3949c1e4
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue Jul 23 16:30:56 2013 +0200
+
+    Arreglo problema en la impresión de los listados y en los autoforms
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/openreports/es/impers_presupuesto_fproforma.rml b/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/openreports/es/impers_presupuesto_fproforma.rml
+index 9c2aae7..c56aea3 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/openreports/es/impers_presupuesto_fproforma.rml
++++ b/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/openreports/es/impers_presupuesto_fproforma.rml
+@@ -9,7 +9,6 @@
+ 		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
+ 		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+ 		
+-		&lt;!-- INCLUDE FILE=&quot;[CONF_DIR_OPENREPORTS]plantilla_cabecerapresupuesto.rml&quot; --&gt;
+ 		&lt;!-- INCLUDE FILE=&quot;[CONF_DIR_OPENREPORTS]plantilla_empresa.rml&quot; --&gt;
+ 		
+ &lt;!--IF QUERY=&quot;SELECT * FROM cliente WHERE idcliente = [idcliente] LIMIT 1&quot;--&gt;
+@@ -29,7 +28,8 @@
+ 		&lt;drawString x=&quot;13.5cm&quot; y=&quot;24.25cm&quot;&gt;[poblcliente]&lt;/drawString&gt;
+ 		&lt;drawString x=&quot;13.5cm&quot; y=&quot;23.8cm&quot;&gt;[telcliente]&lt;/drawString&gt;
+ 		&lt;drawString x=&quot;13.5cm&quot; y=&quot;23.35cm&quot;&gt;[mailcliente]&lt;/drawString&gt;
+-
++&lt;!-- END QUERY --&gt;
++&lt;!-- END IF QUERY --&gt;
+ 
+ 		&lt;setFont name=&quot;Helvetica&quot; size=&quot;10&quot;/&gt;
+ 		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
+diff --git a/bulmages/bulmalib/plugins/pluginbl_autoform/autoform.cpp b/bulmages/bulmalib/plugins/pluginbl_autoform/autoform.cpp
+index 9de55d3..e4571a3 100644
+--- a/bulmages/bulmalib/plugins/pluginbl_autoform/autoform.cpp
++++ b/bulmages/bulmalib/plugins/pluginbl_autoform/autoform.cpp
+@@ -275,9 +275,9 @@ BlAutoForm * BlAutoFormList::createAutoForm() {
+ 				
+ 
+ 			    } // end for			
+-			subform-&gt;setInsert ( allowinsert == &quot;true&quot; );
+-			subform-&gt;setDelete ( allowdelete == &quot;true&quot; );
+-			subform-&gt;setSortingEnabled ( setsorting == &quot;true&quot; );
++			subform-&gt;setInsert ( allowinsert.toLower() == &quot;true&quot; );
++			subform-&gt;setDelete ( allowdelete.toLower() == &quot;true&quot; );
++			subform-&gt;setSortingEnabled ( setsorting.toLower() == &quot;true&quot; );
+ 			subform-&gt;inicializar();
+ 			
+ 		    } // end if
+diff --git a/bulmages/bulmalib/plugins/pluginbl_autoform/pluginbl_autoform.cpp b/bulmages/bulmalib/plugins/pluginbl_autoform/pluginbl_autoform.cpp
+index 09f2562..e4dedb3 100644
+--- a/bulmages/bulmalib/plugins/pluginbl_autoform/pluginbl_autoform.cpp
++++ b/bulmages/bulmalib/plugins/pluginbl_autoform/pluginbl_autoform.cpp
+@@ -1551,9 +1551,9 @@ BlAutoForm * genBlAutoForm( const QString &amp;formname) {
+ 				} // end while
+ 				subform-&gt;addSubFormHeader ( nomheader, type, ( BlDbField::DbRestrict ) restricciones, opciones , nompheader );
+ 			    } // end for			
+-			subform-&gt;setInsert ( allowinsert == &quot;true&quot; );
+-			subform-&gt;setDelete ( allowdelete == &quot;true&quot; );
+-			subform-&gt;setSortingEnabled ( setsorting == &quot;true&quot; );
++			subform-&gt;setInsert ( allowinsert.toLower() == &quot;true&quot; );
++			subform-&gt;setDelete ( allowdelete.toLower() == &quot;true&quot; );
++			subform-&gt;setSortingEnabled ( setsorting.toLower() == &quot;true&quot; );
+ 			subform-&gt;inicializar();
+ 			
+ 		    } // end if
+diff --git a/bulmages/bulmalib/src/blsubform.cpp b/bulmages/bulmalib/src/blsubform.cpp
+index 75f456d..31f4a2a 100644
+--- a/bulmages/bulmalib/src/blsubform.cpp
++++ b/bulmages/bulmalib/src/blsubform.cpp
+@@ -2937,7 +2937,7 @@ QString BlSubForm::formatFieldTableStory(BlDbSubFormField *value, QLocale spanis
+         /// Si es un n&uacute;mero con decimales, tenerlo en cuenta
+         if ( value-&gt;fieldType() &amp; BlDbField::DbNumeric ) {
+             int prec = value-&gt;text().section(&quot;,&quot;, 1).count();
+-            field += spanish.toString ( value-&gt;text().toDouble(), 'f', prec );
++            field += spanish.toString ( value-&gt;text().replace(&quot;,&quot;,&quot;.&quot;).toDouble(), 'f', prec );
+         } else
+             field += blXMLEncode ( value-&gt;text() );
+     }
+diff --git a/bulmages/bulmalib/src/blsync.cpp b/bulmages/bulmalib/src/blsync.cpp
+index 4e7422b..71c265c 100644
+--- a/bulmages/bulmalib/src/blsync.cpp
++++ b/bulmages/bulmalib/src/blsync.cpp
+@@ -144,6 +144,7 @@ void BlSync::sync() {
+ 
+       
+ /// Configuraciones personalizadas
++     
+       url = g_confpr-&gt;value(CONF_URL_SYNC) + &quot;filesp.txt&quot;;
+       
+       getFile(&quot;filesp.txt&quot;, g_confpr-&gt;value(CONF_DIR_USER));
+@@ -166,7 +167,7 @@ void BlSync::sync() {
+ 		  
+ 		  bool descarga = true;
+ 		  
+-		  QFile file1 ( g_confpr-&gt;value(CONF_DIR_USER)+&quot;lfilesp.txt&quot;);
++		  QFile file1 ( g_confpr-&gt;value(CONF_DIR_USER)+&quot;lfilesp_&quot;+dbname+&quot;_&quot;+user+&quot;_.txt&quot;);
+ 		  if (file1.open(QIODevice::ReadOnly)) {
+ 		      QTextStream lin(&amp;file1);
+ 		      QString lline = lin.readLine();
+@@ -182,22 +183,24 @@ void BlSync::sync() {
+ 		      } // end while
+ 		      file1.close();
+ 		  } // end if
+-		  
+-		    if (!actualizaciones) {
+-			QMessageBox msgBox;
+-			msgBox.setText(_(&quot;Hay actualizaciones pendientes de realizar.&quot;));
+-			msgBox.setInformativeText(_(&quot;Desea actualizar ahora?&quot;));
+-			msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
+-			msgBox.setDefaultButton(QMessageBox::Ok);
+-			int ret = msgBox.exec();
+-			if (ret == QMessageBox::Cancel) {
+-			  close();
+-			  return;
+-			} // end if
+-			actualizaciones = true;
+-		    } // end if
+-		  
++		  	  
+ 		  if (descarga) {
++		    
++		    
++		      if (!actualizaciones) {
++			  QMessageBox msgBox;
++			  msgBox.setText(_(&quot;Hay actualizaciones pendientes de realizar.&quot;));
++			  msgBox.setInformativeText(_(&quot;Desea actualizar ahora?&quot;));
++			  msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
++			  msgBox.setDefaultButton(QMessageBox::Ok);
++			  int ret = msgBox.exec();
++			  if (ret == QMessageBox::Cancel) {
++			    close();
++			    return;
++			  } // end if
++			  actualizaciones = true;
++		      } // end if
++		    
+ 		      dest.replace(&quot;[CONF_DIR_OPENREPORTS]&quot;, g_confpr-&gt;value(CONF_DIR_OPENREPORTS));
+ 		      dest.replace(&quot;[CONFIG_DIR_CONFIG]&quot;, CONFIG_DIR_CONFIG);
+ 		      dest.replace(&quot;[CONF_DIR_PLUGINS]&quot;, g_confpr-&gt;value(CONF_DIR_PLUGINS).replace(&quot;;&quot;,&quot;&quot;));
+@@ -215,7 +218,7 @@ void BlSync::sync() {
+ 	      pline = pin.readLine();
+ 	  } // end while
+     
+-	  blCopyFile(g_confpr-&gt;value(CONF_DIR_USER)+&quot;filesp.txt&quot;, g_confpr-&gt;value(CONF_DIR_USER)+&quot;lfilesp.txt&quot;);
++	  blCopyFile(g_confpr-&gt;value(CONF_DIR_USER)+&quot;filesp.txt&quot;, g_confpr-&gt;value(CONF_DIR_USER)+&quot;lfilesp_&quot;+dbname+&quot;_&quot;+user+&quot;_.txt&quot;);
+ 
+       } // end if
+ 
+diff --git a/bulmages/installbulmages/bulmages.conf.in b/bulmages/installbulmages/bulmages.conf.in
+index e9e4f7c..5c2fe58 100644
+--- a/bulmages/installbulmages/bulmages.conf.in
++++ b/bulmages/installbulmages/bulmages.conf.in
+@@ -115,7 +115,7 @@ CONF_USE_QSCRIPT                        FALSE
+ 
+ # Opciones de sincronizacion
+ CONF_SYNC                           FALSE
+-CONF_URL_SYNC                       <A HREF="http://www.bulmages.com/bulmaincloud/">http://www.bulmages.com/bulmaincloud/</A>
++CONF_URL_SYNC                       <A HREF="http://updates.bulmages.com/">http://updates.bulmages.com/</A>
+ 
+ # NOTA PARA DESARROLLADORES:
+ # --------------------------
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007689.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007691.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7690">[ fecha ]</a>
+              <a href="thread.html#7690">[ hilo ]</a>
+              <a href="subject.html#7690">[ asunto ]</a>
+              <a href="author.html#7690">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

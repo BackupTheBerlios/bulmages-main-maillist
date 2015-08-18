@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 2774f7b274a1caf79f3c5ae0ee8fed766023695d
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%5BGit%5DProject%20bulmages%20at%20BerliOS%20branch%2C%20master%2C%0A%09updated.%202774f7b274a1caf79f3c5ae0ee8fed766023695d&In-Reply-To=%3C20110621230326.44B3A481277%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006023.html">
+   <LINK REL="Next"  HREF="006025.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 2774f7b274a1caf79f3c5ae0ee8fed766023695d </H1>
+    <B>tborras at BerliOS</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%5BGit%5DProject%20bulmages%20at%20BerliOS%20branch%2C%20master%2C%0A%09updated.%202774f7b274a1caf79f3c5ae0ee8fed766023695d&In-Reply-To=%3C20110621230326.44B3A481277%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 2774f7b274a1caf79f3c5ae0ee8fed766023695d">git en mail.berlios.de
+       </A><BR>
+    <I>Mie Jun 22 01:03:22 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006023.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 13927516ed26b2e198ae70e5efe7e62fbe5c16ad
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006025.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 4973914d1ffa371152242cc684596c19e20b947d
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6024">[ fecha ]</a>
+              <a href="thread.html#6024">[ hilo ]</a>
+              <a href="subject.html#6024">[ asunto ]</a>
+              <a href="author.html#6024">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+The branch, master has been updated
+       via  2774f7b274a1caf79f3c5ae0ee8fed766023695d (commit)
+      from  13927516ed26b2e198ae70e5efe7e62fbe5c16ad (commit)
+
+Nuevas revisiones:
+
+- Log -----------------------------------------------------------------
+commit 2774f7b274a1caf79f3c5ae0ee8fed766023695d
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Wed Jun 22 01:02:41 2011 +0200
+
+    Arreglo temas del blDebug y hago algunos tests con valgrind
+
+-----------------------------------------------------------------------
+
+Resumen de cambios:
+ .../plugins/pluginbc_registroiva/listiva.h         |    2 +-
+ .../pluginbc_registroiva/listlinprevcobro.h        |    2 +-
+ .../plugins/pluginbc_registroiva/registroiva.h     |   37 ++--
+ .../plugins/pluginbc_registroiva/registroivaview.h |    3 +-
+ .../pluginbf_clientefactura/listdescfacturaview.h  |    2 +-
+ .../listdescpresupuestoview.h                      |    2 +-
+ .../pluginbf_comercial/busquedaestadoincidencia.h  |    3 +-
+ .../pluginbf_comercial/listzonacomercialview.h     |    3 +-
+ .../plugins/pluginbf_comercial/rutacomerciallist.h |    6 +-
+ .../listdescalbaranprovview.h                      |    2 +-
+ .../listdescfacturaprovview.h                      |    3 +-
+ .../listdescpedidoproveedorview.h                  |    3 +-
+ .../pluginbf_seriesfactura/listseriefacturaview.h  |    2 +-
+ .../plugins/pluginbf_tarifa/listltarifaview.h      |    5 +-
+ .../pluginbf_trazabilidad/movimientosview.h        |    3 +-
+ bulmages/bulmafact/src/bfconfiguracionview.h       |    2 +-
+ bulmages/bulmafact/src/bfseriefacturaview.h        |    2 +-
+ bulmages/bulmafact/src/main.cxx                    |   10 +-
+ bulmages/bulmalib/src/blapplication.cpp            |    2 +-
+ bulmages/bulmalib/src/blargparser.cpp              |    2 +
+ bulmages/bulmalib/src/blcombobox.cpp               |   90 ++++---
+ bulmages/bulmalib/src/blcomboboxdelegate.cpp       |  101 ++++----
+ bulmages/bulmalib/src/blconfiguration.cpp          |   18 +-
+ bulmages/bulmalib/src/blconfiguration.h            |    2 +-
+ bulmages/bulmalib/src/bldb.cpp                     |   52 +----
+ bulmages/bulmalib/src/blfunctions.cpp              |  284 +++++++++++---------
+ bulmages/bulmalib/src/blfunctions.h                |    4 +
+ bulmages/bulmalib/src/blplugins.cpp                |    8 +-
+ bulmages/bulmalib/src/blsplashscreen.cpp           |    3 +
+ 29 files changed, 332 insertions(+), 326 deletions(-)
+
+
+-- 
+Proyecto BulmaGes
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006023.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 13927516ed26b2e198ae70e5efe7e62fbe5c16ad
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006025.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 4973914d1ffa371152242cc684596c19e20b947d
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6024">[ fecha ]</a>
+              <a href="thread.html#6024">[ hilo ]</a>
+              <a href="subject.html#6024">[ asunto ]</a>
+              <a href="author.html#6024">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

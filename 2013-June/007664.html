@@ -1,0 +1,256 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130627194951.43A6C167%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007663.html">
+   <LINK REL="Next"  HREF="007665.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130627194951.43A6C167%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Jue Jun 27 21:49:51 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007663.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007665.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7664">[ fecha ]</a>
+              <a href="thread.html#7664">[ hilo ]</a>
+              <a href="subject.html#7664">[ asunto ]</a>
+              <a href="author.html#7664">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from 342ca1e to f79b5e3
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/342ca1e701dc7e578052505b49adc16a1f75bf47/diffs/f79b5e3a753817ccfa1c9b8d34294fc37fba64fa">https://gitorious.org/bulmages/bulmages/commit/342ca1e701dc7e578052505b49adc16a1f75bf47/diffs/f79b5e3a753817ccfa1c9b8d34294fc37fba64fa</A>
+
+Diff: 
+
+commit f79b5e3a753817ccfa1c9b8d34294fc37fba64fa
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu Jun 27 21:49:36 2013 +0200
+
+    Arreglo un problema en el balance jerarquico, que se colgaba y quito algunas salidas del programa sin aviso previo por errores inesperados
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_balance/balanceview.cpp b/bulmages/bulmafact/plugins/pluginbf_balance/balanceview.cpp
+index d701405..7ae1a91 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_balance/balanceview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_balance/balanceview.cpp
+@@ -188,7 +188,8 @@ void BalanceView::presentar()
+ **/
+ void BalanceView::presentarSyS ( QString fechaInicial, QString fechaFinal, QString cuentaInicial, QString cuentaFinal, int nivel, int, bool jerarquico )
+ {
+-    BL_FUNC_DEBUG
++    BL_FUNC_DEBUG   
++    
+     BlFixed tsaldoant ( &quot;0.00&quot; ), tdebe ( &quot;0.00&quot; ), thaber ( &quot;0.00&quot; ), tsaldo ( &quot;0.00&quot; );
+     BlDbRecordSet *ramas = NULL;
+     BlDbRecordSet *hojas = NULL;
+@@ -346,10 +347,11 @@ void BalanceView::presentarSyS ( QString fechaInicial, QString fechaFinal, QStri
+                         /// La hoja cuelga de la ra&iacute;z principal.
+                         it = new QTreeWidgetItem ( mui_list, datos );
+                     } else {
+-                        while ( ptrIt.key() &gt;= nivelActual )
++                        while ( ptrIt.key() &gt;= nivelActual ) {
+                             /// Ascendemos por el &aacute;rbol para colgar la hoja en el
+                             /// lugar correcto.
+                             ptrIt--;
++			} // end while
+                         it = new QTreeWidgetItem ( ptrIt.value(), datos );
+                     } // end if
+                     /// Insertamos el widget (hoja actual) en la tabla controlada y obtenemos
+@@ -359,11 +361,16 @@ void BalanceView::presentarSyS ( QString fechaInicial, QString fechaFinal, QStri
+                     /// Borramos el resto de niveles que cuelgan, para no seguir colgando por
+                     /// esa rama.
+                     i = ptrIt + 1;
+-                    while ( i != ptrList.constEnd() ) {
++/* TBR
++ * Este arreglo debe ser una importante criba de velocidad. Pero no se porque falla y genera un segfault.
++ * Por lo que la comento hasta encontrar un poco de tiempo para seguir este error.
++ *                    while ( i != ptrList.constEnd() ) {
+                         /// Borra todas las entradas con la misma clave.
+                         ptrList.remove ( i.key() );
+                         ++i;
+                     } // end while
++*/
++
+                 } else { /// sin jerarquizar...
+                     it = new QTreeWidgetItem ( mui_list, datos );
+                 } // end if
+@@ -403,6 +410,7 @@ void BalanceView::presentarSyS ( QString fechaInicial, QString fechaFinal, QStri
+         } // end while
+         mui_list-&gt;resizeColumnToContents ( 1 );
+ 
++	
+         /// Hacemos la actualizaci&oacute;n de los saldos totales en formato
+         /// espa&ntilde;ol y los ponemos en su Widget.
+         QString totsaldoant = tsaldoant.toQString();
+diff --git a/bulmages/bulmafact/src/main.cxx b/bulmages/bulmafact/src/main.cxx
+index 31b55a4..6b8c703 100644
+--- a/bulmages/bulmafact/src/main.cxx
++++ b/bulmages/bulmafact/src/main.cxx
+@@ -184,6 +184,8 @@ int main ( int argc, char **argv )
+           g_confpr-&gt;readConfig ( confLocalEsp );
+       } // end if
+ 
++      splashScr-&gt;setMessage ( _( &quot;Buscando Actualizaciones&quot; ) );
++      splashScr-&gt;setProgressBar ( 5 );
+       BlSync *sync = new BlSync(0,0);
+       sync-&gt;exec();
+       delete sync;
+@@ -209,19 +211,19 @@ int main ( int argc, char **argv )
+       } // end if
+ 
+       splashScr-&gt;setMessage ( _( &quot;Cargando plugins&quot; ) );
+-      splashScr-&gt;setProgressBar ( 10 );
++      splashScr-&gt;setProgressBar ( 15 );
+ 
+       /// Hacemos la carga de las librerias que contienen los plugins.
+       g_plugins-&gt;loadLibs ( g_confpr-&gt;value( CONF_PLUGINS_BULMAFACT ) );
+ 
+       splashScr-&gt;setMessage ( _( &quot;Lanzando plugins&quot; ) );
+-      splashScr-&gt;setProgressBar ( 20 );
++      splashScr-&gt;setProgressBar ( 25 );
+ 
+       /// Disparamos los plugins con entryPoint.
+       g_plugins-&gt;run ( &quot;entryPoint&quot;, bges );
+ 
+       splashScr-&gt;setMessage ( _( &quot;Inicializando componentes&quot; ) );
+-      splashScr-&gt;setProgressBar ( 30 );
++      splashScr-&gt;setProgressBar ( 35 );
+ 
+       /// Lanzamos la creacion de las ventanas principales.
+       bges-&gt;createMainWindows ( splashScr );
+diff --git a/bulmages/bulmalib/src/blcombobox.cpp b/bulmages/bulmalib/src/blcombobox.cpp
+index dbac051..b8397df 100644
+--- a/bulmages/bulmalib/src/blcombobox.cpp
++++ b/bulmages/bulmalib/src/blcombobox.cpp
+@@ -122,10 +122,9 @@ void BlComboBox::setId ( QString id )
+ 
+ 	setCurrentIndex ( i1 );
+     } catch(...) {
+-#ifdef CONFIG_DEBUG
+-	fprintf(stderr, _(&quot;Error de Base de Datos en BlComboBox::setId.\n&quot;).toLatin1().constData());
+-#endif
+-	exit(0);
++	/// Algo ha fallado y se cierra el programa.
++	blMsgError(_(&quot;Ocurrio un error inesperado en BlComboBox al establecer el identificador&quot;));
++	throw -1;
+     } // end try
+     
+ }
+diff --git a/bulmages/bulmalib/src/blcomboboxdelegate.cpp b/bulmages/bulmalib/src/blcomboboxdelegate.cpp
+index ad402f6..f46132f 100644
+--- a/bulmages/bulmalib/src/blcomboboxdelegate.cpp
++++ b/bulmages/bulmalib/src/blcomboboxdelegate.cpp
+@@ -113,10 +113,8 @@ void BlComboBoxDelegate::setId ( QString id, QString fieldSearch )
+ 
+ 	setCurrentIndex ( i1 );
+     } catch(...) {
+-#ifdef CONFIG_DEBUG
+-	fprintf(stderr, &quot;Error de Base de Datos en BlComboBoxDelegate::setId\n&quot;);
+-#endif
+-	exit(0);
++	blMsgError( &quot;Error de Base de Datos en BlComboBoxDelegate::setId&quot;);
++	throw -1;
+     } // end try
+ }
+ 
+diff --git a/bulmages/bulmalib/src/blconfiguration.cpp b/bulmages/bulmalib/src/blconfiguration.cpp
+index f008391..8a2b13e 100644
+--- a/bulmages/bulmalib/src/blconfiguration.cpp
++++ b/bulmages/bulmalib/src/blconfiguration.cpp
+@@ -120,17 +120,11 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
+     /// Comprobamos la existencia de los directorios y archivos de configuracion.
+     /// Directorios y archivos obligatorios (sale si no existe):
+     if ( !dirGlobalConf.exists() ) {
+-#ifdef CONFIG_DEBUG
+-        mensaje = &quot;--&gt; ERROR: El directorio '&quot; + m_dirGlobalConf + &quot;' no existe. Debe crearlo. &lt;--\n&quot;;
+-        fprintf ( stderr, &quot;%s&quot;, mensaje.toLatin1().constData() );
+-#endif
++        blMsgError(&quot;El directorio '&quot; + m_dirGlobalConf + &quot;' no existe. Debe crearlo&quot;);
+         exit ( -1 );
+     } else {
+         if ( !genericGlobalConfFile.exists ( m_dirGlobalConf + m_genericGlobalConfFile ) ) {
+-#ifdef CONFIG_DEBUG
+-            mensaje = &quot;--&gt; ERROR: El archivo '&quot; + m_dirGlobalConf + m_genericGlobalConfFile + &quot;' no existe. Debe crearlo. &lt;--\n&quot;;
+-            fprintf ( stderr, &quot;%s&quot;, mensaje.toLatin1().constData() );
+-#endif
++	    blMsgError(&quot;El archivo '&quot; + m_dirGlobalConf + m_genericGlobalConfFile + &quot;' no existe. Debe crearlo.&quot;);
+             exit ( -1 );
+         } else {
+             /// 1) Leemos la configuracion del archivo generico global.
+@@ -166,10 +160,7 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
+             fprintf ( stderr, &quot;%s&quot;, mensaje.toLatin1().constData() );
+ #endif
+         } else {
+-#ifdef CONFIG_DEBUG
+-            mensaje = &quot;--&gt; ERROR: No se ha podido crear el directorio '&quot; + m_dirLocalConf + &quot;'. &lt;--\n&quot;;
+-            fprintf ( stderr, &quot;%s&quot;, mensaje.toLatin1().constData() );
+-#endif
++	    blMsgError( &quot;No se ha podido crear el directorio '&quot; + m_dirLocalConf + &quot;'.&quot;);
+             exit ( -1 );
+         }// end if
+     } // end if
+diff --git a/bulmages/bulmalib/src/blmaincompany.cpp b/bulmages/bulmalib/src/blmaincompany.cpp
+index 3ec7881..8ad210c 100644
+--- a/bulmages/bulmalib/src/blmaincompany.cpp
++++ b/bulmages/bulmalib/src/blmaincompany.cpp
+@@ -203,6 +203,7 @@ QString BlMainCompany::searchCompany ( QString tipo )
+     delete nuevae;
+     /// Si no se ha seleccionado ninguna base de datos entonces abortamos.
+     if ( bd == &quot;&quot; ) {
++	blMsgError(&quot;Debe seleccionar una empresa&quot;);
+         exit ( 1 );
+     } // end if
+     
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007663.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007665.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7664">[ fecha ]</a>
+              <a href="thread.html#7664">[ hilo ]</a>
+              <a href="subject.html#7664">[ asunto ]</a>
+              <a href="author.html#7664">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

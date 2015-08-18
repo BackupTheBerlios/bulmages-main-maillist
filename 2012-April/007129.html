@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20master...&In-Reply-To=%3C20120426214014.0E767756D8%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007128.html">
+   <LINK REL="Next"  HREF="007130.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20master...&In-Reply-To=%3C20120426214014.0E767756D8%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Jue Abr 26 23:40:13 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007128.html">[BulmaGés]Ni el cambio más pequeño se libra.
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007130.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to release...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7129">[ fecha ]</a>
+              <a href="thread.html#7129">[ hilo ]</a>
+              <a href="subject.html#7129">[ asunto ]</a>
+              <a href="author.html#7129">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 2 commits to master
+master changed from 9a01c74 to 7ee48f1
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/9a01c7444f7bb8cc38ee8526b48b27db0f7ddbdf/diffs/7ee48f19295c6cdcdbd768f0012e16b72f709533">https://gitorious.org/bulmages/bulmages/commit/9a01c7444f7bb8cc38ee8526b48b27db0f7ddbdf/diffs/7ee48f19295c6cdcdbd768f0012e16b72f709533</A>
+
+Diff: 
+
+commit 7ee48f19295c6cdcdbd768f0012e16b72f709533
+Merge: 9a01c74 22af1b8
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu Apr 26 23:39:58 2012 +0200
+
+    Merge branch 'principal'
+
+
+commit 22af1b84def22bbf79d51d3efe307c379076aaf4
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu Apr 26 23:39:41 2012 +0200
+
+    Arreglo error en la apertura de albaranes de una factura. Bug Reportado por Jose Manuel de Granada
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturaview.cpp b/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturaview.cpp
+index 2cfa487..3cb4ef6 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturaview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturaview.cpp
+@@ -189,7 +189,14 @@ void FacturaView::on_mui_veralbaranes_clicked()
+         cur = mainCompany() -&gt;loadQuery ( SQLQuery );
+         if ( !cur-&gt;eof() ) {
+             while ( !cur-&gt;eof() ) {
+-                bud = new AlbaranClienteView ( mainCompany(), NULL );
++	      
++		/// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
++		int resur = g_plugins-&gt;run ( &quot;SNewAlbaranClienteView&quot;, mainCompany() );
++		if ( !resur ) {
++		    blMsgInfo ( _ ( &quot;No se pudo crear instancia de albaran&quot; ) );
++		    return;
++		} // end if
++                bud = ( AlbaranClienteView * ) g_plugParams;
+                 mainCompany() -&gt;m_pWorkspace-&gt;addSubWindow ( bud );
+                 bud-&gt;load ( cur-&gt;value( &quot;idalbaran&quot; ) );
+                 bud-&gt;show();
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007128.html">[BulmaGés]Ni el cambio más pequeño se libra.
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007130.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to release...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7129">[ fecha ]</a>
+              <a href="thread.html#7129">[ hilo ]</a>
+              <a href="subject.html#7129">[ asunto ]</a>
+              <a href="author.html#7129">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

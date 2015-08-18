@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Regalo de reyes para bulmagés: firma digital con QCA
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FRegalo_de_reyes_para_%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fbulmag%3DE9s%3D3A_firma_digital_con_QCA%3F%3D&In-Reply-To=%3C4D263448.8060800%40yahoo.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="004405.html">
+   <LINK REL="Next"  HREF="004407.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Regalo de reyes para bulmagés: firma digital con QCA </H1>
+    <B>Arturo ML­</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FRegalo_de_reyes_para_%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fbulmag%3DE9s%3D3A_firma_digital_con_QCA%3F%3D&In-Reply-To=%3C4D263448.8060800%40yahoo.es%3E"
+       TITLE="[BulmaGés]Regalo de reyes para bulmagés: firma digital con QCA">antar_cheran en yahoo.es
+       </A><BR>
+    <I>Jue Ene  6 22:29:44 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="004405.html">[BulmaGés] r4147 - in	trunk/bulmages/bulmafact/plugins: pluginbf_actividad	pluginbf_almacen pluginbf_almacenamplia pluginbf_alumno	pluginbf_articulo pluginbf_asociacion pluginbf_banco	pluginbf_bulmatpv pluginbf_carteracobros	pluginbf_carterapagos pluginbf_clientealbaran	pluginbf_clientecobro pluginbf_clientefactura	pluginbf_clientepedido pluginbf_clientepresupuesto	pluginbf_comercial pluginbf_compraventa pluginbf_contrato	pluginbf_cuadrante pluginbf_efactura pluginbf_formasdepago	pluginbf_inventario pluginbf_inventariosimple pluginbf_iva	pluginbf_minicontabilidad pluginbf_modificadores	pluginbf_profesor pluginbf_proveedoralbaran	pluginbf_proveedorfactura pluginbf_proveedorpago	pluginbf_proveedorpedido pluginbf_q19 pluginbf_recibo	pluginbf_seriesfactura pluginbf_socio pluginbf_tallascolores	pluginbf_tarifa pluginbf_tipotrabajo pluginbf_trabajador	pluginbf_trazabilidad pluginbf_tutor pluginbf_vehiculo pluginbf_z2z
+</A></li>
+        <LI>Próximo mensaje: <A HREF="004407.html">[BulmaGés]Regalo de reyes para bulmagés: firma digital con QCA
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4406">[ fecha ]</a>
+              <a href="thread.html#4406">[ hilo ]</a>
+              <a href="subject.html#4406">[ asunto ]</a>
+              <a href="author.html#4406">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola a todos.
+
+Hace mucho que tenía esto pendiente y he estado sacando tiempo estas 
+vacaciones.
+
+Después de algunas pruebas y usando el API criptográfica QCA ( página 
+original del proyecto: <A HREF="http://delta.affinix.com/qca/">http://delta.affinix.com/qca/</A> &amp;&amp; página en KDE 
+API Reference: 
+<A HREF="http://api.kde.org/kdesupport-api/kdesupport-apidocs/qca/html/">http://api.kde.org/kdesupport-api/kdesupport-apidocs/qca/html/</A> ) he 
+conseguido firmar archivos usando la clave privada y el certificado de 
+clave pública que la FNMT proporciona encapsulados en almacenes de 
+claves PKCS12 (archivos .p12).
+
+Estos archivos son los que da la FNMT a cualquier ciudadano (empresas 
+creo que también) que pide un certificado. Se trata de un simple 
+contenedor, protegido por una contraseña.
+
+El siguiente paso es, una vez firmados los archivos, obtener la firma en 
+formato CMS y guardarla en otro archivo.
+
+Ahora mismo estoy trabajando en ello, pero para quien tenga algún 
+archivo .p12 de la FNMT y quiera probar el código, os paso lo que tengo 
+hasta ahora, sólo falta guardar la firma en formato CMS). El ZIP que 
+adjunto contiene un proyecto de KDevelop4 usando CMake, aunque quien no 
+use esto, puede coger el main.cpp y apañárselas de otro modo (supongo... :)
+
+Para poder compilar el código, aparte de las Qt, necesitaréis los 
+paquetes (Ubuntu):
+
+libqca2 (la librería...)
+libqca2-dev (archivos para desarrollo)
+libqca2-plugin-ossl (plugin para usar openSSL como proveedor de 
+funciones criptográficas en QCA)
+
+Cuando os toque linkar para construir el ejecutable, deberéis hacerlo 
+contra la librería /usr/lib/libqca.so (si usáis el Makefile generado a 
+través del proyecto esto ya está configurado en el CMakeLists.txt).
+
+El API escogida es QCA, por eso de que depende de Qt y la integración 
+con BulmaGés creo que no sería nada traumática.
+
+Se acepta feedback de todo tipo.
+
+Un saludo,
+
+Arturo.
+
+
+------------ próxima parte ------------
+A non-text attachment was scrubbed...
+Name: pruebaQCA.zip
+Type: application/zip
+Size: 9345 bytes
+Desc: no disponible
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20110106/08471ae6/attachment.zip">https://lists.berlios.de/pipermail/bulmages-main/attachments/20110106/08471ae6/attachment.zip</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="004405.html">[BulmaGés] r4147 - in	trunk/bulmages/bulmafact/plugins: pluginbf_actividad	pluginbf_almacen pluginbf_almacenamplia pluginbf_alumno	pluginbf_articulo pluginbf_asociacion pluginbf_banco	pluginbf_bulmatpv pluginbf_carteracobros	pluginbf_carterapagos pluginbf_clientealbaran	pluginbf_clientecobro pluginbf_clientefactura	pluginbf_clientepedido pluginbf_clientepresupuesto	pluginbf_comercial pluginbf_compraventa pluginbf_contrato	pluginbf_cuadrante pluginbf_efactura pluginbf_formasdepago	pluginbf_inventario pluginbf_inventariosimple pluginbf_iva	pluginbf_minicontabilidad pluginbf_modificadores	pluginbf_profesor pluginbf_proveedoralbaran	pluginbf_proveedorfactura pluginbf_proveedorpago	pluginbf_proveedorpedido pluginbf_q19 pluginbf_recibo	pluginbf_seriesfactura pluginbf_socio pluginbf_tallascolores	pluginbf_tarifa pluginbf_tipotrabajo pluginbf_trabajador	pluginbf_trazabilidad pluginbf_tutor pluginbf_vehiculo pluginbf_z2z
+</A></li>
+	<LI>Próximo mensaje: <A HREF="004407.html">[BulmaGés]Regalo de reyes para bulmagés: firma digital con QCA
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4406">[ fecha ]</a>
+              <a href="thread.html#4406">[ hilo ]</a>
+              <a href="subject.html#4406">[ asunto ]</a>
+              <a href="author.html#4406">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

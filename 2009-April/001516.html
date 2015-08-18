@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]BUG al importar plan de cuentas en bulmacont (SVN 9/4/2009)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FBUG_al_importar_plan_%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fde_cuentas_en_bulmacont_%3D28SVN_9/4/2009%3D29%3F%3D&In-Reply-To=%3C200904111159.07686.mmezo%40selexco.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001514.html">
+   <LINK REL="Next"  HREF="001519.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]BUG al importar plan de cuentas en bulmacont (SVN 9/4/2009) </H1>
+    <B>Marcos Mezo</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FBUG_al_importar_plan_%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fde_cuentas_en_bulmacont_%3D28SVN_9/4/2009%3D29%3F%3D&In-Reply-To=%3C200904111159.07686.mmezo%40selexco.net%3E"
+       TITLE="[BulmaGés]BUG al importar plan de cuentas en bulmacont (SVN 9/4/2009)">mmezo en selexco.net
+       </A><BR>
+    <I>Sab Abr 11 11:59:07 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001514.html">[BulmaGés] BUG al importar plan de cuentas en	bulmacont (SVN 9/4/2009)
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001519.html">[BulmaGés]BUG al importar plan de cuentas en bulmacont (SVN 9/4/2009)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1516">[ fecha ]</a>
+              <a href="thread.html#1516">[ hilo ]</a>
+              <a href="subject.html#1516">[ asunto ]</a>
+              <a href="author.html#1516">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> El problema parece ser que el campo &quot;padre&quot; de la tabla &quot;cuenta&quot; está
+</I>&gt;<i> marcado como NOT NULL (sin valor por defecto) y en la importación del plan
+</I>&gt;<i> contable hay una comprobación que no sé muy bien por qué se hace, pero el
+</I>&gt;<i> caso es que inserta en la tabla cuentas un valor de prueba y no inserta el
+</I>&gt;<i> campo &quot;padre&quot;.
+</I>&gt;<i>
+</I>&gt;<i> Es la línea 1490 del archivo bulmalib/src/pgimportfiles.cpp
+</I>&gt;<i> QString query = &quot;INSERT INTO cuenta (codigo, descripcion) VALUES ('AUX',
+</I>&gt;<i> 'Una descripcion auxiliar de cuenta')&quot;;
+</I>
+Por cierto, que haciendo pruebas quité en la base de datos la restricción &quot;NOT 
+NULL&quot; en el campo padre y se importó correctamente el plan contable. 
+
+Mirando luego en la tabla postgres directamente todas las cuentas &quot;raiz&quot; de 2 
+cifras (10 CAPITAL, 11 RESERVAS,....) tienen padre=NULL, por lo que la 
+restricción NOT NULL no se puede cumplir.
+
+¿Cual es la solución correcta? Dejar el campo sin la restricción o adoptar un 
+convenio para las cuentas &quot;raiz&quot; como poner padre=0 o algo así? ¿Cómo lo 
+tenéis el resto?
+
+Gracias,
+Marcos
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001514.html">[BulmaGés] BUG al importar plan de cuentas en	bulmacont (SVN 9/4/2009)
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001519.html">[BulmaGés]BUG al importar plan de cuentas en bulmacont (SVN 9/4/2009)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1516">[ fecha ]</a>
+              <a href="thread.html#1516">[ hilo ]</a>
+              <a href="subject.html#1516">[ asunto ]</a>
+              <a href="author.html#1516">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

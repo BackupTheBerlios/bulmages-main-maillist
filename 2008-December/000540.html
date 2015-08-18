@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]accents als llistats per RML
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Faccents_als_llistats_%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fper_RML%3F%3D&In-Reply-To=%3C200812151027.16944.leo%40alaxarxa.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000534.html">
+   <LINK REL="Next"  HREF="000493.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]accents als llistats per RML </H1>
+    <B>Leopold Palomo-Avellaneda</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Faccents_als_llistats_%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fper_RML%3F%3D&In-Reply-To=%3C200812151027.16944.leo%40alaxarxa.net%3E"
+       TITLE="[BulmaGés]accents als llistats per RML">leo en alaxarxa.net
+       </A><BR>
+    <I>Lun Dic 15 10:27:16 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000534.html">[BulmaGés] accents als llistats per RML
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000493.html">[BulmaGés]última línia d'albarans
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#540">[ fecha ]</a>
+              <a href="thread.html#540">[ hilo ]</a>
+              <a href="subject.html#540">[ asunto ]</a>
+              <a href="author.html#540">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>A Dilluns 15 Desembre 2008, Xavi Drudis Ferran va escriure:
+&gt;<i> On Wed, Dec 10, 2008 at 10:18:10PM +0100, Xavi Drudis Ferran wrote:
+</I>&gt;<i> &gt; Por cierto, todavía no va. Ahora me fallan los acentos que vienen de la
+</I>&gt;<i> &gt; base de datos con sentencias SQL incrustadas en el .rml, sólo van los
+</I>&gt;<i> &gt; acentos en el propio rml y en los datos cogidos del formulario (grid)
+</I>&gt;<i> &gt; en pantalla. Me he puesto a mirarlo en C++ pero el kdevelop se me cuelga,
+</I>&gt;<i> &gt; no sé que le pasa. Funcionaba hace unas horas...
+</I>&gt;<i>
+</I>&gt;<i> Ara comença a funcionar alguna cosa. Poca.
+</I>&gt;<i> He pujat unes plantilles de RML traduïdes al català.
+</I>&gt;<i> Però només he provat pressupost, comanda, albarà, factura i rebut a client.
+</I>&gt;<i> I només he provat la visualització a evince, no sé si altres visors
+</I>&gt;<i> donaran algun problema (diria que no, en teoria el PDF va en UTF-8 -segons
+</I>&gt;<i> una constant python-, crec, independentment de la codificació de la
+</I>&gt;<i> plantilla).
+</I>&gt;<i>
+</I>&gt;<i> He modificat el C++ que afegeix dades a les plantilles per a que
+</I>&gt;<i> respecti la codificació de la plantilla original (només he provat una
+</I>&gt;<i> mica ASCII, ISO-8859-1, UTF-8, UTF-16LE i UTF-16BE. UTF-32 no va,
+</I>&gt;<i> sembla un bug de Qt però podria ser jo que no entenc alguna cosa, no
+</I>&gt;<i> sé, però diria que ningú fa servir UTF-32). Hi havia llocs en que això
+</I>&gt;<i> ja es feia i llocs que no. On es feia era on es cridava el XMLProtect
+</I>&gt;<i> de funcaux.h, que per cada caracter no ASCII posa una referència
+</I>&gt;<i> numèrica de caracter dintre de un CDATA, més o menys
+</I>&gt;<i> aix&lt;![CDATA[&#237;]]&gt;. No era incorrecte,clar, el problema eren els
+</I>&gt;<i> llocs on no es cridava a XMLProtect. Per exemple, em sembla que era a
+</I>&gt;<i> les dades que venien de &lt;!--QUERY SELECT ... --&gt; incrustats al RML que
+</I>&gt;<i> per comptes de cridar a XMLProtect es menjaven els accents
+</I>&gt;<i> (minúscules), apòstrofs cometes i salts de línia (els canviaven per un
+</I>&gt;<i> blanc).
+</I>&gt;<i>
+</I>&gt;<i> He substituit les crides a XMLProtect que he vist per crides a
+</I>&gt;<i> xmlEscape, i n'he afegit on m'ha semblat que faltaven, potser
+</I>&gt;<i> faltaven, o no faltaven però no feien mal i potser algun dia si el fat
+</I>&gt;<i> se'ns girava en contra podien arribar a faltar. xmlEscape escapa menys
+</I>&gt;<i> que XMLProtect, només quan troba caracters prohibits (per significatius)
+</I>&gt;<i> a XML : &lt;, &gt;, &quot;, &amp; . a resta la deixa en unicode en memòria, esperant
+</I>&gt;<i> que s'escrigui bé a disc en escriure el fitxer. I no posa CDATAs, només
+</I>&gt;<i> referències numériques de caracter, aix&#237;. Em fa l'efecte que en segons
+</I>&gt;<i> quin esquema XSD o DTD no es poden posar CDATAs a qualsevol lloc, no sé,
+</I>&gt;<i> al menys no n'he vist mai en atributs, per exemple. A més crec que alguns
+</I>&gt;<i> parsers ho tractarien com bolcs de text diferents. Potser són paranoies
+</I>&gt;<i> meves i havia de deixar XMLProtect, no sé.
+</I>&gt;<i>
+</I>&gt;<i> DBRecord::generaRML es cuida ara d'escriure el fitxer RML a
+</I>&gt;<i> ~/.bulmages/ respectant la codificació original. Crida a trataTags
+</I>&gt;<i> (que és virtual també) per a que tracti els tags, de forma diferent en
+</I>&gt;<i> cada cas. Els generaRML dels descendents (ficha.cpp i fichabf.cpp)
+</I>&gt;<i> criden al mètode del pare.  Però cada classe llença un plugin (abans
+</I>&gt;<i> només se'n llençava un, el de la classe més específica). Això podria
+</I>&gt;<i> afectar algun plugin, que abans no es cridés i ara sí, però una cerca
+</I>&gt;<i> ràpida no ha semblat trobar-ne cap cas al codi del svn. Si hi ha codi
+</I>&gt;<i> extern que depén d'això igual m'he carregat alguna cosa.
+</I>&gt;<i>
+</I>&gt;<i> He reorganitzat una mica el codi intentant treure duplicacions de codi.
+</I>&gt;<i> Totes les substitucions de marcadors &lt;!--...--&gt; i [...] ara es fa al
+</I>&gt;<i> trataTags, de manera que escriure el fitxer només ho fa
+</I>&gt;<i> DBRecord::generaRML, que és qui acaba cridant tothom.
+</I>&gt;<i>
+</I>&gt;<i> L'ideal seria que tothom cridés a DBRecord::generaRML, i que qualsevol
+</I>&gt;<i> text introduït al buffer RML llegit passés una vegada i només una per
+</I>&gt;<i> xmlEscape, però això només ho he fet en 3 classes, i una cerca ràpida
+</I>&gt;<i> m'ha semblat indicar que el codi que llegeix i escriu la plantilla RML
+</I>&gt;<i> està duplicat en una seixantena de llocs (espero que sigui un miratge,
+</I>&gt;<i> si us plau...) . No sé si arribaré a arreglar-los tots, perquè així
+</I>&gt;<i> cansat com estic se'm fa una mica costa amunt. Tampoc sé perquè hem de
+</I>&gt;<i> copiar convulsivament logo.png de /usr/share/bulmages/openreports a
+</I>&gt;<i> ~/.bulmages/ cada vegada que imprimim res (per cert aquest sí que
+</I>&gt;<i> molaria tenir-lo en svg però em temo que en cal un per cada empresa,
+</I>&gt;<i> no el podem distribuir fet). O perquè cal tractar un fitxer XML amb
+</I>&gt;<i> streams i expressions regulars com si no hi hagués parsers ni perquè
+</I>&gt;<i> hem de posar instruccions dintre de comentaris XML del pal &lt;!-- QUERY
+</I>&gt;<i> ...--&gt; ... &lt;!-- END QUERY--&gt; si l'XML ja té el concepte d'element per
+</I>&gt;<i> fer aquestes coses (obrir i tancar un contingut). Però si ens hem de
+</I>&gt;<i> posar a arreglar tot això ja podem passar-nos directament a XML+XSLT
+</I>&gt;<i> per generar XHTML+ CSS (media print) i que el PDF el generi un
+</I>&gt;<i> navegador, i vaja, que és com carregar-se tot el que hi ha i fa
+</I>&gt;<i> mandra, no?. Jo només volia accents als llistats ...
+</I>&gt;<i>
+</I>&gt;<i> Espero no haver trencat res. He intentat anar amb compte, però com
+</I>&gt;<i> que no conec gaire el programa, ni les Qt, ni el C++, ni el python,
+</I>&gt;<i> ni l'RML...
+</I>&gt;<i>
+</I>&gt;<i> El bgtrml2pdf tal com el vaig deixar dilluns sembla menjar-se totes
+</I>&gt;<i> les codificacions feliçment, però vaja potser falta provar-ho tot en
+</I>&gt;<i> altres S.O. i locales, no sé...
+</I>&gt;<i>
+</I>&gt;<i> El que sí que m'he trobat és algun problema de quadradets negres
+</I>&gt;<i> per comptes de caràcters al PDF, però sospito que és per tipus de
+</I>&gt;<i> lletra que no tenen el caràcter (no recordo quin era, grec, o navajo, o
+</I>&gt;<i> així...)
+</I>&gt;<i>
+</I>&gt;<i> Envio el missatge perquè el Leo ho va suggerir. Ho dic perquè com que
+</I>&gt;<i> no sé si m'ha quedat tan constructiu com voldria, així li tiro la
+</I>&gt;<i> culpa a un altre, ;op.
+</I>
+Molt bé Xavi, molt bona feina.
+
+Moltes gràcies.
+
+
+Leo
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000534.html">[BulmaGés] accents als llistats per RML
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000493.html">[BulmaGés]última línia d'albarans
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#540">[ fecha ]</a>
+              <a href="thread.html#540">[ hilo ]</a>
+              <a href="subject.html#540">[ asunto ]</a>
+              <a href="author.html#540">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

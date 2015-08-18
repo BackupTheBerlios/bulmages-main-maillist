@@ -1,0 +1,296 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to plantil...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20plantil...&In-Reply-To=%3C20120430102418.36CFE756D7%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007145.html">
+   <LINK REL="Next"  HREF="007147.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to plantil... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20plantil...&In-Reply-To=%3C20120430102418.36CFE756D7%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to plantil...">no-reply en gitorious.org
+       </A><BR>
+    <I>Lun Abr 30 12:24:18 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007145.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to plantil...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007147.html">[BulmaGés] [Gitorious] Activity: tborras created	branch filtrosz in ...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7146">[ fecha ]</a>
+              <a href="thread.html#7146">[ hilo ]</a>
+              <a href="subject.html#7146">[ asunto ]</a>
+              <a href="author.html#7146">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to plantillasimpresion
+plantillasimpresion changed from 967f7ad to 38fcda4
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/967f7adc32b7e3a2ece54d7f61fc94ddb670b746/diffs/38fcda42f6394473b40d0cca590cde4444848beb">https://gitorious.org/bulmages/bulmages/commit/967f7adc32b7e3a2ece54d7f61fc94ddb670b746/diffs/38fcda42f6394473b40d0cca590cde4444848beb</A>
+
+Diff: 
+
+commit 38fcda42f6394473b40d0cca590cde4444848beb
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon Apr 30 12:24:06 2012 +0200
+
+    Agreglo la plantilla de pedido cliente
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientepedido/openreports/es/pedidocliente.rml b/bulmages/bulmafact/plugins/pluginbf_clientepedido/openreports/es/pedidocliente.rml
+new file mode 100644
+index 0000000..8dfc5d7
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_clientepedido/openreports/es/pedidocliente.rml
+@@ -0,0 +1,206 @@
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;no&quot; ?&gt;
++&lt;!DOCTYPE document SYSTEM &quot;rml_1_0.dtd&quot;&gt;
++&lt;document&gt;
++&lt;template pageSize=&quot;(21cm, 29.7cm)&quot; leftMargin=&quot;0cm&quot; rightMargin=&quot;0cm&quot; topMargin=&quot;1.0cm&quot; bottomMargin=&quot;2.0cm&quot; title=&quot;Pedido&quot; author=&quot;&quot;&gt;
++	&lt;pageTemplate id=&quot;main&quot;&gt;
++		&lt;pageGraphics&gt;
++		&lt;include src=&quot;[CONF_DIR_OPENREPORTS]plantilla.rml&quot;/&gt;
++
++		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
++		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
++		
++&lt;!--IF QUERY=&quot;SELECT * FROM cliente WHERE idcliente = [idcliente] LIMIT 1&quot;--&gt;
++&lt;!--QUERY=&quot;SELECT * FROM cliente WHERE idcliente = [idcliente] LIMIT 1&quot;--&gt;
++
++		&lt;setFont name=&quot;Helvetica-Bold&quot; size=&quot;11&quot;/&gt;
++		&lt;fill color=&quot;(1,1,1)&quot;/&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;26.53cm&quot;&gt;Datos del cliente:&lt;/drawString&gt;
++
++		&lt;!-- LOS DATOS DEL CLIENTE --&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;10&quot;/&gt;
++		&lt;fill color=&quot;(0,0,0)&quot;/&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;26.05cm&quot;&gt;[idcliente]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;25.6cm&quot;&gt;[nomcliente]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;25.15cm&quot;&gt;[cifcliente]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;24.7cm&quot;&gt;[dircliente]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;24.25cm&quot;&gt;[poblcliente]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;23.8cm&quot;&gt;[telcliente]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;23.35cm&quot;&gt;[mailcliente]&lt;/drawString&gt;
++
++
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;10&quot;/&gt;
++		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
++		&lt;drawString x=&quot;10cm&quot; y=&quot;26.05cm&quot;&gt;Nº Cliente:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;25.6cm&quot;&gt;Nombre/Empresa:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;25.15cm&quot;&gt;NIF/CIF:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;24.7cm&quot;&gt;Dirección:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;24.25cm&quot;&gt;Población:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;23.8cm&quot;&gt;Teléfono:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;23.35cm&quot;&gt;Dirección Email:&lt;/drawString&gt;
++
++		&lt;!--Fecha pedidocliente--&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;11&quot;/&gt;
++
++		&lt;drawString x=&quot;10cm&quot; y=&quot;27.95cm&quot;&gt;Fecha pedido:&lt;/drawString&gt;
++		&lt;drawString x=&quot;10cm&quot; y=&quot;27.5cm&quot;&gt;Nº pedido:&lt;/drawString&gt;
++		&lt;drawString x=&quot;17.0cm&quot; y=&quot;27.95cm&quot;&gt;Referencia:&lt;/drawString&gt;
++
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;27.95cm&quot;&gt;[fechapedidocliente]&lt;/drawString&gt;
++		&lt;drawString x=&quot;13.5cm&quot; y=&quot;27.5cm&quot;&gt;[numpedidocliente]&lt;/drawString&gt;
++		&lt;drawString x=&quot;17.0cm&quot; y=&quot;27.5cm&quot;&gt;[refpedidocliente]&lt;/drawString&gt;
++
++		&lt;!-- INCLUDE FILE=&quot;[CONF_DIR_OPENREPORTS]plantilla_empresa.rml&quot; --&gt;
++
++		&lt;setFont name=&quot;Helvetica-Bold&quot; size=&quot;12&quot;/&gt;
++		&lt;drawCentredString x=&quot;5.3cm&quot; y=&quot;26.3cm&quot;&gt;- PEDIDO -&lt;/drawCentredString&gt;
++
++&lt;!--END QUERY--&gt;
++&lt;!--END IF QUERY--&gt;
++
++
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;7&quot;/&gt;
++		&lt;drawString x=&quot;15cm&quot; y=&quot;22.7cm&quot;&gt;Los importes están expresados en euros.&lt;/drawString&gt;
++
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;10&quot;/&gt;
++		&lt;drawCentredString x=&quot;5.3cm&quot; y=&quot;25.85cm&quot;&gt;Forma de pago: &lt;!--QUERY=&quot;SELECT descforma_pago FROM forma_pago WHERE idforma_pago = [idforma_pago] LIMIT 1&quot;--&gt;[descforma_pago]&lt;!--END QUERY--&gt;&lt;/drawCentredString&gt;
++
++	&lt;/pageGraphics&gt;
++
++
++		&lt;!-- FRAME DE CONTENIDOS --&gt;
++		&lt;frame id=&quot;column&quot; x1=&quot;1cm&quot; y1=&quot;8cm&quot; width=&quot;19cm&quot; height=&quot;14.6cm&quot; /&gt;
++
++		
++	&lt;/pageTemplate&gt;
++
++&lt;/template&gt;
++
++&lt;include src=&quot;[CONF_DIR_OPENREPORTS]estilos.rml&quot;/&gt;
++
++&lt;story&gt;	
++	&lt;blockTable style=&quot;tablacontenido&quot; colWidths=&quot;3.00cm, 8.5cm, 1.8cm, 2cm, 2.9cm&quot; splitByRow=&quot;2&quot; rowheights=&quot;2&quot; repeatRows=&quot;1&quot;&gt;
++		&lt;tr&gt;
++			&lt;td&gt;Codigo&lt;/td&gt;
++			&lt;td&gt;Concepto&lt;/td&gt;
++			&lt;td&gt;Unid:&lt;/td&gt;
++			&lt;td&gt;Precio/u:&lt;/td&gt;
++			&lt;td&gt;Subtotal s/iva:&lt;/td&gt;
++		&lt;/tr&gt;
++		[story codigocompletoarticulo, descpedidocliente, cantpedidocliente, pvppedidocliente, subtotalpedidocliente]
++	
++&lt;!--IF DESCUENTOS--&gt;
++		&lt;tr&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++		&lt;/tr&gt;
++
++		&lt;tr&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;para style=&quot;paragrafo2&quot;&gt;&lt;b&gt;Descuento/s:&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;para style=&quot;paragrafo2der&quot;&gt;&lt;b&gt;% Dto:&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;para style=&quot;paragrafo2der&quot;&gt;&lt;b&gt;Total dto:&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++		&lt;/tr&gt;
++
++&lt;!--LINEAS DESCUENTO--&gt;
++		&lt;tr&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;para style=&quot;paragrafo2&quot;&gt;[conceptdpedidocliente]&lt;/para&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;[proporciondpedidocliente]%&lt;/td&gt;
++			&lt;td&gt;[totaldescdpedidocliente]&lt;/td&gt;
++		&lt;/tr&gt;
++&lt;!--END LINEAS DESCUENTO--&gt;
++&lt;!--END IF DESCUENTOS--&gt;
++
++
++&lt;!--IF QUERY=&quot;SELECT comentpedidocliente FROM pedidocliente WHERE length(comentpedidocliente) &gt; 0 AND idpedidocliente = [idpedidocliente]&quot;--&gt;
++&lt;!--QUERY=&quot;SELECT comentpedidocliente FROM pedidocliente WHERE length(comentpedidocliente) &gt; 0 AND idpedidocliente = [idpedidocliente]&quot;--&gt;
++		&lt;tr&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++		&lt;/tr&gt;
++
++		&lt;tr&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;para style=&quot;paragrafo2&quot;&gt;&lt;b&gt;Comentario/s:&lt;/b&gt;&lt;/para&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++		&lt;/tr&gt;
++
++		&lt;tr&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;para style=&quot;paragrafo2&quot;&gt;[comentpedidocliente,l]&lt;/para&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++			&lt;td&gt;&lt;/td&gt;
++		&lt;/tr&gt;
++&lt;!--END QUERY--&gt;
++&lt;!--END IF QUERY--&gt;
++
++	&lt;/blockTable&gt;
++
++	
++	&lt;storyPlace x=&quot;0cm&quot; y=&quot;0cm&quot; width=&quot;20cm&quot; height=&quot;1cm&quot;&gt;
++		&lt;place x=&quot;1cm&quot; y=&quot;4cm&quot; width=&quot;19cm&quot; height=&quot;4cm&quot;&gt;
++			&lt;blockTable style=&quot;total&quot; colWidths=&quot;16.3cm,2.7cm&quot; &gt;
++				&lt;tr&gt;
++					&lt;td colspan=&quot;2&quot;&gt;
++						&lt;blockTable style=&quot;titulo&quot; colWidths=&quot;5.5cm, 3.2cm, 1.4cm, 1.75cm, 1.4cm, 1.9cm, 1.15cm, 2.7cm&quot;&gt;
++							&lt;tr&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;Base Imponible:&lt;/td&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;I.V.A.%:&lt;/td&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;Tot I.V.A.:&lt;/td&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;Total:&lt;/td&gt;
++							&lt;/tr&gt;
++						&lt;/blockTable&gt;
++					&lt;/td&gt;
++				&lt;/tr&gt;
++				&lt;tr&gt;
++					&lt;td&gt;
++						&lt;blockTable style=&quot;contenido&quot; colWidths=&quot;5.5cm, 3.2cm, 1.4cm, 1.75cm, 1.4cm, 1.9cm, 1.15cm&quot; &gt;
++						&lt;!--TOTALES--&gt;
++							&lt;tr&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;[bimp]&lt;/td&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;[tbimp]%&lt;/td&gt;
++								&lt;td&gt;  &lt;/td&gt;
++								&lt;td&gt;[iva]&lt;/td&gt;
++								&lt;td&gt;  &lt;/td&gt;
++							&lt;/tr&gt;
++						&lt;!--END TOTALES--&gt;
++						&lt;/blockTable&gt;
++					&lt;/td&gt;
++					&lt;td&gt;
++						&lt;blockTable style=&quot;preciofinal&quot; colWidths=&quot;2.7cm&quot; &gt;
++							&lt;tr&gt;
++								&lt;td&gt;[total] &#8364;&lt;/td&gt;
++							&lt;/tr&gt;
++						&lt;/blockTable&gt;
++					&lt;/td&gt;
++				&lt;/tr&gt;
++			&lt;/blockTable&gt;
++		&lt;/place&gt;
++	&lt;/storyPlace&gt;
++
++&lt;storyPlace x=&quot;0cm&quot; y=&quot;0cm&quot; width=&quot;15cm&quot; height=&quot;1cm&quot;&gt;
++&lt;place x=&quot;16cm&quot; y=&quot;0cm&quot; width=&quot;15cm&quot; height=&quot;2.5cm&quot;&gt;
++&lt;barCode code=&quot;code128&quot; height=&quot;1cm&quot;&gt;PED [idpedidocliente] [numpedidocliente] [refpedidocliente]&lt;/barCode&gt;
++&lt;/place&gt;
++&lt;/storyPlace&gt;
++
++
++&lt;/story&gt;
++&lt;/document&gt;
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007145.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to plantil...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007147.html">[BulmaGés] [Gitorious] Activity: tborras created	branch filtrosz in ...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7146">[ fecha ]</a>
+              <a href="thread.html#7146">[ hilo ]</a>
+              <a href="subject.html#7146">[ asunto ]</a>
+              <a href="author.html#7146">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

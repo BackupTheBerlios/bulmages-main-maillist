@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Sobre los plugins
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FSobre_los_plugins%3F%3D&In-Reply-To=%3C200907221842.12547.leo%40alaxarxa.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002802.html">
+   <LINK REL="Next"  HREF="002804.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Sobre los plugins </H1>
+    <B>Leopold Palomo-Avellaneda</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FSobre_los_plugins%3F%3D&In-Reply-To=%3C200907221842.12547.leo%40alaxarxa.net%3E"
+       TITLE="[BulmaGés]Sobre los plugins">leo en alaxarxa.net
+       </A><BR>
+    <I>Mie Jul 22 18:42:12 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002802.html">[BulmaGés] Sobre los plugins
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002804.html">[BulmaGés]Sobre los plugins
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2803">[ fecha ]</a>
+              <a href="thread.html#2803">[ hilo ]</a>
+              <a href="subject.html#2803">[ asunto ]</a>
+              <a href="author.html#2803">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>A Dimecres 22 Juliol 2009, Pedro Lopez-Cabanillas va escriure:
+&gt;<i> Hola,
+</I>&gt;<i>
+</I>&gt;<i> Los plugins están compilados ahora mismo como shared libraries, con sus
+</I>&gt;<i> atributos SONAME, version y symlinks. Esto no es necesario, ya que los
+</I>&gt;<i> plugins se cargan con QLibrary::load() y por otra parte esta política
+</I>&gt;<i> obliga a empaquetarlos en formato RPM con una serie de paquetes -devel
+</I>&gt;<i> innecesarios. Por este motivo, propongo un cambio en los scripts de CMake.
+</I>&gt;<i> En vez de:
+</I>&gt;<i>
+</I>&gt;<i> 	add_library(${plugin} SHARED ${plugin_SRC} ${plugin_MOC_SRCS}
+</I>&gt;<i>         	${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
+</I>&gt;<i>
+</I>&gt;<i> 	set_target_properties( ${plugin} PROPERTIES
+</I>&gt;<i> 	  SOVERSION &quot;${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}&quot;
+</I>&gt;<i> 	  VERSION &quot;${BULMAGES_VERSION}&quot;)
+</I>&gt;<i>
+</I>&gt;<i> Quedarían de esta forma:
+</I>&gt;<i>
+</I>&gt;<i> 	add_library(${plugin} MODULE ${plugin_SRC} ${plugin_MOC_SRCS}
+</I>&gt;<i>         	${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
+</I>&gt;<i>
+</I>&gt;<i> 	#set_target_properties( ${plugin} PROPERTIES
+</I>&gt;<i> 	#  SOVERSION &quot;${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}&quot;
+</I>&gt;<i> 	#  VERSION &quot;${BULMAGES_VERSION}&quot;)
+</I>&gt;<i>
+</I>&gt;<i> Esto generaría por cada plugin solamente un archivo .so sin ningun enlace
+</I>&gt;<i> simbólico. Una mejora adicional sería evitar el prefijo &quot;lib&quot; en todos los
+</I>&gt;<i> plugins, para lo cual se puede hacer a nivel global:
+</I>&gt;<i>
+</I>&gt;<i> 	SET(CMAKE_SHARED_MODULE_PREFIX &quot;&quot;)
+</I>&gt;<i>
+</I>&gt;<i> Pero esto obligaría a modificar en la base de datos la nomenclatura de los
+</I>&gt;<i> plugins, así como en la actualización de instalaciones de los usuarios. La
+</I>&gt;<i> edición masiva de los CMakeLists.txt puedo hacerla fácilmente con un
+</I>&gt;<i> script.
+</I>&gt;<i>
+</I>&gt;<i> ¿Opiniones?
+</I>
+necesito tiempo para meditarlo i consultar. En principio no tiene mala pinta, 
+pero .... déjame unos dias.
+
+Leo
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002802.html">[BulmaGés] Sobre los plugins
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002804.html">[BulmaGés]Sobre los plugins
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2803">[ fecha ]</a>
+              <a href="thread.html#2803">[ hilo ]</a>
+              <a href="subject.html#2803">[ asunto ]</a>
+              <a href="author.html#2803">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

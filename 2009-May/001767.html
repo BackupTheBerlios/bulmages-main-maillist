@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Llistats nous
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FLlistats_nous%3F%3D&In-Reply-To=%3C20090510091822.GA4213%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001761.html">
+   <LINK REL="Next"  HREF="001756.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Llistats nous </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FLlistats_nous%3F%3D&In-Reply-To=%3C20090510091822.GA4213%40localhost%3E"
+       TITLE="[BulmaGés]Llistats nous">xdrudis en tinet.cat
+       </A><BR>
+    <I>Dom Mayo 10 11:18:22 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001761.html">[BulmaGés]Llistats nous
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001756.html">[BulmaGés] No puedo crear empresas
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1767">[ fecha ]</a>
+              <a href="thread.html#1767">[ hilo ]</a>
+              <a href="subject.html#1767">[ asunto ]</a>
+              <a href="author.html#1767">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sat, May 09, 2009 at 07:51:54PM +0200, Tomeu Borras wrote:
+&gt;<i> Hola
+</I>&gt;<i> 
+</I>&gt;<i> Doncs si es matar mosques a canonades.
+</I>&gt;<i>
+</I>
+Tinc un company de feina que quan li dius això contesta:
+&quot; Val, però consti que a canonades es moren, les mosques, eh?&quot;
+Però a mi tampoc m'agraden els canons.
+ 
+&gt;<i> Jo els llistats nous els vaig enfonyant dins els respectius plugins que 
+</I>&gt;<i> tracten les taules a les que fa referencia el informe. Pero els que ja eren 
+</I>&gt;<i> al openreports de bulmages no els he tocat.
+</I>&gt;<i> 
+</I>
+Però els informes que he fet jo sempre depenen de més d'un plugin (potser
+perquè els que depenien d'un ja estaven fets ?). De fet tots depenen de 
+pluginbl_template o pluginbl_report, però suposo que això no compta.
+ N'hi havia que depenien de més d'un altre a docsMonolitic, pero a trunk que
+tot son plugins, és realment difícil dependre d'un de sol.
+
+&gt;<i> Tampoc m'amuina massa que els informes estiguin allí.
+</I>&gt;<i>
+</I>
+Doncs per ara els pujaré a openreports/ca (per cert si algú els vol 
+traduir, hi ha res previst per traduir llistats, tipus integrar gettext 
+o similars o és simplement
+fer-ne una còpia amb els textos canviats ?) 
+
+&gt;<i> Pero el que no fería en cap dels casos es crear un plugin per a un rml i 
+</I>&gt;<i> un .ui
+</I>&gt;<i> 
+</I>
+Millor. Menys feina, i realment sembla una mica liós. La única pega de fer-ho 
+com ho faré serà que potencialment a algú li apareixeran llistats que no funcionaran.
+En un futur potser es podria fer per comptes d'un plugin per llistat, incorporar, 
+dins de cada rml o a un fitxer al costat, un descriptor de dependències, i que
+bulmasetup copïi tots els que siguin viables per a cada empresa (o millor, que 
+creï enlaços simbòlics) segons els plugins actius a l'empresa. Però és una mica
+complicat, hauria de crear un directori de llistats per a cada empresa, i ja 
+hi ha prou feina amb el bulmasetup actual com per a complicar-se més. 
+
+&gt;<i> &gt; inf_vendesPersonal.rml:
+</I>&gt;<i> &gt; vendes per treballador (aquí faltaria afegir alguna interfície per poder
+</I>&gt;<i> &gt; entrar el treballador en fitxes d'alguns documents on no es pot)
+</I>&gt;<i> &gt;
+</I>
+Llegeix les taules :
+
+trabajador
+presupuesto (client)
+pedidocliente
+albaran (client)
+factura(client)
+cobro 
+
+O sia que requereix  6 plugins per molt que pugui semblar que és de pluginbf_trabajador.
+
+
+Tot i que factura i cobro tenen el treballador buit perquè no se li assigna 
+ni desde cap document previ ni des de l'interfície d'usuari (ni amb triggers).
+Suposo que posaré un combo a factura i cobrament per veure i triar treballador.
+Algun inconvenient ? Ah, si, que els treballadors estan a pluginbf_trabajador.
+Bé doncs ja miraré com està fet per pressupostos, comandes i albarans.
+
+&gt;<i> &gt; inf_impers_cliente_VendesFamilia.rml
+</I>&gt;<i> &gt; vendes per família d'articles. Només funciona amb segons quines tries de
+</I>&gt;<i> &gt; prefixes de l'arbre de famílies. Es pot treure per a un client o per a tots
+</I>&gt;<i> &gt;
+</I>
+llegeix: 
+albaran (client)
+articulo
+familia
+
+Prodia anar a  pluginbf_clientealbaran, però al seu readme 
+no diu res a dependencies, per tant suposo que pots tenir albarans
+sense tenir articles (escrivint les línies d'albarà manualment???). 
+O sia que ho poso a installbulmages/openreports/ca
+
+
+&gt;<i> &gt; inf_articlesSotaMinims.rml
+</I>&gt;<i> &gt; 	  informe d'articles sota mínims en el conjunt de tots els
+</I>&gt;<i> &gt; 	  magatzems. No estic molt segur d'on posar-lo. Requereix plugin
+</I>&gt;<i> &gt; 	  informes i plugin inventaris, i articles.
+</I>&gt;<i> &gt; 	  He tret el total d'stock comparat amb la suma d'stocks mínims
+</I>&gt;<i> &gt; 	  de tots els magatzems. A mí només m'interessa el cas de magatzem
+</I>&gt;<i> &gt; 	  únic, però potser a alguna empresa amb n magatzems li interessa
+</I>&gt;<i> &gt; 	  un llistat que els sumi per preveure compres ?
+</I>&gt;<i> &gt;
+</I>
+llegeix:
+articulo
+minimsalmacen
+
+necessita pluginbf_inventario i pluginbf_articulo
+
+
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>
+Signa per fer Collserola parc natural com cal
+<A HREF="http://www.collserola.org/salvemelparcnatural/">http://www.collserola.org/salvemelparcnatural/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001761.html">[BulmaGés]Llistats nous
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001756.html">[BulmaGés] No puedo crear empresas
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1767">[ fecha ]</a>
+              <a href="thread.html#1767">[ hilo ]</a>
+              <a href="subject.html#1767">[ asunto ]</a>
+              <a href="author.html#1767">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

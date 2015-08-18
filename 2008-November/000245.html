@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]postgresiface2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fpostgresiface2%3F%3D&In-Reply-To=%3C490EBC94.5050805%40todo-redes.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000241.html">
+   <LINK REL="Next"  HREF="000246.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]postgresiface2 </H1>
+    <B>Fco. Javier M. C.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fpostgresiface2%3F%3D&In-Reply-To=%3C490EBC94.5050805%40todo-redes.com%3E"
+       TITLE="[BulmaGés]postgresiface2">fcojavmc en todo-redes.com
+       </A><BR>
+    <I>Lun Nov  3 09:55:48 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000241.html">[BulmaGés] postgresiface2
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000246.html">[BulmaGés]postgresiface2
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#245">[ fecha ]</a>
+              <a href="thread.html#245">[ hilo ]</a>
+              <a href="subject.html#245">[ asunto ]</a>
+              <a href="author.html#245">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Xavi,
+
+
+Xavi Drudis Ferran escribió:
+&gt;<i> Hola. 
+</I>&gt;<i>
+</I>&gt;<i> Jo només he programat contra postgres des de Perl, PHP i Java, però 
+</I>&gt;<i> mai des de C++ ni C. 
+</I>&gt;<i>
+</I>&gt;<i> Tanmateix llegeixo aquí 
+</I>&gt;<i> <A HREF="http://www.postgresql.org/docs/8.3/interactive/libpq-exec.html">http://www.postgresql.org/docs/8.3/interactive/libpq-exec.html</A>
+</I>&gt;<i> <A HREF="http://www.postgresql.org/docs/8.3/static/protocol.html">http://www.postgresql.org/docs/8.3/static/protocol.html</A>
+</I>&gt;<i>
+</I>&gt;<i> que d'ençà del protocol 3 de postgresql a la libpq li pots posar
+</I>&gt;<i> paràmetres a les consultes ($1, $2, $3) i passar-li una taula de
+</I>&gt;<i> valors amb (PQExecParams)). Jo estic acostumat a fer-ho així, per
+</I>&gt;<i> facilitar la seguretat (tot i que em temo que les injeccions d'SQL no
+</I>&gt;<i> deuen ser un problema a bulmages, donat que la interfície les permet)
+</I>&gt;<i> i també per estalviar-me haver de posar cometes i escapar-les. Però el
+</I>&gt;<i> tros que he vist de bulmages no ho fa així
+</I>&gt;<i>
+</I>&gt;<i> Per exemple ara hi ha coses com 
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     QString SQLQuery = &quot;SELECT * FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias = '&quot; + val + &quot;'&quot;;
+</I>&gt;<i>     cursor2 *cur = busc-&gt;empresaBase() -&gt;cargacursor ( SQLQuery );
+</I>&gt;<i>
+</I>&gt;<i> Però llavors si val conté un apostrof (per exemple perquè l'alies és
+</I>&gt;<i> &quot;L'ombra de l'eunuc&quot;) donarà un error de sintaxi SQL, suposo. Podria
+</I>&gt;<i> escapar-ho bé (canviar ' per '' abans de concatenar però caldria mirar
+</I>&gt;<i> si amb això n'hi ha prou).  A mi m'agradaria poder fer alguna cosa
+</I>&gt;<i> semblant a
+</I>&gt;<i>
+</I>&gt;<i>     QString valors[1] = {val};
+</I>&gt;<i>     QString SQLQuery = &quot;SELECT * FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias = $1&quot;;
+</I>&gt;<i>     cursor2 *cur = busc-&gt;empresaBase() -&gt;cargacursor ( SQLQuery, 1, valors, NULL, NULL );
+</I>&gt;<i>
+</I>&gt;<i> I així funciona amb apòstrofs a val i no cal escapar res (i si els
+</I>&gt;<i> tipus dels paràmetres no són varchar cal declarar-los per comptes dels
+</I>&gt;<i> NULLS, suposo, però al menys és libpq qui fa el formateig o conversió
+</I>&gt;<i> de tipus, espero).
+</I>&gt;<i>   
+</I>
+Ara, no dic que no es pugui mijorar, pero tenim 
+postgresiface2::saneaCadena(QString) que serveig per escapar cadenes 
+abans de passarla a Postgres.
+
+exemple: QString SQLQuery = &quot;SELECT * FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias = '&quot; + saneaCadena(val) + &quot;'&quot;;
+    cursor2 *cur = busc-&gt;empresaBase() -&gt;cargacursor ( SQLQuery );
+
+
+
+&gt;<i> Per a poder introduir això a postgresiface2 caldria exigir que la
+</I>&gt;<i> versió de postgresql fos &gt;=7.4 Els paquets de debian semblen requerir
+</I>&gt;<i> postgres &gt;= 8.3, o sia que per aquí rai, però no sé si hi ha alguna
+</I>&gt;<i> versió mínima de postgres requerida en altres plataformes.
+</I>&gt;<i>
+</I>&gt;<i> Si un dia es fessin servir consultes precompilades (PREPARE) podria ser útil
+</I>&gt;<i> també per reutilitzar més consultes, i donaria teòricament una mica
+</I>&gt;<i> més d'eficiència (en últimes versions de postgresql, abans no
+</I>&gt;<i> preparava consultes). Però encara que no s'usesin encara consultes
+</I>&gt;<i> precompilades seria una mica més cómode de programar, no? (o són
+</I>&gt;<i> manies meves?).
+</I>&gt;<i>
+</I>&gt;<i> Us semblaria bona idea  un canvi així ? 
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+Salut.
+
+-- 
+Fco. Javier M. C.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000241.html">[BulmaGés] postgresiface2
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000246.html">[BulmaGés]postgresiface2
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#245">[ fecha ]</a>
+              <a href="thread.html#245">[ hilo ]</a>
+              <a href="subject.html#245">[ asunto ]</a>
+              <a href="author.html#245">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

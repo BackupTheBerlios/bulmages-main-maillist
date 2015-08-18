@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] r2933 - in trunk/bulmages:	bulmafact/plugins/pluginactividad bulmafact/src bulmalib/src scripts
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r2933%20-%20in%20trunk/bulmages%3A%0A%09bulmafact/plugins/pluginactividad%20bulmafact/src%20bulmalib/src%20scripts&In-Reply-To=%3C200901261509.n0QF9fj3012221%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000868.html">
+   <LINK REL="Next"  HREF="000870.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] r2933 - in trunk/bulmages:	bulmafact/plugins/pluginactividad bulmafact/src bulmalib/src scripts </H1>
+    <B>svn en mail.berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r2933%20-%20in%20trunk/bulmages%3A%0A%09bulmafact/plugins/pluginactividad%20bulmafact/src%20bulmalib/src%20scripts&In-Reply-To=%3C200901261509.n0QF9fj3012221%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] r2933 - in trunk/bulmages:	bulmafact/plugins/pluginactividad bulmafact/src bulmalib/src scripts">svn en mail.berlios.de
+       </A><BR>
+    <I>Lun Ene 26 16:09:41 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000868.html">[BulmaGés]r2930 - in trunk/bulmages: bulmafact/plugins bulmafact/plugins/pluginactividad bulmafact/plugins/pluginalumno bulmafact/plugins/pluginprofesor bulmafact/plugins/pluginprofesor/dbmodels bulmafact/plugins/pluginprofesor/icons bulmafact/pl
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000870.html">[BulmaGés]INCIDENCIAS PROCESADOS Y DESCRIPCIÓN
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#869">[ fecha ]</a>
+              <a href="thread.html#869">[ hilo ]</a>
+              <a href="subject.html#869">[ asunto ]</a>
+              <a href="author.html#869">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: tborras
+Date: 2009-01-26 16:09:33 +0100 (Mon, 26 Jan 2009)
+New Revision: 2933
+
+Added:
+   trunk/bulmages/bulmafact/src/busquedaprofesor.cpp
+   trunk/bulmages/bulmafact/src/busquedaprofesor.h
+   trunk/bulmages/bulmalib/src/busqueda.cpp
+   trunk/bulmages/bulmalib/src/busqueda.h
+   trunk/bulmages/bulmalib/src/busquedabase.ui
+   trunk/bulmages/scripts/vinculartablas.sql
+Modified:
+   trunk/bulmages/bulmafact/plugins/pluginactividad/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginactividad/actividadbase.ui
+   trunk/bulmages/bulmafact/plugins/pluginactividad/actividadview.cpp
+   trunk/bulmages/bulmafact/src/bulmafact_en_US.UTF-8.po
+   trunk/bulmages/bulmafact/src/bulmafact_fr_FR.UTF-8.po
+   trunk/bulmages/bulmalib/src/CMakeLists.txt
+   trunk/bulmages/bulmalib/src/blmonthcalendar.cpp
+   trunk/bulmages/bulmalib/src/blmonthcalendar.h
+Log:
+Agrego la clase Busqueda que generaliza los buscadores de una tabla mediante la escritura
+de algunas letras y haciendo un query del tipo LIKE. Por ejemplo busquedaCliente, busquedaArticulo, busquedaProveedor
+Ahora hay una superclase que aglutina la mayor parte del codigo y tambien el .ui es unico para todos
+los buscadores de este tipo.
+Tambien creo la clase BusquedaProfesor que aprovecha esta superclase. Luego ire migrando las demas
+en cuanto se confirme que funciona bien.
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000868.html">[BulmaGés]r2930 - in trunk/bulmages: bulmafact/plugins bulmafact/plugins/pluginactividad bulmafact/plugins/pluginalumno bulmafact/plugins/pluginprofesor bulmafact/plugins/pluginprofesor/dbmodels bulmafact/plugins/pluginprofesor/icons bulmafact/pl
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000870.html">[BulmaGés]INCIDENCIAS PROCESADOS Y DESCRIPCIÓN
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#869">[ fecha ]</a>
+              <a href="thread.html#869">[ hilo ]</a>
+              <a href="subject.html#869">[ asunto ]</a>
+              <a href="author.html#869">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

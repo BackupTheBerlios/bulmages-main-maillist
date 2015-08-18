@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Definición de listados y mascaras
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FDefinici%3DF3n_de_lista%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fdos_y_mascaras%3F%3D&In-Reply-To=%3C4A4E9555.8050209%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002606.html">
+   <LINK REL="Next"  HREF="002608.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Definición de listados y mascaras </H1>
+    <B>adrian15</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FDefinici%3DF3n_de_lista%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fdos_y_mascaras%3F%3D&In-Reply-To=%3C4A4E9555.8050209%40gmail.com%3E"
+       TITLE="[BulmaGés]Definición de listados y mascaras">adrian15sgd en gmail.com
+       </A><BR>
+    <I>Sab Jul  4 01:33:41 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002606.html">[BulmaGés]Sugerencia sobre declaración de campos obligatorios
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002608.html">[BulmaGés]Definición de listados y mascaras
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2607">[ fecha ]</a>
+              <a href="thread.html#2607">[ hilo ]</a>
+              <a href="subject.html#2607">[ asunto ]</a>
+              <a href="author.html#2607">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola lista de Bulmages,
+
+	Aunque no lo parezca sigo subscrito por aquí. Albert Mas de vez en 
+cuando me hace un resumen de lo que le parece más importante. Según me 
+cuenta la mayoría de los errorcillos que había encontrado se van 
+solucionando.
+
+	En este email quería hablarlos de los listados. La verdad es que no 
+tengo bulmages a mano así. Bueno, sí, aquí la tengo en mi repositorio 
+offline de Ubuntu 9.04 pero me cuesta instalarla. Quiero decir que no he 
+probado vuestros listados. Es todo de oidas.
+
+	Os explico. Llevo unos cuántos mails dónde veo fragmentos de algo que 
+sería un informe. Un xml con los campos qué imprimir y dónde se encuentran.
+
+	Y aquí viene lo bueno, para sacar los campos qué imprimir se puede 
+interrumpir el xml en todo momento y hacer consultas sql.
+
+	No sé. Llevo como 20 minutos viendo los archivos del correo y no sé 
+encontrar a lo que me refiero.
+
+	Puede que esté equivocado. Incluso he visto que en las plantillas usais 
+cosas como [Factura] o [Total Factura] que es algo parecido a lo que 
+estoy acostumbrado en nuestro programa privativo de gestión.
+
+	VOLVIENDO AL TEMA...
+
+	En el programa privativo de gestión no hay informes como tales sino que 
+se dividen en dos partes:
+	- Definición de Listado
+	- Máscara de Listado
+
+En la definición de Listado se especifica por un lado qué sentencia sql 
+se ejecuta. También se define en qué tabla(s) se especifica los limites 
+qué preguntar al usuario.
+P.ej, si es sobre clientes y los datos están en 3 tablas diferentes tú 
+puedes decir qué quieres los límites de la tabla Cliente qué tiene 
+definidos como campos para limites: CódigoCliente y RazonSocial.
+
+Esto implica qué cuando el usuario ejecuta el listado se le pregunten 
+por esos limites.
+
+La máscara de listado es independiente de la definicion del listado. 
+(Aunque la definición de listado tiene una referencia hacia la máscara 
+de listado).
+
+Para editar la máscara de listado tenemos un editor visual muy chulo, 
+lamentablemente no puedes echar mano de cosas como xml. Y, bueno, ahí 
+echas manos de los campos de la consulta sql, de valores del programa, 
+de valores de la empresa, de valores de la interfaz del programa (por 
+ejemplo puedes imprimir los límites elegidos por el usuario).
+
+El tema es que clonando las definiciones de listado (Copiar cambiando su 
+nombre) y sólo creando máscaras diferentes tienes mucho juego. Yo no lo 
+uso mucho. Pero la idea, sería, por ejemplo, qué los datos son los 
+mismos pero según los trabajadores se ven más aparentes unos registros u 
+otros. O se vé con mayor tipo de letra o esto o lo otro.
+
+De cara al usuario final él sólo ve como listados las definiciones de 
+listados.
+
+Por último otra característica útil es que los listados tienen apellido, 
+mejor dicho pueden clasificarse dentro de un grupo.
+
+Por ejemplo, todos los informes de articulos los pongo en el grupo 
+garticulos. La pantalla de edición de artículos la configuras para que 
+la impresión sólo te muestre como listados los del grupo garticulos.
+Y... tenemos que cuándo estás viendo los artículos y le das al botón de 
+imprimir te aparecen los listados (definiciones de listados técnicamente 
+hablando) de solamente el grupo garticulos.
+
+¿Alguien me puede explicar así, por encima, medio comparando con lo que 
+acabo de escribir como están ahora mismo los informes en Bulmages?
+
+Muchas gracias.
+
+adrian15
+-- 
+Support free software. Donate to Super Grub Disk. Apoya el software 
+libre. Dona a Super Grub Disk. <A HREF="http://www.supergrubdisk.org/index.php?pid=10">http://www.supergrubdisk.org/index.php?pid=10</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002606.html">[BulmaGés]Sugerencia sobre declaración de campos obligatorios
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002608.html">[BulmaGés]Definición de listados y mascaras
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2607">[ fecha ]</a>
+              <a href="thread.html#2607">[ hilo ]</a>
+              <a href="subject.html#2607">[ asunto ]</a>
+              <a href="author.html#2607">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

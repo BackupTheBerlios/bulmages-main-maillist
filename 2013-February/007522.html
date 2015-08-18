@@ -1,0 +1,660 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130208045419.E97FDF6B%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007521.html">
+   <LINK REL="Next"  HREF="007523.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130208045419.E97FDF6B%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Vie Feb  8 05:54:19 CET 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007521.html">[BulmaGés] La página wiki 'Repositorio de paquetes Debian' ha sido actualizada
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007523.html">[BulmaGés][Gitorious] Activity: tborras pushed 1 commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7522">[ fecha ]</a>
+              <a href="thread.html#7522">[ hilo ]</a>
+              <a href="subject.html#7522">[ asunto ]</a>
+              <a href="author.html#7522">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from 3ff7a80 to 2d2d908
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/3ff7a8000f49cbcb65899528520d02d450a8e62b/diffs/2d2d90848ecdf6fe10d4d813f08b28474ac120f2">https://gitorious.org/bulmages/bulmages/commit/3ff7a8000f49cbcb65899528520d02d450a8e62b/diffs/2d2d90848ecdf6fe10d4d813f08b28474ac120f2</A>
+
+Diff: 
+
+commit 2d2d90848ecdf6fe10d4d813f08b28474ac120f2
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri Feb 8 05:36:35 2013 +0100
+
+    Con este commit se pueden agregar pestañas a una ficha existente mediante los archivos de especificaciones.
+    
+    Para ello he ampliado el XML reconocido en los archivos .spc que ahora soportan el tag &lt;TAB&gt;&lt;/TAB&gt;
+    
+    y llevan como parametros adicionales
+    
+    &lt;NAME&gt;&lt;/NAME&gt;
+    &lt;UI_INTERFACE&gt;&lt;/UI_INTERFACE&gt;
+    
+    Y como es natural los famosos &lt;CAMPO&gt;&lt;/CAMPO&gt; y ahora también &lt;SUBFORM&gt;&lt;/SUBFORM&gt;
+    
+    De esta forma las fichas existentens son extensibles al mismo nivel que los autoformularios.
+    
+    Pongo un ejemplo de uso en el &quot;supuesto&quot; archivo ArticuloBase_XXX_spec.spc que altera la ficha de articulos:
+    
+    &lt;DOCUMENT&gt;
+    &lt;TAB&gt;
+    &lt;NAME&gt;Ultimas Compras&lt;/NAME&gt;
+    &lt;UI_INTERFACE&gt;/tmp/sociobase.ui&lt;/UI_INTERFACE&gt;
+    
+    &lt;SUBFORM&gt;
+    &lt;NOMCAMPO&gt;listart&lt;/NOMCAMPO&gt;
+      &lt;NOMPCAMPO&gt;Reservas&lt;/NOMPCAMPO&gt;
+      &lt;FILECONFIG&gt;reservassocio&lt;/FILECONFIG&gt;
+      &lt;RESTRICTIONSCAMPO&gt;DBNOTHING&lt;/RESTRICTIONSCAMPO&gt;
+      &lt;QUERY&gt;SELECT * FROM lalbaranp NATURAL LEFT JOIN albaranp NATURAL LEFT JOIN proveedor WHERE idarticulo = [idarticulo] &lt;/QUERY&gt;
+      &lt;VINCULOS&gt;idarticulo = idarticulo&lt;/VINCULOS&gt;
+      &lt;TABLENAME&gt;articulo&lt;/TABLENAME&gt;
+      &lt;FIELDID&gt;idarticulo&lt;/FIELDID&gt;
+      &lt;ALLOWNULL&gt;FALSE&lt;/ALLOWNULL&gt;
+      &lt;ALLOWINSERT&gt;FALSE&lt;/ALLOWINSERT&gt;
+      &lt;ALLOWDELETE&gt;FALSE&lt;/ALLOWDELETE&gt;
+      &lt;SETSORTING&gt;FALSE&lt;/SETSORTING&gt;
+    
+      &lt;HEADER&gt;
+      &lt;NOMCAMPO&gt;nomproveedor&lt;/NOMCAMPO&gt;
+      &lt;NOMPCAMPO&gt;Proveedor&lt;/NOMPCAMPO&gt;
+      &lt;DBTYPECAMPO&gt;DBVARCHAR&lt;/DBTYPECAMPO&gt;
+      &lt;RESTRICTIONSCAMPO&gt;DBNOSAVE&lt;/RESTRICTIONSCAMPO&gt;
+      &lt;OPTIONSHEADER&gt;DBNOSAVE&lt;/OPTIONSHEADER&gt;
+      &lt;OPTIONSHEADER&gt;DBNOWRITE&lt;/OPTIONSHEADER&gt;
+      &lt;/HEADER&gt;
+      &lt;HEADER&gt;
+      &lt;NOMCAMPO&gt;fechaalbaranp&lt;/NOMCAMPO&gt;
+      &lt;NOMPCAMPO&gt;Fecha&lt;/NOMPCAMPO&gt;
+      &lt;DBTYPECAMPO&gt;DBDATE&lt;/DBTYPECAMPO&gt;
+      &lt;RESTRICTIONSCAMPO&gt;DBNOSAVE&lt;/RESTRICTIONSCAMPO&gt;
+      &lt;OPTIONSHEADER&gt;DBNOSAVE&lt;/OPTIONSHEADER&gt;
+      &lt;OPTIONSHEADER&gt;DBNOWRITE&lt;/OPTIONSHEADER&gt;
+      &lt;/HEADER&gt;
+      &lt;HEADER&gt;
+      &lt;NOMCAMPO&gt;cifproveedor&lt;/NOMCAMPO&gt;
+      &lt;NOMPCAMPO&gt;CIF Proveedor&lt;/NOMPCAMPO&gt;
+      &lt;DBTYPECAMPO&gt;DBINT&lt;/DBTYPECAMPO&gt;
+      &lt;RESTRICTIONSCAMPO&gt;DBNOSAVE&lt;/RESTRICTIONSCAMPO&gt;
+      &lt;OPTIONSHEADER&gt;DBNOSAVE&lt;/OPTIONSHEADER&gt;
+      &lt;OPTIONSHEADER&gt;DBNOWRITE&lt;/OPTIONSHEADER&gt;
+      &lt;/HEADER&gt;
+      &lt;HEADER&gt;
+      &lt;NOMCAMPO&gt;cantlalbaranp&lt;/NOMCAMPO&gt;
+      &lt;NOMPCAMPO&gt;Cantidad&lt;/NOMPCAMPO&gt;
+      &lt;DBTYPECAMPO&gt;DBINT&lt;/DBTYPECAMPO&gt;
+      &lt;RESTRICTIONSCAMPO&gt;DBNOSAVE&lt;/RESTRICTIONSCAMPO&gt;
+      &lt;OPTIONSHEADER&gt;DBNOSAVE&lt;/OPTIONSHEADER&gt;
+      &lt;OPTIONSHEADER&gt;DBNOWRITE&lt;/OPTIONSHEADER&gt;
+      &lt;/HEADER&gt;
+      &lt;HEADER&gt;
+      &lt;NOMCAMPO&gt;pvplalbaranp&lt;/NOMCAMPO&gt;
+      &lt;NOMPCAMPO&gt;Precio&lt;/NOMPCAMPO&gt;
+      &lt;DBTYPECAMPO&gt;DBVARCHAR&lt;/DBTYPECAMPO&gt;
+      &lt;RESTRICTIONSCAMPO&gt;DBNOSAVE&lt;/RESTRICTIONSCAMPO&gt;
+      &lt;OPTIONSHEADER&gt;DBNOSAVE&lt;/OPTIONSHEADER&gt;
+      &lt;OPTIONSHEADER&gt;DBNOWRITE&lt;/OPTIONSHEADER&gt;
+      &lt;/HEADER&gt;
+    &lt;/SUBFORM&gt;
+    
+    &lt;/TAB&gt;
+    
+    &lt;TAB&gt;
+     &lt;NAME&gt;Ultimas Ventas&lt;/NAME&gt;
+     &lt;UI_INTERFACE&gt;/tmp/sociobase1.ui&lt;/UI_INTERFACE&gt;
+    
+    &lt;SUBFORM&gt;
+     &lt;NOMCAMPO&gt;listart1&lt;/NOMCAMPO&gt;
+     &lt;NOMPCAMPO&gt;Reservas&lt;/NOMPCAMPO&gt;
+     &lt;FILECONFIG&gt;reservassocio&lt;/FILECONFIG&gt;
+     &lt;RESTRICTIONSCAMPO&gt;DBNOTHING&lt;/RESTRICTIONSCAMPO&gt;
+     &lt;QUERY&gt;SELECT * FROM lalbaran NATURAL LEFT JOIN albaran NATURAL LEFT JOIN cliente WHERE idarticulo = [idarticulo] &lt;/QUERY&gt;
+     &lt;VINCULOS&gt;idarticulo = idarticulo&lt;/VINCULOS&gt;
+     &lt;TABLENAME&gt;articulo&lt;/TABLENAME&gt;
+     &lt;FIELDID&gt;idarticulo&lt;/FIELDID&gt;
+     &lt;ALLOWNULL&gt;FALSE&lt;/ALLOWNULL&gt;
+     &lt;ALLOWINSERT&gt;FALSE&lt;/ALLOWINSERT&gt;
+     &lt;ALLOWDELETE&gt;FALSE&lt;/ALLOWDELETE&gt;
+     &lt;SETSORTING&gt;FALSE&lt;/SETSORTING&gt;
+    
+    &lt;HEADER&gt;
+      &lt;NOMCAMPO&gt;nomcliente&lt;/NOMCAMPO&gt;
+      &lt;NOMPCAMPO&gt;Cliente&lt;/NOMPCAMPO&gt;
+      &lt;DBTYPECAMPO&gt;DBINT&lt;/DBTYPECAMPO&gt;
+      &lt;RESTRICTIONSCAMPO&gt;DBNOSAVE&lt;/RESTRICTIONSCAMPO&gt;
+      &lt;OPTIONSHEADER&gt;DBNOSAVE&lt;/OPTIONSHEADER&gt;
+      &lt;OPTIONSHEADER&gt;DBNOWRITE&lt;/OPTIONSHEADER&gt;
+    &lt;/HEADER&gt;
+    &lt;HEADER&gt;
+      &lt;NOMCAMPO&gt;fechaalbaran&lt;/NOMCAMPO&gt;
+      &lt;NOMPCAMPO&gt;Fecha&lt;/NOMPCAMPO&gt;
+      &lt;DBTYPECAMPO&gt;DBINT&lt;/DBTYPECAMPO&gt;
+      &lt;RESTRICTIONSCAMPO&gt;DBNOSAVE&lt;/RESTRICTIONSCAMPO&gt;
+      &lt;OPTIONSHEADER&gt;DBNOSAVE&lt;/OPTIONSHEADER&gt;
+      &lt;OPTIONSHEADER&gt;DBNOWRITE&lt;/OPTIONSHEADER&gt;
+    &lt;/HEADER&gt;
+    &lt;HEADER&gt;
+      &lt;NOMCAMPO&gt;cifcliente&lt;/NOMCAMPO&gt;
+      &lt;NOMPCAMPO&gt;CIF Cliente&lt;/NOMPCAMPO&gt;
+      &lt;DBTYPECAMPO&gt;DBINT&lt;/DBTYPECAMPO&gt;
+      &lt;RESTRICTIONSCAMPO&gt;DBNOSAVE&lt;/RESTRICTIONSCAMPO&gt;
+      &lt;OPTIONSHEADER&gt;DBNOSAVE&lt;/OPTIONSHEADER&gt;
+      &lt;OPTIONSHEADER&gt;DBNOWRITE&lt;/OPTIONSHEADER&gt;
+    &lt;/HEADER&gt;
+    &lt;HEADER&gt;
+      &lt;NOMCAMPO&gt;cantlalbaran&lt;/NOMCAMPO&gt;
+      &lt;NOMPCAMPO&gt;Cantidad&lt;/NOMPCAMPO&gt;
+      &lt;DBTYPECAMPO&gt;DBINT&lt;/DBTYPECAMPO&gt;
+      &lt;RESTRICTIONSCAMPO&gt;DBNOSAVE&lt;/RESTRICTIONSCAMPO&gt;
+      &lt;OPTIONSHEADER&gt;DBNOSAVE&lt;/OPTIONSHEADER&gt;
+      &lt;OPTIONSHEADER&gt;DBNOWRITE&lt;/OPTIONSHEADER&gt;
+    &lt;/HEADER&gt;
+    &lt;HEADER&gt;
+      &lt;NOMCAMPO&gt;pvplalbaran&lt;/NOMCAMPO&gt;
+      &lt;NOMPCAMPO&gt;Precio Venta&lt;/NOMPCAMPO&gt;
+      &lt;DBTYPECAMPO&gt;DBVARCHAR&lt;/DBTYPECAMPO&gt;
+      &lt;RESTRICTIONSCAMPO&gt;DBNOSAVE&lt;/RESTRICTIONSCAMPO&gt;
+      &lt;OPTIONSHEADER&gt;DBNOSAVE&lt;/OPTIONSHEADER&gt;
+      &lt;OPTIONSHEADER&gt;DBNOWRITE&lt;/OPTIONSHEADER&gt;
+    &lt;/HEADER&gt;
+    &lt;/SUBFORM&gt;
+    
+    &lt;/TAB&gt;
+    
+    &lt;FICHA&gt;
+        &lt;CAMPO&gt;
+                &lt;NOMCAMPO&gt;fechancliente&lt;/NOMCAMPO&gt;
+                &lt;NOMPCAMPO&gt;Tel. Movil&lt;/NOMPCAMPO&gt;
+                &lt;DBTYPECAMPO&gt;DBDATE&lt;/DBTYPECAMPO&gt;
+                &lt;RESTRICTIONSCAMPO&gt;DBNOTHING&lt;/RESTRICTIONSCAMPO&gt;
+        &lt;/CAMPO&gt;
+        &lt;CAMPO&gt;
+                &lt;NOMCAMPO&gt;fechanincliente&lt;/NOMCAMPO&gt;
+                &lt;NOMPCAMPO&gt;Tel. Jodes&lt;/NOMPCAMPO&gt;
+    	    &lt;DBTYPECAMPO&gt;DBDATE&lt;/DBTYPECAMPO&gt;
+                &lt;RESTRICTIONSCAMPO&gt;DBNOTHING&lt;/RESTRICTIONSCAMPO&gt;
+        &lt;/CAMPO&gt;
+    &lt;/FICHA&gt;
+    
+    &lt;/DOCUMENT&gt;
+    
+    NOTA: Si la ficha a la que intentamos adjuntar un TAB no tiene ningún QTabWidget entonces no funcionara.
+    NOTA2: Notad la diferencia entre &lt;TAB&gt; y &lt;FICHA&gt;. El primero crea los campos y en el segundo se diseñan mediante el archivo de QtDesigner indicado en &lt;UI_INTERFACE&gt;
+
+diff --git a/bulmages/bulmalib/src/blform.cpp b/bulmages/bulmalib/src/blform.cpp
+index cfff188..19195d7 100644
+--- a/bulmages/bulmalib/src/blform.cpp
++++ b/bulmages/bulmalib/src/blform.cpp
+@@ -63,11 +63,8 @@ BlForm::BlForm ( QWidget *parent, Qt::WFlags f, edmode modo ) : BlWidget ( paren
+     setContextMenuPolicy ( Qt::CustomContextMenu );
+     connect ( this, SIGNAL ( customContextMenuRequested ( const QPoint &amp; ) ), this, SLOT ( on_customContextMenuRequested ( const QPoint &amp; ) ) );
+     m_modo = modo;
++    m_firstLoad = TRUE;
+     dialogChanges_readValues();
+-
+-
+-    
+-    
+ }
+ 
+ 
+@@ -142,6 +139,7 @@ BlForm::BlForm ( BlMainCompany *emp, QWidget *parent, Qt::WFlags f, edmode modo
+     setContextMenuPolicy ( Qt::CustomContextMenu );
+     connect ( this, SIGNAL ( customContextMenuRequested ( const QPoint &amp; ) ), this, SLOT ( on_customContextMenuRequested ( const QPoint &amp; ) ) );
+     m_modo = modo;
++    m_firstLoad = TRUE;
+     dialogChanges_readValues();    
+     
+ }
+@@ -168,6 +166,12 @@ void BlForm::loadSpecs()
+ {
+     BL_FUNC_DEBUG
+     
++    if (m_firstLoad) {
++	m_firstLoad = FALSE;
++    } else {
++      return;
++    }// end if
++    
+         /// Disparamos los plugins
+     int res1 = g_plugins-&gt;run ( &quot;BlForm_loadSpecs&quot;, this );
+     if ( res1 != 0 ) {
+@@ -189,6 +193,223 @@ void BlForm::loadSpecs()
+     file.close();
+ 
+     QDomElement docElem = doc.documentElement();
++    
++    
++    QDomNodeList tabnodos = docElem.elementsByTagName ( &quot;TAB&quot; );
++    for ( int i = 0; i &lt; tabnodos.count(); i++ ) {
++        QDomNode ventana = tabnodos.item ( i );
++        QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
++        if ( !e1.isNull() ) { /// the node was really an element.
++	   QString name = e1.firstChildElement ( &quot;NAME&quot; ).toElement().text();
++           QString interfacefile = e1.firstChildElement ( &quot;UI_INTERFACE&quot; ).toElement().text();
++            QTabWidget *tab =  findChild&lt;QTabWidget *&gt;();
++	    if (tab) {
++	      BlUiLoader loader(mainCompany());
++	      QFile file(interfacefile);
++	      file.open(QFile::ReadOnly);
++	      QWidget *myWidget = loader.load(&amp;file, this);
++	      tab-&gt;insertTab(-1,myWidget,name);
++	    } else {
++	      blMsgInfo(&quot;Se ha encontrado una especificacion TAB para una ficha que no posee QTabWidget&quot;);
++	    } // end if
++		QDomNodeList nodos = e1.elementsByTagName ( &quot;CAMPO&quot; );
++		for ( int j = 0; j &lt; nodos.count(); j++ ) {
++		    QDomNode ventana = nodos.item ( j );
++		    QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
++		    if ( !e1.isNull() ) { /// the node was really an element.
++			BlDbField::DbType type = BlDbField::DbVarChar;
++			QString nomheader = e1.firstChildElement ( &quot;NOMCAMPO&quot; ).toElement().text();
++			if ( exists ( nomheader ) ) return ;
++			QString nompheader = e1.firstChildElement ( &quot;NOMPCAMPO&quot; ).toElement().text();
++			QString typeheader = e1.firstChildElement ( &quot;DBTYPECAMPO&quot; ).toElement().text();
++			if ( typeheader == &quot;DBVARCHAR&quot; ) {
++			    type = BlDbField::DbVarChar;
++			} else if ( typeheader == &quot;DBINT&quot; ) {
++			    type = BlDbField::DbInt;
++			} else if ( typeheader == &quot;DBNUMERIC&quot; ) {
++			    type = BlDbField::DbNumeric;
++			} else if ( typeheader == &quot;DBBOOLEAN&quot; ) {
++			    type = BlDbField::DbBoolean;
++			} else if ( typeheader == &quot;DBDATE&quot; ) {
++			    type = BlDbField::DbDate;
++			} // end if
++
++			int restricciones = ( int ) BlDbField::DbNothing;
++			QDomElement restrict = e1.firstChildElement ( &quot;RESTRICTIONSCAMPO&quot; );
++			while ( !restrict.isNull() ) {
++			    QString trestrict = restrict.text();
++			    if ( trestrict == &quot;DBNOTHING&quot; ) {
++				restricciones |= BlDbField::DbNothing;
++			    } else if ( trestrict == &quot;DBNOTNULL&quot; ) {
++				restricciones |= BlDbField::DbNotNull;
++			    } else if ( trestrict == &quot;DBPRIMARYKEY&quot; ) {
++				restricciones |= BlDbField::DbPrimaryKey;
++			    } else if ( trestrict == &quot;DBNOSAVE&quot; ) {
++				restricciones |= BlDbField::DbNoSave;
++			    } else if ( trestrict == &quot;DBAUTO&quot; ) {
++				restricciones |= BlDbField::DbAuto;
++			    } else if ( trestrict == &quot;DBAUTO&quot; ) {
++				restricciones |= BlDbField::DbAuto;
++			    } else if ( trestrict == &quot;DBDUPPRIMARYKEY&quot; ) {
++				restricciones |= BlDbField::DbDupPrimaryKey;
++			    } else if ( trestrict == &quot;DBREQUIRED&quot; ) {
++				restricciones |= BlDbField::DbRequired;
++			    } else if ( trestrict == &quot;DBNOLOAD&quot; ) {
++				restricciones |= BlDbField::DbNoLoad;
++			    } // end if
++			    restrict = restrict.nextSiblingElement ( &quot;RESTRICTIONSCAMPO&quot; );
++			} // end while
++
++			addDbField ( nomheader, type, ( BlDbField::DbRestrict ) restricciones, nompheader );
++			
++			
++			QString tipocampo = e1.firstChildElement ( &quot;TIPOCAMPO&quot; ).toElement().text();
++			if (tipocampo == &quot;BLCOMBOBOX&quot;) {
++			    QString nombre= &quot;mui_&quot;+nomheader;
++			    BlComboBox * combo = findChild&lt;BlComboBox *&gt;(nombre);
++			    QString query = e1.firstChildElement ( &quot;QUERY&quot; ).toElement().text();
++			    QString tablename = e1.firstChildElement ( &quot;TABLENAME&quot; ).toElement().text();
++			    QString fieldid = e1.firstChildElement ( &quot;FIELDID&quot; ).toElement().text();
++			    
++			    
++			    // Para no liarla parda, ponemos provincias y asi no habrá pedatas de momento.
++			    combo-&gt;setQuery ( query );
++			    combo-&gt;setTableName ( tablename );
++			    combo-&gt;setFieldId ( fieldid );
++			    QDomNodeList nodos = e1.elementsByTagName ( &quot;VALOR&quot; );
++			    for ( int j = 0; j &lt; nodos.count(); j++ ) {
++				QDomNode ventana = nodos.item ( j );
++				QString va = ventana.toElement().text(); /// try to convert the node to an element.
++				combo-&gt;m_valores[va] = &quot;&quot;;
++			    } // end for
++			    combo-&gt;setAllowNull ( TRUE );
++			    combo-&gt;setId ( &quot;&quot; );
++			} // end if
++
++			if (tipocampo == &quot;BLSEARCHWIDGET&quot;) {
++			    QString nombre= &quot;mui_&quot;+nomheader;
++			    BlSearchWidget * search = findChild&lt;BlSearchWidget *&gt;(nombre);
++			    QString label = e1.firstChildElement ( &quot;LABEL&quot; ).toElement().text();
++			    QString tablename = e1.firstChildElement ( &quot;TABLENAME&quot; ).toElement().text();
++			    QString fieldid = e1.firstChildElement ( &quot;FIELDID&quot; ).toElement().text();
++			    
++			    
++			    // Para no liarla parda, ponemos provincias y asi no habrá pedatas de momento.
++			    search-&gt;setLabel ( label );
++			    search-&gt;setTableName ( tablename );
++			    search-&gt;setFieldId ( fieldid );
++			    QDomNodeList nodos = e1.elementsByTagName ( &quot;VALOR&quot; );
++			    for ( int j = 0; j &lt; nodos.count(); j++ ) {
++				QDomNode ventana = nodos.item ( j );
++				QString va = ventana.toElement().text(); /// try to convert the node to an element.
++				search-&gt;m_valores[va] = &quot;&quot;;
++			    } // end for
++			    search-&gt;setId ( &quot;&quot; );
++			} // end if
++
++		    } // end if
++		} // end for
++		
++		
++		/// Cargamos los subformularios
++		QDomNodeList nodoss = e1.elementsByTagName ( &quot;SUBFORM&quot; );
++		for ( int j = 0; j &lt; nodoss.count(); j++ ) {
++		    QDomNode ventana = nodoss.item ( j );
++		    QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
++		    if ( !e1.isNull() ) { /// the node was really an element.
++			BlDbField::DbType type = BlDbField::DbVarChar;
++			QString nomheader = e1.firstChildElement ( &quot;NOMCAMPO&quot; ).toElement().text();
++			if ( exists ( nomheader ) ) return;
++			QString nompheader = e1.firstChildElement ( &quot;NOMPCAMPO&quot; ).toElement().text();
++			BlSubForm * subform = findChild&lt;BlSubForm *&gt;(&quot;mui_&quot; + nomheader);
++			QString tablename = e1.firstChildElement ( &quot;TABLENAME&quot; ).toElement().text();
++			QString fieldid = e1.firstChildElement ( &quot;FIELDID&quot; ).toElement().text();
++			QString fileconfig = e1.firstChildElement ( &quot;FILECONFIG&quot; ).toElement().text();
++			
++			QString allowinsert = e1.firstChildElement ( &quot;ALLOWINSERT&quot; ).toElement().text();
++			QString allowdelete = e1.firstChildElement ( &quot;ALLOWDELETE&quot; ).toElement().text();
++			QString setsorting = e1.firstChildElement ( &quot;SETSORTING&quot; ).toElement().text();
++			///
++			
++			subform-&gt;setDbTableName ( tablename );
++			subform-&gt;setDbFieldId ( fieldid );
++			subform-&gt;setFileConfig ( fileconfig );
++			
++			/// Hacemos el tratamiento de los headers
++			    QDomNodeList nodos = e1.elementsByTagName ( &quot;HEADER&quot; );
++			    for ( int j = 0; j &lt; nodos.count(); j++ ) {
++				QDomNode ventana = nodos.item ( j );
++				QDomElement header = ventana.toElement();
++				
++				BlDbField::DbType type = BlDbField::DbVarChar;
++				QString nomheader = header.firstChildElement ( &quot;NOMCAMPO&quot; ).toElement().text();
++				QString nompheader = header.firstChildElement ( &quot;NOMPCAMPO&quot; ).toElement().text();
++				QString typeheader = header.firstChildElement ( &quot;DBTYPECAMPO&quot; ).toElement().text();
++				if ( typeheader == &quot;DBVARCHAR&quot; ) {
++				    type = BlDbField::DbVarChar;
++				} else if ( typeheader == &quot;DBINT&quot; ) {
++				    type = BlDbField::DbInt;
++				} else if ( typeheader == &quot;DBNUMERIC&quot; ) {
++				    type = BlDbField::DbNumeric;
++				} else if ( typeheader == &quot;DBBOOLEAN&quot; ) {
++				    type = BlDbField::DbBoolean;
++				} else if ( typeheader == &quot;DBDATE&quot; ) {
++				    type = BlDbField::DbDate;
++				} // end if
++
++				int restricciones = ( int ) BlDbField::DbNothing;
++				QDomElement restrict = header.firstChildElement ( &quot;RESTRICTIONSCAMPO&quot; );
++				while ( !restrict.isNull() ) {
++				    QString trestrict = restrict.text();
++				    if ( trestrict == &quot;DBNOTHING&quot; ) {
++					restricciones |= BlDbField::DbNothing;
++				    } else if ( trestrict == &quot;DBNOTNULL&quot; ) {
++					restricciones |= BlDbField::DbNotNull;
++				    } else if ( trestrict == &quot;DBPRIMARYKEY&quot; ) {
++					restricciones |= BlDbField::DbPrimaryKey;
++				    } else if ( trestrict == &quot;DBNOSAVE&quot; ) {
++					restricciones |= BlDbField::DbNoSave;
++				    } else if ( trestrict == &quot;DBAUTO&quot; ) {
++					restricciones |= BlDbField::DbAuto;
++				    } else if ( trestrict == &quot;DBDUPPRIMARYKEY&quot; ) {
++					restricciones |= BlDbField::DbDupPrimaryKey;
++				    } else if ( trestrict == &quot;DBREQUIRED&quot; ) {
++					restricciones |= BlDbField::DbRequired;
++				    } else if ( trestrict == &quot;DBNOLOAD&quot; ) {
++					restricciones |= BlDbField::DbNoLoad;
++				    } // end if
++				    restrict = restrict.nextSiblingElement ( &quot;RESTRICTIONSCAMPO&quot; );
++				} // end while
++				int opciones = ( int ) BlSubFormHeader::DbNone;
++				QDomElement opci = header.firstChildElement ( &quot;OPTIONSHEADER&quot; );
++				while ( !opci.isNull() ) {
++				    QString topci = opci.text();
++				    if ( topci == &quot;DBNONE&quot; ) {
++					opciones |= BlSubFormHeader::DbNone;
++				    } else if ( topci == &quot;DBREADONLY&quot; ) {
++					opciones |= BlSubFormHeader::DbReadOnly;
++				    } else if ( topci == &quot;DBHIDEVIEW&quot; ) {
++					opciones |= BlSubFormHeader::DbHideView;
++				    } else if ( topci == &quot;DBNOWRITE&quot; ) {
++					opciones |= BlSubFormHeader::DbNoWrite;
++				    } else if ( topci == &quot;DBDISABLEVIEW&quot; ) {
++					opciones |= BlSubFormHeader::DbDisableView;
++				    } // end if
++				    opci = opci.nextSiblingElement ( &quot;OPTIONSHEADER&quot; );
++				} // end while
++				subform-&gt;addSubFormHeader ( nomheader, type, ( BlDbField::DbRestrict ) restricciones, opciones , nompheader );
++			    } // end for			
++			subform-&gt;setInsert ( allowinsert == &quot;TRUE&quot; );
++			subform-&gt;setDelete ( allowdelete == &quot;TRUE&quot; );
++			subform-&gt;setSortingEnabled ( setsorting == &quot;TRUE&quot; );
++			subform-&gt;inicializar();
++			
++		    } // end if
++		} // end for
++	} // end if
++    } // end for
++    
++    
+     QDomElement principal = docElem.firstChildElement ( &quot;FICHA&quot; );
+     /// Cogemos la coordenada X
+     QString tablename = principal.firstChildElement ( &quot;TABLENAME&quot; ).toElement().text();
+@@ -538,14 +759,12 @@ void BlForm::insertWindow ( QString nom, QObject *obj, bool compdup, QString tit
+     BL_FUNC_DEBUG
+     if ( mainCompany() != NULL ) {
+         mainCompany() -&gt;insertWindow ( nom, obj, compdup, titulo );
+-    } // end if
+-
+-    /// De Forma rapida hacemos un tratamiento de los permisos
+-    setDbTableName ( tableName() );
+-    /// Tal vez no es el mejor sitio para hacer la carga de SPECS. Pero no hay llamada especifica
+-    /// De configuracion por lo que si no es este no es ninguno.
+-    loadSpecs();
+-    
++	/// De Forma rapida hacemos un tratamiento de los permisos
++	setDbTableName ( tableName() );
++	/// Tal vez no es el mejor sitio para hacer la carga de SPECS. Pero no hay llamada especifica
++	/// De configuracion por lo que si no es este no es ninguno.
++	loadSpecs();
++    } // end if 
+ }
+ 
+ 
+@@ -899,6 +1118,56 @@ int BlForm::load ( QString id, bool paint )
+         /// Activamos documentos adicionales
+         activateDocuments();
+ 
++	
++	/// Cargamos los subformularios de specificaciones
++    /// Cargamos el XML de descripcion de autoforms y lo procesamos.
++    QFile file ( CONFIG_DIR_CONFIG + objectName() + &quot;_&quot; + mainCompany() -&gt;dbName() + &quot;_spec.spc&quot;);
++    QDomDocument doc ( &quot;mydocument&quot; );
++    if ( !file.open ( QIODevice::ReadOnly ) ) {
++        return 0;
++    } // end if
++    if ( !doc.setContent ( &amp;file ) ) {
++        file.close();
++	blMsgInfo(&quot;Error al parsear el archivo de especificaciones&quot;);
++        return 0;
++    } // end if
++    file.close();
++    
++    /// Iteramos para cada AutoForm y lo creamos haciendo todo lo necesario para que este funcione.
++    QDomElement docElem = doc.documentElement();
++    
++    QDomNodeList nodos = docElem.elementsByTagName ( &quot;TAB&quot; );
++    for ( int i = 0; i &lt; nodos.count(); i++ ) {
++        QDomNode autoform = nodos.item ( i );
++        QDomElement e1 = autoform.toElement(); /// try to convert the node to an element.
++        if ( !e1.isNull() ) { /// the node was really an element.
++
++		/// Cargamos los subformularios
++		QDomNodeList nodoss = e1.elementsByTagName ( &quot;SUBFORM&quot; );
++		for ( int j = 0; j &lt; nodoss.count(); j++ ) {
++		    QDomNode ventana = nodoss.item ( j );
++		    QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
++		    if ( !e1.isNull() ) { /// the node was really an element.
++			BlDbField::DbType type = BlDbField::DbVarChar;
++			QString nomheader = e1.firstChildElement ( &quot;NOMCAMPO&quot; ).toElement().text();
++			BlSubForm * subform = findChild&lt;BlSubForm *&gt;(&quot;mui_&quot; + nomheader);
++			if (subform) {
++			   /// Ya tenemos el subformulario presente. Y ahora podemos hacer lo que nos plazca.
++			   QString query = e1.firstChildElement ( &quot;QUERY&quot; ).toElement().text();
++			   /// Sustituimos las variables encontradas.
++			   substrVars(query,0);
++			   subform-&gt;load(query);
++			} // end if
++		    } // end if
++		} // end for
++	} // end if
++    } // end for
++
++	
++	
++	
++	
++	
+         if ( paint == TRUE ) {
+             pintar();
+         } // end if
+@@ -1046,6 +1315,64 @@ int BlForm::afterSave()
+ {
+     BL_FUNC_DEBUG
+     
++    
++    /// Guardamos datos de los subformularios de especificaciones
++    
++    /// Cargamos el XML de descripcion de autoforms y lo procesamos.
++    QFile file (  CONFIG_DIR_CONFIG + objectName() + &quot;_&quot; + mainCompany() -&gt;dbName() + &quot;_spec.spc&quot; );
++    QDomDocument doc ( &quot;mydocument&quot; );
++    if ( !file.open ( QIODevice::ReadOnly ) ) {
++        return 0;
++    } // end if
++    if ( !doc.setContent ( &amp;file ) ) {
++        file.close();
++	blMsgInfo(&quot;Error al parsear el archivo de autoformularios&quot;);
++        return 0;
++    } // end if
++    file.close();
++    
++    /// Iteramos para cada AutoForm y lo creamos haciendo todo lo necesario para que este funcione.
++    QDomElement docElem = doc.documentElement();
++    
++    QDomNodeList nodos = docElem.elementsByTagName ( &quot;AUTOFORM&quot; );
++    for ( int i = 0; i &lt; nodos.count(); i++ ) {
++        QDomNode autoform = nodos.item ( i );
++        QDomElement e1 = autoform.toElement(); /// try to convert the node to an element.
++        if ( !e1.isNull() ) { /// the node was really an element.
++	
++		/// Cargamos los subformularios
++		QDomNodeList nodoss = e1.elementsByTagName ( &quot;SUBFORM&quot; );
++		for ( int j = 0; j &lt; nodoss.count(); j++ ) {
++		    QDomNode ventana = nodoss.item ( j );
++		    QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
++		    if ( !e1.isNull() ) { /// the node was really an element.
++			BlDbField::DbType type = BlDbField::DbVarChar;
++			QString nomheader = e1.firstChildElement ( &quot;NOMCAMPO&quot; ).toElement().text();
++			BlSubForm * subform = findChild&lt;BlSubForm *&gt;(&quot;mui_&quot; + nomheader);
++			if (subform) {
++			   /// Ya tenemos el subformulario presente. Y ahora podemos hacer lo que nos plazca.
++			   QString vinculos = e1.firstChildElement ( &quot;VINCULOS&quot; ).toElement().text();
++			   /// Sustituimos las variables que informa el campo
++			    QStringList listavinculos = vinculos.split(&quot;,&quot;);
++			    for (int j1 = 0; j1 &lt; listavinculos.size(); ++j1) {
++				  
++				  int posicion = listavinculos.at(j1).indexOf(&quot;=&quot;);
++				  QString campo = listavinculos.at(j1).left(posicion);
++				  QString valor = listavinculos.at(j1).right(listavinculos.at(j1).size() - posicion -1);
++			    
++				  subform-&gt;setColumnValue ( campo, dbValue ( valor ) );
++			    } // end for
++
++			    subform-&gt;save();
++			} // end if
++		    } // end if
++		} // end for
++
++	} // end if
++    } // end for
++    
++    
++    
+     return 0;
+ }
+ 
+diff --git a/bulmages/bulmalib/src/blform.h b/bulmages/bulmalib/src/blform.h
+index 7bb6971..0a5dfa4 100644
+--- a/bulmages/bulmalib/src/blform.h
++++ b/bulmages/bulmalib/src/blform.h
+@@ -46,6 +46,8 @@ private:
+     edmode m_modo;
+     QString m_title;
+     QScriptEngine m_myEngine;
++    bool m_firstLoad;
++
+     
+ protected:
+     void setSelectMode();
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007521.html">[BulmaGés] La página wiki 'Repositorio de paquetes Debian' ha sido actualizada
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007523.html">[BulmaGés][Gitorious] Activity: tborras pushed 1 commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7522">[ fecha ]</a>
+              <a href="thread.html#7522">[ hilo ]</a>
+              <a href="subject.html#7522">[ asunto ]</a>
+              <a href="author.html#7522">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

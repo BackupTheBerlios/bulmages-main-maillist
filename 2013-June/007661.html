@@ -1,0 +1,418 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130625203023.12B3C165%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007660.html">
+   <LINK REL="Next"  HREF="007663.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130625203023.12B3C165%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Mar Jun 25 22:30:22 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007660.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007663.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7661">[ fecha ]</a>
+              <a href="thread.html#7661">[ hilo ]</a>
+              <a href="subject.html#7661">[ asunto ]</a>
+              <a href="author.html#7661">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from e854fc9 to a11adae
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/e854fc9202b67cf241aa532d32f3def6feafdb49/diffs/a11adaed9386a030b0ed330e91ad5c79dc599fc0">https://gitorious.org/bulmages/bulmages/commit/e854fc9202b67cf241aa532d32f3def6feafdb49/diffs/a11adaed9386a030b0ed330e91ad5c79dc599fc0</A>
+
+Diff: 
+
+commit a11adaed9386a030b0ed330e91ad5c79dc599fc0
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue Jun 25 22:29:46 2013 +0200
+
+    Arreglo problema con el QAction actionSalir que no se disparaba correctamente con Qt5
+
+diff --git a/bulmages/bulmafact/src/bfbulmafact.cpp b/bulmages/bulmafact/src/bfbulmafact.cpp
+index 6f313db..a2e7c71 100644
+--- a/bulmages/bulmafact/src/bfbulmafact.cpp
++++ b/bulmages/bulmafact/src/bfbulmafact.cpp
+@@ -129,16 +129,6 @@ BfBulmaFact::~BfBulmaFact()
+ }
+ 
+ 
+-/// \TODO: Revisar este metodo.
+-/**
+-**/
+-void BfBulmaFact::s_FPago()
+-{
+-    BL_FUNC_DEBUG
+-    m_company-&gt;s_FPago();
+-    
+-}
+-
+ 
+ /** Intercambia entre el modo ventana completa y el modo ventana normal
+ */
+@@ -317,28 +307,6 @@ void BfBulmaFact::on_actionIndexador_triggered()
+ 
+ ///
+ /**
+-**/
+-void BfBulmaFact::on_actionTipoIVA_triggered()
+-{
+-    BL_FUNC_DEBUG
+-    m_company-&gt;s_TipoIVAView();
+-    
+-}
+-
+-
+-///
+-/**
+-**/
+-void BfBulmaFact::on_actionTasaIVA_triggered()
+-{
+-    BL_FUNC_DEBUG
+-    m_company-&gt;s_TasaIVAView();
+-    
+-}
+-
+-
+-///
+-/**
+ \return
+ **/
+ BlWorkspace * BfBulmaFact::workspace()
+@@ -370,37 +338,6 @@ void BfBulmaFact::on_actionPaises_triggered()
+ }
+ 
+ 
+-///
+-/**
+-**/
+-void BfBulmaFact::on_actionSeries_de_Factura_triggered()
+-{
+-    BL_FUNC_DEBUG
+-    m_company-&gt;s_seriesFactura();
+-    
+-}
+-
+-
+-///
+-/**
+-**/
+-void BfBulmaFact::on_actionTrabajadores_triggered()
+-{
+-    BL_FUNC_DEBUG
+-    m_company-&gt;s_trabajadores();
+-    
+-}
+-
+-
+-///
+-/**
+-**/
+-void BfBulmaFact::on_actionBancos_triggered()
+-{
+-    BL_FUNC_DEBUG
+-    m_company-&gt;s_bancos();
+-    
+-}
+ 
+ 
+ ///
+@@ -428,17 +365,6 @@ void BfBulmaFact::on_actionAcerta_de_triggered()
+ ///
+ /**
+ **/
+-void BfBulmaFact::on_actionAlmacenes_triggered()
+-{
+-    BL_FUNC_DEBUG
+-    m_company-&gt;s_almacenes();
+-    
+-}
+-
+-
+-///
+-/**
+-**/
+ void BfBulmaFact::on_actionParametros_triggered()
+ {
+     BL_FUNC_DEBUG
+@@ -447,15 +373,6 @@ void BfBulmaFact::on_actionParametros_triggered()
+ }
+ 
+ 
+-///
+-/**
+-**/
+-void BfBulmaFact::on_actionFormas_de_Pago_triggered()
+-{
+-    BL_FUNC_DEBUG
+-    s_FPago();
+-    
+-}
+ 
+ 
+ ///
+@@ -480,6 +397,16 @@ void BfBulmaFact::on_actionOrganizaci_n_en_Cascada_triggered()
+ 
+ }
+ 
++///
++/**
++**/
++void BfBulmaFact::on_actionSalir_triggered()
++{
++    BL_FUNC_DEBUG
++    close();
++}
++
++
+ 
+ void BfBulmaFact::resizeEvent ( QResizeEvent * event )
+ {
+diff --git a/bulmages/bulmafact/src/bfbulmafact.h b/bulmages/bulmafact/src/bfbulmafact.h
+index 1193c08..0fba658 100644
+--- a/bulmages/bulmafact/src/bfbulmafact.h
++++ b/bulmages/bulmafact/src/bfbulmafact.h
+@@ -64,25 +64,18 @@ public:
+ 
+ public slots:
+     virtual void closeEvent ( QCloseEvent *event );
+-    virtual void s_FPago();
+     virtual void s_ventanaCompleta();
+     virtual void s_About();
+     virtual void on_actionDocumentacion_triggered();
+-    virtual void on_actionPaises_triggered();
+-    virtual void on_actionSeries_de_Factura_triggered();
+-    virtual void on_actionTrabajadores_triggered();
+-    virtual void on_actionBancos_triggered();
+     virtual void on_actionVentana_Completa_triggered();
+     virtual void on_actionAcerta_de_triggered();
+-    virtual void on_actionAlmacenes_triggered();
+     virtual void on_actionParametros_triggered();
+-    virtual void on_actionFormas_de_Pago_triggered();
+     virtual void on_actionIndexador_triggered();
+-    virtual void on_actionTipoIVA_triggered();
+     virtual void on_actionModo_Experto_triggered();
+-    virtual void on_actionTasaIVA_triggered();
+     virtual void on_actionOrdenar_Ventanas_triggered();
+     virtual void on_actionOrganizaci_n_en_Cascada_triggered();
++    virtual void on_actionSalir_triggered();
++    virtual void on_actionPaises_triggered();
+ 
+ private slots:
+     /// Este SLOT sirve para actualizar el Indexador cuando se activa una ventana
+diff --git a/bulmages/bulmafact/src/bfbulmafactbase.ui b/bulmages/bulmafact/src/bfbulmafactbase.ui
+index d696844..a746159 100644
+--- a/bulmages/bulmafact/src/bfbulmafactbase.ui
++++ b/bulmages/bulmafact/src/bfbulmafactbase.ui
+@@ -33,7 +33,7 @@
+      &lt;x&gt;0&lt;/x&gt;
+      &lt;y&gt;0&lt;/y&gt;
+      &lt;width&gt;798&lt;/width&gt;
+-     &lt;height&gt;21&lt;/height&gt;
++     &lt;height&gt;25&lt;/height&gt;
+     &lt;/rect&gt;
+    &lt;/property&gt;
+    &lt;widget class=&quot;QMenu&quot; name=&quot;menuAcerca_de&quot;&gt;
+@@ -301,22 +301,5 @@
+  &lt;resources&gt;
+   &lt;include location=&quot;../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;actionSalir&lt;/sender&gt;
+-   &lt;signal&gt;activated()&lt;/signal&gt;
+-   &lt;receiver&gt;BfBulmaFactBase&lt;/receiver&gt;
+-   &lt;slot&gt;close()&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;-1&lt;/x&gt;
+-     &lt;y&gt;-1&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;374&lt;/x&gt;
+-     &lt;y&gt;275&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
++ &lt;connections/&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/src/bfcompany.cpp b/bulmages/bulmafact/src/bfcompany.cpp
+index 3c81df2..e0258f5 100644
+--- a/bulmages/bulmafact/src/bfcompany.cpp
++++ b/bulmages/bulmafact/src/bfcompany.cpp
+@@ -102,69 +102,6 @@ void BfCompany::createMainWindows ( BlSplashScreen *splash )
+ 
+ 
+ 
+-/** Crea y Presenta la ventana de formas de pago.
+-*/
+-/// \TODO: Deberia dividirse en dos y deberia pasar por sistema de plugins.
+-/**
+-**/
+-void BfCompany::s_FPago()
+-{
+-    BL_FUNC_DEBUG
+-    /*
+-       FPagoView *f = new FPagoView ( this, NULL );
+-       m_pWorkspace-&gt;addSubWindow ( f );
+-       f-&gt;show();
+-    */
+-    
+-}
+-
+-
+-/** Crea y Presenta la ventana de trabajadores
+-*/
+-/// \TODO: Deberia dividirse en dos y deberia pasar por sistema de plugins.
+-/**
+-**/
+-void BfCompany::s_trabajadores()
+-{
+-    BL_FUNC_DEBUG  
+-}
+-
+-
+-/** Crea y Presenta la ventana de bancos
+-*/
+-/// \TODO: Deberia dividirse en dos y deberia pasar por sistema de plugins.
+-/**
+-**/
+-void BfCompany::s_bancos()
+-{
+-    BL_FUNC_DEBUG
+-}
+-
+-
+-/** Crea y Presenta la ventana de Series de Factura
+-*/
+-/// \TODO: Deberia dividirse en dos y deberia pasar por sistema de plugins.
+-/**
+-**/
+-void BfCompany::s_seriesFactura()
+-{
+-    BL_FUNC_DEBUG
+-   
+-}
+-
+-
+-
+-
+-
+-/** Crea una instancia de ListAlmacenView y la presenta.
+-*/
+-/**
+-\return
+-**/
+-void BfCompany::s_almacenes()
+-{
+-    BL_FUNC_DEBUG
+-}
+ 
+ 
+ /** Crea una instancia de BfConfiguracionView y la presenta.
+@@ -181,26 +118,6 @@ void BfCompany::s_newBfConfiguracionView()
+ }
+ 
+ 
+-/** Crea y muestra el listado de Tipos de IVA
+-*/
+-/**
+-**/
+-void BfCompany::s_TipoIVAView()
+-{
+-    BL_FUNC_DEBUG
+-    
+-}
+-
+-
+-/** Crea y muestra el listado de Tasas de IVA
+-*/
+-/**
+-**/
+-void BfCompany::s_TasaIVAView()
+-{
+-    BL_FUNC_DEBUG
+-   
+-}
+ 
+ 
+ /// Guarda la configuracion de programa para poder recuperar algunas cosas de presentacion.
+diff --git a/bulmages/bulmafact/src/bfcompany.h b/bulmages/bulmafact/src/bfcompany.h
+index 07394b7..8b2dbe3 100644
+--- a/bulmages/bulmafact/src/bfcompany.h
++++ b/bulmages/bulmafact/src/bfcompany.h
+@@ -49,19 +49,9 @@ public:
+     BfCompany ( BfBulmaFact *bges );
+     virtual ~BfCompany();
+     void createMainWindows ( BlSplashScreen * );
+-    void s_FPago();
+-    void s_Familias();
+-    void s_trabajadores();
+-    void s_bancos();
+-    void s_seriesFactura();
+     void s_newBfConfiguracionView();
+-    void s_almacenes();
+-    void viewPagosList();
+-    void s_TipoIVAView();
+-    void s_TasaIVAView();
+     void guardaConf();
+     void cargaConf();
+-    void *newPagoView();
+ };
+ 
+ #endif
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007660.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007663.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7661">[ fecha ]</a>
+              <a href="thread.html#7661">[ hilo ]</a>
+              <a href="subject.html#7661">[ asunto ]</a>
+              <a href="author.html#7661">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

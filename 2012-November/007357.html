@@ -1,0 +1,218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Comienzo en bulmages un poquillo duro
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3FComienzo_en_bulmages_un_po%3F%3D%20%3D%3Futf-8%3Fq%3Fquillo_duro%3F%3D&In-Reply-To=%3C20121115132306.544c6a6d%40namir.ctr.unican.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007382.html">
+   <LINK REL="Next"  HREF="007356.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Comienzo en bulmages un poquillo duro </H1>
+    <B>Miguel Telleria de Esteban</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3FComienzo_en_bulmages_un_po%3F%3D%20%3D%3Futf-8%3Fq%3Fquillo_duro%3F%3D&In-Reply-To=%3C20121115132306.544c6a6d%40namir.ctr.unican.es%3E"
+       TITLE="[BulmaGés]Comienzo en bulmages un poquillo duro">miguel en mtelleria.com
+       </A><BR>
+    <I>Jue Nov 15 13:23:06 CET 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007382.html">[BulmaGés]Comienzo en bulmages un poquillo duro
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007356.html">[BulmaGés] [Gitorious] Activity: tborras pushed 3	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7357">[ fecha ]</a>
+              <a href="thread.html#7357">[ hilo ]</a>
+              <a href="subject.html#7357">[ asunto ]</a>
+              <a href="author.html#7357">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Gracias a la ayuda de Tomeu por IRC he podido seguir adelante.
+
+Entiendo que había 2 problemas:
+
+*  Por un lado mi usuario normal no tenía acceso a las bases de datos
+   de postgres.  Un select * from configuration; devolvia error en la
+   consola psql.
+
+*  Por otro lado había algún problema con los ficheros .sql que Tomeu
+   acaba de arreglar en sus recientes commits.
+
+Tomando los commits de Tomeu como parches en mi debian/patches (gracias
+a git-buildpackage esto es fácil de hacer) he regenerado los paquetes.
+
+Está todo subido a mi clon:
+
+<A HREF="https://gitorious.org/~mtelleria/bulmages/mtelleria-bulmages">https://gitorious.org/~mtelleria/bulmages/mtelleria-bulmages</A>
+<A HREF="https://gitorious.org/~mtelleria/bulmages/mtelleria-bulmages/trees/paquetes">https://gitorious.org/~mtelleria/bulmages/mtelleria-bulmages/trees/paquetes</A>
+
+Resultados:
+
+*  bulmafact arranca ya, al menos en su módo básico con &quot;facturación
+   genérica&quot; y &quot;utilidades genéricas&quot;.
+
+*  bulmacont sigue sin mostrar las empresas de contabilidad creadas con
+   bulmasetup :(.
+
+*  bulmasetup genera algo de código rojo cuando crea empresas, tanto de
+   contabilidad como de facturación.  En un email aparte lo enviaré.
+
+Mis agradecimientos a Tomeu por su tiempo.
+
+Saludos,
+
+	Miguel
+
+
+
+On Wed, 14 Nov 2012 23:15:12 +0000 <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">rdcalle en gmail.com</A> wrote:
+
+&gt;<i> has probado a recargar o refrescar esa lista vacía cuando te aparece
+</I>&gt;<i> con ninguna empresa? a mi en ocasiones me ocurrió que no las cargaba
+</I>&gt;<i> de inicio (un tonto bug) y con solo actualizar la lista aparecían. --
+</I>&gt;<i>  
+</I>&gt;<i> Enviado desde mi Nokia N9
+</I>&gt;<i>  
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> El 14/11/12 20:16 Miguel Telleria de Esteban escribió:
+</I>&gt;<i> 
+</I>&gt;<i> Hola de nuevo,
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Pues nada una vez instalado mi paquete intento &quot;echar a andar la
+</I>&gt;<i> bestia&quot;. He avanzado poco pero yo soy difícil de rendirme.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Me configuro phppgadmin para ver lo que pasa dentro de postgresql
+</I>&gt;<i> (tengo la 9.1 en Sid).
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Consigo:
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> * Crear empresa de contabilidad desde bulmasetup y con creabulmacont
+</I>&gt;<i> * Crear empresa de facturación/TPV desde bulmasetup y con
+</I>&gt;<i> creabulmafact
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Al menos las bases de datos y tablas en posgresql así lo indican.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> NO CONSIGO:
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Sin embargo al lanzar bulmacont, bulmafact o bulmatpv me encuentro con
+</I>&gt;<i> el mismo problema:
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> LA LISTA DE EMPRESAS ESTA VACIA
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Síntomas:
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> * En la consola shell cuando lanzo bulma* aparecen las siguientes
+</I>&gt;<i> lineas sospechosas:
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> --&gt; El archivo '/etc/bulmages/bulmatpv.conf' existe. Se va a leer.&lt;--
+</I>&gt;<i> Leyendo configuracion/etc/bulmages/bulmatpv.conf
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> FIN Leyendo configuracion
+</I>&gt;<i> --&gt; El archivo '/home/miguel/.bulmages/bulmages.conf' no existe. &lt;--
+</I>&gt;<i> --&gt; El archivo '/home/miguel/.bulmages/bulmatpv.conf' no existe. &lt;--
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> * en el directorio .bulmages aparece un fichero listempresas.lst de 0
+</I>&gt;<i> bytes. No hay nada más.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> * en /etc/bulmages, el listado es el siguiente:
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> bulmafact_chispasfactdb.conf
+</I>&gt;<i> bulmafact_chispasfactdb.conf~
+</I>&gt;<i> bulmacont_chispascontdb.conf
+</I>&gt;<i> bulmacont_chispascontdb.conf~
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> y los siguientes ficheros que no han cambiado de hora desde que se
+</I>&gt;<i> instaló el paquete
+</I>&gt;<i> bulmacont.conf
+</I>&gt;<i> bulmafact.conf
+</I>&gt;<i> bulmages.conf
+</I>&gt;<i> bulmatpv.conf
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> * Borré todo de postgresql, volví a crear las empresas (con nombres
+</I>&gt;<i> diferentes) y nunca las veo en el listado de empresas de bulmasetup.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> SIGUIENTES PASOS QUE HARE
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> * Probar los binarios descargados de bulmagesplus.com a ver si ocurre
+</I>&gt;<i> lo mismo.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> * Si alguien me responde y me indica un commit en git que pueda usar
+</I>&gt;<i> como base más estable, volveré a regenerar los paquetes.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Un saludo,
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Miguel
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+
+-- 
+
+      (O-O)
+---oOO-(_)-OOo-----------------------------------------------------
+ Miguel TELLERIA DE ESTEBAN               <A HREF="http://www.mtelleria.com">http://www.mtelleria.com</A>
+ Email: miguel at mtelleria.com           Tel GSM:  +34 650 801098
+                                          Tel Fix:  +34 942 280174
+
+ Miembro de <A HREF="http://www.linuca.org">http://www.linuca.org</A>    Membre du <A HREF="http://www.bxlug.be">http://www.bxlug.be</A>
+ ¿Usuario captivo o libre?    <A HREF="http://www.obtengalinux.org/windows/">http://www.obtengalinux.org/windows/</A>
+ Free or  captive user?        <A HREF="http://www.getgnulinux.org/windows/">http://www.getgnulinux.org/windows/</A>
+-------------------------------------------------------------------
+
+------------ próxima parte ------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 198 bytes
+Desc: no disponible
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20121115/87776d51/attachment.pgp">https://lists.berlios.de/pipermail/bulmages-main/attachments/20121115/87776d51/attachment.pgp</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007382.html">[BulmaGés]Comienzo en bulmages un poquillo duro
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007356.html">[BulmaGés] [Gitorious] Activity: tborras pushed 3	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7357">[ fecha ]</a>
+              <a href="thread.html#7357">[ hilo ]</a>
+              <a href="subject.html#7357">[ asunto ]</a>
+              <a href="author.html#7357">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

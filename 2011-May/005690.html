@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 7cbb53d29a254dcff09eb17c1ed0fc3d1ff2b02b
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%5BGit%5DProject%20bulmages%20at%20BerliOS%20branch%2C%20master%2C%0A%09updated.%207cbb53d29a254dcff09eb17c1ed0fc3d1ff2b02b&In-Reply-To=%3C20110503180257.0BB4948139D%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005689.html">
+   <LINK REL="Next"  HREF="005691.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 7cbb53d29a254dcff09eb17c1ed0fc3d1ff2b02b </H1>
+    <B>mph2 at BerliOS</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%5BGit%5DProject%20bulmages%20at%20BerliOS%20branch%2C%20master%2C%0A%09updated.%207cbb53d29a254dcff09eb17c1ed0fc3d1ff2b02b&In-Reply-To=%3C20110503180257.0BB4948139D%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 7cbb53d29a254dcff09eb17c1ed0fc3d1ff2b02b">git en mail.berlios.de
+       </A><BR>
+    <I>Mar Mayo  3 20:02:53 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="005689.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 3cb1b14525ea05af0385fb864b3268da135e581d
+</A></li>
+        <LI>Próximo mensaje: <A HREF="005691.html">[BulmaGés] chara sobre activismo y software libre	hoy 4 de mayo en palma
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5690">[ fecha ]</a>
+              <a href="thread.html#5690">[ hilo ]</a>
+              <a href="subject.html#5690">[ asunto ]</a>
+              <a href="author.html#5690">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+The branch, master has been updated
+       via  7cbb53d29a254dcff09eb17c1ed0fc3d1ff2b02b (commit)
+      from  3cb1b14525ea05af0385fb864b3268da135e581d (commit)
+
+Nuevas revisiones:
+
+- Log -----------------------------------------------------------------
+commit 7cbb53d29a254dcff09eb17c1ed0fc3d1ff2b02b
+Author: Daniel Ripoll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&gt;
+Date:   Tue May 3 19:50:25 2011 +0200
+
+    Comienzo estandarización en clase de pluginbf_comercial y restablezco otros
+    
+    pluginbf_comercial:
+        Clase mypluginbf implementada en myplugin.cpp movida a pluginbf_comercial.cpp
+        Clase mypluginbf renombrada a PluginBf_Comercial
+    
+        La declaración permanece temporalmente ahora en comercial.h.
+        Motivos:
+            Si se mueve la función al lugar correcto pluginbf_comercial.h,
+            por algún motivo salta error.
+            'No se puede encontrar la libreria
+            /usr/local/lib/bulmatpv/plugins/libpluginbf_comercial.so'
+    
+            Ese archivo realmente no existe ya que no pertenece a BulmaTPV.
+            Debería revisarse el lanzamiento de plugins por parte de
+            BulmaLib.
+    
+    pluginbf_carterapagos:
+        Vuelvo a desplazar PluginBf_CarteraCobros a cartepagoslist.h por
+        el mismo motivo.
+    
+    pluginbf_carteracobros:
+            Vuelvo a desplazar PluginBf_CarteraCobros a carteracobroslist.h
+            por  el mismo motivo.
+
+-----------------------------------------------------------------------
+
+Resumen de cambios:
+ .../pluginbf_carteracobros/carteracobroslist.h     |   15 +++
+ .../pluginbf_carteracobros.h                       |   17 ----
+ .../pluginbf_carterapagos/carterapagoslist.h       |   17 ++++
+ .../pluginbf_carterapagos/pluginbf_carterapagos.h  |   17 ----
+ .../pluginbf_comercial/{myplugin.h =&gt; comercial.h} |   13 +--
+ .../plugins/pluginbf_comercial/myplugin.cpp        |  100 --------------------
+ .../pluginbf_comercial/pluginbf_comercial.cpp      |   81 +++++++++++++++-
+ .../pluginbf_comercial/pluginbf_comercial.h        |    6 +
+ .../pluginbf_comercial/po/pluginbf_comercial.pot   |   18 ++--
+ .../po/pluginbf_comercial_ca_ES.po                 |   18 ++--
+ .../po/pluginbf_comercial_en_US.po                 |    8 +-
+ .../po/pluginbf_comercial_es_ES.po                 |   20 ++--
+ .../po/pluginbf_comercial_fr_FR.po                 |   18 ++--
+ 13 files changed, 164 insertions(+), 184 deletions(-)
+ rename bulmages/bulmafact/plugins/pluginbf_comercial/{myplugin.h =&gt; comercial.h} (91%)
+ delete mode 100644 bulmages/bulmafact/plugins/pluginbf_comercial/myplugin.cpp
+
+
+-- 
+Proyecto BulmaGes
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="005689.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 3cb1b14525ea05af0385fb864b3268da135e581d
+</A></li>
+	<LI>Próximo mensaje: <A HREF="005691.html">[BulmaGés] chara sobre activismo y software libre	hoy 4 de mayo en palma
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5690">[ fecha ]</a>
+              <a href="thread.html#5690">[ hilo ]</a>
+              <a href="subject.html#5690">[ asunto ]</a>
+              <a href="author.html#5690">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

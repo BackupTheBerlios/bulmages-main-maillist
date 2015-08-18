@@ -1,0 +1,3486 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130610192514.868F81A3%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007627.html">
+   <LINK REL="Next"  HREF="007623.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130610192514.868F81A3%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Lun Jun 10 21:25:14 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007627.html">[BulmaGés]BulmaInCloud
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007623.html">[BulmaGés] Paquetes
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7622">[ fecha ]</a>
+              <a href="thread.html#7622">[ hilo ]</a>
+              <a href="subject.html#7622">[ asunto ]</a>
+              <a href="author.html#7622">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from 838c745 to 2999cb8
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/838c745358d7f721f76a7494fcbecae9b32c4d03/diffs/2999cb8de9204bf91ef4c16b8cdb44a02b712157">https://gitorious.org/bulmages/bulmages/commit/838c745358d7f721f76a7494fcbecae9b32c4d03/diffs/2999cb8de9204bf91ef4c16b8cdb44a02b712157</A>
+
+Diff: 
+
+commit 2999cb8de9204bf91ef4c16b8cdb44a02b712157
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon Jun 10 21:22:43 2013 +0200
+
+    Agrego la nueva clase BlFile que deriva de QFile y que buscara archivos inexistentes en la red.
+    Quito algunos informes del general installbulmages y los pongo en sus respectivos plugins
+    Cambio el sistema de inicio para que al no conectarse a la base de datos se pida aparte de usuario
+    y contrasenya el host, puerto y nombre de la base de datos. Todo esto se combina con el selector en
+    el caso de no especificar base de datos.
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_actividad/actividadeslist.cpp b/bulmages/bulmafact/plugins/pluginbf_actividad/actividadeslist.cpp
+index 64516c8..15173ab 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_actividad/actividadeslist.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_actividad/actividadeslist.cpp
+@@ -23,7 +23,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtWidgets/QCheckBox&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtWidgets/QCheckBox&gt;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtWidgets/QMenu&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_actividad/actividadview.cpp b/bulmages/bulmafact/plugins/pluginbf_actividad/actividadview.cpp
+index 3a6d041..e6133fb 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_actividad/actividadview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_actividad/actividadview.cpp
+@@ -25,7 +25,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtGui/QCloseEvent&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+ #include &quot;actividadview.h&quot;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_actividad/convocatoriaslist.cpp b/bulmages/bulmafact/plugins/pluginbf_actividad/convocatoriaslist.cpp
+index 1902a05..87a9d3e 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_actividad/convocatoriaslist.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_actividad/convocatoriaslist.cpp
+@@ -20,7 +20,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtWidgets/QCheckBox&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtWidgets/QCheckBox&gt;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtWidgets/QMenu&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_actividad/convocatoriaview.cpp b/bulmages/bulmafact/plugins/pluginbf_actividad/convocatoriaview.cpp
+index abeb82e..fce610d 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_actividad/convocatoriaview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_actividad/convocatoriaview.cpp
+@@ -22,7 +22,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtGui/QCloseEvent&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+ #include &quot;convocatoriaview.h&quot;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_almacenamplia/almaceneslistview.cpp b/bulmages/bulmafact/plugins/pluginbf_almacenamplia/almaceneslistview.cpp
+index e723af1..07272a5 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_almacenamplia/almaceneslistview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_almacenamplia/almaceneslistview.cpp
+@@ -20,7 +20,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtWidgets/QCheckBox&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtWidgets/QCheckBox&gt;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_almacenamplia/almacenview.cpp b/bulmages/bulmafact/plugins/pluginbf_almacenamplia/almacenview.cpp
+index 920adad..fd50bb4 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_almacenamplia/almacenview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_almacenamplia/almacenview.cpp
+@@ -22,7 +22,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtGui/QCloseEvent&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+ #include &quot;almacenview.h&quot;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_alumno/alumnoslist.cpp b/bulmages/bulmafact/plugins/pluginbf_alumno/alumnoslist.cpp
+index 2f9828b..af12765 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_alumno/alumnoslist.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_alumno/alumnoslist.cpp
+@@ -20,7 +20,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtWidgets/QCheckBox&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtWidgets/QCheckBox&gt;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtWidgets/QMenu&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_alumno/alumnoview.cpp b/bulmages/bulmafact/plugins/pluginbf_alumno/alumnoview.cpp
+index 678f62b..d397fc2 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_alumno/alumnoview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_alumno/alumnoview.cpp
+@@ -25,7 +25,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtGui/QCloseEvent&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtWidgets/QFileDialog&gt;
+ 
+@@ -154,7 +154,7 @@ void AlumnoView::pintarPost()
+     QString archivoimagen;
+     archivoimagen = g_confpr-&gt;value( CONF_DIR_IMG_ALUMNOS ) + dbValue ( &quot;idalumno&quot; ) + &quot;.jpg&quot;;
+ 
+-    QFile archivo;
++    BlFile archivo;
+     archivo.setFileName ( archivoimagen );
+ 
+     if ( archivo.exists() ) {
+@@ -203,7 +203,7 @@ int AlumnoView::beforeDelete()
+     QString archivoimagen;
+     archivoimagen = g_confpr-&gt;value( CONF_DIR_IMG_ALUMNOS ) + dbValue ( &quot;idalumno&quot; ) + &quot;.jpg&quot;;
+ 
+-    QFile archivo;
++    BlFile archivo;
+     archivo.setFileName ( archivoimagen );
+ 
+     if ( archivo.exists() ) {
+@@ -283,7 +283,7 @@ void AlumnoView::on_mui_borrarimagen_clicked()
+     QString archivoimagen;
+     archivoimagen = g_confpr-&gt;value( CONF_DIR_IMG_ALUMNOS ) + dbValue ( &quot;idalumno&quot; ) + &quot;.jpg&quot;;
+ 
+-    QFile archivo;
++    BlFile archivo;
+     archivo.setFileName ( archivoimagen );
+ 
+     if ( archivo.exists() ) {
+diff --git a/bulmages/bulmafact/plugins/pluginbf_alumno/promocionarclaseview.cpp b/bulmages/bulmafact/plugins/pluginbf_alumno/promocionarclaseview.cpp
+index fcbe711..2a22cd7 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_alumno/promocionarclaseview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_alumno/promocionarclaseview.cpp
+@@ -25,7 +25,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtGui/QCloseEvent&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtWidgets/QFileDialog&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_articulo/articulolist.cpp b/bulmages/bulmafact/plugins/pluginbf_articulo/articulolist.cpp
+index b60ce6c..6c2b598 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_articulo/articulolist.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_articulo/articulolist.cpp
+@@ -19,7 +19,7 @@
+  ***************************************************************************/
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtWidgets/QLineEdit&gt;
+ #include &lt;QtWidgets/QCheckBox&gt;
+ #include &lt;QtWidgets/QComboBox&gt;
+@@ -246,7 +246,7 @@ void ArticuloList::imprimir()
+ void ArticuloList::on_mui_exportar_clicked()
+ {
+     BL_FUNC_DEBUG
+-    QFile filexml ( QFileDialog::getSaveFileName ( this,
++    BlFile filexml ( QFileDialog::getSaveFileName ( this,
+                     _ ( &quot;Elija el archivo&quot; ),
+                     g_confpr-&gt;value( CONF_DIR_USER ),
+                     _ ( &quot;Articulos (*.xml)&quot; ) ) );
+@@ -271,7 +271,7 @@ void ArticuloList::on_mui_exportar_clicked()
+ void ArticuloList::on_mui_importar_clicked()
+ {
+     BL_FUNC_DEBUG
+-    QFile filexml ( QFileDialog::getOpenFileName ( this,
++    BlFile filexml ( QFileDialog::getOpenFileName ( this,
+                     _ ( &quot;Elija el archivo&quot; ),
+                     g_confpr-&gt;value( CONF_DIR_USER ),
+                     _ ( &quot;Articulos (*.xml)&quot; ) ) );
+diff --git a/bulmages/bulmafact/plugins/pluginbf_articulo/articuloview.cpp b/bulmages/bulmafact/plugins/pluginbf_articulo/articuloview.cpp
+index 57d8e08..09a9cce 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_articulo/articuloview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_articulo/articuloview.cpp
+@@ -36,7 +36,7 @@
+ #include &quot;comparticulolistview.h&quot;
+ #include &quot;blfunctions.h&quot;
+ #include &quot;blplugins.h&quot;
+-
++#include &quot;blfile.h&quot;
+ 
+ /** Se encarga de la inicializacion de todos los componentes de la ventana de 'Articulo'.
+     Inicializa la gestion de cambios para que se considere que no hay cambios realizados
+@@ -163,7 +163,7 @@ void ArticuloView::pintarPost()
+     archivoimagen = g_confpr-&gt;value( CONF_DIR_IMG_ARTICLES ) + &quot;/&quot; + mui_codigocompletoarticulo-&gt;text() + &quot;.png&quot;;
+ #endif
+ 
+-    QFile archivo;
++    BlFile archivo;
+     archivo.setFileName ( archivoimagen );
+ 
+     if ( archivo.exists() ) {
+@@ -384,7 +384,7 @@ void ArticuloView::on_mui_borrarimagen_clicked()
+     archivoimagen = g_confpr-&gt;value( CONF_DIR_IMG_ARTICLES ) + &quot;/&quot; + mui_codigocompletoarticulo-&gt;text() + &quot;.png&quot;;
+ #endif
+ 
+-    QFile archivo;
++    BlFile archivo;
+     archivo.setFileName ( archivoimagen );
+ 
+     if ( archivo.exists() ) {
+diff --git a/bulmages/bulmafact/plugins/pluginbf_articulo/familiasview.cpp b/bulmages/bulmafact/plugins/pluginbf_articulo/familiasview.cpp
+index 62a597c..c7ad3e6 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_articulo/familiasview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_articulo/familiasview.cpp
+@@ -21,7 +21,7 @@
+ #include &lt;QtCore/QMap&gt;
+ #include &lt;QtWidgets/QLineEdit&gt;
+ #include &lt;QtWidgets/QMessageBox&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+ #include &quot;familiasview.h&quot;
+@@ -556,7 +556,7 @@ void FamiliasView::on_mui_imprimir_clicked()
+     QString logousuario = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;logo.jpg&quot;;
+     blCopyFile(archivologo, logousuario);
+     
+-    QFile file;
++    BlFile file;
+     file.setFileName ( archivod );
+     file.open ( QIODevice::ReadOnly );
+     QTextStream stream ( &amp;file );
+diff --git a/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoform.cpp b/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoform.cpp
+index c38605f..3eba670 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoform.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoform.cpp
+@@ -20,7 +20,7 @@
+ 
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtWidgets/QMessageBox&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ 
+ #include &quot;bcasientoform.h&quot;
+ #include &quot;bcasientoview.h&quot;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientointeligenteview.cpp b/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientointeligenteview.cpp
+index 5f04e41..c274502 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientointeligenteview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientointeligenteview.cpp
+@@ -26,6 +26,7 @@
+ #include &quot;bfcompany.h&quot;
+ #include &quot;bcasientoview.h&quot;
+ #include &quot;pluginbf_asiento.h&quot;
++#include &quot;blfile.h&quot;
+ 
+ #define TIPO_CTA         0
+ #define TIPO_FECHA       1
+@@ -345,7 +346,7 @@ void BcAsientoInteligenteView::mostrarPlantilla()
+     /// Vamos a intentar borrar todos los datos antes de empezar.
+     borraWidgets();
+     if ( mui_comboainteligentes-&gt;currentIndex() != -1 ) {
+-        QFile f ( listasientos.at ( mui_comboainteligentes-&gt;currentIndex() ) );
++        BlFile f ( listasientos.at ( mui_comboainteligentes-&gt;currentIndex() ) );
+         if ( !f.open ( QIODevice::ReadOnly ) )
+             return;
+         if ( !m_doc.setContent ( &amp;f ) ) {
+diff --git a/bulmages/bulmafact/plugins/pluginbf_asociacion/comisioneslist.cpp b/bulmages/bulmafact/plugins/pluginbf_asociacion/comisioneslist.cpp
+index c43004c..750648c 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_asociacion/comisioneslist.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_asociacion/comisioneslist.cpp
+@@ -20,7 +20,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtWidgets/QCheckBox&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtWidgets/QCheckBox&gt;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtWidgets/QMenu&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_asociacion/comisionview.cpp b/bulmages/bulmafact/plugins/pluginbf_asociacion/comisionview.cpp
+index 5d7a936..c5ab69b 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_asociacion/comisionview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_asociacion/comisionview.cpp
+@@ -22,7 +22,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtGui/QCloseEvent&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+ #include &quot;comisionview.h&quot;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_asociacion/convreunionlist.cpp b/bulmages/bulmafact/plugins/pluginbf_asociacion/convreunionlist.cpp
+index e230683..0565d48 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_asociacion/convreunionlist.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_asociacion/convreunionlist.cpp
+@@ -20,7 +20,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtWidgets/QCheckBox&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtWidgets/QCheckBox&gt;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtWidgets/QMenu&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_asociacion/convreunionview.cpp b/bulmages/bulmafact/plugins/pluginbf_asociacion/convreunionview.cpp
+index 0fa28b9..cd129d4 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_asociacion/convreunionview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_asociacion/convreunionview.cpp
+@@ -25,7 +25,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtGui/QCloseEvent&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+ #include &quot;convreunionview.h&quot;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_asociacion/jdirectivalist.cpp b/bulmages/bulmafact/plugins/pluginbf_asociacion/jdirectivalist.cpp
+index 41978c1..b9cda18 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_asociacion/jdirectivalist.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_asociacion/jdirectivalist.cpp
+@@ -23,7 +23,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtWidgets/QCheckBox&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtWidgets/QCheckBox&gt;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtWidgets/QMenu&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_asociacion/jdirectivaview.cpp b/bulmages/bulmafact/plugins/pluginbf_asociacion/jdirectivaview.cpp
+index 5b022b7..c7e2f6d 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_asociacion/jdirectivaview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_asociacion/jdirectivaview.cpp
+@@ -25,7 +25,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtGui/QCloseEvent&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+ #include &quot;jdirectivaview.h&quot;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_balance/balanceprintview.cpp b/bulmages/bulmafact/plugins/pluginbf_balance/balanceprintview.cpp
+index f961f87..9b82cd4 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_balance/balanceprintview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_balance/balanceprintview.cpp
+@@ -29,7 +29,7 @@
+ #include &lt;QtWidgets/QComboBox&gt;
+ #include &lt;QtWidgets/QToolButton&gt;
+ #include &lt;QtWidgets/QCheckBox&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+ #include &lt;bldatesearch.h&gt;
+@@ -169,13 +169,13 @@ void BalancePrintView::presentar ( const char* tipus )
+         QString archivo = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;balance.txt&quot;;
+         QString archivohtml = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;balance.html&quot;;
+ 
+-        QFile filehtml;
++        BlFile filehtml;
+         filehtml.setFileName ( archivohtml );
+         filehtml.open ( QIODevice::WriteOnly );
+         QTextStream fitxersortidahtml ( &amp;filehtml );
+ 
+ 
+-        QFile filetxt;
++        BlFile filetxt;
+         filetxt.setFileName ( archivo );
+         filetxt.open ( QIODevice::WriteOnly );
+         QTextStream fitxersortidatxt ( &amp;filetxt );
+diff --git a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/zview.cpp b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/zview.cpp
+index dabc1df..c9ed16c 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/zview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/zview.cpp
+@@ -20,7 +20,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtGui/QCloseEvent&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+ #include &lt;fstream&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_carteracobros/q19view.cpp b/bulmages/bulmafact/plugins/pluginbf_carteracobros/q19view.cpp
+index b72ac17..9a149c7 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_carteracobros/q19view.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_carteracobros/q19view.cpp
+@@ -20,7 +20,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtGui/QCloseEvent&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+ #include &lt;fstream&gt;
+@@ -552,7 +552,7 @@ void Q19View::on_mui_aceptar_clicked()
+     try {
+ 
+ 
+-        QFile file ( mui_archivo-&gt;text() );
++        BlFile file ( mui_archivo-&gt;text() );
+         if ( !file.open ( QIODevice::WriteOnly | QIODevice::Text ) )
+             return;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_carterapagos/q34view.cpp b/bulmages/bulmafact/plugins/pluginbf_carterapagos/q34view.cpp
+index 37da9c8..85046f5 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_carterapagos/q34view.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_carterapagos/q34view.cpp
+@@ -20,7 +20,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtGui/QCloseEvent&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtWidgets/QFileDialog&gt;
+ #include &lt;fstream&gt;
+@@ -505,7 +505,7 @@ void Q34View::on_mui_aceptar_clicked()
+     try {
+ 
+ 
+-        QFile file ( mui_archivo-&gt;text() );
++        BlFile file ( mui_archivo-&gt;text() );
+         if ( !file.open ( QIODevice::WriteOnly | QIODevice::Text ) )
+             return;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_catalogo/catalogoqtoolbutton.cpp b/bulmages/bulmafact/plugins/pluginbf_catalogo/catalogoqtoolbutton.cpp
+index 0430d4b..2c54e19 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_catalogo/catalogoqtoolbutton.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_catalogo/catalogoqtoolbutton.cpp
+@@ -21,7 +21,7 @@
+ #include &lt;stdio.h&gt;
+ #include &lt;stdlib.h&gt;
+ 
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtCore/QString&gt;
+ #include &lt;QtWidgets/QFileDialog&gt;
+@@ -97,7 +97,7 @@ void CatalogoQToolButton::click()
+     QString logousuario = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;logo.jpg&quot;;
+     blCopyFile(archivologo,logousuario);
+     
+-    QFile file;
++    BlFile file;
+     file.setFileName ( archivod );
+     file.open ( QIODevice::ReadOnly );
+     QTextStream stream ( &amp;file );
+@@ -142,7 +142,7 @@ QString CatalogoQToolButton::detalleArticulos()
+         texto += &quot;&lt;td&gt;&lt;para&gt;&lt;H1&gt;&quot; + blXMLEncode ( cur-&gt;value( &quot;nomarticulo&quot; ) ) + &quot;&lt;/H1&gt;&lt;/para&gt;&quot;;
+         texto += &quot;&lt;para&gt;&quot; + blXMLEncode ( cur-&gt;value( &quot;obserarticulo&quot; ) ) + &quot;&lt;/para&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;\n&quot;;
+         QString file = g_confpr-&gt;value( CONF_DIR_IMG_ARTICLES ) + blXMLEncode ( cur-&gt;value( &quot;codigocompletoarticulo&quot; ) ) + &quot;.jpg&quot;;
+-        QFile f ( file );
++        BlFile f ( file );
+         if ( f.exists() ) {
+             texto += &quot;&lt;td&gt;&lt;!-- illustration x=\&quot;0\&quot; y=\&quot;0\&quot; height=\&quot;5cm\&quot; --&gt;\n&quot;
+                      &quot;&lt;image file=\&quot;&quot; + g_confpr-&gt;value( CONF_DIR_IMG_ARTICLES ) +
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cliente/clientslist.cpp b/bulmages/bulmafact/plugins/pluginbf_cliente/clientslist.cpp
+index aedfb96..57da9fd 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cliente/clientslist.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_cliente/clientslist.cpp
+@@ -32,6 +32,7 @@
+ #include &quot;blimportexport.h&quot;
+ #include &quot;bfinformereferencia.h&quot;
+ #include &quot;blplugins.h&quot;
++#include &quot;blfile.h&quot;
+ 
+ 
+ /** Inicializa todos los componentes del listado.
+@@ -195,7 +196,7 @@ void ClientsList::remove()
+ void ClientsList::on_mui_exportar_clicked()
+ {
+     BL_FUNC_DEBUG
+-    QFile filexml ( QFileDialog::getSaveFileName (
++    BlFile filexml ( QFileDialog::getSaveFileName (
+                         this,
+                         _ ( &quot;Elija el archivo&quot; ),
+                         g_confpr-&gt;value( CONF_DIR_USER ),
+@@ -218,7 +219,7 @@ void ClientsList::on_mui_exportar_clicked()
+ void ClientsList::on_mui_importar_clicked()
+ {
+     BL_FUNC_DEBUG
+-    QFile filexml ( QFileDialog::getOpenFileName (
++    BlFile filexml ( QFileDialog::getOpenFileName (
+                         this,
+                         _ ( &quot;Elija el archivo&quot; ),
+                         g_confpr-&gt;value( CONF_DIR_USER ),
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientealbaran/albaranclientelist.cpp b/bulmages/bulmafact/plugins/pluginbf_clientealbaran/albaranclientelist.cpp
+index 1b274f3..d225f01 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientealbaran/albaranclientelist.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_clientealbaran/albaranclientelist.cpp
+@@ -19,7 +19,7 @@
+  ***************************************************************************/
+ 
+ #include &lt;QtWidgets/QCheckBox&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientecobro/cobroslist.cpp b/bulmages/bulmafact/plugins/pluginbf_clientecobro/cobroslist.cpp
+index 1a479b1..01c84da 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientecobro/cobroslist.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_clientecobro/cobroslist.cpp
+@@ -20,7 +20,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtWidgets/QCheckBox&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtWidgets/QCheckBox&gt;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtWidgets/QMenu&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientecobro/cobroview.cpp b/bulmages/bulmafact/plugins/pluginbf_clientecobro/cobroview.cpp
+index 6a89971..80c9cf8 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientecobro/cobroview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_clientecobro/cobroview.cpp
+@@ -22,7 +22,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtGui/QCloseEvent&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+ #include &quot;cobroview.h&quot;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturaslist.cpp b/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturaslist.cpp
+index 93cc20d..a9f9c49 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturaslist.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturaslist.cpp
+@@ -18,7 +18,7 @@
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+  ***************************************************************************/
+ 
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientefacturaivainc/facturaivaincclientelist.cpp b/bulmages/bulmafact/plugins/pluginbf_clientefacturaivainc/facturaivaincclientelist.cpp
+index 224b589..f605975 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientefacturaivainc/facturaivaincclientelist.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_clientefacturaivainc/facturaivaincclientelist.cpp
+@@ -19,7 +19,7 @@
+  ***************************************************************************/
+ 
+ #include &lt;QtWidgets/QCheckBox&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientepedido/pedidosclientelist.cpp b/bulmages/bulmafact/plugins/pluginbf_clientepedido/pedidosclientelist.cpp
+index 534bb19..9a1ff91 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientepedido/pedidosclientelist.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_clientepedido/pedidosclientelist.cpp
+@@ -18,7 +18,7 @@
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+  ***************************************************************************/
+ 
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/presupuestolist.cpp b/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/presupuestolist.cpp
+index da60135..0658feb 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/presupuestolist.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/presupuestolist.cpp
+@@ -20,7 +20,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtWidgets/QCheckBox&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtWidgets/QCheckBox&gt;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/presupuestoview.cpp b/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/presupuestoview.cpp
+index e8c062b..ba9b35d 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/presupuestoview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/presupuestoview.cpp
+@@ -23,7 +23,7 @@
+ #include &lt;QtCore/QObject&gt;
+ #include &lt;QtWidgets/QComboBox&gt;
+ #include &lt;QtWidgets/QToolButton&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtWidgets/QLayout&gt;
+ #include &lt;QtWidgets/QMessageBox&gt;
+@@ -312,7 +312,7 @@ QString PresupuestoView::detalleArticulos()
+             texto += &quot;&lt;para&gt;&lt;pre&gt;&quot; + cur-&gt;value( &quot;obserarticulo&quot; ) + &quot;&lt;/pre&gt;&lt;/para&gt;&lt;/td&gt;\n&quot;;
+         } // end if
+         QString file = g_confpr-&gt;value( CONF_DIR_IMG_ARTICLES ) + cur-&gt;value( &quot;codigocompletoarticulo&quot; ) + &quot;.jpg&quot;;
+-        QFile f ( file );
++        BlFile f ( file );
+         if ( f.exists() ) {
+             texto += &quot;    &lt;td&gt;&lt;illustration x=\&quot;0\&quot; y=\&quot;0\&quot; height=\&quot;5cm\&quot;&gt;\n&quot;
+                      &quot;        &lt;image file=\&quot;&quot; + g_confpr-&gt;value( CONF_DIR_IMG_ARTICLES ) + cur-&gt;value( &quot;codigocompletoarticulo&quot; ) + &quot;.jpg\&quot; x=\&quot;0\&quot; y=\&quot;0\&quot; height=\&quot;5cm\&quot;/&gt;\n&quot;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clienteticket/ticketclientelist.cpp b/bulmages/bulmafact/plugins/pluginbf_clienteticket/ticketclientelist.cpp
+index 32e8b04..d214d34 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clienteticket/ticketclientelist.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_clienteticket/ticketclientelist.cpp
+@@ -19,7 +19,7 @@
+  ***************************************************************************/
+ 
+ #include &lt;QtWidgets/QCheckBox&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_comercial/incidenciacomercial.cpp b/bulmages/bulmafact/plugins/pluginbf_comercial/incidenciacomercial.cpp
+index 5f44995..0810058 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_comercial/incidenciacomercial.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_comercial/incidenciacomercial.cpp
+@@ -18,7 +18,7 @@
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+  ***************************************************************************/
+ 
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+ #include &quot;incidenciacomercial.h&quot;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_comercial/incidenciacomercialview.cpp b/bulmages/bulmafact/plugins/pluginbf_comercial/incidenciacomercialview.cpp
+index 2105ce7..480e676 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_comercial/incidenciacomercialview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_comercial/incidenciacomercialview.cpp
+@@ -25,7 +25,7 @@
+ #include &lt;QtCore/QObject&gt;
+ #include &lt;QtWidgets/QComboBox&gt;
+ #include &lt;QtWidgets/QToolButton&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtWidgets/QLayout&gt;
+ #include &lt;QtGui/QCloseEvent&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_comercial/rutacomercialincview.cpp b/bulmages/bulmafact/plugins/pluginbf_comercial/rutacomercialincview.cpp
+index f33b0d0..9634bc8 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_comercial/rutacomercialincview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_comercial/rutacomercialincview.cpp
+@@ -24,7 +24,7 @@
+ #include &lt;QtCore/QObject&gt;
+ #include &lt;QtWidgets/QComboBox&gt;
+ #include &lt;QtWidgets/QToolButton&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtWidgets/QLayout&gt;
+ #include &lt;QtWidgets/QMessageBox&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_comercial/rutacomerciallist.cpp b/bulmages/bulmafact/plugins/pluginbf_comercial/rutacomerciallist.cpp
+index 625db11..5653514 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_comercial/rutacomerciallist.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_comercial/rutacomerciallist.cpp
+@@ -20,7 +20,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtWidgets/QCheckBox&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtWidgets/QCheckBox&gt;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+@@ -205,7 +205,7 @@ void RutaComercialList::imprimir()
+     QString logousuario = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;logo.jpg&quot;;
+     blCopyFile(archivologo, logousuario);
+ 
+-    QFile file;
++    BlFile file;
+     file.setFileName ( archivod );
+     file.open ( QIODevice::ReadOnly );
+     QTextStream stream ( &amp;file );
+diff --git a/bulmages/bulmafact/plugins/pluginbf_comercial/rutacomercialview.cpp b/bulmages/bulmafact/plugins/pluginbf_comercial/rutacomercialview.cpp
+index 2876051..ab49220 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_comercial/rutacomercialview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_comercial/rutacomercialview.cpp
+@@ -24,7 +24,7 @@
+ #include &lt;QtCore/QObject&gt;
+ #include &lt;QtWidgets/QComboBox&gt;
+ #include &lt;QtWidgets/QToolButton&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtWidgets/QLayout&gt;
+ #include &lt;QtWidgets/QMessageBox&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_contrato/contrato.cpp b/bulmages/bulmafact/plugins/pluginbf_contrato/contrato.cpp
+index 07cf9ff..fe0898e 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_contrato/contrato.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_contrato/contrato.cpp
+@@ -18,7 +18,7 @@
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+  ***************************************************************************/
+ 
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+ #include &quot;contrato.h&quot;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_corrector/correctorwidget.cpp b/bulmages/bulmafact/plugins/pluginbf_corrector/correctorwidget.cpp
+index ff08931..3fcbe54 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_corrector/correctorwidget.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_corrector/correctorwidget.cpp
+@@ -129,6 +129,160 @@ void correctorwidget::on_mui_corregir_clicked()
+     delete cur;
+ 
+ 
++    
++    /// Calculo de asientos abiertos.
++    query.sprintf ( &quot;SELECT *, asiento.idasiento AS idas FROM asiento LEFT JOIN (SELECT count(idborrador) AS numborr, idasiento FROM borrador GROUP BY idasiento) AS borr ON borr.idasiento = asiento.idasiento LEFT JOIN (SELECT count(idapunte) AS numap, idasiento FROM apunte GROUP BY idasiento) AS apunt ON apunt.idasiento = asiento.idasiento WHERE apunt.numap = 0 OR numap ISNULL&quot; );
++    cur = mainCompany()-&gt;loadQuery ( query );
++    while ( !cur-&gt;eof() ) {
++        QString cadena;
++        cadena = &quot;&lt;img src='&quot; + g_confpr-&gt;value( CONF_PROGDATA ) + &quot;icons/messagebox_warning.png'&gt;&nbsp;&nbsp;&lt;B&gt;&lt;I&gt;Warning:&lt;/I&gt;&lt;/B&gt;&lt;BR&gt;El asiento num. &lt;B&gt;&quot; + cur-&gt;value( &quot;ordenasiento&quot; ) + &quot;&lt;/B&gt; con fecha &lt;B&gt;&quot; + cur-&gt;value( &quot;fecha&quot; ) + &quot;&lt;/B&gt; esta abierto, esto causa que el asiento no modifique el estado de las cuentas.&quot;;
++        agregarError ( cadena, &quot;asiento&quot;, &quot;idasiento=&quot; + cur-&gt;value( &quot;idas&quot; ) );
++        cur-&gt;nextRecord();
++    } // end while
++    delete cur;
++
++    /// Calculo de insercion en cuentas intermedias (con hijos).
++    /// --------------------------------------------------------
++    query.sprintf ( &quot;SELECT * FROM asiento, apunte, cuenta WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.idcuenta IN (SELECT padre FROM cuenta) AND apunte.idasiento = asiento.idasiento&quot; );
++    cur = mainCompany()-&gt;loadQuery ( query );
++    while ( !cur-&gt;eof() ) {
++        QString cadena;
++        cadena = &quot;&lt;img src='&quot; + g_confpr-&gt;value( CONF_PROGDATA ) + &quot;icons/messagebox_critical.png'&gt;&nbsp;&nbsp;&lt;B&gt;&lt;I&gt;Critial Error:&lt;/I&gt;&lt;/B&gt;&lt;BR&gt;El asiento num. &lt;B&gt;&quot; + cur-&gt;value( &quot;ordenasiento&quot; ) + &quot;&lt;/B&gt; tiene un apunte con la cuenta &lt;B&gt;&quot; + cur-&gt;value( &quot;codigo&quot; ) + &quot;&lt;/B&gt; no hija..&quot;;
++        agregarError ( cadena, &quot;asiento&quot;, &quot;idasiento=&quot; + cur-&gt;value( &quot;idasiento&quot; ) );
++        cur-&gt;nextRecord();
++    } // end while
++    delete cur;
++
++    /// Calculo de la ecuacion fundamental contable A+G = P+N+I
++    /// -------------------------------------------------------
++    query = &quot; SELECT asiento.idasiento AS idasiento, asiento.ordenasiento AS ordenasiento, ingresos, activos, gastos, netos, pasivos FROM asiento &quot;;
++    query += &quot; LEFT JOIN (SELECT idasiento, COALESCE(sum(apunte.debe),0) - COALESCE(sum(apunte.haber),0) AS ingresos FROM cuenta, apunte WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.tipocuenta = 4 GROUP BY idasiento) AS ing ON asiento.idasiento = ing.idasiento &quot;;
++    query += &quot; LEFT JOIN (SELECT idasiento, COALESCE(sum(apunte.debe),0) - COALESCE(sum(apunte.haber),0) AS gastos FROM cuenta, apunte WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.tipocuenta = 5 GROUP BY idasiento) AS gas ON asiento.idasiento = gas.idasiento &quot;;
++    query += &quot; LEFT JOIN (SELECT idasiento, COALESCE(sum(apunte.debe),0) - COALESCE(sum(apunte.haber),0) AS activos FROM cuenta, apunte WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.tipocuenta = 1 GROUP BY idasiento) AS act ON act.idasiento = asiento.idasiento &quot;;
++    query += &quot; LEFT JOIN (SELECT idasiento, COALESCE(sum(apunte.debe),0) - COALESCE(sum(apunte.haber),0) AS pasivos FROM cuenta, apunte WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.tipocuenta = 2 GROUP BY idasiento) AS pas ON pas.idasiento = asiento.idasiento &quot;;
++    query += &quot; LEFT JOIN (SELECT idasiento, COALESCE(sum(apunte.debe),0) - COALESCE(sum(apunte.haber),0) AS netos FROM cuenta, apunte WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.tipocuenta = 3 GROUP BY idasiento) AS net ON net.idasiento = asiento.idasiento &quot;;
++    query += &quot; ORDER BY ordenasiento&quot;;
++    cur = mainCompany()-&gt;loadQuery ( query );
++    while ( !cur-&gt;eof() ) {
++        float ing, gas, act, pas, net;
++        ing = cur-&gt;value( &quot;ingresos&quot; ).toFloat();
++        gas = cur-&gt;value( &quot;gastos&quot; ).toFloat();
++        act = cur-&gt;value( &quot;activos&quot; ).toFloat();
++        pas = cur-&gt;value( &quot;pasivos&quot; ).toFloat();
++        net = cur-&gt;value( &quot;netos&quot; ).toFloat();
++        if ( abs( act + gas + pas + net + ing ) &gt; 0.01 ) {
++            QString cadena;
++            cadena = &quot;&lt;img src='&quot; + g_confpr-&gt;value( CONF_PROGDATA ) + &quot;icons/messagebox_critical.png'&gt;&nbsp;&nbsp;&lt;B&gt;&lt;I&gt;Error critico:&lt;/I&gt;&lt;/B&gt;&lt;BR&gt;El asiento num. &lt;B&gt;&quot; + cur-&gt;value( &quot;ordenasiento&quot; ) + &quot;&lt;/B&gt; no cumple la ecuacion fundamental.&quot; + QString::number ( act ) + &quot; + &quot; + QString::number ( gas ) + &quot; = &quot; + QString::number ( pas ) + &quot; + &quot; + QString::number ( net ) + &quot; + &quot; + QString::number ( ing );
++            agregarError ( cadena, &quot;asiento&quot;, &quot;idasiento=&quot; + cur-&gt;value( &quot;idasiento&quot; ) );
++        } // end if
++        cur-&gt;nextRecord();
++    } // end while
++    delete cur;
++
++    /// Calculo de cuentas con insercion en el debe que lo tienen bloqueado.
++    /// --------------------------------------------------------------------
++    query.sprintf ( &quot;SELECT * FROM asiento, apunte, cuenta WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.nodebe AND apunte.idasiento = asiento.idasiento AND apunte.debe &lt;&gt; 0&quot; );
++    BlDebug::blDebug ( Q_FUNC_INFO, 0, QString(_(&quot;Consulta: '%1'&quot;)).arg(query) );
++    cur = mainCompany()-&gt;loadQuery ( query, &quot;hola1&quot; );
++    while ( !cur-&gt;eof() ) {
++        QString cadena;
++        cadena = &quot;&lt;img src='&quot; + g_confpr-&gt;value( CONF_PROGDATA ) + &quot;icons/messagebox_warning.png'&gt;&nbsp;&nbsp;&lt;B&gt;&lt;I&gt;Warning:&lt;/I&gt;&lt;/B&gt;&lt;BR&gt;El asiento num. &lt;B&gt;&quot; + cur-&gt;value( &quot;ordenasiento&quot; ) + &quot;&lt;/B&gt; tiene una insercion en el debe de la cuenta &lt;B&gt;&quot; + cur-&gt;value( &quot;codigo&quot; ) + &quot;&lt;/B&gt; que no permite inserciones en el debe de dicha cuenta.&quot;;
++        agregarError ( cadena, &quot;asiento&quot;, &quot;idasiento=&quot; + cur-&gt;value( &quot;idasiento&quot; ) );
++        cur-&gt;nextRecord();
++    } // end while
++    delete cur;
++
++    /// Calculo de cuentas con insercion en el haber que lo tienen bloqueado.
++    /// ---------------------------------------------------------------------
++    query.sprintf ( &quot;SELECT * FROM asiento, apunte, cuenta WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.nohaber AND apunte.idasiento = asiento.idasiento AND apunte.haber &lt;&gt; 0&quot; );
++    cur = mainCompany()-&gt;loadQuery ( query );
++    while ( !cur-&gt;eof() ) {
++        QString cadena;
++        cadena = &quot;&lt;img src='&quot; + g_confpr-&gt;value( CONF_PROGDATA ) + &quot;icons/messagebox_warning.png'&gt;&nbsp;&nbsp;&lt;B&gt;&lt;I&gt;Warning:&lt;/I&gt;&lt;/B&gt;&lt;BR&gt;El asiento num. &lt;B&gt;&quot; + cur-&gt;value( &quot;ordenasiento&quot; ) + &quot;&lt;/B&gt; tiene una insercion en el haber de la cuenta &lt;B&gt;&quot; + cur-&gt;value( &quot;codigo&quot; ) + &quot;&lt;/B&gt; que no permite inserciones en el haber de dicha cuenta.&quot;;
++        agregarError ( cadena, &quot;asiento&quot;, &quot;idasiento=&quot; + cur-&gt;value( &quot;idasiento&quot; ) );
++        cur-&gt;nextRecord();
++    } // end while
++    delete cur;
++
++    /// Calculo de amortizaciones con plazos expirados.
++    /// -----------------------------------------------
++    query = &quot;SELECT * FROM linamortizacion WHERE fechaprevista &lt; now() AND idasiento IS NULL&quot;;
++    cur = mainCompany()-&gt;loadQuery ( query );
++    while ( !cur-&gt;eof() ) {
++        QString cadena;
++        cadena = &quot;&lt;img src='&quot; + g_confpr-&gt;value( CONF_PROGDATA ) + &quot;icons/messagebox_warning.png'&gt;&nbsp;&nbsp;&lt;B&gt;&lt;I&gt;Warning:&lt;/I&gt;&lt;/B&gt;&lt;BR&gt;La amortizacion num. &lt;B&gt;&quot; + cur-&gt;value( &quot;idamortizacion&quot; ) + &quot;&lt;/B&gt; tiene un plazo expirado &lt;B&gt;&quot; + cur-&gt;value( &quot;fechaprevista&quot; ) + &quot;&lt;/B&gt;.&quot;;
++        agregarError ( cadena, &quot;amortizacion&quot;, &quot;idamortizacion=&quot; + cur-&gt;value( &quot;idamortizacion&quot; ) );
++        cur-&gt;nextRecord();
++    } // end while
++    delete cur;
++
++    /// Calculo de asientos con IVA y sin facturas asociadas.
++    /// -----------------------------------------------------
++    query = &quot;SELECT * FROM borrador, cuenta WHERE cuenta.idcuenta = borrador.idcuenta AND codigo LIKE '%47%' AND idasiento NOT IN (SELECT idborrador FROM registroiva)&quot;;
++    cur = mainCompany()-&gt;loadQuery ( query );
++    while ( !cur-&gt;eof() ) {
++        QString cadena;
++        cadena = &quot;&lt;img src='&quot; + g_confpr-&gt;value( CONF_PROGDATA ) + &quot;icons/messagebox_warning.png'&gt;&nbsp;&nbsp;&lt;B&gt;&lt;I&gt;Warning:&lt;/I&gt;&lt;/B&gt;&lt;BR&gt;El asiento num. &lt;B&gt;&quot; + cur-&gt;value( &quot;orden&quot; ) + &quot;&lt;/B&gt; tiene una insercion en cuentas de IVA (&quot; + cur-&gt;value( &quot;codigo&quot; ) + &quot;) sin que haya una factura asociada.&quot;;
++        agregarError ( cadena, &quot;asiento&quot;, &quot;idasiento=&quot; + cur-&gt;value( &quot;idasiento&quot; ) );
++        cur-&gt;nextRecord();
++    } // end while
++    delete cur;
++
++
++    /// Verifica la longitud de las cuentas.
++    /// -----------------------------------------------------
++    /// La longitud del codigo es valida si es mayor que 'x' e igual a 'x' + 'y'.
++    query = &quot;SELECT valor FROM configuracion WHERE nombre = 'CodCuenta'&quot;;
++    cur = mainCompany()-&gt;loadQuery ( query );
++
++    /// Longitud de x.
++    int longitudx = cur-&gt;value( &quot;valor&quot; ).replace(QString(&quot;y&quot;), QString(&quot;&quot;)).trimmed().length();
++    int totallongitud = cur-&gt;value( &quot;valor&quot; ).trimmed().length();
++
++    /// Busca errores.
++    query = &quot;SELECT * FROM cuenta WHERE char_length(codigo) &gt; '&quot; + QString::number(longitudx) + &quot;' AND char_length(codigo) != '&quot; + QString::number(totallongitud) + &quot;'&quot;;
++    BlDbRecordSet *cur2 = mainCompany()-&gt;loadQuery ( query );
++
++    while ( !cur2-&gt;eof() ) {
++	QString cadena;
++	cadena = &quot;&lt;img src='&quot; + g_confpr-&gt;value( CONF_PROGDATA ) + &quot;icons/messagebox_warning.png'&gt;&nbsp;&nbsp;&lt;B&gt;&lt;I&gt;Warning:&lt;/I&gt;&lt;/B&gt;&lt;BR&gt;El codigo de la cuenta &lt;B&gt;&quot; + cur2-&gt;value( &quot;codigo&quot; ) + &quot;&lt;/B&gt; no tiene la longitud adecuada.&quot;;
++	agregarError ( cadena, &quot;&quot;, &quot;&quot; );
++	cur2-&gt;nextRecord();
++    } // end while
++
++    delete cur2;
++    delete cur;
++
++    
++    /// Busca codigos de cuentas repetidos.
++    /// -----------------------------------------------------
++    query = &quot;SELECT codigo, COUNT(codigo) AS repeticiones FROM cuenta GROUP BY codigo HAVING ( COUNT(codigo) &gt; 1 )&quot;;
++    cur = mainCompany()-&gt;loadQuery ( query );
++
++    while ( !cur-&gt;eof() ) {
++	QString cadena;
++	QString cadena2;
++	
++	cadena = &quot;&lt;img src='&quot; + g_confpr-&gt;value( CONF_PROGDATA ) + &quot;icons/messagebox_warning.png'&gt;&nbsp;&nbsp;&lt;B&gt;&lt;I&gt;Warning:&lt;/I&gt;&lt;/B&gt;&lt;BR&gt;El codigo de la cuenta &lt;B&gt;&quot; + cur-&gt;value( &quot;codigo&quot; ) + &quot;&lt;/B&gt; esta repedido &lt;B&gt;&quot; + cur-&gt;value( &quot;repeticiones&quot; ) + &quot;&lt;/B&gt; veces:&lt;BR&gt;&quot;;
++	
++	
++	query = &quot;SELECT idcuenta, codigo, descripcion FROM cuenta WHERE codigo = '&quot; + cur-&gt;value( &quot;codigo&quot; ) + &quot;'&quot;;
++	cur2 = mainCompany()-&gt;loadQuery ( query );
++	while ( !cur2-&gt;eof() ) {
++	    /// Muestra las 3 primeras letras de la descripcion de la cuenta.
++	    cadena2 += &quot;&lt;tr&gt;&lt;td&gt;Cuenta: &lt;B&gt;'&quot; + cur2-&gt;value(&quot;descripcion&quot;).left(7) + &quot;...&lt;/B&gt;' &lt;a name='idcuenta' href='#idcuenta=&quot; + cur2-&gt;value( &quot;idcuenta&quot; ) + &quot;'&gt;corregir&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&quot;;
++	    cur2-&gt;nextRecord();
++	} // end while
++	delete cur2;
++		
++	//agregarError ( cadena, &quot;idcuenta&quot;, &quot;idcuenta=&quot; + cur-&gt;value( &quot;idcuenta&quot; ) );
++	textBrowser += &quot;&lt;HR&gt;&lt;table&gt;&lt;tr&gt;&lt;td&gt;&quot; + cadena + &quot;&lt;/td&gt;&lt;/tr&gt;&quot; + cadena2 + &quot;&lt;/table&gt;&quot;;
++
++	cur-&gt;nextRecord();
++    } // end while
++    
++    delete cur;    
++    
+     textBrowser += &quot;&lt;/BODY&gt;&lt;/HTML&gt;&quot;;
+     mui_browser-&gt;setHtml ( textBrowser );
+     
+diff --git a/bulmages/bulmafact/plugins/pluginbf_corrector/pluginbf_corrector.cpp b/bulmages/bulmafact/plugins/pluginbf_corrector/pluginbf_corrector.cpp
+index cb045a6..e670b0b 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_corrector/pluginbf_corrector.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_corrector/pluginbf_corrector.cpp
+@@ -27,7 +27,7 @@
+ #include &lt;QtGui/QIcon&gt;
+ #include &lt;QtWidgets/QApplication&gt;
+ #include &lt;QtCore/QObject&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ 
+ #include &quot;pluginbf_corrector.h&quot;
+ #include &quot;correctorwidget.h&quot;
+@@ -79,7 +79,7 @@ int entryPoint ( BfBulmaFact *bcont )
+     bcont-&gt;menuVentana-&gt;addSeparator();
+     bcont-&gt;menuVentana-&gt;addAction ( viewCorrector );
+ 
+-    QFile file ( g_confpr-&gt;value( CONF_DIR_USER ) + &quot;plugincorrectorbf_&quot; + emp-&gt;dbName() + &quot;.cfn&quot; );
++    BlFile file ( g_confpr-&gt;value( CONF_DIR_USER ) + &quot;plugincorrectorbf_&quot; + emp-&gt;dbName() + &quot;.cfn&quot; );
+     if ( file.exists () ) {
+         doc1-&gt;show();
+         viewCorrector-&gt;setChecked ( true );
+@@ -99,7 +99,7 @@ int entryPoint ( BfBulmaFact *bcont )
+ int BfBulmaFact_closeEvent ( BfBulmaFact *bcont )
+ {
+     BlMainCompany * emp = bcont-&gt;company();
+-    QFile file ( g_confpr-&gt;value( CONF_DIR_USER ) + &quot;plugincorrectorbf_&quot; + emp-&gt;dbName() + &quot;.cfn&quot; );
++    BlFile file ( g_confpr-&gt;value( CONF_DIR_USER ) + &quot;plugincorrectorbf_&quot; + emp-&gt;dbName() + &quot;.cfn&quot; );
+     if ( !viewCorrector-&gt;isChecked() ) {
+         file.remove();
+     } else {
+diff --git a/bulmages/bulmafact/plugins/pluginbf_correo/chosemailer.cpp b/bulmages/bulmafact/plugins/pluginbf_correo/chosemailer.cpp
+index fefac18..fae3bee 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_correo/chosemailer.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_correo/chosemailer.cpp
+@@ -20,7 +20,7 @@
+ 
+ #include &lt;QtCore/QDir&gt;
+ #include &quot;chosemailer.h&quot;
+-
++#include &quot;blfile.h&quot;
+ 
+ #ifndef Q_OS_WIN32
+     /// Detectamos las variables de entorno de usuario, para guardar la configuracion
+@@ -115,7 +115,7 @@ int ChoseMailer::GuardarConfig()
+      
+      /// Guardamos la configuracion, quiza sea interesante extraer este metodo hacia bulmalib posteriormente.
+     
+-    QFile file ( g_confpr-&gt;getLocalDir() + &quot;bulmafact.conf&quot; );
++    BlFile file ( g_confpr-&gt;getLocalDir() + &quot;bulmafact.conf&quot; );
+     if ( !file.open ( QIODevice::Append | QIODevice::Text ) )
+         return 1;
+     // end if
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cuadrante/cuadrante1view.cpp b/bulmages/bulmafact/plugins/pluginbf_cuadrante/cuadrante1view.cpp
+index becbc82..0b6dbd6 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cuadrante/cuadrante1view.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_cuadrante/cuadrante1view.cpp
+@@ -22,7 +22,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtGui/QCloseEvent&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+ #include &quot;cuadrante1view.h&quot;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cuadrante/cuadrantediarioview.cpp b/bulmages/bulmafact/plugins/pluginbf_cuadrante/cuadrantediarioview.cpp
+index 7ad77cd..1fd6725 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cuadrante/cuadrantediarioview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_cuadrante/cuadrantediarioview.cpp
+@@ -22,7 +22,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtGui/QCloseEvent&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtGui/QDrag&gt;
+ #include &lt;QtWidgets/QMenu&gt;
+@@ -408,7 +408,7 @@ void CuadranteDiarioView::on_mui_imprimir_clicked()
+     QString logousuario = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;logo.jpg&quot;;
+     blCopyFile(archivologo, logousuario);
+ 
+-    QFile file;
++    BlFile file;
+     file.setFileName ( archivod );
+     file.open ( QIODevice::ReadOnly );
+     QTextStream stream ( &amp;file );
+@@ -476,7 +476,7 @@ void CuadranteDiarioView::saveConfig()
+ {
+     BL_FUNC_DEBUG
+     QString aux = &quot;&quot;;
+-    QFile file ( g_confpr-&gt;value( CONF_DIR_USER ) + &quot;cuadrantedcfn.cfn&quot; );
++    BlFile file ( g_confpr-&gt;value( CONF_DIR_USER ) + &quot;cuadrantedcfn.cfn&quot; );
+     /// Guardado del orden y de configuraciones varias.
+     if ( file.open ( QIODevice::WriteOnly ) ) {
+         QTextStream stream ( &amp;file );
+@@ -503,7 +503,7 @@ void CuadranteDiarioView::saveConfig()
+ void CuadranteDiarioView::loadConfig()
+ {
+     BL_FUNC_DEBUG
+-    QFile file ( g_confpr-&gt;value( CONF_DIR_USER ) + &quot;cuadrantedcfn.cfn&quot; );
++    BlFile file ( g_confpr-&gt;value( CONF_DIR_USER ) + &quot;cuadrantedcfn.cfn&quot; );
+     QString line;
+     int error = 1;
+     if ( file.open ( QIODevice::ReadOnly ) ) {
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cuadrante/cuadranteview.cpp b/bulmages/bulmafact/plugins/pluginbf_cuadrante/cuadranteview.cpp
+index 3993b32..a6e7ce5 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cuadrante/cuadranteview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_cuadrante/cuadranteview.cpp
+@@ -22,7 +22,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtGui/QCloseEvent&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtGui/QDrag&gt;
+ #include &lt;QtWidgets/QMenu&gt;
+@@ -369,7 +369,7 @@ void CuadranteView::on_mui_imprimir_clicked()
+     QString logousuario = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;logo.jpg&quot;;
+     blCopyFile(archivologo, logousuario);
+ 
+-    QFile file;
++    BlFile file;
+     file.setFileName ( archivod );
+     file.open ( QIODevice::ReadOnly );
+     QTextStream stream ( &amp;file );
+@@ -437,7 +437,7 @@ void CuadranteView::saveConfig()
+ {
+     BL_FUNC_DEBUG
+     QString aux = &quot;&quot;;
+-    QFile file ( g_confpr-&gt;value( CONF_DIR_USER ) + &quot;cuadrantecfn.cfn&quot; );
++    BlFile file ( g_confpr-&gt;value( CONF_DIR_USER ) + &quot;cuadrantecfn.cfn&quot; );
+     /// Guardado del orden y de configuraciones varias.
+     if ( file.open ( QIODevice::WriteOnly ) ) {
+         QTextStream stream ( &amp;file );
+@@ -464,7 +464,7 @@ void CuadranteView::saveConfig()
+ void CuadranteView::loadConfig()
+ {
+     BL_FUNC_DEBUG
+-    QFile file ( g_confpr-&gt;value( CONF_DIR_USER ) + &quot;cuadrantecfn.cfn&quot; );
++    BlFile file ( g_confpr-&gt;value( CONF_DIR_USER ) + &quot;cuadrantecfn.cfn&quot; );
+     QString line;
+     int error = 1;
+     if ( file.open ( QIODevice::ReadOnly ) ) {
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cuenta/bccuentalistview.cpp b/bulmages/bulmafact/plugins/pluginbf_cuenta/bccuentalistview.cpp
+index d8b8a96..80eca9f 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cuenta/bccuentalistview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_cuenta/bccuentalistview.cpp
+@@ -19,7 +19,7 @@
+  ***************************************************************************/
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtWidgets/QLineEdit&gt;
+ #include &lt;QtWidgets/QCheckBox&gt;
+ #include &lt;QtWidgets/QComboBox&gt;
+@@ -250,7 +250,7 @@ void BcCuentaListView::on_mui_exportar_clicked()
+ {
+     /*
+         BL_FUNC_DEBUG
+-        QFile filexml ( QFileDialog::getSaveFileName ( this,
++        BlFile filexml ( QFileDialog::getSaveFileName ( this,
+                         _( &quot;Elija el archivo&quot; ),
+                         g_confpr-&gt;value( CONF_DIR_USER ),
+                         _( &quot;Clientes (*.xml)&quot; ) ) );
+@@ -278,7 +278,7 @@ void BcCuentaListView::on_mui_importar_clicked()
+ {
+     /*
+         BL_FUNC_DEBUG
+-        QFile filexml ( QFileDialog::getOpenFileName ( this,
++        BlFile filexml ( QFileDialog::getOpenFileName ( this,
+                         _( &quot;Elija el archivo&quot; ),
+                         g_confpr-&gt;value( CONF_DIR_USER ),
+                         _( &quot;Clientes (*.xml)&quot; ) ) );
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cuenta/bcplancontablelistview.cpp b/bulmages/bulmafact/plugins/pluginbf_cuenta/bcplancontablelistview.cpp
+index cc4a3a6..46d4dda 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cuenta/bcplancontablelistview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_cuenta/bcplancontablelistview.cpp
+@@ -31,6 +31,7 @@
+ #include &quot;bccuentaview.h&quot;
+ #include &quot;bfcompany.h&quot;
+ #include &quot;bcimages.h&quot;
++#include &quot;blfile.h&quot;
+ 
+ ///
+ /**
+@@ -565,7 +566,7 @@ void BcPlanContableListView::imprimir()
+     QString logousuario = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;logo.jpg&quot;;
+     blCopyFile(archivologo, logousuario);
+ 
+-    QFile file;
++    BlFile file;
+     file.setFileName ( archivod );
+     file.open ( QIODevice::ReadOnly );
+     QTextStream stream ( &amp;file );
+@@ -614,7 +615,7 @@ void BcPlanContableListView::imprimir()
+ void BcPlanContableListView::on_mui_exportar_clicked()
+ {
+     BL_FUNC_DEBUG
+-    QFile filexml ( QFileDialog::getSaveFileName ( this,
++    BlFile filexml ( QFileDialog::getSaveFileName ( this,
+                     _ ( &quot;Elija el archivo&quot; ),
+                     g_confpr-&gt;value( CONF_DIR_USER ),
+                     _ ( &quot;Plan contable (*.xml)&quot; ) ) );
+@@ -633,7 +634,7 @@ void BcPlanContableListView::on_mui_exportar_clicked()
+ void BcPlanContableListView::on_mui_importar_clicked()
+ {
+     BL_FUNC_DEBUG
+-    QFile filexml ( QFileDialog::getOpenFileName ( this,
++    BlFile filexml ( QFileDialog::getOpenFileName ( this,
+                     _ ( &quot;Elija el archivo&quot; ),
+                     &quot;/usr/share/bulmages&quot;,
+                     _ ( &quot;Plan contable (*.xml)&quot; ) ) );
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cuenta/pluginbf_cuenta.cpp b/bulmages/bulmafact/plugins/pluginbf_cuenta/pluginbf_cuenta.cpp
+index f7be70b..7673749 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cuenta/pluginbf_cuenta.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_cuenta/pluginbf_cuenta.cpp
+@@ -37,6 +37,8 @@
+ #include &quot;bccuentaview.h&quot;
+ #include &quot;bfsubform.h&quot;
+ #include &quot;blimportexport.h&quot;
++#include &quot;blfile.h&quot;
++
+ 
+ BfBulmaFact * g_pluginbf_cuenta=NULL;
+ 
+@@ -79,7 +81,7 @@ int entryPoint ( BlMainWindow *bcont )
+     BlDbRecordSet *cur = g_pluginbf_cuenta-&gt;company()-&gt;loadQuery(query);
+     if (cur-&gt;eof()) {
+       blMsgInfo(_(&quot;No ha importado un plan de cuentas. Deberia importarlo antes de usar el programa.&quot;));
+-      QFile filexml ( QFileDialog::getOpenFileName ( NULL,
++      BlFile filexml ( QFileDialog::getOpenFileName ( NULL,
+ 		      _ ( &quot;Elija el archivo&quot; ),
+ 		      g_confpr-&gt;value(CONF_DIR_OPENREPORTS),
+ 		      _ ( &quot;Plan contable (*.xml)&quot; ) ) );
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/pluginbf_cuentaresumen.cpp b/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/pluginbf_cuentaresumen.cpp
+index 3498c22..d40e714 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/pluginbf_cuentaresumen.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/pluginbf_cuentaresumen.cpp
+@@ -35,6 +35,7 @@
+ #include &quot;bfcompany.h&quot;
+ #include &quot;bfbulmafact.h&quot;
+ #include &quot;bldockwidget.h&quot;
++#include &quot;blfile.h&quot;
+ 
+ 
+ ResumCtaWidget *g_res;
+@@ -87,7 +88,7 @@ int entryPoint ( BfBulmaFact *bfact )
+     pPluginMenu -&gt;addSeparator();
+     pPluginMenu -&gt;addAction ( viewCorrector );
+ 
+-    QFile file ( g_confpr-&gt;value( CONF_DIR_USER ) + &quot;pluginresumcta_.cfn&quot; );
++    BlFile file ( g_confpr-&gt;value( CONF_DIR_USER ) + &quot;pluginresumcta_.cfn&quot; );
+     if ( file.exists () ) {
+         doc1-&gt;show();
+         viewCorrector-&gt;setChecked ( true );
+@@ -183,7 +184,7 @@ int BfSubForm_on_mui_list_cellChanged_post ( BfSubForm *subform )
+ **/
+ int BfBulmaFact_closeEvent ( BfBulmaFact *bfact )  {
+     BL_FUNC_DEBUG
+-    QFile file ( g_confpr-&gt;value( CONF_DIR_USER ) + &quot;pluginresumcta_.cfn&quot; );
++    BlFile file ( g_confpr-&gt;value( CONF_DIR_USER ) + &quot;pluginresumcta_.cfn&quot; );
+     if ( !viewCorrector-&gt;isChecked() ) {
+         file.remove();
+     } else {
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cuentasanuales2ods/pluginbc_cuentasanuales2ods.cpp b/bulmages/bulmafact/plugins/pluginbf_cuentasanuales2ods/pluginbc_cuentasanuales2ods.cpp
+index 5603888..8f33ed1 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cuentasanuales2ods/pluginbc_cuentasanuales2ods.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_cuentasanuales2ods/pluginbc_cuentasanuales2ods.cpp
+@@ -380,7 +380,7 @@ void PluginBc_CuentasAnuales2ODS::balanceSituacionODS ( CAnuales tipus )
+     cadena = &quot;rm &quot; + archivod;
+     system ( cadena.toLatin1() );
+ 
+-    QFile file ( archivod );
++    BlFile file ( archivod );
+     if ( file.open ( QIODevice::WriteOnly ) ) {
+         QTextStream stream ( &amp;file );
+         stream.setCodec ( &quot;UTF-8&quot; );
+diff --git a/bulmages/bulmafact/plugins/pluginbf_diario/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_diario/CMakeLists.txt
+index 6f3fc11..594626c 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_diario/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_diario/CMakeLists.txt
+@@ -111,4 +111,7 @@ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.en DESTINATION share/bulmages/
+ set(plugin_STR ${plugin_SRC} ${plugin_MOC_SRCS}
+    ${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
+ 
++install(DIRECTORY openreports/ 
++      DESTINATION share/bulmages/openreports
++      PATTERN &quot;.svn&quot; EXCLUDE)
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_diario/README.es b/bulmages/bulmafact/plugins/pluginbf_diario/README.es
+index c7d3d40..9c2bdb0 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_diario/README.es
++++ b/bulmages/bulmafact/plugins/pluginbf_diario/README.es
+@@ -22,7 +22,7 @@ Dependencias: libpluginbf_factcont;
+ 
+ Incompatibles:
+ 
+-Reports: balance.rml
++Reports: diario.rml
+ 
+ Categorias: Contabilidad general;Experimentales;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_diario/bcdiarioprintview.cpp b/bulmages/bulmafact/plugins/pluginbf_diario/bcdiarioprintview.cpp
+index 9fa1469..c00ffe0 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_diario/bcdiarioprintview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_diario/bcdiarioprintview.cpp
+@@ -28,6 +28,7 @@
+ #include &quot;bfcompany.h&quot;
+ #include &quot;pluginbf_diario.h&quot;
+ #include &quot;bcdiarioview.h&quot;
++#include &quot;blfile.h&quot;
+ 
+ 
+ 
+@@ -169,13 +170,13 @@ void BcDiarioPrintView::presentar ( const char *tipus )
+         QString archivohtml = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;diario.html&quot;;
+ 
+ 
+-        QFile filehtml;
++        BlFile filehtml;
+         filehtml.setFileName ( archivohtml );
+         filehtml.open ( QIODevice::WriteOnly );
+         QTextStream fitxersortidahtml ( &amp;filehtml );
+ 
+ 
+-        QFile filetxt;
++        BlFile filetxt;
+         filetxt.setFileName ( archivo );
+         filetxt.open ( QIODevice::WriteOnly );
+         QTextStream fitxersortidatxt ( &amp;filetxt );
+@@ -259,13 +260,13 @@ void BcDiarioPrintView::presentar ( const char *tipus )
+         QString archivohtml = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;diario.html&quot;;
+ 
+ 
+-        QFile filehtml;
++        BlFile filehtml;
+         filehtml.setFileName ( archivohtml );
+         filehtml.open ( QIODevice::WriteOnly );
+         QTextStream fitxersortidahtml ( &amp;filehtml );
+ 
+ 
+-        QFile filetxt;
++        BlFile filetxt;
+         filetxt.setFileName ( archivo );
+         filetxt.open ( QIODevice::WriteOnly );
+         QTextStream fitxersortidatxt ( &amp;filetxt );
+diff --git a/bulmages/bulmafact/plugins/pluginbf_diario/openreports/ca/diario.rml b/bulmages/bulmafact/plugins/pluginbf_diario/openreports/ca/diario.rml
+new file mode 100644
+index 0000000..0463edf
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_diario/openreports/ca/diario.rml
+@@ -0,0 +1,56 @@
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot; ?&gt;
++&lt;!DOCTYPE document SYSTEM &quot;rml_1_0.dtd&quot;&gt;
++
++&lt;document&gt;
++
++&lt;template allowSplitting=&quot;20&quot;&gt;
++	&lt;pageTemplate id=&quot;main&quot;&gt;
++		&lt;pageGraphics&gt;
++		&lt;!-- EL LOGO DE CABECERA --&gt;
++		&lt;image x=&quot;1.5cm&quot; y=&quot;26cm&quot; width=&quot;5cm&quot; file=&quot;logo.jpg&quot;/&gt;
++		&lt;setFont name=&quot;Helvetica-Bold&quot; size=&quot;12&quot;/&gt;
++		&lt;drawString x=&quot;1.7cm&quot; y=&quot;25cm&quot;&gt;Nombre fiscal de tu Empresa&lt;/drawString&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;22&quot;/&gt;
++		&lt;drawString x=&quot;15.3cm&quot; y=&quot;25cm&quot;&gt;Libro Diario&lt;/drawString&gt;
++		&lt;!-- EL PIE DE PAGINA --&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;8&quot;/&gt;
++		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
++		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
++		&lt;drawString x=&quot;10.5cm&quot; y=&quot;0.6cm&quot;&gt;&lt;pageNumber/&gt;&lt;/drawString&gt;
++		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
++		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
++		&lt;/pageGraphics&gt;
++		&lt;frame id=&quot;frame&quot; x1=&quot;1.5cm&quot; y1=&quot;1.2cm&quot; width=&quot;18cm&quot; height=&quot;23cm&quot;/&gt;
++		&lt;condPageBreak height=&quot;2cm&quot;/&gt;
++	&lt;/pageTemplate&gt;
++&lt;/template&gt;
++
++&lt;stylesheet&gt;
++	&lt;blockTableStyle id=&quot;tabla&quot;&gt;
++		&lt;!-- SE PONE TODA LA TABLA JUSTIFICADA A LA IZDA. --&gt;
++		&lt;blockAlignment value=&quot;LEFT&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;!-- LA PRIMERA CON CONTENIDOS CENTRADOS --&gt;
++		&lt;blockAlignment value=&quot;CENTER&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;!-- EL DEBE Y EL HABER (LAS 2 ULTIMAS COLS. DESDE FILA 2) ALINEADOS A LA DCHA. --&gt;
++		&lt;blockAlignment value=&quot;RIGHT&quot; start=&quot;-2,1&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;!-- COLOR DE FONDO Y DE LETRA PARA LOS TITULOS--&gt;
++		&lt;blockBackground colorName=&quot;lightgrey&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;blockTextColor colorName=&quot;black&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;!-- LINEA BAJO CADA UNA DE LAS FILAS, DESDE LA SEGUNDA --&gt;
++		&lt;lineStyle kind=&quot;LINEBELOW&quot; colorName=&quot;lightgrey&quot; thickness=&quot;0&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;!-- BORDE DE LA TABLA --&gt;
++		&lt;lineStyle kind=&quot;OUTLINE&quot; colorName=&quot;black&quot;  start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;!-- LETRA PARA LA FILA DE CABECERA--&gt;
++		&lt;blockFont name=&quot;Helvetica-Bold&quot; size=&quot;8&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;!-- LETRA PARA LOS CONTENIDOS DE LA TABLA --&gt;
++		&lt;blockFont name=&quot;Helvetica&quot; size=&quot;6&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;!-- JUSTIFICACION VERTICAL DE LAS CELDAS --&gt;
++		&lt;blockValign value=&quot;BOTTOM&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
++	&lt;/blockTableStyle&gt;
++&lt;/stylesheet&gt;
++
++&lt;story&gt;
++	[story]
++&lt;/story&gt;
++
++&lt;/document&gt;
+\ No newline at end of file
+diff --git a/bulmages/bulmafact/plugins/pluginbf_diario/openreports/en/diario.rml b/bulmages/bulmafact/plugins/pluginbf_diario/openreports/en/diario.rml
+new file mode 100644
+index 0000000..0463edf
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_diario/openreports/en/diario.rml
+@@ -0,0 +1,56 @@
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot; ?&gt;
++&lt;!DOCTYPE document SYSTEM &quot;rml_1_0.dtd&quot;&gt;
++
++&lt;document&gt;
++
++&lt;template allowSplitting=&quot;20&quot;&gt;
++	&lt;pageTemplate id=&quot;main&quot;&gt;
++		&lt;pageGraphics&gt;
++		&lt;!-- EL LOGO DE CABECERA --&gt;
++		&lt;image x=&quot;1.5cm&quot; y=&quot;26cm&quot; width=&quot;5cm&quot; file=&quot;logo.jpg&quot;/&gt;
++		&lt;setFont name=&quot;Helvetica-Bold&quot; size=&quot;12&quot;/&gt;
++		&lt;drawString x=&quot;1.7cm&quot; y=&quot;25cm&quot;&gt;Nombre fiscal de tu Empresa&lt;/drawString&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;22&quot;/&gt;
++		&lt;drawString x=&quot;15.3cm&quot; y=&quot;25cm&quot;&gt;Libro Diario&lt;/drawString&gt;
++		&lt;!-- EL PIE DE PAGINA --&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;8&quot;/&gt;
++		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
++		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
++		&lt;drawString x=&quot;10.5cm&quot; y=&quot;0.6cm&quot;&gt;&lt;pageNumber/&gt;&lt;/drawString&gt;
++		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
++		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
++		&lt;/pageGraphics&gt;
++		&lt;frame id=&quot;frame&quot; x1=&quot;1.5cm&quot; y1=&quot;1.2cm&quot; width=&quot;18cm&quot; height=&quot;23cm&quot;/&gt;
++		&lt;condPageBreak height=&quot;2cm&quot;/&gt;
++	&lt;/pageTemplate&gt;
++&lt;/template&gt;
++
++&lt;stylesheet&gt;
++	&lt;blockTableStyle id=&quot;tabla&quot;&gt;
++		&lt;!-- SE PONE TODA LA TABLA JUSTIFICADA A LA IZDA. --&gt;
++		&lt;blockAlignment value=&quot;LEFT&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;!-- LA PRIMERA CON CONTENIDOS CENTRADOS --&gt;
++		&lt;blockAlignment value=&quot;CENTER&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;!-- EL DEBE Y EL HABER (LAS 2 ULTIMAS COLS. DESDE FILA 2) ALINEADOS A LA DCHA. --&gt;
++		&lt;blockAlignment value=&quot;RIGHT&quot; start=&quot;-2,1&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;!-- COLOR DE FONDO Y DE LETRA PARA LOS TITULOS--&gt;
++		&lt;blockBackground colorName=&quot;lightgrey&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;blockTextColor colorName=&quot;black&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;!-- LINEA BAJO CADA UNA DE LAS FILAS, DESDE LA SEGUNDA --&gt;
++		&lt;lineStyle kind=&quot;LINEBELOW&quot; colorName=&quot;lightgrey&quot; thickness=&quot;0&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;!-- BORDE DE LA TABLA --&gt;
++		&lt;lineStyle kind=&quot;OUTLINE&quot; colorName=&quot;black&quot;  start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;!-- LETRA PARA LA FILA DE CABECERA--&gt;
++		&lt;blockFont name=&quot;Helvetica-Bold&quot; size=&quot;8&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;!-- LETRA PARA LOS CONTENIDOS DE LA TABLA --&gt;
++		&lt;blockFont name=&quot;Helvetica&quot; size=&quot;6&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;!-- JUSTIFICACION VERTICAL DE LAS CELDAS --&gt;
++		&lt;blockValign value=&quot;BOTTOM&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
++	&lt;/blockTableStyle&gt;
++&lt;/stylesheet&gt;
++
++&lt;story&gt;
++	[story]
++&lt;/story&gt;
++
++&lt;/document&gt;
+\ No newline at end of file
+diff --git a/bulmages/bulmafact/plugins/pluginbf_diario/openreports/es/diario.rml b/bulmages/bulmafact/plugins/pluginbf_diario/openreports/es/diario.rml
+new file mode 100644
+index 0000000..0463edf
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_diario/openreports/es/diario.rml
+@@ -0,0 +1,56 @@
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot; ?&gt;
++&lt;!DOCTYPE document SYSTEM &quot;rml_1_0.dtd&quot;&gt;
++
++&lt;document&gt;
++
++&lt;template allowSplitting=&quot;20&quot;&gt;
++	&lt;pageTemplate id=&quot;main&quot;&gt;
++		&lt;pageGraphics&gt;
++		&lt;!-- EL LOGO DE CABECERA --&gt;
++		&lt;image x=&quot;1.5cm&quot; y=&quot;26cm&quot; width=&quot;5cm&quot; file=&quot;logo.jpg&quot;/&gt;
++		&lt;setFont name=&quot;Helvetica-Bold&quot; size=&quot;12&quot;/&gt;
++		&lt;drawString x=&quot;1.7cm&quot; y=&quot;25cm&quot;&gt;Nombre fiscal de tu Empresa&lt;/drawString&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;22&quot;/&gt;
++		&lt;drawString x=&quot;15.3cm&quot; y=&quot;25cm&quot;&gt;Libro Diario&lt;/drawString&gt;
++		&lt;!-- EL PIE DE PAGINA --&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;8&quot;/&gt;
++		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
++		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
++		&lt;drawString x=&quot;10.5cm&quot; y=&quot;0.6cm&quot;&gt;&lt;pageNumber/&gt;&lt;/drawString&gt;
++		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
++		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
++		&lt;/pageGraphics&gt;
++		&lt;frame id=&quot;frame&quot; x1=&quot;1.5cm&quot; y1=&quot;1.2cm&quot; width=&quot;18cm&quot; height=&quot;23cm&quot;/&gt;
++		&lt;condPageBreak height=&quot;2cm&quot;/&gt;
++	&lt;/pageTemplate&gt;
++&lt;/template&gt;
++
++&lt;stylesheet&gt;
++	&lt;blockTableStyle id=&quot;tabla&quot;&gt;
++		&lt;!-- SE PONE TODA LA TABLA JUSTIFICADA A LA IZDA. --&gt;
++		&lt;blockAlignment value=&quot;LEFT&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;!-- LA PRIMERA CON CONTENIDOS CENTRADOS --&gt;
++		&lt;blockAlignment value=&quot;CENTER&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;!-- EL DEBE Y EL HABER (LAS 2 ULTIMAS COLS. DESDE FILA 2) ALINEADOS A LA DCHA. --&gt;
++		&lt;blockAlignment value=&quot;RIGHT&quot; start=&quot;-2,1&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;!-- COLOR DE FONDO Y DE LETRA PARA LOS TITULOS--&gt;
++		&lt;blockBackground colorName=&quot;lightgrey&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;blockTextColor colorName=&quot;black&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;!-- LINEA BAJO CADA UNA DE LAS FILAS, DESDE LA SEGUNDA --&gt;
++		&lt;lineStyle kind=&quot;LINEBELOW&quot; colorName=&quot;lightgrey&quot; thickness=&quot;0&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;!-- BORDE DE LA TABLA --&gt;
++		&lt;lineStyle kind=&quot;OUTLINE&quot; colorName=&quot;black&quot;  start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;!-- LETRA PARA LA FILA DE CABECERA--&gt;
++		&lt;blockFont name=&quot;Helvetica-Bold&quot; size=&quot;8&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;!-- LETRA PARA LOS CONTENIDOS DE LA TABLA --&gt;
++		&lt;blockFont name=&quot;Helvetica&quot; size=&quot;6&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;!-- JUSTIFICACION VERTICAL DE LAS CELDAS --&gt;
++		&lt;blockValign value=&quot;BOTTOM&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
++	&lt;/blockTableStyle&gt;
++&lt;/stylesheet&gt;
++
++&lt;story&gt;
++	[story]
++&lt;/story&gt;
++
++&lt;/document&gt;
+\ No newline at end of file
+diff --git a/bulmages/bulmafact/plugins/pluginbf_diario/openreports/fr/diario.rml b/bulmages/bulmafact/plugins/pluginbf_diario/openreports/fr/diario.rml
+new file mode 100644
+index 0000000..0463edf
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_diario/openreports/fr/diario.rml
+@@ -0,0 +1,56 @@
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot; ?&gt;
++&lt;!DOCTYPE document SYSTEM &quot;rml_1_0.dtd&quot;&gt;
++
++&lt;document&gt;
++
++&lt;template allowSplitting=&quot;20&quot;&gt;
++	&lt;pageTemplate id=&quot;main&quot;&gt;
++		&lt;pageGraphics&gt;
++		&lt;!-- EL LOGO DE CABECERA --&gt;
++		&lt;image x=&quot;1.5cm&quot; y=&quot;26cm&quot; width=&quot;5cm&quot; file=&quot;logo.jpg&quot;/&gt;
++		&lt;setFont name=&quot;Helvetica-Bold&quot; size=&quot;12&quot;/&gt;
++		&lt;drawString x=&quot;1.7cm&quot; y=&quot;25cm&quot;&gt;Nombre fiscal de tu Empresa&lt;/drawString&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;22&quot;/&gt;
++		&lt;drawString x=&quot;15.3cm&quot; y=&quot;25cm&quot;&gt;Libro Diario&lt;/drawString&gt;
++		&lt;!-- EL PIE DE PAGINA --&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;8&quot;/&gt;
++		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
++		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
++		&lt;drawString x=&quot;10.5cm&quot; y=&quot;0.6cm&quot;&gt;&lt;pageNumber/&gt;&lt;/drawString&gt;
++		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
++		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
++		&lt;/pageGraphics&gt;
++		&lt;frame id=&quot;frame&quot; x1=&quot;1.5cm&quot; y1=&quot;1.2cm&quot; width=&quot;18cm&quot; height=&quot;23cm&quot;/&gt;
++		&lt;condPageBreak height=&quot;2cm&quot;/&gt;
++	&lt;/pageTemplate&gt;
++&lt;/template&gt;
++
++&lt;stylesheet&gt;
++	&lt;blockTableStyle id=&quot;tabla&quot;&gt;
++		&lt;!-- SE PONE TODA LA TABLA JUSTIFICADA A LA IZDA. --&gt;
++		&lt;blockAlignment value=&quot;LEFT&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;!-- LA PRIMERA CON CONTENIDOS CENTRADOS --&gt;
++		&lt;blockAlignment value=&quot;CENTER&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;!-- EL DEBE Y EL HABER (LAS 2 ULTIMAS COLS. DESDE FILA 2) ALINEADOS A LA DCHA. --&gt;
++		&lt;blockAlignment value=&quot;RIGHT&quot; start=&quot;-2,1&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;!-- COLOR DE FONDO Y DE LETRA PARA LOS TITULOS--&gt;
++		&lt;blockBackground colorName=&quot;lightgrey&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;blockTextColor colorName=&quot;black&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;!-- LINEA BAJO CADA UNA DE LAS FILAS, DESDE LA SEGUNDA --&gt;
++		&lt;lineStyle kind=&quot;LINEBELOW&quot; colorName=&quot;lightgrey&quot; thickness=&quot;0&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;!-- BORDE DE LA TABLA --&gt;
++		&lt;lineStyle kind=&quot;OUTLINE&quot; colorName=&quot;black&quot;  start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;!-- LETRA PARA LA FILA DE CABECERA--&gt;
++		&lt;blockFont name=&quot;Helvetica-Bold&quot; size=&quot;8&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;!-- LETRA PARA LOS CONTENIDOS DE LA TABLA --&gt;
++		&lt;blockFont name=&quot;Helvetica&quot; size=&quot;6&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;!-- JUSTIFICACION VERTICAL DE LAS CELDAS --&gt;
++		&lt;blockValign value=&quot;BOTTOM&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
++	&lt;/blockTableStyle&gt;
++&lt;/stylesheet&gt;
++
++&lt;story&gt;
++	[story]
++&lt;/story&gt;
++
++&lt;/document&gt;
+\ No newline at end of file
+diff --git a/bulmages/bulmafact/plugins/pluginbf_efactura/efqtoolbutton.cpp b/bulmages/bulmafact/plugins/pluginbf_efactura/efqtoolbutton.cpp
+index 75e137b..f014dac 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_efactura/efqtoolbutton.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_efactura/efqtoolbutton.cpp
+@@ -26,7 +26,7 @@
+ #include &quot;blwidget.h&quot;
+ 
+ /// Para Exportacion de efacturas
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtXml/QXmlInputSource&gt;
+ #include &lt;QtXml/QXmlSimpleReader&gt;
+@@ -178,7 +178,7 @@ void EFQToolButton::exporta_factura_ubl()
+ 
+     QString query = &quot;&quot;;
+ 
+-    QFile *file_in  = new QFile ( _PLANTILLA_ );
++    BlFile *file_in  = new BlFile ( _PLANTILLA_ );
+ 
+     if ( !file_in-&gt;open ( QIODevice::ReadOnly | QIODevice::Text ) ) {
+ 	BlDebug::blDebug ( Q_FUNC_INFO, 0, _(&quot;Error al abir la plantilla de factura.&quot;) );
+@@ -235,7 +235,7 @@ void EFQToolButton::exporta_factura_ubl()
+     nombrearchivo += QString ( m_factura-&gt;dbValue ( &quot;idfactura&quot; ) );
+     nombrearchivo += &quot;.xml&quot;;
+ 
+-    QFile *file_out = new QFile ( nombrearchivo );
++    BlFile *file_out = new BlFile ( nombrearchivo );
+ 
+     if ( !file_out-&gt;open ( QIODevice::WriteOnly | QIODevice::Text ) ) {
+ 	BlDebug::blDebug ( Q_FUNC_INFO, 0, _(&quot;Error al crear el archivo de salida.&quot;) );
+@@ -428,7 +428,7 @@ void EFQToolButton::exporta_factura_ubl()
+ 
+     /// Parseamos fichero XML ---------------------------
+ 
+-    QFile *file = new QFile ( nombrearchivo );
++    BlFile *file = new BlFile ( nombrearchivo );
+ 
+     if ( !file-&gt;open ( QIODevice::ReadOnly | QIODevice::Text ) ) {
+ 	BlDebug::blDebug ( Q_FUNC_INFO, 0, QString(_(&quot;Error. No se pudo abrir el archivo '%1' para su parseo.&quot;)).arg(nombrearchivo) );
+diff --git a/bulmages/bulmafact/plugins/pluginbf_efactura/efqtoolbutton_importar.cpp b/bulmages/bulmafact/plugins/pluginbf_efactura/efqtoolbutton_importar.cpp
+index 4ce8589..8c30bff 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_efactura/efqtoolbutton_importar.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_efactura/efqtoolbutton_importar.cpp
+@@ -252,7 +252,7 @@ void EFQToolButtonImportar::importa_factura_ubl()
+     /// Declaramos una variable de tipo QDomDocument que usaremos
+     /// para cargar los datos del fichero en memoria
+     QDomDocument doc ( &quot;efactura&quot; );
+-    QFile file ( fichero );
++    BlFile file ( fichero );
+ 
+     if ( !file.open ( QIODevice::ReadOnly ) )
+         return;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_etiquetado/ticketqtoolbutton.cpp b/bulmages/bulmafact/plugins/pluginbf_etiquetado/ticketqtoolbutton.cpp
+index c2fe59c..b08b4ca 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_etiquetado/ticketqtoolbutton.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_etiquetado/ticketqtoolbutton.cpp
+@@ -30,6 +30,7 @@
+ #include &quot;blfixed.h&quot;
+ #include &quot;bfcompany.h&quot;
+ #include &quot;bldb.h&quot;
++#include &quot;blfile.h&quot;
+ 
+ 
+ ///
+@@ -83,7 +84,7 @@ void TicketQToolButton::click()
+     QString archivod = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;etiquetas.rml&quot;;
+     blCopyFile(archivo,archivod);
+ 
+-    QFile file;
++    BlFile file;
+     file.setFileName ( archivod );
+     file.open ( QIODevice::ReadOnly );
+     QTextStream stream ( &amp;file );
+diff --git a/bulmages/bulmafact/plugins/pluginbf_informecliente/informeqtoolbutton.cpp b/bulmages/bulmafact/plugins/pluginbf_informecliente/informeqtoolbutton.cpp
+index 4ba96e3..a65f0ac 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_informecliente/informeqtoolbutton.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_informecliente/informeqtoolbutton.cpp
+@@ -22,7 +22,7 @@
+ #include &lt;stdlib.h&gt;
+ 
+ #include &lt;QtWidgets/QWidget&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtCore/QString&gt;
+ #include &lt;QtWidgets/QFileDialog&gt;
+@@ -98,7 +98,7 @@ void InformeQToolButton::click()
+     QString logousuario = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;logo.jpg&quot;;
+     blCopyFile(archivologo, logousuario);
+ 
+-    QFile file;
++    BlFile file;
+     file.setFileName ( archivod );
+     file.open ( QIODevice::ReadOnly );
+     QTextStream stream ( &amp;file );
+@@ -397,7 +397,7 @@ void InformeArtQToolButton::click()
+     QString logousuario = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;logo.jpg&quot;;
+     blCopyFile(archivologo, logousuario);
+ 
+-    QFile file;
++    BlFile file;
+     file.setFileName ( archivod );
+     file.open ( QIODevice::ReadOnly );
+     QTextStream stream ( &amp;file );
+diff --git a/bulmages/bulmafact/plugins/pluginbf_informecliente2sxc/informeqtoolbutton.cpp b/bulmages/bulmafact/plugins/pluginbf_informecliente2sxc/informeqtoolbutton.cpp
+index d57024d..6849699 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_informecliente2sxc/informeqtoolbutton.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_informecliente2sxc/informeqtoolbutton.cpp
+@@ -22,7 +22,7 @@
+ #include &lt;stdlib.h&gt;
+ 
+ #include &lt;QtWidgets/QWidget&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtCore/QString&gt;
+ #include &lt;QtWidgets/QFileDialog&gt;
+@@ -216,7 +216,7 @@ void InformeQToolButton::click()
+     QString informeclientessxcperl = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;informeclientessxc.perl&quot;;
+     blRemove(informeclientessxcperl);
+     
+-    QFile file ( informeclientessxcperl );
++    BlFile file ( informeclientessxcperl );
+     if ( file.open ( QIODevice::WriteOnly ) ) {
+         QTextStream stream ( &amp;file );
+         stream &lt;&lt; fitxersortidatxt;
+@@ -456,7 +456,7 @@ void InformeProveedorQToolButton::click()
+     blRemove(informeproveedoressxcperl);
+     
+     
+-    QFile file ( informeproveedoressxcperl );
++    BlFile file ( informeproveedoressxcperl );
+     if ( file.open ( QIODevice::WriteOnly ) ) {
+         QTextStream stream ( &amp;file );
+         stream &lt;&lt; fitxersortidatxt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_informecliente2sxc/informeqtoolbutton1.cpp b/bulmages/bulmafact/plugins/pluginbf_informecliente2sxc/informeqtoolbutton1.cpp
+index dc67f81..3fcf79f 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_informecliente2sxc/informeqtoolbutton1.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_informecliente2sxc/informeqtoolbutton1.cpp
+@@ -22,7 +22,7 @@
+ #include &lt;stdlib.h&gt;
+ 
+ #include &lt;QtWidgets/QWidget&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtCore/QString&gt;
+ #include &lt;QtWidgets/QFileDialog&gt;
+@@ -215,7 +215,7 @@ void InformeQToolButton1::click()
+     QString informeclientessxcperl = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;informeclientessxc.perl&quot;;
+     blRemove(informeclientessxcperl);
+ 
+-    QFile file ( informeclientessxcperl );
++    BlFile file ( informeclientessxcperl );
+     if ( file.open ( QIODevice::WriteOnly ) ) {
+         QTextStream stream ( &amp;file );
+         stream &lt;&lt; fitxersortidatxt;
+@@ -456,7 +456,7 @@ void InformeProveedorQToolButton1::click()
+     QString informeproveedoressxcperl = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;informeproveedoressxc.perl&quot;;
+     blRemove(informeproveedoressxcperl);
+ 
+-    QFile file ( informeproveedoressxcperl );
++    BlFile file ( informeproveedoressxcperl );
+     if ( file.open ( QIODevice::WriteOnly ) ) {
+         QTextStream stream ( &amp;file );
+         stream &lt;&lt; fitxersortidatxt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_inventario/inventario.cpp b/bulmages/bulmafact/plugins/pluginbf_inventario/inventario.cpp
+index 6f544e8..24d587f 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_inventario/inventario.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_inventario/inventario.cpp
+@@ -18,7 +18,7 @@
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+  ***************************************************************************/
+ 
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+ #include &quot;inventario.h&quot;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_inventario/inventariosview.cpp b/bulmages/bulmafact/plugins/pluginbf_inventario/inventariosview.cpp
+index 0bc7b1f..6602bae 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_inventario/inventariosview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_inventario/inventariosview.cpp
+@@ -19,7 +19,7 @@
+  ***************************************************************************/
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+ #include &quot;inventariosview.h&quot;
+@@ -185,7 +185,7 @@ void InventariosView::on_mui_imprimir_clicked()
+     blCopyFile(archivologo, logousuario);
+ 
+ 
+-    QFile file;
++    BlFile file;
+     file.setFileName ( archivod );
+     file.open ( QIODevice::ReadOnly );
+     QTextStream stream ( &amp;file );
+diff --git a/bulmages/bulmafact/plugins/pluginbf_mayor/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_mayor/CMakeLists.txt
+index 860cd97..8842fa8 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_mayor/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_mayor/CMakeLists.txt
+@@ -136,3 +136,6 @@ FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmafact_en_US.css &quot;${VAR_CSS_en_US}&quot; )
+ 
+ install(DIRECTORY images DESTINATION share/bulmages PATTERN &quot;.svn&quot; EXCLUDE)
+ 
++install(DIRECTORY openreports/ 
++      DESTINATION share/bulmages/openreports
++      PATTERN &quot;.svn&quot; EXCLUDE)
+diff --git a/bulmages/bulmafact/plugins/pluginbf_mayor/README.es b/bulmages/bulmafact/plugins/pluginbf_mayor/README.es
+index 63d4920..0ecb35f 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_mayor/README.es
++++ b/bulmages/bulmafact/plugins/pluginbf_mayor/README.es
+@@ -22,7 +22,7 @@ Dependencias: libpluginbf_factcont;
+ 
+ Incompatibles:
+ 
+-Reports: 
++Reports: extracto.rml
+ 
+ Categorias: Contabilidad general;Experimentales;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractoview.cpp b/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractoview.cpp
+index 69a7bd1..f641056 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractoview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractoview.cpp
+@@ -37,6 +37,7 @@
+ #include &quot;bcextractosubform.h&quot;
+ #include &quot;blprogressbar.h&quot;
+ #include &quot;blfunctions.h&quot;
++#include &quot;blfile.h&quot;
+ 
+ /// Este archivo contiene la implementaci&oacute;n de la clase BcExtractoView que saca el
+ /// extracto por pantalla de una o varias cuentas determinadas. Esta clase es una de las
+@@ -694,7 +695,7 @@ void BcExtractoView::on_mui_cargarPunteos_clicked()
+                      _ ( &quot;Punteo (*.pto);;Todos los archivos (*)&quot; ) );
+ 
+         if ( !fn.isEmpty() ) {
+-            QFile file ( fn );
++            BlFile file ( fn );
+             if ( !file.open ( QIODevice::ReadOnly | QIODevice::Text ) ) {
+                 return;
+             } // end if
+@@ -932,7 +933,7 @@ void BcExtractoView::imprimir()
+     QString logousuario = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;logo.jpg&quot;;
+     blCopyFile(archivologo, logousuario);
+     
+-    QFile file;
++    BlFile file;
+     file.setFileName ( archivod );
+     file.open ( QIODevice::ReadOnly );
+     QTextStream stream ( &amp;file );
+diff --git a/bulmages/bulmafact/plugins/pluginbf_mayor/openreports/ca/extracto.rml b/bulmages/bulmafact/plugins/pluginbf_mayor/openreports/ca/extracto.rml
+new file mode 100644
+index 0000000..43b7eac
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_mayor/openreports/ca/extracto.rml
+@@ -0,0 +1,72 @@
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot; ?&gt;
++&lt;!DOCTYPE document SYSTEM &quot;rml_1_0.dtd&quot;&gt;
++&lt;document&gt;
++&lt;template pageSize=&quot;(21cm, 29.7cm)&quot; leftMargin=&quot;0cm&quot; rightMargin=&quot;0cm&quot; topMargin=&quot;2.0cm&quot; bottomMargin=&quot;2.0cm&quot; title=&quot;Extracto de Cuentas&quot; author=&quot;Tomeu Borras&quot; allowSplitting=&quot;20&quot;&gt;
++	&lt;pageTemplate id=&quot;main&quot;&gt;
++		&lt;pageGraphics&gt;
++		&lt;!-- EL LOGO DE CABECERA --&gt;
++		&lt;image x=&quot;2.5cm&quot; y=&quot;28.54cm&quot; width=&quot;2.5cm&quot; file=&quot;logo.jpg&quot;/&gt;
++
++		&lt;!-- EL DRAFT --&gt;
++			&lt;!--setFont name=&quot;Helvetica&quot; size=&quot;100&quot;/&gt;
++			&lt;fill color=&quot;(1,0.9,0.9)&quot;/&gt;
++			&lt;stroke color=&quot;(1,0.9,0.9)&quot;/&gt;
++			&lt;translate dx=&quot;15cm&quot; dy=&quot;-5.5cm&quot;/&gt;
++			&lt;rotate degrees=&quot;50&quot;/&gt;
++			&lt;drawString x=&quot;23mm&quot; y=&quot;15.7cm&quot;&gt;BORRADOR&lt;/drawString&gt;
++			&lt;lineMode width=&quot;4mm&quot;/&gt;
++			&lt;rect round=&quot;1cm&quot; x=&quot;18mm&quot; y=&quot;15cm&quot; width=&quot;21cm&quot; height=&quot;4cm&quot; fill=&quot;no&quot; stroke=&quot;yes&quot;/&gt;	
++		&lt;rotate degrees=&quot;-50&quot;/&gt;
++		&lt;translate dx=&quot;-15cm&quot; dy=&quot;5.5cm&quot;/--&gt;
++
++		&lt;!-- EL PIE DE PAGINA --&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;8&quot;/&gt;		
++		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
++		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
++		&lt;drawString x=&quot;7.3cm&quot; y=&quot;0.5cm&quot;&gt;-Iglues-&lt;/drawString&gt;
++
++		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
++		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;22&quot;/&gt;
++		&lt;drawString x=&quot;18cm&quot; y=&quot;27.5cm&quot;&gt;Extracto de Cuentas&lt;/drawString&gt;
++		&lt;/pageGraphics&gt;
++	&lt;frame id=&quot;column&quot; x1=&quot;1cm&quot; y1=&quot;1cm&quot; width=&quot;21cm&quot; height=&quot;26.5cm&quot;/&gt;
++	&lt;/pageTemplate&gt;
++&lt;/template&gt;
++&lt;stylesheet&gt;
++	&lt;blockTableStyle id=&quot;tabla&quot;&gt;
++		&lt;blockAlignment value=&quot;RIGHT&quot; start=&quot;2,1&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockAlignment value=&quot;CENTER&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;blockTextColor colorName=&quot;(0,0,0)&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockFont name=&quot;Helvetica-Bold&quot; size=&quot;7&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;blockFont name=&quot;Helvetica&quot; size=&quot;7&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockFont name=&quot;Helvetica&quot; size=&quot;7&quot; start=&quot;1,1&quot; stop=&quot;1,-1&quot;/&gt;
++		&lt;blockValign value=&quot;TOP&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockTopPadding length=&quot;0.03cm&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockBottomPadding length=&quot;0.1cm&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++	&lt;/blockTableStyle&gt;
++	&lt;blockTableStyle id=&quot;tablaextracto&quot;&gt;
++		&lt;blockAlignment value=&quot;RIGHT&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockAlignment value=&quot;LEFT&quot; start=&quot;0,0&quot; stop=&quot;2,-1&quot;/&gt;
++		&lt;blockAlignment value=&quot;LEFT&quot; start=&quot;6,0&quot; stop=&quot;6,-1&quot;/&gt;
++		&lt;blockBackground colorName=&quot;(0.7,0.7,0.7)&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;blockTextColor colorName=&quot;(0,0,0)&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;lineStyle kind=&quot;LINEBEFORE&quot; colorName=&quot;(0.5,0.5,0.5)&quot;  start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;lineStyle kind=&quot;LINEBELOW&quot; colorName=&quot;(0,0,0)&quot;  start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;lineStyle kind=&quot;OUTLINE&quot; colorName=&quot;black&quot;  start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockFont name=&quot;Helvetica&quot; size=&quot;6&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockFont name=&quot;Helvetica-Bold&quot; size=&quot;7&quot; start=&quot;0,-1&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockFont name=&quot;Helvetica-Bold&quot; size=&quot;7&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++
++		&lt;blockValign value=&quot;TOP&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockTopPadding length=&quot;-0.03cm&quot; start=&quot;0,1&quot; stop=&quot;-1,-2&quot;/&gt;
++		&lt;blockBottomPadding length=&quot;-0.15cm&quot; start=&quot;0,1&quot; stop=&quot;-1,-2&quot;/&gt;
++	&lt;/blockTableStyle&gt;
++
++&lt;/stylesheet&gt;
++
++&lt;story&gt;
++	[story]
++	&lt;spacer length=&quot;5mm&quot; width=&quot;1mm&quot;/&gt;		
++&lt;/story&gt;
++&lt;/document&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_mayor/openreports/en/extracto.rml b/bulmages/bulmafact/plugins/pluginbf_mayor/openreports/en/extracto.rml
+new file mode 100644
+index 0000000..43b7eac
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_mayor/openreports/en/extracto.rml
+@@ -0,0 +1,72 @@
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot; ?&gt;
++&lt;!DOCTYPE document SYSTEM &quot;rml_1_0.dtd&quot;&gt;
++&lt;document&gt;
++&lt;template pageSize=&quot;(21cm, 29.7cm)&quot; leftMargin=&quot;0cm&quot; rightMargin=&quot;0cm&quot; topMargin=&quot;2.0cm&quot; bottomMargin=&quot;2.0cm&quot; title=&quot;Extracto de Cuentas&quot; author=&quot;Tomeu Borras&quot; allowSplitting=&quot;20&quot;&gt;
++	&lt;pageTemplate id=&quot;main&quot;&gt;
++		&lt;pageGraphics&gt;
++		&lt;!-- EL LOGO DE CABECERA --&gt;
++		&lt;image x=&quot;2.5cm&quot; y=&quot;28.54cm&quot; width=&quot;2.5cm&quot; file=&quot;logo.jpg&quot;/&gt;
++
++		&lt;!-- EL DRAFT --&gt;
++			&lt;!--setFont name=&quot;Helvetica&quot; size=&quot;100&quot;/&gt;
++			&lt;fill color=&quot;(1,0.9,0.9)&quot;/&gt;
++			&lt;stroke color=&quot;(1,0.9,0.9)&quot;/&gt;
++			&lt;translate dx=&quot;15cm&quot; dy=&quot;-5.5cm&quot;/&gt;
++			&lt;rotate degrees=&quot;50&quot;/&gt;
++			&lt;drawString x=&quot;23mm&quot; y=&quot;15.7cm&quot;&gt;BORRADOR&lt;/drawString&gt;
++			&lt;lineMode width=&quot;4mm&quot;/&gt;
++			&lt;rect round=&quot;1cm&quot; x=&quot;18mm&quot; y=&quot;15cm&quot; width=&quot;21cm&quot; height=&quot;4cm&quot; fill=&quot;no&quot; stroke=&quot;yes&quot;/&gt;	
++		&lt;rotate degrees=&quot;-50&quot;/&gt;
++		&lt;translate dx=&quot;-15cm&quot; dy=&quot;5.5cm&quot;/--&gt;
++
++		&lt;!-- EL PIE DE PAGINA --&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;8&quot;/&gt;		
++		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
++		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
++		&lt;drawString x=&quot;7.3cm&quot; y=&quot;0.5cm&quot;&gt;-Iglues-&lt;/drawString&gt;
++
++		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
++		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;22&quot;/&gt;
++		&lt;drawString x=&quot;18cm&quot; y=&quot;27.5cm&quot;&gt;Extracto de Cuentas&lt;/drawString&gt;
++		&lt;/pageGraphics&gt;
++	&lt;frame id=&quot;column&quot; x1=&quot;1cm&quot; y1=&quot;1cm&quot; width=&quot;21cm&quot; height=&quot;26.5cm&quot;/&gt;
++	&lt;/pageTemplate&gt;
++&lt;/template&gt;
++&lt;stylesheet&gt;
++	&lt;blockTableStyle id=&quot;tabla&quot;&gt;
++		&lt;blockAlignment value=&quot;RIGHT&quot; start=&quot;2,1&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockAlignment value=&quot;CENTER&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;blockTextColor colorName=&quot;(0,0,0)&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockFont name=&quot;Helvetica-Bold&quot; size=&quot;7&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;blockFont name=&quot;Helvetica&quot; size=&quot;7&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockFont name=&quot;Helvetica&quot; size=&quot;7&quot; start=&quot;1,1&quot; stop=&quot;1,-1&quot;/&gt;
++		&lt;blockValign value=&quot;TOP&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockTopPadding length=&quot;0.03cm&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockBottomPadding length=&quot;0.1cm&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++	&lt;/blockTableStyle&gt;
++	&lt;blockTableStyle id=&quot;tablaextracto&quot;&gt;
++		&lt;blockAlignment value=&quot;RIGHT&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockAlignment value=&quot;LEFT&quot; start=&quot;0,0&quot; stop=&quot;2,-1&quot;/&gt;
++		&lt;blockAlignment value=&quot;LEFT&quot; start=&quot;6,0&quot; stop=&quot;6,-1&quot;/&gt;
++		&lt;blockBackground colorName=&quot;(0.7,0.7,0.7)&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;blockTextColor colorName=&quot;(0,0,0)&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;lineStyle kind=&quot;LINEBEFORE&quot; colorName=&quot;(0.5,0.5,0.5)&quot;  start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;lineStyle kind=&quot;LINEBELOW&quot; colorName=&quot;(0,0,0)&quot;  start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;lineStyle kind=&quot;OUTLINE&quot; colorName=&quot;black&quot;  start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockFont name=&quot;Helvetica&quot; size=&quot;6&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockFont name=&quot;Helvetica-Bold&quot; size=&quot;7&quot; start=&quot;0,-1&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockFont name=&quot;Helvetica-Bold&quot; size=&quot;7&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++
++		&lt;blockValign value=&quot;TOP&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockTopPadding length=&quot;-0.03cm&quot; start=&quot;0,1&quot; stop=&quot;-1,-2&quot;/&gt;
++		&lt;blockBottomPadding length=&quot;-0.15cm&quot; start=&quot;0,1&quot; stop=&quot;-1,-2&quot;/&gt;
++	&lt;/blockTableStyle&gt;
++
++&lt;/stylesheet&gt;
++
++&lt;story&gt;
++	[story]
++	&lt;spacer length=&quot;5mm&quot; width=&quot;1mm&quot;/&gt;		
++&lt;/story&gt;
++&lt;/document&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_mayor/openreports/es/extracto.rml b/bulmages/bulmafact/plugins/pluginbf_mayor/openreports/es/extracto.rml
+new file mode 100644
+index 0000000..43b7eac
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_mayor/openreports/es/extracto.rml
+@@ -0,0 +1,72 @@
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot; ?&gt;
++&lt;!DOCTYPE document SYSTEM &quot;rml_1_0.dtd&quot;&gt;
++&lt;document&gt;
++&lt;template pageSize=&quot;(21cm, 29.7cm)&quot; leftMargin=&quot;0cm&quot; rightMargin=&quot;0cm&quot; topMargin=&quot;2.0cm&quot; bottomMargin=&quot;2.0cm&quot; title=&quot;Extracto de Cuentas&quot; author=&quot;Tomeu Borras&quot; allowSplitting=&quot;20&quot;&gt;
++	&lt;pageTemplate id=&quot;main&quot;&gt;
++		&lt;pageGraphics&gt;
++		&lt;!-- EL LOGO DE CABECERA --&gt;
++		&lt;image x=&quot;2.5cm&quot; y=&quot;28.54cm&quot; width=&quot;2.5cm&quot; file=&quot;logo.jpg&quot;/&gt;
++
++		&lt;!-- EL DRAFT --&gt;
++			&lt;!--setFont name=&quot;Helvetica&quot; size=&quot;100&quot;/&gt;
++			&lt;fill color=&quot;(1,0.9,0.9)&quot;/&gt;
++			&lt;stroke color=&quot;(1,0.9,0.9)&quot;/&gt;
++			&lt;translate dx=&quot;15cm&quot; dy=&quot;-5.5cm&quot;/&gt;
++			&lt;rotate degrees=&quot;50&quot;/&gt;
++			&lt;drawString x=&quot;23mm&quot; y=&quot;15.7cm&quot;&gt;BORRADOR&lt;/drawString&gt;
++			&lt;lineMode width=&quot;4mm&quot;/&gt;
++			&lt;rect round=&quot;1cm&quot; x=&quot;18mm&quot; y=&quot;15cm&quot; width=&quot;21cm&quot; height=&quot;4cm&quot; fill=&quot;no&quot; stroke=&quot;yes&quot;/&gt;	
++		&lt;rotate degrees=&quot;-50&quot;/&gt;
++		&lt;translate dx=&quot;-15cm&quot; dy=&quot;5.5cm&quot;/--&gt;
++
++		&lt;!-- EL PIE DE PAGINA --&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;8&quot;/&gt;		
++		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
++		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
++		&lt;drawString x=&quot;7.3cm&quot; y=&quot;0.5cm&quot;&gt;-Iglues-&lt;/drawString&gt;
++
++		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
++		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;22&quot;/&gt;
++		&lt;drawString x=&quot;18cm&quot; y=&quot;27.5cm&quot;&gt;Extracto de Cuentas&lt;/drawString&gt;
++		&lt;/pageGraphics&gt;
++	&lt;frame id=&quot;column&quot; x1=&quot;1cm&quot; y1=&quot;1cm&quot; width=&quot;21cm&quot; height=&quot;26.5cm&quot;/&gt;
++	&lt;/pageTemplate&gt;
++&lt;/template&gt;
++&lt;stylesheet&gt;
++	&lt;blockTableStyle id=&quot;tabla&quot;&gt;
++		&lt;blockAlignment value=&quot;RIGHT&quot; start=&quot;2,1&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockAlignment value=&quot;CENTER&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;blockTextColor colorName=&quot;(0,0,0)&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockFont name=&quot;Helvetica-Bold&quot; size=&quot;7&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;blockFont name=&quot;Helvetica&quot; size=&quot;7&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockFont name=&quot;Helvetica&quot; size=&quot;7&quot; start=&quot;1,1&quot; stop=&quot;1,-1&quot;/&gt;
++		&lt;blockValign value=&quot;TOP&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockTopPadding length=&quot;0.03cm&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockBottomPadding length=&quot;0.1cm&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++	&lt;/blockTableStyle&gt;
++	&lt;blockTableStyle id=&quot;tablaextracto&quot;&gt;
++		&lt;blockAlignment value=&quot;RIGHT&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockAlignment value=&quot;LEFT&quot; start=&quot;0,0&quot; stop=&quot;2,-1&quot;/&gt;
++		&lt;blockAlignment value=&quot;LEFT&quot; start=&quot;6,0&quot; stop=&quot;6,-1&quot;/&gt;
++		&lt;blockBackground colorName=&quot;(0.7,0.7,0.7)&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;blockTextColor colorName=&quot;(0,0,0)&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;lineStyle kind=&quot;LINEBEFORE&quot; colorName=&quot;(0.5,0.5,0.5)&quot;  start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;lineStyle kind=&quot;LINEBELOW&quot; colorName=&quot;(0,0,0)&quot;  start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;lineStyle kind=&quot;OUTLINE&quot; colorName=&quot;black&quot;  start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockFont name=&quot;Helvetica&quot; size=&quot;6&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockFont name=&quot;Helvetica-Bold&quot; size=&quot;7&quot; start=&quot;0,-1&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockFont name=&quot;Helvetica-Bold&quot; size=&quot;7&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++
++		&lt;blockValign value=&quot;TOP&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockTopPadding length=&quot;-0.03cm&quot; start=&quot;0,1&quot; stop=&quot;-1,-2&quot;/&gt;
++		&lt;blockBottomPadding length=&quot;-0.15cm&quot; start=&quot;0,1&quot; stop=&quot;-1,-2&quot;/&gt;
++	&lt;/blockTableStyle&gt;
++
++&lt;/stylesheet&gt;
++
++&lt;story&gt;
++	[story]
++	&lt;spacer length=&quot;5mm&quot; width=&quot;1mm&quot;/&gt;		
++&lt;/story&gt;
++&lt;/document&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_mayor/openreports/fr/extracto.rml b/bulmages/bulmafact/plugins/pluginbf_mayor/openreports/fr/extracto.rml
+new file mode 100644
+index 0000000..43b7eac
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_mayor/openreports/fr/extracto.rml
+@@ -0,0 +1,72 @@
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot; ?&gt;
++&lt;!DOCTYPE document SYSTEM &quot;rml_1_0.dtd&quot;&gt;
++&lt;document&gt;
++&lt;template pageSize=&quot;(21cm, 29.7cm)&quot; leftMargin=&quot;0cm&quot; rightMargin=&quot;0cm&quot; topMargin=&quot;2.0cm&quot; bottomMargin=&quot;2.0cm&quot; title=&quot;Extracto de Cuentas&quot; author=&quot;Tomeu Borras&quot; allowSplitting=&quot;20&quot;&gt;
++	&lt;pageTemplate id=&quot;main&quot;&gt;
++		&lt;pageGraphics&gt;
++		&lt;!-- EL LOGO DE CABECERA --&gt;
++		&lt;image x=&quot;2.5cm&quot; y=&quot;28.54cm&quot; width=&quot;2.5cm&quot; file=&quot;logo.jpg&quot;/&gt;
++
++		&lt;!-- EL DRAFT --&gt;
++			&lt;!--setFont name=&quot;Helvetica&quot; size=&quot;100&quot;/&gt;
++			&lt;fill color=&quot;(1,0.9,0.9)&quot;/&gt;
++			&lt;stroke color=&quot;(1,0.9,0.9)&quot;/&gt;
++			&lt;translate dx=&quot;15cm&quot; dy=&quot;-5.5cm&quot;/&gt;
++			&lt;rotate degrees=&quot;50&quot;/&gt;
++			&lt;drawString x=&quot;23mm&quot; y=&quot;15.7cm&quot;&gt;BORRADOR&lt;/drawString&gt;
++			&lt;lineMode width=&quot;4mm&quot;/&gt;
++			&lt;rect round=&quot;1cm&quot; x=&quot;18mm&quot; y=&quot;15cm&quot; width=&quot;21cm&quot; height=&quot;4cm&quot; fill=&quot;no&quot; stroke=&quot;yes&quot;/&gt;	
++		&lt;rotate degrees=&quot;-50&quot;/&gt;
++		&lt;translate dx=&quot;-15cm&quot; dy=&quot;5.5cm&quot;/--&gt;
++
++		&lt;!-- EL PIE DE PAGINA --&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;8&quot;/&gt;		
++		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
++		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
++		&lt;drawString x=&quot;7.3cm&quot; y=&quot;0.5cm&quot;&gt;-Iglues-&lt;/drawString&gt;
++
++		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
++		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
++		&lt;setFont name=&quot;Helvetica&quot; size=&quot;22&quot;/&gt;
++		&lt;drawString x=&quot;18cm&quot; y=&quot;27.5cm&quot;&gt;Extracto de Cuentas&lt;/drawString&gt;
++		&lt;/pageGraphics&gt;
++	&lt;frame id=&quot;column&quot; x1=&quot;1cm&quot; y1=&quot;1cm&quot; width=&quot;21cm&quot; height=&quot;26.5cm&quot;/&gt;
++	&lt;/pageTemplate&gt;
++&lt;/template&gt;
++&lt;stylesheet&gt;
++	&lt;blockTableStyle id=&quot;tabla&quot;&gt;
++		&lt;blockAlignment value=&quot;RIGHT&quot; start=&quot;2,1&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockAlignment value=&quot;CENTER&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;blockTextColor colorName=&quot;(0,0,0)&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockFont name=&quot;Helvetica-Bold&quot; size=&quot;7&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;blockFont name=&quot;Helvetica&quot; size=&quot;7&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockFont name=&quot;Helvetica&quot; size=&quot;7&quot; start=&quot;1,1&quot; stop=&quot;1,-1&quot;/&gt;
++		&lt;blockValign value=&quot;TOP&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockTopPadding length=&quot;0.03cm&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockBottomPadding length=&quot;0.1cm&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++	&lt;/blockTableStyle&gt;
++	&lt;blockTableStyle id=&quot;tablaextracto&quot;&gt;
++		&lt;blockAlignment value=&quot;RIGHT&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockAlignment value=&quot;LEFT&quot; start=&quot;0,0&quot; stop=&quot;2,-1&quot;/&gt;
++		&lt;blockAlignment value=&quot;LEFT&quot; start=&quot;6,0&quot; stop=&quot;6,-1&quot;/&gt;
++		&lt;blockBackground colorName=&quot;(0.7,0.7,0.7)&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;blockTextColor colorName=&quot;(0,0,0)&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;lineStyle kind=&quot;LINEBEFORE&quot; colorName=&quot;(0.5,0.5,0.5)&quot;  start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;lineStyle kind=&quot;LINEBELOW&quot; colorName=&quot;(0,0,0)&quot;  start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++		&lt;lineStyle kind=&quot;OUTLINE&quot; colorName=&quot;black&quot;  start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockFont name=&quot;Helvetica&quot; size=&quot;6&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockFont name=&quot;Helvetica-Bold&quot; size=&quot;7&quot; start=&quot;0,-1&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockFont name=&quot;Helvetica-Bold&quot; size=&quot;7&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
++
++		&lt;blockValign value=&quot;TOP&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
++		&lt;blockTopPadding length=&quot;-0.03cm&quot; start=&quot;0,1&quot; stop=&quot;-1,-2&quot;/&gt;
++		&lt;blockBottomPadding length=&quot;-0.15cm&quot; start=&quot;0,1&quot; stop=&quot;-1,-2&quot;/&gt;
++	&lt;/blockTableStyle&gt;
++
++&lt;/stylesheet&gt;
++
++&lt;story&gt;
++	[story]
++	&lt;spacer length=&quot;5mm&quot; width=&quot;1mm&quot;/&gt;		
++&lt;/story&gt;
++&lt;/document&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/acontableview.cpp b/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/acontableview.cpp
+index efb93d8..b1ccf2c 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/acontableview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/acontableview.cpp
+@@ -22,7 +22,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtGui/QCloseEvent&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+ #include &quot;acontableview.h&quot;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/partidasview.cpp b/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/partidasview.cpp
+index 1f2511b..afb3db2 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/partidasview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/partidasview.cpp
+@@ -21,7 +21,7 @@
+ #include &lt;QtCore/QMap&gt;
+ #include &lt;QtWidgets/QLineEdit&gt;
+ #include &lt;QtWidgets/QMessageBox&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+ #include &quot;partidasview.h&quot;
+@@ -503,7 +503,7 @@ void PartidasView::on_mui_imprimir_clicked()
+     QString logousuario = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;logo.jpg&quot;;
+     blCopyFile(archivologo,logousuario);
+             
+-    QFile file;
++    BlFile file;
+     file.setFileName ( archivod );
+     file.open ( QIODevice::ReadOnly );
+     QTextStream stream ( &amp;file );
+diff --git a/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/presupuestocontableview.cpp b/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/presupuestocontableview.cpp
+index 8545f4f..e41df9e 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/presupuestocontableview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/presupuestocontableview.cpp
+@@ -23,7 +23,7 @@
+ #include &lt;QtCore/QObject&gt;
+ #include &lt;QtWidgets/QComboBox&gt;
+ #include &lt;QtWidgets/QToolButton&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtWidgets/QLayout&gt;
+ #include &lt;QtWidgets/QMessageBox&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_multiimprimir/impmultqtoolbutton.cpp b/bulmages/bulmafact/plugins/pluginbf_multiimprimir/impmultqtoolbutton.cpp
+index 0503a5c..544831d 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_multiimprimir/impmultqtoolbutton.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_multiimprimir/impmultqtoolbutton.cpp
+@@ -42,7 +42,7 @@
+ #include &quot;bfcompany.h&quot;
+ #include &quot;bldb.h&quot;
+ #include &quot;impmultqtoolbutton.h&quot;
+-
++#include &quot;blfile.h&quot;
+ 
+ ///
+ /**
+@@ -279,7 +279,7 @@ void ImpQToolButton::click()
+             QString logousuario = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;logo.jpg&quot;;
+             blCopyFile(archivologo,logousuario);
+             
+-            QFile file;
++            BlFile file;
+             file.setFileName ( archivod );
+             file.open ( QIODevice::ReadOnly );
+             QTextStream stream ( &amp;file );
+diff --git a/bulmages/bulmafact/plugins/pluginbf_profesor/profesoreslist.cpp b/bulmages/bulmafact/plugins/pluginbf_profesor/profesoreslist.cpp
+index 21b19f4..a76ba42 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_profesor/profesoreslist.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_profesor/profesoreslist.cpp
+@@ -23,7 +23,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtWidgets/QCheckBox&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtWidgets/QCheckBox&gt;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtWidgets/QMenu&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_profesor/profesorview.cpp b/bulmages/bulmafact/plugins/pluginbf_profesor/profesorview.cpp
+index 420f515..612e070 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_profesor/profesorview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_profesor/profesorview.cpp
+@@ -25,7 +25,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtGui/QCloseEvent&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+ #include &quot;profesorview.h&quot;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedor/providerslist.cpp b/bulmages/bulmafact/plugins/pluginbf_proveedor/providerslist.cpp
+index 4bbd1c9..9538dec 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedor/providerslist.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedor/providerslist.cpp
+@@ -21,7 +21,7 @@
+ #include &lt;QtWidgets/QLineEdit&gt;
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtWidgets/QCheckBox&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtWidgets/QFileDialog&gt;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+@@ -292,7 +292,7 @@ void ProveedorList::imprimir()
+ **/
+ void ProveedorList::on_mui_exportar_clicked()
+ {
+-    QFile filexml ( QFileDialog::getSaveFileName ( this,
++    BlFile filexml ( QFileDialog::getSaveFileName ( this,
+                     _ ( &quot;Seleccione el archivo&quot; ),
+                     g_confpr-&gt;value( CONF_DIR_USER ),
+                     _ ( &quot;Proveedores (*.xml)&quot; ) ) );
+@@ -311,7 +311,7 @@ void ProveedorList::on_mui_exportar_clicked()
+ **/
+ void ProveedorList::on_mui_importar_clicked()
+ {
+-    QFile filexml ( QFileDialog::getOpenFileName ( this,
++    BlFile filexml ( QFileDialog::getOpenFileName ( this,
+                     _ ( &quot;Elija el archivo&quot; ),
+                     g_confpr-&gt;value( CONF_DIR_USER ),
+                     _ ( &quot;Proveedores (*.xml)&quot; ) ) );
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/albaranesproveedor.cpp b/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/albaranesproveedor.cpp
+index 9f0362d..4e39c23 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/albaranesproveedor.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/albaranesproveedor.cpp
+@@ -20,7 +20,7 @@
+ 
+ #include &lt;QtWidgets/QCheckBox&gt;
+ #include &lt;QtWidgets/QCheckBox&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturasplist.cpp b/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturasplist.cpp
+index 8436b58..954882a 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturasplist.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturasplist.cpp
+@@ -19,7 +19,7 @@
+  ***************************************************************************/
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtCore/QString&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorpago/pagoslist.cpp b/bulmages/bulmafact/plugins/pluginbf_proveedorpago/pagoslist.cpp
+index f0f4736..e17bdfc 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorpago/pagoslist.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorpago/pagoslist.cpp
+@@ -20,7 +20,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtWidgets/QCheckBox&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtWidgets/QCheckBox&gt;
+ #include &lt;QtWidgets/QMenu&gt;
+ #include &lt;QtCore/QTextStream&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidosproveedorlist.cpp b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidosproveedorlist.cpp
+index 4840dfe..c070ef7 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidosproveedorlist.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidosproveedorlist.cpp
+@@ -21,7 +21,7 @@
+ #include &lt;stdio.h&gt;
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+ #include &quot;pedidosproveedorlist.h&quot;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proyectos/proyectoview.cpp b/bulmages/bulmafact/plugins/pluginbf_proyectos/proyectoview.cpp
+index 57d6952..dc20d5c 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proyectos/proyectoview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_proyectos/proyectoview.cpp
+@@ -20,7 +20,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtGui/QCloseEvent&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;fstream&gt;
+ 
+@@ -239,7 +239,7 @@ void ProyectoView::on_mui_geninforme_clicked()
+     cadena = &quot;rm &quot; + archivod;
+     system ( cadena.toLatin1() );
+ 
+-    QFile file ( archivod );
++    BlFile file ( archivod );
+     if ( file.open ( QIODevice::WriteOnly ) )  {
+         QTextStream stream ( &amp;file );
+         stream.setCodec ( &quot;UTF-8&quot; );
+diff --git a/bulmages/bulmafact/plugins/pluginbf_q19/q19qtoolbutton1.cpp b/bulmages/bulmafact/plugins/pluginbf_q19/q19qtoolbutton1.cpp
+index edec680..5524bf4 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_q19/q19qtoolbutton1.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_q19/q19qtoolbutton1.cpp
+@@ -95,7 +95,7 @@ void Q19QToolButton1::click()
+         QString fileName = QFileDialog::getSaveFileName ( this, _( &quot;Save File&quot; ),
+                            &quot;&quot;,
+                            _( &quot;*.q19&quot; ) );
+-        QFile file ( fileName );
++        BlFile file ( fileName );
+         if ( !file.open ( QIODevice::WriteOnly | QIODevice::Text ) )
+             return;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_q19/q19view.cpp b/bulmages/bulmafact/plugins/pluginbf_q19/q19view.cpp
+index df70a5e..c452c6e 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_q19/q19view.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_q19/q19view.cpp
+@@ -22,7 +22,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtGui/QCloseEvent&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtWidgets/QFileDialog&gt;
+ #include &lt;QtWidgets/QCalendarWidget&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_q19/q19writer.cpp b/bulmages/bulmafact/plugins/pluginbf_q19/q19writer.cpp
+index d11cdea..3b22709 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_q19/q19writer.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_q19/q19writer.cpp
+@@ -21,6 +21,7 @@
+ 
+ #include &lt;QtWidgets/QWidget&gt;
+ #include &quot;q19writer.h&quot;
++#include &quot;blfile.h&quot;
+ 
+ /// Necesarios para importacion de efactura
+ #include &lt;QtCore/QString&gt;
+@@ -98,7 +99,7 @@ void Q19Writer::genera ( BlDbRecordSet  *curcobro, QString fileName , QStringLis
+ 		bool bancUnic = ( curcobro-&gt;value( &quot;idbanco&quot;,0 ) == curcobro-&gt;value( &quot;idbanco&quot;,curcobro-&gt;numregistros()-1 ) );
+ 		BlDebug::blDebug ( &quot;bancUnic=&quot;,0,bancUnic?&quot;si&quot;:&quot;no&quot; );
+ 		QString idbanc ( &quot;&quot; );
+-		QFile file;
++		BlFile file;
+ 		QTextStream out ( &amp;file );
+ 		/*
+ 		   <A HREF="http://www.cam.es/1/empresas/servicios/pdf/c19.pdf">http://www.cam.es/1/empresas/servicios/pdf/c19.pdf</A>
+diff --git a/bulmages/bulmafact/plugins/pluginbf_recibo/emitirrecibosview.cpp b/bulmages/bulmafact/plugins/pluginbf_recibo/emitirrecibosview.cpp
+index 7e34301..a45515b 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_recibo/emitirrecibosview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_recibo/emitirrecibosview.cpp
+@@ -25,7 +25,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtGui/QCloseEvent&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+ #include &quot;emitirrecibosview.h&quot;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_recibo/reciboslist.cpp b/bulmages/bulmafact/plugins/pluginbf_recibo/reciboslist.cpp
+index 5efd3bb..c4596a2 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_recibo/reciboslist.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_recibo/reciboslist.cpp
+@@ -23,7 +23,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtWidgets/QCheckBox&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtWidgets/QCheckBox&gt;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtWidgets/QMenu&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_recibo/reciboview.cpp b/bulmages/bulmafact/plugins/pluginbf_recibo/reciboview.cpp
+index 7754a4a..1e630fd 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_recibo/reciboview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_recibo/reciboview.cpp
+@@ -22,7 +22,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtGui/QCloseEvent&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+ #include &quot;reciboview.h&quot;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_socio/sociolist.cpp b/bulmages/bulmafact/plugins/pluginbf_socio/sociolist.cpp
+index 21e13f3..8447847 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_socio/sociolist.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_socio/sociolist.cpp
+@@ -20,7 +20,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtWidgets/QCheckBox&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtWidgets/QCheckBox&gt;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtWidgets/QMenu&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_socio/socioview.cpp b/bulmages/bulmafact/plugins/pluginbf_socio/socioview.cpp
+index 6aca55f..43838bf 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_socio/socioview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_socio/socioview.cpp
+@@ -25,7 +25,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtGui/QCloseEvent&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+ #include &quot;socioview.h&quot;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_ticket/ticketqtoolbutton.cpp b/bulmages/bulmafact/plugins/pluginbf_ticket/ticketqtoolbutton.cpp
+index 56d275f..62ba105 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_ticket/ticketqtoolbutton.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_ticket/ticketqtoolbutton.cpp
+@@ -22,7 +22,7 @@
+ #include &lt;cstdio&gt;
+ #include &lt;cstdlib&gt;
+ 
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtCore/QString&gt;
+ #include &lt;QtWidgets/QFileDialog&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_trazabilidad/movimientosview.cpp b/bulmages/bulmafact/plugins/pluginbf_trazabilidad/movimientosview.cpp
+index b1ae11c..e778db1 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_trazabilidad/movimientosview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_trazabilidad/movimientosview.cpp
+@@ -18,7 +18,7 @@
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+  ***************************************************************************/
+ 
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_tutor/tutoreslist.cpp b/bulmages/bulmafact/plugins/pluginbf_tutor/tutoreslist.cpp
+index 69bc0d3..f860764 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_tutor/tutoreslist.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_tutor/tutoreslist.cpp
+@@ -20,7 +20,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtWidgets/QCheckBox&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtWidgets/QCheckBox&gt;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtWidgets/QMenu&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_tutor/tutorview.cpp b/bulmages/bulmafact/plugins/pluginbf_tutor/tutorview.cpp
+index 550c11e..7765c7a 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_tutor/tutorview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_tutor/tutorview.cpp
+@@ -25,7 +25,7 @@
+ 
+ #include &lt;QtWidgets/QMessageBox&gt;
+ #include &lt;QtGui/QCloseEvent&gt;
+-#include &lt;QtCore/QFile&gt;
++#include &quot;blfile.h&quot;
+ #include &lt;QtCore/QTextStream&gt;
+ 
+ #include &quot;tutorview.h&quot;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_z2z/z2zview.cpp b/bulmages/bulmafact/plugins/pluginbf_z2z/z2zview.cpp
+index affc9c1..ec291c3 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_z2z/z2zview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_z2z/z2zview.cpp
+@@ -34,7 +34,7 @@
+ #include &quot;bfcompany.h&quot;
+ #include &quot;blfunctions.h&quot;
+ #include &quot;blplugins.h&quot;
+-
++#include &quot;blfile.h&quot;
+ 
+ /** Inicializa la pantalla.
+     Inicializa todos los componentes y mete la pantalla en el workSpace.
+@@ -157,14 +157,14 @@ void Z2ZView::on_mui_traspasar_clicked()
+         db-&gt;inicializa ( g_confpr-&gt;value( CONF_FACT_ALT ) );
+         db-&gt;begin();
+ 
+-        QFile file ( g_confpr-&gt;value( CONF_DIR_USER ) + &quot;z2z_&quot; + mainCompany()-&gt;dbName() + &quot;_&quot; + QDateTime::currentDateTime().toString ( &quot;dd_MM_yyyy_hh_mm&quot; ) + &quot;.sql&quot; );
++        BlFile file ( g_confpr-&gt;value( CONF_DIR_USER ) + &quot;z2z_&quot; + mainCompany()-&gt;dbName() + &quot;_&quot; + QDateTime::currentDateTime().toString ( &quot;dd_MM_yyyy_hh_mm&quot; ) + &quot;.sql&quot; );
+         /// Guardado del orden y de configuraciones varias.
+         if ( ! file.open ( QIODevice::WriteOnly ) ) {
+             return;
+         } // end if
+         QTextStream stream ( &amp;file );
+ 
+-        QFile file1 ( g_confpr-&gt;value( CONF_DIR_USER ) + &quot;insert_z2z_&quot; + mainCompany()-&gt;dbName() + &quot;_&quot; + QDateTime::currentDateTime().toString ( &quot;dd_MM_yyyy_hh_mm&quot; ) + &quot;.sql&quot; );
++        BlFile file1 ( g_confpr-&gt;value( CONF_DIR_USER ) + &quot;insert_z2z_&quot; + mainCompany()-&gt;dbName() + &quot;_&quot; + QDateTime::currentDateTime().toString ( &quot;dd_MM_yyyy_hh_mm&quot; ) + &quot;.sql&quot; );
+         /// Guardado del orden y de configuraciones varias.
+         if ( ! file1.open ( QIODevice::WriteOnly ) ) {
+             file.close();
+@@ -172,7 +172,7 @@ void Z2ZView::on_mui_traspasar_clicked()
+         } // end if
+         QTextStream stream1 ( &amp;file1 );
+ 
+-        QFile file2 ( g_confpr-&gt;value( CONF_DIR_USER ) + &quot;delete_z2z_&quot; + mainCompany()-&gt;dbName() + &quot;_&quot; + QDateTime::currentDateTime().toString ( &quot;dd_MM_yyyy_hh_mm&quot; ) + &quot;.sql&quot; );
++        BlFile file2 ( g_confpr-&gt;value( CONF_DIR_USER ) + &quot;delete_z2z_&quot; + mainCompany()-&gt;dbName() + &quot;_&quot; + QDateTime::currentDateTime().toString ( &quot;dd_MM_yyyy_hh_mm&quot; ) + &quot;.sql&quot; );
+         /// Guardado del orden y de configuraciones varias.
+         if ( ! file2.open ( QIODevice::WriteOnly ) ) {
+             file.close();
+@@ -181,7 +181,7 @@ void Z2ZView::on_mui_traspasar_clicked()
+         } // end if
+         QTextStream stream2 ( &amp;file2 );
+ 
+-        QFile file3 ( g_confpr-&gt;value( CONF_DIR_USER ) + &quot;refs_z2z_&quot; + mainCompany()-&gt;dbName() + &quot;_&quot; + QDateTime::currentDateTime().toString ( &quot;dd_MM_yyyy_hh_mm&quot; ) + &quot;.sql&quot; );
++        BlFile file3 ( g_confpr-&gt;value( CONF_DIR_USER ) + &quot;refs_z2z_&quot; + mainCompany()-&gt;dbName() + &quot;_&quot; + QDateTime::currentDateTime().toString ( &quot;dd_MM_yyyy_hh_mm&quot; ) + &quot;.sql&quot; );
+         /// Guardado del orden y de configuraciones varias.
+         if ( ! file3.open ( QIODevice::WriteOnly ) ) {
+             file.close();
+diff --git a/bulmages/bulmafact/src/main.cxx b/bulmages/bulmafact/src/main.cxx
+index bd7c94a..358944f 100644
+--- a/bulmages/bulmafact/src/main.cxx
++++ b/bulmages/bulmafact/src/main.cxx
+@@ -76,7 +76,6 @@ int main ( int argc, char **argv )
+       initPlugins();
+ 
+       /// Definimos la codificaci&oacute;n a Unicode.
+-       //QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( &quot;UTF-8&quot; ) );
+        QTextCodec::setCodecForLocale ( QTextCodec::codecForName ( &quot;UTF-8&quot; ) );
+ 
+       g_theApp-&gt;setFont ( QFont ( g_confpr-&gt;value( CONF_FONTFAMILY_BULMAGES ).toUtf8().constData(), atoi ( g_confpr-&gt;value( CONF_FONTSIZE_BULMAGES ).toUtf8().constData() ) ) );
+@@ -109,11 +108,33 @@ int main ( int argc, char **argv )
+ 
+       /// Preguntar el nombre de usuario y/o contrase&ntilde;a en caso necesario.
+       login1 = new BlDbLoginDialog ( 0, &quot;&quot; );
+-      if ( !login1-&gt;authOK() || argParser-&gt;askPassword() ) {
++
++
+          if( !argParser-&gt;userName().isEmpty() ) {
+             login1-&gt;m_login-&gt;setText( argParser-&gt;userName() );
+-            login1-&gt;m_password-&gt;setFocus();
++	 } // end if
++	 
++         login1-&gt;m_password-&gt;setFocus();
++	    
++	 if (!argParser-&gt;host().isEmpty()) {
++	    login1-&gt;m_host-&gt;setText(argParser-&gt;host());
++	 } else {
++	    login1-&gt;m_host-&gt;setText(g_confpr-&gt;value(CONF_SERVIDOR));
++	 } // end if
++	    
++	 if (!argParser-&gt;port().isEmpty()) {
++	    login1-&gt;m_port-&gt;setText(argParser-&gt;port());
++	 } else {
++	    login1-&gt;m_port-&gt;setText(g_confpr-&gt;value(CONF_PUERTO));
+          } // end if
++         if (argParser-&gt;dbName().isEmpty()) {
++	    login1-&gt;m_db-&gt;setText(g_confpr-&gt;value(CONF_DBNAME));
++	 } else {
++	    login1-&gt;m_db-&gt;setText(argParser-&gt;dbName());
++	 } // end if
++	 
++      login1-&gt;validate();	 
++      if ( !login1-&gt;authOK() || argParser-&gt;askPassword() ) {
+          login1-&gt;exec();
+       } // end if
+       /// Si la autentificacion falla una segunda vez abortamos el programa.
+@@ -122,7 +143,7 @@ int main ( int argc, char **argv )
+       } // end if
+       delete login1;
+ 
+-      bges = new BfBulmaFact ( argParser-&gt;dbName() );
++      bges = new BfBulmaFact ( g_confpr-&gt;value(CONF_DBNAME) );
+       bges-&gt;hide();
+       g_main = bges;
+ 
+diff --git a/bulmages/bulmalib/src/CMakeLists.txt b/bulmages/bulmalib/src/CMakeLists.txt
+index 858595f..b5a9de0 100644
+--- a/bulmages/bulmalib/src/CMakeLists.txt
++++ b/bulmages/bulmalib/src/CMakeLists.txt
+@@ -77,6 +77,7 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
+ 			blescprinter.cpp
+ 			blcp850eurotextcodec.cpp
+ 			bluiloader.cpp
++			blfile.cpp
+ 			blaction.cpp)
+ 
+ set(bulmalib_MOCS	bldblogindialog.h
+@@ -112,6 +113,7 @@ set(bulmalib_MOCS	bldblogindialog.h
+ 			bltoolbutton.h
+ 			blbankedit.h
+ 			bluiloader.h
++			blfile.h
+ 			blaction.h)
+ 
+ 
+diff --git a/bulmages/bulmalib/src/blconfiguration.cpp b/bulmages/bulmalib/src/blconfiguration.cpp
+index 7c29dfb..2cd5809 100644
+--- a/bulmages/bulmalib/src/blconfiguration.cpp
++++ b/bulmages/bulmalib/src/blconfiguration.cpp
+@@ -257,6 +257,8 @@ QString BlConfiguration::name( int i )
+         return &quot;CONF_SERVIDOR&quot;;
+     if ( i == CONF_PUERTO )
+         return &quot;CONF_PUERTO&quot;;
++    if ( i == CONF_DBNAME )
++       return &quot;CONF_DBNAME&quot;;
+     if ( i == CONF_SPOOL )
+         return &quot;CONF_SPOOL&quot;;
+     if ( i == CONF_FLIP )
+diff --git a/bulmages/bulmalib/src/blconfiguration.h b/bulmages/bulmalib/src/blconfiguration.h
+index ca805cf..1ee6054 100644
+--- a/bulmages/bulmalib/src/blconfiguration.h
++++ b/bulmages/bulmalib/src/blconfiguration.h
+@@ -123,6 +123,7 @@
+ #define CONF_SERVIDOR                181
+ /// Indica por defecto que puerto tiene el servidor de bases de datos para conectar con el.
+ #define CONF_PUERTO                  182
++#define CONF_DBNAME                  183
+ 
+ /// Indica que visor de documentos PDF va a utilizar el programa.
+ #define CONF_SPOOL					 191
+diff --git a/bulmages/bulmalib/src/bldblogindialog.cpp b/bulmages/bulmalib/src/bldblogindialog.cpp
+index 97a1469..4467caf 100644
+--- a/bulmages/bulmalib/src/bldblogindialog.cpp
++++ b/bulmages/bulmalib/src/bldblogindialog.cpp
+@@ -51,8 +51,7 @@ BlDbLoginDialog::BlDbLoginDialog ( QWidget *parent, const char *name ) : QDialog
+     grpAuthError-&gt;setVisible ( true );
+     QObject::connect ( pbValidar, SIGNAL ( clicked() ), this, SLOT ( validate() ) );
+     QObject::connect ( pbCerrar, SIGNAL ( clicked() ), this, SLOT ( close() ) );
+-    validate();
+-    
++//    validate();  
+ }
+ 
+ 
+@@ -78,22 +77,20 @@ void BlDbLoginDialog::validate()
+ 
+     g_confpr-&gt;setValue ( CONF_LOGIN_USER, m_login-&gt;text() );
+     g_confpr-&gt;setValue ( CONF_PASSWORD_USER, m_password-&gt;text() );
++    g_confpr-&gt;setValue ( CONF_SERVIDOR, m_host-&gt;text() );
++    g_confpr-&gt;setValue ( CONF_PUERTO, m_port-&gt;text() );
++    g_confpr-&gt;setValue ( CONF_DBNAME, m_db-&gt;text());
+ 
+     /// Comprobamos si es un usuario v&aacute;lido.
+     metabase = new BlPostgreSqlClient();
+-    if ( !metabase-&gt;inicializa ( &quot;bulmafact&quot; ) ) {
++    if ( !metabase-&gt;inicializa (m_db-&gt;text() ) ) {
+         m_authOK = true;
++    } else {
++	g_confpr-&gt;setValue( CONF_DBNAME, &quot;&quot;); // Vaciamos el DBNAME para que saque el selector.
+     } // end if
+     delete metabase;
+     if ( !m_authOK ) {
+         metabase = new BlPostgreSqlClient();
+-        if ( !metabase-&gt;inicializa ( &quot;bulmacont&quot; ) ) {
+-            m_authOK = true;
+-        } // end if
+-        delete metabase;
+-    } // end if
+-    if ( !m_authOK ) {
+-        metabase = new BlPostgreSqlClient();
+         if ( !metabase-&gt;inicializa ( &quot;template1&quot; ) ) {
+             m_authOK = true;
+         } // end if
+diff --git a/bulmages/bulmalib/src/bldblogindialogbase.ui b/bulmages/bulmalib/src/bldblogindialogbase.ui
+index c817717..a34bd19 100644
+--- a/bulmages/bulmalib/src/bldblogindialogbase.ui
++++ b/bulmages/bulmalib/src/bldblogindialogbase.ui
+@@ -1,59 +1,55 @@
+-&lt;ui version=&quot;4.0&quot; &gt;
+- &lt;author&gt;&lt;/author&gt;
+- &lt;comment&gt;&lt;/comment&gt;
+- &lt;exportmacro&gt;&lt;/exportmacro&gt;
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
++&lt;ui version=&quot;4.0&quot;&gt;
+  &lt;class&gt;BlDbLoginDialogBase&lt;/class&gt;
+- &lt;widget class=&quot;QDialog&quot; name=&quot;BlDbLoginDialogBase&quot; &gt;
+-  &lt;property name=&quot;geometry&quot; &gt;
++ &lt;widget class=&quot;QDialog&quot; name=&quot;BlDbLoginDialogBase&quot;&gt;
++  &lt;property name=&quot;geometry&quot;&gt;
+    &lt;rect&gt;
+     &lt;x&gt;0&lt;/x&gt;
+     &lt;y&gt;0&lt;/y&gt;
+-    &lt;width&gt;355&lt;/width&gt;
+-    &lt;height&gt;197&lt;/height&gt;
++    &lt;width&gt;507&lt;/width&gt;
++    &lt;height&gt;432&lt;/height&gt;
+    &lt;/rect&gt;
+   &lt;/property&gt;
+-  &lt;property name=&quot;sizePolicy&quot; &gt;
+-   &lt;sizepolicy&gt;
+-    &lt;hsizetype&gt;0&lt;/hsizetype&gt;
+-    &lt;vsizetype&gt;0&lt;/vsizetype&gt;
++  &lt;property name=&quot;sizePolicy&quot;&gt;
++   &lt;sizepolicy hsizetype=&quot;Fixed&quot; vsizetype=&quot;Fixed&quot;&gt;
+     &lt;horstretch&gt;0&lt;/horstretch&gt;
+     &lt;verstretch&gt;0&lt;/verstretch&gt;
+    &lt;/sizepolicy&gt;
+   &lt;/property&gt;
+-  &lt;property name=&quot;windowTitle&quot; &gt;
++  &lt;property name=&quot;windowTitle&quot;&gt;
+    &lt;string&gt;Lanzador Bulmages&lt;/string&gt;
+   &lt;/property&gt;
+-  &lt;layout class=&quot;QVBoxLayout&quot; &gt;
+-   &lt;property name=&quot;margin&quot; &gt;
++  &lt;layout class=&quot;QVBoxLayout&quot;&gt;
++   &lt;property name=&quot;spacing&quot;&gt;
+     &lt;number&gt;5&lt;/number&gt;
+    &lt;/property&gt;
+-   &lt;property name=&quot;spacing&quot; &gt;
++   &lt;property name=&quot;margin&quot;&gt;
+     &lt;number&gt;5&lt;/number&gt;
+    &lt;/property&gt;
+    &lt;item&gt;
+-    &lt;widget class=&quot;QGroupBox&quot; name=&quot;grpAuthError&quot; &gt;
+-     &lt;property name=&quot;title&quot; &gt;
++    &lt;widget class=&quot;QGroupBox&quot; name=&quot;grpAuthError&quot;&gt;
++     &lt;property name=&quot;title&quot;&gt;
+       &lt;string&gt;Mensaje de error:&lt;/string&gt;
+      &lt;/property&gt;
+-     &lt;layout class=&quot;QHBoxLayout&quot; &gt;
+-      &lt;property name=&quot;margin&quot; &gt;
++     &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++      &lt;property name=&quot;spacing&quot;&gt;
+        &lt;number&gt;5&lt;/number&gt;
+       &lt;/property&gt;
+-      &lt;property name=&quot;spacing&quot; &gt;
++      &lt;property name=&quot;margin&quot;&gt;
+        &lt;number&gt;5&lt;/number&gt;
+       &lt;/property&gt;
+       &lt;item&gt;
+-       &lt;widget class=&quot;QLabel&quot; name=&quot;lblAuthError&quot; &gt;
+-        &lt;property name=&quot;enabled&quot; &gt;
++       &lt;widget class=&quot;QLabel&quot; name=&quot;lblAuthError&quot;&gt;
++        &lt;property name=&quot;enabled&quot;&gt;
+          &lt;bool&gt;true&lt;/bool&gt;
+         &lt;/property&gt;
+-        &lt;property name=&quot;text&quot; &gt;
++        &lt;property name=&quot;text&quot;&gt;
+          &lt;string/&gt;
+         &lt;/property&gt;
+-        &lt;property name=&quot;textFormat&quot; &gt;
++        &lt;property name=&quot;textFormat&quot;&gt;
+          &lt;enum&gt;Qt::PlainText&lt;/enum&gt;
+         &lt;/property&gt;
+-        &lt;property name=&quot;alignment&quot; &gt;
++        &lt;property name=&quot;alignment&quot;&gt;
+          &lt;set&gt;Qt::AlignCenter&lt;/set&gt;
+         &lt;/property&gt;
+        &lt;/widget&gt;
+@@ -62,56 +58,95 @@
+     &lt;/widget&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+-    &lt;widget class=&quot;QGroupBox&quot; name=&quot;groupBox&quot; &gt;
+-     &lt;property name=&quot;title&quot; &gt;
++    &lt;widget class=&quot;QGroupBox&quot; name=&quot;groupBox&quot;&gt;
++     &lt;property name=&quot;title&quot;&gt;
+       &lt;string&gt;Registro de entrada:&lt;/string&gt;
+      &lt;/property&gt;
+-     &lt;layout class=&quot;QGridLayout&quot; &gt;
+-      &lt;property name=&quot;margin&quot; &gt;
++     &lt;layout class=&quot;QGridLayout&quot;&gt;
++      &lt;property name=&quot;margin&quot;&gt;
+        &lt;number&gt;5&lt;/number&gt;
+       &lt;/property&gt;
+-      &lt;property name=&quot;spacing&quot; &gt;
++      &lt;property name=&quot;spacing&quot;&gt;
+        &lt;number&gt;5&lt;/number&gt;
+       &lt;/property&gt;
+-      &lt;item row=&quot;0&quot; column=&quot;1&quot; &gt;
+-       &lt;widget class=&quot;QLineEdit&quot; name=&quot;m_login&quot; /&gt;
++      &lt;item row=&quot;0&quot; column=&quot;0&quot;&gt;
++       &lt;widget class=&quot;QLabel&quot; name=&quot;label&quot;&gt;
++        &lt;property name=&quot;text&quot;&gt;
++         &lt;string&gt;Servidor:&lt;/string&gt;
++        &lt;/property&gt;
++        &lt;property name=&quot;alignment&quot;&gt;
++         &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
++        &lt;/property&gt;
++       &lt;/widget&gt;
++      &lt;/item&gt;
++      &lt;item row=&quot;1&quot; column=&quot;0&quot;&gt;
++       &lt;widget class=&quot;QLabel&quot; name=&quot;Puerto&quot;&gt;
++        &lt;property name=&quot;text&quot;&gt;
++         &lt;string&gt;Puerto:&lt;/string&gt;
++        &lt;/property&gt;
++        &lt;property name=&quot;alignment&quot;&gt;
++         &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
++        &lt;/property&gt;
++       &lt;/widget&gt;
++      &lt;/item&gt;
++      &lt;item row=&quot;0&quot; column=&quot;1&quot;&gt;
++       &lt;widget class=&quot;QLineEdit&quot; name=&quot;m_host&quot;/&gt;
++      &lt;/item&gt;
++      &lt;item row=&quot;1&quot; column=&quot;1&quot;&gt;
++       &lt;widget class=&quot;QLineEdit&quot; name=&quot;m_port&quot;/&gt;
+       &lt;/item&gt;
+-      &lt;item row=&quot;0&quot; column=&quot;0&quot; &gt;
+-       &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1&quot; &gt;
+-        &lt;property name=&quot;text&quot; &gt;
++      &lt;item row=&quot;2&quot; column=&quot;0&quot;&gt;
++       &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1&quot;&gt;
++        &lt;property name=&quot;text&quot;&gt;
+          &lt;string&gt;Nombre de usuario:&lt;/string&gt;
+         &lt;/property&gt;
+-        &lt;property name=&quot;alignment&quot; &gt;
++        &lt;property name=&quot;alignment&quot;&gt;
+          &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
+         &lt;/property&gt;
+        &lt;/widget&gt;
+       &lt;/item&gt;
+-      &lt;item row=&quot;1&quot; column=&quot;0&quot; &gt;
+-       &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel2&quot; &gt;
+-        &lt;property name=&quot;text&quot; &gt;
++      &lt;item row=&quot;3&quot; column=&quot;0&quot;&gt;
++       &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel2&quot;&gt;
++        &lt;property name=&quot;text&quot;&gt;
+          &lt;string&gt;Contrasenya:&lt;/string&gt;
+         &lt;/property&gt;
+-        &lt;property name=&quot;alignment&quot; &gt;
++        &lt;property name=&quot;alignment&quot;&gt;
+          &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
+         &lt;/property&gt;
+        &lt;/widget&gt;
+       &lt;/item&gt;
+-      &lt;item row=&quot;1&quot; column=&quot;1&quot; &gt;
+-       &lt;widget class=&quot;QLineEdit&quot; name=&quot;m_password&quot; &gt;
+-        &lt;property name=&quot;echoMode&quot; &gt;
++      &lt;item row=&quot;2&quot; column=&quot;1&quot;&gt;
++       &lt;widget class=&quot;QLineEdit&quot; name=&quot;m_login&quot;/&gt;
++      &lt;/item&gt;
++      &lt;item row=&quot;3&quot; column=&quot;1&quot;&gt;
++       &lt;widget class=&quot;QLineEdit&quot; name=&quot;m_password&quot;&gt;
++        &lt;property name=&quot;echoMode&quot;&gt;
+          &lt;enum&gt;QLineEdit::Password&lt;/enum&gt;
+         &lt;/property&gt;
+        &lt;/widget&gt;
+       &lt;/item&gt;
++      &lt;item row=&quot;4&quot; column=&quot;1&quot;&gt;
++       &lt;widget class=&quot;QLineEdit&quot; name=&quot;m_db&quot;/&gt;
++      &lt;/item&gt;
++      &lt;item row=&quot;4&quot; column=&quot;0&quot;&gt;
++       &lt;widget class=&quot;QLabel&quot; name=&quot;label_2&quot;&gt;
++        &lt;property name=&quot;text&quot;&gt;
++         &lt;string&gt;Base de Datos:&lt;/string&gt;
++        &lt;/property&gt;
++        &lt;property name=&quot;alignment&quot;&gt;
++         &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
++        &lt;/property&gt;
++       &lt;/widget&gt;
++      &lt;/item&gt;
+      &lt;/layout&gt;
+     &lt;/widget&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+     &lt;spacer&gt;
+-     &lt;property name=&quot;orientation&quot; &gt;
++     &lt;property name=&quot;orientation&quot;&gt;
+       &lt;enum&gt;Qt::Vertical&lt;/enum&gt;
+      &lt;/property&gt;
+-     &lt;property name=&quot;sizeHint&quot; &gt;
++     &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
+       &lt;size&gt;
+        &lt;width&gt;20&lt;/width&gt;
+        &lt;height&gt;40&lt;/height&gt;
+@@ -120,19 +155,19 @@
+     &lt;/spacer&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+-    &lt;layout class=&quot;QHBoxLayout&quot; &gt;
+-     &lt;property name=&quot;margin&quot; &gt;
+-      &lt;number&gt;0&lt;/number&gt;
+-     &lt;/property&gt;
+-     &lt;property name=&quot;spacing&quot; &gt;
++    &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++     &lt;property name=&quot;spacing&quot;&gt;
+       &lt;number&gt;6&lt;/number&gt;
+      &lt;/property&gt;
++     &lt;property name=&quot;margin&quot;&gt;
++      &lt;number&gt;0&lt;/number&gt;
++     &lt;/property&gt;
+      &lt;item&gt;
+       &lt;spacer&gt;
+-       &lt;property name=&quot;orientation&quot; &gt;
++       &lt;property name=&quot;orientation&quot;&gt;
+         &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;sizeHint&quot; &gt;
++       &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
+         &lt;size&gt;
+          &lt;width&gt;40&lt;/width&gt;
+          &lt;height&gt;20&lt;/height&gt;
+@@ -141,21 +176,21 @@
+       &lt;/spacer&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+-      &lt;widget class=&quot;QPushButton&quot; name=&quot;pbValidar&quot; &gt;
+-       &lt;property name=&quot;text&quot; &gt;
++      &lt;widget class=&quot;QPushButton&quot; name=&quot;pbValidar&quot;&gt;
++       &lt;property name=&quot;text&quot;&gt;
+         &lt;string&gt;&amp;Validar&lt;/string&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;autoDefault&quot; &gt;
++       &lt;property name=&quot;autoDefault&quot;&gt;
+         &lt;bool&gt;true&lt;/bool&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;default&quot; &gt;
++       &lt;property name=&quot;default&quot;&gt;
+         &lt;bool&gt;true&lt;/bool&gt;
+        &lt;/property&gt;
+       &lt;/widget&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+-      &lt;widget class=&quot;QPushButton&quot; name=&quot;pbCerrar&quot; &gt;
+-       &lt;property name=&quot;text&quot; &gt;
++      &lt;widget class=&quot;QPushButton&quot; name=&quot;pbCerrar&quot;&gt;
++       &lt;property name=&quot;text&quot;&gt;
+         &lt;string&gt;&amp;Cerrar el programa&lt;/string&gt;
+        &lt;/property&gt;
+       &lt;/widget&gt;
+@@ -164,15 +199,15 @@
+    &lt;/item&gt;
+   &lt;/layout&gt;
+  &lt;/widget&gt;
+- &lt;includes&gt;
+-  &lt;include location=&quot;local&quot;&gt;local_blI18n.h&lt;/include&gt;
+- &lt;/includes&gt;
+- &lt;layoutdefault spacing=&quot;6&quot; margin=&quot;11&quot; /&gt;
++ &lt;layoutdefault spacing=&quot;6&quot; margin=&quot;11&quot;/&gt;
+  &lt;tabstops&gt;
+   &lt;tabstop&gt;m_login&lt;/tabstop&gt;
+   &lt;tabstop&gt;m_password&lt;/tabstop&gt;
+   &lt;tabstop&gt;pbValidar&lt;/tabstop&gt;
+  &lt;/tabstops&gt;
++ &lt;includes&gt;
++  &lt;include location=&quot;local&quot;&gt;local_blI18n.h&lt;/include&gt;
++ &lt;/includes&gt;
+  &lt;resources/&gt;
+  &lt;connections/&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmalib/src/blfile.cpp b/bulmages/bulmalib/src/blfile.cpp
+new file mode 100644
+index 0000000..440ca26
+--- /dev/null
++++ b/bulmages/bulmalib/src/blfile.cpp
+@@ -0,0 +1,131 @@
++/***************************************************************************
++ *   Copyright (C) 2013 by Tomeu Borras Riera                              *
++ *   <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>                                                  *
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 2 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program; if not, write to the                         *
++ *   Free Software Foundation, Inc.,                                       *
++ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
++ ***************************************************************************/
++#include &lt;QtNetwork/QNetworkAccessManager&gt;
++#include &lt;QtCore/QFileInfo&gt;
++
++#include &quot;blfunctions.h&quot;
++#include &quot;blconfiguration.h&quot;
++#include &quot;blfile.h&quot;
++#include &quot;blmainwindow.h&quot;
++#include &quot;blmaincompany.h&quot;
++
++QNetworkAccessManager *manager;
++
++
++BlFile::BlFile() : QFile () {
++}
++
++BlFile::BlFile(QString file) : QFile (file) {
++
++//  if (!exists() {
++  
++      QFileInfo fileInfo(file);
++      QString filename(fileInfo.fileName());
++      
++      QString user = g_confpr-&gt;value(CONF_LOGIN_USER);
++      QString dbname = g_confpr-&gt;value(CONF_DBNAME);
++    #ifdef Q_OS_WIN32
++      QString platform = &quot;MS_WIN&quot;;
++    #else
++      QString platform = &quot;LINUX&quot;;
++    #endif
++      
++      QString url = &quot;<A HREF="http://www.bulmages.com/bulmaincloud/">http://www.bulmages.com/bulmaincloud/</A>&quot;+platform+&quot;/&quot;+user+&quot;/&quot;+dbname+&quot;/&quot;+filename;
++      fprintf(stderr, &quot;Iniciando descarga %s\n&quot;, url.toLatin1().constData());
++      
++      manager = new QNetworkAccessManager(this);
++      QNetworkRequest request;
++      request.setUrl(QUrl(url));
++      request.setRawHeader(&quot;User-Agent&quot;, &quot;BgBrowser 1.0&quot;);
++    
++      QNetworkReply *reply = manager-&gt;get(request);
++
++      connect(reply, SIGNAL(readyRead()), this, SLOT(slotReadyRead()));
++      connect(reply, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(downloadProgress(qint64,qint64)));
++
++      connect(reply, SIGNAL(error(QNetworkReply::NetworkError)),
++	    this, SLOT(slotError(QNetworkReply::NetworkError)));
++      connect(reply, SIGNAL(sslErrors(QList&lt;QSslError&gt;)),
++	    this, SLOT(slotSslErrors(QList&lt;QSslError&gt;)));
++      connect(manager, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinished(QNetworkReply*)));
++
++    while (reply-&gt;isRunning()) {
++      QApplication::processEvents();
++    } // end while
++ 
++//  }// end if
++ 
++      url = &quot;<A HREF="http://www.bulmages.com/bulmaincloud/ALL/">http://www.bulmages.com/bulmaincloud/ALL/</A>&quot;+user+&quot;/&quot;+dbname+&quot;/&quot;+filename;
++      fprintf(stderr, &quot;Iniciando descarga %s\n&quot;, url.toLatin1().constData());
++      request.setUrl(QUrl(url));
++      reply = manager-&gt;get(request);
++      while (reply-&gt;isRunning()) {
++	QApplication::processEvents();
++      } // end while
++    
++
++      url = &quot;<A HREF="http://www.bulmages.com/bulmaincloud/ALL/ALL/">http://www.bulmages.com/bulmaincloud/ALL/ALL/</A>&quot;+filename;
++      fprintf(stderr, &quot;Iniciando descarga %s\n&quot;, url.toLatin1().constData());
++      request.setUrl(QUrl(url));
++      reply = manager-&gt;get(request);
++      while (reply-&gt;isRunning()) {
++	QApplication::processEvents();
++      } // end while
++    
++}
++
++BlFile::~BlFile() {
++}
++
++void BlFile::slotSslErrors(QList&lt;QSslError&gt;) {
++  fprintf(stderr, &quot;Error de autentificacion descargando %s\n&quot;, fileName().toLatin1().constData());
++}
++
++void BlFile::slotError(QNetworkReply::NetworkError) {
++  fprintf(stderr,&quot;Error descargando %s\n&quot;, fileName().toLatin1().constData());
++}
++
++void BlFile::slotReadyRead() {
++
++}
++
++void BlFile::replyFinished(QNetworkReply * reply) {
++  
++  if (reply-&gt;error() == QNetworkReply::NoError) {
++      QFileInfo fileInfo(fileName());
++      QString filename(fileInfo.fileName());
++      
++      fprintf(stderr,&quot;Descarga completa %s\n&quot;, fileName().toLatin1().constData());
++      
++      QFile localFile(fileName());
++      if (!localFile.open(QIODevice::WriteOnly))
++	  return;
++      const QByteArray sdata = reply-&gt;readAll();
++      localFile.write(sdata);
++      localFile.close();
++  } else {
++      fprintf(stderr,&quot;Error descargando %s\n&quot;, fileName().toLatin1().constData());
++  }
++  reply-&gt;deleteLater();
++}
++
++void BlFile::downloadProgress(qint64 a,qint64 b) {
++  fprintf(stderr,&quot;Descarga en proceso\n&quot;);
++}
+\ No newline at end of file
+diff --git a/bulmages/bulmalib/src/blfile.h b/bulmages/bulmalib/src/blfile.h
+new file mode 100644
+index 0000000..36a26eb
+--- /dev/null
++++ b/bulmages/bulmalib/src/blfile.h
+@@ -0,0 +1,49 @@
++/***************************************************************************
++ *   Copyright (C) 2013 by Tomeu Borras Riera                              *
++ *   <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>                                                  *
++ *   <A HREF="http://www.iglues.org">http://www.iglues.org</A>                                                 *
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 2 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program; if not, write to the                         *
++ *   Free Software Foundation, Inc.,                                       *
++ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
++ ***************************************************************************/
++
++#ifndef BLFILE_H
++#define BLFILE_H
++
++#include &lt;QtNetwork/QNetworkReply&gt;
++#include &lt;QtNetwork/QSslError&gt;
++#include &lt;QtCore/QFile&gt;
++
++
++
++/** Sobrecarga los QFile para poder hacer busquedas por internet */
++class BlFile : public QFile
++{
++    Q_OBJECT
++
++public:
++    BlFile ( );
++    BlFile (QString );
++    ~BlFile();
++    
++public slots:
++  virtual void replyFinished(QNetworkReply *);
++  virtual void slotSslErrors(QList&lt;QSslError&gt;);
++  virtual void slotError(QNetworkReply::NetworkError);
++  virtual void slotReadyRead();
++  virtual void downloadProgress(qint64 ,qint64 );
++};
++
++#endif
+\ No newline at end of file
+diff --git a/bulmages/installbulmages/openreports/ca/diario.rml b/bulmages/installbulmages/openreports/ca/diario.rml
+deleted file mode 100644
+index 0463edf..0000000
+--- a/bulmages/installbulmages/openreports/ca/diario.rml
++++ /dev/null
+@@ -1,56 +0,0 @@
+-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot; ?&gt;
+-&lt;!DOCTYPE document SYSTEM &quot;rml_1_0.dtd&quot;&gt;
+-
+-&lt;document&gt;
+-
+-&lt;template allowSplitting=&quot;20&quot;&gt;
+-	&lt;pageTemplate id=&quot;main&quot;&gt;
+-		&lt;pageGraphics&gt;
+-		&lt;!-- EL LOGO DE CABECERA --&gt;
+-		&lt;image x=&quot;1.5cm&quot; y=&quot;26cm&quot; width=&quot;5cm&quot; file=&quot;logo.jpg&quot;/&gt;
+-		&lt;setFont name=&quot;Helvetica-Bold&quot; size=&quot;12&quot;/&gt;
+-		&lt;drawString x=&quot;1.7cm&quot; y=&quot;25cm&quot;&gt;Nombre fiscal de tu Empresa&lt;/drawString&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;22&quot;/&gt;
+-		&lt;drawString x=&quot;15.3cm&quot; y=&quot;25cm&quot;&gt;Libro Diario&lt;/drawString&gt;
+-		&lt;!-- EL PIE DE PAGINA --&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;8&quot;/&gt;
+-		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
+-		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+-		&lt;drawString x=&quot;10.5cm&quot; y=&quot;0.6cm&quot;&gt;&lt;pageNumber/&gt;&lt;/drawString&gt;
+-		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
+-		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+-		&lt;/pageGraphics&gt;
+-		&lt;frame id=&quot;frame&quot; x1=&quot;1.5cm&quot; y1=&quot;1.2cm&quot; width=&quot;18cm&quot; height=&quot;23cm&quot;/&gt;
+-		&lt;condPageBreak height=&quot;2cm&quot;/&gt;
+-	&lt;/pageTemplate&gt;
+-&lt;/template&gt;
+-
+-&lt;stylesheet&gt;
+-	&lt;blockTableStyle id=&quot;tabla&quot;&gt;
+-		&lt;!-- SE PONE TODA LA TABLA JUSTIFICADA A LA IZDA. --&gt;
+-		&lt;blockAlignment value=&quot;LEFT&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
+-		&lt;!-- LA PRIMERA CON CONTENIDOS CENTRADOS --&gt;
+-		&lt;blockAlignment value=&quot;CENTER&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-		&lt;!-- EL DEBE Y EL HABER (LAS 2 ULTIMAS COLS. DESDE FILA 2) ALINEADOS A LA DCHA. --&gt;
+-		&lt;blockAlignment value=&quot;RIGHT&quot; start=&quot;-2,1&quot; stop=&quot;-1,-1&quot;/&gt;
+-		&lt;!-- COLOR DE FONDO Y DE LETRA PARA LOS TITULOS--&gt;
+-		&lt;blockBackground colorName=&quot;lightgrey&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-		&lt;blockTextColor colorName=&quot;black&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-		&lt;!-- LINEA BAJO CADA UNA DE LAS FILAS, DESDE LA SEGUNDA --&gt;
+-		&lt;lineStyle kind=&quot;LINEBELOW&quot; colorName=&quot;lightgrey&quot; thickness=&quot;0&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
+-		&lt;!-- BORDE DE LA TABLA --&gt;
+-		&lt;lineStyle kind=&quot;OUTLINE&quot; colorName=&quot;black&quot;  start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-		&lt;!-- LETRA PARA LA FILA DE CABECERA--&gt;
+-		&lt;blockFont name=&quot;Helvetica-Bold&quot; size=&quot;8&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-		&lt;!-- LETRA PARA LOS CONTENIDOS DE LA TABLA --&gt;
+-		&lt;blockFont name=&quot;Helvetica&quot; size=&quot;6&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
+-		&lt;!-- JUSTIFICACION VERTICAL DE LAS CELDAS --&gt;
+-		&lt;blockValign value=&quot;BOTTOM&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
+-	&lt;/blockTableStyle&gt;
+-&lt;/stylesheet&gt;
+-
+-&lt;story&gt;
+-	[story]
+-&lt;/story&gt;
+-
+-&lt;/document&gt;
+\ No newline at end of file
+diff --git a/bulmages/installbulmages/openreports/en/diario.rml b/bulmages/installbulmages/openreports/en/diario.rml
+deleted file mode 100644
+index 0463edf..0000000
+--- a/bulmages/installbulmages/openreports/en/diario.rml
++++ /dev/null
+@@ -1,56 +0,0 @@
+-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot; ?&gt;
+-&lt;!DOCTYPE document SYSTEM &quot;rml_1_0.dtd&quot;&gt;
+-
+-&lt;document&gt;
+-
+-&lt;template allowSplitting=&quot;20&quot;&gt;
+-	&lt;pageTemplate id=&quot;main&quot;&gt;
+-		&lt;pageGraphics&gt;
+-		&lt;!-- EL LOGO DE CABECERA --&gt;
+-		&lt;image x=&quot;1.5cm&quot; y=&quot;26cm&quot; width=&quot;5cm&quot; file=&quot;logo.jpg&quot;/&gt;
+-		&lt;setFont name=&quot;Helvetica-Bold&quot; size=&quot;12&quot;/&gt;
+-		&lt;drawString x=&quot;1.7cm&quot; y=&quot;25cm&quot;&gt;Nombre fiscal de tu Empresa&lt;/drawString&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;22&quot;/&gt;
+-		&lt;drawString x=&quot;15.3cm&quot; y=&quot;25cm&quot;&gt;Libro Diario&lt;/drawString&gt;
+-		&lt;!-- EL PIE DE PAGINA --&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;8&quot;/&gt;
+-		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
+-		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+-		&lt;drawString x=&quot;10.5cm&quot; y=&quot;0.6cm&quot;&gt;&lt;pageNumber/&gt;&lt;/drawString&gt;
+-		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
+-		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+-		&lt;/pageGraphics&gt;
+-		&lt;frame id=&quot;frame&quot; x1=&quot;1.5cm&quot; y1=&quot;1.2cm&quot; width=&quot;18cm&quot; height=&quot;23cm&quot;/&gt;
+-		&lt;condPageBreak height=&quot;2cm&quot;/&gt;
+-	&lt;/pageTemplate&gt;
+-&lt;/template&gt;
+-
+-&lt;stylesheet&gt;
+-	&lt;blockTableStyle id=&quot;tabla&quot;&gt;
+-		&lt;!-- SE PONE TODA LA TABLA JUSTIFICADA A LA IZDA. --&gt;
+-		&lt;blockAlignment value=&quot;LEFT&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
+-		&lt;!-- LA PRIMERA CON CONTENIDOS CENTRADOS --&gt;
+-		&lt;blockAlignment value=&quot;CENTER&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-		&lt;!-- EL DEBE Y EL HABER (LAS 2 ULTIMAS COLS. DESDE FILA 2) ALINEADOS A LA DCHA. --&gt;
+-		&lt;blockAlignment value=&quot;RIGHT&quot; start=&quot;-2,1&quot; stop=&quot;-1,-1&quot;/&gt;
+-		&lt;!-- COLOR DE FONDO Y DE LETRA PARA LOS TITULOS--&gt;
+-		&lt;blockBackground colorName=&quot;lightgrey&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-		&lt;blockTextColor colorName=&quot;black&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-		&lt;!-- LINEA BAJO CADA UNA DE LAS FILAS, DESDE LA SEGUNDA --&gt;
+-		&lt;lineStyle kind=&quot;LINEBELOW&quot; colorName=&quot;lightgrey&quot; thickness=&quot;0&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
+-		&lt;!-- BORDE DE LA TABLA --&gt;
+-		&lt;lineStyle kind=&quot;OUTLINE&quot; colorName=&quot;black&quot;  start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-		&lt;!-- LETRA PARA LA FILA DE CABECERA--&gt;
+-		&lt;blockFont name=&quot;Helvetica-Bold&quot; size=&quot;8&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-		&lt;!-- LETRA PARA LOS CONTENIDOS DE LA TABLA --&gt;
+-		&lt;blockFont name=&quot;Helvetica&quot; size=&quot;6&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
+-		&lt;!-- JUSTIFICACION VERTICAL DE LAS CELDAS --&gt;
+-		&lt;blockValign value=&quot;BOTTOM&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
+-	&lt;/blockTableStyle&gt;
+-&lt;/stylesheet&gt;
+-
+-&lt;story&gt;
+-	[story]
+-&lt;/story&gt;
+-
+-&lt;/document&gt;
+\ No newline at end of file
+diff --git a/bulmages/installbulmages/openreports/es/diario.rml b/bulmages/installbulmages/openreports/es/diario.rml
+deleted file mode 100644
+index 0463edf..0000000
+--- a/bulmages/installbulmages/openreports/es/diario.rml
++++ /dev/null
+@@ -1,56 +0,0 @@
+-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot; ?&gt;
+-&lt;!DOCTYPE document SYSTEM &quot;rml_1_0.dtd&quot;&gt;
+-
+-&lt;document&gt;
+-
+-&lt;template allowSplitting=&quot;20&quot;&gt;
+-	&lt;pageTemplate id=&quot;main&quot;&gt;
+-		&lt;pageGraphics&gt;
+-		&lt;!-- EL LOGO DE CABECERA --&gt;
+-		&lt;image x=&quot;1.5cm&quot; y=&quot;26cm&quot; width=&quot;5cm&quot; file=&quot;logo.jpg&quot;/&gt;
+-		&lt;setFont name=&quot;Helvetica-Bold&quot; size=&quot;12&quot;/&gt;
+-		&lt;drawString x=&quot;1.7cm&quot; y=&quot;25cm&quot;&gt;Nombre fiscal de tu Empresa&lt;/drawString&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;22&quot;/&gt;
+-		&lt;drawString x=&quot;15.3cm&quot; y=&quot;25cm&quot;&gt;Libro Diario&lt;/drawString&gt;
+-		&lt;!-- EL PIE DE PAGINA --&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;8&quot;/&gt;
+-		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
+-		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+-		&lt;drawString x=&quot;10.5cm&quot; y=&quot;0.6cm&quot;&gt;&lt;pageNumber/&gt;&lt;/drawString&gt;
+-		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
+-		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+-		&lt;/pageGraphics&gt;
+-		&lt;frame id=&quot;frame&quot; x1=&quot;1.5cm&quot; y1=&quot;1.2cm&quot; width=&quot;18cm&quot; height=&quot;23cm&quot;/&gt;
+-		&lt;condPageBreak height=&quot;2cm&quot;/&gt;
+-	&lt;/pageTemplate&gt;
+-&lt;/template&gt;
+-
+-&lt;stylesheet&gt;
+-	&lt;blockTableStyle id=&quot;tabla&quot;&gt;
+-		&lt;!-- SE PONE TODA LA TABLA JUSTIFICADA A LA IZDA. --&gt;
+-		&lt;blockAlignment value=&quot;LEFT&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
+-		&lt;!-- LA PRIMERA CON CONTENIDOS CENTRADOS --&gt;
+-		&lt;blockAlignment value=&quot;CENTER&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-		&lt;!-- EL DEBE Y EL HABER (LAS 2 ULTIMAS COLS. DESDE FILA 2) ALINEADOS A LA DCHA. --&gt;
+-		&lt;blockAlignment value=&quot;RIGHT&quot; start=&quot;-2,1&quot; stop=&quot;-1,-1&quot;/&gt;
+-		&lt;!-- COLOR DE FONDO Y DE LETRA PARA LOS TITULOS--&gt;
+-		&lt;blockBackground colorName=&quot;lightgrey&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-		&lt;blockTextColor colorName=&quot;black&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-		&lt;!-- LINEA BAJO CADA UNA DE LAS FILAS, DESDE LA SEGUNDA --&gt;
+-		&lt;lineStyle kind=&quot;LINEBELOW&quot; colorName=&quot;lightgrey&quot; thickness=&quot;0&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
+-		&lt;!-- BORDE DE LA TABLA --&gt;
+-		&lt;lineStyle kind=&quot;OUTLINE&quot; colorName=&quot;black&quot;  start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-		&lt;!-- LETRA PARA LA FILA DE CABECERA--&gt;
+-		&lt;blockFont name=&quot;Helvetica-Bold&quot; size=&quot;8&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-		&lt;!-- LETRA PARA LOS CONTENIDOS DE LA TABLA --&gt;
+-		&lt;blockFont name=&quot;Helvetica&quot; size=&quot;6&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
+-		&lt;!-- JUSTIFICACION VERTICAL DE LAS CELDAS --&gt;
+-		&lt;blockValign value=&quot;BOTTOM&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
+-	&lt;/blockTableStyle&gt;
+-&lt;/stylesheet&gt;
+-
+-&lt;story&gt;
+-	[story]
+-&lt;/story&gt;
+-
+-&lt;/document&gt;
+\ No newline at end of file
+diff --git a/bulmages/installbulmages/openreports/es/extracto.rml b/bulmages/installbulmages/openreports/es/extracto.rml
+deleted file mode 100644
+index 43b7eac..0000000
+--- a/bulmages/installbulmages/openreports/es/extracto.rml
++++ /dev/null
+@@ -1,72 +0,0 @@
+-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot; ?&gt;
+-&lt;!DOCTYPE document SYSTEM &quot;rml_1_0.dtd&quot;&gt;
+-&lt;document&gt;
+-&lt;template pageSize=&quot;(21cm, 29.7cm)&quot; leftMargin=&quot;0cm&quot; rightMargin=&quot;0cm&quot; topMargin=&quot;2.0cm&quot; bottomMargin=&quot;2.0cm&quot; title=&quot;Extracto de Cuentas&quot; author=&quot;Tomeu Borras&quot; allowSplitting=&quot;20&quot;&gt;
+-	&lt;pageTemplate id=&quot;main&quot;&gt;
+-		&lt;pageGraphics&gt;
+-		&lt;!-- EL LOGO DE CABECERA --&gt;
+-		&lt;image x=&quot;2.5cm&quot; y=&quot;28.54cm&quot; width=&quot;2.5cm&quot; file=&quot;logo.jpg&quot;/&gt;
+-
+-		&lt;!-- EL DRAFT --&gt;
+-			&lt;!--setFont name=&quot;Helvetica&quot; size=&quot;100&quot;/&gt;
+-			&lt;fill color=&quot;(1,0.9,0.9)&quot;/&gt;
+-			&lt;stroke color=&quot;(1,0.9,0.9)&quot;/&gt;
+-			&lt;translate dx=&quot;15cm&quot; dy=&quot;-5.5cm&quot;/&gt;
+-			&lt;rotate degrees=&quot;50&quot;/&gt;
+-			&lt;drawString x=&quot;23mm&quot; y=&quot;15.7cm&quot;&gt;BORRADOR&lt;/drawString&gt;
+-			&lt;lineMode width=&quot;4mm&quot;/&gt;
+-			&lt;rect round=&quot;1cm&quot; x=&quot;18mm&quot; y=&quot;15cm&quot; width=&quot;21cm&quot; height=&quot;4cm&quot; fill=&quot;no&quot; stroke=&quot;yes&quot;/&gt;	
+-		&lt;rotate degrees=&quot;-50&quot;/&gt;
+-		&lt;translate dx=&quot;-15cm&quot; dy=&quot;5.5cm&quot;/--&gt;
+-
+-		&lt;!-- EL PIE DE PAGINA --&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;8&quot;/&gt;		
+-		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
+-		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+-		&lt;drawString x=&quot;7.3cm&quot; y=&quot;0.5cm&quot;&gt;-Iglues-&lt;/drawString&gt;
+-
+-		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
+-		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;22&quot;/&gt;
+-		&lt;drawString x=&quot;18cm&quot; y=&quot;27.5cm&quot;&gt;Extracto de Cuentas&lt;/drawString&gt;
+-		&lt;/pageGraphics&gt;
+-	&lt;frame id=&quot;column&quot; x1=&quot;1cm&quot; y1=&quot;1cm&quot; width=&quot;21cm&quot; height=&quot;26.5cm&quot;/&gt;
+-	&lt;/pageTemplate&gt;
+-&lt;/template&gt;
+-&lt;stylesheet&gt;
+-	&lt;blockTableStyle id=&quot;tabla&quot;&gt;
+-		&lt;blockAlignment value=&quot;RIGHT&quot; start=&quot;2,1&quot; stop=&quot;-1,-1&quot;/&gt;
+-		&lt;blockAlignment value=&quot;CENTER&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-		&lt;blockTextColor colorName=&quot;(0,0,0)&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
+-		&lt;blockFont name=&quot;Helvetica-Bold&quot; size=&quot;7&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-		&lt;blockFont name=&quot;Helvetica&quot; size=&quot;7&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
+-		&lt;blockFont name=&quot;Helvetica&quot; size=&quot;7&quot; start=&quot;1,1&quot; stop=&quot;1,-1&quot;/&gt;
+-		&lt;blockValign value=&quot;TOP&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
+-		&lt;blockTopPadding length=&quot;0.03cm&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
+-		&lt;blockBottomPadding length=&quot;0.1cm&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
+-	&lt;/blockTableStyle&gt;
+-	&lt;blockTableStyle id=&quot;tablaextracto&quot;&gt;
+-		&lt;blockAlignment value=&quot;RIGHT&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
+-		&lt;blockAlignment value=&quot;LEFT&quot; start=&quot;0,0&quot; stop=&quot;2,-1&quot;/&gt;
+-		&lt;blockAlignment value=&quot;LEFT&quot; start=&quot;6,0&quot; stop=&quot;6,-1&quot;/&gt;
+-		&lt;blockBackground colorName=&quot;(0.7,0.7,0.7)&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-		&lt;blockTextColor colorName=&quot;(0,0,0)&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-		&lt;lineStyle kind=&quot;LINEBEFORE&quot; colorName=&quot;(0.5,0.5,0.5)&quot;  start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
+-		&lt;lineStyle kind=&quot;LINEBELOW&quot; colorName=&quot;(0,0,0)&quot;  start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-		&lt;lineStyle kind=&quot;OUTLINE&quot; colorName=&quot;black&quot;  start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
+-		&lt;blockFont name=&quot;Helvetica&quot; size=&quot;6&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
+-		&lt;blockFont name=&quot;Helvetica-Bold&quot; size=&quot;7&quot; start=&quot;0,-1&quot; stop=&quot;-1,-1&quot;/&gt;
+-		&lt;blockFont name=&quot;Helvetica-Bold&quot; size=&quot;7&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-
+-		&lt;blockValign value=&quot;TOP&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
+-		&lt;blockTopPadding length=&quot;-0.03cm&quot; start=&quot;0,1&quot; stop=&quot;-1,-2&quot;/&gt;
+-		&lt;blockBottomPadding length=&quot;-0.15cm&quot; start=&quot;0,1&quot; stop=&quot;-1,-2&quot;/&gt;
+-	&lt;/blockTableStyle&gt;
+-
+-&lt;/stylesheet&gt;
+-
+-&lt;story&gt;
+-	[story]
+-	&lt;spacer length=&quot;5mm&quot; width=&quot;1mm&quot;/&gt;		
+-&lt;/story&gt;
+-&lt;/document&gt;
+diff --git a/bulmages/installbulmages/openreports/fr/diario.rml b/bulmages/installbulmages/openreports/fr/diario.rml
+deleted file mode 100644
+index 0463edf..0000000
+--- a/bulmages/installbulmages/openreports/fr/diario.rml
++++ /dev/null
+@@ -1,56 +0,0 @@
+-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot; ?&gt;
+-&lt;!DOCTYPE document SYSTEM &quot;rml_1_0.dtd&quot;&gt;
+-
+-&lt;document&gt;
+-
+-&lt;template allowSplitting=&quot;20&quot;&gt;
+-	&lt;pageTemplate id=&quot;main&quot;&gt;
+-		&lt;pageGraphics&gt;
+-		&lt;!-- EL LOGO DE CABECERA --&gt;
+-		&lt;image x=&quot;1.5cm&quot; y=&quot;26cm&quot; width=&quot;5cm&quot; file=&quot;logo.jpg&quot;/&gt;
+-		&lt;setFont name=&quot;Helvetica-Bold&quot; size=&quot;12&quot;/&gt;
+-		&lt;drawString x=&quot;1.7cm&quot; y=&quot;25cm&quot;&gt;Nombre fiscal de tu Empresa&lt;/drawString&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;22&quot;/&gt;
+-		&lt;drawString x=&quot;15.3cm&quot; y=&quot;25cm&quot;&gt;Libro Diario&lt;/drawString&gt;
+-		&lt;!-- EL PIE DE PAGINA --&gt;
+-		&lt;setFont name=&quot;Helvetica&quot; size=&quot;8&quot;/&gt;
+-		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
+-		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+-		&lt;drawString x=&quot;10.5cm&quot; y=&quot;0.6cm&quot;&gt;&lt;pageNumber/&gt;&lt;/drawString&gt;
+-		&lt;fill color=&quot;(0,0,0)&quot;/&gt;	
+-		&lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+-		&lt;/pageGraphics&gt;
+-		&lt;frame id=&quot;frame&quot; x1=&quot;1.5cm&quot; y1=&quot;1.2cm&quot; width=&quot;18cm&quot; height=&quot;23cm&quot;/&gt;
+-		&lt;condPageBreak height=&quot;2cm&quot;/&gt;
+-	&lt;/pageTemplate&gt;
+-&lt;/template&gt;
+-
+-&lt;stylesheet&gt;
+-	&lt;blockTableStyle id=&quot;tabla&quot;&gt;
+-		&lt;!-- SE PONE TODA LA TABLA JUSTIFICADA A LA IZDA. --&gt;
+-		&lt;blockAlignment value=&quot;LEFT&quot; start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
+-		&lt;!-- LA PRIMERA CON CONTENIDOS CENTRADOS --&gt;
+-		&lt;blockAlignment value=&quot;CENTER&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-		&lt;!-- EL DEBE Y EL HABER (LAS 2 ULTIMAS COLS. DESDE FILA 2) ALINEADOS A LA DCHA. --&gt;
+-		&lt;blockAlignment value=&quot;RIGHT&quot; start=&quot;-2,1&quot; stop=&quot;-1,-1&quot;/&gt;
+-		&lt;!-- COLOR DE FONDO Y DE LETRA PARA LOS TITULOS--&gt;
+-		&lt;blockBackground colorName=&quot;lightgrey&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-		&lt;blockTextColor colorName=&quot;black&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-		&lt;!-- LINEA BAJO CADA UNA DE LAS FILAS, DESDE LA SEGUNDA --&gt;
+-		&lt;lineStyle kind=&quot;LINEBELOW&quot; colorName=&quot;lightgrey&quot; thickness=&quot;0&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
+-		&lt;!-- BORDE DE LA TABLA --&gt;
+-		&lt;lineStyle kind=&quot;OUTLINE&quot; colorName=&quot;black&quot;  start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-		&lt;!-- LETRA PARA LA FILA DE CABECERA--&gt;
+-		&lt;blockFont name=&quot;Helvetica-Bold&quot; size=&quot;8&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-		&lt;!-- LETRA PARA LOS CONTENIDOS DE LA TABLA --&gt;
+-		&lt;blockFont name=&quot;Helvetica&quot; size=&quot;6&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
+-		&lt;!-- JUSTIFICACION VERTICAL DE LAS CELDAS --&gt;
+-		&lt;blockValign value=&quot;BOTTOM&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
+-	&lt;/blockTableStyle&gt;
+-&lt;/stylesheet&gt;
+-
+-&lt;story&gt;
+-	[story]
+-&lt;/story&gt;
+-
+-&lt;/document&gt;
+\ No newline at end of file
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007627.html">[BulmaGés]BulmaInCloud
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007623.html">[BulmaGés] Paquetes
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7622">[ fecha ]</a>
+              <a href="thread.html#7622">[ hilo ]</a>
+              <a href="subject.html#7622">[ asunto ]</a>
+              <a href="author.html#7622">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] Cambios para funcionar en FreeBSD
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Cambios%20para%20funcionar%20en%20FreeBSD&In-Reply-To=%3C4FB96B11.3070103%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007256.html">
+   <LINK REL="Next"  HREF="007250.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] Cambios para funcionar en FreeBSD </H1>
+    <B>Daniel Ripoll</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Cambios%20para%20funcionar%20en%20FreeBSD&In-Reply-To=%3C4FB96B11.3070103%40gmail.com%3E"
+       TITLE="[BulmaGés] Cambios para funcionar en FreeBSD">dripoll.public en gmail.com
+       </A><BR>
+    <I>Lun Mayo 21 00:07:13 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007256.html">[BulmaGés]Propuesta mejoras BulmaTPV
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007250.html">[BulmaGés]Cambios para funcionar en FreeBSD
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7249">[ fecha ]</a>
+              <a href="thread.html#7249">[ hilo ]</a>
+              <a href="subject.html#7249">[ asunto ]</a>
+              <a href="author.html#7249">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola gente,
+Un amigo mio ha empezado a implementar BulmaGes en su negocio, pero se 
+vio con el pequeño problema de que no podia compilarlo bajo FreeBSD, que 
+es el sistema con el que funcionan sus ordenadores, tras pelearme un 
+rato y analizar los errores identifiqué que el problema simplemente 
+estaba en que saltaba error al intentar compilar el archivo 
+bulmages.qrc, que contenia dos archivos con espacios en los nombres.
+
+Ha sido eliminar los espacios y compilar.
+
+Al ejecutarse me encontré con otros problemas, relacionados nuevamente 
+con rutas, esta vez de python, los cuales solucione usando el modulo de 
+CMake FindPythonInterpr y FindPackageHandleStandardArgs.
+
+En mi fork personal de gitorious he realizado una serie de commits 
+solucionando este problema, podéis verlos aquí:
+<A HREF="https://gitorious.org/~themeph/bulmages/themephs-bulmages/commit/1b5cf91f11c45e166234ddf838e18200b818cc51">https://gitorious.org/~themeph/bulmages/themephs-bulmages/commit/1b5cf91f11c45e166234ddf838e18200b818cc51</A>
+<A HREF="https://gitorious.org/~themeph/bulmages/themephs-bulmages/commit/886d221ab8678326dc7e5ca79dc3ef2b4b625e0e">https://gitorious.org/~themeph/bulmages/themephs-bulmages/commit/886d221ab8678326dc7e5ca79dc3ef2b4b625e0e</A>
+(este segundo arregla un fallo del primero)
+<A HREF="https://gitorious.org/~themeph/bulmages/themephs-bulmages/commit/b74b01b408c442cb3f67025f877fd57e4a7e7061">https://gitorious.org/~themeph/bulmages/themephs-bulmages/commit/b74b01b408c442cb3f67025f877fd57e4a7e7061</A>
+
+
+Si me dais vía libre pasaré a incorporarlos en el master principal, y 
+creo que también deberían ser incluidos en la release.
+
+Saludos,
+
+-- 
+Daniel Ripoll Osma
+<A HREF="http://danielripoll.es">http://danielripoll.es</A>
+6688.27.4.90
+
+Web&amp;  Desktop Developer
+
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007256.html">[BulmaGés]Propuesta mejoras BulmaTPV
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007250.html">[BulmaGés]Cambios para funcionar en FreeBSD
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7249">[ fecha ]</a>
+              <a href="thread.html#7249">[ hilo ]</a>
+              <a href="subject.html#7249">[ asunto ]</a>
+              <a href="author.html#7249">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

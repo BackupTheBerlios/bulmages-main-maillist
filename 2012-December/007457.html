@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Sobre Qt4, Qt5, UTF-8, Latin, CString, ANSI y ASCII
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FSobre_Qt4%3D2C_Qt5%3D2C_U%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FTF-8%3D2C_Latin%3D2C_CString%3D2C_ANSI_y_ASCII%3F%3D&In-Reply-To=%3C50CCBC32.9070104%40todo-redes.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007456.html">
+   <LINK REL="Next"  HREF="007458.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Sobre Qt4, Qt5, UTF-8, Latin, CString, ANSI y ASCII </H1>
+    <B>Fco. Javier M. C.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FSobre_Qt4%3D2C_Qt5%3D2C_U%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FTF-8%3D2C_Latin%3D2C_CString%3D2C_ANSI_y_ASCII%3F%3D&In-Reply-To=%3C50CCBC32.9070104%40todo-redes.com%3E"
+       TITLE="[BulmaGés]Sobre Qt4, Qt5, UTF-8, Latin, CString, ANSI y ASCII">fcojavmc en todo-redes.com
+       </A><BR>
+    <I>Sab Dic 15 19:06:42 CET 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007456.html">[BulmaGés] Sobre Qt4, Qt5, UTF-8, Latin, CString,	ANSI y ASCII
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007458.html">[BulmaGés] Qt 5, listo!
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7457">[ fecha ]</a>
+              <a href="thread.html#7457">[ hilo ]</a>
+              <a href="subject.html#7457">[ asunto ]</a>
+              <a href="author.html#7457">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Daniel.
+
+Buena observación.
+
+Es cierto que en Qt5 desaparecen algunos tratamientos de texto porque
+funcionan mal o se emplean mal y al final es un desastre.
+
+En el caso concreto del Bixolon BCD 1000, según las especificaciones
+técnicas el dispositivo soporta, por defecto la codificación PC-437
+
+
+Manual técnico del Bixolon:
+<A HREF="https://www.howardcomputers.com/images/digcon/USER_MANUAL/6E1AC1BE-22A6-41C4-95DD-948569F2920A.pdf">https://www.howardcomputers.com/images/digcon/USER_MANUAL/6E1AC1BE-22A6-41C4-95DD-948569F2920A.pdf</A>
+
+
+La manera correcta de hacer este tratamiento en Qt5 es utilizando
+QTextCodec.
+El problema es que las Qt no soportan por defecto esta codificación como
+se puede ver en la documentación de la clase
+
+<A HREF="http://qt-project.org/doc/qt-5.0/qtcore/qtextcodec.html">http://qt-project.org/doc/qt-5.0/qtcore/qtextcodec.html</A>
+
+¿Cómo hacerlo entonces? Reimplementando la clase QTextCodec. Un ejemplo
+para este fin se puede ver en:
+
+<A HREF="http://svn.openmoko.org/trunk/src/host/qemu-neo1973/phonesim/lib/serial/qatutils.cpp">http://svn.openmoko.org/trunk/src/host/qemu-neo1973/phonesim/lib/serial/qatutils.cpp</A>
+
+
+Un saludo.
+
+
+
+
+
+El 15/12/12 02:10, Daniel Ripoll escribió:
+&gt;<i> Saludos,
+</I>&gt;<i>
+</I>&gt;<i> Hoy charlando un poco sobre el tema de Qt5 y Qt4 acerca del deprecated
+</I>&gt;<i> de toAscii() y fromAscii(), fromCString() y toCString() y sobre lo que
+</I>&gt;<i> nos &quot;puteaba&quot; en especial respecto al visor de Bisolon BCD 1000,
+</I>&gt;<i> levantó mi duda de... ¿Si nuestro visor utiliza Ascii como podemos
+</I>&gt;<i> arreglar eso en Qt5?
+</I>&gt;<i>
+</I>&gt;<i> Buscando buscando... y leyendo por todas partes
+</I>&gt;<i> (en especial la documentación
+</I>&gt;<i> <A HREF="http://doc-snapshot.qt-project.org/5.0/qtcore/qstring.html">http://doc-snapshot.qt-project.org/5.0/qtcore/qstring.html</A> y
+</I>&gt;<i> <A HREF="https://bugreports.qt-project.org/browse/QTBUG-21872">https://bugreports.qt-project.org/browse/QTBUG-21872</A> ) me di cuenta de
+</I>&gt;<i> una pequeña nota...
+</I>&gt;<i>
+</I>&gt;<i> Resulta que toAscii se ha eliminado de Qt5 ya que era un &quot;metodo
+</I>&gt;<i> mentiroso&quot;.
+</I>&gt;<i> Es decir, toAscii no devolvía nunca un valor US-ASCII (ANSI X3.4-1986)
+</I>&gt;<i> ni tampoco un ASCII si no el valor por defecto de la compilación local
+</I>&gt;<i> para codificación de 8-bits el cual podría no ser compatible con Ascii
+</I>&gt;<i> y entonces se destrozaria todo...
+</I>&gt;<i>
+</I>&gt;<i> Necesitaba comprobarlo con mis propios ojos y tratar de compilar el
+</I>&gt;<i> proyecto de Qt4 con otra local y efectivamente... Las cadenas fueron
+</I>&gt;<i> villanamente estropeadas.
+</I>&gt;<i>
+</I>&gt;<i> ¿Cual es la solución correcta? ¿Es usar UTF8?
+</I>&gt;<i> Podría funcionar... pero no es realmente lo correcto, ya que por
+</I>&gt;<i> ejemplo podriamos tener problemas con caracteres que no esten en la
+</I>&gt;<i> misma posición dentro de la tabla o que sean distintos y estén en la
+</I>&gt;<i> misma posición...
+</I>&gt;<i>
+</I>&gt;<i> ¿Que soluciones tenemos?
+</I>&gt;<i>
+</I>&gt;<i> En QString usar toLocal8Bit y fromLocal8Bit y esperar y rogar que
+</I>&gt;<i> nuestro compilador utilice US-ASCII (que no suele ser NUNCA el caso,
+</I>&gt;<i> si no que usa Latin1, que para eso esta toLatin1 y fromLatin1
+</I>&gt;<i>
+</I>&gt;<i> Evaluar si realmente debemos usar en ese caso un QString o si podemos
+</I>&gt;<i> hacer otra cosa....
+</I>&gt;<i> Como por ejemplo:
+</I>&gt;<i>
+</I>&gt;<i> QByteArray(&quot;cadena&quot;).constData() (Donde cadena es ahí directamente un
+</I>&gt;<i> char)
+</I>&gt;<i> o....
+</I>&gt;<i> QString cadena = &quot;cadena&quot;;
+</I>&gt;<i> QByteArray(cadena).constData();
+</I>&gt;<i>
+</I>&gt;<i> Este segundo caso me parece más adecuado para cuando la cadena tenga
+</I>&gt;<i> que pasar por gettext.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Guardar las cadenas que deben ser impresas bajo alguna de estas:
+</I>&gt;<i> QLatin1String Envoltorio de cadenas codificado US-ASCII/Latin-1 (En el
+</I>&gt;<i> caso del Bisolon BSD1000 este metodo sería parcialmente correcto, ya
+</I>&gt;<i> que necesitamos un US-ASCII)
+</I>&gt;<i> QLatin1Char Envoltorio de cadenas codificado en ASCII/Latin1
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Saludos y que empiece el brainstorming....
+</I>&gt;<i>
+</I>
+--
+Fco. Javier M. C.
+*************************
+<A HREF="http://todo-redes.com">http://todo-redes.com</A>
+<A HREF="http://bulmagesplus.com">http://bulmagesplus.com</A>
+*************************
+
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007456.html">[BulmaGés] Sobre Qt4, Qt5, UTF-8, Latin, CString,	ANSI y ASCII
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007458.html">[BulmaGés] Qt 5, listo!
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7457">[ fecha ]</a>
+              <a href="thread.html#7457">[ hilo ]</a>
+              <a href="subject.html#7457">[ asunto ]</a>
+              <a href="author.html#7457">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

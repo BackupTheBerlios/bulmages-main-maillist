@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]BulmaGés Qt5 win y linux (en marcha)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FBulmaG%3DE9s_Qt5_win_y_%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Flinux_%3D28en_marcha%3D29%3F%3D&In-Reply-To=%3CCAJWqEtfZdb6pQ9%3DukL45r56PsChy3msOtDCOSx4i%3DgHOPFkTQw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007589.html">
+   <LINK REL="Next"  HREF="007592.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]BulmaGés Qt5 win y linux (en marcha) </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FBulmaG%3DE9s_Qt5_win_y_%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Flinux_%3D28en_marcha%3D29%3F%3D&In-Reply-To=%3CCAJWqEtfZdb6pQ9%3DukL45r56PsChy3msOtDCOSx4i%3DgHOPFkTQw%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]BulmaGés Qt5 win y linux (en marcha)">tborras en conetxia.com
+       </A><BR>
+    <I>Mie Mayo 29 11:38:19 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007589.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007592.html">[BulmaGés]BulmaGés Qt5 win y linux (en marcha)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7591">[ fecha ]</a>
+              <a href="thread.html#7591">[ hilo ]</a>
+              <a href="subject.html#7591">[ asunto ]</a>
+              <a href="author.html#7591">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bones a tothom:
+
+A grosso modo ya tenemos bulmages generandose y efecutando en Qt5 tanto en
+Linux como en Windows. Qt 5.0.2 y CMake 2.8.11 en Windows.
+
+Quedan muchas cosas por revisar:
+
+- Los archivos de cmake necesitan un poco de limpieza.
+- El refresco de pantalla es algo deficiente, principalmente en los
+subformularios.
+- Hay algunos SIGNALS que no se lanzan correctamente. Tal vez haya algunas
+incompatibilidades entre uic4 y uic5
+- BulmaSetup sigue trabajando con Qt4
+- Algunos plugins se han tenido que deshabilitar (p.ej: QtEmbed ha
+desaparecido).
+- BulmaCont no está totalmente traspasdo. Además este cambio va a requerir
+que cambiemos el nombre de BulmaFact (ya no será sólo facturación)
+
+Muchos temas en los que pensar .... y trabajar ...
+
+Pero antes de intentar corregir estos errores es más interesante cambiar el
+sistema de llamadas a plugins (otro de los objetivos para la próxima
+versión) cambiandolo por un genuino SIGNAL / SLOT. No parece que tenga
+mucho sentido corregir algo que al final quedará obsoleto.
+
+Voy a dedicar los próximos dias a realizar algunas pruebas con un par de
+plugins para ver si los puedo remodelar con un sistema de señales, no creo
+que sea muy complicado pero si bastante trabajoso.
+
+PD: Estaría bien que intentarais compilar en otras plataformas y reportar
+los errores/soluciones para compatibilizar al máximo. Daniel dijo que tenia
+problemas y seguro que es algo de los CMake que debemos ajustar.
+
+Salut
+
+-- 
+Tomeu Borrás
+Conetxia Soluciones Informáticas
+677 77 44 76
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20130529/eabced57/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20130529/eabced57/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007589.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007592.html">[BulmaGés]BulmaGés Qt5 win y linux (en marcha)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7591">[ fecha ]</a>
+              <a href="thread.html#7591">[ hilo ]</a>
+              <a href="subject.html#7591">[ asunto ]</a>
+              <a href="author.html#7591">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

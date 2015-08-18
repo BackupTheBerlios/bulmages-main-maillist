@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: cgarde pushed 2	commits to masterm...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20cgarde%20pushed%202%0A%09commits%20to%20masterm...&In-Reply-To=%3C20120403165438.1A45C756E5%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007023.html">
+   <LINK REL="Next"  HREF="007025.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: cgarde pushed 2	commits to masterm... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20cgarde%20pushed%202%0A%09commits%20to%20masterm...&In-Reply-To=%3C20120403165438.1A45C756E5%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: cgarde pushed 2	commits to masterm...">no-reply en gitorious.org
+       </A><BR>
+    <I>Mar Abr  3 18:54:37 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007023.html">[BulmaGés] [Gitorious] Activity: tborras pushed 8	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007025.html">[BulmaGés] [Gitorious] Activity: tborras pushed 3	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7024">[ fecha ]</a>
+              <a href="thread.html#7024">[ hilo ]</a>
+              <a href="subject.html#7024">[ asunto ]</a>
+              <a href="author.html#7024">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+cgarde pushed 2 commits to master
+master changed from a233fb7 to edcb81c
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/a233fb7fc4a0c2a58b89cb643c9837e2bf11c9e7/diffs/edcb81cb4b68cacec8844aa6300085cbc514ffc7">https://gitorious.org/bulmages/bulmages/commit/a233fb7fc4a0c2a58b89cb643c9837e2bf11c9e7/diffs/edcb81cb4b68cacec8844aa6300085cbc514ffc7</A>
+
+Diff: 
+
+commit edcb81cb4b68cacec8844aa6300085cbc514ffc7
+Merge: 3f9e4a9 a233fb7
+Author: Cristian Garde &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">cristian.garde en gmail.com</A>&gt;
+Date:   Tue Apr 3 18:54:37 2012 +0200
+
+    Merge branch 'master' of gitorious.org:bulmages/bulmages
+    
+    Conflicts:
+    	bulmages/bulmalib/src/blconfiguration.cpp
+
+diff --cc bulmages/bulmalib/src/blconfiguration.cpp
+index e0d46ea,5b7c14c..d02a9f8
+--- a/bulmages/bulmalib/src/blconfiguration.cpp
++++ b/bulmages/bulmalib/src/blconfiguration.cpp
+@@@ -461,10 -461,8 +461,12 @@@ QString BlConfiguration::name( int i 
+          return &quot;CONF_CUPS_TICKET_PRINTER&quot;;
+      if ( i == CONF_TPV_CATEGORY_TREE )
+         return &quot;CONF_TPV_CATEGORY_TREE&quot;;
+ +    if ( i == CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION )
+ +        return &quot;CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION&quot;;
+ +    if ( i == CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES )
+ +        return &quot;CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES&quot;;
++     if ( i == CONF_USE_QSCRIPT )
++        return &quot;CONF_USE_QSCRIPT&quot;;
+      return &quot;&quot;;
+  }
+  
+
+commit 3f9e4a9bf9ffae353958b5ba9f4abfcd2846ca84
+Author: Cristian Garde &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">cristian.garde en gmail.com</A>&gt;
+Date:   Tue Apr 3 18:50:40 2012 +0200
+
+    Faltaba subir unos cambios.
+
+diff --git a/bulmages/bulmalib/src/blconfiguration.cpp b/bulmages/bulmalib/src/blconfiguration.cpp
+index aaf1caf..e0d46ea 100644
+--- a/bulmages/bulmalib/src/blconfiguration.cpp
++++ b/bulmages/bulmalib/src/blconfiguration.cpp
+@@ -461,6 +461,10 @@ QString BlConfiguration::name( int i )
+         return &quot;CONF_CUPS_TICKET_PRINTER&quot;;
+     if ( i == CONF_TPV_CATEGORY_TREE )
+        return &quot;CONF_TPV_CATEGORY_TREE&quot;;
++    if ( i == CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION )
++        return &quot;CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION&quot;;
++    if ( i == CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES )
++        return &quot;CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES&quot;;
+     return &quot;&quot;;
+ }
+ 
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007023.html">[BulmaGés] [Gitorious] Activity: tborras pushed 8	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007025.html">[BulmaGés] [Gitorious] Activity: tborras pushed 3	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7024">[ fecha ]</a>
+              <a href="thread.html#7024">[ hilo ]</a>
+              <a href="subject.html#7024">[ asunto ]</a>
+              <a href="author.html#7024">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

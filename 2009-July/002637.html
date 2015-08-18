@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Modificar listado artículos
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Futf-8%3Fq%3FModificar_listado_art%3F%3D%0A%09%3D%3Futf-8%3Fq%3F%3DC3%3DADculos%3F%3D&In-Reply-To=%3C200907070231.09635.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002633.html">
+   <LINK REL="Next"  HREF="002645.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Modificar listado artículos </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Futf-8%3Fq%3FModificar_listado_art%3F%3D%0A%09%3D%3Futf-8%3Fq%3F%3DC3%3DADculos%3F%3D&In-Reply-To=%3C200907070231.09635.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]Modificar listado artículos">tborras en conetxia.com
+       </A><BR>
+    <I>Mar Jul  7 02:31:09 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002633.html">[BulmaGés]Modificar listado artículos
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002645.html">[BulmaGés]Modificar listado artículos
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2637">[ fecha ]</a>
+              <a href="thread.html#2637">[ hilo ]</a>
+              <a href="subject.html#2637">[ asunto ]</a>
+              <a href="author.html#2637">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Andres
+
+El Monday 06 July 2009 18:30:51 Andres Aznar escribió:
+&gt;<i> Buenas, tengo tres preguntas acerca de los listados de artículos.
+</I>&gt;<i> Quiero imprimir todos los artículos que tengo pero al pinchar sobre
+</I>&gt;<i> &quot;Imprimir catálogo&quot; se cierra el programa, por lo que voy a hacerlo
+</I>&gt;<i> simplemente con &quot;Imprimir listado&quot; dejando solo las columnas &quot;Código
+</I>&gt;<i> completo articulo&quot;, &quot;Nombre artículo&quot; y &quot;P.V.P&quot; y es cuando me surgen las
+</I>&gt;<i> dudas:
+</I>&gt;<i>
+</I>&gt;<i> 1.- La impresión me sale apaisada y aunque he tratado de usar el
+</I>&gt;<i> listado_normal.rml no me funciona, ¿debo retocar yo a mano listado.rml?¿Es
+</I>&gt;<i> lo normal?
+</I>&gt;<i>
+</I>Lo que puedes hacer es sustituir listado.rml por listado_normal.rml ya que en 
+la impresion de listados se usa siempre la plantilla listado.rml
+
+
+&gt;<i> 2.- Me gustaría que los precios que apareciesen tuvieran el iva añadido
+</I>&gt;<i> pero en listado.rml no se como hacerlo. He intentado modificar el select
+</I>&gt;<i> del listado con &quot;Configurar listado&quot;-SQL poniento SELECT *,pvparticulo*1.16
+</I>&gt;<i> as precio ....... para que se me añadiese la columna pero tampoco me sale,
+</I>&gt;<i> supongo que lo estaré haciendo mal.
+</I>&gt;<i>
+</I>Tenemos un plugin de iva incluido que te adecuará un campo para poner el iva 
+incluido
+
+Si quieres un apaño puedes optar por dos opciones
+
+SELECT pvparticulo*1.16 as pvparticulo, *
+
+
+O usando el query con precio puedes crear el archivo 
+articulo_bulmafact_specs.spc (en etc/bulmages) y dentro poner
+
+&lt;SUBFORM&gt;
+    &lt;HEADER&gt;
+        &lt;NOMHEADER&gt;precio&lt;/NOMHEADER&gt;
+        &lt;NOMPHEADER&gt;Precio IVA Incl&lt;/NOMPHEADER&gt;
+        &lt;DBTYPEHEADER&gt;DBNUMERIC&lt;/DBTYPEHEADER&gt;
+        &lt;RESTRICTIONSHEADER&gt;DBNOSAVE&lt;/RESTRICTIONSHEADER&gt;
+        &lt;OPTIONSHEADER&gt;DBREADONLY&lt;/OPTIONSHEADER&gt;
+    &lt;/HEADER&gt;
+&lt;/SUBFORM&gt;
+
+&gt;<i> 3.- En la impresión de pruebas los artículos que contienen en símbolo &quot; se
+</I>&gt;<i> imprime &quot; Ya que en la base de datos si se almacenan esos caracteres
+</I>&gt;<i> bien supongo que será problema de la interpretación del .rml ¿debo cambiar
+</I>&gt;<i> la codificación UTF-8 que aparece al comiendo del archivo?
+</I>&gt;<i>
+</I>Los caracteres especiales funcionan un poco mal con el rml. Yo siempre he 
+tenido problemas con la codificacion
+
+
+Una alternativa bastante atractiva es instalar el pluginbl_subform2ods 
+(Exportar subformularios a ODS) y usar el openoffice para manejar este tipo 
+de listados. Una vez instalado el plugin al pulsar el botón derecho sobre un 
+subformulario te aparecerá la opcion de exportarlo a ODS.
+
+
+Salut
+
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002633.html">[BulmaGés]Modificar listado artículos
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002645.html">[BulmaGés]Modificar listado artículos
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2637">[ fecha ]</a>
+              <a href="thread.html#2637">[ hilo ]</a>
+              <a href="subject.html#2637">[ asunto ]</a>
+              <a href="author.html#2637">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

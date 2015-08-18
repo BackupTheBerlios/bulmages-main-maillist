@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Fallo de segmentación al poner una lista desplegable fuera del constructor de ficha
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-15%3Fq%3FFallo_de_segmentaci%3F%3D%0A%20%3D%3Fiso-8859-15%3Fq%3F%3DF3n_al_poner_una_lista_desplegable_fuera_del_constructor%3F%3D%0A%20%3D%3Fiso-8859-15%3Fq%3F_de_ficha%3F%3D&In-Reply-To=%3C201006241844.07290.auryn%40wanadoo.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003721.html">
+   <LINK REL="Next"  HREF="003723.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Fallo de segmentación al poner una lista desplegable fuera del constructor de ficha </H1>
+    <B>Aron</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-15%3Fq%3FFallo_de_segmentaci%3F%3D%0A%20%3D%3Fiso-8859-15%3Fq%3F%3DF3n_al_poner_una_lista_desplegable_fuera_del_constructor%3F%3D%0A%20%3D%3Fiso-8859-15%3Fq%3F_de_ficha%3F%3D&In-Reply-To=%3C201006241844.07290.auryn%40wanadoo.es%3E"
+       TITLE="[BulmaGés]Fallo de segmentación al poner una lista desplegable fuera del constructor de ficha">auryn en wanadoo.es
+       </A><BR>
+    <I>Jue Jun 24 18:44:07 CEST 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003721.html">[BulmaGés]Fallo de segmentación al poner una lista desplegable fuera del constructor de ficha
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003723.html">[BulmaGés]Fallo de segmentación al poner una lista desplegable fuera del constructor de ficha
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3722">[ fecha ]</a>
+              <a href="thread.html#3722">[ hilo ]</a>
+              <a href="subject.html#3722">[ asunto ]</a>
+              <a href="author.html#3722">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>De momento tiene algunas pegas:
+aparece el texto que nos interesa en el campo, pero a la derecha sale el id, 
+que debería estar oculto.
+Además, al cambiar de fila activa aparece sólo el id.
+
+On Jueves, 24 de Junio de 2010 18:26:04 Aron escribió:
+&gt;<i> Adjunto ejemplo de campo desplegable en &quot;idarticulo&quot; de &quot;proveedoralbaran&quot;.
+</I>&gt;<i> He desarrollado una clase delegado para desplegables genérica que requiere
+</I>&gt;<i> un nombre de tabla, un nombre de campo identificador y un nombre de campo
+</I>&gt;<i> de texto a mostrar en el desplegable.
+</I>&gt;<i> 
+</I>&gt;<i> Así me funciona. No sé si puede ser interesante agregar esta clase a
+</I>&gt;<i> bulmalib para poder tener desplegables de forma sencilla en tablas. De
+</I>&gt;<i> momento lo usaré en mi desarrollo particular si no le véis utilidad.
+</I>&gt;<i> 
+</I>&gt;<i> Saludos
+</I>&gt;<i> 
+</I>&gt;<i> On Viernes, 11 de Junio de 2010 14:16:41 Tomeu escribió:
+</I>&gt;<i> &gt; Hola Aron
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Necesito más información para precisar el fallo.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; &gt; Tengo un delegado que muestra una lista desplegable (BlComboBox) al
+</I>&gt;<i> &gt; &gt; editar
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt;  los campos de la columna de una tabla BfSubForm contenida en una ficha
+</I>&gt;<i> &gt; &gt;  BfForm.
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Estoy intentando que aparezcan los datos en la lista, pero obtengo un
+</I>&gt;<i> &gt; &gt; fallo
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt;  de segmentación cada vez que se entra al &quot;createEditor&quot; del delegado.
+</I>&gt;<i> &gt; &gt;  Dentro de createEditor se define la lista desplegable. El fallo viene
+</I>&gt;<i> &gt; &gt;  al final, en la línea desplegable-&gt;setId(&quot;&quot;), que debería cargar los
+</I>&gt;<i> &gt; &gt;  datos.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Creo que deberias hacer el setId en el setEditorData en lugar de en el
+</I>&gt;<i> &gt; createEditor.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; De todos modos no tengo suficientes datos ni forma de probarlo para
+</I>&gt;<i> &gt; asegurarlo y los delegados son una parte bastante difícil.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Creas el delegado directamente y lo adjuntas con setItemDelegate ?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Derivas algunas clases para poner tu código ?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Usas las llamadas de plugins para crear el delegado correspondiente ?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Salut
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; &gt; Si pongo la definición de la lista desplegable en el constructor de la
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt;  ficha se cargan los datos y no hay problemas.
+</I>&gt;<i> &gt; &gt;  
+</I>&gt;<i> &gt; &gt; 	   BlComboBox *desplegable = new BlComboBox(this);
+</I>&gt;<i> &gt; &gt; 	   desplegable-&gt;setMainCompany(mainCompany());
+</I>&gt;<i> &gt; &gt; 	   desplegable-&gt;setQuery(&quot;SELECT id, nombre FROM gen.proveedor ORDER
+</I>&gt;<i> &gt; &gt; 	   BY
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; nombre&quot;);
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; 	   desplegable-&gt;setFieldId(&quot;id&quot;);
+</I>&gt;<i> &gt; &gt; 	   desplegable-&gt;m_valores[&quot;nombre&quot;] = &quot;&quot;;
+</I>&gt;<i> &gt; &gt; 	   desplegable-&gt;setAllowNull(true);
+</I>&gt;<i> &gt; &gt; 	   desplegable-&gt;setId(&quot;&quot;); // Aquí viene el fallo de segmentación si
+</I>&gt;<i> &gt; &gt; 	   no
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; estamos en el constructor
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Gracias
+</I>&gt;<i> &gt; &gt; _______________________________________________
+</I>&gt;<i> &gt; &gt; Bulmages-main mailing list
+</I>&gt;<i> &gt; &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt; &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i> &gt; &gt; &quot;
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Bulmages-main mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003721.html">[BulmaGés]Fallo de segmentación al poner una lista desplegable fuera del constructor de ficha
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003723.html">[BulmaGés]Fallo de segmentación al poner una lista desplegable fuera del constructor de ficha
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3722">[ fecha ]</a>
+              <a href="thread.html#3722">[ hilo ]</a>
+              <a href="subject.html#3722">[ asunto ]</a>
+              <a href="author.html#3722">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

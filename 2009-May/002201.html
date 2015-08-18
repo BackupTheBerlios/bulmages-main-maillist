@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Otra duda más
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FOtra_duda_m%3DE1s%3F%3D&In-Reply-To=%3C4A1BA351.9050008%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002189.html">
+   <LINK REL="Next"  HREF="002213.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Otra duda más </H1>
+    <B>Arturo Martín Lladó</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FOtra_duda_m%3DE1s%3F%3D&In-Reply-To=%3C4A1BA351.9050008%40conetxia.com%3E"
+       TITLE="[BulmaGés]Otra duda más">amartin en conetxia.com
+       </A><BR>
+    <I>Mar Mayo 26 10:07:45 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002189.html">[BulmaGés]Otra duda más
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002213.html">[BulmaGés]Otra duda más
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2201">[ fecha ]</a>
+              <a href="thread.html#2201">[ hilo ]</a>
+              <a href="subject.html#2201">[ asunto ]</a>
+              <a href="author.html#2201">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Espero que esta explicación te sirva.
+
+El usuario &quot;root&quot; de PostgreSQL es el usuario de sistema &quot;postgres&quot;. 
+Éste es el superusuario de la base de datos con más privilegios. 
+Después, postgres puede añadir usuarios y ponerlos como superusuario o 
+no (y creo que aún así tienen menos privilegios de administración en 
+algunos detalles).
+
+A lo mejor te está liando que, desde bulmasetup, se añada al root como 
+superusuario de PostgreSQL. Esto es porque, para realizar las conexiones 
+a la base de datos es necesario que este usuario esté creado, si no, 
+bulmasetup no puede realizar conexiones a las bases de datos para 
+administrarlas, ni administrar usuarios, etc.
+
+Recuerda que bulmasetup se ha de ejecutar como root para que pueda 
+funcionar, así que, usando la autenticación ident sameuser (o trust que 
+no sé si va como predeterminada) de PostgreSQL, se conecta a la base de 
+datos con el &quot;same user&quot; de UNIX, en este caso, root.
+
+A lo mejor esto también ayuda: 
+<A HREF="http://wiki.postgresql.org/wiki/Autenticaci%C3%B3n_del_Cliente">http://wiki.postgresql.org/wiki/Autenticaci%C3%B3n_del_Cliente</A>
+
+Un saludo.
+
+Raül Martínez i Peris escribió:
+&gt;<i> ¿Es diferente la funcionalidad de tener acceso de &quot;root&quot; a PostgreSQL
+</I>&gt;<i> o tener acceso como &quot;usuario con derechos de superusuario&quot; a
+</I>&gt;<i> PostgreSQL?
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+-- 
+Arturo Martín Lladó - <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">amartin en conetxia.com</A>
+Departamento de Software
+Conetxia Soluciones Informáticas S.L.
+<A HREF="http://www.conetxia.com">http://www.conetxia.com</A> - <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">info en conetxia.com</A>
+902.88.11.66
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002189.html">[BulmaGés]Otra duda más
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002213.html">[BulmaGés]Otra duda más
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2201">[ fecha ]</a>
+              <a href="thread.html#2201">[ hilo ]</a>
+              <a href="subject.html#2201">[ asunto ]</a>
+              <a href="author.html#2201">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

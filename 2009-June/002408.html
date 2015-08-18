@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]r3501 - in trunk/bulmages/bulmatpv: plugins/pluginbt_totalivaincluido src
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fr3501_-_in_trunk/bulmages/%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fbulmatpv%3D3A_plugins/pluginbt%3D5Ftotalivaincluido_src%3F%3D&In-Reply-To=%3C4A33F568.6090107%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002407.html">
+   <LINK REL="Next"  HREF="002399.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]r3501 - in trunk/bulmages/bulmatpv: plugins/pluginbt_totalivaincluido src </H1>
+    <B>--==F@lcon==--</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fr3501_-_in_trunk/bulmages/%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fbulmatpv%3D3A_plugins/pluginbt%3D5Ftotalivaincluido_src%3F%3D&In-Reply-To=%3C4A33F568.6090107%40gmail.com%3E"
+       TITLE="[BulmaGés]r3501 - in trunk/bulmages/bulmatpv: plugins/pluginbt_totalivaincluido src">falcon.lab en gmail.com
+       </A><BR>
+    <I>Sab Jun 13 20:52:24 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002407.html">[BulmaGés]r3501 - in trunk/bulmages/bulmatpv: plugins/pluginbt_totalivaincluido src
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002399.html">[BulmaGés] r3502 - trunk/bulmages/bulmasetup
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2408">[ fecha ]</a>
+              <a href="thread.html#2408">[ hilo ]</a>
+              <a href="subject.html#2408">[ asunto ]</a>
+              <a href="author.html#2408">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Buenas!
+
+Pues si, puestos así hay un montón de maneras en las que un camarero 
+puede quedarse con dinero de la caja, pero pienso que deberíamos 
+ponérselo lo más complicado posible. Los software de TPV que hay en el 
+mercado implementan distintos niveles de seguridad, pero podría 
+apostarme a que necesitas permiso para modificar un ticket después de 
+haber hecho un subtotal...
+Tal y como comenta Arturo, esto se solucionaría con los perfiles de 
+usuario. Aunque de todas formas, opino que la manera más correcta de 
+hacerlo es la que propone Tomeu, pero no con permisos de borrado sino 
+con permisos para anular una línea, esto es, ticar un mismo artículo en 
+negativo. Así mantenemos la &quot;historia&quot; del ticket para el caso de una 
+posterior revisión por parte del dueño o encargado. Al mejor estilo 
+Carrefour, donde las cajeras llaman a su encargada para volver a pasar 
+el artículo por el lector, pero en negativo.
+
+
+Saludos!!
+
+Joaquin
+
+Arturo escribió:
+&gt;<i> Todo esto que se comenta está pendiente de implementación/solución 
+</I>&gt;<i> gracias a los perfiles de usuario (sólo camarero, maitre, cajero, 
+</I>&gt;<i> administrador, etc...). Hay que definir estos perfiles en breve.
+</I>&gt;<i>
+</I>&gt;<i> Un saludo.
+</I>&gt;<i>
+</I>&gt;<i> Tomeu Borras wrote:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Bones
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> No es tema de reimprimir o no sino mes aviat de poder fer o no poder fer.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> El que en Joaquin vol dir es que una volta que s'ha imprimit un ticket per 
+</I>&gt;&gt;<i> cobrar-lo (hi ha un dilema entre si es pot modificar el ticket o no). Ja que 
+</I>&gt;&gt;<i> un cambrer podria fer el ticket cobrar i desp&#341;es esborrar-lo quedant-se amb 
+</I>&gt;&gt;<i> tots els diners.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Posats així, també pot cobrar sense fer ticket, fer tickets de devolució 
+</I>&gt;&gt;<i> falsos, fer un psql per consola i esborrar el que li passi pels nassos o 
+</I>&gt;&gt;<i> alguna altra marranada d'aquest estil.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> PD: Tanmateix hi ha una forma alternativa (i correcte) de arreglar-ho força 
+</I>&gt;&gt;<i> sencilla que es llevar els permisos de esborrat de lalbaran (o de la taula 
+</I>&gt;&gt;<i> que pertoqui) ja que tal com funciona BulmaTPV quan imprimeixes el ticket es 
+</I>&gt;&gt;<i> fa el guardat i sense permisos de esborrar linies ja tens el resultat 
+</I>&gt;&gt;<i> desitjat de no permetrer esborrar línies una vegada imprés.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Enfi, salut.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> El Saturday 13 June 2009 18:35:38 Xavi Drudis Ferran escribió:
+</I>&gt;&gt;<i>   
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i> On Thu, Jun 11, 2009 at 04:44:21PM +0200, --==<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">F en lcon</A>==-- wrote:
+</I>&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;<i> Perdón, me corrijo, si que podemos imprimir un ticket antes de cobrarlo
+</I>&gt;&gt;&gt;&gt;<i> (para llevarlo a la mesa, por ejemplo) pero deberíamos evitar que se
+</I>&gt;&gt;&gt;&gt;<i> puedan borrar líneas del ticket después de hecho, y si se agregan
+</I>&gt;&gt;&gt;&gt;<i> artículos (o se anulan introduciendo una cantidad en negativo) obligar
+</I>&gt;&gt;&gt;&gt;<i> al usuario a reimprimir el ticket.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Saludos!
+</I>&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;<i> Entenc el que et preocupa i també m'han arribat preocupacions per un estil
+</I>&gt;&gt;&gt;<i> de bulmafact.
+</I>&gt;&gt;&gt;<i> Però no entenc com pots obligar l'usuari a imprimir res (sino engega la
+</I>&gt;&gt;&gt;<i> impresora, no imprimirà, o hi ha mil maneres que una cosa no s'imprimeixi).
+</I>&gt;&gt;&gt;<i> I encara que l'imprimís, el programa no pot controlar si estripa el ticket
+</I>&gt;&gt;&gt;<i> que ha acabat d'imprimir, no ?.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Potser és perquè no tinc ni idea de TPVs i usen impresores especials que
+</I>&gt;&gt;&gt;<i> fan còpies o què sé jo... Però vol dir que aquest requeriment té sentit ?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Veig més sentit a això de no permetre esborrar línies de ticket si s'ha
+</I>&gt;&gt;&gt;<i> imprés (tot i que tampoc és gaire fàcil, perquè que s'hagi intentat
+</I>&gt;&gt;&gt;<i> imprimir no vol dir que s'hagi imprés, que el programa no et deixi fer una
+</I>&gt;&gt;&gt;<i> cosa no vol dir que la bd no et deixi i només hi ha seguretat de debó si és
+</I>&gt;&gt;&gt;<i> la bd que no et deixa ... )
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Però parl des de la més absoluta ignoràcia de bulmatpv i tpvs en general.
+</I>&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002407.html">[BulmaGés]r3501 - in trunk/bulmages/bulmatpv: plugins/pluginbt_totalivaincluido src
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002399.html">[BulmaGés] r3502 - trunk/bulmages/bulmasetup
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2408">[ fecha ]</a>
+              <a href="thread.html#2408">[ hilo ]</a>
+              <a href="subject.html#2408">[ asunto ]</a>
+              <a href="author.html#2408">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

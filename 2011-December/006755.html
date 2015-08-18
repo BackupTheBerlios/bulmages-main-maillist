@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] Problema con Bulmasetup
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Problema%20con%20Bulmasetup&In-Reply-To=%3CCAJWqEtc2UNPu%3DjevNseqEXZm5umLNHvot6Zm4MobUE%3DDVord0w%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006754.html">
+   <LINK REL="Next"  HREF="006756.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] Problema con Bulmasetup </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Problema%20con%20Bulmasetup&In-Reply-To=%3CCAJWqEtc2UNPu%3DjevNseqEXZm5umLNHvot6Zm4MobUE%3DDVord0w%40mail.gmail.com%3E"
+       TITLE="[BulmaGés] Problema con Bulmasetup">tborras en conetxia.com
+       </A><BR>
+    <I>Vie Dic 30 12:40:48 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006754.html">[BulmaGés] Problema con el python	multios().mkdir_p
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006756.html">[BulmaGés]Problema con Bulmasetup
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6755">[ fecha ]</a>
+              <a href="thread.html#6755">[ hilo ]</a>
+              <a href="subject.html#6755">[ asunto ]</a>
+              <a href="author.html#6755">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello again:
+
+Ya tengo arreglado el tema:
+
+    def copy(self, src, dst):
+        &quot;&quot;&quot; Given a source will copy to destination and also it's meta,
+doesn't care if are folder or a file
+        &quot;&quot;&quot;
+        if os.path.isdir(src) == True:
+            shutil.copytree(src,dst)
+        else:
+            shutil.copy(src,dst)
+        shutil.copystat(src,dst)
+
+
+No es buena idea hacer el copystat cuando el destino difiere del origen
+(por ejemplo al poner como destino sólo el directorio).
+
+Salut
+
+-- 
+Tomeu Borrás
+Conetxia Soluciones Informáticas
+902 88 11 66 - 677 77 44 76
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20111230/f06369bb/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20111230/f06369bb/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006754.html">[BulmaGés] Problema con el python	multios().mkdir_p
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006756.html">[BulmaGés]Problema con Bulmasetup
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6755">[ fecha ]</a>
+              <a href="thread.html#6755">[ hilo ]</a>
+              <a href="subject.html#6755">[ asunto ]</a>
+              <a href="author.html#6755">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

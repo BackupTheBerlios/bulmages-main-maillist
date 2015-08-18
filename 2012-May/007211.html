@@ -1,0 +1,460 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to arreglo...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20arreglo...&In-Reply-To=%3C20120511220401.8B2D6756D7%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007210.html">
+   <LINK REL="Next"  HREF="007212.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to arreglo... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20arreglo...&In-Reply-To=%3C20120511220401.8B2D6756D7%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to arreglo...">no-reply en gitorious.org
+       </A><BR>
+    <I>Sab Mayo 12 00:04:01 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007210.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to arreglo...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007212.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to arreglo...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7211">[ fecha ]</a>
+              <a href="thread.html#7211">[ hilo ]</a>
+              <a href="subject.html#7211">[ asunto ]</a>
+              <a href="author.html#7211">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to arreglobulmacont
+arreglobulmacont changed from 729c643 to 9a4536d
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/729c643ceb338aefa8dbe1b1a1f09466c040d52d/diffs/9a4536dd9e087e8d6ce14417e07e44dbee2133eb">https://gitorious.org/bulmages/bulmages/commit/729c643ceb338aefa8dbe1b1a1f09466c040d52d/diffs/9a4536dd9e087e8d6ce14417e07e44dbee2133eb</A>
+
+Diff: 
+
+commit 9a4536dd9e087e8d6ce14417e07e44dbee2133eb
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sat May 12 00:04:03 2012 +0200
+
+    Arreglo las opciones de mostrar diario
+
+diff --git a/bulmages/bulmacont/plugins/pluginbc_diario/bcdiarioview.h b/bulmages/bulmacont/plugins/pluginbc_diario/bcdiarioview.h
+index 6dd8f6c..4230df9 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_diario/bcdiarioview.h
++++ b/bulmages/bulmacont/plugins/pluginbc_diario/bcdiarioview.h
+@@ -69,5 +69,22 @@ public slots:
+     virtual void openAsiento();
+ };
+ 
++
++class SubForm_Diario : public QObject
++{
++    Q_OBJECT
++
++public:
++    SubForm_Diario ( BlSubForm * );
++    ~SubForm_Diario();
++    void boton_diario1 ( int );
++public slots:
++    virtual void s_pintaMenu ( QMenu * );
++    virtual void s_trataMenu ( QAction * );
++    virtual void botonera();
++    virtual void botonera1();
++    virtual void botonera2();
++};
++
+ #endif
+ 
+diff --git a/bulmages/bulmacont/plugins/pluginbc_diario/pluginbc_diario.cpp b/bulmages/bulmacont/plugins/pluginbc_diario/pluginbc_diario.cpp
+index 47b283e..53315ca 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_diario/pluginbc_diario.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_diario/pluginbc_diario.cpp
+@@ -88,3 +88,242 @@ int BlAction_actionTriggered(BlAction *accion) {
+     
+     return 0;
+ }
++
++
++
++
++
++
++
++
++
++/// --------------------------------------------------------------
++/// --------- Implemento la seleccion de diarios -----------------
++/// Con esta funcionalidad creamos menus contextuales en todos los subformularios donde
++/// Aparezca el identificador de articulo como elemento y permite de forma sencilla
++/// La creacion, la edicion, y la seleccion.
++///
++
++/**
++\param parent
++**/
++SubForm_Diario::SubForm_Diario ( BlSubForm *parent ) : QObject ( parent )
++{
++    BL_FUNC_DEBUG
++    
++}
++
++///
++/**
++**/
++SubForm_Diario::~SubForm_Diario()
++{
++    BL_FUNC_DEBUG
++    
++}
++
++
++///
++/**
++\param menu
++**/
++void SubForm_Diario::s_pintaMenu ( QMenu *menu )
++{
++    BL_FUNC_DEBUG
++    BlSubForm *sub = ( BlSubForm * ) parent();
++    BlSubFormHeader *header = sub-&gt;header ( &quot;codigo&quot; );
++    if ( header ) {
++        menu-&gt;addSeparator();
++        QString idcuenta = sub-&gt;dbValue ( &quot;idcuenta&quot; );
++        if ( idcuenta != &quot;&quot; )  {
++	    menu-&gt;addAction ( _ ( &quot;Diario (dia)&quot; ) );
++	    menu-&gt;addAction ( _ ( &quot;Diario (mes)&quot; ) );
++	    menu-&gt;addAction ( _ ( &quot;Diario (año)&quot; ) );
++	} // end if
++    } // end if
++}
++
++
++///
++/**
++\param action
++**/
++void SubForm_Diario::s_trataMenu ( QAction *action )
++{
++    BL_FUNC_DEBUG
++    BlSubForm *sub = ( BlSubForm * ) parent();
++    QString idcuenta = sub-&gt;dbValue ( &quot;idcuenta&quot; );
++
++    if ( idcuenta != &quot;&quot; ) {
++	if ( action-&gt;text() == _ ( &quot;Diario (dia)&quot; ) ) {
++            boton_diario1 ( 0 );
++	} // end if
++
++	if ( action-&gt;text() == _ ( &quot;Diario (mes)&quot; ) ) {
++            boton_diario1 ( 1 );
++	} // end if
++	
++	if ( action-&gt;text() == _ ( &quot;Diario (año)&quot; ) ) {
++            boton_diario1 ( 2 );
++	} // end if
++    } // end if
++}
++
++///
++/**
++\param action
++**/
++void SubForm_Diario::botonera ( )
++{
++    BL_FUNC_DEBUG
++            boton_diario1 ( 0 );
++}
++
++
++///
++/**
++\param action
++**/
++void SubForm_Diario::botonera1 ( )
++{
++    BL_FUNC_DEBUG
++            boton_diario1 ( 1 );
++}
++
++
++///
++/**
++\param action
++**/
++void SubForm_Diario::botonera2 ( )
++{
++    BL_FUNC_DEBUG
++            boton_diario1 ( 2 );
++}
++
++
++/// Si el parametro pasado es un:
++/// 0 -&gt; del d&iacute;a actual
++/// 1 -&gt; del mes actual
++/// 2 -&gt; del a&ntilde;o actual
++/**
++\param tipo
++**/
++void SubForm_Diario::boton_diario1 ( int tipo )
++{
++    BL_FUNC_DEBUG
++
++    BlSubForm *sub = ( BlSubForm * ) parent();
++    QDate fecha1, fecha2, fechaact;
++    QString fecha = sub-&gt;dbValue ( &quot;fecha&quot; ).left ( 10 );
++    
++    QString codigo = sub-&gt;dbValue ( &quot;codigo&quot; );
++    if ( codigo != &quot;&quot; ) {
++        fechaact = blNormalizeDate ( fecha );
++        switch ( tipo ) {
++        case 0:
++            fecha1.setYMD ( fechaact.year(), fechaact.month(), fechaact.day() );
++            fecha2.setYMD ( fechaact.year(), fechaact.month(), fechaact.day() );
++            break;
++        case 1:
++            fecha1.setYMD ( fechaact.year(), fechaact.month(), 1 );
++            fecha2.setYMD ( fechaact.year(), fechaact.month(), fechaact.daysInMonth() );
++            break;
++        case 2:
++            fecha1.setYMD ( fechaact.year(), 1, 1 );
++            fecha2.setYMD ( fechaact.year(), 12, 31 );
++            break;
++        } // end switch
++        
++        if ( !g_diario) {
++            g_diario = new BcDiarioView ( g_pluginbc_diario-&gt;company(), 0 );
++	    g_diario-&gt;setObjectName(&quot;BcDiarioView&quot;);
++            g_pluginbc_diario-&gt;company()-&gt;pWorkspace()-&gt;addSubWindow ( g_diario );
++	} // end if
++        
++        g_diario -&gt;inicializa1 ( ( char * ) fecha1.toString ( &quot;dd/MM/yyyy&quot; ).toAscii().constData(), ( char * ) fecha2.toString ( &quot;dd/MM/yyyy&quot; ).toAscii().constData(), 0 );
++        g_diario -&gt;accept();
++	g_diario-&gt;hide();
++	g_diario-&gt;show();
++    } // end if
++    
++}
++
++
++
++///
++/**
++\param sub
++\return
++**/
++int BlSubForm_BlSubForm_Post ( BlSubForm *sub )
++{
++    BL_FUNC_DEBUG
++    SubForm_Diario *subformods = new SubForm_Diario ( sub );
++    sub-&gt;QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformods, SLOT ( s_pintaMenu ( QMenu * ) ) );
++    sub-&gt;QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformods, SLOT ( s_trataMenu ( QAction * ) ) );
++    
++    return 0;
++}
++
++
++
++/// Miramos de poner los iconos del menu de subformularios
++///
++/**
++\param sub
++\return
++**/
++int BlSubForm_preparaMenu ( BlSubForm *sub ) {
++    BL_FUNC_DEBUG
++    BlSubFormHeader *header = sub-&gt;header ( &quot;codigo&quot; );
++    if ( header ) {
++	SubForm_Diario *subformods = new SubForm_Diario ( sub );
++	
++	QHBoxLayout *m_hboxLayout1 = sub-&gt;mui_menusubform-&gt;findChild&lt;QHBoxLayout *&gt; ( &quot;hboxLayout1&quot; );
++	if ( !m_hboxLayout1 ) {
++	    m_hboxLayout1 = new QHBoxLayout ( sub-&gt;mui_menusubform );
++	    m_hboxLayout1-&gt;setSpacing (0 );
++	    m_hboxLayout1-&gt;setMargin ( 0 );
++	    m_hboxLayout1-&gt;setObjectName ( QString::fromUtf8 ( &quot;hboxLayout1&quot; ) );
++	} // end if
++	
++
++	  QToolButton *sel = new QToolButton ( sub-&gt;mui_menusubform );
++	  sel-&gt;setStatusTip ( &quot;Diario (dia)&quot; );
++	  sel-&gt;setToolTip ( &quot;Diario (dia)&quot; );
++	  sel-&gt;setMinimumSize ( QSize ( 18, 18 ) );
++	  sel-&gt;setIcon ( QIcon ( &quot;:/Images/balance-sheet.png&quot; ) );
++	  sel-&gt;setIconSize ( QSize ( 18, 18 ) );    
++	  m_hboxLayout1-&gt;addWidget ( sel );
++	  sel-&gt;connect (sel, SIGNAL(released()), subformods, SLOT(botonera()));
++	
++	  QToolButton *sel1 = new QToolButton ( sub-&gt;mui_menusubform );
++	  sel1-&gt;setStatusTip ( &quot;Diario (mes)&quot; );
++	  sel1-&gt;setToolTip ( &quot;Diario (mes)&quot; );
++	  sel1-&gt;setMinimumSize ( QSize ( 18, 18 ) );
++	  sel1-&gt;setIcon ( QIcon ( &quot;:/Images/balance-sheet.png&quot; ) );
++	  sel1-&gt;setIconSize ( QSize ( 18, 18 ) );    
++	  m_hboxLayout1-&gt;addWidget ( sel1 );
++	  sel1-&gt;connect (sel1, SIGNAL(released()), subformods, SLOT(botonera1()));
++	  
++	  QToolButton *sel2 = new QToolButton ( sub-&gt;mui_menusubform );
++	  sel2-&gt;setStatusTip ( &quot;Diario (año)&quot; );
++	  sel2-&gt;setToolTip ( &quot;Diario (año)&quot; );
++	  sel2-&gt;setMinimumSize ( QSize ( 18, 18 ) );
++	  sel2-&gt;setIcon ( QIcon ( &quot;:/Images/balance-sheet.png&quot; ) );
++	  sel2-&gt;setIconSize ( QSize ( 18, 18 ) );    
++	  m_hboxLayout1-&gt;addWidget ( sel2 );
++	  sel2-&gt;connect (sel2, SIGNAL(released()), subformods, SLOT(botonera2()));
++
++    } // end if
++    return 0;
++}
++
++
++
++
++
++
++
++
+diff --git a/bulmages/bulmacont/plugins/pluginbc_diario/pluginbc_diario.h b/bulmages/bulmacont/plugins/pluginbc_diario/pluginbc_diario.h
+index 507ab3c..f542942 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_diario/pluginbc_diario.h
++++ b/bulmages/bulmacont/plugins/pluginbc_diario/pluginbc_diario.h
+@@ -32,6 +32,8 @@
+ extern &quot;C&quot; PLUGINBC_DIARIO_EXPORT BcDiarioView *g_diario;
+ extern &quot;C&quot; PLUGINBC_DIARIO_EXPORT int entryPoint ( BcBulmaCont * );
+ extern &quot;C&quot; PLUGINBC_DIARIO_EXPORT int BlAction_actionTriggered(BlAction *);
++extern &quot;C&quot; PLUGINBC_DIARIO_EXPORT int BlSubForm_preparaMenu ( BlSubForm * );
++extern &quot;C&quot; PLUGINBC_DIARIO_EXPORT int BlSubForm_BlSubForm_Post ( BlSubForm * );
+ 
+ #endif
+ 
+diff --git a/bulmages/bulmacont/plugins/pluginbc_mayor/bcextractosubform.cpp b/bulmages/bulmacont/plugins/pluginbc_mayor/bcextractosubform.cpp
+index f48b4fb..192e2c9 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_mayor/bcextractosubform.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_mayor/bcextractosubform.cpp
+@@ -92,11 +92,6 @@ void BcExtractoSubForm::s_pintaMenu ( QMenu *menu )
+     BL_FUNC_DEBUG
+     menu-&gt;addSeparator();
+     menu-&gt;addAction ( _ ( &quot;Mostrar asiento&quot; ) );
+-    menu-&gt;addSeparator();
+-    menu-&gt;addAction ( _ ( &quot;Mostrar diario (dia)&quot; ) );
+-    menu-&gt;addAction ( _ ( &quot;Mostrar diario (mes)&quot; ) );
+-    menu-&gt;addAction ( _ ( &quot;Mostrar diario (ano)&quot; ) );
+-    
+ }
+ 
+ /// Slot que trata la activacion de un elemento en el menu contextual.
+@@ -110,12 +105,5 @@ void BcExtractoSubForm::s_trataMenu ( QAction *action )
+     if ( !action ) return;
+     if ( action-&gt;text() == _ ( &quot;Mostrar asiento&quot; ) )
+ 	emit openAsiento();
+-    if ( action-&gt;text() == _ ( &quot;Mostrar diario (dia)&quot; ) )
+-        boton_diario1 ( 0 );
+-    if ( action-&gt;text() == _ ( &quot;Mostrar diario (mes)&quot; ) )
+-        boton_diario1 ( 1 );
+-    if ( action-&gt;text() == _ ( &quot;Mostrar diario (ano)&quot; ) )
+-        boton_diario1 ( 2 );
+-    
+ }
+ 
+diff --git a/bulmages/bulmacont/src/bcsubform.cpp b/bulmages/bulmacont/src/bcsubform.cpp
+index 3defefb..ba8adb9 100644
+--- a/bulmages/bulmacont/src/bcsubform.cpp
++++ b/bulmages/bulmacont/src/bcsubform.cpp
+@@ -340,43 +340,6 @@ void BcSubForm::boton_asiento()
+ 
+ 
+ 
+-/// Si el parametro pasado es un:
+-/// 0 -&gt; del d&iacute;a actual
+-/// 1 -&gt; del mes actual
+-/// 2 -&gt; del a&ntilde;o actual
+-/**
+-\param tipo
+-**/
+-void BcSubForm::boton_diario1 ( int tipo )
+-{
+-    BL_FUNC_DEBUG
+-/*
+-    BcCompany *companyact = ( BcCompany * ) mainCompany();
+-    QDate fecha1, fecha2, fechaact, fechaact1;
+-    fechaact = blNormalizeDate ( dbValue ( &quot;fecha&quot; ).left ( 10 ) );
+-    fechaact1 = blNormalizeDate ( dbValue ( &quot;fecha&quot; ).left ( 10 ) );
+-    if ( dbValue ( &quot;fecha&quot; ).left ( 10 ) != &quot;&quot; ) {
+-        switch ( tipo ) {
+-        case 0:
+-            fecha1.setYMD ( fechaact.year(), fechaact.month(), fechaact.day() );
+-            fecha2.setYMD ( fechaact1.year(), fechaact1.month(), fechaact1.day() );
+-            break;
+-        case 1:
+-            fecha1.setYMD ( fechaact.year(), fechaact.month(), 1 );
+-            fecha2.setYMD ( fechaact.year(), fechaact.month(), fechaact.daysInMonth() );
+-            break;
+-        case 2:
+-            fecha1.setYMD ( fechaact.year(), 1, 1 );
+-            fecha2.setYMD ( fechaact.year(), 12, 31 );
+-            break;
+-        } // end switch
+-        companyact-&gt;diarioempresa() -&gt;inicializa1 ( ( char * ) fecha1.toString ( &quot;dd/MM/yyyy&quot; ).toAscii().constData(), ( char * ) fecha2.toString ( &quot;dd/MM/yyyy&quot; ).toAscii().constData(), 0 );
+-    } // end if
+-    companyact-&gt;diarioempresa() -&gt;accept();
+-    companyact-&gt;librodiario();
+-*/
+-    
+-}
+ 
+ 
+ /// Si el parametro pasado es un:
+diff --git a/bulmages/bulmacont/src/bcsubform.h b/bulmages/bulmacont/src/bcsubform.h
+index e8e8db2..12672ce 100644
+--- a/bulmages/bulmacont/src/bcsubform.h
++++ b/bulmages/bulmacont/src/bcsubform.h
+@@ -58,7 +58,6 @@ public:
+     BcSubForm ( QWidget *parent = 0 );
+     virtual ~BcSubForm();
+     virtual void boton_asiento();
+-    virtual void boton_diario1 ( int );
+     virtual void createMenu ( QMenu * );
+     virtual void execMenuAction ( QAction * );
+     virtual void setMainCompany ( BlMainCompany *c );
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007210.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to arreglo...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007212.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to arreglo...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7211">[ fecha ]</a>
+              <a href="thread.html#7211">[ hilo ]</a>
+              <a href="subject.html#7211">[ asunto ]</a>
+              <a href="author.html#7211">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

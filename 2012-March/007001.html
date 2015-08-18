@@ -1,0 +1,206 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Ampliación sobre pequeño problema en los subformularios.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-March/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FAmpliaci%3DF3n_sobre_pe%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fque%3DF1o_problema_en_los_subformularios%3D2E%3F%3D&In-Reply-To=%3CCANdfMDf5A4HpkwRvF%3DXQzrmGGqoZMk71AtuPrZBHEmLpRfipBA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007000.html">
+   <LINK REL="Next"  HREF="006996.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Ampliación sobre pequeño problema en los subformularios. </H1>
+    <B>Aron</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FAmpliaci%3DF3n_sobre_pe%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fque%3DF1o_problema_en_los_subformularios%3D2E%3F%3D&In-Reply-To=%3CCANdfMDf5A4HpkwRvF%3DXQzrmGGqoZMk71AtuPrZBHEmLpRfipBA%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]Ampliación sobre pequeño problema en los subformularios.">auryn en wanadoo.es
+       </A><BR>
+    <I>Vie Mar  9 09:09:46 CET 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007000.html">[BulmaGés]Ampliación sobre pequeño problema en los subformularios.
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006996.html">[BulmaGés]Pequeño error en subformularios.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7001">[ fecha ]</a>
+              <a href="thread.html#7001">[ hilo ]</a>
+              <a href="subject.html#7001">[ asunto ]</a>
+              <a href="author.html#7001">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola, mis cambios eran para identificar una columna por su nombre de campo,
+ya sea para cambiar algún color en las celdas una columna o para mostrar y
+ocultar desde código.
+
+Si una columna está forzosamente oculta siempre, no creo que afecte a lo
+que he hecho.
+
+Resumen de mis cambios a este respecto en BlSubForm:
+* nuevo método columnNumber ( QString NOMBRECAMPO ) que devuelve número de
+elemento visual o en el configurador
+* nuevos métodos setColumnVisible por número de orden en el configurador y
+por nombre de campo
+* cambio en showColumn y hideColumn para mostrar y ocultar basándose
+siempre en el configurador
+
+Espero que nos aclaremos pronto :)
+
+El 9 de marzo de 2012 07:38, Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt; escribió:
+
+&gt;<i> Claro que si.
+</I>&gt;<i>
+</I>&gt;<i> Arreglando el bug inicial que no hace el salto de linea al estar estos
+</I>&gt;<i> campos visibles.
+</I>&gt;<i>
+</I>&gt;<i> También si tu problema es únicamente con el idarticulo y no con orden y
+</I>&gt;<i> idlpedido puedes hacer que no bloquee el idarticulo y también funcionará.
+</I>&gt;<i>
+</I>&gt;<i> Salut
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> El 8 de marzo de 2012 23:08, Fco. Javier M. C. &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;escribió:
+</I>&gt;<i>
+</I>&gt;<i>  Tomeu.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> No me parece bien tus cambios, hay que pensar algo diferente. Yo necesito
+</I>&gt;&gt;<i> acceder al idarticulo y necesito ver esas columnas cuando sea necesario sin
+</I>&gt;&gt;<i> ser modo experto. ¿no se puede arreglar de otra manera?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Un saludo.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> El 08/03/12 22:16, Tomeu Borras escribió:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Si, parece que así queda bastante bien solventado.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> El DisableView hace que el checkbox del listado de columnas no sea
+</I>&gt;&gt;<i> checkable pero no lo oculta. Ahora además si estas en modo experto si te
+</I>&gt;&gt;<i> deja hacerlo visible. Siempre es interesante saber cual es un id o similar.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Salut
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> El 8 de marzo de 2012 21:36, Fco. Javier M. C. &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;escribió:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Hablando así rápido. Si el campo está realmente oculto no tendría que
+</I>&gt;&gt;&gt;<i> aparecer en el listado de columnas, pero eso a Arón le va a dar problemas
+</I>&gt;&gt;&gt;<i> porque lo utiliza para detectar la posición de las columnas. Buscar por ese
+</I>&gt;&gt;&gt;<i> orden no es correcto (aquí está la prueba) y se tendría que hacer buscando
+</I>&gt;&gt;&gt;<i> en el index de la tabla y traduciendo a la posición visible, si es
+</I>&gt;&gt;&gt;<i> necesario, como el cambio que he hecho yo.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> ¿Qué opinas Arón?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> El 08/03/12 21:12, Tomeu Borras escribió:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> El parametro que buscaba es:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>  BlSubFormHeader::DbDisableView (Debe tener unos 3 añitos).
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> El cual deshabilita la posibilidad de que el usuario haga visible el
+</I>&gt;&gt;&gt;<i> campo. No se como funcionará, pero voy a probarlo.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> PD: Que mal vamos de documentación !!! Y la memoria empieza a fallarme.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Salut
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> --
+</I>&gt;&gt;&gt;<i> Tomeu Borrás
+</I>&gt;&gt;&gt;<i> Conetxia Soluciones Informáticas
+</I>&gt;&gt;&gt;<i> 902 88 11 66 - 677 77 44 76
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>   _______________________________________________
+</I>&gt;&gt;&gt;<i> Bulmages-main mailing <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">listBulmages-main en lists.berlios.dehttps</A>://lists.berlios.de/mailman/listinfo/bulmages-main
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> --
+</I>&gt;&gt;&gt;<i> Javier.
+</I>&gt;&gt;&gt;<i> TODO-<A HREF="REDEShttp://www.todo-redes.com">REDEShttp://www.todo-redes.com</A>
+</I>&gt;&gt;&gt;<i> C/Begònia 12 - 07010 Palma de Mallorca.
+</I>&gt;&gt;&gt;<i> Tel.: 971499071
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> Bulmages-main mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> --
+</I>&gt;&gt;<i> Tomeu Borrás
+</I>&gt;&gt;<i> Conetxia Soluciones Informáticas
+</I>&gt;&gt;<i> 902 88 11 66 - 677 77 44 76
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Bulmages-main mailing <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">listBulmages-main en lists.berlios.dehttps</A>://lists.berlios.de/mailman/listinfo/bulmages-main
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> --
+</I>&gt;&gt;<i> Javier.
+</I>&gt;&gt;<i> TODO-<A HREF="REDEShttp://www.todo-redes.com">REDEShttp://www.todo-redes.com</A>
+</I>&gt;&gt;<i> C/Begònia 12 - 07010 Palma de Mallorca.
+</I>&gt;&gt;<i> Tel.: 971499071
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Bulmages-main mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Tomeu Borrás
+</I>&gt;<i> Conetxia Soluciones Informáticas
+</I>&gt;<i> 902 88 11 66 - 677 77 44 76
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20120309/f3c47109/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20120309/f3c47109/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007000.html">[BulmaGés]Ampliación sobre pequeño problema en los subformularios.
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006996.html">[BulmaGés]Pequeño error en subformularios.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7001">[ fecha ]</a>
+              <a href="thread.html#7001">[ hilo ]</a>
+              <a href="subject.html#7001">[ asunto ]</a>
+              <a href="author.html#7001">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Plugins en cliente-servidor
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Futf-8%3Fq%3FPlugins_en_cliente-servido%3F%3D%20%3D%3Futf-8%3Fq%3Fr%3F%3D&In-Reply-To=%3C200812151633.27580.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000542.html">
+   <LINK REL="Next"  HREF="000547.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Plugins en cliente-servidor </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Futf-8%3Fq%3FPlugins_en_cliente-servido%3F%3D%20%3D%3Futf-8%3Fq%3Fr%3F%3D&In-Reply-To=%3C200812151633.27580.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]Plugins en cliente-servidor">tborras en conetxia.com
+       </A><BR>
+    <I>Lun Dic 15 16:33:27 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000542.html">[BulmaGés] Plugins en cliente-servidor
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000547.html">[BulmaGés] r2841 - in	trunk/bulmages/images/oxygen/international: . 48x48
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#543">[ fecha ]</a>
+              <a href="thread.html#543">[ hilo ]</a>
+              <a href="subject.html#543">[ asunto ]</a>
+              <a href="author.html#543">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola
+
+Lo que pides es sencillo.
+
+Generas la configuración en el servidor y luego trasladas los archivos a los 
+clientes.
+
+Es decir que en el servidor deberías ver los archivos
+/etc/bulmages/bulmages.conf
+/etc/bulmages/bulmafact.conf
+/etc/bulmages/bulmafact_database.conf
+
+Traslada sólo el archivo
+/etc/bulmages/bulmafact_database.conf
+
+que es el que indica que plugins se instalan para dicha empresa.
+
+
+En el bulmages.conf seguramente tendrás cambiada la ip de acceso al servidor 
+con lo que no lo copies.
+
+
+Otra cosa:
+
+Si tienes plantillas personalizadas o bien tienes que tener el directorio 
+compartido y bien ajustado el parametro CONF_DIR_OPENREPORTS
+o bien tienes los archivos de plantilla replicados en cada maquina.
+
+
+Y para acabar:
+
+De momento la instalación que has hecho puede funcionarte bien, pero puedes 
+tener problemas si las base de datos cambia y el cliente no.
+Yo también compilaría del SVN en el servidor y así los tendría todos con la 
+misma versión.
+
+Puedes (si te interesa) hacer actualización de todos los clientes con un 
+scriptillo en el crontab que copie del /usr/local del servidor al /usr/local 
+de los clientes. Enfin esto ya es cada uno se lo monta como quiere.
+
+Espero que esto te ayude.
+
+Salut
+
+
+
+
+El Monday 15 December 2008 15:58:12 Joe &quot;The Driller&quot; escribió:
+&gt;<i> Hola a todos !!
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Estoy intentando instalar Bulmages en un servidor (Ubuntu Intrepid con
+</I>&gt;<i> Gnome) de manera que este contenga la base de datos del programa y
+</I>&gt;<i> accedo al mismo desde diversos terminales tambien con ubuntu (8.04 64
+</I>&gt;<i> bits, 7.10 32 bits y 8.10 32 bits). El problema con que me encuentro es
+</I>&gt;<i> que no se como configurar los plugins de cada &quot;terminal&quot; puesto que
+</I>&gt;<i> bulmasetup solo lo puedo ejecutar en el servidor. La aplicación funciona
+</I>&gt;<i> en principio y accedo a la base de datos sin problemas. Además me he
+</I>&gt;<i> dado cuenta de que no puedo borrar una empresa ya creada en el servidor,
+</I>&gt;<i> no encuentro ninguna opción para hacerlo. Cualquier ayuda serà
+</I>&gt;<i> bienvenida y muy, muy agradecida.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     En el servidor tengo instalada la versión debianizada de los
+</I>&gt;<i> repositorios de Intrepid, en las estaciones tengo instalada la versión
+</I>&gt;<i> compilada del SVN de la semana pasada.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Saludos,
+</I>&gt;<i>
+</I>&gt;<i> José Coma.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> P.D: me encuentro también que al compilar las versiones del SVN sobre
+</I>&gt;<i> Gnome me pide como requisito tener KPDF, etc.. cosa que en principio no
+</I>&gt;<i> debiera de ser necesario puesto que luego en el .conf correspondiente se
+</I>&gt;<i> puede cambiar por evince o lo que uno quiera. ¿hay modo de compilarlo
+</I>&gt;<i> sin instalar previamente estos paquetes?.
+</I>
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000542.html">[BulmaGés] Plugins en cliente-servidor
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000547.html">[BulmaGés] r2841 - in	trunk/bulmages/images/oxygen/international: . 48x48
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#543">[ fecha ]</a>
+              <a href="thread.html#543">[ hilo ]</a>
+              <a href="subject.html#543">[ asunto ]</a>
+              <a href="author.html#543">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

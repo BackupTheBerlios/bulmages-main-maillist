@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] Una curiosidad / bug / feature de Qt
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Una%20curiosidad%20/%20bug%20/%20feature%20de%20Qt&In-Reply-To=%3C200905101746.18363.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001771.html">
+   <LINK REL="Next"  HREF="001774.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] Una curiosidad / bug / feature de Qt </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Una%20curiosidad%20/%20bug%20/%20feature%20de%20Qt&In-Reply-To=%3C200905101746.18363.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés] Una curiosidad / bug / feature de Qt">tborras en conetxia.com
+       </A><BR>
+    <I>Dom Mayo 10 17:46:18 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001771.html">[BulmaGés] r3304 - trunk/bulmages/bulmasetup
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001774.html">[BulmaGés]Una curiosidad / bug / feature de Qt
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1772">[ fecha ]</a>
+              <a href="thread.html#1772">[ hilo ]</a>
+              <a href="subject.html#1772">[ asunto ]</a>
+              <a href="author.html#1772">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bones a tothom:
+
+Supondremos que conoceis el QDialog de Qt y el exec del mismo.
+
+Imaginemos dos clases A y B ambas de Qt y B derivada de la clase QDialog
+
+Imaginemos que la clase A crea la clase B y le manda el exec()
+
+Entonces A pierde el control de la ejecucion hasta que el dialogo B ha sido 
+cerrado.
+
+Hasta aqui todo OK. Ahora hagamos el siguiente experimento:
+
+
+&lt;Experimento&gt; En el constructor de B hacemos un show() &lt;/Experimento&gt;
+
+Entonces A no pierde el control de la ejecucion tras hacer el exec sino que se 
+convierte en un multiThread admitiendo y procesando nuevos SIGNALS.
+
+
+PD: No se si es un bug o no. Pero lo cierto es que es muy útil.
+
+
+Salut
+
+
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001771.html">[BulmaGés] r3304 - trunk/bulmages/bulmasetup
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001774.html">[BulmaGés]Una curiosidad / bug / feature de Qt
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1772">[ fecha ]</a>
+              <a href="thread.html#1772">[ hilo ]</a>
+              <a href="subject.html#1772">[ asunto ]</a>
+              <a href="author.html#1772">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

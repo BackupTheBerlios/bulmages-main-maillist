@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Saber nuevo id desde guardarPost en una ficha BfForm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3FSaber_nuevo_id_desde_guard%3F%3D%0A%20%3D%3Futf-8%3Fq%3FarPost_en_una_ficha_BfForm%3F%3D&In-Reply-To=%3C201001091801.16112.auryn%40wanadoo.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003278.html">
+   <LINK REL="Next"  HREF="003277.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Saber nuevo id desde guardarPost en una ficha BfForm </H1>
+    <B>Aron</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3FSaber_nuevo_id_desde_guard%3F%3D%0A%20%3D%3Futf-8%3Fq%3FarPost_en_una_ficha_BfForm%3F%3D&In-Reply-To=%3C201001091801.16112.auryn%40wanadoo.es%3E"
+       TITLE="[BulmaGés]Saber nuevo id desde guardarPost en una ficha BfForm">auryn en wanadoo.es
+       </A><BR>
+    <I>Sab Ene  9 18:01:16 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003278.html">[BulmaGés]Saber nuevo id desde guardarPost en una ficha BfForm
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003277.html">[BulmaGés] [Bug #16642] Segmentation Fault al	escribir texto en un BlSearchWidget
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3286">[ fecha ]</a>
+              <a href="thread.html#3286">[ hilo ]</a>
+              <a href="subject.html#3286">[ asunto ]</a>
+              <a href="author.html#3286">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Creo que he encontrado lo que tenía mal.
+
+En el constructor se me había olvidado lanzar el plugin de la ficha mediante:
+g_plugins-&gt;lanza(
+
+Lo raro es que me funcionara la ficha (más o menos).
+
+On 2010&#24180;Enero8&#26085; Viernes 20:16:11 Tomeu escribi&#243;:
+&gt;<i> &gt; Tengo una ficha que hereda de BfForm.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; En mi función guardarPost necesito saber el nuevo identificador que ha
+</I>&gt;<i> &gt;  creado PostgreSQL cuando la ficha es nueva, pero dbValue ( &quot;idtabla&quot; )
+</I>&gt;<i> &gt; no me da el valor correcto.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; He hecho que funcione poniendo al principio de mi guardarPost la llamada:
+</I>&gt;<i> &gt; dbConnection() -&gt; commit();
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ¿En guardarPost no debería saberse ya el nuevo id, ya que el registro
+</I>&gt;<i> &gt; está guardado?
+</I>&gt;<i> &gt; &quot;
+</I>&gt;<i> 
+</I>&gt;<i> Algo debes tener mal ya que el id si se pone antes de la llamada
+</I>&gt;<i>  guardarPost.
+</I>&gt;<i> 
+</I>&gt;<i> Se me ocurre que estes haciendo un begin por tu cuenta. Cosa no contemplada
+</I>&gt;<i>  si se esta usando BlForm ya que el propio BlForm es el que hace el manejo
+</I>&gt;<i>  de las transacciones.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> O que no tengas bien establecido cual es el identificador de la tabla.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Hay un montón de ejemplos del guardarPost que funcionan bien, por ejemplo
+</I>&gt;<i> FacturaProveedorView (pluginbf_profeedorfactura/facturapview.cpp) ,
+</I>&gt;<i> FacturaView (pluginbf_clientefactura/facturaview.cpp), y todos los
+</I>&gt;<i>  formularios con subformulario en general tienen un guardarPost para
+</I>&gt;<i>  guardar el subformulario o subformularios.
+</I>&gt;<i> 
+</I>&gt;<i> Salut
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i> 
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003278.html">[BulmaGés]Saber nuevo id desde guardarPost en una ficha BfForm
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003277.html">[BulmaGés] [Bug #16642] Segmentation Fault al	escribir texto en un BlSearchWidget
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3286">[ fecha ]</a>
+              <a href="thread.html#3286">[ hilo ]</a>
+              <a href="subject.html#3286">[ asunto ]</a>
+              <a href="author.html#3286">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

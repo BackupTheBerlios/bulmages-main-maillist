@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Encuesta PCH
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-August/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FEncuesta_PCH%3F%3D&In-Reply-To=%3C200908012343.35046.pedro.lopez.cabanillas%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002891.html">
+   <LINK REL="Next"  HREF="002894.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Encuesta PCH </H1>
+    <B>Pedro Lopez-Cabanillas</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FEncuesta_PCH%3F%3D&In-Reply-To=%3C200908012343.35046.pedro.lopez.cabanillas%40gmail.com%3E"
+       TITLE="[BulmaGés]Encuesta PCH">pedro.lopez.cabanillas en gmail.com
+       </A><BR>
+    <I>Sab Ago  1 23:43:34 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002891.html">[BulmaGés]Encuesta PCH
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002894.html">[BulmaGés] prova
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2892">[ fecha ]</a>
+              <a href="thread.html#2892">[ hilo ]</a>
+              <a href="subject.html#2892">[ asunto ]</a>
+              <a href="author.html#2892">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Saturday, August 1, 2009, Fco. Javier M. C. wrote:
+&gt;<i> He actualizado a CMake 2.6 para probar la precompilación y no noto un
+</I>&gt;<i> gran cambio en el tiempo de compilación total ¿tu que mejoría has
+</I>&gt;<i> notado?, casi te diría que me va más lento 
+</I>
+El ahorro de tiempo no es significativo en este momento, si consideramos todo el proyecto en su conjunto. He implementado PCH solamente para el directorio bulmalib, por tanto cualquier medida de tiempos con fines de comparación debería limitarse sólamente a este directorio. 
+
+He realizado unas pruebas, cambiando al directorio build/bulmalib antes de ejecutar &quot;time make&quot;, con lo cual se compila únicamente la biblioteca bulmalib y sus plugins. Por culpa de las dependencias, también se compilan las bibliotecas bulmafact y bulmacont, lo cual desvirtúa las mediciones, ya que dichas bibliotecas no usan PCH todavía. De todas formas, los tiempos que he recogido con la metodología anterior, y sobre la misma máquina (Athlon XP, 2 GHz, 1Gb de RAM) son los siguientes:
+
+Implementación Original: 10m 12s		
+Nueva Implementación y ENABLE_PCH=off: 9m 59s
+Nueva Implementación y ENABLE_PCH=on:  8m 38s
+
+Esto es un ahorro de tiempo en la compilación con PCH respecto a la implementación original de un 15,36%, y de un 13,52% respecto a la compilación sin PCH. Estos porcentajes subirán cuando se aplique a
+
+En el proyecto Rosegarden, donde también he implementado este sistema, el ahorro que se consigue es alrededor de un 20%. 
+
+&gt;<i> y además genera un archivo de 
+</I>&gt;<i> unos 46 megas.
+</I>
+En mi caso, el fichero generado &quot;bulmalib/stableheaders.hpp.gch/debug.c++&quot; tiene un tamaño de 62M. Si has configurado en modo &quot;release&quot;, o &quot;custom&quot; puede ser algo mas pequeño. Además de su gran tamaño, hay que considerar que la generación de este fichero se toma su tiempo. Por eso usar una única PCH para todo el proyecto es mucho más óptimo que usar varias.
+
+&gt;<i> Propones incluir manualmente un include a los .ui, 
+</I>
+Si. Para los nuevos .ui se tendrá que incluir manualmente. El designer tiene un cuadro de diálogo para hacerlo: menú &quot;form&quot;, opción &quot;form settings&quot;, cuadro de entrada &quot;include hints&quot;.
+
+Para los ficheros &quot;.ui&quot; existentes actualmente, ejecutaré un script que añade automáticamente este trozo de XML en todos ellos:
+
+	&lt;includes&gt;
+	  &lt;include location=&quot;local&quot;&gt;local_BlI18n.h&lt;/include&gt;
+	&lt;/includes&gt;
+
+&gt;<i> yo no lo veo 
+</I>&gt;<i> práctico, cada vez que modifiques un .ui con el Designer tienes que
+</I>&gt;<i> acordarte de poner el include ¿en serio que no hay otra forma de hacerlo?
+</I>
+Cuando se tenga que modificar un &quot;.ui&quot; existente no hay que hacer nada en absoluto. El código ya estará incluido, y se conserva perfectamente. 
+
+La única alternativa a añadir el tag &lt;includes&gt; en los .ui y los #include en los .cpp es una opción &quot;-include&quot; en la línea de mandato de todos los pasos de compilación. Sin embargo, esto que a priori puede parecer más cómodo es una chapuza, y muy contraproducente. Precisamente usar PCH tiene como fin reducir el número de cabeceras procesadas en cada paso de compilación. Con la opción &quot;-include&quot; lo que se hace es añadir una cabecera a TODOS los fuentes, incluso cuando no se necesita para nada. Insisto en unos datos que aporté en el mensaje anterior: 
+
+&gt;<i> &gt; el directorio bulmalib/src hay 42 fuentes .cpp, y he tenido que añadir el
+</I>&gt;<i> &gt; #include en 9 de ellos. Puede que sea más incomodo que no tener hacer
+</I>&gt;<i> &gt; nada, pero tampoco lo veo tan grave.
+</I>
+Por otra parte, vuelvo a insistir en otro punto importante del mensaje anterior:
+
+&gt;<i> &gt; El motivo por el que las macros tienen que declararse en un header y no
+</I>&gt;<i> &gt; en la línea de mandatos del compilador con -D, es que en caso contrario
+</I>&gt;<i> &gt; no es posible usar cabeceras precompiladas.
+</I>
+[...]
+
+&gt;<i> A ver, si estoy equivocado, corrígeme ¿ok?
+</I>&gt;<i>
+</I>&gt;<i> Hay que crear un archivo llamado 'local_BlI18n.h' diferente para cada
+</I>&gt;<i> plugin, del tipo:
+</I>
+Este archivo se crea de forma automática con la macro MacrosBlI18n.cmake.
+
+&gt;<i> /* Generated file. Please do not edit! */
+</I>&gt;<i> /* created by MacrosBlI18n.cmake */
+</I>&gt;<i> #ifndef LOCAL_BLI18N
+</I>&gt;<i> #define LOCAL_BLI18N
+</I>&gt;<i>
+</I>&gt;<i> #include &quot;bli18n.h&quot;
+</I>&gt;<i>
+</I>&gt;<i> #ifndef _
+</I>&gt;<i>  #define _(String) BlI18n(&quot;bulmalib&quot;,String)
+</I>&gt;<i> #endif
+</I>&gt;<i> #ifndef N_
+</I>&gt;<i>  #define N_(String,Int) BlI18n(&quot;bulmalib&quot;,String)
+</I>&gt;<i> #endif
+</I>&gt;<i>
+</I>&gt;<i> #endif /*LOCAL_BLI18N*/
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Pero es que ahora se pone con la opción del compilador -D porque no se
+</I>&gt;<i> puede meter en el código como ahora propones. Por ejemplo:
+</I>&gt;<i> en bulmalib se definirá 'LOCAL_BLI18N' y cogerá sus valores y al ir a
+</I>&gt;<i> evaluar '#ifndef  LOCAL_BLI18N' de cada plugin no se redefinirá porque
+</I>&gt;<i> ya lo está en BulmaLib y dejará de funcionar el sistema de traducciones.
+</I>
+No. No tiene por que producirse el caso que dices. La solución que se usa ahora mismo es perfectamente reemplazable por la cabecera, y si compilas bulmalib con ENABLED_PCH=off se está reemplazando y el sistema de traducciones tiene que funcionar perfectamente. 
+
+El #ifdef LOCAL_BLI18N lo que hace es proteger contra doble inclusión. Pero sólamente estará #included en los fuentes que sea necesario. Un fuente del directorio bulmalib incluirá el local_BlI18n.h de su directorio, y los fuentes de cada subdirectorio de plugins incluirán el suyo. Normalmente la inclusión se hará una sola vez, por lo que la protección contra doble inclusión se podría omitir. Pero si no te fías, incluso sería posible al generar la cabecera poner un símbolo de protección diferente para cada directorio, algo así:
+
+#ifndef LOCAL_BLI18N_bulmalib
+#define LOCAL_BLI18N_bulmalib
+[...]
+#endif /*LOCAL_BLI18N_bulmalib*/
+
+Saludos,
+Pedro
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20090801/d641802f/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20090801/d641802f/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002891.html">[BulmaGés]Encuesta PCH
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002894.html">[BulmaGés] prova
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2892">[ fecha ]</a>
+              <a href="thread.html#2892">[ hilo ]</a>
+              <a href="subject.html#2892">[ asunto ]</a>
+              <a href="author.html#2892">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

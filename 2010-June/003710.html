@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] 	Sending file: pluginbf_cdi_inv.tar.gz
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09Sending%20file%3A%20pluginbf_cdi_inv.tar.gz&In-Reply-To=%3CAANLkTikG7Ssv91x_j7AsctCK2b0cACXu0W8_UQGOHz5s%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003711.html">
+   <LINK REL="Next"  HREF="003712.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] 	Sending file: pluginbf_cdi_inv.tar.gz </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09Sending%20file%3A%20pluginbf_cdi_inv.tar.gz&In-Reply-To=%3CAANLkTikG7Ssv91x_j7AsctCK2b0cACXu0W8_UQGOHz5s%40mail.gmail.com%3E"
+       TITLE="[BulmaGés] 	Sending file: pluginbf_cdi_inv.tar.gz">tborras en gmail.com
+       </A><BR>
+    <I>Vie Jun 18 14:03:52 CEST 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003711.html">[BulmaGés]Comportamiento de la tecla tab en las listas editables
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003712.html">[BulmaGés] r3862 - in	trunk/bulmages/bulmafact/plugins: pluginbf_cliente	pluginbf_proveedor pluginbf_sincrobulmacont
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3710">[ fecha ]</a>
+              <a href="thread.html#3710">[ hilo ]</a>
+              <a href="subject.html#3710">[ asunto ]</a>
+              <a href="author.html#3710">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Aron
+
+Creo que ya he encontrado el fallo.
+
+La solución hay multiples opciones y estoy evaluando cual conviene más.
+
+
+En resumen el problema es que el puntero al mainCompany no esta inicializado
+cuando se crea el delegado y por tanto queda como puntero a NULL que hace
+petar las llamadas a base de datos al no existir el objeto al que se hace la
+llamada.
+
+Nota que creas el delegado en el constructor de la clase mientras que la
+asignación del mainCompany la haces con el método setMainCompany y no en la
+construcción del mismo.
+Esto es así pq al ser un widget no es sencillo tratar el widget con el
+designer-qt4 y tener en el constructor de clase el mainCompany pasado como
+parametro.
+
+Salut
+
+
+Posibles Soluciones:
+
+Programar un setMainCompany en el componente y en el subformulario asociado
+que expanda el puntero hacia el delegado (la más ortodoxa)
+
+Usar la variable global para establecer cual es el mainCompany (la que da
+menos trabajo)
+
+Lo suyo es la reprogramación pero es un poco más de trabajo.
+
+
+Salut
+
+
+
+El 17 de junio de 2010 11:27, Aron Galdón &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">aron_galdon en cdi-ibense.com</A>&gt;escribió:
+
+&gt;<i> Bon dia Tomeu.
+</I>&gt;<i>
+</I>&gt;<i> Adjunte el plugin sencer en el qual estem provant desplegables en taula,
+</I>&gt;<i> per
+</I>&gt;<i> si pots vorer així millor el &quot;segmentation fault&quot; que apareix en
+</I>&gt;<i> setEditorData.
+</I>&gt;<i>
+</I>&gt;<i> Gràcies
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Aron Galdón
+</I>&gt;<i> Hilex Transformaciones Metálicas S.L.
+</I>&gt;<i> Tfno.:966 556 536
+</I>&gt;<i> Fax:966 556 513
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">aron_galdon en cdi-ibense.com</A>
+</I>&gt;<i>
+</I>&gt;<i> AVISO LEGAL - CLÁUSULA DE PRIVACIDAD
+</I>&gt;<i> Este mensaje se dirige exclusivamente a su destinatario y puede contener
+</I>&gt;<i> información privilegiada o confidencial. Si no es vd. el destinatario
+</I>&gt;<i> indicado, queda informado de que la utilización, divulgación y/o copia sin
+</I>&gt;<i> autorización está prohibida en virtud de la legislación vigente. Si ha
+</I>&gt;<i> recibido este mensaje por error, le rogamos que lo comunique inmediatamente
+</I>&gt;<i> por esta misma vía y proceda a su destrucción.
+</I>&gt;<i>
+</I>------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20100618/b8a9a2d7/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20100618/b8a9a2d7/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003711.html">[BulmaGés]Comportamiento de la tecla tab en las listas editables
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003712.html">[BulmaGés] r3862 - in	trunk/bulmages/bulmafact/plugins: pluginbf_cliente	pluginbf_proveedor pluginbf_sincrobulmacont
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3710">[ fecha ]</a>
+              <a href="thread.html#3710">[ hilo ]</a>
+              <a href="subject.html#3710">[ asunto ]</a>
+              <a href="author.html#3710">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

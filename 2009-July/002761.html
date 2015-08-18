@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][BulmaGÃ©s][BulmaGÃ©s] r3578 - trunk/bulmages/bulm  alib/src
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaG%3DC3%3DA9s%3D5D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaG%3DC3%3DA9s%3D5D_r3578_-_trunk/bulmages/bulm__alib/src%3F%3D&In-Reply-To=%3C45821.80.34.165.131.1248180943.squirrel%40webmail.tinet.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002758.html">
+   <LINK REL="Next"  HREF="002759.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][BulmaGÃ©s][BulmaGÃ©s] r3578 - trunk/bulmages/bulm  alib/src </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaG%3DC3%3DA9s%3D5D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaG%3DC3%3DA9s%3D5D_r3578_-_trunk/bulmages/bulm__alib/src%3F%3D&In-Reply-To=%3C45821.80.34.165.131.1248180943.squirrel%40webmail.tinet.org%3E"
+       TITLE="[BulmaGés][BulmaGÃ©s][BulmaGÃ©s] r3578 - trunk/bulmages/bulm  alib/src">xdrudis en tinet.cat
+       </A><BR>
+    <I>Mar Jul 21 14:55:43 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002758.html">[BulmaGés][BulmaGÃ©s] r3578 - trunk/bulmages/bulmalib/src
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002759.html">[BulmaGés][BulmaGÃ©s] r3578 - trunk/bulmages/bulmalib/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2761">[ fecha ]</a>
+              <a href="thread.html#2761">[ hilo ]</a>
+              <a href="subject.html#2761">[ asunto ]</a>
+              <a href="author.html#2761">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> El Martes 21 Julio 2009, Xavi Drudis Ferran escribió:
+</I>&gt;<i> Si no hi ha una data en el camp, el calendari haurà de tindrer algun dia
+</I>&gt;<i> seleccionat inicialment.
+</I>&gt;<i> Altra opció podria ser que fora el primer dia del mes actual. Per a mi és
+</I>&gt;<i> millor el dia d'avui (el control QCalendarWidget fa això predeterminadament).
+</I>&gt;<i>
+</I>
+Ja entenc que si un calendari té el defecte que no pot tenir la selecció de dia buida,
+n'haurà d'aparèixer algun de seleccionat, i està bé que sigui l'actual. Però és una murga
+que crec que s'hauria de preveure. Trobo que és un defecte gros del QCalendarWidget,
+potser es podria arreglar amb un control nou.
+
+O si seguim amb el QCalendarWidget, hauríem
+de prendre mesures per a que no canvïin dades sense voler. Per exemple mantenint un flag a part del calendari
+que indiqui si el camp és null. Quan carregues el registre inciialitzes el camp segons
+la BD i després li poses fals si l'usuari selecciona una data. En el moment de desar
+si el camp buit és cert no deses la data seleccionada perquè només té un valor perquè
+el QCalendarWidget no sap estar buit, i si el camp buit és fals és que o bé ja tenia
+un valor a la BD o bé l'usuari li ha assignat o bé les dues coses.
+
+Queda però un
+problema, que tens un camp que a la BD pot ser null i que tu no tens cap manera
+de que l'usuari el pugui fer null un cop té un valor. A vegades això és corrrecte pel
+cas que estas fent, i sovint no ho és.
+
+Llavors jo quan m'hi he trobat he hagut de posar un checkbox i un QCalendarWidget.
+El checkbox marcat vol dir camp null i desmarcat vol dir la data que marqui el QCalendarWidget.
+Marcar el checkbox deshabilita el calendari i desmarcar-lo l'habilita. En carrergar poses
+el marques el checkbox sii el camp és null i habilites o dehabilites el calendaria en conseqüència.
+I ne desar mires si està marcat per posar null o si no està marcat, la data del calendari.
+Mmmm... No, em sembla que ho he fet al revés, marcat per no null i desmarcat per null. Però
+és igual, el cas és que necessites un control binari addicional si una dada pot ser nul.la al
+model de dades i no ho pot ser al control que té l'usuari per editar-la.
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002758.html">[BulmaGés][BulmaGÃ©s] r3578 - trunk/bulmages/bulmalib/src
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002759.html">[BulmaGés][BulmaGÃ©s] r3578 - trunk/bulmages/bulmalib/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2761">[ fecha ]</a>
+              <a href="thread.html#2761">[ hilo ]</a>
+              <a href="subject.html#2761">[ asunto ]</a>
+              <a href="author.html#2761">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

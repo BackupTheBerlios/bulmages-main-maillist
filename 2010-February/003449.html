@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] r3773 - in trunk/bulmages:	bulmacont/src bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3773%20-%20in%20trunk/bulmages%3A%0A%09bulmacont/src%20bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels&In-Reply-To=%3C201002181726.o1IHQjNp000429%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003447.html">
+   <LINK REL="Next"  HREF="003450.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] r3773 - in trunk/bulmages:	bulmacont/src bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels </H1>
+    <B>svn en mail.berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3773%20-%20in%20trunk/bulmages%3A%0A%09bulmacont/src%20bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels&In-Reply-To=%3C201002181726.o1IHQjNp000429%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] r3773 - in trunk/bulmages:	bulmacont/src bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels">svn en mail.berlios.de
+       </A><BR>
+    <I>Jue Feb 18 18:26:45 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003447.html">[BulmaGés] r3772 - trunk/bulmages/installbulmages
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003450.html">[BulmaGés] Una lecetita devino... buuuffff
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3449">[ fecha ]</a>
+              <a href="thread.html#3449">[ hilo ]</a>
+              <a href="subject.html#3449">[ asunto ]</a>
+              <a href="author.html#3449">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: fcojavmc
+Date: 2010-02-18 18:26:43 +0100 (dj, 18 feb 2010)
+New Revision: 3773
+
+Modified:
+   trunk/bulmages/bulmacont/src/bccambiacuentabase.ui
+   trunk/bulmages/bulmacont/src/bccambiacuentaview.cpp
+   trunk/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels/pluginbf_sincrobulmacont-rm.sql
+   trunk/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels/pluginbf_sincrobulmacont.sql
+Log:
+- BulmaCont: Herramientas-&gt;Sustituir cuentas. Esta opción tenía un
+  comportamiento extraño. Funciona de la siguiente manera: Se nos
+muestra un formulario de introducción de datos para sustituir 'cuentas'
+en los --apuntes-- de --asientos cerrados y en forma de borrador--. El
+problema es que, aunque hacía un UPDATE de los datos en las tablas
+'apunte' y 'borrador' no se actualizaban los asientos de forma correcta
+y los cálculos de saldos de las cuentas quedaban descuadrados. El fallo
+sólo ocurría con los asientos cerrados.
+
+Lo he corregido haciendo que, si tiene que hacer un UPDATE de un apunte
+en un asiento cerrado: Primero se abra el asiento (al hacerlo se borra
+de la tabla 'apunte') luego se actualiza (UPDATE) todas las
+coincidencias de la tabla 'borrador' y finalmente se cierra el asiento
+(se crea de nuevo las entradas en 'apunte'). Esto garantiza que todos
+los cálculos de saldos se realizan bien.
+
+Aquí se podría hacer algún tipo de bloqueo en la base de datos para
+evitar esta situación, pero la tabla 'apunte' tiene que poderse
+actualizar, por ejemplo para los punteos. Así que no lo veo factible.
+Habrá que tener cuidado al hacer un UPDATE a nivel de programa.
+
+
+- BulmaCont: Mejoro el aspecto visual de la ventana 'sustituir cuentas'.
+
+- BulmaFact: Mejoras en la comunicación dblink. Familias.
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003447.html">[BulmaGés] r3772 - trunk/bulmages/installbulmages
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003450.html">[BulmaGés] Una lecetita devino... buuuffff
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3449">[ fecha ]</a>
+              <a href="thread.html#3449">[ hilo ]</a>
+              <a href="subject.html#3449">[ asunto ]</a>
+              <a href="author.html#3449">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

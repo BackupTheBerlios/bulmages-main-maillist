@@ -1,0 +1,478 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] r3784 - in trunk/bulmages: bulmacont/plugins/pluginbc_amortizacion bulmacont/plugins/pluginbc_asiento bulmacont/plugins/pluginbc_bloqueofechas bulmacont/plugins/pluginbc_caaslods bulmacont/plugins/pluginbc_cuenta bulmacont/plugins/pluginbc_cuentasanuales bulmacont/plugins/pluginbc_diario bulmacont/plugins/pluginbc_duplicarasiento bulmacont/plugins/pluginbc_mayor bulmacont/plugins/pluginbc_registroiva bulmafact/plugins/pluginbf_abrecodigobarras bulmafact/plugins/pluginbf_abrereferencia bulmafact/plugins/pluginbf_actividad bulmafact/plugins/pluginbf_alias bulmafact/plugins/pluginbf_almacen bulmafact/plugins/pluginbf_almacenamplia bulmafact/plugins/pluginbf_alumno bulmafact/plugins/pluginbf_articulo bulmafact/plugins/pluginbf_asociacion bulmafact/plugins/pluginbf_asterisk bulmafact/plugins/pluginbf_banco bulmafact/plugins/pluginbf_bulmacont bulmafact/plugins/pluginbf_bulmatpv bulmafact/plugins/pluginbf_carteracobros bulmafact/plugins/pluginbf_carterapagos bulmafact/plu! gins/pluginbf_catalogo bulmafact/plugins/pluginbf_cliente bulmafact/plugins/pluginbf_clientealbaran bulmafact/plugins/pluginbf_clientealbaranesfactura bulmafact/plugins/pluginbf_clientecobro bulmafact/plugins/pluginbf_clientefactura bulmafact/plugins/pluginbf_clientepedido bulmafact/plugins/pluginbf_clientepresupuesto bulmafact/plugins/pluginbf_clienteproveedor bulmafact/plugins/pluginbf_comercial bulmafact/plugins/pluginbf_compraventa bulmafact/plugins/pluginbf_contrato bulmafact/plugins/pluginbf_corrector bulmafact/plugins/pluginbf_correo bulmafact/plugins/pluginbf_correothunderbird bulmafact/plugins/pluginbf_cuadrante bulmafact/plugins/pluginbf_debug bulmafact/plugins/pluginbf_efactura bulmafact/plugins/pluginbf_etiquetado bulmafact/plugins/pluginbf_etiquetas bulmafact/plugins/pluginbf_example bulmafact/plugins/pluginbf_formasdepago bulmafact/plugins/pluginbf_gestassociacio bulmafact/plugins/pluginbf_informecliente bulmafact/plugins/pluginbf_informecliente2sxc bulmafact/! plugins/pluginbf_inventario bulmafact/plugins/pluginbf_inventa! riosimpl
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3784%20-%20in%20trunk/bulmages%3A%0A%20bulmacont/plugins/pluginbc_amortizacion%20bulmacont/plugins/pluginbc_asiento%0A%20bulmacont/plugins/pluginbc_bloqueofechas%0A%20bulmacont/plugins/pluginbc_caaslods%20bulmacont/plugins/pluginbc_cuenta%0A%20bulmacont/plugins/pluginbc_cuentasanuales%20bulmacont/plugins/pluginbc_diario%0A%20bulmacont/plugins/pluginbc_duplicarasiento%20bulmacont/plugins/pluginbc_mayor%0A%20bulmacont/plugins/pluginbc_registroiva%0A%20bulmafact/plugins/pluginbf_abrecodigobarras%0A%20bulmafact/plugins/pluginbf_abrereferencia%0A%20bulmafact/plugins/pluginbf_actividad%20bulmafact/plugins/pluginbf_alias%0A%20bulmafact/plugins/pluginbf_almacen%20bulmafact/plugins/pluginbf_almacenamplia%0A%20bulmafact/plugins/pluginbf_alumno%20bulmafact/plugins/pluginbf_articulo%0A%20bulmafact/plugins/pluginbf_asociacion%20bulmafact/plugins/pluginbf_asterisk%0A%20bulmafact/plugins/pluginbf_banco%20bulmafact/plugins/pluginbf_bulmacont%0A%20bulmafact/plugins/pluginbf_bulmatpv%0A%20bulmafact/plugins/pluginbf_carteracobros%0A%20bulmafact/plugins/pluginbf_carterapagos%20bulmafact/plu%21%0A%20gins/pluginbf_catalogo%20bulmafact/plugins/pluginbf_cliente%0A%20bulmafact/plugins/pluginbf_clientealbaran%0A%20bulmafact/plugins/pluginbf_clientealbaranesfactura%0A%20bulmafact/plugins/pluginbf_clientecobro%0A%20bulmafact/plugins/pluginbf_clientefactura%0A%20bulmafact/plugins/pluginbf_clientepedido%0A%20bulmafact/plugins/pluginbf_clientepresupuesto%0A%20bulmafact/plugins/pluginbf_clienteproveedor%0A%20bulmafact/plugins/pluginbf_comercial%20bulmafact/plugins/pluginbf_compraventa%0A%20bulmafact/plugins/pluginbf_contrato%20bulmafact/plugins/pluginbf_corrector%0A%20bulmafact/plugins/pluginbf_correo%0A%20bulmafact/plugins/pluginbf_correothunderbird%0A%20bulmafact/plugins/pluginbf_cuadrante%20bulmafact/plugins/pluginbf_debug%0A%20bulmafact/plugins/pluginbf_efactura%20bulmafact/plugins/pluginbf_etiquetado%0A%20bulmafact/plugins/pluginbf_etiquetas%20bulmafact/plugins/pluginbf_example%0A%20bulmafact/plugins/pluginbf_formasdepago%0A%20bulmafact/plugins/pluginbf_gestassociacio%0A%20bulmafact/plugins/pluginbf_informecliente%0A%20bulmafact/plugins/pluginbf_informecliente2sxc%20bulmafact/%21%0A%20plugins/pluginbf_inventario%20bulmafact/plugins/pluginbf_inventa%21%20riosimpl&In-Reply-To=%3C201003042337.o24NbXG4006549%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003479.html">
+   <LINK REL="Next"  HREF="003481.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] r3784 - in trunk/bulmages: bulmacont/plugins/pluginbc_amortizacion bulmacont/plugins/pluginbc_asiento bulmacont/plugins/pluginbc_bloqueofechas bulmacont/plugins/pluginbc_caaslods bulmacont/plugins/pluginbc_cuenta bulmacont/plugins/pluginbc_cuentasanuales bulmacont/plugins/pluginbc_diario bulmacont/plugins/pluginbc_duplicarasiento bulmacont/plugins/pluginbc_mayor bulmacont/plugins/pluginbc_registroiva bulmafact/plugins/pluginbf_abrecodigobarras bulmafact/plugins/pluginbf_abrereferencia bulmafact/plugins/pluginbf_actividad bulmafact/plugins/pluginbf_alias bulmafact/plugins/pluginbf_almacen bulmafact/plugins/pluginbf_almacenamplia bulmafact/plugins/pluginbf_alumno bulmafact/plugins/pluginbf_articulo bulmafact/plugins/pluginbf_asociacion bulmafact/plugins/pluginbf_asterisk bulmafact/plugins/pluginbf_banco bulmafact/plugins/pluginbf_bulmacont bulmafact/plugins/pluginbf_bulmatpv bulmafact/plugins/pluginbf_carteracobros bulmafact/plugins/pluginbf_carterapagos bulmafact/plu! gins/pluginbf_catalogo bulmafact/plugins/pluginbf_cliente bulmafact/plugins/pluginbf_clientealbaran bulmafact/plugins/pluginbf_clientealbaranesfactura bulmafact/plugins/pluginbf_clientecobro bulmafact/plugins/pluginbf_clientefactura bulmafact/plugins/pluginbf_clientepedido bulmafact/plugins/pluginbf_clientepresupuesto bulmafact/plugins/pluginbf_clienteproveedor bulmafact/plugins/pluginbf_comercial bulmafact/plugins/pluginbf_compraventa bulmafact/plugins/pluginbf_contrato bulmafact/plugins/pluginbf_corrector bulmafact/plugins/pluginbf_correo bulmafact/plugins/pluginbf_correothunderbird bulmafact/plugins/pluginbf_cuadrante bulmafact/plugins/pluginbf_debug bulmafact/plugins/pluginbf_efactura bulmafact/plugins/pluginbf_etiquetado bulmafact/plugins/pluginbf_etiquetas bulmafact/plugins/pluginbf_example bulmafact/plugins/pluginbf_formasdepago bulmafact/plugins/pluginbf_gestassociacio bulmafact/plugins/pluginbf_informecliente bulmafact/plugins/pluginbf_informecliente2sxc bulmafact/! plugins/pluginbf_inventario bulmafact/plugins/pluginbf_inventa! riosimpl </H1>
+    <B>svn en mail.berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3784%20-%20in%20trunk/bulmages%3A%0A%20bulmacont/plugins/pluginbc_amortizacion%20bulmacont/plugins/pluginbc_asiento%0A%20bulmacont/plugins/pluginbc_bloqueofechas%0A%20bulmacont/plugins/pluginbc_caaslods%20bulmacont/plugins/pluginbc_cuenta%0A%20bulmacont/plugins/pluginbc_cuentasanuales%20bulmacont/plugins/pluginbc_diario%0A%20bulmacont/plugins/pluginbc_duplicarasiento%20bulmacont/plugins/pluginbc_mayor%0A%20bulmacont/plugins/pluginbc_registroiva%0A%20bulmafact/plugins/pluginbf_abrecodigobarras%0A%20bulmafact/plugins/pluginbf_abrereferencia%0A%20bulmafact/plugins/pluginbf_actividad%20bulmafact/plugins/pluginbf_alias%0A%20bulmafact/plugins/pluginbf_almacen%20bulmafact/plugins/pluginbf_almacenamplia%0A%20bulmafact/plugins/pluginbf_alumno%20bulmafact/plugins/pluginbf_articulo%0A%20bulmafact/plugins/pluginbf_asociacion%20bulmafact/plugins/pluginbf_asterisk%0A%20bulmafact/plugins/pluginbf_banco%20bulmafact/plugins/pluginbf_bulmacont%0A%20bulmafact/plugins/pluginbf_bulmatpv%0A%20bulmafact/plugins/pluginbf_carteracobros%0A%20bulmafact/plugins/pluginbf_carterapagos%20bulmafact/plu%21%0A%20gins/pluginbf_catalogo%20bulmafact/plugins/pluginbf_cliente%0A%20bulmafact/plugins/pluginbf_clientealbaran%0A%20bulmafact/plugins/pluginbf_clientealbaranesfactura%0A%20bulmafact/plugins/pluginbf_clientecobro%0A%20bulmafact/plugins/pluginbf_clientefactura%0A%20bulmafact/plugins/pluginbf_clientepedido%0A%20bulmafact/plugins/pluginbf_clientepresupuesto%0A%20bulmafact/plugins/pluginbf_clienteproveedor%0A%20bulmafact/plugins/pluginbf_comercial%20bulmafact/plugins/pluginbf_compraventa%0A%20bulmafact/plugins/pluginbf_contrato%20bulmafact/plugins/pluginbf_corrector%0A%20bulmafact/plugins/pluginbf_correo%0A%20bulmafact/plugins/pluginbf_correothunderbird%0A%20bulmafact/plugins/pluginbf_cuadrante%20bulmafact/plugins/pluginbf_debug%0A%20bulmafact/plugins/pluginbf_efactura%20bulmafact/plugins/pluginbf_etiquetado%0A%20bulmafact/plugins/pluginbf_etiquetas%20bulmafact/plugins/pluginbf_example%0A%20bulmafact/plugins/pluginbf_formasdepago%0A%20bulmafact/plugins/pluginbf_gestassociacio%0A%20bulmafact/plugins/pluginbf_informecliente%0A%20bulmafact/plugins/pluginbf_informecliente2sxc%20bulmafact/%21%0A%20plugins/pluginbf_inventario%20bulmafact/plugins/pluginbf_inventa%21%20riosimpl&In-Reply-To=%3C201003042337.o24NbXG4006549%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] r3784 - in trunk/bulmages: bulmacont/plugins/pluginbc_amortizacion bulmacont/plugins/pluginbc_asiento bulmacont/plugins/pluginbc_bloqueofechas bulmacont/plugins/pluginbc_caaslods bulmacont/plugins/pluginbc_cuenta bulmacont/plugins/pluginbc_cuentasanuales bulmacont/plugins/pluginbc_diario bulmacont/plugins/pluginbc_duplicarasiento bulmacont/plugins/pluginbc_mayor bulmacont/plugins/pluginbc_registroiva bulmafact/plugins/pluginbf_abrecodigobarras bulmafact/plugins/pluginbf_abrereferencia bulmafact/plugins/pluginbf_actividad bulmafact/plugins/pluginbf_alias bulmafact/plugins/pluginbf_almacen bulmafact/plugins/pluginbf_almacenamplia bulmafact/plugins/pluginbf_alumno bulmafact/plugins/pluginbf_articulo bulmafact/plugins/pluginbf_asociacion bulmafact/plugins/pluginbf_asterisk bulmafact/plugins/pluginbf_banco bulmafact/plugins/pluginbf_bulmacont bulmafact/plugins/pluginbf_bulmatpv bulmafact/plugins/pluginbf_carteracobros bulmafact/plugins/pluginbf_carterapagos bulmafact/plu! gins/pluginbf_catalogo bulmafact/plugins/pluginbf_cliente bulmafact/plugins/pluginbf_clientealbaran bulmafact/plugins/pluginbf_clientealbaranesfactura bulmafact/plugins/pluginbf_clientecobro bulmafact/plugins/pluginbf_clientefactura bulmafact/plugins/pluginbf_clientepedido bulmafact/plugins/pluginbf_clientepresupuesto bulmafact/plugins/pluginbf_clienteproveedor bulmafact/plugins/pluginbf_comercial bulmafact/plugins/pluginbf_compraventa bulmafact/plugins/pluginbf_contrato bulmafact/plugins/pluginbf_corrector bulmafact/plugins/pluginbf_correo bulmafact/plugins/pluginbf_correothunderbird bulmafact/plugins/pluginbf_cuadrante bulmafact/plugins/pluginbf_debug bulmafact/plugins/pluginbf_efactura bulmafact/plugins/pluginbf_etiquetado bulmafact/plugins/pluginbf_etiquetas bulmafact/plugins/pluginbf_example bulmafact/plugins/pluginbf_formasdepago bulmafact/plugins/pluginbf_gestassociacio bulmafact/plugins/pluginbf_informecliente bulmafact/plugins/pluginbf_informecliente2sxc bulmafact/! plugins/pluginbf_inventario bulmafact/plugins/pluginbf_inventa! riosimpl">svn en mail.berlios.de
+       </A><BR>
+    <I>Vie Mar  5 00:37:33 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003479.html">[BulmaGés] 	http://losmaldecidos.blogspot.com/2010/03/01011000-falsa-lassanya.html
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003481.html">[BulmaGés]r3784 - in trunk/bulmages: bulmacont/plugins/pluginbc_amortizacion bulmacont/plugins/pluginbc_asiento bulmacont/plugins/pluginbc_bloqueofechas bulmacont/plugins/pluginbc_caaslods bulmacont/plugins/pluginbc_cuenta bulmacont/plugins/pluginbc_cuentasanuales bulmacont/plugins/pluginbc_diario bulmacont/plugins/pluginbc_duplicarasiento bulmacont/plugins/pluginbc_mayor bulmacont/plugins/pluginbc_registroiva bulmafact/plugins/pluginbf_abrecodigobarras bulmafact/plugins/pluginbf_abrereferencia bulmafact/plugins/pluginbf_actividad bulmafact/plugins/pluginbf_alias bulmafact/plugins/pluginbf_almacen bulmafact/plugins/pluginbf_almacenamplia bulmafact/plugins/pluginbf_alumno bulmafact/plugins/pluginbf_articulo bulmafact/plugins/pluginbf_asociacion bulmafact/plugins/pluginbf_asterisk bulmafact/plugins/pluginbf_banco bulmafact/plugins/pluginbf_bulmacont bulmafact/plugins/pluginbf_bulmatpv bulmafact/plugins/pluginbf_carteracobros bulmafact/plugins/pluginbf_carterapagos bulmafact/plu! gins/pluginbf_catalogo bulmafact/plugins/pluginbf_cliente bulmafact/plugins/pluginbf_clientealbaran bulmafact/plugins/pluginbf_clientealbaranesfactura bulmafact/plugins/pluginbf_clientecobro bulmafact/plugins/pluginbf_clientefactura bulmafact/plugins/pluginbf_clientepedido bulmafact/plugins/pluginbf_clientepresupuesto bulmafact/plugins/pluginbf_clienteproveedor bulmafact/plugins/pluginbf_comercial bulmafact/plugins/pluginbf_compraventa bulmafact/plugins/pluginbf_contrato bulmafact/plugins/pluginbf_corrector bulmafact/plugins/pluginbf_correo bulmafact/plugins/pluginbf_correothunderbird bulmafact/plugins/pluginbf_cuadrante bulmafact/plugins/pluginbf_debug bulmafact/plugins/pluginbf_efactura bulmafact/plugins/pluginbf_etiquetado bulmafact/plugins/pluginbf_etiquetas bulmafact/plugins/pluginbf_example bulmafact/plugins/pluginbf_formasdepago bulmafact/plugins/pluginbf_gestassociacio bulmafact/plugins/pluginbf_informecliente bulmafact/plugins/pluginbf_informecliente2sxc bulmafact/! plugins/pluginbf_inventario bulmafact/plugins/pluginbf_inventa! riosimpl
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3480">[ fecha ]</a>
+              <a href="thread.html#3480">[ hilo ]</a>
+              <a href="subject.html#3480">[ asunto ]</a>
+              <a href="author.html#3480">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: fcojavmc
+Date: 2010-03-05 00:37:13 +0100 (dv, 05 mar 2010)
+New Revision: 3784
+
+Added:
+   trunk/bulmages/bulmacont/plugins/pluginbc_amortizacion/pdefs.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_asiento/pdefs.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_bloqueofechas/pdefs.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_cuenta/pdefs.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_cuentasanuales/pdefs.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_diario/pdefs.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_duplicarasiento/pdefs.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_mayor/pdefs.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_registroiva/pdefs.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_abrecodigobarras/pdefs_pluginbf_abrecodigobarras.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_abrereferencia/pdefs_pluginbf_abrereferencia.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_actividad/pdefs_pluginbf_actividad.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_alias/pdefs_pluginbf_alias.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_almacen/pdefs_pluginbf_almacen.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_almacenamplia/pdefs_pluginbf_almacenamplia.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_alumno/pdefs_pluginbf_alumno.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_articulo/pdefs_pluginbf_articulo.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_asociacion/pdefs_pluginbf_asociacion.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_asterisk/pdefs_pluginbf_asterisk.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_banco/pdefs_pluginbf_banco.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_bulmacont/pdefs_pluginbf_bulmacont.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_bulmatpv/pdefs_pluginbf_bulmatpv.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_carteracobros/pdefs_pluginbf_carteracobros.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_carterapagos/pdefs_pluginbf_carterapagos.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_catalogo/pdefs_pluginbf_catalogo.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_cliente/pdefs_pluginbf_cliente.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientealbaran/pdefs_pluginbf_clientealbaran.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientealbaranesfactura/pdefs_pluginbf_clientealbaranesfactura.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientecobro/pdefs_pluginbf_clientecobro.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientefactura/pdefs_pluginbf_clientefactura.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientepedido/pdefs_pluginbf_clientepedido.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/pdefs_pluginbf_clientepresupuesto.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clienteproveedor/pdefs_pluginbf_clienteproveedor.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_comercial/pdefs_pluginbf_comercial.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_compraventa/pdefs_pluginbf_compraventa.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_contrato/pdefs_pluginbf_contrato.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_corrector/pdefs_pluginbf_corrector.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_correo/pdefs_pluginbf_correo.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_correothunderbird/pdefs_pluginbf_correothunderbird.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_cuadrante/pdefs_pluginbf_cuadrante.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_debug/pdefs_pluginbf_debug.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_efactura/pdefs_pluginbf_efactura.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_etiquetado/pdefs_pluginbf_etiquetado.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_etiquetas/pdefs_pluginbf_etiquetas.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_example/pdefs_pluginbf_example.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_formasdepago/pdefs_pluginbf_formasdepago.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_gestassociacio/pdefs_pluginbf_gestassociacio.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_informecliente/pdefs_pluginbf_informecliente.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_informecliente2sxc/pdefs_pluginbf_informecliente2sxc.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_inventario/pdefs_pluginbf_inventario.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_inventariosimple/pdefs_pluginbf_inventariosimple.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_iva/pdefs_pluginbf_iva.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_ivaincluido/pdefs_pluginbf_ivaincluido.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/pdefs_pluginbf_minicontabilidad.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_modificadores/pdefs_pluginbf_modificadores.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_multiimprimir/pdefs_pluginbf_multiimprimir.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_preciocoste/pdefs_pluginbf_preciocoste.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_profesor/pdefs_pluginbf_profesor.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_promedios/pdefs_pluginbf_promedios.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedor/pdefs_pluginbf_proveedor.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/pdefs_pluginbf_proveedoralbaran.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/pdefs_pluginbf_proveedorfactura.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedorpago/pdefs_pluginbf_proveedorpago.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pdefs_pluginbf_proveedorpedido.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_q19/pdefs_pluginbf_q19.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_qwebcam/pdefs_pluginbf_qwebcam.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_recibo/pdefs_pluginbf_recibo.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_resumenarticulo/pdefs_pluginbf_resumenarticulo.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_seriesfactura/pdefs_pluginbf_seriesfactura.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_socio/pdefs_pluginbf_socio.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_tallascolores/pdefs_pluginbf_tallascolores.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_tarifa/pdefs_pluginbf_tarifa.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_ticket/pdefs_pluginbf_ticket.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_tipotrabajo/pdefs_pluginbf_tipotrabajo.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_trabajador/pdefs_pluginbf_trabajador.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_trazabilidad/pdefs_pluginbf_trazabilidad.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_tutor/pdefs_pluginbf_tutor.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_vehiculo/pdefs_pluginbf_vehiculo.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_z2z/pdefs_pluginbf_z2z.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_attachdocument/pdefs_pluginbl_attachdocument.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_bloqconf/pdefs_pluginbl_bloqconf.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_clipboard/pdefs_pluginbl_clipboard.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_formlock/pdefs_pluginbl_formlock.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_importcsv/pdefs_pluginbl_importcsv.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_report/pdefs_pluginbl_report.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_report2ods/pdefs_pluginbl_report2ods.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2ods/pdefs_pluginbl_subform2ods.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2pdf/pdefs_pluginbl_subform2pdf.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2sxc/pdefs_pluginbl_subform2sxc.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_template/pdefs_pluginbl_template.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2mail/pdefs_pluginbl_template2mail.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2ods/pdefs_pluginbl_template2ods.h
+Removed:
+   trunk/bulmages/bulmafact/plugins/pluginbf_articulo/pdefs.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_cliente/pdefs.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientealbaran/pdefs.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientecobro/pdefs.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientefactura/pdefs_clientefactura.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientepedido/pdefs.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/pdefs_clientepresupuesto.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/pdefs_minicontabilidad.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedor/pdefs.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/pdefs.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/pdefs.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pdefs.h
+Modified:
+   trunk/bulmages/bulmacont/plugins/pluginbc_amortizacion/bcamortizacionlistview.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_amortizacion/bcamortizacionview.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_amortizacion/pluginbc_amortizacion.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_asiento/CMakeLists.txt
+   trunk/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientoform.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientointeligenteimportarxml.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientointeligenteview.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientolistsubform.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientolistview.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientosubform.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_asiento/bcasientoview.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_asiento/pluginbc_asiento.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_bloqueofechas/bcbloqueafechaview.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_bloqueofechas/pluginbc_bloqueofechas.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_caaslods/datosview.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_cuenta/bccuentalistview.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_cuenta/bccuentaview.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_cuenta/bcplancontablearbol.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_cuenta/bcplancontablelistview.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_cuenta/pluginbc_cuenta.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_cuentasanuales/CMakeLists.txt
+   trunk/bulmages/bulmacont/plugins/pluginbc_cuentasanuales/bccuentasanualesimprimirview.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_cuentasanuales/bccuentasanualesview.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_cuentasanuales/pluginbc_cuentasanuales.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_diario/bcdiarioimprimir2txt.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_diario/bcdiarioprintview.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_diario/bcdiariosubform.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_diario/bcdiarioview.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_diario/pluginbc_diario.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_duplicarasiento/bcasientoduplicarview.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_duplicarasiento/pluginbc_duplicarasiento.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_mayor/bcextractosubform.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_mayor/bcextractoview.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_mayor/pluginbc_mayor.h
+   trunk/bulmages/bulmacont/plugins/pluginbc_registroiva/CMakeLists.txt
+   trunk/bulmages/bulmacont/plugins/pluginbc_registroiva/pluginbc_registroiva.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_abrecodigobarras/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_abrecodigobarras/pluginbf_abrecodigobarras.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_abrereferencia/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_abrereferencia/pluginbf_abrereferencia.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_actividad/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_actividad/actividadeslist.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_actividad/actividadview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_actividad/convocatoriaslist.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_actividad/convocatoriaview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_actividad/pluginbf_actividad.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_actividad/tipoactividadview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_alias/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_alias/pluginbf_alias.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_almacen/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_almacen/listalmacenview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_almacen/pluginbf_almacen.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_almacenamplia/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_almacenamplia/almaceneslistview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_almacenamplia/almacenview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_almacenamplia/pluginbf_almacenamplia.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_alumno/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_alumno/alumnoslist.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_alumno/alumnoview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_alumno/claseview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_alumno/listcuotasporalumnoview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_alumno/pluginbf_alumno.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_articulo/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_articulo/articulolist.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_articulo/articuloview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_articulo/comparticulolistview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_articulo/familiasview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_articulo/pluginbf_articulo.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_articulo/tiposarticuloview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_asociacion/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_asociacion/comisioneslist.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_asociacion/comisionview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_asociacion/convreunionlist.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_asociacion/convreunionview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_asociacion/jdirectivalist.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_asociacion/jdirectivaview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_asociacion/pluginbf_asociacion.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_asterisk/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_asterisk/pluginbf_asterisk.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_banco/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_banco/bancoview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_banco/pluginbf_banco.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_bulmacont/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_bulmacont/pluginbf_bulmacont.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_bulmatpv/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_bulmatpv/pluginbf_tpv.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_bulmatpv/zlist.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_bulmatpv/zview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_carteracobros/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_carteracobros/carteracobroslist.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_carteracobros/pluginbf_carteracobros.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_carteracobros/q19view.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_carteracobros/vencimientocview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_carterapagos/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_carterapagos/carterapagoslist.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_carterapagos/pluginbf_carterapagos.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_carterapagos/q34view.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_carterapagos/vencimientopview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_catalogo/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_catalogo/catalogoqtoolbutton.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_catalogo/pluginbf_catalogo.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_cliente/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_cliente/clienteview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_cliente/clientslist.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_cliente/pluginbf_cliente.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientealbaran/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientealbaran/albaranclientelist.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientealbaran/albaranclienteview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientealbaran/genalbqtoolbutton.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientealbaran/pluginbf_clientealbaran.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientealbaranesfactura/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientealbaranesfactura/impqtoolbutton.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientealbaranesfactura/pluginbf_clientealbaranfacturar.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientecobro/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientecobro/cobroslist.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientecobro/cobroview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientecobro/impqtoolbutton.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientecobro/pluginbf_clientecobro.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientefactura/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturaslist.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturaview.cpp
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturaview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientefactura/genfacqtoolbutton.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientefactura/listdescfacturaview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientefactura/listlinfacturaview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientefactura/pluginbf_clientefactura.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientepedido/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientepedido/genpedqtoolbutton.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientepedido/listdescpedidoclienteview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientepedido/listlinpedidoclienteview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientepedido/pedidoclienteview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientepedido/pedidosclientelist.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientepedido/pluginbf_clientepedido.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/genpreqtoolbutton.cpp
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/genpreqtoolbutton.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/listdescpresupuestoview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/listlinpresupuestoview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/pluginbf_clientepresupuesto.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/presupuestolist.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/presupuestoview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_clienteproveedor/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_clienteproveedor/pluginbf_clienteproveedor.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_comercial/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_comercial/comercialclienteview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_comercial/incidenciacomercialview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_comercial/myplugin.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_comercial/pluginbf_comercial.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_comercial/rutacomercialincview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_comercial/rutacomerciallist.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_compraventa/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_compraventa/compraventaview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_compraventa/pluginbf_compraventa.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_contrato/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_contrato/pluginbf_contrato.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_corrector/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_corrector/pluginbf_corrector.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_correo/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_correo/impqtoolbutton.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_correo/pluginbf_correo.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_correothunderbird/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_correothunderbird/impqtoolbutton.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_correothunderbird/pluginbf_correothunderbird.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_cuadrante/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_cuadrante/cuadrantediarioview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_cuadrante/cuadranteqtablewidget.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_cuadrante/cuadranteqtreewidget.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_cuadrante/cuadranteview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_cuadrante/pluginbf_cuadrante.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_debug/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_debug/pluginbf_debug.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_efactura/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_efactura/pluginbf_efactura.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_etiquetado/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_etiquetado/pluginbf_etiquetado.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_etiquetas/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_example/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_example/pluginbf_example.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_formasdepago/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_formasdepago/pluginbf_formasdepago.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_gestassociacio/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_gestassociacio/pluginbf_gestassociacio.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_informecliente/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_informecliente/pluginbf_informecliente.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_informecliente2sxc/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_informecliente2sxc/pluginbf_informecliente2sxc.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_inventario/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_inventario/pluginbf_inventario.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_inventariosimple/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_inventariosimple/pluginbf_inventariosimple.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_iva/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_iva/pluginbf_iva.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_ivaincluido/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_ivaincluido/pluginbf_ivaincluido.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/acontableview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/partidasview.cpp
+   trunk/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/partidasview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/pluginbf_minicontabilidad.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/presupuestocontablelist.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/presupuestocontableview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_modificadores/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_modificadores/pluginbf_modificadores.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_multiimprimir/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_multiimprimir/pluginbf_multiimprimir.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_preciocoste/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_preciocoste/pluginbf_preciocoste.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_profesor/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_profesor/pluginbf_profesor.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_profesor/profesoreslist.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_promedios/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_promedios/pluginbf_promedios.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_promedios/promedioview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedor/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedor/pluginbf_proveedor.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedor/provedit.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedor/providerslist.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/albaranesproveedor.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/albaranproveedorview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/genalbpqtoolbutton.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/listdescalbaranprovview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/pluginbf_proveedoralbaran.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturapview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturasplist.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/genfactqtoolbutton.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/listdescfacturaprovview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/listlinfacturapview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/pluginbf_proveedorfactura.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedorpago/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedorpago/pluginbf_proveedorpago.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/listdescpedidoproveedorview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/listlinpedidoproveedorview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidosproveedorlist.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pluginbf_proveedorpedido.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_q19/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_q19/pluginbf_q19.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_qwebcam/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_qwebcam/pluginbf_qwebcam.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_qwebcam/qwebcam.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_qwebcam/qwebcamview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_recibo/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_recibo/pluginbf_recibo.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_resumenarticulo/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_resumenarticulo/pluginbf_resumenarticulo.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_seriesfactura/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_seriesfactura/pluginbf_seriesfactura.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_socio/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_socio/pluginbf_socio.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_tallascolores/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_tallascolores/plugin_tc_articulos.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_tarifa/pluginbf_tarifa.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_ticket/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_ticket/pluginbf_ticket.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_tipotrabajo/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_tipotrabajo/pluginbf_tipotrabajo.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_trabajador/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_trabajador/pluginbf_trabajador.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_trazabilidad/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_trazabilidad/pluginbf_trazabilidad.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_tutor/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_tutor/pluginbf_tutor.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_tutor/tutorview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_vehiculo/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_vehiculo/pluginbf_vehiculo.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_vehiculo/vehiculoview.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_z2z/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbf_z2z/pluginbf_z2z.h
+   trunk/bulmages/bulmafact/plugins/pluginbf_z2z/z2zview.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_attachdocument/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginbl_attachdocument/archmenu.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_attachdocument/pluginbl_attachdocument.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_bloqconf/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginbl_bloqconf/pluginbloqconf.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_clipboard/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginbl_clipboard/pluginbl_clipboard.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_embed/pluginbl_embed.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_formlock/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginbl_formlock/pluginbl_formlock.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_importcsv/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginbl_importcsv/importcsv.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_importcsv/pluginbl_importcsv.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_report/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginbl_report/pluginbl_report.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_report2ods/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginbl_report2ods/myplugininformesods.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_report2ods/pluginbl_report2ods.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2ods/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2ods/pluginbl_subform2ods.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2pdf/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2pdf/pluginbl_subform2pdf.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2sxc/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2sxc/pluginbl_subform2sxc.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_template/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginbl_template/eqtoolbutton.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_template/pluginbl_template.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2mail/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2mail/pluginbl_template2mail.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2ods/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2ods/pluginbl_template2ods.h
+   trunk/bulmages/bulmalib/src/CMakeLists.txt
+   trunk/bulmages/bulmalib/src/blconfiguration.h
+   trunk/bulmages/bulmalib/src/bltreewidget.h
+   trunk/bulmages/bulmalib/src/blwidget.h
+   trunk/bulmages/installbulmages/dbmodels/crear/bulmacont/bulmacont_schema.sql
+Log:
+Pequeños cambios para compilar en Windows.
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003479.html">[BulmaGés] 	http://losmaldecidos.blogspot.com/2010/03/01011000-falsa-lassanya.html
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003481.html">[BulmaGés]r3784 - in trunk/bulmages: bulmacont/plugins/pluginbc_amortizacion bulmacont/plugins/pluginbc_asiento bulmacont/plugins/pluginbc_bloqueofechas bulmacont/plugins/pluginbc_caaslods bulmacont/plugins/pluginbc_cuenta bulmacont/plugins/pluginbc_cuentasanuales bulmacont/plugins/pluginbc_diario bulmacont/plugins/pluginbc_duplicarasiento bulmacont/plugins/pluginbc_mayor bulmacont/plugins/pluginbc_registroiva bulmafact/plugins/pluginbf_abrecodigobarras bulmafact/plugins/pluginbf_abrereferencia bulmafact/plugins/pluginbf_actividad bulmafact/plugins/pluginbf_alias bulmafact/plugins/pluginbf_almacen bulmafact/plugins/pluginbf_almacenamplia bulmafact/plugins/pluginbf_alumno bulmafact/plugins/pluginbf_articulo bulmafact/plugins/pluginbf_asociacion bulmafact/plugins/pluginbf_asterisk bulmafact/plugins/pluginbf_banco bulmafact/plugins/pluginbf_bulmacont bulmafact/plugins/pluginbf_bulmatpv bulmafact/plugins/pluginbf_carteracobros bulmafact/plugins/pluginbf_carterapagos bulmafact/plu! gins/pluginbf_catalogo bulmafact/plugins/pluginbf_cliente bulmafact/plugins/pluginbf_clientealbaran bulmafact/plugins/pluginbf_clientealbaranesfactura bulmafact/plugins/pluginbf_clientecobro bulmafact/plugins/pluginbf_clientefactura bulmafact/plugins/pluginbf_clientepedido bulmafact/plugins/pluginbf_clientepresupuesto bulmafact/plugins/pluginbf_clienteproveedor bulmafact/plugins/pluginbf_comercial bulmafact/plugins/pluginbf_compraventa bulmafact/plugins/pluginbf_contrato bulmafact/plugins/pluginbf_corrector bulmafact/plugins/pluginbf_correo bulmafact/plugins/pluginbf_correothunderbird bulmafact/plugins/pluginbf_cuadrante bulmafact/plugins/pluginbf_debug bulmafact/plugins/pluginbf_efactura bulmafact/plugins/pluginbf_etiquetado bulmafact/plugins/pluginbf_etiquetas bulmafact/plugins/pluginbf_example bulmafact/plugins/pluginbf_formasdepago bulmafact/plugins/pluginbf_gestassociacio bulmafact/plugins/pluginbf_informecliente bulmafact/plugins/pluginbf_informecliente2sxc bulmafact/! plugins/pluginbf_inventario bulmafact/plugins/pluginbf_inventa! riosimpl
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3480">[ fecha ]</a>
+              <a href="thread.html#3480">[ hilo ]</a>
+              <a href="subject.html#3480">[ asunto ]</a>
+              <a href="author.html#3480">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

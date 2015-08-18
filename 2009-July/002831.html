@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Implementación de pre-compiled headers en Bulmages
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Futf-8%3Fq%3FImplementaci%3DC3%3DB3n_de_pre%3F%3D%0A%09%3D%3Futf-8%3Fq%3F-compiled_headers_en_Bulmages%3F%3D&In-Reply-To=%3C200907242324.00083.pedro.lopez.cabanillas%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002830.html">
+   <LINK REL="Next"  HREF="002832.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Implementación de pre-compiled headers en Bulmages </H1>
+    <B>Pedro Lopez-Cabanillas</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Futf-8%3Fq%3FImplementaci%3DC3%3DB3n_de_pre%3F%3D%0A%09%3D%3Futf-8%3Fq%3F-compiled_headers_en_Bulmages%3F%3D&In-Reply-To=%3C200907242324.00083.pedro.lopez.cabanillas%40gmail.com%3E"
+       TITLE="[BulmaGés]Implementación de pre-compiled headers en Bulmages">pedro.lopez.cabanillas en gmail.com
+       </A><BR>
+    <I>Vie Jul 24 23:23:59 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002830.html">[BulmaGés] r3588 - in trunk/bulmages: .	ModulesCMake bulmalib bulmalib/pch bulmalib/plugins	bulmalib/plugins/pluginbl_attachdocument	bulmalib/plugins/pluginbl_bloqconf	bulmalib/plugins/pluginbl_clipboard bulmalib/plugins/pluginbl_embed	bulmalib/plugins/pluginbl_formlock	bulmalib/plugins/pluginbl_importcsv bulmalib/plugins/pluginbl_report	bulmalib/plugins/pluginbl_report2ods	bulmalib/plugins/pluginbl_subform2ods	bulmalib/plugins/pluginbl_subform2pdf	bulmalib/plugins/pluginbl_subform2sxc	bulmalib/plugins/pluginbl_template	bulmalib/plugins/pluginbl_template2mail	bulmalib/plugins/pluginbl_template2ods bulmalib/src
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002832.html">[BulmaGés] r3589 - in trunk/bulmages: .	ModulesCMake bulmalib bulmalib/pch bulmalib/plugins	bulmalib/plugins/pluginbl_attachdocument	bulmalib/plugins/pluginbl_bloqconf	bulmalib/plugins/pluginbl_clipboard bulmalib/plugins/pluginbl_embed	bulmalib/plugins/pluginbl_formlock	bulmalib/plugins/pluginbl_importcsv bulmalib/plugins/pluginbl_report	bulmalib/plugins/pluginbl_report2ods	bulmalib/plugins/pluginbl_subform2ods	bulmalib/plugins/pluginbl_subform2pdf	bulmalib/plugins/pluginbl_subform2sxc	bulmalib/plugins/pluginbl_template	bulmalib/plugins/pluginbl_template2mail	bulmalib/plugins/pluginbl_template2ods bulmalib/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2831">[ fecha ]</a>
+              <a href="thread.html#2831">[ hilo ]</a>
+              <a href="subject.html#2831">[ asunto ]</a>
+              <a href="author.html#2831">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>¿Que son las PCHs?
+
+Pre-compiled Header (PCH) es el resultado de procesar un fuente de cabeceras 
+(.h/.hpp) por el compilador, que puede ser utilizado como entrada en otros 
+pasos de compilación para acelerar su ejecución.
+
+Un paso de compilación es el proceso de un archivo fuente (.cpp) para obtener 
+un objeto (.o). Como los fuentes suelen contener directivas &#8220;#include&#8221;, que 
+se repiten en cada uno de ellos, una parte considerable de la compilación se 
+gasta en leer y procesar todas esas cabeceras. Hay que tener en cuenta que es 
+habitual encontrar m&#225;s directivas &#8220;#include&#8221; tambi&#233;n en las cabeceras. Una 
+mejora de rendimiento implementada en casi todos los compiladores es 
+pre-compilar las cabeceras más comunes y estables una sola vez, reutilizando 
+el resultado en los pasos de compilación siguientes.
+
+El compilador GNU C++ tiene soporte para PCH desde la versión gcc-3.4. 
+Más información: 
+	<A HREF="http://gcc.gnu.org/onlinedocs/gcc/Precompiled-Headers.html">http://gcc.gnu.org/onlinedocs/gcc/Precompiled-Headers.html</A>
+	<A HREF="http://en.wikipedia.org/wiki/Precompiled_header">http://en.wikipedia.org/wiki/Precompiled_header</A>
+
+¿Como se aplica esto en Bulmages?
+
+Bulmages es una aplicación C++ que usa las bibliotecas Qt4, por lo que las 
+cabeceras más comunes son precisamente las de la biblioteca estándar de C++ y 
+las de Qt4. Hay un nuevo fuente en el directorio bulmalib 
+(pch/stableheaders.hpp) que contiene &#250;nicamente directivas &#8220;#include&#8221; con las 
+cabeceras de dichas bibliotecas. Es conceptualmente muy similar al 
+fuente &#8220;stdafx.h&#8221; que se usa en los proyectos C++ de Visual Stupido.
+
+La utilización de PCH en la compilación de Bulmages es opcional, y por defecto 
+dicha opción está deshabilitada. Para activarla, se ha de pasar un 
+par&#225;metro &#8220;ENABLE_PCH&#8221; a cmake, como por ejemplo (en Linux):
+
+$ cmake .. -DENABLE_PCH=yes \
+           -DCMAKE_CXX_FLAGS=&quot;-Wall -fexceptions&quot; \
+           -DCMAKE_BUILD_TYPE=debug
+
+Se ha añadido una macro de CMake que comprueba la versión del compilador 
+cuando se solicita la opción, y si es una versión correcta se habilita. En un 
+principio, estaba previsto usar la misma PCH en todos los pasos de 
+compilación del proyecto. Sin embargo esto puede no ser muy conveniente, ya 
+que el compilador presenta la restricción en cuanto a creación y uso de PCH 
+de que tanto la pre-compilación como los pasos de compilación que la utilizan 
+deben realizarse con prácticamente las mismas opciones (defines) y flags del 
+compilador. Para evitar esta restricción, admitiendo distintas opciones de 
+compilación en cada uno de los módulos principales de Bulmages, el plan 
+actual es crear una PCH por cada directorio principal. Por ejemplo: una PCH 
+para el directorio bulmalib, que se usa en todos los pasos de compilación 
+para crear la biblioteca libbulmalib así como sus plugins. Otras PCHs se 
+crearán en cada uno de los directorios bulmacont, bulmafact, etc. 
+
+Estado de desarrollo
+
+En estos momentos se ha implementado únicamente en bulmalib, como prueba de 
+concepto y para tener la oportunidad de discutir estrategias y realizar 
+mejoras antes de aplicarlas a todos los directorios. Una vez madura la 
+implementación, se aplicará en primer lugar a los directorios bulmacont y 
+bulmafact, que consumen la mayor parte del tiempo de compilación. Para el 
+directorio bulmages probablemente no merezca la pena, y en el caso de 
+bulmatpv se ha de evaluar el impacto de los cambios necesarios, ya que el 
+resultado de las pruebas preliminares indica que puede requerir 
+modificaciones profundas.
+
+Saludos,
+Pedro
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002830.html">[BulmaGés] r3588 - in trunk/bulmages: .	ModulesCMake bulmalib bulmalib/pch bulmalib/plugins	bulmalib/plugins/pluginbl_attachdocument	bulmalib/plugins/pluginbl_bloqconf	bulmalib/plugins/pluginbl_clipboard bulmalib/plugins/pluginbl_embed	bulmalib/plugins/pluginbl_formlock	bulmalib/plugins/pluginbl_importcsv bulmalib/plugins/pluginbl_report	bulmalib/plugins/pluginbl_report2ods	bulmalib/plugins/pluginbl_subform2ods	bulmalib/plugins/pluginbl_subform2pdf	bulmalib/plugins/pluginbl_subform2sxc	bulmalib/plugins/pluginbl_template	bulmalib/plugins/pluginbl_template2mail	bulmalib/plugins/pluginbl_template2ods bulmalib/src
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002832.html">[BulmaGés] r3589 - in trunk/bulmages: .	ModulesCMake bulmalib bulmalib/pch bulmalib/plugins	bulmalib/plugins/pluginbl_attachdocument	bulmalib/plugins/pluginbl_bloqconf	bulmalib/plugins/pluginbl_clipboard bulmalib/plugins/pluginbl_embed	bulmalib/plugins/pluginbl_formlock	bulmalib/plugins/pluginbl_importcsv bulmalib/plugins/pluginbl_report	bulmalib/plugins/pluginbl_report2ods	bulmalib/plugins/pluginbl_subform2ods	bulmalib/plugins/pluginbl_subform2pdf	bulmalib/plugins/pluginbl_subform2sxc	bulmalib/plugins/pluginbl_template	bulmalib/plugins/pluginbl_template2mail	bulmalib/plugins/pluginbl_template2ods bulmalib/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2831">[ fecha ]</a>
+              <a href="thread.html#2831">[ hilo ]</a>
+              <a href="subject.html#2831">[ asunto ]</a>
+              <a href="author.html#2831">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

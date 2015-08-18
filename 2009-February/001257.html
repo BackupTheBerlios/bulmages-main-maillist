@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][BulmaGÃ©s]Binario Debian
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaG%3DC3%3DA9s%3D5DBi%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fnario_Debian%3F%3D&In-Reply-To=%3C59388.80.34.165.131.1235571512.squirrel%40webmail.tinet.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001256.html">
+   <LINK REL="Next"  HREF="001262.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][BulmaGÃ©s]Binario Debian </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaG%3DC3%3DA9s%3D5DBi%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fnario_Debian%3F%3D&In-Reply-To=%3C59388.80.34.165.131.1235571512.squirrel%40webmail.tinet.org%3E"
+       TITLE="[BulmaGés][BulmaGÃ©s]Binario Debian">xdrudis en tinet.cat
+       </A><BR>
+    <I>Mie Feb 25 15:18:32 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001256.html">[BulmaGés]Binario Debian
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001262.html">[BulmaGés][BulmaGÃ©s]Binario Debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1257">[ fecha ]</a>
+              <a href="thread.html#1257">[ hilo ]</a>
+              <a href="subject.html#1257">[ asunto ]</a>
+              <a href="author.html#1257">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> Personalmente he editado algunos rml a mano para cambiar un par de cosas
+</I>&gt;<i> y no me parece muy complicado. Lo de python es otro cantar, pero bueno,
+</I>&gt;<i> si necesitáis ayuda con ello, lo dicho.
+</I>&gt;<i> Por mi parte intentaré empezar a ver algo de python ...
+</I>&gt;<i> Esos manuales están con los fuentes no??
+</I>&gt;<i>
+</I>
+Jo sí que he compilat paquets .debs però no sé si ho he fet molt bé.
+El que no he aconseguit és generar-los per a una altra arquitectura.
+Vaig provar al meu i386 a dir-li que ho fés per amd64 de ma germana i me'ls va
+fer però després d'instal·larlos no anaven, vaig haver de compilar al amd64.
+
+De tota manera no m'ha funcionat mai el debian/rules tal com el baixo del
+reositori. He de canviar alguns directoris per fer-ho funcionar.
+
+Sempre havia pensat que tenia alguna cosa malament i que el debian/rules
+li devia funcionar a tothom menys a mí però ara que dius això, no sé, si vols
+et passo el meu.
+
+De fet tampoc em funciona les instruccions per compilar amb make del README,
+he de compilar sobre l'arbre de fonts, si no no em funciona.
+
+Nota: jo no he provat el trunk actual, estic parlant de la branca docsMonolitics,
+i del trunk abans de crear aquesta branca.
+
+
+&gt;<i> Tomeu Borras escribió:
+</I>&gt;&gt;<i> Hola:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 	Los reportes si los hacemos a &quot;pelo&quot; con un editor. Como el buén HTML. Hay 2
+</I>&gt;&gt;<i> buenos manuales de RML y otros tantos de python (para los ODS). Antes
+</I>&gt;&gt;<i> empezamos a usar Kugar pero nunca acabó de gustarme y con esto de montar a
+</I>&gt;&gt;<i> mano es como usar consola o entorno gráfico, LateX o OpenOffice, aptitude o
+</I>&gt;&gt;<i> Adept,
+</I>&gt;&gt;<i>
+</I>
+Hi ha manuals de RML, però cal apuntar que els llistats inclouen marques especials,
+en un llenguatge aliè a XML que no sé que estigui documentat enlloc més que al codi font.
+És a dir: bulmafact obre el teu fitxer RML com si fos de text, substitueix algunes marques
+com [story] [nomdecamp] o
+
+&lt;!--QUERY=&quot;SELECT MAX(pau) FROM mon WHERE hola=maco GROUP BY random&quot;--&gt;
+blabla
+&lt;!--END QUERY--&gt;
+
+O per comptes de QUERY, SUBQUERY, IFACE, IF, SETVAR, etc.
+
+I després de substituir tot això escriu el fitxer RML resultat, que és el que interpreten les
+eines reportlabs en python i no sé què més i aquest resultat si que segueix els manuals
+de RML.
+
+També he trobat alguna cosa del manual de RML que no funciona, no m'acabo d'explicar
+perquè, potser està fixat a algun llco del codi que només faci una passada...
+
+Els camps substituïbles disponibles i altres coses com la gestió de codificació i escapaments
+depenen de des de quina opció de bulmafact hagis llençat el llistat. De fet el codi està
+copiat a molts llocs amb adaptacions a cada cas.
+
+I malgrat tot, no és tan difícil adaptar llistats o fer-ne de nous. És bastant potent...
+
+&gt;&gt;<i> 	Además ahora no tenemos ni una sola garantia de estabilidad en el fuente.
+</I>&gt;&gt;<i>
+</I>
+la branca docsMonolitic és més estable en el sentit de quieta, no hi ha tants canvis.
+Però tampoc és que funcioni tot. Està com trunk abans del lio que et comentaven.
+
+Però la pega és que no crec que la branca docsMonolitic visqui gaire. Espero carregar-me-la
+aviat i passar a treballar al trunk .
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001256.html">[BulmaGés]Binario Debian
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001262.html">[BulmaGés][BulmaGÃ©s]Binario Debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1257">[ fecha ]</a>
+              <a href="thread.html#1257">[ hilo ]</a>
+              <a href="subject.html#1257">[ asunto ]</a>
+              <a href="author.html#1257">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

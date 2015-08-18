@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]problema con bulmasetup en Debian
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fproblema_con_bulmasetup_en%3F%3D%20%3D%3Futf-8%3Fq%3F_Debian%3F%3D&In-Reply-To=%3C52C147CD.7070303%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007796.html">
+   <LINK REL="Next"  HREF="007801.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]problema con bulmasetup en Debian </H1>
+    <B>Miguel Ángel Ordóñez Moya</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fproblema_con_bulmasetup_en%3F%3D%20%3D%3Futf-8%3Fq%3F_Debian%3F%3D&In-Reply-To=%3C52C147CD.7070303%40gmail.com%3E"
+       TITLE="[BulmaGés]problema con bulmasetup en Debian">miguelangel.ordonez en gmail.com
+       </A><BR>
+    <I>Lun Dic 30 11:15:41 CET 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007796.html">[BulmaGés]problema con bulmasetup en Debian
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007801.html">[BulmaGés]problema con bulmasetup en Debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7798">[ fecha ]</a>
+              <a href="thread.html#7798">[ hilo ]</a>
+              <a href="subject.html#7798">[ asunto ]</a>
+              <a href="author.html#7798">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>El 30/12/13 10:42, Tomeu Borras escribió:
+&gt;<i> la 0.13 es algo antigua. Diría que tiene unos 2 años.
+</I>&gt;<i> 
+</I>&gt;<i> Pero si te ha compilado bien quiere decir que aun la puedes hacer servir.
+</I>&gt;<i> 
+</I>&gt;<i> Parece que te falla algún paso del ccmake y que hay un directorio que no
+</I>&gt;<i> esta bien puesto.
+</I>&gt;<i> 
+</I>&gt;<i> Probablemente CMAKE_INSTALL_PREFIX que debería ser /usr/local y lo
+</I>&gt;<i> tienes como /datos/Programacion/trunk para verificarlo mira a ver si se
+</I>&gt;<i> ha instalado correctamente en /usr/local/share/bulmages y si no reanuda
+</I>&gt;<i> la compilacion desde cero y sin tocar nada con el ccmake.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Espero que te ayude.
+</I>&gt;<i> 
+</I>&gt;<i> Salut
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>Hola Tomeu.
+
+Esta versión parece que se compiló bien. Aunque sea antigua, a ver si
+soy capaz de hacerla funcionar.
+
+Un ls -la en /usr/local/share/bulmages
+total 156
+drwxr-sr-x 22 root staff  4096 dic 15 20:30 .
+drwxrwsr-x 11 root staff  4096 dic 15 20:30 ..
+drwxr-xr-x  2 root staff  4096 dic 15 20:30 ainteligentes
+drwxr-xr-x  4 root staff  4096 dic 15 20:30 ayuda
+drwxr-sr-x  2 root staff  4096 dic 15 20:30 bgtrml2pdf
+drwxr-sr-x  2 root staff  4096 dic 15 20:30 bulmacont-plugins
+drwxr-sr-x  2 root staff 20480 dic 15 20:30 bulmafact-plugins
+drwxr-sr-x  2 root staff  4096 dic 15 20:30 bulmalib-plugins
+drwxr-sr-x  2 root staff  4096 dic 15 20:40 bulmasetup
+drwxr-sr-x  2 root staff 12288 dic 15 20:30 bulmatpv-plugins
+drwxr-xr-x  2 root staff  4096 dic 15 20:30 canuales
+drwxr-xr-x  2 root staff  4096 dic 15 20:30 confs
+-rw-r--r--  1 root staff 18009 dic 11 18:18 COPYING.txt
+drwxr-xr-x  2 root staff  4096 dic 15 20:30 css
+drwxr-xr-x  5 root staff  4096 dic 15 20:30 dbmodels
+drwxr-sr-x  5 root staff  4096 dic 15 20:30 doc
+drwxr-sr-x  4 root staff  4096 dic 15 20:30 examples
+drwxr-xr-x  2 root staff  4096 dic 15 20:30 icons
+drwxr-xr-x  8 root staff  4096 dic 15 20:30 images
+drwxr-sr-x  3 root staff  4096 dic 15 20:30 imagesrc
+drwxr-xr-x  6 root staff  4096 dic 15 20:30 openreports
+drwxr-xr-x  5 root staff  4096 dic 15 20:30 planescontables
+-rw-r--r--  1 root staff  1140 dic 11 18:18 README.Bulmalib.es
+-rw-r--r--  1 root staff 10021 dic 11 18:19 README.es
+-rw-r--r--  1 root staff  2281 dic 11 18:19 README.plugins.es
+drwxr-xr-x  2 root staff  4096 dic 15 20:30 rev-conf
+-rw-r--r--  1 root staff     7 dic 15 19:56 version
+
+
+En /usr/local/bin, un ls bulma* -la
+-rwxr-xr-x 1 root staff  37346 dic 15 20:02 /usr/local/bin/bulmacont
+-rwxr-xr-x 1 root staff  37251 dic 15 20:01 /usr/local/bin/bulmafact
+-rwxr-xr-x 1 root staff 986682 dic 15 20:22 /usr/local/bin/bulmages
+-rwxr-xr-x 1 root staff   4206 dic 15 19:56 /usr/local/bin/bulmasetup
+-rwxr-xr-x 1 root staff  43837 dic 15 19:59 /usr/local/bin/bulmatpv
+
+Haciendo un less del fichero /usr/local/bin/bulmasetup aparece al
+principio esta línea:
+sys.path.append('/usr/local/share/bulmages/bulmasetup')
+
+
+¿Debo modificar las líneas que planteabais del fichero
+nuevacontabilidad.py?
+#os.system(self.command.toAscii().data())
+self.process.start(self.command)
+self.process.waitForFinished(-1)
+(me estoy dando cuenta que las modifiqué donde no debía en
+/datos/Programación/trunk/bulmages/bulmasetup)
+
+Un saludo y muchas gracias.
+-- 
+Miguel Ángel
+
+------------ próxima parte ------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 897 bytes
+Desc: OpenPGP digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20131230/17539631/attachment.pgp">https://lists.berlios.de/pipermail/bulmages-main/attachments/20131230/17539631/attachment.pgp</A>&gt;
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007796.html">[BulmaGés]problema con bulmasetup en Debian
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007801.html">[BulmaGés]problema con bulmasetup en Debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7798">[ fecha ]</a>
+              <a href="thread.html#7798">[ hilo ]</a>
+              <a href="subject.html#7798">[ asunto ]</a>
+              <a href="author.html#7798">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

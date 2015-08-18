@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Sessió de proves de FaPaCges
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FSessi%3DF3_de_proves_de%3F%3D%20%3D%3Fiso-8859-1%3Fq%3F_FaPaCges%3F%3D&In-Reply-To=%3C201003181239.24763.orestes%40tsc.upc.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003529.html">
+   <LINK REL="Next"  HREF="003531.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Sessió de proves de FaPaCges </H1>
+    <B>Orestes Mas</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FSessi%3DF3_de_proves_de%3F%3D%20%3D%3Fiso-8859-1%3Fq%3F_FaPaCges%3F%3D&In-Reply-To=%3C201003181239.24763.orestes%40tsc.upc.edu%3E"
+       TITLE="[BulmaGés]Sessió de proves de FaPaCges">orestes en tsc.upc.edu
+       </A><BR>
+    <I>Jue Mar 18 12:39:24 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003529.html">[BulmaGés]Sessió de proves de FaPaCges
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003531.html">[BulmaGés]Sessió de proves de FaPaCges
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3530">[ fecha ]</a>
+              <a href="thread.html#3530">[ hilo ]</a>
+              <a href="subject.html#3530">[ asunto ]</a>
+              <a href="author.html#3530">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>A Dijous 18 Març 2010 10:07:04, Walter Garcia-Fontes va escriure:
+&gt;<i> Ahir vam fer una sessió de proves de FaPaCgès, en la qual 5 usuaris
+</I>&gt;<i> planers (bé l'Orestes no tan planer) van treballar en base a un guió
+</I>&gt;<i> de dades fictícies per provar diverses parts del programa. 
+</I>&gt;<i> 
+</I>&gt;<i> A mi em va quedar la impressió que hi ha un problema de disseny inicial bàsic
+</I>&gt;<i> qua haurem d'enfrontar i que és el següent. 
+</I>&gt;<i> 
+</I>&gt;<i> En totes les taules la lògica de Bulmagès és treballar &quot;en
+</I>&gt;<i> cascada&quot;. Per posar un exemple dels plugins d'associacions, si volem
+</I>&gt;<i> entrar una operació d'ingrés o despesa, primer creem la categoria
+</I>&gt;<i> corresponent i després creem l'entrada. Això és perfectament lògic
+</I>&gt;<i> perquè aquesta categoria de despesa la reutilitzarem per moltes altres
+</I>&gt;<i> entrades.
+</I>&gt;<i> 
+</I>&gt;<i> La mateixa lògica s'utilitza per entrar les dades de &quot;pares&quot; i
+</I>&gt;<i> &quot;alumnes&quot;, però aquí no té tan de sentit perquè l'alumne està vinculat
+</I>&gt;<i> a un sol pare o un màxim de dos. Quin problema causa això? Per entrar
+</I>&gt;<i> els pares i alumnes el procediment és el següent:
+</I>&gt;<i> 
+</I>&gt;<i> 1) crea el pare
+</I>&gt;<i> 2) crea el fill
+</I>&gt;<i> 3) torna al formulari de pares i vincula (escull al camp de fills) el
+</I>&gt;<i> fill que has creat.
+</I>
+No és aquesta l'única manera. En el formulari d'entrada de fill hi ha 
+una pestanya des d'on pots assignar pares a aquest fill. És a dir, que
+les relacions pares-fills es poden establir en el moment que s'entren pares
+o en el moment que s'entren fills. La qüestió és que cal fer-ho en algun 
+moment o altre (és evident), i el que cal potser és com fer-ho de la
+manera més còmode i intuïtiva possible.
+&gt;<i> 
+</I>&gt;<i> A part de la operativitat del pas 3), on quan tens molts fills creats
+</I>&gt;<i> has d'escollir el que correspongui, aquest flux tots els participants
+</I>&gt;<i> de la sessió el consideraven il·lògic i contraintuïtiu. I està a la
+</I>&gt;<i> base de l'aplicatiu, perquè primer s'han d'entrar aquestes dades. 
+</I>
+&gt;<i> Jo veig dues opcions:
+</I>&gt;<i> 1) que al pas 2) quedi ja automàticament vinculada la taula de pares
+</I>&gt;<i> amb el fill entrat. En Tomeu em comentava que no és trivial fer això. 
+</I>&gt;<i> 
+</I>&gt;<i> 2) Canviar el disseny i tenir a la mateixa taula pares i fills. Jo
+</I>&gt;<i> aquesta segona opció no la veig del tot malament, ja que l'unitat
+</I>&gt;<i> bàsica d'una AMPA és una &quot;família&quot;.
+</I>
+Caldria pensar-ho amb detall, però això crea duplicacions. Només cal pensar
+en el fet dels germans, on dos germans diferents tenen els mateixos pares.
+Caldria entrar de forma duplicada els pares a cada germà. A banda de la 
+ineficiència que això suposa a efectes d'espai d'emmagatzematge, 
+sempre és molt mala idea perquè quan l'operador comet errades 
+ortogràfiques en entrar el nom d'un mateix pare resulta que a efectes 
+informàtics compta com dues persones diferents.
+
+És cert que una vegada entrat un pare, es pot entrar de forma duplicada 
+si el seleccionem d'una taula, cosa que minimitza els errors mecanogràfics,
+però no els evita del tot (i no protegeix contra edicions posteriors). A més, 
+per fer això és més simple tenir una taula de pares separada.
+
+&gt;<i> A la família podem tenir
+</I>&gt;<i> informació sobre un progenitor, sobre els dos (i no necessàriament
+</I>&gt;<i> conviuen, per tant en aquest cas seria una ex-família, però encara
+</I>&gt;<i> tenen sentit perquè tenen un fill comú), i s'haurà de pensar com es
+</I>&gt;<i> tracten casos més complexos com per exemple parelles que tenen fills
+</I>&gt;<i> comuns i fills d'altres relacions. Aquest cas no crec que sigui massa
+</I>&gt;<i> complicat perquè als efectes de l'escola continuen sent una família. 
+</I>
+Depèn dels casos. La variabilitat de les AMPAs és molt gran. En qualsevol
+cas posar pares i fills en una mateixa taula intueixo que crea més problemes
+que no pas en resol.
+
+Potser s'aconseguiria una flexibilitat més gran si es crea una taula de famílies
+que agrupi els diferents components d'una família, amb un &quot;flag&quot; que indiqui
+si és fill o pare, però això ja se m'escapa: és faina pels analistes :-)
+
+&gt;<i> 
+</I>&gt;<i> Bé, crec que és un tema important, perquè com deia crec que tots els
+</I>&gt;<i> participants dubtaven de la lògica d'haver d'entrar pares i fills per
+</I>&gt;<i> separat, i després haver-los de vincular. Veien més lògic que hi
+</I>&gt;<i> hagués un únic formulari amb diverses pestanyes per a pare/mare i
+</I>&gt;<i> fills. 
+</I>&gt;<i> 
+</I>
+Si voleu, quan arribi a casa puc enviar algunes captures de pantalla que 
+mostren com ho tenen resolt altres programes comercials.
+
+Orestes.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003529.html">[BulmaGés]Sessió de proves de FaPaCges
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003531.html">[BulmaGés]Sessió de proves de FaPaCges
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3530">[ fecha ]</a>
+              <a href="thread.html#3530">[ hilo ]</a>
+              <a href="subject.html#3530">[ asunto ]</a>
+              <a href="author.html#3530">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

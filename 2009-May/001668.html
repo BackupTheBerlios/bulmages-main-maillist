@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Compilación con errores en los archivos .po
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FCompilaci%3DF3n_con_err%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fores_en_los_archivos_%3D2Epo%3F%3D&In-Reply-To=%3C49FAEA5B.90003%40todo-redes.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001667.html">
+   <LINK REL="Next"  HREF="001669.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Compilación con errores en los archivos .po </H1>
+    <B>Fco. Javier M. C.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FCompilaci%3DF3n_con_err%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fores_en_los_archivos_%3D2Epo%3F%3D&In-Reply-To=%3C49FAEA5B.90003%40todo-redes.com%3E"
+       TITLE="[BulmaGés]Compilación con errores en los archivos .po">fcojavmc en todo-redes.com
+       </A><BR>
+    <I>Vie Mayo  1 14:26:03 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001667.html">[BulmaGés]Compilación con errores en los archivos .po
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001669.html">[BulmaGés] r3265 -	trunk/bulmages/installbulmages/i18n
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1668">[ fecha ]</a>
+              <a href="thread.html#1668">[ hilo ]</a>
+              <a href="subject.html#1668">[ asunto ]</a>
+              <a href="author.html#1668">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Raül Martínez i Peris escribió:
+&gt;<i> Hola.
+</I>&gt;<i>
+</I>&gt;<i> Al compilar bulmaGES y haciendo referencia al archivo
+</I>&gt;<i> bulmalib_es_ES-UTF8.po, hay una linea que la que hay que cambiar la
+</I>&gt;<i> cadena de texto &quot;Cerrar&quot; por &quot;&amp;Cerrar&quot;, y viene del archivo:
+</I>&gt;<i> Place: ui_fichacfgbase.h:292
+</I>&gt;<i> Varios: fuzzy
+</I>&gt;<i>
+</I>&gt;<i> Pero al compilar da el siguiente error:
+</I>&gt;<i>
+</I>&gt;<i> [  8%] Generating bulmalib_es_ES.UTF-8.gmo, bulmalib_es_ES.UTF-8.po
+</I>&gt;<i> .................. terminado.
+</I>&gt;<i> /home/raul/bulmages/trunk/bulmages/build/bulmalib/src/bulmalib_es_ES.UTF-8.po:95:
+</I>&gt;<i> a alguna de las líneas `msgid' y `msgstr' les falta el `\n' final
+</I>&gt;<i> /home/raul/bulmages/trunk/bulmages/build/bulmalib/src/bulmalib_es_ES.UTF-8.po:343:
+</I>&gt;<i> a alguna de las líneas `msgid' y `msgstr' les falta el`\n' final
+</I>&gt;<i> /usr/bin/msgfmt: se encontraron 2 errores fatales
+</I>&gt;<i> make[2]: *** [bulmalib/src/bulmalib_es_ES.UTF-8.gmo] Error 1
+</I>&gt;<i> make[1]: *** [bulmalib/src/CMakeFiles/bulmalib_pos.dir/all] Error 2
+</I>&gt;<i> make: *** [all] Error 2
+</I>&gt;<i>
+</I>&gt;<i> He probado a quitar el &quot;&amp;&quot; de la cadena de texto y desde ese momento
+</I>&gt;<i> SÍ que compila.
+</I>&gt;<i>
+</I>&gt;<i> Supongo que la traducción se habría generado automáticamente y por
+</I>&gt;<i> ello añadió dicho símbolo. De momento he dejado la cadena de texto sin
+</I>&gt;<i> el símbolo &quot;&amp;&quot;.
+</I>&gt;<i>
+</I>&gt;<i> Si debe mantenerse el símbolo &quot;&amp;&quot;, ¿se supone que debo hacer algo al respecto?
+</I>&gt;<i>
+</I>&gt;<i> Un saludo.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>Hola. El símbolo &amp; se tiene que mantener si la cadena de texto original
+lo tiene. Este símbolo indica que la letra siguiente actua como atajo de
+teclado.Ej: &quot;&amp;Cerrar&quot;, la acción se ejecutaría al pulsar ALT+C. Es una
+cosa que hay que tener en cuenta a la hora de traducir, porque lo más
+seguro es que no coincida la misma letra en todos los idiomas y hay que
+cambiarlo para que en una misma pantalla no coincidan más acciones con
+el mismo atajo (siempre que sea posible).
+
+En el caso concreto que tu dices, la cadena esta &quot;fuzzy&quot;,  yo no
+traduciria nada de ellas, ya te dije que están obsoletos en el código y
+lo mejor es que se borren, se mantienen como referencia para no perder
+la traducción si hay cambios en el código. El archivo que dices ya no se
+llama &quot;ui_fichacfgbase.h&quot;, ahora se llama &quot;ui_formconfigbase.h&quot;
+
+Te veo con muchas ganas de traducir, pero piensa que ha habido muchos
+cambios de nombres de archivos y me sabría mal que trabajases tanto para
+luego encontrarte todo cambiado y tener que repetir el trabajo. Voy a
+ver si me documento como realizar de nuevo el .pot y subirlo para que
+trabajes sobre lo último del código.
+
+Un saludo.
+
+-- 
+Fco. Javier M. C.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001667.html">[BulmaGés]Compilación con errores en los archivos .po
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001669.html">[BulmaGés] r3265 -	trunk/bulmages/installbulmages/i18n
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1668">[ fecha ]</a>
+              <a href="thread.html#1668">[ hilo ]</a>
+              <a href="subject.html#1668">[ asunto ]</a>
+              <a href="author.html#1668">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

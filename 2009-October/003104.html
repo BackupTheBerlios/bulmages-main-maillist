@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]bug: PLUGINS NO COINCIDENTES.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-October/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fbug%3D3A_PLUGINS_NO_COI%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FNCIDENTES%3D2E%3F%3D&In-Reply-To=%3C1256837903.9372.50.camel%40vaio%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003101.html">
+   <LINK REL="Next"  HREF="003105.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]bug: PLUGINS NO COINCIDENTES. </H1>
+    <B>Albert Mas</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fbug%3D3A_PLUGINS_NO_COI%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FNCIDENTES%3D2E%3F%3D&In-Reply-To=%3C1256837903.9372.50.camel%40vaio%3E"
+       TITLE="[BulmaGés]bug: PLUGINS NO COINCIDENTES.">albertmas en termens.cat
+       </A><BR>
+    <I>Jue Oct 29 18:38:23 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003101.html">[BulmaGés]PLUGINS NO COINCIDENTES.
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003105.html">[BulmaGés]bug: PLUGINS NO COINCIDENTES.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3104">[ fecha ]</a>
+              <a href="thread.html#3104">[ hilo ]</a>
+              <a href="subject.html#3104">[ asunto ]</a>
+              <a href="author.html#3104">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>BUENO, CONTINUO AMB EL TEMA PLUGINS. JA QUE ESTIC FENT TOTES LES PROVES
+POSSIBLE I ESTIC TROBANT ERROR.
+
+He eliminat tots els plugins de:
+/etc/bulmages/bulmafact.conf
+i també de:
+/etc/bulmages/bulmafact_nombreempresa.conf
+
+ARA OBRO BULMASETUP I...
+
+1. Us informo que hi ha 3 plugins que sempre surten marcats com
+instal.lats:
+- Datos Iniciales (que aquest encara ho puc entendre)
+- Control de ingresos y gastos.
+- Contratos clientes.
+
+2. Hi ha molts plugins repetits vàries vegades, com ara:
+- Remesas bancarias.
+- Comerciales i un altre que es diu: Gestion de Comerciales.
+- Trazabilidad.
+- Contratos Clientes.
+- Envio de documentos usando Thunterbird.
+(Ja és curiós perquè un és el que surt marcat sempre i l'altre no)
+*** EM SEMBLA QUE AIXÒ PASSA PERQUÈ EN AQUESTA LLISTA ENCARA HI HA
+PLUGINS VELLS, ELS QUE NO PORTEN EL BF ***
+
+3. Después d'aplicar els canvis a Bulmasetup, obrim el programa i ens
+surten 43 milions d'errors. Tots són plugins que no troba.
+Això és conseqüència del cacao que té bulmasetup amb el plugin comentat
+abans.
+
+Per tant hauré d'acabar anar al fitxer .conf i toquejar la configuració
+dels plugins a mà, sort que tenia una còpia :-)
+
+
+COPIO AQUI ELS PLUGINS QUE M'HA POSAT BULMASETUP:
+
+CONF_PLUGINS_BULMAFACT   libpluginbf_minicontabilidad.so; \
+*libpluginsubformods.so; \
+libpluginbf_trabajador.so; \
+libpluginbl_template2ods.so; \
+*libpluginimpersods.so; \
+*libpluginclipboardbf.so; \
+libpluginbl_clipboard.so; \
+libpluginbl_bloqconf.so; \
+libpluginbf_cliente.so; \
+libpluginbf_proveedor.so; \
+libpluginbf_carteracobros.so; \
+libpluginbf_clientealbaran.so; \
+libpluginbf_clientefactura.so; \
+libpluginbf_clientecobro.so; \
+libpluginbf_proveedoralbaran.so; \
+libpluginbf_proveedorfactura.so; \
+libpluginbf_proveedorpago.so; \
+libpluginbf_comercial.so; \
+*libpluginmailthunderbird.so; \
+libpluginbf_correothunderbird.so; \
+libpluginbf_contrato.so; \
+libpluginbf_informecliente2sxc.so; \
+*libplugininformeclientessxc.so; \
+libpluginbf_banco.so; \
+libpluginbf_multiimprimir.so; \
+libpluginbf_q19.so; \
+*libpluginq19.so; \
+libpluginbl_report2ods.so; \
+*libpluginpedido.so; \
+*libpluginpedidoprov.so; \
+*libplugincomercialesbf.so; \
+*libpluginfactura.so; \
+*libpluginpresupuesto.so; \
+*libpluginfacturaprov.so; \
+*libplugincobros.so; \
+*libpluginpagos.so
+
+
+AMB * ELS QUE FALLEN.
+
+-- 
+Albert Mas &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">albertmas en termens.cat</A>&gt;
+
+
+
+El dj 29 de 10 de 2009 a les 15:04 +0100, en/na Tomeu va escriure:
+
+&gt;<i> Hola Albert
+</I>&gt;<i> 
+</I>&gt;<i> Això passa perque gairebé tots els plugins de bulmafact, bulmacont i bulmatpv 
+</I>&gt;<i> han sigut renombrats i no hi ha un registre que casi els noms antics amb els 
+</I>&gt;<i> noms nous y per això el sistema no es capaç de detectar quins plugins han 
+</I>&gt;<i> canviat i quins no.
+</I>&gt;<i> 
+</I>&gt;<i> Mes enlla d'això si tornes a triar els plugins corresponents (esl que hi 
+</I>&gt;<i> havia) toca deixar-ho tot operatiu.
+</I>&gt;<i> 
+</I>&gt;<i> Salut
+</I>&gt;<i> 
+</I>&gt;<i> &gt; Hola Llista, bon dia.
+</I>&gt;<i> &gt; Estic fent proves amb la última versió de Bulmages, així que us aniré
+</I>&gt;<i> &gt; passant alguns e-mails.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; No entenc perqu&#232; a Bulmasetup no coincideixen els plugin insta&#320;lats amb
+</I>&gt;<i> &gt; els que tinc posats al fitxer empresa.conf a /etc/bulmages
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Però el problema gran recau quan entrem a Bulmasetup per exemple per
+</I>&gt;<i> &gt; actualitzar la base de dades, com que apareixen els plugins marcats que
+</I>&gt;<i> &gt; li sembla, quan fas aplicar canvis es destrossa tot.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; De fet això ja ho estic detectant des de que varem canviar la imatge del
+</I>&gt;<i> &gt; bulmasetup.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Faig alguna cosa malament? Algú més li passa?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Salutacions a tots!
+</I>&gt;<i> &gt; &quot;
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+-- 
+Albert Mas &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">albertmas en termens.cat</A>&gt;
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20091029/a6792f63/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20091029/a6792f63/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003101.html">[BulmaGés]PLUGINS NO COINCIDENTES.
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003105.html">[BulmaGés]bug: PLUGINS NO COINCIDENTES.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3104">[ fecha ]</a>
+              <a href="thread.html#3104">[ hilo ]</a>
+              <a href="subject.html#3104">[ asunto ]</a>
+              <a href="author.html#3104">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

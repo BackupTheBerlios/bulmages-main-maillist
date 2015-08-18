@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Plugins de correo, facturas en PDF y otras consultas
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FPlugins_de_correo%3D2C_%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Ffacturas_en_PDF_y_otras_consultas%3F%3D&In-Reply-To=%3C4E1CB2F2.6080407%40todo-redes.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006221.html">
+   <LINK REL="Next"  HREF="006226.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Plugins de correo, facturas en PDF y otras consultas </H1>
+    <B>Fco. Javier M. C.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FPlugins_de_correo%3D2C_%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Ffacturas_en_PDF_y_otras_consultas%3F%3D&In-Reply-To=%3C4E1CB2F2.6080407%40todo-redes.com%3E"
+       TITLE="[BulmaGés]Plugins de correo, facturas en PDF y otras consultas">fcojavmc en todo-redes.com
+       </A><BR>
+    <I>Mar Jul 12 22:47:46 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006221.html">[BulmaGés] Plugins de correo,	facturas en PDF y otras consultas
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006226.html">[BulmaGés]Plugins de correo, facturas en PDF y otras consultas
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6224">[ fecha ]</a>
+              <a href="thread.html#6224">[ hilo ]</a>
+              <a href="subject.html#6224">[ asunto ]</a>
+              <a href="author.html#6224">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Daniel.
+
+
+Fantástico por el proyecto. Enhorabuena.
+
+El problema que tienes es porque falta el archivo rml y la imagen. Bien.
+Eso lo has corregido.
+
+Segundo problema te sale porque el RML no está bien hecho y hay un
+contenido que se sale del recuadro que le has dejado. Por eso se queja.
+
+Resumiendo, revisa el RML que usas. Es complicado pillarte el truco,
+pero se puede. Usa otra plantilla y ves modificando poco a poco. También
+puedes lanzar a compilar el RML desde la consola con bgtrml2pdf y hacer
+debug desde allí.
+
+
+
+Un saludo.
+
+
+
+El 12/07/11 19:32, Daniel Ripoll escribió:
+&gt;<i> Hola lista,
+</I>&gt;<i>
+</I>&gt;<i> Vayamos por partes...
+</I>&gt;<i>
+</I>&gt;<i> 1)-----------------------------------------------------------------------------------------------------------------------------------------------------
+</I>&gt;<i> Estoy desarrollando código para bulmages bajo demanda, y tengo permiso
+</I>&gt;<i> para publicar bajo GPL al terminar.
+</I>&gt;<i>
+</I>&gt;<i> Este código serviría de substitución al plubinbf_correo y
+</I>&gt;<i> plubinbf_correothunderbird y similares, básicamente actuaría como
+</I>&gt;<i> &quot;framework de clientes email&quot; evitando un plugin para cada programa que
+</I>&gt;<i> es realmente engorroso y aumenta mucho el código.
+</I>&gt;<i>
+</I>&gt;<i> Por defecto usaría el cliente predeterminado del usuario.
+</I>&gt;<i> En caso de existir en la configuración la variable CONF_CLIENTE_EMAIL
+</I>&gt;<i> usaría el indicado ahí independientemente de la plataforma donde
+</I>&gt;<i> estuviera ejecutandose.
+</I>&gt;<i>
+</I>&gt;<i> Además serviría para cualquier cliente de email, al seguir los
+</I>&gt;<i> estándares RFC, incluso para los clientes propios de Microsoft, que
+</I>&gt;<i> modifican el estándar y ya se por donde cojean.
+</I>&gt;<i>
+</I>&gt;<i> Como podéis ver, la idea es algo similar a lo que hice para los
+</I>&gt;<i> navegadores web: blWebBrowser (en blfunctions), pero para email y luego
+</I>&gt;<i> podría usarse en cualquier plugin o código.
+</I>&gt;<i>
+</I>&gt;<i> Por otra parte, permitiría el uso de plantillas en text/plain y
+</I>&gt;<i> text/html, mucho más cómodo que modificar el código y recompilar cada vez.
+</I>&gt;<i>
+</I>&gt;<i> Creo que puedo afirmar que interesa a todos.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> 2)-----------------------------------------------------------------------------------------------------------------------------------------------------
+</I>&gt;<i> En este afan de desarrollo, me he encontrado un enorme freno, he estado
+</I>&gt;<i> &quot;jugueteando&quot; con el plubinbf_correothunderbird y pluginbf_correo,
+</I>&gt;<i> supuestamente crean un archivo pdf y lo adjunta.
+</I>&gt;<i> Problema: los archivos PDF que crea estan completamente vacios 0 bytes.
+</I>&gt;<i> (adjunto el PDF para los excepticos).
+</I>&gt;<i>
+</I>&gt;<i> Por terminal se queja de varias cosas...
+</I>&gt;<i>
+</I>&gt;<i> cp: no se puede efectuar `stat' sobre
+</I>&gt;<i> «/opt/bulmages/openreports_demo_fact/factura.rml»: No existe el fichero
+</I>&gt;<i> o el directorio
+</I>&gt;<i> cp: no se puede efectuar `stat' sobre
+</I>&gt;<i> «/opt/bulmages/openreports_demo_fact/logo.jpg»: No existe el fichero o
+</I>&gt;<i> el directorio
+</I>&gt;<i> Traceback (most recent call last):
+</I>&gt;<i>   File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 1116, in &lt;module&gt;
+</I>&gt;<i>     print parseString(file(sys.argv[1], 'r').read()),
+</I>&gt;<i>   File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 1096, in parseString
+</I>&gt;<i>     r = _rml_doc(node, localcontext, images, path, title=title)
+</I>&gt;<i>   File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 151, in __init__
+</I>&gt;<i>     doc =  etree.XML(file(filename, 'r').read())
+</I>&gt;<i> IOError: [Errno 2] No such file or directory:
+</I>&gt;<i> '/opt/bulmages/openreports_demo_fact/estilos.rml'
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Al insertar esa carpeta, en base a los .rml que hay en bulmages y que
+</I>&gt;<i> supuestamente serían correctos, cantan otros errores.
+</I>&gt;<i>
+</I>&gt;<i> Traceback (most recent call last):
+</I>&gt;<i>   File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 1116, in &lt;module&gt;
+</I>&gt;<i>     print parseString(file(sys.argv[1], 'r').read()),
+</I>&gt;<i>   File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 1104, in parseString
+</I>&gt;<i>     r.render(fp)
+</I>&gt;<i>   File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 207, in render
+</I>&gt;<i>     pt_obj.render(el)
+</I>&gt;<i>   File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 852, in render
+</I>&gt;<i>     self.doc_tmpl.build(fis)
+</I>&gt;<i>   File
+</I>&gt;<i> &quot;/usr/lib/python2.7/site-packages/reportlab-2.5-py2.7-linux-i686.egg/reportlab/platypus/doctemplate.py&quot;,
+</I>&gt;<i> line 880, in build
+</I>&gt;<i>     self.handle_flowable(flowables)
+</I>&gt;<i>   File
+</I>&gt;<i> &quot;/usr/lib/python2.7/site-packages/reportlab-2.5-py2.7-linux-i686.egg/reportlab/platypus/doctemplate.py&quot;,
+</I>&gt;<i> line 763, in handle_flowable
+</I>&gt;<i>     if frame.add(f, canv, trySplit=self.allowSplitting):
+</I>&gt;<i>   File
+</I>&gt;<i> &quot;/usr/lib/python2.7/site-packages/reportlab-2.5-py2.7-linux-i686.egg/reportlab/platypus/frames.py&quot;,
+</I>&gt;<i> line 174, in _add
+</I>&gt;<i>     flowable.drawOn(canv, self._x + self._leftExtraIndent, y, _sW=aW-w)
+</I>&gt;<i>   File
+</I>&gt;<i> &quot;/usr/lib/python2.7/site-packages/reportlab-2.5-py2.7-linux-i686.egg/reportlab/platypus/flowables.py&quot;,
+</I>&gt;<i> line 108, in drawOn
+</I>&gt;<i>     self._drawOn(canvas)
+</I>&gt;<i>   File
+</I>&gt;<i> &quot;/usr/lib/python2.7/site-packages/reportlab-2.5-py2.7-linux-i686.egg/reportlab/platypus/flowables.py&quot;,
+</I>&gt;<i> line 89, in _drawOn
+</I>&gt;<i>     self.draw()#this is the bit you overload
+</I>&gt;<i>   File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 584, in draw
+</I>&gt;<i>     drw.render(self.canv, self.self2.doc)
+</I>&gt;<i>   File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 463, in render
+</I>&gt;<i>     cnv.render(self.node)
+</I>&gt;<i>   File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 448, in render
+</I>&gt;<i>     tags[n.tag](n)
+</I>&gt;<i>   File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 332, in _place
+</I>&gt;<i>     raise ValueError, &quot;Not enough space&quot;
+</I>&gt;<i> ValueError: Not enough space
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> -----------------------------------------------------------------------------------------------------------------------------------------------------
+</I>&gt;<i> OS: Fedora Linux 15
+</I>&gt;<i> uname -r: Linux Hyde 3.0-rc7.fc15.i686
+</I>&gt;<i> python --version: Python 2.7.1
+</I>&gt;<i> -----------------------------------------------------------------------------------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ¿Alguna idea?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+
+-- 
+Javier.
+TODO-REDES
+<A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+C/Begònia 12 - 07010 Palma de Mallorca.
+Tel.: 971499071
+
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20110712/e6ae19f6/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20110712/e6ae19f6/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006221.html">[BulmaGés] Plugins de correo,	facturas en PDF y otras consultas
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006226.html">[BulmaGés]Plugins de correo, facturas en PDF y otras consultas
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6224">[ fecha ]</a>
+              <a href="thread.html#6224">[ hilo ]</a>
+              <a href="subject.html#6224">[ asunto ]</a>
+              <a href="author.html#6224">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

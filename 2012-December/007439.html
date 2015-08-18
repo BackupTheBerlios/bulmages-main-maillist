@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][Camino hacia el futuro] Más cosas que no existen en Qt5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BCamino_hacia_el_fu%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fturo%3D5D_M%3DE1s_cosas_que_no_existen_en_Qt5%3F%3D&In-Reply-To=%3C50C11442.8040804%40danielripoll.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007438.html">
+   <LINK REL="Next"  HREF="007441.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][Camino hacia el futuro] Más cosas que no existen en Qt5 </H1>
+    <B>Daniel Ripoll</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BCamino_hacia_el_fu%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fturo%3D5D_M%3DE1s_cosas_que_no_existen_en_Qt5%3F%3D&In-Reply-To=%3C50C11442.8040804%40danielripoll.es%3E"
+       TITLE="[BulmaGés][Camino hacia el futuro] Más cosas que no existen en Qt5">info en danielripoll.es
+       </A><BR>
+    <I>Jue Dic  6 22:55:14 CET 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007438.html">[BulmaGés][Camino hacia el futuro] Más cosas que no existen en Qt5
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007441.html">[BulmaGés][Un paso más al futuro] Ya compilamos (lo básico) en Qt5
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7439">[ fecha ]</a>
+              <a href="thread.html#7439">[ hilo ]</a>
+              <a href="subject.html#7439">[ asunto ]</a>
+              <a href="author.html#7439">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Añadid fromAscii() a la cuenta...
+
+La matanza que esta habiendo en los archivos es de nivel épico...
+
+Salut!
+
+On 06/12/12 22:47, Daniel Ripoll wrote:
+&gt;<i> Buenas chicos, he conseguido avanzar un poquito más en el tema del 
+</I>&gt;<i> camino hacia Qt5...
+</I>&gt;<i>
+</I>&gt;<i> Ahora he llegado a un punto que ya no solo me afecta en los headers, 
+</I>&gt;<i> si no a lineas y lineas de código...
+</I>&gt;<i>
+</I>&gt;<i> toAscii() ha desaparecido completamente! Si si, se lo ha tragado un 
+</I>&gt;<i> agujero negro.
+</I>&gt;<i>
+</I>&gt;<i> El motivo: toAscii() no devolvía siempre caracteres ASCII... WTF?
+</I>&gt;<i>
+</I>&gt;<i> En su defecto ahora parece que debemos usar toUtf8()
+</I>&gt;<i>
+</I>&gt;<i> On 06/12/12 06:17, Daniel Ripoll wrote:
+</I>&gt;&gt;<i> Hola chicos, estos dias he estado haciendo pruebas con CMake, de que 
+</I>&gt;&gt;<i> cambios había  que hacer al proyecto y demás para que compile bajo 
+</I>&gt;&gt;<i> Qt5...
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Tras muchos quebraderos de cabeza he avanzado hasta lo que yo llamo 
+</I>&gt;&gt;<i> &quot;Problema&quot;, ¿A que me refiero?.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Pues a que nosotros usamos una clase derivada de QWorkspace, llamada 
+</I>&gt;&gt;<i> BlWorkspace,  que funciona a su vez con QMdiArea o QWorkspace, pues 
+</I>&gt;&gt;<i> bien... esta primera ya no va a poderse usar, ya que ha sido 
+</I>&gt;&gt;<i> eliminada en las nuevas versiones de Qt5
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Podéis probar y experimentar
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> <A HREF="https://gitorious.org/~themeph/bulmages/themephs-bulmages">https://gitorious.org/~themeph/bulmages/themephs-bulmages</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+
+-- 
+Daniel Ripoll Osma
+<A HREF="http://danielripoll.es">http://danielripoll.es</A>
+<A HREF="http://bulmages.es">http://bulmages.es</A>
+<A HREF="http://manualencatala.tk">http://manualencatala.tk</A>
+6688.27.4.90
+
+Web &amp; Desktop Developer
+
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007438.html">[BulmaGés][Camino hacia el futuro] Más cosas que no existen en Qt5
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007441.html">[BulmaGés][Un paso más al futuro] Ya compilamos (lo básico) en Qt5
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7439">[ fecha ]</a>
+              <a href="thread.html#7439">[ hilo ]</a>
+              <a href="subject.html#7439">[ asunto ]</a>
+              <a href="author.html#7439">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

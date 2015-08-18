@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] Caracteres sustituidos
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Caracteres%20sustituidos&In-Reply-To=%3C201103211530.44578.asmond%40orange.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005505.html">
+   <LINK REL="Next"  HREF="005508.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] Caracteres sustituidos </H1>
+    <B>Toni Asensi Esteve</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Caracteres%20sustituidos&In-Reply-To=%3C201103211530.44578.asmond%40orange.es%3E"
+       TITLE="[BulmaGés] Caracteres sustituidos">asmond en orange.es
+       </A><BR>
+    <I>Lun Mar 21 15:30:44 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="005505.html">[BulmaGés] r4725 - in trunk/bulmages:	bulmafact/src bulmalib/src bulmatpv/plugins/pluginbt_printercocina	installbulmages/dbmodels/actualizar	installbulmages/dbmodels/crear/bulmafact
+</A></li>
+        <LI>Próximo mensaje: <A HREF="005508.html">[BulmaGés]Caracteres sustituidos
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5507">[ fecha ]</a>
+              <a href="thread.html#5507">[ hilo ]</a>
+              <a href="subject.html#5507">[ asunto ]</a>
+              <a href="author.html#5507">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> Author: fcojavmc
+</I>&gt;<i> Date: 2011-03-21 11:08:42 +0100 (Mon, 21 Mar 2011)
+</I>&gt;<i> [...]
+</I>&gt;<i> Nueva funciona auxiliar en la base de datos para mostrar cadena de
+</I>&gt;<i> textos eliminando acentos. La utilizo para imprimir por impresora de
+</I>&gt;<i> tickets que no admiten esos caracteres.
+</I>
+Esos dispositivos y demás... vienen causando tantos problemas desde hace tanto 
+tiempo que los gobiernos deberían poner multas. :-(
+
+He visto que la función era:
+
+&gt;<i> CREATE OR REPLACE FUNCTION sinacentos (text) RETURNS text AS $$
+</I>&gt;<i> SELECT translate($1,'áéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ','aeiouAEIOUaeiouAEIOUnN');
+</I>&gt;<i> $$ LANGUAGE sql;
+</I>
+¿Y si, para evitar problemas en otros usos en el futuro, se añaden otros 
+caracteres como 
+	&#224;&#232;&#236;&#242;&#249;&#192;&#200;&#204;&#210;&#217;&#231;&#199;&#186;&#170;&#161;&#191;&#171;&#187;&#8364;&#162;
+?
+
+De paso, como también hay caracteres &quot;traducidos&quot; que no son acentos ¿y si a 
+la función le llamamos como una abreviación de algo equivalente a &quot;sin 
+caracteres no ascii&quot;?
+
+Saludos:
+-- 
+Toni Asensi Esteve.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="005505.html">[BulmaGés] r4725 - in trunk/bulmages:	bulmafact/src bulmalib/src bulmatpv/plugins/pluginbt_printercocina	installbulmages/dbmodels/actualizar	installbulmages/dbmodels/crear/bulmafact
+</A></li>
+	<LI>Próximo mensaje: <A HREF="005508.html">[BulmaGés]Caracteres sustituidos
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5507">[ fecha ]</a>
+              <a href="thread.html#5507">[ hilo ]</a>
+              <a href="subject.html#5507">[ asunto ]</a>
+              <a href="author.html#5507">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

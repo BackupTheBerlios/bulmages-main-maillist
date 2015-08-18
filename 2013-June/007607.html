@@ -1,0 +1,393 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130603065455.B3A4915F%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007610.html">
+   <LINK REL="Next"  HREF="007608.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130603065455.B3A4915F%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Lun Jun  3 08:54:55 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007610.html">[BulmaGés]Hagamos una rimera versión Qt5 para Windows
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007608.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7607">[ fecha ]</a>
+              <a href="thread.html#7607">[ hilo ]</a>
+              <a href="subject.html#7607">[ asunto ]</a>
+              <a href="author.html#7607">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from c3c2168 to 3cef42e
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/c3c2168f5e4ca9903068516e087004513649fbdc/diffs/3cef42eadeb9981221773b212b7c35999bce12bc">https://gitorious.org/bulmages/bulmages/commit/c3c2168f5e4ca9903068516e087004513649fbdc/diffs/3cef42eadeb9981221773b212b7c35999bce12bc</A>
+
+Diff: 
+
+commit 3cef42eadeb9981221773b212b7c35999bce12bc
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon Jun 3 00:04:40 2013 +0200
+
+    Arreglo un error con los BlDoubleSpinBox que siempre se ponen a cero.
+    Convierto el sistema transaccional de la base de datos en un sistema transaccional anidado.
+    Esto es se pueden hacer multiples secuencias BEGIN--&gt;COMMIT, BEGIN--&gt;ROLLBACK anidadas con las siguientes restricciones.
+    1.- El commit o rollback solo se realiza realmente cuando termina la primera transaccion del anidamiento.
+    2.- Si durante todo el anidamiento se ha hecho un rollback entonces todo el anidamiento es rollback
+    3.- Solo se hace commit si durante todo el anidamiento se han hecho todos los commits.
+    
+    Esta solucion ha sido adoptada debido a que un BlForm puede llamar a metodos de otro BlForm que estan en transaccion.
+    Por ejemplo al borrar una factura que se borre el asiento correspondiente a la factura.
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoform.cpp b/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoform.cpp
+index 41c5bb2..1da3dd2 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoform.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoform.cpp
+@@ -149,45 +149,49 @@ int BcAsientoForm::remove ( bool atendido )
+ {
+     BL_FUNC_DEBUG
+     int error;
+-    if ( dbValue ( &quot;idasiento&quot; ) != &quot;&quot; ) {
+-        if ( atendido ) {
+-            switch ( QMessageBox::warning ( 0,
+-                                            _ ( &quot;Borrar asiento&quot; ),
+-                                            _ ( &quot;Se va a borrar el asiento. ¿Esta seguro?&quot; ),
+-                                            QMessageBox::Ok,
+-                                            QMessageBox::Cancel ) ) {
+-            case QMessageBox::Ok: /// Retry clicked or Enter pressed.
+-                mainCompany() -&gt;begin();
+-                m_listaLineas-&gt;remove();
+-                error = mainCompany() -&gt;runQuery ( &quot;DELETE FROM apunte WHERE idasiento = &quot; + dbValue ( &quot;idasiento&quot; ) );
+-                error += mainCompany() -&gt;runQuery ( &quot;DELETE FROM asiento WHERE idasiento = &quot; + dbValue ( &quot;idasiento&quot; ) );
+-                if ( error ) {
+-                    mainCompany() -&gt;rollback();
+-                    return -1;
+-                } // end if
+-                mainCompany() -&gt;commit();
+-                vaciar();
+-                dialogChanges_readValues();
+-                return 3;
+-            case QMessageBox::Cancel: /// Abort clicked or Escape pressed.
+-                return 2;
+-            } // end switch
+-        } else {
+-            mainCompany() -&gt;begin();
+-            m_listaLineas-&gt;remove();
+-            error = mainCompany() -&gt;runQuery ( &quot;DELETE FROM apunte WHERE idasiento = &quot; + dbValue ( &quot;idasiento&quot; ) );
+-            error += mainCompany() -&gt;runQuery ( &quot;DELETE FROM asiento WHERE idasiento = &quot; + dbValue ( &quot;idasiento&quot; ) );
+-            if ( error ) {
+-                mainCompany() -&gt;rollback();
+-                return -1;
+-            } // end if
+-            mainCompany() -&gt;commit();
+-            vaciar();
+-            dialogChanges_readValues();
+-            return 3;
+-        } // end if
+-    } // end if
+-    
++    try {
++        mainCompany()-&gt;begin();
++	if ( dbValue ( &quot;idasiento&quot; ) != &quot;&quot; ) {
++	    if ( atendido ) {
++		switch ( QMessageBox::warning ( 0,
++						_ ( &quot;Borrar asiento&quot; ),
++						_ ( &quot;Se va a borrar el asiento. ¿Esta seguro?&quot; ),
++						QMessageBox::Ok,
++						QMessageBox::Cancel ) ) {
++		case QMessageBox::Ok: /// Retry clicked or Enter pressed.
++		    m_listaLineas-&gt;remove();
++		    error = mainCompany() -&gt;runQuery ( &quot;DELETE FROM apunte WHERE idasiento = &quot; + dbValue ( &quot;idasiento&quot; ) );
++		    error += mainCompany() -&gt;runQuery ( &quot;DELETE FROM asiento WHERE idasiento = &quot; + dbValue ( &quot;idasiento&quot; ) );
++		    if ( error ) {
++			mainCompany() -&gt;rollback();
++			return -1;
++		    } // end if
++		    mainCompany() -&gt;commit();
++		    vaciar();
++		    dialogChanges_readValues();
++		    return 3;
++		case QMessageBox::Cancel: /// Abort clicked or Escape pressed.
++		    mainCompany()-&gt;commit();
++		    return 2;
++		} // end switch
++	    } else {
++		m_listaLineas-&gt;remove();
++		error = mainCompany() -&gt;runQuery ( &quot;DELETE FROM apunte WHERE idasiento = &quot; + dbValue ( &quot;idasiento&quot; ) );
++		error += mainCompany() -&gt;runQuery ( &quot;DELETE FROM asiento WHERE idasiento = &quot; + dbValue ( &quot;idasiento&quot; ) );
++		if ( error ) {
++		    mainCompany() -&gt;rollback();
++		    return -1;
++		} // end if
++		mainCompany() -&gt;commit();
++		vaciar();
++		dialogChanges_readValues();
++		return 3;
++	    } // end if
++	} // end if
++    } catch(...) {
++	blMsgError(&quot;Error inesperado borrando el asiento&quot;);
++	mainCompany()-&gt;rollback();
++    } // end try
+     return 0;
+ }
+ 
+diff --git a/bulmages/bulmalib/src/blform.cpp b/bulmages/bulmalib/src/blform.cpp
+index 19986a6..9ea63cf 100644
+--- a/bulmages/bulmalib/src/blform.cpp
++++ b/bulmages/bulmalib/src/blform.cpp
+@@ -754,9 +754,6 @@ void BlForm::closeEvent ( QCloseEvent *e )
+                 return;
+             } // end if
+         } // end if
+-        /// \TODO Este removeWindow encubre un bug. Debe tratarse de otra forma el
+-        /// sacar las ventanas de listventanas.
+-//        removeWindow();
+         e-&gt;accept();
+     } catch ( ... ) {
+         blMsgInfo ( _ ( &quot;No se pudo cerrar la ventana debido a un error&quot; ) );
+@@ -976,7 +973,7 @@ void BlForm::pintar()
+         /// Buscamos un BlDoubleSpinBox con nombre coincidente.
+         BlDoubleSpinBox *l8 = findChild&lt;BlDoubleSpinBox *&gt; ( &quot;mui_&quot; + campo-&gt;fieldName() );
+         if ( l8 ) {
+-            l8-&gt;setValue ( campo-&gt;fieldValue().toDouble() );
++            l8-&gt;setValue ( campo-&gt;fieldValue().replace(&quot;,&quot;,&quot;.&quot;).toDouble() );
+ 		if ( readOnly ) l8-&gt;setDisabled( true );
+             /// Buscamos los decimales que tiene el campo y establecemos el numero de decimales a ese valor.
+             QString query2 = &quot;SELECT numeric_scale FROM information_schema.columns WHERE table_name = '&quot;+tableName()+&quot;' and column_name='&quot;+campo-&gt;fieldName()+&quot;';&quot;;
+@@ -1297,6 +1294,7 @@ int BlForm::remove()
+ {
+     BL_FUNC_DEBUG
+     try {
++        mainCompany()-&gt;begin();
+         /// Lanzamos los plugins.
+         if ( g_plugins-&gt;run ( &quot;BlForm_borrar&quot;, this ) ) return 0;
+         beforeDelete();
+@@ -1312,11 +1310,11 @@ int BlForm::remove()
+                         lista.at(i)-&gt;presentar();
+                 } // end for
+         } // end if
+-
++	mainCompany()-&gt;commit();
+         
+         return err;
+     } catch ( ... ) {
+-        
++        mainCompany()-&gt;rollback();
+         return -1;
+     } // end try
+ }
+diff --git a/bulmages/bulmalib/src/blfunctions.cpp b/bulmages/bulmalib/src/blfunctions.cpp
+index dca2ffb..e21ef35 100644
+--- a/bulmages/bulmalib/src/blfunctions.cpp
++++ b/bulmages/bulmalib/src/blfunctions.cpp
+@@ -875,6 +875,7 @@ void blDebug ( const QString &amp;cad, int nivel, const QString &amp;param )
+ void blMsgInfo ( QString cad, QWidget *parent )
+ {
+     BL_FUNC_DEBUG
++    BlDebug::blDebug(cad);
+     QMessageBox msgBox;
+     msgBox.information ( parent,
+                          _ ( &quot;Informacion del programa&quot; ),
+@@ -886,6 +887,7 @@ void blMsgInfo ( QString cad, QWidget *parent )
+ void blMsgWarning ( QString cad, QWidget *parent )
+ {
+     BL_FUNC_DEBUG
++    BlDebug::blDebug(cad);
+     QMessageBox msgBox;
+     msgBox.warning ( parent,
+                      _ ( &quot;Aviso del programa&quot; ),
+@@ -897,6 +899,7 @@ void blMsgWarning ( QString cad, QWidget *parent )
+ void blMsgError ( QString cad, QWidget *parent )
+ {
+     BL_FUNC_DEBUG
++    BlDebug::blDebug(cad);
+     QMessageBox msgBox;
+     msgBox.critical ( parent,
+                       _ ( &quot;Error del programa&quot; ),
+diff --git a/bulmages/bulmalib/src/blpostgresqlclient.cpp b/bulmages/bulmalib/src/blpostgresqlclient.cpp
+index 022cf21..3b88fd3 100644
+--- a/bulmages/bulmalib/src/blpostgresqlclient.cpp
++++ b/bulmages/bulmalib/src/blpostgresqlclient.cpp
+@@ -31,6 +31,9 @@
+ #include &quot;blerrordialog.h&quot;
+ 
+ 
++int g_num_begins=0;
++int g_global_commit=true;
++
+ ///
+ /**
+ \return
+@@ -518,8 +521,6 @@ BlPostgreSqlClient::BlPostgreSqlClient()
+ {
+     BL_FUNC_DEBUG
+     conn = NULL;
+-    m_insideTransaction = false;
+-    
+ }
+ 
+ 
+@@ -666,22 +667,28 @@ int BlPostgreSqlClient::formatofecha()
+ int BlPostgreSqlClient::begin()
+ {
+     BL_FUNC_DEBUG
+-    BlDebug::blDebug(&quot;=============== BEGIN ==================&quot;);
+-    if ( m_insideTransaction ) {
+-        BlDebug::blDebug ( &quot;Doble inicio de transaccion&quot;, 0 );
+-	blMsgError(&quot;Doble inicio de transaccion&quot;);
+-        return -1;
+-    } // end if
+-    PGresult *res;
+-    res = PQexec ( conn, &quot;BEGIN&quot; );
+-    if ( !res || PQresultStatus ( res ) != PGRES_COMMAND_OK ) {
+-        BlDebug::blDebug ( &quot;BEGIN command failed&quot; );
+-	blMsgError(&quot;No se pudo iniciar la transaccion&quot;);
+-        PQclear ( res );
+-        return -1;
++    /// Podemos hacer transacciones en cascada, en cuyo caso las previas son obviadas. Salvo en caso de hacer un rollback.
++    /// Esto es debido a que un formulario puede solicitar el borrado de otro formulario y ambos harán begin. Interesa que si uno de los dos falla
++    /// Se obvie toda la transaccion.
++    if (g_num_begins == 0) {
++      /// Es la primera transaccion y ponemos el commit a true, porque para empezar no habrá rollback.
++      g_global_commit = true;
++      BlDebug::blDebug(&quot;=============== BEGIN ==================&quot;);
++      PGresult *res;
++      res = PQexec ( conn, &quot;BEGIN&quot; );
++      if ( !res || PQresultStatus ( res ) != PGRES_COMMAND_OK ) {
++	  BlDebug::blDebug ( &quot;BEGIN command failed&quot; );
++	  blMsgError(&quot;No se pudo iniciar la transaccion&quot;);
++	  PQclear ( res );
++	  g_num_begins = 0;
++	  return -1;
++      } // end if
++    } else {
++          BlDebug::blDebug(&quot;=============== BEGIN ANIDADO ==================&quot;);
+     } // end if
+-    PQclear ( res );
+-    m_insideTransaction = true;
++    g_num_begins ++;
++    
++    // PQclear ( res );
+     
+     return ( 0 );
+ }
+@@ -696,16 +703,20 @@ int BlPostgreSqlClient::begin()
+ void BlPostgreSqlClient::commit()
+ {
+     BL_FUNC_DEBUG
+-    BlDebug::blDebug(&quot;=============== COMMIT ==================&quot;);
+-    if ( !m_insideTransaction ) {
+-	
+-        return;
++    g_num_begins--;
++    if (g_num_begins == 0) {
++	 if (g_global_commit) {
++	      BlDebug::blDebug(&quot;=============== COMMIT ==================&quot;);
++	      PGresult *res;
++	      res = PQexec ( conn, &quot;COMMIT&quot; );
++	      PQclear ( res );
++	 } else {
++	      BlDebug::blDebug(&quot;=============== ROLLBACK DENTRO DE TRANSACCION ANIDADA ==================&quot;);
++	      PGresult *res;
++	      res = PQexec ( conn, &quot;ROLLBACK&quot; );
++	      PQclear ( res );
++	 } // end if
+     } // end if
+-    PGresult *res;
+-    res = PQexec ( conn, &quot;COMMIT&quot; );
+-    PQclear ( res );
+-    m_insideTransaction = false;
+-    
+ }
+ 
+ 
+@@ -718,16 +729,15 @@ void BlPostgreSqlClient::commit()
+ void BlPostgreSqlClient::rollback()
+ {
+     BL_FUNC_DEBUG
+-    BlDebug::blDebug(&quot;=============== ROLLBACK ==================&quot;);
+-    if ( !m_insideTransaction ) {
+-	
+-        return;
++    g_num_begins--;
++    if ( g_num_begins == 0) {
++	BlDebug::blDebug(&quot;=============== ROLLBACK ==================&quot;);
++	PGresult *res;
++	res = PQexec ( conn, &quot;ROLLBACK&quot; );
++	PQclear ( res );
++    } else {
++	g_global_commit= false;
+     } // end if
+-    PGresult *res;
+-    res = PQexec ( conn, &quot;ROLLBACK&quot; );
+-    PQclear ( res );
+-    m_insideTransaction = false;
+-    
+ }
+ 
+ 
+diff --git a/bulmages/bulmalib/src/blpostgresqlclient.h b/bulmages/bulmalib/src/blpostgresqlclient.h
+index f2ff8e0..f14a955 100644
+--- a/bulmages/bulmalib/src/blpostgresqlclient.h
++++ b/bulmages/bulmalib/src/blpostgresqlclient.h
+@@ -175,7 +175,6 @@ private:
+     QString m_pgTty; /// Indica algunos par&aacute;metros de la conexi&oacute;n (Desgraciadamente no se cuales).
+     QString m_pgDbName; /// Indica el nombre de la base de datos con la que se conecta.
+     PGconn *conn; /// Representa la conexi&oacute;n.
+-    bool m_insideTransaction; /// Indica si estamos dentro de una transacci&oacute;n.
+     QString m_currentUser;   /// Indica el usuario que se ha conectado.
+     /// escapa una cadena per a posar-la a la cadena de connexió a PostgreSQL
+     QString &amp;escCadConn(QString t) ;
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007610.html">[BulmaGés]Hagamos una rimera versión Qt5 para Windows
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007608.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7607">[ fecha ]</a>
+              <a href="thread.html#7607">[ hilo ]</a>
+              <a href="subject.html#7607">[ asunto ]</a>
+              <a href="author.html#7607">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

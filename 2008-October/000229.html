@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3F%3D5BBulmaFact_y_BulmaTPV%3D5D%3F%3D%0A%20%3D%3Futf-8%3Fq%3F_Dudas_variadas_y_fallos_variados%3F%3D&In-Reply-To=%3C200810280830.10560.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000228.html">
+   <LINK REL="Next"  HREF="000234.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3F%3D5BBulmaFact_y_BulmaTPV%3D5D%3F%3D%0A%20%3D%3Futf-8%3Fq%3F_Dudas_variadas_y_fallos_variados%3F%3D&In-Reply-To=%3C200810280830.10560.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados">tborras en conetxia.com
+       </A><BR>
+    <I>Mar Oct 28 08:30:10 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000228.html">[BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000234.html">[BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#229">[ fecha ]</a>
+              <a href="thread.html#229">[ hilo ]</a>
+              <a href="subject.html#229">[ asunto ]</a>
+              <a href="author.html#229">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>El Monday 27 October 2008 18:44:12 Daniel Bustos Fernández escribió:
+Hola
+&gt;<i> Hola
+</I>&gt;<i>
+</I>&gt;<i> Estoy aprendiendo a usar ambos programas con la ayuda web. Tengo instalados
+</I>&gt;<i> BulmaFact y BulmaTPV, y una empresa creada sin ningún plugin.
+</I>&gt;<i>
+</I>&gt;<i> Veamos si estos pasos son los correctos para comenzar con BulmaFact:
+</I>&gt;<i>
+</I>&gt;<i> - Creo una empresa y defino sus propiedades (SerieFacturaDefecto no la he
+</I>&gt;<i> cambiado aun)
+</I>&gt;<i> - Luego en Maestro defino: Iva, tasas de iva, almacenes, paises/provincias.
+</I>&gt;<i> - Defino al menos un artículo (creo su familia, su tipo y finalmente lo
+</I>&gt;<i> creo).
+</I>&gt;<i>
+</I>Hasta aqui todo bien.
+
+&gt;<i>           Aqui una duda. No puedo agregar una imagen al artículo, me dice
+</I>&gt;<i> que &quot;no tengo permisos o espacio de disco insuficiente&quot;.
+</I>&gt;<i>
+</I>En el /etc/bulmages/bulmafact.conf tiene que haber una directiva que indica 
+donde se guardan las imagenes. Seguramente estara apuntando a un directorio 
+en el que no tienes permisos.
+
+&gt;<i> - Creo un cliente.
+</I>&gt;<i> - Creo un proveedor.
+</I>&gt;<i> - Creo un trabajador.
+</I>&gt;<i>
+</I>&gt;<i> Ahora puedo hacer pedidos al proveedor y pagarle, con lo cual la cantidad
+</I>&gt;<i> de artículos en stock sube.
+</I>&gt;<i> Ahora bien, a la hora de pagar, puedo hacerlo tantas veces como quiera!! Es
+</I>&gt;<i> decir, si hago un pedido de 10 artículos, al stock suben esos 10, y aunque
+</I>&gt;<i> pague mas veces el mismo pedido, no van a ser más de esos 10, en cambio,
+</I>&gt;<i> los pagos sí que se acumulan.
+</I>Asi es. El tema es que puedes hacer pagos fraccionados y por ejemplo pagar un 
+50% dos veces. Por eso no controlamos si ya hay un pago o no. Lo que puedes 
+usar es el checkbox de procesado para indicar si el albaran requiere de tu 
+atención (esta pendiente de algo) o no.
+
+
+&gt;<i>
+</I>&gt;<i> Otra cosa que no va bien es que, al crear un albarán, la 2a y siguientes
+</I>&gt;<i> veces que lo edito, me da el siguiente fallo al tratar de grabar:
+</I>&gt;<i> &quot;Error al intentar modificar la base de datos.
+</I>&gt;<i> Error: No existe la columna &lt;&lt;lotelalbaranp&gt;&gt; en la relación &lt;&lt;lalbaranp&gt;&gt;
+</I>&gt;<i> LINE 1 UPDATE lalbaranp ...............................
+</I>Tienes puesto el plugin de trazabilidad. En el /etc/bulmages/bulmafact.conf 
+tienes que quitar el libplugintrazabilidad.so (creo)
+
+Si te interesa este plugin parece que no se ha parcheado bien la base de datos 
+y tendras que aplicarlo a mano. revf-plugintrazabilidad.sql (estara 
+en /usr/share/bulmages/dbmodels/plugins)
+
+&gt;<i>
+</I>&gt;<i> Por ello una vez creo un albarán no puedo editarlo sin que me de error y no
+</I>&gt;<i> se graben los cambios.
+</I>&gt;<i> Bueno, inexplicablemente si cambio la descripción eso sí que se guarda,
+</I>&gt;<i> pero si p.e. añado artículos al albarán, pues no.
+</I>&gt;<i>
+</I>&gt;<i> Hoy he abierto BulmaTPV por curiosidad, y veo que al iniciarlo me pide el
+</I>&gt;<i> usuario y luego aparece todo vacío (sin artículos para vender).
+</I>
+Los usuarios son los que tengas creados en bulmafact (vendedores)
+BulmaTPV por defecto esta libre de interficie grafica (la definen 
+completamente los plugins que instales. Esa es la gracia).
+Mira de instalar algunos con el bulmasetup (o edita 
+el /etc/bulmages/bulmatpv.conf)
+
+Yo siempre tengo  libpluginticket, libplugintecladonumerico, libplugintotal, 
+libplugincambio, libpluginabrevs y libpluginadmin
+
+
+
+&gt;<i> Supongo que tengo que editar el archivo pantallastpv.xml y añadir a mano
+</I>&gt;<i> mis artículos.
+</I>&gt;<i> ¿Se puede automatizar el proceso?
+</I>De momento no se puede automatizar, hay que hacerlo a mano.
+Puedes usar el pluginartsubform para que en lugar de ser TPV de bar sea un tpv 
+de ferreteria y en lugar de una rejilla con imagenes te muestre una lista de 
+articulos con un buscador.
+
+&gt;<i>
+</I>&gt;<i> Por otro lado, una vez abierto BulmaTPV, ocupa toda la pantalla, y no puedo
+</I>&gt;<i> ni minimizar ni cerrar el programa. Quiero decir, no veo el botón de cerrar
+</I>&gt;<i> por ningún sitio, y  tengo que cerrarlo matando el proceso!! Supongo que
+</I>&gt;<i> algo hago mal.
+</I>Alt + F4
+
+Tambien puedes instalar el libpluginabrevs y libpluginadmin y aparecerá (entre 
+otros) el botón de salir.
+
+&gt;<i>
+</I>&gt;<i> A ver si sabeis responder mis consultas de newbie :)
+</I>Espero haber podido ayudarte.
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000228.html">[BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000234.html">[BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#229">[ fecha ]</a>
+              <a href="thread.html#229">[ hilo ]</a>
+              <a href="subject.html#229">[ asunto ]</a>
+              <a href="author.html#229">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

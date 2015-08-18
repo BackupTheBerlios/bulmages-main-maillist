@@ -1,0 +1,879 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to blsendm...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20blsendm...&In-Reply-To=%3C20120424212544.A92D1756DF%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007120.html">
+   <LINK REL="Next"  HREF="007122.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to blsendm... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20blsendm...&In-Reply-To=%3C20120424212544.A92D1756DF%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to blsendm...">no-reply en gitorious.org
+       </A><BR>
+    <I>Mar Abr 24 23:25:44 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007120.html">[BulmaGés] [Gitorious] Activity: tborras created	branch blsendmail i...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007122.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to blsendm...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7121">[ fecha ]</a>
+              <a href="thread.html#7121">[ hilo ]</a>
+              <a href="subject.html#7121">[ asunto ]</a>
+              <a href="author.html#7121">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to blsendmail
+blsendmail changed from 1e42459 to 31849b7
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/1e424592c606079a630fd03aa685d821e7a9fb29/diffs/31849b721b076120242e8f89d5dc3eb5de3f4bb1">https://gitorious.org/bulmages/bulmages/commit/1e424592c606079a630fd03aa685d821e7a9fb29/diffs/31849b721b076120242e8f89d5dc3eb5de3f4bb1</A>
+
+Diff: 
+
+commit 31849b721b076120242e8f89d5dc3eb5de3f4bb1
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue Apr 24 23:25:30 2012 +0200
+
+    Arreglos con evince
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_correo/impqtoolbutton.cpp b/bulmages/bulmafact/plugins/pluginbf_correo/impqtoolbutton.cpp
+index fbfc174..6b312a0 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_correo/impqtoolbutton.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_correo/impqtoolbutton.cpp
+@@ -134,7 +134,7 @@ void EmailQToolButton::click()
+             body += _(&quot;Atentamente\n\n\n\&quot;&quot;);
+             attached = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;presupuesto&quot; + num + &quot;.pdf&quot;;
+ 
+-            bfSendEmail( email, bcc, subject, body, attached );
++            blSendEmail( email, bcc, subject, body, attached );
+         } // end if
+     } // end if
+ 
+@@ -165,7 +165,7 @@ void EmailQToolButton::click()
+             body += _(&quot;Atentamente\n\n\n\&quot;&quot;);
+             QString attached = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;pedidocliente&quot; + num + &quot;.pdf&quot;;
+ 
+-            bfSendEmail( email, bcc, subject, body, attached );
++            blSendEmail( email, bcc, subject, body, attached );
+         } // end if
+     } // end if
+ 
+@@ -197,7 +197,7 @@ void EmailQToolButton::click()
+             body += _( &quot;Atentamente\n\n\n\&quot;&quot;);
+             attached = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;albaran&quot; + num + &quot;.pdf&quot;;
+ 
+-            bfSendEmail( email, bcc, subject, body, attached );
++            blSendEmail( email, bcc, subject, body, attached );
+         } // end if
+     } // end if
+ 
+@@ -231,7 +231,7 @@ void EmailQToolButton::click()
+             attached = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;factura&quot; + serie + num + &quot;.pdf&quot;;
+             
+ 
+-            bfSendEmail( email, bcc, subject, body, attached );
++            blSendEmail( email, bcc, subject, body, attached );
+         } // end if
+     } // end if
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_correo/pluginbf_correo.cpp b/bulmages/bulmafact/plugins/pluginbf_correo/pluginbf_correo.cpp
+index 1211d54..863eac1 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_correo/pluginbf_correo.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_correo/pluginbf_correo.cpp
+@@ -32,13 +32,7 @@
+ #include &quot;chosemailer.h&quot;
+ 
+ 
+-#ifdef Q_OS_WIN32
+-    #define CAD_COMILLAS QString(&quot;\&quot;&quot;)
+-    #define background QString(&quot;&quot;)
+-#else
+-    #define CAD_COMILLAS QString(&quot;&quot;)
+-    #define background QString(&quot; &amp;&quot;)
+-#endif
++
+ 
+ 
+ ///
+@@ -181,160 +175,3 @@ int LaunchChoseMailer ()
+     return 0;
+ }
+ 
+-
+-///
+-/**
+-\ param recipient
+-\ param subject
+-\ param body
+-\ param attached
+-\ return
+-**/
+-int Thunderbird ( QString &amp;recipient, QString &amp;bcc, QString &amp;subject, QString &amp;body, QString &amp;attached )
+-{
+-    BL_FUNC_DEBUG
+-    QString dir_email = g_confpr-&gt;value( CONF_EMAIL_CLIENT );
+-    
+-    QString runcommand = QString(CAD_COMILLAS + dir_email + CAD_COMILLAS);
+-    runcommand += &quot; -compose &quot;;
+-    runcommand += &quot;to='&quot; + recipient + &quot;',&quot;;
+-    runcommand += &quot;bcc='&quot; + bcc + &quot;',&quot;;
+-    runcommand += &quot;subject='&quot; + subject + &quot;',&quot;;
+-    body.replace(&quot;,&quot;,&quot;&#44;&quot;); // convertim les comes amb el seu valor html, del contrari thunderbird ens talla el missatge.
+-    runcommand += &quot;body='&quot; + body + &quot;',&quot;;
+-    if (attached != &quot;&quot;) {
+-        runcommand += &quot;attachment='<A HREF="file://">file://</A>&quot; + attached + &quot;'&quot;;
+-    }
+-            
+-    system(QString( runcommand + background).toAscii());
+-    
+-    return 0;
+-}
+-
+-///
+-/**
+-\ param recipient
+-\ param subject
+-\ param body
+-\ param attached
+-\ return
+-**/
+-int Kmail ( QString &amp;recipient, QString &amp;bcc, QString &amp;subject, QString &amp;body, QString &amp;attached )
+-{
+-    BL_FUNC_DEBUG
+-    QString dir_email = g_confpr-&gt;value( CONF_EMAIL_CLIENT );
+-    
+-    QString runcommand = QString(CAD_COMILLAS + dir_email + CAD_COMILLAS);
+-    if (subject != &quot;&quot;)
+-      runcommand += &quot; -s \&quot;&quot; + subject + &quot;\&quot;&quot;;
+-    if (bcc != &quot;&quot;) 
+-      runcommand += &quot; -b &quot; + bcc;
+-    if (body != &quot;&quot;)
+-      runcommand += &quot; --body \&quot;&quot; + body + &quot;\&quot;&quot;;
+-    if (attached != &quot;&quot;) 
+-      runcommand += &quot; --attach &quot; + attached;
+-  
+-    runcommand += &quot; &quot; + recipient;
+-            
+-    system(QString( runcommand + background).toAscii());
+-    
+-    return 0;
+-}
+-///
+-/**
+-\ param recipient
+-\ param subject
+-\ param body
+-\ param attached
+-\ return
+-**/
+-int Evolution ( QString &amp;recipient, QString &amp;bcc, QString &amp;subject, QString &amp;body, QString &amp;attached )
+-{
+-    BL_FUNC_DEBUG
+-    QString dir_email = g_confpr-&gt;value( CONF_EMAIL_CLIENT );
+-    
+-    
+-    QString urlmail = &quot; \&quot;mailto:&quot; + recipient;
+-    urlmail += &quot;?subject=&quot; + subject;
+-    urlmail += &quot;&amp;bcc=&quot; + bcc;
+-    urlmail += &quot;&amp;body=&quot; + body;
+-    if (attached != &quot;&quot;) {
+-        urlmail += &quot;&amp;attach=&quot; + attached + &quot;\&quot;&quot;;
+-    }
+-    QString runcommand = QString(CAD_COMILLAS + dir_email + QUrl(urlmail, QUrl::TolerantMode).toString() + CAD_COMILLAS);
+-    system(QString( runcommand + background).toAscii());
+-    return 0;
+-
+-}
+-
+-///
+-/**
+-\ param recipient
+-\ param subject
+-\ param body
+-\ param attached
+-\ return
+-**/
+-#ifdef Q_OS_WIN32
+-int Outlook ( QString &amp;recipient, QString &amp;bcc, QString &amp;subject, QString &amp;body, QString &amp;attached )
+-{
+-    BL_FUNC_DEBUG
+-    QString dir_email = g_confpr-&gt;value( CONF_EMAIL_CLIENT );
+-    QString barra2;
+-    
+-    QString urlmail = &quot; /c ipm.note&quot;;
+-    if (attached != &quot;&quot;) {
+-        urlmail += &quot; /a &quot; + attached;
+-    }
+-    urlmail += &quot; /m &quot; + recipient;
+-    QByteArray barray = QUrl(subject, QUrl::TolerantMode).toEncoded();
+-    QByteArray barray2 = QUrl(body, QUrl::TolerantMode).toEncoded();
+-    QString stringed(barray);
+-    QString stringed2(barray);
+-    urlmail += &quot;?subject=&quot; + stringed;
+-    urlmail += &quot;&amp;body=&quot; + stringed2;
+-    
+-    QString runcommand = QString(CAD_COMILLAS + dir_email + CAD_COMILLAS + CAD_COMILLAS + urlmail + CAD_COMILLAS);
+-    
+-    system(QString( runcommand + background).toAscii());
+-    return 0;
+-
+-}
+-#endif
+-
+-///
+-/**
+-\ param recipient
+-\ param subject
+-\ param body
+-\ param attached
+-\ return
+-**/
+-int bfSendEmail ( QString &amp;recipient, QString &amp;bcc, QString &amp;subject, QString &amp;body, QString &amp;attached )
+-{
+-    BL_FUNC_DEBUG
+-    
+-    QString dir_email = g_confpr-&gt;value( CONF_EMAIL_CLIENT );
+-      
+-    QFileInfo fileinfo(dir_email);
+-    QString program_name = fileinfo.fileName();
+-    #ifdef Q_OS_WIN32
+-        program_name.replace(&quot;.exe&quot;, &quot;&quot;);
+-    #endif
+-    
+-    if (program_name == &quot;thunderbird&quot;) {
+-        Thunderbird (  recipient, bcc, subject, body, attached );
+-    } else if (program_name == &quot;kmail&quot;) {
+-        Kmail (  recipient, bcc, subject, body, attached );
+-    } else if (program_name == &quot;evolution&quot;) {
+-        Evolution (  recipient, bcc, subject, body, attached );
+-    }
+-    #ifdef Q_OS_WIN32
+-     else if (program_name == &quot;Outlook&quot;) {
+-        Outlook (  recipient, bcc, subject, body, attached );
+-    } // end if
+-    #endif
+-    
+-    return 0;
+-    
+-}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_correo/pluginbf_correo.h b/bulmages/bulmafact/plugins/pluginbf_correo/pluginbf_correo.h
+index 5583fe4..3d0abff 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_correo/pluginbf_correo.h
++++ b/bulmages/bulmafact/plugins/pluginbf_correo/pluginbf_correo.h
+@@ -37,16 +37,7 @@ extern &quot;C&quot; PLUGINBF_CORREO_EXPORT int AlbaranClienteView_AlbaranClienteView ( Al
+ extern &quot;C&quot; PLUGINBF_CORREO_EXPORT int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
+ extern &quot;C&quot; PLUGINBF_CORREO_EXPORT int PresupuestoView_PresupuestoView ( PresupuestoView * );
+ extern &quot;C&quot; PLUGINBF_CORREO_EXPORT int FacturaView_FacturaView ( FacturaView * );
+-
+ extern &quot;C&quot; PLUGINBF_CORREO_EXPORT int LaunchChoseMailer ();
+-extern &quot;C&quot; PLUGINBF_CORREO_EXPORT int Thunderbird ( QString &amp;recipient, QString &amp;bcc, QString &amp;subject, QString &amp;body, QString &amp;attached );
+-extern &quot;C&quot; PLUGINBF_CORREO_EXPORT int Kmail ( QString &amp;recipient, QString &amp;bcc, QString &amp;subject, QString &amp;body, QString &amp;attached );
+-extern &quot;C&quot; PLUGINBF_CORREO_EXPORT int Evolution ( QString &amp;recipient, QString &amp;bcc, QString &amp;subject, QString &amp;body, QString &amp;attached );
+-#ifdef Q_OS_WIN32
+-extern &quot;C&quot; PLUGINBF_CORREO_EXPORT int Outlook ( QString &amp;recipient, QString &amp;bcc, QString &amp;subject, QString &amp;body, QString &amp;attached );
+- #endif
+-extern &quot;C&quot; PLUGINBF_CORREO_EXPORT int bfSendEmail ( QString &amp;recipient, QString &amp;bcc, QString &amp;subject, QString &amp;body, QString &amp;attached );
+-
+ extern &quot;C&quot; PLUGINBF_CORREO_EXPORT int entryPoint ( BfBulmaFact * );
+ 
+ #endif
+diff --git a/bulmages/bulmafact/plugins/pluginbf_multiimprimir/impmultqtoolbutton.cpp b/bulmages/bulmafact/plugins/pluginbf_multiimprimir/impmultqtoolbutton.cpp
+index 1e61225..29b8e4a 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_multiimprimir/impmultqtoolbutton.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_multiimprimir/impmultqtoolbutton.cpp
+@@ -105,14 +105,6 @@ void ImpQToolButton::click()
+ {
+     BL_FUNC_DEBUG
+ 
+-	/// Hacer comprobacion de la variable PRINTER
+-	if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER) == &quot;None&quot;) {
+-	    blMsgInfo(&quot;No existe impresora por defecto. Establezca la variable CONF_CUPS_DEFAULT_PRINTER&quot;);
+-        
+-	    return;
+-	} // end if
+-
+-
+     BlDbRecordSet *cur1 = NULL;
+     BlDbRecordSet *cur = NULL;
+ 
+@@ -348,7 +340,6 @@ void ImpQToolButton::click()
+                         cur = m_companyact-&gt;loadQuery ( query );
+                         if ( !cur-&gt;eof() ) {
+                             txt += &quot; &lt;drawString x=\&quot;4.8cm\&quot; y=\&quot;&quot; + QString::number ( col + 2.3 ) + &quot;cm\&quot;&gt;&quot; + cur-&gt;value( &quot;nomcliente&quot; ) + &quot;&lt;/drawString&gt;\n&quot;;
+-//    txt += &quot; &lt;drawString x=\&quot;4.8cm\&quot; y=\&quot;&quot;+ QString::number(col+1.9) +&quot;cm\&quot;&gt;&quot;+cur-&gt;value(&quot;nomaltcliente&quot;)+&quot;&lt;/drawString&gt;\n&quot;;
+                             txt += &quot; &lt;drawString x=\&quot;4.8cm\&quot; y=\&quot;&quot; + QString::number ( col + 1.5 ) + &quot;cm\&quot;&gt;&quot; + cur-&gt;value( &quot;dircliente&quot; ) + &quot;&lt;/drawString&gt;\n&quot;;
+                             txt += &quot; &lt;drawString x=\&quot;4.8cm\&quot; y=\&quot;&quot; + QString::number ( col + 1.1 ) + &quot;cm\&quot;&gt;&quot; + cur-&gt;value( &quot;cpcliente&quot; ) + &quot;&lt;/drawString&gt;\n&quot;;
+                         } // end if
+@@ -375,12 +366,6 @@ void ImpQToolButton::click()
+             res = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;recibos.pdf &quot;;
+ 
+ 
+-            /// En la version para windows hay problemas con las imagenes,
+-            /// por eso de momento lo dejamos asi.
+-#ifndef WINDOWS
+-            //   buff.replace(&quot;[detallearticulos]&quot;, detalleArticulos());
+-#endif
+-
+             if ( file.open ( QIODevice::WriteOnly ) ) {
+                 QTextStream stream ( &amp;file );
+                 stream &lt;&lt; buff;
+@@ -431,10 +416,22 @@ void ImpQToolButton::click()
+             } // end for
+         } // end if
+ 
+-	    QString comando = &quot;lp -d&quot; +g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER) + &quot; &quot; + res;
+-	    system ( comando.toAscii().data() );
+-	    comando = &quot;rm &quot; + res;
+-	    system ( comando.toAscii().data() );
++	
++#ifndef Q_OS_WIN32
++	QString comando = &quot;&quot;;
++	if ((g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER) == &quot;None&quot;)) {
++	  comando = &quot;lpr &quot; + res;
++	} else {
++	  comando = &quot;lp -d&quot; +g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER) + &quot; &quot; + res;
++	} // end if
++	system ( comando.toAscii().data() );
++	comando = &quot;rm &quot; + res;
++	system ( comando.toAscii().data() );
++#else
++	/// Estaria bien imprimir directamente en la impresora, pero no hay forma de hacerlo en Windows.
++	QString comando = &quot;\&quot;start \&quot;\&quot; \&quot;&quot; + g_confpr-&gt;value( CONF_PDF ) + &quot;\&quot; \&quot;&quot; + res + &quot;\&quot;\&quot;&quot;;
++	system ( comando.toAscii().data() );
++#endif
+         
+ 
+     } catch ( ... ) {
+@@ -445,8 +442,6 @@ void ImpQToolButton::click()
+     } // end try
+ }
+ 
+-// ==================================================================================
+-
+ 
+ ///
+ /**
+@@ -592,13 +587,6 @@ void EmailQToolButton::click()
+ {
+     BL_FUNC_DEBUG
+ 
+-    // Es posible que esto se haya cargado antes de cargar el company por eso
+-    // No me fio de que la asignacion en el constructor haya ido bien y reasigno aqui
+-
+-
+-    QString res = &quot;&quot;;
+-
+-
+     if ( m_presupuestoList != NULL ) {
+         m_companyact = ( BfCompany * ) m_presupuestoList-&gt;mainCompany();
+         BlSubForm *sub = m_presupuestoList-&gt;mui_list;
+@@ -610,6 +598,8 @@ void EmailQToolButton::click()
+             QString val = rec-&gt;dbValue ( &quot;selector&quot; );
+             if ( val == &quot;TRUE&quot; ) {
+                 QString id = rec-&gt;dbValue ( &quot;idpresupuesto&quot; );
++		QString num = rec-&gt;dbValue ( &quot;numpresupuesto&quot; );
++		QString ref = rec-&gt;dbValue (&quot;refpresupuesto&quot; );
+                 QString idcliente = rec-&gt;dbValue ( &quot;idcliente&quot; );
+                 QString query = &quot;SELECT mailcliente from cliente WHERE idcliente=&quot; + idcliente;
+                 BlDbRecordSet *curs = m_companyact-&gt;loadQuery ( query );
+@@ -630,12 +620,17 @@ void EmailQToolButton::click()
+                     blCreatePDF ( &quot;presupuesto&quot; );
+                     
+                     QString oldName =  g_confpr-&gt;value( CONF_DIR_USER ) + &quot;presupuesto.pdf&quot;;
+-                    QString newName = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;presupuesto&quot; + id + &quot;.pdf&quot;;
++                    QString newName = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;presupuesto&quot; + num + &quot;.pdf&quot;;
+                     blMoveFile(oldName, newName);
+-
+-                    QString cad = &quot;kmail -s \&quot;Presupuesto &quot; + id + &quot;\&quot; --body \&quot; Adjunto remito presupuesto numero &quot; + id + &quot;\n Atentamente\n\&quot; --attach &quot; + g_confpr-&gt;value( CONF_DIR_USER ) + &quot;presupuesto&quot; + id + &quot;.pdf &quot; + email;
+-                    system ( cad.toAscii().data() );
+-                    res += g_confpr-&gt;value( CONF_DIR_USER ) + &quot;presupuesto&quot; + id + &quot;.pdf &quot;;
++    
++		    QString subject = _(&quot;Presupuesto &quot;) + num;
++		    QString body = _(&quot;Adjunto le enviamos el presupuesto numero &quot;) + num + _(&quot; con referencia &quot;) + ref +&quot;\n&quot;;
++		    body += _(&quot;Atentamente\n\n\n\&quot;&quot;);
++		    QString attached = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;presupuesto&quot; + num + &quot;.pdf&quot;;
++		    QString bcc= &quot;&quot;;
++		    
++		    blSendEmail( email, bcc, subject, body, attached );
++		    
+                 } // end if
+                 pres-&gt;close();
+             } // end if
+@@ -656,6 +651,8 @@ void EmailQToolButton::click()
+             if ( val == &quot;TRUE&quot; ) {
+                 QString id = rec-&gt;dbValue ( &quot;idpedidocliente&quot; );
+                 QString idcliente = rec-&gt;dbValue ( &quot;idcliente&quot; );
++		QString num = rec-&gt;dbValue ( &quot;numpedidocliente&quot; );
++		QString ref = rec-&gt;dbValue ( &quot;refpedidocliente&quot; );
+                 QString query = &quot;SELECT mailcliente from cliente WHERE idcliente=&quot; + idcliente;
+                 BlDbRecordSet *curs = m_companyact-&gt;loadQuery ( query );
+                 QString email = curs-&gt;value( &quot;mailcliente&quot; );
+@@ -675,13 +672,17 @@ void EmailQToolButton::click()
+                     blCreatePDF ( &quot;pedidocliente&quot; );
+                    
+                     QString oldName =  g_confpr-&gt;value( CONF_DIR_USER ) + &quot;pedidocliente.pdf&quot;;
+-                    QString newName = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;pedidocliente&quot; + id + &quot;.pdf&quot;;
++                    QString newName = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;pedidocliente&quot; + num + &quot;.pdf&quot;;
+                     blMoveFile(oldName, newName);
+-
+-
+-                    QString cad = &quot;kmail -s \&quot;Pedido Cliente &quot; + id + &quot;\&quot; --body \&quot; Adjunto remito pedido numero &quot; + id + &quot;\n Atentamente\n\&quot; --attach &quot; + g_confpr-&gt;value( CONF_DIR_USER ) + &quot;pedidocliente&quot; + id + &quot;.pdf &quot; + email;
+-                    system ( cad.toAscii().data() );
+-                    res += g_confpr-&gt;value( CONF_DIR_USER ) + &quot;pedidocliente&quot; + id + &quot;.pdf &quot;;
++		    
++		    QString subject = _(&quot;Pedido &quot;) + num;
++		    QString body = _(&quot;Adjunto le enviamos el pedido numero &quot;) + num + _(&quot; con referencia &quot;) + ref +&quot;\n&quot;;
++		    body += _(&quot;Atentamente\n\n\n\&quot;&quot;);
++		    QString attached = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;pedidocliente&quot; + num + &quot;.pdf&quot;;
++		    QString bcc= &quot;&quot;;
++		
++		    blSendEmail( email, bcc, subject, body, attached );
++		    
+                 } // end if
+                 pres-&gt;close();
+             } // end if
+@@ -702,6 +703,9 @@ void EmailQToolButton::click()
+             QString val = rec-&gt;dbValue ( &quot;selector&quot; );
+             if ( val == &quot;TRUE&quot; ) {
+                 QString id = rec-&gt;dbValue ( &quot;idalbaran&quot; );
++		QString num = rec-&gt;dbValue ( &quot;numalbaran&quot; );
++		QString ref = rec-&gt;dbValue ( &quot;refalbaran&quot; );
++		
+                 QString idcliente = rec-&gt;dbValue ( &quot;idcliente&quot; );
+                 QString query = &quot;SELECT mailcliente from cliente WHERE idcliente=&quot; + idcliente;
+                 BlDbRecordSet *curs = m_companyact-&gt;loadQuery ( query );
+@@ -721,12 +725,18 @@ void EmailQToolButton::click()
+                     blCreatePDF ( &quot;albaran&quot; );
+ 
+                     QString oldName =  g_confpr-&gt;value( CONF_DIR_USER ) + &quot;albaran.pdf&quot;;
+-                    QString newName = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;albaran&quot; + id + &quot;.pdf&quot;;
++                    QString newName = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;albaran&quot; + num + &quot;.pdf&quot;;
+                     blMoveFile(oldName, newName);
+ 
+-                    QString cad = &quot;kmail -s \&quot;Albaran Cliente &quot; + id + &quot;\&quot; --body \&quot; Adjunto remito albaran numero &quot; + id + &quot;\n Atentamente\n\&quot; --attach &quot; + g_confpr-&gt;value( CONF_DIR_USER ) + &quot;albaran&quot; + id + &quot;.pdf &quot; + email;
+-                    system ( cad.toAscii().data() );
+-                    res += g_confpr-&gt;value( CONF_DIR_USER ) + &quot;albaran&quot; + id + &quot;.pdf &quot;;
++		    
++		    QString subject = _(&quot;Albaran &quot;) + num;
++		    QString body = _(&quot;Adjunto le enviamos el albaran numero &quot;) + num + _(&quot; con referencia &quot;) + ref +&quot;\n&quot;;
++		    body += _( &quot;Atentamente\n\n\n\&quot;&quot;);
++		    QString attached = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;albaran&quot; + num + &quot;.pdf&quot;;
++		    QString bcc= &quot;&quot;;
++		    
++		    blSendEmail( email, bcc, subject, body, attached );
++		    
+                 } // end if
+                 pres-&gt;close();
+             } // end if
+@@ -775,15 +785,14 @@ void EmailQToolButton::click()
+                     QString newName = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;factura&quot; + serie + num + &quot;.pdf&quot;;
+                     blMoveFile(oldName, newName);
+ 
++		    QString subject = _(&quot;Factura &quot;) + num;
++		    QString body = _(&quot;Adjunto le enviamos la factura numero &quot;) + serie + num + _(&quot; con fecha &quot;) + fecha +&quot;\n&quot;;
++		    body += _(&quot;Sin otro particular, reciba un cordial saludo\n\n\n&quot;);
++		    QString attached = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;factura&quot; + serie + num + &quot;.pdf&quot;;
++		    QString bcc= &quot;&quot;;
+ 
+-                    QString cad = &quot;kmail -s \&quot;Factura &quot; + num + &quot;\&quot; --body \&quot;Estimado cliente,\n\n&quot;;
+-                    cad += &quot;Adjunto le enviamos la factura numero &quot; + serie + num + &quot; con fecha &quot; + fecha + &quot;\n&quot;;
+-                    cad += &quot;Sin otro particular, reciba un cordial saludo:\n\n\n\&quot;&quot;;
+-                    cad += &quot; --attach &quot; + g_confpr-&gt;value( CONF_DIR_USER ) + &quot;factura&quot; + serie + num + &quot;.pdf &quot; + email;
+-
+-                    system ( cad.toAscii().data() );
+-
+-                    res += g_confpr-&gt;value( CONF_DIR_USER ) + &quot;factura&quot; + serie + num + &quot;.pdf &quot;;
++		    blSendEmail( email, bcc, subject, body, attached );
++		    
+                 } // end if
+                 pres-&gt;close();
+             } // end if
+@@ -804,6 +813,7 @@ void EmailQToolButton::click()
+                 QString idcliente = rec-&gt;dbValue ( &quot;idcliente&quot; );
+                 QString ref = rec-&gt;dbValue ( &quot;refcobro&quot; );
+                 QString fecha = rec-&gt;dbValue ( &quot;fcobro&quot; );
++		fecha.replace(&quot;/&quot;, &quot;_&quot;);
+ 
+                 QString query = &quot;SELECT mailcliente from cliente WHERE idcliente=&quot; + idcliente;
+                 BlDbRecordSet *curs = m_companyact-&gt;loadQuery ( query );
+@@ -821,17 +831,17 @@ void EmailQToolButton::click()
+                 blCreatePDF ( &quot;recibo&quot; );
+                 
+                 QString oldName =  g_confpr-&gt;value( CONF_DIR_USER ) + &quot;recibo.pdf&quot;;
+-                QString newName = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;albaran&quot; + fecha + ref + &quot;.pdf&quot;;
++                QString newName = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;recibo&quot; + fecha + ref + &quot;.pdf&quot;;
+                 blMoveFile(oldName, newName);
+-
+-
+-                QString cad = &quot;kmail -s \&quot;Recibo &quot; + fecha + ref + &quot;\&quot; --body \&quot;Estimado cliente,\n\n&quot;;
+-                cad += &quot;Adjunto le enviamos el recibo numero &quot; + fecha + ref + &quot; con fecha &quot; + fecha + &quot;\n&quot;;
+-                cad += &quot;Sin otro particular, reciba un cordial saludo:\n\n\n&quot;;
+-                cad += &quot; --attach &quot; + g_confpr-&gt;value( CONF_DIR_USER ) + &quot;recibo&quot; + fecha + ref + &quot;.pdf &quot; + email;
+-                system ( cad.toAscii().data() );
+-
+-                res += g_confpr-&gt;value( CONF_DIR_USER ) + &quot;recibo&quot; + fecha + ref + &quot;.pdf &quot;;
++	
++		QString subject = _(&quot;Recibo &quot;) + fecha + ref;
++		QString body = _(&quot;Adjunto le enviamos el recibo con referencia &quot;) + ref + _(&quot; y fecha &quot;) + fecha +&quot;\n&quot;;
++		body += _(&quot;Sin otro particular, reciba un cordial saludo\n\n\n&quot;);
++		QString attached = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;recibo&quot; + fecha + ref + &quot;.pdf&quot;;
++	  	QString bcc= &quot;&quot;;
++
++		blSendEmail( email, bcc, subject, body, attached );
++		
+                 delete pres;
+             } // end if
+         } // end for
+@@ -843,13 +853,6 @@ void EmailQToolButton::click()
+ 
+ 
+ 
+-
+-
+-
+-
+-// ==================================================================================
+-
+-
+ ///
+ /**
+ \param pres
+diff --git a/bulmages/bulmafact/plugins/pluginbf_multiimprimir/pluginbf_multiimprimir.cpp b/bulmages/bulmafact/plugins/pluginbf_multiimprimir/pluginbf_multiimprimir.cpp
+index 8785bee..0e9bf5b 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_multiimprimir/pluginbf_multiimprimir.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_multiimprimir/pluginbf_multiimprimir.cpp
+@@ -141,7 +141,6 @@ int CobrosList_CobrosList ( CobrosList *l )
+ 
+     SelQToolButton *sel = new SelQToolButton ( NULL, NULL, NULL, NULL, l, l-&gt;mui_plugbotones );
+     ImpQToolButton *imp = new ImpQToolButton ( NULL, NULL, NULL, NULL, l, l-&gt;mui_plugbotones );
+-//    EmailQToolButton *email = new EmailQToolButton(NULL, NULL, NULL, NULL, l, l-&gt;mui_plugbotones);
+     ProcesarQToolButton * procesar = new ProcesarQToolButton ( NULL, NULL, NULL, NULL, l, l-&gt;mui_plugbotones );
+     SumarQToolButton * sumar = new SumarQToolButton ( NULL, NULL, NULL, NULL, l, l-&gt;mui_plugbotones );
+ 
+@@ -154,7 +153,6 @@ int CobrosList_CobrosList ( CobrosList *l )
+     } // end if
+     m_hboxLayout1-&gt;addWidget ( sel );
+     m_hboxLayout1-&gt;addWidget ( imp );
+-//    m_hboxLayout1-&gt;addWidget(email);
+     m_hboxLayout1-&gt;addWidget ( procesar);
+     m_hboxLayout1-&gt;addWidget ( sumar);
+ 
+@@ -179,7 +177,6 @@ int PresupuestoList_PresupuestoList ( PresupuestoList *l )
+     ProcesarQToolButton * procesar = new ProcesarQToolButton ( l, NULL, NULL, NULL, NULL, l-&gt;mui_plugbotones );
+     SumarQToolButton * sumar = new SumarQToolButton ( l, NULL, NULL, NULL, NULL, l-&gt;mui_plugbotones );
+ 
+-
+     QHBoxLayout *m_hboxLayout1 = l-&gt;mui_plugbotones-&gt;findChild&lt;QHBoxLayout *&gt; ( &quot;hboxLayout1&quot; );
+     if ( !m_hboxLayout1 ) {
+         m_hboxLayout1 = new QHBoxLayout ( l-&gt;mui_plugbotones );
+@@ -314,7 +311,6 @@ int RecibosList_RecibosList ( RecibosList *l )
+ 
+     SelQToolButton *sel = new SelQToolButton ( NULL, NULL, NULL, NULL, NULL, l-&gt;mui_plugbotones );
+     ImpQToolButton *imp = new ImpQToolButton ( NULL, NULL, NULL, NULL, NULL, l-&gt;mui_plugbotones );
+-///    EmailQToolButton *email = new EmailQToolButton(NULL, NULL, NULL, NULL, NULL, l-&gt;mui_plugbotones);
+ 
+     QHBoxLayout *m_hboxLayout1 = l-&gt;mui_plugbotones-&gt;findChild&lt;QHBoxLayout *&gt; ( &quot;hboxLayout1&quot; );
+     if ( !m_hboxLayout1 ) {
+diff --git a/bulmages/bulmalib/plugins/pluginbl_template2mail/eqtoolbutton.cpp b/bulmages/bulmalib/plugins/pluginbl_template2mail/eqtoolbutton.cpp
+index 0192f28..3b72606 100644
+--- a/bulmages/bulmalib/plugins/pluginbl_template2mail/eqtoolbutton.cpp
++++ b/bulmages/bulmalib/plugins/pluginbl_template2mail/eqtoolbutton.cpp
+@@ -145,16 +145,28 @@ void EQToolButtonMail::trataMenu ( QAction *action )
+                     delete curs;
+                 } // end if
+ 
++                QString idproveedor = m_BlForm-&gt;dbValue ( &quot;idproveedor&quot; );
++                if ( !idproveedor.isEmpty() ) {
++                    QString query = &quot;SELECT emailproveedor from proveedor WHERE idproveedor=&quot; + idproveedor;
++                    BlDbRecordSet *curs = ( ( BlForm * ) parent() )-&gt;mainCompany()-&gt;loadQuery ( query );
++                    if ( !curs-&gt;eof() ) {
++                        email = curs-&gt;value( &quot;emailproveedor&quot; );
++                    } // end if
++                    delete curs;
++                } // end if
++
+                 QString doc = fileInfo.fileName().left ( fileInfo.fileName().size() - 4 );
+                 blCreatePDF ( doc );
+ 
+                 QString oldName = g_confpr-&gt;value( CONF_DIR_USER ) + doc + &quot;.pdf&quot;;
+                 QString newName = g_confpr-&gt;value( CONF_DIR_USER ) +   doc  + num + &quot;.pdf&quot;;
+                 blMoveFile(oldName,newName);
++		
++		QString subject = doc + num;
++		QString body = &quot;Adjunto remito &quot; + doc + &quot; numero &quot; + num + &quot;. Con referencia &quot; + ref + &quot;\n Atentamente\n&quot;;
++		QString bcc= &quot;&quot;;
+ 
+-                QString cad = &quot;kmail -s \&quot; &quot; + doc + num + &quot;\&quot; --body \&quot; Adjunto remito &quot; + doc + &quot; numero &quot; + num + &quot;. Con referencia &quot; + ref + &quot;\n Atentamente\n\&quot; --attach &quot; + newName + &quot; &quot; + email;
+-
+-                system ( cad.toAscii().data() );
++		blSendEmail( email, bcc, subject , body, newName );
+ 
+ 
+             } // end if
+diff --git a/bulmages/bulmalib/src/blfunctions.cpp b/bulmages/bulmalib/src/blfunctions.cpp
+index bde3c2e..8c75d1f 100644
+--- a/bulmages/bulmalib/src/blfunctions.cpp
++++ b/bulmages/bulmalib/src/blfunctions.cpp
+@@ -38,6 +38,20 @@
+ #include &quot;blmainwindow.h&quot;
+ #include &quot;local_blI18n.h&quot;
+ 
++
++/// Definiciones para el email.
++#ifdef Q_OS_WIN32
++    #define CAD_COMILLAS QString(&quot;\&quot;&quot;)
++    #define background QString(&quot;&quot;)
++#else
++    #define CAD_COMILLAS QString(&quot;&quot;)
++    #define background QString(&quot; &amp;&quot;)
++#endif
++
++
++
++
++
+ /** Las variables estaticas de clase deben ser delcaras para reservar memoria */
+ QFile *BlDebug::m_file;
+ QFile *BlDebug::m_fileXML;
+@@ -1558,3 +1572,167 @@ bool blMoveFile( const QString &amp;oldName, const QString &amp;newName )
+     // Se ha movido correctamente el archivo, o se ha copiado y eliminado el original
+     return true;
+ }
++
++
++/// FUNCIONES DE MANEJO DEL CORREO ELECTRONICO
++/// ==========================================
++
++///
++/**
++\ param recipient
++\ param subject
++\ param body
++\ param attached
++\ return
++**/
++int Thunderbird ( QString &amp;recipient, QString &amp;bcc, QString &amp;subject, QString &amp;body, QString &amp;attached )
++{
++    BL_FUNC_DEBUG
++    QString dir_email = g_confpr-&gt;value( CONF_EMAIL_CLIENT );
++    
++    QString runcommand = QString(CAD_COMILLAS + dir_email + CAD_COMILLAS);
++    runcommand += &quot; -compose &quot;;
++    runcommand += &quot;to='&quot; + recipient + &quot;',&quot;;
++    runcommand += &quot;bcc='&quot; + bcc + &quot;',&quot;;
++    runcommand += &quot;subject='&quot; + subject + &quot;',&quot;;
++    body.replace(&quot;,&quot;,&quot;&#44;&quot;); // convertim les comes amb el seu valor html, del contrari thunderbird ens talla el missatge.
++    runcommand += &quot;body='&quot; + body + &quot;',&quot;;
++    if (attached != &quot;&quot;) {
++        runcommand += &quot;attachment='<A HREF="file://">file://</A>&quot; + attached + &quot;'&quot;;
++    }
++            
++    system(QString( runcommand + background).toAscii());
++    
++    return 0;
++}
++
++///
++/**
++\ param recipient
++\ param subject
++\ param body
++\ param attached
++\ return
++**/
++int Kmail ( QString &amp;recipient, QString &amp;bcc, QString &amp;subject, QString &amp;body, QString &amp;attached )
++{
++    BL_FUNC_DEBUG
++    QString dir_email = g_confpr-&gt;value( CONF_EMAIL_CLIENT );
++    
++    QString runcommand = QString(CAD_COMILLAS + dir_email + CAD_COMILLAS);
++    if (subject != &quot;&quot;)
++      runcommand += &quot; -s \&quot;&quot; + subject + &quot;\&quot;&quot;;
++    if (bcc != &quot;&quot;) 
++      runcommand += &quot; -b &quot; + bcc;
++    if (body != &quot;&quot;)
++      runcommand += &quot; --body \&quot;&quot; + body + &quot;\&quot;&quot;;
++    if (attached != &quot;&quot;) 
++      runcommand += &quot; --attach &quot; + attached;
++  
++    runcommand += &quot; &quot; + recipient;
++            
++    system(QString( runcommand + background).toAscii());
++    
++    return 0;
++}
++///
++/**
++\ param recipient
++\ param subject
++\ param body
++\ param attached
++\ return
++**/
++int Evolution ( QString &amp;recipient, QString &amp;bcc, QString &amp;subject, QString &amp;body, QString &amp;attached )
++{
++    BL_FUNC_DEBUG
++    QString dir_email = g_confpr-&gt;value( CONF_EMAIL_CLIENT );
++    
++    
++    QString urlmail = &quot; \&quot;mailto:&quot; + recipient;
++    urlmail += &quot;?subject=&quot; + subject;
++    urlmail += &quot;&amp;bcc=&quot; + bcc;
++    urlmail += &quot;&amp;body=&quot; + body;
++    if (attached != &quot;&quot;) {
++        urlmail += &quot;&amp;attach=&quot; + attached + &quot;\&quot;&quot;;
++    }
++    QString runcommand = QString(CAD_COMILLAS + dir_email + QUrl(urlmail, QUrl::TolerantMode).toString() + CAD_COMILLAS);
++    system(QString( runcommand + background).toAscii());
++    return 0;
++
++}
++
++///
++/**
++\ param recipient
++\ param subject
++\ param body
++\ param attached
++\ return
++**/
++#ifdef Q_OS_WIN32
++int Outlook ( QString &amp;recipient, QString &amp;bcc, QString &amp;subject, QString &amp;body, QString &amp;attached )
++{
++    BL_FUNC_DEBUG
++    QString dir_email = g_confpr-&gt;value( CONF_EMAIL_CLIENT );
++    QString barra2;
++    
++    QString urlmail = &quot; /c ipm.note&quot;;
++    if (attached != &quot;&quot;) {
++        urlmail += &quot; /a &quot; + attached;
++    }
++    urlmail += &quot; /m &quot; + recipient;
++    QByteArray barray = QUrl(subject, QUrl::TolerantMode).toEncoded();
++    QByteArray barray2 = QUrl(body, QUrl::TolerantMode).toEncoded();
++    QString stringed(barray);
++    QString stringed2(barray);
++    urlmail += &quot;?subject=&quot; + stringed;
++    urlmail += &quot;&amp;body=&quot; + stringed2;
++    
++    QString runcommand = QString(CAD_COMILLAS + dir_email + CAD_COMILLAS + CAD_COMILLAS + urlmail + CAD_COMILLAS);
++    
++    system(QString( runcommand + background).toAscii());
++    return 0;
++
++}
++#endif
++
++///
++/**
++\ param recipient
++\ param subject
++\ param body
++\ param attached
++\ return
++**/
++int blSendEmail ( QString &amp;recipient, QString &amp;bcc, QString &amp;subject, QString &amp;body, QString &amp;attached )
++{
++    BL_FUNC_DEBUG
++    
++    QString dir_email = g_confpr-&gt;value( CONF_EMAIL_CLIENT );
++      
++    QFileInfo fileinfo(dir_email);
++    QString program_name = fileinfo.fileName();
++    #ifdef Q_OS_WIN32
++        program_name.replace(&quot;.exe&quot;, &quot;&quot;);
++    #endif
++    
++    if (program_name == &quot;thunderbird&quot;) {
++        Thunderbird (  recipient, bcc, subject, body, attached );
++    } else if (program_name == &quot;kmail&quot;) {
++        Kmail (  recipient, bcc, subject, body, attached );
++    } else if (program_name == &quot;evolution&quot;) {
++        Evolution (  recipient, bcc, subject, body, attached );
++    }
++    #ifdef Q_OS_WIN32
++     else if (program_name == &quot;Outlook&quot;) {
++        Outlook (  recipient, bcc, subject, body, attached );
++    } // end if
++    #endif
++    
++    return 0;
++    
++}
++
++
++
+diff --git a/bulmages/bulmalib/src/blfunctions.h b/bulmages/bulmalib/src/blfunctions.h
+index 0397df7..3f37f96 100644
+--- a/bulmages/bulmalib/src/blfunctions.h
++++ b/bulmages/bulmalib/src/blfunctions.h
+@@ -147,6 +147,7 @@ int BL_EXPORT blSumAllDigits(int val);
+ bool BL_EXPORT blValidateSpainCIFNIFCode(QString nifcif, QChar &amp;digit);
+ 
+ void BL_EXPORT blRawPrint(const QString &amp;archivo, bool diruser=TRUE, const QString &amp;defprinter=&quot;&quot;);
++
+ void BL_EXPORT blWebBrowser(const QString &amp;uri, const QString &amp;defbrowser=&quot;&quot;);
+ 
+ QString BL_EXPORT blGetEnv( const char *varName );
+@@ -169,4 +170,15 @@ bool BL_EXPORT blRemove(const QString &amp;filetoremove);
+ ///Delets a directory and all its contents
+ bool BL_EXPORT blRemoveDirectory(const QString &amp;directorytoremove);
+ 
++
++
++extern &quot;C&quot; BL_EXPORT int Thunderbird ( QString &amp;recipient, QString &amp;bcc, QString &amp;subject, QString &amp;body, QString &amp;attached );
++extern &quot;C&quot; BL_EXPORT int Kmail ( QString &amp;recipient, QString &amp;bcc, QString &amp;subject, QString &amp;body, QString &amp;attached );
++extern &quot;C&quot; BL_EXPORT int Evolution ( QString &amp;recipient, QString &amp;bcc, QString &amp;subject, QString &amp;body, QString &amp;attached );
++#ifdef Q_OS_WIN32
++extern &quot;C&quot; BL_EXPORT int Outlook ( QString &amp;recipient, QString &amp;bcc, QString &amp;subject, QString &amp;body, QString &amp;attached );
++ #endif
++extern &quot;C&quot; BL_EXPORT int blSendEmail ( QString &amp;recipient, QString &amp;bcc, QString &amp;subject, QString &amp;body, QString &amp;attached );
++
++
+ #endif
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007120.html">[BulmaGés] [Gitorious] Activity: tborras created	branch blsendmail i...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007122.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to blsendm...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7121">[ fecha ]</a>
+              <a href="thread.html#7121">[ hilo ]</a>
+              <a href="subject.html#7121">[ asunto ]</a>
+              <a href="author.html#7121">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

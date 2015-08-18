@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Inkscape y sus problemas
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FInkscape_y_sus_proble%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fmas%3F%3D&In-Reply-To=%3C200812151009.29221.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000526.html">
+   <LINK REL="Next"  HREF="000545.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Inkscape y sus problemas </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FInkscape_y_sus_proble%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fmas%3F%3D&In-Reply-To=%3C200812151009.29221.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]Inkscape y sus problemas">tborras en conetxia.com
+       </A><BR>
+    <I>Lun Dic 15 10:09:29 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000526.html">[BulmaGés]Inkscape y sus problemas
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000545.html">[BulmaGés]Inkscape y sus problemas
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#536">[ fecha ]</a>
+              <a href="thread.html#536">[ hilo ]</a>
+              <a href="subject.html#536">[ asunto ]</a>
+              <a href="author.html#536">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola a todos
+
+No es necesariamente cierto que un grafico vectorial sea más pesado o lento 
+que un bitmap.
+
+Por ejemplo un vectorial que solo dibuja una linea simplemente tiene que 
+almacenar la formula de la linea ( y=ax  ) y yastá. Hasta el renderizado puede 
+ser  más rápido que un bitmap que almacena el color de todos los puntos de la 
+imagen ya que tambien tiene que pintar dichos puntos mientras que la linea 
+apenas pinta unos pocos.
+
+Y en cuanto al overhead de calculo en el procesador pués la fórmula matemática 
+contra la descompresión / renderización. Como la descompresión de jpeg.
+
+Lo que marca la diferencia entre uno y otro es la cantidad de elementos que el 
+vectorizador tenga y el tamaño del lienzo.
+
+Sobre cual es el tamaño adecuado para los iconos que estamos hablando pués 
+creo que entre los 0 y los 150 Kb es un tamaño adecuado. (no 4 Megas que es 
+varios órdenes de magnitud superior).
+
+Salut
+
+El Sunday 14 December 2008 13:51:25 Xavi Drudis Ferran escribió:
+&gt;<i> On Sun, Dec 14, 2008 at 01:34:21PM +0100, Raül Martínez i Peris wrote:
+</I>&gt;<i> &gt; Hola Xavi, vamos aclarando puntos.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Karbon destroza la imagen (ójala no fuera así), se pierden ciertas cosas
+</I>&gt;<i> &gt; como degradados y transparencias. Al ver dicho resultado optamos por
+</I>&gt;<i> &gt; reconvertir la sombra de los iconos en un juego de degradados circulares
+</I>&gt;<i> &gt; que no den error al compilar, supongo que hice algo mal en dicho proceso
+</I>&gt;<i> &gt; y continúa dando el mismo error (¿correcto?).
+</I>&gt;<i>
+</I>&gt;<i> Vale. Queda claro. Ya me parecía a mi que no iba a ser tan fácil.
+</I>&gt;<i>
+</I>&gt;<i> &gt; Cuando digo que no sé a partir de qué tamaño comienzan a ser &quot;pesados&quot;
+</I>&gt;<i> &gt; para su visualización me refiero a que yo no tengo la información para
+</I>&gt;<i> &gt; decidir si una imagen de 500kb o de 2000kb son el límite, y ese enfoque
+</I>&gt;<i> &gt; es importante para rehacer los iconos.
+</I>&gt;<i>
+</I>&gt;<i> ah!. Yo tampoco lo sé. Siempre he usado bitmaps para los iconos, y claro
+</I>&gt;<i> con 40 o 50 KB vas sobrado.
+</I>&gt;<i>
+</I>&gt;<i> &gt; Mejor svg que png, pero, en máquinas viejas la diferencia de tiempo me ha
+</I>&gt;<i> &gt; parecido entender que es crucial. Por eso propongo con el mismo juego de
+</I>&gt;<i> &gt; iconos mantener el juego de iconos svg (solucionando los problemas de
+</I>&gt;<i> &gt; compilación) y al mismo tiempo tener otro juego de iconos iguales en
+</I>&gt;<i> &gt; formato png. Como se ha rehecho el sistema de iconos para que puedan
+</I>&gt;<i> &gt; cambiarse de un juego a otro me ha quedado la duda si el cambio de
+</I>&gt;<i> &gt; formato es un problema, si no lo es podríamos meter los dos juegos (svg y
+</I>&gt;<i> &gt; png) para que en máquina viejas/lentas se agilice el dibujado de
+</I>&gt;<i> &gt; pantallas.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Este último punto creo que no es un problema a corto/medio plazo puesto
+</I>&gt;<i> &gt; que bulmagés solo utiliza iconos 48x48, ¿correcto?
+</I>&gt;<i>
+</I>&gt;<i> No sé. Pero lo que no entiendo es cual es la ventaja del .svg si luego
+</I>&gt;<i> siempre se va a mostrar a 48x48. Que diferència puede ver un usuario de
+</I>&gt;<i> otro si la medida en píxels es fija ? . Yo pensaba que la ventaja de los
+</I>&gt;<i> gráficos vectoriales es que escalan muy bien, y los bitmaps se ven fatal si
+</I>&gt;<i> los escalas, pero si no vamos a escalarlos, que otras ventajas tienen los
+</I>&gt;<i> svg ? No digo para dibujar, crearlos, editarlos, digo para distribuir los
+</I>&gt;<i> iconos.
+</I>&gt;<i>
+</I>&gt;<i> Yo pensaba que si distribuían svgs era porque algún usuario tendría
+</I>&gt;<i> botones de 48x48 y otro de 64x64 y otro de 32x32 o lo que sea, segun
+</I>&gt;<i> su resolución, medida física de pantalla o lo que sea, de manera que
+</I>&gt;<i> siempre los tengan de un 5% del ancho de pantalla, o de 0,5 cm o lo
+</I>&gt;<i> que sea. Pero si los van a tener siempre a 48px, que ganan porqué sean
+</I>&gt;<i> svg ? Podríamos usar los svg como fuentes, y generar pngs de 48x48
+</I>&gt;<i> automáticamente con cualquier proceso que nos guste la calidad de
+</I>&gt;<i> renderizado que de y distribuir sólo pngs.
+</I>&gt;<i>
+</I>&gt;<i> Perdón por mi ignorancia gráfica.
+</I>&gt;<i>
+</I>&gt;<i> &gt; Si quieres ver la diferencia de iconos pasados por Karbon, ábrete los dos
+</I>&gt;<i> &gt; directorios (el de iconos originales hechos con inkscape y el de los
+</I>&gt;<i> &gt; convertidos) y advertiras la diferencia en las sombras (supongo que este
+</I>&gt;<i> &gt; punto ahora no se notará) y con la transparencia de algunos objetos como
+</I>&gt;<i> &gt; los iconos que tienen &quot;hojas de texto&quot; en los que quedan los bordes como
+</I>&gt;<i> &gt; trazos negros (a lo marilin manson).
+</I>&gt;<i>
+</I>&gt;<i> Ya no tengo los originales, podría bajarmelos del svn, pero no hace falta,
+</I>&gt;<i> te creo más a tí que a mis ojos. Soy un negado para cosas visuales,
+</I>&gt;<i> estéticas, etc.
+</I>
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000526.html">[BulmaGés]Inkscape y sus problemas
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000545.html">[BulmaGés]Inkscape y sus problemas
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#536">[ fecha ]</a>
+              <a href="thread.html#536">[ hilo ]</a>
+              <a href="subject.html#536">[ asunto ]</a>
+              <a href="author.html#536">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

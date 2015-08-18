@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] r2881 - in	trunk/bulmages/bulmafact/plugins: . pluginbarcodeopen	plugincobros pluginetiquetas pluginfacturaprov pluginfacturar	pluginpagos
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r2881%20-%20in%0A%09trunk/bulmages/bulmafact/plugins%3A%20.%20pluginbarcodeopen%0A%09plugincobros%20pluginetiquetas%20pluginfacturaprov%20pluginfacturar%0A%09pluginpagos&In-Reply-To=%3C200901012153.n01LroMa002664%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000721.html">
+   <LINK REL="Next"  HREF="000724.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] r2881 - in	trunk/bulmages/bulmafact/plugins: . pluginbarcodeopen	plugincobros pluginetiquetas pluginfacturaprov pluginfacturar	pluginpagos </H1>
+    <B>svn en mail.berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r2881%20-%20in%0A%09trunk/bulmages/bulmafact/plugins%3A%20.%20pluginbarcodeopen%0A%09plugincobros%20pluginetiquetas%20pluginfacturaprov%20pluginfacturar%0A%09pluginpagos&In-Reply-To=%3C200901012153.n01LroMa002664%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] r2881 - in	trunk/bulmages/bulmafact/plugins: . pluginbarcodeopen	plugincobros pluginetiquetas pluginfacturaprov pluginfacturar	pluginpagos">svn en mail.berlios.de
+       </A><BR>
+    <I>Jue Ene  1 22:53:50 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000721.html">[BulmaGés]traspaso de punteros entre plugins.
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000724.html">[BulmaGés]Script para limitar usuarios.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#722">[ fecha ]</a>
+              <a href="thread.html#722">[ hilo ]</a>
+              <a href="subject.html#722">[ asunto ]</a>
+              <a href="author.html#722">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: tborras
+Date: 2009-01-01 22:53:26 +0100 (Thu, 01 Jan 2009)
+New Revision: 2881
+
+Added:
+   trunk/bulmages/bulmafact/plugins/pluginetiquetas/
+   trunk/bulmages/bulmafact/plugins/pluginetiquetas/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginetiquetas/COPYING
+   trunk/bulmages/bulmafact/plugins/pluginetiquetas/README
+   trunk/bulmages/bulmafact/plugins/pluginetiquetas/copying
+   trunk/bulmages/bulmafact/plugins/pluginetiquetas/pluginetiquetas.cpp
+   trunk/bulmages/bulmafact/plugins/pluginetiquetas/pluginetiquetas.cpp.orig
+   trunk/bulmages/bulmafact/plugins/pluginetiquetas/pluginetiquetas.h
+   trunk/bulmages/bulmafact/plugins/pluginetiquetas/pluginetiquetas.h.orig
+   trunk/bulmages/bulmafact/plugins/pluginetiquetas/readme
+   trunk/bulmages/bulmafact/plugins/pluginetiquetas/ticket.png
+   trunk/bulmages/bulmafact/plugins/pluginetiquetas/ticketqtoolbutton.cpp
+   trunk/bulmages/bulmafact/plugins/pluginetiquetas/ticketqtoolbutton.cpp.orig
+   trunk/bulmages/bulmafact/plugins/pluginetiquetas/ticketqtoolbutton.h
+   trunk/bulmages/bulmafact/plugins/pluginetiquetas/ticketqtoolbutton.h.orig
+   trunk/bulmages/bulmafact/plugins/pluginfacturar/
+   trunk/bulmages/bulmafact/plugins/pluginfacturar/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginfacturar/COPYING
+   trunk/bulmages/bulmafact/plugins/pluginfacturar/README
+   trunk/bulmages/bulmafact/plugins/pluginfacturar/copying
+   trunk/bulmages/bulmafact/plugins/pluginfacturar/impqtoolbutton.cpp
+   trunk/bulmages/bulmafact/plugins/pluginfacturar/impqtoolbutton.cpp.orig
+   trunk/bulmages/bulmafact/plugins/pluginfacturar/impqtoolbutton.h
+   trunk/bulmages/bulmafact/plugins/pluginfacturar/impqtoolbutton.h.orig
+   trunk/bulmages/bulmafact/plugins/pluginfacturar/pluginfacturar.cpp
+   trunk/bulmages/bulmafact/plugins/pluginfacturar/pluginfacturar.cpp.orig
+   trunk/bulmages/bulmafact/plugins/pluginfacturar/pluginfacturar.h
+   trunk/bulmages/bulmafact/plugins/pluginfacturar/pluginfacturar.h.orig
+   trunk/bulmages/bulmafact/plugins/pluginfacturar/readme
+Modified:
+   trunk/bulmages/bulmafact/plugins/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginbarcodeopen/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/plugincobros/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginfacturaprov/CMakeLists.txt
+   trunk/bulmages/bulmafact/plugins/pluginpagos/CMakeLists.txt
+Log:
+arreglo problema de dependencias y agrego algunos plugins empezados.
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000721.html">[BulmaGés]traspaso de punteros entre plugins.
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000724.html">[BulmaGés]Script para limitar usuarios.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#722">[ fecha ]</a>
+              <a href="thread.html#722">[ hilo ]</a>
+              <a href="subject.html#722">[ asunto ]</a>
+              <a href="author.html#722">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

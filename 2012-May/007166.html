@@ -1,0 +1,902 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20master...&In-Reply-To=%3C20120503104905.A06962C875%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007165.html">
+   <LINK REL="Next"  HREF="007167.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20master...&In-Reply-To=%3C20120503104905.A06962C875%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Jue Mayo  3 12:49:05 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007165.html">[BulmaGés] [Gitorious] Activity: tborras pushed 5	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007167.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7166">[ fecha ]</a>
+              <a href="thread.html#7166">[ hilo ]</a>
+              <a href="subject.html#7166">[ asunto ]</a>
+              <a href="author.html#7166">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 2 commits to master
+master changed from f6d7eac to ebdb3b7
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/f6d7eac1f45e2ec28ccb19b5f8c84ca68a8f0a4f/diffs/ebdb3b757c1d616e9109d53d087611ca0dc5d5d2">https://gitorious.org/bulmages/bulmages/commit/f6d7eac1f45e2ec28ccb19b5f8c84ca68a8f0a4f/diffs/ebdb3b757c1d616e9109d53d087611ca0dc5d5d2</A>
+
+Diff: 
+
+commit ebdb3b757c1d616e9109d53d087611ca0dc5d5d2
+Merge: dca1535 f6d7eac
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu May 3 12:47:22 2012 +0200
+
+    Merge branch 'master' of gitorious.org:bulmages/bulmages
+
+
+commit dca15354475d3d695bc6dad992eff1378b1b1f0e
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu May 3 12:46:46 2012 +0200
+
+    Arreglo las opciones de depuracion para que cuenten en microsegundos (suficientemente preciso para depurar) y arreglo el depurator para que de alguna informacion adicional, abra trazas en fichero y reduzca un poco su tamaño de letra
+
+diff --git a/bulmages/bulmalib/src/blfunctions.cpp b/bulmages/bulmalib/src/blfunctions.cpp
+index e78f0fd..0af6d31 100644
+--- a/bulmages/bulmalib/src/blfunctions.cpp
++++ b/bulmages/bulmalib/src/blfunctions.cpp
+@@ -33,6 +33,7 @@
+ #include &lt;QUrl&gt;
+ #include &lt;QIODevice&gt;
+ 
++
+ #include &quot;blfunctions.h&quot;
+ #include &quot;blconfiguration.h&quot;
+ #include &quot;blmainwindow.h&quot;
+@@ -64,6 +65,21 @@ QString BlDebug::m_mensajesanulados[7000];
+ QString BlDebug::m_clasesanuladas[7000];
+ int BlDebug::m_indiceclases;
+ 
++// int timeval_subtract (result, x, y)
++//      struct timeval *result, *x, *y;
++// {
++//   /* Perform the carry for the later subtraction by updating y. */
++//   if (x-&gt;tv_usec &lt; y-&gt;tv_usec) {
++//     int nsec = (y-&gt;tv_usec - x-&gt;tv_usec) / 1000000 + 1;
++//     y-&gt;tv_usec -= 1000000 * nsec;
++//     y-&gt;tv_sec += nsec;
++//   }
++//   if (x-&gt;tv_usec - y-&gt;tv_usec &gt; 1000000) {
++//     int nsec = (y-&gt;tv_usec - x-&gt;tv_usec) / 1000000;
++//     y-&gt;tv_usec += 1000000 * nsec;
++//     y-&gt;tv_sec -= nsec;
++//   }
++
+ 
+ BlDebug::BlDebug(const QString &amp;func, int level, const QString &amp;params) {
+     try {
+@@ -77,6 +93,7 @@ BlDebug::BlDebug(const QString &amp;func, int level, const QString &amp;params) {
+ 	m_func = func;
+ 	m_level = level;
+ 	m_params = params;
++ 	gettimeofday(&amp;m_tp, NULL);
+ 	m_time.start();
+ 
+ 	static int semaforo = 0;
+@@ -203,8 +220,14 @@ BlDebug::~BlDebug() {
+                 *BlDebug::m_out &lt;&lt; &quot;    &quot;;
+             } // end for
+ 
++	    timeval tp, endtime;
++	    gettimeofday(&amp;endtime, NULL);
++
++	    //timeval_subtract(&amp;tp, &amp;endtime, &amp;m_tp);
++	    int elapsedtime = endtime.tv_sec * 1000000 + endtime.tv_usec - m_tp.tv_sec * 1000000 - m_tp.tv_usec;
++	    
+             QString cad1 = m_func;
+-            cad1 = &quot;&lt;/&quot; + cad1 + &quot; time=\&quot;&quot; + QString::number ( m_time.elapsed() ) + &quot;\&quot; result=\&quot;&quot; + m_params + &quot;\&quot; &gt;&quot;;
++            cad1 = &quot;&lt;/&quot; + cad1 + &quot; time=\&quot;&quot; + QString::number ( elapsedtime ) + &quot;\&quot; result=\&quot;&quot; + m_params + &quot;\&quot; &gt;&quot;;
+ 
+ 
+             *BlDebug::m_outXML &lt;&lt; cad1  &lt;&lt; &quot;\n&quot; &lt;&lt; flush;
+@@ -760,7 +783,7 @@ void blDebug ( const QString &amp;cad, int nivel, const QString &amp;param )
+         static QString mensajesanulados[7000];
+         static QString clasesanuladas[7000];
+         static int indiceclases = 0;
+-        static QTime t;
++        static QElapsedTimer t;
+ 
+         if ( !semaforo ) {
+             t.start();
+diff --git a/bulmages/bulmalib/src/blfunctions.h b/bulmages/bulmalib/src/blfunctions.h
+index 3f37f96..47f6b4c 100644
+--- a/bulmages/bulmalib/src/blfunctions.h
++++ b/bulmages/bulmalib/src/blfunctions.h
+@@ -35,6 +35,8 @@
+ #include &lt;QFile&gt;
+ #include &lt;QTextStream&gt;
+ 
++#include &lt;sys/time.h&gt;
++
+ #include &lt;stdio.h&gt;
+ #include &lt;sstream&gt;
+ #include &lt;string&gt;
+@@ -67,6 +69,7 @@ public:
+   static int m_indiceclases;
+   
+   QTime   m_time;
++  timeval m_tp;
+   QString m_func;
+   int m_level;
+   QString m_params;  
+diff --git a/bulmages/scripts/depurator/main.py b/bulmages/scripts/depurator/main.py
+index 4cd5884..0c2fb7c 100644
+--- a/bulmages/scripts/depurator/main.py
++++ b/bulmages/scripts/depurator/main.py
+@@ -5,10 +5,11 @@ __all__ = [&quot;depurator&quot;]
+ __doc__ = &quot;Sistema de Depuracion para BulmaGes a partir de los logs.\r\n&quot;
+ 
+ import sys
++import re
+ from depurator import *
+ from principal import *
+-from PyQt4 import *
+-
++from PyQt4.QtGui import *
++from PyQt4.QtCore import *
+ 
+ 
+ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
+@@ -33,25 +34,26 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
+ #	self.tree.setColumnWidth(2,20)
+ 	
+ 	
+-	self.f = open(&quot;/home/tborras/.bulmages/bulmagesout.xml&quot;, 'r')
+-	self.f.seek(0,2)
++#	self.f = open(&quot;/home/tborras/.bulmages/bulmagesout.xml&quot;, 'r')
++#	self.f.seek(0,2)
++	self.f = None
+ 
+ 	self.t = QtCore.QTimer()
+ 	self.connect(self.t, QtCore.SIGNAL(&quot;timeout()&quot;), self.hazalgo)
+ 	self.connect(self.mui_clear, QtCore.SIGNAL(&quot;triggered()&quot;), self.on_mui_clear_clicked)
+ 	self.connect(self.mui_conectar, QtCore.SIGNAL(&quot;triggered()&quot;), self.on_mui_conectar_clicked)
++	self.connect(self.mui_abrir_traza, QtCore.SIGNAL(&quot;triggered()&quot;), self.on_mui_abrir_traza_clicked)
+ 	self.t.start(100)
+ 
++    def on_mui_abrir_traza_clicked(self):
++        print &quot;Abriendo!!&quot;
++        self.openfile = QFileDialog.getOpenFileName(self,&quot;Traza - Elija archivo de traza&quot;, &quot;~/.bulmages&quot;,&quot;XML (*.xml)&quot;)
++	self.f = open(self.openfile, 'r')
++
+     def on_mui_conectar_clicked(self):
+ 	print &quot;Conexion !!&quot;
+ 	self.f = open(&quot;/home/tborras/.bulmages/bulmagesout.xml&quot;, 'r')	
+ 	self.f.seek(0,2)
+-	
+-    def on_mui_conectar_triggered(self):
+-#	print &quot;Conexion !!&quot;
+-#	self.f = open(&quot;~/.bulmages/bulmagesout.txt&quot;, 'r')
+-	self.f = open(&quot;/home/tborras/.bulmages/bulmagesout.xml&quot;, 'r')
+-	self.f.seek(0,2)
+ 
+     def on_mui_tableclear_triggered(self):
+ 	self.table.clear()
+@@ -73,6 +75,8 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
+ 		self.lmen.procesaMensaje(line.replace(&quot;\n&quot;, &quot;&quot;))
+ 
+     def hazalgo(self):
++        if (self.f == None):
++	  return
+         if (self.semaforo == 0):
+ 	  self.semaforo=1
+ 	else:
+@@ -107,10 +111,12 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
+     def procesaMensaje(self, mens):
+ 	sacamensaje = 0	
+ 	mensajefin = 1
++	tiempo = 0
+ 
+ 	mensaje = mens.strip()
+ 	# Descartamos el sistema de comentarios.
+ 	if mensaje.startswith(&quot;&lt;comment&quot;):
++		self.sacaMensaje(mensaje)
+ 		return
+ 	if mensaje.startswith(&quot;&lt;/comment&quot;):
+ 		return
+@@ -128,9 +134,15 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
+ 		  mensaje = partmsg[1]
+ 		if not &quot;::&quot; in mensaje:
+ 		  return
++		  
++		# Buscamos el tiempo invertido
++		matchObj = re.search('time=\&quot;([0-9]+)\&quot;', mens)
++		print matchObj.group(1)
++		tiempo = int(matchObj.group(1))
++		  
+ 	else:
+ 
+-		# Es un mensaje de cierre
++		# Es un mensaje de apertura
+ 		partmsg = mensaje.split(&quot; &quot;)
+ 		if len ( partmsg) &gt; 3:
+ 		  mensaje = partmsg[3]
+@@ -144,10 +156,15 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
+ 		if not &quot;::&quot; in mensaje:
+ 		  return
+ 		  
++		  
++
++
++		  
+ 	lmensaje = mensaje.split(&quot;::&quot;)
+ 	if len(lmensaje) &lt; 2:
+ 		return
+ 		
++	# Ya tenemos clase y subclase.
+ 	submens = lmensaje[1].split(&quot; &quot;)
+ 	lmensaje[1] = submens[0].split(&quot;(&quot;)[0]
+ 
+@@ -164,19 +181,34 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
+ 		lis.insert(1, &quot;1&quot;)
+ 		lis.insert(2, &quot;0&quot;)
+ 
+-	
+-
+-
+-
+-#	fla = QtCore.Qt.MatchFlags.MatchExactly()
+ 
++	ttiempo=0
++	ttiempomax=0
++	ttiempomin=9999999
++	# Tratamos el arbol.
++	
+ 	ldtree = self.tree.findItems(lmensaje[0], QtCore.Qt.MatchExactly)
+ 	if len(ldtree) &gt; 0:
+ 		titem = ldtree[0]
+ 		texto = titem.text(mensajefin).toInt()
+ 		texto = texto[0] + 1
+ 		titem.setText(mensajefin, QtCore.QString.number(texto))
++		# Ponemos el tiempo total consumido en la funcion.
++
++		if str(titem.text(3)) &lt;&gt; &quot;&quot;:
++		  ttiempo = int(str(titem.text(3)))
++		titem.setText(3,QtCore.QString.number(ttiempo + tiempo))
++		if str(titem.text(4)) &lt;&gt; &quot;&quot;:
++		    ttiempomax = int(str(titem.text(4)))
++		if tiempo &gt; ttiempomax:
++		    titem.setText(4,QtCore.QString.number(tiempo))
++		if str(titem.text(5)) &lt;&gt; &quot;&quot;:
++		    ttiempomin = int(str(titem.text(5)))
++		if tiempo &lt; ttiempomin:
++		    titem.setText(5,QtCore.QString.number(tiempo))
+ 
++
++		# Bajamos en el arbol de llamadas y vamos actualizando los datos.
+ 		encontrado = 0
+ 		i = 0
+ 		while i &lt; titem.childCount():
+@@ -189,27 +221,74 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
+ 				titem1.setText(mensajefin, QtCore.QString.number(texto))
+ 				if titem1.checkState(0) == QtCore.Qt.Checked:
+ 					sacamensaje = 1
++					
++				# Ponemos el tiempo total consumido en la funcion.
++				ttiempo=0
++				ttiempomax=0
++				ttiempomin=999
++				if str(titem1.text(3)) &lt;&gt; &quot;&quot;:
++				  ttiempo = int(str(titem1.text(3)))
++				titem1.setText(3,QtCore.QString.number(ttiempo + tiempo))
++				if str(titem1.text(4)) &lt;&gt; &quot;&quot;:
++				   ttiempomax = int(str(titem1.text(4)))
++				if tiempo &gt; ttiempomax:
++				   titem1.setText(4,QtCore.QString.number(tiempo))
++				if str(titem1.text(5)) &lt;&gt; &quot;&quot;:
++				   ttiempomin = int(str(titem1.text(5)))
++				if tiempo &lt; ttiempomin:
++				   titem1.setText(5,QtCore.QString.number(tiempo))
++
++				  
+ 			i = i +1
+ 				
+-				
+-		if encontrado == 0:
+ 
+-			
++		# Si no hemos encontrado el elemento lo insertamos.
++		if encontrado == 0:
+ 			titem1 = QtGui.QTreeWidgetItem(lis1)
+ 			titem1.setCheckState(0, QtCore.Qt.Unchecked)
+ 			titem.addChild(titem1)
++			# Ponemos el tiempo total consumido en la funcion.
++			titem1.setText(3,QtCore.QString.number(tiempo))
++			titem1.setText(4,QtCore.QString.number(ttiempomax))
++			titem1.setText(5,QtCore.QString.number(ttiempomin))
++			titem1.setTextAlignment(1,Qt.AlignRight)
++			titem1.setTextAlignment(2,Qt.AlignRight)
++			titem1.setTextAlignment(3,Qt.AlignRight)
++			titem1.setTextAlignment(4,Qt.AlignRight)
++			titem1.setTextAlignment(5,Qt.AlignRight)
++
++
++			
+ 		
+ 	else:
++		# Agregamos la clase y el metodo (una clase nunca va sola)
+ 		titem =  QtGui.QTreeWidgetItem(lis)
+ #		titem.setCheckState(0, QtCore.Qt.Unchecked)
+ 		titem.setTextColor(0, QtGui.QColor(255,0,0))
++		# Ponemos el tiempo total consumido en la funcion.
++		titem.setText(3,QtCore.QString.number(tiempo))
++		titem.setText(4,QtCore.QString.number(ttiempomax))
++		titem.setText(5,QtCore.QString.number(ttiempomin))
++		titem.setTextAlignment(1,Qt.AlignRight)
++		titem.setTextAlignment(2,Qt.AlignRight)
++		titem.setTextAlignment(3,Qt.AlignRight)
++		titem.setTextAlignment(4,Qt.AlignRight)
++		titem.setTextAlignment(5,Qt.AlignRight)
+ 		self.tree.addTopLevelItem(titem)
+ 
+ 		
+ 		titem1 = QtGui.QTreeWidgetItem(lis1)
+ 		titem1.setCheckState(0, QtCore.Qt.Unchecked)
+ 		titem.addChild(titem1)
+-
++		# Ponemos el tiempo total consumido en la funcion.
++		titem1.setText(3,QtCore.QString.number(tiempo))
++		titem1.setText(4,QtCore.QString.number(ttiempomax))
++		titem1.setText(5,QtCore.QString.number(ttiempomin))
++		titem1.setTextAlignment(1,Qt.AlignRight)
++		titem1.setTextAlignment(2,Qt.AlignRight)
++		titem1.setTextAlignment(3,Qt.AlignRight)
++		titem1.setTextAlignment(4,Qt.AlignRight)
++		titem1.setTextAlignment(5,Qt.AlignRight)
+ 
+ 	if sacamensaje == 1:
+ 		self.sacaMensaje(mens)
+diff --git a/bulmages/scripts/depurator/principal.py b/bulmages/scripts/depurator/principal.py
+index f750260..5f0ec94 100644
+--- a/bulmages/scripts/depurator/principal.py
++++ b/bulmages/scripts/depurator/principal.py
+@@ -2,127 +2,119 @@
+ 
+ # Form implementation generated from reading ui file 'principal.ui'
+ #
+-# Created: Wed Jan 10 21:30:13 2007
+-#      by: PyQt4 UI code generator 4.0.1
++# Created: Thu May  3 12:12:45 2012
++#      by: PyQt4 UI code generator 4.7.4
+ #
+ # WARNING! All changes made in this file will be lost!
+ 
+-import sys
+ from PyQt4 import QtCore, QtGui
+ 
+ class Ui_Principal(object):
+     def setupUi(self, Principal):
+         Principal.setObjectName(&quot;Principal&quot;)
+-        Principal.resize(QtCore.QSize(QtCore.QRect(0,0,807,535).size()).expandedTo(Principal.minimumSizeHint()))
+-
+-        font = QtGui.QFont(Principal.font())
++        Principal.resize(807, 535)
++        font = QtGui.QFont()
+         font.setPointSize(12)
+         Principal.setFont(font)
+-
+         self.centralwidget = QtGui.QWidget(Principal)
+         self.centralwidget.setObjectName(&quot;centralwidget&quot;)
+-
+         self.hboxlayout = QtGui.QHBoxLayout(self.centralwidget)
+-        self.hboxlayout.setMargin(9)
+         self.hboxlayout.setSpacing(6)
++        self.hboxlayout.setMargin(9)
+         self.hboxlayout.setObjectName(&quot;hboxlayout&quot;)
+-
+         self.dockWidget = QtGui.QDockWidget(self.centralwidget)
+         self.dockWidget.setObjectName(&quot;dockWidget&quot;)
+-
+-        self.dockWidgetContents = QtGui.QWidget(self.dockWidget)
++        self.dockWidgetContents = QtGui.QWidget()
+         self.dockWidgetContents.setObjectName(&quot;dockWidgetContents&quot;)
+-
+         self.vboxlayout = QtGui.QVBoxLayout(self.dockWidgetContents)
+-        self.vboxlayout.setMargin(9)
+         self.vboxlayout.setSpacing(6)
++        self.vboxlayout.setMargin(9)
+         self.vboxlayout.setObjectName(&quot;vboxlayout&quot;)
+-
+         self.tree = QtGui.QTreeWidget(self.dockWidgetContents)
+-
+-        font = QtGui.QFont(self.tree.font())
+-        font.setPointSize(14)
++        font = QtGui.QFont()
++        font.setPointSize(7)
+         self.tree.setFont(font)
+         self.tree.setAlternatingRowColors(True)
+-        self.tree.setSortingEnabled(True)
+-        self.tree.setColumnCount(3)
++        self.tree.setColumnCount(9)
+         self.tree.setObjectName(&quot;tree&quot;)
++        self.tree.header().setDefaultSectionSize(200)
+         self.vboxlayout.addWidget(self.tree)
+         self.dockWidget.setWidget(self.dockWidgetContents)
+         self.hboxlayout.addWidget(self.dockWidget)
+-
+         self.table = QtGui.QTableWidget(self.centralwidget)
++        font = QtGui.QFont()
++        font.setPointSize(8)
++        self.table.setFont(font)
+         self.table.setAlternatingRowColors(True)
+         self.table.setSelectionMode(QtGui.QAbstractItemView.MultiSelection)
++        self.table.setColumnCount(3)
+         self.table.setObjectName(&quot;table&quot;)
++        self.table.setColumnCount(3)
++        self.table.setRowCount(0)
+         self.hboxlayout.addWidget(self.table)
+         Principal.setCentralWidget(self.centralwidget)
+-
+         self.menubar = QtGui.QMenuBar(Principal)
+-        self.menubar.setGeometry(QtCore.QRect(0,0,807,27))
++        self.menubar.setGeometry(QtCore.QRect(0, 0, 807, 26))
+         self.menubar.setObjectName(&quot;menubar&quot;)
+-
+         self.menuAbout = QtGui.QMenu(self.menubar)
+         self.menuAbout.setObjectName(&quot;menuAbout&quot;)
+-
+         self.menuPrincipal = QtGui.QMenu(self.menubar)
+         self.menuPrincipal.setObjectName(&quot;menuPrincipal&quot;)
+         Principal.setMenuBar(self.menubar)
+-
+         self.statusbar = QtGui.QStatusBar(Principal)
+         self.statusbar.setObjectName(&quot;statusbar&quot;)
+         Principal.setStatusBar(self.statusbar)
+-
+         self.toolBar = QtGui.QToolBar(Principal)
++        font = QtGui.QFont()
++        font.setPointSize(10)
++        self.toolBar.setFont(font)
+         self.toolBar.setOrientation(QtCore.Qt.Horizontal)
+         self.toolBar.setObjectName(&quot;toolBar&quot;)
+-        Principal.addToolBar(self.toolBar)
+-
++        Principal.addToolBar(QtCore.Qt.ToolBarArea(QtCore.Qt.TopToolBarArea), self.toolBar)
+         self.mui_about = QtGui.QAction(Principal)
+         self.mui_about.setObjectName(&quot;mui_about&quot;)
+-
+         self.mui_clear = QtGui.QAction(Principal)
+         self.mui_clear.setObjectName(&quot;mui_clear&quot;)
+-
+         self.mui_conectar = QtGui.QAction(Principal)
+         self.mui_conectar.setObjectName(&quot;mui_conectar&quot;)
+-
+         self.mui_tableclear = QtGui.QAction(Principal)
+         self.mui_tableclear.setObjectName(&quot;mui_tableclear&quot;)
+-
+         self.actionLimpiar_Arbol = QtGui.QAction(Principal)
+         self.actionLimpiar_Arbol.setObjectName(&quot;actionLimpiar_Arbol&quot;)
+-
+         self.mui_expandtree = QtGui.QAction(Principal)
+         self.mui_expandtree.setObjectName(&quot;mui_expandtree&quot;)
+-
+         self.mui_collapseTree = QtGui.QAction(Principal)
+         self.mui_collapseTree.setObjectName(&quot;mui_collapseTree&quot;)
++        self.mui_abrir_traza = QtGui.QAction(Principal)
++        self.mui_abrir_traza.setObjectName(&quot;mui_abrir_traza&quot;)
+         self.menuAbout.addAction(self.mui_about)
+         self.menuPrincipal.addAction(self.mui_conectar)
++        self.menuPrincipal.addAction(self.mui_abrir_traza)
+         self.menuPrincipal.addSeparator()
+         self.menuPrincipal.addAction(self.mui_tableclear)
+         self.menuPrincipal.addAction(self.actionLimpiar_Arbol)
+         self.menubar.addAction(self.menuPrincipal.menuAction())
+         self.menubar.addAction(self.menuAbout.menuAction())
+         self.toolBar.addAction(self.mui_clear)
+-        self.toolBar.addAction(self.mui_conectar)
+         self.toolBar.addAction(self.mui_expandtree)
+         self.toolBar.addAction(self.mui_collapseTree)
+ 
+         self.retranslateUi(Principal)
+-        QtCore.QObject.connect(self.actionLimpiar_Arbol,QtCore.SIGNAL(&quot;triggered()&quot;),self.tree.clear)
++        QtCore.QObject.connect(self.actionLimpiar_Arbol, QtCore.SIGNAL(&quot;triggered()&quot;), self.tree.clear)
+         QtCore.QMetaObject.connectSlotsByName(Principal)
+ 
+     def retranslateUi(self, Principal):
+         Principal.setWindowTitle(QtGui.QApplication.translate(&quot;Principal&quot;, &quot;MainWindow&quot;, None, QtGui.QApplication.UnicodeUTF8))
+-        self.tree.headerItem().setText(0,QtGui.QApplication.translate(&quot;Principal&quot;, &quot;1&quot;, None, QtGui.QApplication.UnicodeUTF8))
+-        self.tree.headerItem().setText(1,QtGui.QApplication.translate(&quot;Principal&quot;, &quot;1&quot;, None, QtGui.QApplication.UnicodeUTF8))
+-        self.tree.headerItem().setText(2,QtGui.QApplication.translate(&quot;Principal&quot;, &quot;2&quot;, None, QtGui.QApplication.UnicodeUTF8))
+-        self.table.setColumnCount(3)
+-        self.table.clear()
+-        self.table.setColumnCount(3)
+-        self.table.setRowCount(0)
++        self.tree.setSortingEnabled(True)
++        self.tree.headerItem().setText(0, QtGui.QApplication.translate(&quot;Principal&quot;, &quot;Nombre&quot;, None, QtGui.QApplication.UnicodeUTF8))
++        self.tree.headerItem().setText(1, QtGui.QApplication.translate(&quot;Principal&quot;, &quot;Aperturas&quot;, None, QtGui.QApplication.UnicodeUTF8))
++        self.tree.headerItem().setText(2, QtGui.QApplication.translate(&quot;Principal&quot;, &quot;Cierres&quot;, None, QtGui.QApplication.UnicodeUTF8))
++        self.tree.headerItem().setText(3, QtGui.QApplication.translate(&quot;Principal&quot;, &quot;Tiempo Total&quot;, None, QtGui.QApplication.UnicodeUTF8))
++        self.tree.headerItem().setText(4, QtGui.QApplication.translate(&quot;Principal&quot;, &quot;Intervalo Maximo&quot;, None, QtGui.QApplication.UnicodeUTF8))
++        self.tree.headerItem().setText(5, QtGui.QApplication.translate(&quot;Principal&quot;, &quot;Intervalo Minimo&quot;, None, QtGui.QApplication.UnicodeUTF8))
++        self.tree.headerItem().setText(6, QtGui.QApplication.translate(&quot;Principal&quot;, &quot;Subllamadas Media&quot;, None, QtGui.QApplication.UnicodeUTF8))
++        self.tree.headerItem().setText(7, QtGui.QApplication.translate(&quot;Principal&quot;, &quot;Subllamadas Maximo&quot;, None, QtGui.QApplication.UnicodeUTF8))
++        self.tree.headerItem().setText(8, QtGui.QApplication.translate(&quot;Principal&quot;, &quot;Subllamadas Minimo&quot;, None, QtGui.QApplication.UnicodeUTF8))
+         self.menuAbout.setTitle(QtGui.QApplication.translate(&quot;Principal&quot;, &quot;About&quot;, None, QtGui.QApplication.UnicodeUTF8))
+         self.menuPrincipal.setTitle(QtGui.QApplication.translate(&quot;Principal&quot;, &quot;Principal&quot;, None, QtGui.QApplication.UnicodeUTF8))
+         self.mui_about.setText(QtGui.QApplication.translate(&quot;Principal&quot;, &quot;About&quot;, None, QtGui.QApplication.UnicodeUTF8))
+@@ -132,12 +124,6 @@ class Ui_Principal(object):
+         self.actionLimpiar_Arbol.setText(QtGui.QApplication.translate(&quot;Principal&quot;, &quot;Limpiar Arbol&quot;, None, QtGui.QApplication.UnicodeUTF8))
+         self.mui_expandtree.setText(QtGui.QApplication.translate(&quot;Principal&quot;, &quot;Expandir Arbol&quot;, None, QtGui.QApplication.UnicodeUTF8))
+         self.mui_collapseTree.setText(QtGui.QApplication.translate(&quot;Principal&quot;, &quot;contraerArbol&quot;, None, QtGui.QApplication.UnicodeUTF8))
++        self.mui_abrir_traza.setText(QtGui.QApplication.translate(&quot;Principal&quot;, &quot;Abrir Traza&quot;, None, QtGui.QApplication.UnicodeUTF8))
++        self.mui_abrir_traza.setShortcut(QtGui.QApplication.translate(&quot;Principal&quot;, &quot;Ctrl+A&quot;, None, QtGui.QApplication.UnicodeUTF8))
+ 
+-
+-if __name__ == &quot;__main__&quot;:
+-    app = QtGui.QApplication(sys.argv)
+-    Principal = QtGui.QMainWindow()
+-    ui = Ui_Principal()
+-    ui.setupUi(Principal)
+-    Principal.show()
+-    sys.exit(app.exec_())
+diff --git a/bulmages/scripts/depurator/principal.ui b/bulmages/scripts/depurator/principal.ui
+index e680fc7..145b100 100644
+--- a/bulmages/scripts/depurator/principal.ui
++++ b/bulmages/scripts/depurator/principal.ui
+@@ -1,7 +1,8 @@
+-&lt;ui version=&quot;4.0&quot; &gt;
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
++&lt;ui version=&quot;4.0&quot;&gt;
+  &lt;class&gt;Principal&lt;/class&gt;
+- &lt;widget class=&quot;QMainWindow&quot; name=&quot;Principal&quot; &gt;
+-  &lt;property name=&quot;geometry&quot; &gt;
++ &lt;widget class=&quot;QMainWindow&quot; name=&quot;Principal&quot;&gt;
++  &lt;property name=&quot;geometry&quot;&gt;
+    &lt;rect&gt;
+     &lt;x&gt;0&lt;/x&gt;
+     &lt;y&gt;0&lt;/y&gt;
+@@ -9,61 +10,94 @@
+     &lt;height&gt;535&lt;/height&gt;
+    &lt;/rect&gt;
+   &lt;/property&gt;
+-  &lt;property name=&quot;font&quot; &gt;
++  &lt;property name=&quot;font&quot;&gt;
+    &lt;font&gt;
+     &lt;pointsize&gt;12&lt;/pointsize&gt;
+    &lt;/font&gt;
+   &lt;/property&gt;
+-  &lt;property name=&quot;windowTitle&quot; &gt;
++  &lt;property name=&quot;windowTitle&quot;&gt;
+    &lt;string&gt;MainWindow&lt;/string&gt;
+   &lt;/property&gt;
+-  &lt;widget class=&quot;QWidget&quot; name=&quot;centralwidget&quot; &gt;
+-   &lt;layout class=&quot;QHBoxLayout&quot; &gt;
+-    &lt;property name=&quot;margin&quot; &gt;
+-     &lt;number&gt;9&lt;/number&gt;
+-    &lt;/property&gt;
+-    &lt;property name=&quot;spacing&quot; &gt;
++  &lt;widget class=&quot;QWidget&quot; name=&quot;centralwidget&quot;&gt;
++   &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++    &lt;property name=&quot;spacing&quot;&gt;
+      &lt;number&gt;6&lt;/number&gt;
+     &lt;/property&gt;
++    &lt;property name=&quot;margin&quot;&gt;
++     &lt;number&gt;9&lt;/number&gt;
++    &lt;/property&gt;
+     &lt;item&gt;
+-     &lt;widget class=&quot;QDockWidget&quot; name=&quot;dockWidget&quot; &gt;
+-      &lt;widget class=&quot;QWidget&quot; name=&quot;dockWidgetContents&quot; &gt;
+-       &lt;layout class=&quot;QVBoxLayout&quot; &gt;
+-        &lt;property name=&quot;margin&quot; &gt;
+-         &lt;number&gt;9&lt;/number&gt;
+-        &lt;/property&gt;
+-        &lt;property name=&quot;spacing&quot; &gt;
++     &lt;widget class=&quot;QDockWidget&quot; name=&quot;dockWidget&quot;&gt;
++      &lt;widget class=&quot;QWidget&quot; name=&quot;dockWidgetContents&quot;&gt;
++       &lt;layout class=&quot;QVBoxLayout&quot;&gt;
++        &lt;property name=&quot;spacing&quot;&gt;
+          &lt;number&gt;6&lt;/number&gt;
+         &lt;/property&gt;
++        &lt;property name=&quot;margin&quot;&gt;
++         &lt;number&gt;9&lt;/number&gt;
++        &lt;/property&gt;
+         &lt;item&gt;
+-         &lt;widget class=&quot;QTreeWidget&quot; name=&quot;tree&quot; &gt;
+-          &lt;property name=&quot;font&quot; &gt;
++         &lt;widget class=&quot;QTreeWidget&quot; name=&quot;tree&quot;&gt;
++          &lt;property name=&quot;font&quot;&gt;
+            &lt;font&gt;
+-            &lt;pointsize&gt;14&lt;/pointsize&gt;
++            &lt;pointsize&gt;7&lt;/pointsize&gt;
+            &lt;/font&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;alternatingRowColors&quot; &gt;
++          &lt;property name=&quot;alternatingRowColors&quot;&gt;
+            &lt;bool&gt;true&lt;/bool&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;sortingEnabled&quot; &gt;
++          &lt;property name=&quot;sortingEnabled&quot;&gt;
+            &lt;bool&gt;true&lt;/bool&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;columnCount&quot; &gt;
+-           &lt;number&gt;3&lt;/number&gt;
++          &lt;property name=&quot;columnCount&quot;&gt;
++           &lt;number&gt;9&lt;/number&gt;
+           &lt;/property&gt;
++          &lt;attribute name=&quot;headerDefaultSectionSize&quot;&gt;
++           &lt;number&gt;200&lt;/number&gt;
++          &lt;/attribute&gt;
++          &lt;column&gt;
++           &lt;property name=&quot;text&quot;&gt;
++            &lt;string&gt;Nombre&lt;/string&gt;
++           &lt;/property&gt;
++          &lt;/column&gt;
++          &lt;column&gt;
++           &lt;property name=&quot;text&quot;&gt;
++            &lt;string&gt;Aperturas&lt;/string&gt;
++           &lt;/property&gt;
++          &lt;/column&gt;
++          &lt;column&gt;
++           &lt;property name=&quot;text&quot;&gt;
++            &lt;string&gt;Cierres&lt;/string&gt;
++           &lt;/property&gt;
++          &lt;/column&gt;
++          &lt;column&gt;
++           &lt;property name=&quot;text&quot;&gt;
++            &lt;string&gt;Tiempo Total&lt;/string&gt;
++           &lt;/property&gt;
++          &lt;/column&gt;
++          &lt;column&gt;
++           &lt;property name=&quot;text&quot;&gt;
++            &lt;string&gt;Intervalo Maximo&lt;/string&gt;
++           &lt;/property&gt;
++          &lt;/column&gt;
++          &lt;column&gt;
++           &lt;property name=&quot;text&quot;&gt;
++            &lt;string&gt;Intervalo Minimo&lt;/string&gt;
++           &lt;/property&gt;
++          &lt;/column&gt;
+           &lt;column&gt;
+-           &lt;property name=&quot;text&quot; &gt;
+-            &lt;string&gt;1&lt;/string&gt;
++           &lt;property name=&quot;text&quot;&gt;
++            &lt;string&gt;Subllamadas Media&lt;/string&gt;
+            &lt;/property&gt;
+           &lt;/column&gt;
+           &lt;column&gt;
+-           &lt;property name=&quot;text&quot; &gt;
+-            &lt;string&gt;1&lt;/string&gt;
++           &lt;property name=&quot;text&quot;&gt;
++            &lt;string&gt;Subllamadas Maximo&lt;/string&gt;
+            &lt;/property&gt;
+           &lt;/column&gt;
+           &lt;column&gt;
+-           &lt;property name=&quot;text&quot; &gt;
+-            &lt;string&gt;2&lt;/string&gt;
++           &lt;property name=&quot;text&quot;&gt;
++            &lt;string&gt;Subllamadas Minimo&lt;/string&gt;
+            &lt;/property&gt;
+           &lt;/column&gt;
+          &lt;/widget&gt;
+@@ -73,14 +107,19 @@
+      &lt;/widget&gt;
+     &lt;/item&gt;
+     &lt;item&gt;
+-     &lt;widget class=&quot;QTableWidget&quot; name=&quot;table&quot; &gt;
+-      &lt;property name=&quot;alternatingRowColors&quot; &gt;
++     &lt;widget class=&quot;QTableWidget&quot; name=&quot;table&quot;&gt;
++      &lt;property name=&quot;font&quot;&gt;
++       &lt;font&gt;
++        &lt;pointsize&gt;8&lt;/pointsize&gt;
++       &lt;/font&gt;
++      &lt;/property&gt;
++      &lt;property name=&quot;alternatingRowColors&quot;&gt;
+        &lt;bool&gt;true&lt;/bool&gt;
+       &lt;/property&gt;
+-      &lt;property name=&quot;selectionMode&quot; &gt;
++      &lt;property name=&quot;selectionMode&quot;&gt;
+        &lt;enum&gt;QAbstractItemView::MultiSelection&lt;/enum&gt;
+       &lt;/property&gt;
+-      &lt;property name=&quot;columnCount&quot; &gt;
++      &lt;property name=&quot;columnCount&quot;&gt;
+        &lt;number&gt;3&lt;/number&gt;
+       &lt;/property&gt;
+       &lt;column/&gt;
+@@ -90,81 +129,97 @@
+     &lt;/item&gt;
+    &lt;/layout&gt;
+   &lt;/widget&gt;
+-  &lt;widget class=&quot;QMenuBar&quot; name=&quot;menubar&quot; &gt;
+-   &lt;property name=&quot;geometry&quot; &gt;
++  &lt;widget class=&quot;QMenuBar&quot; name=&quot;menubar&quot;&gt;
++   &lt;property name=&quot;geometry&quot;&gt;
+     &lt;rect&gt;
+      &lt;x&gt;0&lt;/x&gt;
+      &lt;y&gt;0&lt;/y&gt;
+      &lt;width&gt;807&lt;/width&gt;
+-     &lt;height&gt;27&lt;/height&gt;
++     &lt;height&gt;26&lt;/height&gt;
+     &lt;/rect&gt;
+    &lt;/property&gt;
+-   &lt;widget class=&quot;QMenu&quot; name=&quot;menuAbout&quot; &gt;
+-    &lt;property name=&quot;title&quot; &gt;
++   &lt;widget class=&quot;QMenu&quot; name=&quot;menuAbout&quot;&gt;
++    &lt;property name=&quot;title&quot;&gt;
+      &lt;string&gt;About&lt;/string&gt;
+     &lt;/property&gt;
+-    &lt;addaction name=&quot;mui_about&quot; /&gt;
++    &lt;addaction name=&quot;mui_about&quot;/&gt;
+    &lt;/widget&gt;
+-   &lt;widget class=&quot;QMenu&quot; name=&quot;menuPrincipal&quot; &gt;
+-    &lt;property name=&quot;title&quot; &gt;
++   &lt;widget class=&quot;QMenu&quot; name=&quot;menuPrincipal&quot;&gt;
++    &lt;property name=&quot;title&quot;&gt;
+      &lt;string&gt;Principal&lt;/string&gt;
+     &lt;/property&gt;
+-    &lt;addaction name=&quot;mui_conectar&quot; /&gt;
+-    &lt;addaction name=&quot;separator&quot; /&gt;
+-    &lt;addaction name=&quot;mui_tableclear&quot; /&gt;
+-    &lt;addaction name=&quot;actionLimpiar_Arbol&quot; /&gt;
++    &lt;addaction name=&quot;mui_conectar&quot;/&gt;
++    &lt;addaction name=&quot;mui_abrir_traza&quot;/&gt;
++    &lt;addaction name=&quot;separator&quot;/&gt;
++    &lt;addaction name=&quot;mui_tableclear&quot;/&gt;
++    &lt;addaction name=&quot;actionLimpiar_Arbol&quot;/&gt;
+    &lt;/widget&gt;
+-   &lt;addaction name=&quot;menuPrincipal&quot; /&gt;
+-   &lt;addaction name=&quot;menuAbout&quot; /&gt;
++   &lt;addaction name=&quot;menuPrincipal&quot;/&gt;
++   &lt;addaction name=&quot;menuAbout&quot;/&gt;
+   &lt;/widget&gt;
+-  &lt;widget class=&quot;QStatusBar&quot; name=&quot;statusbar&quot; /&gt;
+-  &lt;widget class=&quot;QToolBar&quot; name=&quot;toolBar&quot; &gt;
+-   &lt;property name=&quot;orientation&quot; &gt;
++  &lt;widget class=&quot;QStatusBar&quot; name=&quot;statusbar&quot;/&gt;
++  &lt;widget class=&quot;QToolBar&quot; name=&quot;toolBar&quot;&gt;
++   &lt;property name=&quot;font&quot;&gt;
++    &lt;font&gt;
++     &lt;pointsize&gt;10&lt;/pointsize&gt;
++    &lt;/font&gt;
++   &lt;/property&gt;
++   &lt;property name=&quot;orientation&quot;&gt;
+     &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
+    &lt;/property&gt;
+-   &lt;attribute name=&quot;toolBarArea&quot; &gt;
+-    &lt;number&gt;4&lt;/number&gt;
++   &lt;attribute name=&quot;toolBarArea&quot;&gt;
++    &lt;enum&gt;TopToolBarArea&lt;/enum&gt;
+    &lt;/attribute&gt;
+-   &lt;addaction name=&quot;mui_clear&quot; /&gt;
+-   &lt;addaction name=&quot;mui_conectar&quot; /&gt;
+-   &lt;addaction name=&quot;mui_expandtree&quot; /&gt;
+-   &lt;addaction name=&quot;mui_collapseTree&quot; /&gt;
++   &lt;attribute name=&quot;toolBarBreak&quot;&gt;
++    &lt;bool&gt;false&lt;/bool&gt;
++   &lt;/attribute&gt;
++   &lt;addaction name=&quot;mui_clear&quot;/&gt;
++   &lt;addaction name=&quot;mui_expandtree&quot;/&gt;
++   &lt;addaction name=&quot;mui_collapseTree&quot;/&gt;
+   &lt;/widget&gt;
+-  &lt;action name=&quot;mui_about&quot; &gt;
+-   &lt;property name=&quot;text&quot; &gt;
++  &lt;action name=&quot;mui_about&quot;&gt;
++   &lt;property name=&quot;text&quot;&gt;
+     &lt;string&gt;About&lt;/string&gt;
+    &lt;/property&gt;
+   &lt;/action&gt;
+-  &lt;action name=&quot;mui_clear&quot; &gt;
+-   &lt;property name=&quot;text&quot; &gt;
++  &lt;action name=&quot;mui_clear&quot;&gt;
++   &lt;property name=&quot;text&quot;&gt;
+     &lt;string&gt;Limpiar&lt;/string&gt;
+    &lt;/property&gt;
+   &lt;/action&gt;
+-  &lt;action name=&quot;mui_conectar&quot; &gt;
+-   &lt;property name=&quot;text&quot; &gt;
++  &lt;action name=&quot;mui_conectar&quot;&gt;
++   &lt;property name=&quot;text&quot;&gt;
+     &lt;string&gt;Conectar&lt;/string&gt;
+    &lt;/property&gt;
+   &lt;/action&gt;
+-  &lt;action name=&quot;mui_tableclear&quot; &gt;
+-   &lt;property name=&quot;text&quot; &gt;
++  &lt;action name=&quot;mui_tableclear&quot;&gt;
++   &lt;property name=&quot;text&quot;&gt;
+     &lt;string&gt;Limpiar Table&lt;/string&gt;
+    &lt;/property&gt;
+   &lt;/action&gt;
+-  &lt;action name=&quot;actionLimpiar_Arbol&quot; &gt;
+-   &lt;property name=&quot;text&quot; &gt;
++  &lt;action name=&quot;actionLimpiar_Arbol&quot;&gt;
++   &lt;property name=&quot;text&quot;&gt;
+     &lt;string&gt;Limpiar Arbol&lt;/string&gt;
+    &lt;/property&gt;
+   &lt;/action&gt;
+-  &lt;action name=&quot;mui_expandtree&quot; &gt;
+-   &lt;property name=&quot;text&quot; &gt;
++  &lt;action name=&quot;mui_expandtree&quot;&gt;
++   &lt;property name=&quot;text&quot;&gt;
+     &lt;string&gt;Expandir Arbol&lt;/string&gt;
+    &lt;/property&gt;
+   &lt;/action&gt;
+-  &lt;action name=&quot;mui_collapseTree&quot; &gt;
+-   &lt;property name=&quot;text&quot; &gt;
++  &lt;action name=&quot;mui_collapseTree&quot;&gt;
++   &lt;property name=&quot;text&quot;&gt;
+     &lt;string&gt;contraerArbol&lt;/string&gt;
+    &lt;/property&gt;
+   &lt;/action&gt;
++  &lt;action name=&quot;mui_abrir_traza&quot;&gt;
++   &lt;property name=&quot;text&quot;&gt;
++    &lt;string&gt;Abrir Traza&lt;/string&gt;
++   &lt;/property&gt;
++   &lt;property name=&quot;shortcut&quot;&gt;
++    &lt;string&gt;Ctrl+A&lt;/string&gt;
++   &lt;/property&gt;
++  &lt;/action&gt;
+  &lt;/widget&gt;
+  &lt;resources/&gt;
+  &lt;connections&gt;
+@@ -174,11 +229,11 @@
+    &lt;receiver&gt;tree&lt;/receiver&gt;
+    &lt;slot&gt;clear()&lt;/slot&gt;
+    &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot; &gt;
++    &lt;hint type=&quot;sourcelabel&quot;&gt;
+      &lt;x&gt;-1&lt;/x&gt;
+      &lt;y&gt;-1&lt;/y&gt;
+     &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot; &gt;
++    &lt;hint type=&quot;destinationlabel&quot;&gt;
+      &lt;x&gt;204&lt;/x&gt;
+      &lt;y&gt;291&lt;/y&gt;
+     &lt;/hint&gt;
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007165.html">[BulmaGés] [Gitorious] Activity: tborras pushed 5	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007167.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7166">[ fecha ]</a>
+              <a href="thread.html#7166">[ hilo ]</a>
+              <a href="subject.html#7166">[ asunto ]</a>
+              <a href="author.html#7166">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

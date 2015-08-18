@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]r4013 - in trunk/bulmages: bulmalib/src bulmatpv/src
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fr4013_-_in_trunk/bulm%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fages%3D3A_bulmalib/src_bulmatpv/src%3F%3D&In-Reply-To=%3C201009220037.12131.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="004077.html">
+   <LINK REL="Next"  HREF="004070.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]r4013 - in trunk/bulmages: bulmalib/src bulmatpv/src </H1>
+    <B>Tomeu</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fr4013_-_in_trunk/bulm%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fages%3D3A_bulmalib/src_bulmatpv/src%3F%3D&In-Reply-To=%3C201009220037.12131.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]r4013 - in trunk/bulmages: bulmalib/src bulmatpv/src">tborras en conetxia.com
+       </A><BR>
+    <I>Mie Sep 22 00:37:11 CEST 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="004077.html">[BulmaGés]r4013 - in trunk/bulmages: bulmalib/src bulmatpv/src
+</A></li>
+        <LI>Próximo mensaje: <A HREF="004070.html">[BulmaGés] r4014 -	trunk/bulmages/bulmafact/plugins/pluginbf_clientefactura
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4080">[ fecha ]</a>
+              <a href="thread.html#4080">[ hilo ]</a>
+              <a href="subject.html#4080">[ asunto ]</a>
+              <a href="author.html#4080">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Aron, me alegra que te guste el cambio.
+
+Pués lo del clearVars depende.
+
+Si el BlForm hace una impresion asignando una variable con setVar y si no 
+hemos borrado esa asignacion con clearVars en la siguiente impresion 
+(suponiendo que el BlForm no ha sido destruido) ese mismo setVar podria dar 
+problemas.
+
+En el caso que he programado lo uso para las impresoras de cocina del TPV 
+donde el programa pasa como parametro la impresora al informe y lo hace en una 
+iteracion para cada posible impresora de cocina. También es cierto que en cada 
+iteraccion la variable se reescribe y no es necesario hacer un clearVars. 
+
+Aun así yo usaria un clearVars en el inicio del proceso de impresión antes de 
+establecer las variables que quiero sólo por si acaso. Al fin y al cabo algun 
+plugin de terceros podria hacer un setVar conflictivo y no borrarlo.
+
+Se me ocurre por ejemplo la ficha de presupuesto con dos plugins que generan 
+algun tipo de informe para ese presupuesto y que uno hace un setVar de una 
+variable que el segundo usa en un query. Si invocamos el primero, luego el 
+segundo puede dar resultados incorrectos sustituyendo los campos por el valor 
+de la variable en lugar de por los resultados del query.
+
+Salut
+
+&gt;<i> Hola.
+</I>&gt;<i> 
+</I>&gt;<i> He utilizado la nueva función BlForm::setVar y funciona muy bien, así ya
+</I>&gt;<i> podemos definir valores puntuales para los informes.
+</I>&gt;<i> 
+</I>&gt;<i> Sólo una duda: ¿hay que usar clearVars en algún momento?
+</I>&gt;<i> 
+</I>&gt;<i> On Sábado, 18 de Septiembre de 2010 14:58:17 <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">svn en mail.berlios.de</A> escribió:
+</I>&gt;<i> &gt; Author: tborras
+</I>&gt;<i> &gt; Date: 2010-09-18 14:58:17 +0200 (Sat, 18 Sep 2010)
+</I>&gt;<i> &gt; New Revision: 4013
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Modified:
+</I>&gt;<i> &gt;    trunk/bulmages/bulmalib/src/blform.cpp
+</I>&gt;<i> &gt;    trunk/bulmages/bulmalib/src/blform.h
+</I>&gt;<i> &gt;    trunk/bulmages/bulmatpv/src/btticket.cpp
+</I>&gt;<i> &gt; Log:
+</I>&gt;<i> &gt; Extiendo un cambio a bulmalib
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Bulmages-main mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i> 
+</I>&gt;<i> --
+</I>&gt;<i> Aron
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i> &quot;
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="004077.html">[BulmaGés]r4013 - in trunk/bulmages: bulmalib/src bulmatpv/src
+</A></li>
+	<LI>Próximo mensaje: <A HREF="004070.html">[BulmaGés] r4014 -	trunk/bulmages/bulmafact/plugins/pluginbf_clientefactura
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4080">[ fecha ]</a>
+              <a href="thread.html#4080">[ hilo ]</a>
+              <a href="subject.html#4080">[ asunto ]</a>
+              <a href="author.html#4080">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

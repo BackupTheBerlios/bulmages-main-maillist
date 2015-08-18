@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Qt5 y Windows
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FQt5_y_Windows%3F%3D&In-Reply-To=%3CCAJWqEtcRqcLPcySVbC4sPpAUKiLinX9TdZ%2BY4OBKQjwtkCB0aA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007586.html">
+   <LINK REL="Next"  HREF="007588.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Qt5 y Windows </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FQt5_y_Windows%3F%3D&In-Reply-To=%3CCAJWqEtcRqcLPcySVbC4sPpAUKiLinX9TdZ%2BY4OBKQjwtkCB0aA%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]Qt5 y Windows">tborras en conetxia.com
+       </A><BR>
+    <I>Mar Mayo 28 19:15:10 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007586.html">[BulmaGés]Qt5 y Windows
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007588.html">[BulmaGés]Qt5 y Windows
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7587">[ fecha ]</a>
+              <a href="thread.html#7587">[ hilo ]</a>
+              <a href="subject.html#7587">[ asunto ]</a>
+              <a href="author.html#7587">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bones Leo.
+
+Agafem per exemple el bulmatpv. Dins el  src del bulmatpv generam els
+projectes libbulmatpv y el bulmatpv.
+El problema es que per a Windows el treball amb llibreries es totalment
+distint que amb Linux i has de fer servir el declspec(dllexport) o
+declspec(dllimport) a les declaracions segons estiguis construint la
+llibreria o la estiguis fent servir. Es una barbaritat però MS ja ens hi te
+acostumats.
+
+Nosaltres tenim el parametre de compilació (BT_BULMATPV)  que feim servir
+unicament per aquest propòsit. Si compliles amb BT_BULMATPV activat estas
+construint la llibreria libbulmatpv i si no només la estas emprant.
+
+Ara creq que dona problemes (abans no ho feia, pero també he cambiat de
+compilador, les Qt, el cmake ...) entre el bulmatpv.exe i el
+libbulmatpv.dll perque el parámetre BT_BULMATPV esta activat tant quan
+construim la llibrería com quan  construim l'executable. a l'executable no
+s'ha de fer servir ja que no construeixes la llibreria i la fas servir per
+tant el link del bulmatpv.exe falla dient coses molt lletges.
+
+Així que la pregunta es com poder pasar el ADD_DEFINITIONS només per a un
+projecte i no per a tot el directori.
+
+No es que sigui cap gran problema,  podem treurer el main.cxx a un altre
+directori y &quot;Santas Pascuas&quot; Pero ja que hi soim voldría aclarir el dubte.
+
+Salut
+
+
+El 28 de mayo de 2013 17:44, Leopold Palomo-Avellaneda
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">leo at alaxarxa.net</A>&gt;escribió:
+
+&gt;<i> Crec que es pot fer per target. I tambe a nivell de carpeta. Pots explicar
+</I>&gt;<i> mes detalladament quins parametres vols especiicament?
+</I>&gt;<i>
+</I>&gt;<i> Sent from my mobile
+</I>&gt;<i>
+</I>&gt;<i> Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras at conetxia.com</A>&gt; ha escrit:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Buenas
+</I>&gt;<i>
+</I>&gt;<i> Hay algunos misterios con Qt5 y cmake bastante raros.
+</I>&gt;<i>
+</I>&gt;<i> Tras hacerlo funcionar con Ubuntu y sin afinar mucho el tema he querido
+</I>&gt;<i> atacar la compilación con Windows.
+</I>&gt;<i>
+</I>&gt;<i> Cosa que me ha dejado un saborcillo medio amargo al compilar perfectamente
+</I>&gt;<i> pero no así con el linkado de los .ese
+</I>&gt;<i>
+</I>&gt;<i> Investiga no un poco, creo que el problema esta en que tenemos la
+</I>&gt;<i> generación del exe en la misma carpeta que la librería y parece que los
+</I>&gt;<i> parámetros de configuración deben diferir.
+</I>&gt;<i>
+</I>&gt;<i> Es un tema novedoso para mi pero creo que con cmake solo puedes
+</I>&gt;<i> especificar parámetros por carpeta y no por proyecto.
+</I>&gt;<i>
+</I>&gt;<i> Alguien me lo confirma ?
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>
+
+
+-- 
+Tomeu Borrás
+Conetxia Soluciones Informáticas
+677 77 44 76
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20130528/e4b0d8ad/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20130528/e4b0d8ad/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007586.html">[BulmaGés]Qt5 y Windows
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007588.html">[BulmaGés]Qt5 y Windows
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7587">[ fecha ]</a>
+              <a href="thread.html#7587">[ hilo ]</a>
+              <a href="subject.html#7587">[ asunto ]</a>
+              <a href="author.html#7587">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

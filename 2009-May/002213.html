@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Otra duda más
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FOtra_duda_m%3DE1s%3F%3D&In-Reply-To=%3Cc42865c40905260554n7df592ecv4534c78dd2c2b93%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002201.html">
+   <LINK REL="Next"  HREF="002195.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Otra duda más </H1>
+    <B>Raül Martínez i Peris</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FOtra_duda_m%3DE1s%3F%3D&In-Reply-To=%3Cc42865c40905260554n7df592ecv4534c78dd2c2b93%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]Otra duda más">elferrer en gmail.com
+       </A><BR>
+    <I>Mar Mayo 26 14:54:35 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002201.html">[BulmaGés]Otra duda más
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002195.html">[BulmaGés] [Feature #4629] Pregunta por el usuario	root
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2213">[ fecha ]</a>
+              <a href="thread.html#2213">[ hilo ]</a>
+              <a href="subject.html#2213">[ asunto ]</a>
+              <a href="author.html#2213">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Perfecto, ya lo tengo claro, ahora puedo definir más correctamente en
+el manual el porqué.
+
+Un saludo.
+
+
+
+El 26/05/09, Arturo Martín Lladó &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">amartin en conetxia.com</A>&gt; escribió:
+&gt;<i> Espero que esta explicación te sirva.
+</I>&gt;<i>
+</I>&gt;<i> El usuario &quot;root&quot; de PostgreSQL es el usuario de sistema &quot;postgres&quot;.
+</I>&gt;<i> Éste es el superusuario de la base de datos con más privilegios.
+</I>&gt;<i> Después, postgres puede añadir usuarios y ponerlos como superusuario o
+</I>&gt;<i> no (y creo que aún así tienen menos privilegios de administración en
+</I>&gt;<i> algunos detalles).
+</I>&gt;<i>
+</I>&gt;<i> A lo mejor te está liando que, desde bulmasetup, se añada al root como
+</I>&gt;<i> superusuario de PostgreSQL. Esto es porque, para realizar las conexiones
+</I>&gt;<i> a la base de datos es necesario que este usuario esté creado, si no,
+</I>&gt;<i> bulmasetup no puede realizar conexiones a las bases de datos para
+</I>&gt;<i> administrarlas, ni administrar usuarios, etc.
+</I>&gt;<i>
+</I>&gt;<i> Recuerda que bulmasetup se ha de ejecutar como root para que pueda
+</I>&gt;<i> funcionar, así que, usando la autenticación ident sameuser (o trust que
+</I>&gt;<i> no sé si va como predeterminada) de PostgreSQL, se conecta a la base de
+</I>&gt;<i> datos con el &quot;same user&quot; de UNIX, en este caso, root.
+</I>&gt;<i>
+</I>&gt;<i> A lo mejor esto también ayuda:
+</I>&gt;<i> <A HREF="http://wiki.postgresql.org/wiki/Autenticaci%C3%B3n_del_Cliente">http://wiki.postgresql.org/wiki/Autenticaci%C3%B3n_del_Cliente</A>
+</I>&gt;<i>
+</I>&gt;<i> Un saludo.
+</I>&gt;<i>
+</I>&gt;<i> Raül Martínez i Peris escribió:
+</I>&gt;&gt;<i> ¿Es diferente la funcionalidad de tener acceso de &quot;root&quot; a PostgreSQL
+</I>&gt;&gt;<i> o tener acceso como &quot;usuario con derechos de superusuario&quot; a
+</I>&gt;&gt;<i> PostgreSQL?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Arturo Martín Lladó - <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">amartin en conetxia.com</A>
+</I>&gt;<i> Departamento de Software
+</I>&gt;<i> Conetxia Soluciones Informáticas S.L.
+</I>&gt;<i> <A HREF="http://www.conetxia.com">http://www.conetxia.com</A> - <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">info en conetxia.com</A>
+</I>&gt;<i> 902.88.11.66
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>
+
+-- 
+Raül Martínez i Peris
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002201.html">[BulmaGés]Otra duda más
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002195.html">[BulmaGés] [Feature #4629] Pregunta por el usuario	root
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2213">[ fecha ]</a>
+              <a href="thread.html#2213">[ hilo ]</a>
+              <a href="subject.html#2213">[ asunto ]</a>
+              <a href="author.html#2213">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

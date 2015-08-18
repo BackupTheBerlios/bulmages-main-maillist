@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]VARIABLES FACTURA.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Futf-8%3Fq%3FVARIABLES_FACTURA%3D2E%3F%3D&In-Reply-To=%3C200905151822.51702.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002167.html">
+   <LINK REL="Next"  HREF="001933.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]VARIABLES FACTURA. </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Futf-8%3Fq%3FVARIABLES_FACTURA%3D2E%3F%3D&In-Reply-To=%3C200905151822.51702.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]VARIABLES FACTURA.">tborras en conetxia.com
+       </A><BR>
+    <I>Vie Mayo 15 18:22:51 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002167.html">[BulmaGés]VARIABLES FACTURA.
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001933.html">[BulmaGés] r3357 -	trunk/bulmages/bulmafact/plugins/pluginbf_alumno
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1940">[ fecha ]</a>
+              <a href="thread.html#1940">[ hilo ]</a>
+              <a href="subject.html#1940">[ asunto ]</a>
+              <a href="author.html#1940">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bueno pues
+
+Ya esta arreglado el error. Que era el siguiente:
+
+Se cambió el procesado del RML para que los [story] admitieran argumentos y 
+pudieran ocultar columnas.
+
+En la programacion del trataTags el calculo de las bases imponibles a partir 
+de las que se sacan los totales esta en el mismo bucle que calcula la cadena 
+por la que se sustituiria el [story]. El problema es que ese bucle ahora es 
+opcional y solo se procesa si hay [story] en el documento con lo que si no 
+tenias el tag [story] en el documento no se calculaban las bases  y todos los 
+demás cálculos daban cero.
+
+Enfin, ya está arreglado.
+
+Salut
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002167.html">[BulmaGés]VARIABLES FACTURA.
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001933.html">[BulmaGés] r3357 -	trunk/bulmages/bulmafact/plugins/pluginbf_alumno
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1940">[ fecha ]</a>
+              <a href="thread.html#1940">[ hilo ]</a>
+              <a href="subject.html#1940">[ asunto ]</a>
+              <a href="author.html#1940">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

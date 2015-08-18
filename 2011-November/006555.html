@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][PostgreSQL] De problemas con schemas.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F%3D5BPostgreSQL%3D5D_De_p%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Froblemas_con_schemas%3D2E%3F%3D&In-Reply-To=%3CCAJWqEteYjK%3D553FVWzUqBrfAnDV27BKCPTntdxf9mJuGDGEv4A%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006554.html">
+   <LINK REL="Next"  HREF="006599.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][PostgreSQL] De problemas con schemas. </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F%3D5BPostgreSQL%3D5D_De_p%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Froblemas_con_schemas%3D2E%3F%3D&In-Reply-To=%3CCAJWqEteYjK%3D553FVWzUqBrfAnDV27BKCPTntdxf9mJuGDGEv4A%40mail.gmail.com%3E"
+       TITLE="[BulmaGés][PostgreSQL] De problemas con schemas.">tborras en conetxia.com
+       </A><BR>
+    <I>Vie Nov 25 10:08:04 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006554.html">[BulmaGés][PostgreSQL] De problemas con schemas.
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006599.html">[BulmaGés][PostgreSQL] De problemas con schemas.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6555">[ fecha ]</a>
+              <a href="thread.html#6555">[ hilo ]</a>
+              <a href="subject.html#6555">[ asunto ]</a>
+              <a href="author.html#6555">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bien, he estado comparando los archivos SQL
+
+El problema de raiz es el siguiente:
+
+\echo -n ':: Establecemos el lenguaje de procedimientos ... '
+-- CREATE TRUSTED PROCEDURAL LANGUAGE plpgsql HANDLER plpgsql_call_handler;
+
+No entiendo por que quitas el plpgsql, sin el cual todos los triggers
+son lanzados en SQL estandar (con lo que la mayoría no funcionan).
+A partir de aqui todo es posible, ningún  trigger se ejecutará con lo
+que cualquier transacción terminará en ROLLBACK y en la base de datos
+no podrás meter nada.
+
+Y claro los problemas que tienes entre AS y BS también vienen de aqui,
+al suprimir el plpgsql todos los procedimientos dan errores de
+sintaxis ya que el
+lenguaje que los procesa no es el mismo.
+
+Salut
+
+
+
+El 25 de noviembre de 2011 02:19, Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;escribió:
+
+&gt;<i> Esto ...
+</I>&gt;<i>
+</I>&gt;<i> Se que es una chorrada, pero como se hace un diff de dos archivos que
+</I>&gt;<i> tienes en el ordenador en lugar de comparar cambios con un repositorio ?
+</I>&gt;<i>
+</I>&gt;<i> Salut
+</I>&gt;<i>
+</I>&gt;<i> El 25 de noviembre de 2011 01:24, Daniel Ripoll Osma &lt;
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">dripoll.public en gmail.com</A>&gt; escribió:
+</I>&gt;<i>
+</I>&gt;&gt;<i>  Al 25/11/11 00:46, En/na Daniel Ripoll Osma ha escrit:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> No queriendo hacer una simple rima, si no profundizar en el tema. He
+</I>&gt;&gt;<i> conseguido modificar el bulmafact_schema.sql para que me cree la base de
+</I>&gt;&gt;<i> datos, manualmente, y luego la rellene con lo encontrado en
+</I>&gt;&gt;<i> bulmafact_data.sql.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Aquí tengo el archivo (no lo subo al repo hasta no tener visto bueno)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> <A HREF="http://dl.dropbox.com/u/3754199/bulmafact_schema.sql">http://dl.dropbox.com/u/3754199/bulmafact_schema.sql</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Crea perfectamente, no obstante en bulmasetup, sigue sin crearme los
+</I>&gt;&gt;<i> correspondientes schemas, parece que ignora el archivo completamente.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ¿Alguna idea de que puede pasar?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Salut!
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  Hola a todos,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Bueno, dar la enhorabuena nuevamente por lo de los AutoForms a Tomeu, que
+</I>&gt;&gt;<i> ya se la dí por twitter y salió por un día en el paper.li de San Juan
+</I>&gt;&gt;<i> Libre (paper.li es un periodico generado, mediante una serie de tweets
+</I>&gt;&gt;<i> de personas destacadas en el ambito deseado)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Pero bueno, no todo trata de felicitar, precisamente vengo a llorar un
+</I>&gt;&gt;<i> poco.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Resulta que tengo instalada la versión de postgres: psql (PostgreSQL)
+</I>&gt;&gt;<i> 9.1.1
+</I>&gt;&gt;<i> Compila todo a la perfección y demás, pero.... ¡bulmasetup no crea las
+</I>&gt;&gt;<i> bases de datos!
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> He probado a crearlas manualmente, pero tampoco, estan los clasicos
+</I>&gt;&gt;<i> errores de &quot;as.&quot; cuando debería ser &quot;bs.&quot; o &quot;XXXX.&quot; por lo de que as esta
+</I>&gt;&gt;<i> reservado, pero a pesar de haberlo cambiado todo, sigue sin crearmelas
+</I>&gt;&gt;<i> manualmente.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ¿Alguien tiene el archivo correcto, o una base de datos, totalmente en
+</I>&gt;&gt;<i> blanco?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> --
+</I>&gt;&gt;<i> Daniel Ripoll Osmawww.danielripoll.es
+</I>&gt;&gt;<i> 6688.27.4.90
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Web &amp; Desktop Developer
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Bulmages-main mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Tomeu Borrás
+</I>&gt;<i> Conetxia Soluciones Informáticas
+</I>&gt;<i> 902 88 11 66 - 677 77 44 76
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+
+-- 
+Tomeu Borrás
+Conetxia Soluciones Informáticas
+902 88 11 66 - 677 77 44 76
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20111125/570a83f5/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20111125/570a83f5/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006554.html">[BulmaGés][PostgreSQL] De problemas con schemas.
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006599.html">[BulmaGés][PostgreSQL] De problemas con schemas.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6555">[ fecha ]</a>
+              <a href="thread.html#6555">[ hilo ]</a>
+              <a href="subject.html#6555">[ asunto ]</a>
+              <a href="author.html#6555">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

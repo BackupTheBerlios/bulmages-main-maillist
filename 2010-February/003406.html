@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][Bug #16823] AndLinux/FaPaCGès no va amb Windows Vista o 7
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BBug_%3D2316823%3D5D_An%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FdLinux/FaPaCG%3DE8s_no_va_amb_Windows_Vista_o_7%3F%3D&In-Reply-To=%3C201002100942.41252.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003405.html">
+   <LINK REL="Next"  HREF="003410.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][Bug #16823] AndLinux/FaPaCGès no va amb Windows Vista o 7 </H1>
+    <B>Tomeu</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BBug_%3D2316823%3D5D_An%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FdLinux/FaPaCG%3DE8s_no_va_amb_Windows_Vista_o_7%3F%3D&In-Reply-To=%3C201002100942.41252.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés][Bug #16823] AndLinux/FaPaCGès no va amb Windows Vista o 7">tborras en conetxia.com
+       </A><BR>
+    <I>Mie Feb 10 09:42:41 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003405.html">[BulmaGés][Bug #16823] AndLinux/FaPaCGès no va amb Windows Vista o 7
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003410.html">[BulmaGés][Bug #16823] AndLinux/FaPaCGès no va amb Windows Vista o 7
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3406">[ fecha ]</a>
+              <a href="thread.html#3406">[ hilo ]</a>
+              <a href="subject.html#3406">[ asunto ]</a>
+              <a href="author.html#3406">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Faig una mica de explicació de tot plegat per tenir clar el que passa.
+
+colinux es el kernel de Linux adaptat per funcionar com si fos un programa de 
+Windows. Aquest nucli no té interacció directa amb els usuaris sino que es un 
+programa que dona serveis a altres programes o dispositius. Per tant la seva 
+execució no es com la execució d'un altre programa. Segons com hi ha una icona 
+al taskbar.
+
+Cal remarcar que aquest nucli no es FapacGes, sino el propi kernel i que per 
+fer anar el FapacGes a Windows fan falta, alguns programes de suport. Alguns 
+corrent sobre el windows (kernel, servidor X) i d'altres corrent sota el 
+colinux (postgresql, cups).
+
+Essent aquest un nucli sense iteracció podríem pensar (i de fet ho feim) que 
+tot això pot funcionar com un servei del propi Windows i despreocupar-nos de 
+engegar-lo o no deixant que colinux arranqui en engegar l'ordinador i estigui 
+sembre encés. (Això es registrant-lo com a servei NT, o posant-lo al 
+Autoarranque).
+
+Doncs a lo que se refereixen es a que en la instal·lació de andlinux nosaltres 
+podem triar si volem que el colinux engegui automaticament com a servei o que 
+no el registri com a servei i que nosaltres el posarem en marxa quan el 
+volguem fer servir mitjançant les opcions al menu 'Start Colinux'. I segons 
+diuen posar-lo com a servei no funciona be amb Vista ni Windows 7.
+
+Les proves que s'han de fer son simples:
+
+Per una banda anar al visor de sucesos per veurer l'error que dona i reportar-
+lo.
+
+Per altra banda, una volta instal·lat anar al menu i intentar engegar-lo 
+manualment amb el 'Start colinux'. Notar que una vegada fet això no semblarà 
+que pasi res i que hem de engegar el FapacGes.
+
+NOTA: Probablement, i coneixent les polítiques de Vista es un problema de 
+permisos en alguna part. També hi pot haver algun problema posterior amb 
+l'execució del servidor X.
+
+
+
+
+Salut
+
+
+
+&gt;<i> * Tomeu Borras [09/02/10 22:47]:
+</I>&gt;<i> &gt; Segons aquest foro
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; <A HREF="http://www.andlinux.org/forum/viewtopic.php?t=180">http://www.andlinux.org/forum/viewtopic.php?t=180</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Resulta que per funcionar a Vista el que s'ha de fer es triar el startup
+</I>&gt;<i> &gt; manual en lloc de la instal·lació com a servei NT.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ¿Podeu provar-ho?
+</I>&gt;<i> 
+</I>&gt;<i> Què vol dir &quot;startup manual&quot;? Quan s'instal·la l'AndLinux simplement
+</I>&gt;<i> s'ha d'anar a alguns dels menús on apareix &quot;Fapacgès&quot; (al menú inicio
+</I>&gt;<i> o a la icona de la barra horitzontal de baix de &quot;inicio rápido&quot;) i
+</I>&gt;<i> escollir Fapacgès i això obre el bulmafact. Sembla com si la
+</I>&gt;<i> instal·lació ja deixés el programa corrent como a servei. No entenc
+</I>&gt;<i> gaire bé com ho fa, si en escollir aquest opció de menú s'inicia el
+</I>&gt;<i> servei o si el servei queda ja per a que s'iniciï automàticament cada
+</I>&gt;<i> cop que s'inicia l'ordinador.
+</I>&gt;<i> 
+</I>&gt;<i> Tinc algun Windows Vista per casa d'una filla, faré proves aquí.
+</I>&gt;<i> 
+</I>&gt;<i> Walter
+</I>&gt;<i> 
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003405.html">[BulmaGés][Bug #16823] AndLinux/FaPaCGès no va amb Windows Vista o 7
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003410.html">[BulmaGés][Bug #16823] AndLinux/FaPaCGès no va amb Windows Vista o 7
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3406">[ fecha ]</a>
+              <a href="thread.html#3406">[ hilo ]</a>
+              <a href="subject.html#3406">[ asunto ]</a>
+              <a href="author.html#3406">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

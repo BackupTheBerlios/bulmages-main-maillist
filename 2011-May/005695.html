@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaG&#233;s][Bug #18043] Ubuntu 11.04 - Bulmages no t&#65533; una icona per iniciar
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Futf-8%3Fq%3F%3D5BBug_%3D2318043%3D5D_Ubuntu_%3F%3D%0A%09%3D%3Futf-8%3Fq%3F11%3D2E04_-_Bulmages_no_t%3DEF%3DBF%3DBD_una_icona_per_iniciar%3F%3D&In-Reply-To=%3CBANLkTi%3DauLgrrfesc1cWB721jz%3DVjiceqQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005694.html">
+   <LINK REL="Next"  HREF="005696.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaG&#233;s][Bug #18043] Ubuntu 11.04 - Bulmages no t&#65533; una icona per iniciar </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Futf-8%3Fq%3F%3D5BBug_%3D2318043%3D5D_Ubuntu_%3F%3D%0A%09%3D%3Futf-8%3Fq%3F11%3D2E04_-_Bulmages_no_t%3DEF%3DBF%3DBD_una_icona_per_iniciar%3F%3D&In-Reply-To=%3CBANLkTi%3DauLgrrfesc1cWB721jz%3DVjiceqQ%40mail.gmail.com%3E"
+       TITLE="[BulmaG&#233;s][Bug #18043] Ubuntu 11.04 - Bulmages no t&#65533; una icona per iniciar">tborras en gmail.com
+       </A><BR>
+    <I>Mie Mayo  4 16:31:25 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="005694.html">[BulmaG&#233;s][Bug #18043] Ubuntu 11.04 - Bulmages no t&#65533; una icona per iniciar
+</A></li>
+        <LI>Próximo mensaje: <A HREF="005696.html">[BulmaG&#233;s][Bug #18043] Ubuntu 11.04 - Bulmages no t&#65533; una icona per iniciar
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5695">[ fecha ]</a>
+              <a href="thread.html#5695">[ hilo ]</a>
+              <a href="subject.html#5695">[ asunto ]</a>
+              <a href="author.html#5695">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bones
+
+Segons entenc el que s'ha de fer es seguir aquest tutorial
+
+<A HREF="http://library.gnome.org/admin/system-admin-guide/stable/menustructure-13.html.en">http://library.gnome.org/admin/system-admin-guide/stable/menustructure-13.html.en</A>
+
+i crear els arxius de menu al $XDG_CONFIG_DIRS/menus/applications.menu
+
+Imagin que aquesta localització es compatible amb KDE, GNOME i XFCE pero no
+he fet les proves pertinents.
+
+
+Clar que ho miro i ho torno a mirar i no existeix la variable de sessió
+XDG_CONFIG_DIR al Ubuntu amb lo que el tutorial queda invalidat. Pero si que
+existeix un XDG_DATA_DIRS i un subdirectori menu
+
+
+Ara ho provaré i si funciona faré que el make install posi els arxius aqui
+on toca amb relació al directori de instal·lació.
+
+De fet fa estona que ho volia fer però entre una cosa i l'altre no m'hi he
+posat mai (vaig de bòlid). El reportbug es la excusa perfecte per no deixar
+passar mes temps, gracies.
+
+Salut
+
+2011/5/4 Walter Garcia-Fontes &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">walter.garcia en upf.edu</A>&gt;
+
+&gt;<i> * <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">admin en berlios.de</A> [04/05/11 11:25]:
+</I>&gt;<i> &gt; Submitted by: wgarcia
+</I>&gt;<i> &gt; Assigned to : none
+</I>&gt;<i> &gt; Summary: Ubuntu 11.04 - Bulmages no t? una icona per iniciar
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Details: Al nou Ubuntu 11.04 l'escriptori per defecte ?s el nou Unity.
+</I>&gt;<i> Aquest escriptori (basat en Gnome) no t? un gnome-panel a dalt, sin? un
+</I>&gt;<i> panell propi que no t? l'indicador cl?ssic i per tant no mostra avisos
+</I>&gt;<i> d'aplicacions.
+</I>&gt;<i> &gt; Aix? implica que Bulmages no t? indicador al panell per iniciar el
+</I>&gt;<i> llen?ador. L'?nica manera d'iniciar les diferents parts de la suite ?s des
+</I>&gt;<i> d'una terminal.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; S'hauria de considerar abandonar l'inici &quot;r?pid&quot; a trav?s de l'indicador
+</I>&gt;<i> i iniciar Bulmages des de men?s ?nicament.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Aix? tamb? passar? a les distribucions que adoptin Gnome 3 perqu? el
+</I>&gt;<i> Gnome Shell tampoc t? indicadors al panell, tot que Gnome 3 s'apla?at per
+</I>&gt;<i> n?ssima vegada a setembre.
+</I>&gt;<i> &gt; A Unity s'usa una barretja aberrant de GTK2+, GTK3 i Qt4.6.
+</I>&gt;<i>
+</I>&gt;<i> Em sembla que a l'Unity actual sols s'usa GTK 2, a l'Unity 2D (sense
+</I>&gt;<i> Compiz) s'usa QT4.6, i per la versió 10.10 es passarà l'Unity a GTK
+</I>&gt;<i> 3.
+</I>&gt;<i>
+</I>&gt;<i> &gt; Gnome 3, usa el nou GTK3 (Que per cert, al final no s'ha apla?at, ja
+</I>&gt;<i> &gt; que GTK3 i Gnome3 ja figuren com a estable, excepte per a Debian i
+</I>&gt;<i> &gt; Ubuntu).
+</I>&gt;<i>
+</I>&gt;<i> Lo del l'aplaçament va ser un acudit d' &quot;April Fool's Day&quot; que em vaig
+</I>&gt;<i> empassar com un beneit (fool=beneit).
+</I>&gt;<i>
+</I>&gt;<i> &gt; A m?s a m?s, afirmar que ja no existeixen &quot;indicadors&quot; es totalment
+</I>&gt;<i> incorrecte.
+</I>&gt;<i> &gt; Tant el panell de el Unity com Gnome 3 complets (shell i panels),
+</I>&gt;<i> &gt; han estat redisenyats, i segueixen existint indicadors, la
+</I>&gt;<i> &gt; diferencia, es que fins ara existien tres conceptes: &quot;Applet&quot;,
+</I>&gt;<i> &gt; &quot;Systray&quot;, &quot;AppIndicator&quot; i ara tant sols existeix un unic
+</I>&gt;<i> &gt; &quot;AppIndicator&quot; totalment redissenyat.
+</I>&gt;<i>
+</I>&gt;<i> Aquí totalment d'acord, a més de moment a Unity s'han permès els
+</I>&gt;<i> indicadors clàssics (els &quot;systray&quot;) i per tant no afecta a  Bulmagès,
+</I>&gt;<i> que amb una petita configuració continua sortint al quadre d'Unity.
+</I>&gt;<i>
+</I>&gt;<i> &gt; L''inici r?pid de BulmaGes no es un indicador com dius, si no es una
+</I>&gt;<i> icona de systray.
+</I>&gt;<i> &gt; Ja que si fos un indicador apareixeria a Unity, ja que usa una
+</I>&gt;<i> &gt; versio lleugerament modificada del &quot;AppIndicator&quot; de Gnome2.
+</I>&gt;<i>
+</I>&gt;<i> Com deia es pot fer, i de fet tothom ho està fent perquè de moment hi
+</I>&gt;<i> ha un munt d'aplicacions que no s'han adaptat, que apareguin els
+</I>&gt;<i> &quot;systray&quot; a Unity, i per tant la de Bulmagès pot continuar apareixent.
+</I>&gt;<i>
+</I>&gt;<i> &gt; No se fins a quin punt abandonar l'inici r?pid, pero si es mant?
+</I>&gt;<i> &gt; posiblement requereixi una mica de feina, per fer que funcioni per
+</I>&gt;<i> &gt; tot.
+</I>&gt;<i>
+</I>&gt;<i> Això potser és objecte d'una discussió més àmplia. Jo com a usuari
+</I>&gt;<i> penso que l'inici ràpid de Bulmagès no és indispensable, però suposo
+</I>&gt;<i> que un/a usuari/a que gestioni una comptabilitat, facturació i punt de
+</I>&gt;<i> venda i hagi d'anar fent diverses tasques al llarg de la seva jornada
+</I>&gt;<i> ho pot trobar útil.
+</I>&gt;<i>
+</I>&gt;<i> Walter
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Walter Garcia-Fontes
+</I>&gt;<i> mailto: <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">walter.garcia en upf.edu</A> - <A HREF="http://puna.upf.edu">http://puna.upf.edu</A>
+</I>&gt;<i> Departament d'Economia i Empresa - <A HREF="http://www.econ.upf.edu">http://www.econ.upf.edu</A>
+</I>&gt;<i> Universitat Pompeu Fabra
+</I>&gt;<i> Ramon Trias Fargas 25-27, 08005 Barcelona, Spain
+</I>&gt;<i> Tel. +34 93 542 2722 - Fax. +34 93 542 1746
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20110504/76fefd18/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20110504/76fefd18/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="005694.html">[BulmaG&#233;s][Bug #18043] Ubuntu 11.04 - Bulmages no t&#65533; una icona per iniciar
+</A></li>
+	<LI>Próximo mensaje: <A HREF="005696.html">[BulmaG&#233;s][Bug #18043] Ubuntu 11.04 - Bulmages no t&#65533; una icona per iniciar
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5695">[ fecha ]</a>
+              <a href="thread.html#5695">[ hilo ]</a>
+              <a href="subject.html#5695">[ asunto ]</a>
+              <a href="author.html#5695">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

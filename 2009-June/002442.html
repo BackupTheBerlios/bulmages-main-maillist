@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]¿Qué propósito tiene pdefs.h?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fb%3Fwr9RdcOpIHByb3DDs3NpdG8g%3F%3D%20%3D%3Futf-8%3Fq%3Ftiene_pdefs%3D2Eh%3D3F%3F%3D&In-Reply-To=%3C200906181122.18764.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002441.html">
+   <LINK REL="Next"  HREF="002444.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]¿Qué propósito tiene pdefs.h? </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fb%3Fwr9RdcOpIHByb3DDs3NpdG8g%3F%3D%20%3D%3Futf-8%3Fq%3Ftiene_pdefs%3D2Eh%3D3F%3F%3D&In-Reply-To=%3C200906181122.18764.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]¿Qué propósito tiene pdefs.h?">tborras en conetxia.com
+       </A><BR>
+    <I>Jue Jun 18 11:22:18 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002441.html">[BulmaGés]¿Qué propósito tiene pdefs.h?
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002444.html">[BulmaGés] Ventana principal de plugin fija en el	indexador
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2442">[ fecha ]</a>
+              <a href="thread.html#2442">[ hilo ]</a>
+              <a href="subject.html#2442">[ asunto ]</a>
+              <a href="author.html#2442">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>El Thursday 18 June 2009 11:06:41 Aron escribió:
+&gt;<i> En algunos plugins existe este fichero, y en el CMakeLists.txt aparece lo
+</I>&gt;<i> siguiente (parece que para ejecutar un moc si no es QObject):
+</I>&gt;<i>
+</I>&gt;<i> # Exclude files with no QObject macro.
+</I>&gt;<i> file(GLOB plugin_NO_MOCS pdefs.h)
+</I>&gt;<i> list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+</I>&gt;<i>
+</I>&gt;<i> ¿Para qué sirve &quot;pdefs.h&quot;?
+</I>Buena pregunta !!!!
+
+Resulta que el mayor problema que tenemos con la compilacion en Windows es que 
+la cabecera (el .h) de una libreria no debe ser igual si lo que estas 
+haciendo es la compilacion de la libreria o estas compilando para usar los 
+componentes de la misma.
+
+Es decir que si compilas la libreria tienes que usar la macro 
+__declspec(dllexport) para que la clase sea exportada y pueda ser usada por 
+otras librerias.
+
+Y si lo que tienes que hacer es usar un componente compilado en otra libreria 
+tienes que usar la macro __declspec(dllimport) para que la libreria sepa 
+donde encontrar la implementacion de la clase.
+
+Es un peñazo !!!! Como el Windows mismo. Resulta que la única lógica que tiene 
+hacer eso son fines comerciales donde puedes cobrar por uso de determinada 
+libreria.
+
+Bueno, el pdefs.h tiene como objetivo determinar lo que estas compilando (si 
+es la propia libreria o no y poner la macro como toca). Aun no esta puesto 
+por todo ni terminado completamente pero te pongo un ejemplo con el del 
+pluginbf_clientepresupuesto
+
+
+
+#ifndef PDEFS_CLIENTEPRESUPUESTO_H
+#define PDEFS_CLIENTEPRESUPUESTO_H
+
+
+#ifdef Q_WS_WIN
+
+#ifdef pluginbf_clientepresupuesto
+#define MY_EXPORT_CLIENTEPRESUPUESTO __declspec(dllexport)
+#else
+#define MY_EXPORT_CLIENTEPRESUPUESTO __declspec(dllimport)
+#endif
+
+#else
+#define MY_EXPORT_CLIENTEPRESUPUESTO
+#endif
+
+#endif
+
+
+Lo que hace es simple: Según si esta definido pluginbf_clientepresupuesto (lo 
+cual significa que estamos compilando dicho plugin pone una macro u otra.
+
+
+Al principio pense que con una única macro MY_EXPORT era suficiente. Pero 
+resulta que como tenemos includes cruzados de una libreria a otra necesitamos 
+una macro para cada libreria para que no se entremezclen.
+
+La macro es usada luego en toda la libreria para exportar los puntos de 
+entrada de plugin y las clases que queremos poder usar desde fuera de la 
+propia libreria.
+
+Y este es el cometido de pdefs.h (Windows only).
+
+Salut
+
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002441.html">[BulmaGés]¿Qué propósito tiene pdefs.h?
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002444.html">[BulmaGés] Ventana principal de plugin fija en el	indexador
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2442">[ fecha ]</a>
+              <a href="thread.html#2442">[ hilo ]</a>
+              <a href="subject.html#2442">[ asunto ]</a>
+              <a href="author.html#2442">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

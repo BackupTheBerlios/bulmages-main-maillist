@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [.gitignore] Principalmente a Pablo	Alvarez de Sotomayor Posadillo
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5B.gitignore%5D%20Principalmente%20a%20Pablo%0A%09Alvarez%20de%20Sotomayor%20Posadillo&In-Reply-To=%3C4ED43509.5090702%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006587.html">
+   <LINK REL="Next"  HREF="006575.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [.gitignore] Principalmente a Pablo	Alvarez de Sotomayor Posadillo </H1>
+    <B>Daniel Ripoll Osma</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5B.gitignore%5D%20Principalmente%20a%20Pablo%0A%09Alvarez%20de%20Sotomayor%20Posadillo&In-Reply-To=%3C4ED43509.5090702%40gmail.com%3E"
+       TITLE="[BulmaGés] [.gitignore] Principalmente a Pablo	Alvarez de Sotomayor Posadillo">dripoll.public en gmail.com
+       </A><BR>
+    <I>Mar Nov 29 02:27:37 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006587.html">[BulmaGés]Problemas postgres9
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006575.html">[BulmaGés]Invitación a conectarnos en LinkedIn
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6569">[ fecha ]</a>
+              <a href="thread.html#6569">[ hilo ]</a>
+              <a href="subject.html#6569">[ asunto ]</a>
+              <a href="author.html#6569">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Saludos, he visto que has editado el archivo .gitignore del repositorio,
+advertirte que ten cuidado lo que tocas...
+
+Lo que tu has añadido es:
+
+*.cmake
+*.conf
+*.css
+*.depends
+*.pot_list
+actualizabulmacont
+actualizabulmafact
+applications
+bgtrml2pdf.py
+blconfig.h
+bulmasetup.py
+CMakeCache.txt
+CMakeFiles
+config.py
+creabulmacont
+creabulmafact
+create_gettext_files
+create_message_catalog
+installbulmages-db
+install_manifest.txt
+local_blI18n.h
+Makefile
+menu
+update_message_catalog_lang
+version
+~
+
+Sin ofender pero te has fijado bien en lo que ignoras?
+
+1) Al ignorar directamente *.css estas impidiendo la revisión de
+cualquier formato .css, y hay archivos .css que deberían de estar bajo
+revisión, aunque no se actualicen.
+
+2) Estas indicando que applications no debe ser sujeto a GIT, con lo
+cual estas impidiendo que existan los archivos SVG que nos otorgan los
+iconos.
+
+3) ¡Has puesto blconfig.h! ¡Un archivo crítico del sistema de bulmages!
+¿que haces animal?
+
+4) ¡Has puesto menu! Impidiendo la revisión del menu, y por lo tanto si
+no hay menu, no hay iconos.
+
+Además has puesto muchos archivos que ni si quiera existen, como
+version, update_message_catalog_lang, etc... que son generados al
+compilar el programa...
+
+Si tienes un caos con estos archivos entre el código y demás, lo suyo es
+que te lo estructures de esta manera (te enseño como lo tengo yo
+mediante &quot;capturas textuales de la terminal&quot;.
+
+$ ls Proyectos/bulmages
+build/  bulmages/  debian/  devkitPro/  documentos/  no-cont-bulmages/ 
+web/  contributors.txt
+
+$ ls build
+actualizabulmacont*      actualizabulmafact*     
+applications/                 bulmacont/     bulmafact/           bulmages/
+bulmalib/                bulmasetup/             
+bulmatpv/                     CMakeFiles/    creabulmacont*      
+creabulmafact*
+create_gettext_files*    create_message_catalog* 
+css/                          doc/           installbulmages/    
+installbulmages-db*
+Makefile                 menu/                   
+update_message_catalog_lang*  version        cmake_install.cmake 
+CPackConfig.cmake
+CPackSourceConfig.cmake  bulmacont.conf          
+bulmafact.conf                bulmages.conf  bulmatpv.conf       
+bgtrml2pdf.py*
+CMakeCache.txt           install_manifest.txt
+
+
+
+Como puedes ver la mayoría de lo que has marcado esta en el build, y por
+tanto es inutil marcarlo en el .gitignore del repositorio.
+
+¿Y como es que no subo el build cuando hago pushes, commits y demás?
+
+Sencillo:
+git config --global core.excludesfile ~/.gitignore
+
+Y en ese archivo, ubicado en mi home, tengo escrito:
+build/
+.DS_Store
+.thumb
+
+Como puedes ver es mucho más sencillo y correcto que usar el .gitignore
+del repositorio, arriesgandote a quitar de versión algo que no deberías
+quitar
+
+
+
+
+-- 
+Daniel Ripoll Osma
+www.danielripoll.es
+6688.27.4.90
+
+Web &amp; Desktop Developer
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006587.html">[BulmaGés]Problemas postgres9
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006575.html">[BulmaGés]Invitación a conectarnos en LinkedIn
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6569">[ fecha ]</a>
+              <a href="thread.html#6569">[ hilo ]</a>
+              <a href="subject.html#6569">[ asunto ]</a>
+              <a href="author.html#6569">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

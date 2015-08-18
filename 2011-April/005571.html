@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Migrando a GIT (I)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FMigrando_a_GIT_%3D28I%3F%3D%20%3D%3Fiso-8859-1%3Fq%3F%3D29%3F%3D&In-Reply-To=%3C4DA38225.2050507%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005566.html">
+   <LINK REL="Next"  HREF="005570.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Migrando a GIT (I) </H1>
+    <B>Daniel Ripoll</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FMigrando_a_GIT_%3D28I%3F%3D%20%3D%3Fiso-8859-1%3Fq%3F%3D29%3F%3D&In-Reply-To=%3C4DA38225.2050507%40gmail.com%3E"
+       TITLE="[BulmaGés]Migrando a GIT (I)">dripoll.public en gmail.com
+       </A><BR>
+    <I>Mar Abr 12 00:35:17 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="005566.html">[BulmaGés]Migrando a GIT (I)
+</A></li>
+        <LI>Próximo mensaje: <A HREF="005570.html">[BulmaGés] r4748 - trunk/bulmages/bulmalib/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5571">[ fecha ]</a>
+              <a href="thread.html#5571">[ hilo ]</a>
+              <a href="subject.html#5571">[ asunto ]</a>
+              <a href="author.html#5571">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>El 11/04/11 22:55, Fco. Javier M. C. escribió:
+Hola Javier y Walter,
+&gt;&gt;<i> Gracias Daniel, lo he probado y funciona. Sólo dos observaciones:
+</I>Agradezco las gratitudes, y me agrada ver que ya estáis probando.
+&gt;&gt;&gt;<i> git clone <A HREF="ssh://VUESTRO_NICK_EN_BERLIOS@git.berlios.de/gitroot/bulmages">ssh://VUESTRO_NICK_EN_BERLIOS@git.berlios.de/gitroot/bulmages</A> bulmages.git
+</I>&gt;&gt;<i> ¿Qué significa este &quot;bulmages.git&quot; que sale en la segunda línea? Con
+</I>&gt;&gt;<i> la primera línea ya me bajó el trunk.
+</I>&gt;&gt;<i>
+</I>&gt;<i> Esto se pone en la misma línea para que te cree el directorio Git con
+</I>&gt;<i> ese nombre.
+</I>
+Efectivamente, tal y como dice Javier, no es una segunda linea, es en la 
+misma, para que cree el directorio con ese nombre, realmente no es 
+necesario, pero usualmente los proyectos en git suelen tener esa 
+apariencia &quot;proyecto.git&quot;, obviamente nadie te obliga, eso queda en tu 
+PC y ya verás que nombre le pones ;-D
+&gt;&gt;&gt;<i> 2.) Antes de hacer nada más, deberemos indicarle a GIT cual es nuestro email y
+</I>&gt;&gt;&gt;<i> nombre real.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> git config user.name &quot;Nombre Real que tenemos en Berlios&quot;
+</I>&gt;&gt;&gt;<i> git config user.email <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">nuestroemail en dominio.com</A>
+</I>&gt;&gt;<i> Para hacer esto hay que entrar al directorio &quot;bulmages&quot; que se crea
+</I>&gt;&gt;<i> cuando se baja el &quot;trunk&quot;.
+</I>&gt;<i> Exacto.
+</I>
+Efectivamente, hay que entrar antes dentro del directorio, culpa mia por 
+obviar eso, de todas maneras, si quereis podéis realizar:
+
+    git config --global user.name &quot;Nombre Real que tenemos en Berlios&quot;
+    git config --global user.email <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">nuestroemail en dominio.com</A>
+
+Con esto lo que conseguireis es que se guarde en vuestro 
+$HOME/.gitconfig y use ese nombre e email por defecto en todos los 
+proyectos GIT.
+&gt;&gt;<i> He hecho mi primer commit! No parece generar un correo a la lista como
+</I>&gt;&gt;<i> hacía el subversion (o todavía no ha llegado?).
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Walter
+</I>&gt;&gt;<i>
+</I>&gt;<i> Un poco de paciencia que todavía estamos mirando que todo vaya bien,
+</I>&gt;<i> aunque eso no se como va. A lo mejor Leo o Tomeu saben como se puede
+</I>&gt;<i> arreglar.
+</I>Enhorabuena por tu primer Commit, efectivamente no aparece en la lista 
+como en SVN, ese proceso no era &quot;automágico&quot;, que quiero decir? Que 
+posiblemente sea alguna opción y/o script que se tenga que activar, al 
+cual Leo o Tomeu supongo tendrán acceso.
+
+Aprovecho para decir, que si os fijais en los logs de git, aparece un 
+usuario 'd &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">meph.snake en gmail.com</A>&quot;&gt;', como habréis visto ya hay otros 
+commits con el mismo email con mi nombre, eso es porque ya previamente 
+estaba registrado (pero no activado) en berlios, no obstante ese nombre 
+&quot;d&quot; es un error por culpa de mi configuración, el cual ahora mismo 
+arreglaré y subiré.
+
+-- 
+Daniel Ripoll.
+TODO-REDES
+<A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+C/Begònia 12 - 07010 Palma de Mallorca.
+Tel.: 971499071
+
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20110412/d1b797eb/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20110412/d1b797eb/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="005566.html">[BulmaGés]Migrando a GIT (I)
+</A></li>
+	<LI>Próximo mensaje: <A HREF="005570.html">[BulmaGés] r4748 - trunk/bulmages/bulmalib/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5571">[ fecha ]</a>
+              <a href="thread.html#5571">[ hilo ]</a>
+              <a href="subject.html#5571">[ asunto ]</a>
+              <a href="author.html#5571">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

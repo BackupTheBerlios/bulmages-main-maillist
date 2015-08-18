@@ -1,0 +1,241 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Información sobre el sistema de traducciones Gettext
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FInformaci%3DF3n_sobre_e%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fl_sistema_de_traducciones_Gettext%3F%3D&In-Reply-To=%3C200901242313.31735.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000857.html">
+   <LINK REL="Next"  HREF="000860.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Información sobre el sistema de traducciones Gettext </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FInformaci%3DF3n_sobre_e%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fl_sistema_de_traducciones_Gettext%3F%3D&In-Reply-To=%3C200901242313.31735.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]Información sobre el sistema de traducciones Gettext">tborras en conetxia.com
+       </A><BR>
+    <I>Sab Ene 24 23:13:31 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000857.html">[BulmaGés]Información sobre el sistema de traducciones Gettext
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000860.html">[BulmaGés]Información sobre el sistema de traducciones Gettext
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#858">[ fecha ]</a>
+              <a href="thread.html#858">[ hilo ]</a>
+              <a href="subject.html#858">[ asunto ]</a>
+              <a href="author.html#858">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Muy buenas.
+
+Enhorabuena !!! Un trabajo excelente !!!.
+
+Salut
+
+
+El Saturday 24 January 2009 21:21:32 Fco. Javier M. C. escribió:
+&gt;<i> Hola a todos. Relacionado con el último 'commit' que he hecho para dar
+</I>&gt;<i> soporte de traducciones 'gettext' a bulmafact os quiero informar sobre
+</I>&gt;<i> algunos aspectos del sistema. Que conste que no soy experto en gettext
+</I>&gt;<i> (ni en nada, todo sea dicho) que es un sistema complejo en si mismo.
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> TÍTULO: Sistema de traducción GETTEXT en Bulmagés.
+</I>&gt;<i> AUTOR: Fco. Javier M. C. &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+</I>&gt;<i> LICENCIA DEL DOCUMENTO: CC-BY
+</I>&gt;<i> EFECTIVIDAD: SVN rev. 2928
+</I>&gt;<i> FECHA: 24/ENERO/2009
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> INTRODUCCIÓN:
+</I>&gt;<i> --------------
+</I>&gt;<i>
+</I>&gt;<i> Este documento muestra los cambios que se han hecho en bulmagés para
+</I>&gt;<i> adaptarlo al funcionamiento del sistema de traducciones y localización
+</I>&gt;<i> 'gettext'.
+</I>&gt;<i>
+</I>&gt;<i> A fecha de hoy sólo se ha adaptado el sistema a los .ui (pantallas) de
+</I>&gt;<i> Bulmafact. El sistema se irá extendiendo progresivamente por el resto
+</I>&gt;<i> del código.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> CAMBIOS EN BULMALIB:
+</I>&gt;<i> ---------------------
+</I>&gt;<i>
+</I>&gt;<i> Para tener soporte de traducciones 'gettext' hay que hacer un
+</I>&gt;<i> '#include', de al menos, uno de esos dos '.h' ('i18n.h' o 'funcaux.h').
+</I>&gt;<i>
+</I>&gt;<i> Se han creado los archivos 'i18n.h' e 'i18n.cpp' para colocar las
+</I>&gt;<i> funciones necesarias de 'gettext'.
+</I>&gt;<i> Se ha puesto un '#include &quot;i18n.h&quot;' en 'funcaux.h' para aprovechar que
+</I>&gt;<i> está incluido en casi todo el código.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> LOS UIS:
+</I>&gt;<i> ---------
+</I>&gt;<i>
+</I>&gt;<i> El problema de las traducciones de los '.ui' es que no están en forma de
+</I>&gt;<i> código. El sistema espera a disponer del código generado por 'moc' antes
+</I>&gt;<i> de localizar las cadenas a traducir.
+</I>&gt;<i>
+</I>&gt;<i> En el archivo 'CMakeLists.txt' hay que colocar esta linea:
+</I>&gt;<i> QT4_WRAP_UI(bulmafact_UIS_H ${bulmafact_UIS} OPTIONS -tr i18n)
+</I>&gt;<i>
+</I>&gt;<i> Utilizamos la opción '-tr' para colocar las cadenas de texto dentro de
+</I>&gt;<i> nuestra función 'i18n'.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ATENCIÓN: Como 'i18n' es una función ajena a QT4 hay que poner un
+</I>&gt;<i> '#include' de 'funcaux.h' o 'i18n.h' antes del include del '.ui'. De lo
+</I>&gt;<i> contrario mostrará un error al compilar.
+</I>&gt;<i>
+</I>&gt;<i> Ejemplo (aboutview.h):
+</I>&gt;<i>
+</I>&gt;<i> MAL:
+</I>&gt;<i>       #include &lt;ui_aboutbase.h&gt;
+</I>&gt;<i>       #include &quot;funcaux.h&quot;
+</I>&gt;<i>
+</I>&gt;<i> BIEN:
+</I>&gt;<i>       #include &quot;funcaux.h&quot;
+</I>&gt;<i>       #include &lt;ui_aboutbase.h&gt;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ARCHIVOS DE TRADUCCIONES '.POT', '.PO', '.GMO', '.MO':
+</I>&gt;<i> -------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> .POT = Archivo de texto plano. plantilla sin traducciones.
+</I>&gt;<i> .PO = Archivo de texto plano con traducciones hechas.
+</I>&gt;<i> .GMO = Archivo binario desde el .PO correspondiente.
+</I>&gt;<i> .MO = Archivo binario instalado.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> PROCEDIMIENTO DE TRADUCCIÓN:
+</I>&gt;<i> -----------------------------
+</I>&gt;<i>
+</I>&gt;<i> En el archivo 'CMakeLists.txt' hay que colocar esta linea para definir
+</I>&gt;<i> los idiomas a procesar:
+</I>&gt;<i> GETTEXT_CREATE_TRANSLATIONS
+</I>&gt;<i> (${CMAKE_BINARY_DIR}/bulmafact/src/bulmafact.pot ALL LANGUAGES
+</I>&gt;<i> es_ES.UTF-8 en_US.UTF-8)
+</I>&gt;<i>
+</I>&gt;<i> En este caso se procesarán los idionas: 'es_ES.UTF-8' y 'en_US.UTF-8'.
+</I>&gt;<i> Para un nuevo idioma sólo hay que añadirlo a la continuación de la lista.
+</I>&gt;<i>
+</I>&gt;<i> **
+</I>&gt;<i>
+</I>&gt;<i> $DC (Directorio de compilación) = build/bulmafact/src
+</I>&gt;<i> $CF (Directorio del código fuente) = trunk/bulmages/bulmafact/src
+</I>&gt;<i>
+</I>&gt;<i> Después de compilar, 'xgettext' genera en el $DC el archivo
+</I>&gt;<i> 'bulmafact.pot' que contiene todas las cadenas de texto que se han
+</I>&gt;<i> encontrado para traducir. Es la plantilla base que se tiene que utilizar
+</I>&gt;<i> para traduccir el programa a otro idioma.
+</I>&gt;<i>
+</I>&gt;<i> Automáticamente se lanza el comando 'msgmerge' que hace una mezcla de la
+</I>&gt;<i> nueva plantilla generada: 'bulmafact.pot' con el archivo traducido
+</I>&gt;<i> anterior, si existe, ej: '$CF/bulmafact_es_ES.UTF-8.po'. Si no existe lo
+</I>&gt;<i> crea pero sin traducir nada.
+</I>&gt;<i>
+</I>&gt;<i> 'msgfmt' se encarga a continuación de traducir, por ejemplo:
+</I>&gt;<i> '$CF/bulmafact_es_ES.UTF-8.po' a formato binario '.gmo' dentro de $DC
+</I>&gt;<i> (ej: '$DC/bulmafact_es_ES.UTF-8.gmo').
+</I>&gt;<i>
+</I>&gt;<i> Finalmente, cuando se realice la instalación con 'make install' los
+</I>&gt;<i> archivos '.gmo' se colocarán en %CMAKE_INSTALL_PREFIX%/share/locale con
+</I>&gt;<i> extensión '.mo'.
+</I>&gt;<i> (ej: '/usr/local/share/locale/es_ES.UTF-8/LC_MESSAGES/bulmafact.mo').
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> NOTA: Se puede lanzar manualmente todo el proceso de traducción con
+</I>&gt;<i> 'make bulmafact_pos' dentro de $DC.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> LOCALIZAR LAS TRADUCCIONES:
+</I>&gt;<i> ----------------------------
+</I>&gt;<i>
+</I>&gt;<i> 'Gettext' busca la variable de entorno 'LANG' o 'LC_MESSAGES' para saber
+</I>&gt;<i> que 'locale' tiene que utilizar. Si no se carga la traducción deseada
+</I>&gt;<i> hay que mirar este punto.
+</I>&gt;<i>
+</I>&gt;<i> 'bulmafact' utiliza la variable de configuración 'CONF_DIR_TRADUCCION'
+</I>&gt;<i> de '/etc/bulmages/bulmages.conf' para localizar los archivos '.mo' para
+</I>&gt;<i> que 'gettext' pueda hacer las traducciones cuando se use el programa.
+</I>&gt;<i> (ej: 'CONF_DIR_TRADUCCION  /usr/local/share/locale'). Tiene que
+</I>&gt;<i> coincidir con '%CMAKE_INSTALL_PREFIX%/share/locale'.
+</I>&gt;<i>
+</I>&gt;<i> NOTA: He modificado la plantilla de 'bulmages.conf.in' para que apunte
+</I>&gt;<i> al lugar correcto, pero si se usa una configuración anterior hay que
+</I>&gt;<i> revisar este apartado.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> MARCAR CADENAS DE TEXTO PARA TRADUCCIÓN EN EL CÓDIGO:
+</I>&gt;<i> ------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> De forma preferente hay que encerrar el texto a traducir entrecomillado
+</I>&gt;<i> entre '_()'. Ejemplo: '_(&quot;texto a traducir&quot;)' Esta función devuelve un
+</I>&gt;<i> QString de QT.
+</I>&gt;<i>
+</I>&gt;<i> También se puede hacer con 'i18n(&quot;texto a traducir&quot;)' pero con '_()' es
+</I>&gt;<i> más sencillo y se utiliza de esta manera en otros programas que hacen
+</I>&gt;<i> uso de 'gettext'.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> MEJORAS Y BUGS:
+</I>&gt;<i> ----------------
+</I>&gt;<i>
+</I>&gt;<i> Lo positivo es que el sistema funciona. Hay algunas cosas que se tienen
+</I>&gt;<i> que mejorar. Por ejemplo, existe el archivo '$CF/bulmafact' que es un
+</I>&gt;<i> archivo vacio. Es necesario porque hay una función que lo busca para que
+</I>&gt;<i> la compilación se haga sin problemas. Tengo pendiente arreglar este
+</I>&gt;<i> aspecto.
+</I>&gt;<i>
+</I>&gt;<i> 'Gettext' es complejo y no se han probado todas las posibilidades y
+</I>&gt;<i> posiblemente haya que hacer algunos ajustes.
+</I>&gt;<i>
+</I>&gt;<i> El sistema de traducción no esta extendido por todo el código y tengo
+</I>&gt;<i> que ver como funciona con los plugins.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> AGRADECIMIENTOS:
+</I>&gt;<i> -----------------
+</I>&gt;<i>
+</I>&gt;<i> Quiero darle las gracias a Leo por iniciar el camino a gettext... camino
+</I>&gt;<i> lleno de piedras que he tenido que recorrer :)
+</I>
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000857.html">[BulmaGés]Información sobre el sistema de traducciones Gettext
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000860.html">[BulmaGés]Información sobre el sistema de traducciones Gettext
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#858">[ fecha ]</a>
+              <a href="thread.html#858">[ hilo ]</a>
+              <a href="subject.html#858">[ asunto ]</a>
+              <a href="author.html#858">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

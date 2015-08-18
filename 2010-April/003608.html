@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] r3825 - trunk/bulmages/bulmalib/src
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3825%20-%20trunk/bulmages/bulmalib/src&In-Reply-To=%3C201004201443.o3KEhorh010581%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003607.html">
+   <LINK REL="Next"  HREF="003609.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] r3825 - trunk/bulmages/bulmalib/src </H1>
+    <B>svn en mail.berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3825%20-%20trunk/bulmages/bulmalib/src&In-Reply-To=%3C201004201443.o3KEhorh010581%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] r3825 - trunk/bulmages/bulmalib/src">svn en mail.berlios.de
+       </A><BR>
+    <I>Mar Abr 20 16:43:50 CEST 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003607.html">[BulmaGés] r3824 - in trunk/bulmages:	bulmafact/plugins/pluginbf_q19 bulmalib/src	bulmatpv/plugins/pluginbt_ivaincluido	bulmatpv/plugins/pluginbt_ticketivaincluido	bulmatpv/plugins/pluginbt_totalivaincluido bulmatpv/src
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003609.html">[BulmaGés]r3825 - trunk/bulmages/bulmalib/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3608">[ fecha ]</a>
+              <a href="thread.html#3608">[ hilo ]</a>
+              <a href="subject.html#3608">[ asunto ]</a>
+              <a href="author.html#3608">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: hilex
+Date: 2010-04-20 16:43:47 +0200 (dt, 20 abr 2010)
+New Revision: 3825
+
+Modified:
+   trunk/bulmages/bulmalib/src/blformlistfilter.cpp
+   trunk/bulmages/bulmalib/src/blformlistfilter.h
+Log:
+Mejoro el comportamiento del filtro genérico y simplifico su aplicación en un listado.
+
+Instrucciones (están en blformlistfilter.h):
+
+Forma de uso desde un widget tipo &quot;List&quot; de un listado concreto de plugin:
+
+  1) Agregar un QWidget llamado &quot;mui_filtrador&quot; y promocionarlo a BlFormListFilter.
+
+  2) Agregar en la barra de botones un bot&oacute;n (puede usarse el que hay: &quot;mui_filtrar&quot;).
+
+  3) Activarle a dicho bot&oacute;n la propiedad checkable y ponerle el icono i_filter.png.
+
+  4) Para que el filtro pueda acceder al listado y se muestre y oculte al pulsar el bot&oacute;n,
+  en el constructor del listado concreto, agregar:
+      mui_filtrador-&gt;setSubFormList ( mui_list );
+      connect ( mui_filtrar, SIGNAL ( clicked() ), mui_filtrador, SLOT ( showHideFilter() ));
+      connect ( mui_filtrador, SIGNAL ( aplicar_filtro() ), this-&gt;mui_actualizar, SLOT ( click() ));
+      connect ( mui_filtrador, SIGNAL ( cerrar_filtro() ), mui_filtrar, SLOT ( click() ));
+
+  5) Para que se aplique el filtrado al actualizar el listado, agregar &quot;mui_filtrador-&gt;generarFiltro()&quot;
+   como condición del WHERE de &quot;presentar()&quot; (el AND ya viene incluido en la condición).
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003607.html">[BulmaGés] r3824 - in trunk/bulmages:	bulmafact/plugins/pluginbf_q19 bulmalib/src	bulmatpv/plugins/pluginbt_ivaincluido	bulmatpv/plugins/pluginbt_ticketivaincluido	bulmatpv/plugins/pluginbt_totalivaincluido bulmatpv/src
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003609.html">[BulmaGés]r3825 - trunk/bulmages/bulmalib/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3608">[ fecha ]</a>
+              <a href="thread.html#3608">[ hilo ]</a>
+              <a href="subject.html#3608">[ asunto ]</a>
+              <a href="author.html#3608">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

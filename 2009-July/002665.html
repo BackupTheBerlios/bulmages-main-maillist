@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]segfault al lanzar los programas...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fsegfault_al_lanzar_lo%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fs_programas%3D2E%3D2E%3D2E%3F%3D&In-Reply-To=%3C200907091319.22119.pedro.lopez.cabanillas%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002664.html">
+   <LINK REL="Next"  HREF="002669.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]segfault al lanzar los programas... </H1>
+    <B>Pedro Lopez-Cabanillas</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fsegfault_al_lanzar_lo%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fs_programas%3D2E%3D2E%3D2E%3F%3D&In-Reply-To=%3C200907091319.22119.pedro.lopez.cabanillas%40gmail.com%3E"
+       TITLE="[BulmaGés]segfault al lanzar los programas...">pedro.lopez.cabanillas en gmail.com
+       </A><BR>
+    <I>Jue Jul  9 13:19:22 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002664.html">[BulmaGés]segfault al lanzar los programas...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002669.html">[BulmaGés]segfault al lanzar los programas...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2665">[ fecha ]</a>
+              <a href="thread.html#2665">[ hilo ]</a>
+              <a href="subject.html#2665">[ asunto ]</a>
+              <a href="author.html#2665">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thursday, July 9, 2009, Tomeu Borras wrote:
+&gt;<i> Hola Pedro:
+</I>&gt;<i>
+</I>&gt;<i> Prueba a no poner ningun plugin a ver si funciona.
+</I>
+Supongo que quieres decir desactivar los checkbox de todos los plugins en el 
+bulmasetup. Lo he probado, pero no tiene efecto.
+
+&gt;<i> Las trazas (si tienes el MODO DEBUG) estaran en ~/.bulmages/bulmagesout.txt
+</I>&gt;<i>
+</I>&gt;<i> Cuando ejecutas desde consola el bulmacont o bulmafact podrias pasar todo
+</I>&gt;<i> lo que dice?
+</I>
+$ bulmacont -d testcont
+--&gt; MAIN::Iniciando el programa. &lt;--
+--&gt; Leyendo el archivo '/etc/bulmages/bulmages.conf'&lt;--
+Leyendo configuracion/etc/bulmages/bulmages.conf
+
+FIN Leyendo configuracion
+--&gt; El archivo '/etc/bulmages/bulmacont.conf' existe. Se va a leer.&lt;--
+Leyendo configuracion/etc/bulmages/bulmacont.conf
+
+FIN Leyendo configuracion
+--&gt; El archivo '/home/pedro/.bulmages/bulmages.conf' no existe. &lt;--
+--&gt; El archivo '/home/pedro/.bulmages/bulmacont.conf' no existe. &lt;--
+Violación de segmento
+$
+
+Adjunto el fichero ~/.bulmages/bulmagesout.txt
+
+Saludos,
+Pedro
+------------ próxima parte ------------
+    BlApplication::BlApplication 
+    END BlApplication::BlApplication 
+    BlPlugins::BlPlugins 
+    END BlPlugins::BlPlugins 
+    BlArgParser::BlArgParser 
+    END BlArgParser::BlArgParser 
+    BlSplashScreen::BlSplashScreen 
+    END BlSplashScreen::BlSplashScreen 
+    BlSplashScreen::mensaje Iniciando clases
+    END BlSplashScreen::mensaje 
+    BlSplashScreen::setBarraProgreso 
+    END BlSplashScreen::setBarraProgreso 
+    BlDbLoginDialog::BlDbLoginDialog 
+        BlDbLoginDialog::validar 
+            BlPostgreSqlClient::sanearCadena 
+            END BlPostgreSqlClient::sanearCadena 
+            BlPostgreSqlClient::BlPostgreSqlClient 
+            END BlPostgreSqlClient::BlPostgreSqlClient 
+            BlPostgreSqlClient::inicializa bulmafact
+             port = 5432 dbname = bulmafact 
+            La conexion con la base de datos 'bulmafact' ha fallado.
+ 
+            FATAL:  no existe la base de datos Â«bulmafactÂ»
+ 
+                BlPostgreSqlClient::~BlPostgreSqlClient 
+                END BlPostgreSqlClient::~BlPostgreSqlClient 
+                BlPostgreSqlClient::BlPostgreSqlClient 
+                END BlPostgreSqlClient::BlPostgreSqlClient 
+                BlPostgreSqlClient::inicializa bulmacont
+                 port = 5432 dbname = bulmacont 
+                La conexion con la base de datos 'bulmacont' ha fallado.
+ 
+                FATAL:  no existe la base de datos Â«bulmacontÂ»
+ 
+                    BlPostgreSqlClient::~BlPostgreSqlClient 
+                    END BlPostgreSqlClient::~BlPostgreSqlClient 
+                    BlPostgreSqlClient::BlPostgreSqlClient 
+                    END BlPostgreSqlClient::BlPostgreSqlClient 
+                    BlPostgreSqlClient::inicializa template1
+                     port = 5432 dbname = template1 
+                    La conexion con la base de datos ha ido bien, ahora vamos a por la fecha 
+                        BlPostgreSqlClient::formatofecha 
+                        END BlPostgreSqlClient::formatofecha 
+                        BlPostgreSqlClient::loadQuery SELECT current_user
+                            BlDbRecordSet::BlDbRecordSet SELECT current_user
+                            SELECT current_user 
+                                BlDbRecordSet::nomcampo 
+                                END BlDbRecordSet::nomcampo 
+                                BlDbRecordSet::nomcampo 
+                                END BlDbRecordSet::nomcampo 
+                            ------------ RESULTADO DE LA CONSULTA ----------------- 
+                            Numero de registros: 1, Numero de campos: 1 
+                            --------- FIN RESULTADO DE LA CONSULTA ---------------- 
+                            END BlDbRecordSet::BlDbRecordSet  Numero de registros: 1, Numero de campos: 1
+                        END BlPostgreSqlClient::loadQuery 
+                        BlDbRecordSet::eof 
+                        END BlDbRecordSet::eof 
+                        BlDbRecordSet::valor current_user -1
+                            BlDbRecordSet::numcampo 
+                            END BlDbRecordSet::numcampo 0
+                        END BlDbRecordSet::valor  campo:current_user ----- Valor:pedro
+                        BlDbRecordSet::valor 00
+                        END BlDbRecordSet::valor 
+                        BlDbRecordSet::~BlDbRecordSet 
+                            BlDbRecordSet::cerrar 
+                            END BlDbRecordSet::cerrar 
+                        END BlDbRecordSet::~BlDbRecordSet 
+                    END BlPostgreSqlClient::inicializa template1
+                    BlPostgreSqlClient::~BlPostgreSqlClient 
+                    END BlPostgreSqlClient::~BlPostgreSqlClient 
+                END BlDbLoginDialog::validar 
+            END BlDbLoginDialog::BlDbLoginDialog 
+            BlDbLogindialog::authOK 
+            END BlDbLoginDialog::authOK 
+            BlDbLogindialog::authOK 
+            END BlDbLoginDialog::authOK 
+            BlDbLoginDialog::~BlDbLoginDialog 
+            END BlDbLoginDialog::~BlDbLoginDialog 
+            BcBulmaCont::BcBulmaCont 
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002664.html">[BulmaGés]segfault al lanzar los programas...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002669.html">[BulmaGés]segfault al lanzar los programas...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2665">[ fecha ]</a>
+              <a href="thread.html#2665">[ hilo ]</a>
+              <a href="subject.html#2665">[ asunto ]</a>
+              <a href="author.html#2665">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] r3750 - in trunk/bulmages: bulmalib/src	installbulmages/bgtrml2pdf
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3750%20-%20in%20trunk/bulmages%3A%20bulmalib/src%0A%09installbulmages/bgtrml2pdf&In-Reply-To=%3C201002080907.o1897QMh024214%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003397.html">
+   <LINK REL="Next"  HREF="003400.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] r3750 - in trunk/bulmages: bulmalib/src	installbulmages/bgtrml2pdf </H1>
+    <B>svn en mail.berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3750%20-%20in%20trunk/bulmages%3A%20bulmalib/src%0A%09installbulmages/bgtrml2pdf&In-Reply-To=%3C201002080907.o1897QMh024214%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] r3750 - in trunk/bulmages: bulmalib/src	installbulmages/bgtrml2pdf">svn en mail.berlios.de
+       </A><BR>
+    <I>Lun Feb  8 10:07:26 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003397.html">[BulmaGés]Problema al compilar Bulmagesd 0.12
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003400.html">[BulmaGés] r3751 -	trunk/bulmages/installbulmages/bgtrml2pdf
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3392">[ fecha ]</a>
+              <a href="thread.html#3392">[ hilo ]</a>
+              <a href="subject.html#3392">[ asunto ]</a>
+              <a href="author.html#3392">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: fcojavmc
+Date: 2010-02-08 10:07:26 +0100 (dl, 08 feb 2010)
+New Revision: 3750
+
+Modified:
+   trunk/bulmages/bulmalib/src/blfunctions.cpp
+   trunk/bulmages/bulmalib/src/blsubform.cpp
+   trunk/bulmages/installbulmages/bgtrml2pdf/bgtrml2pdf.in
+Log:
+Corrijo la protección de caracteres especiales en los archivos xml desde
+la función XMLProtect (para impresión en RML).
+
+Desde bgtrml2pdf no se trataban bien las etiquetas CDATA en ciertas
+circuntánceas.
+
+Ahora se elimina el uso de CDATA dentro de los RML y se utiliza el
+formato &amp;#xx; donde xx es el número que representa el caracter a
+mostrar en pantalla.
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003397.html">[BulmaGés]Problema al compilar Bulmagesd 0.12
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003400.html">[BulmaGés] r3751 -	trunk/bulmages/installbulmages/bgtrml2pdf
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3392">[ fecha ]</a>
+              <a href="thread.html#3392">[ hilo ]</a>
+              <a href="subject.html#3392">[ asunto ]</a>
+              <a href="author.html#3392">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]problemas con la compilacion
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fproblemas_con_la_comp%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Filacion%3F%3D&In-Reply-To=%3C1300525998.13470.24.camel%40david-laptop%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005489.html">
+   <LINK REL="Next"  HREF="005496.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]problemas con la compilacion </H1>
+    <B>david</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fproblemas_con_la_comp%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Filacion%3F%3D&In-Reply-To=%3C1300525998.13470.24.camel%40david-laptop%3E"
+       TITLE="[BulmaGés]problemas con la compilacion">d.sevilla6 en gmail.com
+       </A><BR>
+    <I>Sab Mar 19 10:13:18 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="005489.html">[BulmaGés]problemas con la compilacion
+</A></li>
+        <LI>Próximo mensaje: <A HREF="005496.html">[BulmaGés]problemas con la compilacion
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5495">[ fecha ]</a>
+              <a href="thread.html#5495">[ hilo ]</a>
+              <a href="subject.html#5495">[ asunto ]</a>
+              <a href="author.html#5495">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Vaya! que rapida respuesta así da gusto preguntar!!
+muchas gracias chicos, he descomentado ese plugin y se me ha compilado e
+instalado (creo).
+
+ahora tengo otro problema (creo que estoy bastaaaaaante verde con esto)
+cuando le doy en terminal sudo bulmasetup me responde esto:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">david en david-laptop</A>:~$ sudo bulmasetup
+Traceback (most recent call last):
+  File &quot;/usr/local/bin/bulmasetup&quot;, line 18, in &lt;module&gt;
+    from nuevousuario import NuevoUsuario
+  File &quot;/usr/local/share/bulmages/bulmasetup/nuevousuario.py&quot;, line 8,
+in &lt;module&gt;
+    from empresa import Empresa
+  File &quot;/usr/local/share/bulmages/bulmasetup/empresa.py&quot;, line 11, in
+&lt;module&gt;
+    import psycopg2
+ImportError: No module named psycopg2
+
+¿me falta configurar algo?
+
+El vie, 18-03-2011 a las 14:59 +0100, Tomeu Borras escribió:
+&gt;<i> Hola David
+</I>&gt;<i> 
+</I>&gt;<i> El error que tienes es debido a la version de las Qt que estas
+</I>&gt;<i> usando. 
+</I>&gt;<i> 
+</I>&gt;<i> isValidColor funciona a partir de las qt 4.7 (es que siempre andamos
+</I>&gt;<i> con lo más nuevo).
+</I>&gt;<i> 
+</I>&gt;<i> Puedes actualizar las qt, quitar el plugin de la compilacion si no lo
+</I>&gt;<i> necesitas o comentar la línea (es la única que falla).
+</I>&gt;<i> 
+</I>&gt;<i> Salut
+</I>&gt;<i> 
+</I>&gt;<i> 2011/3/18 david &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">sevinez en gmail.com</A>&gt;
+</I>&gt;<i>         cuando estoy al 64% de la compilacion me aparece esto:
+</I>&gt;<i>         
+</I>&gt;<i>         [ 64%] Generating moc_zlist.cxx
+</I>&gt;<i>         [ 64%] Generating ui_familiastpvbase.h
+</I>&gt;<i>         [ 64%] Generating ui_zbase.h
+</I>&gt;<i>         [ 64%] Generating ui_articulotpvbase.h
+</I>&gt;<i>         Scanning dependencies of target pluginbf_bulmatpv
+</I>&gt;<i>         [ 64%] Building CXX object
+</I>&gt;<i>         bulmafact/plugins/pluginbf_bulmatpv/CMakeFiles/pluginbf_bulmatpv.dir/articulotpv.o
+</I>&gt;<i>         /home/david/Escritorio/bulmages/bulmages/bulmafact/plugins/pluginbf_bulmatpv/articulotpv.cpp: In member function &#8216;void ArticuloTPV::on_mui_seleccionarcolor_clicked()&#8217;:
+</I>&gt;<i>         /home/david/Escritorio/bulmages/bulmages/bulmafact/plugins/pluginbf_bulmatpv/articulotpv.cpp:43: error: &#8216;isValidColor&#8217; is not a member of &#8216;QColor&#8217;
+</I>&gt;<i>         make[2]: ***
+</I>&gt;<i>         [bulmafact/plugins/pluginbf_bulmatpv/CMakeFiles/pluginbf_bulmatpv.dir/articulotpv.o] Error 1
+</I>&gt;<i>         make[1]: ***
+</I>&gt;<i>         [bulmafact/plugins/pluginbf_bulmatpv/CMakeFiles/pluginbf_bulmatpv.dir/all] Error 2
+</I>&gt;<i>         make: *** [all] Error 2
+</I>&gt;<i>         
+</I>&gt;<i>         ya no se por donde meter mano y llevo ya 1 año con esto
+</I>&gt;<i>         
+</I>&gt;<i>         _______________________________________________
+</I>&gt;<i>         Bulmages-main mailing list
+</I>&gt;<i>         <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i>         <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="005489.html">[BulmaGés]problemas con la compilacion
+</A></li>
+	<LI>Próximo mensaje: <A HREF="005496.html">[BulmaGés]problemas con la compilacion
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5495">[ fecha ]</a>
+              <a href="thread.html#5495">[ hilo ]</a>
+              <a href="subject.html#5495">[ asunto ]</a>
+              <a href="author.html#5495">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

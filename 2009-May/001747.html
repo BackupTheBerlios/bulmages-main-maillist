@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Cambio de ruta para configuración en Windows
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-15%3Fq%3FCambio_de_ruta_para_%3F%3D%0A%20%3D%3Fiso-8859-15%3Fq%3Fconfiguraci%3DF3n_en_Windows%3F%3D&In-Reply-To=%3C200905071918.32753.auryn%40wanadoo.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001746.html">
+   <LINK REL="Next"  HREF="001749.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Cambio de ruta para configuración en Windows </H1>
+    <B>Arón</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-15%3Fq%3FCambio_de_ruta_para_%3F%3D%0A%20%3D%3Fiso-8859-15%3Fq%3Fconfiguraci%3DF3n_en_Windows%3F%3D&In-Reply-To=%3C200905071918.32753.auryn%40wanadoo.es%3E"
+       TITLE="[BulmaGés]Cambio de ruta para configuración en Windows">auryn en wanadoo.es
+       </A><BR>
+    <I>Jue Mayo  7 19:18:32 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001746.html">[BulmaGés]Cambio de ruta para configuración en Windows
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001749.html">[BulmaGés]Cambio de ruta para configuración en Windows
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1747">[ fecha ]</a>
+              <a href="thread.html#1747">[ hilo ]</a>
+              <a href="subject.html#1747">[ asunto ]</a>
+              <a href="author.html#1747">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>El Jueves, 7 de Mayo de 2009, Arón escribió:
+&gt;<i> En trunk/bulmages/CMakeLists.txt hay una variable BULMAGES_CONFIG_DIR a la
+</I>&gt;<i> que se asigna &quot;/etc/bulmages&quot;.
+</I>&gt;<i>
+</I>&gt;<i> if(WIN32)
+</I>&gt;<i> set( BULMAGES_CONFIG_DIR $ENV{ProgramFiles}/bulmages/etc CACHE PATH &quot;The
+</I>&gt;<i> location of bulmages configuration dir&quot;)
+</I>&gt;<i> endif(WIN32)
+</I>&gt;<i>
+</I>&gt;<i> if(NOT WIN32)
+</I>&gt;<i> set( BULMAGES_CONFIG_DIR /etc/bulmages CACHE PATH &quot;The location of bulmages
+</I>&gt;<i> configuration dir&quot;)
+</I>&gt;<i> endif(NOT WIN32)
+</I>&gt;<i>
+</I>&gt;<i> He intentado que al estar en Windows sea otra ruta, pero en el fichero
+</I>&gt;<i> &quot;build/bulmalib/src/blconfig.h&quot; la variable CONFIG_DIR_CONFIG siempre acaba
+</I>&gt;<i> siendo &quot;/etc/bulmages&quot;, incluso si pongo otra ruta para Linux.
+</I>&gt;<i>
+</I>&gt;<i> ¿Dónde se genera realmente esa ruta?
+</I>
+Aunque estoy haciéndolo de este modo, igual la idea a largo plazo es pasarse 
+QSettings  para tratar la configuración del programa.
+
+
+
+
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20090507/8bd33638/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20090507/8bd33638/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001746.html">[BulmaGés]Cambio de ruta para configuración en Windows
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001749.html">[BulmaGés]Cambio de ruta para configuración en Windows
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1747">[ fecha ]</a>
+              <a href="thread.html#1747">[ hilo ]</a>
+              <a href="subject.html#1747">[ asunto ]</a>
+              <a href="author.html#1747">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

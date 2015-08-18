@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] r2910 - in trunk/bulmages:	bulmafact/plugins/pluginfactura bulmafact/src bulmalib/src
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r2910%20-%20in%20trunk/bulmages%3A%0A%09bulmafact/plugins/pluginfactura%20bulmafact/src%20bulmalib/src&In-Reply-To=%3C200901180845.n0I8jvPB030690%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000821.html">
+   <LINK REL="Next"  HREF="000822.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] r2910 - in trunk/bulmages:	bulmafact/plugins/pluginfactura bulmafact/src bulmalib/src </H1>
+    <B>svn en mail.berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r2910%20-%20in%20trunk/bulmages%3A%0A%09bulmafact/plugins/pluginfactura%20bulmafact/src%20bulmalib/src&In-Reply-To=%3C200901180845.n0I8jvPB030690%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] r2910 - in trunk/bulmages:	bulmafact/plugins/pluginfactura bulmafact/src bulmalib/src">svn en mail.berlios.de
+       </A><BR>
+    <I>Dom Ene 18 09:45:57 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000821.html">[BulmaGés]No me espereis esta tarde en la codeparty
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000822.html">[BulmaGés] r2911 - trunk/bulmages/installbulmages
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#819">[ fecha ]</a>
+              <a href="thread.html#819">[ hilo ]</a>
+              <a href="subject.html#819">[ asunto ]</a>
+              <a href="author.html#819">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: tborras
+Date: 2009-01-18 09:45:51 +0100 (Sun, 18 Jan 2009)
+New Revision: 2910
+
+Modified:
+   trunk/bulmages/bulmafact/plugins/pluginfactura/facturaslist.cpp
+   trunk/bulmages/bulmafact/src/fichabf.cpp
+   trunk/bulmages/bulmafact/src/fichabf.h
+   trunk/bulmages/bulmalib/src/dbrecord.cpp
+   trunk/bulmages/bulmalib/src/ficha.cpp
+   trunk/bulmages/bulmalib/src/fixed.cpp
+   trunk/bulmages/bulmalib/src/fixed.h
+   trunk/bulmages/bulmalib/src/funcaux.cpp
+   trunk/bulmages/bulmalib/src/funcaux.h
+   trunk/bulmages/bulmalib/src/postgresiface2.cpp
+   trunk/bulmages/bulmalib/src/postgresiface2.h
+   trunk/bulmages/bulmalib/src/subform.cpp
+Log:
+Hago el tratamiento del punto decimal segun los locales.
+Para ello (y como la base de datos solo entiende el . decimal) altero las funciones que pueden devolver valores
+de tipo numerico que son tres (Fixed::toQString Cursor2::valor y Campo::valorcampo)
+Basicamente lo que he hecho ha sido agregar un parametro adicional a estas funciones que indica si se debe recodificar segun
+locales o no el valor del campo. En Fixed ya estaba hecho y solo he tenido que modificarlo. En cursor2 hay un parametro adicional que
+por defecto esta a FALSE y en valorcampo no ha hecho falta implementarlo.
+El sistema intenta separar la entrada de datos (con un proceso para ellos digamos estandarizado) de la salida (con un proceso distinto para cada Locale).
+NOTA: Habria que hacer algo similar a esto con las fechas. Pero sera un poco mas engorroso.
+NOTA2: En algunos sitios puede que falle y no muestre los puntos decimales correctamente. Eso es debido a que en 
+las llamadas del tipo Cursor2::valor hay que pasar un tercer parametro indicando que aplique formato.
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000821.html">[BulmaGés]No me espereis esta tarde en la codeparty
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000822.html">[BulmaGés] r2911 - trunk/bulmages/installbulmages
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#819">[ fecha ]</a>
+              <a href="thread.html#819">[ hilo ]</a>
+              <a href="subject.html#819">[ asunto ]</a>
+              <a href="author.html#819">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

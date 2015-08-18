@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]On van els canvis a la BD ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FOn_van_els_canvis_a_l%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fa_BD_%3D3F%3F%3D&In-Reply-To=%3C200905141635.05387.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001902.html">
+   <LINK REL="Next"  HREF="001908.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]On van els canvis a la BD ? </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FOn_van_els_canvis_a_l%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fa_BD_%3D3F%3F%3D&In-Reply-To=%3C200905141635.05387.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]On van els canvis a la BD ?">tborras en conetxia.com
+       </A><BR>
+    <I>Jue Mayo 14 16:35:05 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001902.html">[BulmaGés][BulmaGÃ©s] On van els canvis a la BD ?
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001908.html">[BulmaGés][BulmaGÃ©s]On van els canvis a la BD ?
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1903">[ fecha ]</a>
+              <a href="thread.html#1903">[ hilo ]</a>
+              <a href="subject.html#1903">[ asunto ]</a>
+              <a href="author.html#1903">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Xavi:
+
+Els canvis van al revf-0.11
+
+El arxiu revf-0.12 el crearem quan en el moment de alliberar. Mentrestant tots 
+els canvis a la Base de Dades van en el de la versió actua.
+
+També es important que canviis el numero de revision menor que esta al parche 
+0.11-XXX que esta just al final del parche.
+
+Sobre si les taules ahurien d'anar a un lloc o a un altre segur que per la 
+propera versió el schema serà molt més reduït i els plugins tindran més 
+implicació amb la base de dades. Pero ara com ara no ho vull tocar amb 
+presses perque s'ha de testejar bé. També falta fer molts scripts de esborrat 
+pero ja els anirem fent. 
+
+Val a dir que així com esta ara el problema només es que pots tenir taules 
+creades que no s'emplein pero no implica error funcional amb lo que ja me 
+conformo (Per ara).
+
+Un apunt adicional: No soc partidari de que cada mòdul posi la seva taula 
+perque com dius hi ha jocs de dependencies foranes que ho ferien bastant 
+engorrós. El que tinc pensat es jugar amb mòduls clau (dels que depenen els 
+altres) que instalin tot el joc de dades. Per exemple posar bona part de les 
+taules de ventes al modul de clients el qual es imprescindible si vols fer 
+ventes. I quelcom similar amb compres cobramets i pagaments, etc
+
+També aprofito per contestar sobre el BusquedaTrabajador i d'altres que estan 
+al src del bulmafact i no tenen sentit sense el pluginbf_trabajador. Totes 
+aquestes clases han de desapareixer i esser substituides per BlSearch 
+BlComoBox i similars que fan una implementació generica dels BuscaXXXXX i son 
+inicialitzades amb la taule sobre la que fan la cerca. Als plugins de gestió 
+de asociacions de pares, mares i alumnes ja esta fet així en la cerca de 
+tutors, professors, activitats, etc
+En lloc de implmentar un Busca per a cada taula de la base de dades el que 
+vull es implementar un unic Busca per a cada tipus de widget i 
+inicialitzar-lo amb el comportament i taules de referencia de les que ha de 
+fer la introducció.
+
+Esper haver-te aclarit alguna cosa i no haver-te amuinat molt amb aquestes 
+idees de la propera versió.
+
+Salut
+
+
+
+El Thursday 14 May 2009 15:07:31 Xavi Drudis Ferran escribió:
+&gt;<i> Hola.
+</I>&gt;<i>
+</I>&gt;<i> He vist que no sé si estic fent bé el canvi que vaig fer a una funció de bd
+</I>&gt;<i> per calcular impostos a factures.
+</I>&gt;<i>
+</I>&gt;<i> A quin fitxer ho he de posar ?
+</I>&gt;<i>
+</I>&gt;<i> Jo ho vaig posar a un que crea tota la base de dades, em sembla que
+</I>&gt;<i> erabulmages_schema.sql . Però no ho hauria de posar a algun d'incremental
+</I>&gt;<i> també ?
+</I>&gt;<i>
+</I>&gt;<i> M'he llegit altre cop
+</I>&gt;<i> <A HREF="http://iglues.org/wiki/doku.php?id=documentacion:guiadesarrollobulmafact:st">http://iglues.org/wiki/doku.php?id=documentacion:guiadesarrollobulmafact:st</A>
+</I>&gt;<i>art#base_de_datos
+</I>&gt;<i>
+</I>&gt;<i> Que diu
+</I>&gt;<i>
+</I>&gt;<i> IMPORTANTE: Todo cambio que se realiza en el archivo bulmafact_schema.sql
+</I>&gt;<i> debe quedar reflejado en el script revf-X.Y.Z del directorio de
+</I>&gt;<i> actualizaciones ya que uno se usa para instalaciones nuevas y el otro para
+</I>&gt;<i> actualizaciones desde versioens antiguas.
+</I>&gt;<i>
+</I>&gt;<i> Però què val X.Y.Z ?
+</I>&gt;<i> jo em pensava que estàvem preparant la 0.12 però no vaig trobar el fitxer
+</I>&gt;<i> 12 per enlloc .
+</I>&gt;<i>
+</I>&gt;<i> Ho pregunto perquè quan pugui vull afegir un camp sufixe al banc, pel q19.
+</I>&gt;<i>
+</I>&gt;<i> Per cert, això ho he de posar al fitxer general de bulmafact, al pluguin de
+</I>&gt;<i> banc o al plugin de q19 ?
+</I>&gt;<i>
+</I>&gt;<i> P.S. Si un dia (no serà per aquesta versió ) posessim svglib per tenir
+</I>&gt;<i> millor suport svg als llistats, hi ha problema per canviar la llicència de
+</I>&gt;<i> bgtrml2pdf a GPL 3 ? Ara és alguna cosa més permisiva, com MIT, o BSD,
+</I>&gt;<i> crec, però svglib primer no era lliure i ara veig que és GPL3.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001902.html">[BulmaGés][BulmaGÃ©s] On van els canvis a la BD ?
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001908.html">[BulmaGés][BulmaGÃ©s]On van els canvis a la BD ?
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1903">[ fecha ]</a>
+              <a href="thread.html#1903">[ hilo ]</a>
+              <a href="subject.html#1903">[ asunto ]</a>
+              <a href="author.html#1903">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

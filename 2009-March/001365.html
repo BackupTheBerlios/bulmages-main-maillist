@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] q19 i sufixe
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-March/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20q19%20i%20sufixe&In-Reply-To=%3C20090311213130.GF7292%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001355.html">
+   <LINK REL="Next"  HREF="001366.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] q19 i sufixe </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20q19%20i%20sufixe&In-Reply-To=%3C20090311213130.GF7292%40localhost%3E"
+       TITLE="[BulmaGés] q19 i sufixe">xdrudis en tinet.cat
+       </A><BR>
+    <I>Mie Mar 11 22:31:30 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001355.html">[BulmaGés] r3142 -	branches/docsMonolitic/bulmages/installbulmages/openreports/ca
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001366.html">[BulmaGés]q19 i sufixe
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1365">[ fecha ]</a>
+              <a href="thread.html#1365">[ hilo ]</a>
+              <a href="subject.html#1365">[ asunto ]</a>
+              <a href="author.html#1365">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Hola. 
+
+Ma germana ha provat els canvis que vaig fer al plugin q19 per enviar rebuts a bancs, 
+amb dues caixes.
+
+Té el problema que jo vaig posar el id de banc com a valor del camp &quot;sufixe&quot;, que la documentació 
+defineix així: 
+
+     C1- CLIENTE ORDENANTE:
+     se identifica por un código de dos partes: Número de Identificación Fiscal (
+     N.I.F.) y Sufijo (Número de tres cifras que identifica los diferentes tipos de
+     facturación del cliente y/o los diferentes centros emisores de soportes o
+     ficheros de facturación).
+     El NIF deberá ser el mismo y el Sufijo distinto cuando la facturación sea
+     repartida entre varias Entidades Receptoras, asignando un Sufijo distinto a
+     cada Entidad.
+
+Per tant vaig pensar que el client ordenant (l'empresa que fa servir
+bulmafact) podia decidir quin sufixe usar, sempre que no usés el
+mateix per a dues entitats financeres diferents.
+
+Doncs pel que li han dit a ma germana no, ha de fer servir el que se
+li va assignar quan es va donar d'alta per enviar rebuts.  Però i si
+dues entitats diferents et donen el mateix sufix, llavors ja no pots
+complir la norma d'usar sufixes diferents per entitats diferents, no ?
+
+De fet a una entitat li han dit que si parla amb l'oficina li poden
+modificar aquesta assignació, de manera que ho podria triar ella, i a
+l'altra no li han dit, li han dit que ha de canviar el sufix per usar
+el mateix que usava en el programa de fer rebuts que li va donar la
+caixa.
+
+
+Total, que suposo que el desitjable seria que bulmafact permetés
+configurar el sufixe que vols enviar a les remeses de rebuts. Però no
+sé com fer-ho.
+
+Per a les factures podria afegir una casella al quadre de diàleg que
+surt, però els cobraments generen fitxers q19 sense quadre de diàleg.
+
+D'entrada diria que afegim una columna a la taula banco i un camp a la
+fitxa de banc.
+
+Però aquest camp no té sentit per qui no tingui el plugin q19 i a més
+no sé si és permisible canviar l'esquema de base de dades (crec
+recordar que no canviava entre versions petites). Llavors s'hauria
+d'ocultar el camp a la fitxa quan no hi hagués el pluginq19 ? La
+veritat és que li havia afegit algun índex a la bd per allò dels
+àlies, però una columna nova sembla més fort.
+
+També podríem posar un valor a la taula de configuració de dades
+d'empresa, però llavors no compliríem que fos diferent per a cada
+entitat, i obligaríem a funcionar enviant rebuts només a un sol
+banc. Per moltes empreses pot ser suficient però el que vaig fer
+permetia enviar a bancs diferents (fins i tot distribuia els rebuts
+seleccioants en tants fitxers de remesa com bancs tinguessin els
+rebuts).
+
+Una altra opció seria fer una taula a part relacionada amb bancs, però
+no veig que aporta millor que afegir la columna, només més
+complexitat.
+ 
+I una altra encara més cutre seria colar-ho a un camp existent. Per
+exemple dir que si al camp comentari hi ha la cadena sufix: seguida de
+dígits, agafem el sufix d'aquí. Però ho trobo molt precari.
+
+Em podeu iluminar amb alguna idea, bona pràctica o convenció
+bulmafactista ?
+
+Gràcies.
+
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>
+Signa per fer Collserola parc natural com cal
+<A HREF="http://www.collserola.org/salvemelparcnatural/">http://www.collserola.org/salvemelparcnatural/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001355.html">[BulmaGés] r3142 -	branches/docsMonolitic/bulmages/installbulmages/openreports/ca
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001366.html">[BulmaGés]q19 i sufixe
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1365">[ fecha ]</a>
+              <a href="thread.html#1365">[ hilo ]</a>
+              <a href="subject.html#1365">[ asunto ]</a>
+              <a href="author.html#1365">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

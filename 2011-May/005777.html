@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][Bug #18099] BulmaSetup marca plugins no instalados
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Futf-8%3Fq%3F%3D5BBug_%3D2318099%3D5D_BulmaSe%3F%3D%0A%09%3D%3Futf-8%3Fq%3Ftup_marca_plugins_no_instalados%3F%3D&In-Reply-To=%3CBANLkTikrisANKNJK-h2wns3F7tt_UA3X0Q%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005750.html">
+   <LINK REL="Next"  HREF="005733.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][Bug #18099] BulmaSetup marca plugins no instalados </H1>
+    <B>Daniel Ripoll Osma</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Futf-8%3Fq%3F%3D5BBug_%3D2318099%3D5D_BulmaSe%3F%3D%0A%09%3D%3Futf-8%3Fq%3Ftup_marca_plugins_no_instalados%3F%3D&In-Reply-To=%3CBANLkTikrisANKNJK-h2wns3F7tt_UA3X0Q%40mail.gmail.com%3E"
+       TITLE="[BulmaGés][Bug #18099] BulmaSetup marca plugins no instalados">dripoll.public en gmail.com
+       </A><BR>
+    <I>Jue Mayo 12 09:53:59 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="005750.html">[BulmaGés][Bug #18099] BulmaSetup marca plugins no instalados
+</A></li>
+        <LI>Próximo mensaje: <A HREF="005733.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 48690c4ba84549548f8f904605673596245ddc20
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5777">[ fecha ]</a>
+              <a href="thread.html#5777">[ hilo ]</a>
+              <a href="subject.html#5777">[ asunto ]</a>
+              <a href="author.html#5777">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Al desinstalar esos plugins fantasmas, vamos eliminarlos, no solo los
+dejaba indicados. Si no que además bulmafact se quejaba de no poder
+acceder a esos plugins. Con lo cual, se deduce que eran usados.
+
+Así que tu punto b, cobra sentido:
+    b) En la tabla configuracion hay una entrada con la marca del plugin
+
+Algo debe fallar no se si en código o en SQL, ya que no hay datos
+introducidos por usuario con estos plugins.
+
+Otros plugins que no han tenido activado estos plugins, no los ven ni
+marcados ni activos.
+
+Salut,
+
+2011/5/6 Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en gmail.com</A>&gt;:
+&gt;<i> Mirando esto más detenidamente:
+</I>&gt;<i>
+</I>&gt;<i> El hecho de no estar mencionado en el pertinente .conf no es suficiente como
+</I>&gt;<i> para considerar que el plugin no está instalado ya que por algun extraño
+</I>&gt;<i> motivo podría haber desaparecido de alli pero quedar el rastro de
+</I>&gt;<i> instalacion en la base de datos.
+</I>&gt;<i>
+</I>&gt;<i> Por tanto bulmasetup también busca una marca en la base de datos que indica
+</I>&gt;<i> si el plugin esta instalado o no. Dicha marca es una entrada en la tabla de
+</I>&gt;<i> configuracion con el valor de la versión instalada.
+</I>&gt;<i>
+</I>&gt;<i> Entonces bulmasetup considera que un plugin esta instalado si:
+</I>&gt;<i>    a) Hay entrada de la libreria en el .conf
+</I>&gt;<i>    b) En la tabla configuracion hay una entrada con la marca del plugin
+</I>&gt;<i>
+</I>&gt;<i> Sigo haciendo pruebas por si se me escapa algo.
+</I>&gt;<i>
+</I>&gt;<i> Lo que estaria bien que intentases es a desinstalar estos plugins
+</I>&gt;<i> &quot;fantasmas&quot; y ver si desaparecen o no.
+</I>&gt;<i>
+</I>&gt;<i> Salut
+</I>&gt;<i>
+</I>&gt;<i> 2011/5/6 &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">admin en berlios.de</A>&gt;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Bug #18099, was updated on 2011-May-06 11:03
+</I>&gt;&gt;<i> Here is a current snapshot of the bug.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Project: BulmaGes, Gestión Empresarial Libre
+</I>&gt;&gt;<i> Category: bulmasetup
+</I>&gt;&gt;<i> Status: Open
+</I>&gt;&gt;<i> Resolution: None
+</I>&gt;&gt;<i> Bug Group: None
+</I>&gt;&gt;<i> Priority: 5
+</I>&gt;&gt;<i> Submitted by: mph2
+</I>&gt;&gt;<i> Assigned to : none
+</I>&gt;&gt;<i> Summary: BulmaSetup marca plugins no instalados
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Details: Al iniciar BulmaSetup se marcan plugins en BulmaFact que
+</I>&gt;&gt;<i> realmente no estan instalados, aqui os dejo un video de demostración
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> <A HREF="http://www.youtube.com/watch?v=5QOz6qe55Rg">http://www.youtube.com/watch?v=5QOz6qe55Rg</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Podeis ponerlo (y lo aconsejo) a 720p en pantalla completa, ya que lo he
+</I>&gt;&gt;<i> hecho con compresión exagerada al vuelo, y en baja calidad se ve fatal.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> For detailed info, follow this link:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> <A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=18099&amp;group_id=4472">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=18099&amp;group_id=4472</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Bulmages-main mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+
+
+-- 
+**************************************
+Daniel Ripoll
+**************************************
+          Todo-Redes
+        C/.Begonia, 12
+   07010 Palma de Mallorca.
+      Tel: +34-971499071
+   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+  comercial(en)todo-redes.com
+***************************************
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="005750.html">[BulmaGés][Bug #18099] BulmaSetup marca plugins no instalados
+</A></li>
+	<LI>Próximo mensaje: <A HREF="005733.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 48690c4ba84549548f8f904605673596245ddc20
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5777">[ fecha ]</a>
+              <a href="thread.html#5777">[ hilo ]</a>
+              <a href="subject.html#5777">[ asunto ]</a>
+              <a href="author.html#5777">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

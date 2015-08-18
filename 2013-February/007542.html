@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: aron pushed 1	commits to mastermas...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20aron%20pushed%201%0A%09commits%20to%20mastermas...&In-Reply-To=%3C20130221104735.57C7DFB0%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007541.html">
+   <LINK REL="Next"  HREF="007543.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: aron pushed 1	commits to mastermas... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20aron%20pushed%201%0A%09commits%20to%20mastermas...&In-Reply-To=%3C20130221104735.57C7DFB0%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: aron pushed 1	commits to mastermas...">no-reply en gitorious.org
+       </A><BR>
+    <I>Jue Feb 21 11:47:35 CET 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007541.html">[BulmaGés]Paquetes Debian, ¿donde?
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007543.html">[BulmaGés] [Gitorious] Activity: aron pushed 1	commits to mastermas...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7542">[ fecha ]</a>
+              <a href="thread.html#7542">[ hilo ]</a>
+              <a href="subject.html#7542">[ asunto ]</a>
+              <a href="author.html#7542">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+aron pushed 1 commits to master
+master changed from 5a04ab4 to 7b0a902
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/5a04ab48ec59e27aeafb801e56358263c65ed518/diffs/7b0a902a7742b16eaae516c6534c0935fea528ba">https://gitorious.org/bulmages/bulmages/commit/5a04ab48ec59e27aeafb801e56358263c65ed518/diffs/7b0a902a7742b16eaae516c6534c0935fea528ba</A>
+
+Diff: 
+
+commit 7b0a902a7742b16eaae516c6534c0935fea528ba
+Author: Aron &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">auryn en wanadoo.es</A>&gt;
+Date:   Thu Feb 21 11:43:12 2013 +0100
+
+    Permitir desbloquear la ficha desde el aviso que el plugin &quot;Bloqueo de fichas&quot; muestra cuando está siendo usada por otro usuario.
+    Además, evito que se intente bloquear un ficha que ya está cargada: BlForm::save() hace una carga que activa el BlForm_load de este plugin.
+    --
+    Aron Galdón
+    
+    PostgreSQL, Qt4 and PHP developer
+
+diff --git a/bulmages/bulmalib/plugins/pluginbl_formlock/pluginbl_formlock.cpp b/bulmages/bulmalib/plugins/pluginbl_formlock/pluginbl_formlock.cpp
+index 4023c58..2b22f81 100644
+--- a/bulmages/bulmalib/plugins/pluginbl_formlock/pluginbl_formlock.cpp
++++ b/bulmages/bulmalib/plugins/pluginbl_formlock/pluginbl_formlock.cpp
+@@ -77,9 +77,11 @@ int BlForm_load ( BlForm *ficha )
+ {
+     BL_FUNC_DEBUG
+ 
+-    /// Si el usuario s&oacute;lo tiene permisos de lectura sobre la ficha no es necesario bloquearla
+-    if ( !ficha-&gt;mainCompany() -&gt;hasTablePrivilege ( ficha-&gt;tableName(), &quot;UPDATE&quot; )
+-      &amp;&amp; !ficha-&gt;mainCompany() -&gt;hasTablePrivilege ( ficha-&gt;tableName(), &quot;DELETE&quot; ) ) {
++    /// No seguir con el bloqueo si la ficha es visible (que significa que estamos haciendo la carga post-guardado de BlForm::save())
++    /// o si el usuario s&oacute;lo tiene permisos de lectura
++    if ( ficha-&gt;isVisible()
++      || ( !ficha-&gt;mainCompany() -&gt;hasTablePrivilege ( ficha-&gt;tableName(), &quot;UPDATE&quot; )
++        &amp;&amp; !ficha-&gt;mainCompany() -&gt;hasTablePrivilege ( ficha-&gt;tableName(), &quot;DELETE&quot; ) ) ) {
+         return 0;
+     }
+ 
+@@ -92,23 +94,45 @@ int BlForm_load ( BlForm *ficha )
+                                           ficha-&gt;dbValue ( ficha-&gt;fieldId() ),
+                                           ficha-&gt;mainCompany()-&gt;currentUser() );
+ 
++    int res = 0;
++
+     if ( !cur1-&gt;eof() ) {
+-       blMsgInfo ( _ ( &quot;Esta ficha está siendo utilizada por el usuario \&quot;%1\&quot;. Usted no podrá hacer cambios en este momento.&quot; )
+-               .arg( cur1-&gt;value(&quot;usuariobloqueo&quot;) ) );
+-
+-        /// Miramos si existe un boton de guardar, borrar y uno de aceptar y los desactivamos,
+-        /// y si hay uno de cancelar mostramos &quot;Cerrar&quot;: as&iacute; tenemos una ficha de s&oacute;lo lectura
+-        QAbstractButton *pbut = NULL; /// Puntero para buscar y manipular botones
+-        pbut = ficha-&gt;findChild&lt;QAbstractButton *&gt; ( &quot;mui_guardar&quot; );
+-        if ( pbut ) pbut-&gt;setEnabled ( FALSE );
+-        pbut = ficha-&gt;findChild&lt;QAbstractButton *&gt; ( &quot;mui_aceptar&quot; );
+-        if ( pbut ) pbut-&gt;setEnabled ( FALSE );
+-        pbut = ficha-&gt;findChild&lt;QAbstractButton *&gt; ( &quot;mui_cancelar&quot; );
+-        if ( pbut ) pbut-&gt;setText(&quot;Cerrar&quot;);
+-        pbut = ficha-&gt;findChild&lt;QAbstractButton *&gt; ( &quot;mui_borrar&quot; );
+-        if ( pbut ) pbut-&gt;setEnabled ( FALSE );
+-
+-    } else {
++
++       /// Ofrecer al usuario la oportunidad de desbloquear la ficha
++       QString msg = _ ( &quot;La ficha parece estar en uso por otra persona.\nSe recomienda no hacer cambios en este momento.\nFicha bloqueada para \&quot;%1\&quot; el %2 a las %3.&quot; )
++                   .arg( cur1-&gt;value(&quot;usuariobloqueo&quot;) ).arg( cur1-&gt;value(&quot;fechabloqueo&quot;) ).arg( cur1-&gt;value(&quot;horabloqueo&quot;).left(5) );
++       res = QMessageBox::question ( NULL,
++                         _ ( &quot;Ficha en uso&quot; ),
++                         msg,
++                         _ ( &quot;&amp;Ver en sólo lectura&quot; ),
++                         _ ( &quot;&amp;Desbloquear&quot; ),
++                         0, 1 );
++
++       /// El usuario decide ver la ficha en s&oacute;lo lectura
++       if ( res == 0 ) {
++
++           /// Miramos si existe un boton de guardar, borrar y uno de aceptar y los desactivamos,
++           /// y si hay uno de cancelar mostramos &quot;Cerrar&quot;: as&iacute; tenemos una ficha de s&oacute;lo lectura
++           QAbstractButton *pbut = NULL; /// Puntero para buscar y manipular botones
++           pbut = ficha-&gt;findChild&lt;QAbstractButton *&gt; ( &quot;mui_guardar&quot; );
++           if ( pbut ) pbut-&gt;setEnabled ( FALSE );
++           pbut = ficha-&gt;findChild&lt;QAbstractButton *&gt; ( &quot;mui_aceptar&quot; );
++           if ( pbut ) pbut-&gt;setEnabled ( FALSE );
++           pbut = ficha-&gt;findChild&lt;QAbstractButton *&gt; ( &quot;mui_cancelar&quot; );
++           if ( pbut ) pbut-&gt;setText(&quot;Cerrar&quot;);
++           pbut = ficha-&gt;findChild&lt;QAbstractButton *&gt; ( &quot;mui_borrar&quot; );
++           if ( pbut ) pbut-&gt;setEnabled ( FALSE );
++       } // end if
++
++       /// El usuario decide desbloquear de todos modos
++       else if ( res == 1 ) {
++
++           BlForm_DesBlForm ( ficha );
++       }
++    }
++
++    /// Si no hab&iacute;a un bloqueo activado o el usuario actual ha desbloqueado el bloqueo de otra persona, bloquear en su nombre
++    if ( cur1-&gt;eof() || res == 1 ) {
+ 
+         query = &quot;INSERT INTO bloqueo (fichabloqueo, identificadorfichabloqueo, usuariobloqueo) VALUES ($1,$2,$3)&quot;;
+         ficha-&gt;mainCompany()-&gt;run ( query, 
+@@ -132,6 +156,7 @@ int BlForm_load ( BlForm *ficha )
+ int BlForm_DesBlForm ( BlForm *ficha )
+ {
+     BL_FUNC_DEBUG
++blMsgInfo(&quot;BlForm_DesBlForm&quot;);
+ 
+     if (!ficha-&gt;fieldId().isEmpty()) {
+     if ( ficha-&gt;dbValue(ficha-&gt;fieldId()) != &quot;&quot;) {
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007541.html">[BulmaGés]Paquetes Debian, ¿donde?
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007543.html">[BulmaGés] [Gitorious] Activity: aron pushed 1	commits to mastermas...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7542">[ fecha ]</a>
+              <a href="thread.html#7542">[ hilo ]</a>
+              <a href="subject.html#7542">[ asunto ]</a>
+              <a href="author.html#7542">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

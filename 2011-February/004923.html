@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Problemas de dependencias con dpkg-buildpackage
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FProblemas_de_dependen%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fcias_con_dpkg-buildpackage%3F%3D&In-Reply-To=%3CAANLkTi%3DSQZDvnuLLsZh6yveMBpbm5zYXtPf9RNvQR9Br%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="004917.html">
+   <LINK REL="Next"  HREF="004918.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Problemas de dependencias con dpkg-buildpackage </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FProblemas_de_dependen%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fcias_con_dpkg-buildpackage%3F%3D&In-Reply-To=%3CAANLkTi%3DSQZDvnuLLsZh6yveMBpbm5zYXtPf9RNvQR9Br%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]Problemas de dependencias con dpkg-buildpackage">tborras en gmail.com
+       </A><BR>
+    <I>Mie Feb  9 10:43:13 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="004917.html">[BulmaGés]Problemas de dependencias con dpkg-buildpackage
+</A></li>
+        <LI>Próximo mensaje: <A HREF="004918.html">[BulmaGés] r4375 - trunk/bulmages/bulmasetup
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4923">[ fecha ]</a>
+              <a href="thread.html#4923">[ hilo ]</a>
+              <a href="subject.html#4923">[ asunto ]</a>
+              <a href="author.html#4923">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bien, entonces subiré, de momento los .install y el control para que se
+puedan generar los paquetes y testearse. Y miraré ahora a ver como generar
+las entradas de menu para ir completando los paquetes.
+
+Salut
+
+El 9 de febrero de 2011 09:32, Walter Garcia-Fontes
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">walter.garcia en upf.edu</A>&gt;escribió:
+
+&gt;<i> * Tomeu Borras [09/02/11 07:19]:
+</I>&gt;<i> &gt; Buenas
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Ya he hecho &quot;unos&quot; paquetes. Un gran trabajo el de Leo.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; He arreglado los install para que la instalacion sea completa y he
+</I>&gt;<i> cambiado un
+</I>&gt;<i> &gt; par de cosas de sitio porque sino el bulmasetup no funcionaria con solo
+</I>&gt;<i> usar el
+</I>&gt;<i> &gt; bulmages-server-admin.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; También he agregado una dependencia de bulmages-server-admin del
+</I>&gt;<i> bulmages.
+</I>&gt;<i>
+</I>&gt;<i> Genial. Yo también probé mis paquetes y faltaba el problema de
+</I>&gt;<i> dependencias. Además los paquetes se pisaban entre sí queriendo
+</I>&gt;<i> instalar las mimas cosas, quizás con tus .install se haya arreglado.
+</I>&gt;<i>
+</I>&gt;<i> &gt; Por lo poco que los he probado estan funcionando. Eso si, no he visto que
+</I>&gt;<i> &gt; metiesen los ejecutables en el menu de KDE así que lo suyo es currarlo un
+</I>&gt;<i> poco
+</I>&gt;<i> &gt; más.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; El tema es subir cambios o no. Porque tampoco soy muy experto en esto del
+</I>&gt;<i> &gt; empaquetado.
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>&gt;<i> Yo voto por subirlos. Si rompemos algo siempre tenemos las revisiones
+</I>&gt;<i> antiguas para arreglarlo, y así podemos continuar trabajando para
+</I>&gt;<i> conseguir acabarlo, por último sin instalable de Linux se limita
+</I>&gt;<i> mucha, hay mucha gente que si le dices que tiene que compilar por más
+</I>&gt;<i> que se vea fácil, ni lo intenta.
+</I>&gt;<i>
+</I>&gt;<i> Walter
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Walter Garcia-Fontes
+</I>&gt;<i> Barcelona
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ----- End forwarded message -----
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Walter Garcia-Fontes
+</I>&gt;<i> mailto: <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">walter.garcia en upf.edu</A> - <A HREF="http://puna.upf.edu">http://puna.upf.edu</A>
+</I>&gt;<i> Departament d'Economia i Empresa - <A HREF="http://www.econ.upf.edu">http://www.econ.upf.edu</A>
+</I>&gt;<i> Universitat Pompeu Fabra
+</I>&gt;<i> Ramon Trias Fargas 25-27, 08005 Barcelona, Spain
+</I>&gt;<i> Tel. +34 93 542 2722 - Fax. +34 93 542 1746
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20110209/1eabfbc0/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20110209/1eabfbc0/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="004917.html">[BulmaGés]Problemas de dependencias con dpkg-buildpackage
+</A></li>
+	<LI>Próximo mensaje: <A HREF="004918.html">[BulmaGés] r4375 - trunk/bulmages/bulmasetup
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4923">[ fecha ]</a>
+              <a href="thread.html#4923">[ hilo ]</a>
+              <a href="subject.html#4923">[ asunto ]</a>
+              <a href="author.html#4923">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Saber nuevo id desde guardarPost en una ficha BfForm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FSaber_nuevo_id_desde_%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FguardarPost_en_una_ficha_BfForm%3F%3D&In-Reply-To=%3C201001082016.11794.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003276.html">
+   <LINK REL="Next"  HREF="003286.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Saber nuevo id desde guardarPost en una ficha BfForm </H1>
+    <B>Tomeu</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FSaber_nuevo_id_desde_%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FguardarPost_en_una_ficha_BfForm%3F%3D&In-Reply-To=%3C201001082016.11794.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]Saber nuevo id desde guardarPost en una ficha BfForm">tborras en conetxia.com
+       </A><BR>
+    <I>Vie Ene  8 20:16:11 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003276.html">[BulmaGés] Saber nuevo id desde guardarPost en una	ficha BfForm
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003286.html">[BulmaGés]Saber nuevo id desde guardarPost en una ficha BfForm
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3278">[ fecha ]</a>
+              <a href="thread.html#3278">[ hilo ]</a>
+              <a href="subject.html#3278">[ asunto ]</a>
+              <a href="author.html#3278">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> Tengo una ficha que hereda de BfForm.
+</I>&gt;<i> 
+</I>&gt;<i> En mi función guardarPost necesito saber el nuevo identificador que ha
+</I>&gt;<i>  creado PostgreSQL cuando la ficha es nueva, pero dbValue ( &quot;idtabla&quot; ) no
+</I>&gt;<i>  me da el valor correcto.
+</I>&gt;<i> 
+</I>&gt;<i> He hecho que funcione poniendo al principio de mi guardarPost la llamada:
+</I>&gt;<i> dbConnection() -&gt; commit();
+</I>&gt;<i> 
+</I>&gt;<i> ¿En guardarPost no debería saberse ya el nuevo id, ya que el registro está
+</I>&gt;<i> guardado?
+</I>&gt;<i> &quot;
+</I>
+
+Algo debes tener mal ya que el id si se pone antes de la llamada guardarPost.
+
+Se me ocurre que estes haciendo un begin por tu cuenta. Cosa no contemplada si 
+se esta usando BlForm ya que el propio BlForm es el que hace el manejo de las 
+transacciones.
+
+
+O que no tengas bien establecido cual es el identificador de la tabla.
+
+
+Hay un montón de ejemplos del guardarPost que funcionan bien, por ejemplo 
+FacturaProveedorView (pluginbf_profeedorfactura/facturapview.cpp) , 
+FacturaView (pluginbf_clientefactura/facturaview.cpp), y todos los formularios 
+con subformulario en general tienen un guardarPost para guardar el 
+subformulario o subformularios.
+
+Salut
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003276.html">[BulmaGés] Saber nuevo id desde guardarPost en una	ficha BfForm
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003286.html">[BulmaGés]Saber nuevo id desde guardarPost en una ficha BfForm
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3278">[ fecha ]</a>
+              <a href="thread.html#3278">[ hilo ]</a>
+              <a href="subject.html#3278">[ asunto ]</a>
+              <a href="author.html#3278">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

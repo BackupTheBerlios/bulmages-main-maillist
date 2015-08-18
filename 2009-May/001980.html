@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] Plugin de cuentas anuales
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Plugin%20de%20cuentas%20anuales&In-Reply-To=%3C200905182342.41787.leo%40alaxarxa.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001978.html">
+   <LINK REL="Next"  HREF="001984.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] Plugin de cuentas anuales </H1>
+    <B>Leopold Palomo Avellaneda</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Plugin%20de%20cuentas%20anuales&In-Reply-To=%3C200905182342.41787.leo%40alaxarxa.net%3E"
+       TITLE="[BulmaGés] Plugin de cuentas anuales">leo en alaxarxa.net
+       </A><BR>
+    <I>Lun Mayo 18 23:42:41 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001978.html">[BulmaGés] r3370 -	trunk/bulmages/installbulmages/i18n
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001984.html">[BulmaGés]Plugin de cuentas anuales
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1980">[ fecha ]</a>
+              <a href="thread.html#1980">[ hilo ]</a>
+              <a href="subject.html#1980">[ asunto ]</a>
+              <a href="author.html#1980">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bones,
+
+para quien no lo sepa estoy rehaciendo el plugin de cuentas anuales. Richard, 
+toma nota ....
+
+Mi idea es eliminar los antiguos. Hay trabajo por hacer, pero no tanto. Lo 
+principal está hecho. Dentro de bulmalib, hay toda un utilitario de funciones 
+para hacer informes con python y bases de datos: los ficheros pys.
+
+El trabajo ha sido migrar de python incrustado en c++ a pys (python a 
+secas ...)
+
+Casi todas las cuentas anuales están pasadas, pero faltan eliminar símbolos 
+que aún faltan.
+
+También he añadido la funcionalidad de poder comparar períodos, por lo que el 
+plugin ahora pide al usuario fecha actual, inicial i final y fecha anterior 
+inicial i final.
+
+El problema que tengo es que el programa peta y no encuentro el fallo. 
+Haciendo debug he llegado a la función generaRML donde peta ya que 
+
+ mainCompany()-&gt;dbName();
+
+no es accesible. 
+
+Le podéis echar un vistazo por favor?
+
+Leo
+
+######################################3
+
+int BlForm::generaRML ( const QString &amp;arch )
+{
+    _depura ( &quot;BlForm::generaRML&quot;, 0 );
+
+    /// Vaciamos las variables de RML
+    m_variables.clear();
+
+    /// Ponemos en m_variables CONF_DBNAME y CONF_DBUSER
+    m_variables[&quot;CONF_DBNAME&quot;] = mainCompany()-&gt;dbName();
+    m_variables[&quot;CONF_DBUSER&quot;] = mainCompany()-&gt;currentUser();
+
+    /// Disparamos los plugins
+    int res = g_plugins-&gt;lanza ( &quot;BlForm_generaRML&quot;, this );
+    if ( res != 0 ) {
+        return 1;
+    } // end if
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001978.html">[BulmaGés] r3370 -	trunk/bulmages/installbulmages/i18n
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001984.html">[BulmaGés]Plugin de cuentas anuales
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1980">[ fecha ]</a>
+              <a href="thread.html#1980">[ hilo ]</a>
+              <a href="subject.html#1980">[ asunto ]</a>
+              <a href="author.html#1980">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

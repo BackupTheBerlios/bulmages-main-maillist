@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Más temas de compilación en cygwin
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FM%3DE1s_temas_de_compil%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Faci%3DF3n_en_cygwin%3F%3D&In-Reply-To=%3C20100805122506.GA10173%40upf.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003893.html">
+   <LINK REL="Next"  HREF="003892.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Más temas de compilación en cygwin </H1>
+    <B>Walter Garcia-Fontes</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FM%3DE1s_temas_de_compil%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Faci%3DF3n_en_cygwin%3F%3D&In-Reply-To=%3C20100805122506.GA10173%40upf.edu%3E"
+       TITLE="[BulmaGés]Más temas de compilación en cygwin">walter.garcia en upf.edu
+       </A><BR>
+    <I>Jue Ago  5 14:25:06 CEST 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003893.html">[BulmaGés]Solicitud de iconos
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003892.html">[BulmaGés]Más temas de compilación en cygwin
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3891">[ fecha ]</a>
+              <a href="thread.html#3891">[ hilo ]</a>
+              <a href="subject.html#3891">[ asunto ]</a>
+              <a href="author.html#3891">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Finalmente pude avanzar y completar el link en &quot;bulmadir&quot;
+especificando la línea de lincado directamente y agregando
+&quot;libintl.dll.a&quot; al final. Otras maneras que probé introduciendo esta
+librería en diversos lugares de &quot;CMakeCache.txt&quot; agregaba esta cadena
+pero al principio, justo después de /usr/bin/c++, y seguía quejándose
+de no encontrar las _libintl_gettext y otras relacionadas. Pero
+poniéndola al final completó el lincado y después de copiar las
+librerías creadas al lugar adecuado el make se dio por satisfecho y
+siguió. 
+
+En seguida apareció otro problema en bulmatpv.dir. Hay unos paréntesis
+que interpreta como  paréntesis de la línea de comandos, (&quot;D_(String&quot;
+y cosas así), cosa que he arreglado poniéndole entrando otra vez el
+comando directamente y poniéndole un &quot;\&quot; delante de los
+paréntesis. Pero esto de momento me obliga a compilar cada objeto por
+separado, copiar los .o al lugar adecuado, etc. Se os ocurre porqué en
+&quot;cygwin&quot; estos paréntesis dan problemas pero no en linux? Es posible
+que &quot;sh&quot; no sea &quot;sh&quot; sino &quot;ash&quot; en cygwin, y quizás esto cause los
+problemas. 
+
+Walter
+
+-- 
+Walter Garcia-Fontes
+mailto: <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">walter.garcia en upf.edu</A> - <A HREF="http://puna.upf.edu">http://puna.upf.edu</A>
+Departament d'Economia i Empresa - <A HREF="http://www.econ.upf.edu">http://www.econ.upf.edu</A>
+Universitat Pompeu Fabra
+Ramon Trias Fargas 25-27, 08005 Barcelona, Spain
+Tel. +34 93 542 2722 - Fax. +34 93 542 1746
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003893.html">[BulmaGés]Solicitud de iconos
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003892.html">[BulmaGés]Más temas de compilación en cygwin
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3891">[ fecha ]</a>
+              <a href="thread.html#3891">[ hilo ]</a>
+              <a href="subject.html#3891">[ asunto ]</a>
+              <a href="author.html#3891">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

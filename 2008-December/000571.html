@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Actualización Bulmages
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Futf-8%3Fq%3FActualizaci%3DC3%3DB3n_Bulmage%3F%3D%20%3D%3Futf-8%3Fq%3Fs%3F%3D&In-Reply-To=%3C200812161518.09937.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000568.html">
+   <LINK REL="Next"  HREF="000576.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Actualización Bulmages </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Futf-8%3Fq%3FActualizaci%3DC3%3DB3n_Bulmage%3F%3D%20%3D%3Futf-8%3Fq%3Fs%3F%3D&In-Reply-To=%3C200812161518.09937.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]Actualización Bulmages">tborras en conetxia.com
+       </A><BR>
+    <I>Mar Dic 16 15:18:09 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000568.html">[BulmaGés]Actualización Bulmages
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000576.html">[BulmaGés] r2847 -	trunk/bulmages/images/oxygen/actions
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#571">[ fecha ]</a>
+              <a href="thread.html#571">[ hilo ]</a>
+              <a href="subject.html#571">[ asunto ]</a>
+              <a href="author.html#571">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Joe:
+
+Un poco de rollo:
+BulmaGés cambia mucho, muy rápidamente y además aun no hay una versión a la 
+que podamos decir &quot;perfecta&quot;. Eso hace que si quieres realizar un uso serio 
+de la aplicación descartes automaticamente el uso de los paquetes estandar 
+por los siguientes motivos:
+	- Son versiones antiguas.
+	- Sobre los paquetes no se están arreglando los bugs.
+
+Así que yo personalmente recomiendo ir siempre (hasta que no tengamos algo 
+bueno de verdad) tirando del svn por los siguientes motivos:
+	- Siempre puedes actualizarlo.
+	- El arreglo de bugs puede ser muy  muy rápido.
+	- Te resultará más fácil colaborar con el proyecto.
+
+Vale, descartamos los paquetes y ahora que:
+
+(No voy a detallar como compilar e instalar) Por defecto la instalación desde 
+svn se realiza en /usr/local lo cual se puede cambiar ....
+
+Si sólo vas a tener una máquina ejecutando el programa yastá (ahi lo tienes  y 
+ahi  se queda). Lo atacas con ssh -X o con FreeNX (sobrecargando el servidor) 
+y listos !!!
+
+Si la opción de una única instalación se te hace corta, o es complicada 
+entonces tienes el dilema siguiente:
+	1.- Descargo el svn en cada maquina y compilo para cada máquina
+	2.- Desde lo que tengo compilado en el servidor lo instalo en tantas maquinas 
+como quiera.
+
+	La opción 1 no es viable por ser un tostón.
+
+	A eso me refería con lo de copiar del /usr/local del servidor al /usr/local 
+de tus máquinas. (Con un sencillo script de rsync, compartiendo las claves 
+RSA del ssh para que no tengas que meter la contraseña cada vez puedes tener 
+todo actualizado en un plis !!!) (De verdad que nunca he entendido al genio 
+que se inventó aquello de meter el programa en la base de datos para 
+actualizar los clientes !!!).
+
+Y listo porque la configuración la haces una única vez y si utilizas bien la 
+jerarquia de los archivos de configuración no tendrás nunca problemas de 
+archivos de configuración obsoletos para la versión que estas utilizando ni 
+tampoco perderás las opciones personalizadas de configuración.
+
+Lo de los directorios de plantillas y tal y tal pués tienen sus opciones (o 
+bien carpeta compartida o bien replicadas con rsync).
+
+PD: Si tienes las cosas en /usr/share/bulmages y en /usr/lib es pq o bien has 
+instalado los paquetes o bien has cambiado la ruta por defecto (eso te puede 
+complicar un pelin, no mucho, la actualización de los clientes).
+
+
+No se si te lo he clarificado, pero por lo menos lo he intentado.
+
+Salut
+
+
+El Tuesday 16 December 2008 12:33:23 Joe &quot;The Driller&quot; escribió:
+&gt;<i>    Apreciado Tomeu, todavía no me queda claro cómo actualizar bulmages,
+</I>&gt;<i> si se trata de una sola máquina ¿Debo compilar sin más y no borrar nada
+</I>&gt;<i> previamente?, si es el servidor ¿hago lo mismo? En mi caso que tengo la
+</I>&gt;<i> base de datos en el servidor no acabo de comprender qué debo copiar
+</I>&gt;<i> exactamente del usr/local del servidor, creo que en el directorio
+</I>&gt;<i> mencionado no hay ningún archivo del programa, todo está en
+</I>&gt;<i> el /etc/bulmages,  /usr/share/bulmages, /usr/lib,  /var/lib  y en el
+</I>&gt;<i> directorio local.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Saludos,
+</I>&gt;<i>
+</I>&gt;<i> José Coma.
+</I>
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000568.html">[BulmaGés]Actualización Bulmages
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000576.html">[BulmaGés] r2847 -	trunk/bulmages/images/oxygen/actions
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#571">[ fecha ]</a>
+              <a href="thread.html#571">[ hilo ]</a>
+              <a href="subject.html#571">[ asunto ]</a>
+              <a href="author.html#571">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

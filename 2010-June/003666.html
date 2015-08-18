@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]lista la primera hornada de paquetes para debian
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-15%3Fq%3Flista_la_primera_hor%3F%3D%0A%20%3D%3Fiso-8859-15%3Fq%3Fnada_de_paquetes_para_debian%3F%3D&In-Reply-To=%3C201006062247.43975.leo%40alaxarxa.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003665.html">
+   <LINK REL="Next"  HREF="003667.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]lista la primera hornada de paquetes para debian </H1>
+    <B>Leopold Palomo Avellaneda</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-15%3Fq%3Flista_la_primera_hor%3F%3D%0A%20%3D%3Fiso-8859-15%3Fq%3Fnada_de_paquetes_para_debian%3F%3D&In-Reply-To=%3C201006062247.43975.leo%40alaxarxa.net%3E"
+       TITLE="[BulmaGés]lista la primera hornada de paquetes para debian">leo en alaxarxa.net
+       </A><BR>
+    <I>Lun Jun  7 00:47:43 CEST 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003665.html">[BulmaGés]lista la primera hornada de paquetes para debian
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003667.html">[BulmaGés]lista la primera hornada de paquetes para debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3666">[ fecha ]</a>
+              <a href="thread.html#3666">[ hilo ]</a>
+              <a href="subject.html#3666">[ asunto ]</a>
+              <a href="author.html#3666">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>A Divendres 04 Juny 2010, Iker Salmón San Millán va escriure:
+&gt;<i> Hola,
+</I>&gt;<i> 
+</I>&gt;<i> Pues eso, que por fin he conseguido construir los paquetes.  Eso sí, no os
+</I>&gt;<i> hagáis ilusiones, aún queda mucho trabajo por hacer.
+</I>
+perfecto, muchas grácias.
+
+&gt;<i> Para empezar, no se si he metido cada archivo donde corresponde, y además
+</I>&gt;<i> he tenido varios warnings durante la construcción de los paquetes.  Esos
+</I>&gt;<i> warnings estan relacionados con los plugins  y CREO que se pueden ignorar
+</I>&gt;<i> por el propio mensaje &quot;it's probably a plugin&quot;. pero no sé, lo mejor es
+</I>&gt;<i> que los ponga:
+</I>
+me lo miro.
+ 
+[...]
+&gt;<i> 
+</I>&gt;<i> Otra cosa es que he necesitado exportar LD_LIBRARY_PATH para los
+</I>&gt;<i> directorios de plugins de bulmafact y bulmacont, porque no he sido capaz
+</I>&gt;<i> de incluirlos en el archivo rules, se supone que con el parámetro -l puedo
+</I>&gt;<i> hacerlo con dh_shlibdeps, pero no se si he metido la ruta mal o que.  
+</I>
+no, va en el postconfig. Lo arreglo yo.
+
+&gt;<i> Tampoco he probado todas las posibilidades con las rutas parciales o
+</I>&gt;<i> completas, pero como me ha funcionado exportandolo y tengo los ojos
+</I>&gt;<i> llorosos ya de leer, lo he dejado para otro día.
+</I>
+:<i>-D
+</I>
+ 
+&gt;<i> Creo que como tomeu me ha añadido al subversión podría subir os cambios que
+</I>&gt;<i> he tenido que hacer para que se construya bien los paquetes, pero
+</I>&gt;<i> sinceramente no me atrevo a hacerlo aún.  Me falta confianza.  Además,
+</I>&gt;<i> antes de hacerlo quisiera terminar con las cosas pendientes que quedan por
+</I>&gt;<i> discutir:
+</I>
+súbelos ya!!!! ;-)
+ 
+&gt;<i> Voy a intentar sintetizar todo para que quede clarito.
+</I>&gt;<i> 
+</I>&gt;<i> Definitivamente nos quedan cinco paquetes:  bulmages, bulmafact, bulmacont,
+</I>&gt;<i> bulmatpv y bulmages-servers-admin
+</I>&gt;<i> La idea que tengo, que no se si es la más correcta, es esta:
+</I>
+si, tranquilo.
+
+&gt;<i> En cada paquete van las cosas propias de sí mismos (bulmafact, bulmatpv,
+</I>&gt;<i> bulmacont y bulmages-servers-admin) salvo en bulmages, que he metido lo que
+</I>&gt;<i> creo que era de bulmalib y de bulmages-common y también la documentación.
+</I>&gt;<i> Con lo que creo que bulmafact, bulmatpv y bulmacont dependen de ese paquete
+</I>&gt;<i> también, por lo que lo he añadido como dependencia (antes tenían como
+</I>&gt;<i> dependencia bulmages-common).
+</I>&gt;<i> 
+</I>&gt;<i> La idea es que bulmages-servers-admin pueda funcionar por si mismo sin
+</I>&gt;<i> otras dependencias.
+</I>
+ok, dependrá de postres y qt y pyqt y python si metes el lanzador.
+
+&gt;<i> La duda que me queda es si hacer o no un paquete solo para la
+</I>&gt;<i> documentación. Ya me contaréis.
+</I>
+nops, no vale la pena.
+
+&gt;<i> Cosas pendientes:
+</I>&gt;<i> 
+</I>&gt;<i> 1- Confirmar la separación de los paquetes tal y como lo he planteado.
+</I>
+por mi ok, pero quiero revisarla.
+
+&gt;<i> 2- Verificar que no haya metido la pata a la hora de separar los archivos,
+</I>&gt;<i> ya que no me se la función de cada uno.  Me he limitado a deducirlo por el
+</I>&gt;<i> nombre y ruta de cada archivo.  Lo único que tengo claro es que los que he
+</I>&gt;<i> metido en bulmafact, bulmacont y bulmatpv están bien, ya que se identifican
+</I>&gt;<i> muy bien.  Creo que puede haber problemas con los otros dos (además estaba
+</I>&gt;<i> ya muy cansado cuando los puse y probé mil cosas porque no conseguía crear
+</I>&gt;<i> el paquete).  No quiero incordiar a Tomeu, pero creo que él sería el más
+</I>&gt;<i> adecuado para comprobar ese listado.
+</I>
+
+no puedo verificar nada si no subes los cambios.
+
+&gt;<i> 3- Decidir si metemos la documentación en bulmages también o creamos un
+</I>&gt;<i> bulmages-doc.
+</I>
+no, de verdad, no vale la pena.
+
+&gt;<i> 4- Decidir la versión que será el paquete.  Creo que nombrarlo como una
+</I>&gt;<i> versión + subversión no es lo más adecuado para pensar en que llegue a
+</I>&gt;<i> estable.  ¿Sería posible liberar una especie de postversion ya que ahora ya
+</I>&gt;<i> no quedan dependencias de las qt3?
+</I>
+mira, de verdad, llevo años con esto y renuncio. Versión + svnrevision . No 
+psa nada con debian, tranquilo.
+
+&gt;<i> 5- modificar el rules para no tener que exportar la variable de las rutas y
+</I>&gt;<i> que sea más sencilla la construcción de los paquetes.
+</I>
+ok, tranquilo-
+
+&gt;<i> Aunque la congelación de squeeze está muy cerca y es prácticamente
+</I>&gt;<i> imposible que consigamos que entre a tiempo, aún hay una pequeña
+</I>&gt;<i> posibilidad.
+</I>
+venga, lo intentamos.
+
+&gt;<i> Como sé que todo el mundo pone de su parte y muchos no tienen casi tiempo
+</I>&gt;<i> no voy a pedirle a nadie un esfuerzo.  Pero yo tengo tiempo disponible y
+</I>&gt;<i> muchas ganas, con una pequeña ayudita inicial puedo tener los paquetes
+</I>&gt;<i> listos en pocos días.
+</I>
+sube los cambios !!!!!
+
+&gt;<i> Un saludo a todos y ánimo.
+</I>&gt;<i> 
+</I>&gt;<i> P.S.  Creo que no me dejo nada en el tintero, estoy bastante cansado y ya
+</I>&gt;<i> no pienso con claridad, pero después de ver los paquetes en formato deb me
+</I>&gt;<i> siento renovado y feliz.  Gracias a todos por la oportunidad de
+</I>&gt;<i> aprendizaje que me habéis brindado.
+</I>
+
+venga, ahora me toca a mi iteración 2.
+
+
+Grácias,
+
+Leo
+
+-- 
+--
+Linux User 152692     PGP: 0xF944807E
+Catalonia
+-------------------------------------
+A: Because it messes up the order in which people normally read text.
+Q: Why is top-posting such a bad thing?
+A: Top-posting.
+Q: What is the most annoying thing in e-mail?
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003665.html">[BulmaGés]lista la primera hornada de paquetes para debian
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003667.html">[BulmaGés]lista la primera hornada de paquetes para debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3666">[ fecha ]</a>
+              <a href="thread.html#3666">[ hilo ]</a>
+              <a href="subject.html#3666">[ asunto ]</a>
+              <a href="author.html#3666">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

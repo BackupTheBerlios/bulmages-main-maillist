@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Compilando en Kubuntu -- error, no encuentra librerías --
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Futf-8%3Fq%3FCompilando_en_Kubuntu_--_e%3F%3D%0A%09%3D%3Futf-8%3Fq%3Frror%3D2C_no_encuentra_librer%3DC3%3DADas_--%3F%3D&In-Reply-To=%3C200901150824.43276.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000785.html">
+   <LINK REL="Next"  HREF="000813.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Compilando en Kubuntu -- error, no encuentra librerías -- </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Futf-8%3Fq%3FCompilando_en_Kubuntu_--_e%3F%3D%0A%09%3D%3Futf-8%3Fq%3Frror%3D2C_no_encuentra_librer%3DC3%3DADas_--%3F%3D&In-Reply-To=%3C200901150824.43276.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]Compilando en Kubuntu -- error, no encuentra librerías --">tborras en conetxia.com
+       </A><BR>
+    <I>Jue Ene 15 08:24:43 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000785.html">[BulmaGés]Compilando en Kubuntu -- error, no encuentra librerías --
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000813.html">[BulmaGés]Compilando en Kubuntu -- error, no encuentra librerías --
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#787">[ fecha ]</a>
+              <a href="thread.html#787">[ hilo ]</a>
+              <a href="subject.html#787">[ asunto ]</a>
+              <a href="author.html#787">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Este error esta documenado en el wiki 
+
+Seguramente no tengas el /usr/local/lib en el ldconfig
+
+edita el archivo /etc/ld.so.conf.d/i486-linux-gnu
+
+y agrega el directorio /usr/local/lib
+
+luego ejecuta ldconfig para que recargue el parametro.
+
+Salut
+
+El Thursday 15 January 2009 00:18:19 Daniel Bustos Fernández escribió:
+&gt;<i> help!! :-(
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> El 11 de enero de 2009 20:00, Daniel Bustos Fernández
+</I>&gt;<i>
+</I>&gt;<i> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">daniel69 en gmail.com</A>&gt;escribió:
+</I>&gt;<i> &gt; Hola
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Me ocurre exactamente esto
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; <A HREF="http://llistes.bulma.net/pipermail/bulmages/2008-May/009081.html">http://llistes.bulma.net/pipermail/bulmages/2008-May/009081.html</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; con la última KUbuntu. Estoy intentando compilarla para empezar a
+</I>&gt;<i> &gt; toquetear código.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; No acabo de entender la solución que dais al problema, en el mismo hilo.
+</I>&gt;<i> &gt; Según dice Tomeu:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &quot;
+</I>&gt;<i> &gt; Es posile que el ccmake no este bien hecho o que haya un problema en el
+</I>&gt;<i> &gt; los CMakeFiles
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Mientras tanto puedes probar de hacer un ln -s de este archivo al
+</I>&gt;<i> &gt; /usr/lib y
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; seguramente te desaparezca este error y salga otro similar con las otras
+</I>&gt;<i> &gt; librerias.&quot;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ¿Qué archivo? ¿ccmake? No hay ningún ccmake o yo no lo se encontrar.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Me he bajado el código del svn.
+</I>&gt;<i> &gt; En mi Kubuntu las librerias están en /usr/local/lib, no en usr/loca
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ¿¿ ln -s archivo_que_toque usr/local/lib ??
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Un saludo
+</I>&gt;<i> &gt; Dani
+</I>
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000785.html">[BulmaGés]Compilando en Kubuntu -- error, no encuentra librerías --
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000813.html">[BulmaGés]Compilando en Kubuntu -- error, no encuentra librerías --
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#787">[ fecha ]</a>
+              <a href="thread.html#787">[ hilo ]</a>
+              <a href="subject.html#787">[ asunto ]</a>
+              <a href="author.html#787">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] BUG al importar plan de cuentas en	bulmacont (SVN 9/4/2009)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20BUG%20al%20importar%20plan%20de%20cuentas%20en%0A%09bulmacont%20%28SVN%209/4/2009%29&In-Reply-To=%3C200904101659.06366.m.mezo%40upm.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001513.html">
+   <LINK REL="Next"  HREF="001516.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] BUG al importar plan de cuentas en	bulmacont (SVN 9/4/2009) </H1>
+    <B>Marcos Mezo</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20BUG%20al%20importar%20plan%20de%20cuentas%20en%0A%09bulmacont%20%28SVN%209/4/2009%29&In-Reply-To=%3C200904101659.06366.m.mezo%40upm.es%3E"
+       TITLE="[BulmaGés] BUG al importar plan de cuentas en	bulmacont (SVN 9/4/2009)">m.mezo en upm.es
+       </A><BR>
+    <I>Vie Abr 10 16:59:05 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001513.html">[BulmaGés] r3217 - in	trunk/bulmages/bulmafact/plugins: pluginbf_actividad	pluginbf_profesor/dbmodels
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001516.html">[BulmaGés]BUG al importar plan de cuentas en bulmacont (SVN 9/4/2009)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1514">[ fecha ]</a>
+              <a href="thread.html#1514">[ hilo ]</a>
+              <a href="subject.html#1514">[ asunto ]</a>
+              <a href="author.html#1514">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola a todos,
+
+como siempre cuando busco un ratín me meto a hacer pruebas con 
+bulmafact/bulmacont.
+
+Ayer actualicé el SVN y lo compilé y ahora estaba probándolo un poco. He 
+intentado importar el plan de cuentas pyme 2008 en bulmacont y me daba error 
+de violación de restricción. (Los otros también, por cierto)
+
+El problema parece ser que el campo &quot;padre&quot; de la tabla &quot;cuenta&quot; está marcado 
+como NOT NULL (sin valor por defecto) y en la importación del plan contable 
+hay una comprobación que no sé muy bien por qué se hace, pero el caso es que 
+inserta en la tabla cuentas un valor de prueba y no inserta el campo &quot;padre&quot;.
+
+Es la línea 1490 del archivo bulmalib/src/pgimportfiles.cpp
+QString query = &quot;INSERT INTO cuenta (codigo, descripcion) VALUES ('AUX', 'Una 
+descripcion auxiliar de cuenta')&quot;;
+
+Arreglarla sería sencillo si supiera qué poner para que tenga sentido la 
+línea, pero no sé si incluso lo más correcto sería eliminar esta inserción 
+por completo. (Y su borrado en el destructor)
+
+Ya puestos, en esta veo también &quot;hardcoded&quot; el marcar todos los periodos del 
+2005 como no bloqueados con un INSERT y me da la impresión que eran para 
+hacer puebas y que se podría borrar, pero de momento no me atrevo.
+
+Un saludo,
+Marcos Mezo
+
+P.D. Me ha sorprendido, pero a la vez hecho ilusión, que en un comentario un 
+poco más abajo, en la línea 1640 diga literalmente :-) :
+/// Nuevo Socio M.Mezo
+
+Veo que alrededor de esta línea se emplea el sanearCadena(), que es mi única 
+contribución al proyecto hasta la fecha (a parte de los comentarios plastas y 
+petición de ayuda como ahora), pero no creo que tenga mucho que ver. ¿O es 
+que estabais esperando que encuentre yo este bug y me lo habéis puesto de 
+bienvenida? :-D
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001513.html">[BulmaGés] r3217 - in	trunk/bulmages/bulmafact/plugins: pluginbf_actividad	pluginbf_profesor/dbmodels
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001516.html">[BulmaGés]BUG al importar plan de cuentas en bulmacont (SVN 9/4/2009)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1514">[ fecha ]</a>
+              <a href="thread.html#1514">[ hilo ]</a>
+              <a href="subject.html#1514">[ asunto ]</a>
+              <a href="author.html#1514">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

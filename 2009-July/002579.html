@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][BulmaGÃ©s][BulmaGÃ (c)s] PROPIEDADES     EMPRESA.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaG%3DC3%3DA9s%3D5D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaG%3DC3_%3D28c%3D29s%3D5D_PROPIEDADES_____EMPRESA%3D2E%3F%3D&In-Reply-To=%3C36106.212.121.229.126.1246449742.squirrel%40webmail.tinet.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002578.html">
+   <LINK REL="Next"  HREF="002581.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][BulmaGÃ©s][BulmaGÃ (c)s] PROPIEDADES     EMPRESA. </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaG%3DC3%3DA9s%3D5D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaG%3DC3_%3D28c%3D29s%3D5D_PROPIEDADES_____EMPRESA%3D2E%3F%3D&In-Reply-To=%3C36106.212.121.229.126.1246449742.squirrel%40webmail.tinet.org%3E"
+       TITLE="[BulmaGés][BulmaGÃ©s][BulmaGÃ (c)s] PROPIEDADES     EMPRESA.">xdrudis en tinet.cat
+       </A><BR>
+    <I>Mie Jul  1 14:02:22 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002578.html">[BulmaGés][BulmaGÃ(c)s] PROPIEDADES EMPRESA.
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002581.html">[BulmaGés][BulmaGÃ(c)s][BulmaGÃ (c)s] PROPIEDADES EMPRESA.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2579">[ fecha ]</a>
+              <a href="thread.html#2579">[ hilo ]</a>
+              <a href="subject.html#2579">[ asunto ]</a>
+              <a href="author.html#2579">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> A veure... estic intentant fer unes plantilles de documents.
+</I>&gt;<i> Actualment en tinc unes bastant bones però les estic millorar.
+</I>&gt;<i>
+</I>&gt;<i> Concreament a la factura no apareixen les dades propies de l'empresa, i
+</I>&gt;<i> llavorns el que vaig és editar la plantilla.rml i posar logos, nif, nom,
+</I>&gt;<i> adreça, informació adicional, etc...
+</I>&gt;<i>
+</I>&gt;<i> però clar si puc utilitzar la informació que hi ha als camps de propiedades
+</I>&gt;<i> de empresa ja podrem començar a utilitzar les plantilles com a models per a
+</I>&gt;<i> tothom.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> en definitiva considero que bulmages no pot estar tant fluix en els
+</I>&gt;<i> documents finals i per això els tinc bastant millorats.
+</I>&gt;<i>
+</I>
+Ah. Ara ja t'entenc. No et sé contestar de memòria, però suposo que hauràs
+de fer un query a la taula configuracion, crec. Alguna cosa de l'estil:
+
+&lt;!--QUERY =&quot;SELECT  *
+FROM
+(SELECT VALOR AS CIF FROM CONFIGURACION WHERE NOMBRE = 'CIF'),
+(SELECT Valor As TipoVia FROM Configuracion WHERE Nombre = 'TipoVia'),
+(SELECT Valor As NombreVia FROM Configuracion WHERE Nombre = 'NombreVia'),
+(SELECT Valor As NumeroVia FROM Configuracion WHERE Nombre = 'NumeroVia'),
+(SELECT Valor As Escalera FROM Configuracion WHERE Nombre = 'Escalera'),
+(SELECT Valor As Piso FROM Configuracion WHERE Nombre = 'Piso'),
+(SELECT Valor As Puerta FROM Configuracion WHERE Nombre = 'Puerta'),
+(SELECT Valor As CodPostal FROM Configuracion WHERE Nombre = 'CodPostal'),
+(SELECT Valor As Municipio FROM Configuracion WHERE Nombre = 'Municipio'),
+(SELECT Valor As Provincia FROM Configuracion WHERE Nombre = 'Provincia'),
+(SELECT Valor As Pais FROM Configuracion WHERE Nombre = 'Pais'),
+(SELECT Valor As Tipo FROM Configuracion WHERE Nombre = 'Tipo'),
+(SELECT Valor As ProgramaContabilidad FROM Configuracion WHERE Nombre = 'ProgramaContabilidad'),
+(SELECT Valor As AlmacenDefecto FROM Configuracion WHERE Nombre = 'AlmacenDefecto'),
+(SELECT Valor As DireccionCompleta FROM Configuracion WHERE Nombre = 'DireccionCompleta'),
+(SELECT Valor As Ciudad FROM Configuracion WHERE Nombre = 'Ciudad'),
+(SELECT Valor As CodArticuloGenerico FROM Configuracion WHERE Nombre = 'CodArticuloGenerico'),
+(SELECT Valor As SerieFacturaDefecto FROM Configuracion WHERE Nombre = 'SerieFacturaDefecto'),
+(SELECT VALOR AS IRPF FROM CONFIGURACION WHERE NOMBRE = 'IRPF'),
+(SELECT Valor As CodCuenta FROM Configuracion WHERE Nombre = 'CodCuenta')
+&quot;--&gt;
+   &lt;drawString x=&quot;7.3cm&quot; y=&quot;1.2cm&quot;&gt;[CIF] [NombreEmpresa&lt;/drawString&gt;
+   &lt;drawString x=&quot;7.3cm&quot; y=&quot;0.9cm&quot;&gt;[CodPostal] [Municipio]&lt;/drawString&gt;
+&lt;!-- END QUERY --&gt;
+
+no ?
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002578.html">[BulmaGés][BulmaGÃ(c)s] PROPIEDADES EMPRESA.
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002581.html">[BulmaGés][BulmaGÃ(c)s][BulmaGÃ (c)s] PROPIEDADES EMPRESA.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2579">[ fecha ]</a>
+              <a href="thread.html#2579">[ hilo ]</a>
+              <a href="subject.html#2579">[ asunto ]</a>
+              <a href="author.html#2579">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

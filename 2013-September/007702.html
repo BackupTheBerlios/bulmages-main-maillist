@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Problemas con CMAKE y Qt5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-September/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FProblemas_con_CMAKE_y%3F%3D%20%3D%3Fiso-8859-1%3Fq%3F_Qt5%3F%3D&In-Reply-To=%3C5232F46B.4080501%40gnuinos.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+   <LINK REL="Next"  HREF="007703.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Problemas con CMAKE y Qt5 </H1>
+    <B>aitor</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FProblemas_con_CMAKE_y%3F%3D%20%3D%3Fiso-8859-1%3Fq%3F_Qt5%3F%3D&In-Reply-To=%3C5232F46B.4080501%40gnuinos.org%3E"
+       TITLE="[BulmaGés]Problemas con CMAKE y Qt5">aitor en gnuinos.org
+       </A><BR>
+    <I>Vie Sep 13 13:18:03 CEST 2013</I>
+    <P><UL>
+        
+        <LI>Próximo mensaje: <A HREF="007703.html">[BulmaGés]Problemas con CMAKE y Qt5
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7702">[ fecha ]</a>
+              <a href="thread.html#7702">[ hilo ]</a>
+              <a href="subject.html#7702">[ asunto ]</a>
+              <a href="author.html#7702">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Buenos días, Tomeu, Daniel y compañía. Me he bajado la versión de 
+BulmaGés en Qt5 desde Gitorius para intentar compilarla en kubuntu 13.04.
+
+Bueno, os comento...
+
+1) Primero he instalado Qt5 usando el instalador 
+qt-linux-opensource-5.1.0-x86-offline.run 
+&lt;<A HREF="http://qt-project.org/downloads">http://qt-project.org/downloads</A>&gt; proporcionado por qt-project. La ruta 
+de la instalación ha sido la siguiente:
+
+      /opt/Qt5.1.0/5.1.0
+
+2) Después he instalado las dependencias de BulmaGés: postgres, 
+python-psycopg2, python-reportlab, etc...
+
+3) He modificado en el CMakeLists.txt la variable QT5_MODULE_PATH al 
+siguiente valor:
+
+     QT5_MODULE_PATH = &quot;/opt/Qt5.1.0/5.1.0/gcc/lib/cmake&quot;
+
+4) Finalmente, he ejecutado cmake, pero me lanza el siguiente error:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">aitor en localhost</A>:~/bulmages/bulmages/build$ cmake ../
+CMake Error at CMakeLists.txt:36 (find_package):
+   By not providing &quot;FindQt5Core.cmake&quot; in CMAKE_MODULE_PATH this 
+project has
+   asked CMake to find a package configuration file provided by 
+&quot;Qt5Core&quot;, but
+   CMake did not find one.
+   Could not find a package configuration file provided by &quot;Qt5Core&quot; 
+with any
+   of the following names:
+     Qt5CoreConfig.cmake
+     qt5core-config.cmake
+   Add the installation prefix of &quot;Qt5Core&quot; to CMAKE_PREFIX_PATH or set
+   &quot;Qt5Core_DIR&quot; to a directory containing one of the above files.  If
+   &quot;Qt5Core&quot; provides a separate development package or SDK, be sure it has
+   been installed.
+-- Configuring incomplete, errors occurred!
+
+El archivo Qt5CoreConfig.cmake está en 
+/opt/Qt5.1.0/5.1.0/gcc/lib/cmake/Qt5Core. Sin embargo no lo encuentra. 
+También os comento que tengo instalado Qt4, pero eso no debería de 
+generar conflictos.
+
+¿Alguna ayuda al respecto?
+
+Gracias anticipadas.
+
+________________________________________________________________________________________________________________________________________________
+
+
+
+El 13/06/13 17:04, Daniel Ripoll escribió:
+&gt;<i> Hola a todos,
+</I>&gt;<i>
+</I>&gt;<i> Continuo teniendo los problemas con CMAKE y Qt5, pero veo de donde 
+</I>&gt;<i> vienen... (Aunque por falta de tiempo ahora no veo donde afinarlo)
+</I>&gt;<i>
+</I>&gt;<i> La cosa es que se queja de que esos .cmake no existen. Se busca en el 
+</I>&gt;<i> directorio... ¡Y efectivamente no existen!
+</I>&gt;<i>
+</I>&gt;<i> CMake Error at CMakeLists.txt:85 (INCLUDE):
+</I>&gt;<i>   include could not find load file:
+</I>&gt;<i>
+</I>&gt;<i> /opt/Qt5.0.1/5.0.1/gcc_64/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreMacros.cmake 
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> CMake Error at CMakeLists.txt:87 (INCLUDE):
+</I>&gt;<i>   include could not find load file:
+</I>&gt;<i>
+</I>&gt;<i> /opt/Qt5.0.1/5.0.1/gcc_64/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake 
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> CMake Error at CMakeLists.txt:88 (INCLUDE):
+</I>&gt;<i>   include could not find load file:
+</I>&gt;<i>
+</I>&gt;<i> /opt/Qt5.0.1/5.0.1/gcc_64/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake 
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20130913/ff13aa46/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20130913/ff13aa46/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Próximo mensaje: <A HREF="007703.html">[BulmaGés]Problemas con CMAKE y Qt5
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7702">[ fecha ]</a>
+              <a href="thread.html#7702">[ hilo ]</a>
+              <a href="subject.html#7702">[ asunto ]</a>
+              <a href="author.html#7702">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

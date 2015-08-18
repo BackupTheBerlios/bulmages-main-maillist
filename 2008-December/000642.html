@@ -1,0 +1,293 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Bug #14481] Falta &quot; a línia 91 de revf-pluginpreciocoste.sql
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%5BBug%20%2314481%5D%20Falta%20%22%20a%20l%EDnia%2091%20de%20revf-pluginpreciocoste.sql&In-Reply-To=%3C200812212016.mBLKG9Xj012391%40unicorn.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000641.html">
+   <LINK REL="Next"  HREF="000643.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Bug #14481] Falta &quot; a línia 91 de revf-pluginpreciocoste.sql </H1>
+    <B>admin en berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%5BBug%20%2314481%5D%20Falta%20%22%20a%20l%EDnia%2091%20de%20revf-pluginpreciocoste.sql&In-Reply-To=%3C200812212016.mBLKG9Xj012391%40unicorn.berlios.de%3E"
+       TITLE="[Bug #14481] Falta &quot; a línia 91 de revf-pluginpreciocoste.sql">admin en berlios.de
+       </A><BR>
+    <I>Dom Dic 21 21:16:09 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000641.html">[BulmaGés] r2867 -	trunk/bulmages/bulmafact/plugins/pluginpreciocoste/dbmodels
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000643.html">[BulmaGés] [Bug #14476] Falten fitxers sql de	plugins ?
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#642">[ fecha ]</a>
+              <a href="thread.html#642">[ hilo ]</a>
+              <a href="subject.html#642">[ asunto ]</a>
+              <a href="author.html#642">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bug #14481, was updated on 2008-Sep-11 14:25
+Here is a current snapshot of the bug.
+
+Project: BulmaGes, Gestión Empresarial Libre
+Category: bulmasetup
+Status: Closed
+Resolution: Fixed
+Bug Group: None
+Priority: 5
+Submitted by: xdrudis
+Assigned to : lepalom
+Summary: Falta &quot; a línia 91 de revf-pluginpreciocoste.sql
+
+Details: Provat amb bulmasetup-0.11.1-2 de lenny
+
+Dóna un error que no afecta a la funcionalitat però embruta el 
+log d'errors i fa més díficil veure els errors de debó.
+
+Vaig instal·lar els plugins:
+ libpluginq19.so; \
+libplugintpv.so; \
+libpluginetiquetado.so; \
+libpluginpromedios.so; \
+libplugininformeclientessxc.so; \
+libpluginpreciocoste.so; \
+libplugininformeclientes.so; \
+libpluginimpresionesmultiples.so; \
+libplugininventario.so; \
+libpluginmail.so; \
+libplugintarifas.so; \
+libplugindebugbf.so; \
+libplugincatalogo.so; \
+libpluginticket.so; \
+libpluginbarcodeopen.so; \
+libpluginimportcsv.so; \
+libpluginsubformprint.so; \
+libpluginimpers.so; \
+libpluginsubformods.so; \
+libpluginsubformsxc.so; \
+libplugininformes.so
+
+I a més el de bloquejos i el d'àlies
+
+Com que el de bloquejos i àlies em van donar errors 
+(veure  Bug #14479 i 014478 ) 
+
+vaig desinstal·lar els pluguins d'àlies i bloquejos
+
+Llavors em va donar un error perquè a la línia 91 de 
+:<i>  /usr/share/bulmages/dbmodels/plugins/revf-pluginpreciocoste.sql 
+</I>hi ha un missatge sense tancar cometes
+
+Tratando Precios de Coste
+Ha que actualizar Precios de Coste
+su postgres -c &quot;psql -t -f /usr/share/bulmages/dbmodels/plugins/revf-pluginpreciocoste.sql bulmafact&quot;
+Start.
+Start.
+error: psql:/usr/share/bulmages/dbmodels/plugins/revf-pluginpreciocoste.sql:91: 
+error: unterminated quoted string 
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE PRECIO COSTE *********&quot; &quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot; &quot;:: &quot;
+SET SET BEGIN CREATE FUNCTION CREATE FUNCTION CREATE FUNCTION 0 DROP FUNCTION &quot;Agregamos el campo precio de coste a los articulos&quot; 1 :: Funcion para actualiz
+ar precios de venta segun precios de coste ... CREATE FUNCTION CREATE TRIGGER CREATE FUNCTION 0 DROP FUNCTION &quot;Actualizada la revision de la base de datos&quot; D
+ROP FUNCTION DROP FUNCTION COMMIT 
+
+--------
+
+Provat damb bulmasetup-0.11.1-2 de lenny
+
+Da un error que non afècte ara foncionalitat mès empiporne eth 
+log d'errors e hè mès díficil a veir es vers errors .
+
+Installè es plugins:
+
+
+ libpluginq19.so; \
+libplugintpv.so; \
+libpluginetiquetado.so; \
+libpluginpromedios.so; \
+libplugininformeclientessxc.so; \
+libpluginpreciocoste.so; \
+libplugininformeclientes.so; \
+libpluginimpresionesmultiples.so; \
+libplugininventario.so; \
+libpluginmail.so; \
+libplugintarifas.so; \
+libplugindebugbf.so; \
+libplugincatalogo.so; \
+libpluginticket.so; \
+libpluginbarcodeopen.so; \
+libpluginimportcsv.so; \
+libpluginsubformprint.so; \
+libpluginimpers.so; \
+libpluginsubformods.so; \
+libpluginsubformsxc.so; \
+libplugininformes.so
+
+E tanben eth de àlies e eth de bloquejos.
+
+
+Coma que eth de bloquejos e àlies me daren  errors 
+(veir  Bug #14479 i 014478 ) 
+
+desinstalle es pluguins d'àlies e bloquejos
+
+Alavetz me dí  un error pr'amor que ena línia 91 de 
+:<i>  /usr/share/bulmages/dbmodels/plugins/revf-pluginpreciocoste.sql 
+</I>i a un messatge sens barrar birgules
+
+Tratando Precios de Coste
+Ha que actualizar Precios de Coste
+su postgres -c &quot;psql -t -f /usr/share/bulmages/dbmodels/plugins/revf-pluginpreciocoste.sql bulmafact&quot;
+Start.
+Start.
+error: psql:/usr/share/bulmages/dbmodels/plugins/revf-pluginpreciocoste.sql:91: 
+error: unterminated quoted string 
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE PRECIO COSTE *********&quot; &quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot; &quot;:: &quot;
+SET SET BEGIN CREATE FUNCTION CREATE FUNCTION CREATE FUNCTION 0 DROP FUNCTION &quot;Agregamos el campo precio de coste a los articulos&quot; 1 :: Funcion para actualiz
+ar precios de venta segun precios de coste ... CREATE FUNCTION CREATE TRIGGER CREATE FUNCTION 0 DROP FUNCTION &quot;Actualizada la revision de la base de datos&quot; D
+ROP FUNCTION DROP FUNCTION COMMIT 
+
+---------------
+Tested with  bulmasetup-0.11.1-2 from lenny
+
+It gives an error which does not harm functionality but
+puts noise in the error log and makes it harder to see actual errors.
+
+I installed plugins:
+ libpluginq19.so; \
+libplugintpv.so; \
+libpluginetiquetado.so; \
+libpluginpromedios.so; \
+libplugininformeclientessxc.so; \
+libpluginpreciocoste.so; \
+libplugininformeclientes.so; \
+libpluginimpresionesmultiples.so; \
+libplugininventario.so; \
+libpluginmail.so; \
+libplugintarifas.so; \
+libplugindebugbf.so; \
+libplugincatalogo.so; \
+libpluginticket.so; \
+libpluginbarcodeopen.so; \
+libpluginimportcsv.so; \
+libpluginsubformprint.so; \
+libpluginimpers.so; \
+libpluginsubformods.so; \
+libpluginsubformsxc.so; \
+libplugininformes.so
+
+And also blocking and aliases  plugins
+
+Since blocking and aliases gave me errors 
+(see  Bug #14479 i 014478 ) 
+
+I uninstalled blocking and aliases plugins
+
+Then it gave me an error because in line 91 of
+:<i>  /usr/share/bulmages/dbmodels/plugins/revf-pluginpreciocoste.sql 
+</I>there's a message without closing quotes:
+
+Tratando Precios de Coste
+Ha que actualizar Precios de Coste
+su postgres -c &quot;psql -t -f /usr/share/bulmages/dbmodels/plugins/revf-pluginpreciocoste.sql bulmafact&quot;
+Start.
+Start.
+error: psql:/usr/share/bulmages/dbmodels/plugins/revf-pluginpreciocoste.sql:91: 
+error: unterminated quoted string 
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE PRECIO COSTE *********&quot; &quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot; &quot;:: &quot;
+SET SET BEGIN CREATE FUNCTION CREATE FUNCTION CREATE FUNCTION 0 DROP FUNCTION &quot;Agregamos el campo precio de coste a los articulos&quot; 1 :: Funcion para actualiz
+ar precios de venta segun precios de coste ... CREATE FUNCTION CREATE TRIGGER CREATE FUNCTION 0 DROP FUNCTION &quot;Actualizada la revision de la base de datos&quot; D
+ROP FUNCTION DROP FUNCTION COMMIT 
+
+
+---------------
+
+Probado con bulmasetup-0.11.1-2 de lenny
+
+Da un error que no afecta a la funcionalidad pero ensucia el 
+log de errores y hace más díficil ver los errores autenticos.
+
+Instalé los plugins:
+ libpluginq19.so; \
+libplugintpv.so; \
+libpluginetiquetado.so; \
+libpluginpromedios.so; \
+libplugininformeclientessxc.so; \
+libpluginpreciocoste.so; \
+libplugininformeclientes.so; \
+libpluginimpresionesmultiples.so; \
+libplugininventario.so; \
+libpluginmail.so; \
+libplugintarifas.so; \
+libplugindebugbf.so; \
+libplugincatalogo.so; \
+libpluginticket.so; \
+libpluginbarcodeopen.so; \
+libpluginimportcsv.so; \
+libpluginsubformprint.so; \
+libpluginimpers.so; \
+libpluginsubformods.so; \
+libpluginsubformsxc.so; \
+libplugininformes.so
+
+Y además el de bloqueos y el de alias
+
+Cómo que el de bloqueos y alias me dieron errores 
+(ver  Bug #14479 y 014478 ) 
+ desinstalé los pluguins de alias y bloqueos
+
+Entonces me dio un error porque en la línea 91 de : 
+  /usr/share/bulmages/dbmodels/plugins/revf-pluginpreciocoste.sql 
+hay un mensaje sin cerrar comillas
+
+
+Tratando Precios de Coste
+Ha que actualizar Precios de Coste
+su postgres -c &quot;psql -t -f /usr/share/bulmages/dbmodels/plugins/revf-pluginpreciocoste.sql bulmafact&quot;
+Start.
+Start.
+error: psql:/usr/share/bulmages/dbmodels/plugins/revf-pluginpreciocoste.sql:91: 
+error: unterminated quoted string 
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE PRECIO COSTE *********&quot; &quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot; &quot;:: &quot;
+SET SET BEGIN CREATE FUNCTION CREATE FUNCTION CREATE FUNCTION 0 DROP FUNCTION &quot;Agregamos el campo precio de coste a los articulos&quot; 1 :: Funcion para actualiz
+ar precios de venta segun precios de coste ... CREATE FUNCTION CREATE TRIGGER CREATE FUNCTION 0 DROP FUNCTION &quot;Actualizada la revision de la base de datos&quot; D
+ROP FUNCTION DROP FUNCTION COMMIT 
+
+
+Follow-Ups:
+
+Date: 2008-Dec-21 21:16
+By: lepalom
+
+Comment:
+Tancat al svn2867
+-------------------------------------------------------
+
+For detailed info, follow this link:
+<A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=14481&amp;group_id=4472">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=14481&amp;group_id=4472</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000641.html">[BulmaGés] r2867 -	trunk/bulmages/bulmafact/plugins/pluginpreciocoste/dbmodels
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000643.html">[BulmaGés] [Bug #14476] Falten fitxers sql de	plugins ?
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#642">[ fecha ]</a>
+              <a href="thread.html#642">[ hilo ]</a>
+              <a href="subject.html#642">[ asunto ]</a>
+              <a href="author.html#642">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

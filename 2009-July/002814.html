@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]mas build system
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fmas_build_system%3F%3D&In-Reply-To=%3C200907231133.06729.leo%40alaxarxa.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002813.html">
+   <LINK REL="Next"  HREF="002821.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]mas build system </H1>
+    <B>Leopold Palomo-Avellaneda</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fmas_build_system%3F%3D&In-Reply-To=%3C200907231133.06729.leo%40alaxarxa.net%3E"
+       TITLE="[BulmaGés]mas build system">leo en alaxarxa.net
+       </A><BR>
+    <I>Jue Jul 23 11:33:06 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002813.html">[BulmaGés]mas build system
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002821.html">[BulmaGés] mas build system
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2814">[ fecha ]</a>
+              <a href="thread.html#2814">[ hilo ]</a>
+              <a href="subject.html#2814">[ asunto ]</a>
+              <a href="author.html#2814">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>A Dijous 23 Juliol 2009, Pedro Lopez-Cabanillas va escriure:
+&gt;<i> On Thursday, July 23, 2009, Leopold Palomo-Avellaneda wrote:
+</I>&gt;<i> &gt; A Dijous 23 Juliol 2009, Pedro Lopez-Cabanillas va escriure:
+</I>&gt;<i> &gt; &gt; On Wednesday, July 22, 2009, Leopold Palomo Avellaneda wrote:
+</I>&gt;<i> &gt; &gt; &gt; A Dimecres 22 Juliol 2009, Pedro Lopez-Cabanillas va escriure:
+</I>&gt;<i> &gt; &gt; &gt; &gt; Hola,
+</I>&gt;<i> &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; Dos propuestas mas, para el build system. O sea: tocar los
+</I>&gt;<i> &gt; &gt; &gt; &gt; CMakeLists...
+</I>&gt;<i> &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; 1. Compilación 64 bits. Ya lo comenté hace un par de semanas: en
+</I>&gt;<i> &gt; &gt; &gt; &gt; algunas distros de 64 bits las bibliotecas van en lib64/ en vez de
+</I>&gt;<i> &gt; &gt; &gt; &gt; lib/. Me ofrezco para añadir soporte en el build system.
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; explica-me tu idea por favor.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Propongo una solución parecida a como lo hacen los scripts de KDE4. Dos
+</I>&gt;<i> &gt; &gt; partes, en primer lugar un search/replace masivo en todos los
+</I>&gt;<i> &gt; &gt; CMakeLists.txt, cambiando líneas como la siguiente:
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; 	install_targets(/lib bulmalib)
+</I>&gt;<i> &gt; &gt; por:
+</I>&gt;<i> &gt; &gt; 	install(TARGETS bulmalib LIBRARY DESTINATION ${LIB_INSTALL_DIR})
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; OK.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &gt; Por otro lado, en el script del directorio raíz, definir una nueva
+</I>&gt;<i> &gt; &gt; variable LIB_SUFFIX que se podrá asignar por los empaquetadores o
+</I>&gt;<i> &gt; &gt; usuarios para ajustar la instalación a las convenciones de cada distro,
+</I>&gt;<i> &gt; &gt; inicializándola con &quot;&quot; en sistemas de 32 bits y con &quot;64&quot; en sistemas de
+</I>&gt;<i> &gt; &gt; 64 bits. Algo así:
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; 	set(_Init_LIB_SUFFIX &quot;&quot;)
+</I>&gt;<i> &gt; &gt; 	IF(CMAKE_SIZEOF_VOID_P MATCHES &quot;8&quot;)
+</I>&gt;<i> &gt; &gt; 		set(_Init_LIB_SUFFIX &quot;64&quot;)
+</I>&gt;<i> &gt; &gt; 	ENDIF(CMAKE_SIZEOF_VOID_P MATCHES &quot;8&quot;)
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; 	set(LIB_SUFFIX &quot;${_Init_LIB_SUFFIX}&quot; CACHE STRING &quot;suffix of lib
+</I>&gt;<i> &gt; &gt; directory name (32/64)&quot;)
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; 	set(LIB_INSTALL_DIR &quot;lib${LIB_SUFFIX}&quot;)
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Es decir, en el momento de ejecutar la configuración, se podría hacer
+</I>&gt;<i> &gt; &gt; (por ejemplo):
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; 	$ cmake .. -DLIB_SUFFIX=32
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Si me pongo el sombrero de debian no me gusta mucho, pero es aceptable.
+</I>&gt;<i> &gt; En debian, las de 64 se ponen donde tu dices, pero hay un link a lib, por
+</I>&gt;<i> &gt; lo que siempre encuentras las cosas en el mismo sitio, sean de 32 o no.
+</I>&gt;<i> &gt; No entiendo lo del 32 o 64 con el valor de la variable LIB_SUFFIX; más
+</I>&gt;<i> &gt; bien seria o &quot;&quot;, &quot;64&quot; por qué tenéis un lib32 en maquinas habituales
+</I>&gt;<i> &gt; (32)? Si te simplifica la vida, por mi adelante. El paquete debian se
+</I>&gt;<i> &gt; modifica muy fácilmente para esto.
+</I>&gt;<i>
+</I>&gt;<i> A mi también me parece una tontería el directorio lib32, pero hay que
+</I>&gt;<i> permitirlo porque lo usan algunas distros, siguiendo el estándar (FHS)
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://www.pathname.com/fhs/pub/fhs-2.3.html#LIBLTQUALGTALTERNATEFORMATESSE">http://www.pathname.com/fhs/pub/fhs-2.3.html#LIBLTQUALGTALTERNATEFORMATESSE</A>
+</I>&gt;<i>NTIAL
+</I>&gt;<i> <A HREF="http://www.pathname.com/fhs/pub/fhs-2.3.html#USRLIBLTQUALGTALTERNATEFORMATL">http://www.pathname.com/fhs/pub/fhs-2.3.html#USRLIBLTQUALGTALTERNATEFORMATL</A>
+</I>&gt;<i>IBRARI <A HREF="http://www.pathname.com/fhs/pub/fhs-2.3.html#LIB64">http://www.pathname.com/fhs/pub/fhs-2.3.html#LIB64</A>
+</I>&gt;<i> <A HREF="http://www.pathname.com/fhs/pub/fhs-2.3.html#FTN.AEN890">http://www.pathname.com/fhs/pub/fhs-2.3.html#FTN.AEN890</A>
+</I>&gt;<i>
+</I>&gt;<i> De todas formas, en una distro &quot;normal&quot; (Debian, openSuse, ...) no se
+</I>&gt;<i> necesitará especificar el -DLIB_SUFFIX en la línea de mandato de cmake,
+</I>&gt;<i> porque el nombre del directorio por defecto ya sería &quot;lib&quot; o &quot;lib64&quot;
+</I>&gt;<i> dependiendo de la arquitectura detectada.
+</I>
+en debian, las librerias de 64 bits van a /usr/lib no a /usr/lib64. Lo que hay 
+es un enlace de lib a lib64. 
+
+Leo
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002813.html">[BulmaGés]mas build system
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002821.html">[BulmaGés] mas build system
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2814">[ fecha ]</a>
+              <a href="thread.html#2814">[ hilo ]</a>
+              <a href="subject.html#2814">[ asunto ]</a>
+              <a href="author.html#2814">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

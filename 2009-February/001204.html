@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]r3099 - trunk/bulmages/bulmasetup
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fr3099_-_trunk/bulmage%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fs/bulmasetup%3F%3D&In-Reply-To=%3C200902231610.58276.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001203.html">
+   <LINK REL="Next"  HREF="001205.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]r3099 - trunk/bulmages/bulmasetup </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fr3099_-_trunk/bulmage%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fs/bulmasetup%3F%3D&In-Reply-To=%3C200902231610.58276.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]r3099 - trunk/bulmages/bulmasetup">tborras en conetxia.com
+       </A><BR>
+    <I>Lun Feb 23 16:10:58 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001203.html">[BulmaGés] r3099 - trunk/bulmages/bulmasetup
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001205.html">[BulmaGés]r3099 - trunk/bulmages/bulmasetup
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1204">[ fecha ]</a>
+              <a href="thread.html#1204">[ hilo ]</a>
+              <a href="subject.html#1204">[ asunto ]</a>
+              <a href="author.html#1204">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Buenas:
+
+	Estoy empezando a trabajar con bulmasetup para hacerlo algo más atractivo y 
+manejable. Y de paso ponerle algún extra. 
+
+	Más o menos le voy dando el aspecto del Adept Manager de KDE (v3.5) que el de 
+la 4.X me parece muy enrevesado.
+
+	Ahora mismo estoy con la pantalla de modificacion de facturacion (aunque por 
+extensión se acabará poniendo algo similar en la creación de empresas y en la 
+contabilidad). Entre los cambios que pongo más significativos hay los 
+siguientes:
+
+	1.- Quito el boton Actualizar Bases de Datos y el de Actualizar plugins y 
+pongo un unico boton aplicar cambios. Y aparte en el formulario pongo un 
+checkbox de Actualizar las Bases de Datos que permita poner o no los cambios 
+en la base de datos.
+
+	2.- Agrego opciones de filtrado. De momento ver los plugins instalados o 
+verlos todos y luego una nueva clasificación por categoria de la que de 
+momento solo se ve un ComboBox pero que ya se puede intuir lo que hará.
+
+	3.- Quito los comentarios de los plugins de la tabla y los meto en un 
+QTextBrowser (Que va a admitir HTML esto significa que hay que reformar los 
+readme para que las descripciones sean más extensas. Incluso he pensado en 
+poner las mismas que en el manual) que cambia cada vez que se pulsa sobre 
+alguno de los plugins que estan en la tabla. También mejoro la altura de los 
+elementos de la tabla reduciendo su longitud considerablemente.
+
+	4.- Saco la consola y la pongo como pestaña adicional.
+
+Es importante (muy importante) (especialmente importante) (y más teniendo en 
+cuenta que yo odio profundamente los asistentes) que me ayudeis a probar y 
+mejorar la pantalla porque cada vez que lo miro y pienso que eso se hace con 
+una linea de comando se me baja el alma a los pies.
+
+No empezaré las demás pantallas hasta que tengamos bien esta ya que luego hay 
+que aplicar el mismo estilo por todas las otras y preveo que va a ser labor 
+de mucho probar y opinar.
+
+
+Como sugerencias ya tengo en cuenta las siguientes:
+
+	Falta poner (idea de Fco. Javier) la versión instalada y la versión 
+disponible y destacar aquellos que no coincidan.
+
+	También está el tema de crear usuarios normales y superusuarios de postgres y 
+hacer una administracion de permisos sencillita. (Aunque si de mi dependiese 
+ponia el manual de postgres y arreando !!!!!)
+
+
+Salut
+
+El Monday 23 February 2009 15:43:30 <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">svn en mail.berlios.de</A> escribió:
+&gt;<i> Author: tborras
+</I>&gt;<i> Date: 2009-02-23 15:43:25 +0100 (Mon, 23 Feb 2009)
+</I>&gt;<i> New Revision: 3099
+</I>&gt;<i>
+</I>&gt;<i> Added:
+</I>&gt;<i>    trunk/bulmages/bulmasetup/bulmasetup.py
+</I>&gt;<i>    trunk/bulmages/bulmasetup/config.in
+</I>&gt;<i> Removed:
+</I>&gt;<i>    trunk/bulmages/bulmasetup/bulmasetup.in
+</I>&gt;<i> Modified:
+</I>&gt;<i>    trunk/bulmages/bulmasetup/CMakeLists.txt
+</I>&gt;<i>    trunk/bulmages/bulmasetup/facturacion.py
+</I>&gt;<i>    trunk/bulmages/bulmasetup/modificarfacturacion.py
+</I>&gt;<i>    trunk/bulmages/bulmasetup/modificarfacturacionbase.py
+</I>&gt;<i>    trunk/bulmages/bulmasetup/modificarfacturacionbase.ui
+</I>&gt;<i> Log:
+</I>&gt;<i> Cambios en bulmasetup.
+</I>&gt;<i> Cambio la pantalla de modificar facturacion para empezar a testear un
+</I>&gt;<i> disenyo mas funcional y atractivo.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001203.html">[BulmaGés] r3099 - trunk/bulmages/bulmasetup
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001205.html">[BulmaGés]r3099 - trunk/bulmages/bulmasetup
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1204">[ fecha ]</a>
+              <a href="thread.html#1204">[ hilo ]</a>
+              <a href="subject.html#1204">[ asunto ]</a>
+              <a href="author.html#1204">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

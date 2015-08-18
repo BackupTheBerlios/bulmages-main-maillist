@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Gettext y los gloriosos mensajes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FGettext_y_los_glorios%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fos_mensajes%3F%3D&In-Reply-To=%3C200902162337.46555.leo%40alaxarxa.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001105.html">
+   <LINK REL="Next"  HREF="001095.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Gettext y los gloriosos mensajes </H1>
+    <B>Leopold Palomo Avellaneda</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FGettext_y_los_glorios%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fos_mensajes%3F%3D&In-Reply-To=%3C200902162337.46555.leo%40alaxarxa.net%3E"
+       TITLE="[BulmaGés]Gettext y los gloriosos mensajes">leo en alaxarxa.net
+       </A><BR>
+    <I>Lun Feb 16 23:37:46 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001105.html">[BulmaGés]Gettext y los gloriosos mensajes
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001095.html">[BulmaGés] r3055 - in trunk/bulmages:	bulmacont/src bulmafact/src bulmages/src bulmalib/src	bulmalib/src/po installbulmages/i18n old-ts
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1108">[ fecha ]</a>
+              <a href="thread.html#1108">[ hilo ]</a>
+              <a href="subject.html#1108">[ asunto ]</a>
+              <a href="author.html#1108">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>A Diumenge 15 Febrer 2009, Fco. Javier M. C. va escriure:
+&gt;<i> Hola Leo.
+</I>&gt;<i>
+</I>&gt;<i> Ayer Tomeu creó un plugin nuevo (saco la gestión de trabajadores) y no
+</I>&gt;<i> sabía como crear los .po con las traducciones. No se si es la mejor
+</I>&gt;<i> manera de hacerlo o existe algún atajo. Yo le pasé estas instrucciones.
+</I>&gt;<i> Te las mando para que veas como lo hizo y si se puede mejorar el
+</I>&gt;<i> procedimiento porque es muy engorroso.
+</I>
+es que no estaba acabado .... ahora quizás sí ... ;-)
+
+Para crear un nuevo plugin, se crea como se han ido creando el resto de 
+plugins. Los pasos son los de siempre:
+
+- mkdir dir_nombre_del_plugin
+- crear los ficheros que toquen
+- Copiar el CMakeLists.txt.template i cambiar poner el nombre que toque.
+- crear el directorio po dentro del del plugin.
+
+Ir a build, hacer make
+Si todo ha ido bien entonces hay que haver:
+- make nombre_del_plugin_pot
+(esto creará el template de mensajes)
+- make update_nombre_del_plugin_pot
+(esto copiará el template al source_dir)
+
+Ahora hace falta inicializar los mensajes. Dentro del directorio po, donde 
+reside el fichero nombre_del_plugin.pot ejecutar el script que se encuentra 
+en build.
+~/donde_este_bulmages_build/create_gettext_files nombre_del_plugin
+
+este script creará y actualizará los mensajes a partir de los catálogos. Por 
+defecto, crea la versión castellana y la catalana. Si queremos realizar 
+alguna traducción, corrección, etc, podemos editar el fichero creado.
+
+Si todo ha ido bien, ya se  puede hacer:
+make translations
+make install
+
+Si, creemos el el plugin ya está esta con mensajes correctos, entonces 
+deberiamos actualizar el catálogo de mensajes:
+
+Dentro de build, ejecutamos:
+./create_message_catalog
+
+donde nos creará un nuevo fichero pot, con todos los mensajes de la suite 
+bulmages y lo colocará en los sources.
+
+y luego,
+
+./update_message_catalog_lang language1 language2 language3
+
+por ejemplo:
+
+./update_message_catalog_lang ca_ES.UTF-8 es_ES.UTF-8 
+
+donde, a partir de los mensajes (incluso los que acabamos de editar), 
+actualiza el catálogo de mensajes traducidos de sources.
+
+La idea es que se vaya traduciendo estos ficheros (los de dentro de 
+installbulmages/i18n)
+
+Cuando queramos, podemos actualizar los ficheros de traducción de cada módulo, 
+simplemente ejecutando:
+make update_lang_po
+
+Ir con cuidado porque esto actualiza unos 200 ficheros.
+
+Bueno, ahora solo falta probar, depurar y traducir. Convendría tener algun 
+tipo de convención para los mensajes y no tener mensajes gloriosos ....
+
+Leo
+
+
+
+&gt;<i> 1)- editar el archivo CMakeLists.txt del directorio del código fuente
+</I>&gt;<i> del plugin y comentar las siguientes líneas de GETTEXT_CREATE_TRANSLATIONS:
+</I>&gt;<i>
+</I>&gt;<i> if(USE_GETTEXT)
+</I>&gt;<i>    set(plugin_i18n ${plugin_SRC} ${plugin_MOC_SRCS} ${plugin_UIS_H}
+</I>&gt;<i>                         ${plugin_SRCS} ${plugin_MOCS})
+</I>&gt;<i>    GETTEXT_CREATE_TEMPLATE(${plugin} ${CMAKE_CURRENT_BINARY_DIR}
+</I>&gt;<i>                                 ${CMAKE_CURRENT_SOURCE_DIR} plugin_i18n)
+</I>&gt;<i> #   GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/${plugin}.pot
+</I>&gt;<i> #                                ALL LANGUAGES es_ES.UTF-8 ca_ES.UTF-8)
+</I>&gt;<i> endif(USE_GETTEXT)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> 2)- cmake (como siempre)
+</I>&gt;<i> 3)- make
+</I>&gt;<i> 4)- make translations
+</I>&gt;<i> 5)- entrar en el directorio del plugin en el directorio de compilación y
+</I>&gt;<i> ejecutar 'make pluginbf_trabajador_pot' para generar el archivo '.pot'
+</I>&gt;<i> con las cadenas a traducir.
+</I>&gt;<i> 6)- crear directorio 'po' en el directorio del plugin (código fuente).
+</I>&gt;<i> 7)- copiar el archivo '.pot' desde el directorio de compilación.
+</I>&gt;<i> 8)- copiar el archivo '.pot' para cada idioma con extensión '.po'. Ej:
+</I>&gt;<i> pluginbf_trabajador_es_ES.UTF-8.po
+</I>&gt;<i> 9)- descomentar las líneas de CMakeLists.txt
+</I>&gt;<i> 10)- cambiar, de los archivos '.po' las líneas 16 ...&quot; charser=CHARSET&quot;
+</I>&gt;<i> por &quot;charset=UTF-8&quot; porque sino dará error en el siguiente paso.
+</I>&gt;<i> 11)- make translations (otra vez. esto traducirá las cadenas que pueda
+</I>&gt;<i> de forma automática, rellenando los archivos '.po' de cada idioma)
+</I>&gt;<i> 12)- copiar los archivos '.po' del directorio de compilación (que ya
+</I>&gt;<i> está traducido) al directorio del código fuente del plugin.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Un saludo.
+</I>&gt;<i>
+</I>&gt;<i> Leopold Palomo Avellaneda escribió:
+</I>&gt;<i> &gt; Bones,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; una de las cosas que te permite tener un único catálogo de mensajes es
+</I>&gt;<i> &gt; ver los gloriosos mensajes que se han ido utilizando en Bulmages. para
+</I>&gt;<i> &gt; quién no lo sepa, cada uno de ellos es diferente y se tiene que traducir
+</I>&gt;<i> &gt; (*).
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Apartura tarde
+</I>&gt;<i> &gt; Apertura Tarde
+</I>&gt;<i> &gt; Apertura tardes
+</I>&gt;<i> &gt; Apertura Manyana
+</I>&gt;<i> &gt; Apertura manyana
+</I>&gt;<i> &gt; Apertura manyanas
+</I>&gt;<i> &gt; Apellidos
+</I>&gt;<i> &gt; Apellidos:
+</I>&gt;<i> &gt; Articulo
+</I>&gt;<i> &gt; Articulo:
+</I>&gt;<i> &gt; Articulos
+</I>&gt;<i> &gt; &amp;Articulos
+</I>&gt;<i> &gt; Articulo&amp;s
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Leo
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; (*) pensar que con qtranslator se habían de traducir TODOS los mensajes,
+</I>&gt;<i> &gt; incluso los repetidos. Por lo que si tenias un mensaje 15 veces, lo
+</I>&gt;<i> &gt; tenias que traducir 15 veces.
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Bulmages-main mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001105.html">[BulmaGés]Gettext y los gloriosos mensajes
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001095.html">[BulmaGés] r3055 - in trunk/bulmages:	bulmacont/src bulmafact/src bulmages/src bulmalib/src	bulmalib/src/po installbulmages/i18n old-ts
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1108">[ fecha ]</a>
+              <a href="thread.html#1108">[ hilo ]</a>
+              <a href="subject.html#1108">[ asunto ]</a>
+              <a href="author.html#1108">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

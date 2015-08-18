@@ -1,0 +1,293 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130601222405.5DD9215F%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+   <LINK REL="Next"  HREF="007605.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130601222405.5DD9215F%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Dom Jun  2 00:24:04 CEST 2013</I>
+    <P><UL>
+        
+        <LI>Próximo mensaje: <A HREF="007605.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7604">[ fecha ]</a>
+              <a href="thread.html#7604">[ hilo ]</a>
+              <a href="subject.html#7604">[ asunto ]</a>
+              <a href="author.html#7604">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from 11af527 to 2ded849
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/11af52723a399cf47d2e76f1ab8ab4137e6f70bd/diffs/2ded849a30ef825ec6bd212ee4a38c5e845c6340">https://gitorious.org/bulmages/bulmages/commit/11af52723a399cf47d2e76f1ab8ab4137e6f70bd/diffs/2ded849a30ef825ec6bd212ee4a38c5e845c6340</A>
+
+Diff: 
+
+commit 2ded849a30ef825ec6bd212ee4a38c5e845c6340
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sun Jun 2 00:23:49 2013 +0200
+
+    Arreglo problema con la creación de cuenta para compras en las familias
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_articulo/familiasview.cpp b/bulmages/bulmafact/plugins/pluginbf_articulo/familiasview.cpp
+index c094ef0..62a597c 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_articulo/familiasview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_articulo/familiasview.cpp
+@@ -380,14 +380,15 @@ int FamiliasView::save()
+ 	} // end if
+ 
+         if ( mui_productofamilia-&gt;isChecked() ) {
+-            prodfam = &quot; true &quot;;
++            prodfam = &quot; TRUE &quot;;
+         } else {
+-            prodfam = &quot; false &quot;;
++            prodfam = &quot; FALSE &quot;;
+         } // end if
+         QString query = &quot;UPDATE familia SET nombrefamilia = '&quot; +
+                         mainCompany()-&gt;sanearCadena ( mui_nomFamilia-&gt;text() ) + &quot;', descfamilia = '&quot; +
+                         mainCompany()-&gt;sanearCadena ( mui_descFamilia-&gt;toPlainText() ) + &quot;' , codigofamilia = '&quot; +
+                         mainCompany()-&gt;sanearCadena ( mui_codFamilia-&gt;text() ) + &quot;', productofisicofamilia= &quot; + prodfam + &quot; WHERE idfamilia =&quot; + m_idfamilia;
++
+         int error = mainCompany()-&gt;runQuery ( query );
+         if ( error ) {
+             throw -1;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cuenta/pluginbf_cuenta.cpp b/bulmages/bulmafact/plugins/pluginbf_cuenta/pluginbf_cuenta.cpp
+index f6c7249..315f9ad 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cuenta/pluginbf_cuenta.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_cuenta/pluginbf_cuenta.cpp
+@@ -808,7 +808,7 @@ int FamiliasView_FamiliasView ( FamiliasView *fam )
+     cta1-&gt;setMainCompany(fam-&gt;mainCompany());
+     cta1-&gt;setLabel ( _ ( &quot;Cuenta contable compras:&quot; ) );
+     cta1-&gt;setTableName ( &quot;cuenta&quot; );
+-    cta1-&gt;setFieldId(&quot;idcuentav&quot;);
++    cta1-&gt;setFieldId(&quot;idcuenta&quot;);
+     cta1-&gt;m_valores[&quot;descripcion&quot;] = &quot;&quot;;
+     cta1-&gt;m_valores[&quot;codigo&quot;] = &quot;&quot;;
+     cta1-&gt;setObjectName(&quot;mui_idcuentav&quot;);
+@@ -834,6 +834,7 @@ int FamiliasView_FamiliasView ( FamiliasView *fam )
+ 
+ int FamiliasView_Guardar_Pre ( FamiliasView *fam )
+ {
++    BL_FUNC_DEBUG
+     QString query;
+   
+     try {
+@@ -867,7 +868,6 @@ int FamiliasView_Guardar_Pre ( FamiliasView *fam )
+ 		  codint.setNum ( valor );
+ 
+ 	      } else {
+-
+ 		  // PONER UN PARAMETRO APROPIADO
+ 		  while ( codint.length() &lt;  g_confpr-&gt;value(CONF_CONT_NUMDIGITOSEMPRESA).toInt() - 1 ) {
+ 		      codint = codint + &quot;0&quot;;
+@@ -883,13 +883,11 @@ int FamiliasView_Guardar_Pre ( FamiliasView *fam )
+ 	
+ 	      fam-&gt;findChild&lt;BlSearchWidget *&gt;(&quot;mui_idcuenta&quot;)-&gt;setText(codint);
+ 	      
+-	      blMsgError(&quot;Se ha creado la cuenta &quot; + codint);
++	      blMsgInfo(&quot;Se ha creado la cuenta &quot; + codint);
+ 	} else {
+ 	      query = &quot;UPDATE familia SET idcuenta = &quot;+idcuenta+&quot; WHERE idfamilia = &quot; + fam-&gt;idFamiliaModified();
+ 	      fam-&gt;mainCompany()-&gt;runQuery(query);
+ 	      fam-&gt;findChild&lt;BlSearchWidget *&gt;(&quot;mui_idcuenta&quot;)-&gt;setId(idcuenta);
+-
+-	      
+ 	} // end if
+ 	
+ 	/// LA cuenta para compras
+@@ -934,18 +932,17 @@ int FamiliasView_Guardar_Pre ( FamiliasView *fam )
+ 	
+ 	      fam-&gt;findChild&lt;BlSearchWidget *&gt;(&quot;mui_idcuentav&quot;)-&gt;setText(codint);
+ 	      
+-	      blMsgError(&quot;Se ha creado la cuenta &quot; + codint);
++	      blMsgInfo(&quot;Se ha creado la cuenta &quot; + codint);
+ 	} else {
+ 	      query = &quot;UPDATE familia SET idcuentav = &quot;+idcuentav+&quot; WHERE idfamilia = &quot; + fam-&gt;idFamiliaModified();
+ 	      fam-&gt;mainCompany()-&gt;runQuery(query);
+ 	      fam-&gt;findChild&lt;BlSearchWidget *&gt;(&quot;mui_idcuentav&quot;)-&gt;setId(idcuenta);
+-
+-	      
+ 	} // end if
+ 	
+ 	
+     } catch (int e) {
+-	throw -1;
++	blMsgError(_(&quot;Se ha producido un error al guardar las cuentas asociadas a la familia&quot;));
++	return -1;
+     } // end try
+ 
+   
+@@ -1078,7 +1075,8 @@ int FPagoView_Guardar_Pre ( FPagoView *fam )
+ 	      
+ 	} // end if
+     } catch (int e) {
+-	throw -1;
++	blMsgError(_(&quot;Error en la gestion de las cuentas contables asociadas&quot;));
++	return -1;
+     } // end try
+ 
+   
+diff --git a/bulmages/bulmalib/plugins/pluginbl_feeds/CMakeLists.txt b/bulmages/bulmalib/plugins/pluginbl_feeds/CMakeLists.txt
+index fcce8e5..ce0241f 100644
+--- a/bulmages/bulmalib/plugins/pluginbl_feeds/CMakeLists.txt
++++ b/bulmages/bulmalib/plugins/pluginbl_feeds/CMakeLists.txt
+@@ -69,9 +69,13 @@ set_target_properties( ${plugin} PROPERTIES
+   SOVERSION &quot;${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}&quot;
+   VERSION &quot;${BULMAGES_VERSION}&quot;)
+ 
++if(WIN32)
+ target_link_libraries(${plugin} bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+-
+ qt5_use_modules(${plugin} UiTools Xml Core Widgets Script Network WebKit WebKitWidgets)
++else(WIN32)
++target_link_libraries(${plugin} bulmalib)
++qt5_use_modules(${plugin} Widgets WebKit WebKitWidgets)
++endif(WIN32)
+ 
+ install_targets(/lib/bulmalib/plugins ${plugin})
+ 
+diff --git a/bulmages/bulmalib/plugins/pluginbl_feeds/pluginbl_feeds.cpp b/bulmages/bulmalib/plugins/pluginbl_feeds/pluginbl_feeds.cpp
+index b3359dc..25e161c 100644
+--- a/bulmages/bulmalib/plugins/pluginbl_feeds/pluginbl_feeds.cpp
++++ b/bulmages/bulmalib/plugins/pluginbl_feeds/pluginbl_feeds.cpp
+@@ -49,7 +49,7 @@ QAction *g_actionFeedsWidget;
+ **/
+ int entryPoint ( BlMainWindow *bcont )
+ {
+-    BlDebug::blDebug ( &quot;Entrada del plugin Feeds&quot;, 10 );
++    BL_FUNC_DEBUG
+ 
+     /// Inicializa el sistema de traducciones 'gettext'.
+     setlocale ( LC_ALL, &quot;&quot; );
+@@ -77,24 +77,9 @@ int entryPoint ( BlMainWindow *bcont )
+     g_actionFeedsWidget-&gt;setStatusTip ( &quot;Muestra/oculta las notificaciones&quot; );
+     g_actionFeedsWidget-&gt;setWhatsThis ( &quot;Feeds.\n\nMuestra/oculta notificaciones&quot; );
+ 
+-    /*
+-    QObject::connect ( g_actionFeedsWidget, SIGNAL ( toggled ( bool ) ), g_docFeedsWidget, SLOT ( cambiaVisible ( bool ) ) );
+-    QObject::connect ( g_docFeedsWidget, SIGNAL ( cambiaEstadoVisible ( bool ) ), g_actionFeedsWidget, SLOT ( setChecked ( bool ) ) );
+-
+-    
+-    /// Miramos si existe un menu Herramientas
+-    QMenu *pPluginMenu = bcont-&gt;newMenu ( &quot;Venta&amp;na&quot;, &quot;menuVentana&quot;, &quot;menuAcerca_de&quot; );
+-
+-    pPluginMenu-&gt;addSeparator();
+-    pPluginMenu-&gt;addAction ( g_actionFeedsWidget );
+-
+-*/
+-
+     g_docFeedsWidget-&gt;show();
+     g_actionFeedsWidget-&gt;setChecked ( true );
+ 
+-
+-    BlDebug::blDebug ( &quot;Iniciado correctamente el plugin Feeds&quot;, 10 );
+     return 0;
+ }
+ 
+diff --git a/bulmages/bulmalib/src/blpostgresqlclient.cpp b/bulmages/bulmalib/src/blpostgresqlclient.cpp
+index c3ad5ae..022cf21 100644
+--- a/bulmages/bulmalib/src/blpostgresqlclient.cpp
++++ b/bulmages/bulmalib/src/blpostgresqlclient.cpp
+@@ -666,14 +666,17 @@ int BlPostgreSqlClient::formatofecha()
+ int BlPostgreSqlClient::begin()
+ {
+     BL_FUNC_DEBUG
++    BlDebug::blDebug(&quot;=============== BEGIN ==================&quot;);
+     if ( m_insideTransaction ) {
+-        BlDebug::blDebug ( &quot;Ya estamos dentro de una transaccion&quot;, 0 );
++        BlDebug::blDebug ( &quot;Doble inicio de transaccion&quot;, 0 );
++	blMsgError(&quot;Doble inicio de transaccion&quot;);
+         return -1;
+     } // end if
+     PGresult *res;
+     res = PQexec ( conn, &quot;BEGIN&quot; );
+     if ( !res || PQresultStatus ( res ) != PGRES_COMMAND_OK ) {
+         BlDebug::blDebug ( &quot;BEGIN command failed&quot; );
++	blMsgError(&quot;No se pudo iniciar la transaccion&quot;);
+         PQclear ( res );
+         return -1;
+     } // end if
+@@ -693,6 +696,7 @@ int BlPostgreSqlClient::begin()
+ void BlPostgreSqlClient::commit()
+ {
+     BL_FUNC_DEBUG
++    BlDebug::blDebug(&quot;=============== COMMIT ==================&quot;);
+     if ( !m_insideTransaction ) {
+ 	
+         return;
+@@ -714,6 +718,7 @@ void BlPostgreSqlClient::commit()
+ void BlPostgreSqlClient::rollback()
+ {
+     BL_FUNC_DEBUG
++    BlDebug::blDebug(&quot;=============== ROLLBACK ==================&quot;);
+     if ( !m_insideTransaction ) {
+ 	
+         return;
+@@ -879,7 +884,7 @@ int BlPostgreSqlClient::run ( QString Query,  int numParams, const char * const
+             throw 42501;
+ 	
+ 	
+-        /// Fi prova. Nota: 42501 = INSUFFICIENT PRIVILEGE en SQL Standard.
++        /// Nota: 42501 = INSUFFICIENT PRIVILEGE en SQL Standard.
+         result=PQexecParams(  conn, ( const char * ) Query.toUtf8()  , 
+                      numParams, NULL, params, NULL, NULL, 0);
+         
+@@ -888,7 +893,6 @@ int BlPostgreSqlClient::run ( QString Query,  int numParams, const char * const
+             throw - 1;
+         if ( PQresultStatus ( result ) != PGRES_COMMAND_OK &amp;&amp; PQresultStatus ( result ) != 2 )
+             throw - 1;
+-	
+ 
+         PQclear ( result );
+ 	
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Próximo mensaje: <A HREF="007605.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7604">[ fecha ]</a>
+              <a href="thread.html#7604">[ hilo ]</a>
+              <a href="subject.html#7604">[ asunto ]</a>
+              <a href="author.html#7604">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

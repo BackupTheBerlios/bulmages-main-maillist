@@ -1,0 +1,539 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: cgarde pushed 1	commits to masterm...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20cgarde%20pushed%201%0A%09commits%20to%20masterm...&In-Reply-To=%3C20120420092220.4D5EB75901%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007086.html">
+   <LINK REL="Next"  HREF="007082.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: cgarde pushed 1	commits to masterm... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20cgarde%20pushed%201%0A%09commits%20to%20masterm...&In-Reply-To=%3C20120420092220.4D5EB75901%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: cgarde pushed 1	commits to masterm...">no-reply en gitorious.org
+       </A><BR>
+    <I>Vie Abr 20 11:22:19 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007086.html">[BulmaGés][Offtopic] Consulta sobre donaciones
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007082.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to release...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7080">[ fecha ]</a>
+              <a href="thread.html#7080">[ hilo ]</a>
+              <a href="subject.html#7080">[ asunto ]</a>
+              <a href="author.html#7080">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+cgarde pushed 1 commits to master
+master changed from d3e8b9e to 24bf96d
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/d3e8b9e0ef4662337e994e44923a1dbaf87eabfb/diffs/24bf96d72ca802b90d08f35bf676fd90d5add435">https://gitorious.org/bulmages/bulmages/commit/d3e8b9e0ef4662337e994e44923a1dbaf87eabfb/diffs/24bf96d72ca802b90d08f35bf676fd90d5add435</A>
+
+Diff: 
+
+commit 24bf96d72ca802b90d08f35bf676fd90d5add435
+Author: Cristian Garde &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">cristian.garde en gmail.com</A>&gt;
+Date:   Fri Apr 20 11:21:41 2012 +0200
+
+    Agregado los campos que faltaban en 'blconfiguracion'
+    
+    Entre ellos el campo del 'IRPF'.
+    Modificado el campo 'Valor' para que permita coger valores en NULL.
+    No se ha añadido el campo 'ProgramaContabilidad' porque ese campo lo
+    deberia añadir 'pluginbf_sincrobulmacont'.
+    
+    --
+    Cristian Garde
+    [[[ Trabajando en Bulmages desde Todo-Redes. ]]]
+    <A HREF="http://todo-redes.com">http://todo-redes.com</A>
+
+diff --git a/bulmages/bulmafact/src/bfconfiguracionbase.ui b/bulmages/bulmafact/src/bfconfiguracionbase.ui
+index 6858c39..c29ea61 100644
+--- a/bulmages/bulmafact/src/bfconfiguracionbase.ui
++++ b/bulmages/bulmafact/src/bfconfiguracionbase.ui
+@@ -143,15 +143,18 @@
+          &lt;property name=&quot;text&quot;&gt;
+           &lt;string&gt;Nombre:&lt;/string&gt;
+          &lt;/property&gt;
++         &lt;property name=&quot;alignment&quot;&gt;
++          &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
++         &lt;/property&gt;
+          &lt;property name=&quot;buddy&quot;&gt;
+           &lt;cstring&gt;m_nombre&lt;/cstring&gt;
+          &lt;/property&gt;
+         &lt;/widget&gt;
+        &lt;/item&gt;
+-       &lt;item row=&quot;0&quot; column=&quot;1&quot;&gt;
++       &lt;item row=&quot;0&quot; column=&quot;2&quot;&gt;
+         &lt;widget class=&quot;QLineEdit&quot; name=&quot;m_nombre&quot;/&gt;
+        &lt;/item&gt;
+-       &lt;item row=&quot;0&quot; column=&quot;2&quot;&gt;
++       &lt;item row=&quot;0&quot; column=&quot;3&quot;&gt;
+         &lt;widget class=&quot;QLabel&quot; name=&quot;label_4&quot;&gt;
+          &lt;property name=&quot;text&quot;&gt;
+           &lt;string&gt;C.I.F.:&lt;/string&gt;
+@@ -164,7 +167,7 @@
+          &lt;/property&gt;
+         &lt;/widget&gt;
+        &lt;/item&gt;
+-       &lt;item row=&quot;0&quot; column=&quot;3&quot;&gt;
++       &lt;item row=&quot;0&quot; column=&quot;5&quot;&gt;
+         &lt;widget class=&quot;QLineEdit&quot; name=&quot;m_cif&quot;/&gt;
+        &lt;/item&gt;
+        &lt;item row=&quot;1&quot; column=&quot;0&quot;&gt;
+@@ -172,15 +175,18 @@
+          &lt;property name=&quot;text&quot;&gt;
+           &lt;string&gt;Direccion:&lt;/string&gt;
+          &lt;/property&gt;
++         &lt;property name=&quot;alignment&quot;&gt;
++          &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
++         &lt;/property&gt;
+          &lt;property name=&quot;buddy&quot;&gt;
+           &lt;cstring&gt;m_direccion&lt;/cstring&gt;
+          &lt;/property&gt;
+         &lt;/widget&gt;
+        &lt;/item&gt;
+-       &lt;item row=&quot;1&quot; column=&quot;1&quot;&gt;
++       &lt;item row=&quot;1&quot; column=&quot;2&quot;&gt;
+         &lt;widget class=&quot;QLineEdit&quot; name=&quot;m_direccion&quot;/&gt;
+        &lt;/item&gt;
+-       &lt;item row=&quot;1&quot; column=&quot;2&quot;&gt;
++       &lt;item row=&quot;1&quot; column=&quot;3&quot;&gt;
+         &lt;widget class=&quot;QLabel&quot; name=&quot;label_6&quot;&gt;
+          &lt;property name=&quot;text&quot;&gt;
+           &lt;string&gt;C.P.:&lt;/string&gt;
+@@ -193,7 +199,7 @@
+          &lt;/property&gt;
+         &lt;/widget&gt;
+        &lt;/item&gt;
+-       &lt;item row=&quot;1&quot; column=&quot;3&quot;&gt;
++       &lt;item row=&quot;1&quot; column=&quot;5&quot;&gt;
+         &lt;widget class=&quot;QLineEdit&quot; name=&quot;m_cp&quot;/&gt;
+        &lt;/item&gt;
+        &lt;item row=&quot;2&quot; column=&quot;0&quot;&gt;
+@@ -201,15 +207,18 @@
+          &lt;property name=&quot;text&quot;&gt;
+           &lt;string&gt;Municipio:&lt;/string&gt;
+          &lt;/property&gt;
++         &lt;property name=&quot;alignment&quot;&gt;
++          &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
++         &lt;/property&gt;
+          &lt;property name=&quot;buddy&quot;&gt;
+           &lt;cstring&gt;m_municipio&lt;/cstring&gt;
+          &lt;/property&gt;
+         &lt;/widget&gt;
+        &lt;/item&gt;
+-       &lt;item row=&quot;2&quot; column=&quot;1&quot;&gt;
++       &lt;item row=&quot;2&quot; column=&quot;2&quot;&gt;
+         &lt;widget class=&quot;QLineEdit&quot; name=&quot;m_municipio&quot;/&gt;
+        &lt;/item&gt;
+-       &lt;item row=&quot;2&quot; column=&quot;2&quot;&gt;
++       &lt;item row=&quot;2&quot; column=&quot;3&quot;&gt;
+         &lt;widget class=&quot;QLabel&quot; name=&quot;label_10&quot;&gt;
+          &lt;property name=&quot;text&quot;&gt;
+           &lt;string&gt;Provincia:&lt;/string&gt;
+@@ -222,99 +231,183 @@
+          &lt;/property&gt;
+         &lt;/widget&gt;
+        &lt;/item&gt;
+-       &lt;item row=&quot;2&quot; column=&quot;3&quot;&gt;
++       &lt;item row=&quot;2&quot; column=&quot;5&quot;&gt;
+         &lt;widget class=&quot;QLineEdit&quot; name=&quot;m_provincia&quot;/&gt;
+        &lt;/item&gt;
++       &lt;item row=&quot;10&quot; column=&quot;2&quot; rowspan=&quot;6&quot;&gt;
++        &lt;spacer name=&quot;verticalSpacer_2&quot;&gt;
++         &lt;property name=&quot;orientation&quot;&gt;
++          &lt;enum&gt;Qt::Vertical&lt;/enum&gt;
++         &lt;/property&gt;
++         &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
++          &lt;size&gt;
++           &lt;width&gt;278&lt;/width&gt;
++           &lt;height&gt;66&lt;/height&gt;
++          &lt;/size&gt;
++         &lt;/property&gt;
++        &lt;/spacer&gt;
++       &lt;/item&gt;
++       &lt;item row=&quot;10&quot; column=&quot;5&quot; rowspan=&quot;6&quot;&gt;
++        &lt;spacer name=&quot;verticalSpacer&quot;&gt;
++         &lt;property name=&quot;orientation&quot;&gt;
++          &lt;enum&gt;Qt::Vertical&lt;/enum&gt;
++         &lt;/property&gt;
++         &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
++          &lt;size&gt;
++           &lt;width&gt;20&lt;/width&gt;
++           &lt;height&gt;208&lt;/height&gt;
++          &lt;/size&gt;
++         &lt;/property&gt;
++        &lt;/spacer&gt;
++       &lt;/item&gt;
++       &lt;item row=&quot;3&quot; column=&quot;5&quot;&gt;
++        &lt;widget class=&quot;QLineEdit&quot; name=&quot;m_ciudad&quot;/&gt;
++       &lt;/item&gt;
++       &lt;item row=&quot;3&quot; column=&quot;3&quot;&gt;
++        &lt;widget class=&quot;QLabel&quot; name=&quot;label_13&quot;&gt;
++         &lt;property name=&quot;text&quot;&gt;
++          &lt;string&gt;Ciudad&lt;/string&gt;
++         &lt;/property&gt;
++         &lt;property name=&quot;alignment&quot;&gt;
++          &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
++         &lt;/property&gt;
++        &lt;/widget&gt;
++       &lt;/item&gt;
++       &lt;item row=&quot;3&quot; column=&quot;2&quot;&gt;
++        &lt;widget class=&quot;QLineEdit&quot; name=&quot;m_pais&quot;/&gt;
++       &lt;/item&gt;
+        &lt;item row=&quot;3&quot; column=&quot;0&quot;&gt;
+         &lt;widget class=&quot;QLabel&quot; name=&quot;label_11&quot;&gt;
+          &lt;property name=&quot;text&quot;&gt;
+           &lt;string&gt;Pais:&lt;/string&gt;
+          &lt;/property&gt;
++         &lt;property name=&quot;alignment&quot;&gt;
++          &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
++         &lt;/property&gt;
+          &lt;property name=&quot;buddy&quot;&gt;
+           &lt;cstring&gt;m_pais&lt;/cstring&gt;
+          &lt;/property&gt;
+         &lt;/widget&gt;
+        &lt;/item&gt;
+-       &lt;item row=&quot;3&quot; column=&quot;1&quot;&gt;
+-        &lt;widget class=&quot;QLineEdit&quot; name=&quot;m_pais&quot;/&gt;
++       &lt;item row=&quot;6&quot; column=&quot;5&quot;&gt;
++        &lt;widget class=&quot;QLineEdit&quot; name=&quot;m_codArticuloGenerico&quot;/&gt;
++       &lt;/item&gt;
++       &lt;item row=&quot;6&quot; column=&quot;3&quot;&gt;
++        &lt;widget class=&quot;QLabel&quot; name=&quot;label_14&quot;&gt;
++         &lt;property name=&quot;text&quot;&gt;
++          &lt;string&gt;Codigo articulo generico:&lt;/string&gt;
++         &lt;/property&gt;
++         &lt;property name=&quot;alignment&quot;&gt;
++          &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
++         &lt;/property&gt;
++        &lt;/widget&gt;
++       &lt;/item&gt;
++       &lt;item row=&quot;4&quot; column=&quot;3&quot;&gt;
++        &lt;widget class=&quot;QLabel&quot; name=&quot;label_15&quot;&gt;
++         &lt;property name=&quot;text&quot;&gt;
++          &lt;string&gt;I.R.P.F.:&lt;/string&gt;
++         &lt;/property&gt;
++         &lt;property name=&quot;alignment&quot;&gt;
++          &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
++         &lt;/property&gt;
++        &lt;/widget&gt;
+        &lt;/item&gt;
+        &lt;item row=&quot;4&quot; column=&quot;0&quot;&gt;
+         &lt;widget class=&quot;QLabel&quot; name=&quot;label_7&quot;&gt;
+          &lt;property name=&quot;text&quot;&gt;
+           &lt;string&gt;Telefono:&lt;/string&gt;
+          &lt;/property&gt;
++         &lt;property name=&quot;alignment&quot;&gt;
++          &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
++         &lt;/property&gt;
+          &lt;property name=&quot;buddy&quot;&gt;
+           &lt;cstring&gt;m_telefono&lt;/cstring&gt;
+          &lt;/property&gt;
+         &lt;/widget&gt;
+        &lt;/item&gt;
+-       &lt;item row=&quot;4&quot; column=&quot;1&quot;&gt;
++       &lt;item row=&quot;4&quot; column=&quot;2&quot;&gt;
+         &lt;widget class=&quot;QLineEdit&quot; name=&quot;m_telefono&quot;/&gt;
+        &lt;/item&gt;
+-       &lt;item row=&quot;5&quot; column=&quot;0&quot;&gt;
++       &lt;item row=&quot;6&quot; column=&quot;2&quot;&gt;
++        &lt;widget class=&quot;QLineEdit&quot; name=&quot;m_fax&quot;/&gt;
++       &lt;/item&gt;
++       &lt;item row=&quot;6&quot; column=&quot;0&quot;&gt;
+         &lt;widget class=&quot;QLabel&quot; name=&quot;label_8&quot;&gt;
+          &lt;property name=&quot;text&quot;&gt;
+           &lt;string&gt;Fax:&lt;/string&gt;
+          &lt;/property&gt;
++         &lt;property name=&quot;alignment&quot;&gt;
++          &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
++         &lt;/property&gt;
+          &lt;property name=&quot;buddy&quot;&gt;
+           &lt;cstring&gt;m_fax&lt;/cstring&gt;
+          &lt;/property&gt;
+         &lt;/widget&gt;
+        &lt;/item&gt;
+-       &lt;item row=&quot;5&quot; column=&quot;1&quot;&gt;
+-        &lt;widget class=&quot;QLineEdit&quot; name=&quot;m_fax&quot;/&gt;
++       &lt;item row=&quot;7&quot; column=&quot;5&quot;&gt;
++        &lt;widget class=&quot;QLineEdit&quot; name=&quot;m_serieFacturaDefecto&quot;/&gt;
+        &lt;/item&gt;
+-       &lt;item row=&quot;6&quot; column=&quot;0&quot;&gt;
++       &lt;item row=&quot;7&quot; column=&quot;3&quot;&gt;
++        &lt;widget class=&quot;QLabel&quot; name=&quot;label_16&quot;&gt;
++         &lt;property name=&quot;text&quot;&gt;
++          &lt;string&gt;Serie factura defecto:&lt;/string&gt;
++         &lt;/property&gt;
++         &lt;property name=&quot;alignment&quot;&gt;
++          &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
++         &lt;/property&gt;
++        &lt;/widget&gt;
++       &lt;/item&gt;
++       &lt;item row=&quot;7&quot; column=&quot;0&quot;&gt;
+         &lt;widget class=&quot;QLabel&quot; name=&quot;label_9&quot;&gt;
+          &lt;property name=&quot;text&quot;&gt;
+           &lt;string&gt;E-Mail:&lt;/string&gt;
+          &lt;/property&gt;
++         &lt;property name=&quot;alignment&quot;&gt;
++          &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
++         &lt;/property&gt;
+          &lt;property name=&quot;buddy&quot;&gt;
+           &lt;cstring&gt;m_mail&lt;/cstring&gt;
+          &lt;/property&gt;
+         &lt;/widget&gt;
+        &lt;/item&gt;
+-       &lt;item row=&quot;6&quot; column=&quot;1&quot;&gt;
++       &lt;item row=&quot;7&quot; column=&quot;2&quot;&gt;
+         &lt;widget class=&quot;QLineEdit&quot; name=&quot;m_mail&quot;/&gt;
+        &lt;/item&gt;
+-       &lt;item row=&quot;7&quot; column=&quot;0&quot;&gt;
++       &lt;item row=&quot;8&quot; column=&quot;0&quot;&gt;
+         &lt;widget class=&quot;QLabel&quot; name=&quot;label_12&quot;&gt;
+          &lt;property name=&quot;text&quot;&gt;
+           &lt;string&gt;Web:&lt;/string&gt;
+          &lt;/property&gt;
++         &lt;property name=&quot;alignment&quot;&gt;
++          &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
++         &lt;/property&gt;
+          &lt;property name=&quot;buddy&quot;&gt;
+           &lt;cstring&gt;m_web&lt;/cstring&gt;
+          &lt;/property&gt;
+         &lt;/widget&gt;
+        &lt;/item&gt;
+-       &lt;item row=&quot;7&quot; column=&quot;1&quot;&gt;
++       &lt;item row=&quot;8&quot; column=&quot;2&quot;&gt;
+         &lt;widget class=&quot;QLineEdit&quot; name=&quot;m_web&quot;/&gt;
+        &lt;/item&gt;
+-       &lt;item row=&quot;8&quot; column=&quot;1&quot;&gt;
+-        &lt;spacer name=&quot;verticalSpacer_2&quot;&gt;
+-         &lt;property name=&quot;orientation&quot;&gt;
+-          &lt;enum&gt;Qt::Vertical&lt;/enum&gt;
++       &lt;item row=&quot;8&quot; column=&quot;3&quot;&gt;
++        &lt;widget class=&quot;QLabel&quot; name=&quot;label_18&quot;&gt;
++         &lt;property name=&quot;text&quot;&gt;
++          &lt;string&gt;Almacen defecto:&lt;/string&gt;
+          &lt;/property&gt;
+-         &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
+-          &lt;size&gt;
+-           &lt;width&gt;278&lt;/width&gt;
+-           &lt;height&gt;66&lt;/height&gt;
+-          &lt;/size&gt;
++         &lt;property name=&quot;alignment&quot;&gt;
++          &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
+          &lt;/property&gt;
+-        &lt;/spacer&gt;
++        &lt;/widget&gt;
+        &lt;/item&gt;
+-       &lt;item row=&quot;3&quot; column=&quot;3&quot; rowspan=&quot;6&quot;&gt;
+-        &lt;spacer name=&quot;verticalSpacer&quot;&gt;
+-         &lt;property name=&quot;orientation&quot;&gt;
+-          &lt;enum&gt;Qt::Vertical&lt;/enum&gt;
+-         &lt;/property&gt;
+-         &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
+-          &lt;size&gt;
+-           &lt;width&gt;20&lt;/width&gt;
+-           &lt;height&gt;208&lt;/height&gt;
+-          &lt;/size&gt;
++       &lt;item row=&quot;8&quot; column=&quot;5&quot;&gt;
++        &lt;widget class=&quot;QLineEdit&quot; name=&quot;m_almacenDefecto&quot;/&gt;
++       &lt;/item&gt;
++       &lt;item row=&quot;4&quot; column=&quot;5&quot;&gt;
++        &lt;widget class=&quot;BlDoubleSpinBox&quot; name=&quot;m_irpf&quot;&gt;
++         &lt;property name=&quot;alignment&quot;&gt;
++          &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
+          &lt;/property&gt;
+-        &lt;/spacer&gt;
++        &lt;/widget&gt;
+        &lt;/item&gt;
+       &lt;/layout&gt;
+      &lt;/widget&gt;
+@@ -339,6 +432,11 @@
+    &lt;extends&gt;QTableWidget&lt;/extends&gt;
+    &lt;header&gt;bfconfiguracionview.h&lt;/header&gt;
+   &lt;/customwidget&gt;
++  &lt;customwidget&gt;
++   &lt;class&gt;BlDoubleSpinBox&lt;/class&gt;
++   &lt;extends&gt;QSpinBox&lt;/extends&gt;
++   &lt;header&gt;bldoublespinbox.h&lt;/header&gt;
++  &lt;/customwidget&gt;
+  &lt;/customwidgets&gt;
+  &lt;resources&gt;
+   &lt;include location=&quot;../../bulmages.qrc&quot;/&gt;
+diff --git a/bulmages/bulmafact/src/bfconfiguracionview.cpp b/bulmages/bulmafact/src/bfconfiguracionview.cpp
+index 55a2b79..740a308 100644
+--- a/bulmages/bulmafact/src/bfconfiguracionview.cpp
++++ b/bulmages/bulmafact/src/bfconfiguracionview.cpp
+@@ -65,6 +65,11 @@ BfConfiguracionView::BfConfiguracionView ( BfCompany *comp, QWidget *parent ) :
+     m_fax-&gt;setText(&quot;--&quot;);
+     m_mail-&gt;setText(&quot;--&quot;);
+     m_web-&gt;setText(&quot;--&quot;);
++    m_ciudad-&gt;setText(&quot;--&quot;);
++    m_codArticuloGenerico-&gt;setText(&quot;--&quot;);
++    m_serieFacturaDefecto-&gt;setText(&quot;--&quot;);
++    m_irpf-&gt;setValue(0.00);
++    m_almacenDefecto-&gt;setText(&quot;--&quot;);
+ 
+ 
+     QString query = &quot;SELECT * FROM configuracion WHERE nombre = 'NombreEmpresa'&quot;;
+@@ -116,7 +121,6 @@ BfConfiguracionView::BfConfiguracionView ( BfCompany *comp, QWidget *parent ) :
+     } // end if
+     delete cur;
+ 
+-
+     query = &quot;SELECT * FROM configuracion WHERE nombre = 'Telefono'&quot;;
+     cur = mainCompany() -&gt;loadQuery ( query );
+     if (!cur-&gt;eof()) {
+@@ -144,6 +148,41 @@ BfConfiguracionView::BfConfiguracionView ( BfCompany *comp, QWidget *parent ) :
+       m_web-&gt;setText(cur-&gt;value(&quot;valor&quot;));
+     } // end if
+     delete cur;
++   
++    query = &quot;SELECT * FROM configuracion WHERE nombre = 'Ciudad'&quot;;
++    cur = mainCompany() -&gt;loadQuery ( query );
++    if (!cur-&gt;eof()) {
++      m_ciudad-&gt;setText(cur-&gt;value(&quot;valor&quot;));
++    } // end if
++    delete cur;
++    
++    query = &quot;SELECT * FROM configuracion WHERE nombre = 'CodArticuloGenerico'&quot;;
++    cur = mainCompany() -&gt;loadQuery ( query );
++    if (!cur-&gt;eof()) {
++      m_codArticuloGenerico-&gt;setText(cur-&gt;value(&quot;valor&quot;));
++    } // end if
++    delete cur;
++    
++    query = &quot;SELECT * FROM configuracion WHERE nombre = 'SerieFacturaDefecto'&quot;;
++    cur = mainCompany() -&gt;loadQuery ( query );
++    if (!cur-&gt;eof()) {
++      m_serieFacturaDefecto-&gt;setText(cur-&gt;value(&quot;valor&quot;));
++    } // end if
++    delete cur;
++
++    query = &quot;SELECT * FROM configuracion WHERE nombre = 'IRPF'&quot;;
++    cur = mainCompany() -&gt;loadQuery ( query );
++    if (!cur-&gt;eof()) {
++      m_irpf-&gt;setValue(cur-&gt;value(&quot;valor&quot;).toDouble());
++    } // end if
++    delete cur;
++
++    query = &quot;SELECT * FROM configuracion WHERE nombre = 'AlmacenDefecto'&quot;;
++    cur = mainCompany() -&gt;loadQuery ( query );
++    if (!cur-&gt;eof()) {
++      m_almacenDefecto-&gt;setText(cur-&gt;value(&quot;valor&quot;));
++    } // end if
++    delete cur;
+     
+     insertWindow ( windowTitle(), this, FALSE );
+     
+@@ -162,7 +201,7 @@ BfConfiguracionView::~BfConfiguracionView()
+ 
+ void BfConfiguracionView::on_mui_aceptar_clicked() {
+         mui_listado-&gt;save();
+-	
++
+ 	mainCompany()-&gt;runQuery(&quot;DELETE FROM configuracion WHERE nombre='NombreEmpresa'&quot;);
+ 	mainCompany()-&gt;runQuery(&quot;INSERT INTO configuracion (nombre,valor) VALUES ('NombreEmpresa','&quot;+ mainCompany()-&gt;sanearCadena(m_nombre-&gt;text())+&quot;')&quot;);
+ 
+@@ -171,7 +210,7 @@ void BfConfiguracionView::on_mui_aceptar_clicked() {
+ 	
+ 	mainCompany()-&gt;runQuery(&quot;DELETE FROM configuracion WHERE nombre='CIF'&quot;);
+ 	mainCompany()-&gt;runQuery(&quot;INSERT INTO configuracion (nombre,valor) VALUES ('CIF','&quot;+ mainCompany()-&gt;sanearCadena(m_cif-&gt;text())+&quot;')&quot;);
+-	
++
+ 	mainCompany()-&gt;runQuery(&quot;DELETE FROM configuracion WHERE nombre='DireccionCompleta'&quot;);
+ 	mainCompany()-&gt;runQuery(&quot;INSERT INTO configuracion (nombre,valor) VALUES ('DireccionCompleta','&quot;+ mainCompany()-&gt;sanearCadena(m_direccion-&gt;text())+&quot;')&quot;);
+ 	
+@@ -183,7 +222,7 @@ void BfConfiguracionView::on_mui_aceptar_clicked() {
+ 	
+ 	mainCompany()-&gt;runQuery(&quot;DELETE FROM configuracion WHERE nombre='Pais'&quot;);
+ 	mainCompany()-&gt;runQuery(&quot;INSERT INTO configuracion (nombre,valor) VALUES ('Pais','&quot;+ mainCompany()-&gt;sanearCadena(m_pais-&gt;text())+&quot;')&quot;);
+-	
++
+ 	mainCompany()-&gt;runQuery(&quot;DELETE FROM configuracion WHERE nombre='Telefono'&quot;);
+ 	mainCompany()-&gt;runQuery(&quot;INSERT INTO configuracion (nombre,valor) VALUES ('Telefono','&quot;+ mainCompany()-&gt;sanearCadena(m_telefono-&gt;text())+&quot;')&quot;);
+ 	
+@@ -196,6 +235,22 @@ void BfConfiguracionView::on_mui_aceptar_clicked() {
+ 	mainCompany()-&gt;runQuery(&quot;DELETE FROM configuracion WHERE nombre='Web'&quot;);
+ 	mainCompany()-&gt;runQuery(&quot;INSERT INTO configuracion (nombre,valor) VALUES ('Web','&quot;+ mainCompany()-&gt;sanearCadena(m_web-&gt;text())+&quot;')&quot;);
+ 	
++	mainCompany()-&gt;runQuery(&quot;DELETE FROM configuracion WHERE nombre='Ciudad'&quot;);
++	mainCompany()-&gt;runQuery(&quot;INSERT INTO configuracion (nombre,valor) VALUES ('Ciudad','&quot;+ mainCompany()-&gt;sanearCadena(m_ciudad-&gt;text())+&quot;')&quot;);
++	
++	mainCompany()-&gt;runQuery(&quot;DELETE FROM configuracion WHERE nombre='CodArticuloGenerico'&quot;);
++	mainCompany()-&gt;runQuery(&quot;INSERT INTO configuracion (nombre,valor) VALUES ('CodArticuloGenerico','&quot;+ mainCompany()-&gt;sanearCadena(m_codArticuloGenerico-&gt;text())+&quot;')&quot;);
++
++	
++	mainCompany()-&gt;runQuery(&quot;DELETE FROM configuracion WHERE nombre='SerieFacturaDefecto'&quot;);
++	mainCompany()-&gt;runQuery(&quot;INSERT INTO configuracion (nombre,valor) VALUES ('SerieFacturaDefecto','&quot;+ mainCompany()-&gt;sanearCadena(m_serieFacturaDefecto-&gt;text())+&quot;')&quot;);
++	
++	mainCompany()-&gt;runQuery(&quot;DELETE FROM configuracion WHERE nombre='IRPF'&quot;);
++	mainCompany()-&gt;runQuery(&quot;INSERT INTO configuracion (nombre,valor) VALUES ('IRPF','&quot;+ mainCompany()-&gt;sanearCadena(m_irpf-&gt;text())+&quot;')&quot;);
++	
++	mainCompany()-&gt;runQuery(&quot;DELETE FROM configuracion WHERE nombre='AlmacenDefecto'&quot;);
++	mainCompany()-&gt;runQuery(&quot;INSERT INTO configuracion (nombre,valor) VALUES ('AlmacenDefecto','&quot;+ mainCompany()-&gt;sanearCadena(m_almacenDefecto-&gt;text())+&quot;')&quot;);
++	
+         close();
+ 	
+ }
+@@ -214,7 +269,7 @@ BfConfiguracionSubForm::BfConfiguracionSubForm ( QWidget *parent ) : BfSubForm (
+     setDbFieldId ( &quot;nombre&quot; );
+     addSubFormHeader ( &quot;nombreorig&quot;, BlDbField::DbVarChar, BlDbField::DbDupPrimaryKey | BlDbField::DbNoSave, BlSubFormHeader::DbHideView | BlSubFormHeader::DbDisableView, &quot;nombre&quot; );
+     addSubFormHeader ( &quot;nombre&quot;, BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite, _ ( &quot;Nombre&quot; ) );
+-    addSubFormHeader ( &quot;valor&quot;, BlDbField::DbVarChar, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( &quot;Valor&quot; ) );
++    addSubFormHeader ( &quot;valor&quot;, BlDbField::DbVarChar, BlDbField::DbNothing, BlSubFormHeader::DbNone, _ ( &quot;Valor&quot; ) );
+     setInsert ( FALSE );
+     setDelete ( FALSE );
+     
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007086.html">[BulmaGés][Offtopic] Consulta sobre donaciones
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007082.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to release...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7080">[ fecha ]</a>
+              <a href="thread.html#7080">[ hilo ]</a>
+              <a href="subject.html#7080">[ asunto ]</a>
+              <a href="author.html#7080">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

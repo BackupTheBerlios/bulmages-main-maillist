@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Modificar permisos a usuarios y grupos de usuarios
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-September/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3FModificar_permisos_a_usuar%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fios_y_grupos_de_usuarios%3F%3D&In-Reply-To=%3C200909181645.13604.auryn%40wanadoo.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003004.html">
+   <LINK REL="Next"  HREF="003006.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Modificar permisos a usuarios y grupos de usuarios </H1>
+    <B>Auryn</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3FModificar_permisos_a_usuar%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fios_y_grupos_de_usuarios%3F%3D&In-Reply-To=%3C200909181645.13604.auryn%40wanadoo.es%3E"
+       TITLE="[BulmaGés]Modificar permisos a usuarios y grupos de usuarios">auryn en wanadoo.es
+       </A><BR>
+    <I>Vie Sep 18 16:45:13 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003004.html">[BulmaGés] Modificar permisos a usuarios y grupos	de usuarios
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003006.html">[BulmaGés]Modificar permisos a usuarios y grupos de usuarios
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3005">[ fecha ]</a>
+              <a href="thread.html#3005">[ hilo ]</a>
+              <a href="subject.html#3005">[ asunto ]</a>
+              <a href="author.html#3005">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>El Viernes 18 Septiembre 2009, Auryn escribió:
+&gt;<i> Hola
+</I>&gt;<i>
+</I>&gt;<i> Para que BulmaSetup muestre tanto usuarios como grupos en el modificador de
+</I>&gt;<i> permisos, he probado esto en la línea 85 de modificausuario.py:
+</I>&gt;<i>
+</I>&gt;<i> usuarios = self.execute(&quot;SELECT * FROM pg_user UNION SELECT groname,
+</I>&gt;<i> grosysid, false, false, false, null, null, null from pg_group&quot;)
+</I>&gt;<i>
+</I>&gt;<i> Si no le veis pegas, igual se puede dejar así.
+</I>
+O simplificando la consulta:
+
+usuarios = self.execute(&quot;SELECT usename, usesuper FROM pg_user UNION SELECT 
+groname, false FROM pg_group&quot;)
+...
+if (row[1] == True):
+	texto = texto + &quot;  (su)&quot;
+
+
+-- 
+Aron
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20090918/a2883494/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20090918/a2883494/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003004.html">[BulmaGés] Modificar permisos a usuarios y grupos	de usuarios
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003006.html">[BulmaGés]Modificar permisos a usuarios y grupos de usuarios
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3005">[ fecha ]</a>
+              <a href="thread.html#3005">[ hilo ]</a>
+              <a href="subject.html#3005">[ asunto ]</a>
+              <a href="author.html#3005">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]BACKUP con BULMASETUP
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FBACKUP_con_BULMASETUP%3F%3D&In-Reply-To=%3C5c6804130904051211i3f1c867fuc65a8f2c034dc928%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001487.html">
+   <LINK REL="Next"  HREF="001489.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]BACKUP con BULMASETUP </H1>
+    <B>Daniel Bustos Fernández</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FBACKUP_con_BULMASETUP%3F%3D&In-Reply-To=%3C5c6804130904051211i3f1c867fuc65a8f2c034dc928%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]BACKUP con BULMASETUP">daniel69 en gmail.com
+       </A><BR>
+    <I>Dom Abr  5 21:11:09 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001487.html">[BulmaGés] r3201 - trunk/bulmages/bulmacont/src
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001489.html">[BulmaGés]BACKUP con BULMASETUP
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1488">[ fecha ]</a>
+              <a href="thread.html#1488">[ hilo ]</a>
+              <a href="subject.html#1488">[ asunto ]</a>
+              <a href="author.html#1488">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola
+
+Siento rescatar este hilo del olvido, pero ahora mismo estoy probando a
+salvar la bbdd y lo he encontrado al buscar cómo hacerlo (el wiki no me
+ayudó ya que no dice lo de los permisos).
+
+Ahora mismo ya he hecho el backup con el bulmasetup y funciona, genera el
+archivo correspondiente.
+Yo no se mucho de postgres pero por lo que veo salva la bbdd pero, ¿y todo
+lo demás?
+Quiero decir, si p.e. tengo fotos para los items del inventario, ¿ se graban
+?
+
+Esto podría hacerlo a mano o con algún programa/script/etc pero aquí se me
+plantea otra pregunta, que es si la relación entre p.e. fichero de imagen y
+la foto que he enlazado en su correspondiente item en bulmafact se mantiene.
+
+Esos ficheros de imágenes NO son la bbdd, pero es parte del trabajo que hace
+uno y debería guardarse.
+Menudo coñazo tener que volver a configurar cada item con cada foto, jeje.
+
+Esto lo podríamos aplicar a todo lo demás, creo.
+
+¿Alguien se ha encontrado con este pequeño problema?
+
+
+
+Un saludo
+
+
+
+
+
+
+2009/2/5 Albert Mas &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">albertmas en termens.cat</A>&gt;
+
+&gt;<i> Tomeu, pasame proforma.
+</I>&gt;<i> Como no, pagar por un servicio de backup es lo minimo.
+</I>&gt;<i>
+</I>&gt;<i> Gracias.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> 2009/2/4 Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+</I>&gt;<i>
+</I>&gt;<i> Y luego va la gente diciendo que los LUG's no hacen falta. Hay que joderse.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Albert aqui tienes posteado un archivo cutrecillo que tiene algunos
+</I>&gt;&gt;<i> comandos.
+</I>&gt;&gt;<i> (El pg_dumpall lo puedes cambiar por tantos pg_dump individuales como
+</I>&gt;&gt;<i> desees
+</I>&gt;&gt;<i> y el rsync hace copias diferenciales de un ordenador a otro.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> #!/bin/bash
+</I>&gt;&gt;<i> echo
+</I>&gt;&gt;<i> echo &quot;Inicio de copia rsync &quot; $1
+</I>&gt;&gt;<i> echo &quot;========================================&quot;
+</I>&gt;&gt;<i> date
+</I>&gt;&gt;<i> echo &quot;Backup de PostGres&quot;
+</I>&gt;&gt;<i> su postgres -c &quot;pg_dumpall&quot; &gt; /home/pgbackups.pgdump
+</I>&gt;&gt;<i> echo &quot;Backup de /home&quot;
+</I>&gt;&gt;<i> rsync -avz /home omicron:/backups_conetxia/pi/home
+</I>&gt;&gt;<i> echo &quot;Backup de /etc&quot;
+</I>&gt;&gt;<i> rsync -avz /etc omicron:/backups_conetxia/pi/etc
+</I>&gt;&gt;<i> echo
+</I>&gt;&gt;<i> echo &quot;Archivos copiados por rsync&quot;
+</I>&gt;&gt;<i> echo
+</I>&gt;&gt;<i> echo &quot;Espacio libre en disco&quot;
+</I>&gt;&gt;<i> df -h
+</I>&gt;&gt;<i> echo
+</I>&gt;&gt;<i> date
+</I>&gt;&gt;<i> echo &quot;Fin de la copia&quot;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Puedes guardarlo en algun sitio y darle permisos de ejecución.
+</I>&gt;&gt;<i> Luego como root haces crontab -e y pones la siguiente linea:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 0 0 * * * /root/backups.sh | mailx -s &quot;Backup Pi&quot;
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">lacuentadecorreo en eldiminioqueteguste</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Hay muy buenos manuales de bash scripting.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> (OF TOPIC) Si quieres ahorrarte el estudiar y hacer pruebas yo por 60
+</I>&gt;&gt;<i> leuros
+</I>&gt;&gt;<i> te lo hago y lo dejo niquelado.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> El Wednesday 04 February 2009 02:40:40 Albert Mas escribió:
+</I>&gt;&gt;<i> &gt; Alguien tiene hecho algun script de backup tal com dice Tomeu?
+</I>&gt;&gt;<i> &gt; Aunque no fuera tan completo me iria bien.
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; Sino ja hos passare el que utilize yo.
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; Saludos.
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; On 1/29/09, Albert Mas &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">albertmas en termens.cat</A>&gt; wrote:
+</I>&gt;&gt;<i> &gt; &gt; Hoy queria hacer mi primer backup de bulmafact con bulmasetup y al ver
+</I>&gt;&gt;<i> &gt; &gt; que no generaba ningun fichero he mirado la consolo y he visto lo
+</I>&gt;&gt;<i> &gt; &gt; siguiente: Backup
+</I>&gt;&gt;<i> &gt; &gt; su postgres -c &quot;pg_dump -f /home/20090129 informatica&quot;
+</I>&gt;&gt;<i> &gt; &gt; Start.
+</I>&gt;&gt;<i> &gt; &gt; Start.
+</I>&gt;&gt;<i> &gt; &gt; error: pg_dump: [archiver] could not open output file
+</I>&gt;&gt;<i> &quot;/home/20090129&quot;:
+</I>&gt;&gt;<i> &gt; &gt; Permission denied
+</I>&gt;&gt;<i> &gt; &gt;
+</I>&gt;&gt;<i> &gt; &gt; por lo que veo no se puede crear el fichero de backup, he provado
+</I>&gt;&gt;<i> &gt; &gt; distintas ubicaciones pero no funciona en ninguna.
+</I>&gt;&gt;<i> &gt; &gt;
+</I>&gt;&gt;<i> &gt; &gt; sabeis que puede estar pasando.
+</I>&gt;&gt;<i> &gt; &gt;
+</I>&gt;&gt;<i> &gt; &gt; Por cierto, para realizar un backup masivo en el caso que tenga varias
+</I>&gt;&gt;<i> &gt; &gt; empresas, me podeis pasar alguna instruccion.
+</I>&gt;&gt;<i> &gt; &gt;
+</I>&gt;&gt;<i> &gt; &gt; Gracias.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> --
+</I>&gt;&gt;<i> Tomeu Borrás Riera
+</I>&gt;&gt;<i> Conetxia Soluciones Informáticas
+</I>&gt;&gt;<i> 902 88 11 66
+</I>&gt;&gt;<i> 971 29 06 29
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Bulmages-main mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> __________________
+</I>&gt;<i> Albert Mas
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">albertmas en termens.cat</A>
+</I>&gt;<i> blog: <A HREF="http://www.turkil.net">http://www.turkil.net</A>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+
+-- 
+&quot;En teoría, no hay diferencia entre la teoría y la práctica. Pero en la
+práctica, sí que la hay.&quot;, Jan L. A. van de Snepscheut
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20090405/323a9b2c/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20090405/323a9b2c/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001487.html">[BulmaGés] r3201 - trunk/bulmages/bulmacont/src
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001489.html">[BulmaGés]BACKUP con BULMASETUP
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1488">[ fecha ]</a>
+              <a href="thread.html#1488">[ hilo ]</a>
+              <a href="subject.html#1488">[ asunto ]</a>
+              <a href="author.html#1488">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

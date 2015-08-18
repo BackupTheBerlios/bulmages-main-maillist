@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Probando la versión de Qt5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FProbando_la_versi%3DF3n%3F%3D%20%3D%3Fiso-8859-1%3Fq%3F_de_Qt5%3F%3D&In-Reply-To=%3C51289D33.6000502%40todo-redes.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007545.html">
+   <LINK REL="Next"  HREF="007547.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Probando la versión de Qt5 </H1>
+    <B>Fco. Javier M. C.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FProbando_la_versi%3DF3n%3F%3D%20%3D%3Fiso-8859-1%3Fq%3F_de_Qt5%3F%3D&In-Reply-To=%3C51289D33.6000502%40todo-redes.com%3E"
+       TITLE="[BulmaGés]Probando la versión de Qt5">fcojavmc en todo-redes.com
+       </A><BR>
+    <I>Sab Feb 23 11:42:59 CET 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007545.html">[BulmaGés]Probando la versión de Qt5
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007547.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7546">[ fecha ]</a>
+              <a href="thread.html#7546">[ hilo ]</a>
+              <a href="subject.html#7546">[ asunto ]</a>
+              <a href="author.html#7546">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola.
+
+Ciertamente el futuro de Bulmages pasa por la migración a Qt5 y C++11 y
+esto me lleva a reflexionar sobre todos los cambios que habría que
+realizar para poder beneficiarnos de las ventajas que supondría esta
+migración.
+
+- Los retos se acumulan:
+Hace 10 años cuando se inició Bulmages el mundo móvil NO había explotado
+todavía, ahora hay tabletas, 'smart phones' casi más potentes que
+ordenadores, y la movilidad y el intercambio de datos es algo a tener en
+cuenta. El comercio electrónico, la interacción con sistemas de venta
+online, sistemas automáticos con proveedores, Hacienda (Webservices) y
+otras empresas (factura electrónica), etc.
+
+Todo junto hace que la tentación de reprogramación completa sea
+tentadora, pero supone un esfuerzo muy importante y los recursos
+disponibles siempre son limitados. No sólo económicos, que también, sino
+de programadores experimentados, no sólo hábiles a la hora de programar
+sino capaces de entender las necesidades de los usuarios de los
+programas de gestión (tienen que entender cómo funcionan las empresas
+por dentro).
+
+- ¿Qué se está haciendo?:
+Como bien dices Tomeu, Daniel ha realizado una primera aproximación de
+portación de Bulmages a Qt5. ¿Es esto suficiente? Es un comienzo.
+Teniendo en cuenta los recursos disponibles es mucho.
+Se organizan cada 2 domingos reuniones para intentar acercar este tipo
+de programación a las personas interesadas (que por cierto toca reunión
+mañana). Es un proceso lento, pero se intenta dar un poco de forma a un
+tipo de formación sobre Bulmages hasta disponer de algún sistema mejor.
+
+- ¿Y ahora qué?:
+Creo que no nos podemos permitir el lujo de reescribir todo el código de
+cero alegremente, pero sí dar pasos y que de forma progresiva se vayan
+introduciendo los cambios necesarios en el programa. Propongo realizar
+los siguientes pasos:
+
+1) Completar la migración a Qt5 con los cambios de Daniel.
+2) Discontinuar el desarrollo de la rama Qt4.
+3) Migrar a C++11 completamente sin introducir nuevos cambios (en modo
+compatibilidad).
+4) Disponer en ese momento de 2 ramas: estable y desarrollo.
+5) Comenzar a desarrollar en la rama de desarrollo utilizando las
+ventajas propias de Qt5 y C++11.
+6) Sincronizar código estabilizado en la rama estable.
+
+Creo que hacerlo de esta manera no es traumático para nadie y la carga
+de trabajo es asumible en un tiempo razonable por los que somos.
+
+
+- ¿Qué pasa con las distribuciones GNU/Linux?
+Esta es la eterna lucha, sobre todo con Debian que es más lenta que un
+caracol para introducir mejoras. Creo sinceramente que no debería de
+preocuparnos en absoluto puesto que hay maneras de solventar el problema
+incluso incluyendo las librerías necesarias junto con el programa y
+hacelo independiente de las librerías instaladas en el sistema. Es lo
+que hago con BulmagesPlus y va perfecto. Siempre habrá alguien al que no
+le guste esta solución, pues que proponga otra que sea factible (o se
+calle para siempre ;) )
+
+
+Como conclusión me gustaría resaltar que se haga lo que se haga es mejor
+hacerlo por consenso porque sino me veo 20 versiones diferentes del
+programa, y eso no es que sea malo (es Software Libre), es que es poco
+práctico. Es mejor disponer de una rama común genérica y luego que cada
+uno se lo personalice como le venga en gana.
+
+
+¡Buá! creo que me ha quedado un correo un poco largo.
+
+Creo que es importante que los programadores de Bulmages se involucren
+en esta discusión que ha iniciado Tomeu y que es de vital importancia
+para el futuro del proyecto.
+
+Muchas gracias.
+Un saludo.
+
+
+
+El 22/02/13 11:01, Tomeu Borras escribió:
+&gt;<i> Hola
+</I>&gt;<i>
+</I>&gt;<i> Estoy empezando a mirarme todo el tema de Qt5 y lo veo genial. Muy
+</I>&gt;<i> buen trabajo Daniel.
+</I>&gt;<i> El tema es que hoy por hoy migrar a Qt5 es algo precipitado ya que no
+</I>&gt;<i> esta oficialmente en las distros (y menos aun en Debian).
+</I>&gt;<i> Otro tema importante es que con Qt5 casi que nos han abierto la puerta
+</I>&gt;<i> a cambiar el sistema de llamadas a plugins haciendo un cambio muy
+</I>&gt;<i> radical en todo el sistema y mucho trabajo también. Ya podrían
+</I>&gt;<i> habérselo pensado antes.
+</I>&gt;<i> Y por otro lado tenemos que estamos modificando la rama de desarrollo
+</I>&gt;<i> en Qt4 y no traspasamos los cambios a Qt5.
+</I>&gt;<i>
+</I>&gt;<i> Pienso que deberíamos sacar una ultima release con Qt4 y dejar tiempo
+</I>&gt;<i> para que se vaya incorporando bien Qt5 en los sistemas y luego pasar a
+</I>&gt;<i> Qt5 la rama de desarrollo. El tema es que tampoco esta mal ir
+</I>&gt;<i> trabajando en una rama Qt5 mientras tanto.
+</I>&gt;<i>
+</I>&gt;<i> ¿Alguna idea sobre como abordamos este tema?
+</I>&gt;<i>
+</I>&gt;<i> Salut
+</I>&gt;<i>
+</I>&gt;<i> -- 
+</I>&gt;<i> Tomeu Borrás
+</I>&gt;<i> Conetxia Soluciones Informáticas
+</I>&gt;<i> 677 77 44 76
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+
+-- 
+Fco. Javier M. C.
+*************************
+<A HREF="http://todo-redes.com">http://todo-redes.com</A>
+<A HREF="http://bulmagesplus.com">http://bulmagesplus.com</A>
+*************************
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20130223/6ab94981/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20130223/6ab94981/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007545.html">[BulmaGés]Probando la versión de Qt5
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007547.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7546">[ fecha ]</a>
+              <a href="thread.html#7546">[ hilo ]</a>
+              <a href="subject.html#7546">[ asunto ]</a>
+              <a href="author.html#7546">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

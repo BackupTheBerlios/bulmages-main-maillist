@@ -1,0 +1,955 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130105102603.42905F90%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+   <LINK REL="Next"  HREF="007464.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130105102603.42905F90%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Sab Ene  5 11:26:03 CET 2013</I>
+    <P><UL>
+        
+        <LI>Próximo mensaje: <A HREF="007464.html">[BulmaGés] [Gitorious] Activity: tborras pushed 0	commits to release...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7465">[ fecha ]</a>
+              <a href="thread.html#7465">[ hilo ]</a>
+              <a href="subject.html#7465">[ asunto ]</a>
+              <a href="author.html#7465">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from 7f7787f to 9527933
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/7f7787fc9bc4a3f01bb89e9ebf3d0ea0921b157c/diffs/9527933a8fdb6a7bdbad4e857ee24cc437f88b4a">https://gitorious.org/bulmages/bulmages/commit/7f7787fc9bc4a3f01bb89e9ebf3d0ea0921b157c/diffs/9527933a8fdb6a7bdbad4e857ee24cc437f88b4a</A>
+
+Diff: 
+
+commit 9527933a8fdb6a7bdbad4e857ee24cc437f88b4a
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sat Jan 5 11:24:37 2013 +0100
+
+    Arreglo los contratos a clientes quitando la clase Contrato y traspasando todo el trabajo a bulmalib y a ContratoView.
+    Arreglo el guardado de opciones de filtrado en ComboBox que no se guardaban y al reiniciar el programa no quedaban configuradas como la vez en que se cerró el programa.
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_contrato/contrato.cpp b/bulmages/bulmafact/plugins/pluginbf_contrato/contrato.cpp
+index 32a2ceb..8ec92f0 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_contrato/contrato.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_contrato/contrato.cpp
+@@ -26,6 +26,8 @@
+ #include &quot;blfunctions.h&quot;
+ #include &quot;blplugins.h&quot;
+ 
++#ifdef __NOCOMPILE
++
+ 
+ /** PReparamos la clase BlDbRecord para funcionar con la tabla contrato.
+ */
+@@ -36,19 +38,7 @@
+ Contrato::Contrato ( BfCompany *comp, QWidget *parent ) : BfForm ( comp, parent )
+ {
+     BL_FUNC_DEBUG
+-    setTitleName ( _ ( &quot;Contrato&quot; ) );
+-    setDbTableName ( &quot;contrato&quot; );
+-    setDbFieldId ( &quot;idcontrato&quot; );
+-    addDbField ( &quot;idcontrato&quot;,  BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( &quot;Id contrato&quot; ) );
+-    addDbField ( &quot;idcliente&quot;,   BlDbField::DbInt, BlDbField::DbNotNull, _ ( &quot;Id cliente&quot; ) );
+-    addDbField ( &quot;refcontrato&quot;, BlDbField::DbVarChar, BlDbField::DbNothing, _ ( &quot;Referencia contrato&quot; ) );
+-    addDbField ( &quot;descontrato&quot;, BlDbField::DbVarChar, BlDbField::DbNothing, _ ( &quot;Descripcion contrato&quot; ) );
+-    addDbField ( &quot;nomcontrato&quot;, BlDbField::DbVarChar, BlDbField::DbNothing, _ ( &quot;Descripcion contrato&quot; ) );
+-    addDbField ( &quot;loccontrato&quot;, BlDbField::DbVarChar, BlDbField::DbNothing, _ ( &quot;Descripcion contrato&quot; ) );
+-    addDbField ( &quot;periodicidadcontrato&quot;, BlDbField::DbVarChar, BlDbField::DbNothing, _ ( &quot;Descripcion contrato&quot; ) );
+-    addDbField ( &quot;fincontrato&quot;,  BlDbField::DbDate, BlDbField::DbNothing, _ ( &quot;Descripcion contrato&quot; ) );
+-    addDbField ( &quot;ffincontrato&quot;, BlDbField::DbDate, BlDbField::DbNothing, _ ( &quot;Descripcion contrato&quot; ) );
+-    blScript(this);
++
+     
+ }
+ 
+@@ -303,4 +293,4 @@ QString Contrato::calculateValues()
+ }
+ 
+ 
+-
++#endif
+diff --git a/bulmages/bulmafact/plugins/pluginbf_contrato/contrato.h b/bulmages/bulmafact/plugins/pluginbf_contrato/contrato.h
+index 850b14a..7f176e6 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_contrato/contrato.h
++++ b/bulmages/bulmafact/plugins/pluginbf_contrato/contrato.h
+@@ -23,12 +23,11 @@
+ 
+ #include &lt;QString&gt;
+ 
+-#include &quot;blfixed.h&quot;
+-#include &quot;bfcompany.h&quot;
+-#include &quot;bldb.h&quot;
+-#include &quot;bfform.h&quot;
+ 
+ 
++
++#ifdef __NOCOMPILE
++
+ /// Administra los datos de una contrato a cliente.
+ /** Intermedia entre la base de datos y la pantalla de presentacion.
+ */
+@@ -63,3 +62,4 @@ public:
+ 
+ #endif
+ 
++#endif
+\ No newline at end of file
+diff --git a/bulmages/bulmafact/plugins/pluginbf_contrato/contratobase.ui b/bulmages/bulmafact/plugins/pluginbf_contrato/contratobase.ui
+index 5731277..bf48d00 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_contrato/contratobase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_contrato/contratobase.ui
+@@ -7,7 +7,7 @@
+    &lt;rect&gt;
+     &lt;x&gt;0&lt;/x&gt;
+     &lt;y&gt;0&lt;/y&gt;
+-    &lt;width&gt;750&lt;/width&gt;
++    &lt;width&gt;831&lt;/width&gt;
+     &lt;height&gt;550&lt;/height&gt;
+    &lt;/rect&gt;
+   &lt;/property&gt;
+@@ -24,13 +24,7 @@
+    &lt;iconset resource=&quot;../../../bulmages.qrc&quot;&gt;
+     &lt;normaloff&gt;:/Images/contract.png&lt;/normaloff&gt;:/Images/contract.png&lt;/iconset&gt;
+   &lt;/property&gt;
+-  &lt;layout class=&quot;QVBoxLayout&quot;&gt;
+-   &lt;property name=&quot;spacing&quot;&gt;
+-    &lt;number&gt;5&lt;/number&gt;
+-   &lt;/property&gt;
+-   &lt;property name=&quot;margin&quot;&gt;
+-    &lt;number&gt;5&lt;/number&gt;
+-   &lt;/property&gt;
++  &lt;layout class=&quot;QVBoxLayout&quot; name=&quot;verticalLayout&quot;&gt;
+    &lt;item&gt;
+     &lt;layout class=&quot;QHBoxLayout&quot;&gt;
+      &lt;property name=&quot;spacing&quot;&gt;
+@@ -334,214 +328,6 @@
+     &lt;/layout&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+-    &lt;widget class=&quot;QFrame&quot; name=&quot;frame&quot;&gt;
+-     &lt;property name=&quot;frameShape&quot;&gt;
+-      &lt;enum&gt;QFrame::StyledPanel&lt;/enum&gt;
+-     &lt;/property&gt;
+-     &lt;property name=&quot;frameShadow&quot;&gt;
+-      &lt;enum&gt;QFrame::Raised&lt;/enum&gt;
+-     &lt;/property&gt;
+-     &lt;layout class=&quot;QGridLayout&quot; name=&quot;gridLayout&quot;&gt;
+-      &lt;item row=&quot;0&quot; column=&quot;1&quot; colspan=&quot;2&quot;&gt;
+-       &lt;widget class=&quot;QLabel&quot; name=&quot;label7&quot;&gt;
+-        &lt;property name=&quot;font&quot;&gt;
+-         &lt;font&gt;
+-          &lt;family&gt;Sans Serif&lt;/family&gt;
+-          &lt;pointsize&gt;9&lt;/pointsize&gt;
+-          &lt;weight&gt;50&lt;/weight&gt;
+-          &lt;italic&gt;false&lt;/italic&gt;
+-          &lt;bold&gt;false&lt;/bold&gt;
+-          &lt;underline&gt;false&lt;/underline&gt;
+-          &lt;strikeout&gt;false&lt;/strikeout&gt;
+-         &lt;/font&gt;
+-        &lt;/property&gt;
+-        &lt;property name=&quot;text&quot;&gt;
+-         &lt;string&gt;Descripcion:&lt;/string&gt;
+-        &lt;/property&gt;
+-        &lt;property name=&quot;buddy&quot;&gt;
+-         &lt;cstring&gt;mui_nomcontrato&lt;/cstring&gt;
+-        &lt;/property&gt;
+-       &lt;/widget&gt;
+-      &lt;/item&gt;
+-      &lt;item row=&quot;0&quot; column=&quot;3&quot;&gt;
+-       &lt;widget class=&quot;QLineEdit&quot; name=&quot;mui_nomcontrato&quot;&gt;
+-        &lt;property name=&quot;sizePolicy&quot;&gt;
+-         &lt;sizepolicy hsizetype=&quot;Expanding&quot; vsizetype=&quot;Fixed&quot;&gt;
+-          &lt;horstretch&gt;0&lt;/horstretch&gt;
+-          &lt;verstretch&gt;0&lt;/verstretch&gt;
+-         &lt;/sizepolicy&gt;
+-        &lt;/property&gt;
+-        &lt;property name=&quot;minimumSize&quot;&gt;
+-         &lt;size&gt;
+-          &lt;width&gt;0&lt;/width&gt;
+-          &lt;height&gt;0&lt;/height&gt;
+-         &lt;/size&gt;
+-        &lt;/property&gt;
+-        &lt;property name=&quot;baseSize&quot;&gt;
+-         &lt;size&gt;
+-          &lt;width&gt;0&lt;/width&gt;
+-          &lt;height&gt;0&lt;/height&gt;
+-         &lt;/size&gt;
+-        &lt;/property&gt;
+-       &lt;/widget&gt;
+-      &lt;/item&gt;
+-      &lt;item row=&quot;1&quot; column=&quot;0&quot; rowspan=&quot;4&quot; colspan=&quot;4&quot;&gt;
+-       &lt;widget class=&quot;BlSearchWidget&quot; name=&quot;mui_idcliente&quot; native=&quot;true&quot;&gt;
+-        &lt;property name=&quot;sizePolicy&quot;&gt;
+-         &lt;sizepolicy hsizetype=&quot;Expanding&quot; vsizetype=&quot;Ignored&quot;&gt;
+-          &lt;horstretch&gt;0&lt;/horstretch&gt;
+-          &lt;verstretch&gt;0&lt;/verstretch&gt;
+-         &lt;/sizepolicy&gt;
+-        &lt;/property&gt;
+-       &lt;/widget&gt;
+-      &lt;/item&gt;
+-      &lt;item row=&quot;1&quot; column=&quot;4&quot; colspan=&quot;2&quot;&gt;
+-       &lt;widget class=&quot;QLabel&quot; name=&quot;label8&quot;&gt;
+-        &lt;property name=&quot;font&quot;&gt;
+-         &lt;font&gt;
+-          &lt;family&gt;Sans Serif&lt;/family&gt;
+-          &lt;pointsize&gt;9&lt;/pointsize&gt;
+-          &lt;weight&gt;50&lt;/weight&gt;
+-          &lt;italic&gt;false&lt;/italic&gt;
+-          &lt;bold&gt;false&lt;/bold&gt;
+-          &lt;underline&gt;false&lt;/underline&gt;
+-          &lt;strikeout&gt;false&lt;/strikeout&gt;
+-         &lt;/font&gt;
+-        &lt;/property&gt;
+-        &lt;property name=&quot;text&quot;&gt;
+-         &lt;string&gt;Fecha de creacion:&lt;/string&gt;
+-        &lt;/property&gt;
+-        &lt;property name=&quot;alignment&quot;&gt;
+-         &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
+-        &lt;/property&gt;
+-       &lt;/widget&gt;
+-      &lt;/item&gt;
+-      &lt;item row=&quot;1&quot; column=&quot;6&quot;&gt;
+-       &lt;widget class=&quot;BlDateSearch&quot; name=&quot;mui_fincontrato&quot; native=&quot;true&quot;&gt;
+-        &lt;property name=&quot;sizePolicy&quot;&gt;
+-         &lt;sizepolicy hsizetype=&quot;Expanding&quot; vsizetype=&quot;Ignored&quot;&gt;
+-          &lt;horstretch&gt;0&lt;/horstretch&gt;
+-          &lt;verstretch&gt;0&lt;/verstretch&gt;
+-         &lt;/sizepolicy&gt;
+-        &lt;/property&gt;
+-        &lt;property name=&quot;minimumSize&quot;&gt;
+-         &lt;size&gt;
+-          &lt;width&gt;0&lt;/width&gt;
+-          &lt;height&gt;14&lt;/height&gt;
+-         &lt;/size&gt;
+-        &lt;/property&gt;
+-        &lt;property name=&quot;maximumSize&quot;&gt;
+-         &lt;size&gt;
+-          &lt;width&gt;150&lt;/width&gt;
+-          &lt;height&gt;16777215&lt;/height&gt;
+-         &lt;/size&gt;
+-        &lt;/property&gt;
+-       &lt;/widget&gt;
+-      &lt;/item&gt;
+-      &lt;item row=&quot;2&quot; column=&quot;4&quot; colspan=&quot;2&quot;&gt;
+-       &lt;widget class=&quot;QLabel&quot; name=&quot;label8_2&quot;&gt;
+-        &lt;property name=&quot;font&quot;&gt;
+-         &lt;font&gt;
+-          &lt;family&gt;Sans Serif&lt;/family&gt;
+-          &lt;pointsize&gt;9&lt;/pointsize&gt;
+-          &lt;weight&gt;50&lt;/weight&gt;
+-          &lt;italic&gt;false&lt;/italic&gt;
+-          &lt;bold&gt;false&lt;/bold&gt;
+-          &lt;underline&gt;false&lt;/underline&gt;
+-          &lt;strikeout&gt;false&lt;/strikeout&gt;
+-         &lt;/font&gt;
+-        &lt;/property&gt;
+-        &lt;property name=&quot;text&quot;&gt;
+-         &lt;string&gt;Fecha de finalizacion:&lt;/string&gt;
+-        &lt;/property&gt;
+-        &lt;property name=&quot;alignment&quot;&gt;
+-         &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
+-        &lt;/property&gt;
+-       &lt;/widget&gt;
+-      &lt;/item&gt;
+-      &lt;item row=&quot;2&quot; column=&quot;6&quot;&gt;
+-       &lt;widget class=&quot;BlDateSearch&quot; name=&quot;mui_ffincontrato&quot; native=&quot;true&quot;&gt;
+-        &lt;property name=&quot;sizePolicy&quot;&gt;
+-         &lt;sizepolicy hsizetype=&quot;Expanding&quot; vsizetype=&quot;Fixed&quot;&gt;
+-          &lt;horstretch&gt;0&lt;/horstretch&gt;
+-          &lt;verstretch&gt;0&lt;/verstretch&gt;
+-         &lt;/sizepolicy&gt;
+-        &lt;/property&gt;
+-        &lt;property name=&quot;minimumSize&quot;&gt;
+-         &lt;size&gt;
+-          &lt;width&gt;0&lt;/width&gt;
+-          &lt;height&gt;14&lt;/height&gt;
+-         &lt;/size&gt;
+-        &lt;/property&gt;
+-        &lt;property name=&quot;maximumSize&quot;&gt;
+-         &lt;size&gt;
+-          &lt;width&gt;150&lt;/width&gt;
+-          &lt;height&gt;16777215&lt;/height&gt;
+-         &lt;/size&gt;
+-        &lt;/property&gt;
+-       &lt;/widget&gt;
+-      &lt;/item&gt;
+-      &lt;item row=&quot;3&quot; column=&quot;4&quot; colspan=&quot;2&quot;&gt;
+-       &lt;widget class=&quot;QLabel&quot; name=&quot;label8_3&quot;&gt;
+-        &lt;property name=&quot;font&quot;&gt;
+-         &lt;font&gt;
+-          &lt;family&gt;Sans Serif&lt;/family&gt;
+-          &lt;pointsize&gt;9&lt;/pointsize&gt;
+-          &lt;weight&gt;50&lt;/weight&gt;
+-          &lt;italic&gt;false&lt;/italic&gt;
+-          &lt;bold&gt;false&lt;/bold&gt;
+-          &lt;underline&gt;false&lt;/underline&gt;
+-          &lt;strikeout&gt;false&lt;/strikeout&gt;
+-         &lt;/font&gt;
+-        &lt;/property&gt;
+-        &lt;property name=&quot;text&quot;&gt;
+-         &lt;string&gt;Periodicidad Facturas:&lt;/string&gt;
+-        &lt;/property&gt;
+-        &lt;property name=&quot;alignment&quot;&gt;
+-         &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
+-        &lt;/property&gt;
+-        &lt;property name=&quot;buddy&quot;&gt;
+-         &lt;cstring&gt;mui_periodicidadcontrato&lt;/cstring&gt;
+-        &lt;/property&gt;
+-       &lt;/widget&gt;
+-      &lt;/item&gt;
+-      &lt;item row=&quot;3&quot; column=&quot;6&quot;&gt;
+-       &lt;widget class=&quot;BlPeriodicityComboBox&quot; name=&quot;mui_periodicidadcontrato&quot;&gt;
+-        &lt;property name=&quot;maximumSize&quot;&gt;
+-         &lt;size&gt;
+-          &lt;width&gt;150&lt;/width&gt;
+-          &lt;height&gt;16777215&lt;/height&gt;
+-         &lt;/size&gt;
+-        &lt;/property&gt;
+-       &lt;/widget&gt;
+-      &lt;/item&gt;
+-      &lt;item row=&quot;0&quot; column=&quot;6&quot;&gt;
+-       &lt;widget class=&quot;QLineEdit&quot; name=&quot;mui_loccontrato&quot;&gt;
+-        &lt;property name=&quot;maximumSize&quot;&gt;
+-         &lt;size&gt;
+-          &lt;width&gt;150&lt;/width&gt;
+-          &lt;height&gt;16777215&lt;/height&gt;
+-         &lt;/size&gt;
+-        &lt;/property&gt;
+-       &lt;/widget&gt;
+-      &lt;/item&gt;
+-      &lt;item row=&quot;0&quot; column=&quot;4&quot; colspan=&quot;2&quot;&gt;
+-       &lt;widget class=&quot;QLabel&quot; name=&quot;label&quot;&gt;
+-        &lt;property name=&quot;text&quot;&gt;
+-         &lt;string&gt;Ubicacion:&lt;/string&gt;
+-        &lt;/property&gt;
+-        &lt;property name=&quot;alignment&quot;&gt;
+-         &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
+-        &lt;/property&gt;
+-        &lt;property name=&quot;buddy&quot;&gt;
+-         &lt;cstring&gt;mui_loccontrato&lt;/cstring&gt;
+-        &lt;/property&gt;
+-       &lt;/widget&gt;
+-      &lt;/item&gt;
+-     &lt;/layout&gt;
+-    &lt;/widget&gt;
+-   &lt;/item&gt;
+-   &lt;item&gt;
+     &lt;widget class=&quot;QTabWidget&quot; name=&quot;Detalle&quot;&gt;
+      &lt;property name=&quot;enabled&quot;&gt;
+       &lt;bool&gt;true&lt;/bool&gt;
+@@ -560,9 +346,240 @@
+      &lt;property name=&quot;currentIndex&quot;&gt;
+       &lt;number&gt;0&lt;/number&gt;
+      &lt;/property&gt;
++     &lt;widget class=&quot;QWidget&quot; name=&quot;tab_2&quot;&gt;
++      &lt;attribute name=&quot;title&quot;&gt;
++       &lt;string&gt;Datos Contrato&lt;/string&gt;
++      &lt;/attribute&gt;
++      &lt;layout class=&quot;QGridLayout&quot; name=&quot;gridLayout_2&quot;&gt;
++       &lt;item row=&quot;0&quot; column=&quot;0&quot;&gt;
++        &lt;widget class=&quot;QFrame&quot; name=&quot;frame&quot;&gt;
++         &lt;property name=&quot;sizePolicy&quot;&gt;
++          &lt;sizepolicy hsizetype=&quot;Preferred&quot; vsizetype=&quot;MinimumExpanding&quot;&gt;
++           &lt;horstretch&gt;0&lt;/horstretch&gt;
++           &lt;verstretch&gt;0&lt;/verstretch&gt;
++          &lt;/sizepolicy&gt;
++         &lt;/property&gt;
++         &lt;property name=&quot;frameShape&quot;&gt;
++          &lt;enum&gt;QFrame::StyledPanel&lt;/enum&gt;
++         &lt;/property&gt;
++         &lt;property name=&quot;frameShadow&quot;&gt;
++          &lt;enum&gt;QFrame::Raised&lt;/enum&gt;
++         &lt;/property&gt;
++         &lt;layout class=&quot;QGridLayout&quot; name=&quot;gridLayout&quot;&gt;
++          &lt;item row=&quot;0&quot; column=&quot;0&quot;&gt;
++           &lt;widget class=&quot;QLabel&quot; name=&quot;label7&quot;&gt;
++            &lt;property name=&quot;font&quot;&gt;
++             &lt;font&gt;
++              &lt;family&gt;Sans Serif&lt;/family&gt;
++              &lt;pointsize&gt;9&lt;/pointsize&gt;
++              &lt;weight&gt;50&lt;/weight&gt;
++              &lt;italic&gt;false&lt;/italic&gt;
++              &lt;bold&gt;false&lt;/bold&gt;
++              &lt;underline&gt;false&lt;/underline&gt;
++              &lt;strikeout&gt;false&lt;/strikeout&gt;
++             &lt;/font&gt;
++            &lt;/property&gt;
++            &lt;property name=&quot;text&quot;&gt;
++             &lt;string&gt;Descripcion:&lt;/string&gt;
++            &lt;/property&gt;
++            &lt;property name=&quot;buddy&quot;&gt;
++             &lt;cstring&gt;mui_nomcontrato&lt;/cstring&gt;
++            &lt;/property&gt;
++           &lt;/widget&gt;
++          &lt;/item&gt;
++          &lt;item row=&quot;0&quot; column=&quot;1&quot;&gt;
++           &lt;widget class=&quot;QLineEdit&quot; name=&quot;mui_nomcontrato&quot;&gt;
++            &lt;property name=&quot;sizePolicy&quot;&gt;
++             &lt;sizepolicy hsizetype=&quot;Expanding&quot; vsizetype=&quot;Fixed&quot;&gt;
++              &lt;horstretch&gt;0&lt;/horstretch&gt;
++              &lt;verstretch&gt;0&lt;/verstretch&gt;
++             &lt;/sizepolicy&gt;
++            &lt;/property&gt;
++            &lt;property name=&quot;minimumSize&quot;&gt;
++             &lt;size&gt;
++              &lt;width&gt;0&lt;/width&gt;
++              &lt;height&gt;0&lt;/height&gt;
++             &lt;/size&gt;
++            &lt;/property&gt;
++            &lt;property name=&quot;baseSize&quot;&gt;
++             &lt;size&gt;
++              &lt;width&gt;0&lt;/width&gt;
++              &lt;height&gt;0&lt;/height&gt;
++             &lt;/size&gt;
++            &lt;/property&gt;
++           &lt;/widget&gt;
++          &lt;/item&gt;
++          &lt;item row=&quot;0&quot; column=&quot;2&quot;&gt;
++           &lt;widget class=&quot;QLabel&quot; name=&quot;label&quot;&gt;
++            &lt;property name=&quot;text&quot;&gt;
++             &lt;string&gt;Ubicacion:&lt;/string&gt;
++            &lt;/property&gt;
++            &lt;property name=&quot;alignment&quot;&gt;
++             &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
++            &lt;/property&gt;
++            &lt;property name=&quot;buddy&quot;&gt;
++             &lt;cstring&gt;mui_loccontrato&lt;/cstring&gt;
++            &lt;/property&gt;
++           &lt;/widget&gt;
++          &lt;/item&gt;
++          &lt;item row=&quot;0&quot; column=&quot;3&quot;&gt;
++           &lt;widget class=&quot;QLineEdit&quot; name=&quot;mui_loccontrato&quot;&gt;
++            &lt;property name=&quot;maximumSize&quot;&gt;
++             &lt;size&gt;
++              &lt;width&gt;150&lt;/width&gt;
++              &lt;height&gt;16777215&lt;/height&gt;
++             &lt;/size&gt;
++            &lt;/property&gt;
++           &lt;/widget&gt;
++          &lt;/item&gt;
++          &lt;item row=&quot;1&quot; column=&quot;0&quot; rowspan=&quot;3&quot; colspan=&quot;2&quot;&gt;
++           &lt;widget class=&quot;BlSearchWidget&quot; name=&quot;mui_idcliente&quot; native=&quot;true&quot;&gt;
++            &lt;property name=&quot;sizePolicy&quot;&gt;
++             &lt;sizepolicy hsizetype=&quot;Expanding&quot; vsizetype=&quot;Ignored&quot;&gt;
++              &lt;horstretch&gt;0&lt;/horstretch&gt;
++              &lt;verstretch&gt;0&lt;/verstretch&gt;
++             &lt;/sizepolicy&gt;
++            &lt;/property&gt;
++           &lt;/widget&gt;
++          &lt;/item&gt;
++          &lt;item row=&quot;1&quot; column=&quot;2&quot;&gt;
++           &lt;widget class=&quot;QLabel&quot; name=&quot;label8&quot;&gt;
++            &lt;property name=&quot;font&quot;&gt;
++             &lt;font&gt;
++              &lt;family&gt;Sans Serif&lt;/family&gt;
++              &lt;pointsize&gt;9&lt;/pointsize&gt;
++              &lt;weight&gt;50&lt;/weight&gt;
++              &lt;italic&gt;false&lt;/italic&gt;
++              &lt;bold&gt;false&lt;/bold&gt;
++              &lt;underline&gt;false&lt;/underline&gt;
++              &lt;strikeout&gt;false&lt;/strikeout&gt;
++             &lt;/font&gt;
++            &lt;/property&gt;
++            &lt;property name=&quot;text&quot;&gt;
++             &lt;string&gt;Fecha de creacion:&lt;/string&gt;
++            &lt;/property&gt;
++            &lt;property name=&quot;alignment&quot;&gt;
++             &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
++            &lt;/property&gt;
++           &lt;/widget&gt;
++          &lt;/item&gt;
++          &lt;item row=&quot;1&quot; column=&quot;3&quot;&gt;
++           &lt;widget class=&quot;BlDateSearch&quot; name=&quot;mui_fincontrato&quot; native=&quot;true&quot;&gt;
++            &lt;property name=&quot;sizePolicy&quot;&gt;
++             &lt;sizepolicy hsizetype=&quot;Expanding&quot; vsizetype=&quot;Ignored&quot;&gt;
++              &lt;horstretch&gt;0&lt;/horstretch&gt;
++              &lt;verstretch&gt;0&lt;/verstretch&gt;
++             &lt;/sizepolicy&gt;
++            &lt;/property&gt;
++            &lt;property name=&quot;minimumSize&quot;&gt;
++             &lt;size&gt;
++              &lt;width&gt;0&lt;/width&gt;
++              &lt;height&gt;14&lt;/height&gt;
++             &lt;/size&gt;
++            &lt;/property&gt;
++            &lt;property name=&quot;maximumSize&quot;&gt;
++             &lt;size&gt;
++              &lt;width&gt;150&lt;/width&gt;
++              &lt;height&gt;16777215&lt;/height&gt;
++             &lt;/size&gt;
++            &lt;/property&gt;
++           &lt;/widget&gt;
++          &lt;/item&gt;
++          &lt;item row=&quot;2&quot; column=&quot;2&quot;&gt;
++           &lt;widget class=&quot;QLabel&quot; name=&quot;label8_2&quot;&gt;
++            &lt;property name=&quot;font&quot;&gt;
++             &lt;font&gt;
++              &lt;family&gt;Sans Serif&lt;/family&gt;
++              &lt;pointsize&gt;9&lt;/pointsize&gt;
++              &lt;weight&gt;50&lt;/weight&gt;
++              &lt;italic&gt;false&lt;/italic&gt;
++              &lt;bold&gt;false&lt;/bold&gt;
++              &lt;underline&gt;false&lt;/underline&gt;
++              &lt;strikeout&gt;false&lt;/strikeout&gt;
++             &lt;/font&gt;
++            &lt;/property&gt;
++            &lt;property name=&quot;text&quot;&gt;
++             &lt;string&gt;Fecha de finalizacion:&lt;/string&gt;
++            &lt;/property&gt;
++            &lt;property name=&quot;alignment&quot;&gt;
++             &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
++            &lt;/property&gt;
++           &lt;/widget&gt;
++          &lt;/item&gt;
++          &lt;item row=&quot;2&quot; column=&quot;3&quot;&gt;
++           &lt;widget class=&quot;BlDateSearch&quot; name=&quot;mui_ffincontrato&quot; native=&quot;true&quot;&gt;
++            &lt;property name=&quot;sizePolicy&quot;&gt;
++             &lt;sizepolicy hsizetype=&quot;Expanding&quot; vsizetype=&quot;Fixed&quot;&gt;
++              &lt;horstretch&gt;0&lt;/horstretch&gt;
++              &lt;verstretch&gt;0&lt;/verstretch&gt;
++             &lt;/sizepolicy&gt;
++            &lt;/property&gt;
++            &lt;property name=&quot;minimumSize&quot;&gt;
++             &lt;size&gt;
++              &lt;width&gt;0&lt;/width&gt;
++              &lt;height&gt;14&lt;/height&gt;
++             &lt;/size&gt;
++            &lt;/property&gt;
++            &lt;property name=&quot;maximumSize&quot;&gt;
++             &lt;size&gt;
++              &lt;width&gt;150&lt;/width&gt;
++              &lt;height&gt;16777215&lt;/height&gt;
++             &lt;/size&gt;
++            &lt;/property&gt;
++           &lt;/widget&gt;
++          &lt;/item&gt;
++          &lt;item row=&quot;3&quot; column=&quot;2&quot;&gt;
++           &lt;widget class=&quot;QLabel&quot; name=&quot;label8_3&quot;&gt;
++            &lt;property name=&quot;font&quot;&gt;
++             &lt;font&gt;
++              &lt;family&gt;Sans Serif&lt;/family&gt;
++              &lt;pointsize&gt;9&lt;/pointsize&gt;
++              &lt;weight&gt;50&lt;/weight&gt;
++              &lt;italic&gt;false&lt;/italic&gt;
++              &lt;bold&gt;false&lt;/bold&gt;
++              &lt;underline&gt;false&lt;/underline&gt;
++              &lt;strikeout&gt;false&lt;/strikeout&gt;
++             &lt;/font&gt;
++            &lt;/property&gt;
++            &lt;property name=&quot;text&quot;&gt;
++             &lt;string&gt;Periodicidad Facturas:&lt;/string&gt;
++            &lt;/property&gt;
++            &lt;property name=&quot;alignment&quot;&gt;
++             &lt;set&gt;Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter&lt;/set&gt;
++            &lt;/property&gt;
++            &lt;property name=&quot;buddy&quot;&gt;
++             &lt;cstring&gt;mui_periodicidadcontrato&lt;/cstring&gt;
++            &lt;/property&gt;
++           &lt;/widget&gt;
++          &lt;/item&gt;
++          &lt;item row=&quot;3&quot; column=&quot;3&quot;&gt;
++           &lt;widget class=&quot;BlPeriodicityComboBox&quot; name=&quot;mui_periodicidadcontrato&quot;&gt;
++            &lt;property name=&quot;maximumSize&quot;&gt;
++             &lt;size&gt;
++              &lt;width&gt;150&lt;/width&gt;
++              &lt;height&gt;16777215&lt;/height&gt;
++             &lt;/size&gt;
++            &lt;/property&gt;
++           &lt;/widget&gt;
++          &lt;/item&gt;
++          &lt;item row=&quot;4&quot; column=&quot;0&quot; colspan=&quot;4&quot;&gt;
++           &lt;widget class=&quot;QFrame&quot; name=&quot;m_frameplugin&quot;&gt;
++            &lt;property name=&quot;frameShape&quot;&gt;
++             &lt;enum&gt;QFrame::StyledPanel&lt;/enum&gt;
++            &lt;/property&gt;
++            &lt;property name=&quot;frameShadow&quot;&gt;
++             &lt;enum&gt;QFrame::Raised&lt;/enum&gt;
++            &lt;/property&gt;
++           &lt;/widget&gt;
++          &lt;/item&gt;
++         &lt;/layout&gt;
++        &lt;/widget&gt;
++       &lt;/item&gt;
++      &lt;/layout&gt;
++     &lt;/widget&gt;
+      &lt;widget class=&quot;QWidget&quot; name=&quot;tab&quot;&gt;
+       &lt;attribute name=&quot;title&quot;&gt;
+-       &lt;string&gt;Detalle&lt;/string&gt;
++       &lt;string&gt;Detalle Facturas&lt;/string&gt;
+       &lt;/attribute&gt;
+       &lt;layout class=&quot;QGridLayout&quot;&gt;
+        &lt;property name=&quot;margin&quot;&gt;
+@@ -578,7 +595,7 @@
+      &lt;/widget&gt;
+      &lt;widget class=&quot;QWidget&quot; name=&quot;tab1&quot;&gt;
+       &lt;attribute name=&quot;title&quot;&gt;
+-       &lt;string&gt;&amp;Facturas&lt;/string&gt;
++       &lt;string&gt;&amp;Facturas Realizadas&lt;/string&gt;
+       &lt;/attribute&gt;
+       &lt;layout class=&quot;QVBoxLayout&quot;&gt;
+        &lt;property name=&quot;spacing&quot;&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_contrato/contratoview.cpp b/bulmages/bulmafact/plugins/pluginbf_contrato/contratoview.cpp
+index faae9da..ce77aac 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_contrato/contratoview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_contrato/contratoview.cpp
+@@ -44,13 +44,27 @@
+ \return
+ **/
+ ContratoView::ContratoView ( BfCompany *comp, QWidget *parent )
+-        : Contrato ( comp, parent )
++        : BfForm ( comp, parent )
+ {
+     BL_FUNC_DEBUG
+     setAttribute ( Qt::WA_DeleteOnClose );
+     try {
+         setupUi ( this );
+ 
++	setTitleName ( _ ( &quot;Contrato&quot; ) );
++	setDbTableName ( &quot;contrato&quot; );
++	setDbFieldId ( &quot;idcontrato&quot; );
++	addDbField ( &quot;idcontrato&quot;,  BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( &quot;Id contrato&quot; ) );
++	addDbField ( &quot;idcliente&quot;,   BlDbField::DbInt, BlDbField::DbNotNull, _ ( &quot;Id cliente&quot; ) );
++	addDbField ( &quot;refcontrato&quot;, BlDbField::DbVarChar, BlDbField::DbNothing, _ ( &quot;Referencia contrato&quot; ) );
++	addDbField ( &quot;descontrato&quot;, BlDbField::DbVarChar, BlDbField::DbNothing, _ ( &quot;Descripcion contrato&quot; ) );
++	addDbField ( &quot;nomcontrato&quot;, BlDbField::DbVarChar, BlDbField::DbNothing, _ ( &quot;Descripcion contrato&quot; ) );
++	addDbField ( &quot;loccontrato&quot;, BlDbField::DbVarChar, BlDbField::DbNothing, _ ( &quot;Descripcion contrato&quot; ) );
++	addDbField ( &quot;periodicidadcontrato&quot;, BlDbField::DbVarChar, BlDbField::DbNothing, _ ( &quot;Descripcion contrato&quot; ) );
++	addDbField ( &quot;fincontrato&quot;,  BlDbField::DbDate, BlDbField::DbNothing, _ ( &quot;Descripcion contrato&quot; ) );
++	addDbField ( &quot;ffincontrato&quot;, BlDbField::DbDate, BlDbField::DbNothing, _ ( &quot;Descripcion contrato&quot; ) );
++	blScript(this);
++	
+         /// Disparamos los plugins.
+         int res = g_plugins-&gt;run ( &quot;ContratoView_ContratoView&quot;, this );
+         if ( res != 0 )
+@@ -109,18 +123,20 @@ void ContratoView::inicializar()
+ \param id
+ \return
+ **/
+-int ContratoView::load ( QString id )
++int ContratoView::cargarPost ( QString id )
+ {
+     BL_FUNC_DEBUG
+     try {
++      /*
+         Contrato::load ( id );
+         if ( dbValue ( &quot;idcontrato&quot; ) != &quot;&quot; ) {
+             setWindowTitle ( _ ( &quot;Contrato&quot; ) + &quot; &quot; + dbValue ( &quot;refcontrato&quot; ) + &quot; &quot; + dbValue ( &quot;idcontrato&quot; ) );
+             insertWindow ( windowTitle(), this );
+         } // end if
++        */
+         mui_lineas-&gt;load ( id );
+         subform2-&gt;load ( &quot;SELECT * FROM factura LEFT JOIN cliente ON cliente.idcliente = factura.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen  WHERE factura.idcliente =&quot; + id + &quot; AND reffactura = '&quot; + dbValue ( &quot;refcontrato&quot; ) + &quot;'&quot; );
+-        dialogChanges_readValues();
++        //dialogChanges_readValues();
+     } catch ( ... ) {
+         return -1;
+     } // end try
+@@ -129,6 +145,9 @@ int ContratoView::load ( QString id )
+ }
+ 
+ 
++
++
++
+ /** Guardado de la ficha en la base de datos.
+     Utiliza los metodos setXXX para establecer los valores de la Ficha en el BlDbRecord
+     y luego llama a \ref Contrato::save() para el guardado en la base de datos.
+@@ -138,20 +157,12 @@ int ContratoView::load ( QString id )
+ /**
+ \return
+ **/
+-int ContratoView::save()
++int ContratoView::afterSave()
+ {
+     BL_FUNC_DEBUG
+     try {
+-        setDbValue ( &quot;refcontrato&quot;, mui_refcontrato-&gt;text() );
+-        setDbValue ( &quot;nomcontrato&quot;, mui_nomcontrato-&gt;text() );
+-        setDbValue ( &quot;idcliente&quot;, mui_idcliente-&gt;id() );
+-        setDbValue ( &quot;fincontrato&quot;, mui_fincontrato-&gt;text() );
+-        setDbValue ( &quot;ffincontrato&quot;, mui_ffincontrato-&gt;text() );
+-        setDbValue ( &quot;loccontrato&quot;, mui_loccontrato-&gt;text() );
+-        setDbValue ( &quot;descontrato&quot;, mui_descontrato-&gt;toPlainText() );
+-        setDbValue ( &quot;periodicidadcontrato&quot;, mui_periodicidadcontrato-&gt;periodo() );
+-        Contrato::save();
+-        dialogChanges_readValues();
++            mui_lineas-&gt;setColumnValue ( &quot;idcontrato&quot;, dbValue ( &quot;idcontrato&quot; ) );
++	    mui_lineas-&gt;save();
+     } catch ( ... ) {
+ 	
+         throw - 1;
+@@ -161,113 +172,20 @@ int ContratoView::save()
+ }
+ 
+ 
+-///
+-/**
+-\param id
+-**/
+-void ContratoView::on_m_cliente_valueChanged ( QString id )
+-{
+-    BL_FUNC_DEBUG
+-    subform2-&gt;setIdCliente ( id );
+-    
+-}
+ 
+ 
+ ///
+ /**
+ \param id
+ **/
+-void ContratoView::pintaidcliente ( QString id )
+-{
+-    BL_FUNC_DEBUG
+-    mui_idcliente-&gt;setId ( id );
+-    
+-}
+-
+-
+-///
+-/**
+-\param id
+-**/
+-void ContratoView::pintafincontrato ( QString id )
+-{
+-    BL_FUNC_DEBUG
+-    mui_fincontrato-&gt;setText ( id );
+-    
+-}
+-
+-
+-///
+-/**
+-\param id
+-**/
+-void ContratoView::pintaffincontrato ( QString id )
+-{
+-    BL_FUNC_DEBUG
+-    mui_ffincontrato-&gt;setText ( id );
+-    
+-}
+-
+-
+-///
+-/**
+-\param id
+-**/
+-void ContratoView::pintadescontrato ( QString id )
+-{
+-    BL_FUNC_DEBUG
+-    mui_descontrato-&gt;setText ( id );
+-    
+-}
+-
+-
+-///
+-/**
+-\param id
+-**/
+-void ContratoView::pintarefcontrato ( QString id )
+-{
+-    BL_FUNC_DEBUG
+-    mui_refcontrato-&gt;setText ( id );
+-    
+-}
+-
+-
+-///
+-/**
+-\param id
+-**/
+-void ContratoView::pintanomcontrato ( QString id )
+-{
+-    BL_FUNC_DEBUG
+-    mui_nomcontrato-&gt;setText ( id );
+-    
+-}
+-
+-
+-///
+-/**
+-\param id
+-**/
+-void ContratoView::pintaperiodicidadcontrato ( QString id )
++void ContratoView::on_m_cliente_valueChanged ( QString id )
+ {
+     BL_FUNC_DEBUG
+-    mui_periodicidadcontrato-&gt;setperiodo ( id );
++    subform2-&gt;setIdCliente ( id );
+     
+ }
+ 
+ 
+-///
+-/**
+-\param id
+-**/
+-void ContratoView::pintaloccontrato ( QString id )
+-{
+-    BL_FUNC_DEBUG
+-    mui_loccontrato-&gt;setText ( id );
+-    
+-}
+-
+ 
+ ///
+ /**
+diff --git a/bulmages/bulmafact/plugins/pluginbf_contrato/contratoview.h b/bulmages/bulmafact/plugins/pluginbf_contrato/contratoview.h
+index a228084..920fa4a 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_contrato/contratoview.h
++++ b/bulmages/bulmafact/plugins/pluginbf_contrato/contratoview.h
+@@ -26,7 +26,6 @@
+ #include &lt;QCheckBox&gt;
+ 
+ 
+-#include &quot;contrato.h&quot;
+ #include &quot;bldatesearch.h&quot;
+ #include &quot;bfbuscarformapago.h&quot;
+ #include &quot;bfbuscarseriefactura.h&quot;
+@@ -56,7 +55,7 @@ public slots:
+ #include &quot;ui_contratobase.h&quot;
+ /// Muestra y administra la ventana de una contrato a cliente.
+ /** */
+-class ContratoView : public Contrato, public Ui_ContratoBase
++class ContratoView : public BfForm, public Ui_ContratoBase
+ {
+     Q_OBJECT
+ 
+@@ -64,21 +63,8 @@ public:
+     ContratoView ( BfCompany *, QWidget *parent = 0 );
+     ~ContratoView();
+     void inicializar();
+-    void pintaidcliente ( QString id );
+-    void pintafincontrato ( QString id );
+-    void pintaffincontrato ( QString id );
+-    void pintadescontrato ( QString id );
+-    void pintarefcontrato ( QString id );
+-    void pintanomcontrato ( QString id );
+-    void pintaperiodicidadcontrato ( QString id );
+-    void pintaloccontrato ( QString id );
+-
+-    /// Estos metodos deben existir para poder trabajar con la clase Ficha
+-    virtual int save();
+-    virtual int load ( QString id );
+-    virtual int remove() {
+-        return Contrato::remove();
+-    };
++    virtual int afterSave();
++    virtual int cargarPost ( QString id );
+ 
+ public slots:
+     virtual void on_subform2_itemDoubleClicked ( QTableWidgetItem * );
+diff --git a/bulmages/bulmalib/src/blformlist.cpp b/bulmages/bulmalib/src/blformlist.cpp
+index c4fb818..7f46cbe 100644
+--- a/bulmages/bulmalib/src/blformlist.cpp
++++ b/bulmages/bulmalib/src/blformlist.cpp
+@@ -694,6 +694,28 @@ void BlFormList::guardaFiltrosXML() {
+ 	    stream &lt;&lt; &quot;&lt;BLSEARCHWIDGET&gt;\n\t&lt;OBJNAME&gt;&quot; &lt;&lt; objname &lt;&lt; &quot;&lt;/OBJNAME&gt;\n\t&lt;OBJVALUE&gt;&quot; &lt;&lt; date &lt;&lt; &quot;&lt;/OBJVALUE&gt;\n\t&lt;OBJPARENT&gt;&quot; &lt;&lt; objparent &lt;&lt; &quot;&lt;/OBJPARENT&gt;\n&lt;/BLSEARCHWIDGET&gt;&quot;;
+ 	} // end while
+ 	
++	
++	QList&lt;BlComboBox *&gt; l9i = findChildren&lt;BlComboBox *&gt;();
++	QListIterator&lt;BlComboBox *&gt; it9i ( l9i );
++	while ( it9i.hasNext() ) {
++	    BlComboBox * item = it9i.next();
++	    QString objname = item-&gt;objectName();
++	    QString objparent = item-&gt;parent()-&gt;objectName();
++	    QString date = item-&gt;id();
++	    stream &lt;&lt; &quot;&lt;BLCOMBOBOX&gt;\n\t&lt;OBJNAME&gt;&quot; &lt;&lt; objname &lt;&lt; &quot;&lt;/OBJNAME&gt;\n\t&lt;OBJVALUE&gt;&quot; &lt;&lt; date &lt;&lt; &quot;&lt;/OBJVALUE&gt;\n\t&lt;OBJPARENT&gt;&quot; &lt;&lt; objparent &lt;&lt; &quot;&lt;/OBJPARENT&gt;\n&lt;/BLCOMBOBOX&gt;&quot;;
++	} // end while
++	
++	
++	QList&lt;QComboBox *&gt; l10i = findChildren&lt;QComboBox *&gt;();
++	QListIterator&lt;QComboBox *&gt; it10i ( l10i );
++	while ( it10i.hasNext() ) {
++	    QComboBox * item = it10i.next();
++	    QString objname = item-&gt;objectName();
++	    QString objparent = item-&gt;parent()-&gt;objectName();
++	    QString date = item-&gt;currentText();
++	    stream &lt;&lt; &quot;&lt;QCOMBOBOX&gt;\n\t&lt;OBJNAME&gt;&quot; &lt;&lt; objname &lt;&lt; &quot;&lt;/OBJNAME&gt;\n\t&lt;OBJVALUE&gt;&quot; &lt;&lt; date &lt;&lt; &quot;&lt;/OBJVALUE&gt;\n\t&lt;OBJPARENT&gt;&quot; &lt;&lt; objparent &lt;&lt; &quot;&lt;/OBJPARENT&gt;\n&lt;/QCOMBOBOX&gt;&quot;;
++	} // end while
++	
+ 	stream &lt;&lt; &quot;&lt;/DOCUMENT&gt;\n&quot;;
+ 	file.close();
+     } // end if
+@@ -785,6 +807,28 @@ void BlFormList::cargaFiltrosXML() {
+ 	} // end if
+     } // end for
+   
++  
++    /// Leemos la visibilidad de las columnas. Se hace antes de ordenarlas.
++    nodos = docElem.elementsByTagName ( &quot;QCOMBOBOX&quot; );
++    for ( int i = 0; i &lt; nodos.count(); i++ ) {
++        QDomNode visible = nodos.item ( i );
++        QDomElement e1 = visible.toElement(); /// try to convert the node to an element.
++        if ( !e1.isNull() ) { /// the node was really an element.
++
++	    /// Cogemos el nombre y el valor
++	    QString objname = e1.firstChildElement ( &quot;OBJNAME&quot; ).toElement().text();
++	    QString objvalue = e1.firstChildElement ( &quot;OBJVALUE&quot; ).toElement().text();
++	    QString objparent = e1.firstChildElement ( &quot;OBJPARENT&quot; ).toElement().text();
++	    QComboBox *dates = findChild&lt;QComboBox *&gt;(objname);
++	    if (dates) {
++		if (dates-&gt;parent()-&gt;objectName() == objparent) {
++		    dates-&gt;setCurrentIndex(dates-&gt;findText(objvalue));
++		} // end if
++	    } // end if
++	    
++	} // end if
++    } // end for
++  
+ }
+ 
+ 
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Próximo mensaje: <A HREF="007464.html">[BulmaGés] [Gitorious] Activity: tborras pushed 0	commits to release...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7465">[ fecha ]</a>
+              <a href="thread.html#7465">[ hilo ]</a>
+              <a href="subject.html#7465">[ asunto ]</a>
+              <a href="author.html#7465">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

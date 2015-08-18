@@ -1,0 +1,964 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20master...&In-Reply-To=%3C20120503173914.A29D475ABE%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007167.html">
+   <LINK REL="Next"  HREF="007169.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20master...&In-Reply-To=%3C20120503173914.A29D475ABE%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Jue Mayo  3 19:39:14 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007167.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007169.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7168">[ fecha ]</a>
+              <a href="thread.html#7168">[ hilo ]</a>
+              <a href="subject.html#7168">[ asunto ]</a>
+              <a href="author.html#7168">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 2 commits to master
+master changed from 57cba8f to ef2b48b
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/57cba8f66639fa5cb676edfdaa2aa85cff01897f/diffs/ef2b48b378e7a54f66f48fa8b4944d7b8fac10bf">https://gitorious.org/bulmages/bulmages/commit/57cba8f66639fa5cb676edfdaa2aa85cff01897f/diffs/ef2b48b378e7a54f66f48fa8b4944d7b8fac10bf</A>
+
+Diff: 
+
+commit ef2b48b378e7a54f66f48fa8b4944d7b8fac10bf
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu May 3 19:38:51 2012 +0200
+
+    Quito mensajes de depuracion de depurator
+
+diff --git a/bulmages/scripts/depurator/depurator.py b/bulmages/scripts/depurator/depurator.py
+index 1446882..1c07106 100644
+--- a/bulmages/scripts/depurator/depurator.py
++++ b/bulmages/scripts/depurator/depurator.py
+@@ -1,174 +1,318 @@
++__version__ = &quot;$Revision: 0.1 $&quot;[11:-2]
++__date__ = &quot;$Date: 2007/01/07 08:09:13 $&quot;[7:-2]
++__author__ = &quot;Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;&quot;
++__all__ = [&quot;depurator&quot;]
++__doc__ = &quot;Sistema de Depuracion para BulmaGes a partir de los logs.\r\n&quot;
++
+ import sys
+-import getopt
++import re
++import os
++from principal import *
++from PyQt4.QtGui import *
++from PyQt4.QtCore import *
++
++
++class HelloWindow(QtGui.QMainWindow, Ui_Principal):
++    def __init__(self, *args):
++        apply(QtGui.QMainWindow.__init__, (self,) + args)
++	self.setupUi(self)
++
++	self.table.setColumnCount(3)
++	self.table.hideColumn(1)
++	self.table.hideColumn(2)
++	self.table.setColumnWidth(0,450)
++	
++	self.semaforo = 0
++	
+ 
++	self.f = None
+ 
++	self.t = QtCore.QTimer()
++	self.connect(self.t, QtCore.SIGNAL(&quot;timeout()&quot;), self.hazalgo)
++	self.connect(self.mui_clear, QtCore.SIGNAL(&quot;triggered()&quot;), self.on_mui_clear_clicked)
++	self.connect(self.mui_conectar, QtCore.SIGNAL(&quot;triggered()&quot;), self.on_mui_conectar_clicked)
++	self.connect(self.mui_abrir_traza, QtCore.SIGNAL(&quot;triggered()&quot;), self.on_mui_abrir_traza_clicked)
++	self.t.start(10)
+ 
+-class Mensaje:
+-	&quot;Representa la llegada de un mensaje&quot;
+-	def __init__(self):
+-		self.m_mensaje = &quot;&quot;
++    def on_mui_abrir_traza_clicked(self):
++        print &quot;Abriendo!!&quot;
++        self.openfile = QFileDialog.getOpenFileName(self,&quot;Traza - Elija archivo de traza&quot;, &quot;~/.bulmages&quot;,&quot;XML (*.xml)&quot;)
++	self.f = open(self.openfile, 'r')
+ 
+-class Metodo:
+-	&quot;Representa un metodo invocado&quot;
+-	def __init__(self):
+-		self.m_nombreMetodo = &quot;&quot;
+-		self.m_invocacionesInit = 0
+-		self.m_invocacionesEnd = 0
++    def on_mui_conectar_clicked(self):
++	print &quot;Conexion !!&quot;
+ 	
+-	def imprimir(self):
+-		print &quot;      &quot; + self.m_nombreMetodo + &quot;  %s &quot; % self.m_invocacionesInit
+-
+-class Clase:
+-	&quot;Representa una clase&quot;
+-        def __init__(self):
+-                self.m_nombreClase = &quot;&quot;
+-		self.m_invocaciones = 0
+-		self. m_listaMetodos = {}
+-
+-	def procesaMensaje(self, mens):
+-		inicial = 1
+-		final = 1
+-		mensaje = mens.strip()
+-		# Descartamos el sistema de comentarios.
+-		if mensaje.startswith(&quot;&lt;comment&quot;):
+-			return
+-		if mensaje.startswith(&quot;&lt;/comment&quot;):
+-			return
+-		if mensaje.startswith(&quot;&lt;/&quot;):
+-			inicial = 0
+-			# Es un mensaje de cierre
+-			partmsg = mensaje.split(&quot; &quot;)
+-			if len ( partmsg) &gt; 3:
+-			  mensaje = partmsg[3]
+-			else:
+-			  return
+-			if not &quot;::&quot; in mensaje:
+-			  mensaje = partmsg[2]
+-			if not &quot;::&quot; in mensaje:
+-			  mensaje = partmsg[1]
+-			if not &quot;::&quot; in mensaje:
+-			  return
+-		else:
+-			final = 0
+-			# Es un mensaje de cierre
+-			partmsg = mensaje.split(&quot; &quot;)
+-			if len ( partmsg) &gt; 3:
+-			  mensaje = partmsg[3]
+-			else:
+-			  return
+-
+-			if not &quot;::&quot; in mensaje:
+-			  mensaje = partmsg[2]
+-			if not &quot;::&quot; in mensaje:
+-			  mensaje = partmsg[1]
+-			if not &quot;::&quot; in mensaje:
+-			  return
+-			  
+-		lmensaje = mensaje.split(&quot;::&quot;)
+-		if len(lmensaje) &lt; 2:
+-			return
+-			
+-		submens = lmensaje[1].split(&quot; &quot;)
+-		lmensaje[1] = submens[0].split(&quot;(&quot;)[0]
++	self.f = open(os.getenv(&quot;HOME&quot;)+&quot;/.bulmages/bulmagesout.xml&quot;, 'r')	
++	self.f.seek(0,2)
++
++    def on_mui_tableclear_triggered(self):
++	self.table.clear()
++	self.table.setRowCount(0)
++	
++    def on_mui_clear_clicked(self):
++	self.table.clear()
++	self.table.setRowCount(0)
++	self.tree.clear()
++
++    def on_mui_expandtree_triggered(self):
++	print &quot;Expansion !!&quot;
++#	self.tree.expandAll()
++
++
++    def ejecuta(self):
++	line = self.f.readline(300)
++	if line != &quot;&quot;:
++		self.lmen.procesaMensaje(line.replace(&quot;\n&quot;, &quot;&quot;))
++
++    def hazalgo(self):
++        if (self.f == None):
++	  return
++        if (self.semaforo == 0):
++	  self.semaforo=1
++	else:
++	  return
++	if self.table.rowCount() &gt; 500:
++		self.table.clear()
++		self.table.setRowCount(0)
+ 		
+-		print &quot;Metodo es: &quot;+ lmensaje[1]
+-
+-		if lmensaje[1] in self.m_listaMetodos:
+-			a = self.m_listaMetodos[lmensaje[1]]
+-			a.m_invocacionesInit = a.m_invocacionesInit + inicial
+-			a.m_invocacionesEnd = a.m_invocacionesEnd + final
+-			self.m_listaMetodos[lmensaje[1]] = a
+-		else:
+-			# los cierres no los contamos, aunque si los mostramos y asi no descuadramos el computo.
+-			a = Metodo()
+-			a.m_nombreMetodo = lmensaje[1]
+-			a.m_invocacionesInit = inicial
+-			self.m_listaMetodos[lmensaje[1]] = a
+-
+-	def imprimir(self):
+-		print self.m_nombreClase + &quot;  %s&quot; % self.m_invocaciones
+-		for x in self.m_listaMetodos:
+-			self.m_listaMetodos[x].imprimir()
+-
+-class ListaClases:
+-	&quot;Listado de clases&quot;
+-	def __init__(self):
+-		self.m_listaClases = {}
+-
+-	def procesaMensaje(self, mens):
+-		# Buscamos la clase del mensaje.
+-		mensaje = mens.strip()
+-		#Quitamos espacios en blanco.
+-		# print mensaje
++	while self.table.rowCount() &gt; 1000:
++		self.table.removeRow(0)
+ 		
++	line = self.f.readline(3000)
++	i=0
++	while len(line) &gt; 3 and i &lt; 100:
++		if len(line) &gt; 3:
++			self.procesaMensaje(line)
++		line = self.f.readline(3000)
++		i = i + 1
++	self.semaforo=0
++
++    def sacaMensaje(self, mens):
++	self.table.insertRow(self.table.rowCount())
++	item = QtGui.QTableWidgetItem(mens)
++	self.table.setItem(self.table.rowCount() - 1, 0, item)
++	item1 = QtGui.QTableWidgetItem(&quot;hola 1&quot;)
++	self.table.setItem(self.table.rowCount() - 1, 1, item1)
++	item2 = QtGui.QTableWidgetItem(&quot;hola 2&quot;)
++	self.table.setItem(self.table.rowCount() - 1, 2, item2)
++	self.table.scrollToItem(item)
++	
++	
++    def procesaMensaje(self, mens):
++	sacamensaje = 0	
++	mensajefin = 1
++	tiempo = 0
++
++	mensaje = mens.strip()
++	# Descartamos el sistema de comentarios.
++	if mensaje.startswith(&quot;&lt;comment&quot;):
++		self.sacaMensaje(mensaje)
++		return
++	if mensaje.startswith(&quot;&lt;/comment&quot;):
++		return
+ 		
+-		# Descartamos el sistema de comentarios.
+-		if mensaje.startswith(&quot;&lt;comment&quot;):
+-			return
+-		if mensaje.startswith(&quot;&lt;/comment&quot;):
+-			return
+-		if mensaje.startswith(&quot;&lt;/&quot;):
+-			# Es un mensaje de cierre
+-			partmsg = mensaje.split(&quot; &quot;)
+-			if len ( partmsg) &gt; 3:
+-			  mensaje = partmsg[3]
+-			else:
+-			  return
+-
+-			if not &quot;::&quot; in mensaje:
+-			  mensaje = partmsg[2]
+-			if not &quot;::&quot; in mensaje:
+-			  mensaje = partmsg[1]
+-			if not &quot;::&quot; in mensaje:
+-			  return
+-		else:
+-			# Es un mensaje de cierre
+-			partmsg = mensaje.split(&quot; &quot;)
+-			if len ( partmsg) &gt; 3:
+-			  mensaje = partmsg[3]
+-			else:
+-			  return
+-
+-			if not &quot;::&quot; in mensaje:
+-			  mensaje = partmsg[2]
+-			if not &quot;::&quot; in mensaje:
+-			  mensaje = partmsg[1]
+-			if not &quot;::&quot; in mensaje:
+-			  return
+-			  
+-		lmensaje = mensaje.split(&quot;::&quot;)
+-		if len(lmensaje) &lt; 2:
+-			return
+-		print &quot;La clase es: &quot; + lmensaje[0]
++	# Quitamos los argumentos entre parentesis.
++	matchObj = re.search('(\(.*\))', mens)
++	if matchObj != None:
++		mensaje = mensaje.replace (matchObj.group(1), &quot; &quot;)
++	else:
++		print &quot;Descartado: &quot;+ mensaje
+ 		
+-		if lmensaje[0] in self.m_listaClases:
+-			a = self.m_listaClases[lmensaje[0]]
+-			a.m_invocaciones = a.m_invocaciones +1
+-			a.procesaMensaje(mens)
+-			self.m_listaClases[lmensaje[0]] = a
+-		else:
+-			a = Clase()
+-			a.m_nombreClase = lmensaje[0]
+-			a.m_invocaciones = 1
+-			a.procesaMensaje(mens)
+-			self.m_listaClases[lmensaje[0]] = a
+-
+-	def imprimir(self):
+-		for x in self.m_listaClases:
+-			self.m_listaClases[x].imprimir()
+-
+-
+-if (__name__=='__main__'):
+-	lmen = ListaClases()
++	if mensaje.startswith(&quot;&lt;/&quot;):
++		mensaje = mensaje.replace(&quot;&lt;/&quot;, &quot;  &quot;)
++		mensajefin = 2
++		# Es un mensaje de cierre
++		partmsg = mensaje.split(&quot; &quot;)
++		if len (partmsg) &gt; 4:
++		    mensaje = partmsg[4]
++		if not &quot;::&quot; in mensaje:
++		    if len ( partmsg) &gt; 3:
++		      mensaje = partmsg[3]
++		if not &quot;::&quot; in mensaje:
++		  mensaje = partmsg[2]
++		if not &quot;::&quot; in mensaje:
++		  mensaje = partmsg[1]
++		if not &quot;::&quot; in mensaje:
++		    mensaje = partmsg[0]
++		if not &quot;::&quot; in mensaje:
++		    print &quot;Descartado: &quot; + mensaje
++		    return
++		  
++		# Buscamos el tiempo invertido
++		matchObj = re.search('time=\&quot;([0-9]+)\&quot;', mens)
++		if matchObj != None:
++		    tiempo = int(matchObj.group(1))
++		  
++	else:
++		mensaje = mensaje.replace(&quot;&lt;&quot;,  &quot; &quot;)
++		# Es un mensaje de apertura
++		partmsg = mensaje.split(&quot; &quot;)
++		if len (partmsg) &gt; 4:
++		    mensaje = partmsg[4]
++		if not &quot;::&quot; in mensaje:
++		    if len ( partmsg) &gt; 3:
++		      mensaje = partmsg[3]
++		if not &quot;::&quot; in mensaje:
++		  mensaje = partmsg[2]
++		if not &quot;::&quot; in mensaje:
++		  mensaje = partmsg[1]
++		if not &quot;::&quot; in mensaje:
++		    mensaje = partmsg[0]
++		if not &quot;::&quot; in mensaje:
++		    print &quot;Descartado: &quot; + mensaje
++		    return
++		  
++		  
++
++
++		  
++	lmensaje = mensaje.split(&quot;::&quot;)
++	if len(lmensaje) &lt; 2:
++		return
++	if len (lmensaje) &gt; 2:
++	  	submens = lmensaje[2].split(&quot; &quot;)
++		lmensaje[1] = submens[0].split(&quot;(&quot;)[0]
++
++	else:
++		# Ya tenemos clase y subclase.
++		submens = lmensaje[1].split(&quot; &quot;)
++		lmensaje[1] = submens[0].split(&quot;(&quot;)[0]
++
++	lis = QtCore.QStringList(lmensaje[0])
++	lis1 = QtCore.QStringList(lmensaje[1])
++	if mensajefin == 2:
++		lis1.insert(1, &quot;0&quot;)
++		lis1.insert(2, &quot;1&quot;)
++		lis.insert(1, &quot;0&quot;)
++		lis.insert(2, &quot;1&quot;)
++	else:
++		lis1.insert(1, &quot;1&quot;)
++		lis1.insert(2, &quot;0&quot;)
++		lis.insert(1, &quot;1&quot;)
++		lis.insert(2, &quot;0&quot;)
++
++
++	ttiempo=0
++	ttiempomax=0
++	ttiempomin=9999999
++	# Tratamos el arbol.
++	
++	ldtree = self.tree.findItems(lmensaje[0], QtCore.Qt.MatchExactly)
++	if len(ldtree) &gt; 0:
++		titem = ldtree[0]
++		texto = titem.text(mensajefin).toInt()
++		texto = texto[0] + 1
++		titem.setText(mensajefin, QtCore.QString.number(texto))
++		# Ponemos el tiempo total consumido en la funcion.
++
++		if str(titem.text(3)) &lt;&gt; &quot;&quot;:
++		  ttiempo = int(str(titem.text(3)))
++		titem.setText(3,QtCore.QString.number(ttiempo + tiempo))
++		if str(titem.text(4)) &lt;&gt; &quot;&quot;:
++		    ttiempomax = int(str(titem.text(4)))
++		if tiempo &gt; ttiempomax:
++		    titem.setText(4,QtCore.QString.number(tiempo))
++		if str(titem.text(5)) &lt;&gt; &quot;&quot;:
++		    ttiempomin = int(str(titem.text(5)))
++		if tiempo &lt; ttiempomin:
++		    titem.setText(5,QtCore.QString.number(tiempo))
++
++
++		# Bajamos en el arbol de llamadas y vamos actualizando los datos.
++		encontrado = 0
++		i = 0
++		while i &lt; titem.childCount():
++			titem1 = titem.child(i)
++			texto = titem1.text(0)
++			if texto == lmensaje[1]:
++				encontrado = 1
++				texto = titem1.text(mensajefin).toInt()
++				texto = texto[0] + 1
++				titem1.setText(mensajefin, QtCore.QString.number(texto))
++				if titem1.checkState(0) == QtCore.Qt.Checked:
++					sacamensaje = 1
++					
++				# Ponemos el tiempo total consumido en la funcion.
++				ttiempo=0
++				ttiempomax=0
++				ttiempomin=999
++				if str(titem1.text(3)) &lt;&gt; &quot;&quot;:
++				  ttiempo = int(str(titem1.text(3)))
++				titem1.setText(3,QtCore.QString.number(ttiempo + tiempo))
++				if str(titem1.text(4)) &lt;&gt; &quot;&quot;:
++				   ttiempomax = int(str(titem1.text(4)))
++				if tiempo &gt; ttiempomax:
++				   titem1.setText(4,QtCore.QString.number(tiempo))
++				if str(titem1.text(5)) &lt;&gt; &quot;&quot;:
++				   ttiempomin = int(str(titem1.text(5)))
++				if tiempo &lt; ttiempomin:
++				   titem1.setText(5,QtCore.QString.number(tiempo))
++
++				  
++			i = i +1
++				
++
++		# Si no hemos encontrado el elemento lo insertamos.
++		if encontrado == 0:
++			titem1 = QtGui.QTreeWidgetItem(lis1)
++			titem1.setCheckState(0, QtCore.Qt.Unchecked)
++			titem.addChild(titem1)
++			# Ponemos el tiempo total consumido en la funcion.
++			titem1.setText(3,QtCore.QString.number(tiempo))
++			titem1.setText(4,QtCore.QString.number(ttiempomax))
++			titem1.setText(5,QtCore.QString.number(ttiempomin))
++			titem1.setTextAlignment(1,Qt.AlignRight)
++			titem1.setTextAlignment(2,Qt.AlignRight)
++			titem1.setTextAlignment(3,Qt.AlignRight)
++			titem1.setTextAlignment(4,Qt.AlignRight)
++			titem1.setTextAlignment(5,Qt.AlignRight)
++
++
++			
+ 		
+-#	f = open(&quot;~/.bulmages/bulmagesout.txt&quot;, 'r')
+-	f = open(&quot;/home/tborras/.bulmages/bulmagesout.xml&quot;, 'r')
+-#	f.seek(0,2)
+-	while 1:
+-		line = f.readline(300)
+-		if line != &quot;&quot;:
+-			print line.strip()
+-			lmen.procesaMensaje(line.replace(&quot;\n&quot;, &quot;&quot;))
+-
+-	lmen.imprimir()
+-	
+\ No newline at end of file
++	else:
++		# Agregamos la clase y el metodo (una clase nunca va sola)
++		titem =  QtGui.QTreeWidgetItem(lis)
++#		titem.setCheckState(0, QtCore.Qt.Unchecked)
++		titem.setTextColor(0, QtGui.QColor(255,0,0))
++		# Ponemos el tiempo total consumido en la funcion.
++		titem.setText(3,QtCore.QString.number(tiempo))
++		titem.setText(4,QtCore.QString.number(ttiempomax))
++		titem.setText(5,QtCore.QString.number(ttiempomin))
++		titem.setTextAlignment(1,Qt.AlignRight)
++		titem.setTextAlignment(2,Qt.AlignRight)
++		titem.setTextAlignment(3,Qt.AlignRight)
++		titem.setTextAlignment(4,Qt.AlignRight)
++		titem.setTextAlignment(5,Qt.AlignRight)
++		self.tree.addTopLevelItem(titem)
++
++		
++		titem1 = QtGui.QTreeWidgetItem(lis1)
++		titem1.setCheckState(0, QtCore.Qt.Unchecked)
++		titem.addChild(titem1)
++		# Ponemos el tiempo total consumido en la funcion.
++		titem1.setText(3,QtCore.QString.number(tiempo))
++		titem1.setText(4,QtCore.QString.number(ttiempomax))
++		titem1.setText(5,QtCore.QString.number(ttiempomin))
++		titem1.setTextAlignment(1,Qt.AlignRight)
++		titem1.setTextAlignment(2,Qt.AlignRight)
++		titem1.setTextAlignment(3,Qt.AlignRight)
++		titem1.setTextAlignment(4,Qt.AlignRight)
++		titem1.setTextAlignment(5,Qt.AlignRight)
++
++	if sacamensaje == 1:
++		self.sacaMensaje(mens)
++	
++	
++
++
++def main(args):
++    app=QtGui.QApplication(args)
++    win=HelloWindow()
++    win.show()
++    app.connect(app, QtCore.SIGNAL(&quot;lastWindowClosed()&quot;),
++                app, QtCore.SLOT(&quot;quit()&quot;))
++    app.exec_()
++
++if __name__==&quot;__main__&quot;:
++    main(sys.argv)
+diff --git a/bulmages/scripts/depurator/main.py b/bulmages/scripts/depurator/main.py
+deleted file mode 100644
+index 61d2a3c..0000000
+--- a/bulmages/scripts/depurator/main.py
++++ /dev/null
+@@ -1,322 +0,0 @@
+-__version__ = &quot;$Revision: 0.1 $&quot;[11:-2]
+-__date__ = &quot;$Date: 2007/01/07 08:09:13 $&quot;[7:-2]
+-__author__ = &quot;Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;&quot;
+-__all__ = [&quot;depurator&quot;]
+-__doc__ = &quot;Sistema de Depuracion para BulmaGes a partir de los logs.\r\n&quot;
+-
+-import sys
+-import re
+-import os
+-from depurator import *
+-from principal import *
+-from PyQt4.QtGui import *
+-from PyQt4.QtCore import *
+-
+-
+-class HelloWindow(QtGui.QMainWindow, Ui_Principal):
+-    def __init__(self, *args):
+-        apply(QtGui.QMainWindow.__init__, (self,) + args)
+-	self.setupUi(self)
+-
+-	self.table.setColumnCount(3)
+-	self.table.hideColumn(1)
+-	self.table.hideColumn(2)
+-	self.table.setColumnWidth(0,450)
+-	
+-	self.semaforo = 0
+-	
+-
+-	self.f = None
+-
+-	self.t = QtCore.QTimer()
+-	self.connect(self.t, QtCore.SIGNAL(&quot;timeout()&quot;), self.hazalgo)
+-	self.connect(self.mui_clear, QtCore.SIGNAL(&quot;triggered()&quot;), self.on_mui_clear_clicked)
+-	self.connect(self.mui_conectar, QtCore.SIGNAL(&quot;triggered()&quot;), self.on_mui_conectar_clicked)
+-	self.connect(self.mui_abrir_traza, QtCore.SIGNAL(&quot;triggered()&quot;), self.on_mui_abrir_traza_clicked)
+-	self.t.start(10)
+-
+-    def on_mui_abrir_traza_clicked(self):
+-        print &quot;Abriendo!!&quot;
+-        self.openfile = QFileDialog.getOpenFileName(self,&quot;Traza - Elija archivo de traza&quot;, &quot;~/.bulmages&quot;,&quot;XML (*.xml)&quot;)
+-	self.f = open(self.openfile, 'r')
+-
+-    def on_mui_conectar_clicked(self):
+-	print &quot;Conexion !!&quot;
+-	
+-	self.f = open(os.getenv(&quot;HOME&quot;)+&quot;/.bulmages/bulmagesout.xml&quot;, 'r')	
+-	self.f.seek(0,2)
+-
+-    def on_mui_tableclear_triggered(self):
+-	self.table.clear()
+-	self.table.setRowCount(0)
+-	
+-    def on_mui_clear_clicked(self):
+-	self.table.clear()
+-	self.table.setRowCount(0)
+-	self.tree.clear()
+-
+-    def on_mui_expandtree_triggered(self):
+-	print &quot;Expansion !!&quot;
+-#	self.tree.expandAll()
+-
+-
+-    def ejecuta(self):
+-	line = self.f.readline(300)
+-	if line != &quot;&quot;:
+-		self.lmen.procesaMensaje(line.replace(&quot;\n&quot;, &quot;&quot;))
+-
+-    def hazalgo(self):
+-        if (self.f == None):
+-	  return
+-        if (self.semaforo == 0):
+-	  self.semaforo=1
+-	else:
+-	  return
+-	if self.table.rowCount() &gt; 500:
+-		self.table.clear()
+-		self.table.setRowCount(0)
+-		
+-	while self.table.rowCount() &gt; 1000:
+-		self.table.removeRow(0)
+-		
+-	line = self.f.readline(3000)
+-	i=0
+-#	while line != &quot;&quot; and i &lt; 10000:
+-	while len(line) &gt; 3 and i &lt; 100:
+-		print &quot;[&quot; + line + &quot;]&quot;
+-		print len(line)
+-		if len(line) &gt; 3:
+-			self.procesaMensaje(line)
+-		line = self.f.readline(3000)
+-		i = i + 1
+-	self.semaforo=0
+-
+-    def sacaMensaje(self, mens):
+-	self.table.insertRow(self.table.rowCount())
+-	item = QtGui.QTableWidgetItem(mens)
+-	self.table.setItem(self.table.rowCount() - 1, 0, item)
+-	item1 = QtGui.QTableWidgetItem(&quot;hola 1&quot;)
+-	self.table.setItem(self.table.rowCount() - 1, 1, item1)
+-	item2 = QtGui.QTableWidgetItem(&quot;hola 2&quot;)
+-	self.table.setItem(self.table.rowCount() - 1, 2, item2)
+-	self.table.scrollToItem(item)
+-	
+-	
+-    def procesaMensaje(self, mens):
+-	sacamensaje = 0	
+-	mensajefin = 1
+-	tiempo = 0
+-
+-	mensaje = mens.strip()
+-	# Descartamos el sistema de comentarios.
+-	if mensaje.startswith(&quot;&lt;comment&quot;):
+-		self.sacaMensaje(mensaje)
+-		return
+-	if mensaje.startswith(&quot;&lt;/comment&quot;):
+-		return
+-		
+-	# Quitamos los argumentos entre parentesis.
+-	matchObj = re.search('(\(.*\))', mens)
+-	if matchObj != None:
+-		mensaje = mensaje.replace (matchObj.group(1), &quot; &quot;)
+-	else:
+-		print &quot;Descartado: &quot;+ mensaje
+-		
+-	if mensaje.startswith(&quot;&lt;/&quot;):
+-		mensaje = mensaje.replace(&quot;&lt;/&quot;, &quot;  &quot;)
+-		mensajefin = 2
+-		# Es un mensaje de cierre
+-		partmsg = mensaje.split(&quot; &quot;)
+-		if len (partmsg) &gt; 4:
+-		    mensaje = partmsg[4]
+-		if not &quot;::&quot; in mensaje:
+-		    if len ( partmsg) &gt; 3:
+-		      mensaje = partmsg[3]
+-		if not &quot;::&quot; in mensaje:
+-		  mensaje = partmsg[2]
+-		if not &quot;::&quot; in mensaje:
+-		  mensaje = partmsg[1]
+-		if not &quot;::&quot; in mensaje:
+-		    mensaje = partmsg[0]
+-		if not &quot;::&quot; in mensaje:
+-		    print &quot;Descartado: &quot; + mensaje
+-		    return
+-		  
+-		# Buscamos el tiempo invertido
+-		matchObj = re.search('time=\&quot;([0-9]+)\&quot;', mens)
+-		if matchObj != None:
+-		    tiempo = int(matchObj.group(1))
+-		  
+-	else:
+-		mensaje = mensaje.replace(&quot;&lt;&quot;,  &quot; &quot;)
+-		# Es un mensaje de apertura
+-		partmsg = mensaje.split(&quot; &quot;)
+-		if len (partmsg) &gt; 4:
+-		    mensaje = partmsg[4]
+-		if not &quot;::&quot; in mensaje:
+-		    if len ( partmsg) &gt; 3:
+-		      mensaje = partmsg[3]
+-		if not &quot;::&quot; in mensaje:
+-		  mensaje = partmsg[2]
+-		if not &quot;::&quot; in mensaje:
+-		  mensaje = partmsg[1]
+-		if not &quot;::&quot; in mensaje:
+-		    mensaje = partmsg[0]
+-		if not &quot;::&quot; in mensaje:
+-		    print &quot;Descartado: &quot; + mensaje
+-		    return
+-		  
+-		  
+-
+-
+-		  
+-	lmensaje = mensaje.split(&quot;::&quot;)
+-	if len(lmensaje) &lt; 2:
+-		return
+-	if len (lmensaje) &gt; 2:
+-	  	submens = lmensaje[2].split(&quot; &quot;)
+-		lmensaje[1] = submens[0].split(&quot;(&quot;)[0]
+-
+-	else:
+-		# Ya tenemos clase y subclase.
+-		submens = lmensaje[1].split(&quot; &quot;)
+-		lmensaje[1] = submens[0].split(&quot;(&quot;)[0]
+-
+-	lis = QtCore.QStringList(lmensaje[0])
+-	lis1 = QtCore.QStringList(lmensaje[1])
+-	if mensajefin == 2:
+-		lis1.insert(1, &quot;0&quot;)
+-		lis1.insert(2, &quot;1&quot;)
+-		lis.insert(1, &quot;0&quot;)
+-		lis.insert(2, &quot;1&quot;)
+-	else:
+-		lis1.insert(1, &quot;1&quot;)
+-		lis1.insert(2, &quot;0&quot;)
+-		lis.insert(1, &quot;1&quot;)
+-		lis.insert(2, &quot;0&quot;)
+-
+-
+-	ttiempo=0
+-	ttiempomax=0
+-	ttiempomin=9999999
+-	# Tratamos el arbol.
+-	
+-	ldtree = self.tree.findItems(lmensaje[0], QtCore.Qt.MatchExactly)
+-	if len(ldtree) &gt; 0:
+-		titem = ldtree[0]
+-		texto = titem.text(mensajefin).toInt()
+-		texto = texto[0] + 1
+-		titem.setText(mensajefin, QtCore.QString.number(texto))
+-		# Ponemos el tiempo total consumido en la funcion.
+-
+-		if str(titem.text(3)) &lt;&gt; &quot;&quot;:
+-		  ttiempo = int(str(titem.text(3)))
+-		titem.setText(3,QtCore.QString.number(ttiempo + tiempo))
+-		if str(titem.text(4)) &lt;&gt; &quot;&quot;:
+-		    ttiempomax = int(str(titem.text(4)))
+-		if tiempo &gt; ttiempomax:
+-		    titem.setText(4,QtCore.QString.number(tiempo))
+-		if str(titem.text(5)) &lt;&gt; &quot;&quot;:
+-		    ttiempomin = int(str(titem.text(5)))
+-		if tiempo &lt; ttiempomin:
+-		    titem.setText(5,QtCore.QString.number(tiempo))
+-
+-
+-		# Bajamos en el arbol de llamadas y vamos actualizando los datos.
+-		encontrado = 0
+-		i = 0
+-		while i &lt; titem.childCount():
+-			titem1 = titem.child(i)
+-			texto = titem1.text(0)
+-			if texto == lmensaje[1]:
+-				encontrado = 1
+-				texto = titem1.text(mensajefin).toInt()
+-				texto = texto[0] + 1
+-				titem1.setText(mensajefin, QtCore.QString.number(texto))
+-				if titem1.checkState(0) == QtCore.Qt.Checked:
+-					sacamensaje = 1
+-					
+-				# Ponemos el tiempo total consumido en la funcion.
+-				ttiempo=0
+-				ttiempomax=0
+-				ttiempomin=999
+-				if str(titem1.text(3)) &lt;&gt; &quot;&quot;:
+-				  ttiempo = int(str(titem1.text(3)))
+-				titem1.setText(3,QtCore.QString.number(ttiempo + tiempo))
+-				if str(titem1.text(4)) &lt;&gt; &quot;&quot;:
+-				   ttiempomax = int(str(titem1.text(4)))
+-				if tiempo &gt; ttiempomax:
+-				   titem1.setText(4,QtCore.QString.number(tiempo))
+-				if str(titem1.text(5)) &lt;&gt; &quot;&quot;:
+-				   ttiempomin = int(str(titem1.text(5)))
+-				if tiempo &lt; ttiempomin:
+-				   titem1.setText(5,QtCore.QString.number(tiempo))
+-
+-				  
+-			i = i +1
+-				
+-
+-		# Si no hemos encontrado el elemento lo insertamos.
+-		if encontrado == 0:
+-			titem1 = QtGui.QTreeWidgetItem(lis1)
+-			titem1.setCheckState(0, QtCore.Qt.Unchecked)
+-			titem.addChild(titem1)
+-			# Ponemos el tiempo total consumido en la funcion.
+-			titem1.setText(3,QtCore.QString.number(tiempo))
+-			titem1.setText(4,QtCore.QString.number(ttiempomax))
+-			titem1.setText(5,QtCore.QString.number(ttiempomin))
+-			titem1.setTextAlignment(1,Qt.AlignRight)
+-			titem1.setTextAlignment(2,Qt.AlignRight)
+-			titem1.setTextAlignment(3,Qt.AlignRight)
+-			titem1.setTextAlignment(4,Qt.AlignRight)
+-			titem1.setTextAlignment(5,Qt.AlignRight)
+-
+-
+-			
+-		
+-	else:
+-		# Agregamos la clase y el metodo (una clase nunca va sola)
+-		titem =  QtGui.QTreeWidgetItem(lis)
+-#		titem.setCheckState(0, QtCore.Qt.Unchecked)
+-		titem.setTextColor(0, QtGui.QColor(255,0,0))
+-		# Ponemos el tiempo total consumido en la funcion.
+-		titem.setText(3,QtCore.QString.number(tiempo))
+-		titem.setText(4,QtCore.QString.number(ttiempomax))
+-		titem.setText(5,QtCore.QString.number(ttiempomin))
+-		titem.setTextAlignment(1,Qt.AlignRight)
+-		titem.setTextAlignment(2,Qt.AlignRight)
+-		titem.setTextAlignment(3,Qt.AlignRight)
+-		titem.setTextAlignment(4,Qt.AlignRight)
+-		titem.setTextAlignment(5,Qt.AlignRight)
+-		self.tree.addTopLevelItem(titem)
+-
+-		
+-		titem1 = QtGui.QTreeWidgetItem(lis1)
+-		titem1.setCheckState(0, QtCore.Qt.Unchecked)
+-		titem.addChild(titem1)
+-		# Ponemos el tiempo total consumido en la funcion.
+-		titem1.setText(3,QtCore.QString.number(tiempo))
+-		titem1.setText(4,QtCore.QString.number(ttiempomax))
+-		titem1.setText(5,QtCore.QString.number(ttiempomin))
+-		titem1.setTextAlignment(1,Qt.AlignRight)
+-		titem1.setTextAlignment(2,Qt.AlignRight)
+-		titem1.setTextAlignment(3,Qt.AlignRight)
+-		titem1.setTextAlignment(4,Qt.AlignRight)
+-		titem1.setTextAlignment(5,Qt.AlignRight)
+-
+-	if sacamensaje == 1:
+-		self.sacaMensaje(mens)
+-	
+-	
+-
+-
+-def main(args):
+-    app=QtGui.QApplication(args)
+-    win=HelloWindow()
+-    win.show()
+-    app.connect(app, QtCore.SIGNAL(&quot;lastWindowClosed()&quot;),
+-                app, QtCore.SLOT(&quot;quit()&quot;))
+-    app.exec_()
+-
+-if __name__==&quot;__main__&quot;:
+-    main(sys.argv)
+
+commit 268d5e96b8bb475d412d0ee0f89750e4e9765410
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu May 3 19:23:33 2012 +0200
+
+    Ajustes en depurator
+
+diff --git a/bulmages/scripts/depurator/main.py b/bulmages/scripts/depurator/main.py
+index ae64795..61d2a3c 100644
+--- a/bulmages/scripts/depurator/main.py
++++ b/bulmages/scripts/depurator/main.py
+@@ -33,7 +33,7 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
+ 	self.connect(self.mui_clear, QtCore.SIGNAL(&quot;triggered()&quot;), self.on_mui_clear_clicked)
+ 	self.connect(self.mui_conectar, QtCore.SIGNAL(&quot;triggered()&quot;), self.on_mui_conectar_clicked)
+ 	self.connect(self.mui_abrir_traza, QtCore.SIGNAL(&quot;triggered()&quot;), self.on_mui_abrir_traza_clicked)
+-	self.t.start(100)
++	self.t.start(10)
+ 
+     def on_mui_abrir_traza_clicked(self):
+         print &quot;Abriendo!!&quot;
+@@ -79,12 +79,15 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
+ 	while self.table.rowCount() &gt; 1000:
+ 		self.table.removeRow(0)
+ 		
+-	line = self.f.readline(300)
++	line = self.f.readline(3000)
+ 	i=0
+-	while line != &quot;&quot; and i &lt; 1000:
+-		line = self.f.readline(300)
+-		if line != &quot;&quot;:
++#	while line != &quot;&quot; and i &lt; 10000:
++	while len(line) &gt; 3 and i &lt; 100:
++		print &quot;[&quot; + line + &quot;]&quot;
++		print len(line)
++		if len(line) &gt; 3:
+ 			self.procesaMensaje(line)
++		line = self.f.readline(3000)
+ 		i = i + 1
+ 	self.semaforo=0
+ 
+@@ -114,9 +117,10 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
+ 		
+ 	# Quitamos los argumentos entre parentesis.
+ 	matchObj = re.search('(\(.*\))', mens)
+-	print matchObj.group(1)
+-	mensaje = mensaje.replace (matchObj.group(1), &quot; &quot;)
+-	print mensaje
++	if matchObj != None:
++		mensaje = mensaje.replace (matchObj.group(1), &quot; &quot;)
++	else:
++		print &quot;Descartado: &quot;+ mensaje
+ 		
+ 	if mensaje.startswith(&quot;&lt;/&quot;):
+ 		mensaje = mensaje.replace(&quot;&lt;/&quot;, &quot;  &quot;)
+@@ -140,8 +144,8 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
+ 		  
+ 		# Buscamos el tiempo invertido
+ 		matchObj = re.search('time=\&quot;([0-9]+)\&quot;', mens)
+-		print matchObj.group(1)
+-		tiempo = int(matchObj.group(1))
++		if matchObj != None:
++		    tiempo = int(matchObj.group(1))
+ 		  
+ 	else:
+ 		mensaje = mensaje.replace(&quot;&lt;&quot;,  &quot; &quot;)
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007167.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007169.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7168">[ fecha ]</a>
+              <a href="thread.html#7168">[ hilo ]</a>
+              <a href="subject.html#7168">[ asunto ]</a>
+              <a href="author.html#7168">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] Comienzo en bulmages un poquillo duro
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Comienzo%20en%20bulmages%20un%20poquillo%20duro&In-Reply-To=%3C20121114201600.4fdbcfee%40namir.ctr.unican.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007381.html">
+   <LINK REL="Next"  HREF="007355.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] Comienzo en bulmages un poquillo duro </H1>
+    <B>Miguel Telleria de Esteban</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Comienzo%20en%20bulmages%20un%20poquillo%20duro&In-Reply-To=%3C20121114201600.4fdbcfee%40namir.ctr.unican.es%3E"
+       TITLE="[BulmaGés] Comienzo en bulmages un poquillo duro">miguel en mtelleria.com
+       </A><BR>
+    <I>Mie Nov 14 20:16:00 CET 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007381.html">[BulmaGés]Empaquetado preliminar bulmages 0.14 en Debian Sid
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007355.html">[BulmaGés]Comienzo en bulmages un poquillo duro
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7354">[ fecha ]</a>
+              <a href="thread.html#7354">[ hilo ]</a>
+              <a href="subject.html#7354">[ asunto ]</a>
+              <a href="author.html#7354">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola de nuevo,
+
+Pues nada una vez instalado mi paquete intento &quot;echar a andar la
+bestia&quot;.  He avanzado poco pero yo soy difícil de rendirme.
+
+Me configuro phppgadmin para ver lo que pasa dentro de postgresql
+(tengo la 9.1 en Sid).
+
+Consigo:
+
+*  Crear empresa de contabilidad desde bulmasetup y con creabulmacont
+*  Crear empresa de facturación/TPV desde bulmasetup y con creabulmafact
+
+Al menos las bases de datos y tablas en posgresql así lo indican.
+
+NO CONSIGO:
+
+Sin embargo al lanzar bulmacont, bulmafact o bulmatpv me encuentro con
+el mismo problema:
+
+   LA LISTA DE EMPRESAS ESTA VACIA
+
+Síntomas:
+
+*  En la consola shell cuando lanzo bulma* aparecen las siguientes
+   lineas sospechosas:
+
+--&gt; El archivo '/etc/bulmages/bulmatpv.conf' existe. Se va a leer.&lt;--
+Leyendo configuracion/etc/bulmages/bulmatpv.conf
+
+FIN Leyendo configuracion
+--&gt; El archivo '/home/miguel/.bulmages/bulmages.conf' no existe. &lt;--
+--&gt; El archivo '/home/miguel/.bulmages/bulmatpv.conf' no existe. &lt;--
+
+*  en el directorio .bulmages aparece un fichero listempresas.lst de 0
+   bytes.  No hay nada más.
+
+*  en /etc/bulmages, el listado es el siguiente:
+
+bulmafact_chispasfactdb.conf
+bulmafact_chispasfactdb.conf~
+bulmacont_chispascontdb.conf
+bulmacont_chispascontdb.conf~
+
+y los siguientes ficheros que no han cambiado de hora desde que se
+instaló el paquete
+bulmacont.conf
+bulmafact.conf
+bulmages.conf
+bulmatpv.conf
+
+*  Borré todo de postgresql, volví a crear las empresas (con nombres
+  diferentes) y nunca las veo en el listado de empresas de bulmasetup.
+
+SIGUIENTES PASOS QUE HARE
+
+*  Probar los binarios descargados de bulmagesplus.com a ver si ocurre
+   lo mismo.
+
+*  Si alguien me responde y me indica un commit en git que pueda usar
+   como base más estable, volveré a regenerar los paquetes.
+
+Un saludo,
+
+	Miguel
+
+
+-- 
+
+      (O-O)
+---oOO-(_)-OOo-----------------------------------------------------
+ Miguel TELLERIA DE ESTEBAN               <A HREF="http://www.mtelleria.com">http://www.mtelleria.com</A>
+ Email: miguel at mtelleria.com           Tel GSM:  +34 650 801098
+                                          Tel Fix:  +34 942 280174
+
+ Miembro de <A HREF="http://www.linuca.org">http://www.linuca.org</A>    Membre du <A HREF="http://www.bxlug.be">http://www.bxlug.be</A>
+ ¿Usuario captivo o libre?    <A HREF="http://www.obtengalinux.org/windows/">http://www.obtengalinux.org/windows/</A>
+ Free or  captive user?        <A HREF="http://www.getgnulinux.org/windows/">http://www.getgnulinux.org/windows/</A>
+-------------------------------------------------------------------
+
+------------ próxima parte ------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 198 bytes
+Desc: no disponible
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20121114/b3f31e2d/attachment.pgp">https://lists.berlios.de/pipermail/bulmages-main/attachments/20121114/b3f31e2d/attachment.pgp</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007381.html">[BulmaGés]Empaquetado preliminar bulmages 0.14 en Debian Sid
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007355.html">[BulmaGés]Comienzo en bulmages un poquillo duro
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7354">[ fecha ]</a>
+              <a href="thread.html#7354">[ hilo ]</a>
+              <a href="subject.html#7354">[ asunto ]</a>
+              <a href="author.html#7354">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

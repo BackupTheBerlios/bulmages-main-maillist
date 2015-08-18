@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Nova versió FaPaCGes a andLinux/Colinux (v0_12r4)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Futf-8%3Fq%3FNova_versi%3DC3%3DB3_FaPaCGes_%3F%3D%0A%09%3D%3Futf-8%3Fq%3Fa_andLinux/Colinux_%3D28v0%3D5F12r4%3D29%3F%3D&In-Reply-To=%3C20091209072502.GA2306%40puna.upf.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003202.html">
+   <LINK REL="Next"  HREF="003205.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Nova versió FaPaCGes a andLinux/Colinux (v0_12r4) </H1>
+    <B>Walter Garcia-Fontes</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Futf-8%3Fq%3FNova_versi%3DC3%3DB3_FaPaCGes_%3F%3D%0A%09%3D%3Futf-8%3Fq%3Fa_andLinux/Colinux_%3D28v0%3D5F12r4%3D29%3F%3D&In-Reply-To=%3C20091209072502.GA2306%40puna.upf.edu%3E"
+       TITLE="[BulmaGés]Nova versió FaPaCGes a andLinux/Colinux (v0_12r4)">walter.garcia en upf.edu
+       </A><BR>
+    <I>Mie Dic  9 08:25:02 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003202.html">[BulmaGés]Bug al mòdul de la FaPaC
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003205.html">[BulmaGés]Nova versió FaPaCGes a andLinux/Colinux (v0_12r4)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3204">[ fecha ]</a>
+              <a href="thread.html#3204">[ hilo ]</a>
+              <a href="subject.html#3204">[ asunto ]</a>
+              <a href="author.html#3204">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>He provat la nova versió que m'ha enviat el Tomeu, i no arrenca en un
+XP típic en el qual l'he provada. Ennumero els problemes que he vist:
+
+1) Tota la instal·lació està en anglès, això per alguna gent pot ser
+un problema, però se li pot dir que esculli tot per defecte (256
+megues de memòria és suficient?)
+
+2) Demana &quot;Username&quot; i &quot;password&quot; i si no s'entra no deixa
+continuar. L'usuari de Windows no sap entrar usuaris, molts entren com
+a usuari &quot;pepito de los pericos&quot; i com a password &quot;123&quot; i després no
+s'en recorden el que han entrat, seria millor deshabilitar això si fos
+possible. 
+
+3) Si s'escull tot per defecte, queda escollit que comparteixi disc
+amb Windows amb &quot;samba&quot;, però després hi ha una finestra per escollir
+un disc a compartir ( i un altre cop &quot;username&quot; i &quot;password&quot; del
+&quot;share&quot;). Aquí he provat de totes maneres d'entrar algun disc a
+compartir (l'usuari no sabrà què entrar) però no hi ha hagut manera,
+ni &quot;c:\&quot; ni &quot;c&quot; ni res va funcionar, o deixar-lo en blanc em va dir
+que havia d'entrar alguna cosa. Vaig haver de cancel·lar la
+instal·lació i escollir que no comparteixi discos amb Windows a la
+finestra on em va preguntar això, si volem que ho faci l'usuari li
+haurem de donar instruccions precises perquè per defecte és compartir
+amb samba. 
+
+Quan va acabar la instal·lació no està clar des d'on començar el
+programa, queden dos accessos directes a l'escriptori, he provat els
+dos. Un obre una consola però no fa res mes, l'altra obre una consola
+un instant i es tanca. També queda una icona a la barra de baix i si
+es clica s'obre un menú molt llarg. A dalt es veu &quot;FapacGes&quot; i
+&quot;FapacSetup&quot; i a les altres entrades són programes de linux
+(Konqueror, etc.). Clicant tant sobre FaPaCGes com sobre FapacSetup
+surt el següent error:
+
+&quot;Could not launch `FaPaCGes': could not connect to
+192.168.11.150:2081&quot;
+
+Clicant sobre FaPaCsetup surt el mateix (canviant FaPaCGes per
+FaPaCsetup). 
+
+No sé si estem errant l'estratègia aquí en tot plegat. Al final l'únic
+que volem és que hi hagi gent que provi el programa i ens faci
+comentaris. Encara no hem pensat quina és la millor estratègia per
+empaquetar el programa per a les diferents plataformes. Jo continuo
+pensant que no hi ha res com la compilació nativa i que tota
+virtualització té problemes si es tracta d'un usuari típic. És útil
+per usuaris avançats però per a l'usuari típic li genera una manera de
+treballar molt diferent a la que està habituat, a més que em sembla
+que exclou moltíssim hardware encara operatiu. Però bé, aquesta és una
+altra discussió.
+
+Penso que el millor ara mateix seria muntar un sistema
+client/servidor, on el FaPaCGès el muntem a un servidor més o menys
+ràpid (el nostre servidor de FaPaC pot ser una opció) i la gent és
+connecta amb algun client senzill. 
+
+Insisteixo que l'únic que volem és que la gent ho provi i ens faci
+comentaris, però l'AMPA típica es desanima si no pot ni obrir el
+programa.
+
+Bé, ara mateix haurem d'aclarir aquests punts de dalt, no vull tornar
+a difondre aquesta versió i que la gent no el pugui provar. 
+
+Walter
+
+-- 
+Walter Garcia-Fontes
+President FaPaC Catalunya
+** Atenció - Nova adreça: mailto: <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">presidencia en fapac.cat</A> **
+FaPaC - <A HREF="http://www.fapac.cat">http://www.fapac.cat</A>
+Cartagena 245, Àtic, Barcelona 08029
+Tel. (+34) 93 435 76 86 - Fax. (+34) 93 433 03 61
+Mòbil: (+34) 670 31 38 86
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003202.html">[BulmaGés]Bug al mòdul de la FaPaC
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003205.html">[BulmaGés]Nova versió FaPaCGes a andLinux/Colinux (v0_12r4)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3204">[ fecha ]</a>
+              <a href="thread.html#3204">[ hilo ]</a>
+              <a href="subject.html#3204">[ asunto ]</a>
+              <a href="author.html#3204">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

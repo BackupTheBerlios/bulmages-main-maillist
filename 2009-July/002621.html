@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Bug #15949] Elemento predeterminado en	campo BlComboBox
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2315949%5D%20Elemento%20predeterminado%20en%0A%09campo%20BlComboBox&In-Reply-To=%3C200907061414.n66EELSg001318%40unicorn.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002656.html">
+   <LINK REL="Next"  HREF="002622.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Bug #15949] Elemento predeterminado en	campo BlComboBox </H1>
+    <B>admin en berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2315949%5D%20Elemento%20predeterminado%20en%0A%09campo%20BlComboBox&In-Reply-To=%3C200907061414.n66EELSg001318%40unicorn.berlios.de%3E"
+       TITLE="[BulmaGés] [Bug #15949] Elemento predeterminado en	campo BlComboBox">admin en berlios.de
+       </A><BR>
+    <I>Lun Jul  6 16:14:21 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002656.html">[BulmaGés]Web de Bulmages
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002622.html">[BulmaGés] [Bug #15838] Pierde datos en pedido,	albaran, factura, presupuesto
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2621">[ fecha ]</a>
+              <a href="thread.html#2621">[ hilo ]</a>
+              <a href="subject.html#2621">[ asunto ]</a>
+              <a href="author.html#2621">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bug #15949, was updated on 2009-Jul-01 13:06
+Here is a current snapshot of the bug.
+
+Project: BulmaGes, Gestión Empresarial Libre
+Category: bulmafact
+Status: Closed
+Resolution: Fixed
+Bug Group: None
+Priority: 5
+Submitted by: hilex
+Assigned to : tborras
+Summary: Elemento predeterminado en campo BlComboBox
+
+Details: Cuando intento hacer que un campo desplegable BlComboBox tenga cierto elemento activo por defecto, al guardar se interpreta como nulo.
+
+El campo está asociado a una consulta (setQuery), a una tabla (setTable) y le digo el campo identificador (setFieldId).
+
+Ejemplo 1:
+DESPLEGABLE-&gt;setAllowNull( TRUE );
+DESPLEGABLE-&gt;setId( &quot;1&quot; );
+
+Resultado 1:
+Aparece seleccionada inicialmente la línea &quot;--&quot;.
+
+Ejemplo 2:
+DESPLEGABLE-&gt;setAllowNull( FALSE );
+DESPLEGABLE-&gt;setId( &quot;1&quot; );
+
+Resultado 2:
+Aparece seleccionada inicialmente la línea deseada, pero al guardar se interpreta como si estuviera vacío.
+
+
+For detailed info, follow this link:
+<A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=15949&amp;group_id=4472">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=15949&amp;group_id=4472</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002656.html">[BulmaGés]Web de Bulmages
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002622.html">[BulmaGés] [Bug #15838] Pierde datos en pedido,	albaran, factura, presupuesto
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2621">[ fecha ]</a>
+              <a href="thread.html#2621">[ hilo ]</a>
+              <a href="subject.html#2621">[ asunto ]</a>
+              <a href="author.html#2621">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

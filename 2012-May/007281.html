@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to release...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20release...&In-Reply-To=%3C20120529192147.E93E6756F1%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007280.html">
+   <LINK REL="Next"  HREF="007282.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to release... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20release...&In-Reply-To=%3C20120529192147.E93E6756F1%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to release...">no-reply en gitorious.org
+       </A><BR>
+    <I>Mar Mayo 29 21:21:47 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007280.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007282.html">[BulmaGés] 0.14 rc2
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7281">[ fecha ]</a>
+              <a href="thread.html#7281">[ hilo ]</a>
+              <a href="subject.html#7281">[ asunto ]</a>
+              <a href="author.html#7281">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to release
+release changed from 1cba230 to 59265d4
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/1cba2305bd900fbf3327bf29f871648a048206f8/diffs/59265d40bbac4b375e80ccb298ee15ca1b76212d">https://gitorious.org/bulmages/bulmages/commit/1cba2305bd900fbf3327bf29f871648a048206f8/diffs/59265d40bbac4b375e80ccb298ee15ca1b76212d</A>
+
+Diff: 
+
+commit 59265d40bbac4b375e80ccb298ee15ca1b76212d
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue May 29 21:21:36 2012 +0200
+
+    Arreglo problema en el commit anterior
+
+diff --git a/bulmages/installbulmages/dbmodels/actualizar/revf-0.13.sql b/bulmages/installbulmages/dbmodels/actualizar/revf-0.13.sql
+index dad3370..0ea72f8 100644
+--- a/bulmages/installbulmages/dbmodels/actualizar/revf-0.13.sql
++++ b/bulmages/installbulmages/dbmodels/actualizar/revf-0.13.sql
+@@ -184,7 +184,7 @@ SELECT drop_if_exists_proc('calculacodigocompletoarticulo', '');
+ 
+ \echo -n ':: Funcion que calcula el codigo completo del articulo ... '
+ CREATE OR REPLACE FUNCTION calculacodigocompletoarticulo() RETURNS &quot;trigger&quot;
+-AS '
++AS $$
+ DECLARE
+     rs RECORD;
+     codigocompleto character varying(100);
+@@ -201,13 +201,13 @@ BEGIN
+ 		codnumeric := codnumeric +1;
+ 		NEW.codarticulo := CAST (codnumeric AS varchar);
+ 		WHILE length(NEW.codarticulo) &lt; 4 LOOP
+-		    NEW.codarticulo := ''0'' || NEW.codarticulo;
++		    NEW.codarticulo := '0' || NEW.codarticulo;
+ 		END LOOP;
+ 	    ELSE
+-		NEW.codarticulo := ''0000'';
++		NEW.codarticulo := '0000';
+ 	    END IF;
+ 	ELSE
+-	    NEW.codarticulo = ''0000'';
++	    NEW.codarticulo = '0000';
+ 	END IF;
+     END IF;
+ 
+@@ -222,7 +222,7 @@ BEGIN
+     NEW.codigocompletoarticulo := codigocompleto;
+     RETURN NEW;
+ END;
+-' LANGUAGE plpgsql;
++$$ LANGUAGE plpgsql;
+ 
+ 
+ \echo -n ':: Disparador que calcula el codigo completo del articulo ... '
+diff --git a/bulmages/installbulmages/dbmodels/crear/bulmafact/bulmafact_schema.sql b/bulmages/installbulmages/dbmodels/crear/bulmafact/bulmafact_schema.sql
+index 154e0a6..1b8e6e0 100644
+--- a/bulmages/installbulmages/dbmodels/crear/bulmafact/bulmafact_schema.sql
++++ b/bulmages/installbulmages/dbmodels/crear/bulmafact/bulmafact_schema.sql
+@@ -426,7 +426,7 @@ END
+ 
+ \echo -n ':: Funcion que calcula el codigo completo del articulo ... '
+ CREATE OR REPLACE FUNCTION calculacodigocompletoarticulo() RETURNS &quot;trigger&quot;
+-AS '
++AS $$
+ DECLARE
+     rs RECORD;
+     codigocompleto character varying(100);
+@@ -443,13 +443,13 @@ BEGIN
+ 		codnumeric := codnumeric +1;
+ 		NEW.codarticulo := CAST (codnumeric AS varchar);
+ 		WHILE length(NEW.codarticulo) &lt; 4 LOOP
+-		    NEW.codarticulo := ''0'' || NEW.codarticulo;
++		    NEW.codarticulo := '0' || NEW.codarticulo;
+ 		END LOOP;
+ 	    ELSE
+-		NEW.codarticulo := ''0000'';
++		NEW.codarticulo := '0000';
+ 	    END IF;
+ 	ELSE
+-	    NEW.codarticulo = ''0000'';
++	    NEW.codarticulo = '0000';
+ 	END IF;
+     END IF;
+ 
+@@ -464,7 +464,7 @@ BEGIN
+     NEW.codigocompletoarticulo := codigocompleto;
+     RETURN NEW;
+ END;
+-' LANGUAGE plpgsql;
++$$ LANGUAGE plpgsql;
+ 
+ 
+ \echo -n ':: Disparador que calcula el codigo completo del articulo ... '
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007280.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007282.html">[BulmaGés] 0.14 rc2
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7281">[ fecha ]</a>
+              <a href="thread.html#7281">[ hilo ]</a>
+              <a href="subject.html#7281">[ asunto ]</a>
+              <a href="author.html#7281">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

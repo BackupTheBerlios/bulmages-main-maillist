@@ -1,0 +1,1895 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Problema al compilar Bulmagesd 0.12
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FProblema_al_compilar_%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FBulmagesd_0%3D2E12%3F%3D&In-Reply-To=%3C4B6FEC2F.50408%40apdo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003391.html">
+   <LINK REL="Next"  HREF="003397.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Problema al compilar Bulmagesd 0.12 </H1>
+    <B>Otilio</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FProblema_al_compilar_%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FBulmagesd_0%3D2E12%3F%3D&In-Reply-To=%3C4B6FEC2F.50408%40apdo.com%3E"
+       TITLE="[BulmaGés]Problema al compilar Bulmagesd 0.12">otilio en apdo.com
+       </A><BR>
+    <I>Lun Feb  8 11:49:19 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003391.html">[BulmaGés]Problema al compilar Bulmagesd 0.12
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003397.html">[BulmaGés]Problema al compilar Bulmagesd 0.12
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3395">[ fecha ]</a>
+              <a href="thread.html#3395">[ hilo ]</a>
+              <a href="subject.html#3395">[ asunto ]</a>
+              <a href="author.html#3395">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ese mismo error, sin explicaciones aparentes, me lo da a mí al compilar 
+con Debian Squeeze.
+Desde mi modesta opinión podría ser algun problema de la versión de 
+glibc o alguna otra librería de sistema.
+
+
+José I. Aymerich escribió:
+&gt;<i> La compilación se intenta en una Mandriva 2010 con postgresql 8.4. Por
+</I>&gt;<i> lo poco que entiendo de estos asuntos el problema parece ser la
+</I>&gt;<i> dificultad para abrir unos determinados archivos. En el caso de que
+</I>&gt;<i> tenga que obtener nuevas versiones de estos archivos, via svn, os
+</I>&gt;<i> rogaría me dieseis instruciones detalladas, o un enlace donde
+</I>&gt;<i> obtenerlas, porque nunca hice esta operación. Pego el mensaje de la
+</I>&gt;<i> consola completo.
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;&gt;<i> [<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">jose en localhost</A> ~]$ cd Descargas/
+</I>&gt;&gt;<i> [<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">jose en localhost</A> Descargas]$ cd bulmages-0.12.0/
+</I>&gt;&gt;<i> [<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">jose en localhost</A> bulmages-0.12.0]$ cd build
+</I>&gt;&gt;<i> [<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">jose en localhost</A> build]$ cmake ../
+</I>&gt;&gt;<i> -- Using cmake version 2.8       
+</I>&gt;&gt;<i> -- Found PostgreSQL pg_config: /usr/bin/pg_config
+</I>&gt;&gt;<i> -- Found PostgreSQL includedir: /usr/include     
+</I>&gt;&gt;<i> -- Found PostgreSQL library: /usr/lib/libpq.so   
+</I>&gt;&gt;<i> -- Found PostgreSQL binary utils dir: /usr/bin   
+</I>&gt;&gt;<i> -- Working on bulmalib                           
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/src/po
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmalib/src/bulmalib_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/src/po/bulmalib_es_ES.UTF-8.po                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmalib/src/bulmalib_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/src/po/bulmalib_ca_ES.UTF-8.po                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmalib/src/bulmalib_en_US.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/src/po/bulmalib_en_US.UTF-8.po                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmalib/src/bulmalib_fr_FR.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/src/po/bulmalib_fr_FR.UTF-8.po                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_subform2sxc/po                                                                                   
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmalib/plugins/pluginbl_subform2sxc/pluginbl_subform2sxc_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_subform2sxc/po/pluginbl_subform2sxc_es_ES.UTF-8.po                                                      
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmalib/plugins/pluginbl_subform2sxc/pluginbl_subform2sxc_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_subform2sxc/po/pluginbl_subform2sxc_ca_ES.UTF-8.po                                                      
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_subform2ods/po                                                                                   
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmalib/plugins/pluginbl_subform2ods/pluginbl_subform2ods_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_subform2ods/po/pluginbl_subform2ods_es_ES.UTF-8.po                                                      
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmalib/plugins/pluginbl_subform2ods/pluginbl_subform2ods_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_subform2ods/po/pluginbl_subform2ods_ca_ES.UTF-8.po                                                      
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_clipboard/po                                                                                     
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmalib/plugins/pluginbl_clipboard/pluginbl_clipboard_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_clipboard/po/pluginbl_clipboard_es_ES.UTF-8.po                                                              
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmalib/plugins/pluginbl_clipboard/pluginbl_clipboard_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_clipboard/po/pluginbl_clipboard_ca_ES.UTF-8.po                                                              
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_template/po                                                                                      
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmalib/plugins/pluginbl_template/pluginbl_template_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_template/po/pluginbl_template_es_ES.UTF-8.po                                                                  
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmalib/plugins/pluginbl_template/pluginbl_template_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_template/po/pluginbl_template_ca_ES.UTF-8.po                                                                  
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_template2ods/po                                                                                  
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmalib/plugins/pluginbl_template2ods/pluginbl_template2ods_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_template2ods/po/pluginbl_template2ods_es_ES.UTF-8.po                                                  
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmalib/plugins/pluginbl_template2ods/pluginbl_template2ods_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_template2ods/po/pluginbl_template2ods_ca_ES.UTF-8.po                                                  
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_template2mail/po                                                                                 
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmalib/plugins/pluginbl_template2mail/pluginbl_template2mail_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_template2mail/po/pluginbl_template2mail_es_ES.UTF-8.po                                              
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmalib/plugins/pluginbl_template2mail/pluginbl_template2mail_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_template2mail/po/pluginbl_template2mail_ca_ES.UTF-8.po                                              
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_importcsv/po                                                                                     
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmalib/plugins/pluginbl_importcsv/pluginbl_importcsv_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_importcsv/po/pluginbl_importcsv_es_ES.UTF-8.po                                                              
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmalib/plugins/pluginbl_importcsv/pluginbl_importcsv_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_importcsv/po/pluginbl_importcsv_ca_ES.UTF-8.po                                                              
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_report/po                                                                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmalib/plugins/pluginbl_report/pluginbl_report_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_report/po/pluginbl_report_es_ES.UTF-8.po                                                                          
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmalib/plugins/pluginbl_report/pluginbl_report_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_report/po/pluginbl_report_ca_ES.UTF-8.po                                                                          
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_report2ods/po                                                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmalib/plugins/pluginbl_report2ods/pluginbl_report2ods_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_report2ods/po/pluginbl_report2ods_es_ES.UTF-8.po                                                          
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmalib/plugins/pluginbl_report2ods/pluginbl_report2ods_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_report2ods/po/pluginbl_report2ods_ca_ES.UTF-8.po                                                          
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_formlock/po                                                                                      
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmalib/plugins/pluginbl_formlock/pluginbl_formlock_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_formlock/po/pluginbl_formlock_es_ES.UTF-8.po                                                                  
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmalib/plugins/pluginbl_formlock/pluginbl_formlock_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_formlock/po/pluginbl_formlock_ca_ES.UTF-8.po                                                                  
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_subform2pdf/po                                                                                   
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmalib/plugins/pluginbl_subform2pdf/pluginbl_subform2pdf_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_subform2pdf/po/pluginbl_subform2pdf_es_ES.UTF-8.po                                                      
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmalib/plugins/pluginbl_subform2pdf/pluginbl_subform2pdf_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_subform2pdf/po/pluginbl_subform2pdf_ca_ES.UTF-8.po                                                      
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_attachdocument/po                                                                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmalib/plugins/pluginbl_attachdocument/pluginbl_attachdocument_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_attachdocument/po/pluginbl_attachdocument_es_ES.UTF-8.po                                          
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmalib/plugins/pluginbl_attachdocument/pluginbl_attachdocument_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_attachdocument/po/pluginbl_attachdocument_ca_ES.UTF-8.po                                          
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_embed/po                                                                                         
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmalib/plugins/pluginbl_embed/pluginbl_embed_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_embed/po/pluginbl_embed_es_ES.UTF-8.po                                                                              
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmalib/plugins/pluginbl_embed/pluginbl_embed_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmalib/plugins/pluginbl_embed/po/pluginbl_embed_ca_ES.UTF-8.po                                                                              
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Working on bulmacont
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/src/po
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmacont/src/bulmacont_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/src/po/bulmacont_es_ES.UTF-8.po                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmacont/src/bulmacont_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/src/po/bulmacont_ca_ES.UTF-8.po                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmacont/src/bulmacont_en_US.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/src/po/bulmacont_en_US.UTF-8.po                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmacont/src/bulmacont_fr_FR.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/src/po/bulmacont_fr_FR.UTF-8.po                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/plugins/pluginbc_registroiva/po                                                                                  
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmacont/plugins/pluginbc_registroiva/pluginbc_registroiva_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/plugins/pluginbc_registroiva/po/pluginbc_registroiva_es_ES.UTF-8.po                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmacont/plugins/pluginbc_registroiva/pluginbc_registroiva_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/plugins/pluginbc_registroiva/po/pluginbc_registroiva_ca_ES.UTF-8.po                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/plugins/pluginbc_corrector/po                                                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmacont/plugins/pluginbc_corrector/pluginbc_corrector_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/plugins/pluginbc_corrector/po/pluginbc_corrector_es_ES.UTF-8.po                                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmacont/plugins/pluginbc_corrector/pluginbc_corrector_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/plugins/pluginbc_corrector/po/pluginbc_corrector_ca_ES.UTF-8.po                                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/plugins/pluginbc_example/po                                                                                      
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmacont/plugins/pluginbc_example/pluginbc_example_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/plugins/pluginbc_example/po/pluginbc_example_es_ES.UTF-8.po                                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmacont/plugins/pluginbc_example/pluginbc_example_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/plugins/pluginbc_example/po/pluginbc_example_ca_ES.UTF-8.po                                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/plugins/pluginbc_depuracion/po                                                                                   
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmacont/plugins/pluginbc_depuracion/pluginbc_depuracion_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/plugins/pluginbc_depuracion/po/pluginbc_depuracion_es_ES.UTF-8.po                                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmacont/plugins/pluginbc_depuracion/pluginbc_depuracion_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/plugins/pluginbc_depuracion/po/pluginbc_depuracion_ca_ES.UTF-8.po                                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/plugins/pluginbc_balancearbol/po                                                                                 
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmacont/plugins/pluginbc_balancearbol/pluginbc_balancearbol_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/plugins/pluginbc_balancearbol/po/pluginbc_balancearbol_es_ES.UTF-8.po                                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmacont/plugins/pluginbc_balancearbol/pluginbc_balancearbol_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/plugins/pluginbc_balancearbol/po/pluginbc_balancearbol_ca_ES.UTF-8.po                                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/plugins/pluginbc_caaslods/po                                                                                     
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmacont/plugins/pluginbc_caaslods/pluginbc_caaslods_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/plugins/pluginbc_caaslods/po/pluginbc_caaslods_es_ES.UTF-8.po                                                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmacont/plugins/pluginbc_caaslods/pluginbc_caaslods_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/plugins/pluginbc_caaslods/po/pluginbc_caaslods_ca_ES.UTF-8.po                                                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/plugins/pluginbc_balance/po                                                                                      
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmacont/plugins/pluginbc_balance/pluginbc_balance_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/plugins/pluginbc_balance/po/pluginbc_balance_es_ES.UTF-8.po                                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmacont/plugins/pluginbc_balance/pluginbc_balance_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/plugins/pluginbc_balance/po/pluginbc_balance_ca_ES.UTF-8.po                                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/plugins/pluginbc_cuentaresumen/po                                                                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmacont/plugins/pluginbc_cuentaresumen/pluginbc_cuentaresumen_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/plugins/pluginbc_cuentaresumen/po/pluginbc_cuentaresumen_es_ES.UTF-8.po                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmacont/plugins/pluginbc_cuentaresumen/pluginbc_cuentaresumen_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/plugins/pluginbc_cuentaresumen/po/pluginbc_cuentaresumen_ca_ES.UTF-8.po                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/plugins/pluginbc_proyectos/po                                                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmacont/plugins/pluginbc_proyectos/pluginbc_proyectos_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/plugins/pluginbc_proyectos/po/pluginbc_proyectos_es_ES.UTF-8.po                                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmacont/plugins/pluginbc_proyectos/pluginbc_proyectos_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmacont/plugins/pluginbc_proyectos/po/pluginbc_proyectos_ca_ES.UTF-8.po                                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Working on bulmafact
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/src/po
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/src/bulmafact_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/src/po/bulmafact_es_ES.UTF-8.po                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/src/bulmafact_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/src/po/bulmafact_ca_ES.UTF-8.po                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/src/bulmafact_en_US.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/src/po/bulmafact_en_US.UTF-8.po                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/src/bulmafact_fr_FR.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/src/po/bulmafact_fr_FR.UTF-8.po                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_example/po                                                                                      
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_example/pluginbf_example_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_example/po/pluginbf_example_es_ES.UTF-8.po                                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_example/pluginbf_example_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_example/po/pluginbf_example_ca_ES.UTF-8.po                                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_example/pluginbf_example_en_US.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_example/po/pluginbf_example_en_US.UTF-8.po                                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_tarifa/po                                                                                       
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_tarifa/pluginbf_tarifa_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_tarifa/po/pluginbf_tarifa_es_ES.UTF-8.po                                                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_tarifa/pluginbf_tarifa_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_tarifa/po/pluginbf_tarifa_ca_ES.UTF-8.po                                                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_comercial/po                                                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_comercial/pluginbf_comercial_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_comercial/po/pluginbf_comercial_es_ES.UTF-8.po                                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_comercial/pluginbf_comercial_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_comercial/po/pluginbf_comercial_ca_ES.UTF-8.po                                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_cliente/po                                                                                      
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_cliente/pluginbf_cliente_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_cliente/po/pluginbf_cliente_es_ES.UTF-8.po                                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_cliente/pluginbf_cliente_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_cliente/po/pluginbf_cliente_ca_ES.UTF-8.po                                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> CMake Error at bulmafact/plugins/pluginbf_cliente/CMakeLists.txt:99
+</I>&gt;&gt;<i> (FILE):
+</I>&gt;&gt;<i>   file Internal CMake error when trying to open
+</I>&gt;&gt;<i> file:                      
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/pluginbf_cliente_es_ES.css for
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i> reading.                                                                 
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> CMake Error at bulmafact/plugins/pluginbf_cliente/CMakeLists.txt:102
+</I>&gt;&gt;<i> (FILE):
+</I>&gt;&gt;<i>   file Internal CMake error when trying to open
+</I>&gt;&gt;<i> file:                       
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/pluginbf_cliente_ca_ES.css for
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i> reading.                                                                  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_proveedor/po                                                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_proveedor/pluginbf_proveedor_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_proveedor/po/pluginbf_proveedor_es_ES.UTF-8.po                                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_proveedor/pluginbf_proveedor_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_proveedor/po/pluginbf_proveedor_ca_ES.UTF-8.po                                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_articulo/po                                                                                     
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_articulo/pluginbf_articulo_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_articulo/po/pluginbf_articulo_es_ES.UTF-8.po                                                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_articulo/pluginbf_articulo_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_articulo/po/pluginbf_articulo_ca_ES.UTF-8.po                                                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_trabajador/po                                                                                   
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_trabajador/pluginbf_trabajador_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_trabajador/po/pluginbf_trabajador_es_ES.UTF-8.po                                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_trabajador/pluginbf_trabajador_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_trabajador/po/pluginbf_trabajador_ca_ES.UTF-8.po                                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_iva/po                                                                                          
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_iva/pluginbf_iva_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_iva/po/pluginbf_iva_es_ES.UTF-8.po                                                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_iva/pluginbf_iva_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_iva/po/pluginbf_iva_ca_ES.UTF-8.po                                                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_almacenamplia/po                                                                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_almacenamplia/pluginbf_almacenamplia_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_almacenamplia/po/pluginbf_almacenamplia_es_ES.UTF-8.po                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_almacenamplia/pluginbf_almacenamplia_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_almacenamplia/po/pluginbf_almacenamplia_ca_ES.UTF-8.po                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_almacen/po                                                                                      
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_almacen/pluginbf_almacen_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_almacen/po/pluginbf_almacen_es_ES.UTF-8.po                                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_almacen/pluginbf_almacen_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_almacen/po/pluginbf_almacen_ca_ES.UTF-8.po                                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_trazabilidad/po                                                                                 
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_trazabilidad/pluginbf_trazabilidad_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_trazabilidad/po/pluginbf_trazabilidad_es_ES.UTF-8.po                                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_trazabilidad/pluginbf_trazabilidad_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_trazabilidad/po/pluginbf_trazabilidad_ca_ES.UTF-8.po                                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_abrecodigobarras/po                                                                             
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_abrecodigobarras/pluginbf_abrecodigobarras_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_abrecodigobarras/po/pluginbf_abrecodigobarras_es_ES.UTF-8.po                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_abrecodigobarras/pluginbf_abrecodigobarras_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_abrecodigobarras/po/pluginbf_abrecodigobarras_ca_ES.UTF-8.po                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_catalogo/po                                                                                     
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_catalogo/pluginbf_catalogo_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_catalogo/po/pluginbf_catalogo_es_ES.UTF-8.po                                                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_catalogo/pluginbf_catalogo_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_catalogo/po/pluginbf_catalogo_ca_ES.UTF-8.po                                                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_informecliente/po                                                                               
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_informecliente/pluginbf_informecliente_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_informecliente/po/pluginbf_informecliente_es_ES.UTF-8.po                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_informecliente/pluginbf_informecliente_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_informecliente/po/pluginbf_informecliente_ca_ES.UTF-8.po                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_inventario/po                                                                                   
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_inventario/pluginbf_inventario_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_inventario/po/pluginbf_inventario_es_ES.UTF-8.po                                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_inventario/pluginbf_inventario_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_inventario/po/pluginbf_inventario_ca_ES.UTF-8.po                                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_contrato/po                                                                                     
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_contrato/pluginbf_contrato_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_contrato/po/pluginbf_contrato_es_ES.UTF-8.po                                                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_contrato/pluginbf_contrato_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_contrato/po/pluginbf_contrato_ca_ES.UTF-8.po                                                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_ticket/po                                                                                       
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_ticket/pluginbf_ticket_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_ticket/po/pluginbf_ticket_es_ES.UTF-8.po                                                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_ticket/pluginbf_ticket_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_ticket/po/pluginbf_ticket_ca_ES.UTF-8.po                                                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_tallascolores/po                                                                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_tallascolores/pluginbf_tallascolores_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_tallascolores/po/pluginbf_tallascolores_es_ES.UTF-8.po                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_tallascolores/pluginbf_tallascolores_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_tallascolores/po/pluginbf_tallascolores_ca_ES.UTF-8.po                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_promedios/po                                                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_promedios/pluginbf_promedios_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_promedios/po/pluginbf_promedios_es_ES.UTF-8.po                                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_promedios/pluginbf_promedios_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_promedios/po/pluginbf_promedios_ca_ES.UTF-8.po                                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_multiimprimir/po                                                                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_multiimprimir/pluginbf_multiimprimir_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_multiimprimir/po/pluginbf_multiimprimir_es_ES.UTF-8.po                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_multiimprimir/pluginbf_multiimprimir_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_multiimprimir/po/pluginbf_multiimprimir_ca_ES.UTF-8.po                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_q19/po                                                                                          
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_q19/pluginbf_q19_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_q19/po/pluginbf_q19_es_ES.UTF-8.po                                                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_q19/pluginbf_q19_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_q19/po/pluginbf_q19_ca_ES.UTF-8.po                                                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_correo/po                                                                                       
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_correo/pluginbf_correo_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_correo/po/pluginbf_correo_es_ES.UTF-8.po                                                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_correo/pluginbf_correo_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_correo/po/pluginbf_correo_ca_ES.UTF-8.po                                                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_correothunderbird/po                                                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_correothunderbird/pluginbf_correothunderbird_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_correothunderbird/po/pluginbf_correothunderbird_es_ES.UTF-8.po                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_correothunderbird/pluginbf_correothunderbird_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_correothunderbird/po/pluginbf_correothunderbird_ca_ES.UTF-8.po                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_tipotrabajo/po                                                                                  
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_tipotrabajo/pluginbf_tipotrabajo_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_tipotrabajo/po/pluginbf_tipotrabajo_es_ES.UTF-8.po                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_tipotrabajo/pluginbf_tipotrabajo_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_tipotrabajo/po/pluginbf_tipotrabajo_ca_ES.UTF-8.po                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_cuadrante/po                                                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_cuadrante/pluginbf_cuadrante_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_cuadrante/po/pluginbf_cuadrante_es_ES.UTF-8.po                                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_cuadrante/pluginbf_cuadrante_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_cuadrante/po/pluginbf_cuadrante_ca_ES.UTF-8.po                                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_asterisk/po                                                                                     
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_asterisk/pluginbf_asterisk_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_asterisk/po/pluginbf_asterisk_es_ES.UTF-8.po                                                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_asterisk/pluginbf_asterisk_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_asterisk/po/pluginbf_asterisk_ca_ES.UTF-8.po                                                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_bulmatpv/po                                                                                     
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_bulmatpv/pluginbf_bulmatpv_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_bulmatpv/po/pluginbf_bulmatpv_es_ES.UTF-8.po                                                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_bulmatpv/pluginbf_bulmatpv_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_bulmatpv/po/pluginbf_bulmatpv_ca_ES.UTF-8.po                                                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_debug/po                                                                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_debug/pluginbf_debug_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_debug/po/pluginbf_debug_es_ES.UTF-8.po                                                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_debug/pluginbf_debug_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_debug/po/pluginbf_debug_ca_ES.UTF-8.po                                                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_preciocoste/po                                                                                  
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_preciocoste/pluginbf_preciocoste_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_preciocoste/po/pluginbf_preciocoste_es_ES.UTF-8.po                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_preciocoste/pluginbf_preciocoste_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_preciocoste/po/pluginbf_preciocoste_ca_ES.UTF-8.po                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_resumenarticulo/po                                                                              
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_resumenarticulo/pluginbf_resumenarticulo_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_resumenarticulo/po/pluginbf_resumenarticulo_es_ES.UTF-8.po                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_resumenarticulo/pluginbf_resumenarticulo_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_resumenarticulo/po/pluginbf_resumenarticulo_ca_ES.UTF-8.po                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_alias/po                                                                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_alias/pluginbf_alias_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_alias/po/pluginbf_alias_es_ES.UTF-8.po                                                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_alias/pluginbf_alias_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_alias/po/pluginbf_alias_ca_ES.UTF-8.po                                                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_ivaincluido/po                                                                                  
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_ivaincluido/pluginbf_ivaincluido_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_ivaincluido/po/pluginbf_ivaincluido_es_ES.UTF-8.po                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_ivaincluido/pluginbf_ivaincluido_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_ivaincluido/po/pluginbf_ivaincluido_ca_ES.UTF-8.po                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_informecliente2sxc/po                                                                           
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_informecliente2sxc/pluginbf_informecliente2sxc_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_informecliente2sxc/po/pluginbf_informecliente2sxc_es_ES.UTF-8.po                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_informecliente2sxc/pluginbf_informecliente2sxc_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_informecliente2sxc/po/pluginbf_informecliente2sxc_ca_ES.UTF-8.po                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_etiquetado/po                                                                                   
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_etiquetado/pluginbf_etiquetado_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_etiquetado/po/pluginbf_etiquetado_es_ES.UTF-8.po                                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_etiquetado/pluginbf_etiquetado_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_etiquetado/po/pluginbf_etiquetado_ca_ES.UTF-8.po                                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_etiquetas/po                                                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_etiquetas/pluginbf_etiquetas_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_etiquetas/po/pluginbf_etiquetas_es_ES.UTF-8.po                                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_etiquetas/pluginbf_etiquetas_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_etiquetas/po/pluginbf_etiquetas_ca_ES.UTF-8.po                                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_compraventa/po                                                                                  
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_compraventa/pluginbf_compraventa_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_compraventa/po/pluginbf_compraventa_es_ES.UTF-8.po                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_compraventa/pluginbf_compraventa_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_compraventa/po/pluginbf_compraventa_ca_ES.UTF-8.po                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_clienteproveedor/po                                                                             
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_clienteproveedor/pluginbf_clienteproveedor_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_clienteproveedor/po/pluginbf_clienteproveedor_es_ES.UTF-8.po                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_clienteproveedor/pluginbf_clienteproveedor_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_clienteproveedor/po/pluginbf_clienteproveedor_ca_ES.UTF-8.po                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_abrereferencia/po                                                                               
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_abrereferencia/pluginbf_abrereferencia_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_abrereferencia/po/pluginbf_abrereferencia_es_ES.UTF-8.po                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_abrereferencia/pluginbf_abrereferencia_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_abrereferencia/po/pluginbf_abrereferencia_ca_ES.UTF-8.po                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_corrector/po                                                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_corrector/pluginbf_corrector_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_corrector/po/pluginbf_corrector_es_ES.UTF-8.po                                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_corrector/pluginbf_corrector_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_corrector/po/pluginbf_corrector_ca_ES.UTF-8.po                                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_clientealbaranesfactura/po                                                                      
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_clientealbaranesfactura/pluginbf_clientealbaranesfactura_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_clientealbaranesfactura/po/pluginbf_clientealbaranesfactura_es_ES.UTF-8.po    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_clientealbaranesfactura/pluginbf_clientealbaranesfactura_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_clientealbaranesfactura/po/pluginbf_clientealbaranesfactura_ca_ES.UTF-8.po    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_proveedorpago/po                                                                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_proveedorpago/pluginbf_proveedorpago_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_proveedorpago/po/pluginbf_proveedorpago_es_ES.UTF-8.po                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_proveedorpago/pluginbf_proveedorpago_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_proveedorpago/po/pluginbf_proveedorpago_ca_ES.UTF-8.po                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_clientecobro/po                                                                                 
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_clientecobro/pluginbf_clientecobro_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_clientecobro/po/pluginbf_clientecobro_es_ES.UTF-8.po                                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_clientecobro/pluginbf_clientecobro_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_clientecobro/po/pluginbf_clientecobro_ca_ES.UTF-8.po                                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_clientepresupuesto/po                                                                           
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_clientepresupuesto/pluginbf_clientepresupuesto_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_clientepresupuesto/po/pluginbf_clientepresupuesto_es_ES.UTF-8.po                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_clientepresupuesto/pluginbf_clientepresupuesto_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_clientepresupuesto/po/pluginbf_clientepresupuesto_ca_ES.UTF-8.po                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> CMake Error at
+</I>&gt;&gt;<i> bulmafact/plugins/pluginbf_clientepresupuesto/CMakeLists.txt:114 (FILE):
+</I>&gt;&gt;<i>   file Internal CMake error when trying to open
+</I>&gt;&gt;<i> file:                                  
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/pluginbf_clientepresupuesto_es_ES.css   
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>   for
+</I>&gt;&gt;<i> reading.                                                                       
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> CMake Error at
+</I>&gt;&gt;<i> bulmafact/plugins/pluginbf_clientepresupuesto/CMakeLists.txt:117 (FILE):
+</I>&gt;&gt;<i>   file Internal CMake error when trying to open
+</I>&gt;&gt;<i> file:                                  
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/pluginbf_clientepresupuesto_ca_ES.css   
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>   for
+</I>&gt;&gt;<i> reading.                                                                       
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_clientepedido/po                                                                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_clientepedido/pluginbf_clientepedido_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_clientepedido/po/pluginbf_clientepedido_es_ES.UTF-8.po                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_clientepedido/pluginbf_clientepedido_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_clientepedido/po/pluginbf_clientepedido_ca_ES.UTF-8.po                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> CMake Error at
+</I>&gt;&gt;<i> bulmafact/plugins/pluginbf_clientepedido/CMakeLists.txt:115 (FILE):
+</I>&gt;&gt;<i>   file Internal CMake error when trying to open
+</I>&gt;&gt;<i> file:                             
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/pluginbf_clientepedido_es_ES.css   
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>   for
+</I>&gt;&gt;<i> reading.                                                                  
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> CMake Error at
+</I>&gt;&gt;<i> bulmafact/plugins/pluginbf_clientepedido/CMakeLists.txt:118 (FILE):
+</I>&gt;&gt;<i>   file Internal CMake error when trying to open
+</I>&gt;&gt;<i> file:                             
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/pluginbf_clientepedido_ca_ES.css   
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>   for
+</I>&gt;&gt;<i> reading.                                                                  
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_clientealbaran/po                                                                               
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_clientealbaran/pluginbf_clientealbaran_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_clientealbaran/po/pluginbf_clientealbaran_es_ES.UTF-8.po                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_clientealbaran/pluginbf_clientealbaran_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_clientealbaran/po/pluginbf_clientealbaran_ca_ES.UTF-8.po                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> CMake Error at
+</I>&gt;&gt;<i> bulmafact/plugins/pluginbf_clientealbaran/CMakeLists.txt:124 (FILE):
+</I>&gt;&gt;<i>   file Internal CMake error when trying to open
+</I>&gt;&gt;<i> file:                              
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/pluginbf_clientealbaran_es_ES.css   
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>   for
+</I>&gt;&gt;<i> reading.                                                                   
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> CMake Error at
+</I>&gt;&gt;<i> bulmafact/plugins/pluginbf_clientealbaran/CMakeLists.txt:127 (FILE):
+</I>&gt;&gt;<i>   file Internal CMake error when trying to open
+</I>&gt;&gt;<i> file:                              
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/pluginbf_clientealbaran_ca_ES.css   
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>   for
+</I>&gt;&gt;<i> reading.                                                                   
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_clientefactura/po                                                                               
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_clientefactura/pluginbf_clientefactura_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_clientefactura/po/pluginbf_clientefactura_es_ES.UTF-8.po                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_clientefactura/pluginbf_clientefactura_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_clientefactura/po/pluginbf_clientefactura_ca_ES.UTF-8.po                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> CMake Error at
+</I>&gt;&gt;<i> bulmafact/plugins/pluginbf_clientefactura/CMakeLists.txt:115 (FILE):
+</I>&gt;&gt;<i>   file Internal CMake error when trying to open
+</I>&gt;&gt;<i> file:                              
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/pluginbf_clientefactura_es_ES.css   
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>   for
+</I>&gt;&gt;<i> reading.                                                                   
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> CMake Error at
+</I>&gt;&gt;<i> bulmafact/plugins/pluginbf_clientefactura/CMakeLists.txt:118 (FILE):
+</I>&gt;&gt;<i>   file Internal CMake error when trying to open
+</I>&gt;&gt;<i> file:                              
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/pluginbf_clientefactura_ca_ES.css   
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>   for
+</I>&gt;&gt;<i> reading.                                                                   
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_proveedorfactura/po                                                                             
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_proveedorfactura/pluginbf_proveedorfactura_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_proveedorfactura/po/pluginbf_proveedorfactura_es_ES.UTF-8.po                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_proveedorfactura/pluginbf_proveedorfactura_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_proveedorfactura/po/pluginbf_proveedorfactura_ca_ES.UTF-8.po                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_proveedoralbaran/po                                                                             
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_proveedoralbaran/pluginbf_proveedoralbaran_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_proveedoralbaran/po/pluginbf_proveedoralbaran_es_ES.UTF-8.po                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_proveedoralbaran/pluginbf_proveedoralbaran_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_proveedoralbaran/po/pluginbf_proveedoralbaran_ca_ES.UTF-8.po                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_proveedorpedido/po                                                                              
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_proveedorpedido/pluginbf_proveedorpedido_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_proveedorpedido/po/pluginbf_proveedorpedido_es_ES.UTF-8.po                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_proveedorpedido/pluginbf_proveedorpedido_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_proveedorpedido/po/pluginbf_proveedorpedido_ca_ES.UTF-8.po                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_z2z/po                                                                                          
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_z2z/pluginbf_z2z_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_z2z/po/pluginbf_z2z_es_ES.UTF-8.po                                                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_z2z/pluginbf_z2z_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_z2z/po/pluginbf_z2z_ca_ES.UTF-8.po                                                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> CMake Warning (dev) at bulmafact/plugins/CMakeLists.txt:81
+</I>&gt;&gt;<i> (add_subdirectory):
+</I>&gt;&gt;<i>   The source
+</I>&gt;&gt;<i> directory                                                        
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_printercocina
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   does not contain a CMakeLists.txt file.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   CMake does not support this case but it used to work accidentally and is
+</I>&gt;&gt;<i>   being allowed for compatibility.                                        
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   Policy CMP0014 is not set: Input directories must have
+</I>&gt;&gt;<i> CMakeLists.txt.  Run
+</I>&gt;&gt;<i>   &quot;cmake --help-policy CMP0014&quot; for policy details.  Use the
+</I>&gt;&gt;<i> cmake_policy    
+</I>&gt;&gt;<i>   command to set the policy and suppress this
+</I>&gt;&gt;<i> warning.                       
+</I>&gt;&gt;<i> This warning is for project developers.  Use -Wno-dev to suppress
+</I>&gt;&gt;<i> it.        
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_profesor/po                                                                                     
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_profesor/pluginbf_profesor_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_profesor/po/pluginbf_profesor_es_ES.UTF-8.po                                                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_profesor/pluginbf_profesor_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_profesor/po/pluginbf_profesor_ca_ES.UTF-8.po                                                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_alumno/po                                                                                       
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_alumno/pluginbf_alumno_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_alumno/po/pluginbf_alumno_es_ES.UTF-8.po                                                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_alumno/pluginbf_alumno_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_alumno/po/pluginbf_alumno_ca_ES.UTF-8.po                                                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_tutor/po                                                                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_tutor/pluginbf_tutor_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_tutor/po/pluginbf_tutor_es_ES.UTF-8.po                                                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_tutor/pluginbf_tutor_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_tutor/po/pluginbf_tutor_ca_ES.UTF-8.po                                                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_actividad/po                                                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_actividad/pluginbf_actividad_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_actividad/po/pluginbf_actividad_es_ES.UTF-8.po                                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_actividad/pluginbf_actividad_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_actividad/po/pluginbf_actividad_ca_ES.UTF-8.po                                                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_minicontabilidad/po                                                                             
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_minicontabilidad/pluginbf_minicontabilidad_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_minicontabilidad/po/pluginbf_minicontabilidad_es_ES.UTF-8.po                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmafact/plugins/pluginbf_minicontabilidad/pluginbf_minicontabilidad_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmafact/plugins/pluginbf_minicontabilidad/po/pluginbf_minicontabilidad_ca_ES.UTF-8.po                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Working on bulmages
+</I>&gt;&gt;<i> -- Working on bulmatpv
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/src/po
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/src/bulmatpv_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/src/po/bulmatpv_es_ES.UTF-8.po                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/src/bulmatpv_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/src/po/bulmatpv_ca_ES.UTF-8.po                            
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_ticket/po                                                                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_ticket/pluginbt_ticket_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_ticket/po/pluginbt_ticket_es_ES.UTF-8.po                                                                          
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_ticket/pluginbt_ticket_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_ticket/po/pluginbt_ticket_ca_ES.UTF-8.po                                                                          
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_tecladonumerico/po                                                                               
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_tecladonumerico/pluginbt_tecladonumerico_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_tecladonumerico/po/pluginbt_tecladonumerico_es_ES.UTF-8.po                                      
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_tecladonumerico/pluginbt_tecladonumerico_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_tecladonumerico/po/pluginbt_tecladonumerico_ca_ES.UTF-8.po                                      
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> CMake Error at
+</I>&gt;&gt;<i> bulmatpv/plugins/pluginbt_tecladonumerico/CMakeLists.txt:94 (FILE):
+</I>&gt;&gt;<i>   file Internal CMake error when trying to open
+</I>&gt;&gt;<i> file:                             
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/pluginbt_tecladonumerico.css
+</I>&gt;&gt;<i> for     
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i> reading.                                                                      
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_total/po                                                                                         
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_total/pluginbt_total_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_total/po/pluginbt_total_es_ES.UTF-8.po                                                                              
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_total/pluginbt_total_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_total/po/pluginbt_total_ca_ES.UTF-8.po                                                                              
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_totalivaincluido/po                                                                              
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_totalivaincluido/pluginbt_totalivaincluido_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_totalivaincluido/po/pluginbt_totalivaincluido_es_ES.UTF-8.po                                  
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_totalivaincluido/pluginbt_totalivaincluido_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_totalivaincluido/po/pluginbt_totalivaincluido_ca_ES.UTF-8.po                                  
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_controlcaja/po                                                                                   
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_controlcaja/pluginbt_controlcaja_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_controlcaja/po/pluginbt_controlcaja_es_ES.UTF-8.po                                                      
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_controlcaja/pluginbt_controlcaja_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_controlcaja/po/pluginbt_controlcaja_ca_ES.UTF-8.po                                                      
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_cobrar/po                                                                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_cobrar/pluginbt_cobrar_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_cobrar/po/pluginbt_cobrar_es_ES.UTF-8.po                                                                          
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_cobrar/pluginbt_cobrar_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_cobrar/po/pluginbt_cobrar_ca_ES.UTF-8.po                                                                          
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_articulosubform/po                                                                               
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_articulosubform/pluginbt_articulosubform_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_articulosubform/po/pluginbt_articulosubform_es_ES.UTF-8.po                                      
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_articulosubform/pluginbt_articulosubform_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_articulosubform/po/pluginbt_articulosubform_ca_ES.UTF-8.po                                      
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_ivaincluido/po                                                                                   
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_ivaincluido/pluginbt_ivaincluido_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_ivaincluido/po/pluginbt_ivaincluido_es_ES.UTF-8.po                                                      
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_ivaincluido/pluginbt_ivaincluido_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_ivaincluido/po/pluginbt_ivaincluido_ca_ES.UTF-8.po                                                      
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_aliastallasycolores2/po                                                                          
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_aliastallasycolores2/pluginbt_aliastallasycolores2_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_aliastallasycolores2/po/pluginbt_aliastallasycolores2_es_ES.UTF-8.po                  
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_aliastallasycolores2/pluginbt_aliastallasycolores2_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_aliastallasycolores2/po/pluginbt_aliastallasycolores2_ca_ES.UTF-8.po                  
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_aliastallasycolores/po                                                                           
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_aliastallasycolores/pluginbt_aliastallasycolores_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_aliastallasycolores/po/pluginbt_aliastallasycolores_es_ES.UTF-8.po                      
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_aliastallasycolores/pluginbt_aliastallasycolores_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_aliastallasycolores/po/pluginbt_aliastallasycolores_ca_ES.UTF-8.po                      
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_ticketdesglose/po                                                                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_ticketdesglose/pluginbt_ticketdesglose_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_ticketdesglose/po/pluginbt_ticketdesglose_es_ES.UTF-8.po                                          
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_ticketdesglose/pluginbt_ticketdesglose_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_ticketdesglose/po/pluginbt_ticketdesglose_ca_ES.UTF-8.po                                          
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_buscaarticulo/po                                                                                 
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_buscaarticulo/pluginbt_buscaarticulo_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_buscaarticulo/po/pluginbt_buscaarticulo_es_ES.UTF-8.po                                              
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_buscaarticulo/pluginbt_buscaarticulo_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_buscaarticulo/po/pluginbt_buscaarticulo_ca_ES.UTF-8.po                                              
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_buscacliente/po                                                                                  
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_buscacliente/pluginbt_buscacliente_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_buscacliente/po/pluginbt_buscacliente_es_ES.UTF-8.po                                                  
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_buscacliente/pluginbt_buscacliente_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_buscacliente/po/pluginbt_buscacliente_ca_ES.UTF-8.po                                                  
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_cambio/po                                                                                        
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_cambio/pluginbt_cambio_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_cambio/po/pluginbt_cambio_es_ES.UTF-8.po                                                                          
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_cambio/pluginbt_cambio_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_cambio/po/pluginbt_cambio_ca_ES.UTF-8.po                                                                          
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_cambioivaincluido/po                                                                             
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_cambioivaincluido/pluginbt_cambioivaincluido_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_cambioivaincluido/po/pluginbt_cambioivaincluido_es_ES.UTF-8.po                              
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_cambioivaincluido/pluginbt_cambioivaincluido_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_cambioivaincluido/po/pluginbt_cambioivaincluido_ca_ES.UTF-8.po                              
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_devolucion/po                                                                                    
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_devolucion/pluginbt_devolucion_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_devolucion/po/pluginbt_devolucion_es_ES.UTF-8.po                                                          
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_devolucion/pluginbt_devolucion_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_devolucion/po/pluginbt_devolucion_ca_ES.UTF-8.po                                                          
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_devolucion2/po                                                                                   
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_devolucion2/pluginbt_devolucion2_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_devolucion2/po/pluginbt_devolucion2_es_ES.UTF-8.po                                                      
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_devolucion2/pluginbt_devolucion2_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_devolucion2/po/pluginbt_devolucion2_ca_ES.UTF-8.po                                                      
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_ticketdevuelto/po                                                                                
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_ticketdevuelto/pluginbt_ticketdevuelto_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_ticketdevuelto/po/pluginbt_ticketdevuelto_es_ES.UTF-8.po                                          
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_ticketdevuelto/pluginbt_ticketdevuelto_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_ticketdevuelto/po/pluginbt_ticketdevuelto_ca_ES.UTF-8.po
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_printercocina/po
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_printercocina/pluginbt_printercocina_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_printercocina/po/pluginbt_printercocina_es_ES.UTF-8.po
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_printercocina/pluginbt_printercocina_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_printercocina/po/pluginbt_printercocina_ca_ES.UTF-8.po
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Calling the macro to copy files to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_accesobotones/po
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_accesobotones/pluginbt_accesobotones_es_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_accesobotones/po/pluginbt_accesobotones_es_ES.UTF-8.po
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Copying
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/build/bulmatpv/plugins/pluginbt_accesobotones/pluginbt_accesobotones_ca_ES.UTF-8.po
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i> /home/jose/Descargas/bulmages-0.12.0/bulmatpv/plugins/pluginbt_accesobotones/po/pluginbt_accesobotones_ca_ES.UTF-8.po
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Working on bulmasetup
+</I>&gt;&gt;<i> -- Working on installbulmages
+</I>&gt;&gt;<i> -- Working on documentation
+</I>&gt;&gt;<i> -- Configuring incomplete, errors occurred!
+</I>&gt;&gt;<i> [<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">jose en localhost</A> build]$
+</I>&gt;&gt;<i>     
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003391.html">[BulmaGés]Problema al compilar Bulmagesd 0.12
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003397.html">[BulmaGés]Problema al compilar Bulmagesd 0.12
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3395">[ fecha ]</a>
+              <a href="thread.html#3395">[ hilo ]</a>
+              <a href="subject.html#3395">[ asunto ]</a>
+              <a href="author.html#3395">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

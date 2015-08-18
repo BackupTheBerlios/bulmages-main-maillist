@@ -1,0 +1,249 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120601203846.1C25F756E8%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007286.html">
+   <LINK REL="Next"  HREF="007288.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120601203846.1C25F756E8%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Vie Jun  1 22:38:45 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007286.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007288.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7287">[ fecha ]</a>
+              <a href="thread.html#7287">[ hilo ]</a>
+              <a href="subject.html#7287">[ asunto ]</a>
+              <a href="author.html#7287">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from 58ccb1d to 0b787e7
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/58ccb1d689a00d0623160c376f81e85ddc2faec8/diffs/0b787e7b0bf6800796db3dbce497933aaaaa5d8e">https://gitorious.org/bulmages/bulmages/commit/58ccb1d689a00d0623160c376f81e85ddc2faec8/diffs/0b787e7b0bf6800796db3dbce497933aaaaa5d8e</A>
+
+Diff: 
+
+commit 0b787e7b0bf6800796db3dbce497933aaaaa5d8e
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri Jun 1 22:38:22 2012 +0200
+
+    Creo el botón de duplicar una factura de cliente
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturabase.ui b/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturabase.ui
+index 5324607..07ad299 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturabase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturabase.ui
+@@ -81,13 +81,7 @@
+        &lt;property name=&quot;frameShadow&quot;&gt;
+         &lt;enum&gt;QFrame::Raised&lt;/enum&gt;
+        &lt;/property&gt;
+-       &lt;layout class=&quot;QHBoxLayout&quot;&gt;
+-        &lt;property name=&quot;spacing&quot;&gt;
+-         &lt;number&gt;5&lt;/number&gt;
+-        &lt;/property&gt;
+-        &lt;property name=&quot;margin&quot;&gt;
+-         &lt;number&gt;5&lt;/number&gt;
+-        &lt;/property&gt;
++       &lt;layout class=&quot;QHBoxLayout&quot; name=&quot;horizontalLayout&quot;&gt;
+         &lt;item&gt;
+          &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_guardar&quot;&gt;
+           &lt;property name=&quot;minimumSize&quot;&gt;
+@@ -235,6 +229,41 @@
+          &lt;/widget&gt;
+         &lt;/item&gt;
+         &lt;item&gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_duplicar&quot;&gt;
++          &lt;property name=&quot;minimumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;maximumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;toolTip&quot;&gt;
++           &lt;string&gt;Duplicar factura&lt;/string&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;whatsThis&quot;&gt;
++           &lt;string&gt;Duplicar factura&lt;/string&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;text&quot;&gt;
++           &lt;string/&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;icon&quot;&gt;
++           &lt;iconset resource=&quot;../../../bulmages.qrc&quot;&gt;
++            &lt;normaloff&gt;:/BulmaCont32x32/images/png/igualant.xpm&lt;/normaloff&gt;:/BulmaCont32x32/images/png/igualant.xpm&lt;/iconset&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;iconSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;22&lt;/width&gt;
++            &lt;height&gt;22&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++         &lt;/widget&gt;
++        &lt;/item&gt;
++        &lt;item&gt;
+          &lt;spacer&gt;
+           &lt;property name=&quot;orientation&quot;&gt;
+            &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
+@@ -353,14 +382,6 @@
+          &lt;/widget&gt;
+         &lt;/item&gt;
+        &lt;/layout&gt;
+-       &lt;zorder&gt;mui_borrar&lt;/zorder&gt;
+-       &lt;zorder&gt;mui_imprimir&lt;/zorder&gt;
+-       &lt;zorder&gt;mui_veralbaranes&lt;/zorder&gt;
+-       &lt;zorder&gt;mui_plugbotones&lt;/zorder&gt;
+-       &lt;zorder&gt;label5&lt;/zorder&gt;
+-       &lt;zorder&gt;mui_reffactura&lt;/zorder&gt;
+-       &lt;zorder&gt;mui_guardar&lt;/zorder&gt;
+-       &lt;zorder&gt;mui_detalles&lt;/zorder&gt;
+       &lt;/widget&gt;
+      &lt;/item&gt;
+     &lt;/layout&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturaview.cpp b/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturaview.cpp
+index 3cb4ef6..9dd6eab 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturaview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturaview.cpp
+@@ -316,5 +316,72 @@ void FacturaView::on_mui_idalmacen_valueChanged ( QString id )
+     
+ }
+ 
++/// Se encarga de generar una factura a partir de un albar&aacute;n.
++/** Primero de todo busca una factura por referencia que tenga este albaran.
++    Si dicha factura existe entonces la cargamos y terminamos.
++    Si no existe dicha factura el sistema avisa y permite crear una poniendo
++    Todos los datos del albaran automaticamente en ella.
++*/
++/**
++\return
++**/
++void FacturaView::on_mui_duplicar_released()
++{
++    BL_FUNC_DEBUG
++    FacturaView *fpv = this ;
++
++
++    FacturaView *bud = NULL;
++    BlDbRecordSet *cur = NULL;
++
++    try {
++        /// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta
++        /// comprobaci&oacute;n la consulta a la base de datos ser&aacute; erronea y al hacer
++        /// el siguiente cur-&gt;eof() el programa fallar&aacute;.
++        /// Comprobamos que existe una factura con esos datos, y en caso afirmativo lo mostramos.
++
++        /// Creamos la factura.
++        FacturaView *bud = new FacturaView ( ( BfCompany * ) fpv-&gt;mainCompany(), 0 );
++        fpv-&gt;mainCompany() -&gt;m_pWorkspace-&gt;addSubWindow ( bud );
++	bud-&gt;inicializar();
++
++        bud-&gt;setDbValue ( &quot;comentfactura&quot;, fpv-&gt;dbValue ( &quot;comentfactura&quot; ) );
++        bud-&gt;setDbValue ( &quot;idforma_pago&quot;, fpv-&gt;dbValue ( &quot;idforma_pago&quot; ) );
++        bud-&gt;setDbValue ( &quot;reffactura&quot;, fpv-&gt;dbValue ( &quot;reffactura&quot; ) );
++        bud-&gt;setDbValue ( &quot;idcliente&quot;, fpv-&gt;dbValue ( &quot;idcliente&quot; ) );
++        bud-&gt;pintar();
++        bud-&gt;show();
++
++        /// Traspasamos las lineas de factura
++        QString l;
++        BlDbSubFormRecord *linea, *linea1;
++        for ( int i = 0; i &lt; fpv-&gt;m_listalineas-&gt;rowCount(); ++i ) {
++            linea = fpv-&gt;m_listalineas-&gt;lineaat ( i );
++            if ( linea-&gt;dbValue ( &quot;idarticulo&quot; ) != &quot;&quot; ) {
++                linea1 = bud-&gt;getlistalineas() -&gt;lineaat ( bud-&gt;getlistalineas() -&gt;rowCount() - 1 );
++                bud-&gt;getlistalineas() -&gt;newRecord();
++                bud-&gt;getlistalineas() -&gt;setProcesarCambios ( FALSE );
++                linea1-&gt;setDbValue ( &quot;desclfactura&quot;, linea-&gt;dbValue ( &quot;desclfactura&quot; ) );
++                linea1-&gt;setDbValue ( &quot;cantlfactura&quot;, linea-&gt;dbValue ( &quot;cantlfactura&quot; ) );
++                linea1-&gt;setDbValue ( &quot;pvplfactura&quot;, linea-&gt;dbValue ( &quot;pvplfactura&quot; ) );
++                linea1-&gt;setDbValue ( &quot;descuentolfactura&quot;, linea-&gt;dbValue ( &quot;descuentolfactura&quot; ) );
++                linea1-&gt;setDbValue ( &quot;idarticulo&quot;, linea-&gt;dbValue ( &quot;idarticulo&quot; ) );
++                linea1-&gt;setDbValue ( &quot;codigocompletoarticulo&quot;, linea-&gt;dbValue ( &quot;codigocompletoarticulo&quot; ) );
++                linea1-&gt;setDbValue ( &quot;nomarticulo&quot;, linea-&gt;dbValue ( &quot;nomarticulo&quot; ) );
++                linea1-&gt;setDbValue ( &quot;ivalfactura&quot;, linea-&gt;dbValue ( &quot;ivalfactura&quot; ) );
++                linea1-&gt;setDbValue ( &quot;reqeqlfactura&quot;, linea-&gt;dbValue ( &quot;reqeqlfactura&quot; ) );
++            } // end if
++        } // end for
++        bud-&gt;calculaypintatotales();
++
++    } catch ( ... ) {
++        blMsgInfo ( _ ( &quot;Error inesperado&quot; ), this );
++        if ( cur ) delete cur;
++        if ( bud ) delete bud;
++    } // end try
++
++}
++
++
+ 
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturaview.h b/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturaview.h
+index b7c37c1..43bff38 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturaview.h
++++ b/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturaview.h
+@@ -60,6 +60,7 @@ public slots:
+     virtual void on_mui_veralbaranes_clicked();
+     virtual void on_mui_idcliente_valueChanged ( QString id );
+     virtual void on_mui_idalmacen_valueChanged ( QString id );
++    virtual void on_mui_duplicar_released();
+ };
+ 
+ 
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007286.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007288.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7287">[ fecha ]</a>
+              <a href="thread.html#7287">[ hilo ]</a>
+              <a href="subject.html#7287">[ asunto ]</a>
+              <a href="author.html#7287">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

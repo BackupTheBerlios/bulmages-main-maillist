@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 0f05cf1c31e39da243bc4c2e12a41000084ed295
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%5BGit%5DProject%20bulmages%20at%20BerliOS%20branch%2C%20master%2C%0A%09updated.%200f05cf1c31e39da243bc4c2e12a41000084ed295&In-Reply-To=%3C20110725222534.206D548142F%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006330.html">
+   <LINK REL="Next"  HREF="006313.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 0f05cf1c31e39da243bc4c2e12a41000084ed295 </H1>
+    <B>fcojavmc at BerliOS</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%5BGit%5DProject%20bulmages%20at%20BerliOS%20branch%2C%20master%2C%0A%09updated.%200f05cf1c31e39da243bc4c2e12a41000084ed295&In-Reply-To=%3C20110725222534.206D548142F%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 0f05cf1c31e39da243bc4c2e12a41000084ed295">git en mail.berlios.de
+       </A><BR>
+    <I>Mar Jul 26 00:25:33 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006330.html">[BulmaGés] [Feature #5430] Calendari activitats
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006313.html">[BulmaGés] New message
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6312">[ fecha ]</a>
+              <a href="thread.html#6312">[ hilo ]</a>
+              <a href="subject.html#6312">[ asunto ]</a>
+              <a href="author.html#6312">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+The branch, master has been updated
+       via  0f05cf1c31e39da243bc4c2e12a41000084ed295 (commit)
+      from  890c9a19e6830c8408aacad0b0eec3cff0bfd78f (commit)
+
+Nuevas revisiones:
+
+- Log -----------------------------------------------------------------
+commit 0f05cf1c31e39da243bc4c2e12a41000084ed295
+Author: Fco. Javier M. C &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+Date:   Tue Jul 26 00:30:19 2011 +0200
+
+    Cambios para que la lectura de las variables de entorno en MS-Windows no
+    tenga problemas con las codificaciones.
+    
+    Creo las funciones:
+    
+    - &quot;QString blGetEnv( const char *varName )&quot; Igual a qgenenv() pero
+      funciona bien en MS-Windows cuando forzamos la codificación a UTF-8,
+    como es nuestro caso y la usamos en su lugar.
+    
+    - &quot;wchar_t* QStringToWCHAR (QString inString)&quot; Función auxiliar para
+      convertir el tipo de dato QString de Qt a WCHAR de MS-Windows. Esta
+    función sólo está disponible cuando se compile para MS-Windows.
+    
+    *********************************
+    Fco. Javier M. C.
+    *********************************
+              Todo-Redes
+            C/.Begonia, 12
+       07010 Palma de Mallorca.
+          Tel: +34-971499071
+       <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+      comercial(en)todo-redes.com
+    *********************************
+
+-----------------------------------------------------------------------
+
+Resumen de cambios:
+ bulmages/bulmalib/src/blargparser.cpp |    2 +-
+ bulmages/bulmalib/src/blfunctions.cpp |   37 +++++++++++++++++++++++++++++++++
+ bulmages/bulmalib/src/blfunctions.h   |    9 ++++++++
+ 3 files changed, 47 insertions(+), 1 deletions(-)
+
+
+-- 
+Proyecto BulmaGes
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006330.html">[BulmaGés] [Feature #5430] Calendari activitats
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006313.html">[BulmaGés] New message
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6312">[ fecha ]</a>
+              <a href="thread.html#6312">[ hilo ]</a>
+              <a href="subject.html#6312">[ asunto ]</a>
+              <a href="author.html#6312">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

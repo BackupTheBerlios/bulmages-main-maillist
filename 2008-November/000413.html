@@ -1,0 +1,515 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fwindows-1252%3Fq%3F%3D5BBulmaFact_y_Bulm%3F%3D%0A%09%3D%3Fwindows-1252%3Fq%3FaTPV%3D5D_Dudas_variadas_y_fallos_variados%3F%3D&In-Reply-To=%3Cf95d36990811240104l5bdce38dy52ae7f1f19ad9244%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000412.html">
+   <LINK REL="Next"  HREF="000416.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados </H1>
+    <B>Cristina</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fwindows-1252%3Fq%3F%3D5BBulmaFact_y_Bulm%3F%3D%0A%09%3D%3Fwindows-1252%3Fq%3FaTPV%3D5D_Dudas_variadas_y_fallos_variados%3F%3D&In-Reply-To=%3Cf95d36990811240104l5bdce38dy52ae7f1f19ad9244%40mail.gmail.com%3E"
+       TITLE="[BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados">inuitc en gmail.com
+       </A><BR>
+    <I>Lun Nov 24 10:04:44 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000412.html">[BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000416.html">[BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#413">[ fecha ]</a>
+              <a href="thread.html#413">[ hilo ]</a>
+              <a href="subject.html#413">[ asunto ]</a>
+              <a href="author.html#413">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Holita hola... no nos pasemos de listos... que no hablamos de cómo
+saber cuántas unidades has vendido que hay millones de formas de
+hacerlo... también puedes ir al amacén (en muchos casos &quot;la
+estantería&quot;) y contarlas, te lleve más o menos tiempo. Hablamos de
+usar o no albaranes. Ya sabemos todos que los informes son muy bonitos
+y funcionan muy bien.
+
+Bien podrías haber dicho &quot;eh... ¿y si con los informes basta?&quot;. La
+fracesita de apertura de mentes, para mi gusto, sobra.
+
+Gracias,
+
+2008/11/24 Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;:
+&gt;<i> Hola holita hola. Abrid las mentes un poquito:
+</I>&gt;<i>
+</I>&gt;<i> Es cierto que el stock lo modifican los albaranes. Pero hay que entender lo
+</I>&gt;<i> que es el stock y las cosas que podemos hacer.
+</I>&gt;<i>
+</I>&gt;<i> El stock es una tabla transparente que mantiene los acumulados de compras /
+</I>&gt;<i> ventas de cada artículo. Esto es por motivos de eficiencia ya que sin ningún
+</I>&gt;<i> coste apreciable tenemos disponible el material que tenemos.
+</I>&gt;<i>
+</I>&gt;<i> Ahora bien, para saber el número de unidades que has vendido de un producto
+</I>&gt;<i> tanto lo puedes saber con las facturas como con los albaranes. Sólo teneis
+</I>&gt;<i> que tirar de los informes personalizados y hacer algo del estilo:
+</I>&gt;<i>
+</I>&gt;<i> SELECT sum(cantlfactura) AS cant FROM lfactura WHERE ffactura &gt;='fechainicial'
+</I>&gt;<i> AND ffactura &lt;='fechafinal' GROUP BY idarticulo;
+</I>&gt;<i>
+</I>&gt;<i> Así tambien teneis una idea del stock (En realidad es un informe de ventas)
+</I>&gt;<i> sin tirar de albaranes.
+</I>&gt;<i>
+</I>&gt;<i> Concluyendo, que para saber cuanto has vendido de X producto no tienes la
+</I>&gt;<i> necesidad de utilizar albaranes. La decisión de utilizar albaranes o no
+</I>&gt;<i> responde al modelo de negocio que tengas y a la forma en que das salida a tu
+</I>&gt;<i> material y lo facturas.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> PD: Tenemos un bonito modulo de generación de informes personalizados tanto en
+</I>&gt;<i> RML como en Python en los que generar un informe puede llevar 10 minutitos.
+</I>&gt;<i>
+</I>&gt;<i> Salut
+</I>&gt;<i>
+</I>&gt;<i> El Monday 24 November 2008 09:30:55 Cristina escribió:
+</I>&gt;&gt;<i> No, las facturas no afectan al stock. Yo también planteé eso en su
+</I>&gt;&gt;<i> momento, porque como nos dedicábamos más a servicios... Pero la verdad
+</I>&gt;&gt;<i> es que es mucho más generalizado el uso de Albaranes que el de
+</I>&gt;&gt;<i> Facturas para el control de stock y este tipo de particularidades es
+</I>&gt;&gt;<i> mejor programarlas específicamente para el cliente que no ponerlo para
+</I>&gt;&gt;<i> todo el mundo.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Por otro lado, pensándolo bien, me di cuenta de que la mayor parte de
+</I>&gt;&gt;<i> las veces no prestaba el servicio en el mismo momento que facturaba.
+</I>&gt;&gt;<i> Por ejemplo, un mantenimiento de 5 horas semanales se factura, por
+</I>&gt;&gt;<i> ejemplo, al finalizar el mes... pero cada semana emito uno o cinco
+</I>&gt;&gt;<i> albaranes. Así, al finalizar el mes y realizar la factura, adjunto los
+</I>&gt;&gt;<i> albaranes y si me salen de más son horas extras, en el caso de que
+</I>&gt;&gt;<i> tengas ese tipo de contrato. Es un ejemplo.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Los albaranes sirven para poder controlar más el gasto en el servicio.
+</I>&gt;&gt;<i> Porque si para poner implantes a un cliente tú tienes asiganadas,
+</I>&gt;&gt;<i> pongamos, 20 horas repartidas en un mes que dura el proceso (por
+</I>&gt;&gt;<i> ejemplo) cuando no haces un control de este proceso nunca sabes
+</I>&gt;&gt;<i> realmente cuánto estás dedicando ni cuánto inviertes. Si cada vez que
+</I>&gt;&gt;<i> haces una intervención lo apuntas en un albarán, cuando haces la
+</I>&gt;&gt;<i> factura sabes realmente cuánto estás dedicando y, en muchas ocasiones,
+</I>&gt;&gt;<i> te llevas grandes sorpresas. Especialmente en empresas familiares de
+</I>&gt;&gt;<i> servicios, en los que la mayor parte de las veces el tiempo que
+</I>&gt;&gt;<i> dedicas suele ser muy superior al que cobras. Lo importante no es que
+</I>&gt;&gt;<i> luego digas: no, voy a cobrar más porque paso más tiempo con el
+</I>&gt;&gt;<i> cliente... sobre todo en cosas que suelen tener un importe fijo. Lo
+</I>&gt;&gt;<i> importante es que lo sabes. Y, según creo yo, el conocimiento en una
+</I>&gt;&gt;<i> empresa es fundamental...
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Pero, resumiendo, es una característica que se puede modificar (lo de
+</I>&gt;&gt;<i> si es fácil o no que lo diga el equipo de desarrollo) a gusto del
+</I>&gt;&gt;<i> cliente.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 2008/11/22 Raül Martínez i Peris &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">elferrer en gmail.com</A>&gt;:
+</I>&gt;&gt;<i> &gt; 2008/11/22 Daniel Bustos Fernández &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">daniel69 en gmail.com</A>&gt;
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt;&gt; Gracias por los consejos, yo estoy por poner 1000 caries, 1000
+</I>&gt;&gt;<i> &gt;&gt; limpiezas, etc y a final de año sacar estadísticas y &quot;resetear&quot;.
+</I>&gt;&gt;<i> &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt; De momento no hacen control de stock, bueno sí, a ojímetro, pero como
+</I>&gt;&gt;<i> &gt;&gt; buen informático y futuro ingeniero voy a tenerlo en cuenta para más
+</I>&gt;&gt;<i> &gt;&gt; adelante, cuando cojan confianza en el producto y vean que puede hacer
+</I>&gt;&gt;<i> &gt;&gt; eso por ellos, supongo que de pronto lo encontrarán muy útil.
+</I>&gt;&gt;<i> &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt; Recordar que se trata de un programa para gente con poca idea de
+</I>&gt;&gt;<i> &gt;&gt; informática (casi nula) y con muy poca formación en ordenadores
+</I>&gt;&gt;<i> &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt; Una cosa, no he entendido esto:
+</I>&gt;&gt;<i> &gt;&gt; &quot;Al respecto de que las facturas no hagan movimiento de almacén debería
+</I>&gt;&gt;<i> &gt;&gt; considerarse la posibilidad de que algunos materiales fueran entregados
+</I>&gt;&gt;<i> &gt;&gt; directamente en mano y con la factura, sin la necesidad de realizar
+</I>&gt;&gt;<i> &gt;&gt; albarán y que se minorara el almacén directamente desde la factura
+</I>&gt;&gt;<i> &gt;&gt; siempre que no provenga de un albarán.&quot;
+</I>&gt;&gt;<i> &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt; ¿Quiere decir que si hago directamente una factura de, por ejemplo una
+</I>&gt;&gt;<i> &gt;&gt; caries, que reste del 'stock de caries' sin hacer
+</I>&gt;&gt;<i> &gt;&gt; presupuesto-pedido-albarán-factura?
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; Cristina, en bulmafact ¿las facturas sin albarán afectan al almacén?
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt;&gt; Un saludo
+</I>&gt;&gt;<i> &gt;&gt; Dani
+</I>&gt;&gt;<i> &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt; 2008/11/21 Raül Martínez i Peris &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">elferrer en gmail.com</A>&gt;
+</I>&gt;&gt;<i> &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt; 2008/11/21 Daniel Bustos Fernández &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">daniel69 en gmail.com</A>&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt; Hola
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt; Gracias a los dos por contestar, la explicación de Raúl es la mejor
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt; explicación que he oído nunca, ahora se entiende mucho mejor todo el
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt; proceso.
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt; No es que yo ignore o crea que no existan esos pasos, simplemente que
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt; para la empresa que quiero poner ahora mismo no se hacen tantos pasos.
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt; Ni siquiera hay ordenadores (todo se hace a mano).
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt; Al ser una empresa de ¿servicios? (¿una clínica dental es de
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt; servicios?), normalmente sólo se hace una factura tras hacer un
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt; trabajo (una limpieza por ejemplo) o bien un presupuesto y luego ya la
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt; factura. No se entrega mercancía,  no se si me explico.
+</I>&gt;&gt;<i> &gt;&gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt; No es cierto del todo, en el caso de ortodoncias sí que hay un almacén,
+</I>&gt;&gt;<i> &gt;&gt;&gt; aunque sí es verdad que el almacén nace para cada cliente y su
+</I>&gt;&gt;<i> &gt;&gt;&gt; necesidad, con lo cual si no tienes contabilizados los litros de
+</I>&gt;&gt;<i> &gt;&gt;&gt; alcohol y kilos de algodón, o los medicamentos que puedas utilizar en
+</I>&gt;&gt;<i> &gt;&gt;&gt; la consulta... no creo que utilices almacén.
+</I>&gt;&gt;<i> &gt;&gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt; Aunque sí puedes utilizar un inventario &quot;virtual&quot;.
+</I>&gt;&gt;<i> &gt;&gt;&gt; Es un poco complicado: digamos que tienes &quot;grosso modo&quot; una necesidades
+</I>&gt;&gt;<i> &gt;&gt;&gt; mínimas de negocio; realizar (por ejemplo) 10 limpiezas a la semana, 3
+</I>&gt;&gt;<i> &gt;&gt;&gt; ortodoncias al mes, etc... Podrías dar de alta un almacén virtual con
+</I>&gt;&gt;<i> &gt;&gt;&gt; lo que teóricamente crees que utilizarás en un período concreto (un año
+</I>&gt;&gt;<i> &gt;&gt;&gt; por ejemplo) y vas descontando el trabajo como si fuera un elemento
+</I>&gt;&gt;<i> &gt;&gt;&gt; real. Una vez transcurridos unos meses tendrás estadísticas de almacén
+</I>&gt;&gt;<i> &gt;&gt;&gt; y consumos.
+</I>&gt;&gt;<i> &gt;&gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt; Además al ser una empresa pequeña y familiar, muchas veces los
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt; clientes son conocidos y pagan algo al principio y luego el resto (con
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt; sus correspondientes facturas).
+</I>&gt;&gt;<i> &gt;&gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;  Yo intentaré acoplar bulmages a esta empresa y esta empresa a
+</I>&gt;&gt;<i> &gt;&gt;&gt; bulmages.
+</I>&gt;&gt;<i> &gt;&gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt; Si veo que no hace falta un paso, hacer que el programa internamente
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt; lo haga sólo (espero saber hacerlo claro!!).
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt; Un saludo
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt; 2008/11/21 Cristina &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">inuitc en gmail.com</A>&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; Resumiendo: el stock se agrega con albaranes de proveedores y se
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; descuenta con albaranes de clientes. En el caso de devoluciones a
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; proveedores o devoluciones de clientes ocurre lo contrario. Si no
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; haces albarán no hay movimiento de stock, aunque tengas factura.
+</I>&gt;&gt;<i> &gt;&gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt; Al respecto de que las facturas no hagan movimiento de almacén debería
+</I>&gt;&gt;<i> &gt;&gt;&gt; considerarse la posibilidad de que algunos materiales fueran entregados
+</I>&gt;&gt;<i> &gt;&gt;&gt; directamente en mano y con la factura, sin la necesidad de realizar
+</I>&gt;&gt;<i> &gt;&gt;&gt; albarán y que se minorara el almacén directamente desde la factura
+</I>&gt;&gt;<i> &gt;&gt;&gt; siempre que no provenga de un albarán.
+</I>&gt;&gt;<i> &gt;&gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; Pero, la explicación de Raül es de Manual, perfecta, me quito el
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; sombrero...
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; Por otro lado el cobro o pago de un servicio/mercancía se puede
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; asociar a presupuesto, pedido, albarán o factura. Si utilizas el
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; campo &quot;referencia&quot; y pones la misma desde el presupuesto hasta la
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; factura y en los cobros correspondientes, cuando generes un informe
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; para ver cómo van las cosas verás todos los pagos asociados y sabrás
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; cuánto te han dado, cuándo y con qué motivo... Esto funciona si eres
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; muy organizado y, personalmente, te recomiendo que lo seas. Con un
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; botón sabrás el estado de una empresa. De otra forma, te pasarás
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; horas recopilando información, haciendo cálculos, cuadrando con el
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; banco... y, aunque pareza mentira y por muy bien que lo lleves todo,
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; esto pasa muy a menudo.
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; Igualmente te sugiero, si me lo permites, que uses todos los pasos.
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; De esta forma tendrás un mayor control y conocimiento sobre lo que
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; pasa en tu empresa y, si vas creciendo, no tendrás que ir
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; incorporando pasos de repente. Se suele decir eso de: para ser una
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; gran empresa lo primero es comportarse como una gran empresa.
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; Saludos
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; 2008/11/21 Raül Martínez i Peris &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">elferrer en gmail.com</A>&gt;:
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; 2008/11/21 Daniel Bustos Fernández &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">daniel69 en gmail.com</A>&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; Hola
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; Llevo un tiempecito ya papeándome los pdfs de métrica y empiezo a
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; ver la
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; luz... pero aun muy lejos eh!! jeje!!
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; Por lo que veo, no hace falta aplicar métrica a *todo* el proceso,
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; quiero
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; decir, desde 0.
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; Yo parto de un punto, una empresa que no tiene soporte informático
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; y un
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; programa (Bulmages) para llegar a otro, una empresa con el soporte
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; de
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; Bulmages mediante el uso de una interfaz de similar a una TPV de
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; fácil uso.
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; Métrica establece los pasos a seguir de forma 'genérica' pero son
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; bastante
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; lógicos e intuitivos. Es decir, a grandes rasgos:
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; Establecer el punto de partida (estado actual de la empresa)
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; Establecer a donde se quiere llegar
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; Análisis de requisitos de lo que se quiere hacer (con la
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; metodología que
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; prefieras)
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; Análisis funcional de lo que se quiere hacer (con la metodología
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; que prefieras)
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; Diseño e implementación de la aplicación
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; Pruebas
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; Documentación
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; etc
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; Bueno, hay mil cosas más, apartados, subapartados, subsubapartados
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; hasta
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; el infinito y más acá.
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; Todavía tengo que &quot;ver la luz&quot; bastante más.
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; Lo que ocurre es que es taaaaaaaaaaaaaaaaaan teórico. Es un manual
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; de
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; buenas maneras.
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; En fin, he estado mirando todo lo que me comentasteis y ya está
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; claro el
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; tema presupuesto-pedido-albarán-factura.
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; Yo no creo que necesite &quot;tantos pasos&quot;, pero lo veré más adelante.
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; He hecho un pedido que pasaba el stock y veo que tengo un stock
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; negativo.
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; Me parece buena idea ya que si, p.e., quiero cobrar por un
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; servicio, no hay
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; stock físico y me da igual que sea positivo o negativo (no tiene
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; sentido un
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; número más que para contar cuantas veces se hizo).
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; Claro que, mejor quitar la marca de 'activar el control de stock'
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; al crear
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; el artículo.
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; Claro que, en todo momento, NO he cobrado, y ya se ha descontado
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; del stock. Exactamente, ¿cuándo ocurre? Es cuando Guardas la
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; factura??
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; No. El stock (movimiento de almacén) se genera (positivo o
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; negativo) con la
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; entrada/salida de un material tangible (no valen las ideas) con su
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; correspondiente albarán (o factura si es una compra directa).
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; Así pues, independientemente de lo implementado el proceso de
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; compra/venta
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; siempre será el siguiente (aún cuando creas que alguno de los pasos
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; no
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; existe):
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; Oferta (o presupuesto) &gt; Pedido &gt; Albarán &gt;Factura &gt;Cobro
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; La oferta puede ser aceptada o no.
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; El pedido es la aceptación de la oferta, pero no genera ningún
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; movimiento.
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; El albarán es el movimiento de la mercancía.
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; La factura es la concreci&#243;n en &#8364; de las cantidades servidas y es un
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; documento oficial con las correspondientes cargas tributarias.
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; El cobro/pago es consecuencia de la aceptación de la factura, a no
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; ser que
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; la factura no refleje lo pactado y entonces habría que hacer una
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; rectificativa (cágate lorito).
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; Si en algún momento la mercancía no se acepta por defecto o
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; cualquier otra
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; causa el receptor debe comunicarlo con un margen de un día para que
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; sea
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; retirada la mercancía y no sea facturada.
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; Por lo tanto, si una mercancía defectuosa va a ser devuelta no se
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; debería
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; generar una factura y solo se generaría un albarán de devolución.
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; Ten en cuenta que el pago de una mercancía puede producirse ANTES
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; de ser
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; recibida, mediante un pago a cuenta, prepago por transferencia,
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; etc., muy
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; habitual en estos días que nos ha tocado vivir. Inclusive podría
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; darse la
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; circunstancia de pagar por anticipado a la aceptación del
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; presupuesto (con
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; el pedido).
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; Que el cobro sea independiente del control de stock a mi me viene
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; muy
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; bien, pues es típico que se pague después, no en el momento de la
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; 'venta'.
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; Bueno, a seguir aprendiendo de BulmaFact!!!
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; Un saludo
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; Dani
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; 2008/11/4 Xavi Drudis Ferran &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; On Tue, Nov 04, 2008 at 08:29:26PM +0100, Daniel Bustos Fernández
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; wrote:
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; &gt; &gt;&gt;PFC
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; &gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; &gt; Como ya comenté, el uso de bulmages es parte de mi PFC. Mi
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; &gt; tutor insiste en
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; &gt; que siga, para el desarrollo de la interfaz que siga métrica
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; &gt; v.3. que
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; &gt; es lo
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; &gt; que piden para el desarrollo de software para la administración
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; &gt; española. No
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; &gt; voy a desarrollar para la administración, pero mi tutor dice
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; &gt; que así
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; &gt; aprendo
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; &gt; para el futuro.
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; &gt; He estado mirando los pdf's de métrica y son infumables.
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; &gt; Supongo que
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; &gt; métrica
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; &gt; debe abarcar cualquier cosa de cualquier tamaño, y para lo que
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; &gt; yo quiero
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; &gt; hacer, que es pequeño, me sobra muuuuucho. ¿Teneis experiencia
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; &gt; en desarrollar con metrica? ¿es tan coñazo como parece?
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; No he desarrollado nunca con Métrica, però le heché un vistazo
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; hace años
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; (metrica v 2 ? ) y parecía un poco coñazo, sí. No me consta que
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; sea muy
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; exigido en la administración pública (pese a que por eso se
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; creó). Pero
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; debe depender de la administración y del proyecto. De las
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; chapuzas que he
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; hecho por o para administraciones públicas diversas sólo un jefe
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; quiso
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; que me lo
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; mirara, aunque no insistió finalmente en usarlo. Quizás para
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; proyectos
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; grandes
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; grandes si se exija ?
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; Siempre les puedes decir que para un proyecto que tiene que
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; colaborar con
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; una comunidad que no usa métrica las ventajas de métrica se
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; reducen mucho.
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; Aunque como ejercicio no me parece mal. El problema es que todo
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; lo que
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; aprovechas
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; te lo encuentras hecho sin usar métrica, y entonces tienes que
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; plantear
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; un proyecto
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; en métrica que sólo abarca lo nuevo que hagas y lo que integras
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; de la
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; comunidad mirarlo
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; como entidades externas, que no va a cuadrar demasiado. O si, no
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; sé,
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; tampoco
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; recuerdo apenas métrica.
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; --
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; Signa per fer Collserola parc natural com cal
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; <A HREF="http://www.collserola.org/salvemelparcnatural/">http://www.collserola.org/salvemelparcnatural/</A>
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; _______________________________________________
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; Bulmages-main mailing list
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; --
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; &quot;En teoría, no hay diferencia entre la teoría y la práctica. Pero
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; en la
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; práctica, sí que la hay.&quot;, Jan L. A. van de Snepscheut
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; _______________________________________________
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; Bulmages-main mailing list
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; --
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; Raül Martínez i Peris
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; _______________________________________________
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; Bulmages-main mailing list
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; _______________________________________________
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; Bulmages-main mailing list
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt; --
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt; &quot;En teoría, no hay diferencia entre la teoría y la práctica. Pero en
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt; la práctica, sí que la hay.&quot;, Jan L. A. van de Snepscheut
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt; _______________________________________________
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt; Bulmages-main mailing list
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;&gt;<i> &gt;&gt;&gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;&gt;<i> &gt;&gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt; --
+</I>&gt;&gt;<i> &gt;&gt;&gt; Raül Martínez i Peris
+</I>&gt;&gt;<i> &gt;&gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt;&gt; _______________________________________________
+</I>&gt;&gt;<i> &gt;&gt;&gt; Bulmages-main mailing list
+</I>&gt;&gt;<i> &gt;&gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;&gt;<i> &gt;&gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;&gt;<i> &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt; --
+</I>&gt;&gt;<i> &gt;&gt; &quot;En teoría, no hay diferencia entre la teoría y la práctica. Pero en la
+</I>&gt;&gt;<i> &gt;&gt; práctica, sí que la hay.&quot;, Jan L. A. van de Snepscheut
+</I>&gt;&gt;<i> &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt; _______________________________________________
+</I>&gt;&gt;<i> &gt;&gt; Bulmages-main mailing list
+</I>&gt;&gt;<i> &gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;&gt;<i> &gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; --
+</I>&gt;&gt;<i> &gt; Raül Martínez i Peris
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; _______________________________________________
+</I>&gt;&gt;<i> &gt; Bulmages-main mailing list
+</I>&gt;&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Bulmages-main mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Tomeu Borrás Riera
+</I>&gt;<i> Conetxia Soluciones Informáticas
+</I>&gt;<i> 902 88 11 66
+</I>&gt;<i> (71 29 06 29
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000412.html">[BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000416.html">[BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#413">[ fecha ]</a>
+              <a href="thread.html#413">[ hilo ]</a>
+              <a href="subject.html#413">[ asunto ]</a>
+              <a href="author.html#413">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

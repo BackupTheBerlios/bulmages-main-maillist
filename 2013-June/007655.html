@@ -1,0 +1,706 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130621054917.C34FB178%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007654.html">
+   <LINK REL="Next"  HREF="007656.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130621054917.C34FB178%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Vie Jun 21 07:49:17 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007654.html">[BulmaGés]Presentación
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007656.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7655">[ fecha ]</a>
+              <a href="thread.html#7655">[ hilo ]</a>
+              <a href="subject.html#7655">[ asunto ]</a>
+              <a href="author.html#7655">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from ecfce5c to 516517d
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/ecfce5c248d58ba868712339acc67349721f22ec/diffs/516517dd5a8033815dfbf1da480422d7053d744e">https://gitorious.org/bulmages/bulmages/commit/ecfce5c248d58ba868712339acc67349721f22ec/diffs/516517dd5a8033815dfbf1da480422d7053d744e</A>
+
+Diff: 
+
+commit 516517dd5a8033815dfbf1da480422d7053d744e
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri Jun 21 07:47:06 2013 +0200
+
+    Arreglos para la sincronización automatica de versiones
+    
+    Mejoro la clase blsync para que acepte parametros de configuracion.
+    
+    Arreglo parte del sistema de acceso que ahora puede presentar datos (Tambien debería almacenarlos temporalmente).
+    
+    Mejoro el sistema de Debug que siempre estaba activado haciendo caso omiso de los parametros de cmake.
+
+diff --git a/bulmages/bulmafact/src/main.cxx b/bulmages/bulmafact/src/main.cxx
+index 78fa74e..31b55a4 100644
+--- a/bulmages/bulmafact/src/main.cxx
++++ b/bulmages/bulmafact/src/main.cxx
+@@ -115,9 +115,12 @@ int main ( int argc, char **argv )
+ 
+          if( !argParser-&gt;userName().isEmpty() ) {
+             login1-&gt;m_login-&gt;setText( argParser-&gt;userName() );
++	 } else {
++	    login1-&gt;m_login-&gt;setText( g_confpr-&gt;value(CONF_LOGIN_USER));
+ 	 } // end if
+ 	 
+          login1-&gt;m_password-&gt;setFocus();
++	 login1-&gt;m_password-&gt;setText(g_confpr-&gt;value(CONF_PASSWORD_USER));
+ 	    
+ 	 if (!argParser-&gt;host().isEmpty()) {
+ 	    login1-&gt;m_host-&gt;setText(argParser-&gt;host());
+diff --git a/bulmages/bulmalib/src/CMakeLists.txt b/bulmages/bulmalib/src/CMakeLists.txt
+index a23b055..2387218 100644
+--- a/bulmages/bulmalib/src/CMakeLists.txt
++++ b/bulmages/bulmalib/src/CMakeLists.txt
+@@ -195,6 +195,10 @@ IF(USE_GETTEXT)
+ ADD_DEFINITIONS(-DUSE_GETTEXT)
+ ENDIF(USE_GETTEXT)
+ 
++IF (ALLOW_DEBUG)
++ADD_DEFINITIONS(-DALLOW_DEBUG)
++ENDIF(ALLOW_DEBUG)
++
+ # build sources, moc'd sources, and rcc'd sources
+ 
+ add_library(bulmalib SHARED ${bulmalib_MOC_SRCS} ${bulmalib_UIS_H}
+diff --git a/bulmages/bulmalib/src/blapplication.cpp b/bulmages/bulmalib/src/blapplication.cpp
+index f525b7b..fdf0758 100644
+--- a/bulmages/bulmalib/src/blapplication.cpp
++++ b/bulmages/bulmalib/src/blapplication.cpp
+@@ -50,7 +50,7 @@ BlApplication::~BlApplication()
+ }
+ 
+ 
+-#if CONFIG_DEBUG == TRUE
++
+ ///
+ /**
+ \param object
+@@ -60,16 +60,14 @@ BlApplication::~BlApplication()
+ bool BlApplication::notify ( QObject *object, QEvent *event )
+ {
+     ///   Esta funcion es llamada continuamente y por eso no la depuramos (BL_FUNC_DEBUG).
+-
+     try {
+         return QApplication::notify ( object, event );
+     } catch ( ... ) {
+-        fprintf(stderr, _(&quot;Error inesperado en el sistema de notificaciones.\n&quot;).toLatin1());
++        fprintf(stderr, &quot;%s\n&quot;, _(&quot;Error inesperado en el sistema de notificaciones.&quot;).toLatin1().constData());
+         return false;
+     } // end try
+-
+ }
+-#endif
++
+ 
+ 
+ ///
+diff --git a/bulmages/bulmalib/src/blapplication.h b/bulmages/bulmalib/src/blapplication.h
+index a92b9b5..54ff757 100644
+--- a/bulmages/bulmalib/src/blapplication.h
++++ b/bulmages/bulmalib/src/blapplication.h
+@@ -40,11 +40,7 @@ private:
+ public:
+     BlApplication ( int &amp;argc, char **argv );
+     ~BlApplication();
+-    
+-#if CONFIG_DEBUG == TRUE
+     virtual bool notify ( QObject *object, QEvent *event );
+-#endif
+-    
+     void emitDbTableChanged(const QString &amp;table);
+ 
+ signals:
+diff --git a/bulmages/bulmalib/src/blcombobox.cpp b/bulmages/bulmalib/src/blcombobox.cpp
+index 621d50b..ceeda37 100644
+--- a/bulmages/bulmalib/src/blcombobox.cpp
++++ b/bulmages/bulmalib/src/blcombobox.cpp
+@@ -122,7 +122,7 @@ void BlComboBox::setId ( QString id )
+ 
+ 	setCurrentIndex ( i1 );
+     } catch(...) {
+-	fprintf(stderr, _(&quot;Error de Base de Datos en BlComboBox::setId.\n&quot;).toLatin1());
++	fprintf(stderr, _(&quot;Error de Base de Datos en BlComboBox::setId.\n&quot;).toLatin1().constData());
+ 	exit(0);
+     } // end try
+     
+diff --git a/bulmages/bulmalib/src/blconfig.h.in b/bulmages/bulmalib/src/blconfig.h.in
+index 6064ed6..1fa360f 100644
+--- a/bulmages/bulmalib/src/blconfig.h.in
++++ b/bulmages/bulmalib/src/blconfig.h.in
+@@ -25,8 +25,11 @@
+ 
+ #define CONFIG_DIR_CONFIG &quot;@BULMAGES_CONFIG_DIR@/&quot;
+ #define CONFIG_VERSION    &quot;@BULMAGES_VERSION@&quot;
+-#define CONFIG_DEBUG TRUE
+-//#undef CONFIG_DEBUG
++#ifdef  ALLOW_DEBUG
++#define CONFIG_DEBUG
++#else
++#undef CONFIG_DEBUG
++#endif
+ 
+ #endif
+ 
+diff --git a/bulmages/bulmalib/src/blconfiguration.cpp b/bulmages/bulmalib/src/blconfiguration.cpp
+index 2cd5809..bc38db7 100644
+--- a/bulmages/bulmalib/src/blconfiguration.cpp
++++ b/bulmages/bulmalib/src/blconfiguration.cpp
+@@ -120,30 +120,40 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
+     /// Comprobamos la existencia de los directorios y archivos de configuracion.
+     /// Directorios y archivos obligatorios (sale si no existe):
+     if ( !dirGlobalConf.exists() ) {
++#ifdef CONFIG_DEBUG
+         mensaje = &quot;--&gt; ERROR: El directorio '&quot; + m_dirGlobalConf + &quot;' no existe. Debe crearlo. &lt;--\n&quot;;
+         fprintf ( stderr, &quot;%s&quot;, mensaje.toLatin1().constData() );
++#endif
+         exit ( -1 );
+     } else {
+         if ( !genericGlobalConfFile.exists ( m_dirGlobalConf + m_genericGlobalConfFile ) ) {
++#ifdef CONFIG_DEBUG
+             mensaje = &quot;--&gt; ERROR: El archivo '&quot; + m_dirGlobalConf + m_genericGlobalConfFile + &quot;' no existe. Debe crearlo. &lt;--\n&quot;;
+             fprintf ( stderr, &quot;%s&quot;, mensaje.toLatin1().constData() );
++#endif
+             exit ( -1 );
+         } else {
+             /// 1) Leemos la configuracion del archivo generico global.
++#ifdef CONFIG_DEBUG
+             mensaje = &quot;--&gt; Leyendo el archivo '&quot; + m_dirGlobalConf + m_genericGlobalConfFile + &quot;'&lt;--\n&quot;;
+             fprintf ( stderr, &quot;%s&quot;, mensaje.toLatin1().constData() );
++#endif
+             readConfig ( m_dirGlobalConf + m_genericGlobalConfFile );
+         }// end if
+     } // end if
+ 
+     /// Directorios y archivos opcionales:
+     if ( !programGlobalConfFile.exists ( m_dirGlobalConf + m_programGlobalConfFile ) ) {
++#ifdef CONFIG_DEBUG
+         mensaje = &quot;--&gt; El archivo '&quot; + m_dirGlobalConf + m_programGlobalConfFile + &quot;' no existe. &lt;--\n&quot;;
+         fprintf ( stderr, &quot;%s&quot;, mensaje.toLatin1().constData() );
++#endif
+     } else {
+         /// 2) Leemos la configuracion del archivo especifico global.
++#ifdef CONFIG_DEBUG
+         mensaje = &quot;--&gt; El archivo '&quot; + m_dirGlobalConf + m_programGlobalConfFile + &quot;' existe. Se va a leer.&lt;--\n&quot;;
+         fprintf ( stderr, &quot;%s&quot;, mensaje.toLatin1().constData() );
++#endif
+         readConfig ( m_dirGlobalConf + m_programGlobalConfFile );
+     }// end if
+ 
+@@ -151,36 +161,47 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
+     /// de configuracion.
+     if ( !dirGlobalConf.exists ( m_dirLocalConf ) ) {
+         if ( dirGlobalConf.mkdir ( m_dirLocalConf ) == true ) {
++#ifdef CONFIG_DEBUG
+             mensaje = &quot;--&gt; Se ha creado el directorio '&quot; + m_dirLocalConf + &quot;'. &lt;--\n&quot;;
+             fprintf ( stderr, &quot;%s&quot;, mensaje.toLatin1().constData() );
++#endif
+         } else {
++#ifdef CONFIG_DEBUG
+             mensaje = &quot;--&gt; ERROR: No se ha podido crear el directorio '&quot; + m_dirLocalConf + &quot;'. &lt;--\n&quot;;
+             fprintf ( stderr, &quot;%s&quot;, mensaje.toLatin1().constData() );
++#endif
+             exit ( -1 );
+         }// end if
+     } // end if
+ 
+     if ( !genericLocalConfFile.exists ( m_dirLocalConf + m_genericLocalConfFile ) ) {
++#ifdef CONFIG_DEBUG
+         mensaje = &quot;--&gt; El archivo '&quot; + m_dirLocalConf + m_genericLocalConfFile + &quot;' no existe. &lt;--\n&quot;;
+         fprintf ( stderr, &quot;%s&quot;, mensaje.toLatin1().constData() );
++#endif
+     } else {
+         /// 3) Leemos la configuracion del archivo generico local.
++#ifdef CONFIG_DEBUG
+         mensaje = &quot;--&gt; El archivo '&quot; + m_dirLocalConf + m_genericLocalConfFile + &quot;' existe. Se va a leer.&lt;--\n&quot;;
+         fprintf ( stderr, &quot;%s&quot;, mensaje.toLatin1().constData() );
++#endif
+         readConfig ( m_dirLocalConf + m_genericLocalConfFile );
+     }// end if
+ 
+     if ( !programLocalConfFile.exists ( m_dirLocalConf + m_programLocalConfFile ) ) {
++#ifdef CONFIG_DEBUG
+         mensaje = &quot;--&gt; El archivo '&quot; + m_dirLocalConf + m_programLocalConfFile + &quot;' no existe. &lt;--\n&quot;;
+         fprintf ( stderr, &quot;%s&quot;, mensaje.toLatin1().constData() );
++#endif
+     } else {
+         /// 4) Leemos la configuracion del archivo especifico local.
++#ifdef CONFIG_DEBUG
+         mensaje = &quot;--&gt; El archivo '&quot; + m_dirLocalConf + m_programLocalConfFile + &quot;' existe. Se va a leer.&lt;--\n&quot;;
+         fprintf ( stderr, &quot;%s&quot;, mensaje.toLatin1().constData() );
++#endif
+         readConfig ( m_dirLocalConf + m_programLocalConfFile );
+     }// end if
+ 
+-   
+     fprintf ( stderr, &quot;Configuraciones cargadas&quot;);
+ }
+ 
+@@ -483,6 +504,10 @@ QString BlConfiguration::name( int i )
+        return &quot;CONF_CONT_CTA_COMPRAPRODUCTO&quot;;
+     if ( i == CONF_CONT_CTA_FPAGO )
+        return &quot;CONF_CONT_CTA_FPAGO&quot;;
++    if ( i == CONF_SYNC )
++       return &quot;CONF_SYNC&quot;;
++    if ( i == CONF_URL_SYNC )
++       return &quot;CONF_URL_SYNC&quot;;
+     return &quot;&quot;;
+ }
+ 
+@@ -523,9 +548,10 @@ bool BlConfiguration::readConfig ( QString fich )
+ {
+     QFile arch ( fich );
+     if ( arch.open ( QIODevice::ReadOnly ) ) {
++#ifdef CONFIG_DEBUG
+         QString cadaux1 = &quot;Leyendo configuracion: '&quot; + fich + &quot;'\n&quot;;
+-        fprintf ( stderr, &quot;%s&quot;, cadaux1.toLatin1().constData() );
+-        fprintf ( stderr, &quot;%s&quot;, &quot;\n&quot; );
++        fprintf ( stderr, &quot;%s\n&quot;, cadaux1.toLatin1().constData() );
++#endif
+         QTextStream in ( &amp;arch );
+         
+         // Esto es necesario para que se lean bien los caracteres especiales
+@@ -559,7 +585,9 @@ bool BlConfiguration::readConfig ( QString fich )
+             } // end for
+         } // end while
+         arch.close();
++
+         fprintf ( stderr, &quot;%s&quot;, &quot;FIN Leyendo configuracion\n&quot; );
++
+         return true;
+     } // end if
+     return false;
+@@ -584,7 +612,9 @@ bool BlConfiguration::valueTrue( int i )
+     
+         return ( valor.toLower() == &quot;true&quot; || valor.toLower() == &quot;t&quot; || valor == &quot;1&quot; || valor.toLower() == &quot;yes&quot; || valor.toLower() == &quot;y&quot;);
+     } // end if
+-    fprintf ( stderr, &quot;BlConfiguration : %s&quot;, &quot;Busqueda de valor sin establecer\n&quot; );
++#ifdef CONFIG_DEBUG
++    fprintf ( stderr, &quot;BlConfiguration : %s %s&quot;, &quot;Busqueda de valor sin establecer\n&quot;, name(i).toLatin1().constData() );
++#endif
+     return false;
+ }
+ 
+@@ -607,7 +637,9 @@ QString BlConfiguration::value( int i )
+     
+         return ( valor );
+     } // end if
+-    fprintf ( stderr, &quot;BlConfiguration : %s&quot;, &quot;Busqueda de valor sin establecer\n&quot; );
++#ifdef CONFIG_DEBUG
++    fprintf ( stderr, &quot;BlConfiguration : %s %s&quot;, &quot;Busqueda de valor sin establecer\n&quot;, name(i).toLatin1().constData() );
++#endif
+     return &quot;&quot;;
+ }
+ 
+diff --git a/bulmages/bulmalib/src/blconfiguration.h b/bulmages/bulmalib/src/blconfiguration.h
+index 1ee6054..0440f09 100644
+--- a/bulmages/bulmalib/src/blconfiguration.h
++++ b/bulmages/bulmalib/src/blconfiguration.h
+@@ -56,6 +56,10 @@
+ /// Traspaso de informacion extendida de los articulos en los documentos.
+ #define CONF_USE_DESCARTICULO         53
+ 
++/// Temas de syncronizacion
++#define CONF_SYNC		      60
++#define CONF_URL_SYNC                 61
++
+ 
+ /// Habilitar el uso de scripts de QScript.
+ #define CONF_USE_QSCRIPT           70
+diff --git a/bulmages/bulmalib/src/blfile.cpp b/bulmages/bulmalib/src/blfile.cpp
+index 2e3373d..a61613e 100644
+--- a/bulmages/bulmalib/src/blfile.cpp
++++ b/bulmages/bulmalib/src/blfile.cpp
+@@ -39,7 +39,10 @@ BlFile::BlFile(QString file) : QFile (file) {
+ }
+ 
+ void BlFile::sync() {
+-  BL_FUNC_DEBUG  
++  BL_FUNC_DEBUG 
++  
++  /// Esta clase esta clausurada
++  return;
+ 
+ //  if (!exists() {
+   
+diff --git a/bulmages/bulmalib/src/blfunctions.cpp b/bulmages/bulmalib/src/blfunctions.cpp
+index e21ef35..797dd54 100644
+--- a/bulmages/bulmalib/src/blfunctions.cpp
++++ b/bulmages/bulmalib/src/blfunctions.cpp
+@@ -758,119 +758,6 @@ void blDebugOff ()
+ }
+ 
+ 
+-/// cad = String a presentar como texto de depuracion o como mensaje de error.
+-/// nivel 0 = normal.
+-/// nivel 1 = Bajo.
+-/// nivel 2 = Alto (sale un popup).
+-/// nivel 4 = Comienza depuracion indiscriminada.
+-/// nivel 5 = Termina depuracion indiscriminada.
+-/// nivel 10 = Salida a terminal.
+-#if CONFIG_DEBUG == TRUE
+-#ifdef OLD_DEBUG
+-void blDebug ( const QString &amp;cad, int nivel, const QString &amp;param )
+-{
+-    /// Si el objeto confpr no esta creado puede dar segmentation fault.
+-    if ( g_confpr == NULL ) {
+-        return;
+-    } // end if
+-
+-    static bool semaforo = 0;
+-
+-
+-    if ( g_confpr-&gt;valueTrue( CONF_DEBUG )) {
+-        static QFile file ( g_confpr-&gt;value( CONF_DIR_USER ) + &quot;bulmagesout.txt&quot; );
+-        static QTextStream out ( &amp;file );
+-
+-        static QFile filexml ( g_confpr-&gt;value( CONF_DIR_USER ) + &quot;bulmagesout.xml&quot; );
+-        static QTextStream outxml ( &amp;filexml );
+-
+-        static int auxxml = 0;
+-        static int supnivel = 0;
+-        static int indice = 0;
+-        static QString mensajesanulados[7000];
+-        static QString clasesanuladas[7000];
+-        static int indiceclases = 0;
+-        static QElapsedTimer t;
+-
+-        if ( !semaforo ) {
+-            t.start();
+-            if ( !file.open ( QIODevice::WriteOnly | QIODevice::Text ) )
+-                return;
+-            if ( !filexml.open ( QIODevice::WriteOnly | QIODevice::Text ) )
+-                return;
+-            semaforo = 1;
+-        } // end if
+-
+-
+-        if ( nivel == 5 ) {
+-            supnivel = 0;
+-            nivel = 2;
+-        } // end if
+-        if ( nivel == 4 ) {
+-            supnivel = 2;
+-            nivel = 2;
+-        } // end if
+-        if ( nivel == 0 || nivel == 1 ) {
+-            /// Si la cadena contiene END bajamos el nivel
+-            if ( !cad.startsWith ( &quot;END&quot; ) ) {
+-                auxxml ++;
+-                if ( auxxml &gt; 20 ) auxxml = 1;
+-            } // end if
+-            for ( int i = 0; i &lt; auxxml; i++ ) {
+-                outxml &lt;&lt; &quot;    &quot;;
+-                out &lt;&lt; &quot;    &quot;;
+-            } // end for
+-
+-            QString cad1 = cad;
+-            if ( cad.startsWith ( &quot;END&quot; ) ) {
+-                cad1 = &quot;&lt;/&quot; + cad1.remove ( 0, 4 ) + &quot; time=\&quot;&quot; + QString::number ( t.elapsed() ) + &quot;\&quot; result=\&quot;&quot; + param + &quot;\&quot; &gt;&quot;;
+-            } else if ( cad.contains ( &quot; &quot; ) ) {
+-                cad1 = &quot;    &lt;COMENT value=\&quot;&quot; + cad + &quot; &quot; + param + &quot;\&quot;&gt;&lt;/COMENT&gt;&quot;;
+-            } else {
+-                cad1 = &quot;&lt;&quot; + cad1 + &quot; time=\&quot;&quot; + QString::number ( t.elapsed() ) + &quot;\&quot; param=\&quot;&quot; + param + &quot;\&quot; &gt;&quot;;
+-            } // end if
+-
+-            outxml &lt;&lt; cad1  &lt;&lt; &quot;\n&quot; &lt;&lt; flush;
+-            out &lt;&lt; cad &lt;&lt; &quot; &quot; &lt;&lt; param &lt;&lt; &quot;\n&quot; &lt;&lt; flush;
+-	    
+-            if ( cad.startsWith ( &quot;END&quot; ) ) {
+-                auxxml --;
+-                if ( auxxml &lt; 0 ) auxxml = 20;
+-            } // end if
+-        } // end if
+-        for ( int i = 0; i &lt; indice; i++ ) {
+-            if ( cad == mensajesanulados[i] ) {
+-                return;
+-            } // end if
+-        } // end for
+-        for ( int i = 0; i &lt; indiceclases; i++ ) {
+-            if ( cad.left ( cad.indexOf ( &quot;::&quot; ) ) == clasesanuladas[i] ) {
+-                return;
+-            } // end if
+-        } // end for
+-
+-        if ( nivel == 2 || ( supnivel == 2 &amp;&amp; nivel == 0 ) || nivel == 3 ) {
+-            out &lt;&lt; cad &lt;&lt; &quot; &quot; &lt;&lt; param &lt;&lt; &quot;\n&quot; &lt;&lt; flush;
+-            int err = QMessageBox::information ( NULL,
+-                                                 _ ( &quot;Informacion de depuracion&quot; ),
+-                                                 cad + &quot; &quot; + param,
+-                                                 _ ( &quot;&amp;Continuar&quot; ),
+-                                                 _ ( &quot;&amp;Omitir&quot; ),
+-                                                 _ ( &quot;Omitir &amp;clase&quot; ),
+-                                                 0, 1 );
+-            if ( err == 1 ) {
+-                mensajesanulados[indice++] = cad;
+-            } // end if
+-            if ( err == 2 ) {
+-                clasesanuladas[indiceclases++] = cad.left ( cad.indexOf ( &quot;::&quot; ) );
+-            } // end if
+-        } // end if
+-
+-        file.flush();
+-    }
+-}
+-#endif
+-#endif
+ 
+ void blMsgInfo ( QString cad, QWidget *parent )
+ {
+@@ -1785,5 +1672,10 @@ int blSendEmail ( QString &amp;recipient, QString &amp;bcc, QString &amp;subject, QString &amp;b
+     
+ }
+ 
++/*
++inline int  blfprintf(FILE *fp,const char *format,...)
++{
++   return 0; 
++}
+ 
+-
++*/
+\ No newline at end of file
+diff --git a/bulmages/bulmalib/src/blfunctions.h b/bulmages/bulmalib/src/blfunctions.h
+index 93bee3b..30cabe0 100644
+--- a/bulmages/bulmalib/src/blfunctions.h
++++ b/bulmages/bulmalib/src/blfunctions.h
+@@ -109,20 +109,16 @@ void BL_EXPORT blReplaceStringInFile ( QString, QString, QString, QString );
+ /// Esta funcion permite editar un texto en un QTextEdit y devuelve el texto editado.
+ QString BL_EXPORT blTextEditor ( QString texto );
+ 
+-#if CONFIG_DEBUG == TRUE
+-#ifdef OLD_DEBUG
+-void BL_EXPORT blDebug ( const QString &amp;cad, int nivel = 0, const QString &amp; param = &quot;&quot; );
+-#endif
++#ifdef CONFIG_DEBUG
+ #define BL_FUNC_DEBUG  BlDebug __llamada_debug(Q_FUNC_INFO, 0);
+ #else
+-#ifdef OLD_DEBUG
+-#define blDebug(...)       // sin debug
+-#endif
+ #define BL_FUNC_DEBUG      // sin debug
+ #endif
+ void BL_EXPORT blDebugOn();
+ void BL_EXPORT blDebugOff();
+ 
++// int  blfprintf(FILE *fp,const char *format,...);
++
+ 
+ void BL_EXPORT blMsgInfo ( QString cad, QWidget *parent = 0 );
+ void BL_EXPORT blMsgWarning ( QString cad, QWidget *parent = 0 );
+diff --git a/bulmages/bulmalib/src/blsync.cpp b/bulmages/bulmalib/src/blsync.cpp
+index b192a99..faec59a 100644
+--- a/bulmages/bulmalib/src/blsync.cpp
++++ b/bulmages/bulmalib/src/blsync.cpp
+@@ -53,7 +53,7 @@ void BlSync::sync() {
+       
+       // Cogemos la lista de ficheros
+       
+-      QString url = &quot;<A HREF="http://www.bulmages.com/bulmaincloud/files.txt">http://www.bulmages.com/bulmaincloud/files.txt</A>&quot;;
++      QString url = g_confpr-&gt;value(CONF_URL_SYNC) + &quot;files.txt&quot;;
+       
+       syncManager = new QNetworkAccessManager(this);
+       connect(syncManager, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinished(QNetworkReply*)));
+@@ -93,6 +93,12 @@ void BlSync::sync() {
+ 	  if (descarga) {
+ 	      dest.replace(&quot;[CONF_DIR_OPENREPORTS]&quot;, g_confpr-&gt;value(CONF_DIR_OPENREPORTS));
+ 	      dest.replace(&quot;[CONFIG_DIR_CONFIG]&quot;, CONFIG_DIR_CONFIG);
++	      dest.replace(&quot;[CONF_DIR_PLUGINS]&quot;, g_confpr-&gt;value(CONF_DIR_PLUGINS).replace(&quot;;&quot;,&quot;&quot;));
++#ifdef MS_WIN
++	      dest.replace(&quot;[CONF_EJECUTABLES]&quot;, g_confpr-&gt;value(CONF_EJECUTABLES).replace(&quot;program&quot;,&quot;program1&quot;));
++#else		  
++	      dest.replace(&quot;[CONF_EJECUTABLES]&quot;, g_confpr-&gt;value(CONF_EJECUTABLES));
++#endif		 
+ 	      getFile(filename, dest);
+ 	      if (arch[3] == &quot;T&quot;) {
+ 		reinicio = true;
+@@ -104,7 +110,7 @@ void BlSync::sync() {
+       blCopyFile(g_confpr-&gt;value(CONF_DIR_USER)+&quot;files.txt&quot;, g_confpr-&gt;value(CONF_DIR_USER)+&quot;lfiles.txt&quot;);
+       
+ /// Configuraciones personalizadas
+-      url = &quot;<A HREF="http://www.bulmages.com/bulmaincloud/filesp.txt">http://www.bulmages.com/bulmaincloud/filesp.txt</A>&quot;;
++      url = g_confpr-&gt;value(CONF_URL_SYNC) + &quot;filesp.txt&quot;;
+       
+       getFile(&quot;filesp.txt&quot;, g_confpr-&gt;value(CONF_DIR_USER));
+ 
+@@ -141,6 +147,12 @@ void BlSync::sync() {
+ 	  if (descarga) {
+ 	      dest.replace(&quot;[CONF_DIR_OPENREPORTS]&quot;, g_confpr-&gt;value(CONF_DIR_OPENREPORTS));
+ 	      dest.replace(&quot;[CONFIG_DIR_CONFIG]&quot;, CONFIG_DIR_CONFIG);
++	      dest.replace(&quot;[CONF_DIR_PLUGINS]&quot;, g_confpr-&gt;value(CONF_DIR_PLUGINS).replace(&quot;;&quot;,&quot;&quot;));
++#ifdef MS_WIN
++	      dest.replace(&quot;[CONF_EJECUTABLES]&quot;, g_confpr-&gt;value(CONF_EJECUTABLES).replace(&quot;program&quot;,&quot;program1&quot;));
++#else		  
++	      dest.replace(&quot;[CONF_EJECUTABLES]&quot;, g_confpr-&gt;value(CONF_EJECUTABLES));
++#endif
+ 	      getFile(filename, dest);
+ 	      if (arch[3] == &quot;T&quot;) {
+ 		reinicio = true;
+@@ -171,23 +183,12 @@ void BlSync::getFile(const QString &amp; name, const QString &amp; dest) {
+       QString platform = &quot;LINUX&quot;;
+     #endif
+   
+-      QString url = &quot;<A HREF="http://www.bulmages.com/bulmaincloud/">http://www.bulmages.com/bulmaincloud/</A>&quot;+platform+&quot;/&quot;+dbname+&quot;/&quot;+name;
++      QString url = g_confpr-&gt;value(CONF_URL_SYNC) + platform+&quot;/&quot;+dbname+&quot;/&quot;+name;
+       QNetworkRequest request;
+       request.setUrl(QUrl(url));
+       request.setRawHeader(&quot;User-Agent&quot;, &quot;BgBrowser 1.0&quot;);
+-    
+-
+       
+       QNetworkReply *reply = syncManager-&gt;get(request);
+-      
+-/*      
+-      connect(reply, SIGNAL(readyRead()), this, SLOT(slotReadyRead()));
+-      connect(reply, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(downloadProgress(qint64,qint64)));
+-      connect(reply, SIGNAL(error(QNetworkReply::NetworkError)),
+-	    this, SLOT(slotError(QNetworkReply::NetworkError)));
+-      connect(reply, SIGNAL(sslErrors(QList&lt;QSslError&gt;)),
+-	    this, SLOT(slotSslErrors(QList&lt;QSslError&gt;)));
+-*/
+ 
+       fprintf(stderr, &quot;Iniciando descarga %s\n&quot;, url.toLatin1().constData());
+       request.setUrl(QUrl(url));
+@@ -202,10 +203,7 @@ void BlSync::getFile(const QString &amp; name, const QString &amp; dest) {
+       } // end if
+       delete reply;
+       
+-      
+-      
+-      
+-      url = &quot;<A HREF="http://www.bulmages.com/bulmaincloud/ALL/">http://www.bulmages.com/bulmaincloud/ALL/</A>&quot;+dbname+&quot;/&quot;+name;
++      url = g_confpr-&gt;value(CONF_URL_SYNC) + &quot;ALL/&quot;+dbname+&quot;/&quot;+name;
+       request.setUrl(QUrl(url));
+       reply = syncManager-&gt;get(request);
+       while (reply-&gt;isRunning()) {
+@@ -218,7 +216,7 @@ void BlSync::getFile(const QString &amp; name, const QString &amp; dest) {
+       } // end if
+       delete reply;
+       
+-      url = &quot;<A HREF="http://www.bulmages.com/bulmaincloud/">http://www.bulmages.com/bulmaincloud/</A>&quot;+platform+&quot;/ALL/&quot;+name;
++      url = g_confpr-&gt;value(CONF_URL_SYNC) +platform+&quot;/ALL/&quot;+name;
+       request.setUrl(QUrl(url));
+       reply = syncManager-&gt;get(request);
+       while (reply-&gt;isRunning()) {
+@@ -233,7 +231,7 @@ void BlSync::getFile(const QString &amp; name, const QString &amp; dest) {
+       
+       
+       
+-      url = &quot;<A HREF="http://www.bulmages.com/bulmaincloud/ALL/ALL/">http://www.bulmages.com/bulmaincloud/ALL/ALL/</A>&quot;+name;
++      url = g_confpr-&gt;value(CONF_URL_SYNC) + &quot;ALL/ALL/&quot;+name;
+       request.setUrl(QUrl(url));
+       reply = syncManager-&gt;get(request);
+       while (reply-&gt;isRunning()) {
+@@ -272,8 +270,6 @@ void BlSync::replyFinished(QNetworkReply * reply) {
+   
+   if (reply-&gt;error() == QNetworkReply::NoError) {
+       
+-      fprintf(stderr,&quot;Descarga completa %s\n&quot;, m_file.toLatin1().constData());
+-      
+       QFile localFile(m_destfile);
+       if (!localFile.open(QIODevice::WriteOnly)) {
+ 	  fprintf(stderr,&quot;Error en la escritura del archivo %s\n&quot;, m_destfile.toLatin1().constData());
+@@ -285,8 +281,7 @@ void BlSync::replyFinished(QNetworkReply * reply) {
+       fprintf(stderr, &quot;Archivo escrito %s \n %s\n&quot;, m_destfile.toLatin1().constData(), sdata.data());
+   } else {
+       fprintf(stderr,&quot;Error descargando %s\n&quot;, m_destfile.toLatin1().constData());
+-  }
+-  //reply-&gt;deleteLater();
++  } // end if
+ }
+ 
+ void BlSync::downloadProgress(qint64 a,qint64 b) {
+@@ -295,5 +290,7 @@ void BlSync::downloadProgress(qint64 a,qint64 b) {
+ 
+ int BlSync::exec() {
+   BL_FUNC_DEBUG
+-  sync();
++  if (g_confpr-&gt;valueTrue(CONF_SYNC)) {
++      sync();
++  } // end if
+ }
+\ No newline at end of file
+diff --git a/bulmages/bulmalib/src/blsync.h b/bulmages/bulmalib/src/blsync.h
+index f3dd9e6..90c5fd5 100644
+--- a/bulmages/bulmalib/src/blsync.h
++++ b/bulmages/bulmalib/src/blsync.h
+@@ -34,7 +34,6 @@ class BL_EXPORT BlSync :  public QDialog, public Ui_BlSyncBase
+ {
+     Q_OBJECT
+ private:
+-    QString m_file;
+     QString m_destfile;
+ public:
+     BlSync ( QWidget *parent, const char *name );
+diff --git a/bulmages/installbulmages/bulmages.conf.in b/bulmages/installbulmages/bulmages.conf.in
+index df9734b..e9e4f7c 100644
+--- a/bulmages/installbulmages/bulmages.conf.in
++++ b/bulmages/installbulmages/bulmages.conf.in
+@@ -113,6 +113,10 @@ CONF_URL_CONTENTS		<A HREF="http://www.bulmages.com/?page_id=13">http://www.bulmages.com/?page_id=13</A>
+ # Usar QScript (llamar a los archivos .qs de openreports)
+ CONF_USE_QSCRIPT                        FALSE
+ 
++# Opciones de sincronizacion
++CONF_SYNC                           FALSE
++CONF_URL_SYNC                       <A HREF="http://www.bulmages.com/bulmaincloud/">http://www.bulmages.com/bulmaincloud/</A>
++
+ # NOTA PARA DESARROLLADORES:
+ # --------------------------
+ # Atencion: Las lineas que se agregen en este archivo deben
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007654.html">[BulmaGés]Presentación
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007656.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7655">[ fecha ]</a>
+              <a href="thread.html#7655">[ hilo ]</a>
+              <a href="subject.html#7655">[ asunto ]</a>
+              <a href="author.html#7655">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

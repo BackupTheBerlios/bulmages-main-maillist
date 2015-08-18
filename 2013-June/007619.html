@@ -1,0 +1,3522 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130606210715.A5C09198%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007618.html">
+   <LINK REL="Next"  HREF="007620.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130606210715.A5C09198%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Jue Jun  6 23:07:15 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007618.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007620.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7619">[ fecha ]</a>
+              <a href="thread.html#7619">[ hilo ]</a>
+              <a href="subject.html#7619">[ asunto ]</a>
+              <a href="author.html#7619">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from 66361e6 to 5e840fb
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/66361e616791d2c90cbbb81df6a403d146a3eb06/diffs/5e840fb32b4cbcd364c6c4b3a4fff8bdabea866b">https://gitorious.org/bulmages/bulmages/commit/66361e616791d2c90cbbb81df6a403d146a3eb06/diffs/5e840fb32b4cbcd364c6c4b3a4fff8bdabea866b</A>
+
+Diff: 
+
+commit 5e840fb32b4cbcd364c6c4b3a4fff8bdabea866b
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu Jun 6 23:07:02 2013 +0200
+
+    Adapto canales y centros de coste de bulmacont a bulmafact y hago que todos los demas plugins funcionen con estos, si estan activados
+
+diff --git a/bulmages/bulmafact/plugins/CMakeLists.txt b/bulmages/bulmafact/plugins/CMakeLists.txt
+index beab007..6c72f5e 100644
+--- a/bulmages/bulmafact/plugins/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/CMakeLists.txt
+@@ -104,7 +104,7 @@ add_subdirectory(pluginbf_mayor)
+ add_subdirectory(pluginbf_balance)
+ add_subdirectory(pluginbf_ccaa2ods)
+ add_subdirectory(pluginbf_cuentaresumen)
+-
++add_subdirectory(pluginbf_canalyccoste)
+ 
+ # ======== PLUGINS DE GESTION ALUMNOS
+ add_subdirectory(pluginbf_profesor)
+diff --git a/bulmages/bulmafact/plugins/pluginbf_balance/balanceview.cpp b/bulmages/bulmafact/plugins/pluginbf_balance/balanceview.cpp
+index 0679366..98ef94c 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_balance/balanceview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_balance/balanceview.cpp
+@@ -215,19 +215,22 @@ void BalanceView::presentarSyS ( QString fechaInicial, QString fechaFinal, QStri
+         delete ramas;
+ 
+         QString ccostes = &quot;&quot;;
++	g_plugins-&gt;run(&quot;PgetSelCostes&quot;, &amp;ccostes);
++
++	
+         QString ccanales = &quot;&quot;;
+-/*
++	g_plugins-&gt;run(&quot;PgetSelCanales&quot;, &amp;ccanales);
++	
++	bool sincanal = true;
++	g_plugins-&gt;run(&quot;PgetSinCanal&quot;, &amp;sincanal);
++	
++
+         /// Sacamos la subcadena para centros de coste y canales.
+-        BcCanalSeleccionarView *scanal = mainCompany() -&gt;getselcanales();
+-        BcCentroCosteSeleccionarView *scoste = mainCompany() -&gt;getselccostes();
+-        QString ccostes = scoste-&gt;cadcoste();
+         if ( ccostes != &quot;&quot; ) {
+             ccostes = &quot; AND apunte.idc_coste IN (&quot; + ccostes + &quot;) &quot;;
+- ;
+         } // end if
+ 
+-        QString ccanales = scanal-&gt;cadCanal();
+-        if (scanal-&gt;sinCanal()) {
++        if (sincanal) {
+ 	  if ( ccanales != &quot;&quot; ) {
+ 	      ccanales = &quot; AND (apunte.idcanal ISNULL OR apunte.idcanal IN (&quot; + ccanales + &quot;)) &quot;;
+ 	  } else {
+@@ -240,7 +243,7 @@ void BalanceView::presentarSyS ( QString fechaInicial, QString fechaFinal, QStri
+ 	      ccanales = &quot; AND apunte.idcanal &lt;&gt; NULL &quot;;	    
+ 	  } // end if
+ 	} // end if
+-*/
++
+         QString wherecostesycanales = ccostes + ccanales;
+ 
+         /// Ahora, usaremos el &aacute;rbol para poner los datos a cada hoja (cuenta)
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/CMakeLists.txt
+new file mode 100644
+index 0000000..9a55ed5
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/CMakeLists.txt
+@@ -0,0 +1,113 @@
++###########################################
++# Plugin for bulmafact                    #
++###########################################
++#pluginbf_canalyccoste
++
++set (plugin pluginbf_canalyccoste)
++
++file(GLOB plugin_SRC *.c *.cpp *.cxx)
++file(GLOB plugin_MOCS *.hpp *.h)
++file(GLOB plugin_UIS *.ui)
++
++
++# Exclude files with no QObject macro.
++file(GLOB plugin_NO_MOCS pdefs_pluginbf_canalyccoste.h pluginbf_canalyccoste.h bcplancontablearbol.h)
++list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
++
++include_directories(
++    ${QT_INCLUDE_DIR}
++	${PGSQL_INCLUDE_DIR}
++	${QT_QTXML_INCLUDE_DIR}
++        ${QT_QTSCRIPT_INCLUDE_DIR}
++	${CMAKE_CURRENT_BINARY_DIR}
++	${CMAKE_CURRENT_SOURCE_DIR}
++	${CMAKE_BINARY_DIR}/bulmalib/src/
++	${CMAKE_SOURCE_DIR}/bulmalib/src/
++	${CMAKE_BINARY_DIR}/bulmafact/src/
++	${CMAKE_SOURCE_DIR}/bulmafact/src/
++   ${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_cuenta/
++   ${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_cuenta/)
++
++# generate rules for building source files from the resources
++#QT5_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
++
++# generate rules for building source files that moc generates
++QT5_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
++QT5_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
++#QT5_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
++
++
++IF(WIN32)
++SET(CMAKE_SHARED_LINKER_FLAGS &quot;${CMAKE_SHARED_LINKER_FLAGS} -Wl,-enable-auto-import&quot;)
++ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBC_BALANCE)
++ENDIF(WIN32)
++
++
++#ADD_DEFINITIONS(${QT_DEFINITIONS})
++ADD_DEFINITIONS(-DQT_SHARED)
++ADD_DEFINITIONS(-DQT_PLUGIN)
++
++if(APPLE)
++  set(CMAKE_SHARED_LINKER_FLAGS &quot;${CMAKE_SHARED_LINKER_FLAGS} -undefined dynamic_lookup&quot;)
++endif(APPLE)
++
++# i18n
++if(WIN32)
++ADD_DEFINITIONS(&quot;-D_(String)=blI18n(\\\&quot;${plugin}\\\&quot;,String)&quot; )
++ADD_DEFINITIONS(&quot;-DN_(String,Int)=blI18n(\\\&quot;${plugin}\\\&quot;,String)&quot; )
++endif(WIN32)
++
++if(NOT WIN32)
++ADD_DEFINITIONS(&quot;-D'_(String)=blI18n(\&quot;${plugin}\&quot;,String)'&quot; )
++ADD_DEFINITIONS(&quot;-D'N_(String,Int)=blI18n(\&quot;${plugin}\&quot;,String)'&quot; )
++endif(NOT WIN32)
++
++
++if(USE_GETTEXT)
++   set(plugin_i18n ${plugin_SRC} ${plugin_MOC_SRCS} ${plugin_UIS_H}
++                        ${plugin_SRCS} ${plugin_MOCS})
++   GETTEXT_CREATE_TEMPLATE(${plugin} ${CMAKE_CURRENT_BINARY_DIR}
++                                ${CMAKE_CURRENT_SOURCE_DIR} plugin_i18n)
++   GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/${plugin}.pot
++                                ALL LANGUAGES es_ES ca_ES fr_FR)
++endif(USE_GETTEXT)
++
++# build sources, moc'd sources, and rcc'd sources
++add_library(${plugin} SHARED ${plugin_SRC} ${plugin_MOC_SRCS}
++	${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
++
++
++set_target_properties( ${plugin} PROPERTIES 
++  SOVERSION &quot;${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}&quot;
++  VERSION &quot;${BULMAGES_VERSION}&quot;)
++
++if(WIN32)
++target_link_libraries(${plugin} libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
++else(WIN32)
++target_link_libraries(${plugin} libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
++endif(WIN32)
++
++add_dependencies(${plugin} bulmafact bulmalib pluginbf_cuenta)
++
++install_targets(/lib/bulmafact/plugins ${plugin})
++
++configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)
++install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/bulmafact-plugins/ RENAME README.es.${plugin})
++
++# Instalamos el archivo README para las descripciones de BulmaSetup
++configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.ca ${CMAKE_CURRENT_BINARY_DIR}/README.ca @ONLY)
++install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.ca DESTINATION share/bulmages/bulmafact-plugins/ RENAME README.ca.${plugin})
++
++# Instalamos el archivo README para las descripciones de BulmaSetup
++configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.fr ${CMAKE_CURRENT_BINARY_DIR}/README.fr @ONLY)
++install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.fr DESTINATION share/bulmages/bulmafact-plugins/ RENAME README.fr.${plugin})
++
++# Instalamos el archivo README para las descripciones de BulmaSetup
++configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.en ${CMAKE_CURRENT_BINARY_DIR}/README.en @ONLY)
++install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.en DESTINATION share/bulmages/bulmafact-plugins/ RENAME README.en.${plugin})
++
++set(plugin_STR ${plugin_SRC} ${plugin_MOC_SRCS}
++   ${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
++
++
++
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/README.ca b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/README.ca
+new file mode 100644
+index 0000000..4be565e
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/README.ca
+@@ -0,0 +1,34 @@
++#######
++#Plugins
++#######
++#README.ca
++20080501
++
++Nombre: Balance
++
++Biblioteca: libpluginbf_canalyccoste.so
++
++Descripción: &lt;H1&gt;Balance jerarquico&lt;/H1&gt;
++&lt;P&gt;Permite hacer un canalyccoste jerárquico.&lt;/P&gt;
++&lt;HR&gt;
++
++ParmBD: -
++
++ArchivoSQLpatch: -
++
++ArchivoSQLdeins: -
++
++Dependencias:
++
++Incompatibles:
++
++Reports: canalyccoste.rml
++
++Categorias: Contabilidad general;Experimentales;
++
++Orden: 20
++
++Comentarios: -
++
++
++    
+\ No newline at end of file
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/README.en b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/README.en
+new file mode 100644
+index 0000000..f3be18c
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/README.en
+@@ -0,0 +1,34 @@
++#######
++#Plugins
++#######
++#README.en
++20080501
++
++Nombre: Balance
++
++Biblioteca: libpluginbf_canalyccoste.so
++
++Descripción: &lt;H1&gt;Balance jerarquico&lt;/H1&gt;
++&lt;P&gt;Permite hacer un canalyccoste jerárquico.&lt;/P&gt;
++&lt;HR&gt;
++
++ParmBD: -
++
++ArchivoSQLpatch: -
++
++ArchivoSQLdeins: -
++
++Dependencias:
++
++Incompatibles:
++
++Reports: canalyccoste.rml
++
++Categorias: Contabilidad general;Experimentales;
++
++Orden: 20
++
++Comentarios: -
++
++
++    
+\ No newline at end of file
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/README.es b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/README.es
+new file mode 100644
+index 0000000..132eef1
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/README.es
+@@ -0,0 +1,34 @@
++#######
++#Plugins
++#######
++#README.es
++20080501
++
++Nombre: Balance
++
++Biblioteca: libpluginbf_canalyccoste.so
++
++Descripción: &lt;H1&gt;Balance jerarquico&lt;/H1&gt;
++&lt;P&gt;Permite hacer un canalyccoste jerárquico.&lt;/P&gt;
++&lt;HR&gt;
++
++ParmBD: -
++
++ArchivoSQLpatch: -
++
++ArchivoSQLdeins: -
++
++Dependencias: libpluginbf_factcont;
++
++Incompatibles:
++
++Reports: canalyccoste.rml
++
++Categorias: Contabilidad general;Experimentales;
++
++Orden: 904
++
++Comentarios: -
++
++
++    
+\ No newline at end of file
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/README.fr b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/README.fr
+new file mode 100644
+index 0000000..2d5f8bc
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/README.fr
+@@ -0,0 +1,35 @@
++#######
++#Plugins
++#######
++#README.fr
++20110203
++
++Nombre: Balance
++
++Biblioteca: libpluginbf_canalyccoste.so
++
++Descripción: &lt;H1&gt;Balance&lt;/H1&gt;
++&lt;P&gt;Permettre de faire une canalyccoste.&lt;/P&gt;
++&lt;HR&gt;
++
++ParmBD: -
++
++ArchivoSQLpatch: -
++
++ArchivoSQLdeins: -
++
++Dependances:
++
++Incompatibles:
++
++Reports: 
++
++Categorias: Comptabilite generale ; Experimental;
++
++Orden: 100
++
++Comentarios: -
++
++
++
++    
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bcbuscarcanal.cpp b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bcbuscarcanal.cpp
+new file mode 100644
+index 0000000..4b49ac0
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bcbuscarcanal.cpp
+@@ -0,0 +1,82 @@
++/***************************************************************************
++ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
++ *   <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>                                                  *
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 2 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program; if not, write to the                         *
++ *   Free Software Foundation, Inc.,                                       *
++ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
++ ***************************************************************************/
++
++#include  &quot;bcbuscarcanal.h&quot;
++#include  &quot;bfcompany.h&quot;
++#include  &quot;blfunctions.h&quot;
++
++
++///
++/**
++**/
++BcBuscarCanal::BcBuscarCanal ( QWidget *parent )
++        : BlComboBox ( parent )
++{
++    BL_FUNC_DEBUG
++    setQuery ( &quot;SELECT idcanal, nombre FROM canal ORDER BY nombre&quot; );
++    setTableName ( &quot;canal&quot; );
++    setFieldId ( &quot;idcanal&quot; );
++    m_valores[&quot;nombre&quot;] = &quot;&quot;;
++    
++}
++
++
++///
++/**
++**/
++BcBuscarCanal::~BcBuscarCanal()
++{
++    BL_FUNC_DEBUG
++    
++}
++
++
++/// ===================================================================
++/// Busqueda Cuenta Delegate para usar con los subforms
++/// ===================================================================
++/** Inicializa todos los componentes del Widget a NULL para que no haya posibles confusiones
++    sobre si un elemento ha sido creado o no.
++/**
++\param parent
++**/
++BcBuscarCanalDelegate::BcBuscarCanalDelegate ( QWidget *parent )
++        : BlComboBoxDelegate ( parent )
++{
++    BL_FUNC_DEBUG
++    setQuery ( &quot;SELECT idcanal, nombre FROM canal ORDER BY nombre&quot; );
++    setTableName ( &quot;canal&quot; );
++    setFieldId ( &quot;idcanal&quot; );
++    m_valores[&quot;nombre&quot;] = &quot;&quot;;
++    
++}
++
++
++
++/// Libera la memoria reservada.
++/**
++**/
++BcBuscarCanalDelegate::~BcBuscarCanalDelegate()
++{
++    BL_FUNC_DEBUG
++    
++}
++
++
++
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bcbuscarcanal.h b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bcbuscarcanal.h
+new file mode 100644
+index 0000000..d9150f0
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bcbuscarcanal.h
+@@ -0,0 +1,53 @@
++/***************************************************************************
++ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
++ *   <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>                                                  *
++ *   <A HREF="http://www.iglues.org">http://www.iglues.org</A> Asociación Iglues -- Contabilidad Linux         *
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 2 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program; if not, write to the                         *
++ *   Free Software Foundation, Inc.,                                       *
++ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
++ ***************************************************************************/
++
++#ifndef BCBUSCARCANAL_H
++#define BCBUSCARCANAL_H
++
++#include &quot;blcomboboxdelegate.h&quot;
++#include &quot;blcombobox.h&quot;
++#include &quot;blwidget.h&quot;
++#include &quot;bfcompany.h&quot;
++#include &quot;blpostgresqlclient.h&quot;
++
++
++class BC_EXPORT BcBuscarCanalDelegate : public BlComboBoxDelegate
++{
++    Q_OBJECT
++
++public:
++    BcBuscarCanalDelegate ( QWidget *parent = 0 );
++    ~BcBuscarCanalDelegate();
++};
++
++
++
++class BC_EXPORT BcBuscarCanal : public BlComboBox
++{
++    Q_OBJECT
++
++public:
++    BcBuscarCanal ( QWidget *parent = 0 );
++    ~BcBuscarCanal();
++};
++
++#endif
++
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bcbuscarcentrocoste.cpp b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bcbuscarcentrocoste.cpp
+new file mode 100644
+index 0000000..1b3b2cd
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bcbuscarcentrocoste.cpp
+@@ -0,0 +1,84 @@
++/***************************************************************************
++ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
++ *   <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>                                                  *
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 2 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program; if not, write to the                         *
++ *   Free Software Foundation, Inc.,                                       *
++ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
++ ***************************************************************************/
++
++#include  &quot;bcbuscarcentrocoste.h&quot;
++#include  &quot;blfunctions.h&quot;
++#include  &quot;bfcompany.h&quot;
++
++
++///
++/**
++\param parent
++**/
++BcBuscarCentroCoste::BcBuscarCentroCoste ( QWidget *parent, const char * )
++        : BlComboBox ( parent )
++{
++    BL_FUNC_DEBUG
++    setQuery ( &quot;SELECT idc_coste, nombre FROM c_coste ORDER BY nombre&quot; );
++    setTableName ( &quot;c_coste&quot; );
++    setFieldId ( &quot;idc_coste&quot; );
++    m_valores[&quot;nombre&quot;] = &quot;&quot;;
++    
++}
++
++
++///
++/**
++**/
++BcBuscarCentroCoste::~BcBuscarCentroCoste()
++{
++    BL_FUNC_DEBUG
++    
++}
++
++
++
++/// ===================================================================
++/// Busqueda Cuenta Delegate para usar con los subforms
++/// ===================================================================
++/** Inicializa todos los componentes del Widget a NULL para que no haya posibles confusiones
++    sobre si un elemento ha sido creado o no.
++    Conecta el SIGNAL activated() con m_activated() para tratarlo.
++*/
++/**
++\param parent
++**/
++BcBuscarCentroCosteDelegate::BcBuscarCentroCosteDelegate ( QWidget *parent )
++        : BlComboBoxDelegate ( parent )
++{
++    BL_FUNC_DEBUG
++    setQuery ( &quot;SELECT idc_coste, nombre FROM c_coste ORDER BY nombre&quot; );
++    setTableName ( &quot;c_coste&quot; );
++    setFieldId ( &quot;idc_coste&quot; );
++    m_valores[&quot;nombre&quot;] = &quot;&quot;;
++    
++}
++
++
++/// Libera la memoria reservada.
++/**
++**/
++BcBuscarCentroCosteDelegate::~BcBuscarCentroCosteDelegate()
++{
++    BL_FUNC_DEBUG
++    
++}
++
++
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bcbuscarcentrocoste.h b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bcbuscarcentrocoste.h
+new file mode 100644
+index 0000000..e4e54fa
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bcbuscarcentrocoste.h
+@@ -0,0 +1,53 @@
++/***************************************************************************
++ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
++ *   <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>                                                  *
++ *   <A HREF="http://www.iglues.org">http://www.iglues.org</A> Asociación Iglues -- Contabilidad Linux         *
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 2 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program; if not, write to the                         *
++ *   Free Software Foundation, Inc.,                                       *
++ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
++ ***************************************************************************/
++
++#ifndef BCBUSCARCENTROCOSTE_H
++#define BCBUSCARCENTROCOSTE_H
++
++#include &quot;blcomboboxdelegate.h&quot;
++#include &quot;blcombobox.h&quot;
++#include &quot;blpostgresqlclient.h&quot;
++#include &quot;blwidget.h&quot;
++
++
++class BfCompany;
++
++
++class BC_EXPORT BcBuscarCentroCosteDelegate : public BlComboBoxDelegate
++{
++    Q_OBJECT
++
++public:
++    BcBuscarCentroCosteDelegate ( QWidget *parent = 0 );
++    ~BcBuscarCentroCosteDelegate();
++};
++
++
++class BC_EXPORT BcBuscarCentroCoste : public BlComboBox
++{
++    Q_OBJECT
++
++public:
++    BcBuscarCentroCoste ( QWidget *parent = 0, const char *name = 0 );
++    ~BcBuscarCentroCoste();
++};
++
++#endif
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccanalbase.ui b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccanalbase.ui
+new file mode 100644
+index 0000000..2c08842
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccanalbase.ui
+@@ -0,0 +1,428 @@
++&lt;ui version=&quot;4.0&quot; &gt;
++ &lt;class&gt;BcCanalBase&lt;/class&gt;
++ &lt;widget class=&quot;QWidget&quot; name=&quot;BcCanalBase&quot; &gt;
++  &lt;property name=&quot;geometry&quot; &gt;
++   &lt;rect&gt;
++    &lt;x&gt;0&lt;/x&gt;
++    &lt;y&gt;0&lt;/y&gt;
++    &lt;width&gt;442&lt;/width&gt;
++    &lt;height&gt;444&lt;/height&gt;
++   &lt;/rect&gt;
++  &lt;/property&gt;
++  &lt;property name=&quot;windowTitle&quot; &gt;
++   &lt;string&gt;Canales&lt;/string&gt;
++  &lt;/property&gt;
++  &lt;property name=&quot;windowIcon&quot; &gt;
++   &lt;iconset resource=&quot;../../bulmages.qrc&quot; &gt;:/BulmaCont32x32/images/png/i_canales.xpm&lt;/iconset&gt;
++  &lt;/property&gt;
++  &lt;layout class=&quot;QVBoxLayout&quot; &gt;
++   &lt;property name=&quot;spacing&quot; &gt;
++    &lt;number&gt;5&lt;/number&gt;
++   &lt;/property&gt;
++   &lt;property name=&quot;leftMargin&quot; &gt;
++    &lt;number&gt;5&lt;/number&gt;
++   &lt;/property&gt;
++   &lt;property name=&quot;topMargin&quot; &gt;
++    &lt;number&gt;5&lt;/number&gt;
++   &lt;/property&gt;
++   &lt;property name=&quot;rightMargin&quot; &gt;
++    &lt;number&gt;5&lt;/number&gt;
++   &lt;/property&gt;
++   &lt;property name=&quot;bottomMargin&quot; &gt;
++    &lt;number&gt;5&lt;/number&gt;
++   &lt;/property&gt;
++   &lt;item&gt;
++    &lt;layout class=&quot;QHBoxLayout&quot; &gt;
++     &lt;property name=&quot;spacing&quot; &gt;
++      &lt;number&gt;0&lt;/number&gt;
++     &lt;/property&gt;
++     &lt;property name=&quot;leftMargin&quot; &gt;
++      &lt;number&gt;0&lt;/number&gt;
++     &lt;/property&gt;
++     &lt;property name=&quot;topMargin&quot; &gt;
++      &lt;number&gt;0&lt;/number&gt;
++     &lt;/property&gt;
++     &lt;property name=&quot;rightMargin&quot; &gt;
++      &lt;number&gt;0&lt;/number&gt;
++     &lt;/property&gt;
++     &lt;property name=&quot;bottomMargin&quot; &gt;
++      &lt;number&gt;0&lt;/number&gt;
++     &lt;/property&gt;
++     &lt;item&gt;
++      &lt;widget class=&quot;QLabel&quot; name=&quot;label&quot; &gt;
++       &lt;property name=&quot;minimumSize&quot; &gt;
++        &lt;size&gt;
++         &lt;width&gt;48&lt;/width&gt;
++         &lt;height&gt;48&lt;/height&gt;
++        &lt;/size&gt;
++       &lt;/property&gt;
++       &lt;property name=&quot;maximumSize&quot; &gt;
++        &lt;size&gt;
++         &lt;width&gt;48&lt;/width&gt;
++         &lt;height&gt;48&lt;/height&gt;
++        &lt;/size&gt;
++       &lt;/property&gt;
++       &lt;property name=&quot;text&quot; &gt;
++        &lt;string/&gt;
++       &lt;/property&gt;
++       &lt;property name=&quot;pixmap&quot; &gt;
++        &lt;pixmap resource=&quot;../../bulmages.qrc&quot; &gt;:/BulmaCont32x32/images/png/i_canales.xpm&lt;/pixmap&gt;
++       &lt;/property&gt;
++       &lt;property name=&quot;scaledContents&quot; &gt;
++        &lt;bool&gt;true&lt;/bool&gt;
++       &lt;/property&gt;
++      &lt;/widget&gt;
++     &lt;/item&gt;
++     &lt;item&gt;
++      &lt;widget class=&quot;QFrame&quot; name=&quot;frame&quot; &gt;
++       &lt;property name=&quot;sizePolicy&quot; &gt;
++        &lt;sizepolicy vsizetype=&quot;Fixed&quot; hsizetype=&quot;Expanding&quot; &gt;
++         &lt;horstretch&gt;0&lt;/horstretch&gt;
++         &lt;verstretch&gt;0&lt;/verstretch&gt;
++        &lt;/sizepolicy&gt;
++       &lt;/property&gt;
++       &lt;property name=&quot;frameShape&quot; &gt;
++        &lt;enum&gt;QFrame::StyledPanel&lt;/enum&gt;
++       &lt;/property&gt;
++       &lt;property name=&quot;frameShadow&quot; &gt;
++        &lt;enum&gt;QFrame::Raised&lt;/enum&gt;
++       &lt;/property&gt;
++       &lt;layout class=&quot;QHBoxLayout&quot; &gt;
++        &lt;property name=&quot;leftMargin&quot; &gt;
++         &lt;number&gt;5&lt;/number&gt;
++        &lt;/property&gt;
++        &lt;property name=&quot;topMargin&quot; &gt;
++         &lt;number&gt;5&lt;/number&gt;
++        &lt;/property&gt;
++        &lt;property name=&quot;rightMargin&quot; &gt;
++         &lt;number&gt;5&lt;/number&gt;
++        &lt;/property&gt;
++        &lt;property name=&quot;bottomMargin&quot; &gt;
++         &lt;number&gt;5&lt;/number&gt;
++        &lt;/property&gt;
++        &lt;item&gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_crear&quot; &gt;
++          &lt;property name=&quot;minimumSize&quot; &gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;maximumSize&quot; &gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;text&quot; &gt;
++           &lt;string/&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;icon&quot; &gt;
++           &lt;iconset resource=&quot;../../bulmages.qrc&quot; &gt;:/Images/document-new.png&lt;/iconset&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;iconSize&quot; &gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++         &lt;/widget&gt;
++        &lt;/item&gt;
++        &lt;item&gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_guardar&quot; &gt;
++          &lt;property name=&quot;minimumSize&quot; &gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;maximumSize&quot; &gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;text&quot; &gt;
++           &lt;string/&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;icon&quot; &gt;
++           &lt;iconset resource=&quot;../../bulmages.qrc&quot; &gt;:/Images/edit-save.png&lt;/iconset&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;iconSize&quot; &gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++         &lt;/widget&gt;
++        &lt;/item&gt;
++        &lt;item&gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_borrar&quot; &gt;
++          &lt;property name=&quot;minimumSize&quot; &gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;maximumSize&quot; &gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;text&quot; &gt;
++           &lt;string/&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;icon&quot; &gt;
++           &lt;iconset resource=&quot;../../bulmages.qrc&quot; &gt;:/Images/edit-delete.png&lt;/iconset&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;iconSize&quot; &gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++         &lt;/widget&gt;
++        &lt;/item&gt;
++        &lt;item&gt;
++         &lt;spacer&gt;
++          &lt;property name=&quot;orientation&quot; &gt;
++           &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;sizeType&quot; &gt;
++           &lt;enum&gt;QSizePolicy::Expanding&lt;/enum&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;sizeHint&quot; &gt;
++           &lt;size&gt;
++            &lt;width&gt;161&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++         &lt;/spacer&gt;
++        &lt;/item&gt;
++       &lt;/layout&gt;
++      &lt;/widget&gt;
++     &lt;/item&gt;
++    &lt;/layout&gt;
++   &lt;/item&gt;
++   &lt;item&gt;
++    &lt;layout class=&quot;QHBoxLayout&quot; &gt;
++     &lt;property name=&quot;spacing&quot; &gt;
++      &lt;number&gt;0&lt;/number&gt;
++     &lt;/property&gt;
++     &lt;property name=&quot;leftMargin&quot; &gt;
++      &lt;number&gt;0&lt;/number&gt;
++     &lt;/property&gt;
++     &lt;property name=&quot;topMargin&quot; &gt;
++      &lt;number&gt;0&lt;/number&gt;
++     &lt;/property&gt;
++     &lt;property name=&quot;rightMargin&quot; &gt;
++      &lt;number&gt;0&lt;/number&gt;
++     &lt;/property&gt;
++     &lt;property name=&quot;bottomMargin&quot; &gt;
++      &lt;number&gt;0&lt;/number&gt;
++     &lt;/property&gt;
++     &lt;item&gt;
++      &lt;spacer&gt;
++       &lt;property name=&quot;orientation&quot; &gt;
++        &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
++       &lt;/property&gt;
++       &lt;property name=&quot;sizeHint&quot; &gt;
++        &lt;size&gt;
++         &lt;width&gt;40&lt;/width&gt;
++         &lt;height&gt;20&lt;/height&gt;
++        &lt;/size&gt;
++       &lt;/property&gt;
++      &lt;/spacer&gt;
++     &lt;/item&gt;
++     &lt;item&gt;
++      &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel2_2&quot; &gt;
++       &lt;property name=&quot;text&quot; &gt;
++        &lt;string&gt;Canal:&lt;/string&gt;
++       &lt;/property&gt;
++      &lt;/widget&gt;
++     &lt;/item&gt;
++     &lt;item&gt;
++      &lt;widget class=&quot;BcBuscarCanal&quot; name=&quot;mui_idCanal&quot; &gt;
++       &lt;property name=&quot;sizePolicy&quot; &gt;
++        &lt;sizepolicy vsizetype=&quot;Fixed&quot; hsizetype=&quot;Expanding&quot; &gt;
++         &lt;horstretch&gt;0&lt;/horstretch&gt;
++         &lt;verstretch&gt;0&lt;/verstretch&gt;
++        &lt;/sizepolicy&gt;
++       &lt;/property&gt;
++      &lt;/widget&gt;
++     &lt;/item&gt;
++     &lt;item&gt;
++      &lt;spacer&gt;
++       &lt;property name=&quot;orientation&quot; &gt;
++        &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
++       &lt;/property&gt;
++       &lt;property name=&quot;sizeType&quot; &gt;
++        &lt;enum&gt;QSizePolicy::Expanding&lt;/enum&gt;
++       &lt;/property&gt;
++       &lt;property name=&quot;sizeHint&quot; &gt;
++        &lt;size&gt;
++         &lt;width&gt;61&lt;/width&gt;
++         &lt;height&gt;20&lt;/height&gt;
++        &lt;/size&gt;
++       &lt;/property&gt;
++      &lt;/spacer&gt;
++     &lt;/item&gt;
++    &lt;/layout&gt;
++   &lt;/item&gt;
++   &lt;item&gt;
++    &lt;widget class=&quot;QGroupBox&quot; name=&quot;groupBox&quot; &gt;
++     &lt;property name=&quot;title&quot; &gt;
++      &lt;string&gt;Informacion del canal:&lt;/string&gt;
++     &lt;/property&gt;
++     &lt;layout class=&quot;QVBoxLayout&quot; &gt;
++      &lt;property name=&quot;spacing&quot; &gt;
++       &lt;number&gt;5&lt;/number&gt;
++      &lt;/property&gt;
++      &lt;property name=&quot;leftMargin&quot; &gt;
++       &lt;number&gt;5&lt;/number&gt;
++      &lt;/property&gt;
++      &lt;property name=&quot;topMargin&quot; &gt;
++       &lt;number&gt;5&lt;/number&gt;
++      &lt;/property&gt;
++      &lt;property name=&quot;rightMargin&quot; &gt;
++       &lt;number&gt;5&lt;/number&gt;
++      &lt;/property&gt;
++      &lt;property name=&quot;bottomMargin&quot; &gt;
++       &lt;number&gt;5&lt;/number&gt;
++      &lt;/property&gt;
++      &lt;item&gt;
++       &lt;layout class=&quot;QHBoxLayout&quot; &gt;
++        &lt;property name=&quot;spacing&quot; &gt;
++         &lt;number&gt;0&lt;/number&gt;
++        &lt;/property&gt;
++        &lt;property name=&quot;leftMargin&quot; &gt;
++         &lt;number&gt;0&lt;/number&gt;
++        &lt;/property&gt;
++        &lt;property name=&quot;topMargin&quot; &gt;
++         &lt;number&gt;0&lt;/number&gt;
++        &lt;/property&gt;
++        &lt;property name=&quot;rightMargin&quot; &gt;
++         &lt;number&gt;0&lt;/number&gt;
++        &lt;/property&gt;
++        &lt;property name=&quot;bottomMargin&quot; &gt;
++         &lt;number&gt;0&lt;/number&gt;
++        &lt;/property&gt;
++        &lt;item&gt;
++         &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1&quot; &gt;
++          &lt;property name=&quot;text&quot; &gt;
++           &lt;string&gt;Nombre:&lt;/string&gt;
++          &lt;/property&gt;
++         &lt;/widget&gt;
++        &lt;/item&gt;
++        &lt;item&gt;
++         &lt;widget class=&quot;QLineEdit&quot; name=&quot;mui_nomCanal&quot; /&gt;
++        &lt;/item&gt;
++       &lt;/layout&gt;
++      &lt;/item&gt;
++      &lt;item&gt;
++       &lt;layout class=&quot;QVBoxLayout&quot; &gt;
++        &lt;property name=&quot;spacing&quot; &gt;
++         &lt;number&gt;0&lt;/number&gt;
++        &lt;/property&gt;
++        &lt;property name=&quot;leftMargin&quot; &gt;
++         &lt;number&gt;0&lt;/number&gt;
++        &lt;/property&gt;
++        &lt;property name=&quot;topMargin&quot; &gt;
++         &lt;number&gt;0&lt;/number&gt;
++        &lt;/property&gt;
++        &lt;property name=&quot;rightMargin&quot; &gt;
++         &lt;number&gt;0&lt;/number&gt;
++        &lt;/property&gt;
++        &lt;property name=&quot;bottomMargin&quot; &gt;
++         &lt;number&gt;0&lt;/number&gt;
++        &lt;/property&gt;
++        &lt;item&gt;
++         &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_2&quot; &gt;
++          &lt;property name=&quot;text&quot; &gt;
++           &lt;string&gt;Descripcion:&lt;/string&gt;
++          &lt;/property&gt;
++         &lt;/widget&gt;
++        &lt;/item&gt;
++        &lt;item&gt;
++         &lt;widget class=&quot;QTextEdit&quot; name=&quot;mui_descCanal&quot; /&gt;
++        &lt;/item&gt;
++       &lt;/layout&gt;
++      &lt;/item&gt;
++     &lt;/layout&gt;
++    &lt;/widget&gt;
++   &lt;/item&gt;
++   &lt;item&gt;
++    &lt;layout class=&quot;QHBoxLayout&quot; &gt;
++     &lt;property name=&quot;spacing&quot; &gt;
++      &lt;number&gt;0&lt;/number&gt;
++     &lt;/property&gt;
++     &lt;property name=&quot;leftMargin&quot; &gt;
++      &lt;number&gt;0&lt;/number&gt;
++     &lt;/property&gt;
++     &lt;property name=&quot;topMargin&quot; &gt;
++      &lt;number&gt;0&lt;/number&gt;
++     &lt;/property&gt;
++     &lt;property name=&quot;rightMargin&quot; &gt;
++      &lt;number&gt;0&lt;/number&gt;
++     &lt;/property&gt;
++     &lt;property name=&quot;bottomMargin&quot; &gt;
++      &lt;number&gt;0&lt;/number&gt;
++     &lt;/property&gt;
++     &lt;item&gt;
++      &lt;spacer&gt;
++       &lt;property name=&quot;orientation&quot; &gt;
++        &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
++       &lt;/property&gt;
++       &lt;property name=&quot;sizeType&quot; &gt;
++        &lt;enum&gt;QSizePolicy::Expanding&lt;/enum&gt;
++       &lt;/property&gt;
++       &lt;property name=&quot;sizeHint&quot; &gt;
++        &lt;size&gt;
++         &lt;width&gt;191&lt;/width&gt;
++         &lt;height&gt;21&lt;/height&gt;
++        &lt;/size&gt;
++       &lt;/property&gt;
++      &lt;/spacer&gt;
++     &lt;/item&gt;
++     &lt;item&gt;
++      &lt;widget class=&quot;QPushButton&quot; name=&quot;pushButton2&quot; &gt;
++       &lt;property name=&quot;text&quot; &gt;
++        &lt;string&gt;&amp;Cerrar&lt;/string&gt;
++       &lt;/property&gt;
++      &lt;/widget&gt;
++     &lt;/item&gt;
++    &lt;/layout&gt;
++   &lt;/item&gt;
++  &lt;/layout&gt;
++ &lt;/widget&gt;
++ &lt;layoutdefault spacing=&quot;6&quot; margin=&quot;11&quot; /&gt;
++ &lt;customwidgets&gt;
++  &lt;customwidget&gt;
++   &lt;class&gt;BcBuscarCanal&lt;/class&gt;
++   &lt;extends&gt;QComboBox&lt;/extends&gt;
++   &lt;header&gt;bcbuscarcanal.h&lt;/header&gt;
++  &lt;/customwidget&gt;
++ &lt;/customwidgets&gt;
++ &lt;resources&gt;
++  &lt;include location=&quot;../../bulmages.qrc&quot; /&gt;
++ &lt;/resources&gt;
++ &lt;connections&gt;
++  &lt;connection&gt;
++   &lt;sender&gt;pushButton2&lt;/sender&gt;
++   &lt;signal&gt;clicked()&lt;/signal&gt;
++   &lt;receiver&gt;BcCanalBase&lt;/receiver&gt;
++   &lt;slot&gt;close()&lt;/slot&gt;
++   &lt;hints&gt;
++    &lt;hint type=&quot;sourcelabel&quot; &gt;
++     &lt;x&gt;391&lt;/x&gt;
++     &lt;y&gt;326&lt;/y&gt;
++    &lt;/hint&gt;
++    &lt;hint type=&quot;destinationlabel&quot; &gt;
++     &lt;x&gt;417&lt;/x&gt;
++     &lt;y&gt;319&lt;/y&gt;
++    &lt;/hint&gt;
++   &lt;/hints&gt;
++  &lt;/connection&gt;
++ &lt;/connections&gt;
++&lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccanalseleccionarbase.ui b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccanalseleccionarbase.ui
+new file mode 100644
+index 0000000..170e609
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccanalseleccionarbase.ui
+@@ -0,0 +1,106 @@
++&lt;ui version=&quot;4.0&quot; &gt;
++ &lt;class&gt;BcCanalSeleccionarBase&lt;/class&gt;
++ &lt;widget class=&quot;QWidget&quot; name=&quot;BcCanalSeleccionarBase&quot; &gt;
++  &lt;property name=&quot;geometry&quot; &gt;
++   &lt;rect&gt;
++    &lt;x&gt;0&lt;/x&gt;
++    &lt;y&gt;0&lt;/y&gt;
++    &lt;width&gt;391&lt;/width&gt;
++    &lt;height&gt;362&lt;/height&gt;
++   &lt;/rect&gt;
++  &lt;/property&gt;
++  &lt;property name=&quot;windowTitle&quot; &gt;
++   &lt;string&gt;Selector de Canales&lt;/string&gt;
++  &lt;/property&gt;
++  &lt;property name=&quot;windowIcon&quot; &gt;
++   &lt;iconset resource=&quot;../../bulmages.qrc&quot; &gt;:/BulmaCont32x32/images/png/i_canales.xpm&lt;/iconset&gt;
++  &lt;/property&gt;
++  &lt;layout class=&quot;QGridLayout&quot; &gt;
++   &lt;property name=&quot;margin&quot; &gt;
++    &lt;number&gt;5&lt;/number&gt;
++   &lt;/property&gt;
++   &lt;property name=&quot;spacing&quot; &gt;
++    &lt;number&gt;5&lt;/number&gt;
++   &lt;/property&gt;
++   &lt;item row=&quot;1&quot; column=&quot;0&quot; &gt;
++    &lt;layout class=&quot;QGridLayout&quot; &gt;
++     &lt;property name=&quot;margin&quot; &gt;
++      &lt;number&gt;0&lt;/number&gt;
++     &lt;/property&gt;
++     &lt;property name=&quot;spacing&quot; &gt;
++      &lt;number&gt;6&lt;/number&gt;
++     &lt;/property&gt;
++     &lt;item row=&quot;0&quot; column=&quot;2&quot; &gt;
++      &lt;widget class=&quot;QPushButton&quot; name=&quot;mui_nada&quot; &gt;
++       &lt;property name=&quot;text&quot; &gt;
++        &lt;string&gt;S. Nada&lt;/string&gt;
++       &lt;/property&gt;
++      &lt;/widget&gt;
++     &lt;/item&gt;
++     &lt;item row=&quot;0&quot; column=&quot;1&quot; &gt;
++      &lt;widget class=&quot;QPushButton&quot; name=&quot;mui_invertir&quot; &gt;
++       &lt;property name=&quot;text&quot; &gt;
++        &lt;string&gt;Invertir&lt;/string&gt;
++       &lt;/property&gt;
++      &lt;/widget&gt;
++     &lt;/item&gt;
++     &lt;item row=&quot;0&quot; column=&quot;3&quot; &gt;
++      &lt;widget class=&quot;QPushButton&quot; name=&quot;mui_todo&quot; &gt;
++       &lt;property name=&quot;text&quot; &gt;
++        &lt;string&gt;S. Todo&lt;/string&gt;
++       &lt;/property&gt;
++      &lt;/widget&gt;
++     &lt;/item&gt;
++     &lt;item row=&quot;0&quot; column=&quot;4&quot; &gt;
++      &lt;widget class=&quot;QPushButton&quot; name=&quot;mui_cerrar&quot; &gt;
++       &lt;property name=&quot;text&quot; &gt;
++        &lt;string&gt;Cerrar&lt;/string&gt;
++       &lt;/property&gt;
++      &lt;/widget&gt;
++     &lt;/item&gt;
++     &lt;item row=&quot;0&quot; column=&quot;0&quot; &gt;
++      &lt;spacer&gt;
++       &lt;property name=&quot;orientation&quot; &gt;
++        &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
++       &lt;/property&gt;
++       &lt;property name=&quot;sizeType&quot; &gt;
++        &lt;enum&gt;QSizePolicy::Expanding&lt;/enum&gt;
++       &lt;/property&gt;
++       &lt;property name=&quot;sizeHint&quot; &gt;
++        &lt;size&gt;
++         &lt;width&gt;68&lt;/width&gt;
++         &lt;height&gt;21&lt;/height&gt;
++        &lt;/size&gt;
++       &lt;/property&gt;
++      &lt;/spacer&gt;
++     &lt;/item&gt;
++    &lt;/layout&gt;
++   &lt;/item&gt;
++   &lt;item row=&quot;0&quot; column=&quot;0&quot; &gt;
++    &lt;widget class=&quot;QTreeWidget&quot; name=&quot;m_listCanales&quot; /&gt;
++   &lt;/item&gt;
++  &lt;/layout&gt;
++ &lt;/widget&gt;
++ &lt;layoutdefault spacing=&quot;6&quot; margin=&quot;11&quot; /&gt;
++ &lt;resources&gt;
++  &lt;include location=&quot;../../bulmages.qrc&quot; /&gt;
++ &lt;/resources&gt;
++ &lt;connections&gt;
++  &lt;connection&gt;
++   &lt;sender&gt;mui_cerrar&lt;/sender&gt;
++   &lt;signal&gt;clicked()&lt;/signal&gt;
++   &lt;receiver&gt;BcCanalSeleccionarBase&lt;/receiver&gt;
++   &lt;slot&gt;close()&lt;/slot&gt;
++   &lt;hints&gt;
++    &lt;hint type=&quot;sourcelabel&quot; &gt;
++     &lt;x&gt;349&lt;/x&gt;
++     &lt;y&gt;332&lt;/y&gt;
++    &lt;/hint&gt;
++    &lt;hint type=&quot;destinationlabel&quot; &gt;
++     &lt;x&gt;379&lt;/x&gt;
++     &lt;y&gt;356&lt;/y&gt;
++    &lt;/hint&gt;
++   &lt;/hints&gt;
++  &lt;/connection&gt;
++ &lt;/connections&gt;
++&lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccanalseleccionarview.cpp b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccanalseleccionarview.cpp
+new file mode 100644
+index 0000000..33b82bc
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccanalseleccionarview.cpp
+@@ -0,0 +1,256 @@
++/***************************************************************************
++ *   Copyright (C) 2003 by Tomeu Borras                                    *
++ *   <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>                                                  *
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 2 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program; if not, write to the                         *
++ *   Free Software Foundation, Inc.,                                       *
++ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
++ ***************************************************************************/
++#include &lt;QtWidgets/QTreeWidgetItemIterator&gt;
++
++#include &quot;bccanalseleccionarview.h&quot;
++#include &quot;bfcompany.h&quot;
++#include &quot;blfunctions.h&quot;
++
++
++BcCanalSeleccionarView *g_selcanales;
++
++/// Inicializa las variables de empresa y de base de datos.
++/** Luego crea las columnas para el objeto m_listCanales que es la lista en que se basa
++    el programa. Luego llama al m&eacute;todo cargaCanales que hace la carga de los canales
++    a partir de la base de datos. */
++/**
++\param emp
++\param parent
++**/
++BcCanalSeleccionarView::BcCanalSeleccionarView ( BfCompany *emp, QWidget *parent )
++        : QWidget ( parent ), BlMainCompanyPointer ( emp )
++{
++    BL_FUNC_DEBUG
++    setupUi ( this );
++    numDigitos = g_confpr-&gt;value(CONF_CONT_NUMDIGITOSEMPRESA).toInt();
++    m_iterador = new QTreeWidgetItemIterator ( m_listCanales );
++
++    m_listCanales-&gt;setColumnCount ( 5 );
++
++    QStringList etiquetas;
++    etiquetas &lt;&lt; _ ( &quot;nom_canal&quot; ) &lt;&lt; _ ( &quot;desc_canal&quot; ) &lt;&lt; _ ( &quot;Status&quot; ) &lt;&lt; _ ( &quot;idcanal&quot; ) &lt;&lt; _ ( &quot;Seleccion&quot; );
++    m_listCanales-&gt;setHeaderLabels ( etiquetas );
++
++    cargaCanales();
++    
++}
++
++
++///
++/**
++**/
++BcCanalSeleccionarView::~BcCanalSeleccionarView()
++{
++    BL_FUNC_DEBUG
++    delete m_iterador;
++    
++}
++
++
++///
++/**
++**/
++void BcCanalSeleccionarView::cargaCanales()
++{
++    BL_FUNC_DEBUG
++    QMap &lt;int, QTreeWidgetItem *&gt; Lista;
++    QTreeWidgetItem *it;
++
++    int idcanal = 0;
++    BlDbRecordSet *cursoraux1;
++    /// Cogemos los canales y los ponemos donde toca.
++    m_listCanales-&gt;clear();
++    /// Ponemos el canal base (sin canal y lo checkeamos)
++    it = new QTreeWidgetItem ( m_listCanales );
++    Lista[idcanal] = it;
++    it-&gt;setText ( 3, _(&quot;-1&quot;) );
++    it-&gt;setText ( 1, _(&quot;Sin Canal&quot;) );
++    it-&gt;setText ( 0, _(&quot;Sin Canal&quot;) );
++    it-&gt;setCheckState ( 0, Qt::Checked );
++    it-&gt;setExpanded ( true );
++    
++    
++    mainCompany() -&gt;begin();
++    cursoraux1 = mainCompany() -&gt;loadQuery ( &quot;SELECT * FROM canal&quot; );
++    mainCompany() -&gt;commit();
++    while ( !cursoraux1-&gt;eof() ) {
++        idcanal = atoi ( cursoraux1-&gt;value( &quot;idcanal&quot; ).toLatin1() );
++        it = new QTreeWidgetItem ( m_listCanales );
++        Lista[idcanal] = it;
++        it-&gt;setText ( 3, cursoraux1-&gt;value( &quot;idcanal&quot; ) );
++        it-&gt;setText ( 1, cursoraux1-&gt;value( &quot;descripcion&quot; ) );
++        it-&gt;setText ( 0, cursoraux1-&gt;value( &quot;nombre&quot; ) );
++        it-&gt;setCheckState ( 0, Qt::Checked );
++        it-&gt;setExpanded ( true );
++        cursoraux1-&gt;nextRecord();
++    } // end while
++
++    delete cursoraux1;
++    
++}
++
++
++/// Esta funci&oacute;n devuelve el primer canal seleccionado de la vista.
++/// Devuelve el idcanal. Si no hay ning&uacute;n canal seleccionado devuelve
++/// cero.
++/**
++\return
++**/
++int BcCanalSeleccionarView::firstCanal()
++{
++    BL_FUNC_DEBUG
++    delete m_iterador;
++    m_iterador = new QTreeWidgetItemIterator ( m_listCanales );
++    ++ ( *m_iterador );
++    return nextCanal();
++}
++
++
++bool BcCanalSeleccionarView::sinCanal()
++{
++    BL_FUNC_DEBUG
++    QTreeWidgetItemIterator iterador( m_listCanales ) ;
++    return ( *iterador ) -&gt;checkState ( 0 ) == Qt::Checked ;
++}
++
++
++/// Esta funci&oacute;n devuelve el siguiente canal seleccionado de la vista.
++/**
++\return idcanal siguiente o 0 si no hay siguiente.
++**/
++int BcCanalSeleccionarView::nextCanal()
++{
++    BL_FUNC_DEBUG
++    int idcanal = 0;
++    while ( ( **m_iterador ) &amp;&amp; idcanal == 0 ) {
++        if ( ( **m_iterador ) -&gt;checkState ( 0 ) == Qt::Checked ) {
++            idcanal = ( **m_iterador ) -&gt;text ( 3 ).toInt();
++        } // end if
++        ++ ( *m_iterador );
++    } // end while
++
++    
++    return idcanal;
++}
++
++
++///
++/**
++\return
++**/
++QString BcCanalSeleccionarView::cadCanal()
++{
++    BL_FUNC_DEBUG
++
++    int idcanal;
++    QString ccanales = &quot;&quot;;
++
++    idcanal = firstCanal();
++    while ( idcanal ) {
++        if ( ccanales != &quot;&quot; )
++            ccanales.sprintf ( &quot;%s, %d&quot;, ccanales.toLatin1().constData(), idcanal );
++        else
++            ccanales.sprintf ( &quot;%d&quot;, idcanal );
++        idcanal = nextCanal();
++    } // end while
++
++    
++    return ccanales;
++}
++
++
++/// Esta funci&oacute;n devuelve el nombre de un canal determinado.
++/**
++\return
++**/
++QString BcCanalSeleccionarView::nomCanal()
++{
++    BL_FUNC_DEBUG
++    QTreeWidgetItemIterator m_iterador ( m_listCanales );
++    QString value = &quot;&quot;;
++
++    if ( ( *m_iterador ) -&gt;checkState ( 0 ) == Qt::Checked ) {
++        value = ( *m_iterador ) -&gt;text ( 0 );
++    } // end if
++
++    delete *m_iterador;
++    
++    return value;
++}
++
++
++///
++/**
++**/
++void BcCanalSeleccionarView::on_mui_todo_clicked()
++{
++    BL_FUNC_DEBUG
++    QTreeWidgetItemIterator m_iterador ( m_listCanales );
++
++    while ( *m_iterador ) {
++        ( *m_iterador ) -&gt;setCheckState ( 0, Qt::Checked );
++        ++m_iterador;
++    }
++
++    delete *m_iterador;
++    
++}
++
++
++///
++/**
++**/
++void BcCanalSeleccionarView::on_mui_nada_clicked()
++{
++    BL_FUNC_DEBUG
++
++    QTreeWidgetItemIterator m_iterador ( m_listCanales );
++
++    while ( *m_iterador ) {
++        ( *m_iterador ) -&gt;setCheckState ( 0, Qt::Unchecked );
++        ++m_iterador;
++    }
++
++    delete *m_iterador;
++    
++}
++
++
++///
++/**
++**/
++void BcCanalSeleccionarView::on_mui_invertir_clicked()
++{
++    BL_FUNC_DEBUG
++    QTreeWidgetItemIterator m_iterador ( m_listCanales );
++
++    while ( *m_iterador ) {
++        if ( ( *m_iterador ) -&gt;checkState ( 0 ) == Qt::Unchecked ) {
++            ( *m_iterador ) -&gt;setCheckState ( 0, Qt::Checked );
++        } else {
++            ( *m_iterador ) -&gt;setCheckState ( 0, Qt::Unchecked );
++        } // end if
++        ++m_iterador;
++    } // end while
++
++    delete *m_iterador;
++    
++}
++
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccanalseleccionarview.h b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccanalseleccionarview.h
+new file mode 100644
+index 0000000..dd622b9
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccanalseleccionarview.h
+@@ -0,0 +1,69 @@
++/***************************************************************************
++ *   Copyright (C) 2003 by Tomeu Borras                                    *
++ *   <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>                                                  *
++ *   <A HREF="http://www.iglues.org">http://www.iglues.org</A> Asociación Iglues -- Contabilidad Linux         *
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 2 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program; if not, write to the                         *
++ *   Free Software Foundation, Inc.,                                       *
++ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
++ ***************************************************************************/
++
++#ifndef BCCANALSELECCIONARVIEW_H
++#define BCCANALSELECCIONARVIEW_H
++
++#include &quot;blfunctions.h&quot;
++#include &quot;ui_bccanalseleccionarbase.h&quot;
++#include &quot;blwidget.h&quot;
++
++
++class BfCompany;
++
++
++///
++/** */
++class BC_EXPORT BcCanalSeleccionarView : public QWidget, public Ui_BcCanalSeleccionarBase, public BlMainCompanyPointer
++{
++    Q_OBJECT
++
++public:
++    BcCanalSeleccionarView ( BfCompany *emp, QWidget *parent = 0 );
++    ~BcCanalSeleccionarView();
++
++private:
++    int m_colNomCoste;
++    int m_colDescCoste;
++    int m_colIdCoste;
++    int m_colStatusCoste;
++    int m_colCheck;
++    int numDigitos;
++    QTreeWidgetItemIterator *m_iterador;
++
++public:
++    void cargaCanales();
++    int firstCanal();
++    int nextCanal();
++    QString cadCanal();
++    QString nomCanal();
++    bool sinCanal();
++
++public slots:
++    void on_mui_todo_clicked();
++    void on_mui_nada_clicked();
++    void on_mui_invertir_clicked();
++};
++
++extern BcCanalSeleccionarView *g_selcanales;
++
++#endif
++
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccanalview.cpp b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccanalview.cpp
+new file mode 100644
+index 0000000..cc553e4
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccanalview.cpp
+@@ -0,0 +1,246 @@
++/***************************************************************************
++ *   Copyright (C) 2003 by Tomeu Borras Riera                              *
++ *   <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>                                                  *
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 2 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program; if not, write to the                         *
++ *   Free Software Foundation, Inc.,                                       *
++ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
++ ***************************************************************************/
++
++#include  &quot;bccanalview.h&quot;
++#include  &quot;bfcompany.h&quot;
++#include  &quot;bccanalseleccionarview.h&quot;
++
++
++///
++/**
++\param emp
++\param parent
++**/
++BcCanalView::BcCanalView ( BfCompany  *emp, QWidget *parent )
++        : BfForm ( emp, parent )
++{
++    BL_FUNC_DEBUG
++
++    setTitleName ( _ ( &quot;Canal&quot; ) );
++    /// EStablezco cual es la tabla en la que basarse para los permisos
++    setDbTableName ( &quot;canal&quot; );
++
++    this-&gt;setAttribute ( Qt::WA_DeleteOnClose );
++    setupUi ( this );
++    mui_idCanal-&gt;setMainCompany ( emp );
++    mui_idCanal-&gt;setId ( &quot;0&quot; );
++
++    m_nomCanal = new QLineEdit();
++    m_nomCanal-&gt;setText ( &quot;&quot; );
++    m_descCanal = new QTextEdit();
++    m_descCanal-&gt;setPlainText ( &quot;&quot; );
++
++    idcanal = 0;
++    dialogChanges_setExcludedObject ( mui_idCanal );
++    dialogChanges_readValues();
++    on_mui_idCanal_valueChanged ( 0 );
++    mainCompany() -&gt;insertWindow ( windowTitle(), this );
++    
++}
++
++
++///
++/**
++**/
++BcCanalView::~BcCanalView()
++{
++    BL_FUNC_DEBUG
++    mainCompany() -&gt;removeWindow ( this );
++    
++}
++
++
++///
++/**
++**/
++void BcCanalView::pintar()
++{
++    BL_FUNC_DEBUG
++    /// Si el combocoste no esta vacio se muestra el registro que contiene.
++    if ( idcanal != 0 ) {
++        /// Habilita los campos para ser editados.
++        mui_nomCanal-&gt;setEnabled ( true );
++        mui_descCanal-&gt;setEnabled ( true );
++        mostrarPlantilla();
++    } else {
++        idcanal = mui_idCanal-&gt;id().toInt();
++        mostrarPlantilla();
++    } // end if
++
++    /// Si se han cambiado los canales, se rehace el selector de canales.
++//    BcCanalSeleccionarView *scanal = mainCompany() -&gt;getselcanales();
++//    scanal-&gt;cargaCanales();
++    
++}
++
++
++/// Esta funci&oacute;n sirve para hacer el cambio sobre un centro de coste.
++/**
++\param numcombo
++**/
++void BcCanalView::on_mui_idCanal_valueChanged ( QString numcombo )
++{
++    BL_FUNC_DEBUG
++    int idcanal1 = numcombo.toInt();
++    static bool flipflop = false;
++
++    if ( dialogChanges_isChanged() &amp;&amp; flipflop ) {
++        if ( QMessageBox::warning ( this,
++                                    _ ( &quot;Guardar canal&quot; ),
++                                    _ ( &quot;Desea guardar los cambios.&quot; ),
++                                    _ ( &quot;&amp;Guardar&quot; ), _ ( &quot;&amp;Cancelar&quot; ), 0 , 0, 1 ) == 0 )
++            on_mui_guardar_clicked();
++    } // end if
++
++    /// Comprueba que el ID del 'combobox' este en la primera posicion '--' y deshabilita los
++    /// campos de texto.
++    if ( idcanal1 == 0 ) {
++        mui_nomCanal-&gt;setText ( &quot;&quot; );
++        mui_nomCanal-&gt;setEnabled ( false );
++        mui_descCanal-&gt;setPlainText ( &quot;&quot; );
++        mui_descCanal-&gt;setEnabled ( false );
++        flipflop = false;
++        return;
++    } else {
++        /// Habilita los campos para ser editados.
++        mui_nomCanal-&gt;setEnabled ( true );
++        mui_descCanal-&gt;setEnabled ( true );
++    } // end if
++
++    flipflop = true;
++    idcanal = idcanal1;
++    mostrarPlantilla();
++    
++}
++
++
++/// Esta funci&oacute;n muestra el canal en la ventana.
++/**
++**/
++void BcCanalView::mostrarPlantilla()
++{
++    BL_FUNC_DEBUG
++    QString query;
++    QTextStream ( &amp;query ) &lt;&lt; &quot;SELECT * from canal WHERE idcanal = '&quot; &lt;&lt; idcanal &lt;&lt; &quot;'&quot;;
++    BlDbRecordSet *cursorcanal = mainCompany() -&gt;loadQuery ( query );
++    if ( !cursorcanal-&gt;eof() ) {
++        mui_nomCanal-&gt;setText ( cursorcanal-&gt;value( &quot;nombre&quot; ) );
++        mui_descCanal-&gt;setPlainText ( cursorcanal-&gt;value( &quot;descripcion&quot; ) );
++    } // end if
++    mui_idCanal-&gt;setId ( QString::number ( idcanal ) );
++    dialogChanges_readValues();
++    
++
++}
++
++
++///
++/**
++**/
++void BcCanalView::on_mui_guardar_clicked()
++{
++    BL_FUNC_DEBUG
++    QString nom = mui_nomCanal-&gt;text();
++    QString desc = mui_descCanal-&gt;toPlainText();
++    QString query;
++    QTextStream ( &amp;query ) &lt;&lt; &quot;UPDATE canal SET nombre = '&quot;
++    &lt;&lt; mainCompany() -&gt;sanearCadena ( nom ).toLatin1().constData()
++    &lt;&lt; &quot;', descripcion = '&quot;
++    &lt;&lt; mainCompany() -&gt;sanearCadena ( desc ).toLatin1().constData()
++    &lt;&lt; &quot;' WHERE idcanal = '&quot; &lt;&lt; idcanal &lt;&lt; &quot;'&quot;;
++    mainCompany() -&gt;runQuery ( query );
++    dialogChanges_readValues();
++    pintar();
++    
++}
++
++
++///
++/**
++**/
++void BcCanalView::on_mui_crear_clicked()
++{
++    BL_FUNC_DEBUG
++    /// Si se ha modificado el contenido advertimos y guardamos.
++    if ( dialogChanges_isChanged() ) {
++        if ( QMessageBox::warning ( this,
++                                    _ ( &quot;Guardar canal&quot; ),
++                                    _ ( &quot;Desea guardar los cambios.&quot; ),
++                                    _ ( &quot;&amp;Guardar&quot; ), _ ( &quot;&amp;Cancelar&quot; ), 0 , 0, 1 ) == 0 )
++            on_mui_guardar_clicked();
++    } // end if
++    QString query = &quot;&quot;;
++    QTextStream ( &amp;query ) &lt;&lt; &quot;INSERT INTO canal (nombre, descripcion) VALUES ('&quot; &lt;&lt; _ ( &quot;Nuevo canal&quot; ) &lt;&lt; &quot;', '&quot; &lt;&lt; _ ( &quot;Escriba su descripcion&quot; ) &lt;&lt; &quot;')&quot;;
++    mainCompany() -&gt;begin();
++    mainCompany() -&gt;runQuery ( query );
++    query = &quot;&quot;;
++    QTextStream ( &amp;query ) &lt;&lt; &quot;SELECT MAX(idcanal) AS id FROM canal&quot;;
++    BlDbRecordSet *cur = mainCompany() -&gt;loadQuery ( query, &quot;queryy&quot; );
++    idcanal = atoi ( cur-&gt;value( &quot;id&quot; ).toLatin1() );
++    delete cur;
++    mainCompany() -&gt;commit();
++    pintar();
++    
++}
++
++
++///
++/**
++**/
++void BcCanalView::on_mui_borrar_clicked()
++{
++    BL_FUNC_DEBUG
++    switch ( QMessageBox::warning ( this,
++                                    _ ( &quot;Borrar canal&quot; ),
++                                    _ ( &quot;Se va a borrar este canal.\nEsto puede ocasionar perdida de datos.&quot; ),
++                                    _ ( &quot;&amp;Borrar&quot; ), _ ( &quot;&amp;Cancelar&quot; ), 0 , 0, 1 ) ) {
++    case 0: /// Retry clicked or Enter pressed.
++        QString query;
++        query.sprintf ( &quot;DELETE FROM canal WHERE idcanal = %d&quot;, idcanal );
++        mainCompany() -&gt;begin();
++        mainCompany() -&gt;runQuery ( query );
++        mainCompany() -&gt;commit();
++        idcanal = 0;
++        pintar();
++    } // end switch
++    
++}
++
++
++///
++/**
++\param e
++**/
++void BcCanalView::closeEvent ( QCloseEvent *e )
++{
++    BL_FUNC_DEBUG
++    if ( dialogChanges_isChanged() ) {
++        int val = QMessageBox::warning ( this,
++                                         _ ( &quot;Guardar canal&quot; ),
++                                         _ ( &quot;Desea guardar los cambios?&quot; ),
++                                         _ ( &quot;&amp;Si&quot; ), _ ( &quot;&amp;No&quot; ), _ ( &quot;&amp;Cancelar&quot; ), 0, 2 );
++        if ( val == 0 )
++            on_mui_guardar_clicked();
++        if ( val == 2 )
++            e-&gt;ignore();
++    } // end if
++    
++}
++
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccanalview.h b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccanalview.h
+new file mode 100644
+index 0000000..64d7a84
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccanalview.h
+@@ -0,0 +1,69 @@
++/***************************************************************************
++ *   Copyright (C) 2003 by Tomeu Borras Riera                              *
++ *   <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>                                                  *
++ *   <A HREF="http://www.iglues.org">http://www.iglues.org</A> Asociación Iglues -- Contabilidad Linux         *
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 2 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program; if not, write to the                         *
++ *   Free Software Foundation, Inc.,                                       *
++ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
++ ***************************************************************************/
++
++#ifndef BCCANALVIEW_H
++#define BCCANALVIEW_H
++
++#include &lt;QtWidgets/QWidget&gt;
++#include &lt;QtWidgets/QComboBox&gt;
++#include &lt;QtWidgets/QLineEdit&gt;
++#include &lt;QtGui/QCloseEvent&gt;
++#include &lt;QtCore/QTextStream&gt;
++
++#include &quot;ui_bccanalbase.h&quot;
++#include &quot;bldialogchanges.h&quot;
++#include &quot;bfform.h&quot;
++
++
++class BfCompany;
++
++
++class BC_EXPORT BcCanalView : public BfForm, public Ui_BcCanalBase
++{
++    Q_OBJECT
++
++private:
++    QLineEdit *m_nomCanal;
++    QTextEdit *m_descCanal;
++
++public:
++    int canales[100];
++    /// Indica cual es el canal que se esta visualizando.
++    int idcanal;
++    /// Si su valor es 0 entonces es que no se esta visualizando ningun centro de coste.
++
++
++public:
++    BcCanalView ( BfCompany *, QWidget *parent = 0 );
++    ~BcCanalView();
++    void mostrarPlantilla();
++    void pintar();
++    void on_mui_borrar_clicked();
++
++public slots:
++    virtual void on_mui_idCanal_valueChanged ( QString );
++    virtual void on_mui_guardar_clicked();
++    virtual void on_mui_crear_clicked();
++    virtual void closeEvent ( QCloseEvent * );
++};
++
++#endif
++
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocostebase.ui b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocostebase.ui
+new file mode 100644
+index 0000000..217c5f7
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocostebase.ui
+@@ -0,0 +1,398 @@
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
++&lt;ui version=&quot;4.0&quot;&gt;
++ &lt;class&gt;BcCentroCosteBase&lt;/class&gt;
++ &lt;widget class=&quot;QWidget&quot; name=&quot;BcCentroCosteBase&quot;&gt;
++  &lt;property name=&quot;geometry&quot;&gt;
++   &lt;rect&gt;
++    &lt;x&gt;0&lt;/x&gt;
++    &lt;y&gt;0&lt;/y&gt;
++    &lt;width&gt;650&lt;/width&gt;
++    &lt;height&gt;550&lt;/height&gt;
++   &lt;/rect&gt;
++  &lt;/property&gt;
++  &lt;property name=&quot;windowTitle&quot;&gt;
++   &lt;string&gt;Centros de Coste&lt;/string&gt;
++  &lt;/property&gt;
++  &lt;property name=&quot;windowIcon&quot;&gt;
++   &lt;iconset resource=&quot;../../bulmages.qrc&quot;&gt;
++    &lt;normaloff&gt;:/BulmaCont32x32/images/png/i_centroCoste.xpm&lt;/normaloff&gt;:/BulmaCont32x32/images/png/i_centroCoste.xpm&lt;/iconset&gt;
++  &lt;/property&gt;
++  &lt;layout class=&quot;QVBoxLayout&quot;&gt;
++   &lt;property name=&quot;margin&quot;&gt;
++    &lt;number&gt;4&lt;/number&gt;
++   &lt;/property&gt;
++   &lt;item&gt;
++    &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++     &lt;property name=&quot;spacing&quot;&gt;
++      &lt;number&gt;0&lt;/number&gt;
++     &lt;/property&gt;
++     &lt;property name=&quot;margin&quot;&gt;
++      &lt;number&gt;0&lt;/number&gt;
++     &lt;/property&gt;
++     &lt;item&gt;
++      &lt;widget class=&quot;QLabel&quot; name=&quot;label&quot;&gt;
++       &lt;property name=&quot;minimumSize&quot;&gt;
++        &lt;size&gt;
++         &lt;width&gt;48&lt;/width&gt;
++         &lt;height&gt;48&lt;/height&gt;
++        &lt;/size&gt;
++       &lt;/property&gt;
++       &lt;property name=&quot;maximumSize&quot;&gt;
++        &lt;size&gt;
++         &lt;width&gt;48&lt;/width&gt;
++         &lt;height&gt;48&lt;/height&gt;
++        &lt;/size&gt;
++       &lt;/property&gt;
++       &lt;property name=&quot;pixmap&quot;&gt;
++        &lt;pixmap resource=&quot;../../bulmages.qrc&quot;&gt;:/BulmaCont32x32/images/png/i_centroCoste.xpm&lt;/pixmap&gt;
++       &lt;/property&gt;
++       &lt;property name=&quot;scaledContents&quot;&gt;
++        &lt;bool&gt;true&lt;/bool&gt;
++       &lt;/property&gt;
++      &lt;/widget&gt;
++     &lt;/item&gt;
++     &lt;item&gt;
++      &lt;widget class=&quot;QFrame&quot; name=&quot;frame&quot;&gt;
++       &lt;property name=&quot;frameShape&quot;&gt;
++        &lt;enum&gt;QFrame::StyledPanel&lt;/enum&gt;
++       &lt;/property&gt;
++       &lt;property name=&quot;frameShadow&quot;&gt;
++        &lt;enum&gt;QFrame::Raised&lt;/enum&gt;
++       &lt;/property&gt;
++       &lt;layout class=&quot;QGridLayout&quot;&gt;
++        &lt;property name=&quot;margin&quot;&gt;
++         &lt;number&gt;5&lt;/number&gt;
++        &lt;/property&gt;
++        &lt;property name=&quot;spacing&quot;&gt;
++         &lt;number&gt;6&lt;/number&gt;
++        &lt;/property&gt;
++        &lt;item row=&quot;0&quot; column=&quot;0&quot;&gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_crear&quot;&gt;
++          &lt;property name=&quot;minimumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;maximumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;text&quot;&gt;
++           &lt;string/&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;icon&quot;&gt;
++           &lt;iconset resource=&quot;../../bulmages.qrc&quot;&gt;
++            &lt;normaloff&gt;:/Images/document-new.png&lt;/normaloff&gt;:/Images/document-new.png&lt;/iconset&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;iconSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;22&lt;/width&gt;
++            &lt;height&gt;22&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;shortcut&quot;&gt;
++           &lt;string&gt;Ctrl+N&lt;/string&gt;
++          &lt;/property&gt;
++         &lt;/widget&gt;
++        &lt;/item&gt;
++        &lt;item row=&quot;0&quot; column=&quot;2&quot;&gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_borrar&quot;&gt;
++          &lt;property name=&quot;minimumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;maximumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;text&quot;&gt;
++           &lt;string/&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;icon&quot;&gt;
++           &lt;iconset resource=&quot;../../bulmages.qrc&quot;&gt;
++            &lt;normaloff&gt;:/Images/edit-delete.png&lt;/normaloff&gt;:/Images/edit-delete.png&lt;/iconset&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;iconSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;22&lt;/width&gt;
++            &lt;height&gt;22&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;shortcut&quot;&gt;
++           &lt;string&gt;Ctrl+D&lt;/string&gt;
++          &lt;/property&gt;
++         &lt;/widget&gt;
++        &lt;/item&gt;
++        &lt;item row=&quot;0&quot; column=&quot;3&quot;&gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_guardar&quot;&gt;
++          &lt;property name=&quot;minimumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;maximumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;text&quot;&gt;
++           &lt;string/&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;icon&quot;&gt;
++           &lt;iconset resource=&quot;../../bulmages.qrc&quot;&gt;
++            &lt;normaloff&gt;:/Images/edit-save.png&lt;/normaloff&gt;:/Images/edit-save.png&lt;/iconset&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;iconSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;22&lt;/width&gt;
++            &lt;height&gt;22&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;shortcut&quot;&gt;
++           &lt;string&gt;Ctrl+S&lt;/string&gt;
++          &lt;/property&gt;
++         &lt;/widget&gt;
++        &lt;/item&gt;
++        &lt;item row=&quot;0&quot; column=&quot;6&quot;&gt;
++         &lt;spacer&gt;
++          &lt;property name=&quot;orientation&quot;&gt;
++           &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;sizeType&quot;&gt;
++           &lt;enum&gt;QSizePolicy::Expanding&lt;/enum&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;171&lt;/width&gt;
++            &lt;height&gt;34&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++         &lt;/spacer&gt;
++        &lt;/item&gt;
++        &lt;item row=&quot;0&quot; column=&quot;1&quot;&gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_detalles&quot;&gt;
++          &lt;property name=&quot;minimumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;maximumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;toolTip&quot;&gt;
++           &lt;string&gt;Mostrar / Ocultar Detalle&lt;/string&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;whatsThis&quot;&gt;
++           &lt;string&gt;Mostrar / Ocultar Detalle&lt;/string&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;text&quot;&gt;
++           &lt;string/&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;icon&quot;&gt;
++           &lt;iconset resource=&quot;../../bulmages.qrc&quot;&gt;
++            &lt;normaloff&gt;:/Images/document-open.png&lt;/normaloff&gt;:/Images/document-open.png&lt;/iconset&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;iconSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;22&lt;/width&gt;
++            &lt;height&gt;22&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;checkable&quot;&gt;
++           &lt;bool&gt;true&lt;/bool&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;checked&quot;&gt;
++           &lt;bool&gt;true&lt;/bool&gt;
++          &lt;/property&gt;
++         &lt;/widget&gt;
++        &lt;/item&gt;
++       &lt;/layout&gt;
++      &lt;/widget&gt;
++     &lt;/item&gt;
++    &lt;/layout&gt;
++   &lt;/item&gt;
++   &lt;item&gt;
++    &lt;widget class=&quot;QTreeWidget&quot; name=&quot;mui_list&quot;&gt;
++     &lt;column&gt;
++      &lt;property name=&quot;text&quot;&gt;
++       &lt;string&gt;1&lt;/string&gt;
++      &lt;/property&gt;
++     &lt;/column&gt;
++    &lt;/widget&gt;
++   &lt;/item&gt;
++   &lt;item&gt;
++    &lt;widget class=&quot;QTabWidget&quot; name=&quot;tabWidget&quot;&gt;
++     &lt;property name=&quot;currentIndex&quot;&gt;
++      &lt;number&gt;0&lt;/number&gt;
++     &lt;/property&gt;
++     &lt;widget class=&quot;QWidget&quot; name=&quot;tab&quot;&gt;
++      &lt;attribute name=&quot;title&quot;&gt;
++       &lt;string&gt;General&lt;/string&gt;
++      &lt;/attribute&gt;
++      &lt;layout class=&quot;QVBoxLayout&quot;&gt;
++       &lt;property name=&quot;spacing&quot;&gt;
++        &lt;number&gt;4&lt;/number&gt;
++       &lt;/property&gt;
++       &lt;property name=&quot;margin&quot;&gt;
++        &lt;number&gt;4&lt;/number&gt;
++       &lt;/property&gt;
++       &lt;item&gt;
++        &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++         &lt;property name=&quot;spacing&quot;&gt;
++          &lt;number&gt;0&lt;/number&gt;
++         &lt;/property&gt;
++         &lt;property name=&quot;margin&quot;&gt;
++          &lt;number&gt;0&lt;/number&gt;
++         &lt;/property&gt;
++         &lt;item&gt;
++          &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1&quot;&gt;
++           &lt;property name=&quot;text&quot;&gt;
++            &lt;string&gt;Nombre:&lt;/string&gt;
++           &lt;/property&gt;
++          &lt;/widget&gt;
++         &lt;/item&gt;
++         &lt;item&gt;
++          &lt;widget class=&quot;QLineEdit&quot; name=&quot;mui_nombre&quot;/&gt;
++         &lt;/item&gt;
++        &lt;/layout&gt;
++       &lt;/item&gt;
++       &lt;item&gt;
++        &lt;layout class=&quot;QVBoxLayout&quot;&gt;
++         &lt;property name=&quot;spacing&quot;&gt;
++          &lt;number&gt;0&lt;/number&gt;
++         &lt;/property&gt;
++         &lt;property name=&quot;margin&quot;&gt;
++          &lt;number&gt;0&lt;/number&gt;
++         &lt;/property&gt;
++         &lt;item&gt;
++          &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_2&quot;&gt;
++           &lt;property name=&quot;sizePolicy&quot;&gt;
++            &lt;sizepolicy hsizetype=&quot;Fixed&quot; vsizetype=&quot;Fixed&quot;&gt;
++             &lt;horstretch&gt;0&lt;/horstretch&gt;
++             &lt;verstretch&gt;0&lt;/verstretch&gt;
++            &lt;/sizepolicy&gt;
++           &lt;/property&gt;
++           &lt;property name=&quot;text&quot;&gt;
++            &lt;string&gt;Descripcion:&lt;/string&gt;
++           &lt;/property&gt;
++          &lt;/widget&gt;
++         &lt;/item&gt;
++         &lt;item&gt;
++          &lt;widget class=&quot;QTextEdit&quot; name=&quot;mui_descripcion&quot;/&gt;
++         &lt;/item&gt;
++        &lt;/layout&gt;
++       &lt;/item&gt;
++      &lt;/layout&gt;
++     &lt;/widget&gt;
++     &lt;widget class=&quot;QWidget&quot; name=&quot;tab_2&quot;&gt;
++      &lt;attribute name=&quot;title&quot;&gt;
++       &lt;string&gt;Centros Distribuidos&lt;/string&gt;
++      &lt;/attribute&gt;
++      &lt;layout class=&quot;QGridLayout&quot;&gt;
++       &lt;property name=&quot;margin&quot;&gt;
++        &lt;number&gt;4&lt;/number&gt;
++       &lt;/property&gt;
++       &lt;property name=&quot;spacing&quot;&gt;
++        &lt;number&gt;4&lt;/number&gt;
++       &lt;/property&gt;
++       &lt;item row=&quot;0&quot; column=&quot;0&quot;&gt;
++        &lt;widget class=&quot;BfSubForm&quot; name=&quot;mui_cdistribuidos&quot;/&gt;
++       &lt;/item&gt;
++      &lt;/layout&gt;
++     &lt;/widget&gt;
++    &lt;/widget&gt;
++   &lt;/item&gt;
++   &lt;item&gt;
++    &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++     &lt;property name=&quot;spacing&quot;&gt;
++      &lt;number&gt;0&lt;/number&gt;
++     &lt;/property&gt;
++     &lt;property name=&quot;margin&quot;&gt;
++      &lt;number&gt;0&lt;/number&gt;
++     &lt;/property&gt;
++     &lt;item&gt;
++      &lt;spacer&gt;
++       &lt;property name=&quot;orientation&quot;&gt;
++        &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
++       &lt;/property&gt;
++       &lt;property name=&quot;sizeType&quot;&gt;
++        &lt;enum&gt;QSizePolicy::Expanding&lt;/enum&gt;
++       &lt;/property&gt;
++       &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
++        &lt;size&gt;
++         &lt;width&gt;191&lt;/width&gt;
++         &lt;height&gt;21&lt;/height&gt;
++        &lt;/size&gt;
++       &lt;/property&gt;
++      &lt;/spacer&gt;
++     &lt;/item&gt;
++     &lt;item&gt;
++      &lt;widget class=&quot;QPushButton&quot; name=&quot;pushButton2&quot;&gt;
++       &lt;property name=&quot;text&quot;&gt;
++        &lt;string&gt;Cerrar&lt;/string&gt;
++       &lt;/property&gt;
++      &lt;/widget&gt;
++     &lt;/item&gt;
++    &lt;/layout&gt;
++   &lt;/item&gt;
++  &lt;/layout&gt;
++ &lt;/widget&gt;
++ &lt;layoutdefault spacing=&quot;6&quot; margin=&quot;11&quot;/&gt;
++ &lt;customwidgets&gt;
++  &lt;customwidget&gt;
++   &lt;class&gt;BfSubForm&lt;/class&gt;
++   &lt;extends&gt;QTableWidget&lt;/extends&gt;
++   &lt;header&gt;bfsubform.h&lt;/header&gt;
++  &lt;/customwidget&gt;
++ &lt;/customwidgets&gt;
++ &lt;resources&gt;
++  &lt;include location=&quot;../../bulmages.qrc&quot;/&gt;
++ &lt;/resources&gt;
++ &lt;connections&gt;
++  &lt;connection&gt;
++   &lt;sender&gt;pushButton2&lt;/sender&gt;
++   &lt;signal&gt;clicked()&lt;/signal&gt;
++   &lt;receiver&gt;BcCentroCosteBase&lt;/receiver&gt;
++   &lt;slot&gt;close()&lt;/slot&gt;
++   &lt;hints&gt;
++    &lt;hint type=&quot;sourcelabel&quot;&gt;
++     &lt;x&gt;749&lt;/x&gt;
++     &lt;y&gt;892&lt;/y&gt;
++    &lt;/hint&gt;
++    &lt;hint type=&quot;destinationlabel&quot;&gt;
++     &lt;x&gt;549&lt;/x&gt;
++     &lt;y&gt;539&lt;/y&gt;
++    &lt;/hint&gt;
++   &lt;/hints&gt;
++  &lt;/connection&gt;
++  &lt;connection&gt;
++   &lt;sender&gt;mui_detalles&lt;/sender&gt;
++   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
++   &lt;receiver&gt;tabWidget&lt;/receiver&gt;
++   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
++   &lt;hints&gt;
++    &lt;hint type=&quot;sourcelabel&quot;&gt;
++     &lt;x&gt;20&lt;/x&gt;
++     &lt;y&gt;459&lt;/y&gt;
++    &lt;/hint&gt;
++    &lt;hint type=&quot;destinationlabel&quot;&gt;
++     &lt;x&gt;281&lt;/x&gt;
++     &lt;y&gt;488&lt;/y&gt;
++    &lt;/hint&gt;
++   &lt;/hints&gt;
++  &lt;/connection&gt;
++ &lt;/connections&gt;
++&lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocosteseleccionarbase.ui b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocosteseleccionarbase.ui
+new file mode 100644
+index 0000000..07c3934
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocosteseleccionarbase.ui
+@@ -0,0 +1,114 @@
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
++&lt;ui version=&quot;4.0&quot;&gt;
++ &lt;class&gt;BcCentroCosteSeleccionarBase&lt;/class&gt;
++ &lt;widget class=&quot;QWidget&quot; name=&quot;BcCentroCosteSeleccionarBase&quot;&gt;
++  &lt;property name=&quot;geometry&quot;&gt;
++   &lt;rect&gt;
++    &lt;x&gt;0&lt;/x&gt;
++    &lt;y&gt;0&lt;/y&gt;
++    &lt;width&gt;498&lt;/width&gt;
++    &lt;height&gt;360&lt;/height&gt;
++   &lt;/rect&gt;
++  &lt;/property&gt;
++  &lt;property name=&quot;windowTitle&quot;&gt;
++   &lt;string&gt;Selector de Centros de Coste&lt;/string&gt;
++  &lt;/property&gt;
++  &lt;property name=&quot;windowIcon&quot;&gt;
++   &lt;iconset resource=&quot;../../bulmages.qrc&quot;&gt;
++    &lt;normaloff&gt;:/BulmaCont32x32/images/png/i_centroCoste.xpm&lt;/normaloff&gt;:/BulmaCont32x32/images/png/i_centroCoste.xpm&lt;/iconset&gt;
++  &lt;/property&gt;
++  &lt;layout class=&quot;QVBoxLayout&quot;&gt;
++   &lt;property name=&quot;spacing&quot;&gt;
++    &lt;number&gt;4&lt;/number&gt;
++   &lt;/property&gt;
++   &lt;property name=&quot;margin&quot;&gt;
++    &lt;number&gt;4&lt;/number&gt;
++   &lt;/property&gt;
++   &lt;item&gt;
++    &lt;widget class=&quot;QTreeWidget&quot; name=&quot;mui_listCostes&quot;&gt;
++     &lt;column&gt;
++      &lt;property name=&quot;text&quot;&gt;
++       &lt;string notr=&quot;true&quot;&gt;1&lt;/string&gt;
++      &lt;/property&gt;
++     &lt;/column&gt;
++    &lt;/widget&gt;
++   &lt;/item&gt;
++   &lt;item&gt;
++    &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++     &lt;property name=&quot;spacing&quot;&gt;
++      &lt;number&gt;6&lt;/number&gt;
++     &lt;/property&gt;
++     &lt;property name=&quot;margin&quot;&gt;
++      &lt;number&gt;0&lt;/number&gt;
++     &lt;/property&gt;
++     &lt;item&gt;
++      &lt;spacer&gt;
++       &lt;property name=&quot;orientation&quot;&gt;
++        &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
++       &lt;/property&gt;
++       &lt;property name=&quot;sizeType&quot;&gt;
++        &lt;enum&gt;QSizePolicy::Expanding&lt;/enum&gt;
++       &lt;/property&gt;
++       &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
++        &lt;size&gt;
++         &lt;width&gt;130&lt;/width&gt;
++         &lt;height&gt;21&lt;/height&gt;
++        &lt;/size&gt;
++       &lt;/property&gt;
++      &lt;/spacer&gt;
++     &lt;/item&gt;
++     &lt;item&gt;
++      &lt;widget class=&quot;QPushButton&quot; name=&quot;mui_invertir&quot;&gt;
++       &lt;property name=&quot;text&quot;&gt;
++        &lt;string&gt;Invertir&lt;/string&gt;
++       &lt;/property&gt;
++      &lt;/widget&gt;
++     &lt;/item&gt;
++     &lt;item&gt;
++      &lt;widget class=&quot;QPushButton&quot; name=&quot;mui_nada&quot;&gt;
++       &lt;property name=&quot;text&quot;&gt;
++        &lt;string&gt;S. Nada&lt;/string&gt;
++       &lt;/property&gt;
++      &lt;/widget&gt;
++     &lt;/item&gt;
++     &lt;item&gt;
++      &lt;widget class=&quot;QPushButton&quot; name=&quot;mui_todo&quot;&gt;
++       &lt;property name=&quot;text&quot;&gt;
++        &lt;string&gt;S. Todo&lt;/string&gt;
++       &lt;/property&gt;
++      &lt;/widget&gt;
++     &lt;/item&gt;
++     &lt;item&gt;
++      &lt;widget class=&quot;QPushButton&quot; name=&quot;pushButton1&quot;&gt;
++       &lt;property name=&quot;text&quot;&gt;
++        &lt;string&gt;Cerrar&lt;/string&gt;
++       &lt;/property&gt;
++      &lt;/widget&gt;
++     &lt;/item&gt;
++    &lt;/layout&gt;
++   &lt;/item&gt;
++  &lt;/layout&gt;
++ &lt;/widget&gt;
++ &lt;layoutdefault spacing=&quot;6&quot; margin=&quot;11&quot;/&gt;
++ &lt;resources&gt;
++  &lt;include location=&quot;../../bulmages.qrc&quot;/&gt;
++ &lt;/resources&gt;
++ &lt;connections&gt;
++  &lt;connection&gt;
++   &lt;sender&gt;pushButton1&lt;/sender&gt;
++   &lt;signal&gt;clicked()&lt;/signal&gt;
++   &lt;receiver&gt;BcCentroCosteSeleccionarBase&lt;/receiver&gt;
++   &lt;slot&gt;close()&lt;/slot&gt;
++   &lt;hints&gt;
++    &lt;hint type=&quot;sourcelabel&quot;&gt;
++     &lt;x&gt;446&lt;/x&gt;
++     &lt;y&gt;328&lt;/y&gt;
++    &lt;/hint&gt;
++    &lt;hint type=&quot;destinationlabel&quot;&gt;
++     &lt;x&gt;380&lt;/x&gt;
++     &lt;y&gt;352&lt;/y&gt;
++    &lt;/hint&gt;
++   &lt;/hints&gt;
++  &lt;/connection&gt;
++ &lt;/connections&gt;
++&lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocosteseleccionarview.cpp b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocosteseleccionarview.cpp
+new file mode 100644
+index 0000000..3b2b0d9
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocosteseleccionarview.cpp
+@@ -0,0 +1,267 @@
++/***************************************************************************
++ *   Copyright (C) 2003 by Tomeu Borras                                    *
++ *   <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>                                                  *
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 2 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program; if not, write to the                         *
++ *   Free Software Foundation, Inc.,                                       *
++ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
++ ***************************************************************************/
++
++#include &quot;bccentrocosteseleccionarview.h&quot;
++#include &quot;bfcompany.h&quot;
++#include &quot;blfunctions.h&quot;
++
++BcCentroCosteSeleccionarView *g_selccostes;
++///
++/**
++\param emp
++\param parent
++**/
++BcCentroCosteSeleccionarView::BcCentroCosteSeleccionarView ( BfCompany *emp, QWidget *parent )
++        : QWidget ( parent ), BlMainCompanyPointer ( emp )
++{
++    BL_FUNC_DEBUG
++    setupUi ( this );
++
++    numDigitos = g_confpr-&gt;value(CONF_CONT_NUMDIGITOSEMPRESA).toInt();
++
++    m_iterador = new QTreeWidgetItemIterator ( mui_listCostes );
++    mui_listCostes-&gt;setColumnCount ( 5 );
++
++    QStringList etiquetas;
++    etiquetas &lt;&lt; _ ( &quot;nom_coste&quot; ) &lt;&lt; _ ( &quot;desc_coste&quot; ) &lt;&lt; _ ( &quot;Status&quot; ) &lt;&lt; _ ( &quot;idc_coste&quot; ) &lt;&lt; _ ( &quot;Seleccion&quot; );
++    mui_listCostes-&gt;setHeaderLabels ( etiquetas );
++    cargacostes();
++    
++}
++
++
++///
++/**
++**/
++BcCentroCosteSeleccionarView::~BcCentroCosteSeleccionarView()
++{
++    BL_FUNC_DEBUG
++    delete m_iterador;
++    
++}
++
++
++///
++/**
++**/
++void BcCentroCosteSeleccionarView::cargacostes()
++{
++    BL_FUNC_DEBUG
++    /// Rellenamnos la listbox que va a sustituir al combobox correspondiente.
++    /// Para que en los listados puedan salir m&aacute;s cosas de las que se dicen.
++    fprintf ( stderr, &quot;Ahora nos toca rellenar las listas.\n&quot; );
++    QMap &lt;int, QTreeWidgetItem *&gt; Lista;
++    QTreeWidgetItem *item;
++    int padre;
++    int idc_coste = 0;
++    BlDbRecordSet *cursoraux1, *cursoraux2;
++
++    /// Cogemos los centros de coste principales y los ponemos donde toca.
++    mui_listCostes-&gt;clear();
++    cursoraux1 = mainCompany() -&gt;loadQuery ( &quot;SELECT * FROM c_coste WHERE padre ISNULL ORDER BY idc_coste&quot; );
++    while ( !cursoraux1-&gt;eof() ) {
++        idc_coste = cursoraux1-&gt;value( &quot;idc_coste&quot; ).toInt();
++
++        item = new QTreeWidgetItem ( mui_listCostes );
++        item-&gt;setText ( 3, cursoraux1-&gt;value( &quot;idc_coste&quot; ) );
++        item-&gt;setText ( 1, cursoraux1-&gt;value( &quot;descripcion&quot; ) );
++        item-&gt;setText ( 0, cursoraux1-&gt;value( &quot;nombre&quot; ) );
++        item-&gt;setCheckState ( 0, Qt::Unchecked );
++// descomentarlo si Qt&gt;=4.2        item-&gt;setExpanded(true);
++        Lista[idc_coste] = item;
++
++        cursoraux1-&gt;nextRecord ();
++    } // end while
++    delete cursoraux1;
++    /// Una vez que hemos puesto los centros de coste padre, todo lo dem&aacute;s es una
++    /// Tarea de ir colocando centros de coste a sus respectivos
++    /// deja de ser recursivo y pasa a ser lineal.
++    cursoraux2 = mainCompany() -&gt;loadQuery ( &quot;SELECT * FROM c_coste WHERE padre IS NOT NULL ORDER BY idc_coste&quot; );
++    while ( !cursoraux2-&gt;eof() ) {
++        padre = cursoraux2-&gt;value( &quot;padre&quot; ).toInt();
++        idc_coste = cursoraux2-&gt;value( &quot;idc_coste&quot; ).toInt();
++        fprintf ( stderr, &quot;Cuentas de subnivel:%d&quot;, padre );
++
++        item = new QTreeWidgetItem ( Lista[padre] );
++        item-&gt;setText ( 3, cursoraux2-&gt;value( &quot;idc_coste&quot; ) );
++        item-&gt;setText ( 1, cursoraux2-&gt;value( &quot;descripcion&quot; ) );
++        item-&gt;setText ( 0, cursoraux2-&gt;value( &quot;nombre&quot; ) );
++        item-&gt;setCheckState ( 0, Qt::Unchecked );
++// descomentarlo si Qt&gt;=4.2        item-&gt;setExpanded(true);
++        Lista[idc_coste] = item;
++
++        cursoraux2-&gt;nextRecord();
++    } // end while
++    delete cursoraux2;
++    
++}
++
++
++/// Esta funci&oaqcute;n devuelve el primer centro de coste seleccionado de la vista.
++/// Devuelve el idc_coste. Si no hay ning&uacute;n centro de coste seleccionado devuelve
++/// cero
++/**
++\return
++**/
++int BcCentroCosteSeleccionarView::firstccoste()
++{
++    BL_FUNC_DEBUG
++    delete m_iterador;
++    m_iterador = new QTreeWidgetItemIterator ( mui_listCostes );
++    int idccoste = 0;
++
++    while ( ( **m_iterador ) &amp;&amp; idccoste == 0 ) {
++        if ( ( **m_iterador ) -&gt;checkState ( 0 ) == Qt::Checked ) {
++            idccoste = ( **m_iterador ) -&gt;text ( 3 ).toInt();
++//            return idccoste;
++        } // end if
++        ++ ( *m_iterador );
++    } // end while
++
++    
++    return idccoste;
++}
++
++
++/// Esta funci&oacute;n devuelve el siguiente centro de coste seleccionado de la vista.
++/**
++\return
++**/
++int BcCentroCosteSeleccionarView::nextccoste()
++{
++    BL_FUNC_DEBUG
++    int idccoste = 0;
++
++    while ( ( **m_iterador ) &amp;&amp; idccoste == 0 ) {
++        if ( ( **m_iterador ) -&gt;checkState ( 0 ) == Qt::Checked ) {
++            idccoste = ( **m_iterador ) -&gt;text ( 3 ).toInt();
++        } // end if
++        ++ ( *m_iterador );
++    } // end while
++    
++    return idccoste;
++}
++
++
++/// Esta funci&oacute;n prepara una lista separada por comas de los costes seleccionados.
++/// Sirve para generar sentencias SQL.
++/**
++\return
++**/
++QString BcCentroCosteSeleccionarView::cadcoste()
++{
++    BL_FUNC_DEBUG
++    int idc_coste;
++    QString ccostes = &quot;&quot;;
++    idc_coste = firstccoste();
++    while ( idc_coste ) {
++        if ( ccostes != &quot;&quot; )
++            ccostes.sprintf ( &quot;%s, %d&quot;, ccostes.toLatin1().constData(), idc_coste );
++        else
++            ccostes.sprintf ( &quot;%d&quot;, idc_coste );
++        idc_coste = nextccoste();
++    } /// end while
++    
++    return ccostes;
++}
++
++
++/// Esta funci&oacute;n devuelve el nombre del centro de coste actual
++/// Si no existe devuelve &quot;&quot;
++/**
++\return
++**/
++QString BcCentroCosteSeleccionarView::nomcoste()
++{
++    BL_FUNC_DEBUG
++    QTreeWidgetItemIterator m_iterador ( mui_listCostes );
++
++    fprintf ( stderr, &quot;nomcoste()\n&quot; );
++
++    if ( ( *m_iterador ) -&gt;checkState ( 0 ) == Qt::Checked ) {
++        fprintf ( stderr, &quot;nomcoste: %s\n&quot;, ( *m_iterador ) -&gt;text ( 0 ).toLatin1().constData() );
++        return ( *m_iterador ) -&gt;text ( 0 );
++    } else {
++        return &quot;&quot;;
++    } // end if
++
++    delete *m_iterador;
++    
++    return &quot;&quot;;
++}
++
++
++///
++/**
++**/
++void BcCentroCosteSeleccionarView::on_mui_todo_clicked()
++{
++    BL_FUNC_DEBUG
++    QTreeWidgetItemIterator m_iterador ( mui_listCostes );
++
++    while ( *m_iterador ) {
++        ( *m_iterador ) -&gt;setCheckState ( 0, Qt::Checked );
++        ++m_iterador;
++    } // end while
++
++    delete *m_iterador;
++    
++}
++
++
++///
++/**
++**/
++void BcCentroCosteSeleccionarView::on_mui_nada_clicked()
++{
++    BL_FUNC_DEBUG
++    QTreeWidgetItemIterator m_iterador ( mui_listCostes );
++
++    while ( *m_iterador ) {
++        ( *m_iterador ) -&gt;setCheckState ( 0, Qt::Unchecked );
++        ++m_iterador;
++    } // end while
++
++    delete *m_iterador;
++    
++}
++
++
++///
++/**
++**/
++void BcCentroCosteSeleccionarView::on_mui_invertir_clicked()
++{
++    BL_FUNC_DEBUG
++    QTreeWidgetItemIterator m_iterador ( mui_listCostes );
++
++    while ( *m_iterador ) {
++        if ( ( *m_iterador ) -&gt;checkState ( 0 ) == Qt::Unchecked ) {
++            ( *m_iterador ) -&gt;setCheckState ( 0, Qt::Checked );
++        } else {
++            ( *m_iterador ) -&gt;setCheckState ( 0, Qt::Unchecked );
++        } // end if
++        ++m_iterador;
++    } // end while
++
++    delete *m_iterador;
++    
++}
++
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocosteseleccionarview.h b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocosteseleccionarview.h
+new file mode 100644
+index 0000000..98545dc
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocosteseleccionarview.h
+@@ -0,0 +1,86 @@
++/***************************************************************************
++ *   Copyright (C) 2003 by Tomeu Borras                                    *
++ *   <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>                                                  *
++ *   <A HREF="http://www.iglues.org">http://www.iglues.org</A> Asociación Iglues -- Contabilidad Linux         *
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 2 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program; if not, write to the                         *
++ *   Free Software Foundation, Inc.,                                       *
++ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
++ ***************************************************************************/
++
++#ifndef BCCENTROCOSTESELECCIONARVIEW_H
++#define BCCENTROCOSTESELECCIONARVIEW_H
++
++#include &lt;QtWidgets/QTreeWidgetItemIterator&gt;
++
++#include &quot;blfunctions.h&quot;
++#include &quot;ui_bccentrocosteseleccionarbase.h&quot;
++#include &quot;blwidget.h&quot;
++
++
++class BfCompany;
++
++
++/// Maneja la ventana de selector de centros de coste.
++/** Esta clase es instanciada en la clase empresa y a partir de entonces se utiliza siempre
++    una &uacute;nica instancia de esta en todo el programa \ref selccostes de este modo
++    evitamos tener que andar reconstruyendo la clase e introducirle los datos.
++    Tambi&eacute;n se utiliza para establecer el centro de coste por defecto, utlidad
++    que permite introducir asientos directamente en un centro de coste sin tener que
++    teclearlo en cada apunte. */
++class BC_EXPORT BcCentroCosteSeleccionarView : public QWidget, public Ui_BcCentroCosteSeleccionarBase, public BlMainCompanyPointer
++{
++    Q_OBJECT
++
++private:
++    ///Indice de la columna que pone el nombre del centro de coste en la lista del formulario.
++    int m_colNomCoste;
++    /// Indice de la columna que indica la descripcion del centro de coste en la lista
++    /// del formulario.
++    int m_colDescCoste;
++    /// Indice de la columna que indica el identificador del centro de coste en la lista
++    /// del formulario.
++    int m_colIdCoste;
++    /// Indica la columna del status del centro de coste.
++    int m_colStatusCoste;
++    /// Indica la columna que tiene el checkbox para el centro de coste.
++    int m_colCheck;
++    /// Número de dígitos que tienen, por defecto, las cuentas.
++    int numDigitos;
++    /// Iterador de la lista que se presenta en este formulario.
++    QTreeWidgetItemIterator *m_iterador;
++
++public:
++    /// Constructor de la clase que recibe el parametro de empresa y que inicializa la
++    /// base de datos a utilizar.
++    BcCentroCosteSeleccionarView ( BfCompany *emp, QWidget *parent = 0 );
++    /// Destructor de la clase.
++    ~BcCentroCosteSeleccionarView();
++    void cargacostes();
++    int firstccoste();
++    int nextccoste();
++    QString cadcoste();
++    QString nomcoste();
++
++public slots:
++    void on_mui_todo_clicked();
++    void on_mui_nada_clicked();
++    void on_mui_invertir_clicked();
++};
++
++
++extern BcCentroCosteSeleccionarView *g_selccostes;
++
++#endif
++
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocosteview.cpp b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocosteview.cpp
+new file mode 100644
+index 0000000..8283266
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocosteview.cpp
+@@ -0,0 +1,283 @@
++/***************************************************************************
++ *   Copyright (C) 2003 by Tomeu Borras Riera                              *
++ *   <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>                                                  *
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 2 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program; if not, write to the                         *
++ *   Free Software Foundation, Inc.,                                       *
++ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
++ ***************************************************************************/
++
++#include &quot;bccentrocosteview.h&quot;
++#include &quot;bfcompany.h&quot;
++#include &quot;bccentrocosteseleccionarview.h&quot;
++#include &quot;bfsubform.h&quot;
++
++#define COL_NOM_COSTE  0
++#define COL_DESC_COSTE 1
++#define COL_IDC_COSTE  2
++
++
++/// Esta clase se encarga de presentar los centros de coste, la ventana, y
++/// de controlar la inserci&oacute;n de nuevos centros de coste, borrarlos, etc.
++/**
++\param emp
++\param parent
++**/
++BcCentroCosteView::BcCentroCosteView ( BfCompany  *emp, QWidget *parent )
++        : BfForm ( emp, parent )
++{
++    BL_FUNC_DEBUG
++    setAttribute ( Qt::WA_DeleteOnClose );
++    setupUi ( this );
++
++    setTitleName ( _ ( &quot;Centro de Coste&quot; ) );
++    /// Etablecemos cual va a ser la tabla para obtener los permisos
++    setDbTableName ( &quot;c_coste&quot; );
++    setDbFieldId ( &quot;idc_coste&quot; );
++    addDbField ( &quot;idc_coste&quot;, BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( &quot;Id. Centro Coste&quot; ) );
++    addDbField ( &quot;nombre&quot;, BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( &quot;Nombre&quot; ) );
++    addDbField ( &quot;descripcion&quot;, BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( &quot;Descripcion&quot; ) );
++
++    /// Inicializamos el subformulario de centros distribuidos
++    mui_cdistribuidos-&gt;setMainCompany ( emp );
++    mui_cdistribuidos-&gt;setDbTableName ( &quot;c_costedist&quot; );
++    mui_cdistribuidos-&gt;setFileConfig ( &quot;ccostedist&quot; );
++    mui_cdistribuidos-&gt;setDbFieldId ( &quot;idc_costedist&quot; );
++    mui_cdistribuidos-&gt;addSubFormHeader ( &quot;nomc_coste&quot;, BlDbField::DbVarChar, BlDbField::DbNoSave, BlSubFormHeader::DbNone, _ ( &quot;Nombre Destinatario&quot; ) );
++    mui_cdistribuidos-&gt;addSubFormHeader ( &quot;porcentc_costedist&quot;, BlDbField::DbNumeric, BlDbField::DbNotNull, BlSubFormHeader::DbNone, _ ( &quot;Porcentaje&quot; ) );
++    mui_cdistribuidos-&gt;addSubFormHeader ( &quot;idc_costedist&quot;, BlDbField::DbInt, BlDbField::DbPrimaryKey, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( &quot;Id&quot; ) );
++    mui_cdistribuidos-&gt;addSubFormHeader ( &quot;idc_coste&quot;, BlDbField::DbInt, BlDbField::DbNothing, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( &quot;Destinatario&quot; ) );
++    mui_cdistribuidos-&gt;addSubFormHeader ( &quot;iddestc_coste&quot;, BlDbField::DbInt, BlDbField::DbNotNull, BlSubFormHeader::DbNoWrite | BlSubFormHeader::DbHideView, _ ( &quot;Origen&quot; ) );
++    mui_cdistribuidos-&gt;setInsert ( true );
++    mui_cdistribuidos-&gt;setOrdenEnabled ( false );
++    idc_coste = 0;
++
++
++    /// Disparamos los plugins.
++    int res = g_plugins-&gt;run ( &quot;BcCentroCosteView_BcCentroCosteView&quot;, this );
++    if ( res != 0 ) {
++        return;
++    } // end if
++
++
++    mui_list-&gt;setColumnCount ( 3 );
++    QStringList headers;
++    headers &lt;&lt; _ ( &quot;Nombre&quot; ) &lt;&lt; _ ( &quot;Descripcion&quot; ) &lt;&lt; _ ( &quot;Id centro de coste&quot; );
++    mui_list-&gt;setColumnWidth ( 0, 200 );
++    mui_list-&gt;setHeaderLabels ( headers );
++    mui_list-&gt;setColumnHidden ( COL_IDC_COSTE, true );
++    dialogChanges_setExcludedObject ( mui_list );
++    dialogChanges_readValues();
++    insertWindow ( windowTitle(), this );
++    repintar();
++    
++}
++
++
++///
++/**
++**/
++BcCentroCosteView::~BcCentroCosteView()
++{
++    BL_FUNC_DEBUG
++    mainCompany() -&gt;removeWindow ( this );
++    
++}
++
++
++///
++/**
++**/
++void BcCentroCosteView::repintar()
++{
++    BL_FUNC_DEBUG
++    QTreeWidgetItem *it;
++    QMap &lt;int, QTreeWidgetItem *&gt; Lista;
++    int padre;
++    int idc_coste1 = 0;
++    BlDbRecordSet *cursoraux1, *cursoraux2;
++
++    /// Vaciamos el &aacute;rbol.
++    mui_list-&gt;clear();
++
++    /// Cargamos las cuentas de primer nivel.
++    cursoraux1 = mainCompany() -&gt;loadQuery ( &quot;SELECT * FROM c_coste WHERE padre ISNULL ORDER BY idc_coste&quot; );
++    while ( !cursoraux1-&gt;eof() ) {
++        padre = atoi ( cursoraux1-&gt;value( &quot;padre&quot; ).toLatin1() );
++        idc_coste1 = atoi ( cursoraux1-&gt;value( &quot;idc_coste&quot; ).toLatin1() );
++        it = new QTreeWidgetItem ( mui_list );
++        Lista[idc_coste1] = it;
++        it-&gt;setText ( COL_IDC_COSTE, cursoraux1-&gt;value( &quot;idc_coste&quot; ) );
++        it-&gt;setText ( COL_DESC_COSTE, cursoraux1-&gt;value( &quot;descripcion&quot; ) );
++        it-&gt;setText ( COL_NOM_COSTE, cursoraux1-&gt;value( &quot;nombre&quot; ) );
++        mui_list-&gt;expandItem ( it );
++        cursoraux1-&gt;nextRecord();
++    } // end while
++    delete cursoraux1;
++
++    /// Cargamos las cuentas hijas
++    cursoraux2 = mainCompany() -&gt;loadQuery ( &quot;SELECT * FROM c_coste WHERE padre IS NOT NULL ORDER BY idc_coste&quot; );
++    while ( !cursoraux2-&gt;eof() ) {
++        padre = cursoraux2-&gt;value( &quot;padre&quot; ).toInt();
++        idc_coste1 = cursoraux2-&gt;value( &quot;idc_coste&quot; ).toInt();
++        if ( Lista[padre] ) {
++            it = new QTreeWidgetItem ( Lista[padre] );
++            Lista[idc_coste1] = it;
++            it-&gt;setText ( COL_IDC_COSTE, cursoraux2-&gt;value( &quot;idc_coste&quot; ) );
++            it-&gt;setText ( COL_DESC_COSTE, cursoraux2-&gt;value( &quot;descripcion&quot; ) );
++            it-&gt;setText ( COL_NOM_COSTE, cursoraux2-&gt;value( &quot;nombre&quot; ) );
++            mui_list-&gt;expandItem ( it );
++        } else {
++	    BlDebug::blDebug ( Q_FUNC_INFO, 0, _(&quot;Error en la carga de centros de coste.&quot;) );
++        } // end if
++        cursoraux2-&gt;nextRecord();
++    } // end while
++    delete cursoraux2;
++
++    /// Ya que se han producido cambios en los centros de coste
++    /// Se inicializa el selector de centros de coste.
++    g_selccostes-&gt;cargacostes();
++    
++}
++
++
++///
++/**
++\param it
++**/
++void BcCentroCosteView::on_mui_list_itemClicked ( QTreeWidgetItem *it, int )
++{
++    BL_FUNC_DEBUG
++    int previdccoste = it-&gt;text ( COL_IDC_COSTE ).toInt();
++    if ( dialogChanges_isChanged() ) {
++        if ( QMessageBox::warning ( this,
++                                    _ ( &quot;Guardar centro de coste&quot; ),
++                                    _ ( &quot;Desea guardar los cambios?&quot; ),
++                                    _ ( &quot;&amp;Guardar&quot; ), _ ( &quot;&amp;Cancelar&quot; ), 0, 0, 1 ) == 0 ) {
++            on_mui_guardar_clicked();
++        } // end if
++    } // end if
++    idc_coste = previdccoste;
++    mostrarPlantilla();
++    
++}
++
++
++///
++/**
++**/
++void BcCentroCosteView::mostrarPlantilla()
++{
++    BL_FUNC_DEBUG
++
++    QString query;
++    BfForm::load ( QString::number ( idc_coste ) );
++
++    query = &quot;SELECT * FROM c_costedist LEFT JOIN (SELECT idc_coste AS idcc, nombre AS nomc_coste FROM c_coste) AS t1 ON c_costedist.idc_Coste = t1.idcc WHERE iddestc_coste=&quot; + QString::number ( idc_coste );
++    mui_cdistribuidos-&gt;load ( query );
++
++
++    dialogChanges_readValues();
++    
++}
++
++
++///
++/**
++**/
++int BcCentroCosteView::save()
++{
++    BL_FUNC_DEBUG
++    BfForm::save();
++
++    mui_cdistribuidos-&gt;setColumnValue ( &quot;iddestc_coste&quot;, QString::number ( idc_coste ) );
++    mui_cdistribuidos-&gt;save();
++
++    dialogChanges_readValues();
++    repintar();
++    
++    return 0;
++}
++
++
++///
++/**
++**/
++void BcCentroCosteView::on_mui_crear_clicked()
++{
++    BL_FUNC_DEBUG
++    /// Si se ha modificado el contenido advertimos y guardamos.
++    if ( dialogChanges_isChanged() ) {
++        if ( QMessageBox::warning ( this,
++                                    _ ( &quot;Guardar centro de coste&quot; ),
++                                    _ ( &quot;Desea guardar los cambios?&quot; ),
++                                    QMessageBox::Ok,
++                                    QMessageBox::Cancel ) == QMessageBox::Ok ) {
++            on_mui_guardar_clicked();
++        } // end if
++    } // end if
++
++    QString query;
++    QTreeWidgetItem *it;
++    it = mui_list-&gt;currentItem();
++    if ( it ) {
++        idc_coste = atoi ( it-&gt;text ( COL_IDC_COSTE ).toLatin1() );
++        query.sprintf ( &quot;INSERT INTO c_coste (padre, nombre, descripcion) VALUES (%d, 'Nuevo centro de coste', 'Escriba su descripcion')&quot;, idc_coste );
++        mainCompany() -&gt;begin();
++        mainCompany() -&gt;runQuery ( query );
++    } else {
++        query.sprintf ( &quot;INSERT INTO c_coste (nombre, descripcion) VALUES ('Nuevo centro de coste', 'Escriba su descripcion')&quot; );
++        mainCompany() -&gt;begin();
++        mainCompany() -&gt;runQuery ( query );
++    } // end if
++    query.sprintf ( &quot;SELECT MAX(idc_coste) AS id_coste FROM c_coste&quot; );
++    BlDbRecordSet *cur = mainCompany() -&gt;loadQuery ( query );
++    idc_coste = atoi ( cur-&gt;value( &quot;id_coste&quot; ).toLatin1() );
++    delete cur;
++    mainCompany() -&gt;commit();
++    repintar();
++    
++}
++
++
++///
++/**
++**/
++void BcCentroCosteView::on_mui_borrar_clicked()
++{
++    BL_FUNC_DEBUG
++    try {
++        switch ( QMessageBox::warning ( this,
++                                        _ ( &quot;Borrar centro de coste&quot; ),
++                                        _ ( &quot;Se va a borrar el centro de coste.\nEsta operacion puede ocasionar perdida de datos.&quot; ),
++                                        _ ( &quot;&amp;Borrar&quot; ), _ ( &quot;&amp;Cancelar&quot; ), 0, 0, 1 ) ) {
++        case 0: /// Retry clicked or Enter pressed.
++            QString query;
++            query.sprintf ( &quot;DELETE FROM c_coste WHERE idc_coste = %d&quot;, idc_coste );
++            mainCompany() -&gt;begin();
++            mainCompany() -&gt;runQuery ( query );
++            mainCompany() -&gt;commit();
++            idc_coste = 0;
++            repintar();
++        } // end switch
++    } catch ( ... ) {
++        blMsgInfo ( _ ( &quot;No se pudo borrar el Centro de Coste&quot; ) );
++        mainCompany() -&gt;rollback();
++        return;
++    } // end try
++    
++}
++
++
++
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocosteview.h b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocosteview.h
+new file mode 100644
+index 0000000..556f34a
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocosteview.h
+@@ -0,0 +1,64 @@
++/***************************************************************************
++ *   Copyright (C) 2003 by Tomeu Borras Riera                              *
++ *   <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>                                                  *
++ *   <A HREF="http://www.iglues.org">http://www.iglues.org</A> Asociación Iglues -- Contabilidad Linux         *
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 2 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program; if not, write to the                         *
++ *   Free Software Foundation, Inc.,                                       *
++ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
++ ***************************************************************************/
++
++#ifndef BCCENTROCOSTEVIEW_H
++#define BCCENTROCOSTEVIEW_H
++
++#include &lt;QtWidgets/QWidget&gt;
++#include &lt;QtWidgets/QComboBox&gt;
++#include &lt;QtWidgets/QLineEdit&gt;
++#include &lt;QtGui/QCloseEvent&gt;
++
++#include &quot;ui_bccentrocostebase.h&quot;
++#include &quot;blpostgresqlclient.h&quot;
++#include &quot;bldialogchanges.h&quot;
++#include &quot;bfform.h&quot;
++
++
++class BfCompany;
++
++
++/// Visualiza un centro de coste.
++/** */
++class BC_EXPORT BcCentroCosteView : public BfForm, public Ui_BcCentroCosteBase
++{
++    Q_OBJECT
++
++public:
++    int idc_coste; /// Indica cual es el centro de coste que se esta visualizando.
++    /// Si su valor es 0 entonces es que no se esta visualizando ning&uacute;n centro de coste.
++
++public:
++    BcCentroCosteView ( BfCompany *, QWidget *parent = 0 );
++    ~BcCentroCosteView();
++    void repintar();
++    void mostrarPlantilla();
++    virtual void on_mui_borrar_clicked();
++    virtual int save();
++
++public slots:
++    virtual void on_mui_crear_clicked();
++    virtual void on_mui_list_itemClicked ( QTreeWidgetItem *, int );
++//    virtual void closeEvent(QCloseEvent *);
++};
++
++#endif
++
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/pdefs_pluginbf_canalyccoste.h b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/pdefs_pluginbf_canalyccoste.h
+new file mode 100644
+index 0000000..f1e7452
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/pdefs_pluginbf_canalyccoste.h
+@@ -0,0 +1,21 @@
++#ifndef PDEFS_PLUGINBC_CANALYCCOSTE_H
++#define PDEFS_PLUGINBC_CANALYCCOSTE_H
++
++
++#ifdef Q_OS_WIN32
++
++#ifdef PLUGINBC_CANALYCCOSTE
++#define PLUGINBC_CANALYCCOSTE_EXPORT __declspec(dllexport)
++#else
++#define PLUGINBC_CANALYCCOSTE_EXPORT __declspec(dllimport)
++#endif
++
++#else
++
++#define PLUGINBC_CANALYCCOSTE_EXPORT
++
++#endif
++
++
++#endif
++
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/pluginbf_canalyccoste.cpp b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/pluginbf_canalyccoste.cpp
+new file mode 100644
+index 0000000..faeaeeb
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/pluginbf_canalyccoste.cpp
+@@ -0,0 +1,160 @@
++/***************************************************************************
++ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
++ *   <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>                                                  *
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 2 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program; if not, write to the                         *
++ *   Free Software Foundation, Inc.,                                       *
++ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
++ ***************************************************************************/
++
++#include &lt;cstdio&gt;
++
++#include &lt;QtWidgets/QAction&gt;
++#include &lt;QtWidgets/QMessageBox&gt;
++#include &lt;QtWidgets/QMessageBox&gt;
++#include &lt;QtWidgets/QWidget&gt;
++#include &lt;QtGui/QIcon&gt;
++#include &lt;QtWidgets/QApplication&gt;
++#include &lt;QtCore/QObject&gt;
++#include &lt;QtCore/QTextCodec&gt;
++#include &lt;QtCore/QLocale&gt;
++
++#include &quot;bldockwidget.h&quot;
++#include &quot;bccanalseleccionarview.h&quot;
++#include &quot;bccentrocosteseleccionarview.h&quot;
++#include &quot;bccentrocosteview.h&quot;
++#include &quot;bccanalview.h&quot;
++#include &quot;pluginbf_canalyccoste.h&quot;
++#include &quot;bfcompany.h&quot;
++
++
++BfBulmaFact *g_pluginbf_canalyccoste = NULL;
++
++
++///
++/**
++\param bcont
++**/
++int entryPoint ( BfBulmaFact *bcont )
++{
++    BL_FUNC_DEBUG
++
++    g_selcanales = new BcCanalSeleccionarView ( bcont-&gt;company(), 0 );
++    g_selccostes = new BcCentroCosteSeleccionarView (bcont-&gt;company(), 0);
++    
++    /// Inicializa el sistema de traducciones 'gettext'.
++    setlocale ( LC_ALL, &quot;&quot; );
++    blBindTextDomain ( &quot;pluginbf_canalyccoste&quot;, g_confpr-&gt;value( CONF_DIR_TRADUCCION ).toLatin1().constData() );
++    g_pluginbf_canalyccoste = bcont;
++
++    QMenu *pPluginMenu = bcont-&gt;menuMaestro;
++    pPluginMenu-&gt;addSeparator();
++    
++    BlAction *accionA = new BlAction ( _ ( &quot;&amp;Canal&quot; ), 0 );
++    accionA-&gt;setStatusTip ( _ ( &quot;Ver Canales&quot; ) );
++    accionA-&gt;setWhatsThis ( _ ( &quot;Ver Canales&quot; ) );
++    accionA-&gt;setIcon ( QIcon ( QString::fromUtf8 ( &quot;:/BulmaCont32x32/images/png/i_canalyccoste.xpm&quot; ) ) );
++    accionA-&gt;setObjectName(&quot;mui_actionCanal&quot;);
++    pPluginMenu-&gt;addAction ( accionA );
++    bcont-&gt;Listados-&gt;addAction ( accionA );
++
++    BlAction *accionB = new BlAction ( _ ( &quot;&amp;Centros de Coste&quot; ), 0 );
++    accionB-&gt;setStatusTip ( _ ( &quot;Ver Centros de Coste&quot; ) );
++    accionB-&gt;setWhatsThis ( _ ( &quot;Ver Centros de Coste&quot; ) );
++    accionB-&gt;setIcon ( QIcon ( QString::fromUtf8 ( &quot;:/BulmaCont32x32/images/png/i_canalyccoste.xpm&quot; ) ) );
++    accionB-&gt;setObjectName(&quot;mui_actionCCoste&quot;);
++    pPluginMenu-&gt;addAction ( accionB );
++    bcont-&gt;Listados-&gt;addAction ( accionB );
++    
++    
++    
++// =================================================
++    /// Vamos a probar con un docwindow.
++    BlDockWidget *doc1 = new BlDockWidget ( _ ( &quot;Selector de Canales&quot; ), bcont );
++    doc1-&gt;setObjectName(&quot;mui_selcanales&quot;);
++    doc1-&gt;setFeatures ( QDockWidget::AllDockWidgetFeatures );
++
++    doc1-&gt;setGeometry ( 100, 100, 100, 500 );
++    doc1-&gt;resize ( 330, 250 );
++    bcont-&gt;addDockWidget ( Qt::RightDockWidgetArea, doc1 );
++
++    doc1-&gt;show();
++
++    doc1-&gt;setWidget ( g_selcanales );
++
++// =================================================	
++	
++    
++/**
++ *
++ *
++ *
++ *
++ */	
++// =================================================
++    /// Vamos a probar con un docwindow.
++    BlDockWidget *doc2 = new BlDockWidget ( _ ( &quot;Selector de Centros de Coste&quot; ), bcont );
++    doc2-&gt;setObjectName(&quot;mui_selcostes&quot;);
++    doc2-&gt;setFeatures ( QDockWidget::AllDockWidgetFeatures );
++
++    doc2-&gt;setGeometry ( 100, 100, 100, 500 );
++    doc2-&gt;resize ( 330, 250 );
++    bcont-&gt;addDockWidget ( Qt::RightDockWidgetArea, doc2 );
++
++    doc2-&gt;show();
++
++    doc2-&gt;setWidget ( g_selccostes );
++
++    return 0;
++}
++
++
++int BlAction_actionTriggered(BlAction *accion) {
++    BL_FUNC_DEBUG
++
++    if (accion-&gt;objectName() == &quot;mui_actionCanal&quot;) {
++	BcCanalView *canal = new BcCanalView ( g_pluginbf_canalyccoste-&gt;company(), 0 );
++	g_pluginbf_canalyccoste-&gt;company()-&gt;pWorkspace()-&gt;addSubWindow ( canal );      
++	canal-&gt;show();
++    } // end if
++
++    if (accion-&gt;objectName() == &quot;mui_actionCCoste&quot;) {
++	BcCentroCosteView *ccoste = new BcCentroCosteView ( g_pluginbf_canalyccoste-&gt;company(), 0 );
++	g_pluginbf_canalyccoste-&gt;company()-&gt;pWorkspace()-&gt;addSubWindow ( ccoste );      
++	ccoste-&gt;show();
++    } // end if
++    
++    return 0;
++}
++
++int PgetSelCostes(QString &amp;text) {
++    BL_FUNC_DEBUG
++    text = g_selccostes-&gt;cadcoste();
++    return 0;
++}
++    
++int PgetSelCanales(QString &amp;text) {
++    BL_FUNC_DEBUG
++    text = g_selcanales-&gt;cadCanal();
++    return 0;
++}
++
++int PgetSinCanal(bool &amp;text) {
++    BL_FUNC_DEBUG
++    text = g_selcanales-&gt;sinCanal();
++    return 0;
++}
++
++    
++    
+\ No newline at end of file
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/pluginbf_canalyccoste.h b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/pluginbf_canalyccoste.h
+new file mode 100644
+index 0000000..1fc85cf
+--- /dev/null
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/pluginbf_canalyccoste.h
+@@ -0,0 +1,37 @@
++/***************************************************************************
++ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
++ *   <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>                                                  *
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 2 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program; if not, write to the                         *
++ *   Free Software Foundation, Inc.,                                       *
++ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
++ ***************************************************************************/
++
++#ifndef PLUGINBC_CANALYCCOSTE_H
++#define PLUGINBC_CANALYCCOSTE_H
++
++#include &quot;bfbulmafact.h&quot;
++#include &quot;blpostgresqlclient.h&quot;
++#include &quot;bfcompany.h&quot;
++#include &quot;blmaincompanypointer.h&quot;
++#include &quot;pdefs_pluginbf_canalyccoste.h&quot;
++#include &quot;blaction.h&quot;
++
++extern &quot;C&quot; PLUGINBC_CANALYCCOSTE_EXPORT int entryPoint ( BfBulmaFact * );
++extern &quot;C&quot; PLUGINBC_CANALYCCOSTE_EXPORT int BlAction_actionTriggered(BlAction *);
++extern &quot;C&quot; PLUGINBC_CANALYCCOSTE_EXPORT int PgetSelCostes(QString &amp;);
++extern &quot;C&quot; PLUGINBC_CANALYCCOSTE_EXPORT int PgetSelCanales(QString &amp;);
++extern &quot;C&quot; PLUGINBC_CANALYCCOSTE_EXPORT int PgetSinCanal(bool &amp;);
++#endif
++
+diff --git a/bulmages/bulmafact/plugins/pluginbf_diario/bcdiarioview.cpp b/bulmages/bulmafact/plugins/pluginbf_diario/bcdiarioview.cpp
+index 9303136..3044e5d 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_diario/bcdiarioview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_diario/bcdiarioview.cpp
+@@ -247,11 +247,19 @@ void BcDiarioView::presentar()
+             cadand = &quot; AND &quot;;
+         } // end if
+ 
+-/*
+-        // Consideraciones para centros de coste y canales
+-        BcCanalSeleccionarView *scanal = mainCompany() -&gt;getselcanales();
+-        BcCentroCosteSeleccionarView *scoste = mainCompany() -&gt;getselccostes();
+-        QString ccostes = scoste-&gt;cadcoste();
++
++        
++        QString ccostes = &quot;&quot;;
++	g_plugins-&gt;run(&quot;PgetSelCostes&quot;, &amp;ccostes);
++
++	
++        QString ccanales = &quot;&quot;;
++	g_plugins-&gt;run(&quot;PgetSelCanales&quot;, &amp;ccanales);
++	
++	bool sincanal = true;
++	g_plugins-&gt;run(&quot;PgetSinCanal&quot;, &amp;sincanal);
++	
++	
+         if ( ccostes != &quot;&quot; ) {
+             ccostes = &quot; &quot; + tabla + &quot;.idc_coste IN (&quot; + ccostes + &quot;) &quot;;
+             cad += cadwhere + cadand + ccostes;
+@@ -261,8 +269,7 @@ void BcDiarioView::presentar()
+ 
+         
+         /// El calculo de los canales
+-        QString ccanales = scanal-&gt;cadCanal();
+-        if (scanal-&gt;sinCanal()) {
++        if (sincanal) {
+ 	  if ( ccanales != &quot;&quot; ) {
+ 	      ccanales = &quot; (&quot;+tabla+&quot;.idcanal ISNULL OR &quot;+tabla+&quot;.idcanal IN (&quot; + ccanales + &quot;)) &quot;;
+ 	  } else {
+@@ -278,7 +285,7 @@ void BcDiarioView::presentar()
+         cad += cadwhere + cadand + ccanales;
+         cadwhere = &quot;&quot;;
+         cadand = &quot; AND &quot;;
+-*/        
++     
+ 
+         bool ok = false;
+         mui_saldosup-&gt;text().toFloat ( &amp;ok );
+diff --git a/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractoview.cpp b/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractoview.cpp
+index d39a9c3..69a7bd1 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractoview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractoview.cpp
+@@ -400,15 +400,14 @@ void BcExtractoView::presentar()
+         QString query = &quot;&quot;;
+         /// Al igual que en el caso anterior los centros de coste han cambiado y a&uacute;n
+         /// no se pueden implementar.
+-	QString ccostes = &quot;&quot;;
+-/*
+-        BcCanalSeleccionarView *scanal = mainCompany() -&gt;getselcanales();
+-        BcCentroCosteSeleccionarView *scoste = mainCompany() -&gt;getselccostes();
+-        QString ccostes = scoste-&gt;cadcoste();
++
++        QString ccostes = &quot;&quot;;
++	g_plugins-&gt;run(&quot;PgetSelCostes&quot;, &amp;ccostes);
++	
+         if ( ccostes != &quot;&quot; ) {
+             ccostes.sprintf ( &quot; AND idc_coste IN (%s) &quot;, ccostes.toLatin1().constData() );
+         } // end if
+-*/        
++        
+ 
+         
+         
+@@ -443,9 +442,11 @@ void BcExtractoView::presentar()
+         
+         /// El calculo de los canales
+         QString ccanales = &quot;&quot;;
+-/*
+-        QString ccanales = scanal-&gt;cadCanal();
+-        if (scanal-&gt;sinCanal()) {
++	g_plugins-&gt;run(&quot;PgetSelCanales&quot;, &amp;ccanales);
++	bool sincanal = true;
++	g_plugins-&gt;run(&quot;PgetSinCanal&quot;, &amp;sincanal);
++	
++        if (sincanal) {
+ 	  if ( ccanales != &quot;&quot; ) {
+ 	      ccanales = &quot; AND (&quot;+tabla+&quot;.idcanal ISNULL OR &quot;+tabla+&quot;.idcanal IN (&quot; + ccanales + &quot;)) &quot;;
+ 	  } else {
+@@ -458,7 +459,7 @@ void BcExtractoView::presentar()
+ 	      ccanales = &quot; AND &quot;+tabla+&quot;.idcanal &lt;&gt; NULL &quot;;	    
+ 	  } // end if
+ 	} // end if
+-*/	
++	
+ 	
+         query = &quot;SELECT * FROM ((SELECT &quot; + cont + &quot; FROM &quot; + tabla + &quot; WHERE  idcuenta = &quot; + idcuenta + &quot; AND fecha &gt;= '&quot; + finicial + &quot;' AND fecha &lt;= '&quot; + ffinal + &quot;' &quot; + ccostes + &quot; &quot; + ccanales + &quot; &quot; + tipopunteo + saldosup + saldoinf + &quot;) AS t2 &quot;;
+         query += &quot; LEFT JOIN (SELECT idcuenta AS idc, descripcion, codigo, tipocuenta FROM cuenta) AS t9 ON t2.idcuenta = t9.idc) AS t1&quot;;
+@@ -767,8 +768,8 @@ QString BcExtractoView::imprimeExtractoCuenta ( QString idcuenta )
+         QString query = &quot;&quot;;
+         /// Al igual que en el caso anterior los centros de coste han cambiado y a&uacute;n
+         /// no se pueden implementar.
+-        QString ccostes=&quot;&quot;;
+-        QString ccanales = &quot;&quot;;
++	QString ccostes = &quot;&quot;;
++	QString ccanales = &quot;&quot;;
+ /*
+         BcCanalSeleccionarView *scanal = mainCompany() -&gt;getselcanales();
+         BcCentroCosteSeleccionarView *scoste = mainCompany() -&gt;getselccostes();
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007618.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007620.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7619">[ fecha ]</a>
+              <a href="thread.html#7619">[ hilo ]</a>
+              <a href="subject.html#7619">[ asunto ]</a>
+              <a href="author.html#7619">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

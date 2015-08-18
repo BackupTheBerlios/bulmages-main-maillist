@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Bug #14945] SQL personalitzat afegeix	LIMIT 500
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2314945%5D%20SQL%20personalitzat%20afegeix%0A%09LIMIT%20500&In-Reply-To=%3C200812231830.mBNIUwxO020801%40unicorn.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000657.html">
+   <LINK REL="Next"  HREF="000652.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Bug #14945] SQL personalitzat afegeix	LIMIT 500 </H1>
+    <B>admin en berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2314945%5D%20SQL%20personalitzat%20afegeix%0A%09LIMIT%20500&In-Reply-To=%3C200812231830.mBNIUwxO020801%40unicorn.berlios.de%3E"
+       TITLE="[BulmaGés] [Bug #14945] SQL personalitzat afegeix	LIMIT 500">admin en berlios.de
+       </A><BR>
+    <I>Mar Dic 23 19:30:58 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000657.html">[BulmaGés]r2869 - in trunk/bulmages/bulmafact: plugins plugins/plugincobros plugins/plugincompraventa plugins/pluginimpresionesmultiples plugins/pluginpagos plugins/pluginq19 src
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000652.html">[BulmaGés] [Bug #14945] SQL personalitzat afegeix	LIMIT 500
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#651">[ fecha ]</a>
+              <a href="thread.html#651">[ hilo ]</a>
+              <a href="subject.html#651">[ asunto ]</a>
+              <a href="author.html#651">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bug #14945, was updated on 2008-Dec-21 12:27
+Here is a current snapshot of the bug.
+
+Project: BulmaGes, Gestión Empresarial Libre
+Category: None
+Status: Open
+Resolution: Fixed
+Bug Group: None
+Priority: 5
+Submitted by: xdrudis
+Assigned to : none
+Summary: SQL personalitzat afegeix LIMIT 500
+
+Details: A les fitxes, si vas a les opcions avançades pots introduir codi 
+SQL que s'executa directament a BD. Inicialment sembla alguna 
+cosa insegura, però crec que tenint en compte tota l'aplicació, no ho és, 
+al cap i a la fi els usuaris de bulmafact són usuaris de postgres i 
+poden fer el mateix des de psql o sia que no estas obrint cap privilegi
+extra. 
+
+Però hi ha una cosa una mica emprenyadora. Quan envies una consulta
+afegeix automàticament LIMIT 500 al final. I quan la tornes a editar has 
+d'esborrar-ho perquè t'ho torna a posar. Encara que afegeixi el LIMIT 500
+a la consulta per evitar sobrecàrregues al servidor de BD, podria no afegir-ho
+al camp de text per evitar que acabi enviant LIMIT 500 LIMIT 500  i peti ? 
+
+
+
+Follow-Ups:
+
+Date: 2008-Dec-23 19:30
+By: tborras
+
+Comment:
+Ara se esborra desde la darrera clausula LIMIT fins al final del query. Per tornar-lo a afegir després segons les clausules pasades.
+-------------------------------------------------------
+
+For detailed info, follow this link:
+<A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=14945&amp;group_id=4472">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=14945&amp;group_id=4472</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000657.html">[BulmaGés]r2869 - in trunk/bulmages/bulmafact: plugins plugins/plugincobros plugins/plugincompraventa plugins/pluginimpresionesmultiples plugins/pluginpagos plugins/pluginq19 src
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000652.html">[BulmaGés] [Bug #14945] SQL personalitzat afegeix	LIMIT 500
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#651">[ fecha ]</a>
+              <a href="thread.html#651">[ hilo ]</a>
+              <a href="subject.html#651">[ asunto ]</a>
+              <a href="author.html#651">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

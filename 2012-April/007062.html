@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Bulmages Windows
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Futf-8%3Fq%3FBulmages_Windows%3F%3D&In-Reply-To=%3C20120418205311.GI4599%40ritho.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007058.html">
+   <LINK REL="Next"  HREF="007064.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Bulmages Windows </H1>
+    <B>Pablo Alvarez de Sotomayor Posadillo</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Futf-8%3Fq%3FBulmages_Windows%3F%3D&In-Reply-To=%3C20120418205311.GI4599%40ritho.net%3E"
+       TITLE="[BulmaGés]Bulmages Windows">palvarez en iglues.org
+       </A><BR>
+    <I>Mie Abr 18 22:53:11 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007058.html">[BulmaGés] Bulmages Windows
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007064.html">[BulmaGés]Bulmages Windows
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7062">[ fecha ]</a>
+              <a href="thread.html#7062">[ hilo ]</a>
+              <a href="subject.html#7062">[ asunto ]</a>
+              <a href="author.html#7062">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> La duda es la siguiente:
+</I>&gt;<i> 
+</I>&gt;<i> Siendo la diferencia con cualquier otra rama un directorio.
+</I>&gt;<i> (nsis_bulmages), y estando en  Git y no en subversion, donde las ramas son
+</I>&gt;<i> bastante diferentes. Â¿Merece la pena que sea una rama separada?.
+</I>&gt;<i> Pq este detalle nos obligarÃ¡ a hacer un winversion14 y toda la parafernalia
+</I>&gt;<i> asociada a hacer merges parriba y pabajo mientras que teniendo el
+</I>&gt;<i> directorio como &quot;uno mÃ¡s&quot; se adapta perfectamente sin molestar a nadie.
+</I>
+Yo lo mantendria en la misma rama. Como bien dices, en git las ramas son
+un poco diferentes, y generalmente estan pensadas para ir desarrollando
+funcionalidades manteniendo un codigo base mas o menos estable. Desde mi
+punto de vista es el mismo caso que puede tener, por ejemplo, un paquete
+debian, que basicamente varia con respecto al resto del programa en un
+directorio. En ese caso se suele crear una rama para desarrollar una
+funcionalidad (crear un paquete debian a partir del codigo fuente) y,
+una vez que se termina de desarrollar la funcionalidad se mergea con la
+rama correspondiente. Asi no tienes que tener una rama para crear paquetes
+debian que tengas que actualizar cada vez que quieras crear un paquete.
+
+Otra cosa es que el codigo en windows compartiera poco con el resto, con
+lo que si podria tener sentido tenerlo en una rama aparte (si ves mi
+repositorio en gitorious he hecho eso para la documentacion o la web, ya
+que quien esta trabajando en la documentacion o en la web no le preocupa
+si alguien ha hecho un cambio en el codigo fuente). E incluso para estos
+casos mucha gente prefiere tener repositorios aparte.
+
+Por cierto, en git los tags son muy utiles, porque te permiten tener una
+unica rama estable (no una por version), incluir una tag cada vez que se
+lance una version y, en caso de que se encuentre un bug en una version
+estable que no sea la ultima git te permite crear branches a partir de
+una tag, con lo cual no te obliga a tener una branch por cada version
+estable que haya.
+
+UN SALUDO
+
+-- 
+    Pablo Álvarez de Sotomayor Posadillo
+Ingeniero Técnico en Informática de Sistemas
+	    <A HREF="http://ritho.net">http://ritho.net</A>
+ &quot;De todas las cosas que he perdido la que 
+     mas hecho de menos es mi cerebro&quot;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 198 bytes
+Desc: Digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20120418/138e8307/attachment.pgp">https://lists.berlios.de/pipermail/bulmages-main/attachments/20120418/138e8307/attachment.pgp</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007058.html">[BulmaGés] Bulmages Windows
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007064.html">[BulmaGés]Bulmages Windows
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7062">[ fecha ]</a>
+              <a href="thread.html#7062">[ hilo ]</a>
+              <a href="subject.html#7062">[ asunto ]</a>
+              <a href="author.html#7062">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

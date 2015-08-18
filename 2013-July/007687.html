@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130707170722.6F240176%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007686.html">
+   <LINK REL="Next"  HREF="007688.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130707170722.6F240176%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Dom Jul  7 19:07:22 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007686.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007688.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7687">[ fecha ]</a>
+              <a href="thread.html#7687">[ hilo ]</a>
+              <a href="subject.html#7687">[ asunto ]</a>
+              <a href="author.html#7687">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from 3233c66 to f19af1e
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/3233c66eee7290fa6f598fb12ee53decafb5b664/diffs/f19af1ebd5ef4c1c5e134b2d385df5579f8afae8">https://gitorious.org/bulmages/bulmages/commit/3233c66eee7290fa6f598fb12ee53decafb5b664/diffs/f19af1ebd5ef4c1c5e134b2d385df5579f8afae8</A>
+
+Diff: 
+
+commit f19af1ebd5ef4c1c5e134b2d385df5579f8afae8
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sun Jul 7 19:07:11 2013 +0200
+
+    Cambios en bulmasetup para que pueda funcionar portablemente en Windows
+
+diff --git a/bulmages/bulmasetup/config.in b/bulmages/bulmasetup/config.in
+index 4c5d22b..a5272a5 100644
+--- a/bulmages/bulmasetup/config.in
++++ b/bulmages/bulmasetup/config.in
+@@ -32,6 +32,7 @@ else:
+     plugins.openreports = os.getcwd().replace(&quot;bulmasetup&quot;,&quot;openreports\\&quot;)
+     plugins.homedir = &quot;&quot;
+ 
++
+ # Variables para la version de desarrollo
+ #sys.path.append('/home/talvarez/bulmages/trunk/bulmages/bulmasetup')
+ #plugins.pathdbbulmafact = '/usr/local/share/bulmages/dbmodels/crear/bulmafact/'
+diff --git a/bulmages/bulmasetup/facturacion.in b/bulmages/bulmasetup/facturacion.in
+index 2a35963..73f95ce 100644
+--- a/bulmages/bulmasetup/facturacion.in
++++ b/bulmages/bulmasetup/facturacion.in
+@@ -259,12 +259,17 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
+ 
+         if (self.encontradoopenreports == 0):
+                 # Escribimos el parametro como lo deseamos
+-            self.out &lt;&lt; &quot;\n\nCONF_DIR_OPENREPORTS &quot;+plugins.openreports+&quot;openreports_&quot; + self.database +&quot;/&quot;+str(locale.name().left(2))+&quot;/\n\n&quot;
+-
++            if os.name == 'posix':
++                self.out &lt;&lt; &quot;\n\nCONF_DIR_OPENREPORTS &quot;+plugins.openreports+&quot;openreports_&quot; + self.database +&quot;/&quot;+str(locale.name().left(2))+&quot;/\n\n&quot;
++            else:
++                self.out &lt;&lt; &quot;\n\nCONF_DIR_OPENREPORTS ..\\openreports\\openreports_&quot; + self.database +&quot;/&quot;+str(locale.name().left(2))+&quot;/\n\n&quot;
+         if (self.encontradostylesheet == 0):
+             # Escribimos el parametro como lo deseamos
+-            self.out &lt;&lt; &quot;\n\nCONF_STYLESHEET &quot; + plugins.cmakeinstallprefix +&quot;css/bulmafact_&quot; +str(locale.name().left(5))+&quot;.css\n\n&quot;
+-
++            if os.name == 'posix':
++                 self.out &lt;&lt; &quot;\n\nCONF_STYLESHEET &quot; + plugins.cmakeinstallprefix +&quot;css/bulmafact_&quot; +str(locale.name().left(5))+&quot;.css\n\n&quot;
++            else:
++                 self.out &lt;&lt; &quot;\n\nCONF_STYLESHEET ..\\css/bulmafact_&quot; +str(locale.name().left(5))+&quot;.css\n\n&quot;
++			
+         # Cerramos los ficheros.
+         self.file.close()
+         self.file1.close()
+@@ -411,13 +416,6 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
+                 self.x = self.x + 1
+             self.out &lt;&lt; &quot;\n&quot;
+ 
+-            # Terminamos de poner el resto de las linea.
+-#        while (not (self.text.isNull()) ):
+-#          self.out &lt;&lt; self.text &lt;&lt; &quot;\n&quot;
+-#          self.text = self.vin.readLine()
+-
+-
+-
+             # Leemos las lineas iniciales (hasta el parametro deseado) y las ponemos de nuevo.
+             self.encontradoarticles = 0;
+             self.text = self.vin.readLine()
+@@ -425,8 +423,12 @@ class Facturacion(Ui_ModificarFacturacionBase, Empresa):
+ 
+             if (self.encontradoarticles == 0):
+                     # Escribimos el parametro como lo deseamos
+-                self.out &lt;&lt; &quot;\n\nCONF_DIR_THUMB_ARTICLES &quot;+plugins.openreports+&quot;imgarticles_&quot; + self.database +&quot;/\n\n&quot;
+-                self.out &lt;&lt; &quot;\n\nCONF_DIR_IMG_ARTICLES &quot;+plugins.openreports+&quot;imgarticles_&quot; + self.database +&quot;/\n\n&quot;
++                if os.name == 'posix':
++					self.out &lt;&lt; &quot;\n\nCONF_DIR_THUMB_ARTICLES &quot;+plugins.openreports+&quot;imgarticles_&quot; + self.database +&quot;/\n\n&quot;
++					self.out &lt;&lt; &quot;\n\nCONF_DIR_IMG_ARTICLES &quot;+plugins.openreports+&quot;imgarticles_&quot; + self.database +&quot;/\n\n&quot;
++                else:
++					self.out &lt;&lt; &quot;\n\nCONF_DIR_THUMB_ARTICLES ..\\openreports\\imgarticles_&quot; + self.database +&quot;/\n\n&quot;
++					self.out &lt;&lt; &quot;\n\nCONF_DIR_IMG_ARTICLES ..\\openreports\\imgarticles_&quot; + self.database +&quot;/\n\n&quot;
+ 
+ 
+ 
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007686.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007688.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7687">[ fecha ]</a>
+              <a href="thread.html#7687">[ hilo ]</a>
+              <a href="subject.html#7687">[ asunto ]</a>
+              <a href="author.html#7687">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

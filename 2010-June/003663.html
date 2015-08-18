@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] lista la primera hornada de paquetes	para debian
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20lista%20la%20primera%20hornada%20de%20paquetes%0A%09para%20debian&In-Reply-To=%3CAANLkTinjTJGW8L6wWlQd8D7MKzSLkp0-tYVTcA6cT5G4%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003662.html">
+   <LINK REL="Next"  HREF="003664.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] lista la primera hornada de paquetes	para debian </H1>
+    <B>Iker Salmón San Millán</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20lista%20la%20primera%20hornada%20de%20paquetes%0A%09para%20debian&In-Reply-To=%3CAANLkTinjTJGW8L6wWlQd8D7MKzSLkp0-tYVTcA6cT5G4%40mail.gmail.com%3E"
+       TITLE="[BulmaGés] lista la primera hornada de paquetes	para debian">shaola en esdebian.org
+       </A><BR>
+    <I>Sab Jun  5 00:05:01 CEST 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003662.html">[BulmaGés] r3853 - trunk/bulmages/scripts
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003664.html">[BulmaGés]lista la primera hornada de paquetes para debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3663">[ fecha ]</a>
+              <a href="thread.html#3663">[ hilo ]</a>
+              <a href="subject.html#3663">[ asunto ]</a>
+              <a href="author.html#3663">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola,
+
+Pues eso, que por fin he conseguido construir los paquetes.  Eso sí, no os
+hagáis ilusiones, aún queda mucho trabajo por hacer.
+Para empezar, no se si he metido cada archivo donde corresponde, y además he
+tenido varios warnings durante la construcción de los paquetes.  Esos
+warnings estan relacionados con los plugins  y CREO que se pueden ignorar
+por el propio mensaje &quot;it's probably a plugin&quot;. pero no sé, lo mejor es que
+los ponga:
+
+dpkg-shlibdeps: warning:
+debian/bulmacont/usr/lib/bulmacont/plugins/libpluginbc_cuentasanuales.so.0.12.0
+contains an unresolvable reference to symbol
+_ZN19BcPlanContableArbol14actualizaHojasEP13BlDbRecordSet: it's probably a
+plugin.
+dpkg-shlibdeps: warning: 6 other similar warnings have been skipped (use -v
+to see them all).
+dpkg-shlibdeps: warning:
+debian/bulmacont/usr/lib/bulmacont/plugins/libpluginbc_corrector.so.0.12.0
+contains an unresolvable reference to symbol
+_ZN13BcAsientoView14muestraasientoEi: it's probably a plugin.
+dpkg-shlibdeps: warning: 1 other similar warnings have been skipped (use -v
+to see them all).
+dpkg-shlibdeps: warning:
+debian/bulmacont/usr/lib/bulmacont/plugins/libpluginbc_duplicarasiento.so.0.12.0
+contains an unresolvable reference to symbol
+_ZN13BcAsientoList13cargaasientosEv: it's probably a plugin.
+dpkg-shlibdeps: warning: 1 other similar warnings have been skipped (use -v
+to see them all).
+dpkg-shlibdeps: warning:
+debian/bulmacont/usr/lib/bulmacont/plugins/libpluginbc_balance.so.0.12.0
+contains an unresolvable reference to symbol _ZN19BcPlanContableArbolC1Ev:
+it's probably a plugin.
+dpkg-shlibdeps: warning: 7 other similar warnings have been skipped (use -v
+to see them all).
+dpkg-shlibdeps: warning:
+debian/bulmacont/usr/lib/bulmacont/plugins/libpluginbc_cuentaresumen.so.0.12.0
+contains an unresolvable reference to symbol
+_ZN13BcAsientoView14muestraasientoEi: it's probably a plugin.
+dpkg-shlibdeps: warning: 1 other similar warnings have been skipped (use -v
+to see them all).
+dpkg-shlibdeps: warning:
+debian/bulmacont/usr/lib/bulmacont/plugins/libpluginbc_amortizacion.so.0.12.0
+contains an unresolvable reference to symbol
+_ZN24BcAsientoInteligenteViewC1EP9BcCompanyP7QWidget: it's probably a
+plugin.
+dpkg-shlibdeps: warning: 6 other similar warnings have been skipped (use -v
+to see them all).
+dpkg-shlibdeps: warning:
+debian/bulmafact/usr/lib/bulmafact/plugins/libpluginbf_proveedorfactura.so.0.12.0
+contains an unresolvable reference to symbol
+_ZN20AlbaranProveedorViewC1EP9BfCompanyP7QWidget: it's probably a plugin.
+dpkg-shlibdeps: warning:
+debian/bulmafact/usr/lib/bulmafact/plugins/libpluginbf_clientefactura.so.0.12.0
+contains an unresolvable reference to symbol
+_ZN18AlbaranClienteList14idCliDelivNoteEv: it's probably a plugin.
+dpkg-shlibdeps: warning: 2 other similar warnings have been skipped (use -v
+to see them all).
+dpkg-shlibdeps: warning:
+debian/bulmafact/usr/lib/bulmafact/plugins/libpluginbf_abrecodigobarras.so.0.12.0
+contains an unresolvable reference to symbol
+_ZN19PedidoProveedorViewC1EP9BfCompanyP7QWidget: it's probably a plugin.
+dpkg-shlibdeps: warning:
+debian/bulmafact/usr/lib/bulmafact/plugins/libpluginbf_catalogo.so.0.12.0
+contains an unresolvable reference to symbol
+_ZN12ArticuloList10formaQueryEv: it's probably a plugin.
+dpkg-shlibdeps: warning:
+debian/bulmafact/usr/lib/bulmafact/plugins/libpluginbf_contrato.so.0.12.0
+contains an unresolvable reference to symbol
+_ZN11FacturaViewC1EP9BfCompanyP7QWidget: it's probably a plugin.
+dpkg-shlibdeps: warning:
+debian/bulmafact/usr/lib/bulmafact/plugins/libpluginbf_multiimprimir.so.0.12.0
+contains an unresolvable reference to symbol
+_ZN9CobroViewC1EP9BfCompanyP7QWidget: it's probably a plugin.
+dpkg-shlibdeps: warning:
+debian/bulmafact/usr/lib/bulmafact/plugins/libpluginbf_proveedoralbaran.so.0.12.0
+contains an unresolvable reference to symbol
+_ZN19PedidoProveedorViewC1EP9BfCompanyP7QWidget: it's probably a plugin.
+dpkg-shlibdeps: warning:
+debian/bulmafact/usr/lib/bulmafact/plugins/libpluginbf_compraventa.so.0.12.0
+contains an unresolvable reference to symbol
+_ZN20FacturaProveedorViewC1EP9BfCompanyP7QWidget: it's probably a plugin.
+dpkg-shlibdeps: warning: 2 other similar warnings have been skipped (use -v
+to see them all).
+
+
+Otra cosa es que he necesitado exportar LD_LIBRARY_PATH para los directorios
+de plugins de bulmafact y bulmacont, porque no he sido capaz de incluirlos
+en el archivo rules, se supone que con el parámetro -l puedo hacerlo con
+dh_shlibdeps, pero no se si he metido la ruta mal o que.  No acabo de
+vislumbrar en el man la forma correcta de hacerlo en el rules.  Tampoco he
+probado todas las posibilidades con las rutas parciales o completas, pero
+como me ha funcionado exportandolo y tengo los ojos llorosos ya de leer, lo
+he dejado para otro día.
+
+Creo que como tomeu me ha añadido al subversión podría subir os cambios que
+he tenido que hacer para que se construya bien los paquetes, pero
+sinceramente no me atrevo a hacerlo aún.  Me falta confianza.  Además, antes
+de hacerlo quisiera terminar con las cosas pendientes que quedan por
+discutir:
+
+Voy a intentar sintetizar todo para que quede clarito.
+
+Definitivamente nos quedan cinco paquetes:  bulmages, bulmafact, bulmacont,
+bulmatpv y bulmages-servers-admin
+La idea que tengo, que no se si es la más correcta, es esta:
+
+En cada paquete van las cosas propias de sí mismos (bulmafact, bulmatpv,
+bulmacont y bulmages-servers-admin) salvo en bulmages, que he metido lo que
+creo que era de bulmalib y de bulmages-common y también la documentación.
+Con lo que creo que bulmafact, bulmatpv y bulmacont dependen de ese paquete
+también, por lo que lo he añadido como dependencia (antes tenían como
+dependencia bulmages-common).
+
+La idea es que bulmages-servers-admin pueda funcionar por si mismo sin otras
+dependencias.
+
+La duda que me queda es si hacer o no un paquete solo para la documentación.
+Ya me contaréis.
+
+Cosas pendientes:
+
+1- Confirmar la separación de los paquetes tal y como lo he planteado.
+
+2- Verificar que no haya metido la pata a la hora de separar los archivos,
+ya que no me se la función de cada uno.  Me he limitado a deducirlo por el
+nombre y ruta de cada archivo.  Lo único que tengo claro es que los que he
+metido en bulmafact, bulmacont y bulmatpv están bien, ya que se identifican
+muy bien.  Creo que puede haber problemas con los otros dos (además estaba
+ya muy cansado cuando los puse y probé mil cosas porque no conseguía crear
+el paquete).  No quiero incordiar a Tomeu, pero creo que él sería el más
+adecuado para comprobar ese listado.
+
+3- Decidir si metemos la documentación en bulmages también o creamos un
+bulmages-doc.
+
+4- Decidir la versión que será el paquete.  Creo que nombrarlo como una
+versión + subversión no es lo más adecuado para pensar en que llegue a
+estable.  ¿Sería posible liberar una especie de postversion ya que ahora ya
+no quedan dependencias de las qt3?
+
+5- modificar el rules para no tener que exportar la variable de las rutas y
+que sea más sencilla la construcción de los paquetes.
+
+Aunque la congelación de squeeze está muy cerca y es prácticamente imposible
+que consigamos que entre a tiempo, aún hay una pequeña posibilidad.
+
+Como sé que todo el mundo pone de su parte y muchos no tienen casi tiempo no
+voy a pedirle a nadie un esfuerzo.  Pero yo tengo tiempo disponible y muchas
+ganas, con una pequeña ayudita inicial puedo tener los paquetes listos en
+pocos días.
+
+Un saludo a todos y ánimo.
+
+P.S.  Creo que no me dejo nada en el tintero, estoy bastante cansado y ya no
+pienso con claridad, pero después de ver los paquetes en formato deb me
+siento renovado y feliz.  Gracias a todos por la oportunidad de aprendizaje
+que me habéis brindado.
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20100605/9aafe16a/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20100605/9aafe16a/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003662.html">[BulmaGés] r3853 - trunk/bulmages/scripts
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003664.html">[BulmaGés]lista la primera hornada de paquetes para debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3663">[ fecha ]</a>
+              <a href="thread.html#3663">[ hilo ]</a>
+              <a href="subject.html#3663">[ asunto ]</a>
+              <a href="author.html#3663">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

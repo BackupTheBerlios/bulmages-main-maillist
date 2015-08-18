@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Privilegis dels usuaris de bases de dades
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FPrivilegis_dels_usuar%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fis_de_bases_de_dades%3F%3D&In-Reply-To=%3C200809210157.39909.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000048.html">
+   <LINK REL="Next"  HREF="000069.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Privilegis dels usuaris de bases de dades </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FPrivilegis_dels_usuar%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fis_de_bases_de_dades%3F%3D&In-Reply-To=%3C200809210157.39909.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]Privilegis dels usuaris de bases de dades">tborras en conetxia.com
+       </A><BR>
+    <I>Dom Sep 21 01:57:39 CEST 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000048.html">[BulmaGés] Privilegis dels usuaris de bases de	dades
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000069.html">[BulmaGés]Privilegis dels usuaris de bases de dades
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#51">[ fecha ]</a>
+              <a href="thread.html#51">[ hilo ]</a>
+              <a href="subject.html#51">[ asunto ]</a>
+              <a href="author.html#51">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>De tot el que comentes el que em sobta es que un usuari normal no pugui entrar 
+al programa. Jo ho vaig provar fa un temps i si que podia entrar.
+
+De fet bulmages esta preparat per emprar els privilegis dels usuaris i si (per 
+exemple) no tens permisos per escriurer a la taula de clients doncs et 
+desabilita el botó de guardar a la fitxa de clients o si no la pots llegir 
+doncs en lloc de un error directament no te mostra els clients. Si fas click 
+amb el botó dret sobre una fitxa veuràs que tens opciones avanzadas de ficha 
+i te diu quins usuaris tenen privilegis.
+
+El que passa es que ja no es un tema de esser super usuari o no. Sino que si 
+t'hi poses enserio tens que fer administració de permisos per a cada usuari i 
+taula amb el GRANT xxxxxxx (una feinada de implementació en un tema que acaba 
+servint a un administrador de bases de dades).
+
+I clar, tot això ja no es tema de gestió empresarial sino que pertany a 
+administració de bases de dades i amb el pgadmin III ho tens molt resolt.
+
+Conclusió:
+Al usuari normal de una PIME (tu mateix ho has dit) tot això li es per demes. 
+Una empresa mes gran toca tenir un informàtic que sap com fer-ho i amb una 
+eina molt millor de la que nosaltres poguem fer. Ho veig una mica com 
+desperdiciar un temps molt valuos duplicant l'esforç.
+
+De totes formes en Leo ja m'ha parlat de que el usuari no ahuria de tenir 
+privilegis de super usuari. Miraré de implementar que els usuaris que es 
+crein amb el bulmasetup no siguin superusuaris i de que tot funcioni com cal 
+amb usuaris normals. La resta de moment pgadmin.
+Bueno un plugin de canvi de contrasenya no costara gaire tampoc.
+
+
+Salut
+
+
+
+El Saturday 20 September 2008 20:59:04 Xavi Drudis Ferran escribió:
+&gt;<i> Hola.
+</I>&gt;<i>
+</I>&gt;<i> Avui comentava amb el Leo una cosa que vaig observar instal·lant bulmafact
+</I>&gt;<i> i m'ha suggerit que ho comenti a la llista.
+</I>&gt;<i>
+</I>&gt;<i> Em va semblar que el bulmasetup quan crea un usuari li dóna permisos
+</I>&gt;<i> d'administrador. Així :
+</I>&gt;<i>
+</I>&gt;<i>                                   List of roles
+</I>&gt;<i>     Role name    | Superuser | Create role | Create DB | Connections |
+</I>&gt;<i> Member of
+</I>&gt;<i> -----------------+-----------+-------------+-----------+-------------+-----
+</I>&gt;<i>------ Anna            | yes       | yes         | yes       | no limit    |
+</I>&gt;<i> ...
+</I>&gt;<i>
+</I>&gt;<i> o sia, igual que postgres.
+</I>&gt;<i> Em va sobtar perquè no conec el programa però no sembla que sigui necessari
+</I>&gt;<i> que qualsevol usuari pugui crear altres usuaris i que pugui crear bases de
+</I>&gt;<i> dades, ni que sigui superusuari. En el meu cas particular no m'importa molt
+</I>&gt;<i> perquè a aquesta instància de postgres no hi ha res més, però puc entendre
+</I>&gt;<i> que en alguns casos sigui un problema.
+</I>&gt;<i>
+</I>&gt;<i> Però aparentment si crees un usuari normal i intentes entrar a bulmafact no
+</I>&gt;<i> et deixa (encara que amb el psql pots entrar a la base de dades amb aquell
+</I>&gt;<i> usuari, perquè al pg_hba.conf té els permisos).
+</I>&gt;<i>
+</I>&gt;<i> La pregunta és una mica si això s'ha fet perquè el programa requereix tots
+</I>&gt;<i> aquests privilegis, o perquè encara no s'ha estudiat quins requereix, o
+</I>&gt;<i> per simplificar alguna altra cosa... No sé si es podria crear un rol que
+</I>&gt;<i> tingués privilegis per insert, update , delete , select i el que fes falta
+</I>&gt;<i> (potser create table, o el que fos) i assignar els usuaris que crees des de
+</I>&gt;<i> bulmasetup a aquest rol.
+</I>&gt;<i>
+</I>&gt;<i> Una possible millora en un futur que no sé si considereu que val la pena
+</I>&gt;<i> és permetre que els usuaris es puguin canviar la contrasenya des de
+</I>&gt;<i> l'aplicació. Ho poden fer des de postgres, és clar, i si s'autentica per
+</I>&gt;<i> trust (allò que per estar en una sessió de linux ja et deixa a entrar a
+</I>&gt;<i> postgres amb un usuari homònim) doncs de fet no té massa sentit perquè les
+</I>&gt;<i> contrasenyes estan a /etc/shadow (o on digui PAM). Però igual com hi ha un
+</I>&gt;<i> diàleg que et permet posar la contrasenya en entrar per si no fas servir
+</I>&gt;<i> aquest esquema autenticació, potser n'hi podria haver un per canviar-te la
+</I>&gt;<i> contrasenya ?
+</I>&gt;<i>
+</I>&gt;<i> En fi res, més que res saber què en penseu .
+</I>&gt;<i>
+</I>&gt;<i> Per cert, moltes gràcies pel programa que no us ho havia dit.
+</I>
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+(71 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000048.html">[BulmaGés] Privilegis dels usuaris de bases de	dades
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000069.html">[BulmaGés]Privilegis dels usuaris de bases de dades
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#51">[ fecha ]</a>
+              <a href="thread.html#51">[ hilo ]</a>
+              <a href="subject.html#51">[ asunto ]</a>
+              <a href="author.html#51">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

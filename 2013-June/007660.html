@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130625144239.2586C166%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007662.html">
+   <LINK REL="Next"  HREF="007661.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130625144239.2586C166%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Mar Jun 25 16:42:39 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007662.html">[BulmaGés]BulmaInCloud pre1
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007661.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7660">[ fecha ]</a>
+              <a href="thread.html#7660">[ hilo ]</a>
+              <a href="subject.html#7660">[ asunto ]</a>
+              <a href="author.html#7660">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from 129e831 to e854fc9
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/129e831c4a734a1e7c716202713ba655189fe679/diffs/e854fc9202b67cf241aa532d32f3def6feafdb49">https://gitorious.org/bulmages/bulmages/commit/129e831c4a734a1e7c716202713ba655189fe679/diffs/e854fc9202b67cf241aa532d32f3def6feafdb49</A>
+
+Diff: 
+
+commit e854fc9202b67cf241aa532d32f3def6feafdb49
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue Jun 25 16:38:34 2013 +0200
+
+    Pequeño arreglo en la clase de sincronizacion
+
+diff --git a/bulmages/bulmalib/src/blsync.cpp b/bulmages/bulmalib/src/blsync.cpp
+index b2b4f58..069eaf7 100644
+--- a/bulmages/bulmalib/src/blsync.cpp
++++ b/bulmages/bulmalib/src/blsync.cpp
+@@ -19,6 +19,7 @@
+  ***************************************************************************/
+ #include &lt;QtNetwork/QNetworkAccessManager&gt;
+ #include &lt;QtCore/QFileInfo&gt;
++#include &lt;QtWidgets/QProgressBar&gt;
+ 
+ #include &quot;blfunctions.h&quot;
+ #include &quot;blconfiguration.h&quot;
+@@ -26,7 +27,9 @@
+ #include &quot;blmainwindow.h&quot;
+ #include &quot;blmaincompany.h&quot;
+ 
++
+ QNetworkAccessManager *syncManager;
++QProgressBar *g_barra;
+ 
+ 
+ BlSync::BlSync ( QWidget *parent, const char *name ) : QDialog ( parent ) {
+@@ -40,6 +43,9 @@ BlSync::BlSync ( QWidget *parent, const char *name ) : QDialog ( parent ) {
+ void BlSync::sync() {
+       BL_FUNC_DEBUG  
+   
++      g_barra = new QProgressBar(0);
++      g_barra-&gt;show();
++	
+       QString user = g_confpr-&gt;value(CONF_LOGIN_USER);
+       QString dbname = g_confpr-&gt;value(CONF_DBNAME);
+     #ifdef Q_OS_WIN32
+@@ -171,6 +177,8 @@ void BlSync::sync() {
+ 	blMsgInfo(&quot;Debe reiniciar el programa para que los cambios surjan efecto&quot;);
+ 	exit(1);
+       } // end if
++      
++      delete g_barra;
+ }
+ 
+ void BlSync::getFile(const QString &amp; name, const QString &amp; dest) {
+@@ -193,7 +201,8 @@ void BlSync::getFile(const QString &amp; name, const QString &amp; dest) {
+       request.setRawHeader(&quot;User-Agent&quot;, &quot;BgBrowser 1.0&quot;);
+       
+       QNetworkReply *reply = syncManager-&gt;get(request);
+-
++      connect(reply, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(downloadProgress(qint64,qint64)));
++      
+ #ifdef CONFIG_DEBUG
+       fprintf(stderr, &quot;Iniciando descarga %s\n&quot;, url.toLatin1().constData());
+ #endif
+@@ -212,6 +221,7 @@ void BlSync::getFile(const QString &amp; name, const QString &amp; dest) {
+       url = g_confpr-&gt;value(CONF_URL_SYNC) + &quot;ALL/&quot;+dbname+&quot;/&quot;+name;
+       request.setUrl(QUrl(url));
+       reply = syncManager-&gt;get(request);
++      connect(reply, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(downloadProgress(qint64,qint64)));
+       while (reply-&gt;isRunning()) {
+ 	QApplication::processEvents();
+       } // end while
+@@ -225,6 +235,7 @@ void BlSync::getFile(const QString &amp; name, const QString &amp; dest) {
+       url = g_confpr-&gt;value(CONF_URL_SYNC) +platform+&quot;/ALL/&quot;+name;
+       request.setUrl(QUrl(url));
+       reply = syncManager-&gt;get(request);
++      connect(reply, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(downloadProgress(qint64,qint64)));
+       while (reply-&gt;isRunning()) {
+ 	QApplication::processEvents();
+       } // end while
+@@ -240,6 +251,7 @@ void BlSync::getFile(const QString &amp; name, const QString &amp; dest) {
+       url = g_confpr-&gt;value(CONF_URL_SYNC) + &quot;ALL/ALL/&quot;+name;
+       request.setUrl(QUrl(url));
+       reply = syncManager-&gt;get(request);
++      connect(reply, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(downloadProgress(qint64,qint64)));
+       while (reply-&gt;isRunning()) {
+ 	QApplication::processEvents();
+       } // end while
+@@ -298,6 +310,10 @@ void BlSync::replyFinished(QNetworkReply * reply) {
+ }
+ 
+ void BlSync::downloadProgress(qint64 a,qint64 b) {
++      /// Preparamos la barra de progreso
++	g_barra-&gt;setRange(0,b);
++        g_barra-&gt;setValue  ( a );
++//        g_barra-&gt;setText ( _ ( &quot;Descarga en Curso &quot; ) + m_destfile);
+ 
+ }
+ 
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007662.html">[BulmaGés]BulmaInCloud pre1
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007661.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7660">[ fecha ]</a>
+              <a href="thread.html#7660">[ hilo ]</a>
+              <a href="subject.html#7660">[ asunto ]</a>
+              <a href="author.html#7660">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

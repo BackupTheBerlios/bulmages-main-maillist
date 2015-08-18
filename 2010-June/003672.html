@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]r3856 - trunk/debian
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fr3856_-_trunk/debian%3F%3D&In-Reply-To=%3CAANLkTine0sg5OuJP25kRKsXiw9-c80XCxJE0K5juYe9_%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003671.html">
+   <LINK REL="Next"  HREF="003673.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]r3856 - trunk/debian </H1>
+    <B>Iker Salmón San Millán</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fr3856_-_trunk/debian%3F%3D&In-Reply-To=%3CAANLkTine0sg5OuJP25kRKsXiw9-c80XCxJE0K5juYe9_%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]r3856 - trunk/debian">shaola en esdebian.org
+       </A><BR>
+    <I>Mar Jun  8 10:18:46 CEST 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003671.html">[BulmaGés]r3856 - trunk/debian
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003673.html">[BulmaGés]r3856 - trunk/debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3672">[ fecha ]</a>
+              <a href="thread.html#3672">[ hilo ]</a>
+              <a href="subject.html#3672">[ asunto ]</a>
+              <a href="author.html#3672">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Pues no me importa tomeu, pero aún estoy muy verde con el tema.  No quiero
+escribir la documentación si no domino lo que voy a escribir. Cuando
+terminemos de empaquetar, intentaré crearlo desde cero yo mismo e iré
+escribiéndola poco a poco.  Ten en cuenta que me apoyo en todo el trabajo
+que han hecho antes que yo y es la primera vez que me meto con un
+empaquetado de forma seria.
+
+Aunque no lo parezca estoy muy verde aún.  Lo que si que podría hace,r como
+ya le comenté a Leo, es la traducción al Euskera de la suite bulmages.  Pero
+eso de momento lo dejo hasta finalizar el empaquetado, porque vamos a ver si
+conseguimos (milagrosamente) llegar antes de la congelación de squeeze.
+
+De momento veo un problema serio con la separación de paquetes que hemos
+decidido para esta versión.  Antes, bulmages-servers (o bulmages-admin no lo
+recuerdo bien) dependía de bulmacont-plugins y bulmafact-plugins.  Sin
+embargo pretendemos que bulmages-servers-admin no dependa de ningun paquete
+(bueno, de ninguno de la suite). ¿Tanto ha cambiado desde la version 0.11
+que ahora podemos hacer eso?
+Recuerda que ahora bulmacont-plugins está incluido en bulmacont y lo mismo
+con bulmafact-plugins...
+
+El 8 de junio de 2010 09:56, Tomeu &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt; escribió:
+
+&gt;<i> Hola Iker
+</I>&gt;<i>
+</I>&gt;<i> Ya se que al vicio de pedir .............
+</I>&gt;<i>
+</I>&gt;<i> Pero por si acaso yo lo dejo caer. Tenemos en la documentación técnica del
+</I>&gt;<i> proyecto esta página:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://www.iglues.org/wiki_developers/doku.php?id=documentacion:guia_empaquetado_debian">http://www.iglues.org/wiki_developers/doku.php?id=documentacion:guia_empaquetado_debian</A>
+</I>&gt;<i>
+</I>&gt;<i> Que se supone viene a ser &quot;Hagase sus paquetes debian de Iglues/Bulmages
+</I>&gt;<i> siguiendo estos 50 sencillísimos pasos !!!&quot;. Y que está más desactualizada
+</I>&gt;<i> que
+</I>&gt;<i> la puñeta.
+</I>&gt;<i>
+</I>&gt;<i> Esto .... te vez capaz de darle un repasillo ?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> PD: Me doy cuenta que en la documentación no se ven bien reflejados los
+</I>&gt;<i> autores y colaboradores de cada documento. Creo que eso es un error
+</I>&gt;<i> gafarral.
+</I>&gt;<i> Tal vez deberiamos añadir en el pié o tras el encabezado la nota de autor y
+</I>&gt;<i> colaboradores ¿Que vos pareix?
+</I>&gt;<i>
+</I>&gt;<i> Salut
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> &gt; Author: ikerssm
+</I>&gt;<i> &gt; Date: 2010-06-08 02:47:52 +0200 (dt, 08 jun 2010)
+</I>&gt;<i> &gt; New Revision: 3856
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Modified:
+</I>&gt;<i> &gt;    trunk/debian/rules
+</I>&gt;<i> &gt; Log:
+</I>&gt;<i> &gt; Arreglado problema de separador en rules por tener 8 espacios en lugar de
+</I>&gt;<i> &gt;  un tabulador
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Bulmages-main mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i> &gt; &quot;
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20100608/ce57f2c9/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20100608/ce57f2c9/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003671.html">[BulmaGés]r3856 - trunk/debian
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003673.html">[BulmaGés]r3856 - trunk/debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3672">[ fecha ]</a>
+              <a href="thread.html#3672">[ hilo ]</a>
+              <a href="subject.html#3672">[ asunto ]</a>
+              <a href="author.html#3672">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Bug #17986] Implementar &quot;keepInFrame&quot;	para informes RML
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2317986%5D%20Implementar%20%22keepInFrame%22%0A%09para%20informes%20RML&In-Reply-To=%3C201104181021.p3IAL5kx017055%40unicorn.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005632.html">
+   <LINK REL="Next"  HREF="005634.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Bug #17986] Implementar &quot;keepInFrame&quot;	para informes RML </H1>
+    <B>admin en berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2317986%5D%20Implementar%20%22keepInFrame%22%0A%09para%20informes%20RML&In-Reply-To=%3C201104181021.p3IAL5kx017055%40unicorn.berlios.de%3E"
+       TITLE="[BulmaGés] [Bug #17986] Implementar &quot;keepInFrame&quot;	para informes RML">admin en berlios.de
+       </A><BR>
+    <I>Lun Abr 18 12:21:05 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="005632.html">[BulmaGés] [Bug #18072] Informes fallan con campo	que contenga ampersand
+</A></li>
+        <LI>Próximo mensaje: <A HREF="005634.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. e2dd99f0f7f3bb6b7a22995089299a5cf7cad334
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5633">[ fecha ]</a>
+              <a href="thread.html#5633">[ hilo ]</a>
+              <a href="subject.html#5633">[ asunto ]</a>
+              <a href="author.html#5633">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bug #17986, was updated on 2011-Mar-07 09:52
+Here is a current snapshot of the bug.
+
+Project: BulmaGes, Gestión Empresarial Libre
+Category: bulmafact
+Status: Open
+Resolution: None
+Bug Group: furure request
+Priority: 5
+Submitted by: hilex
+Assigned to : none
+Summary: Implementar &quot;keepInFrame&quot; para informes RML
+
+Details: Un texto demasiado largo puede llegar a solaparse con los demás elementos del informe.
+Deberíamos poder truncar dicho texto si supera sus límites en el informe. Una forma de hacerlo es mediante keepInFrame, pero dicho tag no está implementado en BulmaGés.
+
+Intento usar:
+&lt;keepInFrame maxWidth=&quot;17.5cm&quot; maxHeight=&quot;0.5cm&quot; onOverflow =&quot;shrink&quot;&gt;
+    &lt;para&gt;[texto]&lt;/para&gt;
+&lt;/keepInFrame&gt;
+
+Pero da el error:
+
+Traceback (most recent call last):
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 1061, in &lt;module&gt;
+    print parseString(file(sys.argv[1], 'r').read()),
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 1049, in parseString
+    r.render(fp)
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 207, in render
+    pt_obj.render(el)
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 826, in render
+    self.doc_tmpl.build(fis)
+  File &quot;/usr/lib/python2.6/dist-packages/reportlab/platypus/doctemplate.py&quot;, 
+line 874, in build
+    self.clean_hanging()
+  File &quot;/usr/lib/python2.6/dist-packages/reportlab/platypus/doctemplate.py&quot;, 
+line 509, in clean_hanging
+    self.handle_flowable(self._hanging)
+  File &quot;/usr/lib/python2.6/dist-packages/reportlab/platypus/doctemplate.py&quot;, 
+line 756, in handle_flowable
+    f.apply(self)
+  File &quot;/usr/lib/python2.6/dist-packages/reportlab/platypus/doctemplate.py&quot;, 
+line 140, in apply
+    getattr(doc,arn)(*args)
+  File &quot;/usr/lib/python2.6/dist-packages/reportlab/platypus/doctemplate.py&quot;, 
+line 534, in handle_pageBegin
+    self.pageTemplate.onPage(self.canv,self)
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 463, in render
+    cnv.render(self.node)
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 448, in render
+    tags[n.tag](n)
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 329, in _place
+    flow.drawOn(self.canvas,infos['x'],infos['y'])
+  File &quot;/usr/lib/python2.6/dist-packages/reportlab/platypus/flowables.py&quot;, 
+line 106, in drawOn
+    self._drawOn(canvas)
+  File &quot;/usr/lib/python2.6/dist-packages/reportlab/platypus/flowables.py&quot;, 
+line 87, in _drawOn
+    self.draw()#this is the bit you overload
+  File &quot;/usr/lib/python2.6/dist-packages/reportlab/platypus/tables.py&quot;, line 
+1272, in draw
+    self._drawCell(cellval, cellstyle, (colpos, rowpos), (colwidth, 
+rowheight))
+  File &quot;/usr/lib/python2.6/dist-packages/reportlab/platypus/tables.py&quot;, line 
+1361, in _drawCell
+    w, h = self._listCellGeom(cellval,colwidth,cellstyle,W=W, 
+H=H,aH=rowheight)
+  File &quot;/usr/lib/python2.6/dist-packages/reportlab/platypus/tables.py&quot;, line 
+366, in _listCellGeom
+    vw, vh = v.wrapOn(canv, aW, aH)
+AttributeError: 'NoneType' object has no attribute 'wrapOn'
+Warning: flowable not yet implemented: keepInFrame !
+
+Follow-Ups:
+
+Date: 2011-Apr-18 12:21
+By: hilex
+
+Comment:
+keepInFrame funciona bien en la sección story, pero al intentar usarlo desde &quot;pageGraphics&quot; (metiéndolo en un place) hay un error:
+
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 326, in _place
+    w,h = flow.wrap(infos['width'], infos['height'])
+  File &quot;/usr/lib/python2.6/dist-packages/reportlab/platypus/flowables.py&quot;, line 911, in wrap
+    W, H = _listWrapOn(self._content,maxWidth,self.canv)
+AttributeError: KeepInFrame instance has no attribute 'canv'
+-------------------------------------------------------
+
+For detailed info, follow this link:
+<A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=17986&amp;group_id=4472">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=17986&amp;group_id=4472</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="005632.html">[BulmaGés] [Bug #18072] Informes fallan con campo	que contenga ampersand
+</A></li>
+	<LI>Próximo mensaje: <A HREF="005634.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. e2dd99f0f7f3bb6b7a22995089299a5cf7cad334
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5633">[ fecha ]</a>
+              <a href="thread.html#5633">[ hilo ]</a>
+              <a href="subject.html#5633">[ asunto ]</a>
+              <a href="author.html#5633">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

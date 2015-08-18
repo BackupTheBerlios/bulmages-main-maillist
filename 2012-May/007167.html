@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120503142139.2EF7375DEF%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007166.html">
+   <LINK REL="Next"  HREF="007168.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120503142139.2EF7375DEF%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Jue Mayo  3 16:21:38 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007166.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007168.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7167">[ fecha ]</a>
+              <a href="thread.html#7167">[ hilo ]</a>
+              <a href="subject.html#7167">[ asunto ]</a>
+              <a href="author.html#7167">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from ebdb3b7 to 57cba8f
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/ebdb3b757c1d616e9109d53d087611ca0dc5d5d2/diffs/57cba8f66639fa5cb676edfdaa2aa85cff01897f">https://gitorious.org/bulmages/bulmages/commit/ebdb3b757c1d616e9109d53d087611ca0dc5d5d2/diffs/57cba8f66639fa5cb676edfdaa2aa85cff01897f</A>
+
+Diff: 
+
+commit 57cba8f66639fa5cb676edfdaa2aa85cff01897f
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu May 3 16:09:11 2012 +0200
+
+    Arreglo problemas en el depurator, ahora coge rutas relativas y filtra mejor los mensajes
+
+diff --git a/bulmages/scripts/depurator/main.py b/bulmages/scripts/depurator/main.py
+index 0c2fb7c..ae64795 100644
+--- a/bulmages/scripts/depurator/main.py
++++ b/bulmages/scripts/depurator/main.py
+@@ -6,6 +6,7 @@ __doc__ = &quot;Sistema de Depuracion para BulmaGes a partir de los logs.\r\n&quot;
+ 
+ import sys
+ import re
++import os
+ from depurator import *
+ from principal import *
+ from PyQt4.QtGui import *
+@@ -16,9 +17,7 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
+     def __init__(self, *args):
+         apply(QtGui.QMainWindow.__init__, (self,) + args)
+ 	self.setupUi(self)
+-#	self.table.hide()
+-#	self.tree.hide()
+-#	self.ejecuta()
++
+ 	self.table.setColumnCount(3)
+ 	self.table.hideColumn(1)
+ 	self.table.hideColumn(2)
+@@ -26,16 +25,7 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
+ 	
+ 	self.semaforo = 0
+ 	
+-#	self.lmen = ListaClases()
+-	
+-#	self.tree.setColumnCount(3)
+-#	self.tree.setColumnWidth(0,200)
+-#	self.tree.setColumnWidth(1,20)
+-#	self.tree.setColumnWidth(2,20)
+-	
+-	
+-#	self.f = open(&quot;/home/tborras/.bulmages/bulmagesout.xml&quot;, 'r')
+-#	self.f.seek(0,2)
++
+ 	self.f = None
+ 
+ 	self.t = QtCore.QTimer()
+@@ -52,7 +42,8 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
+ 
+     def on_mui_conectar_clicked(self):
+ 	print &quot;Conexion !!&quot;
+-	self.f = open(&quot;/home/tborras/.bulmages/bulmagesout.xml&quot;, 'r')	
++	
++	self.f = open(os.getenv(&quot;HOME&quot;)+&quot;/.bulmages/bulmagesout.xml&quot;, 'r')	
+ 	self.f.seek(0,2)
+ 
+     def on_mui_tableclear_triggered(self):
+@@ -120,20 +111,32 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
+ 		return
+ 	if mensaje.startswith(&quot;&lt;/comment&quot;):
+ 		return
++		
++	# Quitamos los argumentos entre parentesis.
++	matchObj = re.search('(\(.*\))', mens)
++	print matchObj.group(1)
++	mensaje = mensaje.replace (matchObj.group(1), &quot; &quot;)
++	print mensaje
++		
+ 	if mensaje.startswith(&quot;&lt;/&quot;):
++		mensaje = mensaje.replace(&quot;&lt;/&quot;, &quot;  &quot;)
+ 		mensajefin = 2
+ 		# Es un mensaje de cierre
+ 		partmsg = mensaje.split(&quot; &quot;)
+-		if len ( partmsg) &gt; 3:
+-		  mensaje = partmsg[3]
+-		else:
+-		  return
++		if len (partmsg) &gt; 4:
++		    mensaje = partmsg[4]
++		if not &quot;::&quot; in mensaje:
++		    if len ( partmsg) &gt; 3:
++		      mensaje = partmsg[3]
+ 		if not &quot;::&quot; in mensaje:
+ 		  mensaje = partmsg[2]
+ 		if not &quot;::&quot; in mensaje:
+ 		  mensaje = partmsg[1]
+ 		if not &quot;::&quot; in mensaje:
+-		  return
++		    mensaje = partmsg[0]
++		if not &quot;::&quot; in mensaje:
++		    print &quot;Descartado: &quot; + mensaje
++		    return
+ 		  
+ 		# Buscamos el tiempo invertido
+ 		matchObj = re.search('time=\&quot;([0-9]+)\&quot;', mens)
+@@ -141,20 +144,23 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
+ 		tiempo = int(matchObj.group(1))
+ 		  
+ 	else:
+-
++		mensaje = mensaje.replace(&quot;&lt;&quot;,  &quot; &quot;)
+ 		# Es un mensaje de apertura
+ 		partmsg = mensaje.split(&quot; &quot;)
+-		if len ( partmsg) &gt; 3:
+-		  mensaje = partmsg[3]
+-		else:
+-		  return
+-
++		if len (partmsg) &gt; 4:
++		    mensaje = partmsg[4]
++		if not &quot;::&quot; in mensaje:
++		    if len ( partmsg) &gt; 3:
++		      mensaje = partmsg[3]
+ 		if not &quot;::&quot; in mensaje:
+ 		  mensaje = partmsg[2]
+ 		if not &quot;::&quot; in mensaje:
+ 		  mensaje = partmsg[1]
+ 		if not &quot;::&quot; in mensaje:
+-		  return
++		    mensaje = partmsg[0]
++		if not &quot;::&quot; in mensaje:
++		    print &quot;Descartado: &quot; + mensaje
++		    return
+ 		  
+ 		  
+ 
+@@ -163,10 +169,14 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
+ 	lmensaje = mensaje.split(&quot;::&quot;)
+ 	if len(lmensaje) &lt; 2:
+ 		return
+-		
+-	# Ya tenemos clase y subclase.
+-	submens = lmensaje[1].split(&quot; &quot;)
+-	lmensaje[1] = submens[0].split(&quot;(&quot;)[0]
++	if len (lmensaje) &gt; 2:
++	  	submens = lmensaje[2].split(&quot; &quot;)
++		lmensaje[1] = submens[0].split(&quot;(&quot;)[0]
++
++	else:
++		# Ya tenemos clase y subclase.
++		submens = lmensaje[1].split(&quot; &quot;)
++		lmensaje[1] = submens[0].split(&quot;(&quot;)[0]
+ 
+ 	lis = QtCore.QStringList(lmensaje[0])
+ 	lis1 = QtCore.QStringList(lmensaje[1])
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007166.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007168.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7167">[ fecha ]</a>
+              <a href="thread.html#7167">[ hilo ]</a>
+              <a href="subject.html#7167">[ asunto ]</a>
+              <a href="author.html#7167">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

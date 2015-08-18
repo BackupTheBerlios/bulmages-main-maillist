@@ -1,0 +1,523 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130616200336.7B7A819D%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007646.html">
+   <LINK REL="Next"  HREF="007648.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130616200336.7B7A819D%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Dom Jun 16 22:03:36 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007646.html">[BulmaGés] (sin asunto)
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007648.html">[BulmaGés] Desinstalar Bulmages
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7647">[ fecha ]</a>
+              <a href="thread.html#7647">[ hilo ]</a>
+              <a href="subject.html#7647">[ asunto ]</a>
+              <a href="author.html#7647">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from 374761e to ecfce5c
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/374761e7c6f32b68a6311debed02281717bd5b50/diffs/ecfce5c248d58ba868712339acc67349721f22ec">https://gitorious.org/bulmages/bulmages/commit/374761e7c6f32b68a6311debed02281717bd5b50/diffs/ecfce5c248d58ba868712339acc67349721f22ec</A>
+
+Diff: 
+
+commit ecfce5c248d58ba868712339acc67349721f22ec
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sun Jun 16 22:03:12 2013 +0200
+
+    Arreglos para la correcta sincronizacion y arranque
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/CMakeLists.txt
+index 9a55ed5..8378e17 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/CMakeLists.txt
+@@ -39,7 +39,7 @@ QT5_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
+ 
+ IF(WIN32)
+ SET(CMAKE_SHARED_LINKER_FLAGS &quot;${CMAKE_SHARED_LINKER_FLAGS} -Wl,-enable-auto-import&quot;)
+-ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBC_BALANCE)
++ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBC_CANALYCCOSTE)
+ ENDIF(WIN32)
+ 
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bcbuscarcanal.h b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bcbuscarcanal.h
+index d9150f0..bb8965c 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bcbuscarcanal.h
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bcbuscarcanal.h
+@@ -29,7 +29,7 @@
+ #include &quot;blpostgresqlclient.h&quot;
+ 
+ 
+-class BC_EXPORT BcBuscarCanalDelegate : public BlComboBoxDelegate
++class BcBuscarCanalDelegate : public BlComboBoxDelegate
+ {
+     Q_OBJECT
+ 
+@@ -40,7 +40,7 @@ public:
+ 
+ 
+ 
+-class BC_EXPORT BcBuscarCanal : public BlComboBox
++class BcBuscarCanal : public BlComboBox
+ {
+     Q_OBJECT
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bcbuscarcentrocoste.h b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bcbuscarcentrocoste.h
+index e4e54fa..7ec69a5 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bcbuscarcentrocoste.h
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bcbuscarcentrocoste.h
+@@ -31,7 +31,7 @@
+ class BfCompany;
+ 
+ 
+-class BC_EXPORT BcBuscarCentroCosteDelegate : public BlComboBoxDelegate
++class BcBuscarCentroCosteDelegate : public BlComboBoxDelegate
+ {
+     Q_OBJECT
+ 
+@@ -41,7 +41,7 @@ public:
+ };
+ 
+ 
+-class BC_EXPORT BcBuscarCentroCoste : public BlComboBox
++class BcBuscarCentroCoste : public BlComboBox
+ {
+     Q_OBJECT
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccanalseleccionarview.h b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccanalseleccionarview.h
+index dd622b9..8a779cb 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccanalseleccionarview.h
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccanalseleccionarview.h
+@@ -32,7 +32,7 @@ class BfCompany;
+ 
+ ///
+ /** */
+-class BC_EXPORT BcCanalSeleccionarView : public QWidget, public Ui_BcCanalSeleccionarBase, public BlMainCompanyPointer
++class BcCanalSeleccionarView : public QWidget, public Ui_BcCanalSeleccionarBase, public BlMainCompanyPointer
+ {
+     Q_OBJECT
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccanalview.h b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccanalview.h
+index 64d7a84..f0f46d1 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccanalview.h
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccanalview.h
+@@ -36,7 +36,7 @@
+ class BfCompany;
+ 
+ 
+-class BC_EXPORT BcCanalView : public BfForm, public Ui_BcCanalBase
++class BcCanalView : public BfForm, public Ui_BcCanalBase
+ {
+     Q_OBJECT
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocosteseleccionarview.h b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocosteseleccionarview.h
+index 98545dc..152240d 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocosteseleccionarview.h
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocosteseleccionarview.h
+@@ -22,6 +22,9 @@
+ #ifndef BCCENTROCOSTESELECCIONARVIEW_H
+ #define BCCENTROCOSTESELECCIONARVIEW_H
+ 
++
++#include &quot;pdefs_pluginbf_canalyccoste.h&quot;
++
+ #include &lt;QtWidgets/QTreeWidgetItemIterator&gt;
+ 
+ #include &quot;blfunctions.h&quot;
+@@ -39,7 +42,7 @@ class BfCompany;
+     Tambi&eacute;n se utiliza para establecer el centro de coste por defecto, utlidad
+     que permite introducir asientos directamente en un centro de coste sin tener que
+     teclearlo en cada apunte. */
+-class BC_EXPORT BcCentroCosteSeleccionarView : public QWidget, public Ui_BcCentroCosteSeleccionarBase, public BlMainCompanyPointer
++class BcCentroCosteSeleccionarView : public QWidget, public Ui_BcCentroCosteSeleccionarBase, public BlMainCompanyPointer
+ {
+     Q_OBJECT
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocosteview.h b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocosteview.h
+index 556f34a..7f8320e 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocosteview.h
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocosteview.h
+@@ -38,7 +38,7 @@ class BfCompany;
+ 
+ /// Visualiza un centro de coste.
+ /** */
+-class BC_EXPORT BcCentroCosteView : public BfForm, public Ui_BcCentroCosteBase
++class BcCentroCosteView : public BfForm, public Ui_BcCentroCosteBase
+ {
+     Q_OBJECT
+ 
+diff --git a/bulmages/bulmalib/src/blfile.h b/bulmages/bulmalib/src/blfile.h
+index b1f44f6..adb5272 100644
+--- a/bulmages/bulmalib/src/blfile.h
++++ b/bulmages/bulmalib/src/blfile.h
+@@ -26,10 +26,12 @@
+ #include &lt;QtNetwork/QSslError&gt;
+ #include &lt;QtCore/QFile&gt;
+ 
++#include &quot;blfunctions.h&quot;
++
+ 
+ 
+ /** Sobrecarga los QFile para poder hacer busquedas por internet */
+-class BlFile : public QFile
++class BL_EXPORT  BlFile : public QFile
+ {
+     Q_OBJECT
+ private:
+diff --git a/bulmages/bulmalib/src/blsync.cpp b/bulmages/bulmalib/src/blsync.cpp
+index 07b09fb..b192a99 100644
+--- a/bulmages/bulmalib/src/blsync.cpp
++++ b/bulmages/bulmalib/src/blsync.cpp
+@@ -33,14 +33,13 @@ BlSync::BlSync ( QWidget *parent, const char *name ) : QDialog ( parent ) {
+   BL_FUNC_DEBUG
+     setWindowTitle ( name );
+     setupUi ( this );
+-    sync();
+ }
+ 
+ 
+ 
+ void BlSync::sync() {
+-  BL_FUNC_DEBUG  
+-
++      BL_FUNC_DEBUG  
++  
+       QString user = g_confpr-&gt;value(CONF_LOGIN_USER);
+       QString dbname = g_confpr-&gt;value(CONF_DBNAME);
+     #ifdef Q_OS_WIN32
+@@ -49,6 +48,8 @@ void BlSync::sync() {
+       QString platform = &quot;LINUX&quot;;
+     #endif
+       
++      bool reinicio = false;
++      
+       
+       // Cogemos la lista de ficheros
+       
+@@ -57,15 +58,12 @@ void BlSync::sync() {
+       syncManager = new QNetworkAccessManager(this);
+       connect(syncManager, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinished(QNetworkReply*)));
+       
+-
+-    
+-
+       getFile(&quot;files.txt&quot;, g_confpr-&gt;value(CONF_DIR_USER));
+-      
++
+       QFile file ( g_confpr-&gt;value(CONF_DIR_USER)+&quot;files.txt&quot; );
+       /// If not exists return.
+       if ( !file.open ( QIODevice::ReadOnly ) ) {
+-	  blMsgInfo(&quot;No se pudo abrir archivo de indices&quot;);
++	  fprintf(stderr,&quot;No se pudo abrir archivo de indices\n&quot;);
+ 	  return;
+       } // end if
+       QTextStream in(&amp;file);
+@@ -74,23 +72,95 @@ void BlSync::sync() {
+ 	  QStringList arch = line.split(&quot; &quot;);
+ 	  QString filename = arch[0];
+ 	  QString dest = arch[1];
+-	  dest.replace(&quot;[CONF_DIR_OPENREPORTS]&quot;, g_confpr-&gt;value(CONF_DIR_OPENREPORTS));
+-	  getFile(filename, dest);
++	  QString date= arch[2];
++	  
++	  bool descarga = true;
++	  
++	  QFile file1 ( g_confpr-&gt;value(CONF_DIR_USER)+&quot;lfiles.txt&quot;);
++	  if (file1.open(QIODevice::ReadOnly)) {
++	      QTextStream lin(&amp;file1);
++	      QString lline = lin.readLine();
++	      while (!lline.isNull()) {
++		  QStringList larch = lline.split(&quot; &quot;);
++		  if (filename == larch[0] &amp;&amp; date == larch[2]) {
++		     descarga = false;
++		     break;
++		  } // end if
++		  lline = lin.readLine();
++	      } // end while
++	      file1.close();
++	  } // end if
++	  if (descarga) {
++	      dest.replace(&quot;[CONF_DIR_OPENREPORTS]&quot;, g_confpr-&gt;value(CONF_DIR_OPENREPORTS));
++	      dest.replace(&quot;[CONFIG_DIR_CONFIG]&quot;, CONFIG_DIR_CONFIG);
++	      getFile(filename, dest);
++	      if (arch[3] == &quot;T&quot;) {
++		reinicio = true;
++	      }// end if
++	  } // end if
+ 	  line = in.readLine();
+       } // end while
+  
++      blCopyFile(g_confpr-&gt;value(CONF_DIR_USER)+&quot;files.txt&quot;, g_confpr-&gt;value(CONF_DIR_USER)+&quot;lfiles.txt&quot;);
++      
++/// Configuraciones personalizadas
++      url = &quot;<A HREF="http://www.bulmages.com/bulmaincloud/filesp.txt">http://www.bulmages.com/bulmaincloud/filesp.txt</A>&quot;;
++      
++      getFile(&quot;filesp.txt&quot;, g_confpr-&gt;value(CONF_DIR_USER));
+ 
+-    
++      QFile pfile ( g_confpr-&gt;value(CONF_DIR_USER)+&quot;filesp.txt&quot; );
++      /// If not exists return.
++      if ( !pfile.open ( QIODevice::ReadOnly ) ) {
++	  fprintf(stderr,&quot;No se pudo abrir archivo de indices\n&quot;);
++	  return;
++      } // end if
++      QTextStream pin(&amp;pfile);
++      QString pline = pin.readLine();
++      while (!pline.isNull()) {
++	  QStringList arch = pline.split(&quot; &quot;);
++	  QString filename = arch[0];
++	  QString dest = arch[1];
++	  QString date= arch[2];
++	  
++	  bool descarga = true;
++	  
++	  QFile file1 ( g_confpr-&gt;value(CONF_DIR_USER)+&quot;lfilesp.txt&quot;);
++	  if (file1.open(QIODevice::ReadOnly)) {
++	      QTextStream lin(&amp;file1);
++	      QString lline = lin.readLine();
++	      while (!lline.isNull()) {
++		  QStringList larch = lline.split(&quot; &quot;);
++		  if (filename == larch[0] &amp;&amp; date == larch[2]) {
++		     descarga = false;
++		     break;
++		  } // end if
++		  lline = lin.readLine();
++	      } // end while
++	      file1.close();
++	  } // end if
++	  if (descarga) {
++	      dest.replace(&quot;[CONF_DIR_OPENREPORTS]&quot;, g_confpr-&gt;value(CONF_DIR_OPENREPORTS));
++	      dest.replace(&quot;[CONFIG_DIR_CONFIG]&quot;, CONFIG_DIR_CONFIG);
++	      getFile(filename, dest);
++	      if (arch[3] == &quot;T&quot;) {
++		reinicio = true;
++	      }// end if
++	  } // end if
++	  pline = pin.readLine();
++      } // end while
++ 
++      blCopyFile(g_confpr-&gt;value(CONF_DIR_USER)+&quot;filesp.txt&quot;, g_confpr-&gt;value(CONF_DIR_USER)+&quot;lfilesp.txt&quot;);
++      
++      if (reinicio) {
++	blMsgInfo(&quot;Debe reiniciar el programa para que los cambios surjan efecto&quot;);
++	exit(1);
++      } // end if
+ }
+ 
+ void BlSync::getFile(const QString &amp; name, const QString &amp; dest) {
+   BL_FUNC_DEBUG
+   
+-      QString url = &quot;<A HREF="http://www.bulmages.com/bulmaincloud/ALL/ALL/">http://www.bulmages.com/bulmaincloud/ALL/ALL/</A>&quot;+name;
+-      QNetworkRequest request;
+-      request.setUrl(QUrl(url));
+-      request.setRawHeader(&quot;User-Agent&quot;, &quot;BgBrowser 1.0&quot;);
+-    
++  
+       m_destfile = dest+name;
+ 
+       QString user = g_confpr-&gt;value(CONF_LOGIN_USER);
+@@ -100,16 +170,24 @@ void BlSync::getFile(const QString &amp; name, const QString &amp; dest) {
+     #else
+       QString platform = &quot;LINUX&quot;;
+     #endif
++  
++      QString url = &quot;<A HREF="http://www.bulmages.com/bulmaincloud/">http://www.bulmages.com/bulmaincloud/</A>&quot;+platform+&quot;/&quot;+dbname+&quot;/&quot;+name;
++      QNetworkRequest request;
++      request.setUrl(QUrl(url));
++      request.setRawHeader(&quot;User-Agent&quot;, &quot;BgBrowser 1.0&quot;);
++    
++
+       
+       QNetworkReply *reply = syncManager-&gt;get(request);
+       
++/*      
+       connect(reply, SIGNAL(readyRead()), this, SLOT(slotReadyRead()));
+       connect(reply, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(downloadProgress(qint64,qint64)));
+       connect(reply, SIGNAL(error(QNetworkReply::NetworkError)),
+ 	    this, SLOT(slotError(QNetworkReply::NetworkError)));
+       connect(reply, SIGNAL(sslErrors(QList&lt;QSslError&gt;)),
+ 	    this, SLOT(slotSslErrors(QList&lt;QSslError&gt;)));
+-
++*/
+ 
+       fprintf(stderr, &quot;Iniciando descarga %s\n&quot;, url.toLatin1().constData());
+       request.setUrl(QUrl(url));
+@@ -117,6 +195,57 @@ void BlSync::getFile(const QString &amp; name, const QString &amp; dest) {
+       while (reply-&gt;isRunning()) {
+ 	QApplication::processEvents();
+       } // end while
++      
++      if (reply-&gt;error() == QNetworkReply::NoError) {
++	  delete reply;
++	  return;
++      } // end if
++      delete reply;
++      
++      
++      
++      
++      url = &quot;<A HREF="http://www.bulmages.com/bulmaincloud/ALL/">http://www.bulmages.com/bulmaincloud/ALL/</A>&quot;+dbname+&quot;/&quot;+name;
++      request.setUrl(QUrl(url));
++      reply = syncManager-&gt;get(request);
++      while (reply-&gt;isRunning()) {
++	QApplication::processEvents();
++      } // end while
++      
++      if (reply-&gt;error() == QNetworkReply::NoError) {
++	  delete reply;
++	  return;
++      } // end if
++      delete reply;
++      
++      url = &quot;<A HREF="http://www.bulmages.com/bulmaincloud/">http://www.bulmages.com/bulmaincloud/</A>&quot;+platform+&quot;/ALL/&quot;+name;
++      request.setUrl(QUrl(url));
++      reply = syncManager-&gt;get(request);
++      while (reply-&gt;isRunning()) {
++	QApplication::processEvents();
++      } // end while
++      
++      if (reply-&gt;error() == QNetworkReply::NoError) {
++	  delete reply;
++	  return;
++      } // end if
++      delete reply;
++      
++      
++      
++      url = &quot;<A HREF="http://www.bulmages.com/bulmaincloud/ALL/ALL/">http://www.bulmages.com/bulmaincloud/ALL/ALL/</A>&quot;+name;
++      request.setUrl(QUrl(url));
++      reply = syncManager-&gt;get(request);
++      while (reply-&gt;isRunning()) {
++	QApplication::processEvents();
++      } // end while
++      
++      if (reply-&gt;error() == QNetworkReply::NoError) {
++	  delete reply;
++	  return;
++      } // end if
++      delete reply;
++
+ }
+ 
+ 
+@@ -155,12 +284,16 @@ void BlSync::replyFinished(QNetworkReply * reply) {
+       localFile.close();
+       fprintf(stderr, &quot;Archivo escrito %s \n %s\n&quot;, m_destfile.toLatin1().constData(), sdata.data());
+   } else {
+-      blMsgInfo(&quot;Error descargando: &quot; + m_destfile);
+       fprintf(stderr,&quot;Error descargando %s\n&quot;, m_destfile.toLatin1().constData());
+   }
+-  reply-&gt;deleteLater();
++  //reply-&gt;deleteLater();
+ }
+ 
+ void BlSync::downloadProgress(qint64 a,qint64 b) {
+   fprintf(stderr,&quot;Descarga en proceso\n&quot;);
++}
++
++int BlSync::exec() {
++  BL_FUNC_DEBUG
++  sync();
+ }
+\ No newline at end of file
+diff --git a/bulmages/bulmalib/src/blsync.h b/bulmages/bulmalib/src/blsync.h
+index 2078522..f3dd9e6 100644
+--- a/bulmages/bulmalib/src/blsync.h
++++ b/bulmages/bulmalib/src/blsync.h
+@@ -30,7 +30,7 @@
+ #include &quot;blfunctions.h&quot;
+ 
+ /** Sobrecarga los QFile para poder hacer busquedas por internet */
+-class BlSync :  public QDialog, public Ui_BlSyncBase
++class BL_EXPORT BlSync :  public QDialog, public Ui_BlSyncBase
+ {
+     Q_OBJECT
+ private:
+@@ -41,6 +41,8 @@ public:
+     ~BlSync();
+     void sync();
+     void getFile(const QString &amp;, const QString &amp;) ;
++    virtual int exec();
++
+ public slots:
+   virtual void replyFinished(QNetworkReply *);
+   virtual void slotSslErrors(QList&lt;QSslError&gt;);
+diff --git a/bulmages/installbulmages/openreports/es/plantilla_empresa.rml b/bulmages/installbulmages/openreports/es/plantilla_empresa.rml
+index fffaebf..e855c9d 100644
+--- a/bulmages/installbulmages/openreports/es/plantilla_empresa.rml
++++ b/bulmages/installbulmages/openreports/es/plantilla_empresa.rml
+@@ -8,6 +8,19 @@
+ 
+ &lt;drawString x=&quot;1.45cm&quot; y=&quot;24.05cm&quot;&gt;&lt;!-- QUERY=&quot;SELECT valor AS val3 FROM configuracion WHERE nombre='CodPostal'&quot; --&gt;[val3]&lt;!-- END QUERY --&gt; &lt;!-- QUERY=&quot;SELECT valor AS val4 FROM configuracion WHERE nombre='Municipio'&quot; --&gt;[val4]&lt;!-- END QUERY --&gt;&lt;/drawString&gt;
+ 
++&lt;drawString x=&quot;1.45cm&quot; y=&quot;23.7cm&quot;&gt;&lt;!-- QUERY=&quot;SELECT valor AS val2 FROM configuracion WHERE nombre='Provincia'&quot; --&gt;[val2]&lt;!-- END QUERY --&gt;&lt;/drawString&gt;
++
++&lt;drawString x=&quot;1.45cm&quot; y=&quot;23.35cm&quot;&gt;&lt;!-- QUERY=&quot;SELECT valor AS val3 FROM configuracion WHERE nombre='Telefono'&quot; --&gt;[val3]&lt;!-- END QUERY --&gt;&lt;/drawString&gt;
++
++
++&lt;!-- EL PIE DE PAGINA --&gt;                                                                                                           
++&lt;setFont name=&quot;Helvetica&quot; size=&quot;8&quot;/&gt;                                                                                                
++&lt;fill color=&quot;(0,0,0)&quot;/&gt;&gt;                                                                                                            
++&lt;stroke color=&quot;(0,0,0)&quot;/&gt;                                                                                                           
++&lt;drawString x=&quot;7.0cm&quot; y=&quot;0.5cm&quot;&gt;&lt;!-- QUERY=&quot;SELECT valor AS val4 FROM configuracion WHERE nombre='Email'&quot; --&gt;[val4] &lt;!-- END QUERY --&gt;&lt;/drawString&gt;
++&lt;drawString x=&quot;10.7cm&quot; y=&quot;0.5cm&quot;&gt;&lt;!-- QUERY=&quot;SELECT valor AS val5 FROM configuracion WHERE nombre='Web'&quot; --&gt;[val5] &lt;!-- END QUERY --&gt;&lt;/drawString&gt;
++
++
+ 
+ &lt;place x=&quot;7.5cm&quot; y=&quot;23.7cm&quot; width=&quot;10cm&quot; height=&quot;2cm&quot;&gt;
+ &lt;barCode code=&quot;qrcode&quot; height=&quot;2cm&quot; width=&quot;2cm&quot;&gt;
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007646.html">[BulmaGés] (sin asunto)
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007648.html">[BulmaGés] Desinstalar Bulmages
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7647">[ fecha ]</a>
+              <a href="thread.html#7647">[ hilo ]</a>
+              <a href="subject.html#7647">[ asunto ]</a>
+              <a href="author.html#7647">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

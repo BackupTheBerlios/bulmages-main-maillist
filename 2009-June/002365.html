@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]r3487 - in trunk/bulmages: bulmalib/src bulmatpv/plugins/pluginbt_articulograficodb installbulmages
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fr3487_-_in_trunk/bulm%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fages%3D3A_bulmalib/src_bulmatpv/plugins/pluginbt%3D5Farticulog%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fraficodb_installbulmages%3F%3D&In-Reply-To=%3C4A2CF754.1010904%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002364.html">
+   <LINK REL="Next"  HREF="002366.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]r3487 - in trunk/bulmages: bulmalib/src bulmatpv/plugins/pluginbt_articulograficodb installbulmages </H1>
+    <B>Arturo Martín Lladó</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fr3487_-_in_trunk/bulm%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fages%3D3A_bulmalib/src_bulmatpv/plugins/pluginbt%3D5Farticulog%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fraficodb_installbulmages%3F%3D&In-Reply-To=%3C4A2CF754.1010904%40conetxia.com%3E"
+       TITLE="[BulmaGés]r3487 - in trunk/bulmages: bulmalib/src bulmatpv/plugins/pluginbt_articulograficodb installbulmages">amartin en conetxia.com
+       </A><BR>
+    <I>Lun Jun  8 13:34:44 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002364.html">[BulmaGés] r3487 - in trunk/bulmages: bulmalib/src	bulmatpv/plugins/pluginbt_articulograficodb installbulmages
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002366.html">[BulmaGés] r3488 - trunk/bulmages/bulmasetup
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2365">[ fecha ]</a>
+              <a href="thread.html#2365">[ hilo ]</a>
+              <a href="subject.html#2365">[ asunto ]</a>
+              <a href="author.html#2365">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hay un error en el punto 2 del final del commit. Lo corrijo:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">svn en mail.berlios.de</A> escribió:
+&gt;<i> Author: arturo_ml
+</I>&gt;<i> Date: 2009-06-08 13:22:49 +0200 (dl, 08 jun 2009)
+</I>&gt;<i> New Revision: 3487
+</I>&gt;<i>
+</I>&gt;<i> Modified:
+</I>&gt;<i>    trunk/bulmages/bulmalib/src/blconfiguration.cpp
+</I>&gt;<i>    trunk/bulmages/bulmalib/src/blconfiguration.h
+</I>&gt;<i>    trunk/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.cpp
+</I>&gt;<i>    trunk/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.h
+</I>&gt;<i>    trunk/bulmages/installbulmages/bulmatpv.conf.in
+</I>&gt;<i> Log:
+</I>&gt;<i>
+</I>&gt;<i> Ya está implementada por completo la funcionalidad de que el TPV coja familias
+</I>&gt;<i> y artículos desde la base de datos. He añadido dos variables más de configuración:
+</I>&gt;<i>
+</I>&gt;<i> - CONF_TPV_CELL_WIDTH: nos dice el ancho (y alto, ya que las hacemos cuadradas) de
+</I>&gt;<i> las celdas donde se presentan los artículos.
+</I>&gt;<i> - CONF_TPV_CELLS_PER_ROW: celdas por fila (ancho de la parrilla, básicamente).
+</I>&gt;<i>
+</I>&gt;<i> Ambos valores se especifican en píxeles.
+</I>&gt;<i>
+</I>&gt;<i> Lo que falta por hacer ahora será el tratamiento automático de thumbnails. La cosa
+</I>&gt;<i> sería así:
+</I>&gt;<i>
+</I>&gt;<i> 1. Comprobar qué imágenes hay en CONF_DIR_IMG_ARTICLES (imágenes de los artículos
+</I>&gt;<i> de BulmaFact).
+</I>&gt;<i> 2. Comprobar cuáles *NO* tienen un thumbnail en CONF_DIR_THUMB_ARTICLES.
+</I>&gt;<i> 3. De las obtenidas en el punto 2, generar su thumbnail en CONF_DIR_THUMB_ARTICLES.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002364.html">[BulmaGés] r3487 - in trunk/bulmages: bulmalib/src	bulmatpv/plugins/pluginbt_articulograficodb installbulmages
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002366.html">[BulmaGés] r3488 - trunk/bulmages/bulmasetup
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2365">[ fecha ]</a>
+              <a href="thread.html#2365">[ hilo ]</a>
+              <a href="subject.html#2365">[ asunto ]</a>
+              <a href="author.html#2365">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

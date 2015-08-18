@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Saber el valor predeterminado de un campo booleano en BlForm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-September/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FSaber_el_valor_predet%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Ferminado_de_un_campo_booleano_en_BlForm%3F%3D&In-Reply-To=%3C200909071300.30132.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002971.html">
+   <LINK REL="Next"  HREF="002973.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Saber el valor predeterminado de un campo booleano en BlForm </H1>
+    <B>Tomeu</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FSaber_el_valor_predet%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Ferminado_de_un_campo_booleano_en_BlForm%3F%3D&In-Reply-To=%3C200909071300.30132.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]Saber el valor predeterminado de un campo booleano en BlForm">tborras en conetxia.com
+       </A><BR>
+    <I>Lun Sep  7 13:00:29 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002971.html">[BulmaGés] Saber el valor predeterminado de un	campo booleano en BlForm
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002973.html">[BulmaGés] r3643 - trunk/bulmages/bulmalib/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2972">[ fecha ]</a>
+              <a href="thread.html#2972">[ hilo ]</a>
+              <a href="subject.html#2972">[ asunto ]</a>
+              <a href="author.html#2972">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Aron
+
+No entiendo muy bien la pregunta.
+
+Para los checkbox que no son triestado es sencillo (TRUE o FALSE) segun este 
+puesto en el diseño de la pantalla por defecto.
+
+Para los checkbos triestado (TRUE, FALSE, NULL) también lo cogerá segun esté 
+puesto en la plantilla.
+
+En casos que no pasan por plantilla tirara por el DEFAULT del SQL
+
+Y claro, ahora tenemos dos valores por defecto el de la plantilla y el del 
+SQL, entendiendo que el de la plantilla manda sobre el del SQL.
+
+Pero no entiendo más allá de esto pq recogeValores cogerá el valor que este 
+puesto en la plantilla y si no se ha modificado el que lea será el de por 
+defecto.
+
+Salut
+
+
+&gt;<i> Hola
+</I>&gt;<i> 
+</I>&gt;<i> ¿Está implementada la posibilidad de saber qué valor por defecto tiene un
+</I>&gt;<i> campo booleano (QCheckBox)?
+</I>&gt;<i> 
+</I>&gt;<i> Sería para consultarlo desde BlForm::recogeValores() de modo que un campo
+</I>&gt;<i> CheckBox nulo se guarde de una manera según el caso:
+</I>&gt;<i> 1) FALSE (el campo no es triestado y no hay valor por defecto SQL)
+</I>&gt;<i> 2) NULL (el campo es triestado y no hay valor por defecto SQL)
+</I>&gt;<i> 3) valor predeterminado establecido en SQL
+</I>&gt;<i> &quot;
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002971.html">[BulmaGés] Saber el valor predeterminado de un	campo booleano en BlForm
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002973.html">[BulmaGés] r3643 - trunk/bulmages/bulmalib/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2972">[ fecha ]</a>
+              <a href="thread.html#2972">[ hilo ]</a>
+              <a href="subject.html#2972">[ asunto ]</a>
+              <a href="author.html#2972">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

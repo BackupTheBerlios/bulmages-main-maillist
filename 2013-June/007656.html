@@ -1,0 +1,624 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130623054103.67055178%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007655.html">
+   <LINK REL="Next"  HREF="007657.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130623054103.67055178%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Dom Jun 23 07:41:03 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007655.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007657.html">[BulmaGés] BulmaInCloud pre1
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7656">[ fecha ]</a>
+              <a href="thread.html#7656">[ hilo ]</a>
+              <a href="subject.html#7656">[ asunto ]</a>
+              <a href="author.html#7656">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from 516517d to 129e831
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/516517dd5a8033815dfbf1da480422d7053d744e/diffs/129e831c4a734a1e7c716202713ba655189fe679">https://gitorious.org/bulmages/bulmages/commit/516517dd5a8033815dfbf1da480422d7053d744e/diffs/129e831c4a734a1e7c716202713ba655189fe679</A>
+
+Diff: 
+
+commit 129e831c4a734a1e7c716202713ba655189fe679
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sun Jun 23 07:40:21 2013 +0200
+
+    arreglo temas de depuracion
+
+diff --git a/bulmages/bulmacont/plugins/pluginbc_amortizacion/bcamortizacionview.cpp b/bulmages/bulmacont/plugins/pluginbc_amortizacion/bcamortizacionview.cpp
+index 0ff573b..0767116 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_amortizacion/bcamortizacionview.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_amortizacion/bcamortizacionview.cpp
+@@ -379,13 +379,17 @@ void BcAmortizacionView::on_mui_btcalcular_clicked()
+     } else if ( mui_metodoPorcentual-&gt;isChecked() ) {
+         /// El m&eacute;todo de amortizaci&oacute;n es el incremental.
+         double porcent = ( double ) 1 / ( double ) ncuotas;
++#ifdef CONFIG_DEBUG
+         fprintf ( stderr, &quot;El coeficiente es: %10.2f\n&quot;, porcent );
++#endif
+         double total = 0;
+         for ( int i = 0; i &lt; ncuotas; i++ ) {
+             if ( i &lt; ( ncuotas - 1 ) ) {
+                 valcuota = ( mui_valorCompra-&gt;text().toDouble() - total ) * porcent;
+                 total += valcuota;
++#ifdef CONFIG_DEBUG
+                 fprintf ( stderr, &quot;cuota: %10.2f -- total: %10.2f\n&quot;, valcuota, total );
++#endif
+             } else {
+                 valcuota = mui_valorCompra-&gt;text().toDouble() - total;
+             } // end if
+diff --git a/bulmages/bulmafact/plugins/pluginbf_amortizacion/bcamortizacionview.cpp b/bulmages/bulmafact/plugins/pluginbf_amortizacion/bcamortizacionview.cpp
+index 0ff573b..0767116 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_amortizacion/bcamortizacionview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_amortizacion/bcamortizacionview.cpp
+@@ -379,13 +379,17 @@ void BcAmortizacionView::on_mui_btcalcular_clicked()
+     } else if ( mui_metodoPorcentual-&gt;isChecked() ) {
+         /// El m&eacute;todo de amortizaci&oacute;n es el incremental.
+         double porcent = ( double ) 1 / ( double ) ncuotas;
++#ifdef CONFIG_DEBUG
+         fprintf ( stderr, &quot;El coeficiente es: %10.2f\n&quot;, porcent );
++#endif
+         double total = 0;
+         for ( int i = 0; i &lt; ncuotas; i++ ) {
+             if ( i &lt; ( ncuotas - 1 ) ) {
+                 valcuota = ( mui_valorCompra-&gt;text().toDouble() - total ) * porcent;
+                 total += valcuota;
++#ifdef CONFIG_DEBUG
+                 fprintf ( stderr, &quot;cuota: %10.2f -- total: %10.2f\n&quot;, valcuota, total );
++#endif
+             } else {
+                 valcuota = mui_valorCompra-&gt;text().toDouble() - total;
+             } // end if
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocosteseleccionarview.cpp b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocosteseleccionarview.cpp
+index 3b2b0d9..bc23591 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocosteseleccionarview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/bccentrocosteseleccionarview.cpp
+@@ -66,7 +66,6 @@ void BcCentroCosteSeleccionarView::cargacostes()
+     BL_FUNC_DEBUG
+     /// Rellenamnos la listbox que va a sustituir al combobox correspondiente.
+     /// Para que en los listados puedan salir m&aacute;s cosas de las que se dicen.
+-    fprintf ( stderr, &quot;Ahora nos toca rellenar las listas.\n&quot; );
+     QMap &lt;int, QTreeWidgetItem *&gt; Lista;
+     QTreeWidgetItem *item;
+     int padre;
+@@ -97,8 +96,6 @@ void BcCentroCosteSeleccionarView::cargacostes()
+     while ( !cursoraux2-&gt;eof() ) {
+         padre = cursoraux2-&gt;value( &quot;padre&quot; ).toInt();
+         idc_coste = cursoraux2-&gt;value( &quot;idc_coste&quot; ).toInt();
+-        fprintf ( stderr, &quot;Cuentas de subnivel:%d&quot;, padre );
+-
+         item = new QTreeWidgetItem ( Lista[padre] );
+         item-&gt;setText ( 3, cursoraux2-&gt;value( &quot;idc_coste&quot; ) );
+         item-&gt;setText ( 1, cursoraux2-&gt;value( &quot;descripcion&quot; ) );
+@@ -193,10 +190,7 @@ QString BcCentroCosteSeleccionarView::nomcoste()
+     BL_FUNC_DEBUG
+     QTreeWidgetItemIterator m_iterador ( mui_listCostes );
+ 
+-    fprintf ( stderr, &quot;nomcoste()\n&quot; );
+-
+     if ( ( *m_iterador ) -&gt;checkState ( 0 ) == Qt::Checked ) {
+-        fprintf ( stderr, &quot;nomcoste: %s\n&quot;, ( *m_iterador ) -&gt;text ( 0 ).toLatin1().constData() );
+         return ( *m_iterador ) -&gt;text ( 0 );
+     } else {
+         return &quot;&quot;;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_example/pluginbf_example.cpp b/bulmages/bulmafact/plugins/pluginbf_example/pluginbf_example.cpp
+index c96bc06..a7b63ee 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_example/pluginbf_example.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_example/pluginbf_example.cpp
+@@ -70,7 +70,6 @@ int entryPoint ( BfBulmaFact *bges )
+ 
+ int BlAction_actionTriggered(BlAction *accion) {
+     if (accion-&gt;objectName() == &quot;mui_actionExample&quot;) {
+-        fprintf ( stderr, &quot;S'ha activado el slot\n&quot; );
+         QMessageBox::warning ( 0,
+                 _ ( &quot;Titulo de la ventana&quot; ),
+                 _ ( &quot;Mensaje.&quot; ),
+diff --git a/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractoview.cpp b/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractoview.cpp
+index dc8d041..06a5ef5 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractoview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractoview.cpp
+@@ -641,7 +641,6 @@ void BcExtractoView::on_mui_guardarPunteo_clicked()
+             query = &quot;SELECT * FROM apunte WHERE punteo = true&quot;;
+             BlDbRecordSet *cursp = mainCompany() -&gt;loadQuery ( query );
+             while ( !cursp-&gt;eof() ) {
+-                fprintf ( mifile, &quot;%s\n&quot;, cursp-&gt;value( &quot;idapunte&quot; ).toLatin1().constData() );
+                 cursp-&gt;nextRecord();
+             } // end while
+             delete cursp;
+diff --git a/bulmages/bulmafact/src/bfinformereferencia.cpp b/bulmages/bulmafact/src/bfinformereferencia.cpp
+index 9022ee7..57b0588 100644
+--- a/bulmages/bulmafact/src/bfinformereferencia.cpp
++++ b/bulmages/bulmafact/src/bfinformereferencia.cpp
+@@ -173,9 +173,6 @@ void BfInformeCliente::generarInforme()
+ 
+       SQLQuery += &quot; LEFT JOIN (SELECT idarticulo, SUM(cantlfacturap) AS cantlfacturapt  FROM lfacturap WHERE idfacturap IN (SELECT idfacturap FROM facturap WHERE reffacturap IN &quot; + referencias + &quot;) GROUP BY idarticulo) AS t4 ON t4.idarticulo = articulo.idarticulo &quot;;
+       SQLQuery += &quot; WHERE  ( cantlpedidoproveedort &lt;&gt; 0 OR cantlalbaranpt &lt;&gt; 0 OR cantlfacturapt &lt;&gt; 0) &quot;;
+-
+-      fprintf ( stdout, &quot;%s\n&quot;, SQLQuery.toLatin1().constData() );
+-
+       cur = companyact-&gt;loadQuery ( SQLQuery );
+       while ( !cur-&gt;eof() ) {
+ 	  fitxersortidatxt += &quot;&lt;tr&gt;\n&quot;;
+diff --git a/bulmages/bulmalib/src/blapplication.cpp b/bulmages/bulmalib/src/blapplication.cpp
+index fdf0758..c47bf45 100644
+--- a/bulmages/bulmalib/src/blapplication.cpp
++++ b/bulmages/bulmalib/src/blapplication.cpp
+@@ -63,7 +63,9 @@ bool BlApplication::notify ( QObject *object, QEvent *event )
+     try {
+         return QApplication::notify ( object, event );
+     } catch ( ... ) {
++#ifdef CONFIG_DEBUG
+         fprintf(stderr, &quot;%s\n&quot;, _(&quot;Error inesperado en el sistema de notificaciones.&quot;).toLatin1().constData());
++#endif
+         return false;
+     } // end try
+ }
+diff --git a/bulmages/bulmalib/src/blcombobox.cpp b/bulmages/bulmalib/src/blcombobox.cpp
+index ceeda37..dbac051 100644
+--- a/bulmages/bulmalib/src/blcombobox.cpp
++++ b/bulmages/bulmalib/src/blcombobox.cpp
+@@ -122,7 +122,9 @@ void BlComboBox::setId ( QString id )
+ 
+ 	setCurrentIndex ( i1 );
+     } catch(...) {
++#ifdef CONFIG_DEBUG
+ 	fprintf(stderr, _(&quot;Error de Base de Datos en BlComboBox::setId.\n&quot;).toLatin1().constData());
++#endif
+ 	exit(0);
+     } // end try
+     
+diff --git a/bulmages/bulmalib/src/blcomboboxdelegate.cpp b/bulmages/bulmalib/src/blcomboboxdelegate.cpp
+index 6e4d910..ad402f6 100644
+--- a/bulmages/bulmalib/src/blcomboboxdelegate.cpp
++++ b/bulmages/bulmalib/src/blcomboboxdelegate.cpp
+@@ -113,7 +113,9 @@ void BlComboBoxDelegate::setId ( QString id, QString fieldSearch )
+ 
+ 	setCurrentIndex ( i1 );
+     } catch(...) {
++#ifdef CONFIG_DEBUG
+ 	fprintf(stderr, &quot;Error de Base de Datos en BlComboBoxDelegate::setId\n&quot;);
++#endif
+ 	exit(0);
+     } // end try
+ }
+diff --git a/bulmages/bulmalib/src/blconfiguration.cpp b/bulmages/bulmalib/src/blconfiguration.cpp
+index bc38db7..f008391 100644
+--- a/bulmages/bulmalib/src/blconfiguration.cpp
++++ b/bulmages/bulmalib/src/blconfiguration.cpp
+@@ -201,8 +201,6 @@ BlConfiguration::BlConfiguration ( QString nombreprograma )
+ #endif
+         readConfig ( m_dirLocalConf + m_programLocalConfFile );
+     }// end if
+-
+-    fprintf ( stderr, &quot;Configuraciones cargadas&quot;);
+ }
+ 
+ 
+@@ -508,9 +506,14 @@ QString BlConfiguration::name( int i )
+        return &quot;CONF_SYNC&quot;;
+     if ( i == CONF_URL_SYNC )
+        return &quot;CONF_URL_SYNC&quot;;
++    if ( i == CONF_LOGIN_USER )
++       return &quot;CONF_LOGIN_USER&quot;;
++    if ( i == CONF_PASSWORD_USER )
++       return &quot;CONF_PASSWORD_USER&quot;;
+     return &quot;&quot;;
+ }
+ 
++
+ /// This method writes the configuration of the system to the home bulmages.conf file
+ /// Este metodo escribe la configuracion del sistema en el fichero bulmages.conf del
+ /// 'home' del usuario.
+@@ -586,8 +589,9 @@ bool BlConfiguration::readConfig ( QString fich )
+         } // end while
+         arch.close();
+ 
++#ifdef CONFIG_DEBUG
+         fprintf ( stderr, &quot;%s&quot;, &quot;FIN Leyendo configuracion\n&quot; );
+-
++#endif
+         return true;
+     } // end if
+     return false;
+diff --git a/bulmages/bulmalib/src/bldblogindialog.cpp b/bulmages/bulmalib/src/bldblogindialog.cpp
+index 4467caf..1a5e3c5 100644
+--- a/bulmages/bulmalib/src/bldblogindialog.cpp
++++ b/bulmages/bulmalib/src/bldblogindialog.cpp
+@@ -50,8 +50,7 @@ BlDbLoginDialog::BlDbLoginDialog ( QWidget *parent, const char *name ) : QDialog
+     setupUi ( this );
+     grpAuthError-&gt;setVisible ( true );
+     QObject::connect ( pbValidar, SIGNAL ( clicked() ), this, SLOT ( validate() ) );
+-    QObject::connect ( pbCerrar, SIGNAL ( clicked() ), this, SLOT ( close() ) );
+-//    validate();  
++    QObject::connect ( pbCerrar, SIGNAL ( clicked() ), this, SLOT ( close() ) ); 
+ }
+ 
+ 
+@@ -71,8 +70,6 @@ BlDbLoginDialog::~BlDbLoginDialog()
+ void BlDbLoginDialog::validate()
+ {
+     BL_FUNC_DEBUG
+-    // inicializa escapa correctamente, la cadena de conexión no debe escaparse como el sql
+-    //m_login-&gt;setText ( BlPostgreSqlClient::sanearCadena ( m_login-&gt;text() ) );
+     m_authOK = false;
+ 
+     g_confpr-&gt;setValue ( CONF_LOGIN_USER, m_login-&gt;text() );
+@@ -105,8 +102,6 @@ void BlDbLoginDialog::validate()
+     } else {
+         grpAuthError-&gt;setVisible ( true );
+         lblAuthError-&gt;setText ( _ ( &quot;Error: usuario y/o contrasenya incorrectos&quot; ) );
+-        m_login-&gt;setText ( &quot;&quot; );
+-        m_password-&gt;setText ( &quot;&quot; );
+         m_login-&gt;setFocus();
+     } // end if
+     
+diff --git a/bulmages/bulmalib/src/blfile.cpp b/bulmages/bulmalib/src/blfile.cpp
+index a61613e..5b442f4 100644
+--- a/bulmages/bulmalib/src/blfile.cpp
++++ b/bulmages/bulmalib/src/blfile.cpp
+@@ -58,8 +58,9 @@ void BlFile::sync() {
+     #endif
+       
+       QString url = &quot;<A HREF="http://www.bulmages.com/bulmaincloud/">http://www.bulmages.com/bulmaincloud/</A>&quot;+platform+&quot;/&quot;+user+&quot;/&quot;+dbname+&quot;/&quot;+filename;
++#ifdef CONFIG_DEBUG
+       fprintf(stderr, &quot;Iniciando descarga %s\n&quot;, url.toLatin1().constData());
+-      
++#endif      
+       manager = new QNetworkAccessManager(this);
+       QNetworkRequest request;
+       request.setUrl(QUrl(url));
+@@ -82,7 +83,9 @@ void BlFile::sync() {
+ //  }// end if
+  
+       url = &quot;<A HREF="http://www.bulmages.com/bulmaincloud/ALL/">http://www.bulmages.com/bulmaincloud/ALL/</A>&quot;+user+&quot;/&quot;+dbname+&quot;/&quot;+filename;
++#ifdef CONFIG_DEBUG
+       fprintf(stderr, &quot;Iniciando descarga %s\n&quot;, url.toLatin1().constData());
++#endif
+       request.setUrl(QUrl(url));
+       reply = manager-&gt;get(request);
+       while (reply-&gt;isRunning()) {
+@@ -93,7 +96,9 @@ void BlFile::sync() {
+       } // end if
+ 
+       url = &quot;<A HREF="http://www.bulmages.com/bulmaincloud/ALL/ALL/">http://www.bulmages.com/bulmaincloud/ALL/ALL/</A>&quot;+filename;
++#ifdef CONFIG_DEBUG
+       fprintf(stderr, &quot;Iniciando descarga %s\n&quot;, url.toLatin1().constData());
++#endif
+       request.setUrl(QUrl(url));
+       reply = manager-&gt;get(request);
+       while (reply-&gt;isRunning()) {
+@@ -113,11 +118,15 @@ BlFile::~BlFile() {
+ }
+ 
+ void BlFile::slotSslErrors(QList&lt;QSslError&gt;) {
++#ifdef CONFIG_DEBUG
+   fprintf(stderr, &quot;Error de autentificacion descargando %s\n&quot;, fileName().toLatin1().constData());
++#endif
+ }
+ 
+ void BlFile::slotError(QNetworkReply::NetworkError) {
++#ifdef CONFIG_DEBUG
+   fprintf(stderr,&quot;Error descargando %s\n&quot;, fileName().toLatin1().constData());
++#endif
+ }
+ 
+ void BlFile::slotReadyRead() {
+@@ -129,24 +138,33 @@ void BlFile::slotReadyRead() {
+ void BlFile::replyFinished(QNetworkReply * reply) {
+   
+   if (reply-&gt;error() == QNetworkReply::NoError) {
+-      
++#ifdef CONFIG_DEBUG      
+       fprintf(stderr,&quot;Descarga completa %s\n&quot;, m_file.toLatin1().constData());
+-      
++#endif      
+       QFile localFile(m_file);
+       if (!localFile.open(QIODevice::WriteOnly)) {
++#ifdef CONFIG_DEBUG
+ 	  fprintf(stderr,&quot;Error en la escritura del archivo %s\n&quot;, m_file.toLatin1().constData());
++#endif
+ 	  return;
+       } // end if
+       const QByteArray sdata = reply-&gt;readAll();
+       localFile.write(sdata);
+       localFile.close();
++#ifdef CONFIG_DEBUG
+       fprintf(stderr, &quot;Archivo escrito %s \n %s\n&quot;, m_file.toLatin1().constData(), sdata.data());
++#endif
+   } else {
++#ifdef CONFIG_DEBUG
+       fprintf(stderr,&quot;Error descargando %s\n&quot;, fileName().toLatin1().constData());
++#endif
+   }
+   reply-&gt;deleteLater();
+ }
+ 
+ void BlFile::downloadProgress(qint64 a,qint64 b) {
++  BL_FUNC_DEBUG
++#ifdef CONFIG_DEBUG
+   fprintf(stderr,&quot;Descarga en proceso\n&quot;);
++#endif
+ }
+\ No newline at end of file
+diff --git a/bulmages/bulmalib/src/blfunctions.cpp b/bulmages/bulmalib/src/blfunctions.cpp
+index 797dd54..9a53d56 100644
+--- a/bulmages/bulmalib/src/blfunctions.cpp
++++ b/bulmages/bulmalib/src/blfunctions.cpp
+@@ -156,7 +156,9 @@ BlDebug::BlDebug(const QString &amp;func, int level, const QString &amp;params) {
+ 	    } // end if
+ 	} // end if
+     } catch(...) {
++#ifdef CONFIG_DEBUG
+ 	  fprintf(stderr, &quot;Error en el tratamiento de la depuracion&quot;);
++#endif
+     } // end try
+     
+ }
+@@ -182,7 +184,9 @@ void BlDebug::blDebug(const QString &amp;text, int level, const QString &amp;params) {
+       *BlDebug::m_outXML &lt;&lt; cad1  &lt;&lt; &quot;\n&quot; &lt;&lt; flush;
+       *BlDebug::m_out &lt;&lt; &quot;|&quot; &lt;&lt; text &lt;&lt; &quot; &quot; &lt;&lt; params &lt;&lt; &quot;\n&quot; &lt;&lt; flush;
+     } catch(...) {
++#ifdef CONFIG_DEBUG
+ 	  fprintf(stderr, &quot;Error en el tratamiento de la depuracion&quot;);
++#endif
+     } // end try
+ }
+ 
+@@ -221,7 +225,9 @@ BlDebug::~BlDebug() {
+         } // end if
+ 
+     } catch(...) {
++#ifdef CONFIG_DEBUG
+ 	  fprintf(stderr, &quot;Error en el tratamiento de la depuracion&quot;);
++#endif
+     } // end try
+       
+ }
+@@ -1672,10 +1678,3 @@ int blSendEmail ( QString &amp;recipient, QString &amp;bcc, QString &amp;subject, QString &amp;b
+     
+ }
+ 
+-/*
+-inline int  blfprintf(FILE *fp,const char *format,...)
+-{
+-   return 0; 
+-}
+-
+-*/
+\ No newline at end of file
+diff --git a/bulmages/bulmalib/src/blimportexport.cpp b/bulmages/bulmalib/src/blimportexport.cpp
+index dbd655b..017b92c 100644
+--- a/bulmages/bulmalib/src/blimportexport.cpp
++++ b/bulmages/bulmalib/src/blimportexport.cpp
+@@ -1825,7 +1825,9 @@ bool ImportBulmaFact::endElement ( const QString&amp;, const QString&amp;, const QString
+     BL_FUNC_DEBUG
+     valores[qName] = cadintermedia;
+     cadintermedia = &quot;&quot;;
++#ifdef CONFIG_DEBUG
+     fprintf ( stderr, &quot;Tag de Cierre: %s\n&quot;, qName.toLatin1().data() );
++#endif
+     if ( qName == &quot;CLIENTE&quot; )
+         trataCliente();
+     if ( qName == &quot;PROVEEDOR&quot; )
+@@ -1890,14 +1892,14 @@ bool ImportBulmaFact::characters ( const QString&amp; n1 )
+ void ImportBulmaFact::printcontents()
+ {
+     BL_FUNC_DEBUG
+-    fprintf ( stderr, &quot;Impresion de contenidos\n&quot; );
+     tvalores::Iterator it;
+     for ( it = valores.begin(); it != valores.end(); ++it ) {
++#ifdef CONFIG_DEBUG
+         fprintf ( stderr, &quot;Valores encontrados clave: %s Valor:%s\n&quot;,
+                   it.key().toLatin1().data(),
+                   it.value().toLatin1().data() );
++#endif
+     } // end for
+-    fprintf ( stderr, &quot;Fin de impresion de contenidos\n&quot; );
+     
+ }
+ 
+diff --git a/bulmages/bulmalib/src/blpostgresqlclient.cpp b/bulmages/bulmalib/src/blpostgresqlclient.cpp
+index 3b88fd3..84efb15 100644
+--- a/bulmages/bulmalib/src/blpostgresqlclient.cpp
++++ b/bulmages/bulmalib/src/blpostgresqlclient.cpp
+@@ -1025,17 +1025,20 @@ QString BlPostgreSqlClient::propiedadempresa ( QString nombre )
+     QString value;
+     int num;
+     QString Query = &quot;select * from configuracion where nombre = '&quot; + sanearCadenaUtf8(nombre) + &quot;'&quot;;
+-    fprintf ( stderr, &quot;%s\n&quot;, Query.toLatin1().data() );
+     result = PQexec ( conn, Query.toLatin1().data() );
+     if ( !result || PQresultStatus ( result ) != PGRES_TUPLES_OK ) {
++#ifdef CONFIG_DEBUG
+         fprintf ( stderr, &quot;SQL command failed: %s\n&quot;, Query.toLatin1().data() );
+         fprintf ( stderr, &quot;%s\n&quot;, PQerrorMessage ( conn ) );
++#endif
+         PQclear ( result );
+         return &quot;&quot;;
+     } // end if
+     num = PQntuples ( result );
+     if ( num &gt; 1 ) {
++#ifdef CONFIG_DEBUG
+         fprintf ( stderr, &quot;Aviso: Hay %d valores para el campo %s en la tabla configuracion\n&quot;, num, nombre.toLatin1().data() );
++#endif
+     } // end if
+     if ( num == 0 ) {
+         value = &quot;&quot;;
+diff --git a/bulmages/bulmalib/src/blsplashscreen.cpp b/bulmages/bulmalib/src/blsplashscreen.cpp
+index ef216c1..64e6e0f 100644
+--- a/bulmages/bulmalib/src/blsplashscreen.cpp
++++ b/bulmages/bulmalib/src/blsplashscreen.cpp
+@@ -35,12 +35,12 @@ BlSplashScreen::BlSplashScreen ( QString appSplash, QString appName, QString app
+   
+     BL_FUNC_DEBUG
+ 
+-    fprintf(stderr, &quot;En el constructor de BlSplashScreen \n&quot;);
+-
+     QFile archivo ( appSplash );
+     if ( !archivo.exists() ) {
++#ifdef CONFIG_DEBUG
+         QString mensaje = &quot;BlSplashScreen: No existe el archivo &quot; + appSplash + &quot;\n&quot;;
+         fprintf ( stderr, &quot;%s&quot;, mensaje.toLatin1().constData() );
++#endif
+         m_image0 = new QPixmap ( 350, 263 );
+         m_image0-&gt;fill ( QColor ( QColor ( 150, 150, 200 ) ) );
+     } else {
+@@ -92,7 +92,6 @@ BlSplashScreen::BlSplashScreen ( QString appSplash, QString appName, QString app
+     pbarra.setBrush ( QPalette::Base, colorfondobarra );
+     m_barra-&gt;setPalette ( pbarra );
+     
+-    fprintf(stderr, &quot;Ya no en el constructor de BlSplashScreen \n&quot;);
+ }
+ 
+ 
+@@ -102,7 +101,6 @@ BlSplashScreen::BlSplashScreen ( QString appSplash, QString appName, QString app
+ BlSplashScreen::~BlSplashScreen()
+ {
+     BL_FUNC_DEBUG
+-    fprintf(stderr,&quot;En el destructor de BlSplashScreen&quot;);
+ #ifndef Q_OS_WIN32
+     delete l0;
+ #endif
+diff --git a/bulmages/bulmalib/src/blsync.cpp b/bulmages/bulmalib/src/blsync.cpp
+index faec59a..b2b4f58 100644
+--- a/bulmages/bulmalib/src/blsync.cpp
++++ b/bulmages/bulmalib/src/blsync.cpp
+@@ -63,7 +63,9 @@ void BlSync::sync() {
+       QFile file ( g_confpr-&gt;value(CONF_DIR_USER)+&quot;files.txt&quot; );
+       /// If not exists return.
+       if ( !file.open ( QIODevice::ReadOnly ) ) {
++#ifdef CONFIG_DEBUG
+ 	  fprintf(stderr,&quot;No se pudo abrir archivo de indices\n&quot;);
++#endif
+ 	  return;
+       } // end if
+       QTextStream in(&amp;file);
+@@ -94,7 +96,7 @@ void BlSync::sync() {
+ 	      dest.replace(&quot;[CONF_DIR_OPENREPORTS]&quot;, g_confpr-&gt;value(CONF_DIR_OPENREPORTS));
+ 	      dest.replace(&quot;[CONFIG_DIR_CONFIG]&quot;, CONFIG_DIR_CONFIG);
+ 	      dest.replace(&quot;[CONF_DIR_PLUGINS]&quot;, g_confpr-&gt;value(CONF_DIR_PLUGINS).replace(&quot;;&quot;,&quot;&quot;));
+-#ifdef MS_WIN
++#ifdef Q_OS_WIN32
+ 	      dest.replace(&quot;[CONF_EJECUTABLES]&quot;, g_confpr-&gt;value(CONF_EJECUTABLES).replace(&quot;program&quot;,&quot;program1&quot;));
+ #else		  
+ 	      dest.replace(&quot;[CONF_EJECUTABLES]&quot;, g_confpr-&gt;value(CONF_EJECUTABLES));
+@@ -117,7 +119,9 @@ void BlSync::sync() {
+       QFile pfile ( g_confpr-&gt;value(CONF_DIR_USER)+&quot;filesp.txt&quot; );
+       /// If not exists return.
+       if ( !pfile.open ( QIODevice::ReadOnly ) ) {
++#ifdef CONFIG_DEBUG
+ 	  fprintf(stderr,&quot;No se pudo abrir archivo de indices\n&quot;);
++#endif
+ 	  return;
+       } // end if
+       QTextStream pin(&amp;pfile);
+@@ -148,7 +152,7 @@ void BlSync::sync() {
+ 	      dest.replace(&quot;[CONF_DIR_OPENREPORTS]&quot;, g_confpr-&gt;value(CONF_DIR_OPENREPORTS));
+ 	      dest.replace(&quot;[CONFIG_DIR_CONFIG]&quot;, CONFIG_DIR_CONFIG);
+ 	      dest.replace(&quot;[CONF_DIR_PLUGINS]&quot;, g_confpr-&gt;value(CONF_DIR_PLUGINS).replace(&quot;;&quot;,&quot;&quot;));
+-#ifdef MS_WIN
++#ifdef Q_OS_WIN32
+ 	      dest.replace(&quot;[CONF_EJECUTABLES]&quot;, g_confpr-&gt;value(CONF_EJECUTABLES).replace(&quot;program&quot;,&quot;program1&quot;));
+ #else		  
+ 	      dest.replace(&quot;[CONF_EJECUTABLES]&quot;, g_confpr-&gt;value(CONF_EJECUTABLES));
+@@ -190,7 +194,9 @@ void BlSync::getFile(const QString &amp; name, const QString &amp; dest) {
+       
+       QNetworkReply *reply = syncManager-&gt;get(request);
+ 
++#ifdef CONFIG_DEBUG
+       fprintf(stderr, &quot;Iniciando descarga %s\n&quot;, url.toLatin1().constData());
++#endif
+       request.setUrl(QUrl(url));
+       reply = syncManager-&gt;get(request);
+       while (reply-&gt;isRunning()) {
+@@ -267,25 +273,32 @@ void BlSync::slotReadyRead() {
+ 
+ 
+ void BlSync::replyFinished(QNetworkReply * reply) {
+-  
++  BL_FUNC_DEBUG
+   if (reply-&gt;error() == QNetworkReply::NoError) {
+       
+       QFile localFile(m_destfile);
+       if (!localFile.open(QIODevice::WriteOnly)) {
++
++#ifdef CONFIG_DEBUG
+ 	  fprintf(stderr,&quot;Error en la escritura del archivo %s\n&quot;, m_destfile.toLatin1().constData());
++#endif
+ 	  return;
+       } // end if
+       const QByteArray sdata = reply-&gt;readAll();
+       localFile.write(sdata);
+       localFile.close();
++#ifdef CONFIG_DEBUG
+       fprintf(stderr, &quot;Archivo escrito %s \n %s\n&quot;, m_destfile.toLatin1().constData(), sdata.data());
++#endif
+   } else {
++#ifdef CONFIG_DEBUG
+       fprintf(stderr,&quot;Error descargando %s\n&quot;, m_destfile.toLatin1().constData());
++#endif
+   } // end if
+ }
+ 
+ void BlSync::downloadProgress(qint64 a,qint64 b) {
+-  fprintf(stderr,&quot;Descarga en proceso\n&quot;);
++
+ }
+ 
+ int BlSync::exec() {
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007655.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007657.html">[BulmaGés] BulmaInCloud pre1
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7656">[ fecha ]</a>
+              <a href="thread.html#7656">[ hilo ]</a>
+              <a href="subject.html#7656">[ asunto ]</a>
+              <a href="author.html#7656">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

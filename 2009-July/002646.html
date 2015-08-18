@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] Me presento
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Me%20presento&In-Reply-To=%3C200907072230.54584.pedro.lopez.cabanillas%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002644.html">
+   <LINK REL="Next"  HREF="002648.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] Me presento </H1>
+    <B>Pedro Lopez-Cabanillas</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Me%20presento&In-Reply-To=%3C200907072230.54584.pedro.lopez.cabanillas%40gmail.com%3E"
+       TITLE="[BulmaGés] Me presento">pedro.lopez.cabanillas en gmail.com
+       </A><BR>
+    <I>Mar Jul  7 22:30:54 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002644.html">[BulmaGés] [Bug #15948] IMPRESION O ENVIO DE	MULTIPLES DOCUMENTOS
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002648.html">[BulmaGés]Me presento
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2646">[ fecha ]</a>
+              <a href="thread.html#2646">[ hilo ]</a>
+              <a href="subject.html#2646">[ asunto ]</a>
+              <a href="author.html#2646">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola,
+
+Soy gallego de nacimiento, pero vivo en Barcelona desde hace ya 20 años (tengo 
+47). Soy músico aficionado, y programador de profesión. Contribuyo 
+ocasionalmente a algunos proyectos de software libre: Rosegarden, QSynth, 
+FluidSynth, ALSA,... y algunos de mi cosecha: VMPK, KMidimon, KMetronome. 
+Todos relacionados con la música. Casi todos en C++ y con Qt o KDE. Ahora 
+mismo estoy usando OpenSuse.
+
+Me sonaba Bulmages desde hace tiempo, pero he tenido el placer de asistir a la 
+excelente presentación de Francisco Javier y Tomeu el sábado pasado, en las 
+Jornades de PL de Barcelona, que han estado bastante bien en general, por 
+cierto.
+
+Quiero contribuir un poquito, para empezar creando paquetes RPM para openSUSE. 
+Utilizo habitualmente el Build Service para empaquetar mis programas, así que 
+he creado en local unos RPMs de la versión 0.11.1, que es la más reciente 
+publicada ¿verdad? 
+
+Aprovecho para plantear unas dudas/problemas:
+
+Las traducciones (*.qm) no se instalan. Se me han quedado fuera de los 
+paquetes RPM de momento. Los he copiado a mano 
+en /usr/share/bulmages/traducciones.
+
+No he encontrado archivos *.desktop, supongo que debería crear al menos dos: 
+uno para &quot;/usr/bin/bulmages&quot;, y el otro para &quot;kdesu /usr/bin/bulmasetup&quot;, ¿y 
+que iconos les pongo? Se trata de que aparezcan los programas en el menú del 
+escritorio (en mi caso, KDE).
+
+He creado un usuario y dos bases de datos, una para contabilidad y otra para 
+facturación/tpv. ¿Esto es correcto/recomendable? Cuando intenté usar el mismo 
+nombre de BD para los dos módulos, uno de los juegos de tablas no se creó.
+
+El programa bulmages muestra el selector, y pulsando los botones solicita  
+seleccionar la empresa. Después de eso, no abre nada más. Tampoco veo ningun 
+error. Esto es lo que aparece en la consola:
+
+$ bulmages
+--&gt; Leyendo el archivo '/etc/bulmages/bulmages.conf'&lt;--
+Leyendo configuracion
+FIN Leyendo configuracion
+--&gt; El archivo '/etc/bulmages/bulmages.conf' existe. Se va a leer.&lt;--
+Leyendo configuracion
+FIN Leyendo configuracion
+--&gt; El archivo '/home/pedro/.bulmages/bulmages.conf' no existe. &lt;--
+--&gt; El archivo '/home/pedro/.bulmages/bulmages.conf' no existe. &lt;--
+--&gt; MAIN::Iniciando el programa. &lt;--
+--&gt; Leyendo el archivo '/etc/bulmages/bulmages.conf'&lt;--
+Leyendo configuracion
+FIN Leyendo configuracion
+--&gt; El archivo '/etc/bulmages/bulmafact.conf' existe. Se va a leer.&lt;--
+Leyendo configuracion
+FIN Leyendo configuracion
+--&gt; El archivo '/home/pedro/.bulmages/bulmages.conf' no existe. &lt;--
+--&gt; El archivo '/home/pedro/.bulmages/bulmafact.conf' no existe. &lt;--
+
+Y ya para acabar, el Build Service de openSUSE es un poco tiquismiquis. Aborta 
+la construcción por unos warnings de la compilación, que se aceptan por la 
+política de la distro. Esta es la parte interesante del log:
+
+
+I: Program returns random data in a function
+E: bulmages 
+no-return-in-nonvoid-function /usr/src/packages/BUILD/bulmages-0.11.1/bulmafact/plugins/pluginpreciocoste/pluginpreciocoste.cpp:206
+E: bulmages 
+no-return-in-nonvoid-function /usr/src/packages/BUILD/bulmages-0.11.1/bulmatpv/plugins/plugintecladonumerico/plugintecladonumerico.cpp:65
+E: bulmages 
+no-return-in-nonvoid-function /usr/src/packages/BUILD/bulmages-0.11.1/bulmatpv/plugins/pluginvisor/pluginvisor.cpp:95, 
+85
+E: bulmages 
+no-return-in-nonvoid-function /usr/src/packages/BUILD/bulmages-0.11.1/bulmatpv/src/subform2bt.cpp:350
+
+I: Expression compares a char* pointer with a string literal.
+Usually a strcmp() was intended by the programmer
+E: bulmages 
+stringcompare /usr/src/packages/BUILD/bulmages-0.11.1/bulmacont/src/modelo300.cpp:211, 
+224, 237
+
+
+Añadiré un parche a la compilación para evitarlos, y lo pondré en la lista. 
+Por otro lado, la construcción para x86_64 falla después de la instalación 
+quejándose del directorio (las librerias van en lib64/ en vez de lib/).
+
+
+Saludos,
+Pedro
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002644.html">[BulmaGés] [Bug #15948] IMPRESION O ENVIO DE	MULTIPLES DOCUMENTOS
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002648.html">[BulmaGés]Me presento
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2646">[ fecha ]</a>
+              <a href="thread.html#2646">[ hilo ]</a>
+              <a href="subject.html#2646">[ asunto ]</a>
+              <a href="author.html#2646">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

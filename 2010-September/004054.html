@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] r4007 - in trunk/bulmages:	bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels	bulmalib/src installbulmages/dbmodels/actualizar	installbulmages/dbmodels/crear/bulmafact
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r4007%20-%20in%20trunk/bulmages%3A%0A%09bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels%0A%09bulmalib/src%20installbulmages/dbmodels/actualizar%0A%09installbulmages/dbmodels/crear/bulmafact&In-Reply-To=%3C20100906100648.7AFE9481051%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="004052.html">
+   <LINK REL="Next"  HREF="004055.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] r4007 - in trunk/bulmages:	bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels	bulmalib/src installbulmages/dbmodels/actualizar	installbulmages/dbmodels/crear/bulmafact </H1>
+    <B>svn en mail.berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r4007%20-%20in%20trunk/bulmages%3A%0A%09bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels%0A%09bulmalib/src%20installbulmages/dbmodels/actualizar%0A%09installbulmages/dbmodels/crear/bulmafact&In-Reply-To=%3C20100906100648.7AFE9481051%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] r4007 - in trunk/bulmages:	bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels	bulmalib/src installbulmages/dbmodels/actualizar	installbulmages/dbmodels/crear/bulmafact">svn en mail.berlios.de
+       </A><BR>
+    <I>Lun Sep  6 12:06:48 CEST 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="004052.html">[BulmaGés] r4006 - in trunk/bulmages:	bulmacont/src bulmafact/src
+</A></li>
+        <LI>Próximo mensaje: <A HREF="004055.html">[BulmaGés] r4008 -	trunk/bulmages/bulmatpv/plugins/pluginbt_modificadores
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4054">[ fecha ]</a>
+              <a href="thread.html#4054">[ hilo ]</a>
+              <a href="subject.html#4054">[ asunto ]</a>
+              <a href="author.html#4054">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: fcojavmc
+Date: 2010-09-06 12:06:48 +0200 (Mon, 06 Sep 2010)
+New Revision: 4007
+
+Added:
+   trunk/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels/update_and_patch.sh
+Modified:
+   trunk/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/dbmodels/pluginbf_sincrobulmacont.sql
+   trunk/bulmages/bulmalib/src/blsubform.cpp
+   trunk/bulmages/installbulmages/dbmodels/actualizar/revf-0.12.sql
+   trunk/bulmages/installbulmages/dbmodels/crear/bulmafact/bulmafact_schema.sql
+Log:
+Actualizacion de la base de datos.
+
+Se cambia la precision con la que se trabaja al guardar datos de 'base
+imponible', 'IVA', etc.. (se cambia de 4 a 2). Cada linea del detalle de
+un documento trabaja con 2 decimales en los totales.
+
+Si los precios tienen mas precision no tendria que afectarles el cambio
+porque internamente si que tiene en cuenta mas decimales.
+
+Ejemplo donde no iba bien trabajar con 4 decimales en los calculos:
+
+PVP / IVA / SubTotal 4 decim / SubTotal 2 decim:
+49,76 / 18% / 58,7168 / 58,72
+47,41 / 16% / 54,9956 / 54,00
+
+Total (4 decim): 113,71
+Total (2 decim): 113,72
+
+En este caso trabajar con 4 decimales hace que descuadre 1 centimo el
+redondeo final.
+
+
+
+
+*********************************
+*          Todo-Redes           *
+*        C/.Begonia, 12         *
+*   07010 Palma de Mallorca.    *
+*      Tel: +34-971499071       *
+*   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>   *
+*  comercial(en)todo-redes.com  *
+*********************************
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="004052.html">[BulmaGés] r4006 - in trunk/bulmages:	bulmacont/src bulmafact/src
+</A></li>
+	<LI>Próximo mensaje: <A HREF="004055.html">[BulmaGés] r4008 -	trunk/bulmages/bulmatpv/plugins/pluginbt_modificadores
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4054">[ fecha ]</a>
+              <a href="thread.html#4054">[ hilo ]</a>
+              <a href="subject.html#4054">[ asunto ]</a>
+              <a href="author.html#4054">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

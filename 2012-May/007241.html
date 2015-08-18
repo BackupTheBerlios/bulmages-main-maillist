@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120517063835.000472C8B5%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007233.html">
+   <LINK REL="Next"  HREF="007242.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120517063835.000472C8B5%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Jue Mayo 17 08:38:34 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007233.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to newtrml...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007242.html">[BulmaGés] Pruebas de impresion con el nuevo	bgtrml2pdf
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7241">[ fecha ]</a>
+              <a href="thread.html#7241">[ hilo ]</a>
+              <a href="subject.html#7241">[ asunto ]</a>
+              <a href="author.html#7241">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from fa2117a to c2eb442
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/fa2117a95c757d09a36ba846fd1809be760e88c7/diffs/c2eb4421d1371f0b3017ce5d55a0efcc6fc9d8db">https://gitorious.org/bulmages/bulmages/commit/fa2117a95c757d09a36ba846fd1809be760e88c7/diffs/c2eb4421d1371f0b3017ce5d55a0efcc6fc9d8db</A>
+
+Diff: 
+
+commit c2eb4421d1371f0b3017ce5d55a0efcc6fc9d8db
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu May 17 08:38:16 2012 +0200
+
+    Deshago el commit anterior que quitaba la sustitucion de \n por &lt;br\&gt; al ser problema de bgtrml2pdf y no de la sustitucion en si como bien dijo Fco. Javier
+
+diff --git a/bulmages/bulmafact/src/bfform.cpp b/bulmages/bulmafact/src/bfform.cpp
+index 4e226a4..90262e3 100644
+--- a/bulmages/bulmafact/src/bfform.cpp
++++ b/bulmages/bulmafact/src/bfform.cpp
+@@ -375,7 +375,7 @@ void BfForm::parseTagsBf ( QString &amp;buff, int tipoEscape )
+             
+                         if ( parametros_story[j].trimmed() == &quot;desc&quot; + tableName() ){
+                             ///Impresion del descripcion de los articulos
+-                            fitxersortidatxt += &quot;    &lt;td&gt;&lt;para style=\&quot;paragrafo\&quot;&gt;&quot; + blStringEscape ( linea-&gt;dbValue ( &quot;desc&quot; + m_listalineas-&gt;tableName() ), tipoEscape ) + &quot;&lt;/para&gt;&lt;/td&gt;\n&quot;;
++                            fitxersortidatxt += &quot;    &lt;td&gt;&lt;para style=\&quot;paragrafo\&quot;&gt;&quot; + blStringEscape ( linea-&gt;dbValue ( &quot;desc&quot; + m_listalineas-&gt;tableName() ), tipoEscape ).replace ( QChar ( '\n' ), &quot;&lt;br/&gt;&quot; ) + &quot;&lt;/para&gt;&lt;/td&gt;\n&quot;;
+                         } // end if
+             
+                         if ( parametros_story[j].trimmed() == &quot;cant&quot; + tableName() ){
+@@ -416,7 +416,7 @@ void BfForm::parseTagsBf ( QString &amp;buff, int tipoEscape )
+                     ///Impresion de los contenidos
+                     fitxersortidatxt += &quot;&lt;tr&gt;&quot;;
+                     fitxersortidatxt += &quot;    &lt;td&gt;&quot; + blStringEscape ( linea-&gt;dbValue ( &quot;codigocompletoarticulo&quot; ), tipoEscape ) + &quot;&lt;/td&gt;\n&quot;;
+-                    fitxersortidatxt += &quot;    &lt;td&gt;&lt;para style=\&quot;paragrafo\&quot;&gt;&quot; + blStringEscape ( linea-&gt;dbValue ( &quot;desc&quot; + m_listalineas-&gt;tableName() ), tipoEscape ) + &quot;&lt;/para&gt;&lt;/td&gt;\n&quot;;
++                    fitxersortidatxt += &quot;    &lt;td&gt;&lt;para style=\&quot;paragrafo\&quot;&gt;&quot; + blStringEscape ( linea-&gt;dbValue ( &quot;desc&quot; + m_listalineas-&gt;tableName() ), tipoEscape ).replace ( QChar ( '\n' ), &quot;&lt;br/&gt;&quot; ) + &quot;&lt;/para&gt;&lt;/td&gt;\n&quot;;
+                     fitxersortidatxt += &quot;    &lt;td&gt;&quot; + linea-&gt;dbValue ( &quot;cant&quot; + m_listalineas-&gt;tableName() ) + &quot;&lt;/td&gt;\n&quot;;
+                     fitxersortidatxt += &quot;    &lt;td&gt;&quot; + l.sprintf ( &quot;%s&quot;, blStringEscape ( linea-&gt;dbValue ( &quot;pvp&quot; + m_listalineas-&gt;tableName() ), tipoEscape ).toAscii().constData() ) + &quot;&lt;/td&gt;\n&quot;;
+                     fitxersortidatxt += &quot;    &lt;td&gt;&quot; + l.sprintf ( &quot;%s&quot;, blStringEscape ( linea-&gt;dbValue ( &quot;descuento&quot; + m_listalineas-&gt;tableName() ), tipoEscape ).toAscii().constData() ) + &quot; %&lt;/td&gt;\n&quot;;
+diff --git a/bulmages/bulmalib/src/blfunctions.cpp b/bulmages/bulmalib/src/blfunctions.cpp
+index 8a979c7..e19ada0 100644
+--- a/bulmages/bulmalib/src/blfunctions.cpp
++++ b/bulmages/bulmalib/src/blfunctions.cpp
+@@ -291,6 +291,7 @@ QString blXMLEscape ( const QString&amp; param )
+     text.replace ( '&quot;', &quot;&quot;&quot; );
+     text.replace ( &quot;&lt;&quot;, &quot;&lt;&quot; );
+     text.replace ( &quot;&gt;&quot;, &quot;&gt;&quot; );
++    text.replace ( &quot;\n&quot;, &quot;&lt;br /&gt;&quot; );
+     return text;
+ }
+ 
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007233.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to newtrml...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007242.html">[BulmaGés] Pruebas de impresion con el nuevo	bgtrml2pdf
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7241">[ fecha ]</a>
+              <a href="thread.html#7241">[ hilo ]</a>
+              <a href="subject.html#7241">[ asunto ]</a>
+              <a href="author.html#7241">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

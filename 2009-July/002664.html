@@ -1,0 +1,222 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]segfault al lanzar los programas...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fsegfault_al_lanzar_lo%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fs_programas%3D2E%3D2E%3D2E%3F%3D&In-Reply-To=%3C200907091302.36330.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002663.html">
+   <LINK REL="Next"  HREF="002665.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]segfault al lanzar los programas... </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fsegfault_al_lanzar_lo%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fs_programas%3D2E%3D2E%3D2E%3F%3D&In-Reply-To=%3C200907091302.36330.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]segfault al lanzar los programas...">tborras en conetxia.com
+       </A><BR>
+    <I>Jue Jul  9 13:02:36 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002663.html">[BulmaGés] segfault al lanzar los programas...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002665.html">[BulmaGés]segfault al lanzar los programas...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2664">[ fecha ]</a>
+              <a href="thread.html#2664">[ hilo ]</a>
+              <a href="subject.html#2664">[ asunto ]</a>
+              <a href="author.html#2664">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Pedro:
+
+Prueba a no poner ningun plugin a ver si funciona.
+
+Las trazas (si tienes el MODO DEBUG) estaran en ~/.bulmages/bulmagesout.txt
+
+Cuando ejecutas desde consola el bulmacont o bulmafact podrias pasar todo lo 
+que dice?
+
+Salut
+
+El Thursday 09 July 2009 12:48:32 Pedro Lopez-Cabanillas escribió:
+&gt;<i> Hola,
+</I>&gt;<i>
+</I>&gt;<i> He compilado e instalado Bulmages desde la versión actual del repositorio
+</I>&gt;<i> SVN, y he creado las bases de datos, usuarios y permisos. El programa
+</I>&gt;<i> &quot;bulmasetup&quot; funciona sin incidencias. El lanzador &quot;bulmages&quot; aparece en la
+</I>&gt;<i> taskbar, y muestra los cuatro botones, pero no abre ningun programa.
+</I>&gt;<i>
+</I>&gt;<i> Al lanzar uno de ellos por separado, por ejemplo &quot;bulmacont&quot;, en la consola
+</I>&gt;<i> aparece el mensaje &quot;Violación de segmento&quot; y termina. Algunas versiones del
+</I>&gt;<i> software instalado en el equipo:
+</I>&gt;<i>
+</I>&gt;<i> Qt: 4.4.3
+</I>&gt;<i> psql (PostgreSQL) 8.2.13
+</I>&gt;<i> g++ (GCC) 4.2.1 (SUSE Linux)
+</I>&gt;<i> glibc-devel-2.6.1-18.3
+</I>&gt;<i> Linux 2.6.22.19-0.3-default #1 SMP 2009-05-27 10:35:34 +0200 i686 athlon
+</I>&gt;<i> i386
+</I>&gt;<i>
+</I>&gt;<i> ¿Como he de activar logs, o trazas detalladas en los programas?.
+</I>&gt;<i> En /etc/bulmages/bulmages.conf he cambiado un valor, pero no tiene efecto:
+</I>&gt;<i> CONF_DEBUG                  TRUE
+</I>&gt;<i>
+</I>&gt;<i> Esta es la traza desde GDB:
+</I>&gt;<i>
+</I>&gt;<i> (gdb) run
+</I>&gt;<i> Starting program: /usr/local/bin/bulmacont -d testconta
+</I>&gt;<i> [Thread debugging using libthread_db enabled]
+</I>&gt;<i> [New Thread 0xb636b6d0 (LWP 687)]
+</I>&gt;<i> --&gt; MAIN::Iniciando el programa. &lt;--
+</I>&gt;<i> --&gt; Leyendo el archivo '/etc/bulmages/bulmages.conf'&lt;--
+</I>&gt;<i> Leyendo configuracion/etc/bulmages/bulmages.conf
+</I>&gt;<i>
+</I>&gt;<i> FIN Leyendo configuracion
+</I>&gt;<i> --&gt; El archivo '/etc/bulmages/bulmacont.conf' existe. Se va a leer.&lt;--
+</I>&gt;<i> Leyendo configuracion/etc/bulmages/bulmacont.conf
+</I>&gt;<i>
+</I>&gt;<i> FIN Leyendo configuracion
+</I>&gt;<i> --&gt; El archivo '/home/pedro/.bulmages/bulmages.conf' no existe. &lt;--
+</I>&gt;<i> --&gt; El archivo '/home/pedro/.bulmages/bulmacont.conf' no existe. &lt;--
+</I>&gt;<i>
+</I>&gt;<i> Program received signal SIGSEGV, Segmentation fault.
+</I>&gt;<i> [Switching to Thread 0xb636b6d0 (LWP 687)]
+</I>&gt;<i> 0xb750b5a6 in QMenuBarPrivate::updateGeometries (this=0x812a790)
+</I>&gt;<i> at ../../include/QtGui/../../src/gui/kernel/qwidget.h:468
+</I>&gt;<i> 468     ../../include/QtGui/../../src/gui/kernel/qwidget.h: No such file or
+</I>&gt;<i> directory.
+</I>&gt;<i>         in ../../include/QtGui/../../src/gui/kernel/qwidget.h
+</I>&gt;<i> (gdb) bt
+</I>&gt;<i> #0  0xb750b5a6 in QMenuBarPrivate::updateGeometries (this=0x812a790)
+</I>&gt;<i> at ../../include/QtGui/../../src/gui/kernel/qwidget.h:468
+</I>&gt;<i> #1  0xb750bfdf in QMenuBar::changeEvent (this=0x80d90f0, e=0xbff7d268) at
+</I>&gt;<i> widgets/qmenubar.cpp:1369
+</I>&gt;<i> #2  0xb717c21f in QWidget::event (this=0x80d90f0, event=0xbff7d268) at
+</I>&gt;<i> kernel/qwidget.cpp:7436
+</I>&gt;<i> #3  0xb750bcc2 in QMenuBar::event (this=0x80d90f0, e=0xbff7d268) at
+</I>&gt;<i> widgets/qmenubar.cpp:1450
+</I>&gt;<i> #4  0xb71241cc in QApplicationPrivate::notify_helper (this=0x80802b0,
+</I>&gt;<i> receiver=0x80d90f0, e=0xbff7d268) at kernel/qapplication.cpp:3803
+</I>&gt;<i> #5  0xb7128d68 in QApplication::notify (this=0x8080218, receiver=0x80d90f0,
+</I>&gt;<i> e=0xbff7d268) at kernel/qapplication.cpp:3768
+</I>&gt;<i> #6  0xb7a24b4e in BlApplication::notify (this=0x8080218, o=0x80d90f0,
+</I>&gt;<i> e=0xbff7d268)
+</I>&gt;<i>
+</I>&gt;<i> at
+</I>&gt;<i> /home/pedro/Programacion/Bulmages/trunk/bulmages/bulmalib/src/blapplication
+</I>&gt;<i>.cpp:65 #7  0xb6c21c99 in QCoreApplication::notifyInternal (this=0x8080218,
+</I>&gt;<i> receiver=0x80d90f0, event=0xbff7d268)
+</I>&gt;<i>     at kernel/qcoreapplication.cpp:587
+</I>&gt;<i> #8  0xb716f7c7 in QWidgetPrivate::setFont_helper (this=0x812a790,
+</I>&gt;<i> font=@0xbff7d2ac)
+</I>&gt;<i>     at ../../include/QtCore/../../src/corelib/kernel/qcoreapplication.h:209
+</I>&gt;<i> #9  0xb716f893 in QWidgetPrivate::resolveFont (this=0x812a790) at
+</I>&gt;<i> kernel/qwidget.cpp:4079
+</I>&gt;<i> #10 0xb716f805 in QWidgetPrivate::setFont_helper (this=0x8172f10,
+</I>&gt;<i> font=@0xbff7d34c) at kernel/qwidget.cpp:4111
+</I>&gt;<i> #11 0xb716f893 in QWidgetPrivate::resolveFont (this=0x8172f10) at
+</I>&gt;<i> kernel/qwidget.cpp:4079
+</I>&gt;<i> #12 0xb717cb40 in QWidget::event (this=0x80f3f48, event=0xbff7d7ec) at
+</I>&gt;<i> kernel/qwidget.cpp:7373
+</I>&gt;<i> #13 0xb74d53e5 in QMainWindow::event (this=0x80f3f48, event=0xbff7d7ec) at
+</I>&gt;<i> widgets/qmainwindow.cpp:1268
+</I>&gt;<i> #14 0xb71241cc in QApplicationPrivate::notify_helper (this=0x80802b0,
+</I>&gt;<i> receiver=0x80f3f48, e=0xbff7d7ec) at kernel/qapplication.cpp:3803
+</I>&gt;<i> #15 0xb7128d68 in QApplication::notify (this=0x8080218, receiver=0x80f3f48,
+</I>&gt;<i> e=0xbff7d7ec) at kernel/qapplication.cpp:3768
+</I>&gt;<i> #16 0xb7a24b4e in BlApplication::notify (this=0x8080218, o=0x80f3f48,
+</I>&gt;<i> e=0xbff7d7ec)
+</I>&gt;<i>
+</I>&gt;<i> at
+</I>&gt;<i> /home/pedro/Programacion/Bulmages/trunk/bulmages/bulmalib/src/blapplication
+</I>&gt;<i>.cpp:65 #17 0xb6c21c99 in QCoreApplication::notifyInternal (this=0x8080218,
+</I>&gt;<i> receiver=0x80f3f48, event=0xbff7d7ec)
+</I>&gt;<i>     at kernel/qcoreapplication.cpp:587
+</I>&gt;<i> #18 0xb7126d29 in QApplication::setFont (font=@0xbff7d85c, className=0x0)
+</I>&gt;<i>     at ../../include/QtCore/../../src/corelib/kernel/qcoreapplication.h:209
+</I>&gt;<i> #19 0xb61b3241 in applyKdeSettings ()
+</I>&gt;<i> from /usr/lib/kde4/plugins/styles/qtcurve.so
+</I>&gt;<i> #20 0xb61bfe46 in checkKComponentData ()
+</I>&gt;<i> from /usr/lib/kde4/plugins/styles/qtcurve.so
+</I>&gt;<i> #21 0xb61c87a8 in QtCurveStyle::standardIconImplementation ()
+</I>&gt;<i> from /usr/lib/kde4/plugins/styles/qtcurve.so
+</I>&gt;<i> #22 0xb61c9ca2 in QtCurveStyle::qt_metacall ()
+</I>&gt;<i> from /usr/lib/kde4/plugins/styles/qtcurve.so
+</I>&gt;<i> #23 0xb6c2a606 in QMetaObject::invokeMethod (obj=0x80b3a20,
+</I>&gt;<i> member=0xb7736862 &quot;standardIconImplementation&quot;, type=Qt::DirectConnection,
+</I>&gt;<i>     ret={&lt;QGenericArgument&gt; = {_data = 0xbff7dfb4, _name =
+</I>&gt;<i> 0xb773685c &quot;QIcon&quot;}, &lt;No data fields&gt;}, val0=
+</I>&gt;<i>       {_data = 0xbff7df98, _name = 0xb773684d &quot;StandardPixmap&quot;},
+</I>&gt;<i> val1={_data = 0xbff7df9c, _name = 0xb7736839 &quot;const QStyleOption*&quot;},
+</I>&gt;<i>     val2={_data = 0xbff7dfa0, _name = 0xb773682a &quot;const QWidget*&quot;},
+</I>&gt;<i> val3={_data = 0x0, _name = 0x0}, val4={_data = 0x0, _name = 0x0},
+</I>&gt;<i>     val5={_data = 0x0, _name = 0x0}, val6={_data = 0x0, _name = 0x0},
+</I>&gt;<i> val7={_data = 0x0, _name = 0x0}, val8={_data = 0x0, _name = 0x0},
+</I>&gt;<i>     val9={_data = 0x0, _name = 0x0}) at kernel/qmetaobject.cpp:984
+</I>&gt;<i> #24 0xb73a1640 in QStyle::standardIcon (this=0x80b3a20,
+</I>&gt;<i> standardIcon=QStyle::SP_ToolBarHorizontalExtensionButton, option=0x0,
+</I>&gt;<i>     widget=0x80d90f0) at styles/qstyle.cpp:2236
+</I>&gt;<i> #25 0xb7509759 in QMenuBarExtension (this=0x80ec100, parent=0x80d90f0) at
+</I>&gt;<i> widgets/qmenubar.cpp:87
+</I>&gt;<i> #26 0xb750989a in QMenuBarPrivate::init (this=0x812a790) at
+</I>&gt;<i> widgets/qmenubar.cpp:715
+</I>&gt;<i> #27 0xb750a103 in QMenuBar (this=0x80d90f0, parent=0x80f3f48) at
+</I>&gt;<i> widgets/qmenubar.cpp:726
+</I>&gt;<i> #28 0xb7d9eca1 in Ui_BcBulmaContBase::setupUi (this=0x80f3f5c,
+</I>&gt;<i> BcBulmaContBase=0x80f3f48)
+</I>&gt;<i>
+</I>&gt;<i> at
+</I>&gt;<i> /home/pedro/Programacion/Bulmages/trunk/bulmages/build/bulmacont/src/ui_bcb
+</I>&gt;<i>ulmacontbase.h:242 #29 0xb7d9840a in BcBulmaCont (this=0x80f3f48,
+</I>&gt;<i> parent=0x0, f=@0xbff7e5ac, DB=@0xbff7e5b0)
+</I>&gt;<i>
+</I>&gt;<i> at
+</I>&gt;<i> /home/pedro/Programacion/Bulmages/trunk/bulmages/bulmacont/src/bcbulmacont.
+</I>&gt;<i>cpp:44 #30 0x0804b506 in main (argc=3, argv=0xbff7e704)
+</I>&gt;<i> at
+</I>&gt;<i> /home/pedro/Programacion/Bulmages/trunk/bulmages/bulmacont/src/main.cxx:123
+</I>&gt;<i> (gdb)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Saludos,
+</I>&gt;<i> Pedro
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002663.html">[BulmaGés] segfault al lanzar los programas...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002665.html">[BulmaGés]segfault al lanzar los programas...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2664">[ fecha ]</a>
+              <a href="thread.html#2664">[ hilo ]</a>
+              <a href="subject.html#2664">[ asunto ]</a>
+              <a href="author.html#2664">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

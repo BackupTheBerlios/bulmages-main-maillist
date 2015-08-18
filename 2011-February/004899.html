@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Problemas de dependencias con dpkg-buildpackage
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3FProblemas_de_dependencias_%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fcon_dpkg-buildpackage%3F%3D&In-Reply-To=%3C201102081343.21292.otilio%40apdo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="004898.html">
+   <LINK REL="Next"  HREF="004901.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Problemas de dependencias con dpkg-buildpackage </H1>
+    <B>Santos Martinez Estrada</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3FProblemas_de_dependencias_%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fcon_dpkg-buildpackage%3F%3D&In-Reply-To=%3C201102081343.21292.otilio%40apdo.com%3E"
+       TITLE="[BulmaGés]Problemas de dependencias con dpkg-buildpackage">otilio en apdo.com
+       </A><BR>
+    <I>Mar Feb  8 13:43:21 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="004898.html">[BulmaGés]Problemas de dependencias con dpkg-buildpackage
+</A></li>
+        <LI>Próximo mensaje: <A HREF="004901.html">[BulmaGés]Problemas de dependencias con dpkg-buildpackage
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4899">[ fecha ]</a>
+              <a href="thread.html#4899">[ hilo ]</a>
+              <a href="subject.html#4899">[ asunto ]</a>
+              <a href="author.html#4899">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Y eso mismo te lo compila correctamente por el método normal?
+
+
+On Martes 08 Febrero 2011 13:27:06 Tomeu Borras escribió:
+&gt;<i> Bones a tothom
+</I>&gt;<i> 
+</I>&gt;<i> Estoy con el tema paquetes deb
+</I>&gt;<i> 
+</I>&gt;<i> Cuando estoy haciendo el dpkg-buildpackages y se pone a compilar en el
+</I>&gt;<i> debian.build me aparece un error de compilacion:
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> make[3]: se sale del directorio
+</I>&gt;<i> «/opt/svn-tborras-bulmages/bulmages/build.debian»
+</I>&gt;<i> 
+</I>&gt;<i> [ 27%] Built target pluginbt_visor
+</I>&gt;<i> In file included from
+</I>&gt;<i> /opt/svn-tborras-bulmages/bulmages/bulmatpv/plugins/pluginbt_clientsync/plu
+</I>&gt;<i> ginbt_clientsync.h:27:0, from
+</I>&gt;<i> /opt/svn-tborras-bulmages/bulmages/bulmatpv/plugins/pluginbt_clientsync/plu
+</I>&gt;<i> ginbt_clientsync.cpp:29:
+</I>&gt;<i> /opt/svn-tborras-bulmages/bulmages/bulmatpv/plugins/pluginbt_accesobotones
+</I>&gt;<i> /abrevs.h:5:27: fatal error: ui_abrevsbase.h: No existe el fichero o el
+</I>&gt;<i> directorio compilation terminated.
+</I>&gt;<i> make[3]: ***
+</I>&gt;<i> [bulmatpv/plugins/pluginbt_clientsync/CMakeFiles/pluginbt_clientsync.dir/pl
+</I>&gt;<i> uginbt_clientsync.o] Error 1
+</I>&gt;<i> make[3]: *** Se espera a que terminen otras tareas....
+</I>&gt;<i> 
+</I>&gt;<i> Seguro que el error es debido a que compila antes pluginbt_clientsync que
+</I>&gt;<i> pluginbt_accesobotones pero
+</I>&gt;<i> he mirado el CMakeLists.txt del pluginbt_clientsync y tiene la directiva:
+</I>&gt;<i> 
+</I>&gt;<i> add_dependencies(${plugin} bulmatpv bulmalib plubinbt_accesobotones)
+</I>&gt;<i> 
+</I>&gt;<i> He probado de hacer un make sobre el build.debian y lo compila bien.
+</I>&gt;<i> 
+</I>&gt;<i> ¿Alguna idea?
+</I>&gt;<i> 
+</I>&gt;<i> Salut
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="004898.html">[BulmaGés]Problemas de dependencias con dpkg-buildpackage
+</A></li>
+	<LI>Próximo mensaje: <A HREF="004901.html">[BulmaGés]Problemas de dependencias con dpkg-buildpackage
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4899">[ fecha ]</a>
+              <a href="thread.html#4899">[ hilo ]</a>
+              <a href="subject.html#4899">[ asunto ]</a>
+              <a href="author.html#4899">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

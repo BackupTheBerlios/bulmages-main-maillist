@@ -1,0 +1,296 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20master...&In-Reply-To=%3C20120529105630.118F1756D8%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007275.html">
+   <LINK REL="Next"  HREF="007279.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20master...&In-Reply-To=%3C20120529105630.118F1756D8%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Mar Mayo 29 12:56:29 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007275.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007279.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to release...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7278">[ fecha ]</a>
+              <a href="thread.html#7278">[ hilo ]</a>
+              <a href="subject.html#7278">[ asunto ]</a>
+              <a href="author.html#7278">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 2 commits to master
+master changed from 9cac37a to 6423095
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/9cac37a855c5e161151c96f853a66e74324cddb7/diffs/6423095260191860637fea2f11e0e0c916db55d8">https://gitorious.org/bulmages/bulmages/commit/9cac37a855c5e161151c96f853a66e74324cddb7/diffs/6423095260191860637fea2f11e0e0c916db55d8</A>
+
+Diff: 
+
+commit 6423095260191860637fea2f11e0e0c916db55d8
+Merge: 9cac37a 8cc965f
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue May 29 12:56:03 2012 +0200
+
+    Merge branch 'problemacodigoarticulo'
+
+
+commit 8cc965f6b6b635830aedf04ce203d83df6181397
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue May 29 12:53:37 2012 +0200
+
+    Arreglo problema con el calculo de los codigos de articulo en entornos multiusuario.
+    1.- Agrego el parametro CONF_PRECALC_CODARTICULO que permite habilitar o desabilitar el calculo del codigo de articulo.
+    2.- Quito la obligatoriedad del campo codigo de articulo ya que éste se calcula en el disparador.
+    3.- Cambio la funcion calculacodigocompletoarticulo de la base de datos  para que funcione bien en el caso que el codigo no esta establecido.
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_articulo/articuloview.cpp b/bulmages/bulmafact/plugins/pluginbf_articulo/articuloview.cpp
+index 5a428f4..1234c1d 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_articulo/articuloview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_articulo/articuloview.cpp
+@@ -59,7 +59,7 @@ ArticuloView::ArticuloView ( BfCompany *comp, QWidget *parent )
+         setDbTableName ( &quot;articulo&quot; );
+         setDbFieldId ( &quot;idarticulo&quot; );
+         addDbField ( &quot;idarticulo&quot;, BlDbField::DbInt, BlDbField::DbPrimaryKey, _ ( &quot;Identificador&quot; ) );
+-        addDbField ( &quot;codarticulo&quot;, BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( &quot;Codigo&quot; ) );
++        addDbField ( &quot;codarticulo&quot;, BlDbField::DbVarChar, BlDbField::DbNothing, _ ( &quot;Codigo&quot; ) );
+         addDbField ( &quot;nomarticulo&quot;, BlDbField::DbVarChar, BlDbField::DbNotNull, _ ( &quot;Nombre del articulo&quot; ) );
+         addDbField ( &quot;abrevarticulo&quot;, BlDbField::DbVarChar, BlDbField::DbNothing, _ ( &quot;Abreviacion&quot; ) );
+         addDbField ( &quot;obserarticulo&quot;, BlDbField::DbVarChar, BlDbField::DbNothing, _ ( &quot;Observaciones&quot; ) );
+@@ -408,7 +408,7 @@ void ArticuloView::on_mui_borrarimagen_clicked()
+ */
+ void ArticuloView::on_mui_idfamilia_valueChanged(QString) {
+     BL_FUNC_DEBUG
+-    if ( mui_codarticulo-&gt;text().isEmpty() &amp;&amp; !mui_idfamilia-&gt;id().isEmpty()) {
++    if ( mui_codarticulo-&gt;text().isEmpty() &amp;&amp; !mui_idfamilia-&gt;id().isEmpty() &amp;&amp; g_confpr-&gt;value(CONF_PRECALC_CODARTICULO) == &quot;TRUE&quot;) {
+         QString query = &quot;select coalesce(max(codarticulo::integer),0) +1 as maximo, coalesce(max(length(codarticulo)), 4) AS long from articulo where codarticulo similar to '[0-9]+' AND idfamilia = &quot; + mui_idfamilia-&gt;id();
+ 
+         BlDbRecordSet *cur = mainCompany() -&gt;loadQuery ( query );
+diff --git a/bulmages/bulmafact/src/main.cxx b/bulmages/bulmafact/src/main.cxx
+index 7348d95..fc5b7ff 100644
+--- a/bulmages/bulmafact/src/main.cxx
++++ b/bulmages/bulmafact/src/main.cxx
+@@ -128,7 +128,7 @@ int main ( int argc, char **argv )
+       delete argParser;
+ 
+       /// Verifica la version de la base de datos para funcionar adecuadamente.
+-      bges-&gt;company()-&gt;dbVersionCheck(&quot;DatabaseRevision&quot;, &quot;0.13.1-0004&quot;);
++      bges-&gt;company()-&gt;dbVersionCheck(&quot;DatabaseRevision&quot;, &quot;0.13.1-0005&quot;);
+ 
+       splashScr-&gt;show();
+       splashScr-&gt;setMessage ( _( &quot;Leyendo configuracion&quot; ) );
+diff --git a/bulmages/bulmalib/src/blconfiguration.cpp b/bulmages/bulmalib/src/blconfiguration.cpp
+index d02a9f8..da84c43 100644
+--- a/bulmages/bulmalib/src/blconfiguration.cpp
++++ b/bulmages/bulmalib/src/blconfiguration.cpp
+@@ -467,11 +467,15 @@ QString BlConfiguration::name( int i )
+         return &quot;CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES&quot;;
+     if ( i == CONF_USE_QSCRIPT )
+        return &quot;CONF_USE_QSCRIPT&quot;;
++    if ( i == CONF_PRECALC_CODARTICULO )
++       return &quot;CONF_PRECALC_CODARTICULO&quot;;
+     return &quot;&quot;;
+ }
+ 
+ 
+ 
++
++
+ /// This method writes the configuration of the system to the home bulmages.conf file
+ /// Este metodo escribe la configuracion del sistema en el fichero bulmages.conf del
+ /// 'home' del usuario.
+diff --git a/bulmages/bulmalib/src/blconfiguration.h b/bulmages/bulmalib/src/blconfiguration.h
+index 8d66919..5168b9e 100644
+--- a/bulmages/bulmalib/src/blconfiguration.h
++++ b/bulmages/bulmalib/src/blconfiguration.h
+@@ -275,6 +275,10 @@
+ 
+ #define CONF_BLOCK_WINDOWS	     530
+ 
++
++/// El sistema precalcula el codigo de articulo o solo lo pone al final cuando se guarda (El precalculo puede dar problemas en entornos multiusuario).
++#define CONF_PRECALC_CODARTICULO     540
++
+ /// CONF_DEBUG indica el modo de debug.
+ #define CONF_DEBUG                   550
+ ///Indica el color de fondo alternativo del pijama del libro diario.
+diff --git a/bulmages/installbulmages/bulmafact.conf.in b/bulmages/installbulmages/bulmafact.conf.in
+index 7b046f0..d83fe31 100644
+--- a/bulmages/installbulmages/bulmafact.conf.in
++++ b/bulmages/installbulmages/bulmafact.conf.in
+@@ -66,6 +66,8 @@ CONF_BACKGROUND_IMAGE      @CMAKE_INSTALL_PREFIX@/share/bulmages/images/bulmafac
+ # Hoja de estilo a utilizar
+ CONF_STYLESHEET                 @CMAKE_INSTALL_PREFIX@/share/bulmages/css/bulmafact_es_ES.css
+ 
++# Indica si debe precalcularse el codigo de articulo o no. (En entornos multiusuario el precalculo puede dar problemas si se introducen articulos desde varios puestos).
++CONF_PRECALC_CODARTICULO   TRUE
+ 
+ 
+ 
+diff --git a/bulmages/installbulmages/dbmodels/actualizar/revf-0.13.sql b/bulmages/installbulmages/dbmodels/actualizar/revf-0.13.sql
+index c9d2b90..dad3370 100644
+--- a/bulmages/installbulmages/dbmodels/actualizar/revf-0.13.sql
++++ b/bulmages/installbulmages/dbmodels/actualizar/revf-0.13.sql
+@@ -178,6 +178,61 @@ CREATE TRIGGER restriccionescomparticulotrigger
+     EXECUTE PROCEDURE restriccionescomparticulo();
+ 
+ 
++
++SELECT drop_if_exists_proc('calculacodigocompletoarticulo', '');
++
++
++\echo -n ':: Funcion que calcula el codigo completo del articulo ... '
++CREATE OR REPLACE FUNCTION calculacodigocompletoarticulo() RETURNS &quot;trigger&quot;
++AS '
++DECLARE
++    rs RECORD;
++    codigocompleto character varying(100);
++    codnumeric integer;
++
++BEGIN
++    -- Lo primero comprobamos es que el codigo del articulo no este vacio y de ser asi lo llenamos.
++    IF NEW.codarticulo = '' OR NEW.codarticulo ISNULL THEN
++	SELECT INTO rs max(codarticulo::int)::varchar AS m FROM articulo WHERE idfamilia = NEW.idfamilia;
++
++	IF FOUND THEN
++	    IF is_number(rs.m) THEN
++		codnumeric := to_number(rs.m);
++		codnumeric := codnumeric +1;
++		NEW.codarticulo := CAST (codnumeric AS varchar);
++		WHILE length(NEW.codarticulo) &lt; 4 LOOP
++		    NEW.codarticulo := ''0'' || NEW.codarticulo;
++		END LOOP;
++	    ELSE
++		NEW.codarticulo := ''0000'';
++	    END IF;
++	ELSE
++	    NEW.codarticulo = ''0000'';
++	END IF;
++    END IF;
++
++    codigocompleto := NEW.codarticulo;
++
++    SELECT INTO rs codigocompletofamilia FROM familia WHERE idfamilia = NEW.idfamilia;
++
++    IF FOUND THEN
++	codigocompleto := rs.codigocompletofamilia || codigocompleto;
++    END IF;
++
++    NEW.codigocompletoarticulo := codigocompleto;
++    RETURN NEW;
++END;
++' LANGUAGE plpgsql;
++
++
++\echo -n ':: Disparador que calcula el codigo completo del articulo ... '
++CREATE TRIGGER calculacodigocompletoarticulotrigger
++    BEFORE INSERT OR UPDATE ON articulo
++    FOR EACH ROW
++    EXECUTE PROCEDURE calculacodigocompletoarticulo();
++
++
++
+ -- =====================================================================================
+ 
+ -- Agregamos nuevos parametros de configuracion
+@@ -188,9 +243,9 @@ DECLARE
+ BEGIN
+ 	SELECT INTO rs * FROM configuracion WHERE nombre = ''DatabaseRevision'';
+ 	IF FOUND THEN
+-		UPDATE CONFIGURACION SET valor = ''0.13.1-0004'' WHERE nombre = ''DatabaseRevision'';
++		UPDATE CONFIGURACION SET valor = ''0.13.1-0005'' WHERE nombre = ''DatabaseRevision'';
+ 	ELSE
+-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.13.1-0004'');
++		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.13.1-0005'');
+ 	END IF;
+ 	RETURN 0;
+ END;
+diff --git a/bulmages/installbulmages/dbmodels/crear/bulmafact/bulmafact_schema.sql b/bulmages/installbulmages/dbmodels/crear/bulmafact/bulmafact_schema.sql
+index 0eaf1a0..99ea1ae 100644
+--- a/bulmages/installbulmages/dbmodels/crear/bulmafact/bulmafact_schema.sql
++++ b/bulmages/installbulmages/dbmodels/crear/bulmafact/bulmafact_schema.sql
+@@ -434,8 +434,8 @@ DECLARE
+ 
+ BEGIN
+     -- Lo primero comprobamos es que el codigo del articulo no este vacio y de ser asi lo llenamos.
+-    IF NEW.codarticulo = '''' THEN
+-	SELECT INTO rs max(codarticulo) AS m FROM articulo WHERE idfamilia = NEW.idfamilia;
++    IF NEW.codarticulo = '' OR NEW.codarticulo ISNULL THEN
++	SELECT INTO rs max(codarticulo::int)::varchar AS m FROM articulo WHERE idfamilia = NEW.idfamilia;
+ 
+ 	IF FOUND THEN
+ 	    IF is_number(rs.m) THEN
+@@ -3295,9 +3295,9 @@ BEGIN
+     SELECT INTO rs * FROM configuracion WHERE nombre = ''DatabaseRevision'';
+ 
+     IF FOUND THEN
+-	UPDATE CONFIGURACION SET valor = ''0.13.1-0004'' WHERE nombre = ''DatabaseRevision'';
++	UPDATE CONFIGURACION SET valor = ''0.13.1-0005'' WHERE nombre = ''DatabaseRevision'';
+     ELSE
+-	INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.13.1-0004'');
++	INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.13.1-0005'');
+     END IF;
+ 
+     RETURN 0;
+diff --git a/bulmages/installbulmages/rev-conf/rev-bulmafact-0_13.conf b/bulmages/installbulmages/rev-conf/rev-bulmafact-0_13.conf
+index 907ffbb..7cef484 100644
+--- a/bulmages/installbulmages/rev-conf/rev-bulmafact-0_13.conf
++++ b/bulmages/installbulmages/rev-conf/rev-bulmafact-0_13.conf
+@@ -1,2 +1,5 @@
+ #Traspaso de informacion extendida de los articulos en los documentos.
+-CONF_USE_DESCARTICULO         FALSE
+\ No newline at end of file
++CONF_USE_DESCARTICULO         FALSE
++
++# Indica si debe precalcularse el codigo de articulo o no. (En entornos multiusuario el precalculo puede dar problemas si se introducen articulos desde varios puestos).
++CONF_PRECALC_CODARTICULO      TRUE
+\ No newline at end of file
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007275.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007279.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to release...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7278">[ fecha ]</a>
+              <a href="thread.html#7278">[ hilo ]</a>
+              <a href="subject.html#7278">[ asunto ]</a>
+              <a href="author.html#7278">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

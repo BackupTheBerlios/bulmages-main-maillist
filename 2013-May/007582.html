@@ -1,0 +1,3865 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130527071934.DE00E17E%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007581.html">
+   <LINK REL="Next"  HREF="007583.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130527071934.DE00E17E%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Lun Mayo 27 09:19:34 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007581.html">[BulmaGés]Migración a Qt5 va bien
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007583.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7582">[ fecha ]</a>
+              <a href="thread.html#7582">[ hilo ]</a>
+              <a href="subject.html#7582">[ asunto ]</a>
+              <a href="author.html#7582">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from 5210b8d to f4d7a1b
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/5210b8d39b8081f117c2b55b7689ec4771e61e9f/diffs/f4d7a1b2d4d43ea5d91a48db48ea9847d8f634f4">https://gitorious.org/bulmages/bulmages/commit/5210b8d39b8081f117c2b55b7689ec4771e61e9f/diffs/f4d7a1b2d4d43ea5d91a48db48ea9847d8f634f4</A>
+
+Diff: 
+
+commit f4d7a1b2d4d43ea5d91a48db48ea9847d8f634f4
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon May 27 09:19:14 2013 +0200
+
+    Arreglando los CMakeLists y poniendo como unica opcion el QMdiArea
+
+diff --git a/.gitignore b/.gitignore
+index 483bac9..26323ff 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -19,7 +19,6 @@ installbulmages-db
+ install_manifest.txt
+ local_blI18n.h
+ Makefile
+-menu/
+ update_message_catalog_lang
+ version
+ applications
+diff --git a/bulmages/CMakeLists.txt b/bulmages/CMakeLists.txt
+index b8a25b2..3611311 100644
+--- a/bulmages/CMakeLists.txt
++++ b/bulmages/CMakeLists.txt
+@@ -18,8 +18,7 @@
+ # Free Software Foundation, Inc.,                                       #
+ # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
+ #                                                                       #
+-
+-
++#########################################################################
+ # ########## Project setup ##########
+ 
+ 
+@@ -142,8 +141,7 @@ if(NOT PYTHON_EXECUTABLE)
+ endif(NOT PYTHON_EXECUTABLE)
+ 
+ option(USE_GETTEXT &quot;Enable use gettext mode&quot; ON)
+-option(USE_QMDIAREA &quot;Enable new QMdiArea&quot; ON)
+-option(ENABLE_PCH  &quot;Enable precompiled headers&quot; OFF)
++option(ALLOW_DEBUG &quot;Enable Debugging Code&quot; ON)
+ 
+ if(NOT PGSQL_FOUND)
+   message(FATAL_ERROR &quot;Bulmages needs libpq to compile&quot;)
+@@ -178,20 +176,6 @@ endif(NOT WIN32)
+ # Remove directory to prevent that css files can grow with plugins css merge.
+ FILE(REMOVE_RECURSE ${CMAKE_BINARY_DIR}/css)
+ 
+-SET(USE_PCH FALSE)
+-IF(ENABLE_PCH)
+-	IF(NOT &quot;${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}&quot; STRLESS &quot;2.6&quot;)
+-		FIND_PACKAGE(PCHSupport)
+-	    IF(PCHSupport_FOUND)
+-	        SET(USE_PCH TRUE)
+-	        MESSAGE(STATUS &quot;Enabling precompiled headers for GCC ${gcc_compiler_version}&quot;) 
+-	    ELSE(PCHSupport_FOUND)
+-	        MESSAGE(STATUS &quot;Sorry, precompiled headers require GCC &gt;= 3.4&quot;) 
+-	    ENDIF(PCHSupport_FOUND)
+-	ELSE(NOT &quot;${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}&quot; STRLESS &quot;2.6&quot;)
+-		MESSAGE(STATUS &quot;Sorry, precompiled headers require CMake &gt;= 2.6&quot;) 
+-	ENDIF(NOT &quot;${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}&quot; STRLESS &quot;2.6&quot;)
+-ENDIF(ENABLE_PCH)
+ 
+ ##############################################################################
+ # Sets the location of nonstandard shared libraries
+@@ -297,11 +281,6 @@ SET(CPACK_PACKAGE_EXECUTABLES &quot;bulmacont&quot; &quot;bulmafact&quot; &quot;bulmatpv&quot;)
+ 
+ INCLUDE(CPack)
+ 
+-#if(BULMAGES_CONFIG_DIR STREQUAL &quot;&quot;)
+-#   set (BULMAGES_CONFIG_DIR /etc/bulmages)
+-#endif(BULMAGES_CONFIG_DIR STREQUAL &quot;&quot;)
+-
+-
+ MARK_AS_ADVANCED(
+ 	BULMAGES_VERSION
+ )
+diff --git a/bulmages/bulmacont/CMakeLists.txt b/bulmages/bulmacont/CMakeLists.txt
+index 1275f56..3c9b32a 100644
+--- a/bulmages/bulmacont/CMakeLists.txt
++++ b/bulmages/bulmacont/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ # Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
+ # <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">leo en alaxarxa.net</A>                                                      #
++# Modified (C) 2013 by Daniel Ripoll                                                     #
+ # <A HREF="http://www.iglues.org">http://www.iglues.org</A>                                                 #
+ #                                                                       #
+ # This program is free software; you can redistribute it and/or modify  #
+@@ -17,6 +18,7 @@
+ # Free Software Foundation, Inc.,                                       #
+ # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
+ #                                                                       #
++#########################################################################
+ 
+ 
+ PROJECT(bulmacont)
+diff --git a/bulmages/bulmacont/plugins/CMakeLists.txt b/bulmages/bulmacont/plugins/CMakeLists.txt
+index c4fc622..5beb431 100644
+--- a/bulmages/bulmacont/plugins/CMakeLists.txt
++++ b/bulmages/bulmacont/plugins/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ # Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
+ # <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">leo en alaxarxa.net</A>                                                      #
++# Modified (C) 2013 by Daniel Ripoll                                                     #
+ # <A HREF="http://www.iglues.org">http://www.iglues.org</A>                                                 #
+ #                                                                       #
+ # This program is free software; you can redistribute it and/or modify  #
+@@ -17,6 +18,7 @@
+ # Free Software Foundation, Inc.,                                       #
+ # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
+ #                                                                       #
++#########################################################################
+ 
+ if(NOT WIN32)
+ add_subdirectory(pluginbc_registroiva)
+diff --git a/bulmages/bulmacont/plugins/pluginbc_amortizacion/CMakeLists.txt b/bulmages/bulmacont/plugins/pluginbc_amortizacion/CMakeLists.txt
+index f881e4a..17a6cd3 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_amortizacion/CMakeLists.txt
++++ b/bulmages/bulmacont/plugins/pluginbc_amortizacion/CMakeLists.txt
+@@ -15,13 +15,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbc_amortizacion.h pluginbc_amortizacion.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmacont/plugins/pluginbc_asiento/CMakeLists.txt b/bulmages/bulmacont/plugins/pluginbc_asiento/CMakeLists.txt
+index e943984..8d31732 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_asiento/CMakeLists.txt
++++ b/bulmages/bulmacont/plugins/pluginbc_asiento/CMakeLists.txt
+@@ -21,13 +21,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbc_asiento.h bcasientointeligenteimportarxml.h pluginbc_asiento.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-# INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmacont/plugins/pluginbc_balance/CMakeLists.txt b/bulmages/bulmacont/plugins/pluginbc_balance/CMakeLists.txt
+index d0909fd..24e753b 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_balance/CMakeLists.txt
++++ b/bulmages/bulmacont/plugins/pluginbc_balance/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbc_balance.h pluginbc_balance.h bcplancontablearbol.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmacont/plugins/pluginbc_bloqueofechas/CMakeLists.txt b/bulmages/bulmacont/plugins/pluginbc_bloqueofechas/CMakeLists.txt
+index 3d0ba7f..ffe830a 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_bloqueofechas/CMakeLists.txt
++++ b/bulmages/bulmacont/plugins/pluginbc_bloqueofechas/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbc_bloqueofechas.h pluginbc_bloqueofechas.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmacont/plugins/pluginbc_ccaa2ods/CMakeLists.txt b/bulmages/bulmacont/plugins/pluginbc_ccaa2ods/CMakeLists.txt
+index a018a91..74da933 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_ccaa2ods/CMakeLists.txt
++++ b/bulmages/bulmacont/plugins/pluginbc_ccaa2ods/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ # Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
+ # <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">leo en alaxarxa.net</A>                                                      #
++# Modified (C) 2013 by Daniel Ripoll                                                     #
+ # <A HREF="http://www.iglues.org">http://www.iglues.org</A>                                                 #
+ #                                                                       #
+ # This program is free software; you can redistribute it and/or modify  #
+@@ -17,6 +18,7 @@
+ # Free Software Foundation, Inc.,                                       #
+ # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
+ #                                                                       #
++#########################################################################
+ 
+ 
+ ###########################################
+diff --git a/bulmages/bulmacont/plugins/pluginbc_corrector/CMakeLists.txt b/bulmages/bulmacont/plugins/pluginbc_corrector/CMakeLists.txt
+index 2d7c13b..7c1143b 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_corrector/CMakeLists.txt
++++ b/bulmages/bulmacont/plugins/pluginbc_corrector/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pluginbc_corrector.h pdefs_pluginbc_corrector.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmacont/plugins/pluginbc_cuenta/CMakeLists.txt b/bulmages/bulmacont/plugins/pluginbc_cuenta/CMakeLists.txt
+index 4e86836..e86dcff 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_cuenta/CMakeLists.txt
++++ b/bulmages/bulmacont/plugins/pluginbc_cuenta/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbc_cuenta.h bcplancontablearbol.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmacont/plugins/pluginbc_cuentaresumen/CMakeLists.txt b/bulmages/bulmacont/plugins/pluginbc_cuentaresumen/CMakeLists.txt
+index 844c780..8bcae60 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_cuentaresumen/CMakeLists.txt
++++ b/bulmages/bulmacont/plugins/pluginbc_cuentaresumen/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pluginbc_cuentaresumen.h pdefs_pluginbc_cuentaresumen.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE(${QT_USE_FILE})
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmacont/plugins/pluginbc_cuentasanuales/CMakeLists.txt b/bulmages/bulmacont/plugins/pluginbc_cuentasanuales/CMakeLists.txt
+index a942b10..125e172 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_cuentasanuales/CMakeLists.txt
++++ b/bulmages/bulmacont/plugins/pluginbc_cuentasanuales/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbc_cuentasanuales.h pluginbc_cuentasanuales.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmacont/plugins/pluginbc_cuentasanuales2ods/CMakeLists.txt b/bulmages/bulmacont/plugins/pluginbc_cuentasanuales2ods/CMakeLists.txt
+index 11215d4..a033e10 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_cuentasanuales2ods/CMakeLists.txt
++++ b/bulmages/bulmacont/plugins/pluginbc_cuentasanuales2ods/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ # Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
+ # <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">leo en alaxarxa.net</A>                                                      #
++# Modified (C) 2013 by Daniel Ripoll                                                     #
+ # <A HREF="http://www.iglues.org">http://www.iglues.org</A>                                                 #
+ #                                                                       #
+ # This program is free software; you can redistribute it and/or modify  #
+@@ -17,6 +18,7 @@
+ # Free Software Foundation, Inc.,                                       #
+ # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
+ #                                                                       #
++#########################################################################
+ 
+ 
+ ###########################################
+@@ -35,13 +37,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbc_cuentasanuales2ods.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+       ${QT_INCLUDE_DIR}
+       ${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmacont/plugins/pluginbc_depuracion/CMakeLists.txt b/bulmages/bulmacont/plugins/pluginbc_depuracion/CMakeLists.txt
+index ff82ab2..f0a671d 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_depuracion/CMakeLists.txt
++++ b/bulmages/bulmacont/plugins/pluginbc_depuracion/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbc_depuracion.h pluginbc_depuracion.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmacont/plugins/pluginbc_diario/CMakeLists.txt b/bulmages/bulmacont/plugins/pluginbc_diario/CMakeLists.txt
+index 961c2fe..d4d98d7 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_diario/CMakeLists.txt
++++ b/bulmages/bulmacont/plugins/pluginbc_diario/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbc_diario.h bcdiarioimprimir2txt.h pluginbc_diario.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmacont/plugins/pluginbc_documentoadjunto/CMakeLists.txt b/bulmages/bulmacont/plugins/pluginbc_documentoadjunto/CMakeLists.txt
+index 0bf6f85..705110d 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_documentoadjunto/CMakeLists.txt
++++ b/bulmages/bulmacont/plugins/pluginbc_documentoadjunto/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbc_documentoadjunto.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmacont/plugins/pluginbc_duplicarasiento/CMakeLists.txt b/bulmages/bulmacont/plugins/pluginbc_duplicarasiento/CMakeLists.txt
+index 3384d4a..668e3d5 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_duplicarasiento/CMakeLists.txt
++++ b/bulmages/bulmacont/plugins/pluginbc_duplicarasiento/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbc_duplicarasiento.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmacont/plugins/pluginbc_example/CMakeLists.txt b/bulmages/bulmacont/plugins/pluginbc_example/CMakeLists.txt
+index 44b6e67..d81ade3 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_example/CMakeLists.txt
++++ b/bulmages/bulmacont/plugins/pluginbc_example/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbc_example.h pluginbc_example.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmacont/plugins/pluginbc_mayor/CMakeLists.txt b/bulmages/bulmacont/plugins/pluginbc_mayor/CMakeLists.txt
+index d09c5d5..3816793 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_mayor/CMakeLists.txt
++++ b/bulmages/bulmacont/plugins/pluginbc_mayor/CMakeLists.txt
+@@ -21,13 +21,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbc_mayor.h pluginbc_mayor.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmacont/plugins/pluginbc_proyectos/CMakeLists.txt b/bulmages/bulmacont/plugins/pluginbc_proyectos/CMakeLists.txt
+index 3f2abda..7c55a56 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_proyectos/CMakeLists.txt
++++ b/bulmages/bulmacont/plugins/pluginbc_proyectos/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pluginbc_proyectos.h pdefs_pluginbc_proyectos.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmacont/plugins/pluginbc_registroiva/CMakeLists.txt b/bulmages/bulmacont/plugins/pluginbc_registroiva/CMakeLists.txt
+index 8ef848b..cc58311 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_registroiva/CMakeLists.txt
++++ b/bulmages/bulmacont/plugins/pluginbc_registroiva/CMakeLists.txt
+@@ -13,13 +13,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbc_registroiva.h listivaview.h linprevcobro.h listlinprevcobro.h iva.h registroiva.h listlinprevcobroview.h pluginbc_registroiva.h listiva.h bcmodeloaeat.h bcmodelo300imprimir2ps.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmacont/src/CMakeLists.txt b/bulmages/bulmacont/src/CMakeLists.txt
+index 8f0771c..22187e7 100644
+--- a/bulmages/bulmacont/src/CMakeLists.txt
++++ b/bulmages/bulmacont/src/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ # Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
+ # <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">leo en alaxarxa.net</A>                                                      #
++# Modified (C) 2013 by Daniel Ripoll                                                     #
+ # <A HREF="http://www.iglues.org">http://www.iglues.org</A>                                                 #
+ #                                                                       #
+ # This program is free software; you can redistribute it and/or modify  #
+@@ -17,6 +18,7 @@
+ # Free Software Foundation, Inc.,                                       #
+ # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
+ #                                                                       #
++#########################################################################
+ 
+ ###########################################
+ # bulmacont                               #
+@@ -51,14 +53,6 @@ set(bulmacont_MOCS bcbulmacont.h
+ #file(GLOB bulmacont_NO_MOCS bcmodelo300imprimir2ps.h)
+ #list(REMOVE_ITEM bulmacont_MOCS ${bulmacont_NO_MOCS}) 
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-
+-#INCLUDE(${QT_USE_FILE})
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+@@ -72,10 +66,6 @@ include_directories(
+ 	${CMAKE_BINARY_DIR}/bulmacont/src/
+ 	${CMAKE_SOURCE_DIR}/bulmacont/src/)
+ 
+-if(USE_QMDIAREA)
+-      ADD_DEFINITIONS(&quot;-D'AREA_QMDI'&quot; )
+-endif(USE_QMDIAREA)
+-
+ # generate rules for building source files from the resources
+ #
+ 
+diff --git a/bulmages/bulmacont/src/bcbulmacont.cpp b/bulmages/bulmacont/src/bcbulmacont.cpp
+index c922499..283dbca 100644
+--- a/bulmages/bulmacont/src/bcbulmacont.cpp
++++ b/bulmages/bulmacont/src/bcbulmacont.cpp
+@@ -45,12 +45,8 @@ BcBulmaCont::BcBulmaCont ( QWidget *parent, Qt::WindowFlags f, QString DB )
+ 
+     m_pWorkspace = new BlWorkspace ( this );
+     
+-#ifdef AREA_QMDI
+     m_pWorkspace-&gt;setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+     m_pWorkspace-&gt;setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+-#else
+-    m_pWorkspace-&gt;setScrollBarsEnabled ( true );
+-#endif
+ 
+     QFrame *m_frame1 = new QFrame();
+     QProgressBar *m_pb = new QProgressBar();
+@@ -74,11 +70,8 @@ BcBulmaCont::BcBulmaCont ( QWidget *parent, Qt::WindowFlags f, QString DB )
+     m_company-&gt;init ( DB, &quot;BulmaCont&quot; );
+     m_company-&gt;setWorkspace ( m_pWorkspace );
+ 
+-#ifdef AREA_QMDI
+     connect ( m_pWorkspace, SIGNAL ( subWindowActivated ( QMdiSubWindow * ) ), this, SLOT ( informaIndexador ( QMdiSubWindow * ) ) );
+-#else
+-    connect ( m_pWorkspace, SIGNAL ( windowActivated ( QWidget * ) ), this, SLOT ( informaIndexador ( QWidget * ) ) );
+-#endif
++
+     
+     /// Aqu&iacute; creamos la ventana dock para meter las distintas ventanas.
+     m_list = new BlWindowListDock ( 0 );
+@@ -256,13 +249,8 @@ void BcBulmaCont::on_actionOrdenar_Ventanas_triggered()
+ {
+     BL_FUNC_DEBUG
+     
+-#ifdef AREA_QMDI
+     m_pWorkspace-&gt;tileSubWindows();
+-#else
+-    m_pWorkspace-&gt;tile();
+-#endif
+-    
+-    
++
+ }
+ 
+ 
+@@ -273,11 +261,8 @@ void BcBulmaCont::on_actionOrganizaci_n_en_Cascada_triggered()
+ {
+     BL_FUNC_DEBUG
+ 
+-#ifdef AREA_QMDI
+     m_pWorkspace-&gt;cascadeSubWindows ();
+-#else
+-    m_pWorkspace-&gt;cascade();
+-#endif
++
+ 
+ }
+ 
+@@ -590,31 +575,13 @@ void BcBulmaCont::on_actionPaises_triggered()
+ void BcBulmaCont::informaIndexador ( QWidget *w )
+ {
+     BL_FUNC_DEBUG
+-#ifndef AREA_QMDI
+-    /// No existe una ventana que activar.
+-    if ( m_company == NULL ) {
+-	
+-        return;
+-    } // end if
+-
+-    if ( w == NULL ) {
+-        m_company-&gt;deselectWindow();
+-	
+-        return;
+-    } // end if
+-    m_company-&gt;deselectWindow();
+-    m_company-&gt;selectWindow ( w-&gt;windowTitle(), w );
+-
+-    QString texto = &quot;Window activated. &quot; + w-&gt;windowTitle() + &quot;\n&quot;;
+-    printf ( &quot;%s&quot;, texto.toLatin1().constData() );
+-#endif
+ }
+ 
+ 
+ void BcBulmaCont::informaIndexador ( QMdiSubWindow *w )
+ {
+     BL_FUNC_DEBUG
+-#ifdef AREA_QMDI
++
+     /// No existe una ventana que activar.
+     if ( m_company == NULL ) {
+ 	
+@@ -631,7 +598,7 @@ void BcBulmaCont::informaIndexador ( QMdiSubWindow *w )
+ 
+     QString texto = &quot;Window activated. &quot; + w-&gt;windowTitle() + &quot;\n&quot;;
+     printf ( &quot;%s&quot;, texto.toLatin1().constData() );
+-#endif
++
+ }
+ 
+ 
+diff --git a/bulmages/bulmafact/CMakeLists.txt b/bulmages/bulmafact/CMakeLists.txt
+index fcf9d12..0cff53f 100644
+--- a/bulmages/bulmafact/CMakeLists.txt
++++ b/bulmages/bulmafact/CMakeLists.txt
+@@ -18,6 +18,7 @@
+ # Free Software Foundation, Inc.,                                       #
+ # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
+ #                                                                       #
++#########################################################################
+ 
+ 
+ 
+@@ -37,14 +38,6 @@ FILE(APPEND ${CMAKE_BINARY_DIR}/css/bulmafact_en_EN.css &quot;${VAR_CSS_en_EN}&quot; )
+ 
+ add_subdirectory(src)
+ add_subdirectory(plugins)
+-#add_subdirectory(designer)
+-
+-
+-#set(QT_USE_QTUITOOLS true)
+-#set(QT_USE_QTXML true) # uitools depends on xml
+-#set(QT_USE_QTSCRIPT true)
+-#set(QT_USE_QTWEBKIT true)
+-
+ 
+ # if you want to add some private code
+ # simple put your add_directory in a
+diff --git a/bulmages/bulmafact/designer/widgetbf_buscarreferencia/CMakeLists.txt b/bulmages/bulmafact/designer/widgetbf_buscarreferencia/CMakeLists.txt
+index 8625293..f9cf4df 100644
+--- a/bulmages/bulmafact/designer/widgetbf_buscarreferencia/CMakeLists.txt
++++ b/bulmages/bulmafact/designer/widgetbf_buscarreferencia/CMakeLists.txt
+@@ -11,14 +11,6 @@ file(GLOB plugin_MOCS *.hpp *.h)
+ file(GLOB plugin_UIS ${CMAKE_SOURCE_DIR}/bulmafact/src/bfbuscarreferenciabase.ui)
+ 
+ 
+-set(QT_USE_QTSCRIPT true)
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTDESIGNER true)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+ 	${QT_INCLUDE_DIR}
+ 	${QT_QTXML_INCLUDE_DIR}
+@@ -27,7 +19,6 @@ include_directories(
+ 	${CMAKE_CURRENT_SOURCE_DIR})
+ 
+ # generate rules for building source files that moc generates
+-#QT5_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
+ QT5_WRAP_UI(plugin_UIS_H ${plugin_UIS})
+ QT5_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
+ 
+diff --git a/bulmages/bulmafact/designer/widgetbf_subform/CMakeLists.txt b/bulmages/bulmafact/designer/widgetbf_subform/CMakeLists.txt
+index 09cea23..f564e8e 100644
+--- a/bulmages/bulmafact/designer/widgetbf_subform/CMakeLists.txt
++++ b/bulmages/bulmafact/designer/widgetbf_subform/CMakeLists.txt
+@@ -10,15 +10,6 @@ file(GLOB plugin_SRC *.c *.cpp *.cxx)
+ file(GLOB plugin_MOCS *.hpp *.h)
+ file(GLOB plugin_UIS *.ui)
+ 
+-
+-set(QT_USE_QTSCRIPT true)
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTDESIGNER true)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+ 	${QT_INCLUDE_DIR}
+ 	${QT_QTXML_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_abrecodigobarras/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_abrecodigobarras/CMakeLists.txt
+index 1fab05a..a0e8dc3 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_abrecodigobarras/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_abrecodigobarras/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_abrecodigobarras.h pluginbf_abrecodigobarras.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_abrereferencia/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_abrereferencia/CMakeLists.txt
+index 979966a..bf185fd 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_abrereferencia/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_abrereferencia/CMakeLists.txt
+@@ -14,12 +14,6 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+ file(GLOB plugin_UIS *.ui)
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_actividad/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_actividad/CMakeLists.txt
+index d44e979..5a7f8ce 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_actividad/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_actividad/CMakeLists.txt
+@@ -19,14 +19,6 @@ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_fr_FR.css.in ${CMAKE_B
+ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_en_US.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_en_US.css @ONLY)
+ 
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#set(pluginactividad_RCCS gestionaula.qrc)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_alias/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_alias/CMakeLists.txt
+index 0e5b058..c22d061 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_alias/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_alias/CMakeLists.txt
+@@ -14,12 +14,6 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+ file(GLOB plugin_UIS *.ui)
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_almacen/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_almacen/CMakeLists.txt
+index 90ede9c..345a16b 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_almacen/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_almacen/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_almacen.h pluginbf_almacen.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_almacenamplia/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_almacenamplia/CMakeLists.txt
+index 486464e..5334329 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_almacenamplia/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_almacenamplia/CMakeLists.txt
+@@ -14,12 +14,6 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+ file(GLOB plugin_UIS *.ui)
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_alumno/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_alumno/CMakeLists.txt
+index 31e7654..01f7bd9 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_alumno/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_alumno/CMakeLists.txt
+@@ -19,15 +19,6 @@ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_fr_FR.css.in ${CMAKE_B
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_alumno.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#set(pluginalumno_RCCS gestionaula.qrc)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_amortizacion/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_amortizacion/CMakeLists.txt
+index f881e4a..17a6cd3 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_amortizacion/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_amortizacion/CMakeLists.txt
+@@ -15,13 +15,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbc_amortizacion.h pluginbc_amortizacion.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_articulo/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_articulo/CMakeLists.txt
+index 16ca0f0..c32a344 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_articulo/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_articulo/CMakeLists.txt
+@@ -21,12 +21,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_articulo.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE(   ${QT_USE_FILE}   )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_asiento/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_asiento/CMakeLists.txt
+index 77b3d42..bd29ae8 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_asiento/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_asiento/CMakeLists.txt
+@@ -21,13 +21,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_asiento.h bcasientointeligenteimportarxml.h pluginbf_asiento.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_asociacion/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_asociacion/CMakeLists.txt
+index c745df8..9779e80 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_asociacion/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_asociacion/CMakeLists.txt
+@@ -14,15 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_asociacion.h pluginbf_asociacion.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#set(pluginactividad_RCCS gestionaula.qrc)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_asterisk/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_asterisk/CMakeLists.txt
+index 7acfd14..b0361d5 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_asterisk/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_asterisk/CMakeLists.txt
+@@ -14,12 +14,6 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+ file(GLOB plugin_UIS *.ui)
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE(   ${QT_USE_FILE}   )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_balance/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_balance/CMakeLists.txt
+index c9fa035..ca417dd 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_balance/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_balance/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_balance.h pluginbf_balance.h bcplancontablearbol.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_banco/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_banco/CMakeLists.txt
+index d7b1e4e..7f1eac7 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_banco/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_banco/CMakeLists.txt
+@@ -13,13 +13,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_banco.h pluginbf_banco.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_bloqueofechas/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_bloqueofechas/CMakeLists.txt
+index cd5e8f4..246ec17 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_bloqueofechas/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_bloqueofechas/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_bloqueofechas.h pluginbf_bloqueofechas.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_bulmacont/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_bulmacont/CMakeLists.txt
+index bc7dd3d..21fea85 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_bulmacont/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_bulmacont/CMakeLists.txt
+@@ -14,12 +14,6 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+ file(GLOB plugin_UIS *.ui)
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/CMakeLists.txt
+index fb4d8f3..2194a9b 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/CMakeLists.txt
+@@ -14,12 +14,6 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+ file(GLOB plugin_UIS *.ui)
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE(${QT_USE_FILE})
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_camarero/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_camarero/CMakeLists.txt
+index 56bc6c0..b239155 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_camarero/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_camarero/CMakeLists.txt
+@@ -13,13 +13,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pluginbf_camarero.h pdefs_pluginbf_camarero.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_carteracobros/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_carteracobros/CMakeLists.txt
+index 5179d3a..2c50360 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_carteracobros/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_carteracobros/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_carteracobros.h pluginbf_carteracobros.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_carterapagos/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_carterapagos/CMakeLists.txt
+index babeea9..ba384b6 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_carterapagos/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_carterapagos/CMakeLists.txt
+@@ -13,13 +13,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_carterapagos.h pluginbf_carterapagos.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_catalogo/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_catalogo/CMakeLists.txt
+index 0dbafca..eeae5b7 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_catalogo/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_catalogo/CMakeLists.txt
+@@ -14,12 +14,6 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+ file(GLOB plugin_UIS *.ui)
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_ccaa2ods/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_ccaa2ods/CMakeLists.txt
+index d29b12c..0b0bd47 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_ccaa2ods/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_ccaa2ods/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ # Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
+ # <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">leo en alaxarxa.net</A>                                                      #
++# Modified (C) 2013 by Daniel Ripoll                                                     #
+ # <A HREF="http://www.iglues.org">http://www.iglues.org</A>                                                 #
+ #                                                                       #
+ # This program is free software; you can redistribute it and/or modify  #
+@@ -17,6 +18,7 @@
+ # Free Software Foundation, Inc.,                                       #
+ # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
+ #                                                                       #
++#########################################################################
+ 
+ 
+ ###########################################
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cliente/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_cliente/CMakeLists.txt
+index 4c8868a..dfbfd1e 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cliente/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_cliente/CMakeLists.txt
+@@ -19,12 +19,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_cliente.h pluginbf_cliente.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE(${QT_USE_FILE})
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientealbaran/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_clientealbaran/CMakeLists.txt
+index 32c6a69..0d346bf 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientealbaran/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_clientealbaran/CMakeLists.txt
+@@ -14,10 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_clientealbaran.h pluginbf_clientealbaran.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_es_ES.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_es_ES.css @ONLY)
+ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_ca_ES.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_ca_ES.css @ONLY)
+ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_en_US.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_en_US.css @ONLY)
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientealbaranesfactura/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_clientealbaranesfactura/CMakeLists.txt
+index e1aae87..5cd938f 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientealbaranesfactura/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_clientealbaranesfactura/CMakeLists.txt
+@@ -13,12 +13,6 @@ file(GLOB plugin_NO_MOCS pluginbf_clientealbaranfacturar.h pdefs_pluginbf_client
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ file(GLOB plugin_UIS *.ui)
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE(${QT_USE_FILE})
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientecobro/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_clientecobro/CMakeLists.txt
+index 42f3ace..1fc2548 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientecobro/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_clientecobro/CMakeLists.txt
+@@ -21,13 +21,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_clientecobro.h pluginbf_clientecobro.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE(   ${QT_USE_FILE}   )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientefactura/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_clientefactura/CMakeLists.txt
+index 38ed4ad..107def4 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientefactura/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_clientefactura/CMakeLists.txt
+@@ -20,12 +20,6 @@ file(GLOB plugin_UIS *.ui ../pluginbf_clientealbaran/*.ui ../pluginbf_clienteped
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_clientefactura.h pluginbf_clientefactura.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE(${QT_USE_FILE})
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientefacturaivainc/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_clientefacturaivainc/CMakeLists.txt
+index 1b8b8d7..14a9a74 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientefacturaivainc/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_clientefacturaivainc/CMakeLists.txt
+@@ -14,18 +14,11 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_clientefacturaivainc.h pluginbf_clientefacturaivainc.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_es_ES.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_es_ES.css @ONLY)
+ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_ca_ES.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_ca_ES.css @ONLY)
+ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_en_US.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_en_US.css @ONLY)
+ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_fr_FR.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_fr_FR.css @ONLY)
+ 
+-
+-#INCLUDE(${QT_USE_FILE})
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientepedido/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_clientepedido/CMakeLists.txt
+index fa7bdae..d0e72ff 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientepedido/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_clientepedido/CMakeLists.txt
+@@ -20,12 +20,6 @@ file(GLOB plugin_UIS *.ui ../pluginbf_clientepresupuesto/*.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_clientepedido.h pluginbf_clientepedido.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE(${QT_USE_FILE})
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/CMakeLists.txt
+index 72dca21..e91cdc7 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/CMakeLists.txt
+@@ -19,12 +19,6 @@ file(GLOB plugin_UIS *.ui ../pluginbf_clientealbaran/*.ui ../pluginbf_clienteped
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_clientepresupuesto.h pluginbf_clientepresupuesto.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE(${QT_USE_FILE})
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clienteproveedor/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_clienteproveedor/CMakeLists.txt
+index 206033e..ec62ed9 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clienteproveedor/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_clienteproveedor/CMakeLists.txt
+@@ -14,12 +14,6 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+ file(GLOB plugin_UIS *.ui)
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE(   ${QT_USE_FILE}   )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+@@ -32,13 +26,9 @@ include_directories(
+ 	${CMAKE_BINARY_DIR}/bulmafact/src/
+ 	${CMAKE_SOURCE_DIR}/bulmafact/src/)
+ 
+-# generate rules for building source files from the resources
+-#QT5_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
+-
+ # generate rules for building source files that moc generates
+ QT5_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
+ QT5_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
+-#QT5_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
+ 
+ 
+ IF(WIN32)
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clienteticket/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_clienteticket/CMakeLists.txt
+index 2890655..ecfe90c 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clienteticket/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_clienteticket/CMakeLists.txt
+@@ -14,18 +14,11 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_clienteticket.h pluginbf_clienteticket.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_es_ES.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_es_ES.css @ONLY)
+ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_ca_ES.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_ca_ES.css @ONLY)
+ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_en_US.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_en_US.css @ONLY)
+ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_fr_FR.css.in ${CMAKE_BINARY_DIR}/bulmafact/plugins/${plugin}/${plugin}_fr_FR.css @ONLY)
+ 
+-
+-#INCLUDE(${QT_USE_FILE})
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_comercial/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_comercial/CMakeLists.txt
+index 60515ef..ffc2be1 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_comercial/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_comercial/CMakeLists.txt
+@@ -13,12 +13,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pluginbf_comercial.h rutacomercial.h incidenciacomercial.h pdefs_pluginbf_comercial.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE(   ${QT_USE_FILE}   )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_compraventa/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_compraventa/CMakeLists.txt
+index 8f6290b..742f4e0 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_compraventa/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_compraventa/CMakeLists.txt
+@@ -13,12 +13,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_compraventa.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_contrato/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_contrato/CMakeLists.txt
+index 5ac512d..a6b1a69 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_contrato/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_contrato/CMakeLists.txt
+@@ -14,12 +14,6 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+ file(GLOB plugin_UIS *.ui)
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_corrector/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_corrector/CMakeLists.txt
+index 03e2f05..de7a0e1 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_corrector/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_corrector/CMakeLists.txt
+@@ -14,12 +14,6 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+ file(GLOB plugin_UIS *.ui)
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_correo/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_correo/CMakeLists.txt
+index 6cbb8c0..bc4345d 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_correo/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_correo/CMakeLists.txt
+@@ -14,12 +14,6 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+ file(GLOB plugin_UIS *.ui)
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cuadrante/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_cuadrante/CMakeLists.txt
+index 8b0d2ac..84389fa 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cuadrante/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_cuadrante/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_cuadrante.h pluginbf_cuadrante.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cuenta/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_cuenta/CMakeLists.txt
+index 7cb287c..103fd46 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cuenta/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_cuenta/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_cuenta.h bcplancontablearbol.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/CMakeLists.txt
+index 02ab4d0..cfe2619 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pluginbf_cuentaresumen.h pdefs_pluginbf_cuentaresumen.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE(${QT_USE_FILE})
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cuentasanuales2ods/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_cuentasanuales2ods/CMakeLists.txt
+index 11215d4..a033e10 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cuentasanuales2ods/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_cuentasanuales2ods/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ # Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
+ # <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">leo en alaxarxa.net</A>                                                      #
++# Modified (C) 2013 by Daniel Ripoll                                                     #
+ # <A HREF="http://www.iglues.org">http://www.iglues.org</A>                                                 #
+ #                                                                       #
+ # This program is free software; you can redistribute it and/or modify  #
+@@ -17,6 +18,7 @@
+ # Free Software Foundation, Inc.,                                       #
+ # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
+ #                                                                       #
++#########################################################################
+ 
+ 
+ ###########################################
+@@ -35,13 +37,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbc_cuentasanuales2ods.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+       ${QT_INCLUDE_DIR}
+       ${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_debug/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_debug/CMakeLists.txt
+index 968a46a..407008d 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_debug/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_debug/CMakeLists.txt
+@@ -13,13 +13,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_debug.h pluginbf_debug.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_diario/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_diario/CMakeLists.txt
+index 025762a..6f3fc11 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_diario/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_diario/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_diario.h bcdiarioimprimir2txt.h pluginbf_diario.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_efactura/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_efactura/CMakeLists.txt
+index 26d4db1..580e392 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_efactura/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_efactura/CMakeLists.txt
+@@ -13,13 +13,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_efactura.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_etiquetado/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_etiquetado/CMakeLists.txt
+index 5da36a8..68f4b74 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_etiquetado/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_etiquetado/CMakeLists.txt
+@@ -14,12 +14,6 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+ file(GLOB plugin_UIS *.ui)
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE(${QT_USE_FILE})
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_etiquetas/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_etiquetas/CMakeLists.txt
+index 691358f..38eec66 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_etiquetas/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_etiquetas/CMakeLists.txt
+@@ -14,12 +14,6 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+ file(GLOB plugin_UIS *.ui)
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE(${QT_USE_FILE})
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_example/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_example/CMakeLists.txt
+index ab6e26a..9a68b2c 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_example/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_example/CMakeLists.txt
+@@ -13,13 +13,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_example.h pluginbf_example.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_factcont/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_factcont/CMakeLists.txt
+index ac74193..fd2f8bb 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_factcont/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_factcont/CMakeLists.txt
+@@ -19,14 +19,6 @@ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_fr_FR.css.in ${CMAKE_B
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_factcont.h pluginbf_factcont.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_formasdepago/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_formasdepago/CMakeLists.txt
+index 7a7ecee..5b64756 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_formasdepago/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_formasdepago/CMakeLists.txt
+@@ -13,13 +13,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_formasdepago.h pluginbf_formasdepago.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_informecliente/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_informecliente/CMakeLists.txt
+index 7cc6290..de8b36d 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_informecliente/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_informecliente/CMakeLists.txt
+@@ -13,13 +13,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pluginbf_informecliente.h pdefs_pluginbf_informecliente.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_informecliente2sxc/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_informecliente2sxc/CMakeLists.txt
+index a4822b8..ca31118 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_informecliente2sxc/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_informecliente2sxc/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pluginbf_informecliente2sxc.h pdefs_pluginbf_informecliente2sxc.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE(${QT_USE_FILE})
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_inventario/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_inventario/CMakeLists.txt
+index cf0c276..afafcf2 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_inventario/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_inventario/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS inventario.h pdefs_pluginbf_inventario.h pluginbf_inventario.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_inventariosimple/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_inventariosimple/CMakeLists.txt
+index 9a7179e..d95d3f9 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_inventariosimple/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_inventariosimple/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_inventariosimple.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_iva/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_iva/CMakeLists.txt
+index 50a7bba..0c1932f 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_iva/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_iva/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_iva.h pluginbf_iva.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_ivaincluido/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_ivaincluido/CMakeLists.txt
+index 20e0717..80c6cea 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_ivaincluido/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_ivaincluido/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pluginbf_ivaincluido.h pdefs_pluginbf_ivaincluido.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_mayor/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_mayor/CMakeLists.txt
+index 9afb94c..860cd97 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_mayor/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_mayor/CMakeLists.txt
+@@ -21,13 +21,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_mayor.h pluginbf_mayor.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/CMakeLists.txt
+index 3bb076f..f79c5a1 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/CMakeLists.txt
+@@ -21,13 +21,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_minicontabilidad.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE(   ${QT_USE_FILE}   )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_modificadores/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_modificadores/CMakeLists.txt
+index aa9afaa..a56fce6 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_modificadores/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_modificadores/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_modificadores.h pluginbf_modificadores.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_multiimprimir/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_multiimprimir/CMakeLists.txt
+index 2ea4c8d..a0491d2 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_multiimprimir/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_multiimprimir/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pluginbf_multiimprimir.h pdefs_pluginbf_multiimprimir.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_preciocoste/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_preciocoste/CMakeLists.txt
+index 4b38f0d..29a151e 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_preciocoste/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_preciocoste/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pluginbf_preciocoste.h pdefs_pluginbf_preciocoste.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_printercocina/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_printercocina/CMakeLists.txt
+index 5f9eeda..49ecf69 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_printercocina/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_printercocina/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pluginbf_printercocina.h pdefs_pluginbf_printercocina.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_profesor/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_profesor/CMakeLists.txt
+index bbe4427..dce1fac 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_profesor/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_profesor/CMakeLists.txt
+@@ -20,14 +20,8 @@ file(GLOB plugin_NO_MOCS pdefs_pluginbf_profesor.h pluginbf_profesor.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+ set(pluginprofesor_RCCS gestionaula.qrc)
+ 
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_promedios/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_promedios/CMakeLists.txt
+index 3552bab..0f03552 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_promedios/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_promedios/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pluginbf_promedios.h pdefs_pluginbf_promedios.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedor/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_proveedor/CMakeLists.txt
+index 563d4cd..e78e2c2 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedor/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedor/CMakeLists.txt
+@@ -21,13 +21,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_proveedor.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/CMakeLists.txt
+index 0688ed7..4f641fc 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/CMakeLists.txt
+@@ -22,13 +22,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_proveedoralbaran.h pluginbf_proveedoralbaran.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorcodigos/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_proveedorcodigos/CMakeLists.txt
+index 3570be1..56f5214 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorcodigos/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorcodigos/CMakeLists.txt
+@@ -14,12 +14,6 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+ file(GLOB plugin_UIS *.ui)
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/CMakeLists.txt
+index 7d098d9..8faecab 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/CMakeLists.txt
+@@ -22,13 +22,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_proveedorfactura.h pluginbf_proveedorfactura.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorpago/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_proveedorpago/CMakeLists.txt
+index 3778105..e2e3e73 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorpago/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorpago/CMakeLists.txt
+@@ -21,13 +21,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_proveedorpago.h pluginbf_proveedorpago.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/CMakeLists.txt
+index 62c96da..7a4a92b 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/CMakeLists.txt
+@@ -22,13 +22,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_proveedorpedido.h pluginbf_proveedorpedido.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proyectos/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_proyectos/CMakeLists.txt
+index 3f2abda..7c55a56 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proyectos/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_proyectos/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pluginbc_proyectos.h pdefs_pluginbc_proyectos.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_q19/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_q19/CMakeLists.txt
+index dd8a72b..bd3c6bf 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_q19/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_q19/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pluginbf_q19.h pdefs_pluginbf_q19.h q19textcodec.h taula.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_qwebcam/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_qwebcam/CMakeLists.txt
+index dbb32f6..1ee261d 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_qwebcam/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_qwebcam/CMakeLists.txt
+@@ -13,13 +13,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_qwebcam.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_recibo/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_recibo/CMakeLists.txt
+index 13ced72..3075e83 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_recibo/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_recibo/CMakeLists.txt
+@@ -20,15 +20,6 @@ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_fr_FR.css.in ${CMAKE_B
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_recibo.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#set(pluginactividad_RCCS gestionaula.qrc)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_resumenarticulo/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_resumenarticulo/CMakeLists.txt
+index 4af6480..bc3743d 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_resumenarticulo/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_resumenarticulo/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pluginbf_resumenarticulo.h pdefs_pluginbf_resumenarticulo.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_seriesfactura/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_seriesfactura/CMakeLists.txt
+index e2b2c54..114bec6 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_seriesfactura/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_seriesfactura/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_seriesfactura.h pluginbf_seriesfactura.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/CMakeLists.txt
+index 4f4b365..9206891 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont/CMakeLists.txt
+@@ -14,12 +14,6 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+ file(GLOB plugin_UIS *.ui)
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_socio/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_socio/CMakeLists.txt
+index 7a01356..b91a17e 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_socio/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_socio/CMakeLists.txt
+@@ -14,15 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_socio.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#set(plugintutor_RCCS gestionaula.qrc)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_tallascolores/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_tallascolores/CMakeLists.txt
+index ace0bc1..528843c 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_tallascolores/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_tallascolores/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_tallascolores.h pluginbf_tallascolores.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_tarifa/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_tarifa/CMakeLists.txt
+index 2dbae2e..f7c0b63 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_tarifa/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_tarifa/CMakeLists.txt
+@@ -14,12 +14,6 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+ file(GLOB plugin_UIS *.ui)
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE(   ${QT_USE_FILE}   )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_ticket/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_ticket/CMakeLists.txt
+index 22ccb0e..55723f4 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_ticket/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_ticket/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pluginbf_ticket.h pdefs_pluginbf_ticket.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_tipotrabajo/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_tipotrabajo/CMakeLists.txt
+index d66be7b..7145297 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_tipotrabajo/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_tipotrabajo/CMakeLists.txt
+@@ -14,12 +14,6 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+ file(GLOB plugin_UIS *.ui)
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_trabajador/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_trabajador/CMakeLists.txt
+index 36769e6..8cf8049 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_trabajador/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_trabajador/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_trabajador.h pluginbf_trabajador.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_trazabilidad/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_trazabilidad/CMakeLists.txt
+index 14de5c1..2943190 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_trazabilidad/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_trazabilidad/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_trazabilidad.h pluginbf_trazabilidad.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_tutor/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_tutor/CMakeLists.txt
+index d183333..2b5e80c 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_tutor/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_tutor/CMakeLists.txt
+@@ -20,15 +20,6 @@ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}_fr_FR.css.in ${CMAKE_B
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_tutor.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#set(plugintutor_RCCS gestionaula.qrc)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_vehiculo/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_vehiculo/CMakeLists.txt
+index f2a8d92..bf9e745 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_vehiculo/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_vehiculo/CMakeLists.txt
+@@ -13,13 +13,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_vehiculo.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/plugins/pluginbf_z2z/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_z2z/CMakeLists.txt
+index d5ae521..0dbeb39 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_z2z/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_z2z/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbf_z2z.h pluginbf_z2z.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmafact/src/CMakeLists.txt b/bulmages/bulmafact/src/CMakeLists.txt
+index 4a55c62..27f4934 100644
+--- a/bulmages/bulmafact/src/CMakeLists.txt
++++ b/bulmages/bulmafact/src/CMakeLists.txt
+@@ -35,20 +35,6 @@ file(GLOB bulmafact_UIS *.ui)
+ 
+ set(bulmafactEx main.cxx)
+ 
+-#set(QT_USE_QTASSISTANT false)
+-#set(QT_USE_QTXML true)
+-#set(QT_USE_QTSCRIPT true)
+-#set(QT_USE_QTWEBKIT true)
+-
+-IF(WIN32)
+-    # En MS-Windows no hay soporte directo de QtDBus.
+-    #set(QT_USE_QTDBUS true)
+-ELSE(WIN32)
+-    set(QT_USE_QTDBUS true)
+-ENDIF(WIN32)
+-
+-#INCLUDE(${QT_USE_FILE})
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+@@ -62,10 +48,6 @@ include_directories(
+ 	${CMAKE_SOURCE_DIR}/bulmafact/src/)
+ 
+ 
+-if(USE_QMDIAREA)
+-      ADD_DEFINITIONS(&quot;-D'AREA_QMDI'&quot; )
+-endif(USE_QMDIAREA)
+-
+ # generate rules for building source files from the resources
+ #
+ 
+diff --git a/bulmages/bulmafact/src/bfbulmafact.cpp b/bulmages/bulmafact/src/bfbulmafact.cpp
+index 161137d..d8dbf9a 100644
+--- a/bulmages/bulmafact/src/bfbulmafact.cpp
++++ b/bulmages/bulmafact/src/bfbulmafact.cpp
+@@ -56,13 +56,10 @@ BfBulmaFact::BfBulmaFact ( QString bd ) : BlMainWindow()
+     setAnimated ( false );
+     setUpdatesEnabled ( true );
+     pWorkspace = new BlWorkspace ( this );
+-    
+-#ifdef AREA_QMDI    
++      
+     pWorkspace-&gt;setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+     pWorkspace-&gt;setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+-#else
+-    pWorkspace-&gt;setScrollBarsEnabled ( true );
+-#endif
++
+     
+     QFrame *m_frame1 = new QFrame();
+     m_pb = new QProgressBar();
+@@ -84,11 +81,8 @@ BfBulmaFact::BfBulmaFact ( QString bd ) : BlMainWindow()
+     m_company-&gt;init ( bd, &quot;BulmaFact&quot; );
+     m_company-&gt;setWorkspace ( pWorkspace );
+ 
+-#ifdef AREA_QMDI
+     connect ( pWorkspace, SIGNAL ( subWindowActivated ( QMdiSubWindow * ) ), this, SLOT ( informaindexador ( QMdiSubWindow * ) ) );
+-#else
+-    connect ( pWorkspace, SIGNAL ( windowActivated ( QWidget * ) ), this, SLOT ( informaindexador ( QWidget * ) ) );
+-#endif
++
+     
+     /// Aqui creamos la ventana dock para meter las distintas ventanas.
+     m_list = new BlWindowListDock ( 0 );
+@@ -225,7 +219,6 @@ void BfBulmaFact::closeEvent ( QCloseEvent *event )
+ void BfBulmaFact::informaindexador ( QMdiSubWindow *w )
+ {
+     BL_FUNC_DEBUG
+-#ifdef AREA_QMDI
+ 
+     /// Si no esta inicializado company no se le puede informar.
+     if ( m_company == NULL ) {
+@@ -240,30 +233,12 @@ void BfBulmaFact::informaindexador ( QMdiSubWindow *w )
+         return;
+     } // end if
+     m_company-&gt;selectWindow ( w-&gt;windowTitle(), w );
+-#endif
+ 
+ }
+ 
+ void BfBulmaFact::informaindexador ( QWidget *w )
+ {
+     BL_FUNC_DEBUG
+-#ifndef AREA_QMDI
+-
+-    /// Si no esta inicializado company no se le puede informar.
+-    if ( m_company == NULL ) {
+-        
+-        return;
+-    } // end if
+-
+-    /// No existe una ventana que activar.
+-    if ( w == NULL ) {
+-        m_company-&gt;deselectWindow();
+-        
+-        return;
+-    } // end if
+-    m_company-&gt;selectWindow ( w-&gt;windowTitle(), w );
+-#endif
+-
+ }
+ 
+ 
+@@ -490,13 +465,7 @@ void BfBulmaFact::on_actionOrdenar_Ventanas_triggered()
+ {
+     BL_FUNC_DEBUG
+ 
+-#ifdef AREA_QMDI
+     pWorkspace-&gt;tileSubWindows();
+-#else
+-    pWorkspace-&gt;tile();
+-#endif
+-    
+-    
+ }
+ 
+ 
+@@ -507,12 +476,7 @@ void BfBulmaFact::on_actionOrganizaci_n_en_Cascada_triggered()
+ {
+     BL_FUNC_DEBUG
+     
+-#ifdef AREA_QMDI
+     pWorkspace-&gt;cascadeSubWindows();
+-#else
+-    pWorkspace-&gt;cascade();
+-#endif
+-  
+ 
+ }
+ 
+diff --git a/bulmages/bulmages/src/CMakeLists.txt b/bulmages/bulmages/src/CMakeLists.txt
+index 4821ea0..20f7176 100644
+--- a/bulmages/bulmages/src/CMakeLists.txt
++++ b/bulmages/bulmages/src/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ # Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
+ # <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">leo en alaxarxa.net</A>                                                      #
++# Modified (C) 2013 by Daniel Ripoll                                                     #
+ # <A HREF="http://www.iglues.org">http://www.iglues.org</A>                                                 #
+ #                                                                       #
+ # This program is free software; you can redistribute it and/or modify  #
+@@ -33,20 +34,6 @@ set(bulmages_MOCS bgbulmages.h)
+ 
+ set(bulmagesEx main.cxx)
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT false)
+-set(QT_USE_QTWEBKIT false)
+-
+-IF(WIN32)
+-    # En MS-Windows no hay soporte directo de QtDBus.
+-    #set(QT_USE_QTDBUS true)
+-ELSE(WIN32)
+-    set(QT_USE_QTDBUS true)
+-ENDIF(WIN32)
+-
+-#INCLUDE(${QT_USE_FILE})
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmalib/CMakeLists.txt b/bulmages/bulmalib/CMakeLists.txt
+index a480ec1..1b3cfd8 100644
+--- a/bulmages/bulmalib/CMakeLists.txt
++++ b/bulmages/bulmalib/CMakeLists.txt
+@@ -18,17 +18,11 @@
+ # Free Software Foundation, Inc.,                                       #
+ # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
+ #                                                                       #
++#########################################################################
+ project(bulmalib)
+ 
+ include(MacrosBlI18n)
+ 
+-#set(QT_USE_QTASSISTANT false)
+-#set(QT_USE_QTUITOOLS true)
+-#set(QT_USE_QTXML true)
+-#set(QT_USE_QTSCRIPT true)
+-
+-#include(${QT_USE_FILE})
+-
+ include_directories(
+       ${QT_INCLUDE_DIR}
+       ${QT_QTWIDGETS_INCLUDE_DIR}
+@@ -38,17 +32,9 @@ include_directories(
+ ADD_DEFINITIONS(-DQT_SHARED -DQT_PLUGIN)
+ ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL)
+ ADD_DEFINITIONS(-DBL_BULMALIB)
+-# Defines if we want our own debugging code
+-#ADD_DEFINITIONS(-DDEPURA_DEBUG)
+-
+-IF(USE_PCH)
+-    ADD_PRECOMPILED_HEADER( bulmalib_pch pch/stableheaders.hpp )
+-ENDIF(USE_PCH)
+ 
+ add_subdirectory(src)
+ add_subdirectory(plugins)
+-#add_subdirectory(designer)
+ 
+ set (r_files README.Bulmalib.es)
+ install(FILES ${r_files} DESTINATION share/bulmages/)
+-#add_subdirectory(po)
+diff --git a/bulmages/bulmalib/designer/widgetbl_bankedit/CMakeLists.txt b/bulmages/bulmalib/designer/widgetbl_bankedit/CMakeLists.txt
+index ba213b8..271b506 100644
+--- a/bulmages/bulmalib/designer/widgetbl_bankedit/CMakeLists.txt
++++ b/bulmages/bulmalib/designer/widgetbl_bankedit/CMakeLists.txt
+@@ -10,15 +10,6 @@ file(GLOB plugin_SRC *.c *.cpp *.cxx ../../src/bli18n.cpp)
+ file(GLOB plugin_MOCS *.hpp *.h)
+ file(GLOB plugin_UIS ../../src/blbankeditbase.ui)
+ 
+-
+-set(QT_USE_QTSCRIPT true)
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTDESIGNER true)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+ 	${QT_INCLUDE_DIR}
+ 	${QT_QTXML_INCLUDE_DIR}
+diff --git a/bulmages/bulmalib/designer/widgetbl_datesearch/CMakeLists.txt b/bulmages/bulmalib/designer/widgetbl_datesearch/CMakeLists.txt
+index bf4f708..7f0f7ea 100644
+--- a/bulmages/bulmalib/designer/widgetbl_datesearch/CMakeLists.txt
++++ b/bulmages/bulmalib/designer/widgetbl_datesearch/CMakeLists.txt
+@@ -10,15 +10,6 @@ file(GLOB plugin_SRC *.c *.cpp *.cxx ../../src/bli18n.cpp)
+ file(GLOB plugin_MOCS *.hpp *.h)
+ file(GLOB plugin_UIS ../../src/bldatesearchbase.ui)
+ 
+-
+-set(QT_USE_QTSCRIPT true)
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTDESIGNER true)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+ 	${QT_INCLUDE_DIR}
+ 	${QT_QTXML_INCLUDE_DIR}
+diff --git a/bulmages/bulmalib/designer/widgetbl_progressbar/CMakeLists.txt b/bulmages/bulmalib/designer/widgetbl_progressbar/CMakeLists.txt
+index fed3de3..d48a0a9 100644
+--- a/bulmages/bulmalib/designer/widgetbl_progressbar/CMakeLists.txt
++++ b/bulmages/bulmalib/designer/widgetbl_progressbar/CMakeLists.txt
+@@ -10,15 +10,6 @@ file(GLOB plugin_SRC *.c *.cpp *.cxx ../../src/bli18n.cpp)
+ file(GLOB plugin_MOCS *.hpp *.h)
+ file(GLOB plugin_UIS ../../src/blprogressbarbase.ui)
+ 
+-
+-set(QT_USE_QTSCRIPT true)
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTDESIGNER true)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+ 	${QT_INCLUDE_DIR}
+ 	${QT_QTXML_INCLUDE_DIR}
+diff --git a/bulmages/bulmalib/designer/widgetbl_searchwidget/CMakeLists.txt b/bulmages/bulmalib/designer/widgetbl_searchwidget/CMakeLists.txt
+index 9e7227e..cfb3d76 100644
+--- a/bulmages/bulmalib/designer/widgetbl_searchwidget/CMakeLists.txt
++++ b/bulmages/bulmalib/designer/widgetbl_searchwidget/CMakeLists.txt
+@@ -10,15 +10,6 @@ file(GLOB plugin_SRC *.c *.cpp *.cxx ../../src/bli18n.cpp)
+ file(GLOB plugin_MOCS *.hpp *.h)
+ file(GLOB plugin_UIS ../../src/blsearchwidgetbase.ui)
+ 
+-
+-set(QT_USE_QTSCRIPT true)
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTDESIGNER true)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+ 	${QT_INCLUDE_DIR}
+ 	${QT_QTXML_INCLUDE_DIR}
+diff --git a/bulmages/bulmalib/designer/widgetbl_subform/CMakeLists.txt b/bulmages/bulmalib/designer/widgetbl_subform/CMakeLists.txt
+index 0cf4e5f..65af332 100644
+--- a/bulmages/bulmalib/designer/widgetbl_subform/CMakeLists.txt
++++ b/bulmages/bulmalib/designer/widgetbl_subform/CMakeLists.txt
+@@ -10,15 +10,6 @@ file(GLOB plugin_SRC *.c *.cpp *.cxx ../../src/bli18n.cpp)
+ file(GLOB plugin_MOCS *.hpp *.h)
+ file(GLOB plugin_UIS ../../src/blsubformbase.ui)
+ 
+-
+-set(QT_USE_QTSCRIPT true)
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTDESIGNER true)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+ 	${PGSQL_INCLUDE_DIR}
+ 	${QT_INCLUDE_DIR}
+diff --git a/bulmages/bulmalib/plugins/pluginbl_clipboard/CMakeLists.txt b/bulmages/bulmalib/plugins/pluginbl_clipboard/CMakeLists.txt
+index 932eba2..4e4f0e7 100644
+--- a/bulmages/bulmalib/plugins/pluginbl_clipboard/CMakeLists.txt
++++ b/bulmages/bulmalib/plugins/pluginbl_clipboard/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ # Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
+ # <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">leo en alaxarxa.net</A>                                                      #
++# Modified (C) 2013 by Daniel Ripoll                                                     #
+ # <A HREF="http://www.iglues.org">http://www.iglues.org</A>                                                 #
+ #                                                                       #
+ # This program is free software; you can redistribute it and/or modify  #
+@@ -17,6 +18,7 @@
+ # Free Software Foundation, Inc.,                                       #
+ # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
+ #                                                                       #
++#########################################################################
+ 
+ ###########################################
+ # Plugin for bulmalib                     #
+diff --git a/bulmages/bulmalib/plugins/pluginbl_feeds/CMakeLists.txt b/bulmages/bulmalib/plugins/pluginbl_feeds/CMakeLists.txt
+index 7db3503..569093a 100644
+--- a/bulmages/bulmalib/plugins/pluginbl_feeds/CMakeLists.txt
++++ b/bulmages/bulmalib/plugins/pluginbl_feeds/CMakeLists.txt
+@@ -14,15 +14,6 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+ file(GLOB plugin_UIS *.ui)
+ 
+-#set(QT_USE_QTASSISTANT false)
+-#set(QT_USE_QTXML true)
+-#set (QT_USE_QTWEBKIT true)
+-#set(QT_USE_QTSCRIPT true)
+-#set(QT_USE_QTNETWORK true)
+-find_package(Qt5WebKit REQUIRED)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+@@ -34,14 +25,9 @@ include_directories(
+ 	${CMAKE_BINARY_DIR}/bulmafact/src/
+ 	${CMAKE_SOURCE_DIR}/bulmafact/src/)
+ 
+-# generate rules for building source files from the resources
+-#QT5_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
+-
+ # generate rules for building source files that moc generates
+ QT5_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)
+ QT5_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
+-#QT5_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
+-
+ 
+ 
+ IF(WIN32)
+diff --git a/bulmages/bulmalib/plugins/pluginbl_importcsv/CMakeLists.txt b/bulmages/bulmalib/plugins/pluginbl_importcsv/CMakeLists.txt
+index 4933ffe..ff9b0bd 100644
+--- a/bulmages/bulmalib/plugins/pluginbl_importcsv/CMakeLists.txt
++++ b/bulmages/bulmalib/plugins/pluginbl_importcsv/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ # Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
+ # <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">leo en alaxarxa.net</A>                                                      #
++# Modified (C) 2013 by Daniel Ripoll                                                     #
+ # <A HREF="http://www.iglues.org">http://www.iglues.org</A>                                                 #
+ #                                                                       #
+ # This program is free software; you can redistribute it and/or modify  #
+@@ -17,6 +18,7 @@
+ # Free Software Foundation, Inc.,                                       #
+ # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
+ #                                                                       #
++#########################################################################
+ 
+ ###########################################
+ # Plugin for bulmalib                     #
+diff --git a/bulmages/bulmalib/plugins/pluginbl_subform2ods/CMakeLists.txt b/bulmages/bulmalib/plugins/pluginbl_subform2ods/CMakeLists.txt
+index 0c2015d..98abe4a 100644
+--- a/bulmages/bulmalib/plugins/pluginbl_subform2ods/CMakeLists.txt
++++ b/bulmages/bulmalib/plugins/pluginbl_subform2ods/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ # Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
+ # <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">leo en alaxarxa.net</A>                                                      #
++# Modified (C) 2013 by Daniel Ripoll                                                     #
+ # <A HREF="http://www.iglues.org">http://www.iglues.org</A>                                                 #
+ #                                                                       #
+ # This program is free software; you can redistribute it and/or modify  #
+@@ -17,6 +18,7 @@
+ # Free Software Foundation, Inc.,                                       #
+ # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
+ #                                                                       #
++#########################################################################
+ 
+ ###########################################
+ # Plugin for bulmalib                     #
+diff --git a/bulmages/bulmalib/plugins/pluginbl_subform2pdf/CMakeLists.txt b/bulmages/bulmalib/plugins/pluginbl_subform2pdf/CMakeLists.txt
+index 07418fe..0f0eeb0 100644
+--- a/bulmages/bulmalib/plugins/pluginbl_subform2pdf/CMakeLists.txt
++++ b/bulmages/bulmalib/plugins/pluginbl_subform2pdf/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ # Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
+ # <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">leo en alaxarxa.net</A>                                                      #
++# Modified (C) 2013 by Daniel Ripoll                                                     #
+ # <A HREF="http://www.iglues.org">http://www.iglues.org</A>                                                 #
+ #                                                                       #
+ # This program is free software; you can redistribute it and/or modify  #
+@@ -17,6 +18,7 @@
+ # Free Software Foundation, Inc.,                                       #
+ # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
+ #                                                                       #
++#########################################################################
+ 
+ ###########################################
+ # Plugin for bulmalib                     #
+diff --git a/bulmages/bulmalib/plugins/pluginbl_template/CMakeLists.txt b/bulmages/bulmalib/plugins/pluginbl_template/CMakeLists.txt
+index ce18522..fbde08f 100644
+--- a/bulmages/bulmalib/plugins/pluginbl_template/CMakeLists.txt
++++ b/bulmages/bulmalib/plugins/pluginbl_template/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ # Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
+ # <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">leo en alaxarxa.net</A>                                                      #
++# Modified (C) 2013 by Daniel Ripoll                                                     #
+ # <A HREF="http://www.iglues.org">http://www.iglues.org</A>                                                 #
+ #                                                                       #
+ # This program is free software; you can redistribute it and/or modify  #
+@@ -17,6 +18,7 @@
+ # Free Software Foundation, Inc.,                                       #
+ # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
+ #                                                                       #
++#########################################################################
+ 
+ ###########################################
+ # Plugin for bulmalib                     #
+diff --git a/bulmages/bulmalib/plugins/pluginbl_template2mail/CMakeLists.txt b/bulmages/bulmalib/plugins/pluginbl_template2mail/CMakeLists.txt
+index f670778..d06740b 100644
+--- a/bulmages/bulmalib/plugins/pluginbl_template2mail/CMakeLists.txt
++++ b/bulmages/bulmalib/plugins/pluginbl_template2mail/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ # Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
+ # <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">leo en alaxarxa.net</A>                                                      #
++# Modified (C) 2013 by Daniel Ripoll                                                     #
+ # <A HREF="http://www.iglues.org">http://www.iglues.org</A>                                                 #
+ #                                                                       #
+ # This program is free software; you can redistribute it and/or modify  #
+@@ -17,6 +18,7 @@
+ # Free Software Foundation, Inc.,                                       #
+ # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
+ #                                                                       #
++#########################################################################
+ 
+ ###########################################
+ # Plugin for bulmalib                     #
+diff --git a/bulmages/bulmalib/plugins/pluginbl_template2ods/CMakeLists.txt b/bulmages/bulmalib/plugins/pluginbl_template2ods/CMakeLists.txt
+index d1d6d6b..50bf76e 100644
+--- a/bulmages/bulmalib/plugins/pluginbl_template2ods/CMakeLists.txt
++++ b/bulmages/bulmalib/plugins/pluginbl_template2ods/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ # Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
+ # <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">leo en alaxarxa.net</A>                                                      #
++# Modified (C) 2013 by Daniel Ripoll                                                     #
+ # <A HREF="http://www.iglues.org">http://www.iglues.org</A>                                                 #
+ #                                                                       #
+ # This program is free software; you can redistribute it and/or modify  #
+@@ -17,6 +18,7 @@
+ # Free Software Foundation, Inc.,                                       #
+ # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
+ #                                                                       #
++#########################################################################
+ 
+ ###########################################
+ # Plugin for bulmalib                     #
+diff --git a/bulmages/bulmalib/src/CMakeLists.txt b/bulmages/bulmalib/src/CMakeLists.txt
+index b7ed0ec..100a9b7 100644
+--- a/bulmages/bulmalib/src/CMakeLists.txt
++++ b/bulmages/bulmalib/src/CMakeLists.txt
+@@ -24,10 +24,6 @@
+ 
+ configure_file( ${CMAKE_SOURCE_DIR}/bulmalib/src/blconfig.h.in  ${CMAKE_BINARY_DIR}/bulmalib/src/blconfig.h @ONLY)
+ 
+-#set(QT_USE_QTXML true)
+-#set(QT_USE_QTSCRIPT true)
+-#set(QT_USE_QTUITOOLS true)
+-
+ set(bulmalib_SRCS	blpostgresqlclient.cpp
+ 			blconfiguration.cpp
+ 			blspainbankaccountnumber.cpp
+@@ -201,10 +197,6 @@ else (USE_GETTEXT)
+       ${CMAKE_SOURCE_DIR}/bulmacont/src/)
+ endif(USE_GETTEXT)
+ 
+-if(USE_QMDIAREA)
+-      ADD_DEFINITIONS(&quot;-D'AREA_QMDI'&quot; )
+-endif(USE_QMDIAREA)
+-
+ # generate rules for building source files from the resources
+ QT5_WRAP_UI(bulmalib_UIS_H ${bulmalib_UIS} OPTIONS -tr N_)
+ QT5_WRAP_CPP(bulmalib_MOC_SRCS ${bulmalib_MOCS})
+@@ -274,10 +266,4 @@ endif(USE_GETTEXT)
+ install_targets(/lib bulmalib)
+ install (FILES ${bulmalib_HDRS} DESTINATION include)
+ 
+-
+-
+-if(USE_PCH)
+-   add_dependencies( bulmalib  bulmalib_pch )
+-endif(USE_PCH)
+-
+ ADD_LOCAL_BLI18N_HEADER( bulmalib )
+diff --git a/bulmages/bulmalib/src/blmaincompany.cpp b/bulmages/bulmalib/src/blmaincompany.cpp
+index 45345f6..3ec7881 100644
+--- a/bulmages/bulmalib/src/blmaincompany.cpp
++++ b/bulmages/bulmalib/src/blmaincompany.cpp
+@@ -107,11 +107,7 @@ int BlMainCompany::insertWindow ( QString nom, QObject *obj, bool compdup, QStri
+ \param obj
+ \return
+ **/
+-#ifdef AREA_QMDI
+   int BlMainCompany::selectWindow ( QString nom, QMdiSubWindow *obj )
+-#else
+-  int BlMainCompany::selectWindow ( QString nom, QObject *obj )
+-#endif
+ {
+     BL_FUNC_DEBUG
+     
+@@ -302,11 +298,8 @@ bool BlMainCompany::showWindow(QString objectName)
+ 		( ( QWidget * ) m_windowListDock-&gt;ventana(i) )-&gt;showNormal();
+ 	    } // end if
+ 	    
+-	    #ifdef AREA_QMDI
+-		m_pWorkspace-&gt;setActiveSubWindow(( QMdiSubWindow *)m_windowListDock-&gt;ventana(i));
+-	    #else
+-		m_pWorkspace-&gt;setActiveWindow(( QWidget * )m_windowListDock-&gt;ventana(i));
+-	    #endif
++	    m_pWorkspace-&gt;setActiveSubWindow(( QMdiSubWindow *)m_windowListDock-&gt;ventana(i));
++
+ 	    
+ 	} // end if
+ 
+diff --git a/bulmages/bulmalib/src/blmaincompany.h b/bulmages/bulmalib/src/blmaincompany.h
+index e2af19c..34ca759 100644
+--- a/bulmages/bulmalib/src/blmaincompany.h
++++ b/bulmages/bulmalib/src/blmaincompany.h
+@@ -62,13 +62,7 @@ public:
+     void setProgressBar ( QProgressBar *pb );
+     int insertWindow ( QString nom, QObject *obj, bool compdup = true, QString titulo = &quot;&quot; );
+     bool showWindow (QString objectName);
+-
+-#ifdef AREA_QMDI
+     int selectWindow ( QString nom, QMdiSubWindow *obj );
+-#else
+-    int selectWindow ( QString nom, QObject *obj );
+-#endif
+-    
+     void removeWindow ( QObject *nom );
+     void s_indexadorCambiaEstado ( bool );
+     void muestraPaises();
+diff --git a/bulmages/bulmalib/src/blwidget.cpp b/bulmages/bulmalib/src/blwidget.cpp
+index 7a374e8..90aeff6 100644
+--- a/bulmages/bulmalib/src/blwidget.cpp
++++ b/bulmages/bulmalib/src/blwidget.cpp
+@@ -32,10 +32,6 @@ BlWidget::BlWidget ( QWidget *parent, Qt::WindowFlags flags )
+         : QWidget ( parent, flags), BlMainCompanyPointer()
+ {
+     BL_FUNC_DEBUG
+-#ifdef AREA_QMDI
+-    /// Deshabilita el doble buffer de las X11. Va todo mucho mas rapido, pero no dibuja bien.
+-    /// qt_x11_set_global_double_buffer(false);
+-#endif
+     setAttribute(Qt::WA_StaticContents);
+     m_descripcion = &quot;&quot;;
+ }
+@@ -77,7 +73,6 @@ void BlWidget::paintEvent ( QPaintEvent * )
+ }
+ 
+ 
+-#ifdef AREA_QMDI
+ bool BlWidget::event ( QEvent * event )
+ {
+     if (event-&gt;type() == QEvent::HideToParent) {
+@@ -88,7 +83,7 @@ bool BlWidget::event ( QEvent * event )
+ 
+     return QWidget::event(event);
+ }
+-#endif
++
+ 
+ QString BlWidget::descripcion() const {
+   return m_descripcion;
+diff --git a/bulmages/bulmalib/src/blwidget.h b/bulmages/bulmalib/src/blwidget.h
+index 461d423..097af11 100644
+--- a/bulmages/bulmalib/src/blwidget.h
++++ b/bulmages/bulmalib/src/blwidget.h
+@@ -52,10 +52,8 @@ private:
+     
+ protected:
+     virtual void paintEvent(QPaintEvent *event);
+-
+-#ifdef AREA_QMDI
+     bool event ( QEvent *event );
+-#endif
++
+ 
+ public:
+     BlWidget ( QWidget *parent = 0, Qt::WindowFlags flags = 0 );
+diff --git a/bulmages/bulmalib/src/blwindowlistdock.cpp b/bulmages/bulmalib/src/blwindowlistdock.cpp
+index 9bf6204..ab06658 100644
+--- a/bulmages/bulmalib/src/blwindowlistdock.cpp
++++ b/bulmages/bulmalib/src/blwindowlistdock.cpp
+@@ -207,10 +207,9 @@ void BlWindowListDock::dclicked()
+             widget-&gt;showNormal();
+         } else {
+             widget-&gt;showMaximized();
+-        } // end if
+-#ifdef AREA_QMDI        
++        } // end if    
+         widget-&gt;parentWidget()-&gt;activateWindow();
+-#endif
++
+     } // end if
+     
+ }
+@@ -226,12 +225,8 @@ void BlWindowListDock::clicked()
+     if ( widget != NULL ) {
+         widget-&gt;show();
+ 	if (widget-&gt;parentWidget()) widget-&gt;parentWidget() -&gt;raise();
+-
+-#ifdef AREA_QMDI
+ 	if (widget-&gt;parentWidget()) widget-&gt;parentWidget()-&gt;activateWindow();
+-#else
+-        m_pWorkspace-&gt;setActiveWindow ( widget );
+-#endif
++
+      
+     } // end if
+     
+@@ -377,11 +372,8 @@ int BlWindowListDock::insertWindow ( QString name, QObject *object, bool checkDu
+ \param obj
+ \return
+ **/
+-#ifdef AREA_QMDI
++
+   int BlWindowListDock::selectWindow ( QString nombre, QMdiSubWindow *obj )
+-#else
+-  int BlWindowListDock::selectWindow ( QString nombre, QObject *obj )
+-#endif
+ {
+     BL_FUNC_DEBUG
+     try {
+@@ -389,13 +381,8 @@ int BlWindowListDock::insertWindow ( QString name, QObject *object, bool checkDu
+         while ( i &lt; m_listBox-&gt;count() ) {
+             BlListWidgetItem * m = ( BlListWidgetItem * ) m_listBox-&gt;item ( i );
+             /// Encuentra la ventana en la lista.
+-#ifdef AREA_QMDI
+ 	    if ( m-&gt;object() == obj-&gt;widget() ) {
+-#else
+-	    if ( m-&gt;object() == obj ) {
+-#endif
+                 m_listBox-&gt;setCurrentItem ( m );
+-		
+                 return 0;
+             } // end if
+             i++;
+diff --git a/bulmages/bulmalib/src/blwindowlistdock.h b/bulmages/bulmalib/src/blwindowlistdock.h
+index 1fb7abc..e9ba0e7 100644
+--- a/bulmages/bulmalib/src/blwindowlistdock.h
++++ b/bulmages/bulmalib/src/blwindowlistdock.h
+@@ -27,6 +27,8 @@
+ #include &lt;QtWidgets/QDockWidget&gt;
+ #include &lt;QtWidgets/QListWidget&gt;
+ #include &lt;QtWidgets/QListWidgetItem&gt;
++#include &lt;QtGui/QPainter&gt;
++#include &lt;QtWidgets/QAbstractItemDelegate&gt;
+ 
+ #include &quot;blfunctions.h&quot;
+ #include &quot;blworkspace.h&quot;
+@@ -35,8 +37,6 @@
+ class BlWorkspace;
+ 
+ 
+-#include &lt;QtGui/QPainter&gt;
+-#include &lt;QtWidgets/QAbstractItemDelegate&gt;
+   
+ class ListDelegate : public QAbstractItemDelegate
+ {
+@@ -102,13 +102,7 @@ public:
+ 
+ public:
+     int insertWindow ( QString name, QObject *object, bool checkDuplication = true, QString title=&quot;&quot;);
+-    
+-#ifdef AREA_QMDI
+     int selectWindow ( QString nombre, QMdiSubWindow *obj );
+-#else
+-    int selectWindow ( QString nombre, QObject *obj );
+-#endif
+-    
+     int deselectWindow();
+     void removeWindow ( QObject * );
+     void setVisibilityState ( bool );
+diff --git a/bulmages/bulmasetup/CMakeLists.txt b/bulmages/bulmasetup/CMakeLists.txt
+index eb52413..c618baf 100644
+--- a/bulmages/bulmasetup/CMakeLists.txt
++++ b/bulmages/bulmasetup/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ # Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
+ # <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">leo en alaxarxa.net</A>                                                      #
++# Modified (C) 2013 by Daniel Ripoll                                                     #
+ # <A HREF="http://www.iglues.org">http://www.iglues.org</A>                                                 #
+ #                                                                       #
+ # This program is free software; you can redistribute it and/or modify  #
+@@ -17,6 +18,7 @@
+ # Free Software Foundation, Inc.,                                       #
+ # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
+ #                                                                       #
++#########################################################################
+ 
+ configure_file( ${CMAKE_SOURCE_DIR}/bulmasetup/config.in ${CMAKE_BINARY_DIR}/bulmasetup/config.py @ONLY)
+ 
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_accesobotones/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_accesobotones/CMakeLists.txt
+index 669f6bd..44f3253 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_accesobotones/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_accesobotones/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_accesobotones.h pluginbt_accesobotones.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_alias/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_alias/CMakeLists.txt
+index 5449602..f4c850d 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_alias/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_alias/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_alias.h pluginbt_alias.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_aliastallasycolores/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_aliastallasycolores/CMakeLists.txt
+index 60bc5cb..736547a 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_aliastallasycolores/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_aliastallasycolores/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_aliastallasycolores.h pluginbt_aliastallasycolores.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_aliastallasycolores2/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_aliastallasycolores2/CMakeLists.txt
+index 5867070..17e4954 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_aliastallasycolores2/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_aliastallasycolores2/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_aliastallasycolores2.h pluginbt_aliastallasycolores2.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_articulografico/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_articulografico/CMakeLists.txt
+index ddd2f16..244b2f8 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_articulografico/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_articulografico/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_articulografico.h pluginbt_articulografico.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/CMakeLists.txt
+index fbf0fac..2a37b13 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_articulograficodb.h pluginbt_articulograficodb.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_articulosubform/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_articulosubform/CMakeLists.txt
+index d5b7adb..ce57881 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_articulosubform/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_articulosubform/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_articulosubform.h pluginbt_articulosubform.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_bascula/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_bascula/CMakeLists.txt
+index 329f3f1..ca2f75d 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_bascula/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_bascula/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_bascula.h pluginbt_bascula.h qextserialport_global.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_buscaarticulo/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_buscaarticulo/CMakeLists.txt
+index 8b83344..1b3ab33 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_buscaarticulo/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_buscaarticulo/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_buscaarticulo.h pluginbt_buscaarticulo.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_buscacliente/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_buscacliente/CMakeLists.txt
+index a8fbddd..e4cd15b 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_buscacliente/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_buscacliente/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_buscacliente.h pluginbt_buscacliente.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_camareros/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_camareros/CMakeLists.txt
+index 30b8ed4..31f0267 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_camareros/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_camareros/CMakeLists.txt
+@@ -17,15 +17,6 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}.css.in ${CMAKE_CURRENT_BINARY_DIR}/${plugin}.css @ONLY)
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSVG true)
+-set(QT_USE_QTSCRIPT true)
+-
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_cambio/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_cambio/CMakeLists.txt
+index ba771e5..5f85004 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_cambio/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_cambio/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_cambio.h pluginbt_cambio.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_cambioivaincluido/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_cambioivaincluido/CMakeLists.txt
+index 500868d..79b1875 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_cambioivaincluido/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_cambioivaincluido/CMakeLists.txt
+@@ -17,12 +17,6 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}.css.in ${CMAKE_CURRENT_BINARY_DIR}/${plugin}.css @ONLY)
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_cliente/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_cliente/CMakeLists.txt
+index fa4c885..eb35467 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_cliente/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_cliente/CMakeLists.txt
+@@ -14,15 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_cliente.h pluginbt_cliente.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSVG true)
+-set(QT_USE_QTSCRIPT true)
+-
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_clientsync/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_clientsync/CMakeLists.txt
+index 5a1c23d..1793b57 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_clientsync/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_clientsync/CMakeLists.txt
+@@ -14,14 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_clientsync.h pluginbt_clientsync.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-set(QT_USE_QTNETWORK true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_cobrar/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_cobrar/CMakeLists.txt
+index f5880fa..c3710a5 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_cobrar/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_cobrar/CMakeLists.txt
+@@ -16,12 +16,6 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}.css.in ${CMAKE_CURRENT_BINARY_DIR}/${plugin}.css @ONLY)
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_cobrarparcialivaincluido/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_cobrarparcialivaincluido/CMakeLists.txt
+index 49af21d..8c9ae55 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_cobrarparcialivaincluido/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_cobrarparcialivaincluido/CMakeLists.txt
+@@ -13,13 +13,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_cobrarparcialivaincluido.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_controlcaja/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_controlcaja/CMakeLists.txt
+index 592bbef..110b993 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_controlcaja/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_controlcaja/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_controlcaja.h pluginbt_controlcaja.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_debug/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_debug/CMakeLists.txt
+index 068f0dd..9b0319e 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_debug/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_debug/CMakeLists.txt
+@@ -13,13 +13,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_debug.h pluginbt_debug.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_devolucion/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_devolucion/CMakeLists.txt
+index 6b76a3f..3de8c1b 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_devolucion/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_devolucion/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_devolucion.h pluginbt_devolucion.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_devolucion2/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_devolucion2/CMakeLists.txt
+index caa1d34..cb4687d 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_devolucion2/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_devolucion2/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_devolucion2.h pluginbt_devolucion2.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_dockapp/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_dockapp/CMakeLists.txt
+index 8e93b89..1724503 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_dockapp/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_dockapp/CMakeLists.txt
+@@ -14,15 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_dockapp.h pluginbt_dockapp.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSVG true)
+-set(QT_USE_QTSCRIPT true)
+-
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_example/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_example/CMakeLists.txt
+index 53add91..f566d8b 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_example/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_example/CMakeLists.txt
+@@ -13,13 +13,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_example.h pluginbt_example.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_ivaincluido/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_ivaincluido/CMakeLists.txt
+index 862c699..9e44697 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_ivaincluido/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_ivaincluido/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_ivaincluido.h pluginbt_ivaincluido.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_mesas/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_mesas/CMakeLists.txt
+index 1a25053..00496ed 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_mesas/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_mesas/CMakeLists.txt
+@@ -14,15 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_mesas.h pluginbt_mesas.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSVG true)
+-set(QT_USE_QTSCRIPT true)
+-
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_modificadores/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_modificadores/CMakeLists.txt
+index 9e4ba38..fa0cb3c 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_modificadores/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_modificadores/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_modificadores.h pluginbt_modificadores.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_printercocina/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_printercocina/CMakeLists.txt
+index 5e8ff45..24654c3 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_printercocina/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_printercocina/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_printercocina.h pluginbt_printercocina.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_pulseras/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_pulseras/CMakeLists.txt
+index 3fed0b8..04f6844 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_pulseras/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_pulseras/CMakeLists.txt
+@@ -14,15 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_pulseras.h pluginbt_pulseras.h pulsera.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSVG true)
+-set(QT_USE_QTSCRIPT true)
+-
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_serverlight/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_serverlight/CMakeLists.txt
+index bd5e53c..0511d45 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_serverlight/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_serverlight/CMakeLists.txt
+@@ -14,14 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_serverlight.h pluginbt_serverlight.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-set(QT_USE_QTNETWORK true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_serversync/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_serversync/CMakeLists.txt
+index 1e5fbc9..050e87e 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_serversync/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_serversync/CMakeLists.txt
+@@ -14,15 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_serversync.h pluginbt_serversync.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-set(QT_USE_QTNETWORK true)
+-
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_stockcompras/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_stockcompras/CMakeLists.txt
+index 1389a37..9a4978f 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_stockcompras/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_stockcompras/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_stockcompras.h pluginbt_stockcompras.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_teclado/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_teclado/CMakeLists.txt
+index 10e6c60..eac3839 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_teclado/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_teclado/CMakeLists.txt
+@@ -14,15 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_teclado.h pluginbt_teclado.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSVG true)
+-set(QT_USE_QTSCRIPT true)
+-
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_tecladonumerico/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_tecladonumerico/CMakeLists.txt
+index 7973a71..686d8b0 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_tecladonumerico/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_tecladonumerico/CMakeLists.txt
+@@ -17,12 +17,6 @@ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/css/${plugin}.css.in ${CMAKE_CURRENT_BINARY_DIR}/${plugin}.css @ONLY)
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_ticket/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_ticket/CMakeLists.txt
+index 5b23c42..5bdb733 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_ticket/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_ticket/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_ticket.h pluginbt_ticket.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_ticketdesglose/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_ticketdesglose/CMakeLists.txt
+index b1e3393..a9d251a 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_ticketdesglose/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_ticketdesglose/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_ticketdesglose.h pluginbt_ticketdesglose.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_ticketdevuelto/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_ticketdevuelto/CMakeLists.txt
+index 4c6557d..30486b8 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_ticketdevuelto/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_ticketdevuelto/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_ticketdevuelto.h pluginbt_ticketdevuelto.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_ticketivaincluido/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_ticketivaincluido/CMakeLists.txt
+index 22c8095..42b8d94 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_ticketivaincluido/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_ticketivaincluido/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_ticketivaincluido.h pluginbt_ticketivaincluido.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_total/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_total/CMakeLists.txt
+index 1e3dd56..630f8ac 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_total/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_total/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_total.h pluginbt_total.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_totalivaincluido/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_totalivaincluido/CMakeLists.txt
+index 7c190d9..c4929fe 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_totalivaincluido/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_totalivaincluido/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_totalivaincluido.h pluginbt_totalivaincluido.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_visor/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_visor/CMakeLists.txt
+index 5377bed..f6ba5ad 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_visor/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_visor/CMakeLists.txt
+@@ -14,13 +14,6 @@ file(GLOB plugin_UIS *.ui)
+ file(GLOB plugin_NO_MOCS pdefs_pluginbt_visor.h pluginbt_visor.h)
+ list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
+ 
+-
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTSCRIPT true)
+-
+-#INCLUDE( ${QT_USE_FILE} )
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+diff --git a/bulmages/bulmatpv/src/CMakeLists.txt b/bulmages/bulmatpv/src/CMakeLists.txt
+index edd93e0..fad4eb8 100644
+--- a/bulmages/bulmatpv/src/CMakeLists.txt
++++ b/bulmages/bulmatpv/src/CMakeLists.txt
+@@ -13,14 +13,6 @@ set(bulmatpv_MOCS btbulmatpv.h
+ 	   btsubform.h
+ 	   btinput.h)
+ 
+-set(QT_USE_QTASSISTANT false)
+-set(QT_USE_QTXML true)
+-set(QT_USE_QTUITOOLS true)
+-set(QT_USE_QTSCRIPT true)
+-
+-
+-#INCLUDE(${QT_USE_FILE})
+-
+ include_directories(
+     ${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+@@ -33,11 +25,6 @@ include_directories(
+ 	${CMAKE_BINARY_DIR}/bulmatpv/src/
+ 	${CMAKE_SOURCE_DIR}/bulmatpv/src/)
+ 
+-
+-if(USE_QMDIAREA)
+-      ADD_DEFINITIONS(&quot;-D'AREA_QMDI'&quot; )
+-endif(USE_QMDIAREA)
+-
+ # generate rules for building source files from the resources
+ #
+ 
+diff --git a/bulmages/bulmatpv/src/btbulmatpv.cpp b/bulmages/bulmatpv/src/btbulmatpv.cpp
+index f900d27..857d08b 100644
+--- a/bulmages/bulmatpv/src/btbulmatpv.cpp
++++ b/bulmages/bulmatpv/src/btbulmatpv.cpp
+@@ -55,12 +55,8 @@ BtBulmaTPV::BtBulmaTPV ( QString bd ) : BlMainWindow()
+     setUpdatesEnabled ( true );
+     pWorkspace = new BlWorkspace ( this );
+     
+-#ifdef AREA_QMDI    
+     pWorkspace-&gt;setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+     pWorkspace-&gt;setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+-#else
+-    pWorkspace-&gt;setScrollBarsEnabled ( true );
+-#endif
+ 
+     QProgressBar *m_pb = new QProgressBar();
+     m_pb-&gt;setMaximum ( 100 );
+diff --git a/bulmages/doc/CMakeLists.txt b/bulmages/doc/CMakeLists.txt
+index c878366..4bf5a68 100644
+--- a/bulmages/doc/CMakeLists.txt
++++ b/bulmages/doc/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ # Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
+ # <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">leo en alaxarxa.net</A>                                                      #
++# Modified (C) 2013 by Daniel Ripoll                                                     #
+ # <A HREF="http://www.iglues.org">http://www.iglues.org</A>                                                 #
+ #                                                                       #
+ # This program is free software; you can redistribute it and/or modify  #
+@@ -17,6 +18,7 @@
+ # Free Software Foundation, Inc.,                                       #
+ # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
+ #                                                                       #
++#########################################################################
+ #bulmacont_files  bulmacont.html  bulmafact_files  bulmafact.html  bulmasetup_files  bulmasetup.html
+ install(DIRECTORY bulmacont_files  bulmafact_files  bulmasetup_files 
+ 				DESTINATION share/bulmages/doc
+diff --git a/bulmages/installbulmages/CMakeLists.txt b/bulmages/installbulmages/CMakeLists.txt
+index ee47c2a..188f9ec 100644
+--- a/bulmages/installbulmages/CMakeLists.txt
++++ b/bulmages/installbulmages/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ # Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
+ # <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">leo en alaxarxa.net</A>                                                      #
++# Modified (C) 2013 by Daniel Ripoll                                                     #
+ # <A HREF="http://www.iglues.org">http://www.iglues.org</A>                                                 #
+ #                                                                       #
+ # This program is free software; you can redistribute it and/or modify  #
+@@ -17,6 +18,7 @@
+ # Free Software Foundation, Inc.,                                       #
+ # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
+ #                                                                       #
++#########################################################################
+ 
+ configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/version.in ${CMAKE_BINARY_DIR}/version @ONLY)
+ configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/bulmages.conf.in ${CMAKE_BINARY_DIR}/bulmages.conf @ONLY)
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007581.html">[BulmaGés]Migración a Qt5 va bien
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007583.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7582">[ fecha ]</a>
+              <a href="thread.html#7582">[ hilo ]</a>
+              <a href="subject.html#7582">[ asunto ]</a>
+              <a href="author.html#7582">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]ampersand en los informes &quot;listado.rml&quot;
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Futf-8%3Fq%3Fampersand_en_los_informes_%3F%3D%0A%09%3D%3Futf-8%3Fq%3F%3D22listado%3D2Erml%3D22%3F%3D&In-Reply-To=%3C24af1ea71002041314j336b0b7cre45270cc2a452192%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003372.html">
+   <LINK REL="Next"  HREF="003373.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]ampersand en los informes &quot;listado.rml&quot; </H1>
+    <B>Joan Miquel Torres Rigo</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Futf-8%3Fq%3Fampersand_en_los_informes_%3F%3D%0A%09%3D%3Futf-8%3Fq%3F%3D22listado%3D2Erml%3D22%3F%3D&In-Reply-To=%3C24af1ea71002041314j336b0b7cre45270cc2a452192%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]ampersand en los informes &quot;listado.rml&quot;">joanmiquel en mallorcaweb.net
+       </A><BR>
+    <I>Jue Feb  4 22:14:09 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003372.html">[BulmaGés]ampersand en los informes &quot;listado.rml&quot;
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003373.html">[BulmaGés]ampersand en los informes &quot;listado.rml&quot;
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3375">[ fecha ]</a>
+              <a href="thread.html#3375">[ hilo ]</a>
+              <a href="subject.html#3375">[ asunto ]</a>
+              <a href="author.html#3375">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>2010/2/4 Aron &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">auryn en wanadoo.es</A>&gt;
+
+&gt;<i> Por lo que veo funciona bien así.
+</I>&gt;<i>
+</I>&gt;<i> Usando &quot;n.data&quot; en bgtrml2pdf y teniendo &quot;valor-&gt;text().replace(&quot;&amp;&quot;,
+</I>&gt;<i> &quot;&amp;&quot;)&quot;
+</I>&gt;<i> en blsubform.cpp ya se generan bien los informes con algún ampersand (&amp;).
+</I>&gt;<i>
+</I>
+Sí. Pero es mejor la solución que da Javi porque lo soluciona para cualquier
+carácter y no sólo para éste en concreto.
+
+Sin embargo, como comentaba antes, es posible que os de muchos más problemas
+si los datos originales no estan en la codificación correcta o tienen
+errores de codificación (típicamente por haber sido copiados de ficheros con
+encodings distintos sin realizar primero la conversión).
+
+Son los típicos &quot;carácteres raros&quot; de las codificaciones ISO-* (como Latin,
+etc...) que en UTF-8 pueden ser sencillamente inválidos segun la posición
+que ocupen.
+
+
+En resumen: La solución es buena para salir del paso, pero a la larga, lo
+mejor es asegurarte que tienes los datos en la codificación correcta y que
+la aplicación trabaje siempre con ésta.
+
+Es un coñazo, pero es el precio de tener unicode con un consumo de memoria
+próximo al de los encodings ISO-* de toda la vida para la tabla ascii
+extendida.
+
+
+Saludos.
+
+-- 
+Joan Miquel Torres__________________________________
+Linux Registered User #164872
+<A HREF="http://www.mallorcaweb.net/joanmiquel">http://www.mallorcaweb.net/joanmiquel</A>
+BULMA: <A HREF="http://bulma.net">http://bulma.net</A> <A HREF="http://breu.bulma.net/?l2301">http://breu.bulma.net/?l2301</A>
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20100204/05b9c58b/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20100204/05b9c58b/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003372.html">[BulmaGés]ampersand en los informes &quot;listado.rml&quot;
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003373.html">[BulmaGés]ampersand en los informes &quot;listado.rml&quot;
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3375">[ fecha ]</a>
+              <a href="thread.html#3375">[ hilo ]</a>
+              <a href="subject.html#3375">[ asunto ]</a>
+              <a href="author.html#3375">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

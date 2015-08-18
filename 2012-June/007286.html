@@ -1,0 +1,467 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120601071019.EB36E2C02A%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+   <LINK REL="Next"  HREF="007287.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20120601071019.EB36E2C02A%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Vie Jun  1 09:10:19 CEST 2012</I>
+    <P><UL>
+        
+        <LI>Próximo mensaje: <A HREF="007287.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7286">[ fecha ]</a>
+              <a href="thread.html#7286">[ hilo ]</a>
+              <a href="subject.html#7286">[ asunto ]</a>
+              <a href="author.html#7286">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from 49f6d90 to 58ccb1d
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/49f6d90f20a99e89f0881f703d649b3e34ad330e/diffs/58ccb1d689a00d0623160c376f81e85ddc2faec8">https://gitorious.org/bulmages/bulmages/commit/49f6d90f20a99e89f0881f703d649b3e34ad330e/diffs/58ccb1d689a00d0623160c376f81e85ddc2faec8</A>
+
+Diff: 
+
+commit 58ccb1d689a00d0623160c376f81e85ddc2faec8
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri Jun 1 08:57:41 2012 +0200
+
+    Creo el boton Duplicar Presupuesto de cliente
+    
+    Que lo que hace es duplicar un presupuesto con el objeto de poder modificarle algunos datos y guardarlo como un presupuesto diferente
+    pero con la ventaja de no tener que escribirlo todo. Muy útil cuando se hacen variaciones de presupuestos y no se quieren perder
+    los que ya se tienen hechos.
+    
+    NOTA: No duplica los descuentos (Lo dejo como feature request).
+    
+    Salut
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/presupuestoclientebase.ui b/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/presupuestoclientebase.ui
+index 9b4aa93..5e22c20 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/presupuestoclientebase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/presupuestoclientebase.ui
+@@ -26,7 +26,7 @@
+   &lt;/property&gt;
+   &lt;layout class=&quot;QGridLayout&quot; name=&quot;gridLayout_2&quot;&gt;
+    &lt;property name=&quot;margin&quot;&gt;
+-    &lt;number&gt;4&lt;/number&gt;
++    &lt;number&gt;0&lt;/number&gt;
+    &lt;/property&gt;
+    &lt;item row=&quot;0&quot; column=&quot;0&quot; colspan=&quot;6&quot;&gt;
+     &lt;layout class=&quot;QHBoxLayout&quot;&gt;
+@@ -72,15 +72,12 @@
+        &lt;property name=&quot;frameShadow&quot;&gt;
+         &lt;enum&gt;QFrame::Raised&lt;/enum&gt;
+        &lt;/property&gt;
+-       &lt;layout class=&quot;QHBoxLayout&quot;&gt;
+-        &lt;property name=&quot;spacing&quot;&gt;
+-         &lt;number&gt;4&lt;/number&gt;
+-        &lt;/property&gt;
++       &lt;layout class=&quot;QHBoxLayout&quot; name=&quot;horizontalLayout&quot;&gt;
+         &lt;property name=&quot;margin&quot;&gt;
+-         &lt;number&gt;4&lt;/number&gt;
++         &lt;number&gt;0&lt;/number&gt;
+         &lt;/property&gt;
+         &lt;item&gt;
+-         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_guardar&quot;&gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_guardar_2&quot;&gt;
+           &lt;property name=&quot;minimumSize&quot;&gt;
+            &lt;size&gt;
+             &lt;width&gt;32&lt;/width&gt;
+@@ -238,6 +235,44 @@
+          &lt;/widget&gt;
+         &lt;/item&gt;
+         &lt;item&gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_duplicar&quot;&gt;
++          &lt;property name=&quot;minimumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;maximumSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;32&lt;/width&gt;
++            &lt;height&gt;32&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;toolTip&quot;&gt;
++           &lt;string&gt;Duplicar presupuesto&lt;/string&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;whatsThis&quot;&gt;
++           &lt;string&gt;Duplicar presupuesto&lt;/string&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;text&quot;&gt;
++           &lt;string/&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;icon&quot;&gt;
++           &lt;iconset resource=&quot;../../../bulmages.qrc&quot;&gt;
++            &lt;normaloff&gt;:/BulmaCont32x32/images/png/igualant.xpm&lt;/normaloff&gt;:/BulmaCont32x32/images/png/igualant.xpm&lt;/iconset&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;iconSize&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;22&lt;/width&gt;
++            &lt;height&gt;22&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;shortcut&quot;&gt;
++           &lt;string&gt;Ctrl+S&lt;/string&gt;
++          &lt;/property&gt;
++         &lt;/widget&gt;
++        &lt;/item&gt;
++        &lt;item&gt;
+          &lt;spacer&gt;
+           &lt;property name=&quot;orientation&quot;&gt;
+            &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
+@@ -433,7 +468,7 @@
+        &lt;/widget&gt;
+       &lt;/item&gt;
+       &lt;item row=&quot;1&quot; column=&quot;0&quot; rowspan=&quot;3&quot; colspan=&quot;5&quot;&gt;
+-       &lt;widget class=&quot;BlSearchWidget&quot; name=&quot;mui_idcliente&quot;&gt;
++       &lt;widget class=&quot;BlSearchWidget&quot; name=&quot;mui_idcliente&quot; native=&quot;true&quot;&gt;
+         &lt;property name=&quot;sizePolicy&quot;&gt;
+          &lt;sizepolicy hsizetype=&quot;Ignored&quot; vsizetype=&quot;Ignored&quot;&gt;
+           &lt;horstretch&gt;0&lt;/horstretch&gt;
+@@ -1491,7 +1526,6 @@
+   &lt;/customwidget&gt;
+  &lt;/customwidgets&gt;
+  &lt;tabstops&gt;
+-  &lt;tabstop&gt;mui_guardar&lt;/tabstop&gt;
+   &lt;tabstop&gt;mui_borrar&lt;/tabstop&gt;
+   &lt;tabstop&gt;mui_imprimir&lt;/tabstop&gt;
+   &lt;tabstop&gt;mui_refpresupuesto&lt;/tabstop&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/presupuestoview.cpp b/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/presupuestoview.cpp
+index 7e94b63..b250dce 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/presupuestoview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/presupuestoview.cpp
+@@ -147,16 +147,6 @@ void PresupuestoView::s_pintaTotales()
+ }
+ 
+ 
+-///
+-/**
+-**/
+-void PresupuestoView::on_mui_pasarapedido_clicked()
+-{
+-    BL_FUNC_DEBUG
+-    generarPedidoCliente();
+-    
+-}
+-
+ 
+ ///
+ /**
+@@ -202,130 +192,6 @@ void PresupuestoView::pintatotales ( BlFixed iva, BlFixed base, BlFixed total, B
+ }
+ 
+ 
+-/// Se encarga de generar un pedido a partir del presupuesto.
+-/**
+-\return
+-**/
+-void PresupuestoView::generarPedidoCliente()
+-{
+-    BL_FUNC_DEBUG
+-    /*
+-        PedidoClienteView *bud = NULL;
+-        BlDbRecordSet *cur = NULL;
+-
+-        try {
+-            /// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta
+-            /// comprobaci&oacute;n la consulta a la base de datos ser&aacute; erronea y al hacer
+-            /// el siguiente cur-&gt;eof() el programa fallar&aacute;.
+-            /// Comprobamos que existe el pedido con esos datos, y en caso afirmativo lo mostramos.
+-
+-            QString SQLQuery = &quot;&quot;;
+-
+-            if ( dbValue ( &quot;refpresupuesto&quot; ).isEmpty() || dbValue ( &quot;idcliente&quot; ).isEmpty() ) {
+-                /// El presupuesto no se ha guardado y no se dispone en la base de datos
+-                /// de estos datos. Se utilizan en su lugar los del formulario.
+-                /// Verifica que exista, por lo menos, un cliente seleccionado.
+-                if ( mui_idcliente-&gt;idcliente().isEmpty() ) {
+-                    blMsgInfo ( _( &quot;Tiene que seleccionar un cliente&quot; ), this );
+-                    return;
+-                } else {
+-                    SQLQuery = &quot;SELECT * FROM pedidocliente WHERE refpedidocliente = '&quot; + mui_refpresupuesto-&gt;text() + &quot;' AND idcliente = &quot; + mui_idcliente-&gt;idcliente();
+-                } // end if
+-            } else {
+-                SQLQuery = &quot;SELECT * FROM pedidocliente WHERE refpedidocliente = '&quot; + dbValue ( &quot;refpresupuesto&quot; ) + &quot;' AND idcliente = &quot; + dbValue ( &quot;idcliente&quot; );
+-            } // end if
+-
+-            cur = mainCompany()-&gt;loadQuery ( SQLQuery );
+-
+-            if ( !cur-&gt;eof() ) {
+-                /// Informamos que ya hay un pedido y lo abrimos.
+-                /// Si no existe pedido salimos de la funci&oacute;n y creamos el pedido.
+-                if ( QMessageBox::question ( this,
+-                                             _( &quot;Pedido existente&quot; ),
+-                                             _( &quot;Existe un pedido a este cliente con la misma referencia que este presupuesto. Desea abrirla para verificar?&quot; ),
+-                                             _( &quot;&amp;Si&quot; ), _( &quot;&amp;No&quot; ), QString::null, 0, 1 ) ) {
+-                    return;
+-                } // end if
+-
+-                bud = mainCompany() -&gt;newPedidoClienteView();
+-                mainCompany() -&gt;m_pWorkspace-&gt;addSubWindow ( bud );
+-                bud-&gt;load ( cur-&gt;value( &quot;idpedidocliente&quot; ) );
+-                bud-&gt;show();
+-                delete cur;
+-                return;
+-            } // end if
+-
+-            delete cur;
+-
+-            /// Creamos el pedido.
+-            bud = mainCompany() -&gt;newPedidoClienteView();
+-            bud-&gt;load ( &quot;0&quot; );
+-            mainCompany() -&gt;m_pWorkspace-&gt;addSubWindow ( bud );
+-
+-            /// Traspasamos toda la informacion del presupuesto al pedido.
+-            recogeValores();
+-            bud-&gt;setDbValue ( &quot;idcliente&quot;, dbValue ( &quot;idcliente&quot; ) );
+-            bud-&gt;setDbValue ( &quot;comentpedidocliente&quot;, dbValue ( &quot;comentpresupuesto&quot; ) );
+-            bud-&gt;setDbValue ( &quot;descpedidocliente&quot;, dbValue ( &quot;descpresupuesto&quot; ) );
+-            bud-&gt;setDbValue ( &quot;fechapedidocliente&quot;, dbValue ( &quot;fpresupuesto&quot; ) );
+-            bud-&gt;setDbValue ( &quot;idforma_pago&quot;, dbValue ( &quot;idforma_pago&quot; ) );
+-            bud-&gt;setDbValue ( &quot;refpedidocliente&quot;, dbValue ( &quot;refpresupuesto&quot; ) );
+-            bud-&gt;setDbValue ( &quot;procesadopedidocliente&quot;, dbValue ( &quot;procesadopresupuesto&quot; ) );
+-            bud-&gt;setDbValue ( &quot;idalmacen&quot;, dbValue ( &quot;idalmacen&quot; ) );
+-            bud-&gt;setDbValue ( &quot;contactpedidocliente&quot;, dbValue ( &quot;contactpresupuesto&quot; ) );
+-            bud-&gt;setDbValue ( &quot;telpedidocliente&quot;, dbValue ( &quot;telpresupuesto&quot; ) );
+-
+-            /// Traspasamos las lineas del presupuesto a lineas del pedido.
+-            BlDbSubFormRecord *linea;
+-            BlDbSubFormRecord *linea2;
+-
+-            for ( int i = 0; i &lt; m_listalineas-&gt;rowCount(); i++ ) {
+-                linea = m_listalineas-&gt;lineaat ( i );
+-                if ( linea-&gt;dbValue ( &quot;idarticulo&quot; ) != &quot;&quot; ) {
+-                    linea2 = bud-&gt;getlistalineas() -&gt;lineaat ( bud-&gt;getlistalineas() -&gt;rowCount() - 1 );
+-                    bud-&gt;getlistalineas() -&gt;newRecord();
+-                    bud-&gt;getlistalineas() -&gt;setProcesarCambios ( FALSE );
+-                    linea2-&gt;setDbValue ( &quot;desclpedidocliente&quot;, linea-&gt;dbValue ( &quot;desclpresupuesto&quot; ) );
+-                    linea2-&gt;setDbValue ( &quot;cantlpedidocliente&quot;, linea-&gt;dbValue ( &quot;cantlpresupuesto&quot; ) );
+-                    linea2-&gt;setDbValue ( &quot;pvplpedidocliente&quot;, linea-&gt;dbValue ( &quot;pvplpresupuesto&quot; ) );
+-                    linea2-&gt;setDbValue ( &quot;ivalpedidocliente&quot;, linea-&gt;dbValue ( &quot;ivalpresupuesto&quot; ) );
+-                    linea2-&gt;setDbValue ( &quot;descuentolpedidocliente&quot;, linea-&gt;dbValue ( &quot;descuentolpresupuesto&quot; ) );
+-                    linea2-&gt;setDbValue ( &quot;idarticulo&quot;, linea-&gt;dbValue ( &quot;idarticulo&quot; ) );
+-                    linea2-&gt;setDbValue ( &quot;codigocompletoarticulo&quot;, linea-&gt;dbValue ( &quot;codigocompletoarticulo&quot; ) );
+-                    linea2-&gt;setDbValue ( &quot;nomarticulo&quot;, linea-&gt;dbValue ( &quot;nomarticulo&quot; ) );
+-                    bud-&gt;getlistalineas() -&gt;setProcesarCambios ( TRUE );
+-                } // end if
+-            } // end for
+-
+-            /// Traspasamos los descuentos del presupuesto a descuentos del pedido.
+-            BlDbSubFormRecord *linea1;
+-            BlDbSubFormRecord *linea3;
+-            for ( int i = 0; i &lt; m_listadescuentos-&gt;rowCount(); i++ ) {
+-                linea1 = m_listadescuentos-&gt;lineaat ( i );
+-                if ( linea1-&gt;dbValue ( &quot;proporciondpresupuesto&quot; ) != &quot;&quot; ) {
+-                    linea3 = bud-&gt;getlistadescuentos() -&gt;lineaat ( bud-&gt;getlistadescuentos() -&gt;rowCount() - 1 );
+-                    bud-&gt;getlistadescuentos() -&gt;setProcesarCambios ( FALSE );
+-                    linea3-&gt;setDbValue ( &quot;conceptdpedidocliente&quot;, linea1-&gt;dbValue ( &quot;conceptdpresupuesto&quot; ) );
+-                    linea3-&gt;setDbValue ( &quot;proporciondpedidocliente&quot;, linea1-&gt;dbValue ( &quot;proporciondpresupuesto&quot; ) );
+-                    bud-&gt;getlistadescuentos() -&gt;setProcesarCambios ( TRUE );
+-                    bud-&gt;getlistadescuentos() -&gt;newRecord();
+-                } // end if
+-            } // end for
+-
+-            /// Pintamos el pedido y lo presentamos.
+-            bud-&gt;pintar();
+-            bud-&gt;calculaypintatotales();
+-            bud-&gt;show();
+-
+-        } catch ( ... ) {
+-            blMsgInfo ( _( &quot;Error inesperado&quot; ), this );
+-            if ( cur ) delete cur;
+-            if ( bud ) delete bud;
+-        } // end try
+-    */
+-    
+-}
+-
+ 
+ ///
+ /**
+@@ -453,3 +319,73 @@ QString PresupuestoView::detalleArticulos()
+     return texto;
+ }
+ 
++
++
++
++/// Se encarga de generar una factura a partir de un albar&aacute;n.
++/** Primero de todo busca una factura por referencia que tenga este albaran.
++    Si dicha factura existe entonces la cargamos y terminamos.
++    Si no existe dicha factura el sistema avisa y permite crear una poniendo
++    Todos los datos del albaran automaticamente en ella.
++*/
++/**
++\return
++**/
++void PresupuestoView::on_mui_duplicar_released()
++{
++    BL_FUNC_DEBUG
++    PresupuestoView *fpv = this ;
++
++
++    PresupuestoView *bud = NULL;
++    BlDbRecordSet *cur = NULL;
++
++    try {
++        /// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta
++        /// comprobaci&oacute;n la consulta a la base de datos ser&aacute; erronea y al hacer
++        /// el siguiente cur-&gt;eof() el programa fallar&aacute;.
++        /// Comprobamos que existe una factura con esos datos, y en caso afirmativo lo mostramos.
++
++        /// Creamos la factura.
++        PresupuestoView *bud = new PresupuestoView ( ( BfCompany * ) fpv-&gt;mainCompany(), 0 );
++        fpv-&gt;mainCompany() -&gt;m_pWorkspace-&gt;addSubWindow ( bud );
++	bud-&gt;inicializar();
++
++        bud-&gt;setDbValue ( &quot;comentpresupuesto&quot;, fpv-&gt;dbValue ( &quot;comentpresupuesto&quot; ) );
++        bud-&gt;setDbValue ( &quot;idforma_pago&quot;, fpv-&gt;dbValue ( &quot;idforma_pago&quot; ) );
++        bud-&gt;setDbValue ( &quot;refpresupuesto&quot;, fpv-&gt;dbValue ( &quot;refpresupuesto&quot; ) );
++        bud-&gt;setDbValue ( &quot;idcliente&quot;, fpv-&gt;dbValue ( &quot;idcliente&quot; ) );
++        bud-&gt;pintar();
++        bud-&gt;show();
++
++        /// Traspasamos las lineas de factura
++        QString l;
++        BlDbSubFormRecord *linea, *linea1;
++        for ( int i = 0; i &lt; fpv-&gt;m_listalineas-&gt;rowCount(); ++i ) {
++            linea = fpv-&gt;m_listalineas-&gt;lineaat ( i );
++            if ( linea-&gt;dbValue ( &quot;idarticulo&quot; ) != &quot;&quot; ) {
++                linea1 = bud-&gt;getlistalineas() -&gt;lineaat ( bud-&gt;getlistalineas() -&gt;rowCount() - 1 );
++                bud-&gt;getlistalineas() -&gt;newRecord();
++                bud-&gt;getlistalineas() -&gt;setProcesarCambios ( FALSE );
++                linea1-&gt;setDbValue ( &quot;desclpresupuesto&quot;, linea-&gt;dbValue ( &quot;desclpresupuesto&quot; ) );
++                linea1-&gt;setDbValue ( &quot;cantlpresupuesto&quot;, linea-&gt;dbValue ( &quot;cantlpresupuesto&quot; ) );
++                linea1-&gt;setDbValue ( &quot;pvplpresupuesto&quot;, linea-&gt;dbValue ( &quot;pvplpresupuesto&quot; ) );
++                linea1-&gt;setDbValue ( &quot;descuentolpresupuesto&quot;, linea-&gt;dbValue ( &quot;descuentolpresupuesto&quot; ) );
++                linea1-&gt;setDbValue ( &quot;idarticulo&quot;, linea-&gt;dbValue ( &quot;idarticulo&quot; ) );
++                linea1-&gt;setDbValue ( &quot;codigocompletoarticulo&quot;, linea-&gt;dbValue ( &quot;codigocompletoarticulo&quot; ) );
++                linea1-&gt;setDbValue ( &quot;nomarticulo&quot;, linea-&gt;dbValue ( &quot;nomarticulo&quot; ) );
++                linea1-&gt;setDbValue ( &quot;ivalpresupuesto&quot;, linea-&gt;dbValue ( &quot;ivalpresupuesto&quot; ) );
++                linea1-&gt;setDbValue ( &quot;reqeqlpresupuesto&quot;, linea-&gt;dbValue ( &quot;reqeqlpresupuesto&quot; ) );
++            } // end if
++        } // end for
++        bud-&gt;calculaypintatotales();
++
++    } catch ( ... ) {
++        blMsgInfo ( _ ( &quot;Error inesperado&quot; ), this );
++        if ( cur ) delete cur;
++        if ( bud ) delete bud;
++    } // end try
++
++}
++
++
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/presupuestoview.h b/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/presupuestoview.h
+index a1d5a7b..7fcff44 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/presupuestoview.h
++++ b/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/presupuestoview.h
+@@ -61,20 +61,17 @@ public:
+     void inicializar();
+     void manageArticle ( int );
+ 
+-private:
+-    void generarPedidoCliente();
+-
+ public:
+     QString detalleArticulos();
+ 
+ public slots:
+     /// Este slot se activa cuando hay cambios en los subformularios.
+     virtual void s_pintaTotales();
+-    virtual void on_mui_pasarapedido_clicked();
+     virtual void on_m_descuentos_editFinish ( int, int );
+     virtual void on_subform2_editFinish ( int, int );
+     virtual void on_mui_idcliente_valueChanged ( QString id );
+     virtual void on_mui_idalmacen_valueChanged ( QString id );
++    virtual void on_mui_duplicar_released();
+ };
+ 
+ #endif
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorbase.ui b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorbase.ui
+index 96c05b3..b2104c1 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorbase.ui
+@@ -266,10 +266,10 @@
+            &lt;/size&gt;
+           &lt;/property&gt;
+           &lt;property name=&quot;toolTip&quot;&gt;
+-           &lt;string&gt;Imprimir pedido&lt;/string&gt;
++           &lt;string&gt;Duplicar pedido&lt;/string&gt;
+           &lt;/property&gt;
+           &lt;property name=&quot;whatsThis&quot;&gt;
+-           &lt;string&gt;Imprimir pedido&lt;/string&gt;
++           &lt;string&gt;Duplicar pedido&lt;/string&gt;
+           &lt;/property&gt;
+           &lt;property name=&quot;text&quot;&gt;
+            &lt;string/&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorview.cpp b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorview.cpp
+index 5f44bf4..ed7ce21 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidoproveedorview.cpp
+@@ -250,9 +250,6 @@ void PedidoProveedorView::on_mui_duplicar_released()
+         PedidoProveedorView *bud = new PedidoProveedorView ( ( BfCompany * ) fpv-&gt;mainCompany(), 0 );
+         fpv-&gt;mainCompany() -&gt;m_pWorkspace-&gt;addSubWindow ( bud );
+ 
+-        /// Cargamos un elemento que no existe para inicializar bien la clase.
+-//         bud-&gt;inicialize();
+-
+         bud-&gt;setDbValue ( &quot;comentpedidoproveedor&quot;, fpv-&gt;dbValue ( &quot;comentpedidoproveedor&quot; ) );
+         bud-&gt;setDbValue ( &quot;idforma_pago&quot;, fpv-&gt;dbValue ( &quot;idforma_pago&quot; ) );
+         bud-&gt;setDbValue ( &quot;refpedidoproveedor&quot;, fpv-&gt;dbValue ( &quot;refpedidoproveedor&quot; ) );
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Próximo mensaje: <A HREF="007287.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7286">[ fecha ]</a>
+              <a href="thread.html#7286">[ hilo ]</a>
+              <a href="subject.html#7286">[ asunto ]</a>
+              <a href="author.html#7286">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] Ayuda para compilar, por favor...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Ayuda%20para%20compilar%2C%20por%20favor...&In-Reply-To=%3C200812131255.17178.m.mezo%40upm.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000502.html">
+   <LINK REL="Next"  HREF="000504.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] Ayuda para compilar, por favor... </H1>
+    <B>Marcos Mezo</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Ayuda%20para%20compilar%2C%20por%20favor...&In-Reply-To=%3C200812131255.17178.m.mezo%40upm.es%3E"
+       TITLE="[BulmaGés] Ayuda para compilar, por favor...">m.mezo en upm.es
+       </A><BR>
+    <I>Sab Dic 13 12:55:16 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000502.html">[BulmaGés] r2837 - trunk/bulmages/bulmacont/src
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000504.html">[BulmaGés]Ayuda para compilar, por favor...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#503">[ fecha ]</a>
+              <a href="thread.html#503">[ hilo ]</a>
+              <a href="subject.html#503">[ asunto ]</a>
+              <a href="author.html#503">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola a todos,
+
+hace un par de años estuve pegandome un poco con bulmacont (cuando aún no 
+estaba en berlios) y lo estuve compilando y modificando algo. De lo que hice 
+que no fue casi nada porque no encontraba tiempo, lo único que subí y queda 
+aún es la función para &quot;sanitizar&quot; las cadenas antes de enviarlas al 
+postgresql.
+
+El caso es que ahora quería al menos volver a compilar el proyecto y ver lo 
+mucho que ha avanzado, pero me estoy dando de cabeza con un error al 
+compilar. He actualizado varias veces estos dos últimos días a la última 
+versión del trunk.
+
+Después del cmake ../ y make, me empieza a compilar correctamente pero luego 
+se para en cada directorio de bulmafact y sus plugins, porque no encuentra el 
+archivo &quot;ui_.h&quot;
+
+El error se puede corregir borrando la referencia a esos archivos en los 
+ficheros &quot;build.make&quot; y  &quot;cmake_clean.cmake&quot;. Por ejemplo uno de los archivos 
+afectados es:
+/trunk/bulmages/build/bulmafact/src/CMakeFiles/bulmafact.dir/build.make
+
+pero como digo pasa en todos los directorios de los plugins de bulmafact 
+también (y sólo de bulmafact, no ocurre en bulmalib ni en bulmacont ni en 
+ningún otro)
+
+Por lo que he deducido debe haber algún script que le diga al cmake o al make 
+que los ficheros ui a compilar son todos los de algún directorio o algún 
+array y algún elemento debe estar vacío y por eso da el fallo. Creía haberlo 
+encontrado en la carpeta scripts y pensaba que era el 
+bulmafact-genera_uicqt4, que parece que convierte el nombre de una lista de 
+archivos.ui al ui_{array[x]}.h y define array[1]=&quot;&quot;, pero parece que no es el 
+caso. He comentado las líneas de ese archivo, e incluso lo he cambiado de 
+nombre y hecho no ejecutable, y después de hacer el cmake de nuevo sigue todo 
+igual. 
+
+Se que puedo arreglarlo a mano borrando todos las referencias ui_.h en los 
+archivos build.make que he comentado antes, pero si me pudierais echar una 
+man para ver por dónde van los tiros e intentar solucionarlo de raiz os lo 
+agradecería. (además de que son unos cuantos archivos y no estoy muy puesto 
+con sed :-) )
+
+Un saludo y gracias,
+Marcos Mezo
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000502.html">[BulmaGés] r2837 - trunk/bulmages/bulmacont/src
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000504.html">[BulmaGés]Ayuda para compilar, por favor...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#503">[ fecha ]</a>
+              <a href="thread.html#503">[ hilo ]</a>
+              <a href="subject.html#503">[ asunto ]</a>
+              <a href="author.html#503">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

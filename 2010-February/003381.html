@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]ampersand en los informes &quot;listado.rml&quot;
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fampersand_en_los_info%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Frmes_%3D22listado%3D2Erml%3D22%3F%3D&In-Reply-To=%3C4B6BF193.6010604%40todo-redes.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003380.html">
+   <LINK REL="Next"  HREF="003393.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]ampersand en los informes &quot;listado.rml&quot; </H1>
+    <B>Fco. Javier M. C.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fampersand_en_los_info%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Frmes_%3D22listado%3D2Erml%3D22%3F%3D&In-Reply-To=%3C4B6BF193.6010604%40todo-redes.com%3E"
+       TITLE="[BulmaGés]ampersand en los informes &quot;listado.rml&quot;">fcojavmc en todo-redes.com
+       </A><BR>
+    <I>Vie Feb  5 11:23:15 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003380.html">[BulmaGés]ampersand en los informes &quot;listado.rml&quot;
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003393.html">[BulmaGés]ampersand en los informes &quot;listado.rml&quot;
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3381">[ fecha ]</a>
+              <a href="thread.html#3381">[ hilo ]</a>
+              <a href="subject.html#3381">[ asunto ]</a>
+              <a href="author.html#3381">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>El 05/02/10 11:09, Aron escribió:
+&gt;<i> Al usar XMLProtect, tanto en el RML generado de &quot;~.bulmages&quot; como en el PDF no 
+</I>&gt;<i> me aparece ningún acento ni el ampersand, sólo su código de esta forma:
+</I>&gt;<i> &quot;&#38;&quot; en vez de &quot;&amp;&quot;
+</I>&gt;<i> &quot;&#255;&quot; para &quot;á&quot;
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+jo! :( lo estoy viendo. Déjame que lo mire porque algo no está
+funcionando bien.
+
+&gt;<i> On Viernes 05 Febrero 2010 10:36:07 Fco. Javier M. C. escribió:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> El 05/02/10 09:40, Aron escribió:
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i> On Jueves 04 Febrero 2010 19:39:00 Fco. Javier M. C. escribió:
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;<i> El 04/02/10 19:01, Aron escribió:
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i> Sí, he tenido que cambiarlo. Si no reemplazo ahí los &quot;&amp;&quot; por &quot;&amp;&quot;
+</I>&gt;&gt;&gt;&gt;&gt;<i> sigue fallando la generación del PDF.
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> Supongo que estás con la versión del SVN y has puesto el &amp; dentro del
+</I>&gt;&gt;&gt;&gt;<i> CDATA. ¿correcto?
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Yo lo he probado en estas condiciones y aparece perfectamente sin tocar
+</I>&gt;&gt;&gt;&gt;<i> nada más.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Si no te funciona copia/pega algún trozo de código donde falle par
+</I>&gt;&gt;&gt;&gt;<i>  probarlo.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Un saludo.
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;<i> Vale, me funciona bien.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Además de parchear &quot;bgtrml2pdf&quot; como dijiste, he modificado la línea 2367
+</I>&gt;&gt;&gt;<i> de &quot;blsubform.cpp&quot; para que incluya &quot;CDATA&quot;:
+</I>&gt;&gt;&gt;<i> fitxersortidarml += &quot;    &lt;td&gt;&lt;![CDATA[&quot; +  valor-&gt;text() + &quot;]]&gt;&lt;/td&gt;\n&quot;;
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> ¿Es así como lo tienes entonces?
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i> jeje! me vas a perdonar, pero las pruebas las hice cambiando el rml a
+</I>&gt;&gt;<i> mano. En cuanto a tu propuesta, no es solución definitiva porque pones
+</I>&gt;&gt;<i> todo el texto dentro de CDATA y no debería ser así, Tomeu tiene la
+</I>&gt;&gt;<i> respuesta correcta :) sería esto:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> fitxersortidarml += &quot;    &lt;td&gt;&quot; +  XMLProtect( valor-&gt;text() ) + &quot;&lt;/td&gt;\n&quot;;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> pruébalo y me dices.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Un saludo.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     
+</I>&gt;<i>   
+</I>
+
+-- 
+Javier.
+TODO-REDES
+<A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+C/Begònia 12 - 07010 Palma de Mallorca.
+Tel.: 971499071
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003380.html">[BulmaGés]ampersand en los informes &quot;listado.rml&quot;
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003393.html">[BulmaGés]ampersand en los informes &quot;listado.rml&quot;
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3381">[ fecha ]</a>
+              <a href="thread.html#3381">[ hilo ]</a>
+              <a href="subject.html#3381">[ asunto ]</a>
+              <a href="author.html#3381">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

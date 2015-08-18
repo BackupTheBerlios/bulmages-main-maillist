@@ -1,0 +1,212 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to listado...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20listado...&In-Reply-To=%3C20120502212503.CD12F75A46%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007162.html">
+   <LINK REL="Next"  HREF="007164.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to listado... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20listado...&In-Reply-To=%3C20120502212503.CD12F75A46%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to listado...">no-reply en gitorious.org
+       </A><BR>
+    <I>Mie Mayo  2 23:25:03 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007162.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to release...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007164.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to listado...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7163">[ fecha ]</a>
+              <a href="thread.html#7163">[ hilo ]</a>
+              <a href="subject.html#7163">[ asunto ]</a>
+              <a href="author.html#7163">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to listadospersonalizados
+listadospersonalizados changed from eb8ae8b to 8fa0fda
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/eb8ae8b50225c582c9ba06fa48b7887d53d04e27/diffs/8fa0fda081d859b5c136a65268d1ed9cb59a2682">https://gitorious.org/bulmages/bulmages/commit/eb8ae8b50225c582c9ba06fa48b7887d53d04e27/diffs/8fa0fda081d859b5c136a65268d1ed9cb59a2682</A>
+
+Diff: 
+
+commit 8fa0fda081d859b5c136a65268d1ed9cb59a2682
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Wed May 2 23:24:45 2012 +0200
+
+    Arreglo problema con las plantillas que se procesan multiples veces
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/CMakeLists.txt
+index e96d76a..ed87d2f 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/CMakeLists.txt
+@@ -116,3 +116,9 @@ add_dependencies(${plugin} bulmafact bulmalib bulmatpv pluginbf_clientealbaran p
+ install(DIRECTORY dbmodels/ 
+ 		DESTINATION share/bulmages/dbmodels/plugins
+ 		PATTERN &quot;.svn&quot; EXCLUDE)
++
++
++install(DIRECTORY openreports/ 
++      DESTINATION share/bulmages/openreports
++      PATTERN &quot;.svn&quot; EXCLUDE)
++
+diff --git a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.ca b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.ca
+index ad9cb6a..681de4e 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.ca
++++ b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.ca
+@@ -28,4 +28,6 @@ Categorias: Facturació avançada;
+ 
+ Orden: 900
+ 
++Reports: listado_z.rml
++
+ Comentarios: És imprescindible tenir la funcionalitat de TPV instal·lada o sinó aquest plugin no funcionarà.
+diff --git a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.en b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.en
+index 6b9b0a1..3b78954 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.en
++++ b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.en
+@@ -28,4 +28,6 @@ Categorias: Advanced invoicing;
+ 
+ Orden: 900
+ 
++Reports: listado_z.rml
++
+ Comentarios: It is essential to have the POS functionality installed or otherwise this plugin will not work.
+diff --git a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.es b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.es
+index 57a3d92..aeb4b31 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.es
++++ b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.es
+@@ -29,4 +29,6 @@ Categorias: Facturacion avanzada;
+ 
+ Orden: 900
+ 
++Reports: listado_z.rml
++
+ Comentarios: Es imprescindible tener la funcionalidad de TPV instalada o sino este plugin no funcionará.
+\ No newline at end of file
+diff --git a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.fr b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.fr
+index 6f1d533..16bba36 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.fr
++++ b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/README.fr
+@@ -28,4 +28,6 @@ Categorias: Facturation avancees;
+ 
+ Orden: 900
+ 
++Reports: listado_z.rml
++
+ Comentarios: On doit avoir la fonctionalité de TPV installée sinon ce plugin ne fonctionnera pas
+diff --git a/bulmages/bulmalib/src/bldb.cpp b/bulmages/bulmalib/src/bldb.cpp
+index 5c54f5d..903e0a0 100644
+--- a/bulmages/bulmalib/src/bldb.cpp
++++ b/bulmages/bulmalib/src/bldb.cpp
+@@ -1003,6 +1003,10 @@ QString BlDbRecord::story ( void )
+ int BlDbRecord::generateRML ( const QString &amp;arch )
+ {
+     BL_FUNC_DEBUG
++
++    QString archivo;
++    QString archivod = arch;
++
+     /// Disparamos los plugins
+     int res = g_plugins-&gt;run ( &quot;BlDbRecord_generateRML&quot;, this );
+     if ( res != 0 ) {
+@@ -1016,19 +1020,20 @@ int BlDbRecord::generateRML ( const QString &amp;arch )
+     else if ( arch.right ( 3 ) == &quot;pys&quot; )
+         tipoescape = 2;
+ 
+-    /// Copiamos el archivo.
+-    QString archivo = g_confpr-&gt;value( CONF_DIR_OPENREPORTS ) + arch;
+-    QString archivod = g_confpr-&gt;value( CONF_DIR_USER ) + arch;
+-    if(!blCopyFile(archivo, archivod)){
+-        blMsgError(_(&quot;Error al copiar el archivo RML [ bldb-&gt;generateRML() ]&quot;));
++    /// Copiamos el archivo desde openreports en caso de que sea preciso.
++    if ( ! archivod.contains(g_confpr-&gt;value( CONF_DIR_USER ))) {
++	archivo = g_confpr-&gt;value( CONF_DIR_OPENREPORTS ) + arch;
++	archivod = g_confpr-&gt;value( CONF_DIR_USER ) + arch;
++	if(!blCopyFile(archivo, archivod)){
++	    blMsgError(_(&quot;Error al copiar el archivo RML [ BlDbRecord-&gt;generateRML() ]&quot;));
++	} // end if
+     } // end if
+ 
+-
+     /// Copiamos el logo
+     QString ownlogo = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;logo.jpg&quot;;
+     QString archivologo = g_confpr-&gt;value( CONF_DIR_OPENREPORTS ) + &quot;logo.jpg&quot;;
+     if(!blCopyFile(archivologo, ownlogo)){
+-        blMsgError(_(&quot;Error al copiar el archivo de logo [ bldb-&gt;generateRML() ]&quot;));
++        blMsgError(_(&quot;Error al copiar el archivo de logo [ BlDbRecord-&gt;generateRML() ]&quot;));
+     } // end if
+ 
+     QFile file;
+diff --git a/bulmages/bulmalib/src/blformlist.cpp b/bulmages/bulmalib/src/blformlist.cpp
+index c6a9314..6d983e4 100644
+--- a/bulmages/bulmalib/src/blformlist.cpp
++++ b/bulmages/bulmalib/src/blformlist.cpp
+@@ -875,6 +875,7 @@ void BlFormList::printPDF (  const QString &amp;titular )
+         blMsgError(_(&quot;Error al copiar logo.jpg [ BlFormList-&gt;printPDF() ]&quot;));
+     } // end if
+ 
++    
+     QFile file;
+     file.setFileName ( archivod );
+     file.open ( QIODevice::ReadOnly );
+@@ -906,10 +907,11 @@ void BlFormList::printPDF (  const QString &amp;titular )
+         stream &lt;&lt; buff;
+         file.close();
+     } // end if
+-    
++
+     BlForm *ficha = new BlForm ( mainCompany(), 0 );
+-    if ( !ficha-&gt;generateRML ( g_confpr-&gt;value( CONF_DIR_OPENREPORTS ) + fileName ))
++    if ( !ficha-&gt;generateRML ( archivod ))
+ 	return;
++    delete ficha;
+ 
+     blCreateAndLoadPDF ( fileName.left ( fileName.size() - 4 ));
+ }
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007162.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to release...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007164.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to listado...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7163">[ fecha ]</a>
+              <a href="thread.html#7163">[ hilo ]</a>
+              <a href="subject.html#7163">[ asunto ]</a>
+              <a href="author.html#7163">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

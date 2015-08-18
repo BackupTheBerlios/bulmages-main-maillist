@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]&quot;Error en el bus&quot; al ejecutar el programa (Recomenat per a Xavi	Drudis)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F%3D22Error_en_el_bus%3D22%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F_al_ejecutar_el_programa_%3D28Recomenat_per_a_Xavi%3D09%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FDrudis%3D29%3F%3D&In-Reply-To=%3C20081215235340.GA21402%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000559.html">
+   <LINK REL="Next"  HREF="000560.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]&quot;Error en el bus&quot; al ejecutar el programa (Recomenat per a Xavi	Drudis) </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F%3D22Error_en_el_bus%3D22%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F_al_ejecutar_el_programa_%3D28Recomenat_per_a_Xavi%3D09%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FDrudis%3D29%3F%3D&In-Reply-To=%3C20081215235340.GA21402%40localhost%3E"
+       TITLE="[BulmaGés]&quot;Error en el bus&quot; al ejecutar el programa (Recomenat per a Xavi	Drudis)">xdrudis en tinet.cat
+       </A><BR>
+    <I>Mar Dic 16 00:53:41 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000559.html">[BulmaGés]&quot;Error en el bus&quot; al ejecutar el programa (Recomenat per a Xavi Drudis)
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000560.html">[BulmaGés]&quot;Error en el bus&quot; al ejecutar el programa (Recomenat per a	Xavi?Drudis)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#557">[ fecha ]</a>
+              <a href="thread.html#557">[ hilo ]</a>
+              <a href="subject.html#557">[ asunto ]</a>
+              <a href="author.html#557">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, Dec 15, 2008 at 12:25:32PM +0100, Tomeu Borras wrote:
+&gt;<i> 
+</I>&gt;<i> PD: Xavi, no se perque falla i tampoc se perque falla només a una distro i a 
+</I>&gt;<i> una altre no. Creq que té a veurer amb el pas dels punters dels arrays de 
+</I>&gt;<i> parametres de postgresiface2::cargacursor cap a cursor2::cursor2 pero no ho
+</I>&gt;<i> he pogut verificar. (Tampoc l'hi he dedicat tot el temps que cal)
+</I>&gt;<i> També he mogut el try de lloc per englobar la interpretació de l'array pero la 
+</I>&gt;<i> excepció no salta (es veu que es un problema de baix nivell com acces a una 
+</I>&gt;<i> direcció de memoria que no existeix).
+</I>&gt;<i> 
+</I>&gt;<i> PD2: Jo migraria els char *  a QString's ja que en tot el codi només feim 
+</I>&gt;<i> servir QString i així ho tenim una mica més uniforme.
+</I>&gt;<i>
+</I>
+Tinc algunes hipotèsis-paranoies no gaire convincents, he d'acabar de fer proves. Després, 
+potser aquesta nit, pujaré una versió nova de postgresiface2.{h,cpp}. Agrairia a tothom 
+que pugui que ho provi, no només els que han trobat l'error si no els que els funcionava abans.
+
+He fet el que dius a PD2 (si ho entenc bé). I he posat un control (redundant?) que 
+si numparams==0 passi paramValues=NULL a PGExecParams. És que no estic clar
+que fas si tens
+
+char *a[0]
+func(a); 
+
+a és null? és un punter a alguna banda ? 
+
+Llavors he compilat i he provat i sorpresa!. 
+Em dóna un segmentation fault a mi a un lloc igual o semblant al que explica en Mas. 
+
+Mirant .bulmages/bulmagesout.txt 
+sembla que a inicializa, quan fas un SELECT current_user està destruint dos cops
+el cursor o al menys cridant dos cops a libpq per tancar el resultset. 
+
+No veia com podia passar, fins que m'he adonat del constructor de cursor2 que 
+està sobrecarregat, n'hi ha 3 i em sembla que uns criden als altres d'una manera
+potser incorrecta en C++ i el que fan és crear un cursor2 temporal que potser es
+destrueix al propi constructor. Ho he canviat. No en sé prou per estar segur, però provaré una mica.
+
+Perdó per les molèsties. 
+
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>
+Signa per fer Collserola parc natural com cal
+<A HREF="http://www.collserola.org/salvemelparcnatural/">http://www.collserola.org/salvemelparcnatural/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000559.html">[BulmaGés]&quot;Error en el bus&quot; al ejecutar el programa (Recomenat per a Xavi Drudis)
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000560.html">[BulmaGés]&quot;Error en el bus&quot; al ejecutar el programa (Recomenat per a	Xavi?Drudis)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#557">[ fecha ]</a>
+              <a href="thread.html#557">[ hilo ]</a>
+              <a href="subject.html#557">[ asunto ]</a>
+              <a href="author.html#557">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

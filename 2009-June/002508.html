@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]r3527 - in trunk/bulmages/bulmafact: plugins/pluginbf_alias	plugins/pluginbf_articulo src
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fr3527_-_in_trunk/bulm%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fages/bulmafact%3D3A_plugins/pluginbf%3D5Falias%3D09plugin%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fs/pluginbf%3D5Farticulo_src%3F%3D&In-Reply-To=%3C20090624192257.GF16372%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002507.html">
+   <LINK REL="Next"  HREF="002509.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]r3527 - in trunk/bulmages/bulmafact: plugins/pluginbf_alias	plugins/pluginbf_articulo src </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fr3527_-_in_trunk/bulm%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fages/bulmafact%3D3A_plugins/pluginbf%3D5Falias%3D09plugin%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fs/pluginbf%3D5Farticulo_src%3F%3D&In-Reply-To=%3C20090624192257.GF16372%40localhost%3E"
+       TITLE="[BulmaGés]r3527 - in trunk/bulmages/bulmafact: plugins/pluginbf_alias	plugins/pluginbf_articulo src">xdrudis en tinet.cat
+       </A><BR>
+    <I>Mie Jun 24 21:22:57 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002507.html">[BulmaGés]r3527 - in trunk/bulmages/bulmafact: plugins/pluginbf_alias	plugins/pluginbf_articulo src
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002509.html">[BulmaGés]r3527 - in trunk/bulmages/bulmafact: plugins/pluginbf_alias	plugins/pluginbf_articulo src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2508">[ fecha ]</a>
+              <a href="thread.html#2508">[ hilo ]</a>
+              <a href="subject.html#2508">[ asunto ]</a>
+              <a href="author.html#2508">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wed, Jun 24, 2009 at 07:28:44PM +0200, <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">svn en mail.berlios.de</A> wrote:
+&gt;<i> Author: tborras
+</I>&gt;<i> Date: 2009-06-24 19:28:37 +0200 (dc, 24 jun 2009)
+</I>&gt;<i> New Revision: 3527
+</I>&gt;<i> 
+</I>&gt;<i> Modified:
+</I>&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginbf_alias/pluginbf_alias.cpp
+</I>&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginbf_alias/pluginbf_alias.h
+</I>&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginbf_articulo/pluginbf_articulo.cpp
+</I>&gt;<i>    trunk/bulmages/bulmafact/plugins/pluginbf_articulo/pluginbf_articulo.h
+</I>&gt;<i>    trunk/bulmages/bulmafact/src/bfbuscararticulo.cpp
+</I>&gt;<i>    trunk/bulmages/bulmafact/src/bfbuscararticulo.h
+</I>&gt;<i>    trunk/bulmages/bulmafact/src/bfsubform.cpp
+</I>&gt;<i> Log:
+</I>&gt;<i> Pongo la edicion de articulos y de paso arreglo el bug de cuelgue al pulsar sobre el desplegable. Tambien cambio el plugin_alias para que los alias se integren dentro del buscador en caso de estar puestos. Espero vuestra opinion
+</I>&gt;<i> 
+</I>
+La idea em sembla bé. I la velocitat en implementar-la em flipa.
+
+L'única cosa que em fa una mica de por, però no veig que trenqui res
+concret és que es faci servir g_editor per accedir a l'editor. Em fa
+l'efecte que algun dia les Qt cridaran un createEditor quan no ens ho
+esperem i la variable global quedarà apuntant a un editor que no és el
+que esperem. Però no vaig trobar cap manera de saber quin editor
+estava actiu preguntant-ho directament a un objecte.
+
+D'altra banda estaria bé escapar sempre l'entrada de l'usuari abans de
+posar-la a l'SQL, o fer servir la versió amb paràmetres de loadQuery
+(que crec que no la fa servir ningú a part de jo que la vaig fer,
+sospito que no vaig encertar la interfície). Encara que un pugui
+pensar que els codis d'articles o alias no tindran apòstrofs, no se
+sap mai, i que no tinguin apòstrofs no vol dir que un usuari no pugui
+entrar un apòstrof (per exemple per equivocació quan volia picar un
+0). I no cal que peti per error de sintaxi a l'SQL, no?.  Ara ho
+canviaré.
+
+Hi ha una cosa que sembla diferent al funcionament dels àlies. Abans
+si no entraves un alies exacte no et trobava res, i només afegia un
+article (o cap) que coincidís amb l'alies. Ara no distingeix
+majúscules i afegeix qualsevol article que contingui el text entrat a
+algun dels seus alias. No sé si és que se m'escapen casos d'us, però
+per als codis de barres això no cal, i per a altres usos potser pot
+arribar a despistar, no sé. En qualsevol cas enlenteix molt les coses
+perquè evitar usar l'índex pels alies. Però potser hi ha algun
+requeriment que ho justifica, no sé. En tot cas abans no anava així.
+
+I parlant d'eficiència. Al plugin alias hi havia un mètode
+posibleAlias que mirava si el text entrat estava entre el màxim i el
+mínim dels alias existents, i la lòngitud també estava entra la màxima
+i mínima, de manera que si no es complia això s'estalviava un
+select. Això va bé quan comproves aquestes coses a cada tecla pitjada.
+Però no es pot fer si vols buscar subcadenes (que jo em pensava que no
+calia).  Depen de què faci servir la gent com a codis d'article o com
+a alias, però en alguns casos només mirant el rang de les inicials i
+la lòngitud de la cadena pots saber si és un alias o no (per exemple,
+moltes vegades tots els alies seran codis de barres numèrics (entre
+&quot;0...&quot; i &quot;9...&quot;) i amb una longitud fixa o com a molt unes poques
+longituds. En aquests casos sempre que no es compleixi això no cal ni
+mirar alias. Si treiem l'heurisme de possibleAlias perdem aquesta
+optimització, però si de debó necessitem omplir el combo amb els
+articles dels alies que continguin el text entrat com a subcadena, no
+tenim més remei.
+
+Això de les subcadenes és realment un requeriment ? 
+
+Però ara ho vaig a provar, que de moment només m'ho he llegit, i potser no ho he entés bé.
+
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>
+Signa per fer Collserola parc natural com cal
+<A HREF="http://www.collserola.org/salvemelparcnatural/">http://www.collserola.org/salvemelparcnatural/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002507.html">[BulmaGés]r3527 - in trunk/bulmages/bulmafact: plugins/pluginbf_alias	plugins/pluginbf_articulo src
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002509.html">[BulmaGés]r3527 - in trunk/bulmages/bulmafact: plugins/pluginbf_alias	plugins/pluginbf_articulo src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2508">[ fecha ]</a>
+              <a href="thread.html#2508">[ hilo ]</a>
+              <a href="subject.html#2508">[ asunto ]</a>
+              <a href="author.html#2508">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

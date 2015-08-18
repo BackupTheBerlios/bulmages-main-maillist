@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][Información] Nuevos funciones blCopyFile y blMoveFile
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3F%3D5BInformaci%3DF3n%3D5D_N%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fuevos_funciones_blCopyFile_y_blMoveFile%3F%3D&In-Reply-To=%3C4ED8BA49.2040104%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006675.html">
+   <LINK REL="Next"  HREF="006677.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][Información] Nuevos funciones blCopyFile y blMoveFile </H1>
+    <B>Daniel Ripoll Osma</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3F%3D5BInformaci%3DF3n%3D5D_N%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fuevos_funciones_blCopyFile_y_blMoveFile%3F%3D&In-Reply-To=%3C4ED8BA49.2040104%40gmail.com%3E"
+       TITLE="[BulmaGés][Información] Nuevos funciones blCopyFile y blMoveFile">dripoll.public en gmail.com
+       </A><BR>
+    <I>Vie Dic  2 12:45:13 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006675.html">[BulmaGés][OFFTopic] Hablando de puentes
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006677.html">[BulmaGés][Información] Nuevos funciones blCopyFile y blMoveFile
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6671">[ fecha ]</a>
+              <a href="thread.html#6671">[ hilo ]</a>
+              <a href="subject.html#6671">[ asunto ]</a>
+              <a href="author.html#6671">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola lista,
+Puede que ya lo hayáis visto en el nuevo código desde ayer, pero creo
+que debo dignarme a informar por email por si hay dudas..
+
+En cualquier caso proceso a explicaros un poco.
+
+La idea básicamente surgió (en el baño, como todas las buenas ideas) de
+que existen metodos más eficaces que llamar al sistema para evitar
+sobrecargas y demás, así que se me ocurrio realizar estas dos funciones.
+Que soportan también el copiado y movimiento entre distintas particiones.
+
+blCopyFile:
+Esta función recorre a la función QFile::copy() para copiar el archivo,
+y en caso de que esta falle, ya lo copia por sistema, mediante
+direcciones tolerantes, así nos olvidamos de tener que jugar con &quot;\&quot; y
+chorradas de esas a la hora de escapar las direcciones, lo hace solo. La
+función es de tipo booleano, cosa que nos permite usar si queremos una
+alarma para indicar que ha habido un error.
+Responde con &quot;true&quot; siempre que todo vaya bien.
+
+Ejemplo:
+ QString ownlogo = g_confpr-&gt;value( CONF_DIR_USER ) + &quot;logo.jpg&quot;;
+ QString archivologo = g_confpr-&gt;value( CONF_DIR_OPENREPORTS ) + &quot;logo.jpg&quot;;
+if(!blCopyFile(archivologo, ownlogo)){
+    blMsgError(_(&quot;Error al copiar el archivo de logo [
+bldb-&gt;generateRML() ]&quot;));
+} // end if
+
+
+blMoveFile:
+Esta función es similar solo que esta sustituye a las llamadas de mv y move.
+En primera instancia recurre a QDir::rename(), en caso de fallar recurre
+a blCopyFile y posteriormente elimina el archivo. Nuevamente es de tipo
+booleano y responde con true si ha funcionado.
+
+
+Espero que sea de utilidad, y os ahorre unas cuantas lineas de IFDEF
+ENDIF, y demás.
+
+Saludos!
+
+PD: Llamadme infantil, pero Aron, me encantan los cambios que estas
+añadiendo con los permisos y los botones. No entiendo como no se me
+ocurrió a mi.
+
+-- 
+Daniel Ripoll Osma
+www.danielripoll.es
+6688.27.4.90
+
+Web &amp; Desktop Developer
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006675.html">[BulmaGés][OFFTopic] Hablando de puentes
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006677.html">[BulmaGés][Información] Nuevos funciones blCopyFile y blMoveFile
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6671">[ fecha ]</a>
+              <a href="thread.html#6671">[ hilo ]</a>
+              <a href="subject.html#6671">[ asunto ]</a>
+              <a href="author.html#6671">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

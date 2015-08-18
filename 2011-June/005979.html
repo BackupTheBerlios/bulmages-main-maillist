@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Problema en los blDebug
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-15%3Fq%3FProblema_en_los_blDe%3F%3D%20%3D%3Fiso-8859-15%3Fq%3Fbug%3F%3D&In-Reply-To=%3C201106091131.41992.asmond%40orange.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005978.html">
+   <LINK REL="Next"  HREF="005983.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Problema en los blDebug </H1>
+    <B>Toni Asensi Esteve</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-15%3Fq%3FProblema_en_los_blDe%3F%3D%20%3D%3Fiso-8859-15%3Fq%3Fbug%3F%3D&In-Reply-To=%3C201106091131.41992.asmond%40orange.es%3E"
+       TITLE="[BulmaGés]Problema en los blDebug">asmond en orange.es
+       </A><BR>
+    <I>Jue Jun  9 11:31:41 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="005978.html">[BulmaGés]Problema en los blDebug
+</A></li>
+        <LI>Próximo mensaje: <A HREF="005983.html">[BulmaGés]Problema en los blDebug
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5979">[ fecha ]</a>
+              <a href="thread.html#5979">[ hilo ]</a>
+              <a href="subject.html#5979">[ asunto ]</a>
+              <a href="author.html#5979">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> - Me puedes aclarar lo de la destruccion del objeto y donde se controla el
+</I>&gt;<i> código de eso para que no haga falta la macro ?
+</I>Sí, claro. La macro QDEBUG_METHOD_NAME se define en
+      <A HREF="http://svn.berlios.de/wsvn/nxspooler/trunk/lib_src/tdebugstartend.h">http://svn.berlios.de/wsvn/nxspooler/trunk/lib_src/tdebugstartend.h</A>
+como
+      #ifdef QT_DEBUG
+          /*!  Create a TDebugStartEnd. This action also writes, in qDebug(), 
+information about the name of the current method. */
+          #define QDEBUG_METHOD_NAME TDebugStartEnd methodName(Q_FUNC_INFO);
+      #else // We don't execute any statement
+          #define QDEBUG_METHOD_NAME
+      #endif
+Así que, cuando estamos desarrollando, en cada función donde aparezca una 
+línea &quot;QDEBUG_METHOD_NAME&quot;, lo que estamos haciendo en dicha línea es crear un 
+objeto de la clase TDebugStartEnd. Cuando la función se termine, se destruirá 
+dicho objeto automáticamente, con lo que automáticamente se ejecutará el 
+destructor de dicho objeto, que será el encargado de imprimir que se ha 
+terminado dicha función. De esta forma no hace falta escribir órdenes extra en 
+cada lugar donde pueda terminar dicha función, ya se encarga de ello el 
+destructor de dicho objeto.
+
+
+&gt;<i> - Nuestros archivos de trazas estan en XML y en TXT. Se podrian respetar
+</I>&gt;<i> ambos formatos ?
+</I>Sí, en NxSpooler el código fuente que hace escribir mensajes de depuración 
+está en 
+   <A HREF="http://svn.berlios.de/wsvn/nxspooler/trunk/lib_src/tdebugstartend.cpp">http://svn.berlios.de/wsvn/nxspooler/trunk/lib_src/tdebugstartend.cpp</A>
+y se basa en un 
+   qDebug() &lt;&lt; 
+con lo que dicho código puede personalizarse lo que haga falta. 
+
+
+&gt;<i> - Nosotros tenemos un debugLevel que hace ejecuciones paso a paso lanzando
+</I>&gt;<i> mensajes y que podemos activar o desactivar en todo momento. ¿Esto se podría
+</I>&gt;<i> implementar?
+</I>Sí, el código fuente de 
+  <A HREF="http://svn.berlios.de/wsvn/nxspooler/trunk/lib_src/tdebugstartend.cpp">http://svn.berlios.de/wsvn/nxspooler/trunk/lib_src/tdebugstartend.cpp</A>
+y los archivos relacionados es relativamente simple, se podría implementar.
+
+
+Nota: si hace aclarar algo al respecto, sólo hace falta preguntar en esta 
+lista.
+
+Salut:
+--
+Toni Asensi Esteve.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="005978.html">[BulmaGés]Problema en los blDebug
+</A></li>
+	<LI>Próximo mensaje: <A HREF="005983.html">[BulmaGés]Problema en los blDebug
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5979">[ fecha ]</a>
+              <a href="thread.html#5979">[ hilo ]</a>
+              <a href="subject.html#5979">[ asunto ]</a>
+              <a href="author.html#5979">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

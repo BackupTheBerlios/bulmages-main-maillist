@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: cgarde pushed 1	commits to masterm...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20cgarde%20pushed%201%0A%09commits%20to%20masterm...&In-Reply-To=%3C20120427081533.10050756EC%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007131.html">
+   <LINK REL="Next"  HREF="007134.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: cgarde pushed 1	commits to masterm... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20cgarde%20pushed%201%0A%09commits%20to%20masterm...&In-Reply-To=%3C20120427081533.10050756EC%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: cgarde pushed 1	commits to masterm...">no-reply en gitorious.org
+       </A><BR>
+    <I>Vie Abr 27 10:15:32 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007131.html">[BulmaGés] [Gitorious] Activity: tborras created	branch filtroprovee...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007134.html">[BulmaGés]Ni el cambio más pequeño se libra.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7132">[ fecha ]</a>
+              <a href="thread.html#7132">[ hilo ]</a>
+              <a href="subject.html#7132">[ asunto ]</a>
+              <a href="author.html#7132">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+cgarde pushed 1 commits to master
+master changed from 7ee48f1 to 4a850b6
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/7ee48f19295c6cdcdbd768f0012e16b72f709533/diffs/4a850b6f98dc0a798cd15190b0c98144937715fc">https://gitorious.org/bulmages/bulmages/commit/7ee48f19295c6cdcdbd768f0012e16b72f709533/diffs/4a850b6f98dc0a798cd15190b0c98144937715fc</A>
+
+Diff: 
+
+commit 4a850b6f98dc0a798cd15190b0c98144937715fc
+Author: Cristian Garde &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">cristian.garde en gmail.com</A>&gt;
+Date:   Fri Apr 27 10:12:59 2012 +0200
+
+    Arreglo IRPF
+    
+    Ahora en la base de datos se guarda el valor del IRPF  con un 'punto'
+    como
+    separador decimal.
+    
+    --
+    Cristian Garde
+    [[[ Trabajando en Bulmages desde Todo-Redes. ]]]
+    <A HREF="http://todo-redes.com">http://todo-redes.com</A>
+
+diff --git a/bulmages/bulmafact/src/bfconfiguracionview.cpp b/bulmages/bulmafact/src/bfconfiguracionview.cpp
+index 740a308..09ecb37 100644
+--- a/bulmages/bulmafact/src/bfconfiguracionview.cpp
++++ b/bulmages/bulmafact/src/bfconfiguracionview.cpp
+@@ -246,7 +246,7 @@ void BfConfiguracionView::on_mui_aceptar_clicked() {
+ 	mainCompany()-&gt;runQuery(&quot;INSERT INTO configuracion (nombre,valor) VALUES ('SerieFacturaDefecto','&quot;+ mainCompany()-&gt;sanearCadena(m_serieFacturaDefecto-&gt;text())+&quot;')&quot;);
+ 	
+ 	mainCompany()-&gt;runQuery(&quot;DELETE FROM configuracion WHERE nombre='IRPF'&quot;);
+-	mainCompany()-&gt;runQuery(&quot;INSERT INTO configuracion (nombre,valor) VALUES ('IRPF','&quot;+ mainCompany()-&gt;sanearCadena(m_irpf-&gt;text())+&quot;')&quot;);
++	mainCompany()-&gt;runQuery(&quot;INSERT INTO configuracion (nombre,valor) VALUES ('IRPF','&quot;+ mainCompany()-&gt;sanearCadena(QString::number(m_irpf-&gt;value()))+&quot;')&quot;);
+ 	
+ 	mainCompany()-&gt;runQuery(&quot;DELETE FROM configuracion WHERE nombre='AlmacenDefecto'&quot;);
+ 	mainCompany()-&gt;runQuery(&quot;INSERT INTO configuracion (nombre,valor) VALUES ('AlmacenDefecto','&quot;+ mainCompany()-&gt;sanearCadena(m_almacenDefecto-&gt;text())+&quot;')&quot;);
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007131.html">[BulmaGés] [Gitorious] Activity: tborras created	branch filtroprovee...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007134.html">[BulmaGés]Ni el cambio más pequeño se libra.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7132">[ fecha ]</a>
+              <a href="thread.html#7132">[ hilo ]</a>
+              <a href="subject.html#7132">[ asunto ]</a>
+              <a href="author.html#7132">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Cambios en BulmaSetup
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FCambios_en_BulmaSetup%3F%3D&In-Reply-To=%3C4EDA0268.2050507%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006684.html">
+   <LINK REL="Next"  HREF="006686.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Cambios en BulmaSetup </H1>
+    <B>Daniel Ripoll Osma</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FCambios_en_BulmaSetup%3F%3D&In-Reply-To=%3C4EDA0268.2050507%40gmail.com%3E"
+       TITLE="[BulmaGés]Cambios en BulmaSetup">dripoll.public en gmail.com
+       </A><BR>
+    <I>Sab Dic  3 12:05:12 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006684.html">[BulmaGés]Cambios en BulmaSetup
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006686.html">[BulmaGés]Cambios en BulmaSetup
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6685">[ fecha ]</a>
+              <a href="thread.html#6685">[ hilo ]</a>
+              <a href="subject.html#6685">[ asunto ]</a>
+              <a href="author.html#6685">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Al 03/12/11 09:33, En/na Tomeu Borras ha escrit:
+&gt;<i>
+</I>&gt;<i> Yo pienso que dejarlos en el share es lo correcto ya que la empresa
+</I>&gt;<i> que quiera modificarlos puede copiar el directorio donde desee y
+</I>&gt;<i> modificar allí. Además puede hacerlo tantas veces como quiera.
+</I>&gt;<i>
+</I>&gt;<i> Otro tema que me viene ahora a la cabeza es que distintitos usuarios
+</I>&gt;<i> puedan usar distintas configuaciones de autoforms. Esto lo pueden
+</I>&gt;<i> hacer con los plugins pero así como esta planteado el autoforms no.
+</I>&gt;<i> Tendría que mirarse primero si existe en autoforms_XXX_YYY_spec.spc en
+</I>&gt;<i> el ./bulmages del usuario que está ejecutando.
+</I>
+Esa también es una muy buena opción siguiendo el:
+share/...
+.bulmages/...
+Aunque si no esta planteado así, supone un pequeño problema :S
+
+
+&gt;&gt;&gt;&gt;<i>El 3 de diciembre de 2011 07:42, Walter Garcia-Fontes
+</I>&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">walter.garcia en upf.edu</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">walter.garcia en upf.edu</A>&gt;&gt; escribió:
+&gt;&gt;&gt;<i>* Daniel Ripoll Osma [03/12/11 02:02]:
+</I>&gt;&gt;&gt;&gt;<i> Lo del bulmasetup C++ fue poco en plan coña, pero vamos si hay que
+</I>hacerlo se
+&gt;&gt;&gt;&gt;<i> haría, eso queda a vox populi.
+</I>
+&gt;&gt;<i>Siguiendo con la vox populi, para que bulmagés completara su carácter
+</I>&gt;&gt;<i>multiplataforma habría que conseguir un bulmasetup multiplataforma,
+</I>&gt;&gt;<i>con este o cualquier otro cambio necesario.
+</I>
+&gt;<i>Es posible, pero necesitaría una reestructuración completa, con un más
+</I>que probable cambio de &gt;tecnología  (PyQt y psycopg2 deberían
+desaparecer). O igual y mucho mejor un cambio de lenguaje.
+
+&gt;<i>En definitiva ya saldría más a cuenta reescribirlo de nuevo.
+</I>
+La razón se ha despertado pronto hoy.
+Efectivamente, lo del bulmasetup es algo que me esta echando en cara
+demasiada gente (4/7).
+
+El proceso a multiplataforma con python puede lograrse pero hay que
+observar algunos pros y contras, ignorando lo que ya discutí con Javier,
+Tomeu y René (en la cena del chino) y posteriormente con Leo hace unos días.
+
+0º Python es una dependencia bastante grande. Que no nos la podemos
+quitar de encima, aunque queramos, fácilmente. bgtrml depende de Python.
+
+1º Si queremos deshacernos de python al 100%, deberíamos reescribir
+bgtrml, PyFriBibi and PyICU y otras dependencias son bindings de C/C++ y
+reportlab existe en C/C++.
+No obstante, ya poco se como funciona bgtrml (que sería mirarselo a
+fondo, aparte de Tomeu ¿quien más lo ha tratado?), como para ver como
+implementarlo en C/C++.
+
+2º PyQt esta en multiplataforma pero...:
+Si bien existen &quot;click &amp; use&quot; para casi toda distro, en Windows la
+release suele llegar tarde y en MacOsX ya ni existe (y eso que ya tienen
+QT4.8), no hay ningún DMG. Manda tu un cliente de MacOsX a compilar
+paquetes, te va a mandar a freir esparragos.
+
+3º DEPENDECIAS:
+Dependencia automática de SIP. Pese a que es muy bonito eso de poder
+desarrollar un SIPhone a partir de PyQt con los ojos cerrados, de hecho
+PyQt surgio con esa idea, y no entiendo como siguen arrastrando esa
+dependencia. Pero que yo sepa, esa no es nuestra meta. Así que tenemos
+UNA DEPENDENCIA INUTIL. Además ocurre lo mismo que antes con PyQt y los
+&quot;click &amp; run&quot;.
+
+4º PSYCOPG2:
+Le ocurre exactamente lo mismo que a PyQt pero más exagerado. En Linux
+cada distro tiene una versión diferente de Psycopg2 y tenemos
+normalmente que hacer &quot;sudo easy_install psycopg2&quot;. Luego hay varios
+&quot;click &amp; run&quot; para Windows (&quot;oh, no me gusta tu compilado, me hago yo mi
+installer&quot; ¬¬), volvemos a que para MacOsX no hay nada, es más, psycopg2
+para macosx esta más verde que el billete de un dolar.
+
+5º SYSTEM():
+Para hacerlo multiplataforma habría que reescribir mucho código,
+eliminando al máximo las llamadas de sistema, las que hubiera que hacer
+a programas como &quot;psql&quot; y demás, pueden lograrse gracias al
+search_file(filename, search_path) que escribí para xdg-sudo, las de
+directorios y copiados pueden realizarse con python y no lo estan.
+
+6º Escalado de permisos:
+Pese a que el programa funcione bien ahora con los cambios realizados,
+el escalado de permisos en bulmasetup es caotico e incorrecto, usa &quot;su&quot;
+en su nucleo, y eso es incorrecto de cara a la multiplataforma, además
+de contraproducente. En Windows y MacOsX (aunque puede usarse en este)
+existen otras maneras de lograr el escalado de permisos.
+
+7º Python es un reclamo (Ya lo dijo Tomeu) pero falso (ya lo dijo Javi):
+Además lo hablé con algunos de la UC3M y de la UOC, Python tiene las 3
+B&amp;F, bueno, bonito, barato y rápido. Esto a veces es un reclamo para
+aquellos programadores que &quot;tienen ganas de colaborar pero no se atreven
+con C++&quot;, vamos gente como yo al principio, pero sin tenerlos tan bien
+puestos :P (modestia aparte).
+
+Se instalan el programa y ven bulmasetup, dicen: ¡Ostia, funciona! y al
+ver que no tiene ni plugins ni nada - que no debería tenerlos - ya no
+hacen nada.
+
+Si documentamos bien (y si llegamos a migrarlo todo -en caso de que haya
+GIT- a la forja de morfeo), cuidamos bien de la WIKI, comentamos bien el
+código, y subimos el doxygen y vamos actualizando, que con git no nos
+cuesta nada. La gente no le va a tener miedo a C++, o al menos no tanto
+y python ya no sería más nuestro caramelo de envoltorio de chocolate y
+sabor a menta y guindilla.
+
+En cualquier caso, lo dejamos en Python tendremos que lidiar con esos
+problemas, que en mi opinión son bastante jodidos.
+
+Y tanto lo dejemos en Python, como en C++ estaremos sujetos a:
+Reescritura, total y absoluta del código.
+
+Por estas 8 razones, y sintiendolo por el trabajo llevado por Tomeu (y
+demás) en bulmasetup.
+Sugiero iniciar bulmasetup2 en C++ y mantener bulmasetup hasta que este
+este terminado.
+
+Vox populi, vox Dei
+
+Salut!
+
+PD: Disculpad por el tocho.
+
+-- 
+Daniel Ripoll Osma
+www.danielripoll.es
+6688.27.4.90
+
+Web &amp; Desktop Developer
+
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20111203/bc6b100a/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20111203/bc6b100a/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006684.html">[BulmaGés]Cambios en BulmaSetup
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006686.html">[BulmaGés]Cambios en BulmaSetup
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6685">[ fecha ]</a>
+              <a href="thread.html#6685">[ hilo ]</a>
+              <a href="subject.html#6685">[ asunto ]</a>
+              <a href="author.html#6685">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

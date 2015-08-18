@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Usar keepInFrame en un informe RML
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FUsar_keepInFrame_en_u%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fn_informe_RML%3F%3D&In-Reply-To=%3C201103030929.50167.auryn%40wanadoo.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005372.html">
+   <LINK REL="Next"  HREF="005374.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Usar keepInFrame en un informe RML </H1>
+    <B>Aron</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FUsar_keepInFrame_en_u%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fn_informe_RML%3F%3D&In-Reply-To=%3C201103030929.50167.auryn%40wanadoo.es%3E"
+       TITLE="[BulmaGés]Usar keepInFrame en un informe RML">auryn en wanadoo.es
+       </A><BR>
+    <I>Jue Mar  3 09:29:50 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="005372.html">[BulmaGés] r4657 - trunk/bulmages/bulmasetup
+</A></li>
+        <LI>Próximo mensaje: <A HREF="005374.html">[BulmaGés]Usar keepInFrame en un informe RML
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5373">[ fecha ]</a>
+              <a href="thread.html#5373">[ hilo ]</a>
+              <a href="subject.html#5373">[ asunto ]</a>
+              <a href="author.html#5373">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Tengo un texto que puede llegar a ser tan largo que tapa a los demás elementos 
+del informe.
+
+Quisiera truncar dicho texto si supera sus límites en el informe.
+
+
+Intento usar:
+&lt;keepInFrame maxWidth=&quot;17.5cm&quot; maxHeight=&quot;0.5cm&quot; onOverflow =&quot;shrink&quot;&gt;
+    &lt;para style=&quot;enca_text&quot;&gt;[observaciones]&lt;/para&gt;
+&lt;/keepInFrame&gt;
+
+
+Pero me da error:
+
+Traceback (most recent call last):
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 1061, in &lt;module&gt;
+    print parseString(file(sys.argv[1], 'r').read()),
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 1049, in parseString
+    r.render(fp)
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 207, in render
+    pt_obj.render(el)
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 826, in render
+    self.doc_tmpl.build(fis)
+  File &quot;/usr/lib/python2.6/dist-packages/reportlab/platypus/doctemplate.py&quot;, 
+line 874, in build
+    self.clean_hanging()
+  File &quot;/usr/lib/python2.6/dist-packages/reportlab/platypus/doctemplate.py&quot;, 
+line 509, in clean_hanging
+    self.handle_flowable(self._hanging)
+  File &quot;/usr/lib/python2.6/dist-packages/reportlab/platypus/doctemplate.py&quot;, 
+line 756, in handle_flowable
+    f.apply(self)
+  File &quot;/usr/lib/python2.6/dist-packages/reportlab/platypus/doctemplate.py&quot;, 
+line 140, in apply
+    getattr(doc,arn)(*args)
+  File &quot;/usr/lib/python2.6/dist-packages/reportlab/platypus/doctemplate.py&quot;, 
+line 534, in handle_pageBegin
+    self.pageTemplate.onPage(self.canv,self)
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 463, in render
+    cnv.render(self.node)
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 448, in render
+    tags[n.tag](n)
+  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 329, in _place
+    flow.drawOn(self.canvas,infos['x'],infos['y'])
+  File &quot;/usr/lib/python2.6/dist-packages/reportlab/platypus/flowables.py&quot;, 
+line 106, in drawOn
+    self._drawOn(canvas)
+  File &quot;/usr/lib/python2.6/dist-packages/reportlab/platypus/flowables.py&quot;, 
+line 87, in _drawOn
+    self.draw()#this is the bit you overload
+  File &quot;/usr/lib/python2.6/dist-packages/reportlab/platypus/tables.py&quot;, line 
+1272, in draw
+    self._drawCell(cellval, cellstyle, (colpos, rowpos), (colwidth, 
+rowheight))
+  File &quot;/usr/lib/python2.6/dist-packages/reportlab/platypus/tables.py&quot;, line 
+1361, in _drawCell
+    w, h = self._listCellGeom(cellval,colwidth,cellstyle,W=W, 
+H=H,aH=rowheight)
+  File &quot;/usr/lib/python2.6/dist-packages/reportlab/platypus/tables.py&quot;, line 
+366, in _listCellGeom
+    vw, vh = v.wrapOn(canv, aW, aH)
+AttributeError: 'NoneType' object has no attribute 'wrapOn'
+Warning: flowable not yet implemented: keepInFrame !
+
+
+
+
+
+On Miércoles 23 Febrero 2011 18:37:14 Aron escribió:
+&gt;<i> Cuando intento usar keepInFrame para controlar mejor el espacio no
+</I>&gt;<i> funciona.
+</I>&gt;<i> 
+</I>&gt;<i> Por ejemplo, con:
+</I>&gt;<i> &lt;keepInFrame frame=&quot;fr0&quot;&gt;
+</I>&gt;<i>     &lt;para&gt;TEXTO&lt;/para&gt;
+</I>&gt;<i> &lt;/keepInFrame&gt;
+</I>&gt;<i> 
+</I>&gt;<i> no aparece el texto y me da este aviso:
+</I>&gt;<i> Warning: flowable not yet implemented: keepInFrame !
+</I>&gt;<i> 
+</I>&gt;<i> Saludos
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="005372.html">[BulmaGés] r4657 - trunk/bulmages/bulmasetup
+</A></li>
+	<LI>Próximo mensaje: <A HREF="005374.html">[BulmaGés]Usar keepInFrame en un informe RML
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5373">[ fecha ]</a>
+              <a href="thread.html#5373">[ hilo ]</a>
+              <a href="subject.html#5373">[ asunto ]</a>
+              <a href="author.html#5373">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,272 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20master...&In-Reply-To=%3C20120524125952.35952756DF%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007269.html">
+   <LINK REL="Next"  HREF="007271.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20master...&In-Reply-To=%3C20120524125952.35952756DF%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Jue Mayo 24 14:59:52 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007269.html">[BulmaGés] [Gitorious] Activity: tborras created	branch arregloplugi...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007271.html">[BulmaGés][Gitorious] Activity: tborras pushed 2 commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7270">[ fecha ]</a>
+              <a href="thread.html#7270">[ hilo ]</a>
+              <a href="subject.html#7270">[ asunto ]</a>
+              <a href="author.html#7270">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 2 commits to master
+master changed from 4417f90 to 2b94eb2
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/4417f90cc1a89c7a7526c52c7f474b9170ae9dbd/diffs/2b94eb2000552e5407855527c69e0549081f7075">https://gitorious.org/bulmages/bulmages/commit/4417f90cc1a89c7a7526c52c7f474b9170ae9dbd/diffs/2b94eb2000552e5407855527c69e0549081f7075</A>
+
+Diff: 
+
+commit 2b94eb2000552e5407855527c69e0549081f7075
+Merge: 4417f90 33cd542
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu May 24 14:59:28 2012 +0200
+
+    Merge branch 'arreglopluginbt_cliente'
+
+
+commit 33cd542ef71f4db32c7df25189e43deaf11d1807
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu May 24 14:51:31 2012 +0200
+
+    Este cambio permite utilizar el pluginbf_cliente en bulmatpv.
+    
+    El tema es que desde algunos tpvs se pueden crear clientes nuevos, que aporten sus datos y además
+    teniamos el problema añadido que no se podian seleccionar clientes con el listado de clientes.
+    
+    Ante esto había dos posibilidades:
+    
+    1.- Que el plugin de clientes fuese compatible con bulmatpv
+    2.- Duplicarlo todo para bulmatpv
+    
+    Evidentemente la opción ha sido la 1 y lo sorprendente es que el cambio es mucho más sencillo de lo que pensaba,
+    ya dije que me gustaba como estaba estructurandose el sistema y este es el motivo.
+    Con este cambio queda la puerta abierta a incorporar muchas más opciones en el tpv (hechas en bulmafact) con interfaz super adaptada.
+    
+    Y eso amigos mios ........... mola mucho !!!!
+    
+    En resumidas cuentas ahora se puede poner libpluginbf_cliente en el bulmatpv.conf y éste funcionará.
+    Para probarlo podeis instalar también el libpluginbt_buscacliente y darle al botón de buscar (donde aparecerá el listado de clientes, se podrán crear, etc)
+    
+    Lo difícil ahora es integrarlo en bulmasetup, que debera integrar plugins de bulmafact (y no se como lo arreglaremos). De momento pondre un comentario en el
+    README y luego ya lo apañaremos.
+    
+    Salut
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cliente/pluginbf_cliente.cpp b/bulmages/bulmafact/plugins/pluginbf_cliente/pluginbf_cliente.cpp
+index 3fd5638..62d280b 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cliente/pluginbf_cliente.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_cliente/pluginbf_cliente.cpp
+@@ -31,15 +31,12 @@
+ ClientsList *g_clientesList = NULL;
+ BfBulmaFact *g_pluginbf_cliente = NULL;
+ 
+-
+-
+-
+ ///
+ /**
+ \param bges
+ \return
+ **/
+-int entryPoint ( BfBulmaFact *bges )
++int entryPoint ( BlMainWindow *bges )
+ {
+     BL_FUNC_DEBUG
+ 
+@@ -47,36 +44,38 @@ int entryPoint ( BfBulmaFact *bges )
+     setlocale ( LC_ALL, &quot;&quot; );
+     blBindTextDomain ( &quot;pluginbf_cliente&quot;, g_confpr-&gt;value( CONF_DIR_TRADUCCION ).toAscii().constData() );
+ 
++    if (bges-&gt;objectName() != &quot;BtBulmaTPVBase&quot;) {
++    g_pluginbf_cliente = (BfBulmaFact * ) bges;
++	
++	if ( g_pluginbf_cliente-&gt;company()-&gt;hasTablePrivilege ( &quot;cliente&quot;, &quot;SELECT&quot; ) ) {
+ 
+-    if ( bges-&gt;company()-&gt;hasTablePrivilege ( &quot;cliente&quot;, &quot;SELECT&quot; ) ) {
++	    /// Miramos si existe un menu Ventas
++	    QMenu *pPluginMenu = g_pluginbf_cliente-&gt;newMenu ( _(&quot;&amp;Ventas&quot;), &quot;menuVentas&quot;, &quot;menuMaestro&quot; );
++	    pPluginMenu-&gt;addSeparator();
+ 
+-        /// Miramos si existe un menu Ventas
+-        QMenu *pPluginMenu = bges-&gt;newMenu ( _(&quot;&amp;Ventas&quot;), &quot;menuVentas&quot;, &quot;menuMaestro&quot; );
+-        pPluginMenu-&gt;addSeparator();
+ 
+-        g_pluginbf_cliente = bges;
+-        
+-        BlAction *accionA = new BlAction ( _ ( &quot;&amp;Clientes&quot; ), 0 );
+-        accionA-&gt;setIcon ( QIcon ( QString::fromUtf8 ( &quot;:/Images/client-list.png&quot; ) ) );
+-        accionA-&gt;setStatusTip ( _ ( &quot;Clientes&quot; ) );
+-        accionA-&gt;setWhatsThis ( _ ( &quot;Clientes&quot; ) );
+-        accionA-&gt;setObjectName(&quot;mui_actionClientes&quot;);
++	    
++	    BlAction *accionA = new BlAction ( _ ( &quot;&amp;Clientes&quot; ), 0 );
++	    accionA-&gt;setIcon ( QIcon ( QString::fromUtf8 ( &quot;:/Images/client-list.png&quot; ) ) );
++	    accionA-&gt;setStatusTip ( _ ( &quot;Clientes&quot; ) );
++	    accionA-&gt;setWhatsThis ( _ ( &quot;Clientes&quot; ) );
++	    accionA-&gt;setObjectName(&quot;mui_actionClientes&quot;);
+ 
+-        pPluginMenu-&gt;addAction ( accionA );
+-        bges-&gt;Listados-&gt;addAction ( accionA );
++	    pPluginMenu-&gt;addAction ( accionA );
++	    g_pluginbf_cliente-&gt;Listados-&gt;addAction ( accionA );
+ 
+-        BlAction *accionB = new BlAction ( _ ( &quot;&amp;Nuevo cliente&quot; ), 0 );
+-        accionB-&gt;setIcon ( QIcon ( QString::fromUtf8 ( &quot;:/Images/client.png&quot; ) ) );
+-        accionB-&gt;setStatusTip ( _ ( &quot;Nuevo cliente&quot; ) );
+-        accionB-&gt;setWhatsThis ( _ ( &quot;Nuevo cliente&quot; ) );
+-        accionB-&gt;setObjectName(&quot;mui_actionNuevoCliente&quot;);
++	    BlAction *accionB = new BlAction ( _ ( &quot;&amp;Nuevo cliente&quot; ), 0 );
++	    accionB-&gt;setIcon ( QIcon ( QString::fromUtf8 ( &quot;:/Images/client.png&quot; ) ) );
++	    accionB-&gt;setStatusTip ( _ ( &quot;Nuevo cliente&quot; ) );
++	    accionB-&gt;setWhatsThis ( _ ( &quot;Nuevo cliente&quot; ) );
++	    accionB-&gt;setObjectName(&quot;mui_actionNuevoCliente&quot;);
+ 
+-        pPluginMenu-&gt;addAction ( accionB );
+-        bges-&gt;Fichas-&gt;addAction ( accionB );
++	    pPluginMenu-&gt;addAction ( accionB );
++	    g_pluginbf_cliente-&gt;Fichas-&gt;addAction ( accionB );
+ 
++	} // end if
+     } // end if
+ 
+-
+     return 0;
+ }
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cliente/pluginbf_cliente.h b/bulmages/bulmafact/plugins/pluginbf_cliente/pluginbf_cliente.h
+index 6ddede3..0c9553a 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cliente/pluginbf_cliente.h
++++ b/bulmages/bulmafact/plugins/pluginbf_cliente/pluginbf_cliente.h
+@@ -29,7 +29,7 @@
+ #include &quot;pdefs_pluginbf_cliente.h&quot;
+ #include &quot;blaction.h&quot;
+ 
+-extern &quot;C&quot; PLUGINBF_CLIENTE_EXPORT int entryPoint ( BfBulmaFact * );
++extern &quot;C&quot; PLUGINBF_CLIENTE_EXPORT int entryPoint ( BlMainWindow * );
+ extern &quot;C&quot; PLUGINBF_CLIENTE_EXPORT int BfCompany_createMainWindows_Post(BfCompany *);
+ extern &quot;C&quot; PLUGINBF_CLIENTE_EXPORT int Busqueda_on_mui_buscar_clicked(BlSearchWidget *);
+ extern &quot;C&quot; PLUGINBF_CLIENTE_EXPORT int SNewClienteView (BfCompany *);
+diff --git a/bulmages/bulmalib/plugins/pluginbl_autoform/autoform.cpp b/bulmages/bulmalib/plugins/pluginbl_autoform/autoform.cpp
+index c3f5c52..6776299 100644
+--- a/bulmages/bulmalib/plugins/pluginbl_autoform/autoform.cpp
++++ b/bulmages/bulmalib/plugins/pluginbl_autoform/autoform.cpp
+@@ -28,7 +28,6 @@
+ #include &lt;QDomDocument&gt;
+ #include &lt;QDomNode&gt;
+ #include &lt;QInputDialog&gt;
+-#include &quot;bluiloader.h&quot;
+ 
+ 
+ #include &quot;autoform.h&quot;
+@@ -471,10 +470,6 @@ int BlAutoForm::afterSave () {
+ BlAutoFormList::BlAutoFormList ( BlMainCompany *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo, const QString &amp;interfacefile ) : BlFormList ( comp, parent, flag, editmodo ) {
+     BL_FUNC_DEBUG
+     setupUi ( this );
+-    /// Disparamos los plugins.
+-//     int res = g_plugins-&gt;run ( &quot;SociosList_SociosList&quot;, this );
+-//     if ( res != 0 )
+-//         return;
+ 
+     mui_list-&gt;setMainCompany ( comp );
+ 
+@@ -487,7 +482,7 @@ BlAutoFormList::BlAutoFormList ( BlMainCompany *comp, QWidget *parent, Qt::WFlag
+      QFile file(interfacefile);
+      file.open(QFile::ReadOnly);
+      QWidget *myWidget = loader.load(&amp;file, 0);
+-//      m_busqueda-&gt;addTab(myWidget, &quot;Datos Generales&quot;);
++
+     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
+     /// para que sea redimensionable y aparezca el titulo de la ventana.
+     QHBoxLayout *layout = new QHBoxLayout(m_busqueda);
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_buscacliente/pluginbt_buscacliente.cpp b/bulmages/bulmatpv/plugins/pluginbt_buscacliente/pluginbt_buscacliente.cpp
+index c9309fd..d6d9800 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_buscacliente/pluginbt_buscacliente.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_buscacliente/pluginbt_buscacliente.cpp
+@@ -29,7 +29,7 @@
+ #include &quot;btticket.h&quot;
+ #include &quot;blapplication.h&quot;
+ #include &quot;bldockwidget.h&quot;
+-
++#include &quot;blformlist.h&quot;
+ 
+ /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
+ /// como un QMap.
+@@ -91,3 +91,5 @@ int Busqueda_on_m_inputBusqueda_editingFinished_Post ( BlSearchWidget *busc )
+ }
+ 
+ 
++
++
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_cliente/README.es b/bulmages/bulmatpv/plugins/pluginbt_cliente/README.es
+index 9957ac2..fc3f3a5 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_cliente/README.es
++++ b/bulmages/bulmatpv/plugins/pluginbt_cliente/README.es
+@@ -10,6 +10,8 @@ Biblioteca: libpluginbt_cliente.so
+ 
+ Descripción: &lt;H1&gt;Seleccion de cliente&lt;/H1&gt;
+ &lt;P&gt;Permite seleccionar el cliente al que va dirigido el ticket.&lt;/P&gt;
++&lt;P&gt;Con el plugin instalado, aparece un botón nuevo en la botonera que al ser pulsado buscará el cliente cuyo codigo coincida con el codigo introducido en
++el teclado numerico&lt;/P&gt;
+ &lt;HR&gt;
+ 
+ ParmBD: 
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007269.html">[BulmaGés] [Gitorious] Activity: tborras created	branch arregloplugi...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007271.html">[BulmaGés][Gitorious] Activity: tborras pushed 2 commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7270">[ fecha ]</a>
+              <a href="thread.html#7270">[ hilo ]</a>
+              <a href="subject.html#7270">[ asunto ]</a>
+              <a href="author.html#7270">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Mas cosas
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-15%3Fq%3FMas_cosas%3F%3D&In-Reply-To=%3C201205161619.18010.santos%40sisteges.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007229.html">
+   <LINK REL="Next"  HREF="007230.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Mas cosas </H1>
+    <B>Santos Martínez Estrada</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-15%3Fq%3FMas_cosas%3F%3D&In-Reply-To=%3C201205161619.18010.santos%40sisteges.com%3E"
+       TITLE="[BulmaGés]Mas cosas">santos en sisteges.com
+       </A><BR>
+    <I>Mie Mayo 16 16:19:17 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007229.html">[BulmaGés]Mas cosas
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007230.html">[BulmaGés] mas cosas
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7247">[ fecha ]</a>
+              <a href="thread.html#7247">[ hilo ]</a>
+              <a href="subject.html#7247">[ asunto ]</a>
+              <a href="author.html#7247">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>El error de bulmasetup es que, una vez que doy nombre a una empresa y marco 
+los plugins que quiero, al darle a crear no hace nada, sólo se cuelga sin más, 
+en la consola no aparece nada.
+Eso después de crear con el pgadmin el usuario root, ya que desde el 
+bulmasetup tampoco lo crea (aparece la ventanita de que hay que crearlo, le 
+das ok y vuelta a la misma).
+
+Aprovecho y también paso el error que me da al compilar en linux (Debian 
+Squeeze) la versión del repo trunk:
+
+&quot;[ 18%] Building CXX object 
+bulmalib/plugins/pluginbl_feeds/CMakeFiles/pluginbl_feeds.dir/visorhtml.o
+/usr/src/bulmages/bulmages/bulmalib/plugins/pluginbl_feeds/visorhtml.cpp:30:20: 
+fatal error: QWebView: No existe el fichero o el directorio                                                                          
+compilation terminated.
+make[2]: *** 
+[bulmalib/plugins/pluginbl_feeds/CMakeFiles/pluginbl_feeds.dir/visorhtml.o] 
+Error 1
+make[1]: *** 
+[bulmalib/plugins/pluginbl_feeds/CMakeFiles/pluginbl_feeds.dir/all] Error 2
+make: *** [all] Error 2&quot;
+
+Imagino que está relacionado con este que me da al hacer el cmake:
+Qt QTWEBKIT library not found.
+
+Sin embargo, tengo instalado el webkit:
+
+i A libkdewebkit5                - KDE WebKit Library                                                                                          
+p   libkwebkit-dbg               - KDE bindings for WebKit, Development files             
+i   libkwebkit-dev                - KDE bindings for WebKit, Development files                                                                  
+i A libkwebkit1                    - KDE bindings for WebKit                                                                                     
+i   libqt4-webkit                  - transitional package for Qt 4 WebKit 
+module                                                                 
+p   libqt4-webkit-dbg         - transitional package for Qt 4 WebKit debugging 
+symbols                                                      
+i   libqtscript4-webkit         - QtScript bindings for the Qt 4 WebKit 
+library                                                               
+i   libqtwebkit-dev              - Web content engine library for Qt - 
+development files                                                       
+i A libqtwebkit4
+
+On Miércoles, 16 de mayo de 2012 15:34:22 Tomeu Borras escribió:
+&gt;<i> Deberías ser más explícito
+</I>&gt;<i> 
+</I>&gt;<i> No puedo reproducir el error si no me indicas los pasos exactos que sigues.
+</I>&gt;<i> 
+</I>&gt;<i> Salut
+</I>&gt;<i> 
+</I>&gt;<i> El 16 de mayo de 2012 15:05, Santos Martinez &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">otilio en apdo.com</A>&gt; escribió:
+</I>&gt;<i> &gt; Sobre la versión de windows:
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; El bulmasetup no me crea nuevas empresas (se cuelga). Qué versión de
+</I>&gt;<i> &gt; postgres
+</I>&gt;<i> &gt; utilizamos en la 0.14?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Los archivos de configuración hay que retocar varias cosas, como las
+</I>&gt;<i> &gt; barras (invertidas siempre).
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Si consigo crear una empresa seguiré probando ....
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Bulmages-main mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+-- 
+Santos Martínez Estrada
+El Palacio, 12 - Bajo - Riego de la Vega
+Tfno: 987 632 100
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">santos en sisteges.com</A>
+
+
+				
+------------------------------------------------------------
+
+Este correo electrónico contiene información estrictamente confidencial y es de 
+uso exclusivo del destinatario, quedando prohibida a cualquier otra persona su 
+copia, distribución o reenvío de su contenido. Si ha recibido este mensaje por 
+error, por favor conteste a su remitente mediante correo electrónico y proceda 
+a borrarlo de su sistema. Rogamos nos comunique inmediatamente cualquier 
+situación anómala en relación al envío de este correo electrónico.
+This email contains confidential information and is used exclusively by the 
+recipient, forbids any person from copying, distributing or forwarding the 
+contents. If you have received this message in error, please reply to the 
+sender by email and delete from your system. Please inform us immediately of 
+any abnormal situation in relation to the sending of this email.
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007229.html">[BulmaGés]Mas cosas
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007230.html">[BulmaGés] mas cosas
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7247">[ fecha ]</a>
+              <a href="thread.html#7247">[ hilo ]</a>
+              <a href="subject.html#7247">[ asunto ]</a>
+              <a href="author.html#7247">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

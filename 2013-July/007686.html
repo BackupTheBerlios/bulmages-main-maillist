@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130704204117.0AB30180%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007685.html">
+   <LINK REL="Next"  HREF="007687.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130704204117.0AB30180%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Jue Jul  4 22:41:16 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007685.html">[BulmaGés]PostGresql 9.1 en Windows
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007687.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7686">[ fecha ]</a>
+              <a href="thread.html#7686">[ hilo ]</a>
+              <a href="subject.html#7686">[ asunto ]</a>
+              <a href="author.html#7686">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from b953914 to 3233c66
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/b9539148c919275d9cb4fd31659a393a1cff6a59/diffs/3233c66eee7290fa6f598fb12ee53decafb5b664">https://gitorious.org/bulmages/bulmages/commit/b9539148c919275d9cb4fd31659a393a1cff6a59/diffs/3233c66eee7290fa6f598fb12ee53decafb5b664</A>
+
+Diff: 
+
+commit 3233c66eee7290fa6f598fb12ee53decafb5b664
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu Jul 4 22:40:35 2013 +0200
+
+    Arreglo problema en al plugin de cuentas que no sacaba bien las imagenes y arreglo problemas en el login para que pueda salir el selector de empresas aun conectando a un sistema remoto
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/pluginbf_cuentaresumen.cpp b/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/pluginbf_cuentaresumen.cpp
+index d40e714..e441a9d 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/pluginbf_cuentaresumen.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/pluginbf_cuentaresumen.cpp
+@@ -149,7 +149,7 @@ int Busqueda_on_m_inputBusqueda_editingFinished_Post ( BlSearchWidget *bfta )
+ \param subform
+ \return
+ **/
+-int BfSubForm_on_mui_list_cellChanged_post ( BfSubForm *subform )
++int BfSubForm_on_mui_list_editFinished ( BfSubForm *subform )
+ {
+     BL_FUNC_DEBUG
+     if ( subform-&gt;currentRow() &lt; 0 )
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/pluginbf_cuentaresumen.h b/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/pluginbf_cuentaresumen.h
+index 5b7e6e1..f8014bc 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/pluginbf_cuentaresumen.h
++++ b/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/pluginbf_cuentaresumen.h
+@@ -32,7 +32,7 @@
+ extern &quot;C&quot; PLUGINBC_CUENTARESUMEN_EXPORT int entryPoint ( BfBulmaFact * );
+ extern &quot;C&quot; PLUGINBC_CUENTARESUMEN_EXPORT int Busqueda_on_m_inputBusqueda_editingFinished_Post ( BlSearchWidget * );
+ extern &quot;C&quot; PLUGINBC_CUENTARESUMEN_EXPORT int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget * );
+-extern &quot;C&quot; PLUGINBC_CUENTARESUMEN_EXPORT int BfSubForm_on_mui_list_cellChanged_post ( BfSubForm * );
++extern &quot;C&quot; PLUGINBC_CUENTARESUMEN_EXPORT int BfSubForm_on_mui_list_editFinished ( BfSubForm * );
+ extern &quot;C&quot; PLUGINBC_CUENTARESUMEN_EXPORT int BfBulmaFact_closeEvent ( BfBulmaFact * );
+ 
+ 
+diff --git a/bulmages/bulmafact/src/main.cxx b/bulmages/bulmafact/src/main.cxx
+index 6b8c703..6a0c732 100644
+--- a/bulmages/bulmafact/src/main.cxx
++++ b/bulmages/bulmafact/src/main.cxx
+@@ -142,6 +142,7 @@ int main ( int argc, char **argv )
+       login1-&gt;validate();	 
+       if ( !login1-&gt;authOK() || argParser-&gt;askPassword() ) {
+          login1-&gt;exec();
++	 g_confpr-&gt;setValue ( CONF_DBNAME, login1-&gt;m_db-&gt;text());
+       } // end if
+       /// Si la autentificacion falla una segunda vez abortamos el programa.
+       if ( !login1-&gt;authOK() ) {
+diff --git a/bulmages/bulmalib/src/bldblogindialogbase.ui b/bulmages/bulmalib/src/bldblogindialogbase.ui
+index a34bd19..fbd608c 100644
+--- a/bulmages/bulmalib/src/bldblogindialogbase.ui
++++ b/bulmages/bulmalib/src/bldblogindialogbase.ui
+@@ -6,8 +6,8 @@
+    &lt;rect&gt;
+     &lt;x&gt;0&lt;/x&gt;
+     &lt;y&gt;0&lt;/y&gt;
+-    &lt;width&gt;507&lt;/width&gt;
+-    &lt;height&gt;432&lt;/height&gt;
++    &lt;width&gt;829&lt;/width&gt;
++    &lt;height&gt;619&lt;/height&gt;
+    &lt;/rect&gt;
+   &lt;/property&gt;
+   &lt;property name=&quot;sizePolicy&quot;&gt;
+@@ -19,13 +19,7 @@
+   &lt;property name=&quot;windowTitle&quot;&gt;
+    &lt;string&gt;Lanzador Bulmages&lt;/string&gt;
+   &lt;/property&gt;
+-  &lt;layout class=&quot;QVBoxLayout&quot;&gt;
+-   &lt;property name=&quot;spacing&quot;&gt;
+-    &lt;number&gt;5&lt;/number&gt;
+-   &lt;/property&gt;
+-   &lt;property name=&quot;margin&quot;&gt;
+-    &lt;number&gt;5&lt;/number&gt;
+-   &lt;/property&gt;
++  &lt;layout class=&quot;QVBoxLayout&quot; name=&quot;verticalLayout&quot;&gt;
+    &lt;item&gt;
+     &lt;widget class=&quot;QGroupBox&quot; name=&quot;grpAuthError&quot;&gt;
+      &lt;property name=&quot;title&quot;&gt;
+@@ -142,14 +136,14 @@
+     &lt;/widget&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+-    &lt;spacer&gt;
++    &lt;spacer name=&quot;verticalSpacer&quot;&gt;
+      &lt;property name=&quot;orientation&quot;&gt;
+       &lt;enum&gt;Qt::Vertical&lt;/enum&gt;
+      &lt;/property&gt;
+      &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
+       &lt;size&gt;
+        &lt;width&gt;20&lt;/width&gt;
+-       &lt;height&gt;40&lt;/height&gt;
++       &lt;height&gt;198&lt;/height&gt;
+       &lt;/size&gt;
+      &lt;/property&gt;
+     &lt;/spacer&gt;
+diff --git a/bulmages/bulmalib/src/blmaincompany.cpp b/bulmages/bulmalib/src/blmaincompany.cpp
+index c3c7da0..d4e7f42 100644
+--- a/bulmages/bulmalib/src/blmaincompany.cpp
++++ b/bulmages/bulmalib/src/blmaincompany.cpp
+@@ -197,6 +197,7 @@ QString BlMainCompany::searchCompany ( QString tipo )
+     nuevae-&gt;exec();
+     BlDebug::blDebug ( &quot;Vamos a cambiar la empresa&quot;, 0 );
+     QString bd = nuevae-&gt;dbName();
++    g_confpr-&gt;setValue ( CONF_DBNAME, bd);
+     BlDebug::blDebug ( &quot;Empresa cambiada a &quot; + bd, 0 );
+     delete nuevae;
+     /// Si no se ha seleccionado ninguna base de datos entonces abortamos.
+@@ -204,7 +205,6 @@ QString BlMainCompany::searchCompany ( QString tipo )
+ 	blMsgError(&quot;Debe seleccionar una empresa&quot;);
+         exit ( 1 );
+     } // end if
+-    
+     return bd;
+ }
+ 
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007685.html">[BulmaGés]PostGresql 9.1 en Windows
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007687.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7686">[ fecha ]</a>
+              <a href="thread.html#7686">[ hilo ]</a>
+              <a href="subject.html#7686">[ asunto ]</a>
+              <a href="author.html#7686">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

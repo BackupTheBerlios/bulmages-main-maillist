@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] More BulmaInCloud
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20More%20BulmaInCloud&In-Reply-To=%3CCAJWqEteAv2DzmgX_v2jU5mc%3DpMOm3h9ufm1yrnejrrx05e-xxw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007667.html">
+   <LINK REL="Next"  HREF="007669.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] More BulmaInCloud </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20More%20BulmaInCloud&In-Reply-To=%3CCAJWqEteAv2DzmgX_v2jU5mc%3DpMOm3h9ufm1yrnejrrx05e-xxw%40mail.gmail.com%3E"
+       TITLE="[BulmaGés] More BulmaInCloud">tborras en conetxia.com
+       </A><BR>
+    <I>Sab Jun 29 13:19:02 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007667.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007669.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7668">[ fecha ]</a>
+              <a href="thread.html#7668">[ hilo ]</a>
+              <a href="subject.html#7668">[ asunto ]</a>
+              <a href="author.html#7668">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bones a tothom
+
+Hemos llegado a un buen punto con BulmaInCloud. Funciona bien con bases de
+datos remotas (con fluidez similar a la que proporciona un entorno web), el
+tamaño es razonable y se actualiza automáticamente según esté establecido
+en el servidor. Además ya está estructurado para tener distintos servidores
+de actualización (Cualquiera puede montarse su propio servidor de
+actualizaciones cambiando el CONF_SERVER_SYNC) con lo que podemos tener
+versiones estables a inestables conviviendo con un mismo cliente.
+
+Así que nos irá perfecto para tener un entorno de pruebas actualizado en
+Windows y que no requiera de instalaciones para probar. Y también se podrá
+ofrecer un servicio de gestión desatendida 24x7 para que no haya que
+preocuparse de backups, instalación de puestos ni actualizaciones de
+software.
+
+El VPS está en camino (si no me han estafado) y en breve podremos montar
+algunas configuraciones distintas (básica, con cartera de pagos,
+alquileres, asociaciones y contabilidad).
+
+Faltan varias cosas (Por si alguien se quiere mojar el culo):
+ - Una versión Linux (que no voy a hacer yo). Pensar que un usuario Linux
+necesita de una versión portable y actualizada porque le da pereza compilar
+me revuelve las tripas.
+ - Alguna mejora de rendimiento ajustando consultas de SQL (que será
+largo). De momento planeo hacer un plugin que calcule los tiempos de
+consulta y muestre posibles cuellos de botella.
+ - Un sistema automatizado de mantenimiento del server (Ahora es
+excesivamente artesanal) que suba automáticamente los archivos y actualice
+los índices.
+ - Y una mejora mostrando el proceso de actualización (ahora hay algo muy
+básico) y pregunte si se desea actualizar o no. Ahora actualiza si o si.
+
+
+Son detalles que hay que pulir, y que con tiempo irán mejorando. También
+hay que reconocer que por ahora no hemos inventado la rueda (todo esto ya
+existía).
+
+Lo que de verdad me interesa es el manejo de los datos (con postgreSQL
+local y remoto) ya que es el punto estrella de este desarrollo, y donde
+podemos destacar.
+
+Toca empezar a mirarse los modos de replica y sincronización implementados
+en postgreSQL a ver hasta donde nos permiten llegar. Y también empezar a
+ver el sistema de notificaciones (LISTEN y NOTIFY) que proponen ya que en
+entornos multiusuario pueden valer la pena. Vamos que hay tema para
+desarrollar ...
+
+
+Por otro lado la versión de Qt5 tiene muchos de los problemas corregidos
+(básicamente han desaparecido algunos SIGNALS muy utilizados clicked y
+activated) y ha habido que cambiarlos por otros (released y triggered). Y
+el QMdiArea no hace ese indeseable efecto de maximizar cuando le viene en
+gana.
+
+Salut
+
+-- 
+Tomeu Borrás
+Conetxia Soluciones Informáticas
+677 77 44 76
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20130629/a68bbab0/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20130629/a68bbab0/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007667.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007669.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7668">[ fecha ]</a>
+              <a href="thread.html#7668">[ hilo ]</a>
+              <a href="subject.html#7668">[ asunto ]</a>
+              <a href="author.html#7668">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

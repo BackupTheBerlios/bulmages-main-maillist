@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]r2834 - trunk/bulmages/installbulmages/bgtrml2pdf
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fr2834_-_trunk/bulmage%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fs/installbulmages/bgtrml2pdf%3F%3D&In-Reply-To=%3C20081210211810.GA6043%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000491.html">
+   <LINK REL="Next"  HREF="000534.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]r2834 - trunk/bulmages/installbulmages/bgtrml2pdf </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fr2834_-_trunk/bulmage%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fs/installbulmages/bgtrml2pdf%3F%3D&In-Reply-To=%3C20081210211810.GA6043%40localhost%3E"
+       TITLE="[BulmaGés]r2834 - trunk/bulmages/installbulmages/bgtrml2pdf">xdrudis en tinet.cat
+       </A><BR>
+    <I>Mie Dic 10 22:18:10 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000491.html">[BulmaGés]r2834 - trunk/bulmages/installbulmages/bgtrml2pdf
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000534.html">[BulmaGés] accents als llistats per RML
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#492">[ fecha ]</a>
+              <a href="thread.html#492">[ hilo ]</a>
+              <a href="subject.html#492">[ asunto ]</a>
+              <a href="author.html#492">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wed, Dec 10, 2008 at 03:05:17PM +0100, Fco. Javier M. C. wrote:
+&gt;<i> 
+</I>&gt;<i> Hola,
+</I>&gt;<i> 
+</I>&gt;<i> No soy experto en Python (ya me gustaria), pero veo que has usado 
+</I>&gt;<i> '|isinstance' en el código. Como no sabia lo que eso hacia he buscado en 
+</I>&gt;<i> google y he encontrado este documento:
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="http://www.canonical.org/~kragen/isinstance/">http://www.canonical.org/~kragen/isinstance/</A>
+</I>&gt;<i> |
+</I>&gt;<i> Leelo y me das tu opinión.
+</I>&gt;<i> 
+</I>
+Yo no soy experto ni siquiera aficionado en python. 
+
+Si, he usado isinstace para distingir strings de bytes de strings
+unicode, porque si aplicas str() a una string unicode parece ser que
+python se dedica a pasarla a ascii (si, el de 7 bits, se puede cambiar
+este defaultencoding pero en la práctica no se puede cambiar de una
+forma portable) y se queja de cualquier caracter que no quepa
+en ascii. Como que eso imposibilita tratar cadenas con acentos, ç, ñ, etc.
+y no considero razonable tener que omitir estos carácteres en los
+informes, quería arreglarlo de alguna manera. Por lo tanto sustituí
+todas las llamadas a str que dudaba si alguna vez podrían encontrarse
+caracteres no ascii por llamadas a una nueva función strSafe. strSafe
+intenta hacer lo correcto (en función del juego de carácteres de
+salida &quot;configurado&quot;) con las cadenas unicode, pero deja tal cual las
+cadenas de bytes, para no cargarse la codificación que se haya usado
+en esos bytes asumiendo que tienen alguna otra codificación.
+
+En principio todo lo leído de XML con minidom debería llegar como
+cadenas unicode seguras, pero a saber qué contendrá lo que venga de
+otras fuentes, incluído texto generado por el programa (porque
+internamente trabaja con cadenas de bytes, supongo que por
+compatibilidad con librerías PDF, no sé).
+
+strSafe usa isinstance para ver si la cadena es unicode o una cadena
+de bytes. En uno de esos casos aplica su buen criterio, y cualquier
+otro caso hace lo que se hacía antes, o sea llamar a str(). Uno de los
+problemas del isinstance es que no puedes pretender tratar todos los
+casos futuros.  En mi uso no lo pretendo, simplemente los casos que no
+trato los dejo como estaban, tratados con str(). En principio
+significa que mi solución sería mejor en algunos casos e igual en
+otros, nunca peor.
+
+El texto que me pasas, hasta dónde entiendo, me parece acertado hasta
+cierto punto. Pero peca de cierta pedantería que intuyo que puede
+venir de o bien quizás de no acabar de entrar en la mentalidad python
+(porque está tan obsesionado con interfícies?) o más probablemente por
+una forma de la hipótesis del mundo cerrado: Evidentemente nadie
+diseña sus clases para tener que estar usando isinstance. Pero más
+evidentemente todavía nadie trabaja sólo con las clases que ha
+diseñado él o ella. El mundo es muy grande y lo más efectivo es usar
+lo que ya existe para hacer cosas nuevas, no diseñarlo todo desde 0.
+Cuando empiezas a usar cosas distintas que ya estan hechas te
+encuentras a veces con problemas (como librerías no muy adaptadas a
+unicode). Y entonces tienes que ver cual es la mejor manera de
+solucionarlo.
+
+Por otro lado no acabo de entender lo que sugiere, ni cuando cree que
+isinstance es un mal menor ni cuando lo considera inaceptable y
+porque, ni las alternativas que ofrece. Que la programación orientada
+a objetos no consiste en switches con isinstance está claro, pero
+también esta claro, por ejemplo, que las excepciones son para casos
+excepcionales, no para sustituir condicionales cuando el programa ya
+debería haber previsto el caso. Por eso si te pones tan purista con el
+isinstance que lo sustituyes por un try catch como propone una vez el
+autor, te puedes encontrar con un purista del try catch que te diga
+que para eso no es.
+
+Total, que yo de python ni idea, lo único que sé es que quiero acentos
+en los listados. Si alguien se mira el bgtrml2pdf y lo arregla para
+que pueda hacer eso sin usar isinstance (por ejemplo analizando bien
+cada llamada a strSafe para decidir si el parámetro siempre será
+unicode y entonces llamar a encode o siempre byte string y entonces no
+hacer nada o si deduce que se pueden dar los dos casos en la misma
+llamada, rediseñando el código para distinguirlos) pues yo estaré
+encantado de la vida.  Pero no me siento con ánimo de hacerlo yo.
+
+Por cierto puestos a ser puristas, podríamos rediseñar python, romper
+compatibilidad con lo anterior y evitar tanta mezcla de byte arrays con 
+cadenas de carácteres, que es la madre del cordero. Lectura introductoria:
+
+<A HREF="http://evanjones.ca/python-utf8.html">http://evanjones.ca/python-utf8.html</A>
+<A HREF="http://blog.ianbicking.org/illusive-setdefaultencoding.html">http://blog.ianbicking.org/illusive-setdefaultencoding.html</A>
+<A HREF="http://faassen.n--tree.net/blog/view/weblog/2005/8/2/0">http://faassen.n--tree.net/blog/view/weblog/2005/8/2/0</A>
+
+Por cierto, todavía no va. Ahora me fallan los acentos que vienen de la 
+base de datos con sentencias SQL incrustadas en el .rml, sólo van los 
+acentos en el propio rml y en los datos cogidos del formulario (grid) 
+en pantalla. Me he puesto a mirarlo en C++ pero el kdevelop se me cuelga, 
+no sé que le pasa. Funcionaba hace unas horas...
+
+
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>
+Signa per fer Collserola parc natural com cal
+<A HREF="http://www.collserola.org/salvemelparcnatural/">http://www.collserola.org/salvemelparcnatural/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000491.html">[BulmaGés]r2834 - trunk/bulmages/installbulmages/bgtrml2pdf
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000534.html">[BulmaGés] accents als llistats per RML
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#492">[ fecha ]</a>
+              <a href="thread.html#492">[ hilo ]</a>
+              <a href="subject.html#492">[ asunto ]</a>
+              <a href="author.html#492">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

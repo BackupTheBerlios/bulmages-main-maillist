@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]r2934 - in trunk/bulmages: ModulesCMake bulmafact/src
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fr2934_-_in_trunk/bulm%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fages%3D3A_ModulesCMake_bulmafact/src%3F%3D&In-Reply-To=%3C200901271251.32022.leo%40alaxarxa.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000875.html">
+   <LINK REL="Next"  HREF="000876.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]r2934 - in trunk/bulmages: ModulesCMake bulmafact/src </H1>
+    <B>Leopold Palomo-Avellaneda</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fr2934_-_in_trunk/bulm%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fages%3D3A_ModulesCMake_bulmafact/src%3F%3D&In-Reply-To=%3C200901271251.32022.leo%40alaxarxa.net%3E"
+       TITLE="[BulmaGés]r2934 - in trunk/bulmages: ModulesCMake bulmafact/src">leo en alaxarxa.net
+       </A><BR>
+    <I>Mar Ene 27 12:51:31 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000875.html">[BulmaGés]r2934 - in trunk/bulmages: ModulesCMake bulmafact/src
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000876.html">[BulmaGés]r2934 - in trunk/bulmages: ModulesCMake bulmafact/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#874">[ fecha ]</a>
+              <a href="thread.html#874">[ hilo ]</a>
+              <a href="subject.html#874">[ asunto ]</a>
+              <a href="author.html#874">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>A Dimarts 27 Gener 2009, vàreu escriure:
+&gt;<i> Leopold Palomo Avellaneda escribió:
+</I>&gt;<i> &gt; A Dilluns 26 Gener 2009, <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">svn en mail.berlios.de</A> va escriure:
+</I>&gt;<i> &gt;&gt; Author: fcojavmc
+</I>&gt;<i> &gt;&gt; Date: 2009-01-26 23:28:13 +0100 (Mon, 26 Jan 2009)
+</I>&gt;<i> &gt;&gt; New Revision: 2934
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; Modified:
+</I>&gt;<i> &gt;&gt;    trunk/bulmages/ModulesCMake/FindGettext.cmake
+</I>&gt;<i> &gt;&gt;    trunk/bulmages/bulmafact/src/bulmafact_en_US.UTF-8.po
+</I>&gt;<i> &gt;&gt;    trunk/bulmages/bulmafact/src/bulmafact_fr_FR.UTF-8.po
+</I>&gt;<i> &gt;&gt; Log:
+</I>&gt;<i> &gt;&gt; Ahora, cada vez que se compila se copian los .po desde el directorio del
+</I>&gt;<i> &gt;&gt; codigo fuente hasta el de compilacion. De esta manera no se alteran
+</I>&gt;<i> &gt;&gt; archivos del directorio del codigo fuente cada vez que se compila. La
+</I>&gt;<i> &gt;&gt; mezcla de cadenas de texto se hace en el directorio de compilacion.
+</I>&gt;<i> &gt;&gt; NOTA: Se tiene que copiar manualmente los .po resultantes al codigo
+</I>&gt;<i> &gt;&gt; fuente cuando sea necesario.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Epps,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; això no està bé crec!!!. Això és un rotllo. Genera el .po quan els
+</I>&gt;<i> &gt; necessites, no sempre que compilis. No necessites tocar els fitxers de
+</I>&gt;<i> &gt; codi font quan compiles. No cal copiar el po, jo tinc fetes les macros.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Leo
+</I>&gt;<i>
+</I>&gt;<i> Hola Leo.
+</I>&gt;<i>
+</I>&gt;<i> No, lo que es un rotllo es que cada vegada que compilis guardi els
+</I>&gt;<i> canvis al directori del codi font. D'acord?
+</I>
+faig cc a la llista:
+
+No sé a que et refereixes.
+
+&gt;<i> Després, que passa si cada vegada que compiles et crea els .pot .po
+</I>&gt;<i> .gmo? Tampoc passa res, perque els necessites per fer les instal·lacions.
+</I>
+no els ha de fer. Els .pot es crea quan fas:
+make messages_extract
+
+&gt;<i> Si has canviat coses al codi font l'unic que passará és que tindrás un
+</I>&gt;<i> .po mesclat automáticament al directori de compilació. Aixó és perfecte
+</I>&gt;<i> perque pots: compilar el codi font que té cadenes noves, automáticament
+</I>&gt;<i> et genera un .po amb les diferencies. Només has de fer les traduccions i
+</I>&gt;<i> copiar els arxius al codi font per pujar-ho al SVN. A on está el problema?
+</I>
+a veure.
+
+El procés amb gettext és el següent:
+
+tu treballes normalment, anant en compte amb determinades coses. En primer 
+lloc quina macro fas servir per les traduccions. Tu has triat i18n, jo no ho 
+hagués fet, però ja m'està bé.
+
+O sigui, que tots els tr(...) hauran de ser i18n(...) el que passa és que això 
+té un problema que em vaig trovar. No sembre tr(&quot;..&quot;) té un string com a 
+paràmetre, pot tenir més coses [1] de forma que no pots fer una transformació 
+1 a 1 amb gettext, has de vigilar, ja que el uic et pot generar codi amb és 
+paràmetres.
+
+Després, quan ja has acabat de fer el codi, i creus que ja pots traduir, que 
+és quan es diu que congeles les cadenes, aleshores extreus el text:
+messages_extract, generant els .pot que publiques per a que els traductors 
+treballin.
+
+En aquest punt, aleshores, els traductors t'envien els seu .po amb la 
+traducció fet, cosa que tu incorpores i la compiles generant el .mo. 
+
+Què fa un traductor?
+
+Doncs, s'agafa el pot, el seu .po antic si el té i fa un msgmerge, de forma 
+que fusiona tot i li marque les cades dubtoses com a &quot;fuzzy&quot;.
+
+Jo havia fet les macros dels message_extract, de forma que es generava els pot 
+automàticament, i també la de crear les traduccions i l'instal.lació. 
+
+Aleshores, la meva idea era encapsular tot el tema de gettext de forma que en 
+els sistemes que no tenen gettext, puguis compilar sense problemes, amb un 
+#ifdef o amb una classe, no ho tenia clar. La idea era de canviar totes les 
+cadenes de bulmages de tr a una altre cosa, per exemple trQt o tri18n, de 
+forma que no col·lisionés amb Qt ni gettext.
+
+Jo estic molt content que t'hagis posat amb això, però haguessis avançat molt 
+més ràpidament si m'haguessis dit quelcom. :-(
+
+Leo
+
+
+
+
+
+
+
+
+&gt;<i> Jo crec que com está ara és perfecte. Només canviaria la ubicació del
+</I>&gt;<i> arxius per un directori propi. Tu que creus?
+</I>
+[1] <A HREF="http://doc.trolltech.com/4.4/qobject.html#tr">http://doc.trolltech.com/4.4/qobject.html#tr</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000875.html">[BulmaGés]r2934 - in trunk/bulmages: ModulesCMake bulmafact/src
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000876.html">[BulmaGés]r2934 - in trunk/bulmages: ModulesCMake bulmafact/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#874">[ fecha ]</a>
+              <a href="thread.html#874">[ hilo ]</a>
+              <a href="subject.html#874">[ asunto ]</a>
+              <a href="author.html#874">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

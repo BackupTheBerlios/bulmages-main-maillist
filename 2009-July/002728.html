@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Bug #15791] Errores en la consola.	Nueva empresa de contabilidad (1)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2315791%5D%20Errores%20en%20la%20consola.%0A%09Nueva%20empresa%20de%20contabilidad%20%281%29&In-Reply-To=%3C200907180610.n6I6AQYk014969%40unicorn.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002727.html">
+   <LINK REL="Next"  HREF="002729.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Bug #15791] Errores en la consola.	Nueva empresa de contabilidad (1) </H1>
+    <B>admin en berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2315791%5D%20Errores%20en%20la%20consola.%0A%09Nueva%20empresa%20de%20contabilidad%20%281%29&In-Reply-To=%3C200907180610.n6I6AQYk014969%40unicorn.berlios.de%3E"
+       TITLE="[BulmaGés] [Bug #15791] Errores en la consola.	Nueva empresa de contabilidad (1)">admin en berlios.de
+       </A><BR>
+    <I>Sab Jul 18 08:10:26 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002727.html">[BulmaGés] r3573 -	trunk/bulmages/bulmacont/plugins/pluginbc_caaslods/openreports
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002729.html">[BulmaGés] [Bug #15754] Error tras reiniciar el	sistema
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2728">[ fecha ]</a>
+              <a href="thread.html#2728">[ hilo ]</a>
+              <a href="subject.html#2728">[ asunto ]</a>
+              <a href="author.html#2728">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bug #15791, was updated on 2009-Jun-01 15:18
+Here is a current snapshot of the bug.
+
+Project: BulmaGes, Gestión Empresarial Libre
+Category: bulmasetup
+Status: Closed
+Resolution: Fixed
+Bug Group: None
+Priority: 5
+Submitted by: elferrer
+Assigned to : tborras
+Summary: Errores en la consola. Nueva empresa de contabilidad (1)
+
+Details: Inicio desde la consola.
+
+Tras ejecutar BulmaSetup, pinchando sobre &quot;Crear empresa de contabilidad&quot;, y seleccionado primero &quot;Categoría: Contabilidad general&quot;.
+
+
+Fallo en la consulta: select valor from configuracion where nombre = 'Tipo'
+Fallo en la consulta: select valor from configuracion where nombre = 'Tipo'
+Traceback (most recent call last):
+  File &quot;/usr/local/share/bulmages/bulmasetup/contabilidad.py&quot;, line 303, in on_mui_categoria_currentIndexChanged
+    self.presentar()
+  File &quot;/usr/local/share/bulmages/bulmasetup/contabilidad.py&quot;, line 331, in presentar
+    text = QString(self.mui_plugins.item(self.i,8).text())
+AttributeError: 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File &quot;/usr/local/share/bulmages/bulmasetup/contabilidad.py&quot;, line 303, in on_mui_categoria_currentIndexChanged
+    self.presentar()
+  File &quot;/usr/local/share/bulmages/bulmasetup/contabilidad.py&quot;, line 331, in presentar
+    text = QString(self.mui_plugins.item(self.i,8).text())
+AttributeError: 'NoneType' object has no attribute 'text'
+
+Este error no lo habría visto si no tuviera la consola abierta, no da ningún mensaje de error en pantalla.
+
+
+
+Follow-Ups:
+
+Date: 2009-Jul-18 08:10
+By: tborras
+
+Comment:
+Este error se arregló hace unos 15 dias junto con otros que pasaban en bulmafact
+-------------------------------------------------------
+
+For detailed info, follow this link:
+<A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=15791&amp;group_id=4472">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=15791&amp;group_id=4472</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002727.html">[BulmaGés] r3573 -	trunk/bulmages/bulmacont/plugins/pluginbc_caaslods/openreports
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002729.html">[BulmaGés] [Bug #15754] Error tras reiniciar el	sistema
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2728">[ fecha ]</a>
+              <a href="thread.html#2728">[ hilo ]</a>
+              <a href="subject.html#2728">[ asunto ]</a>
+              <a href="author.html#2728">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][BulmaGÃ©s][BulmaGÃ©s]segfault al lanzar los progr amas...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaG%3DC3%3DA9s%3D5D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaG%3DC3%3DA9s%3D5Dsegfault_al_lanzar_los_progr_amas%3D2E%3D2E%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D2E%3F%3D&In-Reply-To=%3C200907091633.14460.pedro.lopez.cabanillas%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002673.html">
+   <LINK REL="Next"  HREF="002675.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][BulmaGÃ©s][BulmaGÃ©s]segfault al lanzar los progr amas... </H1>
+    <B>Pedro Lopez-Cabanillas</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaG%3DC3%3DA9s%3D5D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaG%3DC3%3DA9s%3D5Dsegfault_al_lanzar_los_progr_amas%3D2E%3D2E%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D2E%3F%3D&In-Reply-To=%3C200907091633.14460.pedro.lopez.cabanillas%40gmail.com%3E"
+       TITLE="[BulmaGés][BulmaGÃ©s][BulmaGÃ©s]segfault al lanzar los progr amas...">pedro.lopez.cabanillas en gmail.com
+       </A><BR>
+    <I>Jue Jul  9 16:33:14 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002673.html">[BulmaGés][BulmaGÃ©s][BulmaGÃ©s]segfault al lanzar los progr amas...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002675.html">[BulmaGés][BulmaGÃ©s][BulmaGÃ©s]segfault al lanzar los progr amas...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2674">[ fecha ]</a>
+              <a href="thread.html#2674">[ hilo ]</a>
+              <a href="subject.html#2674">[ asunto ]</a>
+              <a href="author.html#2674">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola,
+
+On Thursday, July 9, 2009, Tomeu Borras wrote:
+&gt;<i> Casi mejor empezamos por el principio y vamos descartando cosas.
+</I>&gt;<i>
+</I>&gt;<i> Suponemos que tienes las bases de datos creadas desde bulmasetup.
+</I>&gt;<i> Suponemos tambien que tienes creado el usuario pedro y que pedro es tambien
+</I>&gt;<i> el usuario de la sesion
+</I>
+Supones correctamente. 
+
+&gt;<i> abre una consola y ejecuta
+</I>&gt;<i>
+</I>&gt;<i> $psql -l
+</I>&gt;<i>
+</I>&gt;<i> Nota: Puede que el comando pida un password y debes meter el que has puesto
+</I>&gt;<i> al crear el usuario.
+</I>
+No me pide nada. No le puse password.
+
+&gt;<i> Tiene que aparecer un listado de las empresas creadas y tambien template0 y
+</I>&gt;<i> template1
+</I>
+$ psql -l
+      Listado de base de datos
+  Nombre   |  Dueño   | Codificación
+-----------+----------+--------------
+ bulmacont | postgres | UTF8
+ bulmafact | postgres | UTF8
+ postgres  | postgres | UTF8
+ template0 | postgres | UTF8
+ template1 | postgres | UTF8
+(5 filas)
+
+
+&gt;<i> Si la empresa creada es bulmafact ejecuta
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> $psql bulmafact
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Y la consola cambiará a algo como &gt;
+</I>&gt;<i>
+</I>&gt;<i> aqui puedes hacer algo del tipo
+</I>&gt;<i>
+</I>&gt;<i> &gt;SELECT * FROM configuracion;
+</I>
+bulmafact=# SELECT * FROM configuracion;
+          nombre           |    valor
+---------------------------+--------------
+ DatabaseRevision          | 0.12.1-0001
+ CIF                       | --
+ TipoVia                   | --
+ NombreVia                 | --
+ NumeroVia                 | --
+ Escalera                  | --
+ Piso                      | --
+ Puerta                    | --
+ CodPostal                 | --
+ Municipio                 | --
+ Provincia                 | --
+ Pais                      | --
+ Tipo                      | BulmaFact
+ ProgramaContabilidad      | BulmaCont
+ AlmacenDefecto            | **CAMBIAME**
+ DireccionCompleta         | Sin definir
+ Ciudad                    | Sin definir
+ CodArticuloGenerico       | Sin Definir
+ SerieFacturaDefecto       | **CAMBIAME**
+ IRPF                      | 0
+ CodCuenta                 | xxxxyyy
+ DBRev-BulmaTPV            | 0.10.2-0002
+ NombreEmpresa             | Test
+ PluginBf_Inventario       | 0.10.1-0001
+ PluginBf_Alias            | 0.11.2
+ PluginBf_Trazabilidad     | 0.9.1
+ PluginBf_Profesor         | 0.11.1-0001
+ PluginBf_Cuadrante        | 0.9.3-0002
+ PluginBf_Contrato         | 0.11.1-0001
+ PluginBf_TipoTrabajo      | 0.10.1-0001
+ PluginBf_MiniContabilidad | 0.11.1-0002
+ PluginBf_Comercial        | 0.5.9
+ PluginBF_VariacionTarifa  | 0.11.1-0001
+ PluginBf_Tallas-y-Colores | 0.11.1-0001
+ PluginBf_PrecioCoste      | 0.10.1-0002
+ PluginBf_IVAIncluido      | 0.11.1-0000
+ PluginBf_DatosBase        | 0.12.1-001
+ PluginBf_Asterisk         | 0.11-002
+ PluginBl_FormLock         | 0.11.1-0001
+ PluginBl_AttachDocument   | 0.11.1-0001
+ PluginBt_TicketDevuelto   | 0.11.1-0001
+ PluginBt_Devolucion2      | 0.11.1-0001
+(42 filas)
+
+
+&gt;<i> y de paso
+</I>&gt;<i>
+</I>&gt;<i> &gt;SELECT * FROM articulo;
+</I>
+bulmafact=# SELECT * FROM articulo;
+ idarticulo | codarticulo | nomarticulo | abrevarticulo | obserarticulo | 
+presentablearticulo | controlstockarticulo | idtipo_articulo | idtipo_iva | 
+codigocompletoarticulo | idfamilia | stockarticulo | inactivoarticulo | 
+pvparticulo | pesoundarticulo | volumenundarticulo | preciocostearticulo | 
+margenarticulo | actualizarmargenarticulo | ivaincarticulo | 
+pvpivaincarticulo
+------------+-------------+-------------+---------------+---------------+---------------------+----------------------+-----------------+------------+------------------------+-----------+---------------+------------------+-------------+-----------------+--------------------+---------------------+----------------+--------------------------+----------------+-------------------
+          1 | 001         | VARIOS      |               |               | 
+t                   | t                    |                 |          1 | 
+000001                 |         1 |          0.00 |                  |        
+0.00 |            0.00 |               0.00 |                0.00 |           
+0.00 | f                        | f              |              0.00
+(1 fila)
+
+
+
+&gt;<i> Si todo es correcto (ha salido la tabla por la consola) entonces puedes
+</I>&gt;<i> salir con /q
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Si todos estos pasos han funcionado ahora vamos a probar con bulmafact
+</I>&gt;<i>
+</I>&gt;<i> Desde la consola escribes bulmafact y deberia aparecer una ventana de
+</I>&gt;<i> seleccion de empresa.
+</I>&gt;<i> Si esta vacia hay que darle al boton de refrescar empresas y si no esta
+</I>&gt;<i> vacia hay que hacer doble click sobre la empresa que toque
+</I>&gt;<i>
+</I>
+$ bulmafact
+--&gt; MAIN::Iniciando el programa. &lt;--
+--&gt; Leyendo el archivo '/etc/bulmages/bulmages.conf'&lt;--
+Leyendo configuracion/etc/bulmages/bulmages.conf
+
+FIN Leyendo configuracion
+--&gt; El archivo '/etc/bulmages/bulmafact.conf' existe. Se va a leer.&lt;--
+Leyendo configuracion/etc/bulmages/bulmafact.conf
+
+FIN Leyendo configuracion
+--&gt; El archivo '/home/pedro/.bulmages/bulmages.conf' no existe. &lt;--
+--&gt; El archivo '/home/pedro/.bulmages/bulmafact.conf' no existe. &lt;--
+Violación de segmento
+$
+
+&gt;<i> Una vez hecho esto deberia arrancar el programa.
+</I>
+Pero en vez de eso, casca.
+
+&gt;<i> ===========================================
+</I>&gt;<i>
+</I>&gt;<i> Bueno, esta es la teoría. Ves siguiendo los pasos y en el momento en que no
+</I>&gt;<i> funcione avisa. Y no olvides poner toda la salida de que dispones para
+</I>&gt;<i> poder encontrar donde esta el problema.
+</I>
+Si necesitas más información, solo tienes que pedirla.
+
+Saludos,
+Pedro
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002673.html">[BulmaGés][BulmaGÃ©s][BulmaGÃ©s]segfault al lanzar los progr amas...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002675.html">[BulmaGés][BulmaGÃ©s][BulmaGÃ©s]segfault al lanzar los progr amas...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2674">[ fecha ]</a>
+              <a href="thread.html#2674">[ hilo ]</a>
+              <a href="subject.html#2674">[ asunto ]</a>
+              <a href="author.html#2674">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

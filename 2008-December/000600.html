@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]LIMITAR USUARIOS BASE DE DATOS
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FLIMITAR_USUARIOS_BASE%3F%3D%20%3D%3Fiso-8859-1%3Fq%3F_DE_DATOS%3F%3D&In-Reply-To=%3C200812180031.47615.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000599.html">
+   <LINK REL="Next"  HREF="000603.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]LIMITAR USUARIOS BASE DE DATOS </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FLIMITAR_USUARIOS_BASE%3F%3D%20%3D%3Fiso-8859-1%3Fq%3F_DE_DATOS%3F%3D&In-Reply-To=%3C200812180031.47615.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]LIMITAR USUARIOS BASE DE DATOS">tborras en conetxia.com
+       </A><BR>
+    <I>Jue Dic 18 00:31:47 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000599.html">[BulmaGés] LIMITAR USUARIOS BASE DE DATOS
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000603.html">[BulmaGés] LIMITAR USUARIOS BASE DE DATOS
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#600">[ fecha ]</a>
+              <a href="thread.html#600">[ hilo ]</a>
+              <a href="subject.html#600">[ asunto ]</a>
+              <a href="author.html#600">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Albert:
+
+Los pasos son correctos pero creo que también va a hacer falta hacer algun 
+paso adicional.
+
+haz un 
+GRANT  ALL ON TABLE configuracion TO usuario;
+
+Si logras ver la empresa seguramente el programa petará al abrirla.
+Habrá que hacer un GRANT en cada una de las tablas de la base de datos
+para que el programa se abra bien.
+
+Y postgres de momento no deja hacer un GRANT de todas las tablas.
+
+una forma de asignar multiples permisos a la vez es mediante este comando:
+
+select 'GRANT SELECT ON ' || c.relname || ' TO usuario;' from pg_class AS c 
+LEFT JOIN pg_namespace n ON n.oid = c.relnamespace where c.relkind = 'r' and 
+n.nspname NOT IN('pg_catalog', 'pg_toast') and pg_table_is_visible(c.oid);
+
+Concretamente lo que hace es imprimir en pantalla todos los comandos de 
+asignacion de permisos de cada tabla  (para que podamos hacer copy 
+y luego relanzar pegandolo en el psql) el comando se puede modificar para que 
+los permisos no sean solo los de select sino todos los demas.
+
+A ver que tal te sales ....
+
+
+
+
+
+
+El Thursday 18 December 2008 00:12:21 Albert Mas escribió:
+&gt;<i> Hola a todos.
+</I>&gt;<i> Tomeu me dió unas pequeñas instrucciones para que un usuario solo
+</I>&gt;<i> pudiera ver y tener acceso a una empresa de bulmafact
+</I>&gt;<i>
+</I>&gt;<i> las instrucciones eran las siguientes:
+</I>&gt;<i> 1. Crear usuario de sistema
+</I>&gt;<i> 2. con usuario postgres hacer: createuser NOMBREUSUARIO
+</I>&gt;<i> 2.1. no dar permisos de super usuario ni de roles.
+</I>&gt;<i> 3. con usuario postgres (entramos a la bbdd que queremos que vea)
+</I>&gt;<i> haciendo: psql NOMBREBBDD
+</I>&gt;<i> 3.1 ejecutar la instruccion: grant all on database NOMBREBBDD to
+</I>&gt;<i> NOMBREUSUARIO
+</I>&gt;<i>
+</I>&gt;<i> y  para rebocar permisos de un usuario a una base de datos ejecutar la
+</I>&gt;<i> instruccion:  revoke all on database NOMBREBBDD from NOMBREUSUARIO
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Pero todo y seguir todos los pasos, cuando accedo a bulmafact con el
+</I>&gt;<i> nuevo usuario no veo ni una sola empresa.
+</I>&gt;<i>
+</I>&gt;<i> Alguna ayuda?
+</I>
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000599.html">[BulmaGés] LIMITAR USUARIOS BASE DE DATOS
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000603.html">[BulmaGés] LIMITAR USUARIOS BASE DE DATOS
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#600">[ fecha ]</a>
+              <a href="thread.html#600">[ hilo ]</a>
+              <a href="subject.html#600">[ asunto ]</a>
+              <a href="author.html#600">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

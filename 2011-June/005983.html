@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Problema en los blDebug
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FProblema_en_los_blDeb%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fug%3F%3D&In-Reply-To=%3CBANLkTintDQpzy%3D5WKy%3DT3vpronD885uO0Q%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005979.html">
+   <LINK REL="Next"  HREF="005984.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Problema en los blDebug </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FProblema_en_los_blDeb%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fug%3F%3D&In-Reply-To=%3CBANLkTintDQpzy%3D5WKy%3DT3vpronD885uO0Q%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]Problema en los blDebug">tborras en gmail.com
+       </A><BR>
+    <I>Jue Jun  9 12:43:56 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="005979.html">[BulmaGés]Problema en los blDebug
+</A></li>
+        <LI>Próximo mensaje: <A HREF="005984.html">[BulmaGés]Problema en los blDebug
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5983">[ fecha ]</a>
+              <a href="thread.html#5983">[ hilo ]</a>
+              <a href="subject.html#5983">[ asunto ]</a>
+              <a href="author.html#5983">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ya lo pillo.
+
+Me gusta mucho.
+
+El 9 de junio de 2011 11:31, Toni Asensi Esteve &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">asmond en orange.es</A>&gt; escribió:
+
+&gt;<i> &gt; - Me puedes aclarar lo de la destruccion del objeto y donde se controla
+</I>&gt;<i> el
+</I>&gt;<i> &gt; código de eso para que no haga falta la macro ?
+</I>&gt;<i> Sí, claro. La macro QDEBUG_METHOD_NAME se define en
+</I>&gt;<i>      <A HREF="http://svn.berlios.de/wsvn/nxspooler/trunk/lib_src/tdebugstartend.h">http://svn.berlios.de/wsvn/nxspooler/trunk/lib_src/tdebugstartend.h</A>
+</I>&gt;<i> como
+</I>&gt;<i>      #ifdef QT_DEBUG
+</I>&gt;<i>          /*!  Create a TDebugStartEnd. This action also writes, in
+</I>&gt;<i> qDebug(),
+</I>&gt;<i> information about the name of the current method. */
+</I>&gt;<i>          #define QDEBUG_METHOD_NAME TDebugStartEnd methodName(Q_FUNC_INFO);
+</I>&gt;<i>      #else // We don't execute any statement
+</I>&gt;<i>          #define QDEBUG_METHOD_NAME
+</I>&gt;<i>      #endif
+</I>&gt;<i> Así que, cuando estamos desarrollando, en cada función donde aparezca una
+</I>&gt;<i> línea &quot;QDEBUG_METHOD_NAME&quot;, lo que estamos haciendo en dicha línea es crear
+</I>&gt;<i> un
+</I>&gt;<i> objeto de la clase TDebugStartEnd. Cuando la función se termine, se
+</I>&gt;<i> destruirá
+</I>&gt;<i> dicho objeto automáticamente, con lo que automáticamente se ejecutará el
+</I>&gt;<i> destructor de dicho objeto, que será el encargado de imprimir que se ha
+</I>&gt;<i> terminado dicha función. De esta forma no hace falta escribir órdenes extra
+</I>&gt;<i> en
+</I>&gt;<i> cada lugar donde pueda terminar dicha función, ya se encarga de ello el
+</I>&gt;<i> destructor de dicho objeto.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> &gt; - Nuestros archivos de trazas estan en XML y en TXT. Se podrian respetar
+</I>&gt;<i> &gt; ambos formatos ?
+</I>&gt;<i> Sí, en NxSpooler el código fuente que hace escribir mensajes de depuración
+</I>&gt;<i> está en
+</I>&gt;<i>   <A HREF="http://svn.berlios.de/wsvn/nxspooler/trunk/lib_src/tdebugstartend.cpp">http://svn.berlios.de/wsvn/nxspooler/trunk/lib_src/tdebugstartend.cpp</A>
+</I>&gt;<i> y se basa en un
+</I>&gt;<i>   qDebug() &lt;&lt;
+</I>&gt;<i> con lo que dicho código puede personalizarse lo que haga falta.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> &gt; - Nosotros tenemos un debugLevel que hace ejecuciones paso a paso
+</I>&gt;<i> lanzando
+</I>&gt;<i> &gt; mensajes y que podemos activar o desactivar en todo momento. ¿Esto se
+</I>&gt;<i> podría
+</I>&gt;<i> &gt; implementar?
+</I>&gt;<i> Sí, el código fuente de
+</I>&gt;<i>  <A HREF="http://svn.berlios.de/wsvn/nxspooler/trunk/lib_src/tdebugstartend.cpp">http://svn.berlios.de/wsvn/nxspooler/trunk/lib_src/tdebugstartend.cpp</A>
+</I>&gt;<i> y los archivos relacionados es relativamente simple, se podría implementar.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Nota: si hace aclarar algo al respecto, sólo hace falta preguntar en esta
+</I>&gt;<i> lista.
+</I>&gt;<i>
+</I>&gt;<i> Salut:
+</I>&gt;<i> --
+</I>&gt;<i> Toni Asensi Esteve.
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20110609/59fa892b/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20110609/59fa892b/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="005979.html">[BulmaGés]Problema en los blDebug
+</A></li>
+	<LI>Próximo mensaje: <A HREF="005984.html">[BulmaGés]Problema en los blDebug
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5983">[ fecha ]</a>
+              <a href="thread.html#5983">[ hilo ]</a>
+              <a href="subject.html#5983">[ asunto ]</a>
+              <a href="author.html#5983">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

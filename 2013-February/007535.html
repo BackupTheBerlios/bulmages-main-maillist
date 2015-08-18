@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Bulmages adaptaciones a Venezuela
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FBulmages_adaptaciones%3F%3D%20%3D%3Fiso-8859-1%3Fq%3F_a_Venezuela%3F%3D&In-Reply-To=%3CCAJWqEtenWGWfPxBBB2ZzHvQgcPWZq0VRsB3jQ2ffmQDchCZ8Vg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007534.html">
+   <LINK REL="Next"  HREF="007536.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Bulmages adaptaciones a Venezuela </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FBulmages_adaptaciones%3F%3D%20%3D%3Fiso-8859-1%3Fq%3F_a_Venezuela%3F%3D&In-Reply-To=%3CCAJWqEtenWGWfPxBBB2ZzHvQgcPWZq0VRsB3jQ2ffmQDchCZ8Vg%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]Bulmages adaptaciones a Venezuela">tborras en conetxia.com
+       </A><BR>
+    <I>Mar Feb 12 23:27:49 CET 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007534.html">[BulmaGés] Bulmages adaptaciones a Venezuela
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007536.html">[BulmaGés] Paquetes debian y plugin
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7535">[ fecha ]</a>
+              <a href="thread.html#7535">[ hilo ]</a>
+              <a href="subject.html#7535">[ asunto ]</a>
+              <a href="author.html#7535">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola, gracias por tu atención.
+
+El 11 de febrero de 2013 22:55, Jesús Zuleta &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">jesuszuleta at gmail.com</A>&gt;escribió:
+
+&gt;<i> Buenas me presento ante la comunidad de forma oficial en este momento, mi
+</I>&gt;<i> nombre es Jesús Zuleta soy un Venezolano que habiendo visto el potencial
+</I>&gt;<i> que tiene Bulmages la gestión empresarial me he embarcado (ya una vez con
+</I>&gt;<i> el apoyo de una empresa) y ahora netamente como proyecto freelance, a
+</I>&gt;<i> realizar las adaptaciones necesarias para que sea una plataforma funcional
+</I>&gt;<i> para los diferentes comercios de Venezuela.
+</I>&gt;<i>
+</I>
+Gracias por el  piropo, intentaré hacertelo lo más fácil posible.
+
+&gt;<i>
+</I>&gt;<i> Pero tengo algunas dudas
+</I>&gt;<i> - Como es el soporte ESC/POS como puedo y esto me tiene trancado la
+</I>&gt;<i> cabeza, hacer mi primera factura cuenta con una impresora Aclas PP1F3 que
+</I>&gt;<i> a través del software privado que que se distribuye aquí localmente
+</I>&gt;<i> funciona perfecto, pero con Bulmages no he podido hacer ni siquiera la
+</I>&gt;<i> primera factura.
+</I>&gt;<i>
+</I>
+Deduzco que estas trabajando sobre Windows ya que en caso contrario no
+podrías ejecutar el software privado. Esto es un poco largo de explicar:
+
+1.- La impresión de los tickets en BulmaGés se hace siempre generando un
+archivo previo que luego es mandado a la impresora. (suele estar en el
+directorio .bulmages del usuario y en Windows no es una excepción).
+2.- Las impresoras Legales y compatibles ESC/POS que creo es tu caso pueden
+recibir directamente ese archivo sin necesidad de reinterpretarlo. Por
+tanto si buscas en tu directorio de usuario una carpeta .bulmages allí
+encontraras algo parecido a ticket_normal.txt que es el archivo en formato
+ESC/POS que podrías mandar al puerto de impresora y ésta lo imprimiría. (En
+el tema plantilla de impresión no voy a entrar).
+3.- La impresión de tickets en Windows ha cambiado un poco y no se bien que
+tal funcona ahora, seguramente tengas que poner bien el nombre de la
+impresora en la directiva de configuracion CONF_CUPS_DEFAULT_PRINTER o en
+CONF_PRINTER_TICKET
+
+Así que un breve tutorial de los pasos a seguir:
+a) Buscar el archivo ESC/POS en el .bulmages y revisalo. Si se ha generado
+el programa ha hecho la impresión y el problema esta en la comunicación con
+la impresora. Sino es un error distinto de plantillas o permisos de
+escritura.
+b) Intenta mandar el archivo a la impresora. No me acuerdo de como se hacía
+con MSDOS pero algun comando debe haber. Si lo imprime bien entonces te
+falta revisar la comunicacion y si no imprime o imprime mal tendrás que
+revisar la impresora.
+c) Si has conseguido imprimir el fichero manualmente mira la configuracion
+de las directivas descritas ... si no lo consigues habrá algún problema no
+reportado / descubierto.
+
+Si te interesa programar y quieres hacer pruebas o depuración tienes que
+mirar las funciones blRawPrint y blRawDataPrint del archivo
+bulmalib/src/blfunctions.cpp que se encargan de mandar el archivo de
+impresion a la impresora aqui siempre podrás implementar algún apaño.
+
+
+&gt;<i>
+</I>&gt;<i> Bueno en realidad seria esa única duda los demás es solo carpintería,
+</I>&gt;<i> editar código, cambiar algunas palabras, editar hojas de estilo...
+</I>&gt;<i>
+</I>&gt;<i> Lo otro que en este momento me viene a la mente ya que la facturación del
+</I>&gt;<i> negocio se hace en establecimiento local pero la contabilidad desde una
+</I>&gt;<i> oficina distante de dicho establecimiento,
+</I>&gt;<i> pensaba utilizar una sincronizacion a través de OpenShift para que al
+</I>&gt;<i> finalizar los cortes de cajas mensuales la contadora pueda ver las ventas y
+</I>&gt;<i> compras reflejadas desde su computador evitando la problemática, de estar
+</I>&gt;<i> movilizando las facturas y los documentos físicamente.
+</I>&gt;<i>
+</I>&gt;<i> Mas adelante pensaba también implementar un e-Market.
+</I>&gt;<i>
+</I>
+Siempre quise implementar uno, pero nunca me dio tiempo.
+
+&gt;<i>
+</I>&gt;<i> Algo mas que me gustaría agregar es que el negocio es una venta
+</I>&gt;<i> de repuesto del sector automotor y es un negocio netamente familiar desde
+</I>&gt;<i> el Presidente, la contadora, el vendedor y yo como soporte técnico así que
+</I>&gt;<i> tengo total acceso a lo que se necesite para llevar este proyecto adelante.
+</I>&gt;<i>
+</I>
+Ánimos y que vaya bien.
+
+-- 
+Tomeu Borrás
+Conetxia Soluciones Informáticas
+677 77 44 76
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20130212/b66f705b/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20130212/b66f705b/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007534.html">[BulmaGés] Bulmages adaptaciones a Venezuela
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007536.html">[BulmaGés] Paquetes debian y plugin
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7535">[ fecha ]</a>
+              <a href="thread.html#7535">[ hilo ]</a>
+              <a href="subject.html#7535">[ asunto ]</a>
+              <a href="author.html#7535">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

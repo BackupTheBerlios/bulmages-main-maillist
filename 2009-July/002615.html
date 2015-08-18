@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Definición de listados y mascaras
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FDefinici%3DF3n_de_lista%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fdos_y_mascaras%3F%3D&In-Reply-To=%3C20090705193928.GA7950%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002613.html">
+   <LINK REL="Next"  HREF="002616.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Definición de listados y mascaras </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FDefinici%3DF3n_de_lista%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fdos_y_mascaras%3F%3D&In-Reply-To=%3C20090705193928.GA7950%40localhost%3E"
+       TITLE="[BulmaGés]Definición de listados y mascaras">xdrudis en tinet.cat
+       </A><BR>
+    <I>Dom Jul  5 21:39:28 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002613.html">[BulmaGés]Definición de listados y mascaras
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002616.html">[BulmaGés]Definición de listados y mascaras
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2615">[ fecha ]</a>
+              <a href="thread.html#2615">[ hilo ]</a>
+              <a href="subject.html#2615">[ asunto ]</a>
+              <a href="author.html#2615">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sun, Jul 05, 2009 at 08:22:22PM +0200, adrian15 wrote:
+&gt;<i> &gt; Por un lado propones separar las consultas a Base de Datos en un archivo 
+</I>&gt;<i> &gt; aparte para poder centrarnos en el diseño sin el estorbo de las macros.
+</I>&gt;<i> Eso es.
+</I>
+Tal com està fet el &lt;!--QUERY --&gt; no només defineix la consulta. 
+A més defineix el contingut de l'informe, entre &lt;!-- QUERY ... --&gt; i &lt;!-- END QUERY--&gt;
+que vols repetir per cada fila del resultat. Si treus la consulta 
+fora, segueixes necessitant definir quina part de l'informe es repeteix, 
+i per tant has de tenir una referència a cada consulta que participa a 
+l'informe, cosa que complica lleugerament les coses i fa probable que 
+un hipotètic dissenyador gràfic especialista en RML (que no crec que existeixi
+al món real) no ho tingui tan fàcil per editar RML pur. 
+
+&gt;<i>  &gt; Además que si quieren informes de forma gráfica pueden tirar
+</I>&gt;<i> &gt; de proyectos tipo kugar que en Linux hay varios y funcionan bastante bien. 
+</I>&gt;<i> Tendré que mirarme esto del kugar.
+</I>
+És igual si no saps kugar pots fer informes amb OpenOffice.org o en el que 
+sàpigues fer servir. La BD està accessible per a qualsevol aplicació.
+
+&gt;<i> &gt; 
+</I>&gt;<i> &gt; Y por otro lado si no entiendo mal lo que propones es cambiar todo el sistema 
+</I>&gt;<i> &gt; de impresión ya que RML no es precisamente sencillo de editar de forma 
+</I>&gt;<i> &gt; gráfica por su gran capacidad y extensión.
+</I>&gt;<i> De forma explicita no lo pido pero, no sé, de alguna manera habría que 
+</I>&gt;<i> dejar que los usuarios &quot;de a pie&quot; pudieran no sólo crear listados 
+</I>&gt;<i> mediante asistentes (que eso no sé si lo teneis implementado) sino 
+</I>&gt;<i> también gracias a un &quot;Entorno Visual de Desarrollo de Informes&quot;.
+</I>&gt;<i>
+</I>
+
+No, no crec que valgui la pena. Els usuaris el que volen és que el programa 
+vingui amb llistats raonablement usables, i si no els serveixen que algú els 
+li arregli. No acostumen a entendre ni el model de base de dades ni les consideracions
+sobre espai ocupat segons les dades que arribin, casuística de quines dades
+pots tenir i quines no, etc. I els que ho entenen el que de debó necessiten
+és poder accedir a les dades des de les eines que noeixen, no haver-ne 
+d'aprendre una de nova. Per tant la gràcia és fer fàcil accedir a les dades
+(que ja se'n cuida el postgresql però la exportació a OOo està bé per això).
+
+Crec que les eines de desenvolupament han d'estar molt ben fetes o no cal 
+posar-s'hi. I donaria molta feina. 
+ 
+&gt;<i> Si para editar los informes de forma gráfica hay que cambiar el sistema 
+</I>&gt;<i> de impresión eso lo sabrás tú mejor que yo.
+</I>
+Si es canvia el sistema d'impressió diria que s'hauria d'anar a alguna
+cosa que només ajuntés peces preexistents, no crec que sigui bo fer un
+sistema propi, massa feina, massa errors. Jo optaria per exportar les
+dades que necessita el llistat com a XML, i que la definició del
+llistat sigui un full XSLT que el transformi al que calgui, típicament
+a XHTML amb CSS per a imprimir. Com a mínim ja tens eines per a
+treballar amb tot això, i si no tens editors de XSLT WYSIWYG, al menys
+tens editors amb suport sintàtic, eines per aplicar-los , editors de
+XHTML WYSIWYG per a tenir una plantilla que després puguis transformar
+a XSLT.
+
+&gt;<i> &gt; 
+</I>&gt;<i> &gt; No se, tal vez debería verlo en funcionamiento para entenderlo bien.
+</I>&gt;<i> Humm. El Microsoft Access permite editar informes de forma gráfica una 
+</I>&gt;<i> vez están creados. No es exactamente igual que el programa privativo que 
+</I>&gt;<i> uso pero esa es la idea de lo que se debería conseguir.
+</I>&gt;<i>
+</I>
+Doncs exporta a OOo o accedeix a la BD des d'OOo i fes informes en 
+Base, o en kugar, o en el jasper reports o el que t'agradi.
+N'hi ha prou en fer-te un script que detecti quan ha d'executar un 
+llistat en una d'aquestes eines, i configurar-lo com a visor de PDFs
+al bulmages. Per exemple ma germana te un script que segons la configuració 
+que té al sistema de fitxers obre l'evince o imprimeix directament 
+el PDF sense mostrar-lo abans, i un botonet a l'escriptori que canvia
+aquesta configuració. Però es podria fer alguna cosa que pel nom o pel 
+contingut del PDF sabés que ha de llençar evince, jasper, ooo o kugar amb 
+determinats paràmetres.
+ 
+&gt;<i> No sé, quizás me haya pasado metiendome en la implementación, veamoslo 
+</I>&gt;<i> de otra manera...
+</I>&gt;<i> 
+</I>&gt;<i> Los usuarios &quot;de a pie&quot; han de ser capaces de editar visualmente sus 
+</I>&gt;<i> listados. ¿Qué cambios habría qué hacer a bulmages para ello?
+</I>&gt;<i> 
+</I>
+No crec que sigui responsabilitat de bulmages. Bulmages no és cap 
+editor gràfic. Caldria usar una eina d'informes genèrica. Els llistats de 
+bulmafact haurien de servir per a les necessitats de bulmafact. I ja 
+serveixen. El que caldria és refactoritzar codi, assegurar-se que els 
+accents, etc. surten bé a tot arreu, vaja, pulir-ho. I això del INCLUDE
+des de bulmafact que acaba de fer el Tomeu pot estar molt bé. No sé si 
+hi ha cap petita millora incremental que es pugui fer per facilitar la 
+vida, però repensar-ho tot per acabar fent una cosa que ja estigui 
+feta però pitjor, o com a mínim difrent del que ja hi ha en altres projectes, 
+no li veig la gràcia. 
+
+El sistema d'impressió que té ara segurament ja és més del que necessita, 
+i no és gens difícil de personalitzar. El que necessita és millorar 
+la qualitat o si de cas anar passant progressivament a usos més ortodoxos 
+dels estàndards. Per exemple el fet que el text substituït sigui [camp]
+o &lt;!-- QUERY --&gt;, &lt;!--END QUERY--&gt; obliga a tractar-ho com a text pla 
+sense poder usar processament XML (si fos &lt;val n=&quot;camp&quot;/&gt; &lt;query sql=&quot;select...&quot;&gt;
+&lt;tr&gt; &lt;td&gt; ... &lt;/td&gt;&lt;/tr&gt;&lt;/query&gt; , etc. seria més fàcil). Però dubto que 
+valgui la pena canviar-ho ara que ja està fet. Si de cas fer petits
+canvis per ajudar a llençar altres programes que es cuidin dels llistats 
+(xsltproc, jasper, kugar,...). Però en realitat segurament no cal, si
+ja els pots llençar des de python. 
+
+
+
+
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>
+Signa per fer Collserola parc natural com cal
+<A HREF="http://www.collserola.org/salvemelparcnatural/">http://www.collserola.org/salvemelparcnatural/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002613.html">[BulmaGés]Definición de listados y mascaras
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002616.html">[BulmaGés]Definición de listados y mascaras
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2615">[ fecha ]</a>
+              <a href="thread.html#2615">[ hilo ]</a>
+              <a href="subject.html#2615">[ asunto ]</a>
+              <a href="author.html#2615">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] r3373 - in	trunk/bulmages/bulmatpv/plugins:	pluginbt_devolucion2/dbmodels pluginbt_ticketdevuelto	pluginbt_ticketdevuelto/dbmodels
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3373%20-%20in%0A%09trunk/bulmages/bulmatpv/plugins%3A%0A%09pluginbt_devolucion2/dbmodels%20pluginbt_ticketdevuelto%0A%09pluginbt_ticketdevuelto/dbmodels&In-Reply-To=%3C200905191525.n4JFPoCK008418%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001986.html">
+   <LINK REL="Next"  HREF="001988.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] r3373 - in	trunk/bulmages/bulmatpv/plugins:	pluginbt_devolucion2/dbmodels pluginbt_ticketdevuelto	pluginbt_ticketdevuelto/dbmodels </H1>
+    <B>svn en mail.berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3373%20-%20in%0A%09trunk/bulmages/bulmatpv/plugins%3A%0A%09pluginbt_devolucion2/dbmodels%20pluginbt_ticketdevuelto%0A%09pluginbt_ticketdevuelto/dbmodels&In-Reply-To=%3C200905191525.n4JFPoCK008418%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] r3373 - in	trunk/bulmages/bulmatpv/plugins:	pluginbt_devolucion2/dbmodels pluginbt_ticketdevuelto	pluginbt_ticketdevuelto/dbmodels">svn en mail.berlios.de
+       </A><BR>
+    <I>Mar Mayo 19 17:25:50 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001986.html">[BulmaGés] r3372 - in trunk/bulmages:	bulmafact/plugins/pluginbf_profesor/dbmodels bulmasetup
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001988.html">[BulmaGés] r3374 - in trunk/bulmages:	bulmacont/plugins/pluginbc_caaslods bulmalib/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1987">[ fecha ]</a>
+              <a href="thread.html#1987">[ hilo ]</a>
+              <a href="subject.html#1987">[ asunto ]</a>
+              <a href="author.html#1987">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: talvarez
+Date: 2009-05-19 17:25:49 +0200 (dt, 19 mai 2009)
+New Revision: 3373
+
+Added:
+   trunk/bulmages/bulmatpv/plugins/pluginbt_devolucion2/dbmodels/pluginbt_devolucion2-rm.sql
+Removed:
+   trunk/bulmages/bulmatpv/plugins/pluginbt_devolucion2/dbmodels/pluginbt_devolucion-rm.sql
+Modified:
+   trunk/bulmages/bulmatpv/plugins/pluginbt_ticketdevuelto/CMakeLists.txt
+   trunk/bulmages/bulmatpv/plugins/pluginbt_ticketdevuelto/dbmodels/pluginbt_ticketdevuelto-rm.sql
+Log:
+
+corrijo 2 bugs, 1º le renombro el sql de borrado del plugin bt_devolucion, que daba error NotFound, y ahora sigue dando errores al intentar borrarlo: 
+
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbt_devolucion2-rm.sql:93: 
+error: NOTICE: CREATE OR REPLACE FUNCTION crearef() RETURNS character varying(15) AS $BB$ DECLARE asd RECORD; result character varying(15); efound boolean; BEGIN efound := FALSE; WHILE efound = FALSE LOOP result := random_string(6); efound := TRUE; SELECT INTO asd idpresupuesto FROM presupuesto WHERE refpresupuesto = result; IF FOUND THEN efound := FALSE; END IF; SELECT INTO asd idpedidocliente FROM pedidocliente WHERE refpedidocliente = result; IF FOUND THEN efound := FALSE; END IF; SELECT INTO asd idalbaran FROM albaran WHERE refalbaran = result; IF FOUND THEN efound := FALSE; END IF; SELECT INTO asd idfactura FROM factura WHERE reffactura = result; IF FOUND THEN efound := FALSE; END IF; SELECT INTO asd idcobro FROM cobro WHERE refcobro = result; IF FOUND THEN efound := FALSE; END IF; SELECT INTO asd idpedidoproveedor FROM pedidoproveedor WHERE refpedidoproveedor = result; IF FOUND THEN efound := FALSE; END IF; SELECT INTO asd idalbaranp FROM albaranp WHERE refalbaranp = r!
+ esult; IF FOUND THEN efound := FALSE; END IF; SELECT INTO asd idfacturap FROM facturap WHERE reffacturap = result; IF FOUND THEN efound := FALSE; END IF; SELECT INTO asd idpago FROM pago WHERE refpago = result; IF FOUND THEN efound := FALSE; END IF; -- PLUGINS END LOOP; RETURN result; END; $BB$ LANGUAGE 'plpgsql' ; 
+
+
+y gracias a arturo por la correcion del CMakeLists del plugin ticketdevuelto que no instalava los sql y daba el mismo error que el otro plugin.. not found
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001986.html">[BulmaGés] r3372 - in trunk/bulmages:	bulmafact/plugins/pluginbf_profesor/dbmodels bulmasetup
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001988.html">[BulmaGés] r3374 - in trunk/bulmages:	bulmacont/plugins/pluginbc_caaslods bulmalib/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1987">[ fecha ]</a>
+              <a href="thread.html#1987">[ hilo ]</a>
+              <a href="subject.html#1987">[ asunto ]</a>
+              <a href="author.html#1987">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

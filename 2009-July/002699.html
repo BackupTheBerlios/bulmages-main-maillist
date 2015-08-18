@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] r3561 - trunk/bulmages/bulmacont/src
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3561%20-%20trunk/bulmages/bulmacont/src&In-Reply-To=%3C200907111528.n6BFSVGv032300%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002698.html">
+   <LINK REL="Next"  HREF="002701.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] r3561 - trunk/bulmages/bulmacont/src </H1>
+    <B>svn en mail.berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3561%20-%20trunk/bulmages/bulmacont/src&In-Reply-To=%3C200907111528.n6BFSVGv032300%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] r3561 - trunk/bulmages/bulmacont/src">svn en mail.berlios.de
+       </A><BR>
+    <I>Sab Jul 11 17:28:31 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002698.html">[BulmaGés] r3560 - in trunk/bulmages:	bulmafact/plugins/pluginbf_actividad	bulmafact/plugins/pluginbf_alumno	bulmafact/plugins/pluginbf_asociacion	bulmafact/plugins/pluginbf_bulmacont	bulmafact/plugins/pluginbf_clientealbaran	bulmafact/plugins/pluginbf_clientecobro	bulmafact/plugins/pluginbf_clientefactura	bulmafact/plugins/pluginbf_clientepedido	bulmafact/plugins/pluginbf_clientepresupuesto	bulmafact/plugins/pluginbf_minicontabilidad	bulmafact/plugins/pluginbf_preciocoste	bulmafact/plugins/pluginbf_proveedoralbaran	bulmafact/plugins/pluginbf_proveedorfactura	bulmafact/plugins/pluginbf_proveedorpago	bulmafact/plugins/pluginbf_proveedorpedido	bulmafact/plugins/pluginbf_recibo bulmafact/src	bulmalib/plugins/pluginbl_formlock bulmalib/src	bulmatpv/plugins/pluginbt_aliastallasycolores	bulmatpv/plugins/pluginbt_ivaincluido	bulmatpv/plugins/pluginbt_tecladonumerico	bulmatpv/plugins/pluginbt_visor bulmatpv/src
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002701.html">[BulmaGés] r3562 -	trunk/bulmages/bulmalib/plugins/pluginbl_attachdocument
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2699">[ fecha ]</a>
+              <a href="thread.html#2699">[ hilo ]</a>
+              <a href="subject.html#2699">[ asunto ]</a>
+              <a href="author.html#2699">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: plcl
+Date: 2009-07-11 17:28:28 +0200 (ds, 11 jul 2009)
+New Revision: 3561
+
+Modified:
+   trunk/bulmages/bulmacont/src/bcmodelo300imprimir2ps.cpp
+Log:
+elimino los warnings de compilación del tipo siguiente:
+&quot;warning: comparison with string literal results in unspecified
+behaviour&quot;
+
+La importancia de eliminarlos es que este warning no se acepta en el
+build service de openSUSE, e impide la creación del RPM con un mensaje
+de este tipo:
+
+I: Expression compares a char* pointer with a string literal.
+Usually a strcmp() was intended by the programmer
+E: bulmages stringcompare
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002698.html">[BulmaGés] r3560 - in trunk/bulmages:	bulmafact/plugins/pluginbf_actividad	bulmafact/plugins/pluginbf_alumno	bulmafact/plugins/pluginbf_asociacion	bulmafact/plugins/pluginbf_bulmacont	bulmafact/plugins/pluginbf_clientealbaran	bulmafact/plugins/pluginbf_clientecobro	bulmafact/plugins/pluginbf_clientefactura	bulmafact/plugins/pluginbf_clientepedido	bulmafact/plugins/pluginbf_clientepresupuesto	bulmafact/plugins/pluginbf_minicontabilidad	bulmafact/plugins/pluginbf_preciocoste	bulmafact/plugins/pluginbf_proveedoralbaran	bulmafact/plugins/pluginbf_proveedorfactura	bulmafact/plugins/pluginbf_proveedorpago	bulmafact/plugins/pluginbf_proveedorpedido	bulmafact/plugins/pluginbf_recibo bulmafact/src	bulmalib/plugins/pluginbl_formlock bulmalib/src	bulmatpv/plugins/pluginbt_aliastallasycolores	bulmatpv/plugins/pluginbt_ivaincluido	bulmatpv/plugins/pluginbt_tecladonumerico	bulmatpv/plugins/pluginbt_visor bulmatpv/src
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002701.html">[BulmaGés] r3562 -	trunk/bulmages/bulmalib/plugins/pluginbl_attachdocument
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2699">[ fecha ]</a>
+              <a href="thread.html#2699">[ hilo ]</a>
+              <a href="subject.html#2699">[ asunto ]</a>
+              <a href="author.html#2699">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

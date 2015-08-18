@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Nuevo fallo gordo
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FNuevo_fallo_gordo%3F%3D&In-Reply-To=%3C4F43839F.9000000%40todo-redes.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006923.html">
+   <LINK REL="Next"  HREF="006925.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Nuevo fallo gordo </H1>
+    <B>Fco. Javier M. C.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FNuevo_fallo_gordo%3F%3D&In-Reply-To=%3C4F43839F.9000000%40todo-redes.com%3E"
+       TITLE="[BulmaGés]Nuevo fallo gordo">fcojavmc en todo-redes.com
+       </A><BR>
+    <I>Mar Feb 21 12:44:31 CET 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006923.html">[BulmaGés] Nuevo fallo gordo
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006925.html">[BulmaGés]Junta General de Socios de la Asociación Iglues
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6924">[ fecha ]</a>
+              <a href="thread.html#6924">[ hilo ]</a>
+              <a href="subject.html#6924">[ asunto ]</a>
+              <a href="author.html#6924">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ostras. Tienes todo la razón.
+
+No había tenido en cuenta ese detalle. Menos mal que te has dado cuenta.
+Entonces habría que poner todas las funciones cambiadas y adaptadas a
+PostgreSQL 9.0 en el archivo de actualización porque sino no migra las
+funciones. Ya sólo con esto sería útil cambiar de versión el programa
+¿no crees?
+
+Un saludo.
+
+
+El 21/02/12 11:55, Tomeu Borras escribió:
+&gt;<i> Nuevo error detectado, que requiere un pensamiento.
+</I>&gt;<i>
+</I>&gt;<i> Hay un objetivo bien marcado con las bases de datos y es el siguiente:
+</I>&gt;<i>
+</I>&gt;<i> Una base de datos antigua actualizada con los parches debe quedar
+</I>&gt;<i> exactamente igual que una base de datos creada con el script de creación.
+</I>&gt;<i> En caso contrario estamos &quot;degenerando&quot; instalaciones antiguas que
+</I>&gt;<i> pueden llegar a dar problemas irresolubles.
+</I>&gt;<i>
+</I>&gt;<i> A efectos de programación la cosa se reduce a la siguiente norma
+</I>&gt;<i> fundamental e inquebrantable:
+</I>&gt;<i>
+</I>&gt;<i> - Todo cambio en el archivo de creación de la base de datos debe tener
+</I>&gt;<i> su correspondiente cambio en el archivo de revision correspondiente.
+</I>&gt;<i> (El último creado).
+</I>&gt;<i>
+</I>&gt;<i> Tal vez complica un poco la programación pero es importantísimo no
+</I>&gt;<i> saltarse esta norma.
+</I>&gt;<i>
+</I>&gt;<i> El caso que nos ocupa es bastante ejemplificador:
+</I>&gt;<i>
+</I>&gt;<i> La función crearef()  con  un sencillo cambio de nombre de variable
+</I>&gt;<i> (sustituimos as por bs). En principio parece poco importante y no
+</I>&gt;<i> parece alterar nada.
+</I>&gt;<i>
+</I>&gt;<i> pero ...
+</I>&gt;<i>
+</I>&gt;<i> Resulta que esta función es parcheable (poco común en los tiempo que
+</I>&gt;<i> corren, pero posible). Cualquier módulo puede meter su aporte a esta
+</I>&gt;<i> función y alterar su funcionamiento ya que si la referencia es un
+</I>&gt;<i> campo único entre tablas y automático es poco deseable que un módulo u
+</I>&gt;<i> otro dupliquen referencias. Así que es una función compartida entre
+</I>&gt;<i> módulos al estilo del salvaje oeste (yo meto mis lineas de código y tu
+</I>&gt;<i> mete las tuyas que aqui todo cabe).
+</I>&gt;<i> De esta forma cualquier plugin que altere la función meterá llamadas
+</I>&gt;<i> con la variable &quot;as&quot; que habrá dejado de existir o no u petará o no
+</I>&gt;<i> segun la versión de la base de datos.
+</I>&gt;<i> Deacuerdo en que es la única parcheable (todas las demás no lo son) y
+</I>&gt;<i> es un caso muy muy muy raro. Sin embargo existe el problema.
+</I>&gt;<i>
+</I>&gt;<i> Los cambios a realizar son los siguientes:
+</I>&gt;<i> - Modificar el script de creación.
+</I>&gt;<i> - Meter la redefinición de la funcion en el script de revision.
+</I>&gt;<i> - Cambiar los plugins que meten código en la funcion crearef.
+</I>&gt;<i>
+</I>&gt;<i> Pensad que la gente no sólo hace instalaciones nuevas. También hace
+</I>&gt;<i> actualizaciones.
+</I>&gt;<i>
+</I>&gt;<i> Si no se hace bien estamos condenados a quemarnos en un infierno de bugs.
+</I>&gt;<i>
+</I>&gt;<i> PD: Este mail no es una quema de brujas. Sólo que me veo en la
+</I>&gt;<i> obligación de comentarlo para evitar futuros problemas.
+</I>&gt;<i>
+</I>&gt;<i> Salut
+</I>&gt;<i>
+</I>&gt;<i> -- 
+</I>&gt;<i> Tomeu Borrás
+</I>&gt;<i> Conetxia Soluciones Informáticas
+</I>&gt;<i> 902 88 11 66 - 677 77 44 76
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+
+-- 
+Javier.
+TODO-REDES
+<A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+C/Begònia 12 - 07010 Palma de Mallorca.
+Tel.: 971499071
+
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20120221/322a7746/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20120221/322a7746/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006923.html">[BulmaGés] Nuevo fallo gordo
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006925.html">[BulmaGés]Junta General de Socios de la Asociación Iglues
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6924">[ fecha ]</a>
+              <a href="thread.html#6924">[ hilo ]</a>
+              <a href="subject.html#6924">[ asunto ]</a>
+              <a href="author.html#6924">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

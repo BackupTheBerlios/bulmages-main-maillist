@@ -1,0 +1,1877 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130530092141.23338165%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007592.html">
+   <LINK REL="Next"  HREF="007594.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130530092141.23338165%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Jue Mayo 30 11:21:40 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007592.html">[BulmaGés]BulmaGés Qt5 win y linux (en marcha)
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007594.html">[BulmaGés] Cambiar las llamadas a plugins
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7593">[ fecha ]</a>
+              <a href="thread.html#7593">[ hilo ]</a>
+              <a href="subject.html#7593">[ asunto ]</a>
+              <a href="author.html#7593">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from a0a4ca5 to 56b60e4
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/a0a4ca55f3a8db77ad66b9d82284d06330184669/diffs/56b60e4d9bfa843a5e071e065515888593481427">https://gitorious.org/bulmages/bulmages/commit/a0a4ca55f3a8db77ad66b9d82284d06330184669/diffs/56b60e4d9bfa843a5e071e065515888593481427</A>
+
+Diff: 
+
+commit 56b60e4d9bfa843a5e071e065515888593481427
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu May 30 11:18:52 2013 +0200
+
+    Creo la funcion g_confpr-&gt;valueTrue que hace la comprobacion de si
+    un parametro vale TRUE (en mayusculas y minusculas, tambien pruebva con el YES, con el 1, con la t y con la Y)
+    para que los archivos de configuracion sean un poco mas flexibles.
+    
+    Ademas quito la senyal de mostrar el frame de busqueda de los disenyos de pantalla
+    y los tralado a la programacion. (Es mas corto, queda mas controlado y seguro que funciona con qt5)
+    
+    Y ademas apanyo un problema con QUrl::TolerantMode que no funciona bien con Win32
+
+diff --git a/bulmages/bulmacont/plugins/pluginbc_cuenta/bccuentalistbase.ui b/bulmages/bulmacont/plugins/pluginbc_cuenta/bccuentalistbase.ui
+index adee01d..14f47eb 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_cuenta/bccuentalistbase.ui
++++ b/bulmages/bulmacont/plugins/pluginbc_cuenta/bccuentalistbase.ui
+@@ -368,22 +368,4 @@
+  &lt;resources&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;241&lt;/x&gt;
+-     &lt;y&gt;39&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;201&lt;/x&gt;
+-     &lt;y&gt;71&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmacont/plugins/pluginbc_depuracion/pluginbc_depuracion.cpp b/bulmages/bulmacont/plugins/pluginbc_depuracion/pluginbc_depuracion.cpp
+index 851f2c2..b0237ee 100644
+--- a/bulmages/bulmacont/plugins/pluginbc_depuracion/pluginbc_depuracion.cpp
++++ b/bulmages/bulmacont/plugins/pluginbc_depuracion/pluginbc_depuracion.cpp
+@@ -50,7 +50,7 @@ int entryPoint ( BcBulmaCont *bcont )
+     BlAction *accionA = new BlAction ( _ ( &quot;&amp;Modo debug&quot; ), 0 );
+     accionA-&gt;setCheckable ( true );
+ 
+-    if ( g_confpr-&gt;value( CONF_DEBUG ) == &quot;true&quot; ) {
++    if ( g_confpr-&gt;valueTrue( CONF_DEBUG )) {
+         accionA-&gt;setChecked ( true );
+     } else {
+         accionA-&gt;setChecked ( false );
+diff --git a/bulmages/bulmacont/src/bcbulmacont.cpp b/bulmages/bulmacont/src/bcbulmacont.cpp
+index 283dbca..b048e68 100644
+--- a/bulmages/bulmacont/src/bcbulmacont.cpp
++++ b/bulmages/bulmacont/src/bcbulmacont.cpp
+@@ -499,7 +499,7 @@ void BcBulmaCont::closeEvent ( QCloseEvent *event )
+ {
+     BL_FUNC_DEBUG
+     /// Antes de salir hacemos un mensaje de advertencia.
+-    if ( g_confpr-&gt;value( CONF_ASK_BEFORE_EXIT ) == &quot;true&quot; ) {
++    if ( g_confpr-&gt;valueTrue( CONF_ASK_BEFORE_EXIT )) {
+ 	 QMessageBox msgBox;
+ 	 msgBox.setText(_(&quot;Seguro que desea abandonar el programa &quot;));
+ 	 msgBox.setInformativeText(_(&quot;Se perderan los cambios no guardados&quot;));
+diff --git a/bulmages/bulmafact/plugins/pluginbf_actividad/actividadeslistbase.ui b/bulmages/bulmafact/plugins/pluginbf_actividad/actividadeslistbase.ui
+index 672c70c..a0448ee 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_actividad/actividadeslistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_actividad/actividadeslistbase.ui
+@@ -501,22 +501,4 @@
+   &lt;include location=&quot;../pluginbf_profesor/gestionaula.qrc&quot;/&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;241&lt;/x&gt;
+-     &lt;y&gt;39&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;228&lt;/x&gt;
+-     &lt;y&gt;69&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_actividad/convocatoriaslistbase.ui b/bulmages/bulmafact/plugins/pluginbf_actividad/convocatoriaslistbase.ui
+index 18df1a5..aa7c01d 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_actividad/convocatoriaslistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_actividad/convocatoriaslistbase.ui
+@@ -555,22 +555,4 @@
+   &lt;include location=&quot;../../../bulmages.qrc&quot; /&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot; /&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot; &gt;
+-     &lt;x&gt;241&lt;/x&gt;
+-     &lt;y&gt;39&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot; &gt;
+-     &lt;x&gt;228&lt;/x&gt;
+-     &lt;y&gt;69&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_almacenamplia/almaceneslistbase.ui b/bulmages/bulmafact/plugins/pluginbf_almacenamplia/almaceneslistbase.ui
+index b859b5b..90450a6 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_almacenamplia/almaceneslistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_almacenamplia/almaceneslistbase.ui
+@@ -609,22 +609,4 @@
+  &lt;resources&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot; /&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot; &gt;
+-     &lt;x&gt;241&lt;/x&gt;
+-     &lt;y&gt;40&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot; &gt;
+-     &lt;x&gt;230&lt;/x&gt;
+-     &lt;y&gt;73&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_alumno/alumnoslistbase.ui b/bulmages/bulmafact/plugins/pluginbf_alumno/alumnoslistbase.ui
+index ffea765..b177de9 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_alumno/alumnoslistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_alumno/alumnoslistbase.ui
+@@ -564,22 +564,4 @@
+   &lt;include location=&quot;../pluginbf_profesor/gestionaula.qrc&quot;/&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;241&lt;/x&gt;
+-     &lt;y&gt;39&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;228&lt;/x&gt;
+-     &lt;y&gt;69&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_articulo/articleslistbase.ui b/bulmages/bulmafact/plugins/pluginbf_articulo/articleslistbase.ui
+index d4715f9..1548547 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_articulo/articleslistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_articulo/articleslistbase.ui
+@@ -570,22 +570,4 @@
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;241&lt;/x&gt;
+-     &lt;y&gt;39&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;201&lt;/x&gt;
+-     &lt;y&gt;71&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_articulo/articuloview.cpp b/bulmages/bulmafact/plugins/pluginbf_articulo/articuloview.cpp
+index d13c94f..57d8e08 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_articulo/articuloview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_articulo/articuloview.cpp
+@@ -411,7 +411,7 @@ void ArticuloView::on_mui_borrarimagen_clicked()
+ */
+ void ArticuloView::on_mui_idfamilia_valueChanged(QString) {
+     BL_FUNC_DEBUG
+-    if ( mui_codarticulo-&gt;text().isEmpty() &amp;&amp; !mui_idfamilia-&gt;id().isEmpty() &amp;&amp; g_confpr-&gt;value(CONF_PRECALC_CODARTICULO) == &quot;true&quot;) {
++    if ( mui_codarticulo-&gt;text().isEmpty() &amp;&amp; !mui_idfamilia-&gt;id().isEmpty() &amp;&amp; g_confpr-&gt;valueTrue(CONF_PRECALC_CODARTICULO)) {
+         QString query = &quot;select coalesce(max(codarticulo::integer),0) +1 as maximo, coalesce(max(length(codarticulo)), 4) AS long from articulo where codarticulo similar to '[0-9]+' AND idfamilia = &quot; + mui_idfamilia-&gt;id();
+ 
+         BlDbRecordSet *cur = mainCompany() -&gt;loadQuery ( query );
+diff --git a/bulmages/bulmafact/plugins/pluginbf_asociacion/comisioneslistbase.ui b/bulmages/bulmafact/plugins/pluginbf_asociacion/comisioneslistbase.ui
+index 1692507..9f614fe 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_asociacion/comisioneslistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_asociacion/comisioneslistbase.ui
+@@ -463,22 +463,4 @@
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+   &lt;include location=&quot;../pluginbf_profesor/gestionaula.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;241&lt;/x&gt;
+-     &lt;y&gt;39&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;228&lt;/x&gt;
+-     &lt;y&gt;69&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_asociacion/convreunionlistbase.ui b/bulmages/bulmafact/plugins/pluginbf_asociacion/convreunionlistbase.ui
+index f8294d4..ff5606c 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_asociacion/convreunionlistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_asociacion/convreunionlistbase.ui
+@@ -463,22 +463,4 @@
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+   &lt;include location=&quot;../pluginbf_profesor/gestionaula.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;241&lt;/x&gt;
+-     &lt;y&gt;39&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;228&lt;/x&gt;
+-     &lt;y&gt;69&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_asociacion/jdirectivalistbase.ui b/bulmages/bulmafact/plugins/pluginbf_asociacion/jdirectivalistbase.ui
+index 00298e1..1a63615 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_asociacion/jdirectivalistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_asociacion/jdirectivalistbase.ui
+@@ -514,22 +514,4 @@
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+   &lt;include location=&quot;../pluginbf_profesor/gestionaula.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;241&lt;/x&gt;
+-     &lt;y&gt;39&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;228&lt;/x&gt;
+-     &lt;y&gt;69&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/zlistbase.ui b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/zlistbase.ui
+index 1966c69..70b4617 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_bulmatpv/zlistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_bulmatpv/zlistbase.ui
+@@ -488,22 +488,4 @@
+  &lt;resources&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;273&lt;/x&gt;
+-     &lt;y&gt;41&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;246&lt;/x&gt;
+-     &lt;y&gt;73&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_carteracobros/carteracobroslistbase.ui b/bulmages/bulmafact/plugins/pluginbf_carteracobros/carteracobroslistbase.ui
+index 5c6b65a..32e1f20 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_carteracobros/carteracobroslistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_carteracobros/carteracobroslistbase.ui
+@@ -602,22 +602,4 @@
+  &lt;resources&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;204&lt;/x&gt;
+-     &lt;y&gt;49&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;255&lt;/x&gt;
+-     &lt;y&gt;150&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_carterapagos/carterapagoslistbase.ui b/bulmages/bulmafact/plugins/pluginbf_carterapagos/carterapagoslistbase.ui
+index 5217920..e39071c 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_carterapagos/carterapagoslistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_carterapagos/carterapagoslistbase.ui
+@@ -550,22 +550,4 @@
+  &lt;resources&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;204&lt;/x&gt;
+-     &lt;y&gt;49&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;255&lt;/x&gt;
+-     &lt;y&gt;150&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cliente/clientslistbase.ui b/bulmages/bulmafact/plugins/pluginbf_cliente/clientslistbase.ui
+index 884bbc5..56fb5d6 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cliente/clientslistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_cliente/clientslistbase.ui
+@@ -526,22 +526,4 @@
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setVisible(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;233&lt;/x&gt;
+-     &lt;y&gt;29&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;203&lt;/x&gt;
+-     &lt;y&gt;78&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientealbaran/albaranclientelistbase.ui b/bulmages/bulmafact/plugins/pluginbf_clientealbaran/albaranclientelistbase.ui
+index 98bce81..f5ae0e5 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientealbaran/albaranclientelistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_clientealbaran/albaranclientelistbase.ui
+@@ -1146,22 +1146,4 @@
+  &lt;resources&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;236&lt;/x&gt;
+-     &lt;y&gt;40&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;229&lt;/x&gt;
+-     &lt;y&gt;66&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientecobro/cobroslistbase.ui b/bulmages/bulmafact/plugins/pluginbf_clientecobro/cobroslistbase.ui
+index 1957a40..5018ba7 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientecobro/cobroslistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_clientecobro/cobroslistbase.ui
+@@ -726,22 +726,4 @@
+  &lt;resources&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;241&lt;/x&gt;
+-     &lt;y&gt;39&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;228&lt;/x&gt;
+-     &lt;y&gt;69&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturaslistbase.ui b/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturaslistbase.ui
+index 4cf5ca7..d694424 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturaslistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturaslistbase.ui
+@@ -919,22 +919,4 @@
+  &lt;resources&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;238&lt;/x&gt;
+-     &lt;y&gt;43&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;234&lt;/x&gt;
+-     &lt;y&gt;72&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientefacturaivainc/facturaivaincclientelistbase.ui b/bulmages/bulmafact/plugins/pluginbf_clientefacturaivainc/facturaivaincclientelistbase.ui
+index 66c28c8..c3a0e82 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientefacturaivainc/facturaivaincclientelistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_clientefacturaivainc/facturaivaincclientelistbase.ui
+@@ -1152,22 +1152,4 @@
+  &lt;resources&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;236&lt;/x&gt;
+-     &lt;y&gt;40&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;229&lt;/x&gt;
+-     &lt;y&gt;66&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientepedido/pedidosclientelistbase.ui b/bulmages/bulmafact/plugins/pluginbf_clientepedido/pedidosclientelistbase.ui
+index 3db0344..aa8c0af 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientepedido/pedidosclientelistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_clientepedido/pedidosclientelistbase.ui
+@@ -708,22 +708,4 @@
+  &lt;resources&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;239&lt;/x&gt;
+-     &lt;y&gt;40&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;210&lt;/x&gt;
+-     &lt;y&gt;71&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/presupuestoslistbase.ui b/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/presupuestoslistbase.ui
+index 03b3a79..f1052b7 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/presupuestoslistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_clientepresupuesto/presupuestoslistbase.ui
+@@ -679,22 +679,4 @@
+  &lt;resources&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;241&lt;/x&gt;
+-     &lt;y&gt;40&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;230&lt;/x&gt;
+-     &lt;y&gt;73&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clienteticket/ticketclientelistbase.ui b/bulmages/bulmafact/plugins/pluginbf_clienteticket/ticketclientelistbase.ui
+index 9e605ce..8922ce3 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clienteticket/ticketclientelistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_clienteticket/ticketclientelistbase.ui
+@@ -1152,22 +1152,4 @@
+  &lt;resources&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;236&lt;/x&gt;
+-     &lt;y&gt;40&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;229&lt;/x&gt;
+-     &lt;y&gt;66&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_contrato/contratoslistbase.ui b/bulmages/bulmafact/plugins/pluginbf_contrato/contratoslistbase.ui
+index d5168ce..d14d1e1 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_contrato/contratoslistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_contrato/contratoslistbase.ui
+@@ -494,22 +494,4 @@
+  &lt;resources&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;273&lt;/x&gt;
+-     &lt;y&gt;41&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;246&lt;/x&gt;
+-     &lt;y&gt;73&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cuenta/bccuentalistbase.ui b/bulmages/bulmafact/plugins/pluginbf_cuenta/bccuentalistbase.ui
+index adee01d..14f47eb 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cuenta/bccuentalistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_cuenta/bccuentalistbase.ui
+@@ -368,22 +368,4 @@
+  &lt;resources&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;241&lt;/x&gt;
+-     &lt;y&gt;39&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;201&lt;/x&gt;
+-     &lt;y&gt;71&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_debug/pluginbf_debug.cpp b/bulmages/bulmafact/plugins/pluginbf_debug/pluginbf_debug.cpp
+index 46c828f..cdf3df9 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_debug/pluginbf_debug.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_debug/pluginbf_debug.cpp
+@@ -50,7 +50,7 @@ int entryPoint ( BfBulmaFact *bcont )
+     BlAction *accionA = new BlAction ( _(&quot;&amp;Modo depuracion&quot;), 0 );
+     accionA-&gt;setCheckable ( true );
+ 
+-    if ( g_confpr-&gt;value( CONF_DEBUG ) == &quot;true&quot; ) {
++    if ( g_confpr-&gt;valueTrue( CONF_DEBUG )) {
+         accionA-&gt;setChecked ( true );
+     } else {
+         accionA-&gt;setChecked ( false );
+diff --git a/bulmages/bulmafact/plugins/pluginbf_inventario/inventariobase.ui b/bulmages/bulmafact/plugins/pluginbf_inventario/inventariobase.ui
+index 17ecac7..49617fb 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_inventario/inventariobase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_inventario/inventariobase.ui
+@@ -480,21 +480,5 @@
+     &lt;/hint&gt;
+    &lt;/hints&gt;
+   &lt;/connection&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setHidden(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;160&lt;/x&gt;
+-     &lt;y&gt;45&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;160&lt;/x&gt;
+-     &lt;y&gt;69&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+  &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/presupuestocontablelistbase.ui b/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/presupuestocontablelistbase.ui
+index ba96d09..99ad068 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/presupuestocontablelistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_minicontabilidad/presupuestocontablelistbase.ui
+@@ -442,22 +442,4 @@
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setVisible(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;233&lt;/x&gt;
+-     &lt;y&gt;29&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;203&lt;/x&gt;
+-     &lt;y&gt;78&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_multiimprimir/impmultqtoolbutton.cpp b/bulmages/bulmafact/plugins/pluginbf_multiimprimir/impmultqtoolbutton.cpp
+index 156fc50..0503a5c 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_multiimprimir/impmultqtoolbutton.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_multiimprimir/impmultqtoolbutton.cpp
+@@ -419,7 +419,7 @@ void ImpQToolButton::click()
+ 	
+ #ifndef Q_OS_WIN32
+ 	QString comando = &quot;&quot;;
+-	if ((g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER) == &quot;None&quot;)) {
++	if ((g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).toLower() == &quot;none&quot;)) {
+ 	  comando = &quot;lpr &quot; + res;
+ 	} else {
+ 	  comando = &quot;lp -d&quot; +g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER) + &quot; &quot; + res;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_profesor/profesoreslistbase.ui b/bulmages/bulmafact/plugins/pluginbf_profesor/profesoreslistbase.ui
+index 06fb102..40e9a1c 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_profesor/profesoreslistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_profesor/profesoreslistbase.ui
+@@ -556,22 +556,4 @@
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+   &lt;include location=&quot;gestionaula.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;241&lt;/x&gt;
+-     &lt;y&gt;39&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;228&lt;/x&gt;
+-     &lt;y&gt;69&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedor/providerslistbase.ui b/bulmages/bulmafact/plugins/pluginbf_proveedor/providerslistbase.ui
+index 0d2e3c4..8e2adb5 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedor/providerslistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedor/providerslistbase.ui
+@@ -540,22 +540,4 @@
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setVisible(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;234&lt;/x&gt;
+-     &lt;y&gt;36&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;204&lt;/x&gt;
+-     &lt;y&gt;74&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/albaranesproveedorlistbase.ui b/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/albaranesproveedorlistbase.ui
+index 3f71d61..77852a7 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/albaranesproveedorlistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedoralbaran/albaranesproveedorlistbase.ui
+@@ -1112,22 +1112,4 @@
+  &lt;resources&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;232&lt;/x&gt;
+-     &lt;y&gt;42&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;117&lt;/x&gt;
+-     &lt;y&gt;75&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturasplistbase.ui b/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturasplistbase.ui
+index 2849e7c..7fd5ee3 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturasplistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorfactura/facturasplistbase.ui
+@@ -708,22 +708,4 @@
+  &lt;resources&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;230&lt;/x&gt;
+-     &lt;y&gt;43&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;218&lt;/x&gt;
+-     &lt;y&gt;78&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorpago/pagoslistbase.ui b/bulmages/bulmafact/plugins/pluginbf_proveedorpago/pagoslistbase.ui
+index 8d02a25..66e14ca 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorpago/pagoslistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorpago/pagoslistbase.ui
+@@ -692,22 +692,4 @@
+  &lt;resources&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;236&lt;/x&gt;
+-     &lt;y&gt;41&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;202&lt;/x&gt;
+-     &lt;y&gt;67&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidosproveedorlistbase.ui b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidosproveedorlistbase.ui
+index 59edc66..e133c1e 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidosproveedorlistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedorpedido/pedidosproveedorlistbase.ui
+@@ -695,22 +695,4 @@
+  &lt;resources&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;231&lt;/x&gt;
+-     &lt;y&gt;40&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;227&lt;/x&gt;
+-     &lt;y&gt;66&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_recibo/reciboslistbase.ui b/bulmages/bulmafact/plugins/pluginbf_recibo/reciboslistbase.ui
+index b288714..550abf4 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_recibo/reciboslistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_recibo/reciboslistbase.ui
+@@ -547,22 +547,4 @@
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;241&lt;/x&gt;
+-     &lt;y&gt;39&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;228&lt;/x&gt;
+-     &lt;y&gt;69&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_socio/sociolistbase.ui b/bulmages/bulmafact/plugins/pluginbf_socio/sociolistbase.ui
+index 81dfe08..4a306ef 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_socio/sociolistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_socio/sociolistbase.ui
+@@ -483,22 +483,4 @@
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+   &lt;include location=&quot;../pluginbf_profesor/gestionaula.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;241&lt;/x&gt;
+-     &lt;y&gt;39&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;228&lt;/x&gt;
+-     &lt;y&gt;69&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_ticket/ticketqtoolbutton.cpp b/bulmages/bulmafact/plugins/pluginbf_ticket/ticketqtoolbutton.cpp
+index 7c3ae69..56d275f 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_ticket/ticketqtoolbutton.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_ticket/ticketqtoolbutton.cpp
+@@ -108,9 +108,9 @@ void TicketQToolButton::click()
+ 	  } else if (!g_confpr-&gt;value( CONF_CASHBOX_FILE).isEmpty() &amp;&amp; g_confpr-&gt;value( CONF_CASHBOX_FILE) != &quot;/dev/null&quot;) {
+ 	      QString comando = &quot;cat &quot; + g_confpr-&gt;value(CONF_DIR_USER) + &quot;impers_presupuesto.txt&quot; + &quot;  &gt; &quot; + g_confpr-&gt;value( CONF_CASHBOX_FILE );
+ 	      system ( comando.toLatin1().data() );
+-	  } else if (!g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER).isEmpty() &amp;&amp; g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER) != &quot;None&quot;) {
++	  } else if (!g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER).isEmpty() &amp;&amp; g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER).toLower() != &quot;none&quot;) {
+ 		      blRawPrint( &quot;impers_presupuesto.txt&quot;, true, g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE));
+-	  } else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER) == &quot;None&quot;) {
++	  } else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).toLower() == &quot;none&quot;) {
+ 	      blMsgError(_(&quot;Debe establecer el parametro 'CONF_CUPS_DEFAULT_PRINTER' o 'CONF_CASHBOX_FILE' para abrir el cajon.&quot;));
+ 	  } else {
+ 		      blRawPrint( &quot;impers_presupuesto.txt&quot;);
+@@ -126,9 +126,9 @@ void TicketQToolButton::click()
+ 	  } else if (!g_confpr-&gt;value( CONF_CASHBOX_FILE).isEmpty() &amp;&amp; g_confpr-&gt;value( CONF_CASHBOX_FILE) != &quot;/dev/null&quot;) {
+ 	      QString comando = &quot;cat &quot; + g_confpr-&gt;value(CONF_DIR_USER) + &quot;impers_pedidocliente.txt&quot; + &quot;  &gt; &quot; + g_confpr-&gt;value( CONF_CASHBOX_FILE );
+ 	      system ( comando.toLatin1().data() );
+-	  } else if (!g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER).isEmpty() &amp;&amp; g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER) != &quot;None&quot;) {
++	  } else if (!g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER).isEmpty() &amp;&amp; g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER).toLower() != &quot;none&quot;) {
+ 		      blRawPrint( &quot;impers_pedidocliente.txt&quot;, true, g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE));
+-	  } else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER) == &quot;None&quot;) {
++	  } else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).toLower() == &quot;none&quot;) {
+ 	      blMsgError(_(&quot;Debe establecer el parametro 'CONF_CUPS_DEFAULT_PRINTER' o 'CONF_CASHBOX_FILE' para abrir el cajon.&quot;));
+ 	  } else {
+ 		      blRawPrint( &quot;impers_pedidocliente.txt&quot;);
+@@ -150,9 +150,9 @@ void TicketQToolButton::click()
+ 	  } else if (!g_confpr-&gt;value( CONF_CASHBOX_FILE).isEmpty() &amp;&amp; g_confpr-&gt;value( CONF_CASHBOX_FILE) != &quot;/dev/null&quot;) {
+ 	      QString comando = &quot;cat &quot; + g_confpr-&gt;value(CONF_DIR_USER) + &quot;ticket_normal.txt&quot; + &quot;  &gt; &quot; + g_confpr-&gt;value( CONF_CASHBOX_FILE );
+ 	      system ( comando.toLatin1().data() );
+-	  } else if (!g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER).isEmpty() &amp;&amp; g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER) != &quot;None&quot;) {
++	  } else if (!g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER).isEmpty() &amp;&amp; g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER).toLower() != &quot;none&quot;) {
+ 		      blRawPrint( &quot;ticket_normal.txt&quot;, true, g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE));
+-	  } else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER) == &quot;None&quot;) {
++	  } else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).toLower() == &quot;none&quot;) {
+ 	      blMsgError(_(&quot;Debe establecer el parametro 'CONF_CUPS_DEFAULT_PRINTER' o 'CONF_CASHBOX_FILE' para abrir el cajon.&quot;));
+ 	  } else {
+ 		      blRawPrint( &quot;ticket_normal.txt&quot;);
+@@ -168,9 +168,9 @@ void TicketQToolButton::click()
+ 	  } else if (!g_confpr-&gt;value( CONF_CASHBOX_FILE).isEmpty() &amp;&amp; g_confpr-&gt;value( CONF_CASHBOX_FILE) != &quot;/dev/null&quot;) {
+ 	      QString comando = &quot;cat &quot; + g_confpr-&gt;value(CONF_DIR_USER) + &quot;impers_albaran.txt&quot; + &quot;  &gt; &quot; + g_confpr-&gt;value( CONF_CASHBOX_FILE );
+ 	      system ( comando.toLatin1().data() );
+-	  } else if (!g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER).isEmpty() &amp;&amp; g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER) != &quot;None&quot;) {
++	  } else if (!g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER).isEmpty() &amp;&amp; g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER).toLower() != &quot;none&quot;) {
+ 		      blRawPrint( &quot;impers_albaran.txt&quot;, true, g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE));
+-	  } else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER) == &quot;None&quot;) {
++	  } else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).toLower() == &quot;none&quot;) {
+ 	      blMsgError(_(&quot;Debe establecer el parametro 'CONF_CUPS_DEFAULT_PRINTER' o 'CONF_CASHBOX_FILE' para abrir el cajon.&quot;));
+ 	  } else {
+ 		      blRawPrint( &quot;impers_albaran.txt&quot;);
+@@ -185,9 +185,9 @@ void TicketQToolButton::click()
+ 	  } else if (!g_confpr-&gt;value( CONF_CASHBOX_FILE).isEmpty() &amp;&amp; g_confpr-&gt;value( CONF_CASHBOX_FILE) != &quot;/dev/null&quot;) {
+ 	      QString comando = &quot;cat &quot; + g_confpr-&gt;value(CONF_DIR_USER) + &quot;impers_factura.txt&quot; + &quot;  &gt; &quot; + g_confpr-&gt;value( CONF_CASHBOX_FILE );
+ 	      system ( comando.toLatin1().data() );
+-	  } else if (!g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER).isEmpty() &amp;&amp; g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER) != &quot;None&quot;) {
++	  } else if (!g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER).isEmpty() &amp;&amp; g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER).toLower() != &quot;none&quot;) {
+ 		      blRawPrint( &quot;impers_factura.txt&quot;, true, g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE));
+-	  } else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER) == &quot;None&quot;) {
++	  } else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).toLower() == &quot;none&quot;) {
+ 	      blMsgError(_(&quot;Debe establecer el parametro 'CONF_CUPS_DEFAULT_PRINTER' o 'CONF_CASHBOX_FILE' para abrir el cajon.&quot;));
+ 	  } else {
+ 		      blRawPrint( &quot;impers_factura.txt&quot;);
+diff --git a/bulmages/bulmafact/plugins/pluginbf_trazabilidad/movimientosbase.ui b/bulmages/bulmafact/plugins/pluginbf_trazabilidad/movimientosbase.ui
+index 72dba97..638e1a5 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_trazabilidad/movimientosbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_trazabilidad/movimientosbase.ui
+@@ -500,22 +500,4 @@
+  &lt;resources&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;238&lt;/x&gt;
+-     &lt;y&gt;43&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;234&lt;/x&gt;
+-     &lt;y&gt;72&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_tutor/tutoreslistbase.ui b/bulmages/bulmafact/plugins/pluginbf_tutor/tutoreslistbase.ui
+index 58a9991..0bc7a73 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_tutor/tutoreslistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_tutor/tutoreslistbase.ui
+@@ -470,22 +470,4 @@
+   &lt;include location=&quot;../pluginbf_profesor/gestionaula.qrc&quot;/&gt;
+   &lt;include location=&quot;../../../bulmages_oxygen.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;241&lt;/x&gt;
+-     &lt;y&gt;39&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;228&lt;/x&gt;
+-     &lt;y&gt;69&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/src/bfbulmafact.cpp b/bulmages/bulmafact/src/bfbulmafact.cpp
+index d8dbf9a..6f313db 100644
+--- a/bulmages/bulmafact/src/bfbulmafact.cpp
++++ b/bulmages/bulmafact/src/bfbulmafact.cpp
+@@ -181,7 +181,7 @@ void BfBulmaFact::closeEvent ( QCloseEvent *event )
+ 
+ 
+     /// Antes de salir hacemos un mensaje de advertencia.
+-    if ( g_confpr-&gt;value( CONF_ASK_BEFORE_EXIT ) == &quot;true&quot; ) {
++    if ( g_confpr-&gt;valueTrue( CONF_ASK_BEFORE_EXIT )) {
+ 	 QMessageBox msgBox;
+ 	 msgBox.setText(_(&quot;Seguro que desea abandonar el programa &quot;));
+ 	 msgBox.setInformativeText(_(&quot;Se perderan los cambios no guardados&quot;));
+diff --git a/bulmages/bulmafact/src/bfconfiguracionview.cpp b/bulmages/bulmafact/src/bfconfiguracionview.cpp
+index 6eca298..3c93b8c 100644
+--- a/bulmages/bulmafact/src/bfconfiguracionview.cpp
++++ b/bulmages/bulmafact/src/bfconfiguracionview.cpp
+@@ -56,7 +56,7 @@ BfConfiguracionView::BfConfiguracionView ( BfCompany *comp, QWidget *parent ) :
+     this-&gt;setAttribute ( Qt::WA_DeleteOnClose );
+     mui_listado-&gt;setMainCompany ( mainCompany() );
+     mui_listado-&gt;load();
+-    if (g_confpr-&gt;value(CONF_MODO_EXPERTO) != &quot;true&quot;) {
++    if (!g_confpr-&gt;valueTrue(CONF_MODO_EXPERTO)) {
+      tabWidget-&gt;removeTab(tabWidget-&gt;indexOf(tab_2));
+     } // end if
+ 
+diff --git a/bulmages/bulmafact/src/bfsubform.cpp b/bulmages/bulmafact/src/bfsubform.cpp
+index 4f439bf..a0c578d 100644
+--- a/bulmages/bulmafact/src/bfsubform.cpp
++++ b/bulmages/bulmafact/src/bfsubform.cpp
+@@ -253,7 +253,7 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
+                     || m_tablename == &quot;lalbaran&quot;
+                     || m_tablename == &quot;lfactura&quot; ) {
+ 
+-		if (g_confpr-&gt;value(CONF_USE_DESCARTICULO) == &quot;true&quot; || g_confpr-&gt;value(CONF_USE_DESCARTICULO) == &quot;T&quot; || g_confpr-&gt;value(CONF_USE_DESCARTICULO) == &quot;1&quot;) {
++		if (g_confpr-&gt;valueTrue(CONF_USE_DESCARTICULO)) {
+ 			rec-&gt;setDbValue ( &quot;desc&quot; + m_tablename, cur-&gt;value( &quot;nomarticulo&quot; ) +&quot;\n&quot; + cur-&gt;value(&quot;obserarticulo&quot;) );
+ 
+ 		} else {
+diff --git a/bulmages/bulmalib/plugins/pluginbl_autoform/autoformlistbase.ui b/bulmages/bulmalib/plugins/pluginbl_autoform/autoformlistbase.ui
+index 37fd7d9..8be935b 100644
+--- a/bulmages/bulmalib/plugins/pluginbl_autoform/autoformlistbase.ui
++++ b/bulmages/bulmalib/plugins/pluginbl_autoform/autoformlistbase.ui
+@@ -447,22 +447,4 @@
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+   &lt;include location=&quot;../pluginbf_profesor/gestionaula.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;225&lt;/x&gt;
+-     &lt;y&gt;31&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;253&lt;/x&gt;
+-     &lt;y&gt;128&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmalib/plugins/pluginbl_report/pluginbl_report.cpp b/bulmages/bulmalib/plugins/pluginbl_report/pluginbl_report.cpp
+index 03fec62..f636d92 100644
+--- a/bulmages/bulmalib/plugins/pluginbl_report/pluginbl_report.cpp
++++ b/bulmages/bulmalib/plugins/pluginbl_report/pluginbl_report.cpp
+@@ -79,9 +79,9 @@ void PluginBl_Report::elslot2( )
+     } else if (!g_confpr-&gt;value( CONF_CASHBOX_FILE).isEmpty() &amp;&amp; g_confpr-&gt;value( CONF_CASHBOX_FILE) != &quot;/dev/null&quot;) {
+ 	QString comando = &quot;cat &quot; + g_confpr-&gt;value(CONF_DIR_USER) + sender()-&gt;objectName() + &quot;  &gt; &quot; + g_confpr-&gt;value( CONF_CASHBOX_FILE );
+ 	system ( comando.toLatin1().data() );
+-    } else if (!g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER).isEmpty() &amp;&amp; g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER) != &quot;None&quot;) {
++    } else if (!g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER).isEmpty() &amp;&amp; g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER).toLower() != &quot;none&quot;) {
+ 		blRawPrint( sender()-&gt;objectName(), true, g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE));
+-    } else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER) == &quot;None&quot;) {
++    } else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).toLower() == &quot;none&quot;) {
+ 	blMsgError(_(&quot;Debe establecer el parametro 'CONF_CUPS_DEFAULT_PRINTER' o 'CONF_CASHBOX_FILE' para abrir el cajon.&quot;));
+     } else {
+ 		blRawPrint( sender()-&gt;objectName());
+diff --git a/bulmages/bulmalib/plugins/pluginbl_template/eqtoolbutton.cpp b/bulmages/bulmalib/plugins/pluginbl_template/eqtoolbutton.cpp
+index 35c4f93..ef8abad 100644
+--- a/bulmages/bulmalib/plugins/pluginbl_template/eqtoolbutton.cpp
++++ b/bulmages/bulmalib/plugins/pluginbl_template/eqtoolbutton.cpp
+@@ -307,9 +307,9 @@ void EQToolButton::trataMenu ( QAction *action )
+ 		    } else if (!g_confpr-&gt;value( CONF_CASHBOX_FILE).isEmpty() &amp;&amp; g_confpr-&gt;value( CONF_CASHBOX_FILE) != &quot;/dev/null&quot;) {
+ 			QString comando = &quot;cat &quot; + g_confpr-&gt;value(CONF_DIR_USER) + fileInfo.fileName() + &quot;  &gt; &quot; + g_confpr-&gt;value( CONF_CASHBOX_FILE );
+ 			system ( comando.toLatin1().data() );
+-		    } else if (!g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER).isEmpty() &amp;&amp; g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER) != &quot;None&quot;) {
++		    } else if (!g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER).isEmpty() &amp;&amp; g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER).toLower() != &quot;none&quot;) {
+ 				blRawPrint( fileInfo.fileName(), true, g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE));
+-		    } else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER) == &quot;None&quot;) {
++		    } else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).toLower() == &quot;none&quot;) {
+ 			blMsgError(_(&quot;Debe establecer el parametro 'CONF_CUPS_DEFAULT_PRINTER' o 'CONF_CASHBOX_FILE' para abrir el cajon.&quot;));
+ 		    } else {
+ 				blRawPrint( fileInfo.fileName());
+diff --git a/bulmages/bulmalib/src/blconfiguration.cpp b/bulmages/bulmalib/src/blconfiguration.cpp
+index fd06efb..9c08819 100644
+--- a/bulmages/bulmalib/src/blconfiguration.cpp
++++ b/bulmages/bulmalib/src/blconfiguration.cpp
+@@ -563,6 +563,29 @@ bool BlConfiguration::readConfig ( QString fich )
+ \param i Par&aacute;metro del que se quiere el valor.
+ \return El valor que tiene dicho par&aacute;metro.
+ **/
++bool BlConfiguration::valueTrue( int i )
++{
++    if ( m_valores.contains ( i ) ) {
++    
++	/// Si el valor incluye una variable de substitucion y esta existe se realiza.
++	/// Coge el valor de CONF_REPLACE_STRING y substituye la cadena ${CONF_REPLACE_STRING}
++	QString valor = m_valores[i];
++	
++	if (i != CONF_REPLACE_STRING)
++	    valor.replace(&quot;${CONF_REPLACE_STRING}&quot;, value(CONF_REPLACE_STRING));
++    
++        return ( valor.toLower() == &quot;true&quot; || valor.toLower() == &quot;t&quot; || valor == &quot;1&quot; || valor.toLower() == &quot;yes&quot; || valor.toLower() == &quot;y&quot;);
++    } // end if
++    fprintf ( stderr, &quot;BlConfiguration : %s&quot;, &quot;Busqueda de valor sin establecer\n&quot; );
++    return false;
++}
++
++
++/// Devuelve el valor de un campo determinado.
++/**
++\param i Par&aacute;metro del que se quiere el valor.
++\return El valor que tiene dicho par&aacute;metro.
++**/
+ QString BlConfiguration::value( int i )
+ {
+     if ( m_valores.contains ( i ) ) {
+@@ -576,6 +599,7 @@ QString BlConfiguration::value( int i )
+     
+         return ( valor );
+     } // end if
++    fprintf ( stderr, &quot;BlConfiguration : %s&quot;, &quot;Busqueda de valor sin establecer\n&quot; );
+     return &quot;&quot;;
+ }
+ 
+diff --git a/bulmages/bulmalib/src/blconfiguration.h b/bulmages/bulmalib/src/blconfiguration.h
+index 3b307cb..32cab54 100644
+--- a/bulmages/bulmalib/src/blconfiguration.h
++++ b/bulmages/bulmalib/src/blconfiguration.h
+@@ -327,6 +327,7 @@ public:
+     BlConfiguration ( QString nombreprograma );
+     ~BlConfiguration();
+     QString value( int );
++    bool valueTrue(int);
+     void setValue ( int, QString );
+     bool readConfig ( QString );
+     void saveConfig();
+diff --git a/bulmages/bulmalib/src/bldbsubform.cpp b/bulmages/bulmalib/src/bldbsubform.cpp
+index 54079ae..a4b93ee 100644
+--- a/bulmages/bulmalib/src/bldbsubform.cpp
++++ b/bulmages/bulmalib/src/bldbsubform.cpp
+@@ -201,7 +201,7 @@ int BlDbSubFormField::set ( QString val )
+     } else {
+ 	  setText ( fieldValue() );
+ 
+-	  if ( g_confpr-&gt;value( CONF_CENTER_TEXT_FIELDS ) == &quot;true&quot;
++	  if ( g_confpr-&gt;valueTrue( CONF_CENTER_TEXT_FIELDS )
+ 	  &amp;&amp; fieldType() == BlDbField::DbVarChar )
+ 	  {
+ 		setTextAlignment(Qt::AlignCenter);
+diff --git a/bulmages/bulmalib/src/blform.cpp b/bulmages/bulmalib/src/blform.cpp
+index 4552741..19986a6 100644
+--- a/bulmages/bulmalib/src/blform.cpp
++++ b/bulmages/bulmalib/src/blform.cpp
+@@ -77,7 +77,7 @@ Importa el script y lo lanza.
+ void BlForm::blScript(QObject * obj) {
+     BL_FUNC_DEBUG
+     
+-    if (g_confpr-&gt;value(CONF_USE_QSCRIPT) == &quot;true&quot; || g_confpr-&gt;value(CONF_USE_QSCRIPT) == &quot;T&quot; || g_confpr-&gt;value(CONF_USE_QSCRIPT) == &quot;1&quot; ) {
++    if (g_confpr-&gt;valueTrue(CONF_USE_QSCRIPT)) {
+     
+ 	QString fileName = g_confpr-&gt;value( CONF_DIR_OPENREPORTS ) + &quot;blform_&quot;+metaObject()-&gt;className()+&quot;.qs&quot;;
+ 	QFile scriptFile1(fileName);
+@@ -814,7 +814,7 @@ void BlForm::on_customContextMenuRequested ( const QPoint &amp; )
+     QMenu *popup = new QMenu ( this );
+     
+     /// Si estamos en modo experto. Lo primero que hacemos es encabezar el menu con el nombre del objeto para tenerlo bien ubicado.
+-    if (g_confpr-&gt;value(CONF_MODO_EXPERTO) == &quot;true&quot;) {
++    if (g_confpr-&gt;valueTrue(CONF_MODO_EXPERTO)) {
+       QAction *nombreobjeto = popup-&gt;addAction( objectName() );
+       nombreobjeto-&gt;setDisabled(true);
+       QAction *claseobjeto = popup-&gt;addAction( metaObject()-&gt;className() );
+@@ -827,7 +827,7 @@ void BlForm::on_customContextMenuRequested ( const QPoint &amp; )
+     /// Lanzamos la propagacion del menu a traves de las clases derivadas.
+     createMenu ( popup );
+     QAction *avconfig = NULL;
+-    if (g_confpr-&gt;value(CONF_MODO_EXPERTO) == &quot;true&quot;) {
++    if (g_confpr-&gt;valueTrue(CONF_MODO_EXPERTO)) {
+       avconfig = popup-&gt;addAction ( _ ( &quot;Opciones avanzadas de ficha&quot; ) );
+     } // end if
+ 
+@@ -1246,7 +1246,7 @@ int BlForm::save()
+         load ( id );
+ 
+         /// Si la directiva CONF_REFRESH_LIST esta activada buscamos el listado referente y lo recargamos
+-        if (g_confpr-&gt;value(CONF_REFRESH_LIST) == &quot;true&quot;) {
++        if (g_confpr-&gt;valueTrue(CONF_REFRESH_LIST)) {
+                 /// Buscamos el listado que corresponde al widget.
+                 QList&lt;BlFormList *&gt; lista = g_main-&gt;findChildren&lt;BlFormList *&gt;();
+                 for (int i = 0; i &lt; lista.size(); ++i) {
+@@ -1304,7 +1304,7 @@ int BlForm::remove()
+         err =  BlDbRecord::remove();
+ 
+         /// Si la directiva CONF_REFRESH_LIST esta activada buscamos el listado referente y lo recargamos
+-        if (g_confpr-&gt;value(CONF_REFRESH_LIST) == &quot;true&quot;) {
++        if (g_confpr-&gt;valueTrue(CONF_REFRESH_LIST)) {
+                 /// Buscamos el listado que corresponde al widget.
+                 QList&lt;BlFormList *&gt; lista = g_main-&gt;findChildren&lt;BlFormList *&gt;();
+                 for (int i = 0; i &lt; lista.size(); ++i) {
+diff --git a/bulmages/bulmalib/src/blformlist.cpp b/bulmages/bulmalib/src/blformlist.cpp
+index 47d10de..f496fe4 100644
+--- a/bulmages/bulmalib/src/blformlist.cpp
++++ b/bulmages/bulmalib/src/blformlist.cpp
+@@ -46,7 +46,7 @@ Importa el script y lo lanza.
+ */
+ void BlFormList::blScript(QObject * obj) {
+     
+-    if (g_confpr-&gt;value(CONF_USE_QSCRIPT) == &quot;true&quot; || g_confpr-&gt;value(CONF_USE_QSCRIPT) == &quot;T&quot; || g_confpr-&gt;value(CONF_USE_QSCRIPT) == &quot;1&quot; ) {
++    if (g_confpr-&gt;valueTrue(CONF_USE_QSCRIPT)) {
+   
+ 	  /// Lanzamos los scripts de QScript
+ 	  QString fileName = g_confpr-&gt;value( CONF_DIR_OPENREPORTS ) + &quot;blformlist_&quot;+metaObject()-&gt;className()+&quot;.qs&quot;;
+@@ -516,7 +516,7 @@ void BlFormList::contextMenuEvent ( QContextMenuEvent * ) {
+     QMenu *popup = new QMenu ( this );
+ 
+     /// Si estamos en modo experto. Lo primero que hacemos es encabezar el menu con el nombre del objeto para tenerlo bien ubicado.
+-    if (g_confpr-&gt;value(CONF_MODO_EXPERTO) == &quot;true&quot;) {
++    if (g_confpr-&gt;valueTrue(CONF_MODO_EXPERTO)) {
+       QAction *nombreobjeto = popup-&gt;addAction( objectName() );
+       nombreobjeto-&gt;setDisabled(true);
+     } // end if
+@@ -540,7 +540,7 @@ void BlFormList::submenu ( const QPoint &amp; )
+     QMenu *popup = new QMenu ( this );
+     
+     /// Si estamos en modo experto. Lo primero que hacemos es encabezar el menu con el nombre del objeto para tenerlo bien ubicado.
+-    if (g_confpr-&gt;value(CONF_MODO_EXPERTO) == &quot;true&quot;) {
++    if (g_confpr-&gt;valueTrue(CONF_MODO_EXPERTO)) {
+       QAction *nombreobjeto = popup-&gt;addAction( objectName() );
+       nombreobjeto-&gt;setDisabled(true);
+     } // end if
+@@ -572,6 +572,12 @@ void BlFormList::on_mui_list_toogledConfig ( bool check )
+ }
+ 
+ 
++void BlFormList::on_mui_filtrar_toggled(bool checked) {
++    QWidget *bbusqueda = findChild&lt;QWidget *&gt; ( &quot;m_busqueda&quot; );
++    if (bbusqueda) bbusqueda-&gt;setVisible(checked);
++    
++}
++
+ ///
+ /**
+ **/
+@@ -836,12 +842,12 @@ void BlFormList::cargaFiltrosXML() {
+ const QString BlFormList::nameFileConfig() 
+ {
+    QString directorio = g_confpr-&gt;value(CONF_DIR_USER);
+-   if (g_confpr-&gt;value(CONF_GLOBAL_CONFIG_USER) == &quot;true&quot;) {
++   if (g_confpr-&gt;valueTrue(CONF_GLOBAL_CONFIG_USER)) {
+       directorio = g_confpr-&gt;value(CONF_DIR_CONFIG);
+    } // end if
+ 
+    QString empresa = mainCompany()-&gt;dbName();
+-   if (g_confpr-&gt;value(CONF_GLOBAL_CONFIG_COMPANY) == &quot;true&quot;) {
++   if (g_confpr-&gt;valueTrue(CONF_GLOBAL_CONFIG_COMPANY)) {
+       empresa  = &quot;&quot;;
+    } // end if
+ 
+diff --git a/bulmages/bulmalib/src/blformlist.h b/bulmages/bulmalib/src/blformlist.h
+index 9af29eb..41243fe 100644
+--- a/bulmages/bulmalib/src/blformlist.h
++++ b/bulmages/bulmalib/src/blformlist.h
+@@ -95,6 +95,7 @@ public slots:
+     virtual void on_mui_configurar_toggled ( bool checked );
+     virtual void on_mui_borrar_clicked();
+     virtual void on_mui_crear_clicked();
++    virtual void on_mui_filtrar_toggled(bool checked);
+     virtual void contextMenuEvent ( QContextMenuEvent * );
+ 
+ signals:
+diff --git a/bulmages/bulmalib/src/blfunctions.cpp b/bulmages/bulmalib/src/blfunctions.cpp
+index 1a6c3b2..dca2ffb 100644
+--- a/bulmages/bulmalib/src/blfunctions.cpp
++++ b/bulmages/bulmalib/src/blfunctions.cpp
+@@ -72,7 +72,7 @@ BlDebug::BlDebug(const QString &amp;func, int level, const QString &amp;params) {
+ 	if (!g_confpr ) return;
+ 
+ 	/// Si no hay modo debug salimos directamente
+-	if (g_confpr-&gt;value(CONF_DEBUG) == &quot;false&quot; ) return;
++	if (!g_confpr-&gt;valueTrue(CONF_DEBUG)) return;
+ 	
+ 	m_func = func;
+ 	m_level = level;
+@@ -168,7 +168,7 @@ void BlDebug::blDebug(const QString &amp;text, int level, const QString &amp;params) {
+       if (!g_confpr ) throw -1;
+       
+       /// Si no hay modo debug salimos directamente
+-      if (g_confpr-&gt;value(CONF_DEBUG) == &quot;false&quot; ) return;
++      if (!g_confpr-&gt;valueTrue(CONF_DEBUG)) return;
+ 
+       for ( int i = 0; i &lt;= BlDebug::m_auxxml; i++ ) {
+ 	  *BlDebug::m_outXML &lt;&lt; &quot;    &quot;;
+@@ -194,7 +194,7 @@ BlDebug::~BlDebug() {
+       if (!g_confpr ) return;
+       
+       /// Si no hay modo debug salimos directamente
+-      if (g_confpr-&gt;value(CONF_DEBUG) == &quot;false&quot; ) return;
++      if (!g_confpr-&gt;valueTrue(CONF_DEBUG)) return;
+ 
+        if ( m_level == 0 || m_level == 1 ) {
+             for ( int i = 0; i &lt; BlDebug::m_auxxml; i++ ) {
+@@ -777,7 +777,7 @@ void blDebug ( const QString &amp;cad, int nivel, const QString &amp;param )
+     static bool semaforo = 0;
+ 
+ 
+-    if ( g_confpr-&gt;value( CONF_DEBUG ) == &quot;true&quot; ) {
++    if ( g_confpr-&gt;valueTrue( CONF_DEBUG )) {
+         static QFile file ( g_confpr-&gt;value( CONF_DIR_USER ) + &quot;bulmagesout.txt&quot; );
+         static QTextStream out ( &amp;file );
+ 
+@@ -1476,8 +1476,7 @@ bool blCopyFile( const QString &amp;oldName, const QString &amp;newName )
+     BL_FUNC_DEBUG
+ 
+     // Si es el mismo archivo, no lo copia.
+-    if(oldName.compare(newName) == 0)
+-    {
++    if(oldName.compare(newName) == 0) {
+         return true;
+     } // end if
+     
+@@ -1485,6 +1484,15 @@ bool blCopyFile( const QString &amp;oldName, const QString &amp;newName )
+     QString oldFile = QUrl(oldName, QUrl::TolerantMode).toString();
+     QString newFile = QUrl(newName, QUrl::TolerantMode).toString();
+ 
++    
++#ifdef Q_OS_WIN32
++//# La compatibilidad con Win32 no esta garantizada usando el QUrl::TolerantMode
++    oldFile = oldName;
++    newFile = newName;
++#endif
++    
++    
++
+     // Intenta copiar usando QFile::copy() y si falla, lo copia mediante sistema
+     if(!QFile::copy(oldFile, newFile)) {
+ 	QString command = &quot;&quot;;
+@@ -1493,6 +1501,7 @@ bool blCopyFile( const QString &amp;oldName, const QString &amp;newName )
+ 			command = &quot;copy \&quot;&quot; + oldFile + &quot;\&quot; \&quot;&quot; + newFile + &quot;\&quot;&quot;;
+ 			command.replace(&quot;/&quot;, &quot;\\&quot;);
+ 			command = command + &quot; /y&quot;;
++			
+ 		#else
+ 			command = &quot;cp &quot; + oldFile + &quot; &quot; + newFile;
+ 		#endif
+@@ -1501,9 +1510,9 @@ bool blCopyFile( const QString &amp;oldName, const QString &amp;newName )
+ 
+         if (result == -1) {
+             return false;
+-            }
++        } // end if
+     } // end if
+-
++    
+     // Se ha copiado correctamente el archivo
+     return true;
+ }
+diff --git a/bulmages/bulmalib/src/blpostgresqlclient.cpp b/bulmages/bulmalib/src/blpostgresqlclient.cpp
+index aaf8e90..c3ad5ae 100644
+--- a/bulmages/bulmalib/src/blpostgresqlclient.cpp
++++ b/bulmages/bulmalib/src/blpostgresqlclient.cpp
+@@ -140,7 +140,7 @@ void BlDbRecordSet::inicializa ( QString nombre, PGconn *conn1, QString SQLQuery
+             m_error = true;
+             BlDebug::blDebug ( PQerrorMessage ( conn ) );
+             BlDebug::blDebug ( &quot;QUERY command failed [&quot; + SQLQuery + &quot;]&quot;, 10 );
+-            if ( g_confpr-&gt;value( CONF_ALERTAS_DB ) == &quot;Yes&quot; ) {
++            if ( g_confpr-&gt;valueTrue( CONF_ALERTAS_DB )) {
+                 BlErrorDialog ( _ ( &quot;Error al hacer la consulta con la base de datos.&quot; ) + QString ( &quot;\n:: &quot; ) + QString ( PQresultErrorField ( result, PG_DIAG_MESSAGE_PRIMARY ) ) + &quot; ::&quot;, SQLQuery + QString ( &quot;\n&quot; ) + ( QString ) PQerrorMessage ( conn ) );
+             } // end if
+             PQclear ( result );
+@@ -594,7 +594,7 @@ int BlPostgreSqlClient::inicializa ( QString nomdb )
+         conn = PQconnectdb ( conexion.toLatin1().data() );
+         if ( PQstatus ( conn ) == CONNECTION_BAD ) {
+             BlDebug::blDebug ( &quot;La conexion con la base de datos '&quot; + m_pgDbName + &quot;' ha fallado.\n&quot;, 0 );
+-            if ( passwd != &quot;&quot; &amp;&amp; g_confpr-&gt;value( CONF_ALERTAS_DB ) == &quot;Yes&quot; ) {
++            if ( passwd != &quot;&quot; &amp;&amp; g_confpr-&gt;valueTrue( CONF_ALERTAS_DB )) {
+                 BlDebug::blDebug ( PQerrorMessage ( conn ), 2 );
+             } else {
+                 BlDebug::blDebug ( PQerrorMessage ( conn ), 0 );
+diff --git a/bulmages/bulmalib/src/blprogressbar.cpp b/bulmages/bulmalib/src/blprogressbar.cpp
+index a20116f..77c2247 100644
+--- a/bulmages/bulmalib/src/blprogressbar.cpp
++++ b/bulmages/bulmalib/src/blprogressbar.cpp
+@@ -30,7 +30,7 @@
+ BlProgressBar::BlProgressBar (  ) : QDialog ( 0, Qt::SplashScreen )
+ {
+     BL_FUNC_DEBUG
+-    if ( g_confpr-&gt;value( CONF_SHOW_PROGRESS_BAR ) == &quot;true&quot; ) {
++    if ( g_confpr-&gt;valueTrue( CONF_SHOW_PROGRESS_BAR )) {
+         setupUi ( this );
+         QDesktopWidget *pantalla = new QDesktopWidget();
+         setGeometry ( ( pantalla-&gt;screenGeometry().width() / 2 ) - this-&gt;width() / 2, ( pantalla-&gt;screenGeometry().height() / 2 ) - this-&gt;height() / 2, this-&gt;width(), this-&gt;height() );
+@@ -47,7 +47,7 @@ void BlProgressBar::setText ( const QString &amp;tex )
+ {
+     BL_FUNC_DEBUG
+ 
+-    if ( g_confpr-&gt;value( CONF_SHOW_PROGRESS_BAR ) == &quot;true&quot; ) {
++    if ( g_confpr-&gt;valueTrue( CONF_SHOW_PROGRESS_BAR )) {
+         mui_progressBar_label-&gt;setText ( tex );
+         /// Si no hacemos una espera no se pinta bien el setText.
+         update();
+@@ -74,7 +74,7 @@ BlProgressBar::~BlProgressBar()
+ void BlProgressBar::setValue ( int value )
+ {
+     BL_FUNC_DEBUG
+-    if ( g_confpr-&gt;value( CONF_SHOW_PROGRESS_BAR ) == &quot;true&quot; )
++    if ( g_confpr-&gt;valueTrue( CONF_SHOW_PROGRESS_BAR ))
+         mui_progressBar-&gt;setValue ( value );
+     
+ 
+@@ -88,7 +88,7 @@ int BlProgressBar::value()
+ {
+     BL_FUNC_DEBUG
+     
+-    if ( g_confpr-&gt;value( CONF_SHOW_PROGRESS_BAR ) == &quot;true&quot; ) {
++    if ( g_confpr-&gt;valueTrue( CONF_SHOW_PROGRESS_BAR )) {
+         return mui_progressBar-&gt;value();
+     } else {
+         return 0;
+@@ -102,7 +102,7 @@ int BlProgressBar::value()
+ void BlProgressBar::setRange ( int range,  int range1 )
+ {
+     BL_FUNC_DEBUG
+-    if ( g_confpr-&gt;value( CONF_SHOW_PROGRESS_BAR ) == &quot;true&quot; )
++    if ( g_confpr-&gt;valueTrue( CONF_SHOW_PROGRESS_BAR ))
+         mui_progressBar-&gt;setRange ( range, range1 );
+     
+ }
+@@ -114,7 +114,7 @@ void BlProgressBar::setRange ( int range,  int range1 )
+ void BlProgressBar::show (  )
+ {
+     BL_FUNC_DEBUG
+-    if ( g_confpr-&gt;value( CONF_SHOW_PROGRESS_BAR ) == &quot;true&quot; ) {
++    if ( g_confpr-&gt;valueTrue( CONF_SHOW_PROGRESS_BAR )) {
+         QWidget::show();
+     } // end if
+     
+diff --git a/bulmages/bulmalib/src/blsubform.cpp b/bulmages/bulmalib/src/blsubform.cpp
+index 1e19cf5..8d4ddf8 100644
+--- a/bulmages/bulmalib/src/blsubform.cpp
++++ b/bulmages/bulmalib/src/blsubform.cpp
+@@ -278,7 +278,7 @@ BlSubForm::BlSubForm ( QWidget *parent ) : BlWidget ( parent )
+     g_plugins-&gt;run ( &quot;BlSubForm_BlSubForm_Post&quot;, this );
+     m_procesacambios = true;
+ 
+-    if (g_confpr-&gt;value(CONF_MODO_EXPERTO) != &quot;true&quot;) {
++    if (!g_confpr-&gt;valueTrue(CONF_MODO_EXPERTO)) {
+         mui_selectorblsubform-&gt;removeTab(mui_selectorblsubform-&gt;indexOf(tab3));
+     } // end if
+ 
+@@ -1641,7 +1641,7 @@ void BlSubForm::load ( BlDbRecordSet *cur )
+     m_procesacambios = true;
+ 
+     /// Ajustamos las columnas al contenido.
+-    if (g_confpr-&gt;value(CONF_RESIZEROWSTOCONTENTS) == &quot;true&quot;) {
++    if (g_confpr-&gt;valueTrue(CONF_RESIZEROWSTOCONTENTS)) {
+         mui_listcolumnas-&gt;resizeRowsToContents();
+         resizeRowsToContents();
+     } // end if
+@@ -2080,7 +2080,7 @@ int BlSubForm::addSubFormHeader ( QString nom, BlDbField::DbType typ, int res, i
+     } // end if
+ 
+     /// Si el item esta desabilitado y no estamos en modo experto no podemos mostrarlo.
+-    if  (( opt &amp; BlSubFormHeader::DbDisableView ) &amp;&amp; (g_confpr-&gt;value(CONF_MODO_EXPERTO) != &quot;true&quot;)) {
++    if  (( opt &amp; BlSubFormHeader::DbDisableView ) &amp;&amp; (!g_confpr-&gt;valueTrue(CONF_MODO_EXPERTO))) {
+         it-&gt;setFlags ( Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable );
+     } // end if
+ 
+@@ -2422,12 +2422,12 @@ const QString BlSubForm::nameFileQuery()
+   
+     QString nombre = &quot;&quot;;
+     QString directorio = g_confpr-&gt;value(CONF_DIR_USER);
+-    if (g_confpr-&gt;value(CONF_GLOBAL_CONFIG_USER) == &quot;true&quot;) {
++    if (g_confpr-&gt;valueTrue(CONF_GLOBAL_CONFIG_USER)) {
+         directorio = g_confpr-&gt;value(CONF_DIR_CONFIG);
+     } // end if
+ 
+     QString empresa = mainCompany()-&gt;dbName();
+-    if (g_confpr-&gt;value(CONF_GLOBAL_CONFIG_COMPANY) == &quot;true&quot;) {
++    if (g_confpr-&gt;valueTrue(CONF_GLOBAL_CONFIG_COMPANY)) {
+         empresa  = &quot;&quot;;
+     } // end if
+ 
+@@ -2450,12 +2450,12 @@ const QString BlSubForm::nameFileConfig()
+     BL_FUNC_DEBUG
+       
+     QString directorio = g_confpr-&gt;value(CONF_DIR_USER);
+-    if (g_confpr-&gt;value(CONF_GLOBAL_CONFIG_USER) == &quot;true&quot;) {
++    if (g_confpr-&gt;valueTrue(CONF_GLOBAL_CONFIG_USER)) {
+         directorio = g_confpr-&gt;value(CONF_DIR_CONFIG);
+     } // end if
+ 
+     QString empresa = mainCompany()-&gt;dbName();
+-    if (g_confpr-&gt;value(CONF_GLOBAL_CONFIG_COMPANY) == &quot;true&quot;) {
++    if (g_confpr-&gt;valueTrue(CONF_GLOBAL_CONFIG_COMPANY)) {
+         empresa  = &quot;&quot;;
+     } // end if
+ 
+@@ -3366,7 +3366,7 @@ void BlSubForm::contextMenuEvent ( QContextMenuEvent * )
+     QMenu *popup = new QMenu ( this );
+ 
+     /// Si estamos en modo experto. Lo primero que hacemos es encabezar el menu con el nombre del objeto para tenerlo bien ubicado.
+-    if (g_confpr-&gt;value(CONF_MODO_EXPERTO) == &quot;true&quot;) {
++    if (g_confpr-&gt;valueTrue(CONF_MODO_EXPERTO)) {
+         QAction *nombreobjeto = popup-&gt;addAction( objectName() );
+         nombreobjeto-&gt;setDisabled(true);
+         QAction *claseobjeto = popup-&gt;addAction( metaObject()-&gt;className() );
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_aliastallasycolores/pluginbt_aliastallasycolores.cpp b/bulmages/bulmatpv/plugins/pluginbt_aliastallasycolores/pluginbt_aliastallasycolores.cpp
+index 454ab9d..f3649ba 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_aliastallasycolores/pluginbt_aliastallasycolores.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_aliastallasycolores/pluginbt_aliastallasycolores.cpp
+@@ -745,7 +745,7 @@ int BtTicket_imprimir(BtTicket *tick)
+     if (!g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE).isEmpty() &amp;&amp; g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE) != &quot;/dev/null&quot;) {
+         QString comando = &quot;cat &quot; + g_confpr-&gt;value(CONF_DIR_USER) + &quot;bulmatpv_ticket_tc.esc&quot; + &quot;  &gt; &quot; + g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE );
+         system ( comando.toLatin1().data() );
+-    } else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER) == &quot;None&quot;) {
++    } else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).toLower() == &quot;none&quot;) {
+         BlDebug::blDebug(&quot;Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_TICKET_PRINTER_FILE para imprimir el ticket &quot; , 2);
+     } else {
+ 		blRawPrint (&quot;bulmatpv_ticket_tc.esc&quot;);
+@@ -954,7 +954,7 @@ int BtTicket_imprimirIVAInc(BtTicket *tick)
+     if (!g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE).isEmpty() &amp;&amp; g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE) != &quot;/dev/null&quot;) {
+         QString comando = &quot;cat &quot; + g_confpr-&gt;value(CONF_DIR_USER) + &quot;bulmatpv_ticket_tc_ivainc.esc&quot; + &quot;  &gt; &quot; + g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE );
+         system ( comando.toLatin1().data() );
+-    } else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER) == &quot;None&quot;) {
++    } else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).toLower() == &quot;none&quot;) {
+         BlDebug::blDebug(&quot;Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_TICKET_PRINTER_FILE para imprimir el ticket &quot; , 2);
+     } else {
+         QString comando = &quot;lp -d&quot; + g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER) + &quot; &quot; + g_confpr-&gt;value(CONF_DIR_USER) + &quot;bulmatpv_ticket_tc_ivainc.esc&quot;;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.cpp b/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.cpp
+index 01fecf1..b3ae7d8 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.cpp
+@@ -436,7 +436,7 @@ void ArtGraficosDb::ponListaPantallas(int familiaMostrar)
+     int columnasBotones;
+     int j;
+     int indice;
+-    bool paginadoListaPantallas = (g_confpr-&gt;value(CONF_TPV_CATEGORY_TREE) == &quot;true&quot;) ? true : false;
++    bool paginadoListaPantallas = g_confpr-&gt;valueTrue(CONF_TPV_CATEGORY_TREE);
+ 
+     /// Creo el Widget que estara ubicado en el dockwidget que se ha creado en pluginbt_articulograficodb.cpp
+     if (m_widget) {
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_articulosubform/articulosubformbase.ui b/bulmages/bulmatpv/plugins/pluginbt_articulosubform/articulosubformbase.ui
+index f723584..334f697 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_articulosubform/articulosubformbase.ui
++++ b/bulmages/bulmatpv/plugins/pluginbt_articulosubform/articulosubformbase.ui
+@@ -417,22 +417,4 @@
+  &lt;resources&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;m_busqueda&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;241&lt;/x&gt;
+-     &lt;y&gt;39&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;201&lt;/x&gt;
+-     &lt;y&gt;71&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_debug/debug.cpp b/bulmages/bulmatpv/plugins/pluginbt_debug/debug.cpp
+index 8dead5b..f0b0c3f 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_debug/debug.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_debug/debug.cpp
+@@ -46,7 +46,7 @@ CambiarDebug::CambiarDebug ( BlMainCompany *emp, QWidget *parent ) : BlWidget (
+ 
+     
+     /// Comprovamos el estado de CONF_DEBUG en los archivos de configuracion y checkeamos mui_debug, segun estos.
+-    if ( g_confpr-&gt;value( CONF_DEBUG ) == &quot;true&quot; ) {
++    if ( g_confpr-&gt;valueTrue( CONF_DEBUG )) {
+         mui_debug-&gt;setChecked ( true );
+         BlDebug::blDebug ( ( Q_FUNC_INFO, _(&quot;Debug activado&quot;) ), 0 );
+     } else {
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_ivaincluido/pluginbt_ivaincluido.cpp b/bulmages/bulmatpv/plugins/pluginbt_ivaincluido/pluginbt_ivaincluido.cpp
+index 0004190..2117fca 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_ivaincluido/pluginbt_ivaincluido.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_ivaincluido/pluginbt_ivaincluido.cpp
+@@ -165,7 +165,7 @@ int BtCompany_z(BtCompany * emp)
+ 	if (!g_confpr-&gt;value( CONF_CASHBOX_FILE).isEmpty() &amp;&amp; g_confpr-&gt;value( CONF_CASHBOX_FILE) != &quot;/dev/null&quot;) {
+ 	    QString comando = &quot;cat &quot; + g_confpr-&gt;value(CONF_DIR_USER) + &quot;informe_Z.txt&quot; + &quot;  &gt; &quot; + g_confpr-&gt;value( CONF_CASHBOX_FILE );
+ 	    system ( comando.toLatin1().data() );
+-	} else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER) == &quot;None&quot;) {
++	} else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).toLower() == &quot;none&quot;) {
+ 	    BlDebug::blDebug(&quot;Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon &quot; , 2);
+ 	} else {
+ 		blRawPrint ( &quot;informe_Z.txt&quot; );
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_modificadores/pluginbt_modificadores.cpp b/bulmages/bulmatpv/plugins/pluginbt_modificadores/pluginbt_modificadores.cpp
+index 94eeab4..9140617 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_modificadores/pluginbt_modificadores.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_modificadores/pluginbt_modificadores.cpp
+@@ -124,13 +124,13 @@ int MTicketIVAInc_MTicketIVAInc_Post (MTicketIVAInc *tick) {
+     editarDescripcion-&gt;setIconSize ( QSize ( 32, 32 ) );    
+     
+ 
+-    if ( g_confpr-&gt;value(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES).isEmpty() || (g_confpr-&gt;value(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES) == &quot;false&quot;) ) {
++    if ( g_confpr-&gt;value(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES).isEmpty() || (!g_confpr-&gt;valueTrue(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES)) ) {
+ 	modificadores-&gt;hide();
+     } else {
+ 	modificadores-&gt;show();
+     } // end if
+     
+-    if ( (g_confpr-&gt;value(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION).isEmpty()) || (g_confpr-&gt;value(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION) == &quot;false&quot;) ) {
++    if ( (g_confpr-&gt;value(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION).isEmpty()) || (!g_confpr-&gt;valueTrue(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION)) ) {
+ 	editarDescripcion-&gt;hide();
+     } else {
+ 	editarDescripcion-&gt;show();
+@@ -185,13 +185,13 @@ int MTicket_MTicket_Post (MTicket *tick) {
+     editarDescripcion-&gt;setIconSize ( QSize ( 32, 32 ) );    
+ 
+     
+-    if ( (g_confpr-&gt;value(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES).isEmpty()) || (g_confpr-&gt;value(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES) == &quot;false&quot;) ) {
++    if ( (g_confpr-&gt;value(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES).isEmpty()) || (!g_confpr-&gt;valueTrue(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES)) ) {
+ 	modificadores-&gt;hide();
+     } else {
+ 	modificadores-&gt;show();
+     } // end if
+     
+-    if ( (g_confpr-&gt;value(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION).isEmpty()) || (g_confpr-&gt;value(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION) == &quot;false&quot;) ) {
++    if ( (g_confpr-&gt;value(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION).isEmpty()) || (!g_confpr-&gt;valueTrue(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION)) ) {
+ 	editarDescripcion-&gt;hide();
+     } else {
+ 	editarDescripcion-&gt;show();
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_total/total.cpp b/bulmages/bulmatpv/plugins/pluginbt_total/total.cpp
+index ded1ea7..e60afea 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_total/total.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_total/total.cpp
+@@ -4,7 +4,7 @@
+ Total::Total ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
+ {
+     setupUi ( this );
+-    if (g_confpr-&gt;value(CONF_TPV_REIMPRIMIR) == &quot;true&quot;) {
++    if (g_confpr-&gt;valueTrue(CONF_TPV_REIMPRIMIR)) {
+         mui_imprimiralcobrar-&gt;hide();
+     } // end if
+ }
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_totalivaincluido/total.cpp b/bulmages/bulmatpv/plugins/pluginbt_totalivaincluido/total.cpp
+index d845a72..cf39f46 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_totalivaincluido/total.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_totalivaincluido/total.cpp
+@@ -29,7 +29,7 @@
+ Total::Total ( BtCompany *emp, QWidget *parent ) : BlWidget ( emp, parent )
+ {
+     setupUi ( this );
+-    if (g_confpr-&gt;value(CONF_TPV_REIMPRIMIR) == &quot;true&quot;) {
++    if (g_confpr-&gt;valueTrue(CONF_TPV_REIMPRIMIR)) {
+         mui_imprimiralcobrar-&gt;hide();
+     } // end if
+ }
+diff --git a/bulmages/bulmatpv/src/btbulmatpv.cpp b/bulmages/bulmatpv/src/btbulmatpv.cpp
+index 857d08b..4e64d88 100644
+--- a/bulmages/bulmatpv/src/btbulmatpv.cpp
++++ b/bulmages/bulmatpv/src/btbulmatpv.cpp
+@@ -188,7 +188,7 @@ void BtBulmaTPV::closeEvent ( QCloseEvent *event )
+ 
+ 
+     /// Antes de salir hacemos un mensaje de advertencia.
+-    if ( g_confpr-&gt;value( CONF_ASK_BEFORE_EXIT ) == &quot;true&quot; ) {
++    if ( g_confpr-&gt;valueTrue( CONF_ASK_BEFORE_EXIT )) {
+ 	 QMessageBox msgBox;
+ 	 msgBox.setText(_(&quot;Seguro que desea abandonar el programa &quot;));
+ 	 msgBox.setInformativeText(_(&quot;Se perderan los cambios no guardados&quot;));
+diff --git a/bulmages/bulmatpv/src/btcompany.cpp b/bulmages/bulmatpv/src/btcompany.cpp
+index aa3a4c2..3056ed2 100644
+--- a/bulmages/bulmatpv/src/btcompany.cpp
++++ b/bulmages/bulmatpv/src/btcompany.cpp
+@@ -247,7 +247,7 @@ void BtCompany::z()
+ 		if (!g_confpr-&gt;value( CONF_CASHBOX_FILE).isEmpty() &amp;&amp; g_confpr-&gt;value( CONF_CASHBOX_FILE) != &quot;/dev/null&quot;) {
+ 			QString comando = &quot;cat &quot; + g_confpr-&gt;value(CONF_DIR_USER) + &quot;informe_Z.txt&quot; + &quot;  &gt; &quot; + g_confpr-&gt;value( CONF_CASHBOX_FILE );
+ 			system ( comando.toLatin1().data() );
+-		} else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER) == &quot;None&quot;) {
++		} else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).toLower() == &quot;none&quot;) {
+ 			BlDebug::blDebug(&quot;Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon &quot; , 2);
+ 		} else {
+ 			blRawPrint(&quot;informe_Z.txt&quot;);
+@@ -270,7 +270,7 @@ void BtCompany::x()
+     if (!g_confpr-&gt;value( CONF_CASHBOX_FILE).isEmpty() &amp;&amp; g_confpr-&gt;value( CONF_CASHBOX_FILE) != &quot;/dev/null&quot;) {
+         QString comando = &quot;cat &quot; + g_confpr-&gt;value(CONF_DIR_USER) + &quot;informe_X.txt&quot; + &quot;  &gt; &quot; + g_confpr-&gt;value( CONF_CASHBOX_FILE );
+         system ( comando.toLatin1().data() );
+-    } else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER) == &quot;None&quot;) {
++    } else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).toLower() == &quot;none&quot;) {
+         BlDebug::blDebug(&quot;Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon &quot; , 2);
+     } else {
+ 		blRawPrint(&quot;informe_X.txt&quot;);
+@@ -313,7 +313,7 @@ void BtCompany::cobrar(bool imprimir)
+             return;
+         }// end if
+ 
+-        if (imprimir || g_confpr-&gt;value(CONF_TPV_REIMPRIMIR) == &quot;true&quot;) {
++        if (imprimir || g_confpr-&gt;valueTrue(CONF_TPV_REIMPRIMIR)) {
+             m_ticketActual-&gt;imprimir(false);
+         }// end if
+ 
+diff --git a/bulmages/bulmatpv/src/btticket.cpp b/bulmages/bulmatpv/src/btticket.cpp
+index 80aa08d..e4acec0 100644
+--- a/bulmages/bulmatpv/src/btticket.cpp
++++ b/bulmages/bulmatpv/src/btticket.cpp
+@@ -341,7 +341,7 @@ void BtTicket::abrircajon()
+     if (!g_confpr-&gt;value( CONF_CASHBOX_FILE).isEmpty() &amp;&amp; g_confpr-&gt;value( CONF_CASHBOX_FILE) != &quot;/dev/null&quot;) {
+         QString comando = &quot;cat &quot; + g_confpr-&gt;value(CONF_DIR_USER) + &quot;bulmatpv_abrircajon.txt&quot; + &quot;  &gt; &quot; + g_confpr-&gt;value( CONF_CASHBOX_FILE );
+         system ( comando.toLatin1().data() );
+-    } else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER) == &quot;None&quot;) {
++    } else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).toLower() == &quot;none&quot;) {
+         BlDebug::blDebug(&quot;Debe establecer el parametro CONF_CUPS_DEFAULT_PRINTER o CONF_CASHBOX_FILE para abrir el cajon &quot; , 2);
+     } else {
+ 		blRawPrint( &quot;bulmatpv_abrircajon.txt&quot;);
+@@ -383,9 +383,9 @@ void BtTicket::imprimir(bool doSave)
+     } else if (!g_confpr-&gt;value( CONF_CASHBOX_FILE).isEmpty() &amp;&amp; g_confpr-&gt;value( CONF_CASHBOX_FILE) != &quot;/dev/null&quot;) {
+         QString comando = &quot;cat &quot; + g_confpr-&gt;value(CONF_DIR_USER) + &quot;ticket_normal.txt&quot; + &quot;  &gt; &quot; + g_confpr-&gt;value( CONF_CASHBOX_FILE );
+         system ( comando.toLatin1().data() );
+-    } else if (!g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER).isEmpty() &amp;&amp; g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER) != &quot;None&quot;) {
++    } else if (!g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER).isEmpty() &amp;&amp; g_confpr-&gt;value(CONF_CUPS_TICKET_PRINTER).toLower() != &quot;none&quot;) {
+ 		blRawPrint( &quot;ticket_normal.txt&quot;, true, g_confpr-&gt;value( CONF_TICKET_PRINTER_FILE));
+-    } else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER) == &quot;None&quot;) {
++    } else if (g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).isEmpty() || g_confpr-&gt;value(CONF_CUPS_DEFAULT_PRINTER).toLower() == &quot;none&quot;) {
+ 	blMsgError(_(&quot;Debe establecer el parametro 'CONF_CUPS_DEFAULT_PRINTER' o 'CONF_CASHBOX_FILE' para abrir el cajon.&quot;));
+     } else {
+ 		blRawPrint( &quot;ticket_normal.txt&quot;);
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007592.html">[BulmaGés]BulmaGés Qt5 win y linux (en marcha)
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007594.html">[BulmaGés] Cambiar las llamadas a plugins
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7593">[ fecha ]</a>
+              <a href="thread.html#7593">[ hilo ]</a>
+              <a href="subject.html#7593">[ asunto ]</a>
+              <a href="author.html#7593">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

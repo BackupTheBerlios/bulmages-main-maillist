@@ -1,0 +1,249 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: cgarde pushed 2	commits to masterm...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20cgarde%20pushed%202%0A%09commits%20to%20masterm...&In-Reply-To=%3C20120403113521.8F888758FB%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007031.html">
+   <LINK REL="Next"  HREF="007023.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: cgarde pushed 2	commits to masterm... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20cgarde%20pushed%202%0A%09commits%20to%20masterm...&In-Reply-To=%3C20120403113521.8F888758FB%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: cgarde pushed 2	commits to masterm...">no-reply en gitorious.org
+       </A><BR>
+    <I>Mar Abr  3 13:35:21 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007031.html">[BulmaGés]Pregunta?
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007023.html">[BulmaGés] [Gitorious] Activity: tborras pushed 8	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7022">[ fecha ]</a>
+              <a href="thread.html#7022">[ hilo ]</a>
+              <a href="subject.html#7022">[ asunto ]</a>
+              <a href="author.html#7022">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+cgarde pushed 2 commits to master
+master changed from 1761410 to 08774cc
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/1761410f953382e6a2899f8f17aba04ad90b8f34/diffs/08774cce97430c090feacd9633bc033ee006c844">https://gitorious.org/bulmages/bulmages/commit/1761410f953382e6a2899f8f17aba04ad90b8f34/diffs/08774cce97430c090feacd9633bc033ee006c844</A>
+
+Diff: 
+
+commit 08774cce97430c090feacd9633bc033ee006c844
+Merge: 655807b 1761410
+Author: Cristian Garde &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">cristian.garde en gmail.com</A>&gt;
+Date:   Tue Apr 3 13:35:35 2012 +0200
+
+    Merge branch 'master' of gitorious.org:bulmages/bulmages
+
+
+commit 655807b6238937c16e66c0c3a89d14a48a58cb58
+Author: Cristian Garde &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">cristian.garde en gmail.com</A>&gt;
+Date:   Tue Apr 3 13:27:37 2012 +0200
+
+    Añadido dos nuevos parametros de configuracion para usados por el plugin
+    &quot;pluginbt_modificadores&quot;.
+    
+    CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES
+    CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION
+    
+    Controlan la visibilidad de los botones para modificadores y editar la
+    descripción del artículo.
+    
+    --
+    Cristian Garde
+    [[[ Trabajando en Bulmages desde Todo-Redes. ]]]
+    <A HREF="http://todo-redes.com">http://todo-redes.com</A>
+
+diff --git a/bulmages/bulmalib/src/blconfiguration.h b/bulmages/bulmalib/src/blconfiguration.h
+index 90ef64e..6a2dc13 100644
+--- a/bulmages/bulmalib/src/blconfiguration.h
++++ b/bulmages/bulmalib/src/blconfiguration.h
+@@ -245,6 +245,9 @@
+ 
+ #define CONF_TPV_CATEGORY_TREE       463
+ 
++#define CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION    464
++#define CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES   	465
++
+ /// CONF_NUM_AUT_* determina si se utilizaran numeradores automaticos para presupuestos,
+ /// albaranes y facturas inicialmente vale &quot;&quot;.
+ #define CONF_NUM_AUT_PRESUP          500
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.cpp b/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.cpp
+index cd5128f..5de46c7 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.cpp
+@@ -71,7 +71,6 @@ ArtGraficosDb::ArtGraficosDb ( BlMainCompany *emp, QWidget *parent ) : BlWidget
+ 
+     m_numPantallas = 0;
+     m_pantallaActual = 0;
+-    m_paginadoListaPantallas = (g_confpr-&gt;value(CONF_TPV_CATEGORY_TREE) == &quot;TRUE&quot;) ? true : false;
+     
+     m_widget = 0;
+     m_signalMapperCategory = 0;
+@@ -436,6 +435,7 @@ void ArtGraficosDb::ponListaPantallas(int familiaMostrar)
+     int columnasBotones;
+     int j;
+     int indice;
++    bool paginadoListaPantallas = (g_confpr-&gt;value(CONF_TPV_CATEGORY_TREE) == &quot;TRUE&quot;) ? true : false;
+ 
+     /// Creo el Widget que estara ubicado en el dockwidget que se ha creado en pluginbt_articulograficodb.cpp
+     if (m_widget) {
+@@ -500,7 +500,7 @@ void ArtGraficosDb::ponListaPantallas(int familiaMostrar)
+     
+     if (familiaMostrar == 0) {
+       
+-      if (m_paginadoListaPantallas) {
++      if (paginadoListaPantallas) {
+ 	
+ 	  familias = mainCompany()-&gt;loadQuery ( &quot;SELECT t1.idfamilia, t1.nombrefamilia, t1.colortpvfamilia, t1.padrefamilia, (SELECT count(t2.idfamilia) FROM familia AS t2 WHERE visibletpvfamilia = TRUE AND t2.padrefamilia = t1.idfamilia) AS hijos, (SELECT t3.padrefamilia FROM familia AS t3 WHERE t3.idfamilia = t1.padrefamilia) AS padreanterior FROM familia AS t1 WHERE t1.visibletpvfamilia = TRUE AND t1.padrefamilia IS NULL ORDER BY t1.ordentpvfamilia, t1.nombrefamilia&quot; );
+ 
+@@ -535,7 +535,7 @@ void ArtGraficosDb::ponListaPantallas(int familiaMostrar)
+ 	childCategoryButton-&gt;setFixedWidth(42);
+ 	childCategoryButton-&gt;setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
+ 	
+-	if (m_paginadoListaPantallas) {
++	if (paginadoListaPantallas) {
+ 	  
+ 	  if (familias-&gt;value( &quot;hijos&quot; ).toInt() == 0) {
+ 	    childCategoryButton-&gt;hide();
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.h b/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.h
+index 16f876b..4a5befb 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.h
++++ b/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.h
+@@ -89,7 +89,6 @@ class ArtGraficosDb : public BlWidget, public Ui_ArtGraficosDbBase
+ public:
+     int m_numPantallas;
+     int m_pantallaActual;
+-    bool m_paginadoListaPantallas;
+     QList&lt;FamiliaArticulos&gt; m_listfamilias;
+     QList&lt;QWidget *&gt; m_pantallas;
+     QString m_padreFamiliaAnterior;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_modificadores/pluginbt_modificadores.cpp b/bulmages/bulmatpv/plugins/pluginbt_modificadores/pluginbt_modificadores.cpp
+index eebb37e..9e66b58 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_modificadores/pluginbt_modificadores.cpp
++++ b/bulmages/bulmatpv/plugins/pluginbt_modificadores/pluginbt_modificadores.cpp
+@@ -38,7 +38,6 @@
+ //TabletCanvas *g_tablet = NULL;
+ BlDockWidget *g_doc1 = NULL;
+ 
+-
+ int BtTicket_agregarLinea_Post ( BtTicket *tick )
+ {
+     BL_FUNC_DEBUG
+@@ -56,7 +55,6 @@ int BtTicket_agregarLinea_Post ( BtTicket *tick )
+     item-&gt;addDbField ( &quot;idmodificador7&quot;, BlDbField::DbInt, BlDbField::DbNothing, _( &quot;Imagen.&quot; ) );
+     item-&gt;addDbField ( &quot;idmodificador8&quot;, BlDbField::DbInt, BlDbField::DbNothing, _( &quot;Imagen.&quot; ) );
+     item-&gt;addDbField ( &quot;idmodificador9&quot;, BlDbField::DbInt, BlDbField::DbNothing, _( &quot;Imagen.&quot; ) );
+-
+     
+ 
+     return 0;
+@@ -90,7 +88,6 @@ int entryPoint ( BtBulmaTPV *tpv )
+     g_tablet-&gt;setWindowIcon(QIcon ( g_confpr-&gt;value( CONF_PROGDATA ) + &quot;icons/modificadoresg.png&quot;  ));
+     */
+     
+-    
+     return 0;
+ }
+ 
+@@ -116,7 +113,6 @@ int MTicketIVAInc_MTicketIVAInc_Post (MTicketIVAInc *tick) {
+     modificadores-&gt;setIcon ( QIcon ( g_confpr-&gt;value( CONF_PROGDATA ) + &quot;icons/modificadores.png&quot;  ) );
+     modificadores-&gt;setIconSize ( QSize ( 32, 32 ) );    
+ 
+-    
+     EditarDescripcionQToolButton *editarDescripcion = new EditarDescripcionQToolButton (  (BtCompany *)tick-&gt;mainCompany(), tick );
+     editarDescripcion-&gt;setFixedSize (48, 48);
+     editarDescripcion-&gt;setObjectName ( QString::fromUtf8 ( &quot;editardescripcionqtoolbutton&quot; ) );
+@@ -127,6 +123,19 @@ int MTicketIVAInc_MTicketIVAInc_Post (MTicketIVAInc *tick) {
+     editarDescripcion-&gt;setIconSize ( QSize ( 32, 32 ) );    
+     
+ 
++    if ( g_confpr-&gt;value(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES).isEmpty() || (g_confpr-&gt;value(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES) == &quot;FALSE&quot;) ) {
++	modificadores-&gt;hide();
++    } else {
++	modificadores-&gt;show();
++    } // end if
++    
++    if ( (g_confpr-&gt;value(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION).isEmpty()) || (g_confpr-&gt;value(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION) == &quot;FALSE&quot;) ) {
++	editarDescripcion-&gt;hide();
++    } else {
++	editarDescripcion-&gt;show();
++    } // end if
++    
++    
+     QFrame *frame = tick-&gt;findChild&lt;QFrame *&gt;(&quot;mui_plugbotones&quot;);
+ 
+     if (frame) {
+@@ -173,7 +182,20 @@ int MTicket_MTicket_Post (MTicket *tick) {
+     editarDescripcion-&gt;setMinimumSize ( QSize ( 32, 32 ) );
+     editarDescripcion-&gt;setIcon ( QIcon ( &quot;:/Images/edit_edit.png&quot; ) );
+     editarDescripcion-&gt;setIconSize ( QSize ( 32, 32 ) );    
++
+     
++    if ( (g_confpr-&gt;value(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES).isEmpty()) || (g_confpr-&gt;value(CONF_PLUGINBT_MODIFICADORES_EDIT_MODIFICADORES) == &quot;FALSE&quot;) ) {
++	modificadores-&gt;hide();
++    } else {
++	modificadores-&gt;show();
++    } // end if
++    
++    if ( (g_confpr-&gt;value(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION).isEmpty()) || (g_confpr-&gt;value(CONF_PLUGINBT_MODIFICADORES_EDIT_ARTICLE_DESCRIPTION) == &quot;FALSE&quot;) ) {
++	editarDescripcion-&gt;hide();
++    } else {
++	editarDescripcion-&gt;show();
++    } // end if
++
+ 
+     QFrame *frame = tick-&gt;findChild&lt;QFrame *&gt;(&quot;mui_plugbotones&quot;);
+ 
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007031.html">[BulmaGés]Pregunta?
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007023.html">[BulmaGés] [Gitorious] Activity: tborras pushed 8	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7022">[ fecha ]</a>
+              <a href="thread.html#7022">[ hilo ]</a>
+              <a href="subject.html#7022">[ asunto ]</a>
+              <a href="author.html#7022">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]ampersand en los informes &quot;listado.rml&quot;
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fampersand_en_los_info%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Frmes_%3D22listado%3D2Erml%3D22%3F%3D&In-Reply-To=%3C201002041731.08872.auryn%40wanadoo.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003376.html">
+   <LINK REL="Next"  HREF="003375.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]ampersand en los informes &quot;listado.rml&quot; </H1>
+    <B>Aron</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fampersand_en_los_info%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Frmes_%3D22listado%3D2Erml%3D22%3F%3D&In-Reply-To=%3C201002041731.08872.auryn%40wanadoo.es%3E"
+       TITLE="[BulmaGés]ampersand en los informes &quot;listado.rml&quot;">auryn en wanadoo.es
+       </A><BR>
+    <I>Jue Feb  4 17:31:08 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003376.html">[BulmaGés]ampersand en los informes &quot;listado.rml&quot;
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003375.html">[BulmaGés]ampersand en los informes &quot;listado.rml&quot;
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3372">[ fecha ]</a>
+              <a href="thread.html#3372">[ hilo ]</a>
+              <a href="subject.html#3372">[ asunto ]</a>
+              <a href="author.html#3372">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Por lo que veo funciona bien así.
+
+Usando &quot;n.data&quot; en bgtrml2pdf y teniendo &quot;valor-&gt;text().replace(&quot;&amp;&quot;, &quot;&amp;&quot;)&quot; 
+en blsubform.cpp ya se generan bien los informes con algún ampersand (&amp;).
+
+Buen trabajo
+
+On Jueves 04 Febrero 2010 17:01:58 usted escribió:
+&gt;<i> El 04/02/10 12:54, Aron escribió:
+</I>&gt;<i> &gt; Buenos días
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Cuando en algún campo aparece el símbolo ampersand (&amp;), el informe de
+</I>&gt;<i> &gt; listado falla en ese punto.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; He probado esto en la línea 2367 de blsubform.cpp:
+</I>&gt;<i> &gt; fitxersortidarml += &quot;    &lt;td&gt;&lt;![CDATA[&quot; +  valor-&gt;text() + &quot;]]&gt;&lt;/td&gt;\n&quot;;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Pero se queda el &quot;&lt;![CDATA[&quot; en el PDF resultante.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ¿Cómo podemos hacer funcionar los informes cuando está ese símbolo por
+</I>&gt;<i> &gt; ahí?
+</I>&gt;<i> 
+</I>&gt;<i> Sin todavía hacer las pruebas suficientes creo que he encontrado el
+</I>&gt;<i> fallo en bgtrml2pdf, aqui va el parche, para que lo pruebes.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 444c444
+</I>&gt;<i> &lt;                               rc += n.data
+</I>&gt;<i> ---
+</I>&gt;<i> 
+</I>&gt;<i> &gt;                               rc += n.toxml()
+</I>&gt;<i> 
+</I>&gt;<i> 446c446
+</I>&gt;<i> &lt;                               rc += n.data
+</I>&gt;<i> ---
+</I>&gt;<i> 
+</I>&gt;<i> &gt;                               rc += n.toxml()
+</I>&gt;<i> 
+</I>&gt;<i> Un saludo.
+</I>&gt;<i> 
+</I>&gt;<i> --
+</I>&gt;<i> Javier
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i> 
+</I>
+-- 
+Aron
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003376.html">[BulmaGés]ampersand en los informes &quot;listado.rml&quot;
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003375.html">[BulmaGés]ampersand en los informes &quot;listado.rml&quot;
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3372">[ fecha ]</a>
+              <a href="thread.html#3372">[ hilo ]</a>
+              <a href="subject.html#3372">[ asunto ]</a>
+              <a href="author.html#3372">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

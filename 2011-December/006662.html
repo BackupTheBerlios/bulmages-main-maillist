@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][.gitignore]   Principalmente a Pablo Alvarez de Sotomayor Posadillo
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3F%3D5B%3D2Egitignore%3D5D___Princ%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fipalmente_a_Pablo_Alvarez_de_Sotomayor_Posadillo%3F%3D&In-Reply-To=%3C20111201233505.GC6874%40ritho.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006696.html">
+   <LINK REL="Next"  HREF="006661.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][.gitignore]   Principalmente a Pablo Alvarez de Sotomayor Posadillo </H1>
+    <B>Pablo Alvarez de Sotomayor Posadillo</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3F%3D5B%3D2Egitignore%3D5D___Princ%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fipalmente_a_Pablo_Alvarez_de_Sotomayor_Posadillo%3F%3D&In-Reply-To=%3C20111201233505.GC6874%40ritho.net%3E"
+       TITLE="[BulmaGés][.gitignore]   Principalmente a Pablo Alvarez de Sotomayor Posadillo">palvarez en iglues.org
+       </A><BR>
+    <I>Vie Dic  2 00:35:06 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006696.html">[BulmaGés][.gitignore]    Principalmente a Pablo Alvarez de Sotomayor Posadillo
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006661.html">[BulmaGés][Problemas] No puedo generar facturas (casi arreglado)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6662">[ fecha ]</a>
+              <a href="thread.html#6662">[ hilo ]</a>
+              <a href="subject.html#6662">[ asunto ]</a>
+              <a href="author.html#6662">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> &gt; De hecho esto no es cierto. Los archivos que ya estan bajo revision se
+</I>&gt;<i> &gt; mantienen bajo revision, independientemente si estan en el .gitignore
+</I>&gt;<i> &gt; como sino, y los cambios que se hagan sobre ellos se veran cuando hagas
+</I>&gt;<i> &gt; un &quot;git status&quot;, y los que no esten bajo revision puedes forzar a
+</I>&gt;<i> &gt; incluirlos bajo revision (git add -f archivo.css), con lo cual en ningun
+</I>&gt;<i> &gt; momento se esta impidiendo poner ningun archivo bajo revision, sino que
+</I>&gt;<i> &gt; los css que se generen nuevos se tienen que poner explicitamente bajo
+</I>&gt;<i> &gt; revision, no mostrando, por lo tanto, todos los ficheros css que se
+</I>&gt;<i> &gt; generen automaticamente durante la compilacion cuando hagas un &quot;git
+</I>&gt;<i> &gt; status&quot;.
+</I>&gt;<i> Para empezar decir que me gusta ver que dominas y entiendes git pero
+</I>&gt;<i> digo que lo suyo es no compilar en el mismo lugar (ya lo he explicad
+</I>&gt;<i> previamente), no se.. lo veo mal, una de las ventajas de cmake es tener
+</I>&gt;<i> el c=C3=B3digo alejado de la compilaci=C3=B3n.
+</I>
+Bueno, es cuestion de gustos. Yo personalmente cuando desarrollo en un
+proyecto si que compilo en el mismo directorio y cuando lo que quiero es
+mantener un programa en un sistema desde el codigo fuente si que lo hago
+en directorios separados. Suelo hacer esto porque cuando estoy
+desarrollando no tengo nada mas que una instalacion del programa, la de
+desarrollo, que se va actualizando progresivamente, con lo que no me
+aporta mucho tener un directorio de compilacion separado. Sin embargo,
+en entornos de produccion si que puede ser bastante util tener un
+directorio separado de compilacion, ya que te permite mantener una o
+varias versiones de un mismo programa con la misma configuracion de
+CMake. De todas maneras, como comentaba, es cuestion de gustos.
+
+&gt;<i> Y vale, si bien los que ya estaban, continuar=C3=A1n bajo revisi=C3=B3n y
+</I>&gt;<i> aparecer=C3=A1n con el &quot;git status&quot;. Pero si yo ahora creo un &quot;archivo.co=
+</I>nf&quot;
+&gt;<i> o un &quot;archivo.css&quot; (ahora este no porque lo quit=C3=A9 del .gitignore), n=
+</I>o me
+&gt;<i> lo va a reconocer con &quot;git status&quot; y eso me lleva un problema, porque si
+</I>&gt;<i> he creado varios css, a lo mejor no se cual es realmente el que &quot;queria
+</I>&gt;<i> originalmente tener en revisi=C3=B3n&quot;. (que conste que yo lo har=C3=ADa a=
+</I>s=C3=AD, pero
+&gt;<i> lo veo mal de cara a otros usuarios)
+</I>
+Si, eso puede llegar a ser incomodo. Lo que tenemos que evaluar es que
+nos merece la pena mas, si que se nos olvide cada cierto tiempo incluir
+en el repositorio algun archivo o no estemos seguros de que archivo
+tenemos que incluir o si cada vez que hagamos un nuevo paquete (debian,
+rpm, tgz, ...) tenemos que acordarnos de quitar los css que se han
+generado automaticamente. Personalmente prefiero la primera opcion,
+aunque si decidimos la segunda opcion con personalizar mi gitignore en
+local tengo suficiente.
+
+&gt;<i> Ah=C3=AD no me has entendido, lo que yo me refer=C3=ADa es que si por eje=
+</I>mplo, en
+&gt;<i> el caso de que estuviera applications en .gitignore, si yo ahora create
+</I>&gt;<i> una nueva &quot;application&quot; y la metiera ah=C3=AD, no aparecer=C3=ADa.
+</I>&gt;<i> Y efectivamente, tu dices que se autogenera, correcto, pero lo hace
+</I>&gt;<i> desde ./bulmages/installbulmages/applications.
+</I>
+Aqui creo que tenemos dos opciones, o dejar applications en el
+=2Egitignore principal e incluir en el/los directorio(s) que queramos
+tener un subdirectorio applications en la revision un .gitignore que
+tenga una entrada !applications/ para que no lo ignore o al reves, en
+los directorios que se genere automaticamente un directorio
+=2Eapplications incluir un .gitignore con la entrada applications/
+
+&gt;<i> =C2=BFPor otro lado... como has contado los SVG?
+</I>
+find . -name *.svg | wc -l
+
+&gt;<i> Ah=C3=AD me disculpo, pensaba que el archivo se llamaba directamente
+</I>&gt;<i> blconfig.h, pero tienes raz=C3=B3n. Y sapiens ser=C3=A1s tu, yo soy &quot;sapi=
+</I>ens
+&gt;<i> sapiens&quot; ^^ (es un detalle que nadie tiene en importancia, pero me lo
+</I>&gt;<i> acaba de recordar mi hermano xD)
+</I>
+Cierto :).
+
+&gt;<i> &gt; Precisamente creo muy correcto tener un .gitignore del proyecto en
+</I>&gt;<i> &gt; comun, para no arriesgarse a que alguien incluya por error un
+</I>&gt;<i> &gt; fichero/directorio autogenerado, obligandole a que lo incluya por una
+</I>&gt;<i> &gt; buena razon.
+</I>&gt;<i>
+</I>&gt;<i> Por supuesto, solo eran esas peque=C3=B1as excepciones que te comentaba, =
+</I>esta
+&gt;<i> claro que un .gitignore del proyecto es =C3=BAtil, de hecho creo que
+</I>&gt;<i> podr=C3=ADamos meter la extensi=C3=B3n &quot;.o&quot; y &quot;.so&quot; por si las moscas, no=
+</I>?.
+
+Si, de hecho pensaba hacerlo, pero empece por los primeros que fui
+viendo y luego no me dio tiempo a continuar (he estado bastante ocupado
+la ultima semana en una conferencia).
+
+&gt;<i> &gt; P.D.: La proxima vez si quieres enviarme un correo a mi (como se
+</I>&gt;<i> &gt; sobreentiende de lo que pones en el subject) no lo envies a la lista
+</I>&gt;<i> &gt; entera. Entiendo que quieras que la gente aprenda de los errores de otra
+</I>&gt;<i> &gt; gente, pero si quieres hacer eso no pongas en el subject para tal
+</I>&gt;<i> &gt; persona ni personalices tanto el correo, porque sino no tiene sentido
+</I>&gt;<i> &gt; que lo mandes a la lista.
+</I>&gt;<i>
+</I>&gt;<i> Efectivamente esa era mi intenci=C3=B3n, no la de humillar ni nada. Admito
+</I>&gt;<i> que no ha sido la manera m=C3=A1s =C3=A9tica, pero de esa manera me asegu=
+</I>raba que
+&gt;<i> lo le=C3=ADas. :)
+</I>
+No te preocupes, tampoco me lo he tomado como que quisieras avergonzarme
+ni nada por el estilo (al fin y al cabo llevo en esto del software libre
+varios a=F1os y ya he recibido antes criticas), pero si es verdad que a
+otra persona a lo mejor le podria haber sentado peor.
+
+De todas maneras hoy tampoco me has pillado en mi mejor dia, ya que,
+como he comentado antes, he estado en una conferencia una semana (he
+llegado esta tarde) y entre el cansancio acumulado de dormir poco y los
+viajes de ida y vuelta (de 19 horas de avion cada uno) no me pillas con
+el buen humor que suelo tener normalmente.
+
+Bueno, me voy a la cama, que a todo esto ma=F1ana hay que trabajar para
+ganarse el sustento :).
+
+UN SALUDO
+
+--
+    Pablo Álvarez de Sotomayor Posadillo
+Ingeniero Técnico en Informática de Sistemas
+	    <A HREF="http://ritho.net">http://ritho.net</A>
+ &quot;De todas las cosas que he perdido la que 
+     mas hecho de menos es mi cerebro&quot;
+------------ prÃ³xima parte ------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 198 bytes
+Desc: Digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20111202/c506828e/attachment.pgp">https://lists.berlios.de/pipermail/bulmages-main/attachments/20111202/c506828e/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006696.html">[BulmaGés][.gitignore]    Principalmente a Pablo Alvarez de Sotomayor Posadillo
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006661.html">[BulmaGés][Problemas] No puedo generar facturas (casi arreglado)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6662">[ fecha ]</a>
+              <a href="thread.html#6662">[ hilo ]</a>
+              <a href="subject.html#6662">[ asunto ]</a>
+              <a href="author.html#6662">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

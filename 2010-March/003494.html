@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Mantener el mismo registro activo tras recargar un listado
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FMantener_el_mismo_reg%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fistro_activo_tras_recargar_un_listado%3F%3D&In-Reply-To=%3C4B9669EA.1040109%40todo-redes.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003492.html">
+   <LINK REL="Next"  HREF="003498.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Mantener el mismo registro activo tras recargar un listado </H1>
+    <B>Fco. Javier M. C.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FMantener_el_mismo_reg%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fistro_activo_tras_recargar_un_listado%3F%3D&In-Reply-To=%3C4B9669EA.1040109%40todo-redes.com%3E"
+       TITLE="[BulmaGés]Mantener el mismo registro activo tras recargar un listado">fcojavmc en todo-redes.com
+       </A><BR>
+    <I>Mar Mar  9 16:31:54 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003492.html">[BulmaGés]Mantener el mismo registro activo tras recargar un listado
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003498.html">[BulmaGés]Mantener el mismo registro activo tras recargar un listado
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3494">[ fecha ]</a>
+              <a href="thread.html#3494">[ hilo ]</a>
+              <a href="subject.html#3494">[ asunto ]</a>
+              <a href="author.html#3494">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Aron.
+
+Prometo probarlo, pero antes te quiero preguntar si ¿has verificado que
+funcione en caso de que tengas varias páginas de listados (+ de 500
+registros)?
+
+Un saludo.
+
+
+El 09/03/10 11:06, Aron escribió:
+&gt;<i> On Miércoles 10 Febrero 2010 21:21:03 Fco. Javier M. C. escribió:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> El 10/02/10 16:51, Aron escribió:
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i> Estaría bien que tras recargar un listado se mantuviera activa la misma
+</I>&gt;&gt;&gt;<i> celda que hubiera antes seleccionada (a no ser que se haya borrada).
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Es que ahora, cuando la lista se recarga, vuelve al principio sin ninguna
+</I>&gt;&gt;&gt;<i> fila seleccionada.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Cuando más molesta esto es al modificar una ficha (con CONF_REFRESH_LIST
+</I>&gt;&gt;&gt;<i> habilitado) o al borrar un registro.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Igual se podría hacer en BlSubForm::cargar() algo restaure la celda si
+</I>&gt;&gt;&gt;<i> existe todavía.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Tras cargar, podría ejecutarse algo así:
+</I>&gt;&gt;&gt;<i> mui_list-&gt;mui_list-&gt;setCurrentCell(previous_row, previous_col);
+</I>&gt;&gt;&gt;<i> mui_list-&gt;mui_list-&gt;scrollToItem(mui_list-&gt;mui_list-&gt;currentItem(),
+</I>&gt;&gt;&gt;<i> QAbstractItemView::PositionAtTop);
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> El problema también es que al actualizar puede cambiar el orden o
+</I>&gt;&gt;&gt;<i> filtrado... igual se complicaría demasiado.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Saludos
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i> Algo parecido se implementó hace tiempo y se tuvo que descatar porque no
+</I>&gt;&gt;<i> funcionaba bien en según que circunstancias. Pero siempre se puede
+</I>&gt;&gt;<i> repensar el tema.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Un saludo.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     
+</I>&gt;<i> Hola Tomeu, parece que hoy la lista de Berlios tarda en recibir mis mensajes.
+</I>&gt;<i>
+</I>&gt;<i> Tengo una implementación que parece funcionar bien por lo que he probado.
+</I>&gt;<i> Os dejo el código por si queréis comprobar más casos donde podría dar 
+</I>&gt;<i> problemas, ya que es un método muy importante para el programa.
+</I>&gt;<i>
+</I>&gt;<i> Un saludo
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>   
+</I>
+
+-- 
+Javier.
+TODO-REDES
+<A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+C/Begònia 12 - 07010 Palma de Mallorca.
+Tel.: 971499071
+
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20100309/f741aeaf/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20100309/f741aeaf/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003492.html">[BulmaGés]Mantener el mismo registro activo tras recargar un listado
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003498.html">[BulmaGés]Mantener el mismo registro activo tras recargar un listado
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3494">[ fecha ]</a>
+              <a href="thread.html#3494">[ hilo ]</a>
+              <a href="subject.html#3494">[ asunto ]</a>
+              <a href="author.html#3494">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]BlDbField::DbRequired y BlDbField::DbNotNull
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FBlDbField%3D3A%3D3ADbRequ%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fired_y_BlDbField%3D3A%3D3ADbNotNull%3F%3D&In-Reply-To=%3CAANLkTi%3DZA4v9f5zpSLi7BLvGxQMOKGEA_Nec%2BXj6Grvx%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="004097.html">
+   <LINK REL="Next"  HREF="004099.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]BlDbField::DbRequired y BlDbField::DbNotNull </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FBlDbField%3D3A%3D3ADbRequ%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fired_y_BlDbField%3D3A%3D3ADbNotNull%3F%3D&In-Reply-To=%3CAANLkTi%3DZA4v9f5zpSLi7BLvGxQMOKGEA_Nec%2BXj6Grvx%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]BlDbField::DbRequired y BlDbField::DbNotNull">tborras en gmail.com
+       </A><BR>
+    <I>Lun Sep 27 18:21:29 CEST 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="004097.html">[BulmaGés] BlDbField::DbRequired y	BlDbField::DbNotNull
+</A></li>
+        <LI>Próximo mensaje: <A HREF="004099.html">[BulmaGés] r4026 - in trunk/bulmages/bulmatpv:	plugins plugins/pluginbt_accesobotones/po	plugins/pluginbt_aliastallasycolores/po	plugins/pluginbt_aliastallasycolores2/po	plugins/pluginbt_articulosubform/po	plugins/pluginbt_buscaarticulo/po	plugins/pluginbt_buscacliente/po plugins/pluginbt_camareros	plugins/pluginbt_camareros/po plugins/pluginbt_cambio/po	plugins/pluginbt_cambioivaincluido/po	plugins/pluginbt_cobrar/po plugins/pluginbt_controlcaja/po	plugins/pluginbt_devolucion/po	plugins/pluginbt_devolucion2/po plugins/pluginbt_dockapp/po	plugins/pluginbt_ivaincluido/po plugins/pluginbt_mesas/po	plugins/pluginbt_printercocina/po	plugins/pluginbt_tecladonumerico/po	plugins/pluginbt_ticket/po plugins/pluginbt_ticketdesglose/po	plugins/pluginbt_ticketdevuelto/po plugins/pluginbt_total/po	plugins/pluginbt_totalivaincluido/po src/po
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4098">[ fecha ]</a>
+              <a href="thread.html#4098">[ hilo ]</a>
+              <a href="subject.html#4098">[ asunto ]</a>
+              <a href="author.html#4098">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hay otra diferencia.
+
+El DbRequired comprueba que el campo este relleno antes de agregar una nueva
+linea en el subformulario (caso de los subformularios con la fila vacia para
+rellenar una nueva y que sólo aparece la fila nueva cuando has completado la
+fila anterior. La comprobación es que todos los campos DbRequired tengan
+contenido) mientras que el DbNotNull sólo indica que en la base de datos se
+producirá un error si el campo está vacio.
+
+Por tanto uno es para ayudar a la introducción de datos y el otro es para la
+integridad de datos y evitar el mensaje de error.
+
+Salut
+
+El 27 de septiembre de 2010 17:55, Aron &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">auryn en wanadoo.es</A>&gt; escribió:
+
+&gt;<i> Al definir los datos de un listado BlSubForm tenemos dos opciones para
+</I>&gt;<i> campos &quot;NOT NULL&quot;: BlDbField::DbRequired y BlDbField::DbNotNull.
+</I>&gt;<i>
+</I>&gt;<i> En ambos casos, si el valor es nulo, no se realiza el INSERT o UPDATE,
+</I>&gt;<i> aunque DbNotNull muestra un error y DbRequired no lo hace. ¿Es la única
+</I>&gt;<i> diferencia?.
+</I>&gt;<i>
+</I>&gt;<i> Un campo que no puede ser nulo podría tener un valor predeterminado
+</I>&gt;<i> definido
+</I>&gt;<i> en la base de datos, sólo habría que evitar nombrar al campo en el INSERT o
+</I>&gt;<i> UPDATE. En tal caso, si el comportamiento actual es el deseado, habría que
+</I>&gt;<i> agregar una nueva posibilidad: &quot;BlDbField::DbIgnoreIfNull&quot;.
+</I>&gt;<i>
+</I>&gt;<i> Y otro detalle: cuando se evita realizar el INSERT o UPDATE, se pierden los
+</I>&gt;<i> cambios realizados en la tabla. Voy a revisarlo un poco más a ver si doy
+</I>&gt;<i> con
+</I>&gt;<i> una solución.
+</I>&gt;<i>
+</I>&gt;<i> Un saludo.
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Aron
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20100927/c0435e49/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20100927/c0435e49/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="004097.html">[BulmaGés] BlDbField::DbRequired y	BlDbField::DbNotNull
+</A></li>
+	<LI>Próximo mensaje: <A HREF="004099.html">[BulmaGés] r4026 - in trunk/bulmages/bulmatpv:	plugins plugins/pluginbt_accesobotones/po	plugins/pluginbt_aliastallasycolores/po	plugins/pluginbt_aliastallasycolores2/po	plugins/pluginbt_articulosubform/po	plugins/pluginbt_buscaarticulo/po	plugins/pluginbt_buscacliente/po plugins/pluginbt_camareros	plugins/pluginbt_camareros/po plugins/pluginbt_cambio/po	plugins/pluginbt_cambioivaincluido/po	plugins/pluginbt_cobrar/po plugins/pluginbt_controlcaja/po	plugins/pluginbt_devolucion/po	plugins/pluginbt_devolucion2/po plugins/pluginbt_dockapp/po	plugins/pluginbt_ivaincluido/po plugins/pluginbt_mesas/po	plugins/pluginbt_printercocina/po	plugins/pluginbt_tecladonumerico/po	plugins/pluginbt_ticket/po plugins/pluginbt_ticketdesglose/po	plugins/pluginbt_ticketdevuelto/po plugins/pluginbt_total/po	plugins/pluginbt_totalivaincluido/po src/po
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4098">[ fecha ]</a>
+              <a href="thread.html#4098">[ hilo ]</a>
+              <a href="subject.html#4098">[ asunto ]</a>
+              <a href="author.html#4098">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

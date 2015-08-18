@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Bug #18094] Bulmafact Crash	pluginbf_compraventa (Undefined symbol)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2318094%5D%20Bulmafact%20Crash%0A%09pluginbf_compraventa%20%28Undefined%20symbol%29&In-Reply-To=%3C201105041610.p44GA5QL022982%40unicorn.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005693.html">
+   <LINK REL="Next"  HREF="005703.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Bug #18094] Bulmafact Crash	pluginbf_compraventa (Undefined symbol) </H1>
+    <B>admin en berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2318094%5D%20Bulmafact%20Crash%0A%09pluginbf_compraventa%20%28Undefined%20symbol%29&In-Reply-To=%3C201105041610.p44GA5QL022982%40unicorn.berlios.de%3E"
+       TITLE="[BulmaGés] [Bug #18094] Bulmafact Crash	pluginbf_compraventa (Undefined symbol)">admin en berlios.de
+       </A><BR>
+    <I>Mie Mayo  4 18:10:05 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="005693.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 1708ad3c301c8b729510af1ba8f8e07a9a7ae872
+</A></li>
+        <LI>Próximo mensaje: <A HREF="005703.html">[BulmaGés][Bug #18094] Bulmafact Crash pluginbf_compraventa (Undefined symbol)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5700">[ fecha ]</a>
+              <a href="thread.html#5700">[ hilo ]</a>
+              <a href="subject.html#5700">[ asunto ]</a>
+              <a href="author.html#5700">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bug #18094, was updated on 2011-May-04 18:10
+Here is a current snapshot of the bug.
+
+Project: BulmaGes, Gestión Empresarial Libre
+Category: bulmafact
+Status: Open
+Resolution: None
+Bug Group: None
+Priority: 5
+Submitted by: mph2
+Assigned to : none
+Summary: Bulmafact Crash pluginbf_compraventa (Undefined symbol)
+
+Details: El pluginbf_compraventa, compila OK, se activa también OK, pero al dirigirnos a BulmaFact -&gt; Ventas -&gt; CompraVenta, hace un crash:
+
+
+bulmafact: symbol lookup error: /usr/local/lib/bulmafact/plugins/libpluginbf_compraventa.so: undefined symbol: _ZN23BfClienteAlbaranSubFormC1EP7QWidget
+
+
+
+Existen varios símbolos usados sin definir:
+
+------------
+ldd -d -r /usr/local/lib/bulmafact/plugins/libpluginbf_compraventa.so
+(.....)
+
+undefined symbol: _ZN20FacturaProveedorViewC1EP9BfCompanyP7QWidget      (/usr/local/lib/bulmafact/plugins/libpluginbf_compraventa.so)
+
+undefined symbol: _ZN23BfClienteAlbaranSubFormC1EP7QWidget      (/usr/local/lib/bulmafact/plugins/libpluginbf_compraventa.so)
+
+undefined symbol: _ZN20FacturaProveedorView11inicializarEv      (/usr/local/lib/bulmafact/plugins/libpluginbf_compraventa.so)
+
+undefined symbol: 
+_ZN32BfClienteAlbaranDescuentoSubFormC1EP7QWidget     (/usr/local/lib/bulmafact/plugins/libpluginbf_compraventa.so)
+
+undefined symbol: _ZN9CobroViewC1EP9BfCompanyP7QWidget  (/usr/local/lib/bulmafact/plugins/libpluginbf_compraventa.so)
+
+
+
+------------
+nm -D /usr/local/lib/bulmafact/plugins/libpluginbf_compraventa.so
+
+         U _ZN23BfClienteAlbaranSubFormC1EP7QWidget
+         U _ZN20FacturaProveedorView11inicializarEv
+         U _ZN20FacturaProveedorViewC1EP9BfCompanyP7QWidget
+         U _ZN9CobroViewC1EP9BfCompanyP7QWidget
+         U _ZN32BfClienteAlbaranDescuentoSubFormC1EP7QWidget
+
+
+Según el manual de &quot;nm&quot;.
+U = Undefined symbol used but not defined. Dependency on another library. (Simbolo indefinido usado pero no definido. Dependencia de otra librería).
+
+Lógico, ya que depende de otros plugins.
+
+------------
+Buscando donde se realizan estas llamadas me encuentro con:
+
+BfClienteAlbaranSubForm:
+pluginbf_compraventa/compraventabase.ui:845         &lt;widget class=&quot;BfClienteAlbaranSubForm&quot; native=&quot;1&quot; name=&quot;subform2&quot; /&gt;
+pluginbf_compraventa/compraventabase.ui:1693    &lt;class&gt;BfClienteAlbaranSubForm&lt;/class&gt;
+
+
+FacturaProveedorView:
+compraventaview.cpp:435:    FacturaProveedorView *bud = NULL;
+compraventaview.cpp:484:        FacturaProveedorView *bud = new FacturaProveedorView ( ( BfCompany * ) mainCompany(), 0 );
+
+
+CobroView:
+compraventaview.cpp:207:    CobroView *bud = new CobroView ( mainCompany(), 0 );
+
+BfClienteAlbaranDescuentoSubForm:
+compraventabase.ui:869:        &lt;widget class=&quot;BfClienteAlbaranDescuentoSubForm&quot; native=&quot;1&quot; name=&quot;m_descuentos&quot; /&gt;
+compraventabase.ui:1627:        &lt;widget class=&quot;BfClienteAlbaranDescuentoSubForm&quot; native=&quot;1&quot; name=&quot;m_descuentos3&quot; /&gt;
+compraventabase.ui:1703:   &lt;class&gt;BfClienteAlbaranDescuentoSubForm&lt;/class&gt;
+
+------------
+He añadido manualmente la dependencia de pluginbf_clientealbaran, ya que no se presentaba en los README.
+
+Pero sigue sin funcionar.
+
+------------
+/etc/bulmages/bulmafact_prueba1.conf
+
+CONF_DIR_OPENREPORTS /opt/bulmages/openreports_prueba1/
+CONF_DIR_IMG_ARTICLES /opt/bulmages/imgarticles_prueba1/
+CONF_STYLESHEET /usr/local/share/bulmages/css/bulmafact_es_ES.css
+
+CONF_PLUGINS_BULMAFACT libpluginbf_cliente.so; \
+libpluginbf_clientealbaran.so; \
+libpluginbf_compraventa.so
+
+
+
+
+For detailed info, follow this link:
+<A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=18094&amp;group_id=4472">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=18094&amp;group_id=4472</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="005693.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 1708ad3c301c8b729510af1ba8f8e07a9a7ae872
+</A></li>
+	<LI>Próximo mensaje: <A HREF="005703.html">[BulmaGés][Bug #18094] Bulmafact Crash pluginbf_compraventa (Undefined symbol)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5700">[ fecha ]</a>
+              <a href="thread.html#5700">[ hilo ]</a>
+              <a href="subject.html#5700">[ asunto ]</a>
+              <a href="author.html#5700">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

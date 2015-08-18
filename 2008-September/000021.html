@@ -1,0 +1,254 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Bug #14482] segmentation fault després de desintal·lar plugin (bloqueig)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%5BBug%20%2314482%5D%20segmentation%20fault%20despr%E9s%20de%20desintal%B7lar%20plugin%20%28bloqueig%29&In-Reply-To=%3C200809111244.m8BCiUn2007513%40unicorn.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000020.html">
+   <LINK REL="Next"  HREF="000022.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Bug #14482] segmentation fault després de desintal·lar plugin (bloqueig) </H1>
+    <B>admin en berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%5BBug%20%2314482%5D%20segmentation%20fault%20despr%E9s%20de%20desintal%B7lar%20plugin%20%28bloqueig%29&In-Reply-To=%3C200809111244.m8BCiUn2007513%40unicorn.berlios.de%3E"
+       TITLE="[Bug #14482] segmentation fault després de desintal·lar plugin (bloqueig)">admin en berlios.de
+       </A><BR>
+    <I>Jue Sep 11 14:44:30 CEST 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000020.html">[Bug #14481] Falta &quot; a línia 91 de revf-pluginpreciocoste.sql
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000022.html">[BulmaGés] [Bug #14476] Falten fitxers sql de	plugins ?
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#21">[ fecha ]</a>
+              <a href="thread.html#21">[ hilo ]</a>
+              <a href="subject.html#21">[ asunto ]</a>
+              <a href="author.html#21">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bug #14482, was updated on 2008-Sep-11 04:44
+Here is a current snapshot of the bug.
+
+Project: BulmaGes, Gestión Empresarial Libre
+Category: bulmasetup
+Status: Open
+Resolution: None
+Bug Group: None
+Priority: 5
+Submitted by: xdrudis
+Assigned to : none
+Summary: segmentation fault després de desintal·lar plugin (bloqueig)
+
+Details: Vaig instal·lar  bulmasetup-0.11.1-2 de lenny amb els plugins 
+
+ libpluginq19.so; \
+libplugintpv.so; \
+libpluginetiquetado.so; \
+libpluginpromedios.so; \
+libplugininformeclientessxc.so; \
+libpluginpreciocoste.so; \
+libplugininformeclientes.so; \
+libpluginimpresionesmultiples.so; \
+libplugininventario.so; \
+libpluginmail.so; \
+libplugintarifas.so; \
+libplugindebugbf.so; \
+libplugincatalogo.so; \
+libpluginticket.so; \
+libpluginbarcodeopen.so; \
+libpluginimportcsv.so; \
+libpluginsubformprint.so; \
+libpluginimpers.so; \
+libpluginsubformods.so; \
+libpluginsubformsxc.so; \
+libplugininformes.so
+
+I a més el de bloquejos i el d'àlies
+
+Com que el de bloquejos i àlies em van donar errors 
+(veure  Bug #14479 i 014478 ) 
+
+vaig desinstal·lar els pluguins d'àlies i bloquejos.
+
+Després al usar bulmafact em va donar un segmentation fault 
+en intentar editar un país que acabava d'afegir.
+
+Sospito que l'error és al desintal·lador de plugins de bulmasetup, 
+no al bulmafact.
+
+Aparentment al modificar l'empresa i treure el plugin de bloqueig
+elmina les seves taules, però deixa a /etc/bulmages/bulmafact_bulmafact.conf
+el plugin de bloquejos llistat. Després quan afegeixes un pais, i 
+el selecciones per editar-lo fa una violació de segment. Editant
+/etc/bulmages/bulmafact_bulmafact.conf i treient el .so corresponent
+s'arregla.
+
+--------------------
+
+Installé bulmasetup-0.11.1-2 de lenny damb es plugins 
+
+ libpluginq19.so; \
+libplugintpv.so; \
+libpluginetiquetado.so; \
+libpluginpromedios.so; \
+libplugininformeclientessxc.so; \
+libpluginpreciocoste.so; \
+libplugininformeclientes.so; \
+libpluginimpresionesmultiples.so; \
+libplugininventario.so; \
+libpluginmail.so; \
+libplugintarifas.so; \
+libplugindebugbf.so; \
+libplugincatalogo.so; \
+libpluginticket.so; \
+libpluginbarcodeopen.so; \
+libpluginimportcsv.so; \
+libpluginsubformprint.so; \
+libpluginimpers.so; \
+libpluginsubformods.so; \
+libpluginsubformsxc.so; \
+libplugininformes.so
+
+E ath delà eth de blocatges e eth de àlies
+
+Com qu'eth de blocatges e àlies me dèren errors 
+(veir  Bug #14479 e 014478 ) 
+
+desinstal·lé es pluguins d'àlies e blocatges.
+
+Dempús en tot usar bulmafact me dèc un segmentation fault 
+en tot  sajar d'editar un país qu'acabaue d'ahíger.
+
+Suspècti qu'er error ei ath desintal·lador de plugins de bulmasetup, 
+non a bulmafact.
+
+Aparentaments en tot modificar era enterpresa e trèir eth plugin de blocatge
+elmina es sues taules, mès dèishe a /etc/bulmages/bulmafact_bulmafact.conf
+eth plugin de blocatges listadi. Dempús quan ahiges un pais, e 
+lo selecciones entà editar-lo hè ua violacion de segment. En tot editar
+/etc/bulmages/bulmafact_bulmafact.conf e treient eth .so corresponent
+s'apraie.
+
+---------------
+
+I installed  bulmasetup-0.11.1-2 from lenny with plugins 
+
+ libpluginq19.so; \
+libplugintpv.so; \
+libpluginetiquetado.so; \
+libpluginpromedios.so; \
+libplugininformeclientessxc.so; \
+libpluginpreciocoste.so; \
+libplugininformeclientes.so; \
+libpluginimpresionesmultiples.so; \
+libplugininventario.so; \
+libpluginmail.so; \
+libplugintarifas.so; \
+libplugindebugbf.so; \
+libplugincatalogo.so; \
+libpluginticket.so; \
+libpluginbarcodeopen.so; \
+libpluginimportcsv.so; \
+libpluginsubformprint.so; \
+libpluginimpers.so; \
+libpluginsubformods.so; \
+libpluginsubformsxc.so; \
+libplugininformes.so
+
+And besides the one for bloking and the alias one
+
+Since blocking and àlies gave me errors 
+(see  Bug #14479 and 014478 ) 
+
+I uninstalled the alias and blocking plugins.
+
+Afterwards, using bulmafact gave me a segmentation fault 
+when trying to edit a country that I just  added.
+
+I suspect that the error is in the uninstaller of plugins in bulmasetup, 
+not in bulmafact.
+
+Apparently when modifying the company and taking out the blocking plugin it removes its tables, but it leaves listed in /etc/bulmages/bulmafact_bulmafact.conf
+the blocking plugin. Afterwards when adding a country, and 
+selecting it to edit it ,it dies with a segmentation fault. Editing
+/etc/bulmages/bulmafact_bulmafact.conf and removing  the corresponding .so
+fixes it.
+
+----------
+
+Instalé bulmasetup-0.11.1-2 de lenny con los plugins 
+
+ libpluginq19.so; \
+libplugintpv.so; \
+libpluginetiquetado.so; \
+libpluginpromedios.so; \
+libplugininformeclientessxc.so; \
+libpluginpreciocoste.so; \
+libplugininformeclientes.so; \
+libpluginimpresionesmultiples.so; \
+libplugininventario.so; \
+libpluginmail.so; \
+libplugintarifas.so; \
+libplugindebugbf.so; \
+libplugincatalogo.so; \
+libpluginticket.so; \
+libpluginbarcodeopen.so; \
+libpluginimportcsv.so; \
+libpluginsubformprint.so; \
+libpluginimpers.so; \
+libpluginsubformods.so; \
+libpluginsubformsxc.so; \
+libplugininformes.so
+
+Y además el de bloqueos y el de alias
+
+Cómo que el de bloquejos y alias me dieron errores 
+(ver  Bug #14479 y 014478 ) 
+
+desinstalé los pluguins de alias y bloqueos.
+
+Después al usar bulmafact me dio un segmentation fault 
+al intentar editar un país que acababa de añadir.
+
+Sospecho que el error esa en el desintalador de plugins de bulmasetup, 
+no en bulmafact.
+
+Aparentemente al modificar la empresa y sacar el plugin de bloqueo
+elmina sus tablas, pero deja en /etc/bulmages/bulmafact_bulmafact.conf
+el plugin de bloqueos listado. Después cuando añades un pais, y lo 
+seleccionas para editarlo hace una violación de segmento. Editando
+/etc/bulmages/bulmafact_bulmafact.conf y sacando el .so correspondiente
+se arregla.
+
+
+
+
+For detailed info, follow this link:
+<A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=14482&amp;group_id=4472">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=14482&amp;group_id=4472</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000020.html">[Bug #14481] Falta &quot; a línia 91 de revf-pluginpreciocoste.sql
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000022.html">[BulmaGés] [Bug #14476] Falten fitxers sql de	plugins ?
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#21">[ fecha ]</a>
+              <a href="thread.html#21">[ hilo ]</a>
+              <a href="subject.html#21">[ asunto ]</a>
+              <a href="author.html#21">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

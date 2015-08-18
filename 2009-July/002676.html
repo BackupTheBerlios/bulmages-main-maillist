@@ -1,0 +1,248 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][BulmaGÃ©s][BulmaGÃ©s]segfault al lanzar los progr amas...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaG%3DC3%3DA9s%3D5D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaG%3DC3%3DA9s%3D5Dsegfault_al_lanzar_los_progr_amas%3D2E%3D2E%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D2E%3F%3D&In-Reply-To=%3C200907091705.29794.pedro.lopez.cabanillas%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002675.html">
+   <LINK REL="Next"  HREF="002677.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][BulmaGÃ©s][BulmaGÃ©s]segfault al lanzar los progr amas... </H1>
+    <B>Pedro Lopez-Cabanillas</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaG%3DC3%3DA9s%3D5D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D5BBulmaG%3DC3%3DA9s%3D5Dsegfault_al_lanzar_los_progr_amas%3D2E%3D2E%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D2E%3F%3D&In-Reply-To=%3C200907091705.29794.pedro.lopez.cabanillas%40gmail.com%3E"
+       TITLE="[BulmaGés][BulmaGÃ©s][BulmaGÃ©s]segfault al lanzar los progr amas...">pedro.lopez.cabanillas en gmail.com
+       </A><BR>
+    <I>Jue Jul  9 17:05:29 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002675.html">[BulmaGés][BulmaGÃ©s][BulmaGÃ©s]segfault al lanzar los progr amas...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002677.html">[BulmaGés]segfault al lanzar los programas...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2676">[ fecha ]</a>
+              <a href="thread.html#2676">[ hilo ]</a>
+              <a href="subject.html#2676">[ asunto ]</a>
+              <a href="author.html#2676">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thursday, July 9, 2009, Tomeu Borras wrote:
+&gt;<i> Viendo que no va de postgres la cosa cambiamos a la tematica liberia
+</I>&gt;<i> incorrecta.
+</I>&gt;<i>
+</I>&gt;<i> Supongamos que has instalado algun paquete o alguna version aterior que te
+</I>&gt;<i> ha dejado en el /usr/lib alguna libreria del tipo libbulmaXXX.so
+</I>&gt;<i>
+</I>&gt;<i> Y que segun l que as recompilado se te ha instalado en /usr/local/lib
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Puedes mirar si tienes lbrerias del tipo libbulmaXXXXXX en e /usr/lib y de
+</I>&gt;<i> ser asi borrarlas o moverlas temporalmente de sitio.
+</I>&gt;<i>
+</I>&gt;<i> Y comprobar que esten en /usr/local/lib las librerias tb
+</I>&gt;<i>
+</I>&gt;<i> Igual tras hacer eso (en Ubuntu por lo menos es así) tendrás que hacer un
+</I>&gt;<i> ldconfig.
+</I>&gt;<i>
+</I>&gt;<i> A ver si así ......
+</I>
+Tampoco es esto. De hecho, instalé en /usr la versión 0.11.1, a partir de los 
+RPMs que construí en local. Como tampoco arrancaba esa versión (con los 
+mismos síntomas, exactamente) los desinstalé. He comprobado que la 
+desinstalación fué totalmente limpia. No quedó ni rastro:
+
+$ ls /usr/lib/*bulma*
+ls: no se puede acceder a /usr/lib/*bulma*: No existe el fichero o el 
+directorio
+
+Tienes razón en que después de instalar a partir de los fuentes de SVN, he 
+tenido que ejecutar ldconfig. En caso contrario no encontraba las librerías. 
+
+Las versiones de las librerías que encuentra en ejecución parecen las 
+correctas. La salida de ldd tiene buena pinta:
+
+$ ldd /usr/local/bin/bulmafact
+        linux-gate.so.1 =&gt;  (0xffffe000)
+        libbulmafact.so.0.12 =&gt; /usr/local/lib/libbulmafact.so.0.12 
+(0xb7ed1000)
+        libbulmalib.so.0.12 =&gt; /usr/local/lib/libbulmalib.so.0.12 (0xb7acf000)
+        libQtAssistantClient.so.4 =&gt; /usr/lib/libQtAssistantClient.so.4 
+(0xb7ac7000)
+        libQtGui.so.4 =&gt; /usr/lib/libQtGui.so.4 (0xb716b000)
+        libpng12.so.0 =&gt; /usr/lib/libpng12.so.0 (0xb7146000)
+        libSM.so.6 =&gt; /usr/lib/libSM.so.6 (0xb713d000)
+        libICE.so.6 =&gt; /usr/lib/libICE.so.6 (0xb7123000)
+        libXi.so.6 =&gt; /usr/lib/libXi.so.6 (0xb711a000)
+        libXrender.so.1 =&gt; /usr/lib/libXrender.so.1 (0xb7111000)
+        libXrandr.so.2 =&gt; /usr/lib/libXrandr.so.2 (0xb710a000)
+        libXcursor.so.1 =&gt; /usr/lib/libXcursor.so.1 (0xb7100000)
+        libXinerama.so.1 =&gt; /usr/lib/libXinerama.so.1 (0xb70fc000)
+        libXfixes.so.3 =&gt; /usr/lib/libXfixes.so.3 (0xb70f5000)
+        libfreetype.so.6 =&gt; /usr/lib/libfreetype.so.6 (0xb7086000)
+        libfontconfig.so.1 =&gt; /usr/lib/libfontconfig.so.1 (0xb705a000)
+        libXext.so.6 =&gt; /usr/lib/libXext.so.6 (0xb704b000)
+        libX11.so.6 =&gt; /usr/lib/libX11.so.6 (0xb6f30000)
+        libQtDBus.so.4 =&gt; /usr/lib/libQtDBus.so.4 (0xb6ebf000)
+        libQtXml.so.4 =&gt; /usr/lib/libQtXml.so.4 (0xb6e76000)
+        libQtCore.so.4 =&gt; /usr/lib/libQtCore.so.4 (0xb6c39000)
+        libz.so.1 =&gt; /lib/libz.so.1 (0xb6c26000)
+        librt.so.1 =&gt; /lib/librt.so.1 (0xb6c1d000)
+        libpthread.so.0 =&gt; /lib/libpthread.so.0 (0xb6c06000)
+        libdl.so.2 =&gt; /lib/libdl.so.2 (0xb6c02000)
+        libpq.so.5 =&gt; /usr/lib/libpq.so.5 (0xb6be3000)
+        libm.so.6 =&gt; /lib/libm.so.6 (0xb6bbe000)
+        libstdc++.so.6 =&gt; /usr/lib/libstdc++.so.6 (0xb6ad0000)
+        libgcc_s.so.1 =&gt; /lib/libgcc_s.so.1 (0xb6ac4000)
+        libc.so.6 =&gt; /lib/libc.so.6 (0xb6991000)
+        libQtNetwork.so.4 =&gt; /usr/lib/libQtNetwork.so.4 (0xb6877000)
+        libgthread-2.0.so.0 =&gt; /usr/lib/libgthread-2.0.so.0 (0xb6872000)
+        libglib-2.0.so.0 =&gt; /usr/lib/libglib-2.0.so.0 (0xb67d1000)
+        libexpat.so.1 =&gt; /lib/libexpat.so.1 (0xb67b0000)
+        libXau.so.6 =&gt; /usr/lib/libXau.so.6 (0xb67ab000)
+        libxcb-xlib.so.0 =&gt; /usr/lib/libxcb-xlib.so.0 (0xb67a8000)
+        libxcb.so.1 =&gt; /usr/lib/libxcb.so.1 (0xb678f000)
+        libdbus-1.so.3 =&gt; /lib/libdbus-1.so.3 (0xb675c000)
+        /lib/ld-linux.so.2 (0xb7f9e000)
+        libssl.so.0.9.8 =&gt; /usr/lib/libssl.so.0.9.8 (0xb6719000)
+        libcrypto.so.0.9.8 =&gt; /usr/lib/libcrypto.so.0.9.8 (0xb65d3000)
+        libkrb5.so.3 =&gt; /usr/lib/libkrb5.so.3 (0xb6548000)
+        libcrypt.so.1 =&gt; /lib/libcrypt.so.1 (0xb6516000)
+        libpcre.so.0 =&gt; /usr/lib/libpcre.so.0 (0xb64ee000)
+        libk5crypto.so.3 =&gt; /usr/lib/libk5crypto.so.3 (0xb64c9000)
+        libcom_err.so.2 =&gt; /lib/libcom_err.so.2 (0xb64c4000)
+        libkrb5support.so.0 =&gt; /usr/lib/libkrb5support.so.0 (0xb64bb000)
+        libkeyutils.so.1 =&gt; /lib/libkeyutils.so.1 (0xb64b7000)
+        libresolv.so.2 =&gt; /lib/libresolv.so.2 (0xb64a4000)
+
+[nabucco:~]$ ldd /usr/local/lib/libbulmafact.so.0.12
+        linux-gate.so.1 =&gt;  (0xffffe000)
+        libbulmalib.so.0.12 =&gt; /usr/local/lib/libbulmalib.so.0.12 (0xb7ac2000)
+        libQtAssistantClient.so.4 =&gt; /usr/lib/libQtAssistantClient.so.4 
+(0xb7aba000)
+        libQtGui.so.4 =&gt; /usr/lib/libQtGui.so.4 (0xb715e000)
+        libpng12.so.0 =&gt; /usr/lib/libpng12.so.0 (0xb7139000)
+        libSM.so.6 =&gt; /usr/lib/libSM.so.6 (0xb7130000)
+        libICE.so.6 =&gt; /usr/lib/libICE.so.6 (0xb7117000)
+        libXi.so.6 =&gt; /usr/lib/libXi.so.6 (0xb710d000)
+        libXrender.so.1 =&gt; /usr/lib/libXrender.so.1 (0xb7104000)
+        libXrandr.so.2 =&gt; /usr/lib/libXrandr.so.2 (0xb70fd000)
+        libXcursor.so.1 =&gt; /usr/lib/libXcursor.so.1 (0xb70f3000)
+        libXinerama.so.1 =&gt; /usr/lib/libXinerama.so.1 (0xb70ef000)
+        libXfixes.so.3 =&gt; /usr/lib/libXfixes.so.3 (0xb70e9000)
+        libfreetype.so.6 =&gt; /usr/lib/libfreetype.so.6 (0xb7079000)
+        libfontconfig.so.1 =&gt; /usr/lib/libfontconfig.so.1 (0xb704d000)
+        libXext.so.6 =&gt; /usr/lib/libXext.so.6 (0xb703e000)
+        libX11.so.6 =&gt; /usr/lib/libX11.so.6 (0xb6f23000)
+        libQtDBus.so.4 =&gt; /usr/lib/libQtDBus.so.4 (0xb6eb2000)
+        libQtXml.so.4 =&gt; /usr/lib/libQtXml.so.4 (0xb6e6a000)
+        libQtCore.so.4 =&gt; /usr/lib/libQtCore.so.4 (0xb6c2c000)
+        libz.so.1 =&gt; /lib/libz.so.1 (0xb6c19000)
+        librt.so.1 =&gt; /lib/librt.so.1 (0xb6c10000)
+        libpthread.so.0 =&gt; /lib/libpthread.so.0 (0xb6bf9000)
+        libdl.so.2 =&gt; /lib/libdl.so.2 (0xb6bf5000)
+        libpq.so.5 =&gt; /usr/lib/libpq.so.5 (0xb6bd7000)
+        libm.so.6 =&gt; /lib/libm.so.6 (0xb6bb1000)
+        libstdc++.so.6 =&gt; /usr/lib/libstdc++.so.6 (0xb6ac3000)
+        libgcc_s.so.1 =&gt; /lib/libgcc_s.so.1 (0xb6ab7000)
+        libc.so.6 =&gt; /lib/libc.so.6 (0xb6984000)
+        libQtNetwork.so.4 =&gt; /usr/lib/libQtNetwork.so.4 (0xb686b000)
+        libgthread-2.0.so.0 =&gt; /usr/lib/libgthread-2.0.so.0 (0xb6865000)
+        libglib-2.0.so.0 =&gt; /usr/lib/libglib-2.0.so.0 (0xb67c4000)
+        libexpat.so.1 =&gt; /lib/libexpat.so.1 (0xb67a3000)
+        libXau.so.6 =&gt; /usr/lib/libXau.so.6 (0xb679f000)
+        libxcb-xlib.so.0 =&gt; /usr/lib/libxcb-xlib.so.0 (0xb679b000)
+        libxcb.so.1 =&gt; /usr/lib/libxcb.so.1 (0xb6782000)
+        libdbus-1.so.3 =&gt; /lib/libdbus-1.so.3 (0xb674f000)
+        /lib/ld-linux.so.2 (0x80000000)
+        libssl.so.0.9.8 =&gt; /usr/lib/libssl.so.0.9.8 (0xb670c000)
+        libcrypto.so.0.9.8 =&gt; /usr/lib/libcrypto.so.0.9.8 (0xb65c7000)
+        libkrb5.so.3 =&gt; /usr/lib/libkrb5.so.3 (0xb653b000)
+        libcrypt.so.1 =&gt; /lib/libcrypt.so.1 (0xb6509000)
+        libpcre.so.0 =&gt; /usr/lib/libpcre.so.0 (0xb64e1000)
+        libk5crypto.so.3 =&gt; /usr/lib/libk5crypto.so.3 (0xb64bc000)
+        libcom_err.so.2 =&gt; /lib/libcom_err.so.2 (0xb64b8000)
+        libkrb5support.so.0 =&gt; /usr/lib/libkrb5support.so.0 (0xb64ae000)
+        libkeyutils.so.1 =&gt; /lib/libkeyutils.so.1 (0xb64aa000)
+        libresolv.so.2 =&gt; /lib/libresolv.so.2 (0xb6497000)
+
+[nabucco:~]$ ldd /usr/local/lib/libbulmalib.so.0.12
+        linux-gate.so.1 =&gt;  (0xffffe000)
+        libQtAssistantClient.so.4 =&gt; /usr/lib/libQtAssistantClient.so.4 
+(0xb7ba3000)
+        libQtGui.so.4 =&gt; /usr/lib/libQtGui.so.4 (0xb7247000)
+        libpng12.so.0 =&gt; /usr/lib/libpng12.so.0 (0xb7222000)
+        libSM.so.6 =&gt; /usr/lib/libSM.so.6 (0xb7219000)
+        libICE.so.6 =&gt; /usr/lib/libICE.so.6 (0xb7200000)
+        libXi.so.6 =&gt; /usr/lib/libXi.so.6 (0xb71f7000)
+        libXrender.so.1 =&gt; /usr/lib/libXrender.so.1 (0xb71ed000)
+        libXrandr.so.2 =&gt; /usr/lib/libXrandr.so.2 (0xb71e6000)
+        libXcursor.so.1 =&gt; /usr/lib/libXcursor.so.1 (0xb71dc000)
+        libXinerama.so.1 =&gt; /usr/lib/libXinerama.so.1 (0xb71d8000)
+        libXfixes.so.3 =&gt; /usr/lib/libXfixes.so.3 (0xb71d2000)
+        libfreetype.so.6 =&gt; /usr/lib/libfreetype.so.6 (0xb7163000)
+        libfontconfig.so.1 =&gt; /usr/lib/libfontconfig.so.1 (0xb7136000)
+        libXext.so.6 =&gt; /usr/lib/libXext.so.6 (0xb7127000)
+        libX11.so.6 =&gt; /usr/lib/libX11.so.6 (0xb700c000)
+        libQtXml.so.4 =&gt; /usr/lib/libQtXml.so.4 (0xb6fc4000)
+        libQtCore.so.4 =&gt; /usr/lib/libQtCore.so.4 (0xb6d87000)
+        libz.so.1 =&gt; /lib/libz.so.1 (0xb6d74000)
+        librt.so.1 =&gt; /lib/librt.so.1 (0xb6d6a000)
+        libpthread.so.0 =&gt; /lib/libpthread.so.0 (0xb6d53000)
+        libdl.so.2 =&gt; /lib/libdl.so.2 (0xb6d4f000)
+        libpq.so.5 =&gt; /usr/lib/libpq.so.5 (0xb6d31000)
+        libstdc++.so.6 =&gt; /usr/lib/libstdc++.so.6 (0xb6c43000)
+        libm.so.6 =&gt; /lib/libm.so.6 (0xb6c1e000)
+        libgcc_s.so.1 =&gt; /lib/libgcc_s.so.1 (0xb6c11000)
+        libc.so.6 =&gt; /lib/libc.so.6 (0xb6ade000)
+        libQtNetwork.so.4 =&gt; /usr/lib/libQtNetwork.so.4 (0xb69c5000)
+        libgthread-2.0.so.0 =&gt; /usr/lib/libgthread-2.0.so.0 (0xb69c0000)
+        libglib-2.0.so.0 =&gt; /usr/lib/libglib-2.0.so.0 (0xb691f000)
+        libexpat.so.1 =&gt; /lib/libexpat.so.1 (0xb68fd000)
+        libXau.so.6 =&gt; /usr/lib/libXau.so.6 (0xb68f9000)
+        libxcb-xlib.so.0 =&gt; /usr/lib/libxcb-xlib.so.0 (0xb68f6000)
+        libxcb.so.1 =&gt; /usr/lib/libxcb.so.1 (0xb68dd000)
+        /lib/ld-linux.so.2 (0x80000000)
+        libssl.so.0.9.8 =&gt; /usr/lib/libssl.so.0.9.8 (0xb689a000)
+        libcrypto.so.0.9.8 =&gt; /usr/lib/libcrypto.so.0.9.8 (0xb6754000)
+        libkrb5.so.3 =&gt; /usr/lib/libkrb5.so.3 (0xb66c9000)
+        libcrypt.so.1 =&gt; /lib/libcrypt.so.1 (0xb6697000)
+        libpcre.so.0 =&gt; /usr/lib/libpcre.so.0 (0xb666f000)
+        libk5crypto.so.3 =&gt; /usr/lib/libk5crypto.so.3 (0xb664a000)
+        libcom_err.so.2 =&gt; /lib/libcom_err.so.2 (0xb6645000)
+        libkrb5support.so.0 =&gt; /usr/lib/libkrb5support.so.0 (0xb663c000)
+        libkeyutils.so.1 =&gt; /lib/libkeyutils.so.1 (0xb6638000)
+        libresolv.so.2 =&gt; /lib/libresolv.so.2 (0xb6625000)
+
+
+Saludos,
+Pedro
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002675.html">[BulmaGés][BulmaGÃ©s][BulmaGÃ©s]segfault al lanzar los progr amas...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002677.html">[BulmaGés]segfault al lanzar los programas...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2676">[ fecha ]</a>
+              <a href="thread.html#2676">[ hilo ]</a>
+              <a href="subject.html#2676">[ asunto ]</a>
+              <a href="author.html#2676">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

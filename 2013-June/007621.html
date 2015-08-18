@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] BulmaInCloud
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20BulmaInCloud&In-Reply-To=%3CCAJWqEtds%3D28XxBy1fvYTWM08TGG8JNL35fKaeTJ1fiJkWyOZrQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007620.html">
+   <LINK REL="Next"  HREF="007624.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] BulmaInCloud </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20BulmaInCloud&In-Reply-To=%3CCAJWqEtds%3D28XxBy1fvYTWM08TGG8JNL35fKaeTJ1fiJkWyOZrQ%40mail.gmail.com%3E"
+       TITLE="[BulmaGés] BulmaInCloud">tborras en conetxia.com
+       </A><BR>
+    <I>Vie Jun  7 11:54:41 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007620.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007624.html">[BulmaGés]BulmaInCloud
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7621">[ fecha ]</a>
+              <a href="thread.html#7621">[ hilo ]</a>
+              <a href="subject.html#7621">[ asunto ]</a>
+              <a href="author.html#7621">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Buenas, vayamos resumiendo temas:
+
+La migración a Qt5 hecha,
+El traspaso de BulmaCont a BulmaFact hecho.
+
+Queda pulir y repulir, y hacer tediosos trabajos de pruebas y cambiar el
+nombre de bulmafact para la próxima versión. (Algo tremendamente aburrido).
+Pero de aqui a Noviembre hay bastante tiempo.
+
+Así que voy a meterme en cosas nuevas (y divertidas). Como ahora lo del
+cloud computing esta de moda vamos a hacer algo con ello (personalmente me
+parece que es hacer las cosas mal hechas (desde el punto de vista técnico,
+comercialmente es una maravilla).
+Bueno a ver de que se trata:
+
+ Una versión portable del cliente de BulmaGés. Sin base de datos, ni
+archivos de configuración, ni plantillas de informes (Que estarán en el
+cloud) y que además se actualizará a traves de éste.
+
+Es decir, que te validas dando servidor, puerto, usuario y contraseña y el
+sistema coge de la nube toda tu configuración y la descarga si es preciso.
+
+Y tras esto el siguiente paso es aligerar la version portable a minimos
+existencialistas para que tenga un peso reducido. (Sin base de datos, ni
+bulmasetup ni otras lindeces ...)
+
+Como lo hacemos? A grosso modo viene a ser algo así:
+
+1.- Ponemos en la pantalla de acceso los dos datos que faltan (servidor y
+contrasenya). Lo vital es establecer conexión con el server.
+2.- Derivamos la clase QFile a BlFile que, de ahora en adelante comprueba
+versiones de archivo, y si no concuerdan la descarga del cloud. Obviamente
+en internet estarán a disposicion del usuario una vez que se haya validado,
+Metidos en la base de datos o bien descargables con wget. (Por ejemplo
+descargar plugins nuevos).
+3.- En cuanto a la portabilidad (En Windows ya es prácticamente portable).
+Si no va a tener base de datos será completamente portable.
+4.- Falta el tema de cambiar las configuraciones en el server. O bien el
+BlFile funciona en modo bidireccional o bien empotramos un editor que al
+guardar también suba al servidor.
+
+
+¿Y para que va a servir todo esto? .... Pués para vender trocitos de
+servidor con base de datos, poner demos con tiempos de descarga reducidos,
+una hipotética versión continuamente actualizada, etc.
+
+¿Alguna idea, aportación, pregunta o crítica ?
+
+-- 
+Tomeu Borrás
+Conetxia Soluciones Informáticas
+677 77 44 76
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20130607/f86bfa31/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20130607/f86bfa31/attachment.html</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007620.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007624.html">[BulmaGés]BulmaInCloud
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7621">[ fecha ]</a>
+              <a href="thread.html#7621">[ hilo ]</a>
+              <a href="subject.html#7621">[ asunto ]</a>
+              <a href="author.html#7621">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

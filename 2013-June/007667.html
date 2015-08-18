@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130628231213.68399167%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007666.html">
+   <LINK REL="Next"  HREF="007668.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130628231213.68399167%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Sab Jun 29 01:12:12 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007666.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007668.html">[BulmaGés] More BulmaInCloud
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7667">[ fecha ]</a>
+              <a href="thread.html#7667">[ hilo ]</a>
+              <a href="subject.html#7667">[ asunto ]</a>
+              <a href="author.html#7667">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from 0c81977 to 4a279bc
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/0c819775a32f22542f71caae2e9ddf189ca400ce/diffs/4a279bc791b82af496a0887ee6ded65b347e3e28">https://gitorious.org/bulmages/bulmages/commit/0c819775a32f22542f71caae2e9ddf189ca400ce/diffs/4a279bc791b82af496a0887ee6ded65b347e3e28</A>
+
+Diff: 
+
+commit 4a279bc791b82af496a0887ee6ded65b347e3e28
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sat Jun 29 01:11:53 2013 +0200
+
+    Arreglo algunos problemas adicionales de SIGNALS en Qt5 y elimino algunos mensajes de alerta
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoview.cpp b/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoview.cpp
+index 16036c1..d7f7da5 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoview.cpp
+@@ -58,9 +58,6 @@ BcAsientoView::BcAsientoView ( BfCompany *emp, QWidget *parent, int )
+ 
+     eventos_mui_ordenAsiento *eventosOrdenAsiento = new eventos_mui_ordenAsiento ( this );
+     mui_ordenAsiento-&gt;installEventFilter ( eventosOrdenAsiento );
+-    
+-    /// Conectamos el siganl returnPressed de mui_fecha
+-    connect ( mui_fecha, SIGNAL ( returnPressed() ), this, SLOT ( on_mui_fecha_enterPressed() ) );
+ 
+     mui_list-&gt;setMainCompany ( emp );
+     setListLinAsiento1 ( mui_list );
+@@ -290,7 +287,7 @@ void BcAsientoView::iniciar_asiento_nuevo ( QString nuevoordenasiento )
+ /**
+ \return
+ **/
+-void BcAsientoView::on_mui_fecha_enterPressed()
++void BcAsientoView::on_mui_fecha_returnPressed()
+ {
+     BL_FUNC_DEBUG
+     /// Usamos un semaforo para prevenir de entradas concurrentes.
+@@ -309,18 +306,7 @@ void BcAsientoView::on_mui_fecha_enterPressed()
+ }
+ 
+ 
+-/// Se ha pulsado sobre el bot&oacute;n de duplicar asiento.
+-/** Inicializa el di&aacute;logo de duplicaci&oacute;n de asientos y lo presenta.
+-    Cuando se ha terminado carga el cursor de presentaci&oacute;n y repinta el asiento
+-    para que actualize los cambios. */
+-/**
+-**/
+-void BcAsientoView::on_mui_duplicar_clicked()
+-{
+-    BL_FUNC_DEBUG
+ 
+-    
+-}
+ 
+ 
+ /// Se ha pulsado sobre el bot&oacute;n de generar asientos inteligentes.
+diff --git a/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoview.h b/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoview.h
+index bd7f386..6427750 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoview.h
++++ b/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoview.h
+@@ -112,9 +112,8 @@ public slots:
+     virtual void on_mui_cerrarAsiento_clicked();
+     virtual void on_mui_guardarAsiento_clicked();
+     virtual void on_mui_nuevoAsiento_clicked();
+-    virtual void on_mui_duplicar_clicked();
+     virtual void on_mui_inteligente_clicked();
+-    virtual void on_mui_fecha_enterPressed();
++    virtual void on_mui_fecha_returnPressed();
+     virtual void on_mui_configurar_toggled ( bool checked );
+     virtual void on_mui_list_toogledConfig ( bool check );
+     virtual void on_mui_detalles_toggled( bool check);
+diff --git a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/pluginbf_canalyccoste.cpp b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/pluginbf_canalyccoste.cpp
+index 1c0cc30..cf74d0f 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_canalyccoste/pluginbf_canalyccoste.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_canalyccoste/pluginbf_canalyccoste.cpp
+@@ -64,7 +64,7 @@ int entryPoint ( BfBulmaFact *bcont )
+     BlAction *accionA = new BlAction ( _ ( &quot;&amp;Canal&quot; ), 0 );
+     accionA-&gt;setStatusTip ( _ ( &quot;Ver Canales&quot; ) );
+     accionA-&gt;setWhatsThis ( _ ( &quot;Ver Canales&quot; ) );
+-    accionA-&gt;setIcon ( QIcon ( QString::fromUtf8 ( &quot;:/BulmaCont32x32/images/png/i_canalyccoste.xpm&quot; ) ) );
++    accionA-&gt;setIcon ( QIcon ( QString::fromUtf8 ( &quot;:/BulmaCont32x32/images/png/i_canales.xpm&quot; ) ) );
+     accionA-&gt;setObjectName(&quot;mui_actionCanal&quot;);
+     pPluginMenu-&gt;addAction ( accionA );
+     bcont-&gt;Listados-&gt;addAction ( accionA );
+@@ -72,7 +72,7 @@ int entryPoint ( BfBulmaFact *bcont )
+     BlAction *accionB = new BlAction ( _ ( &quot;&amp;Centros de Coste&quot; ), 0 );
+     accionB-&gt;setStatusTip ( _ ( &quot;Ver Centros de Coste&quot; ) );
+     accionB-&gt;setWhatsThis ( _ ( &quot;Ver Centros de Coste&quot; ) );
+-    accionB-&gt;setIcon ( QIcon ( QString::fromUtf8 ( &quot;:/BulmaCont32x32/images/png/i_canalyccoste.xpm&quot; ) ) );
++    accionB-&gt;setIcon ( QIcon ( QString::fromUtf8 ( &quot;:/BulmaCont32x32/images/png/i_centroCoste.xpm&quot; ) ) );
+     accionB-&gt;setObjectName(&quot;mui_actionCCoste&quot;);
+     pPluginMenu-&gt;addAction ( accionB );
+     bcont-&gt;Listados-&gt;addAction ( accionB );
+diff --git a/bulmages/bulmalib/src/blconfiguration.cpp b/bulmages/bulmalib/src/blconfiguration.cpp
+index 8a2b13e..c6c6078 100644
+--- a/bulmages/bulmalib/src/blconfiguration.cpp
++++ b/bulmages/bulmalib/src/blconfiguration.cpp
+@@ -38,6 +38,7 @@
+ #include &quot;blconfiguration.h&quot;
+ #include &quot;blcompanydialog.h&quot;
+ 
++#define isSet(i) (m_valores.contains ( i ))
+ 
+ /// El objeto global g_confpr es la instancia de la clase configuracion. Este objeto
+ /// puede ser accedido desde todas las clases de la aplicacion.
+@@ -602,13 +603,13 @@ bool BlConfiguration::valueTrue( int i )
+ 	/// Coge el valor de CONF_REPLACE_STRING y substituye la cadena ${CONF_REPLACE_STRING}
+ 	QString valor = m_valores[i];
+ 	
+-	if (i != CONF_REPLACE_STRING)
++	if (i != CONF_REPLACE_STRING &amp;&amp; isSet ( CONF_REPLACE_STRING) )
+ 	    valor.replace(&quot;${CONF_REPLACE_STRING}&quot;, value(CONF_REPLACE_STRING));
+     
+         return ( valor.toLower() == &quot;true&quot; || valor.toLower() == &quot;t&quot; || valor == &quot;1&quot; || valor.toLower() == &quot;yes&quot; || valor.toLower() == &quot;y&quot;);
+     } // end if
+ #ifdef CONFIG_DEBUG
+-    fprintf ( stderr, &quot;BlConfiguration : %s %s&quot;, &quot;Busqueda de valor sin establecer\n&quot;, name(i).toLatin1().constData() );
++    fprintf ( stderr, &quot;BlConfiguration : %s %s\n&quot;, &quot;Busqueda de valor sin establecer\n&quot;, name(i).toLatin1().constData() );
+ #endif
+     return false;
+ }
+@@ -627,13 +628,13 @@ QString BlConfiguration::value( int i )
+ 	/// Coge el valor de CONF_REPLACE_STRING y substituye la cadena ${CONF_REPLACE_STRING}
+ 	QString valor = m_valores[i];
+ 	
+-	if (i != CONF_REPLACE_STRING)
++	if (i != CONF_REPLACE_STRING  &amp;&amp; isSet ( CONF_REPLACE_STRING))
+ 	    valor.replace(&quot;${CONF_REPLACE_STRING}&quot;, value(CONF_REPLACE_STRING));
+     
+         return ( valor );
+     } // end if
+ #ifdef CONFIG_DEBUG
+-    fprintf ( stderr, &quot;BlConfiguration : %s %s&quot;, &quot;Busqueda de valor sin establecer\n&quot;, name(i).toLatin1().constData() );
++    fprintf ( stderr, &quot;BlConfiguration : %s %s\n&quot;, &quot;Busqueda de valor sin establecer\n&quot;, name(i).toLatin1().constData() );
+ #endif
+     return &quot;&quot;;
+ }
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007666.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007668.html">[BulmaGés] More BulmaInCloud
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7667">[ fecha ]</a>
+              <a href="thread.html#7667">[ hilo ]</a>
+              <a href="subject.html#7667">[ asunto ]</a>
+              <a href="author.html#7667">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

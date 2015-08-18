@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Cambiar las llamadas a plugins
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FCambiar_las_llamadas_%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fa_plugins%3F%3D&In-Reply-To=%3C51A7DEA4.5010701%40danielripoll.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007597.html">
+   <LINK REL="Next"  HREF="007600.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Cambiar las llamadas a plugins </H1>
+    <B>Daniel Ripoll</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FCambiar_las_llamadas_%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fa_plugins%3F%3D&In-Reply-To=%3C51A7DEA4.5010701%40danielripoll.es%3E"
+       TITLE="[BulmaGés]Cambiar las llamadas a plugins">info en danielripoll.es
+       </A><BR>
+    <I>Vie Mayo 31 01:20:04 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007597.html">[BulmaGés]Cambiar las llamadas a plugins
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007600.html">[BulmaGés]Cambiar las llamadas a plugins
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7598">[ fecha ]</a>
+              <a href="thread.html#7598">[ hilo ]</a>
+              <a href="subject.html#7598">[ asunto ]</a>
+              <a href="author.html#7598">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 30/05/13 18:49, aishen wrote:
+&gt;<i> Salut,
+</I>&gt;<i> I want to look the new version 1.5 of bulmages to see if there is any 
+</I>&gt;<i> translation to do. Can you help me (remenber ) how to do it with 
+</I>&gt;<i> ubuntu 13.04 (qt5 ) thanks
+</I>&gt;<i> Henri
+</I>&gt;<i> Le 30/05/2013 17:04, Tomeu Borras a écrit :
+</I>&gt;&gt;<i> Buenas, así como lo planteas no acabo de entenderlo.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Podrias desarrollar un ejemplo detallado del tema, por ejemplo con 
+</I>&gt;&gt;<i> las facturas ?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Por lo que creo entender lo único que puede funcionar es el uso de 
+</I>&gt;&gt;<i> XML debido a la gran capacidad de mutación que tienen los objetos.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Ya hay cosas hechas en este sentido. Tenemos funciones de exportación 
+</I>&gt;&gt;<i> e importación desde XML. Son genéricas y funcionan mayormente con la 
+</I>&gt;&gt;<i> sincronización de TPV's y el almacenamiento de elementos en disco 
+</I>&gt;&gt;<i> (Para prevención de caidas de sistema sin pérdida de datos).
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Tal vez lo que buscas es extender la funcionalidad del XML para que 
+</I>&gt;&gt;<i> pueda interactuar con otros programas.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> A mi juicio es menos rígido que una API.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Salut
+</I>&gt;&gt;<i>
+</I>
+Por el tema de XML van los tiros, pero puede ser mejor. Ejemplo, sin 
+tocar nada de código, relato el siguiente panorama (que es mi caso).
+
+1) Usuario adquiere producto en tienda, llamemosle &quot;Producto A&quot; con 
+código de articulo 0070020.
+2) Queda registrado el pedido en la tienda.
+3) Si yo quiero que este producto aparezca como pedido de BulmaGés, debo 
+o bien (segun grado de inviabilidad):
+3.a) Crear a mano cada pedido de la web dentro de BulmaGés (Imposible e 
+inviable)
+3.b) Crear una sentencia SQL dentro de Magento que por cada pedido 
+realice uno dentro de la base de datos de postgres (Inviable)
+3.c) Crear un cron que que cada 5 minutos (por ejemplo), recoja los 
+pedidos y los introduzca mediante sentencias SQL a postgres. (Potable, 
+pero inviable)
+
+Esperamos en nuestra empresa recibir aproximadamente 200 pedidos por dia 
+en el producto más barato (no costará ni 3 euros), así que todo lo que 
+requiera pasos manuales es inviable.
+
+Una API como tal, si esta bien definida, no es rigida, si no al contrario,
+
+Lo que me refiero es que en estas fechas, es estrictamente necesario que 
+BulmaGés pueda crear facturas, pedidos, articulos y demás sin estar 
+propiamente el entorno grafico instalado (o activado).
+
+
+
+Vamos a ilustrar un poco de código de Magento en PHP
+
+ 1.
+    $proxy = new SoapClient('<A HREF="http://magentohost/api/soap/?wsdl">http://magentohost/api/soap/?wsdl</A>');
+ 2.
+    $sessionId = $proxy-&gt;login('apiUser', 'apiKey');
+ 3.
+ 4.
+    $notInvoicedOrderId = '100000003';
+ 5.
+ 6.
+    // Create new invoice
+ 7.
+    $newInvoiceId = $proxy-&gt;call($sessionId,
+    'sales_order_invoice.create', array($notInvoicedOrderId, array(),
+    'Invoice Created', true, true));
+ 8.
+ 9.
+    // View new invoice
+10.
+    $invoice = $proxy-&gt;call($sessionId, 'sales_order_invoice.info',
+    $newInvoiceId);
+11.
+12.
+    var_dump($invoice);
+13.
+14.
+    // Add Comment
+15.
+    $proxy-&gt;call($sessionId, 'sales_order_invoice.addComment',
+    array($newInvoiceId, 'Invoice comment, some text', true, false));
+16.
+17.
+    // View invoice with new comment
+18.
+    $invoice = $proxy-&gt;call($sessionId, 'sales_order_invoice.info',
+    $newInvoiceId);
+19.
+20.
+    var_dump($invoice);
+21.
+22.
+    $proxy-&gt;call($sessionId, 'sales_order_invoice.capture', $newInvoiceId);
+23.
+24.
+    // View captured invoice
+25.
+    $invoice = $proxy-&gt;call($sessionId, 'sales_order_invoice.info',
+    $newInvoiceId);
+26.
+    var_dump($invoice);
+
+
+Como puedes ver, se puede crear (e incluso modificar) una nueva factura 
+de manera ultrasencilla.
+
+Hacer algo así para BulmaGés es realmente necesario, si queremos que el 
+programa llegue a ser usado en sistemas multiusuario y permita 
+conectarse a tiendas u otras cosas.
+Hoy en día los WebShops mandan, pero así como muchos pueden hacer 
+facturas, ninguno tiene las pijerias y gestión que podrían ser ampliadas 
+gracias a BulmaGés.
+Se que no sería sencillo, pero nos abriria un enorme abanico de 
+oportunidades.
+
+Saludos
+
+-- 
+Daniel Ripoll Osma
+
+<A HREF="http://danielripoll.es">http://danielripoll.es</A>
+<A HREF="http://manualencatala.tk">http://manualencatala.tk</A>
+<A HREF="http://bulmages.es">http://bulmages.es</A>
+
+6688.27.4.90
+
+Web &amp; Desktop Developer
+
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20130531/7c76055a/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20130531/7c76055a/attachment.html</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007597.html">[BulmaGés]Cambiar las llamadas a plugins
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007600.html">[BulmaGés]Cambiar las llamadas a plugins
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7598">[ fecha ]</a>
+              <a href="thread.html#7598">[ hilo ]</a>
+              <a href="subject.html#7598">[ asunto ]</a>
+              <a href="author.html#7598">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

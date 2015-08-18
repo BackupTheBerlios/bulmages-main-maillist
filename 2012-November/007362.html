@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]backporteo de bulmages a Debian Squeeze: con qt 4.6 hemos topado
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fbackporteo_de_bulmages_a_D%3F%3D%0A%20%3D%3Futf-8%3Fq%3Febian_Squeeze%3D3A_con_qt_4%3D2E6_hemos_topado%3F%3D&In-Reply-To=%3C20121116003509.2044e7e2%40mtelleria.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007361.html">
+   <LINK REL="Next"  HREF="007383.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]backporteo de bulmages a Debian Squeeze: con qt 4.6 hemos topado </H1>
+    <B>Miguel Telleria de Esteban</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fbackporteo_de_bulmages_a_D%3F%3D%0A%20%3D%3Futf-8%3Fq%3Febian_Squeeze%3D3A_con_qt_4%3D2E6_hemos_topado%3F%3D&In-Reply-To=%3C20121116003509.2044e7e2%40mtelleria.com%3E"
+       TITLE="[BulmaGés]backporteo de bulmages a Debian Squeeze: con qt 4.6 hemos topado">miguel en mtelleria.com
+       </A><BR>
+    <I>Vie Nov 16 00:35:09 CET 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007361.html">[BulmaGés]backporteo de bulmages a Debian Squeeze: con qt 4.6 hemos topado
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007383.html">[BulmaGés]backporteo de bulmages a Debian Squeeze: con qt 4.6 hemos topado
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7362">[ fecha ]</a>
+              <a href="thread.html#7362">[ hilo ]</a>
+              <a href="subject.html#7362">[ asunto ]</a>
+              <a href="author.html#7362">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, 15 Nov 2012 23:01:12 +0100 Daniel Ripoll wrote:
+
+&gt;<i> Hola Miguel,
+</I>&gt;<i> 
+</I>&gt;<i> Yo personalmente no he conseguido que me funcionase bajo Qt4.6 en 
+</I>&gt;<i> Squeeze, eso si, si haces un backport de Qt4.7 debería funcionar...
+</I>
+Estoy usando el qt4.7 empaquetado por mepis 11.
+
+<A HREF="http://forums.debian.net/viewtopic.php?f=17&amp;t=61012&amp;start=30">http://forums.debian.net/viewtopic.php?f=17&amp;t=61012&amp;start=30</A>
+<A HREF="ftp://ftp.mirrorservice.org/sites/ftp.mepis.org/mepis/pool/main/q/qt4-x11/">ftp://ftp.mirrorservice.org/sites/ftp.mepis.org/mepis/pool/main/q/qt4-x11/</A>
+
+Por si acaso lo he recompilado en mi Debian Squeeze y todo ha ido
+bien.  Ya tengo qt4.7 instalado!!.
+
+Ahora sólo me queda tener el python-qt4 instalado.  Curiosamente en
+squeeze es ya la versión 4.7 pero compilada para qt4.6.  Así que
+procedo a recompilar el paquete de squeeze sin mas...
+
+... todo va bien hasta que en mitad de la compilación se queja de que
+necesita python-qt4-assistant.
+
+dh_install: python-qt4 missing files
+(usr/lib/python*/*-packages/PyQt4/QtAssistant.so), aborting
+
+resulta que hay 2 candidatos para el qtassistant.  El original de
+squeeze qt4.6 y el de mepis.  Aquí lo dejo porque ya es tarde :).
+
+Mañana más.
+
+Buenas noches,
+
+	Miguel
+
+
+-- 
+
+      (O-O)
+---oOO-(_)-OOo-----------------------------------------------------
+ Miguel TELLERIA DE ESTEBAN               <A HREF="http://www.mtelleria.com">http://www.mtelleria.com</A>
+ Email: miguel at mtelleria.com           Tel GSM:  +34 650 801098
+                                          Tel Fix:  +34 942 280174
+
+ Miembro de <A HREF="http://www.linuca.org">http://www.linuca.org</A>    Membre du <A HREF="http://www.bxlug.be">http://www.bxlug.be</A>
+ ¿Usuario captivo o libre?    <A HREF="http://www.obtengalinux.org/windows/">http://www.obtengalinux.org/windows/</A>
+ Free or  captive user?        <A HREF="http://www.getgnulinux.org/windows/">http://www.getgnulinux.org/windows/</A>
+-------------------------------------------------------------------
+
+------------ próxima parte ------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 198 bytes
+Desc: no disponible
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20121116/36061685/attachment.pgp">https://lists.berlios.de/pipermail/bulmages-main/attachments/20121116/36061685/attachment.pgp</A>&gt;
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007361.html">[BulmaGés]backporteo de bulmages a Debian Squeeze: con qt 4.6 hemos topado
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007383.html">[BulmaGés]backporteo de bulmages a Debian Squeeze: con qt 4.6 hemos topado
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7362">[ fecha ]</a>
+              <a href="thread.html#7362">[ hilo ]</a>
+              <a href="subject.html#7362">[ asunto ]</a>
+              <a href="author.html#7362">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

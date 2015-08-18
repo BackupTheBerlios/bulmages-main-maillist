@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]NxSpooler. Impresión para FreeNX si se trabaja remotamente con Bulmagés , por ejemplo.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FNxSpooler%3D2E_Impresi%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3DF3n_para_FreeNX_si_se_trabaja_remotamente_con_Bulmag%3DE9s_%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D2C_por_ejemplo%3D2E%3F%3D&In-Reply-To=%3C200907240919.12530.auryn%40wanadoo.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002817.html">
+   <LINK REL="Next"  HREF="002828.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]NxSpooler. Impresión para FreeNX si se trabaja remotamente con Bulmagés , por ejemplo. </H1>
+    <B>Aron</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FNxSpooler%3D2E_Impresi%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3DF3n_para_FreeNX_si_se_trabaja_remotamente_con_Bulmag%3DE9s_%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3D2C_por_ejemplo%3D2E%3F%3D&In-Reply-To=%3C200907240919.12530.auryn%40wanadoo.es%3E"
+       TITLE="[BulmaGés]NxSpooler. Impresión para FreeNX si se trabaja remotamente con Bulmagés , por ejemplo.">auryn en wanadoo.es
+       </A><BR>
+    <I>Vie Jul 24 09:19:12 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002817.html">[BulmaGés] r3585 - in trunk/bulmages:	bulmafact/plugins/pluginbf_articulo	bulmafact/plugins/pluginbf_z2z bulmalib/src bulmatpv/src
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002828.html">[BulmaGés] r3586 - in trunk/bulmages:	bulmacont/plugins/pluginbc_cuentasanuales2ods	bulmacont/plugins/pluginbc_proyectos	bulmalib/plugins/pluginbl_subform2ods	bulmalib/plugins/pluginbl_subform2sxc bulmalib/src installbulmages
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2823">[ fecha ]</a>
+              <a href="thread.html#2823">[ hilo ]</a>
+              <a href="subject.html#2823">[ asunto ]</a>
+              <a href="author.html#2823">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>El Jueves 23 Julio 2009, escribió:
+&gt;<i> Esta genial y funciona de fábula !!!!!!
+</I>&gt;<i>
+</I>&gt;<i> Me encanta el proyecto. Lo voy a usar en un par de clientes. (Lo teneis
+</I>&gt;<i> funcionando en Windows ?).
+</I>Sí, está listo para Linux y Windows.
+Un pequeño detalle: se ha usado QSettings para la configuración y ha resultado 
+muy práctico. Los ajustes se guardan en sitios diferentes según el sistema. En 
+Linux sería en &quot;~/.config&quot; y en Windows en el registro.
+
+
+&gt;<i> Además es casi una mensajeria instantanea y sistema de comunicados brutal
+</I>&gt;<i> !!!
+</I>&gt;<i>
+</I>&gt;<i> Enhorabuena !!!!
+</I>Gracias
+
+&gt;<i> El Thursday 23 July 2009 13:15:19 Aron escribió:
+</I>&gt;<i> &gt; Hola a todos:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Los que trabajen remotamente con Bulmagés usando FreeNX (porque tienen
+</I>&gt;<i> &gt; ordenadores clientes con Windows, por ejemplo) habrán visto que FreeNX
+</I>&gt;<i> &gt; 0.7 no tiene funcionando el tema de la impresión en la impresora local
+</I>&gt;<i> &gt; del usuario.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Hemos creado la utilidad NxSpooler, que permite que documentos pdf
+</I>&gt;<i> &gt; creados en el servidor (por ejemplo los que crea Bulmagés) se impriman en
+</I>&gt;<i> &gt; el ordenador del usuario (tenga Linux o Windows).
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Más concretamente: NxSpooler monitoriza si aparecen archivos PDF en
+</I>&gt;<i> &gt; determinado recurso compartido (predeterminadamente es $HOME/.bulmages).
+</I>&gt;<i> &gt; Por cada archivo nuevo que encuentra NxSpooler: lo abre para que el
+</I>&gt;<i> &gt; usuario lo vea y pueda imprimirlo; cuando el usuario ha cerrado la
+</I>&gt;<i> &gt; ventana del visor PDF, NxSpooler intentará borrar el archivo PDF.
+</I>&gt;<i> &gt; NxSpooler está pensado para ser usado conjuntamente con una sesión FreeNX
+</I>&gt;<i> &gt; donde un programa remoto crea archivos PDF y se guardan en el recurso
+</I>&gt;<i> &gt; compartido para su posterior impresión en el ordenador del usuario.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Como es usual, no nos hacemos responsables de lo que pueda hacer el
+</I>&gt;<i> &gt; programa
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; :-), aunque en el uso que le estamos dando el programa se ha comportado
+</I>&gt;<i> &gt; : de
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; forma estable y es usado en producción; ahora bien, no es una versión
+</I>&gt;<i> &gt; 1.0, lo único que falta por ahora (si alguno de vosotros os animais) es
+</I>&gt;<i> &gt; el ser traducible a otros idiomas (ahora está en castellano, aunque el
+</I>&gt;<i> &gt; texto de algún botón ha aparecido en inglés).
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Se puede bajar el código fuente (en Qt) de la página del proyecto y
+</I>&gt;<i> &gt; compilarlo <A HREF="http://developer.berlios.de/projects/nxspooler/">http://developer.berlios.de/projects/nxspooler/</A>
+</I>
+
+-- 
+Aron
+
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20090724/97c6e7b1/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20090724/97c6e7b1/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002817.html">[BulmaGés] r3585 - in trunk/bulmages:	bulmafact/plugins/pluginbf_articulo	bulmafact/plugins/pluginbf_z2z bulmalib/src bulmatpv/src
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002828.html">[BulmaGés] r3586 - in trunk/bulmages:	bulmacont/plugins/pluginbc_cuentasanuales2ods	bulmacont/plugins/pluginbc_proyectos	bulmalib/plugins/pluginbl_subform2ods	bulmalib/plugins/pluginbl_subform2sxc bulmalib/src installbulmages
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2823">[ fecha ]</a>
+              <a href="thread.html#2823">[ hilo ]</a>
+              <a href="subject.html#2823">[ asunto ]</a>
+              <a href="author.html#2823">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

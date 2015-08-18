@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] Nuevo fallo gordo
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Nuevo%20fallo%20gordo&In-Reply-To=%3CCAJWqEtfPwuoWiUn0DtQG3XvMgwvRC6O7jKMSmHJ-Pod30wPUpA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006922.html">
+   <LINK REL="Next"  HREF="006924.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] Nuevo fallo gordo </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Nuevo%20fallo%20gordo&In-Reply-To=%3CCAJWqEtfPwuoWiUn0DtQG3XvMgwvRC6O7jKMSmHJ-Pod30wPUpA%40mail.gmail.com%3E"
+       TITLE="[BulmaGés] Nuevo fallo gordo">tborras en conetxia.com
+       </A><BR>
+    <I>Mar Feb 21 11:55:42 CET 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006922.html">[BulmaGés] pushed 1 commit to	bulmages/bulmages:master. View diff
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006924.html">[BulmaGés]Nuevo fallo gordo
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6923">[ fecha ]</a>
+              <a href="thread.html#6923">[ hilo ]</a>
+              <a href="subject.html#6923">[ asunto ]</a>
+              <a href="author.html#6923">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Nuevo error detectado, que requiere un pensamiento.
+
+Hay un objetivo bien marcado con las bases de datos y es el siguiente:
+
+Una base de datos antigua actualizada con los parches debe quedar
+exactamente igual que una base de datos creada con el script de creación.
+En caso contrario estamos &quot;degenerando&quot; instalaciones antiguas que pueden
+llegar a dar problemas irresolubles.
+
+A efectos de programación la cosa se reduce a la siguiente norma
+fundamental e inquebrantable:
+
+- Todo cambio en el archivo de creación de la base de datos debe tener su
+correspondiente cambio en el archivo de revision correspondiente. (El
+último creado).
+
+Tal vez complica un poco la programación pero es importantísimo no saltarse
+esta norma.
+
+El caso que nos ocupa es bastante ejemplificador:
+
+La función crearef()  con  un sencillo cambio de nombre de variable
+(sustituimos as por bs). En principio parece poco importante y no parece
+alterar nada.
+
+pero ...
+
+Resulta que esta función es parcheable (poco común en los tiempo que
+corren, pero posible). Cualquier módulo puede meter su aporte a esta
+función y alterar su funcionamiento ya que si la referencia es un campo
+único entre tablas y automático es poco deseable que un módulo u otro
+dupliquen referencias. Así que es una función compartida entre módulos al
+estilo del salvaje oeste (yo meto mis lineas de código y tu mete las tuyas
+que aqui todo cabe).
+De esta forma cualquier plugin que altere la función meterá llamadas con la
+variable &quot;as&quot; que habrá dejado de existir o no u petará o no segun la
+versión de la base de datos.
+Deacuerdo en que es la única parcheable (todas las demás no lo son) y es un
+caso muy muy muy raro. Sin embargo existe el problema.
+
+Los cambios a realizar son los siguientes:
+- Modificar el script de creación.
+- Meter la redefinición de la funcion en el script de revision.
+- Cambiar los plugins que meten código en la funcion crearef.
+
+Pensad que la gente no sólo hace instalaciones nuevas. También hace
+actualizaciones.
+
+Si no se hace bien estamos condenados a quemarnos en un infierno de bugs.
+
+PD: Este mail no es una quema de brujas. Sólo que me veo en la obligación
+de comentarlo para evitar futuros problemas.
+
+Salut
+
+-- 
+Tomeu Borrás
+Conetxia Soluciones Informáticas
+902 88 11 66 - 677 77 44 76
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20120221/56a3e1dd/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20120221/56a3e1dd/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006922.html">[BulmaGés] pushed 1 commit to	bulmages/bulmages:master. View diff
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006924.html">[BulmaGés]Nuevo fallo gordo
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6923">[ fecha ]</a>
+              <a href="thread.html#6923">[ hilo ]</a>
+              <a href="subject.html#6923">[ asunto ]</a>
+              <a href="author.html#6923">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

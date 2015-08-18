@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Infinite recursion in &quot;ON UPDATE&quot; with &quot;WHERE&quot; condition that seems ignored
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FInfinite_recursion_in%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F_%3D22ON_UPDATE%3D22_with_%3D22WHERE%3D22_condition_that_se%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fems_ignored%3F%3D&In-Reply-To=%3C201002231504.53257.auryn%40wanadoo.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003465.html">
+   <LINK REL="Next"  HREF="003467.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Infinite recursion in &quot;ON UPDATE&quot; with &quot;WHERE&quot; condition that seems ignored </H1>
+    <B>Aron</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FInfinite_recursion_in%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F_%3D22ON_UPDATE%3D22_with_%3D22WHERE%3D22_condition_that_se%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fems_ignored%3F%3D&In-Reply-To=%3C201002231504.53257.auryn%40wanadoo.es%3E"
+       TITLE="[BulmaGés]Infinite recursion in &quot;ON UPDATE&quot; with &quot;WHERE&quot; condition that seems ignored">auryn en wanadoo.es
+       </A><BR>
+    <I>Mar Feb 23 15:04:53 CET 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003465.html">[BulmaGés]Infinite recursion in &quot;ON UPDATE&quot; with &quot;WHERE&quot; condition that seems ignored
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003467.html">[BulmaGés]Buzz de Raül Martínez i Peris
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3466">[ fecha ]</a>
+              <a href="thread.html#3466">[ hilo ]</a>
+              <a href="subject.html#3466">[ asunto ]</a>
+              <a href="author.html#3466">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>ups... lo envié a la lista de correo equivocada...
+pero gracias por la ayuda
+
+On Martes 23 Febrero 2010 14:30:07 Fco. Javier M. C. escribió:
+&gt;<i> El 23/02/10 13:17, Aron escribió:
+</I>&gt;<i> &gt; I want to copy 3 values from other table ONLY when id_compo has been
+</I>&gt;<i> &gt; changed.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; But I always get the error: infinite recursion detected in rules for
+</I>&gt;<i> &gt; relation &quot;my_table&quot;.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; It sames like the WHERE condition is never true.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; CREATE OR REPLACE RULE actualizar AS
+</I>&gt;<i> &gt; ON UPDATE TO my_table
+</I>&gt;<i> &gt; WHERE new.id_compo IS NOT NULL
+</I>&gt;<i> &gt; AND old.id_compo &lt;&gt; new.id_compo
+</I>&gt;<i> &gt; DO ALSO
+</I>&gt;<i> &gt; 	UPDATE my_table SET
+</I>&gt;<i> &gt; 		id_compo = new.id_compo,
+</I>&gt;<i> &gt; 		coste = t.coste,
+</I>&gt;<i> &gt; 		precio_venta = t.precio_venta
+</I>&gt;<i> &gt; 	FROM gen.compo AS t
+</I>&gt;<i> 
+</I>&gt;<i> Creo que el problema viene porque después de FROM pones el nombre de un
+</I>&gt;<i> campo. Prueba a poner sólo el nombre de la tabla (gen).
+</I>&gt;<i> 
+</I>&gt;<i> &gt; 	WHERE new.id_compo = t.id;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Thank you
+</I>&gt;<i> 
+</I>&gt;<i> ¿Esto tiene algo que ver con BulmaGes?
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Un saludo.
+</I>&gt;<i> 
+</I>
+-- 
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003465.html">[BulmaGés]Infinite recursion in &quot;ON UPDATE&quot; with &quot;WHERE&quot; condition that seems ignored
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003467.html">[BulmaGés]Buzz de Raül Martínez i Peris
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3466">[ fecha ]</a>
+              <a href="thread.html#3466">[ hilo ]</a>
+              <a href="subject.html#3466">[ asunto ]</a>
+              <a href="author.html#3466">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

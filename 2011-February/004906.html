@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Problemas de dependencias con dpkg-buildpackage
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FProblemas_de_dependen%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fcias_con_dpkg-buildpackage%3F%3D&In-Reply-To=%3CAANLkTinXF12bLeq1W98gODiN16%2BZH%2BGSJnBVdd9SLO%3DF%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="004904.html">
+   <LINK REL="Next"  HREF="004907.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Problemas de dependencias con dpkg-buildpackage </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FProblemas_de_dependen%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fcias_con_dpkg-buildpackage%3F%3D&In-Reply-To=%3CAANLkTinXF12bLeq1W98gODiN16%2BZH%2BGSJnBVdd9SLO%3DF%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]Problemas de dependencias con dpkg-buildpackage">tborras en gmail.com
+       </A><BR>
+    <I>Mar Feb  8 17:41:21 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="004904.html">[BulmaGés]Problemas de dependencias con dpkg-buildpackage
+</A></li>
+        <LI>Próximo mensaje: <A HREF="004907.html">[BulmaGés]Problemas de dependencias con dpkg-buildpackage
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4906">[ fecha ]</a>
+              <a href="thread.html#4906">[ hilo ]</a>
+              <a href="subject.html#4906">[ asunto ]</a>
+              <a href="author.html#4906">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola
+
+El dpkg-checkbuilddeps no saca nada.
+
+Con el dpkg-buildpackage -nc ha terminado sin errores (seguramente es algun
+problema con el distcc). Los paquetes se han hecho a partir del svn3849 lo
+primero toca actualizar la version del svn.
+
+Salut
+
+El 8 de febrero de 2011 16:46, Santos Martinez Estrada
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">otilio en apdo.com</A>&gt;escribió:
+
+&gt;<i> Prueba a hacer un dpkg-checkbuilddeps a ver si te da algún error. A mi me
+</I>&gt;<i> compila 100% pero al final me da este error:
+</I>&gt;<i> &quot;cp: no se puede efectuar `stat' sobre
+</I>&gt;<i> «debian/tmp/usr/share/bulmages/openreports/canuales.rml»: No existe el
+</I>&gt;<i> fichero
+</I>&gt;<i> o el directorio
+</I>&gt;<i> dh_install: cp -a debian/tmp/usr/share/bulmages/openreports/canuales.rml
+</I>&gt;<i> debian/bulmages//usr/share/bulmages/openreports/ returned exit code 1
+</I>&gt;<i> make: *** [binary-arch] Error 2
+</I>&gt;<i> dpkg-buildpackage: fallo: debian/rules binary devolvió un estado de salida
+</I>&gt;<i> de
+</I>&gt;<i> error 2&quot;
+</I>&gt;<i>
+</I>&gt;<i> On Martes 08 Febrero 2011 14:06:46 Tomeu Borras escribió:
+</I>&gt;<i> &gt; Si, sin problemas.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Ahora estoy probando un dpkg-buildpackage -nc para ver si se lo traga.
+</I>&gt;<i> Pero
+</I>&gt;<i> &gt; no me convence demasiado como solución.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Salut
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; El 8 de febrero de 2011 13:43, Santos Martinez Estrada
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">otilio en apdo.com</A>&gt;escribió:
+</I>&gt;<i> &gt; &gt; Y eso mismo te lo compila correctamente por el método normal?
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; On Martes 08 Febrero 2011 13:27:06 Tomeu Borras escribió:
+</I>&gt;<i> &gt; &gt; &gt; Bones a tothom
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; Estoy con el tema paquetes deb
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; Cuando estoy haciendo el dpkg-buildpackages y se pone a compilar en
+</I>&gt;<i> el
+</I>&gt;<i> &gt; &gt; &gt; debian.build me aparece un error de compilacion:
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; make[3]: se sale del directorio
+</I>&gt;<i> &gt; &gt; &gt; «/opt/svn-tborras-bulmages/bulmages/build.debian»
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; [ 27%] Built target pluginbt_visor
+</I>&gt;<i> &gt; &gt; &gt; In file included from
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> /opt/svn-tborras-bulmages/bulmages/bulmatpv/plugins/pluginbt_clientsync/p
+</I>&gt;<i> &gt; &gt; lu
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; ginbt_clientsync.h:27:0, from
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> /opt/svn-tborras-bulmages/bulmages/bulmatpv/plugins/pluginbt_clientsync/p
+</I>&gt;<i> &gt; &gt; lu
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; ginbt_clientsync.cpp:29:
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> /opt/svn-tborras-bulmages/bulmages/bulmatpv/plugins/pluginbt_accesobotone
+</I>&gt;<i> &gt; &gt; s
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; /abrevs.h:5:27: fatal error: ui_abrevsbase.h: No existe el fichero o
+</I>&gt;<i> el
+</I>&gt;<i> &gt; &gt; &gt; directorio compilation terminated.
+</I>&gt;<i> &gt; &gt; &gt; make[3]: ***
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> [bulmatpv/plugins/pluginbt_clientsync/CMakeFiles/pluginbt_clientsync.dir/
+</I>&gt;<i> &gt; &gt; pl
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; uginbt_clientsync.o] Error 1
+</I>&gt;<i> &gt; &gt; &gt; make[3]: *** Se espera a que terminen otras tareas....
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; Seguro que el error es debido a que compila antes pluginbt_clientsync
+</I>&gt;<i> &gt; &gt; &gt; que pluginbt_accesobotones pero
+</I>&gt;<i> &gt; &gt; &gt; he mirado el CMakeLists.txt del pluginbt_clientsync y tiene la
+</I>&gt;<i> &gt; &gt; &gt; directiva:
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; add_dependencies(${plugin} bulmatpv bulmalib plubinbt_accesobotones)
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; He probado de hacer un make sobre el build.debian y lo compila bien.
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; ¿Alguna idea?
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; Salut
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; _______________________________________________
+</I>&gt;<i> &gt; &gt; Bulmages-main mailing list
+</I>&gt;<i> &gt; &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt; &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20110208/db410d9e/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20110208/db410d9e/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="004904.html">[BulmaGés]Problemas de dependencias con dpkg-buildpackage
+</A></li>
+	<LI>Próximo mensaje: <A HREF="004907.html">[BulmaGés]Problemas de dependencias con dpkg-buildpackage
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4906">[ fecha ]</a>
+              <a href="thread.html#4906">[ hilo ]</a>
+              <a href="subject.html#4906">[ asunto ]</a>
+              <a href="author.html#4906">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20121119203207.C4502756F2%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007375.html">
+   <LINK REL="Next"  HREF="007385.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20121119203207.C4502756F2%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Lun Nov 19 21:32:07 CET 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007375.html">[BulmaGés][Gitorious] Activity: themeph pushed 1 commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007385.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7380">[ fecha ]</a>
+              <a href="thread.html#7380">[ hilo ]</a>
+              <a href="subject.html#7380">[ asunto ]</a>
+              <a href="author.html#7380">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from 2e3d3c8 to 1edc0a9
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/2e3d3c87d67ee3f6925c5504859ea47662e21a47/diffs/1edc0a9c3033b646f01377a812cfe3eda8c104b4">https://gitorious.org/bulmages/bulmages/commit/2e3d3c87d67ee3f6925c5504859ea47662e21a47/diffs/1edc0a9c3033b646f01377a812cfe3eda8c104b4</A>
+
+Diff: 
+
+commit 1edc0a9c3033b646f01377a812cfe3eda8c104b4
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon Nov 19 21:29:40 2012 +0100
+
+    Hago la llamada likeFilter de los subformularios ampliable por plugins.
+    Extiendo la funcionalidad del plugin de alias para que al hacer una busqueda de articulos en el filtro LIKE
+    se tengan en cuenta los articulos cuyo alias se corresponde con el texto introducido.
+    
+    Este cambio responde a peticion presentada por JM Tenor
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_alias/pluginbf_alias.cpp b/bulmages/bulmafact/plugins/pluginbf_alias/pluginbf_alias.cpp
+index 8670b4d..e9c3834 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_alias/pluginbf_alias.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_alias/pluginbf_alias.cpp
+@@ -197,6 +197,17 @@ int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget *busc )
+ }
+ 
+ 
++/// En la busqueda por filtro de articulos incluiremos aquellos que tengan alias.
++int BlSubForm_likeFilterSQL_Post (BlSubForm *sub, void ** squery) {
++    BL_FUNC_DEBUG
++    if (sub-&gt;tableName() == &quot;articulo&quot;)  {
++	QString * tquery = (QString *) *squery;
++	*tquery = &quot; OR articulo.idarticulo IN (SELECT idarticulo from alias WHERE cadalias LIKE '%&quot;+*tquery+&quot;%')&quot;; 
++    } // end if
++    return 0;
++}
++
++
+ int BlSubForm_editFinished ( BlSubForm *sub )
+ {
+     BL_FUNC_DEBUG
+diff --git a/bulmages/bulmafact/plugins/pluginbf_alias/pluginbf_alias.h b/bulmages/bulmafact/plugins/pluginbf_alias/pluginbf_alias.h
+index 7897709..4318928 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_alias/pluginbf_alias.h
++++ b/bulmages/bulmafact/plugins/pluginbf_alias/pluginbf_alias.h
+@@ -62,7 +62,7 @@ extern &quot;C&quot; PLUGINBF_ALIAS_EXPORT int ArticuloView_guardar_post ( ArticuloView *
+ extern &quot;C&quot; PLUGINBF_ALIAS_EXPORT int Busqueda_on_m_inputBusqueda_textChanged ( BlSearchWidget * );
+ extern &quot;C&quot; PLUGINBF_ALIAS_EXPORT int BlSubForm_editFinished(BlSubForm *);
+ extern &quot;C&quot; PLUGINBF_ALIAS_EXPORT int BlDbCompleterComboBox_textChanged (BlDbCompleterComboBox *);
+-
++extern &quot;C&quot; PLUGINBF_ALIAS_EXPORT int BlSubForm_likeFilterSQL_Post (BlSubForm *, void **);
+ 
+ #endif
+ 
+diff --git a/bulmages/bulmalib/src/blplugins.cpp b/bulmages/bulmalib/src/blplugins.cpp
+index 3fb26a0..87b33ff 100644
+--- a/bulmages/bulmalib/src/blplugins.cpp
++++ b/bulmages/bulmalib/src/blplugins.cpp
+@@ -163,6 +163,7 @@ int BlPlugins::run ( const char *func, void *clase )
+ /**
+ \return
+ **/
++
+ int BlPlugins::run ( const char *func, void *clase, void **ret )
+ {
+     BL_FUNC_DEBUG
+@@ -212,6 +213,7 @@ int BlPlugins::run ( const char *func, void *clase, void **ret )
+ }
+ 
+ 
++
+ ///
+ /**
+ \return
+diff --git a/bulmages/bulmalib/src/blplugins.h b/bulmages/bulmalib/src/blplugins.h
+index 8448af4..c5ca174 100644
+--- a/bulmages/bulmalib/src/blplugins.h
++++ b/bulmages/bulmalib/src/blplugins.h
+@@ -44,9 +44,6 @@ public:
+     QList&lt;QLibrary *&gt; pluginsLoaded();
+ };
+ 
+-//extern BL_EXPORT BlPlugins *g_plugins;
+-//extern BL_EXPORT void *g_plugParams;
+-
+ extern BlPlugins BL_EXPORT *g_plugins;
+ extern void BL_EXPORT *g_plugParams;
+ void BL_EXPORT initPlugins();
+diff --git a/bulmages/bulmalib/src/blsubform.cpp b/bulmages/bulmalib/src/blsubform.cpp
+index 773aefd..48725e9 100644
+--- a/bulmages/bulmalib/src/blsubform.cpp
++++ b/bulmages/bulmalib/src/blsubform.cpp
+@@ -3778,10 +3778,18 @@ QString BlSubForm::likeFilterSQL(const QString &amp;text)
+                 } // end if
+             } // end if
+         } // end for
+-
++        
++        /// Llamamos a plugins para extender la busqueda por filtro (si es necesario).
++	QString parquery = text;
++	QString *pparquery = &parquery;
++	g_plugins-&gt;run ( &quot;BlSubForm_likeFilterSQL_Post&quot;, (void *) this, ( void ** ) &amp;pparquery );
++	if (parquery != text) 
++	    result  += parquery;
++    
+         result += &quot; ) &quot;;
+     } // end if
+ 
++    
+     return result;
+ }
+ 
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007375.html">[BulmaGés][Gitorious] Activity: themeph pushed 1 commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007385.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7380">[ fecha ]</a>
+              <a href="thread.html#7380">[ hilo ]</a>
+              <a href="subject.html#7380">[ asunto ]</a>
+              <a href="author.html#7380">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

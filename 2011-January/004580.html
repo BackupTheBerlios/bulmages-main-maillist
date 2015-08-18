@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Separador millares (thousands separator)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FSeparador_millares_%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F%3D28thousands_separator%3D29%3F%3D&In-Reply-To=%3CAANLkTi%3DkWgQrjEThLRcXkraAAVuvxv6f_hyPBUmy6C3D%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="004579.html">
+   <LINK REL="Next"  HREF="004581.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Separador millares (thousands separator) </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FSeparador_millares_%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F%3D28thousands_separator%3D29%3F%3D&In-Reply-To=%3CAANLkTi%3DkWgQrjEThLRcXkraAAVuvxv6f_hyPBUmy6C3D%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]Separador millares (thousands separator)">tborras en gmail.com
+       </A><BR>
+    <I>Mar Ene 25 14:25:04 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="004579.html">[BulmaGés]Separador millares (thousands separator)
+</A></li>
+        <LI>Próximo mensaje: <A HREF="004581.html">[BulmaGés]Separador millares (thousands separator)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4580">[ fecha ]</a>
+              <a href="thread.html#4580">[ hilo ]</a>
+              <a href="subject.html#4580">[ asunto ]</a>
+              <a href="author.html#4580">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Aron
+
+Esto es el tema de las Locales. No es muy buena idea hacer que sea la Base
+de Datos la que trabaje segun locales ya que entonces
+se complica mucho la gestión de todo. Principalmente la gestión de las
+fechas.
+
+Sin embargo se puede hacer relativamente fácil modificar la clase BlFixed y
+alguna otra funcion para que presenten los números en el formato descrito
+por QLocale. Y hacer que la clase BlDbRecord reinterprete los numeros con el
+formato estandar (punto decimal y sin separadores de miles).
+
+Con los números no habría muchos problemas.
+
+El principal problema esta en las fechas ya que el manejo de fechas es muy
+muy muy (he dicho muy ?) dependiente de las locales ES
+y acepta DDMMYY DDMM DD/MM/YY DDMMYYYY DD/MM y otras combinaciones de
+escritura de fecha que son perfectamente interpretadas con las locales ES
+pero que en otro tipo de locales seran mal interpretadas.
+
+Ahora mismo no podría ponerme con este tema ni aunque los dias tuviesen 100
+horas pero si quieres intentarlo cuenta con mi ayuda en lo que sea.
+
+Salut
+
+
+El 25 de enero de 2011 13:27, Fco. Javier M. C.
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;escribió:
+
+&gt;<i>  Hola.
+</I>&gt;<i>
+</I>&gt;<i> Que yo sepa no hay nada hecho al respecto.
+</I>&gt;<i>
+</I>&gt;<i> Se tendría que hacer en BulmaGes, no en PostgreSQL.
+</I>&gt;<i>
+</I>&gt;<i> Un saludo.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> El 25/01/11 12:56, Aron escribió:
+</I>&gt;<i>
+</I>&gt;<i> Hola
+</I>&gt;<i>
+</I>&gt;<i> ¿Sabéis si se puede tener separación de millares globalmente con algún
+</I>&gt;<i> ajuste de PostgreSQL o BulmaGés?
+</I>&gt;<i>
+</I>&gt;<i> Sería interesante poder activarlo o desactivarlo para todos los formularios
+</I>&gt;<i> e informes.
+</I>&gt;<i>
+</I>&gt;<i> Saludos
+</I>&gt;<i>
+</I>&gt;<i> ---
+</I>&gt;<i>
+</I>&gt;<i> Hello
+</I>&gt;<i>
+</I>&gt;<i> Do you know if we can hace thousands separators globally with some setting
+</I>&gt;<i> of PostgreSQL or Bulmages?
+</I>&gt;<i>
+</I>&gt;<i> It would be interesting to enable o disable for all forms and reports.
+</I>&gt;<i>
+</I>&gt;<i> Thanks
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i>
+</I>&gt;<i> Aron
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">listBulmages-main en lists.berlios.dehttps</A>://lists.berlios.de/mailman/listinfo/bulmages-main
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Javier.
+</I>&gt;<i> TODO-<A HREF="REDEShttp://www.todo-redes.com">REDEShttp://www.todo-redes.com</A>
+</I>&gt;<i> C/Begònia 12 - 07010 Palma de Mallorca.
+</I>&gt;<i> Tel.: 971499071
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20110125/7dd94d88/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20110125/7dd94d88/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="004579.html">[BulmaGés]Separador millares (thousands separator)
+</A></li>
+	<LI>Próximo mensaje: <A HREF="004581.html">[BulmaGés]Separador millares (thousands separator)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4580">[ fecha ]</a>
+              <a href="thread.html#4580">[ hilo ]</a>
+              <a href="subject.html#4580">[ asunto ]</a>
+              <a href="author.html#4580">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

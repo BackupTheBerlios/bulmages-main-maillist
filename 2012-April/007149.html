@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20master...&In-Reply-To=%3C20120430150148.83F63756DD%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007148.html">
+   <LINK REL="Next"  HREF="007150.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20master...&In-Reply-To=%3C20120430150148.83F63756DD%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Lun Abr 30 17:01:48 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007148.html">[BulmaGés] [Gitorious] Activity: tborras created	branch listadospers...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007150.html">[BulmaGés] [Gitorious] Activity: tborras deleted	branch filtroprovee...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7149">[ fecha ]</a>
+              <a href="thread.html#7149">[ hilo ]</a>
+              <a href="subject.html#7149">[ asunto ]</a>
+              <a href="author.html#7149">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 2 commits to master
+master changed from 87912e6 to d91c188
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/87912e69a345242ca131f6be8b925d2be3eb8d01/diffs/d91c18882ef3009f5401648db3ee2af4ca632596">https://gitorious.org/bulmages/bulmages/commit/87912e69a345242ca131f6be8b925d2be3eb8d01/diffs/d91c18882ef3009f5401648db3ee2af4ca632596</A>
+
+Diff: 
+
+commit d91c18882ef3009f5401648db3ee2af4ca632596
+Merge: 87912e6 18f51f1
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon Apr 30 17:01:05 2012 +0200
+
+    Merge branch 'filtroproveedores'
+
+
+commit 18f51f15996eb5e8527a01e297dd6549c6774341
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri Apr 27 00:00:42 2012 +0200
+
+    Agrego opciones de filtrado para proveedores
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedor/providerslist.cpp b/bulmages/bulmafact/plugins/pluginbf_proveedor/providerslist.cpp
+index 3234b43..1efee23 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedor/providerslist.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedor/providerslist.cpp
+@@ -151,6 +151,14 @@ const QString ProveedorList::generaFiltro()
+     /// Hacemos el filtrado like del campo m_filtro
+     filtro += mui_list-&gt;likeFilterSQL(m_filtro-&gt;text());
+     
++    if ( m_facturas-&gt;isChecked()) {
++        filtro += &quot; AND idproveedor IN (SELECT DISTINCT idproveedor FROM facturap WHERE procesadafacturap = FALSE)&quot;;
++    } // end if
++
++    if ( m_albaranes-&gt;isChecked()) {
++        filtro += &quot; AND idproveedor IN (SELECT DISTINCT idproveedor FROM albaranp WHERE procesadoalbaranp = FALSE)&quot;;
++    } // end if
++    
+     
+     return ( filtro );
+ }
+diff --git a/bulmages/bulmafact/plugins/pluginbf_proveedor/providerslistbase.ui b/bulmages/bulmafact/plugins/pluginbf_proveedor/providerslistbase.ui
+index dd06af9..0d2e3c4 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_proveedor/providerslistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_proveedor/providerslistbase.ui
+@@ -471,19 +471,27 @@
+      &lt;property name=&quot;frameShadow&quot;&gt;
+       &lt;enum&gt;QFrame::Raised&lt;/enum&gt;
+      &lt;/property&gt;
+-     &lt;layout class=&quot;QHBoxLayout&quot;&gt;
+-      &lt;property name=&quot;spacing&quot;&gt;
+-       &lt;number&gt;4&lt;/number&gt;
+-      &lt;/property&gt;
+-      &lt;property name=&quot;margin&quot;&gt;
+-       &lt;number&gt;4&lt;/number&gt;
+-      &lt;/property&gt;
++     &lt;layout class=&quot;QHBoxLayout&quot; name=&quot;horizontalLayout&quot;&gt;
+       &lt;item&gt;
+-       &lt;widget class=&quot;QCheckBox&quot; name=&quot;m_procesados&quot;&gt;
+-        &lt;property name=&quot;text&quot;&gt;
+-         &lt;string&gt;Procesa&amp;dos&lt;/string&gt;
++       &lt;layout class=&quot;QVBoxLayout&quot; name=&quot;verticalLayout&quot;&gt;
++        &lt;property name=&quot;spacing&quot;&gt;
++         &lt;number&gt;4&lt;/number&gt;
+         &lt;/property&gt;
+-       &lt;/widget&gt;
++        &lt;item&gt;
++         &lt;widget class=&quot;QCheckBox&quot; name=&quot;m_facturas&quot;&gt;
++          &lt;property name=&quot;text&quot;&gt;
++           &lt;string&gt;Proveedores con facturas sin procesar.&lt;/string&gt;
++          &lt;/property&gt;
++         &lt;/widget&gt;
++        &lt;/item&gt;
++        &lt;item&gt;
++         &lt;widget class=&quot;QCheckBox&quot; name=&quot;m_albaranes&quot;&gt;
++          &lt;property name=&quot;text&quot;&gt;
++           &lt;string&gt;Proveedores con albaranes sin procesar.&lt;/string&gt;
++          &lt;/property&gt;
++         &lt;/widget&gt;
++        &lt;/item&gt;
++       &lt;/layout&gt;
+       &lt;/item&gt;
+       &lt;item&gt;
+        &lt;spacer&gt;
+@@ -502,6 +510,10 @@
+        &lt;/spacer&gt;
+       &lt;/item&gt;
+      &lt;/layout&gt;
++     &lt;zorder&gt;layoutWidget&lt;/zorder&gt;
++     &lt;zorder&gt;m_facturas&lt;/zorder&gt;
++     &lt;zorder&gt;m_facturas&lt;/zorder&gt;
++     &lt;zorder&gt;m_facturas&lt;/zorder&gt;
+     &lt;/widget&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007148.html">[BulmaGés] [Gitorious] Activity: tborras created	branch listadospers...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007150.html">[BulmaGés] [Gitorious] Activity: tborras deleted	branch filtroprovee...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7149">[ fecha ]</a>
+              <a href="thread.html#7149">[ hilo ]</a>
+              <a href="subject.html#7149">[ asunto ]</a>
+              <a href="author.html#7149">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

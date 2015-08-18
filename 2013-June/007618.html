@@ -1,0 +1,323 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20master...&In-Reply-To=%3C20130605203811.C1C94165%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007617.html">
+   <LINK REL="Next"  HREF="007619.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%202%0A%09commits%20to%20master...&In-Reply-To=%3C20130605203811.C1C94165%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Mie Jun  5 22:38:11 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007617.html">[BulmaGés]Cambio splash
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007619.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7618">[ fecha ]</a>
+              <a href="thread.html#7618">[ hilo ]</a>
+              <a href="subject.html#7618">[ asunto ]</a>
+              <a href="author.html#7618">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 2 commits to master
+master changed from 2c7e3f7 to 66361e6
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/2c7e3f77f189e38d8a5522d02e43494839252e75/diffs/66361e616791d2c90cbbb81df6a403d146a3eb06">https://gitorious.org/bulmages/bulmages/commit/2c7e3f77f189e38d8a5522d02e43494839252e75/diffs/66361e616791d2c90cbbb81df6a403d146a3eb06</A>
+
+Diff: 
+
+commit 66361e616791d2c90cbbb81df6a403d146a3eb06
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Wed Jun 5 22:36:58 2013 +0200
+
+    Arreglo algunos problemas en los asientos
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoform.cpp b/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoform.cpp
+index 1da3dd2..c38605f 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoform.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoform.cpp
+@@ -389,16 +389,18 @@ int BcAsientoForm::save()
+ {
+     BL_FUNC_DEBUG
+     QString id;
+-    mainCompany() -&gt;begin();
+     try {
++	mainCompany() -&gt;begin();
+         dbSave ( id );
+         setIdAsiento ( id );
+         m_listaLineas-&gt;save();
+ 
+         /// Disparamos los plugins
+         int res = g_plugins-&gt;run ( &quot;BcAsientoForm_guardaAsiento1_post&quot;, this );
+-        if ( res != 0 )
++        if ( res != 0 ) {
++	    mainCompany()-&gt;commit();
+             return 0;
++	} // end if
+ 
+         mainCompany() -&gt;commit();
+ 
+@@ -413,8 +415,7 @@ int BcAsientoForm::save()
+         return 0;
+     } catch ( ... ) {
+         mainCompany() -&gt;rollback();
+-	blMsgError(_(&quot;Error en el guardardo&quot;));
+-        
++	blMsgError(_(&quot;Error en el guardardo del asiento&quot;));
+         return -1;
+     } // end try
+ }
+diff --git a/bulmages/bulmafact/plugins/pluginbf_asiento/pluginbf_asiento.cpp b/bulmages/bulmafact/plugins/pluginbf_asiento/pluginbf_asiento.cpp
+index 4d14039..dae6464 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_asiento/pluginbf_asiento.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_asiento/pluginbf_asiento.cpp
+@@ -515,7 +515,7 @@ int BlToolButton_released(BlToolButton *bot) {
+ 
+ int FacturaView_afterSave_Post(FacturaView *fact) {
+     BL_FUNC_DEBUG
+-  
++try {  
+     QString idasiento = &quot;&quot;;
+     QString fecha = fact-&gt;dbValue(&quot;ffactura&quot;);
+     if (fecha == &quot;&quot;) fecha = &quot;now()&quot;;
+@@ -535,12 +535,37 @@ int FacturaView_afterSave_Post(FacturaView *fact) {
+ 
+   if (idasiento == &quot;&quot;) {
+ 
++    query= &quot;SELECT * FROM ejercicios WHERE ejercicio = EXTRACT (YEAR FROM '&quot;+fecha+&quot;'::date) AND periodo = 0&quot;;
++    cur = fact-&gt;mainCompany()-&gt;loadQuery(query);
++    if (cur-&gt;eof()) {
++      delete cur;
++      blMsgInfo(_(&quot;Ejercicio contable inexistente. No se puede crear el asiento.&quot;));
++      return 0;
++    } // end if
++    if ( cur-&gt;value(&quot;bloqueado&quot;) == &quot;t&quot;) {
++      delete cur;
++      blMsgInfo(_(&quot;Ejercicio contable bloqueado. No se puede crear el asiento.&quot;));
++      return 0;
++    } // end if
++    delete cur;
++      
++
++    query = &quot;SELECT * FROM ejercicios WHERE ejercicio = EXTRACT (YEAR FROM '&quot;+fecha+&quot;'::date) AND periodo = EXTRACT (MONTH FROM '&quot;+fecha+&quot;'::date)&quot;;
++    cur = fact-&gt;mainCompany()-&gt;loadQuery(query);
++    if ( cur-&gt;value(&quot;bloqueado&quot;) == &quot;t&quot;) {
++      delete cur;
++      blMsgInfo(_(&quot;Ejercicio contable bloqueado. No se puede crear el asiento.&quot;));
++      return 0;
++    } // end if
++    delete cur;
++    
++    
+       query = &quot;INSERT INTO asiento (fecha, descripcion, comentariosasiento, clase) VALUES ('&quot;+fecha+&quot;','Fra. Cliente&quot;+ fact-&gt;dbValue(&quot;codigoserie_factura&quot;) + fact-&gt;dbValue(&quot;numfactura&quot;) +&quot;','&quot;+fact-&gt;dbValue(&quot;descfactura&quot;)+&quot;',1)&quot;;
+ 
+       fact-&gt;mainCompany()-&gt;runQuery(query);
+       
+       query = &quot;SELECT max(idasiento) AS id FROM asiento &quot;;
+-      BlDbRecordSet *cur = fact-&gt;mainCompany()-&gt;loadQuery(query);
++      cur = fact-&gt;mainCompany()-&gt;loadQuery(query);
+       if (!cur-&gt;eof()) {
+ 	  idasiento = cur-&gt;value(&quot;id&quot;);
+       } // end if
+@@ -607,10 +632,6 @@ int FacturaView_afterSave_Post(FacturaView *fact) {
+   } // end while
+   delete cur;
+   
+-  
+-  
+-  
+-  
+   /// Los apuntes por servicio u obra.
+   query = &quot;SELECT idcuenta, SUM(cantlfactura*pvplfactura*(1-descuentolfactura/100))::NUMERIC(12,2) AS subbase FROM lfactura &quot; \
+   &quot;LEFT JOIN articulo AS t1 ON t1.idarticulo = lfactura.idarticulo &quot; \
+@@ -638,6 +659,10 @@ int FacturaView_afterSave_Post(FacturaView *fact) {
+   query = &quot;SELECT cierraasiento(&quot;+idasiento+&quot;)&quot;;
+   fact-&gt;mainCompany()-&gt;runQuery(query);
+   
++} catch(...) {
++  blMsgInfo(&quot;No se pudo crear el asiento contable&quot;);
++  return 0;
++} // end try
+   return 0;
+ }
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturaview.cpp b/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturaview.cpp
+index 3cf48d5..6fd8faa 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturaview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_clientefactura/facturaview.cpp
+@@ -390,7 +390,7 @@ void FacturaView::on_mui_duplicar_released()
+         bud-&gt;calculaypintatotales();
+ 
+     } catch ( ... ) {
+-        blMsgInfo ( _ ( &quot;Error inesperado&quot; ), this );
++        blMsgInfo ( _ ( &quot;Error inesperado duplicando la factura&quot; ), this );
+         if ( cur ) delete cur;
+         if ( bud ) delete bud;
+     } // end try
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/README.es b/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/README.es
+index 62c6be4..23a22f1 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/README.es
++++ b/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/README.es
+@@ -28,6 +28,6 @@ Incompatibles:
+ 
+ Categorias: Contabilidad general;Experimentales;
+ 
+-Orden: 40
++Orden: 905
+ 
+ Comentarios: -
+diff --git a/bulmages/bulmalib/src/blimportexport.cpp b/bulmages/bulmalib/src/blimportexport.cpp
+index 9feed2d..dbd655b 100644
+--- a/bulmages/bulmalib/src/blimportexport.cpp
++++ b/bulmages/bulmalib/src/blimportexport.cpp
+@@ -1499,7 +1499,7 @@ StructureParser::StructureParser ( BlPostgreSqlClient *con, unsigned int tip )
+     QString query = &quot;INSERT INTO cuenta (codigo, descripcion) VALUES ('AUX', 'Una descripcion auxiliar de cuenta')&quot;;
+     dbConnection-&gt;runQuery ( query );
+     for ( int i = 0; i &lt;= 12; i++ ) {
+-        QString query2 = &quot;INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2005, &quot; + QString::number ( i ) + &quot;, false)&quot;;
++        QString query2 = &quot;INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (&quot;+QString::number(QDate::currentDate().year())+&quot;, &quot; + QString::number ( i ) + &quot;, false)&quot;;
+         dbConnection-&gt;runQuery ( query2 );
+     } // end for
+     dbConnection-&gt;commit();
+
+commit 22e60c55ebb2a8d1ff61805073ac80408ee5d7f9
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue Jun 4 21:43:15 2013 +0200
+
+    Voy a mejorar la plantilla de balance
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_balance/openreports/es/balance.rml b/bulmages/bulmafact/plugins/pluginbf_balance/openreports/es/balance.rml
+index 4f04b6e..40f712a 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_balance/openreports/es/balance.rml
++++ b/bulmages/bulmafact/plugins/pluginbf_balance/openreports/es/balance.rml
+@@ -39,58 +39,46 @@
+ 	&lt;blockTableStyle id=&quot;tabla&quot;&gt;
+ 		&lt;blockTopPadding length=&quot;0&quot;/&gt;
+ 		&lt;blockBottomPadding length=&quot;0&quot;/&gt;
+-		&lt;blockAlignment value=&quot;LEFT&quot; start=&quot;0,1&quot; stop=&quot;1,-1&quot;/&gt;
+-		&lt;blockAlignment value=&quot;RIGHT&quot; start=&quot;2,1&quot; stop=&quot;-1,-1&quot;/&gt;
+-		&lt;blockAlignment value=&quot;CENTER&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-		&lt;blockBackground colorName=&quot;(0.7,0.7,0.7)&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-		&lt;blockTextColor colorName=&quot;(0,0,0)&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-		&lt;blockTextColor colorName=&quot;(0,1,0)&quot; start=&quot;5,1&quot; stop=&quot;5,-1&quot;/&gt;
+-		&lt;blockTextColor colorName=&quot;(0,1,0)&quot; start=&quot;8,1&quot; stop=&quot;8,-1&quot;/&gt;
+-		&lt;lineStyle kind=&quot;LINEBELOW&quot; colorName=&quot;(0,0,0)&quot;  start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-		&lt;lineStyle kind=&quot;OUTLINE&quot; colorName=&quot;black&quot;  start=&quot;0,0&quot; stop=&quot;-1,-1&quot;/&gt;
+-		&lt;blockFont name=&quot;Helvetica-Bold&quot; size=&quot;6&quot; start=&quot;0,0&quot; stop=&quot;-1,0&quot;/&gt;
+-		&lt;blockFont name=&quot;Helvetica&quot; size=&quot;6&quot; start=&quot;0,1&quot; stop=&quot;-1,-1&quot;/&gt;
+-		&lt;blockFont name=&quot;Helvetica&quot; size=&quot;6&quot; start=&quot;1,1&quot; stop=&quot;1,-1&quot;/&gt;
++		&lt;blockAlignment value=&quot;LEFT&quot; start=&quot;0,0&quot; stop=&quot;0,-1&quot;/&gt;
++		&lt;blockAlignment value=&quot;RIGHT&quot; start=&quot;1,0&quot; stop=&quot;-1,-1&quot;/&gt;
++
+ 	&lt;/blockTableStyle&gt;
+ 	&lt;paraStyle name=&quot;rojo&quot; alignment=&quot;right&quot; textColor=&quot;red&quot; fontSize=&quot;6&quot;/&gt;
+ &lt;/stylesheet&gt;
+ 
+ &lt;story&gt;
+ 
+-&lt;blockTable style=&quot;tabla&quot; repeatRows=&quot;1&quot;&gt;
++&lt;blockTable style=&quot;tabla&quot; colWidths=&quot;4cm,10cm,3cm,3cm,3cm&quot; repeatRows=&quot;1&quot;&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Codigo&lt;/td&gt;
+ &lt;td&gt;Descripcion&lt;/td&gt;
+-&lt;td&gt;Saldo Anterior&lt;/td&gt;
+ &lt;td&gt;Debe&lt;/td&gt;
+ &lt;td&gt;Haber&lt;/td&gt;
+ &lt;td&gt;Saldo&lt;/td&gt;
+-&lt;td&gt;Debe Ej&lt;/td&gt;
+-&lt;td&gt;Haber Ej&lt;/td&gt;
+-&lt;td&gt;Saldo Ej&lt;/td&gt;
++
+ &lt;/tr&gt;
+-&lt;!--QUERY=&quot;SELECT * FROM balancetemp ORDER BY codigo, nivel&quot;--&gt;
++
++&lt;!-- QUERY1= &quot;SELECT descripcion, codigo AS cod1 FROM cuenta ORDER BY codigo&quot; --&gt;
++ 
++&lt;!--QUERY2 = &quot;SELECT COALESCE(sum(apunte.debe),0) AS tdebe, COALESCE(sum(apunte.haber),0) as thaber  FROM apunte 
++LEFT JOIN cuenta ON apunte.idcuenta = cuenta.idcuenta 
++WHERE cuenta.codigo LIKE '[cod1]%' &quot; --&gt;
++
++ &lt;!-- QUERY3=&quot;SELECT TRUE WHERE [tdebe] + [thaber]&lt;&gt;0&quot; --&gt;
+ &lt;tr&gt;
+-&lt;td&gt;[codigo]&lt;/td&gt;
++&lt;td&gt;[cod1]&lt;/td&gt;
+ &lt;td&gt;[descripcion]&lt;/td&gt;
+-&lt;td&gt;[asaldo]&lt;/td&gt;
+ &lt;td&gt;[tdebe]&lt;/td&gt;
+ &lt;td&gt;[thaber]&lt;/td&gt;
+-&lt;!-- IF =&quot;[tsaldo] &lt; 0&quot; --&gt;
+-&lt;td&gt;&lt;para style=&quot;rojo&quot;&gt;[tsaldo]&lt;/para&gt;&lt;/td&gt;
+-&lt;!-- ELSE --&gt;
+-&lt;td  &gt;[tsaldo]&lt;/td&gt;
+-&lt;!-- END IF --&gt;
+-
+-&lt;td&gt;[ejdebe]&lt;/td&gt;
+-&lt;td&gt;[ejhaber]&lt;/td&gt;
+-&lt;!-- IF =&quot;[tsaldo] &lt; 0&quot; --&gt;
+-&lt;td&gt;&lt;para style=&quot;rojo&quot;&gt;[ejsaldo]&lt;/para&gt;&lt;/td&gt;
+-&lt;!-- ELSE --&gt;
+-&lt;td  &gt;[ejsaldo]&lt;/td&gt;
+-&lt;!-- END IF --&gt;
++&lt;td&gt;&lt;!--QUERY4=&quot; SELECT [tdebe] - [thaber] AS tsaldo &quot;--&gt;[tsaldo]&lt;!--END QUERY4--&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+-&lt;!--END QUERY--&gt;
++
++ &lt;!-- END QUERY3 --&gt;
++ 
++&lt;!-- END QUERY2--&gt;
++
++&lt;!-- END QUERY1--&gt;
++
+ &lt;/blockTable&gt;		
+ &lt;/story&gt;
+ &lt;/document&gt;
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007617.html">[BulmaGés]Cambio splash
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007619.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7618">[ fecha ]</a>
+              <a href="thread.html#7618">[ hilo ]</a>
+              <a href="subject.html#7618">[ asunto ]</a>
+              <a href="author.html#7618">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

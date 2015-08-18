@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to newtrml...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20newtrml...&In-Reply-To=%3C20120516162443.D91D2756E0%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007239.html">
+   <LINK REL="Next"  HREF="007241.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to newtrml... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20newtrml...&In-Reply-To=%3C20120516162443.D91D2756E0%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to newtrml...">no-reply en gitorious.org
+       </A><BR>
+    <I>Mie Mayo 16 18:24:43 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007239.html">[BulmaGés]mas cosas
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007241.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7233">[ fecha ]</a>
+              <a href="thread.html#7233">[ hilo ]</a>
+              <a href="subject.html#7233">[ asunto ]</a>
+              <a href="author.html#7233">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to newtrml2pdf
+newtrml2pdf changed from b3be6f9 to 0aad893
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/b3be6f983dd08f385b4c7919485fbde5411c905d/diffs/0aad89377cc8b747f3a2a6bfb03b47433f65efbe">https://gitorious.org/bulmages/bulmages/commit/b3be6f983dd08f385b4c7919485fbde5411c905d/diffs/0aad89377cc8b747f3a2a6bfb03b47433f65efbe</A>
+
+Diff: 
+
+commit 0aad89377cc8b747f3a2a6bfb03b47433f65efbe
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Wed May 16 18:24:22 2012 +0200
+
+    Arreglo el nuevo bgtrml2pdf para que soporte las imagenes. El error esta en el NumberedCanvas que no reimplementa bien los metodos sobrecargados del canvas.Canvas No he querido profundizar mas en el tema ya que hay que estudiarlo mucho y he preferido obviar el contador de paginas que esta puesto a peñon fijo y no se puede quitar. Habra que esperar a proximas versiones donde  el &lt;pageCount/&gt; este operativo
+
+diff --git a/bulmages/installbulmages/bgtrml2pdf/bgtrml2pdf.in b/bulmages/installbulmages/bgtrml2pdf/bgtrml2pdf.in
+index 85f6813..fe8d37a 100644
+--- a/bulmages/installbulmages/bgtrml2pdf/bgtrml2pdf.in
++++ b/bulmages/installbulmages/bgtrml2pdf/bgtrml2pdf.in
+@@ -102,7 +102,7 @@ class NumberedCanvas(canvas.Canvas):
+         self._currentPage =0
+         self._pageCounter=0
+         self.pages={}
+-
++&quot;&quot;&quot;
+     def showPage(self):
+         self._currentPage +=1
+         if not self._flag:
+@@ -132,7 +132,7 @@ class NumberedCanvas(canvas.Canvas):
+         #)
+ 
+     def save(self):
+-        &quot;&quot;&quot;add page info to each page (page x of y)&quot;&quot;&quot;
++        #add page info to each page (page x of y)
+         # reset page counter
+         self._pageNumber = 0
+         for code in self._codes:
+@@ -142,7 +142,7 @@ class NumberedCanvas(canvas.Canvas):
+             canvas.Canvas.showPage(self)
+ #        self.restoreState()
+         self._doc.SaveToFile(self._filename, self)
+-
++&quot;&quot;&quot;
+ class PageCount(platypus.Flowable):
+     def draw(self):
+         self.canv.beginForm(&quot;pageCount&quot;)
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007239.html">[BulmaGés]mas cosas
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007241.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7233">[ fecha ]</a>
+              <a href="thread.html#7233">[ hilo ]</a>
+              <a href="subject.html#7233">[ asunto ]</a>
+              <a href="author.html#7233">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

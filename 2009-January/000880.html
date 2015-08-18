@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]r2934 - in trunk/bulmages: ModulesCMake bulmafact/src
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fr2934_-_in_trunk/bulm%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fages%3D3A_ModulesCMake_bulmafact/src%3F%3D&In-Reply-To=%3C20090127195217.GF3960%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000877.html">
+   <LINK REL="Next"  HREF="000878.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]r2934 - in trunk/bulmages: ModulesCMake bulmafact/src </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fr2934_-_in_trunk/bulm%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fages%3D3A_ModulesCMake_bulmafact/src%3F%3D&In-Reply-To=%3C20090127195217.GF3960%40localhost%3E"
+       TITLE="[BulmaGés]r2934 - in trunk/bulmages: ModulesCMake bulmafact/src">xdrudis en tinet.cat
+       </A><BR>
+    <I>Mar Ene 27 20:52:17 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000877.html">[BulmaGés]r2934 - in trunk/bulmages: ModulesCMake bulmafact/src
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000878.html">[BulmaGés] r2935 - in trunk/bulmages:	bulmacont/src bulmafact/plugins/plugintpv	bulmafact/plugins/pluginz2z
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#880">[ fecha ]</a>
+              <a href="thread.html#880">[ hilo ]</a>
+              <a href="subject.html#880">[ asunto ]</a>
+              <a href="author.html#880">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, Jan 27, 2009 at 12:51:31PM +0100, Leopold Palomo-Avellaneda wrote:
+
+&gt;<i> 
+</I>&gt;<i> O sigui, que tots els tr(...) hauran de ser i18n(...) el que passa és que això 
+</I>&gt;<i> té un problema que em vaig trovar. No sembre tr(&quot;..&quot;) té un string com a 
+</I>&gt;<i> paràmetre, pot tenir més coses [1] de forma que no pots fer una transformació 
+</I>&gt;<i> 1 a 1 amb gettext, has de vigilar, ja que el uic et pot generar codi amb és 
+</I>&gt;<i> paràmetres.
+</I>&gt;<i>
+</I>
+Ni puta idea però aquí diuen que pots passar-li un paràmetre a uic 
+per dir-li que no posi tr sinó una altra funció. Amb això no es pot arreglar ? 
+
+<A HREF="http://blog.venthur.de/2008/09/14/gettext-and-qt4/">http://blog.venthur.de/2008/09/14/gettext-and-qt4/</A>
+
+
+&gt;<i> Després, quan ja has acabat de fer el codi, i creus que ja pots traduir, que 
+</I>&gt;<i> és quan es diu que congeles les cadenes, aleshores extreus el text:
+</I>&gt;<i> messages_extract, generant els .pot que publiques per a que els traductors 
+</I>&gt;<i> treballin.
+</I>&gt;<i> 
+</I>&gt;<i> En aquest punt, aleshores, els traductors t'envien els seu .po amb la 
+</I>&gt;<i> traducció fet, cosa que tu incorpores i la compiles generant el .mo. 
+</I>&gt;<i> 
+</I>&gt;<i> Què fa un traductor?
+</I>&gt;<i> 
+</I>&gt;<i> Doncs, s'agafa el pot, el seu .po antic si el té i fa un msgmerge, de forma 
+</I>&gt;<i> que fusiona tot i li marque les cades dubtoses com a &quot;fuzzy&quot;.
+</I>&gt;<i> 
+</I>
+Sí, pel poc que entenc aquest fluxe de treball sembla més realista que el que 
+m'ha semblat entendre del Fco. Javier, que si ho entenc bé sembla que ho pensi
+com si el desenvolupador fes totes les traduccions. 
+
+&gt;<i> Aleshores, la meva idea era encapsular tot el tema de gettext de forma que en 
+</I>&gt;<i> els sistemes que no tenen gettext, puguis compilar sense problemes, amb un 
+</I>&gt;<i> #ifdef o amb una classe, no ho tenia clar. La idea era de canviar totes les 
+</I>&gt;<i> cadenes de bulmages de tr a una altre cosa, per exemple trQt o tri18n, de 
+</I>&gt;<i> forma que no col·lisionés amb Qt ni gettext.
+</I>&gt;<i> 
+</I>
+Hi ha sistemes sense gettext ? Llavors no valdria més quedar-se amb Linguist ? 
+O tampoc funciona en totes les plataformes ?
+Aquí diu que hi ha eines per passar de .ts a .po i a l'inrevés i poder usar 
+tr al programa i Kbabel a la traducció (però també diu que segurament té bugs). 
+
+<A HREF="http://translate.sourceforge.net/wiki/toolkit/ts2po">http://translate.sourceforge.net/wiki/toolkit/ts2po</A>
+
+Consti que no tinc ni punyetera idea del que parlo (per si no resultava evident). 
+
+
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>
+Signa per fer Collserola parc natural com cal
+<A HREF="http://www.collserola.org/salvemelparcnatural/">http://www.collserola.org/salvemelparcnatural/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000877.html">[BulmaGés]r2934 - in trunk/bulmages: ModulesCMake bulmafact/src
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000878.html">[BulmaGés] r2935 - in trunk/bulmages:	bulmacont/src bulmafact/plugins/plugintpv	bulmafact/plugins/pluginz2z
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#880">[ fecha ]</a>
+              <a href="thread.html#880">[ hilo ]</a>
+              <a href="subject.html#880">[ asunto ]</a>
+              <a href="author.html#880">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

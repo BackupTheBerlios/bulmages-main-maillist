@@ -1,0 +1,1402 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130611211401.8C240175%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007628.html">
+   <LINK REL="Next"  HREF="007630.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130611211401.8C240175%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Mar Jun 11 23:14:01 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007628.html">[BulmaGés] Paquetes debian
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007630.html">[BulmaGés] Mensaje de parte de un usuario.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7629">[ fecha ]</a>
+              <a href="thread.html#7629">[ hilo ]</a>
+              <a href="subject.html#7629">[ asunto ]</a>
+              <a href="author.html#7629">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from 2999cb8 to 374761e
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/2999cb8de9204bf91ef4c16b8cdb44a02b712157/diffs/374761e7c6f32b68a6311debed02281717bd5b50">https://gitorious.org/bulmages/bulmages/commit/2999cb8de9204bf91ef4c16b8cdb44a02b712157/diffs/374761e7c6f32b68a6311debed02281717bd5b50</A>
+
+Diff: 
+
+commit 374761e7c6f32b68a6311debed02281717bd5b50
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Tue Jun 11 23:13:51 2013 +0200
+
+    Arreglo diversos temas para la parte contable y creo la clase BlSync que servira para la sincronizacion con servidores
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_balance/balancebase.ui b/bulmages/bulmafact/plugins/pluginbf_balance/balancebase.ui
+index 2ac2b3f..9f570d7 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_balance/balancebase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_balance/balancebase.ui
+@@ -7,12 +7,12 @@
+    &lt;rect&gt;
+     &lt;x&gt;0&lt;/x&gt;
+     &lt;y&gt;0&lt;/y&gt;
+-    &lt;width&gt;690&lt;/width&gt;
+-    &lt;height&gt;490&lt;/height&gt;
++    &lt;width&gt;986&lt;/width&gt;
++    &lt;height&gt;876&lt;/height&gt;
+    &lt;/rect&gt;
+   &lt;/property&gt;
+   &lt;property name=&quot;sizePolicy&quot;&gt;
+-   &lt;sizepolicy hsizetype=&quot;Fixed&quot; vsizetype=&quot;Fixed&quot;&gt;
++   &lt;sizepolicy hsizetype=&quot;Expanding&quot; vsizetype=&quot;Expanding&quot;&gt;
+     &lt;horstretch&gt;0&lt;/horstretch&gt;
+     &lt;verstretch&gt;0&lt;/verstretch&gt;
+    &lt;/sizepolicy&gt;
+@@ -30,17 +30,14 @@
+    &lt;iconset resource=&quot;../../../bulmages.qrc&quot;&gt;
+     &lt;normaloff&gt;:/BulmaCont32x32/images/png/i_balance.xpm&lt;/normaloff&gt;:/BulmaCont32x32/images/png/i_balance.xpm&lt;/iconset&gt;
+   &lt;/property&gt;
+-  &lt;layout class=&quot;QVBoxLayout&quot;&gt;
+-   &lt;property name=&quot;spacing&quot;&gt;
+-    &lt;number&gt;6&lt;/number&gt;
+-   &lt;/property&gt;
++  &lt;layout class=&quot;QGridLayout&quot; name=&quot;gridLayout&quot;&gt;
+    &lt;property name=&quot;margin&quot;&gt;
+-    &lt;number&gt;3&lt;/number&gt;
++    &lt;number&gt;2&lt;/number&gt;
+    &lt;/property&gt;
+-   &lt;item&gt;
++   &lt;item row=&quot;0&quot; column=&quot;0&quot;&gt;
+     &lt;layout class=&quot;QHBoxLayout&quot;&gt;
+      &lt;property name=&quot;spacing&quot;&gt;
+-      &lt;number&gt;5&lt;/number&gt;
++      &lt;number&gt;0&lt;/number&gt;
+      &lt;/property&gt;
+      &lt;property name=&quot;margin&quot;&gt;
+       &lt;number&gt;0&lt;/number&gt;
+@@ -87,15 +84,15 @@
+        &lt;property name=&quot;frameShadow&quot;&gt;
+         &lt;enum&gt;QFrame::Raised&lt;/enum&gt;
+        &lt;/property&gt;
+-       &lt;layout class=&quot;QGridLayout&quot;&gt;
+-        &lt;property name=&quot;margin&quot;&gt;
+-         &lt;number&gt;5&lt;/number&gt;
+-        &lt;/property&gt;
++       &lt;layout class=&quot;QHBoxLayout&quot; name=&quot;horizontalLayout&quot;&gt;
+         &lt;property name=&quot;spacing&quot;&gt;
+-         &lt;number&gt;5&lt;/number&gt;
++         &lt;number&gt;2&lt;/number&gt;
++        &lt;/property&gt;
++        &lt;property name=&quot;margin&quot;&gt;
++         &lt;number&gt;2&lt;/number&gt;
+         &lt;/property&gt;
+-        &lt;item row=&quot;0&quot; column=&quot;2&quot;&gt;
+-         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_filtrar&quot;&gt;
++        &lt;item&gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_imprimir&quot;&gt;
+           &lt;property name=&quot;minimumSize&quot;&gt;
+            &lt;size&gt;
+             &lt;width&gt;32&lt;/width&gt;
+@@ -109,53 +106,31 @@
+            &lt;/size&gt;
+           &lt;/property&gt;
+           &lt;property name=&quot;toolTip&quot;&gt;
+-           &lt;string&gt;Filtrar balance&lt;/string&gt;
++           &lt;string&gt;Imprimir balance&lt;/string&gt;
+           &lt;/property&gt;
+           &lt;property name=&quot;whatsThis&quot;&gt;
+-           &lt;string&gt;Filtrar balance&lt;/string&gt;
++           &lt;string&gt;Imprimir balance&lt;/string&gt;
+           &lt;/property&gt;
+           &lt;property name=&quot;text&quot;&gt;
+            &lt;string/&gt;
+           &lt;/property&gt;
+           &lt;property name=&quot;icon&quot;&gt;
+            &lt;iconset resource=&quot;../../../bulmages.qrc&quot;&gt;
+-            &lt;normaloff&gt;:/Images/edit-find.png&lt;/normaloff&gt;:/Images/edit-find.png&lt;/iconset&gt;
++            &lt;normaloff&gt;:/Images/document-print.png&lt;/normaloff&gt;:/Images/document-print.png&lt;/iconset&gt;
+           &lt;/property&gt;
+           &lt;property name=&quot;iconSize&quot;&gt;
+            &lt;size&gt;
+             &lt;width&gt;22&lt;/width&gt;
+-            &lt;height&gt;32&lt;/height&gt;
++            &lt;height&gt;22&lt;/height&gt;
+            &lt;/size&gt;
+           &lt;/property&gt;
+           &lt;property name=&quot;shortcut&quot;&gt;
+-           &lt;string&gt;Ctrl+F&lt;/string&gt;
+-          &lt;/property&gt;
+-          &lt;property name=&quot;checkable&quot;&gt;
+-           &lt;bool&gt;true&lt;/bool&gt;
+-          &lt;/property&gt;
+-          &lt;property name=&quot;checked&quot;&gt;
+-           &lt;bool&gt;true&lt;/bool&gt;
++           &lt;string&gt;Ctrl+P&lt;/string&gt;
+           &lt;/property&gt;
+          &lt;/widget&gt;
+         &lt;/item&gt;
+-        &lt;item row=&quot;0&quot; column=&quot;4&quot;&gt;
+-         &lt;spacer&gt;
+-          &lt;property name=&quot;orientation&quot;&gt;
+-           &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
+-          &lt;/property&gt;
+-          &lt;property name=&quot;sizeType&quot;&gt;
+-           &lt;enum&gt;QSizePolicy::Expanding&lt;/enum&gt;
+-          &lt;/property&gt;
+-          &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
+-           &lt;size&gt;
+-            &lt;width&gt;52&lt;/width&gt;
+-            &lt;height&gt;25&lt;/height&gt;
+-           &lt;/size&gt;
+-          &lt;/property&gt;
+-         &lt;/spacer&gt;
+-        &lt;/item&gt;
+-        &lt;item row=&quot;0&quot; column=&quot;3&quot;&gt;
+-         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_actualizar&quot;&gt;
++        &lt;item&gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_detalles&quot;&gt;
+           &lt;property name=&quot;minimumSize&quot;&gt;
+            &lt;size&gt;
+             &lt;width&gt;32&lt;/width&gt;
+@@ -169,37 +144,37 @@
+            &lt;/size&gt;
+           &lt;/property&gt;
+           &lt;property name=&quot;toolTip&quot;&gt;
+-           &lt;string&gt;Actualizar balance&lt;/string&gt;
++           &lt;string&gt;Filtrar balance&lt;/string&gt;
+           &lt;/property&gt;
+           &lt;property name=&quot;whatsThis&quot;&gt;
+-           &lt;string&gt;Actualizar balance&lt;/string&gt;
++           &lt;string&gt;Filtrar balance&lt;/string&gt;
+           &lt;/property&gt;
+           &lt;property name=&quot;text&quot;&gt;
+            &lt;string/&gt;
+           &lt;/property&gt;
+           &lt;property name=&quot;icon&quot;&gt;
+            &lt;iconset resource=&quot;../../../bulmages.qrc&quot;&gt;
+-            &lt;normaloff&gt;:/Images/view-refresh.png&lt;/normaloff&gt;:/Images/view-refresh.png&lt;/iconset&gt;
++            &lt;normaloff&gt;:/Images/edit-find.png&lt;/normaloff&gt;:/Images/edit-find.png&lt;/iconset&gt;
+           &lt;/property&gt;
+           &lt;property name=&quot;iconSize&quot;&gt;
+            &lt;size&gt;
+             &lt;width&gt;22&lt;/width&gt;
+-            &lt;height&gt;22&lt;/height&gt;
++            &lt;height&gt;32&lt;/height&gt;
+            &lt;/size&gt;
+           &lt;/property&gt;
+           &lt;property name=&quot;shortcut&quot;&gt;
+-           &lt;string&gt;F5&lt;/string&gt;
++           &lt;string&gt;Ctrl+F&lt;/string&gt;
+           &lt;/property&gt;
+           &lt;property name=&quot;checkable&quot;&gt;
+-           &lt;bool&gt;false&lt;/bool&gt;
++           &lt;bool&gt;true&lt;/bool&gt;
+           &lt;/property&gt;
+           &lt;property name=&quot;checked&quot;&gt;
+-           &lt;bool&gt;false&lt;/bool&gt;
++           &lt;bool&gt;true&lt;/bool&gt;
+           &lt;/property&gt;
+          &lt;/widget&gt;
+         &lt;/item&gt;
+-        &lt;item row=&quot;0&quot; column=&quot;1&quot;&gt;
+-         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_imprimir&quot;&gt;
++        &lt;item&gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_actualizar&quot;&gt;
+           &lt;property name=&quot;minimumSize&quot;&gt;
+            &lt;size&gt;
+             &lt;width&gt;32&lt;/width&gt;
+@@ -213,17 +188,17 @@
+            &lt;/size&gt;
+           &lt;/property&gt;
+           &lt;property name=&quot;toolTip&quot;&gt;
+-           &lt;string&gt;Imprimir balance&lt;/string&gt;
++           &lt;string&gt;Actualizar balance&lt;/string&gt;
+           &lt;/property&gt;
+           &lt;property name=&quot;whatsThis&quot;&gt;
+-           &lt;string&gt;Imprimir balance&lt;/string&gt;
++           &lt;string&gt;Actualizar balance&lt;/string&gt;
+           &lt;/property&gt;
+           &lt;property name=&quot;text&quot;&gt;
+            &lt;string/&gt;
+           &lt;/property&gt;
+           &lt;property name=&quot;icon&quot;&gt;
+            &lt;iconset resource=&quot;../../../bulmages.qrc&quot;&gt;
+-            &lt;normaloff&gt;:/Images/document-print.png&lt;/normaloff&gt;:/Images/document-print.png&lt;/iconset&gt;
++            &lt;normaloff&gt;:/Images/view-refresh.png&lt;/normaloff&gt;:/Images/view-refresh.png&lt;/iconset&gt;
+           &lt;/property&gt;
+           &lt;property name=&quot;iconSize&quot;&gt;
+            &lt;size&gt;
+@@ -232,160 +207,51 @@
+            &lt;/size&gt;
+           &lt;/property&gt;
+           &lt;property name=&quot;shortcut&quot;&gt;
+-           &lt;string&gt;Ctrl+P&lt;/string&gt;
++           &lt;string&gt;F5&lt;/string&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;checkable&quot;&gt;
++           &lt;bool&gt;false&lt;/bool&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;checked&quot;&gt;
++           &lt;bool&gt;false&lt;/bool&gt;
+           &lt;/property&gt;
+          &lt;/widget&gt;
+         &lt;/item&gt;
++        &lt;item&gt;
++         &lt;widget class=&quot;QFrame&quot; name=&quot;mui_plugbotones&quot;&gt;
++          &lt;property name=&quot;frameShape&quot;&gt;
++           &lt;enum&gt;QFrame::StyledPanel&lt;/enum&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;frameShadow&quot;&gt;
++           &lt;enum&gt;QFrame::Raised&lt;/enum&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;lineWidth&quot;&gt;
++           &lt;number&gt;0&lt;/number&gt;
++          &lt;/property&gt;
++         &lt;/widget&gt;
++        &lt;/item&gt;
++        &lt;item&gt;
++         &lt;spacer&gt;
++          &lt;property name=&quot;orientation&quot;&gt;
++           &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;sizeType&quot;&gt;
++           &lt;enum&gt;QSizePolicy::Expanding&lt;/enum&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
++           &lt;size&gt;
++            &lt;width&gt;52&lt;/width&gt;
++            &lt;height&gt;25&lt;/height&gt;
++           &lt;/size&gt;
++          &lt;/property&gt;
++         &lt;/spacer&gt;
++        &lt;/item&gt;
+        &lt;/layout&gt;
+       &lt;/widget&gt;
+      &lt;/item&gt;
+     &lt;/layout&gt;
+    &lt;/item&gt;
+-   &lt;item&gt;
+-    &lt;widget class=&quot;QFrame&quot; name=&quot;frame&quot;&gt;
+-     &lt;property name=&quot;frameShape&quot;&gt;
+-      &lt;enum&gt;QFrame::StyledPanel&lt;/enum&gt;
+-     &lt;/property&gt;
+-     &lt;property name=&quot;frameShadow&quot;&gt;
+-      &lt;enum&gt;QFrame::Raised&lt;/enum&gt;
+-     &lt;/property&gt;
+-     &lt;layout class=&quot;QGridLayout&quot;&gt;
+-      &lt;property name=&quot;margin&quot;&gt;
+-       &lt;number&gt;3&lt;/number&gt;
+-      &lt;/property&gt;
+-      &lt;property name=&quot;spacing&quot;&gt;
+-       &lt;number&gt;3&lt;/number&gt;
+-      &lt;/property&gt;
+-      &lt;item row=&quot;0&quot; column=&quot;0&quot;&gt;
+-       &lt;widget class=&quot;QLabel&quot; name=&quot;TextLabel1_2_2&quot;&gt;
+-        &lt;property name=&quot;sizePolicy&quot;&gt;
+-         &lt;sizepolicy hsizetype=&quot;Fixed&quot; vsizetype=&quot;Fixed&quot;&gt;
+-          &lt;horstretch&gt;0&lt;/horstretch&gt;
+-          &lt;verstretch&gt;0&lt;/verstretch&gt;
+-         &lt;/sizepolicy&gt;
+-        &lt;/property&gt;
+-        &lt;property name=&quot;text&quot;&gt;
+-         &lt;string&gt;Fecha inicial:&lt;/string&gt;
+-        &lt;/property&gt;
+-       &lt;/widget&gt;
+-      &lt;/item&gt;
+-      &lt;item row=&quot;0&quot; column=&quot;1&quot; colspan=&quot;2&quot;&gt;
+-       &lt;widget class=&quot;QLabel&quot; name=&quot;TextLabel1_3&quot;&gt;
+-        &lt;property name=&quot;text&quot;&gt;
+-         &lt;string&gt;Cuenta inicial:&lt;/string&gt;
+-        &lt;/property&gt;
+-       &lt;/widget&gt;
+-      &lt;/item&gt;
+-      &lt;item row=&quot;1&quot; column=&quot;0&quot;&gt;
+-       &lt;widget class=&quot;BlDateSearch&quot; name=&quot;mui_fechaInicial&quot; native=&quot;true&quot;&gt;
+-        &lt;property name=&quot;sizePolicy&quot;&gt;
+-         &lt;sizepolicy hsizetype=&quot;Fixed&quot; vsizetype=&quot;Fixed&quot;&gt;
+-          &lt;horstretch&gt;0&lt;/horstretch&gt;
+-          &lt;verstretch&gt;0&lt;/verstretch&gt;
+-         &lt;/sizepolicy&gt;
+-        &lt;/property&gt;
+-        &lt;property name=&quot;minimumSize&quot;&gt;
+-         &lt;size&gt;
+-          &lt;width&gt;150&lt;/width&gt;
+-          &lt;height&gt;25&lt;/height&gt;
+-         &lt;/size&gt;
+-        &lt;/property&gt;
+-       &lt;/widget&gt;
+-      &lt;/item&gt;
+-      &lt;item row=&quot;1&quot; column=&quot;1&quot; colspan=&quot;2&quot;&gt;
+-       &lt;widget class=&quot;BlSearchWidget&quot; name=&quot;mui_cuentaInicial&quot; native=&quot;true&quot;&gt;
+-        &lt;property name=&quot;minimumSize&quot;&gt;
+-         &lt;size&gt;
+-          &lt;width&gt;100&lt;/width&gt;
+-          &lt;height&gt;25&lt;/height&gt;
+-         &lt;/size&gt;
+-        &lt;/property&gt;
+-       &lt;/widget&gt;
+-      &lt;/item&gt;
+-      &lt;item row=&quot;2&quot; column=&quot;0&quot;&gt;
+-       &lt;widget class=&quot;QLabel&quot; name=&quot;TextLabel1_2_2_2&quot;&gt;
+-        &lt;property name=&quot;text&quot;&gt;
+-         &lt;string&gt;Fecha final:&lt;/string&gt;
+-        &lt;/property&gt;
+-       &lt;/widget&gt;
+-      &lt;/item&gt;
+-      &lt;item row=&quot;2&quot; column=&quot;1&quot; colspan=&quot;2&quot;&gt;
+-       &lt;widget class=&quot;QLabel&quot; name=&quot;TextLabel1_3_2&quot;&gt;
+-        &lt;property name=&quot;text&quot;&gt;
+-         &lt;string&gt;Cuenta final:&lt;/string&gt;
+-        &lt;/property&gt;
+-       &lt;/widget&gt;
+-      &lt;/item&gt;
+-      &lt;item row=&quot;3&quot; column=&quot;0&quot;&gt;
+-       &lt;widget class=&quot;BlDateSearch&quot; name=&quot;mui_fechaFinal&quot; native=&quot;true&quot;&gt;
+-        &lt;property name=&quot;sizePolicy&quot;&gt;
+-         &lt;sizepolicy hsizetype=&quot;Fixed&quot; vsizetype=&quot;Fixed&quot;&gt;
+-          &lt;horstretch&gt;0&lt;/horstretch&gt;
+-          &lt;verstretch&gt;0&lt;/verstretch&gt;
+-         &lt;/sizepolicy&gt;
+-        &lt;/property&gt;
+-        &lt;property name=&quot;minimumSize&quot;&gt;
+-         &lt;size&gt;
+-          &lt;width&gt;150&lt;/width&gt;
+-          &lt;height&gt;25&lt;/height&gt;
+-         &lt;/size&gt;
+-        &lt;/property&gt;
+-       &lt;/widget&gt;
+-      &lt;/item&gt;
+-      &lt;item row=&quot;3&quot; column=&quot;1&quot; colspan=&quot;2&quot;&gt;
+-       &lt;widget class=&quot;BlSearchWidget&quot; name=&quot;mui_cuentaFinal&quot; native=&quot;true&quot;&gt;
+-        &lt;property name=&quot;minimumSize&quot;&gt;
+-         &lt;size&gt;
+-          &lt;width&gt;100&lt;/width&gt;
+-          &lt;height&gt;25&lt;/height&gt;
+-         &lt;/size&gt;
+-        &lt;/property&gt;
+-       &lt;/widget&gt;
+-      &lt;/item&gt;
+-      &lt;item row=&quot;5&quot; column=&quot;0&quot;&gt;
+-       &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_2&quot;&gt;
+-        &lt;property name=&quot;text&quot;&gt;
+-         &lt;string&gt;Nivel:&lt;/string&gt;
+-        &lt;/property&gt;
+-        &lt;property name=&quot;alignment&quot;&gt;
+-         &lt;set&gt;Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter&lt;/set&gt;
+-        &lt;/property&gt;
+-       &lt;/widget&gt;
+-      &lt;/item&gt;
+-      &lt;item row=&quot;6&quot; column=&quot;0&quot;&gt;
+-       &lt;widget class=&quot;QComboBox&quot; name=&quot;mui_nivel&quot;&gt;
+-        &lt;property name=&quot;minimumSize&quot;&gt;
+-         &lt;size&gt;
+-          &lt;width&gt;150&lt;/width&gt;
+-          &lt;height&gt;0&lt;/height&gt;
+-         &lt;/size&gt;
+-        &lt;/property&gt;
+-       &lt;/widget&gt;
+-      &lt;/item&gt;
+-      &lt;item row=&quot;4&quot; column=&quot;0&quot;&gt;
+-       &lt;widget class=&quot;QCheckBox&quot; name=&quot;mui_balanceJerarquico&quot;&gt;
+-        &lt;property name=&quot;text&quot;&gt;
+-         &lt;string&gt;Balance jerarquico&lt;/string&gt;
+-        &lt;/property&gt;
+-       &lt;/widget&gt;
+-      &lt;/item&gt;
+-      &lt;item row=&quot;4&quot; column=&quot;1&quot; rowspan=&quot;3&quot;&gt;
+-       &lt;spacer name=&quot;horizontalSpacer&quot;&gt;
+-        &lt;property name=&quot;orientation&quot;&gt;
+-         &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
+-        &lt;/property&gt;
+-        &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
+-         &lt;size&gt;
+-          &lt;width&gt;40&lt;/width&gt;
+-          &lt;height&gt;20&lt;/height&gt;
+-         &lt;/size&gt;
+-        &lt;/property&gt;
+-       &lt;/spacer&gt;
+-      &lt;/item&gt;
+-     &lt;/layout&gt;
+-    &lt;/widget&gt;
+-   &lt;/item&gt;
+-   &lt;item&gt;
++   &lt;item row=&quot;2&quot; column=&quot;0&quot;&gt;
+     &lt;widget class=&quot;QTreeWidget&quot; name=&quot;mui_list&quot;&gt;
+      &lt;column&gt;
+       &lt;property name=&quot;text&quot;&gt;
+@@ -394,7 +260,7 @@
+      &lt;/column&gt;
+     &lt;/widget&gt;
+    &lt;/item&gt;
+-   &lt;item&gt;
++   &lt;item row=&quot;3&quot; column=&quot;0&quot;&gt;
+     &lt;widget class=&quot;QGroupBox&quot; name=&quot;groupBox_2&quot;&gt;
+      &lt;layout class=&quot;QGridLayout&quot;&gt;
+       &lt;property name=&quot;margin&quot;&gt;
+@@ -705,6 +571,150 @@
+      &lt;/layout&gt;
+     &lt;/widget&gt;
+    &lt;/item&gt;
++   &lt;item row=&quot;1&quot; column=&quot;0&quot;&gt;
++    &lt;widget class=&quot;QFrame&quot; name=&quot;frame&quot;&gt;
++     &lt;property name=&quot;frameShape&quot;&gt;
++      &lt;enum&gt;QFrame::StyledPanel&lt;/enum&gt;
++     &lt;/property&gt;
++     &lt;property name=&quot;frameShadow&quot;&gt;
++      &lt;enum&gt;QFrame::Raised&lt;/enum&gt;
++     &lt;/property&gt;
++     &lt;layout class=&quot;QGridLayout&quot;&gt;
++      &lt;property name=&quot;margin&quot;&gt;
++       &lt;number&gt;3&lt;/number&gt;
++      &lt;/property&gt;
++      &lt;property name=&quot;spacing&quot;&gt;
++       &lt;number&gt;3&lt;/number&gt;
++      &lt;/property&gt;
++      &lt;item row=&quot;0&quot; column=&quot;0&quot;&gt;
++       &lt;widget class=&quot;QLabel&quot; name=&quot;TextLabel1_2_2&quot;&gt;
++        &lt;property name=&quot;sizePolicy&quot;&gt;
++         &lt;sizepolicy hsizetype=&quot;Fixed&quot; vsizetype=&quot;Fixed&quot;&gt;
++          &lt;horstretch&gt;0&lt;/horstretch&gt;
++          &lt;verstretch&gt;0&lt;/verstretch&gt;
++         &lt;/sizepolicy&gt;
++        &lt;/property&gt;
++        &lt;property name=&quot;text&quot;&gt;
++         &lt;string&gt;Fecha inicial:&lt;/string&gt;
++        &lt;/property&gt;
++       &lt;/widget&gt;
++      &lt;/item&gt;
++      &lt;item row=&quot;0&quot; column=&quot;1&quot; colspan=&quot;2&quot;&gt;
++       &lt;widget class=&quot;QLabel&quot; name=&quot;TextLabel1_3&quot;&gt;
++        &lt;property name=&quot;text&quot;&gt;
++         &lt;string&gt;Cuenta inicial:&lt;/string&gt;
++        &lt;/property&gt;
++       &lt;/widget&gt;
++      &lt;/item&gt;
++      &lt;item row=&quot;1&quot; column=&quot;0&quot;&gt;
++       &lt;widget class=&quot;BlDateSearch&quot; name=&quot;mui_fechaInicial&quot; native=&quot;true&quot;&gt;
++        &lt;property name=&quot;sizePolicy&quot;&gt;
++         &lt;sizepolicy hsizetype=&quot;Fixed&quot; vsizetype=&quot;Fixed&quot;&gt;
++          &lt;horstretch&gt;0&lt;/horstretch&gt;
++          &lt;verstretch&gt;0&lt;/verstretch&gt;
++         &lt;/sizepolicy&gt;
++        &lt;/property&gt;
++        &lt;property name=&quot;minimumSize&quot;&gt;
++         &lt;size&gt;
++          &lt;width&gt;150&lt;/width&gt;
++          &lt;height&gt;25&lt;/height&gt;
++         &lt;/size&gt;
++        &lt;/property&gt;
++       &lt;/widget&gt;
++      &lt;/item&gt;
++      &lt;item row=&quot;1&quot; column=&quot;1&quot; colspan=&quot;2&quot;&gt;
++       &lt;widget class=&quot;BlSearchWidget&quot; name=&quot;mui_cuentaInicial&quot; native=&quot;true&quot;&gt;
++        &lt;property name=&quot;minimumSize&quot;&gt;
++         &lt;size&gt;
++          &lt;width&gt;100&lt;/width&gt;
++          &lt;height&gt;25&lt;/height&gt;
++         &lt;/size&gt;
++        &lt;/property&gt;
++       &lt;/widget&gt;
++      &lt;/item&gt;
++      &lt;item row=&quot;2&quot; column=&quot;0&quot;&gt;
++       &lt;widget class=&quot;QLabel&quot; name=&quot;TextLabel1_2_2_2&quot;&gt;
++        &lt;property name=&quot;text&quot;&gt;
++         &lt;string&gt;Fecha final:&lt;/string&gt;
++        &lt;/property&gt;
++       &lt;/widget&gt;
++      &lt;/item&gt;
++      &lt;item row=&quot;2&quot; column=&quot;1&quot; colspan=&quot;2&quot;&gt;
++       &lt;widget class=&quot;QLabel&quot; name=&quot;TextLabel1_3_2&quot;&gt;
++        &lt;property name=&quot;text&quot;&gt;
++         &lt;string&gt;Cuenta final:&lt;/string&gt;
++        &lt;/property&gt;
++       &lt;/widget&gt;
++      &lt;/item&gt;
++      &lt;item row=&quot;3&quot; column=&quot;0&quot;&gt;
++       &lt;widget class=&quot;BlDateSearch&quot; name=&quot;mui_fechaFinal&quot; native=&quot;true&quot;&gt;
++        &lt;property name=&quot;sizePolicy&quot;&gt;
++         &lt;sizepolicy hsizetype=&quot;Fixed&quot; vsizetype=&quot;Fixed&quot;&gt;
++          &lt;horstretch&gt;0&lt;/horstretch&gt;
++          &lt;verstretch&gt;0&lt;/verstretch&gt;
++         &lt;/sizepolicy&gt;
++        &lt;/property&gt;
++        &lt;property name=&quot;minimumSize&quot;&gt;
++         &lt;size&gt;
++          &lt;width&gt;150&lt;/width&gt;
++          &lt;height&gt;25&lt;/height&gt;
++         &lt;/size&gt;
++        &lt;/property&gt;
++       &lt;/widget&gt;
++      &lt;/item&gt;
++      &lt;item row=&quot;3&quot; column=&quot;1&quot; colspan=&quot;2&quot;&gt;
++       &lt;widget class=&quot;BlSearchWidget&quot; name=&quot;mui_cuentaFinal&quot; native=&quot;true&quot;&gt;
++        &lt;property name=&quot;minimumSize&quot;&gt;
++         &lt;size&gt;
++          &lt;width&gt;100&lt;/width&gt;
++          &lt;height&gt;25&lt;/height&gt;
++         &lt;/size&gt;
++        &lt;/property&gt;
++       &lt;/widget&gt;
++      &lt;/item&gt;
++      &lt;item row=&quot;5&quot; column=&quot;0&quot;&gt;
++       &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_2&quot;&gt;
++        &lt;property name=&quot;text&quot;&gt;
++         &lt;string&gt;Nivel:&lt;/string&gt;
++        &lt;/property&gt;
++        &lt;property name=&quot;alignment&quot;&gt;
++         &lt;set&gt;Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter&lt;/set&gt;
++        &lt;/property&gt;
++       &lt;/widget&gt;
++      &lt;/item&gt;
++      &lt;item row=&quot;6&quot; column=&quot;0&quot;&gt;
++       &lt;widget class=&quot;QComboBox&quot; name=&quot;mui_nivel&quot;&gt;
++        &lt;property name=&quot;minimumSize&quot;&gt;
++         &lt;size&gt;
++          &lt;width&gt;150&lt;/width&gt;
++          &lt;height&gt;0&lt;/height&gt;
++         &lt;/size&gt;
++        &lt;/property&gt;
++       &lt;/widget&gt;
++      &lt;/item&gt;
++      &lt;item row=&quot;4&quot; column=&quot;0&quot;&gt;
++       &lt;widget class=&quot;QCheckBox&quot; name=&quot;mui_balanceJerarquico&quot;&gt;
++        &lt;property name=&quot;text&quot;&gt;
++         &lt;string&gt;Balance jerarquico&lt;/string&gt;
++        &lt;/property&gt;
++       &lt;/widget&gt;
++      &lt;/item&gt;
++      &lt;item row=&quot;4&quot; column=&quot;1&quot; rowspan=&quot;3&quot;&gt;
++       &lt;spacer name=&quot;horizontalSpacer&quot;&gt;
++        &lt;property name=&quot;orientation&quot;&gt;
++         &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
++        &lt;/property&gt;
++        &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
++         &lt;size&gt;
++          &lt;width&gt;40&lt;/width&gt;
++          &lt;height&gt;20&lt;/height&gt;
++         &lt;/size&gt;
++        &lt;/property&gt;
++       &lt;/spacer&gt;
++      &lt;/item&gt;
++     &lt;/layout&gt;
++    &lt;/widget&gt;
++   &lt;/item&gt;
+   &lt;/layout&gt;
+  &lt;/widget&gt;
+  &lt;layoutdefault spacing=&quot;3&quot; margin=&quot;3&quot;/&gt;
+@@ -723,7 +733,7 @@
+  &lt;/customwidgets&gt;
+  &lt;tabstops&gt;
+   &lt;tabstop&gt;mui_imprimir&lt;/tabstop&gt;
+-  &lt;tabstop&gt;mui_filtrar&lt;/tabstop&gt;
++  &lt;tabstop&gt;mui_detalles&lt;/tabstop&gt;
+   &lt;tabstop&gt;mui_actualizar&lt;/tabstop&gt;
+   &lt;tabstop&gt;mui_nivel&lt;/tabstop&gt;
+   &lt;tabstop&gt;mui_list&lt;/tabstop&gt;
+@@ -734,18 +744,18 @@
+  &lt;/resources&gt;
+  &lt;connections&gt;
+   &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
++   &lt;sender&gt;mui_detalles&lt;/sender&gt;
+    &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+    &lt;receiver&gt;frame&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
++   &lt;slot&gt;setVisible(bool)&lt;/slot&gt;
+    &lt;hints&gt;
+     &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;160&lt;/x&gt;
+-     &lt;y&gt;35&lt;/y&gt;
++     &lt;x&gt;101&lt;/x&gt;
++     &lt;y&gt;33&lt;/y&gt;
+     &lt;/hint&gt;
+     &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;152&lt;/x&gt;
+-     &lt;y&gt;63&lt;/y&gt;
++     &lt;x&gt;113&lt;/x&gt;
++     &lt;y&gt;60&lt;/y&gt;
+     &lt;/hint&gt;
+    &lt;/hints&gt;
+   &lt;/connection&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_balance/balanceview.cpp b/bulmages/bulmafact/plugins/pluginbf_balance/balanceview.cpp
+index 98ef94c..d701405 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_balance/balanceview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_balance/balanceview.cpp
+@@ -30,11 +30,6 @@
+ #include &quot;blpostgresqlclient.h&quot;
+ #include &quot;balanceprintview.h&quot;
+ #include &quot;bldatesearch.h&quot;
+-/*
+-#include &quot;bcbuscarcentrocoste.h&quot;
+-#include &quot;bccentrocosteseleccionarview.h&quot;
+-#include &quot;bccanalseleccionarview.h&quot;
+-*/
+ 
+ #define CUENTA          0
+ #define DENOMINACION    1
+@@ -62,7 +57,7 @@ BalanceView::BalanceView ( BfCompany *emp, QWidget *parent, int )
+     setAttribute(Qt::WA_DeleteOnClose);
+     setTitleName ( _ ( &quot;Balance&quot; ) );
+     /// Establezco cual es la tabla en la que basarse para el sistema de permisos.
+-    setDbTableName ( &quot;asiento&quot; );
++    setDbTableName ( &quot;balance&quot; );
+     
+     /// Para imprimir usaremos la plantilla balance
+     setTemplateName(&quot;balance&quot;);
+@@ -104,8 +99,10 @@ BalanceView::BalanceView ( BfCompany *emp, QWidget *parent, int )
+     mui_fechaInicial-&gt;setText ( cadena );
+     cadena.sprintf ( &quot;%2.2d/%2.2d/%4.4d&quot;, 31, 12, QDate::currentDate().year() );
+     mui_fechaFinal-&gt;setText ( cadena );
+-
+-    mainCompany() -&gt;insertWindow ( windowTitle(), this );
++    
++    insertWindow ( windowTitle(), this, false );
++    
++	
+     /// Llamamos a los scripts
+     blScript(this);
+ }
+@@ -171,6 +168,10 @@ void BalanceView::presentar()
+     int nivel = mui_nivel-&gt;currentText().toInt();
+     bool jerarquico = mui_balanceJerarquico-&gt;isChecked();
+ 
++    /// Escribimos como descripcion el nombre del cliente para que aparezca en el titulo y en el dockwidget
++    setDescripcion( fechaInicial + &quot;--&quot;+ fechaFinal + &quot;\n&quot; + cuentaInicial);
++
++    
+     /// Balance de Sumas y Saldos.
+     presentarSyS ( fechaInicial, fechaFinal, cuentaInicial, cuentaFinal, nivel, 0, jerarquico );
+ }
+@@ -438,3 +439,4 @@ void BalanceView::accept()
+ }
+ 
+ 
++
+diff --git a/bulmages/bulmafact/plugins/pluginbf_balance/balanceview.h b/bulmages/bulmafact/plugins/pluginbf_balance/balanceview.h
+index 2b7bea0..65134fa 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_balance/balanceview.h
++++ b/bulmages/bulmafact/plugins/pluginbf_balance/balanceview.h
+@@ -46,7 +46,7 @@ public:
+     void inicializa ( QString, QString, QString, QString, QString );
+     ~BalanceView();
+     virtual void accept();
+-
++    
+ private:
+     /// Presenta el Balance.
+     void presentar();
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cuenta/bcplancontablelistview.cpp b/bulmages/bulmafact/plugins/pluginbf_cuenta/bcplancontablelistview.cpp
+index 46d4dda..d26899a 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cuenta/bcplancontablelistview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_cuenta/bcplancontablelistview.cpp
+@@ -91,7 +91,7 @@ BcPlanContableListView::BcPlanContableListView ( BfCompany *emp, QWidget *parent
+ 
+     installEventFilter ( this );
+     if ( m_modo == BL_EDIT_MODE )
+-        mainCompany() -&gt;insertWindow ( windowTitle(), this );
++        insertWindow ( windowTitle(), this, false );
+ 
+     /// De forma predeterminada los botones de busqueda 'anterior' y 'siguiente' estan deshabilitados.
+     mui_anterior-&gt;setDisabled(true);
+diff --git a/bulmages/bulmafact/plugins/pluginbf_diario/bcdiariobase.ui b/bulmages/bulmafact/plugins/pluginbf_diario/bcdiariobase.ui
+index 5af3fb5..38d45d4 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_diario/bcdiariobase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_diario/bcdiariobase.ui
+@@ -252,6 +252,19 @@
+          &lt;/widget&gt;
+         &lt;/item&gt;
+         &lt;item&gt;
++         &lt;widget class=&quot;QFrame&quot; name=&quot;mui_plugbotones&quot;&gt;
++          &lt;property name=&quot;frameShape&quot;&gt;
++           &lt;enum&gt;QFrame::NoFrame&lt;/enum&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;frameShadow&quot;&gt;
++           &lt;enum&gt;QFrame::Plain&lt;/enum&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;lineWidth&quot;&gt;
++           &lt;number&gt;0&lt;/number&gt;
++          &lt;/property&gt;
++         &lt;/widget&gt;
++        &lt;/item&gt;
++        &lt;item&gt;
+          &lt;spacer&gt;
+           &lt;property name=&quot;orientation&quot;&gt;
+            &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_diario/bcdiarioview.cpp b/bulmages/bulmafact/plugins/pluginbf_diario/bcdiarioview.cpp
+index 3044e5d..04cda89 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_diario/bcdiarioview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_diario/bcdiarioview.cpp
+@@ -70,7 +70,7 @@ BcDiarioView::BcDiarioView ( BfCompany  *emp, QWidget *parent, int )
+     /// como el a&ntilde;o inicial.
+     mui_fechainicial-&gt;setText ( &quot;01/01/&quot; + QString::number(QDate::currentDate().year()) );
+     mui_fechafinal-&gt;setText ( &quot;31/12/&quot; + QString::number(QDate::currentDate().year()) );
+-    insertWindow ( windowTitle(), this );
++    insertWindow ( windowTitle(), this, false );
+     /// Llamamos a los scripts
+     blScript(this);
+ 
+@@ -201,7 +201,6 @@ void BcDiarioView::accept()
+ {
+     BL_FUNC_DEBUG
+     presentar();
+-    
+ }
+ 
+ 
+@@ -248,7 +247,9 @@ void BcDiarioView::presentar()
+         } // end if
+ 
+ 
+-        
++        setDescripcion(mui_fechainicial-&gt;text() + &quot; -- &quot; + mui_fechafinal-&gt;text());
++        insertWindow ( windowTitle(), this, true );
++	
+         QString ccostes = &quot;&quot;;
+ 	g_plugins-&gt;run(&quot;PgetSelCostes&quot;, &amp;ccostes);
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractobase.ui b/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractobase.ui
+index d17d755..9d08b43 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractobase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractobase.ui
+@@ -1031,6 +1031,19 @@
+          &lt;/widget&gt;
+         &lt;/item&gt;
+         &lt;item&gt;
++         &lt;widget class=&quot;QFrame&quot; name=&quot;mui_plugbotones&quot;&gt;
++          &lt;property name=&quot;frameShape&quot;&gt;
++           &lt;enum&gt;QFrame::NoFrame&lt;/enum&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;frameShadow&quot;&gt;
++           &lt;enum&gt;QFrame::Plain&lt;/enum&gt;
++          &lt;/property&gt;
++          &lt;property name=&quot;lineWidth&quot;&gt;
++           &lt;number&gt;0&lt;/number&gt;
++          &lt;/property&gt;
++         &lt;/widget&gt;
++        &lt;/item&gt;
++        &lt;item&gt;
+          &lt;spacer&gt;
+           &lt;property name=&quot;orientation&quot;&gt;
+            &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractoview.cpp b/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractoview.cpp
+index f641056..dc8d041 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractoview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractoview.cpp
+@@ -53,7 +53,7 @@ BcExtractoView::BcExtractoView ( BfCompany *company, QWidget *parent, int ) : Bf
+ 
+     setAttribute(Qt::WA_DeleteOnClose);
+     setTitleName ( _ ( &quot;Extracto de cuentas&quot; ) );
+-    setDbTableName ( &quot;apunte&quot; );
++    setDbTableName ( &quot;mayor&quot; );
+ 
+     mui_list-&gt;setMainCompany ( company );
+ 
+@@ -94,7 +94,7 @@ BcExtractoView::BcExtractoView ( BfCompany *company, QWidget *parent, int ) : Bf
+     cadena.sprintf ( &quot;%2.2d/%2.2d/%4.4d&quot;, 31, 12, QDate::currentDate().year() );
+     mui_fechaFinal-&gt;setText ( cadena );
+     m_cursorcta = NULL;
+-    insertWindow ( windowTitle(), this );
++    insertWindow ( windowTitle(), this, false );
+ 
+     m_tratarpunteos = true;
+ 
+@@ -397,6 +397,11 @@ void BcExtractoView::presentar()
+         /// Escribimos el nombre de la cuenta y el c&oacute;digo de la misma.
+         mui_codigoCuenta-&gt;setText ( m_cursorcta-&gt;value( &quot;codigo&quot; ) );
+         mui_nombreCuenta-&gt;setText ( m_cursorcta-&gt;value( &quot;descripcion&quot; ) );
++	
++	/// Para que salga en el indexador modificadoel titulo hacemos un setDescripcion y un insertWindow
++	setDescripcion(m_cursorcta-&gt;value( &quot;codigo&quot; ) + &quot; &quot; + m_cursorcta-&gt;value( &quot;descripcion&quot; ) );
++        insertWindow ( windowTitle(), this, true );
++	
+         /// Hacemos la consulta de los apuntes a listar en la base de datos.
+         QString query = &quot;&quot;;
+         /// Al igual que en el caso anterior los centros de coste han cambiado y a&uacute;n
+diff --git a/bulmages/bulmafact/src/bfform.cpp b/bulmages/bulmafact/src/bfform.cpp
+index 58b9d5f..e2c9544 100644
+--- a/bulmages/bulmafact/src/bfform.cpp
++++ b/bulmages/bulmafact/src/bfform.cpp
+@@ -995,7 +995,7 @@ int BfForm::generateRML ( const QString &amp;arch )
+     
+     try {
+ 
+-        if ( dbValue ( fieldId() ).isEmpty() ) {
++        if ( dbValue ( fieldId() ).isEmpty() &amp;&amp; !m_campoid.isEmpty()) {
+             throw 100;
+         } // end if
+ 
+diff --git a/bulmages/bulmafact/src/main.cxx b/bulmages/bulmafact/src/main.cxx
+index 358944f..78fa74e 100644
+--- a/bulmages/bulmafact/src/main.cxx
++++ b/bulmages/bulmafact/src/main.cxx
+@@ -42,6 +42,9 @@
+ #include &quot;blplugins.h&quot;
+ #include &quot;blsplashscreen.h&quot;
+ 
++
++#include &quot;blsync.h&quot;
++
+ #define CONFGLOBAL CONFIG_DIR_CONFIG + QString(&quot;bulmafact_&quot;)
+ 
+ 
+@@ -143,6 +146,8 @@ int main ( int argc, char **argv )
+       } // end if
+       delete login1;
+ 
++
++      
+       bges = new BfBulmaFact ( g_confpr-&gt;value(CONF_DBNAME) );
+       bges-&gt;hide();
+       g_main = bges;
+@@ -176,6 +181,11 @@ int main ( int argc, char **argv )
+           g_confpr-&gt;readConfig ( confLocalEsp );
+       } // end if
+ 
++      BlSync *sync = new BlSync(0,0);
++      sync-&gt;exec();
++      delete sync;
++      
++      
+ 
+       // Pone el color de fondo del workspace si esta definido y es un color valido.
+       if ( QColor(g_confpr-&gt;value( CONF_BACKGROUND_COLOR )).isValid() ) {
+diff --git a/bulmages/bulmalib/src/CMakeLists.txt b/bulmages/bulmalib/src/CMakeLists.txt
+index b5a9de0..a23b055 100644
+--- a/bulmages/bulmalib/src/CMakeLists.txt
++++ b/bulmages/bulmalib/src/CMakeLists.txt
+@@ -78,6 +78,7 @@ set(bulmalib_SRCS	blpostgresqlclient.cpp
+ 			blcp850eurotextcodec.cpp
+ 			bluiloader.cpp
+ 			blfile.cpp
++			blsync.cpp
+ 			blaction.cpp)
+ 
+ set(bulmalib_MOCS	bldblogindialog.h
+@@ -114,6 +115,7 @@ set(bulmalib_MOCS	bldblogindialog.h
+ 			blbankedit.h
+ 			bluiloader.h
+ 			blfile.h
++			blsync.h
+ 			blaction.h)
+ 
+ 
+@@ -151,6 +153,7 @@ set(bulmalib_UIS	bldblogindialogbase.ui
+ 			blprogressbarbase.ui
+ 			blsearchwidgetbase.ui
+ 			blformlistfilterbase.ui
++			blsyncbase.ui
+ 			blbankeditbase.ui)
+ 
+ if (USE_GETTEXT)
+diff --git a/bulmages/bulmalib/src/bldb.cpp b/bulmages/bulmalib/src/bldb.cpp
+index 49b9a3a..021e4f6 100644
+--- a/bulmages/bulmalib/src/bldb.cpp
++++ b/bulmages/bulmalib/src/bldb.cpp
+@@ -18,7 +18,6 @@
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+  ***************************************************************************/
+ 
+-#include &lt;QtCore/QFile&gt;
+ #include &lt;QtCore/QTextStream&gt;
+ #include &lt;QtCore/QLocale&gt;
+ #include &lt;QtCore/QDebug&gt;
+@@ -39,6 +38,7 @@
+ #include &quot;blescprinter.h&quot;
+ #include &quot;blsearchwidget.h&quot;
+ #include &quot;bldatesearch.h&quot;
++#include &quot;blfile.h&quot;
+ 
+ ///
+ /**
+@@ -1038,7 +1038,7 @@ int BlDbRecord::generateRML ( const QString &amp;arch )
+         blMsgError(_(&quot;Error al copiar el archivo de logo [ BlDbRecord-&gt;generateRML() ]&quot;));
+     } // end if
+ 
+-    QFile file;
++    BlFile file;
+     file.setFileName ( archivod );
+     file.open ( QIODevice::ReadOnly );
+     bool ascii = false;
+diff --git a/bulmages/bulmalib/src/blfile.cpp b/bulmages/bulmalib/src/blfile.cpp
+index 440ca26..2e3373d 100644
+--- a/bulmages/bulmalib/src/blfile.cpp
++++ b/bulmages/bulmalib/src/blfile.cpp
+@@ -30,13 +30,20 @@ QNetworkAccessManager *manager;
+ 
+ 
+ BlFile::BlFile() : QFile () {
++  BL_FUNC_DEBUG
+ }
+ 
+ BlFile::BlFile(QString file) : QFile (file) {
++  BL_FUNC_DEBUG
++  m_file = file;
++}
++
++void BlFile::sync() {
++  BL_FUNC_DEBUG  
+ 
+ //  if (!exists() {
+   
+-      QFileInfo fileInfo(file);
++      QFileInfo fileInfo(m_file);
+       QString filename(fileInfo.fileName());
+       
+       QString user = g_confpr-&gt;value(CONF_LOGIN_USER);
+@@ -56,7 +63,6 @@ BlFile::BlFile(QString file) : QFile (file) {
+       request.setRawHeader(&quot;User-Agent&quot;, &quot;BgBrowser 1.0&quot;);
+     
+       QNetworkReply *reply = manager-&gt;get(request);
+-
+       connect(reply, SIGNAL(readyRead()), this, SLOT(slotReadyRead()));
+       connect(reply, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(downloadProgress(qint64,qint64)));
+ 
+@@ -66,9 +72,9 @@ BlFile::BlFile(QString file) : QFile (file) {
+ 	    this, SLOT(slotSslErrors(QList&lt;QSslError&gt;)));
+       connect(manager, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinished(QNetworkReply*)));
+ 
+-    while (reply-&gt;isRunning()) {
+-      QApplication::processEvents();
+-    } // end while
++      while (reply-&gt;isRunning()) {
++	QApplication::processEvents();
++      } // end while
+  
+ //  }// end if
+  
+@@ -79,7 +85,9 @@ BlFile::BlFile(QString file) : QFile (file) {
+       while (reply-&gt;isRunning()) {
+ 	QApplication::processEvents();
+       } // end while
+-    
++      if (reply-&gt;error() == QNetworkReply::NoError) {
++	return;
++      } // end if
+ 
+       url = &quot;<A HREF="http://www.bulmages.com/bulmaincloud/ALL/ALL/">http://www.bulmages.com/bulmaincloud/ALL/ALL/</A>&quot;+filename;
+       fprintf(stderr, &quot;Iniciando descarga %s\n&quot;, url.toLatin1().constData());
+@@ -91,6 +99,13 @@ BlFile::BlFile(QString file) : QFile (file) {
+     
+ }
+ 
++void 	BlFile::setFileName(const QString &amp; name) {
++  BL_FUNC_DEBUG
++  m_file = name;
++  sync();
++  QFile::setFileName(name);
++}
++
+ BlFile::~BlFile() {
+ }
+ 
+@@ -106,20 +121,23 @@ void BlFile::slotReadyRead() {
+ 
+ }
+ 
++
++
+ void BlFile::replyFinished(QNetworkReply * reply) {
+   
+   if (reply-&gt;error() == QNetworkReply::NoError) {
+-      QFileInfo fileInfo(fileName());
+-      QString filename(fileInfo.fileName());
+       
+-      fprintf(stderr,&quot;Descarga completa %s\n&quot;, fileName().toLatin1().constData());
++      fprintf(stderr,&quot;Descarga completa %s\n&quot;, m_file.toLatin1().constData());
+       
+-      QFile localFile(fileName());
+-      if (!localFile.open(QIODevice::WriteOnly))
++      QFile localFile(m_file);
++      if (!localFile.open(QIODevice::WriteOnly)) {
++	  fprintf(stderr,&quot;Error en la escritura del archivo %s\n&quot;, m_file.toLatin1().constData());
+ 	  return;
++      } // end if
+       const QByteArray sdata = reply-&gt;readAll();
+       localFile.write(sdata);
+       localFile.close();
++      fprintf(stderr, &quot;Archivo escrito %s \n %s\n&quot;, m_file.toLatin1().constData(), sdata.data());
+   } else {
+       fprintf(stderr,&quot;Error descargando %s\n&quot;, fileName().toLatin1().constData());
+   }
+diff --git a/bulmages/bulmalib/src/blfile.h b/bulmages/bulmalib/src/blfile.h
+index 36a26eb..b1f44f6 100644
+--- a/bulmages/bulmalib/src/blfile.h
++++ b/bulmages/bulmalib/src/blfile.h
+@@ -32,12 +32,14 @@
+ class BlFile : public QFile
+ {
+     Q_OBJECT
+-
++private:
++    QString m_file;
+ public:
+     BlFile ( );
+     BlFile (QString );
+     ~BlFile();
+-    
++    void sync();
++    virtual void setFileName(const QString &amp;);
+ public slots:
+   virtual void replyFinished(QNetworkReply *);
+   virtual void slotSslErrors(QList&lt;QSslError&gt;);
+diff --git a/bulmages/bulmalib/src/blsync.cpp b/bulmages/bulmalib/src/blsync.cpp
+new file mode 100644
+index 0000000..07b09fb
+--- /dev/null
++++ b/bulmages/bulmalib/src/blsync.cpp
+@@ -0,0 +1,166 @@
++/***************************************************************************
++ *   Copyright (C) 2013 by Tomeu Borras Riera                              *
++ *   <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>                                                  *
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 2 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program; if not, write to the                         *
++ *   Free Software Foundation, Inc.,                                       *
++ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
++ ***************************************************************************/
++#include &lt;QtNetwork/QNetworkAccessManager&gt;
++#include &lt;QtCore/QFileInfo&gt;
++
++#include &quot;blfunctions.h&quot;
++#include &quot;blconfiguration.h&quot;
++#include &quot;blsync.h&quot;
++#include &quot;blmainwindow.h&quot;
++#include &quot;blmaincompany.h&quot;
++
++QNetworkAccessManager *syncManager;
++
++
++BlSync::BlSync ( QWidget *parent, const char *name ) : QDialog ( parent ) {
++  BL_FUNC_DEBUG
++    setWindowTitle ( name );
++    setupUi ( this );
++    sync();
++}
++
++
++
++void BlSync::sync() {
++  BL_FUNC_DEBUG  
++
++      QString user = g_confpr-&gt;value(CONF_LOGIN_USER);
++      QString dbname = g_confpr-&gt;value(CONF_DBNAME);
++    #ifdef Q_OS_WIN32
++      QString platform = &quot;MS_WIN&quot;;
++    #else
++      QString platform = &quot;LINUX&quot;;
++    #endif
++      
++      
++      // Cogemos la lista de ficheros
++      
++      QString url = &quot;<A HREF="http://www.bulmages.com/bulmaincloud/files.txt">http://www.bulmages.com/bulmaincloud/files.txt</A>&quot;;
++      
++      syncManager = new QNetworkAccessManager(this);
++      connect(syncManager, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinished(QNetworkReply*)));
++      
++
++    
++
++      getFile(&quot;files.txt&quot;, g_confpr-&gt;value(CONF_DIR_USER));
++      
++      QFile file ( g_confpr-&gt;value(CONF_DIR_USER)+&quot;files.txt&quot; );
++      /// If not exists return.
++      if ( !file.open ( QIODevice::ReadOnly ) ) {
++	  blMsgInfo(&quot;No se pudo abrir archivo de indices&quot;);
++	  return;
++      } // end if
++      QTextStream in(&amp;file);
++      QString line = in.readLine();
++      while (!line.isNull()) {
++	  QStringList arch = line.split(&quot; &quot;);
++	  QString filename = arch[0];
++	  QString dest = arch[1];
++	  dest.replace(&quot;[CONF_DIR_OPENREPORTS]&quot;, g_confpr-&gt;value(CONF_DIR_OPENREPORTS));
++	  getFile(filename, dest);
++	  line = in.readLine();
++      } // end while
++ 
++
++    
++}
++
++void BlSync::getFile(const QString &amp; name, const QString &amp; dest) {
++  BL_FUNC_DEBUG
++  
++      QString url = &quot;<A HREF="http://www.bulmages.com/bulmaincloud/ALL/ALL/">http://www.bulmages.com/bulmaincloud/ALL/ALL/</A>&quot;+name;
++      QNetworkRequest request;
++      request.setUrl(QUrl(url));
++      request.setRawHeader(&quot;User-Agent&quot;, &quot;BgBrowser 1.0&quot;);
++    
++      m_destfile = dest+name;
++
++      QString user = g_confpr-&gt;value(CONF_LOGIN_USER);
++      QString dbname = g_confpr-&gt;value(CONF_DBNAME);
++    #ifdef Q_OS_WIN32
++      QString platform = &quot;MS_WIN&quot;;
++    #else
++      QString platform = &quot;LINUX&quot;;
++    #endif
++      
++      QNetworkReply *reply = syncManager-&gt;get(request);
++      
++      connect(reply, SIGNAL(readyRead()), this, SLOT(slotReadyRead()));
++      connect(reply, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(downloadProgress(qint64,qint64)));
++      connect(reply, SIGNAL(error(QNetworkReply::NetworkError)),
++	    this, SLOT(slotError(QNetworkReply::NetworkError)));
++      connect(reply, SIGNAL(sslErrors(QList&lt;QSslError&gt;)),
++	    this, SLOT(slotSslErrors(QList&lt;QSslError&gt;)));
++
++
++      fprintf(stderr, &quot;Iniciando descarga %s\n&quot;, url.toLatin1().constData());
++      request.setUrl(QUrl(url));
++      reply = syncManager-&gt;get(request);
++      while (reply-&gt;isRunning()) {
++	QApplication::processEvents();
++      } // end while
++}
++
++
++
++
++BlSync::~BlSync() {
++}
++
++void BlSync::slotSslErrors(QList&lt;QSslError&gt;) {
++//  fprintf(stderr, &quot;Error de autentificacion descargando %s\n&quot;, fileName().toLatin1().constData());
++}
++
++void BlSync::slotError(QNetworkReply::NetworkError) {
++//  fprintf(stderr,&quot;Error descargando %s\n&quot;, fileName().toLatin1().constData());
++}
++
++void BlSync::slotReadyRead() {
++
++}
++
++
++
++void BlSync::replyFinished(QNetworkReply * reply) {
++  
++  if (reply-&gt;error() == QNetworkReply::NoError) {
++      
++      fprintf(stderr,&quot;Descarga completa %s\n&quot;, m_file.toLatin1().constData());
++      
++      QFile localFile(m_destfile);
++      if (!localFile.open(QIODevice::WriteOnly)) {
++	  fprintf(stderr,&quot;Error en la escritura del archivo %s\n&quot;, m_destfile.toLatin1().constData());
++	  return;
++      } // end if
++      const QByteArray sdata = reply-&gt;readAll();
++      localFile.write(sdata);
++      localFile.close();
++      fprintf(stderr, &quot;Archivo escrito %s \n %s\n&quot;, m_destfile.toLatin1().constData(), sdata.data());
++  } else {
++      blMsgInfo(&quot;Error descargando: &quot; + m_destfile);
++      fprintf(stderr,&quot;Error descargando %s\n&quot;, m_destfile.toLatin1().constData());
++  }
++  reply-&gt;deleteLater();
++}
++
++void BlSync::downloadProgress(qint64 a,qint64 b) {
++  fprintf(stderr,&quot;Descarga en proceso\n&quot;);
++}
+\ No newline at end of file
+diff --git a/bulmages/bulmalib/src/blsync.h b/bulmages/bulmalib/src/blsync.h
+new file mode 100644
+index 0000000..2078522
+--- /dev/null
++++ b/bulmages/bulmalib/src/blsync.h
+@@ -0,0 +1,52 @@
++/***************************************************************************
++ *   Copyright (C) 2013 by Tomeu Borras Riera                              *
++ *   <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>                                                  *
++ *   <A HREF="http://www.iglues.org">http://www.iglues.org</A>                                                 *
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 2 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program; if not, write to the                         *
++ *   Free Software Foundation, Inc.,                                       *
++ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
++ ***************************************************************************/
++
++#ifndef BLSYNC_H
++#define BLSYNC_H
++
++#include &lt;QtWidgets/QDialog&gt;
++#include &lt;QtNetwork/QNetworkReply&gt;
++#include &lt;QtNetwork/QSslError&gt;
++#include &lt;QtCore/QFile&gt;
++#include &quot;ui_blsyncbase.h&quot;
++#include &quot;blfunctions.h&quot;
++
++/** Sobrecarga los QFile para poder hacer busquedas por internet */
++class BlSync :  public QDialog, public Ui_BlSyncBase
++{
++    Q_OBJECT
++private:
++    QString m_file;
++    QString m_destfile;
++public:
++    BlSync ( QWidget *parent, const char *name );
++    ~BlSync();
++    void sync();
++    void getFile(const QString &amp;, const QString &amp;) ;
++public slots:
++  virtual void replyFinished(QNetworkReply *);
++  virtual void slotSslErrors(QList&lt;QSslError&gt;);
++  virtual void slotError(QNetworkReply::NetworkError);
++  virtual void slotReadyRead();
++  virtual void downloadProgress(qint64 ,qint64 );
++};
++
++#endif
+\ No newline at end of file
+diff --git a/bulmages/bulmalib/src/blsyncbase.ui b/bulmages/bulmalib/src/blsyncbase.ui
+new file mode 100644
+index 0000000..b1c1500
+--- /dev/null
++++ b/bulmages/bulmalib/src/blsyncbase.ui
+@@ -0,0 +1,73 @@
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
++&lt;ui version=&quot;4.0&quot;&gt;
++ &lt;class&gt;BlSyncBase&lt;/class&gt;
++ &lt;widget class=&quot;QDialog&quot; name=&quot;BlSyncBase&quot;&gt;
++  &lt;property name=&quot;geometry&quot;&gt;
++   &lt;rect&gt;
++    &lt;x&gt;0&lt;/x&gt;
++    &lt;y&gt;0&lt;/y&gt;
++    &lt;width&gt;400&lt;/width&gt;
++    &lt;height&gt;300&lt;/height&gt;
++   &lt;/rect&gt;
++  &lt;/property&gt;
++  &lt;property name=&quot;windowTitle&quot;&gt;
++   &lt;string&gt;Dialog&lt;/string&gt;
++  &lt;/property&gt;
++  &lt;layout class=&quot;QGridLayout&quot; name=&quot;gridLayout&quot;&gt;
++   &lt;item row=&quot;0&quot; column=&quot;0&quot;&gt;
++    &lt;widget class=&quot;QTextEdit&quot; name=&quot;textEdit&quot;/&gt;
++   &lt;/item&gt;
++   &lt;item row=&quot;1&quot; column=&quot;0&quot;&gt;
++    &lt;widget class=&quot;QDialogButtonBox&quot; name=&quot;buttonBox&quot;&gt;
++     &lt;property name=&quot;orientation&quot;&gt;
++      &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
++     &lt;/property&gt;
++     &lt;property name=&quot;standardButtons&quot;&gt;
++      &lt;set&gt;QDialogButtonBox::Cancel|QDialogButtonBox::Ok&lt;/set&gt;
++     &lt;/property&gt;
++    &lt;/widget&gt;
++   &lt;/item&gt;
++  &lt;/layout&gt;
++ &lt;/widget&gt;
++ &lt;resources/&gt;
++ &lt;connections&gt;
++  &lt;connection&gt;
++   &lt;sender&gt;buttonBox&lt;/sender&gt;
++   &lt;signal&gt;accepted()&lt;/signal&gt;
++   &lt;receiver&gt;BlSyncBase&lt;/receiver&gt;
++   &lt;slot&gt;accept()&lt;/slot&gt;
++   &lt;hints&gt;
++    &lt;hint type=&quot;sourcelabel&quot;&gt;
++     &lt;x&gt;248&lt;/x&gt;
++     &lt;y&gt;254&lt;/y&gt;
++    &lt;/hint&gt;
++    &lt;hint type=&quot;destinationlabel&quot;&gt;
++     &lt;x&gt;157&lt;/x&gt;
++     &lt;y&gt;274&lt;/y&gt;
++    &lt;/hint&gt;
++   &lt;/hints&gt;
++  &lt;/connection&gt;
++  &lt;connection&gt;
++   &lt;sender&gt;buttonBox&lt;/sender&gt;
++   &lt;signal&gt;rejected()&lt;/signal&gt;
++   &lt;receiver&gt;BlSyncBase&lt;/receiver&gt;
++   &lt;slot&gt;reject()&lt;/slot&gt;
++   &lt;hints&gt;
++    &lt;hint type=&quot;sourcelabel&quot;&gt;
++     &lt;x&gt;316&lt;/x&gt;
++     &lt;y&gt;260&lt;/y&gt;
++    &lt;/hint&gt;
++    &lt;hint type=&quot;destinationlabel&quot;&gt;
++     &lt;x&gt;286&lt;/x&gt;
++     &lt;y&gt;274&lt;/y&gt;
++    &lt;/hint&gt;
++   &lt;/hints&gt;
++  &lt;/connection&gt;
++ &lt;/connections&gt;
++ &lt;includes&gt;
++  &lt;include location=&quot;local&quot;&gt;local_blI18n.h&lt;/include&gt;
++ &lt;/includes&gt;
++ &lt;resources&gt;
++  &lt;include location=&quot;../../bulmages.qrc&quot;/&gt;
++ &lt;/resources&gt;
++&lt;/ui&gt;
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007628.html">[BulmaGés] Paquetes debian
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007630.html">[BulmaGés] Mensaje de parte de un usuario.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7629">[ fecha ]</a>
+              <a href="thread.html#7629">[ hilo ]</a>
+              <a href="subject.html#7629">[ asunto ]</a>
+              <a href="author.html#7629">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

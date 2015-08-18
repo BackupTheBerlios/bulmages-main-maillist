@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] i18n i gettext
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20i18n%20i%20gettext&In-Reply-To=%3C200905190048.22675.leo%40alaxarxa.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001984.html">
+   <LINK REL="Next"  HREF="001989.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] i18n i gettext </H1>
+    <B>Leopold Palomo Avellaneda</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20i18n%20i%20gettext&In-Reply-To=%3C200905190048.22675.leo%40alaxarxa.net%3E"
+       TITLE="[BulmaGés] i18n i gettext">leo en alaxarxa.net
+       </A><BR>
+    <I>Mar Mayo 19 00:48:22 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001984.html">[BulmaGés]Plugin de cuentas anuales
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001989.html">[BulmaGés]i18n i gettext
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1981">[ fecha ]</a>
+              <a href="thread.html#1981">[ hilo ]</a>
+              <a href="subject.html#1981">[ asunto ]</a>
+              <a href="author.html#1981">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bones,
+
+este fin de semana me he mirado con calma las macros que hice hace unos meses 
+para gettext y que no documenté. Espero que esto sea un poco de ayuda.
+
+Cuando creamos el directorio build y hacemos el cmake, nos aparecen varios 
+scripts, personalizados para nuestra configuración que, juntamente con las 
+macros del cmake hacen lo siguiente:
+
+########
+make
+########
+
+make messages_extract
+
+recorre TODOS los directorios y, de cada catálogo de mensajes genera el 
+fichero de plantilla de mensajes: el pot. Lo crea en build
+
+make plugin/bulma/loquesea_pot
+
+crea la plantilla de mensajes específico al  plugin/bulma/loquesea 
+seleccionado.
+
+make translations 
+
+crea las traducciones en formato binario.
+
+make update_pots
+
+copia la última versión del TODOS los ficheros de mensajes (de build)  a 
+los &quot;sources&quot;
+
+make update_plugin/bulma/loquesea_pot 
+
+copia la última versión delplugin/bulma/loquesea .pot de mensajes (de build)  
+a los &quot;sources&quot;
+
+make update_lang_po
+
+copia la última versión de las traducciones de mensajes (de build)  a 
+los &quot;sources&quot;
+
+
+########
+Scripts
+########
+
+teniendo en cuenta que cada plugin tiene asociado un .pot i un fichero de 
+traducciones .po por cada idioma, el volumen de ficheros a traducir es 
+inmenso. Por este motivo las traducciones están fusionadas y localizadas en:
+trunk/bulmages/installbulmages/i18n
+
+donde hay 
+- un fichero con todos los mensajes .pot fusionados y sin repetidos, 
+bulmages_suite.pot
+
+- un fichero por cada idioma ca_ES..., es_ES ..., en_US, fr_ES ...
+
+
+estos ficheros se han creado de la siguiente forma:
+
+./create_message_catalog
+
+une todos los .pot de build i actualiza 
+bulmages/installbulmages/i18n/bulmages_suite.pot
+
+./update_message_catalog_lang (poner idioma ...)
+actualiza, des de els po de build, el catálogo de mensajes traducidos de i18n.
+
+
+En principio, si queréis hacer traducciones, revisiones, etc, los ficheros a 
+mirar son los de bulmages/installbulmages/i18n. Los de cada uno de los 
+plugins/bulma* , se pueden actualizar, pero luego habrá que hacer un 
+update_messaga_catalog_lang para actualizar el fusionado.
+
+Espero que sea de ayudo y que alguien lo meta en el wiki ;-)
+
+Leo
+
+
+
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001984.html">[BulmaGés]Plugin de cuentas anuales
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001989.html">[BulmaGés]i18n i gettext
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1981">[ fecha ]</a>
+              <a href="thread.html#1981">[ hilo ]</a>
+              <a href="subject.html#1981">[ asunto ]</a>
+              <a href="author.html#1981">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

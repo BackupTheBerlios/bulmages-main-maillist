@@ -1,0 +1,406 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] r3185 - in trunk/bulmages/bulmalib/plugins: . pluginarchivos pluginarchivos/dbmodels pluginarchivos/po pluginbl_attachdocument pluginbl_attachdocument/dbmodels pluginbl_attachdocument/po pluginbl_clipboard pluginbl_clipboard/po pluginbl_embed pluginbl_embed/po pluginbl_formlock pluginbl_formlock/dbmodels pluginbl_formlock/po pluginbl_importcsv pluginbl_importcsv/po pluginbl_report pluginbl_report/po pluginbl_report2ods pluginbl_report2ods/openreports pluginbl_report2ods/po pluginbl_subform2ods pluginbl_subform2ods/po pluginbl_subform2pdf pluginbl_subform2pdf/po pluginbl_subform2sxc pluginbl_subform2sxc/po pluginbl_template pluginbl_template/po pluginbl_template2mail pluginbl_template2mail/po pluginbl_template2ods pluginbl_template2ods/po pluginbloqueos pluginbloqueos/dbmodels pluginbloqueos/po pluginclipboardbf pluginclipboardbf/po plugindocked plugindocked/po pluginimpers pluginimpers/po pluginimpersmail pluginimpersmail/po pluginimpersods pluginimpersods/po plugin! importcsv pluginimportcsv/po plugininformes plugininformes/po plugininformesods plugininformesods/openreports plugininformesods/po pluginsubformods pluginsubformods/po pluginsubformprint pluginsubformprint/po pluginsubformsxc pluginsubformsxc/po
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-March/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3185%20-%20in%0A%20trunk/bulmages/bulmalib/plugins%3A%20.%20pluginarchivos%20pluginarchivos/dbmodels%0A%20pluginarchivos/po%20pluginbl_attachdocument%20pluginbl_attachdocument/dbmodels%0A%20pluginbl_attachdocument/po%20pluginbl_clipboard%20pluginbl_clipboard/po%0A%20pluginbl_embed%20pluginbl_embed/po%20pluginbl_formlock%0A%20pluginbl_formlock/dbmodels%20pluginbl_formlock/po%20pluginbl_importcsv%0A%20pluginbl_importcsv/po%20pluginbl_report%20pluginbl_report/po%0A%20pluginbl_report2ods%20pluginbl_report2ods/openreports%20pluginbl_report2ods/po%0A%20pluginbl_subform2ods%20pluginbl_subform2ods/po%20pluginbl_subform2pdf%0A%20pluginbl_subform2pdf/po%20pluginbl_subform2sxc%20pluginbl_subform2sxc/po%0A%20pluginbl_template%20pluginbl_template/po%20pluginbl_template2mail%0A%20pluginbl_template2mail/po%20pluginbl_template2ods%20pluginbl_template2ods/po%0A%20pluginbloqueos%20pluginbloqueos/dbmodels%20pluginbloqueos/po%20pluginclipboardbf%0A%20pluginclipboardbf/po%20plugindocked%20plugindocked/po%20pluginimpers%0A%20pluginimpers/po%20pluginimpersmail%20pluginimpersmail/po%20pluginimpersods%0A%20pluginimpersods/po%20plugin%21%20importcsv%20pluginimportcsv/po%20plugininformes%0A%20plugininformes/po%20plugininformesods%20plugininformesods/openreports%0A%20plugininformesods/po%20pluginsubformods%20pluginsubformods/po%0A%20pluginsubformprint%20pluginsubformprint/po%20pluginsubformsxc%0A%20pluginsubformsxc/po&In-Reply-To=%3C200903302000.n2UK0RCd011445%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001462.html">
+   <LINK REL="Next"  HREF="001464.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] r3185 - in trunk/bulmages/bulmalib/plugins: . pluginarchivos pluginarchivos/dbmodels pluginarchivos/po pluginbl_attachdocument pluginbl_attachdocument/dbmodels pluginbl_attachdocument/po pluginbl_clipboard pluginbl_clipboard/po pluginbl_embed pluginbl_embed/po pluginbl_formlock pluginbl_formlock/dbmodels pluginbl_formlock/po pluginbl_importcsv pluginbl_importcsv/po pluginbl_report pluginbl_report/po pluginbl_report2ods pluginbl_report2ods/openreports pluginbl_report2ods/po pluginbl_subform2ods pluginbl_subform2ods/po pluginbl_subform2pdf pluginbl_subform2pdf/po pluginbl_subform2sxc pluginbl_subform2sxc/po pluginbl_template pluginbl_template/po pluginbl_template2mail pluginbl_template2mail/po pluginbl_template2ods pluginbl_template2ods/po pluginbloqueos pluginbloqueos/dbmodels pluginbloqueos/po pluginclipboardbf pluginclipboardbf/po plugindocked plugindocked/po pluginimpers pluginimpers/po pluginimpersmail pluginimpersmail/po pluginimpersods pluginimpersods/po plugin! importcsv pluginimportcsv/po plugininformes plugininformes/po plugininformesods plugininformesods/openreports plugininformesods/po pluginsubformods pluginsubformods/po pluginsubformprint pluginsubformprint/po pluginsubformsxc pluginsubformsxc/po </H1>
+    <B>svn en mail.berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3185%20-%20in%0A%20trunk/bulmages/bulmalib/plugins%3A%20.%20pluginarchivos%20pluginarchivos/dbmodels%0A%20pluginarchivos/po%20pluginbl_attachdocument%20pluginbl_attachdocument/dbmodels%0A%20pluginbl_attachdocument/po%20pluginbl_clipboard%20pluginbl_clipboard/po%0A%20pluginbl_embed%20pluginbl_embed/po%20pluginbl_formlock%0A%20pluginbl_formlock/dbmodels%20pluginbl_formlock/po%20pluginbl_importcsv%0A%20pluginbl_importcsv/po%20pluginbl_report%20pluginbl_report/po%0A%20pluginbl_report2ods%20pluginbl_report2ods/openreports%20pluginbl_report2ods/po%0A%20pluginbl_subform2ods%20pluginbl_subform2ods/po%20pluginbl_subform2pdf%0A%20pluginbl_subform2pdf/po%20pluginbl_subform2sxc%20pluginbl_subform2sxc/po%0A%20pluginbl_template%20pluginbl_template/po%20pluginbl_template2mail%0A%20pluginbl_template2mail/po%20pluginbl_template2ods%20pluginbl_template2ods/po%0A%20pluginbloqueos%20pluginbloqueos/dbmodels%20pluginbloqueos/po%20pluginclipboardbf%0A%20pluginclipboardbf/po%20plugindocked%20plugindocked/po%20pluginimpers%0A%20pluginimpers/po%20pluginimpersmail%20pluginimpersmail/po%20pluginimpersods%0A%20pluginimpersods/po%20plugin%21%20importcsv%20pluginimportcsv/po%20plugininformes%0A%20plugininformes/po%20plugininformesods%20plugininformesods/openreports%0A%20plugininformesods/po%20pluginsubformods%20pluginsubformods/po%0A%20pluginsubformprint%20pluginsubformprint/po%20pluginsubformsxc%0A%20pluginsubformsxc/po&In-Reply-To=%3C200903302000.n2UK0RCd011445%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] r3185 - in trunk/bulmages/bulmalib/plugins: . pluginarchivos pluginarchivos/dbmodels pluginarchivos/po pluginbl_attachdocument pluginbl_attachdocument/dbmodels pluginbl_attachdocument/po pluginbl_clipboard pluginbl_clipboard/po pluginbl_embed pluginbl_embed/po pluginbl_formlock pluginbl_formlock/dbmodels pluginbl_formlock/po pluginbl_importcsv pluginbl_importcsv/po pluginbl_report pluginbl_report/po pluginbl_report2ods pluginbl_report2ods/openreports pluginbl_report2ods/po pluginbl_subform2ods pluginbl_subform2ods/po pluginbl_subform2pdf pluginbl_subform2pdf/po pluginbl_subform2sxc pluginbl_subform2sxc/po pluginbl_template pluginbl_template/po pluginbl_template2mail pluginbl_template2mail/po pluginbl_template2ods pluginbl_template2ods/po pluginbloqueos pluginbloqueos/dbmodels pluginbloqueos/po pluginclipboardbf pluginclipboardbf/po plugindocked plugindocked/po pluginimpers pluginimpers/po pluginimpersmail pluginimpersmail/po pluginimpersods pluginimpersods/po plugin! importcsv pluginimportcsv/po plugininformes plugininformes/po plugininformesods plugininformesods/openreports plugininformesods/po pluginsubformods pluginsubformods/po pluginsubformprint pluginsubformprint/po pluginsubformsxc pluginsubformsxc/po">svn en mail.berlios.de
+       </A><BR>
+    <I>Lun Mar 30 22:00:27 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001462.html">[BulmaGés] r3184 - in trunk/bulmages: bulmafact/plugins/efacturabf bulmafact/plugins/pluginalias bulmafact/plugins/pluginalmacen bulmafact/plugins/pluginbarcodeopen bulmafact/plugins/pluginbf_actividad bulmafact/plugins/pluginbf_almacen bulmafact/plugins/pluginbf_alumno bulmafact/plugins/pluginbf_articulo bulmafact/plugins/pluginbf_asociacion bulmafact/plugins/pluginbf_asterisk bulmafact/plugins/pluginbf_banco bulmafact/plugins/pluginbf_bulmacont bulmafact/plugins/pluginbf_bulmatpv bulmafact/plugins/pluginbf_cliente bulmafact/plugins/pluginbf_clientealbaran bulmafact/plugins/pluginbf_clientealbaranesfactura bulmafact/plugins/pluginbf_clientefactura bulmafact/plugins/pluginbf_clientepedido bulmafact/plugins/pluginbf_clientepresupuesto bulmafact/plugins/pluginbf_clienteproveedor bulmafact/plugins/pluginbf_comercial bulmafact/plugins/pluginbf_corrector bulmafact/plugins/pluginbf_debug bulmafact/plugins/pluginbf_example bulmafact/plugins/pluginbf_formasdepago bulmafact/plugins/plu! ginbf_gestassociacio bulmafact/plugins/pluginbf_iva bulmafact/plugins/pluginbf_ivaincluido bulmafact/plugins/pluginbf_preciocoste bulmafact/plugins/pluginbf_profesor bulmafact/plugins/pluginbf_proveedor bulmafact/plugins/pluginbf_proveedoralbaran bulmafact/plugins/pluginbf_proveedorfactura bulmafact/plugins/pluginbf_proveedorpago bulmafact/plugins/pluginbf_proveedorpedido bulmafact/plugins/pluginbf_recibo bulmafact/plugins/pluginbf_seriesfactura bulmafact/plugins/pluginbf_tallascolores bulmafact/plugins/pluginbf_tarifa bulmafact/plugins/pluginbf_ticket bulmafact/plugins/pluginbf_trabajador bulmafact/plugins/pluginbf_trazabilidad bulmafact/plugins/pluginbf_tutor bulmafact/plugins/pluginbf_vehiculo bulmafact/plugins/plugincatalogo bulmafact/plugins/plugincompraventa bulmafact/plugins/plugincontratos bulmafact/plugins/plugincuadrante bulmafact/plugins/pluginetiquetado bulmafact/plugins/pluginetiquetas bulmafact/plugins/pluginimpresionesmultiples bulmafact/plugins/plugininforme! clientes bulmafact/plugins/plugininformeclientessxc bulmafact/! plugins/
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001464.html">[BulmaGés] r3186 - in trunk/bulmages: bulmafact/plugins/efacturabf bulmafact/plugins/pluginalias bulmafact/plugins/pluginalmacen bulmafact/plugins/pluginbarcodeopen bulmafact/plugins/pluginbf_actividad bulmafact/plugins/pluginbf_almacen bulmafact/plugins/pluginbf_alumno bulmafact/plugins/pluginbf_articulo bulmafact/plugins/pluginbf_asociacion bulmafact/plugins/pluginbf_asterisk bulmafact/plugins/pluginbf_banco bulmafact/plugins/pluginbf_bulmacont bulmafact/plugins/pluginbf_bulmatpv bulmafact/plugins/pluginbf_cliente bulmafact/plugins/pluginbf_clientealbaran bulmafact/plugins/pluginbf_clientealbaranesfactura bulmafact/plugins/pluginbf_clientefactura bulmafact/plugins/pluginbf_clientepedido bulmafact/plugins/pluginbf_clientepresupuesto bulmafact/plugins/pluginbf_clienteproveedor bulmafact/plugins/pluginbf_comercial bulmafact/plugins/pluginbf_corrector bulmafact/plugins/pluginbf_debug bulmafact/plugins/pluginbf_example bulmafact/plugins/pluginbf_formasdepago bulmafact/plugins/plu! ginbf_gestassociacio bulmafact/plugins/pluginbf_iva bulmafact/plugins/pluginbf_ivaincluido bulmafact/plugins/pluginbf_preciocoste bulmafact/plugins/pluginbf_profesor bulmafact/plugins/pluginbf_proveedor bulmafact/plugins/pluginbf_proveedoralbaran bulmafact/plugins/pluginbf_proveedorfactura bulmafact/plugins/pluginbf_proveedorpago bulmafact/plugins/pluginbf_proveedorpedido bulmafact/plugins/pluginbf_recibo bulmafact/plugins/pluginbf_seriesfactura bulmafact/plugins/pluginbf_tallascolores bulmafact/plugins/pluginbf_tarifa bulmafact/plugins/pluginbf_ticket bulmafact/plugins/pluginbf_trabajador bulmafact/plugins/pluginbf_trazabilidad bulmafact/plugins/pluginbf_tutor bulmafact/plugins/pluginbf_vehiculo bulmafact/plugins/plugincatalogo bulmafact/plugins/plugincompraventa bulmafact/plugins/plugincontratos bulmafact/plugins/plugincuadrante bulmafact/plugins/pluginetiquetado bulmafact/plugins/pluginetiquetas bulmafact/plugins/pluginimpresionesmultiples bulmafact/plugins/plugininforme! clientes bulmafact/plugins/plugininformeclientessxc bulmafact/! plugins/
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1463">[ fecha ]</a>
+              <a href="thread.html#1463">[ hilo ]</a>
+              <a href="subject.html#1463">[ asunto ]</a>
+              <a href="author.html#1463">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: fcojavmc
+Date: 2009-03-30 21:57:25 +0200 (Mon, 30 Mar 2009)
+New Revision: 3185
+
+Added:
+   trunk/bulmages/bulmalib/plugins/pluginbl_attachdocument/
+   trunk/bulmages/bulmalib/plugins/pluginbl_attachdocument/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginbl_attachdocument/README.es
+   trunk/bulmages/bulmalib/plugins/pluginbl_attachdocument/archivo.cpp
+   trunk/bulmages/bulmalib/plugins/pluginbl_attachdocument/archivo.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_attachdocument/archivobase.ui
+   trunk/bulmages/bulmalib/plugins/pluginbl_attachdocument/archmenu.cpp
+   trunk/bulmages/bulmalib/plugins/pluginbl_attachdocument/archmenu.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_attachdocument/dbmodels/
+   trunk/bulmages/bulmalib/plugins/pluginbl_attachdocument/dbmodels/pluginbl_attachdocument-rm.sql
+   trunk/bulmages/bulmalib/plugins/pluginbl_attachdocument/dbmodels/pluginbl_attachdocument.sql
+   trunk/bulmages/bulmalib/plugins/pluginbl_attachdocument/pluginbl_attachdocument.cpp
+   trunk/bulmages/bulmalib/plugins/pluginbl_attachdocument/pluginbl_attachdocument.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_attachdocument/po/
+   trunk/bulmages/bulmalib/plugins/pluginbl_attachdocument/po/pluginbl_attachdocument.pot
+   trunk/bulmages/bulmalib/plugins/pluginbl_attachdocument/po/pluginbl_attachdocument_ca_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_attachdocument/po/pluginbl_attachdocument_en_US.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_attachdocument/po/pluginbl_attachdocument_es_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_attachdocument/po/pluginbl_attachdocument_fr_FR.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_clipboard/
+   trunk/bulmages/bulmalib/plugins/pluginbl_clipboard/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginbl_clipboard/README.es
+   trunk/bulmages/bulmalib/plugins/pluginbl_clipboard/pluginbl_clipboard.cpp
+   trunk/bulmages/bulmalib/plugins/pluginbl_clipboard/pluginbl_clipboard.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_clipboard/po/
+   trunk/bulmages/bulmalib/plugins/pluginbl_clipboard/po/pluginbl_clipboard.pot
+   trunk/bulmages/bulmalib/plugins/pluginbl_clipboard/po/pluginbl_clipboard_ca_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_clipboard/po/pluginbl_clipboard_en_US.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_clipboard/po/pluginbl_clipboard_es_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_clipboard/po/pluginbl_clipboard_fr_FR.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_embed/
+   trunk/bulmages/bulmalib/plugins/pluginbl_embed/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginbl_embed/README.es
+   trunk/bulmages/bulmalib/plugins/pluginbl_embed/bx11embedcontainer.cpp
+   trunk/bulmages/bulmalib/plugins/pluginbl_embed/bx11embedcontainer.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_embed/myplugindock.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_embed/pluginbl_embed.cpp
+   trunk/bulmages/bulmalib/plugins/pluginbl_embed/pluginbl_embed.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_embed/po/
+   trunk/bulmages/bulmalib/plugins/pluginbl_embed/po/pluginbl_embed.pot
+   trunk/bulmages/bulmalib/plugins/pluginbl_embed/po/pluginbl_embed_ca_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_embed/po/pluginbl_embed_en_US.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_embed/po/pluginbl_embed_es_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_embed/po/pluginbl_embed_fr_FR.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_formlock/
+   trunk/bulmages/bulmalib/plugins/pluginbl_formlock/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginbl_formlock/README.es
+   trunk/bulmages/bulmalib/plugins/pluginbl_formlock/bloqmenu.cpp
+   trunk/bulmages/bulmalib/plugins/pluginbl_formlock/bloqmenu.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_formlock/dbmodels/
+   trunk/bulmages/bulmalib/plugins/pluginbl_formlock/dbmodels/pluginbl_formlock-rm.sql
+   trunk/bulmages/bulmalib/plugins/pluginbl_formlock/dbmodels/pluginbl_formlock.sql
+   trunk/bulmages/bulmalib/plugins/pluginbl_formlock/pluginbl_formlock.cpp
+   trunk/bulmages/bulmalib/plugins/pluginbl_formlock/pluginbl_formlock.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_formlock/po/
+   trunk/bulmages/bulmalib/plugins/pluginbl_formlock/po/pluginbl_formlock.pot
+   trunk/bulmages/bulmalib/plugins/pluginbl_formlock/po/pluginbl_formlock_ca_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_formlock/po/pluginbl_formlock_en_US.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_formlock/po/pluginbl_formlock_es_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_formlock/po/pluginbl_formlock_fr_FR.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_importcsv/
+   trunk/bulmages/bulmalib/plugins/pluginbl_importcsv/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginbl_importcsv/COPYING
+   trunk/bulmages/bulmalib/plugins/pluginbl_importcsv/README.es
+   trunk/bulmages/bulmalib/plugins/pluginbl_importcsv/importcsv.cpp
+   trunk/bulmages/bulmalib/plugins/pluginbl_importcsv/importcsv.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_importcsv/importcsvbase.ui
+   trunk/bulmages/bulmalib/plugins/pluginbl_importcsv/mypluginimportcsv.cpp
+   trunk/bulmages/bulmalib/plugins/pluginbl_importcsv/mypluginimportcsv.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_importcsv/pluginbl_importcsv.cpp
+   trunk/bulmages/bulmalib/plugins/pluginbl_importcsv/pluginbl_importcsv.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_importcsv/po/
+   trunk/bulmages/bulmalib/plugins/pluginbl_importcsv/po/pluginbl_importcsv.pot
+   trunk/bulmages/bulmalib/plugins/pluginbl_importcsv/po/pluginbl_importcsv_ca_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_importcsv/po/pluginbl_importcsv_en_US.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_importcsv/po/pluginbl_importcsv_es_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_importcsv/po/pluginbl_importcsv_fr_FR.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_report/
+   trunk/bulmages/bulmalib/plugins/pluginbl_report/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginbl_report/README.es
+   trunk/bulmages/bulmalib/plugins/pluginbl_report/myplugininformes.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_report/pluginbl_report.cpp
+   trunk/bulmages/bulmalib/plugins/pluginbl_report/pluginbl_report.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_report/po/
+   trunk/bulmages/bulmalib/plugins/pluginbl_report/po/pluginbl_report.pot
+   trunk/bulmages/bulmalib/plugins/pluginbl_report/po/pluginbl_report_ca_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_report/po/pluginbl_report_en_US.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_report/po/pluginbl_report_es_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_report/po/pluginbl_report_fr_FR.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_report2ods/
+   trunk/bulmages/bulmalib/plugins/pluginbl_report2ods/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginbl_report2ods/README.es
+   trunk/bulmages/bulmalib/plugins/pluginbl_report2ods/myplugininformesods.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_report2ods/openreports/
+   trunk/bulmages/bulmalib/plugins/pluginbl_report2ods/openreports/inf_clientes.pys
+   trunk/bulmages/bulmalib/plugins/pluginbl_report2ods/openreports/inf_detalleventasarticulo.pys
+   trunk/bulmages/bulmalib/plugins/pluginbl_report2ods/openreports/inf_detalleventascliente.pys
+   trunk/bulmages/bulmalib/plugins/pluginbl_report2ods/openreports/inf_familiacliente.pys
+   trunk/bulmages/bulmalib/plugins/pluginbl_report2ods/openreports/inf_resumcompras.pys
+   trunk/bulmages/bulmalib/plugins/pluginbl_report2ods/pluginbl_report2ods.cpp
+   trunk/bulmages/bulmalib/plugins/pluginbl_report2ods/pluginbl_report2ods.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_report2ods/po/
+   trunk/bulmages/bulmalib/plugins/pluginbl_report2ods/po/pluginbl_report2ods.pot
+   trunk/bulmages/bulmalib/plugins/pluginbl_report2ods/po/pluginbl_report2ods_ca_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_report2ods/po/pluginbl_report2ods_en_US.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_report2ods/po/pluginbl_report2ods_es_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_report2ods/po/pluginbl_report2ods_fr_FR.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2ods/
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2ods/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2ods/README.es
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2ods/pluginbl_subform2ods.cpp
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2ods/pluginbl_subform2ods.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2ods/po/
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2ods/po/pluginbl_subform2ods.pot
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2ods/po/pluginbl_subform2ods_ca_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2ods/po/pluginbl_subform2ods_en_US.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2ods/po/pluginbl_subform2ods_es_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2ods/po/pluginbl_subform2ods_fr_FR.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2pdf/
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2pdf/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2pdf/README.es
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2pdf/pluginbl_subform2pdf.cpp
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2pdf/pluginbl_subform2pdf.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2pdf/po/
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2pdf/po/pluginbl_subform2pdf.pot
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2pdf/po/pluginbl_subform2pdf_ca_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2pdf/po/pluginbl_subform2pdf_en_US.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2pdf/po/pluginbl_subform2pdf_es_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2pdf/po/pluginbl_subform2pdf_fr_FR.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2sxc/
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2sxc/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2sxc/README.es
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2sxc/pluginbl_subform2sxc.cpp
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2sxc/pluginbl_subform2sxc.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2sxc/po/
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2sxc/po/pluginbl_subform2sxc.pot
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2sxc/po/pluginbl_subform2sxc_ca_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2sxc/po/pluginbl_subform2sxc_en_US.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2sxc/po/pluginbl_subform2sxc_es_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_subform2sxc/po/pluginbl_subform2sxc_fr_FR.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_template/
+   trunk/bulmages/bulmalib/plugins/pluginbl_template/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginbl_template/COPYING
+   trunk/bulmages/bulmalib/plugins/pluginbl_template/README.es
+   trunk/bulmages/bulmalib/plugins/pluginbl_template/eqtoolbutton.cpp
+   trunk/bulmages/bulmalib/plugins/pluginbl_template/eqtoolbutton.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_template/pluginbl_template.cpp
+   trunk/bulmages/bulmalib/plugins/pluginbl_template/pluginbl_template.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_template/po/
+   trunk/bulmages/bulmalib/plugins/pluginbl_template/po/pluginbl_template_ca_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_template/po/pluginbl_template_en_US.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_template/po/pluginbl_template_es_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_template/po/pluginbl_template_fr_FR.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_template/po/pluginimpers.pot
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2mail/
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2mail/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2mail/COPYING
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2mail/README.es
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2mail/eqtoolbutton.cpp
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2mail/eqtoolbutton.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2mail/pluginbl_template2mail.cpp
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2mail/pluginbl_template2mail.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2mail/po/
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2mail/po/pluginbl_template2mail.pot
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2mail/po/pluginbl_template2mail_ca_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2mail/po/pluginbl_template2mail_en_US.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2mail/po/pluginbl_template2mail_es_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2mail/po/pluginbl_template2mail_fr_FR.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2ods/
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2ods/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2ods/COPYING
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2ods/README.es
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2ods/eqtoolbutton.cpp
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2ods/eqtoolbutton.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2ods/pluginbl_template2ods.cpp
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2ods/pluginbl_template2ods.h
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2ods/po/
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2ods/po/pluginbl_template2ods.pot
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2ods/po/pluginbl_template2ods_ca_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2ods/po/pluginbl_template2ods_en_US.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2ods/po/pluginbl_template2ods_es_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbl_template2ods/po/pluginbl_template2ods_fr_FR.UTF-8.po
+Removed:
+   trunk/bulmages/bulmalib/plugins/pluginarchivos/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginarchivos/README.es
+   trunk/bulmages/bulmalib/plugins/pluginarchivos/archivo.cpp
+   trunk/bulmages/bulmalib/plugins/pluginarchivos/archivo.h
+   trunk/bulmages/bulmalib/plugins/pluginarchivos/archivobase.ui
+   trunk/bulmages/bulmalib/plugins/pluginarchivos/archmenu.cpp
+   trunk/bulmages/bulmalib/plugins/pluginarchivos/archmenu.h
+   trunk/bulmages/bulmalib/plugins/pluginarchivos/dbmodels/rev-pluginarchivos.sql
+   trunk/bulmages/bulmalib/plugins/pluginarchivos/dbmodels/rm-pluginarchivos.sql
+   trunk/bulmages/bulmalib/plugins/pluginarchivos/pluginarchivos.cpp
+   trunk/bulmages/bulmalib/plugins/pluginarchivos/pluginarchivos.h
+   trunk/bulmages/bulmalib/plugins/pluginarchivos/po/pluginarchivos.pot
+   trunk/bulmages/bulmalib/plugins/pluginarchivos/po/pluginarchivos_ca_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginarchivos/po/pluginarchivos_en_US.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginarchivos/po/pluginarchivos_es_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginarchivos/po/pluginarchivos_fr_FR.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbloqueos/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginbloqueos/README.es
+   trunk/bulmages/bulmalib/plugins/pluginbloqueos/bloqmenu.cpp
+   trunk/bulmages/bulmalib/plugins/pluginbloqueos/bloqmenu.h
+   trunk/bulmages/bulmalib/plugins/pluginbloqueos/dbmodels/rev-pluginbloqueos.sql
+   trunk/bulmages/bulmalib/plugins/pluginbloqueos/dbmodels/rm-pluginbloqueos.sql
+   trunk/bulmages/bulmalib/plugins/pluginbloqueos/pluginbloqueos.cpp
+   trunk/bulmages/bulmalib/plugins/pluginbloqueos/pluginbloqueos.h
+   trunk/bulmages/bulmalib/plugins/pluginbloqueos/po/pluginbloqueos.pot
+   trunk/bulmages/bulmalib/plugins/pluginbloqueos/po/pluginbloqueos_ca_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbloqueos/po/pluginbloqueos_en_US.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbloqueos/po/pluginbloqueos_es_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginbloqueos/po/pluginbloqueos_fr_FR.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginclipboardbf/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginclipboardbf/README.es
+   trunk/bulmages/bulmalib/plugins/pluginclipboardbf/pluginclipboardbf.cpp
+   trunk/bulmages/bulmalib/plugins/pluginclipboardbf/pluginclipboardbf.h
+   trunk/bulmages/bulmalib/plugins/pluginclipboardbf/po/pluginclipboardbf.pot
+   trunk/bulmages/bulmalib/plugins/pluginclipboardbf/po/pluginclipboardbf_ca_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginclipboardbf/po/pluginclipboardbf_en_US.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginclipboardbf/po/pluginclipboardbf_es_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginclipboardbf/po/pluginclipboardbf_fr_FR.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/plugindocked/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/plugindocked/README.es
+   trunk/bulmages/bulmalib/plugins/plugindocked/bx11embedcontainer.cpp
+   trunk/bulmages/bulmalib/plugins/plugindocked/bx11embedcontainer.h
+   trunk/bulmages/bulmalib/plugins/plugindocked/myplugindock.h
+   trunk/bulmages/bulmalib/plugins/plugindocked/plugindock.cpp
+   trunk/bulmages/bulmalib/plugins/plugindocked/plugindock.h
+   trunk/bulmages/bulmalib/plugins/plugindocked/po/plugindocked.pot
+   trunk/bulmages/bulmalib/plugins/plugindocked/po/plugindocked_ca_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/plugindocked/po/plugindocked_en_US.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/plugindocked/po/plugindocked_es_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/plugindocked/po/plugindocked_fr_FR.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginimpers/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginimpers/COPYING
+   trunk/bulmages/bulmalib/plugins/pluginimpers/README.es
+   trunk/bulmages/bulmalib/plugins/pluginimpers/eqtoolbutton.cpp
+   trunk/bulmages/bulmalib/plugins/pluginimpers/eqtoolbutton.h
+   trunk/bulmages/bulmalib/plugins/pluginimpers/pluginimpers.cpp
+   trunk/bulmages/bulmalib/plugins/pluginimpers/pluginimpers.h
+   trunk/bulmages/bulmalib/plugins/pluginimpers/po/pluginimpers.pot
+   trunk/bulmages/bulmalib/plugins/pluginimpers/po/pluginimpers_ca_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginimpers/po/pluginimpers_en_US.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginimpers/po/pluginimpers_es_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginimpers/po/pluginimpers_fr_FR.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginimpersmail/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginimpersmail/COPYING
+   trunk/bulmages/bulmalib/plugins/pluginimpersmail/README.es
+   trunk/bulmages/bulmalib/plugins/pluginimpersmail/eqtoolbutton.cpp
+   trunk/bulmages/bulmalib/plugins/pluginimpersmail/eqtoolbutton.h
+   trunk/bulmages/bulmalib/plugins/pluginimpersmail/pluginimpersmail.cpp
+   trunk/bulmages/bulmalib/plugins/pluginimpersmail/pluginimpersmail.h
+   trunk/bulmages/bulmalib/plugins/pluginimpersmail/po/pluginimpersmail.pot
+   trunk/bulmages/bulmalib/plugins/pluginimpersmail/po/pluginimpersmail_ca_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginimpersmail/po/pluginimpersmail_en_US.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginimpersmail/po/pluginimpersmail_es_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginimpersmail/po/pluginimpersmail_fr_FR.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginimpersods/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginimpersods/COPYING
+   trunk/bulmages/bulmalib/plugins/pluginimpersods/README.es
+   trunk/bulmages/bulmalib/plugins/pluginimpersods/eqtoolbutton.cpp
+   trunk/bulmages/bulmalib/plugins/pluginimpersods/eqtoolbutton.h
+   trunk/bulmages/bulmalib/plugins/pluginimpersods/pluginimpersods.cpp
+   trunk/bulmages/bulmalib/plugins/pluginimpersods/pluginimpersods.h
+   trunk/bulmages/bulmalib/plugins/pluginimpersods/po/pluginimpersods.pot
+   trunk/bulmages/bulmalib/plugins/pluginimpersods/po/pluginimpersods_ca_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginimpersods/po/pluginimpersods_en_US.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginimpersods/po/pluginimpersods_es_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginimpersods/po/pluginimpersods_fr_FR.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginimportcsv/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginimportcsv/COPYING
+   trunk/bulmages/bulmalib/plugins/pluginimportcsv/README.es
+   trunk/bulmages/bulmalib/plugins/pluginimportcsv/importcsv.cpp
+   trunk/bulmages/bulmalib/plugins/pluginimportcsv/importcsv.h
+   trunk/bulmages/bulmalib/plugins/pluginimportcsv/importcsvbase.ui
+   trunk/bulmages/bulmalib/plugins/pluginimportcsv/mypluginimportcsv.cpp
+   trunk/bulmages/bulmalib/plugins/pluginimportcsv/mypluginimportcsv.h
+   trunk/bulmages/bulmalib/plugins/pluginimportcsv/pluginimportcsv.cpp
+   trunk/bulmages/bulmalib/plugins/pluginimportcsv/pluginimportcsv.h
+   trunk/bulmages/bulmalib/plugins/pluginimportcsv/po/pluginimportcsv.pot
+   trunk/bulmages/bulmalib/plugins/pluginimportcsv/po/pluginimportcsv_ca_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginimportcsv/po/pluginimportcsv_en_US.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginimportcsv/po/pluginimportcsv_es_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginimportcsv/po/pluginimportcsv_fr_FR.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/plugininformes/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/plugininformes/README.es
+   trunk/bulmages/bulmalib/plugins/plugininformes/myplugininformes.h
+   trunk/bulmages/bulmalib/plugins/plugininformes/plugininformes.cpp
+   trunk/bulmages/bulmalib/plugins/plugininformes/plugininformes.h
+   trunk/bulmages/bulmalib/plugins/plugininformes/po/plugininformes.pot
+   trunk/bulmages/bulmalib/plugins/plugininformes/po/plugininformes_ca_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/plugininformes/po/plugininformes_en_US.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/plugininformes/po/plugininformes_es_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/plugininformes/po/plugininformes_fr_FR.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/plugininformesods/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/plugininformesods/README.es
+   trunk/bulmages/bulmalib/plugins/plugininformesods/myplugininformesods.h
+   trunk/bulmages/bulmalib/plugins/plugininformesods/openreports/inf_clientes.pys
+   trunk/bulmages/bulmalib/plugins/plugininformesods/openreports/inf_detalleventasarticulo.pys
+   trunk/bulmages/bulmalib/plugins/plugininformesods/openreports/inf_detalleventascliente.pys
+   trunk/bulmages/bulmalib/plugins/plugininformesods/openreports/inf_familiacliente.pys
+   trunk/bulmages/bulmalib/plugins/plugininformesods/openreports/inf_resumcompras.pys
+   trunk/bulmages/bulmalib/plugins/plugininformesods/plugininformesods.cpp
+   trunk/bulmages/bulmalib/plugins/plugininformesods/plugininformesods.h
+   trunk/bulmages/bulmalib/plugins/plugininformesods/po/plugininformesods.pot
+   trunk/bulmages/bulmalib/plugins/plugininformesods/po/plugininformesods_ca_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/plugininformesods/po/plugininformesods_en_US.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/plugininformesods/po/plugininformesods_es_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/plugininformesods/po/plugininformesods_fr_FR.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginsubformods/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginsubformods/README.es
+   trunk/bulmages/bulmalib/plugins/pluginsubformods/pluginsubformods.cpp
+   trunk/bulmages/bulmalib/plugins/pluginsubformods/pluginsubformods.h
+   trunk/bulmages/bulmalib/plugins/pluginsubformods/po/pluginsubformods.pot
+   trunk/bulmages/bulmalib/plugins/pluginsubformods/po/pluginsubformods_ca_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginsubformods/po/pluginsubformods_en_US.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginsubformods/po/pluginsubformods_es_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginsubformods/po/pluginsubformods_fr_FR.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginsubformprint/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginsubformprint/README.es
+   trunk/bulmages/bulmalib/plugins/pluginsubformprint/pluginsubformprint.cpp
+   trunk/bulmages/bulmalib/plugins/pluginsubformprint/pluginsubformprint.h
+   trunk/bulmages/bulmalib/plugins/pluginsubformprint/po/pluginsubformprint.pot
+   trunk/bulmages/bulmalib/plugins/pluginsubformprint/po/pluginsubformprint_ca_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginsubformprint/po/pluginsubformprint_en_US.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginsubformprint/po/pluginsubformprint_es_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginsubformprint/po/pluginsubformprint_fr_FR.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginsubformsxc/CMakeLists.txt
+   trunk/bulmages/bulmalib/plugins/pluginsubformsxc/README.es
+   trunk/bulmages/bulmalib/plugins/pluginsubformsxc/pluginsubformsxc.cpp
+   trunk/bulmages/bulmalib/plugins/pluginsubformsxc/pluginsubformsxc.h
+   trunk/bulmages/bulmalib/plugins/pluginsubformsxc/po/pluginsubformsxc.pot
+   trunk/bulmages/bulmalib/plugins/pluginsubformsxc/po/pluginsubformsxc_ca_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginsubformsxc/po/pluginsubformsxc_en_US.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginsubformsxc/po/pluginsubformsxc_es_ES.UTF-8.po
+   trunk/bulmages/bulmalib/plugins/pluginsubformsxc/po/pluginsubformsxc_fr_FR.UTF-8.po
+Modified:
+   trunk/bulmages/bulmalib/plugins/CMakeLists.txt
+Log:
+Modificado por Zhixiong:He cambiado todos los nombres de los plugins que esta dentro de BulmaLib.
+
+Modificado por zhixiong:He cambiado los nombres del plugin pluginarchivos.
+
+?\194?\161?\194?\161?\194?\161Alerta!!! Tambien he modificado los archivos de base de datos!
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001462.html">[BulmaGés] r3184 - in trunk/bulmages: bulmafact/plugins/efacturabf bulmafact/plugins/pluginalias bulmafact/plugins/pluginalmacen bulmafact/plugins/pluginbarcodeopen bulmafact/plugins/pluginbf_actividad bulmafact/plugins/pluginbf_almacen bulmafact/plugins/pluginbf_alumno bulmafact/plugins/pluginbf_articulo bulmafact/plugins/pluginbf_asociacion bulmafact/plugins/pluginbf_asterisk bulmafact/plugins/pluginbf_banco bulmafact/plugins/pluginbf_bulmacont bulmafact/plugins/pluginbf_bulmatpv bulmafact/plugins/pluginbf_cliente bulmafact/plugins/pluginbf_clientealbaran bulmafact/plugins/pluginbf_clientealbaranesfactura bulmafact/plugins/pluginbf_clientefactura bulmafact/plugins/pluginbf_clientepedido bulmafact/plugins/pluginbf_clientepresupuesto bulmafact/plugins/pluginbf_clienteproveedor bulmafact/plugins/pluginbf_comercial bulmafact/plugins/pluginbf_corrector bulmafact/plugins/pluginbf_debug bulmafact/plugins/pluginbf_example bulmafact/plugins/pluginbf_formasdepago bulmafact/plugins/plu! ginbf_gestassociacio bulmafact/plugins/pluginbf_iva bulmafact/plugins/pluginbf_ivaincluido bulmafact/plugins/pluginbf_preciocoste bulmafact/plugins/pluginbf_profesor bulmafact/plugins/pluginbf_proveedor bulmafact/plugins/pluginbf_proveedoralbaran bulmafact/plugins/pluginbf_proveedorfactura bulmafact/plugins/pluginbf_proveedorpago bulmafact/plugins/pluginbf_proveedorpedido bulmafact/plugins/pluginbf_recibo bulmafact/plugins/pluginbf_seriesfactura bulmafact/plugins/pluginbf_tallascolores bulmafact/plugins/pluginbf_tarifa bulmafact/plugins/pluginbf_ticket bulmafact/plugins/pluginbf_trabajador bulmafact/plugins/pluginbf_trazabilidad bulmafact/plugins/pluginbf_tutor bulmafact/plugins/pluginbf_vehiculo bulmafact/plugins/plugincatalogo bulmafact/plugins/plugincompraventa bulmafact/plugins/plugincontratos bulmafact/plugins/plugincuadrante bulmafact/plugins/pluginetiquetado bulmafact/plugins/pluginetiquetas bulmafact/plugins/pluginimpresionesmultiples bulmafact/plugins/plugininforme! clientes bulmafact/plugins/plugininformeclientessxc bulmafact/! plugins/
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001464.html">[BulmaGés] r3186 - in trunk/bulmages: bulmafact/plugins/efacturabf bulmafact/plugins/pluginalias bulmafact/plugins/pluginalmacen bulmafact/plugins/pluginbarcodeopen bulmafact/plugins/pluginbf_actividad bulmafact/plugins/pluginbf_almacen bulmafact/plugins/pluginbf_alumno bulmafact/plugins/pluginbf_articulo bulmafact/plugins/pluginbf_asociacion bulmafact/plugins/pluginbf_asterisk bulmafact/plugins/pluginbf_banco bulmafact/plugins/pluginbf_bulmacont bulmafact/plugins/pluginbf_bulmatpv bulmafact/plugins/pluginbf_cliente bulmafact/plugins/pluginbf_clientealbaran bulmafact/plugins/pluginbf_clientealbaranesfactura bulmafact/plugins/pluginbf_clientefactura bulmafact/plugins/pluginbf_clientepedido bulmafact/plugins/pluginbf_clientepresupuesto bulmafact/plugins/pluginbf_clienteproveedor bulmafact/plugins/pluginbf_comercial bulmafact/plugins/pluginbf_corrector bulmafact/plugins/pluginbf_debug bulmafact/plugins/pluginbf_example bulmafact/plugins/pluginbf_formasdepago bulmafact/plugins/plu! ginbf_gestassociacio bulmafact/plugins/pluginbf_iva bulmafact/plugins/pluginbf_ivaincluido bulmafact/plugins/pluginbf_preciocoste bulmafact/plugins/pluginbf_profesor bulmafact/plugins/pluginbf_proveedor bulmafact/plugins/pluginbf_proveedoralbaran bulmafact/plugins/pluginbf_proveedorfactura bulmafact/plugins/pluginbf_proveedorpago bulmafact/plugins/pluginbf_proveedorpedido bulmafact/plugins/pluginbf_recibo bulmafact/plugins/pluginbf_seriesfactura bulmafact/plugins/pluginbf_tallascolores bulmafact/plugins/pluginbf_tarifa bulmafact/plugins/pluginbf_ticket bulmafact/plugins/pluginbf_trabajador bulmafact/plugins/pluginbf_trazabilidad bulmafact/plugins/pluginbf_tutor bulmafact/plugins/pluginbf_vehiculo bulmafact/plugins/plugincatalogo bulmafact/plugins/plugincompraventa bulmafact/plugins/plugincontratos bulmafact/plugins/plugincuadrante bulmafact/plugins/pluginetiquetado bulmafact/plugins/pluginetiquetas bulmafact/plugins/pluginimpresionesmultiples bulmafact/plugins/plugininforme! clientes bulmafact/plugins/plugininformeclientessxc bulmafact/! plugins/
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1463">[ fecha ]</a>
+              <a href="thread.html#1463">[ hilo ]</a>
+              <a href="subject.html#1463">[ asunto ]</a>
+              <a href="author.html#1463">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,456 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130529024728.577E8164%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007590.html">
+   <LINK REL="Next"  HREF="007591.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130529024728.577E8164%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Mie Mayo 29 04:47:27 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007590.html">[BulmaGés]Qt5 y Windows
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007591.html">[BulmaGés]BulmaGés Qt5 win y linux (en marcha)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7589">[ fecha ]</a>
+              <a href="thread.html#7589">[ hilo ]</a>
+              <a href="subject.html#7589">[ asunto ]</a>
+              <a href="author.html#7589">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from a1d4fe6 to a0a4ca5
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/a1d4fe63826b0041217551d8d4df9ceb7343e00a/diffs/a0a4ca55f3a8db77ad66b9d82284d06330184669">https://gitorious.org/bulmages/bulmages/commit/a1d4fe63826b0041217551d8d4df9ceb7343e00a/diffs/a0a4ca55f3a8db77ad66b9d82284d06330184669</A>
+
+Diff: 
+
+commit a0a4ca55f3a8db77ad66b9d82284d06330184669
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Wed May 29 04:46:42 2013 +0200
+
+    Compilacion de Qt5 para Windows
+
+diff --git a/bulmages/CMakeLists.txt b/bulmages/CMakeLists.txt
+index 428e26e..13ba887 100644
+--- a/bulmages/CMakeLists.txt
++++ b/bulmages/CMakeLists.txt
+@@ -28,15 +28,12 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8.10)
+ 
+ SET( BULMAGES_VERSION 1.5.0 )
+ 
+-
+-set(CMAKE_CXX_FLAGS &quot;-fPIC&quot;)
++IF(NOT WIN32)
++  set(CMAKE_CXX_FLAGS &quot;-fPIC&quot;)
++ENDIF(NOT WIN32)
+ 
+ find_package(Qt5Core REQUIRED)
+ 
+-  message(STATUS &quot;El root: ${Qt5Core_LIBRARIES}&quot;)
+-
+-  message(STATUS &quot;El root: ${_qt5Core_install_prefix}&quot;)
+-
+ IF(WIN32)
+ set(QT5_MODULE_PATH &quot;${_qt5Core_install_prefix}/lib/cmake&quot;)
+ ELSE(WIN32)
+diff --git a/bulmages/ModulesCMake/FindPCHSupport.cmake b/bulmages/ModulesCMake/FindPCHSupport.cmake
+index f0a5d80..d7938e1 100644
+--- a/bulmages/ModulesCMake/FindPCHSupport.cmake
++++ b/bulmages/ModulesCMake/FindPCHSupport.cmake
+@@ -51,7 +51,9 @@ MACRO(ADD_PRECOMPILED_HEADER _targetName _input)
+     STRING(TOUPPER &quot;CMAKE_CXX_FLAGS_${CMAKE_BUILD_TYPE}&quot; _flags_var_name)
+     SET(_compiler_FLAGS ${CMAKE_CXX_FLAGS} ${${_flags_var_name}})
+     SEPARATE_ARGUMENTS(_compiler_FLAGS)
+-    LIST(APPEND _compiler_FLAGS &quot;-fPIC&quot;)
++    IF (NOT WIN32)
++	LIST(APPEND _compiler_FLAGS &quot;-fPIC&quot;)
++    ENDIF(NOT WIN32)
+     #MESSAGE(&quot;_compiler_FLAGS: ${_compiler_FLAGS}&quot;)
+     GET_DIRECTORY_PROPERTY(_dir_FLAGS INCLUDE_DIRECTORIES)
+     FOREACH(item ${_dir_FLAGS})
+diff --git a/bulmages/bulmafact/src/CMakeLists.txt b/bulmages/bulmafact/src/CMakeLists.txt
+index 27f4934..280fd08 100644
+--- a/bulmages/bulmafact/src/CMakeLists.txt
++++ b/bulmages/bulmafact/src/CMakeLists.txt
+@@ -58,28 +58,32 @@ QT5_WRAP_CPP(bulmafact_MOC_SRCS ${bulmafact_MOCS})
+ set(bulmafact_RCCS ../../bulmages.qrc)
+ QT5_ADD_RESOURCES(bulmafact_RCC_SRCS ${bulmafact_RCCS})
+ 
+-IF(WIN32)
+-ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DBF_BULMAFACT)
+-ENDIF(WIN32)
+-
+ 
+ add_library(libbulmafact SHARED ${bulmafact_MOCS} ${bulmafact_MOC_SRCS}
+ 		${bulmafact_UIS_H} ${bulmafact_SRC} ${bulmafact_SRCS} ${bulmafact_RCC_SRCS})
+ 
+-
++IF(WIN32)
++set_property(TARGET libbulmafact PROPERTY COMPILE_DEFINITIONS BF_BULMAFACT QWT_MAKEDLL)
++ENDIF(WIN32)
+ 
+ set_target_properties( libbulmafact PROPERTIES
+   SOVERSION &quot;${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}&quot;
+   VERSION &quot;${BULMAGES_VERSION}&quot;
+   OUTPUT_NAME bulmafact )
+ 
+-qt5_use_modules(libbulmafact UiTools Xml Core Widgets Script)
++qt5_use_modules(libbulmafact UiTools Xml Core Widgets Script WebKit)
+ 
+ target_link_libraries(libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
++#target_link_libraries(bulmafact libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+ 
+-
+-add_executable(bulmafact ${bulmafactEx} ${bulmafact_RCC_SRCS})
+-
++IF(WIN32)
++  add_executable(bulmafact  ${bulmafactEx} ${bulmafact_RCC_SRCS} )
++  target_link_libraries(bulmafact libbulmafact  bulmalib ${PGSQL_LIBRARIES} )
++  qt5_use_modules(bulmafact UiTools Xml Core Widgets Script WebKit)
++ELSE(WIN32)
++  add_executable(bulmafact  ${bulmafactEx})
++  target_link_libraries(bulmafact libbulmafact)
++ENDIF(WIN32)
+ 
+ 
+ # i18n
+@@ -104,7 +108,6 @@ if(USE_GETTEXT)
+                                 ALL LANGUAGES es_ES ca_ES en_US fr_FR)
+ endif(USE_GETTEXT)
+ 
+-target_link_libraries(bulmafact libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+ 
+ add_dependencies(libbulmafact bulmalib)
+ add_dependencies(bulmafact libbulmafact)
+diff --git a/bulmages/bulmalib/src/CMakeLists.txt b/bulmages/bulmalib/src/CMakeLists.txt
+index 100a9b7..858595f 100644
+--- a/bulmages/bulmalib/src/CMakeLists.txt
++++ b/bulmages/bulmalib/src/CMakeLists.txt
+@@ -24,6 +24,8 @@
+ 
+ configure_file( ${CMAKE_SOURCE_DIR}/bulmalib/src/blconfig.h.in  ${CMAKE_BINARY_DIR}/bulmalib/src/blconfig.h @ONLY)
+ 
++find_package(Qt5Core REQUIRED)
++
+ set(bulmalib_SRCS	blpostgresqlclient.cpp
+ 			blconfiguration.cpp
+ 			blspainbankaccountnumber.cpp
+@@ -136,24 +138,6 @@ set (bulmalib_HDRS	blmaincompanypointer.h
+ 			blpostgresqlclient.h
+ 			blargparser.h)
+ 
+-			
+-			
+-#headers that are not moc'ed
+-#			blpostgresqlclient.h 
+-#			blconfiguration.h 
+-#			blspainbankaccountnumber.h 
+-#			blfunctions.h 
+-#			dialogchanges.h 
+-#			blfixed.h 
+-#			blimportexport.h 
+-#			blplugins.h 
+-#			bldb.h 
+-#			bldbsubform.h 
+-#			blmaincompany.h 
+-#			blmainwindow.h
+-#			blargparser.h
+-
+-
+ set(bulmalib_RCCS ../../bulmages.qrc)
+ set(bulmalib_UIS	bldblogindialogbase.ui
+ 			blcompanydialogbase.ui
+@@ -167,17 +151,12 @@ set(bulmalib_UIS	bldblogindialogbase.ui
+ 			blformlistfilterbase.ui
+ 			blbankeditbase.ui)
+ 
+-
+-#message(FATAL_ERROR &quot;La ruta: ${Qt5Widgets_INCLUDES} ${QT_INCLUDE_DIR}&quot;)
+-
+ if (USE_GETTEXT)
+     include_directories(
+       ${PGSQL_INCLUDE_DIR}
+       ${QT_INCLUDE_DIR}
+       ${GETTEXT_INCLUDE_DIR}
+-      ${QT_QTXML_INCLUDE_DIR}
+-      ${QT_QTSCRIPT_INCLUDE_DIR}
+-      ${Qt5Widgets_INCLUDES}
++      ${Qt5Core_INCLUDE_DIRS}
+       ${CMAKE_CURRENT_BINARY_DIR}
+       ${CMAKE_CURRENT_SOURCE_DIR}
+       ${CMAKE_SOURCE_DIR}/bulmalib/src/
+@@ -187,9 +166,7 @@ else (USE_GETTEXT)
+     include_directories(
+       ${PGSQL_INCLUDE_DIR}
+       ${QT_INCLUDE_DIR}
+-      ${QT_QTWIDGETS_INCLUDE_DIR}
+-      ${QT_QTXML_INCLUDE_DIR}
+-      ${QT_QTSCRIPT_INCLUDE_DIR}
++      ${Qt5Core_INCLUDE_DIRS}
+       ${CMAKE_CURRENT_BINARY_DIR}
+       ${CMAKE_CURRENT_SOURCE_DIR}
+       ${CMAKE_SOURCE_DIR}/bulmalib/src/
+@@ -205,9 +182,6 @@ QT5_ADD_RESOURCES(bulmalib_RCC_SRCS ${bulmalib_RCCS})
+ 
+ # generate rules for building source files that moc generates
+ 
+-#ADD_DEFINITIONS(${QT_DEFINITIONS})
+-#ADD_DEFINITIONS(-DQT_SHARED)
+-
+ IF(WIN32)
+ ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DBL_BULMALIB)
+ ENDIF(WIN32)
+@@ -216,12 +190,6 @@ IF(USE_GETTEXT)
+ ADD_DEFINITIONS(-DUSE_GETTEXT)
+ ENDIF(USE_GETTEXT)
+ 
+-
+-# Defines if we want our own debugging code
+-#ADD_DEFINITIONS(-DDEPURA_DEBUG)
+-
+-
+-
+ # build sources, moc'd sources, and rcc'd sources
+ 
+ add_library(bulmalib SHARED ${bulmalib_MOC_SRCS} ${bulmalib_UIS_H}
+diff --git a/bulmages/bulmalib/src/blapplication.cpp b/bulmages/bulmalib/src/blapplication.cpp
+index 4c05b0a..f525b7b 100644
+--- a/bulmages/bulmalib/src/blapplication.cpp
++++ b/bulmages/bulmalib/src/blapplication.cpp
+@@ -50,7 +50,7 @@ BlApplication::~BlApplication()
+ }
+ 
+ 
+-#if CONFIG_DEBUG == true
++#if CONFIG_DEBUG == TRUE
+ ///
+ /**
+ \param object
+diff --git a/bulmages/bulmalib/src/blapplication.h b/bulmages/bulmalib/src/blapplication.h
+index 2fed8da..a92b9b5 100644
+--- a/bulmages/bulmalib/src/blapplication.h
++++ b/bulmages/bulmalib/src/blapplication.h
+@@ -41,7 +41,7 @@ public:
+     BlApplication ( int &amp;argc, char **argv );
+     ~BlApplication();
+     
+-#if CONFIG_DEBUG == true
++#if CONFIG_DEBUG == TRUE
+     virtual bool notify ( QObject *object, QEvent *event );
+ #endif
+     
+diff --git a/bulmages/bulmalib/src/blfunctions.h b/bulmages/bulmalib/src/blfunctions.h
+index ec5ccbc..93bee3b 100644
+--- a/bulmages/bulmalib/src/blfunctions.h
++++ b/bulmages/bulmalib/src/blfunctions.h
+@@ -45,7 +45,7 @@
+ #include &lt;QtWidgets/QMainWindow&gt;
+ #include &lt;QtWidgets/QStatusBar&gt;
+ #ifdef Q_OS_WIN32
+-	#include &lt;qt_windows.h&gt;
++	#include &lt;QtCore/qt_windows.h&gt;
+ #endif
+ 
+ #include &quot;bldefs.h&quot;
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_mesas/CMakeLists.txt b/bulmages/bulmatpv/plugins/pluginbt_mesas/CMakeLists.txt
+index 00496ed..3380300 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_mesas/CMakeLists.txt
++++ b/bulmages/bulmatpv/plugins/pluginbt_mesas/CMakeLists.txt
+@@ -35,6 +35,7 @@ QT5_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
+ #QT5_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
+ 
+ 
++
+ IF(WIN32)
+ SET(CMAKE_SHARED_LINKER_FLAGS &quot;${CMAKE_SHARED_LINKER_FLAGS} -Wl,-enable-auto-import&quot;)
+ ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBT_MESAS)
+@@ -80,6 +81,9 @@ set_target_properties( ${plugin} PROPERTIES
+ 
+ target_link_libraries(${plugin} libbulmatpv bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+ 
++qt5_use_modules(${plugin} Svg)
++
++
+ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)
+ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/bulmatpv-plugins/ RENAME README.es.${plugin})
+ 
+diff --git a/bulmages/bulmatpv/src/CMakeLists.txt b/bulmages/bulmatpv/src/CMakeLists.txt
+index fad4eb8..69ee508 100644
+--- a/bulmages/bulmatpv/src/CMakeLists.txt
++++ b/bulmages/bulmatpv/src/CMakeLists.txt
+@@ -5,6 +5,8 @@
+ file(GLOB bulmatpv_SRC *.c *.cpp)
+ file(GLOB bulmatpv_UIS *.ui)
+ 
++find_package(Qt5Core REQUIRED)
++
+ set(bulmatpvEx main.cxx)
+ 
+ set(bulmatpv_MOCS btbulmatpv.h
+@@ -14,10 +16,8 @@ set(bulmatpv_MOCS btbulmatpv.h
+ 	   btinput.h)
+ 
+ include_directories(
+-    ${QT_INCLUDE_DIR}
++	${QT_INCLUDE_DIR}
+ 	${PGSQL_INCLUDE_DIR}
+-	${QT_QTXML_INCLUDE_DIR}
+-        ${QT_QTSCRIPT_INCLUDE_DIR}
+ 	${CMAKE_CURRENT_BINARY_DIR}
+ 	${CMAKE_CURRENT_SOURCE_DIR}
+ 	${CMAKE_BINARY_DIR}/bulmalib/src/
+@@ -25,65 +25,65 @@ include_directories(
+ 	${CMAKE_BINARY_DIR}/bulmatpv/src/
+ 	${CMAKE_SOURCE_DIR}/bulmatpv/src/)
+ 
+-# generate rules for building source files from the resources
+-#
++if(USE_GETTEXT)
++   set(bulmatpv_i18n ${bulmatpvEx} ${bulmatpv_MOC_SRCS} ${bulmatpv_UIS_H}
++	        ${bulmatpv_SRC} ${bulmatpv_MOCS})
++   GETTEXT_CREATE_TEMPLATE(bulmatpv ${CMAKE_CURRENT_BINARY_DIR}
++                                ${CMAKE_CURRENT_SOURCE_DIR} bulmatpv_i18n)
++   GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/bulmatpv.pot
++                                ALL LANGUAGES es_ES ca_ES fr_FR)
++endif(USE_GETTEXT)
++
++# i18n
++if(WIN32)
++ADD_DEFINITIONS(&quot;-D_(String)=blI18n(\\\&quot;bulmatpv\\\&quot;,String)&quot; )
++ADD_DEFINITIONS(&quot;-DN_(String,Int)=blI18n(\\\&quot;bulmatpv\\\&quot;,String)&quot; )
++else(WIN32)
++ADD_DEFINITIONS(&quot;-D'_(String)=blI18n(\&quot;bulmatpv\&quot;,String)'&quot; )
++ADD_DEFINITIONS(&quot;-D'N_(String,Int)=blI18n(\&quot;bulmatpv\&quot;,String)'&quot; )
++endif(WIN32)
+ 
+ # generate rules for building source files that moc generates
++# build sources, moc'd sources, and rcc'd sources
++# # generate rules for building source files from the resources
++# build sources, moc'd sources, and rcc'd sources
+ QT5_WRAP_UI(bulmatpv_UIS_H ${bulmatpv_UIS} OPTIONS -tr N_)
+ QT5_WRAP_CPP(bulmatpv_MOC_SRCS ${bulmatpv_MOCS})
+ 
+-#QT5_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
+-
+ IF(WIN32)
+ set(bulmatpv_RCCS ../../bulmages.qrc)
+ QT5_ADD_RESOURCES(bulmatpv_RCC_SRCS ${bulmatpv_RCCS})
+-ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DBT_BULMATPV)
+ ENDIF(WIN32)
+ 
+-
+-#ADD_DEFINITIONS(${QT_DEFINITIONS})
+ ADD_DEFINITIONS(-DQT_SHARED)
+-# build sources, moc'd sources, and rcc'd sources
+-# # generate rules for building source files from the resources
+-# build sources, moc'd sources, and rcc'd sources
++
+ 
+ 
+ add_library(libbulmatpv SHARED ${bulmatpv_MOC_SRCS} ${bulmatpv_UIS_H}
+         ${bulmatpv_SRC} ${bulmatpv_MOCS} ${bulmatpv_RCC_SRCS})
+ 
+-set_target_properties( libbulmatpv PROPERTIES
++IF(WIN32)
++set_property(TARGET libbulmatpv PROPERTY COMPILE_DEFINITIONS BT_BULMATPV QWT_MAKEDLL)
++ENDIF(WIN32)
++
++set_target_properties(libbulmatpv PROPERTIES
+   SOVERSION &quot;${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}&quot;
+   VERSION &quot;${BULMAGES_VERSION}&quot;
+   OUTPUT_NAME bulmatpv )
+ 
+-target_link_libraries( libbulmatpv bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+-
+-add_executable(bulmatpv   ${bulmatpvEx} ${bulmatpv_RCC_SRCS})
+-
+-# i18n
+-if(WIN32)
+-ADD_DEFINITIONS(&quot;-D_(String)=blI18n(\\\&quot;bulmatpv\\\&quot;,String)&quot; )
+-ADD_DEFINITIONS(&quot;-DN_(String,Int)=blI18n(\\\&quot;bulmatpv\\\&quot;,String)&quot; )
+-endif(WIN32)
+-
+-if(NOT WIN32)
+-ADD_DEFINITIONS(&quot;-D'_(String)=blI18n(\&quot;bulmatpv\&quot;,String)'&quot; )
+-ADD_DEFINITIONS(&quot;-D'N_(String,Int)=blI18n(\&quot;bulmatpv\&quot;,String)'&quot; )
+-endif(NOT WIN32)
++target_link_libraries(libbulmatpv bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+ 
+ 
+-if(USE_GETTEXT)
+-   set(bulmatpv_i18n ${bulmatpvEx} ${bulmatpv_MOC_SRCS} ${bulmatpv_UIS_H}
+-	        ${bulmatpv_SRC} ${bulmatpv_MOCS})
+-   GETTEXT_CREATE_TEMPLATE(bulmatpv ${CMAKE_CURRENT_BINARY_DIR}
+-                                ${CMAKE_CURRENT_SOURCE_DIR} bulmatpv_i18n)
+-   GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/bulmatpv.pot
+-                                ALL LANGUAGES es_ES ca_ES fr_FR)
+-endif(USE_GETTEXT)
+-
+-target_link_libraries( bulmatpv libbulmatpv bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+-
++IF(WIN32)
++  add_executable(bulmatpv  ${bulmatpvEx} ${bulmatpv_RCC_SRCS} )
++  target_link_libraries(bulmatpv libbulmatpv  bulmalib ${PGSQL_LIBRARIES} )
++  qt5_use_modules(bulmatpv UiTools Xml Core Widgets Script WebKit)
++ELSE(WIN32)
++  add_executable(bulmatpv  ${bulmatpvEx})
++  target_link_libraries(bulmatpv libbulmatpv)
++ENDIF(WIN32)
+ 
++qt5_use_modules(libbulmatpv UiTools Xml Core Widgets Script WebKit)
+ 
+ add_dependencies(libbulmatpv bulmalib)
+ add_dependencies(bulmatpv libbulmatpv )
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007590.html">[BulmaGés]Qt5 y Windows
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007591.html">[BulmaGés]BulmaGés Qt5 win y linux (en marcha)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7589">[ fecha ]</a>
+              <a href="thread.html#7589">[ hilo ]</a>
+              <a href="subject.html#7589">[ asunto ]</a>
+              <a href="author.html#7589">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

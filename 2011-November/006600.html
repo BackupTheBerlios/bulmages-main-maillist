@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] Estoy cansado!
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Estoy%20cansado%21&In-Reply-To=%3C4ED6095B.4020004%40todo-redes.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006643.html">
+   <LINK REL="Next"  HREF="006604.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] Estoy cansado! </H1>
+    <B>Fco. Javier M. C.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Estoy%20cansado%21&In-Reply-To=%3C4ED6095B.4020004%40todo-redes.com%3E"
+       TITLE="[BulmaGés] Estoy cansado!">fcojavmc en todo-redes.com
+       </A><BR>
+    <I>Mie Nov 30 11:45:47 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006643.html">[BulmaGés]runbulmasetup i xdg-sudo
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006604.html">[BulmaGés]Estoy cansado!
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6600">[ fecha ]</a>
+              <a href="thread.html#6600">[ hilo ]</a>
+              <a href="subject.html#6600">[ asunto ]</a>
+              <a href="author.html#6600">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola. No os asusteis :)
+
+Estoy cansado... de gastar papel para probar BulmaTPV. jeje. Así que he
+creado una pequeña herramienta &quot;ScreenTicket&quot; que interpreta el binario
+ESC/POS que le llega a la impresora de tickets y lo muestra en pantalla.
+Otra ventaja es que puedes tener tantas impresoras de tickets como
+quieras y no tienes que comprar impresoras físicas.
+
+Para poderlo utilizar hay que configurar CUPS para que admita la
+creación de impresoras redirigidas a un archivo.
+
+Editar /etc/cups/cupsd.conf y añadir la siguiente directiva:
+
+    FileDevice Yes
+
+Guardar y reiniciciar CUPS para que los cambios surtan efecto. Luego, se
+crean las impresoras de tipo &quot;raw&quot; (en bruto). Por ejemplo se puede
+crear una impresora que redirija al archivo temporal (útil para pruebas)
+&quot;/tmp/printer1.prn&quot; (para crear el archivo se puede usar &quot;touch
+/tmp/printer1.prn&quot;).
+
+Se configura BulmaTPV para que use esas nuevas impresoras CUPS y se pone
+en marcha el programa &quot;ScreenTicket&quot; con:
+
+./screenticket --file=&quot;/tmp/printer1.prn&quot; --title=&quot;COCINA&quot;
+
+
+Adjunto una captura de pantalla de cómo queda usando 2 impresoras.
+
+
+El código fuente (GPL3+) se puede descargar desde aquí:
+
+<A HREF="https://gitorious.org/screenticket">https://gitorious.org/screenticket</A>
+
+
+Lo he puesto en un proyecto a parte porque creo que puede servir también
+para otros proyectos independientes de BulmaGes.
+
+
+Bueno, ya me direis vuestra opinión.
+Un saludo.
+
+-- 
+Javier.
+TODO-REDES
+<A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>
+C/Begònia 12 - 07010 Palma de Mallorca.
+Tel.: 971499071
+
+------------ próxima parte ------------
+A non-text attachment was scrubbed...
+Name: screenticket-1.jpg
+Type: image/jpeg
+Size: 132112 bytes
+Desc: no disponible
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20111130/ac3e8b36/attachment.jpg">https://lists.berlios.de/pipermail/bulmages-main/attachments/20111130/ac3e8b36/attachment.jpg</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006643.html">[BulmaGés]runbulmasetup i xdg-sudo
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006604.html">[BulmaGés]Estoy cansado!
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6600">[ fecha ]</a>
+              <a href="thread.html#6600">[ hilo ]</a>
+              <a href="subject.html#6600">[ asunto ]</a>
+              <a href="author.html#6600">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

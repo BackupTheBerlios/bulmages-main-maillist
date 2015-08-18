@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]r3285 - in trunk/bulmages/bulmalib/plugins: . pluginbl_bloqconf
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fr3285_-_in_trunk/bulm%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fages/bulmalib/plugins%3D3A_%3D2E_pluginbl%3D5Fbloqconf%3F%3D&In-Reply-To=%3C200905070024.06215.leo%40alaxarxa.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001737.html">
+   <LINK REL="Next"  HREF="001728.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]r3285 - in trunk/bulmages/bulmalib/plugins: . pluginbl_bloqconf </H1>
+    <B>Leopold Palomo Avellaneda</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fr3285_-_in_trunk/bulm%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fages/bulmalib/plugins%3D3A_%3D2E_pluginbl%3D5Fbloqconf%3F%3D&In-Reply-To=%3C200905070024.06215.leo%40alaxarxa.net%3E"
+       TITLE="[BulmaGés]r3285 - in trunk/bulmages/bulmalib/plugins: . pluginbl_bloqconf">leo en alaxarxa.net
+       </A><BR>
+    <I>Jue Mayo  7 00:24:05 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001737.html">[BulmaGés]r3285 - in trunk/bulmages/bulmalib/plugins: . pluginbl_bloqconf
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001728.html">[BulmaGés] r3286 -	trunk/bulmages/bulmafact/plugins/pluginbf_recibo
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1740">[ fecha ]</a>
+              <a href="thread.html#1740">[ hilo ]</a>
+              <a href="subject.html#1740">[ asunto ]</a>
+              <a href="author.html#1740">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>A Dimecres 06 Maig 2009, Raül Martínez i Peris va escriure:
+&gt;<i> 2009/5/6 Leopold Palomo Avellaneda &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">leo en alaxarxa.net</A>&gt;:
+</I>&gt;<i> &gt; A Dimecres 06 Maig 2009, <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">svn en mail.berlios.de</A> va escriure:
+</I>&gt;<i> &gt; make update_pluginbl_bloqconf_pot
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; crea el fitxer .pot
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; després
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; cd trunk/bulmages/bulmalib/plugins/pluginbl_bloqconf/po
+</I>&gt;<i> &gt; build/create_gettext_files pluginbl_bloqconf
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; que crea els fitxers.
+</I>&gt;<i>
+</I>&gt;<i> i quin és el funcionament exacte?
+</I>&gt;<i> l'arxiu .pot es genera des del codi?
+</I>&gt;<i> els arxius .po són la base per a generar la compilació?
+</I>&gt;<i>
+</I>&gt;<i> aleshores, els canvis als .po son permanents i no varien amb  cada make?
+</I>&gt;<i>
+</I>&gt;<i> és per això que als arxius .po s'indica si una  cadena ha estat
+</I>&gt;<i> aprovada o no per indicar si hi ha hagut intervenció amb ella després
+</I>&gt;<i> d'haver generat amb el make l'arxiu .pot?
+</I>&gt;<i>
+</I>&gt;<i> ...crec que ara ja ho entenc. vaig a revisar els .po i pujar les
+</I>&gt;<i> correccions... quan acabe amb logo de bulmacont :)
+</I>
+bones,
+
+a veure, el procediment és el següent:
+
+1) es necessita crear un fitxer amb el catàleg dels missatges. Quan dic el 
+catàleg de missatges, em refereixo al fitxer .pot on estan els missatges a 
+traduir.
+
+2) aquest fitxer es crea cridant:
+make nom_del_modul_pot
+
+3) però aquest fitxer està en el build directori, i per tant si es vols tenir 
+en el codi, cal fer make update_nom_del_modul_pot que copia el .pot al 
+directori po del mòdul.
+
+4) ara cal crear els fitxers de traduccions. Aquest fitxers son els .po i són 
+els pot amb les traduccions. Per crear-los, es copia el pot i se li canvia el 
+nom. A aquest fitxer és el que es tradueix.
+
+5) en el nostre cas, tenim més de 100 fitxers a traduir i això és inviable. 
+Per tant, tots els fitxers .pot i els seus respectius po estan fusionats en 
+el i18n directori. Aquells són els que s'han de traduir.
+
+
+Espero haver estat clar.
+
+Leo
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001737.html">[BulmaGés]r3285 - in trunk/bulmages/bulmalib/plugins: . pluginbl_bloqconf
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001728.html">[BulmaGés] r3286 -	trunk/bulmages/bulmafact/plugins/pluginbf_recibo
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1740">[ fecha ]</a>
+              <a href="thread.html#1740">[ hilo ]</a>
+              <a href="subject.html#1740">[ asunto ]</a>
+              <a href="author.html#1740">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

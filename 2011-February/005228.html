@@ -1,0 +1,231 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]blockTable en la sección pageTemplate de un informe RML (no en story)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-15%3Fq%3FblockTable_en_la_sec%3F%3D%0A%20%3D%3Fiso-8859-15%3Fq%3Fci%3DF3n_pageTemplate_de_un_informe_RML_%3D28no_en_story%3D29%3F%3D&In-Reply-To=%3C201102241145.43450.hilex%40metalica-hilex.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005224.html">
+   <LINK REL="Next"  HREF="005231.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]blockTable en la sección pageTemplate de un informe RML (no en story) </H1>
+    <B>Hilex Transformaciones Metálicas S.L.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-15%3Fq%3FblockTable_en_la_sec%3F%3D%0A%20%3D%3Fiso-8859-15%3Fq%3Fci%3DF3n_pageTemplate_de_un_informe_RML_%3D28no_en_story%3D29%3F%3D&In-Reply-To=%3C201102241145.43450.hilex%40metalica-hilex.com%3E"
+       TITLE="[BulmaGés]blockTable en la sección pageTemplate de un informe RML (no en story)">hilex en metalica-hilex.com
+       </A><BR>
+    <I>Jue Feb 24 11:45:43 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="005224.html">[BulmaGés]blockTable en la sección pageTemplate de un informe RML (no en story)
+</A></li>
+        <LI>Próximo mensaje: <A HREF="005231.html">[BulmaGés]blockTable en la sección pageTemplate de un informe RML (no en story)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5228">[ fecha ]</a>
+              <a href="thread.html#5228">[ hilo ]</a>
+              <a href="subject.html#5228">[ asunto ]</a>
+              <a href="author.html#5228">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Sí, ahora ya funciona &lt;place&gt;.
+
+Pues que se pudieran usar estilos ya sería ideal, pero entonces ¿se tendrían 
+que definir los estilos antes de &lt;template&gt; y no después como hasta ahora?
+
+Esto me funciona:
+&lt;pageGraphics&gt;
+    &lt;place x=&quot;1.0cm&quot; y=&quot;18.5cm&quot; width=&quot;27.0cm&quot; height=&quot;2.0cm&quot;&gt;
+        &lt;blockTable
+                colWidths=&quot;3.2cm,23.8cm&quot;&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;image width=&quot;3.2cm&quot; height=&quot;1.0cm&quot; file=&quot;logo.jpg&quot;/&gt;&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;blockTable
+                        colWidths=&quot;3.0cm,3.8cm,17.0cm&quot;
+                        rowHeights=&quot;0.5cm&quot;&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;&lt;para&gt;SALDO&lt;/para&gt;&lt;/td&gt;
+                            &lt;td&gt;&lt;para&gt;Código&lt;/para&gt;&lt;/td&gt;
+                            &lt;td&gt;&lt;para&gt;Nombre&lt;/para&gt;&lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;&lt;para&gt;Cliente:&lt;/para&gt;&lt;/td&gt;
+                                &lt;td&gt;&lt;para&gt;[cod]&lt;/para&gt;&lt;/td&gt;
+                            &lt;td&gt;&lt;para&gt;[cliente]&lt;/para&gt;&lt;/td&gt;
+                        &lt;/tr&gt;
+                    &lt;/blockTable&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/blockTable&gt;
+    &lt;/place&gt;
+&lt;/pageGraphics&gt;
+
+
+
+Gracias
+
+
+
+On Jueves 24 Febrero 2011 10:32:48 Tomeu Borras escribió:
+&gt;<i> Aron
+</I>&gt;<i> 
+</I>&gt;<i> Ayer hice un commit que, creo, permitia el uso del PLACE. Hize algunas
+</I>&gt;<i> pruebas y creo que me funcionó bien. Eso si los tags dentro del place no
+</I>&gt;<i> atienden a estilos (de momento).
+</I>&gt;<i> 
+</I>&gt;<i> Puedes confirmarme que funciona bien ?
+</I>&gt;<i> 
+</I>&gt;<i> Salut
+</I>&gt;<i> 
+</I>&gt;<i> El 23 de febrero de 2011 17:21, Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en gmail.com</A>&gt; escribió:
+</I>&gt;<i> &gt; Me da que es un fallo mio. en los cambios que hice alterando el bgtrml
+</I>&gt;<i> &gt; para las nuevas versiones.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Ahora lo miro.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; El 23 de febrero de 2011 17:03, Aron &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">auryn en wanadoo.es</A>&gt; escribió:
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Gracias, pero tampoco.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt;&gt; Con place no va ni con un simple párrafo:
+</I>&gt;<i> &gt;&gt; 
+</I>&gt;<i> &gt;&gt; &lt;place x=&quot;1.0cm&quot; y=&quot;25.0cm&quot; width=&quot;20.0cm&quot; height=&quot;5.0cm&quot;&gt;
+</I>&gt;<i> &gt;&gt; 
+</I>&gt;<i> &gt;&gt;   &lt;para&gt;ABC&lt;/para&gt;
+</I>&gt;<i> &gt;&gt; 
+</I>&gt;<i> &gt;&gt; &lt;/place&gt;
+</I>&gt;<i> &gt;&gt; 
+</I>&gt;<i> &gt;&gt; Me da el error:
+</I>&gt;<i> &gt;&gt;  File &quot;/usr/local/bin/bgtrml2pdf&quot;, line 465, in __init__
+</I>&gt;<i> &gt;&gt;  
+</I>&gt;<i> &gt;&gt;    self.styles = doc.styles
+</I>&gt;<i> &gt;&gt; 
+</I>&gt;<i> &gt;&gt; AttributeError: TinyDocTemplate instance has no attribute 'styles'
+</I>&gt;<i> &gt;&gt; 
+</I>&gt;<i> &gt;&gt; On Miércoles 23 Febrero 2011 13:56:06 Tomeu Borras escribió:
+</I>&gt;<i> &gt;&gt; &gt; Hola Aron
+</I>&gt;<i> &gt;&gt; &gt; 
+</I>&gt;<i> &gt;&gt; &gt; Puedes usar el elemento &lt;place&gt;
+</I>&gt;<i> &gt;&gt; &gt; 
+</I>&gt;<i> &gt;&gt; &gt; Que te permite poner contenidos en ubicaciones especificas. Es justo
+</I>&gt;<i> &gt;&gt; &gt; lo contrario que un illustration.
+</I>&gt;<i> &gt;&gt; &gt; 
+</I>&gt;<i> &gt;&gt; &gt; Espero que te sirva.
+</I>&gt;<i> &gt;&gt; &gt; 
+</I>&gt;<i> &gt;&gt; &gt; Salut
+</I>&gt;<i> &gt;&gt; &gt; 
+</I>&gt;<i> &gt;&gt; &gt; El 23 de febrero de 2011 13:30, Aron &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">auryn en wanadoo.es</A>&gt; escribió:
+</I>&gt;<i> &gt;&gt; &gt; &gt; ¿Es posible poner un blockTable antes del story para que sea un
+</I>&gt;<i> &gt;&gt; 
+</I>&gt;<i> &gt;&gt; elemento
+</I>&gt;<i> &gt;&gt; 
+</I>&gt;<i> &gt;&gt; &gt; &gt; fijo?
+</I>&gt;<i> &gt;&gt; &gt; &gt; 
+</I>&gt;<i> &gt;&gt; &gt; &gt; Yo pruebo esto pero sólo funciona la de story:
+</I>&gt;<i> &gt;&gt; &gt; &gt; 
+</I>&gt;<i> &gt;&gt; &gt; &gt; &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot; ?&gt;
+</I>&gt;<i> &gt;&gt; &gt; &gt; &lt;!DOCTYPE document SYSTEM &quot;rml_1_0.dtd&quot;&gt;
+</I>&gt;<i> &gt;&gt; &gt; &gt; &lt;document&gt;
+</I>&gt;<i> &gt;&gt; &gt; &gt; 
+</I>&gt;<i> &gt;&gt; &gt; &gt;    &lt;template pageSize=&quot;(29.7cm, 21cm)&quot;
+</I>&gt;<i> &gt;&gt; &gt; &gt;    
+</I>&gt;<i> &gt;&gt; &gt; &gt;                      leftMargin=&quot;0.5cm&quot; rightMargin=&quot;0.5cm&quot;
+</I>&gt;<i> &gt;&gt; &gt; &gt;                      topMargin=&quot;1cm&quot; bottomMargin=&quot;1.5cm&quot;
+</I>&gt;<i> &gt;&gt; &gt; &gt;                      title=&quot;Viaje&quot; allowSplitting=&quot;20&quot;&gt;
+</I>&gt;<i> &gt;&gt; &gt; &gt;        
+</I>&gt;<i> &gt;&gt; &gt; &gt;        &lt;pageTemplate id=&quot;main&quot;&gt;
+</I>&gt;<i> &gt;&gt; &gt; &gt;        
+</I>&gt;<i> &gt;&gt; &gt; &gt;            &lt;frame id=&quot;fr1&quot;
+</I>&gt;<i> &gt;&gt; &gt; &gt;            
+</I>&gt;<i> &gt;&gt; &gt; &gt;                         x1=&quot;1.0cm&quot; y1=&quot;1.0cm&quot;
+</I>&gt;<i> &gt;&gt; &gt; &gt;                         width=&quot;27cm&quot; height=&quot;15.0cm&quot;/&gt;
+</I>&gt;<i> &gt;&gt; &gt; &gt;            
+</I>&gt;<i> &gt;&gt; &gt; &gt;            &lt;pageGraphics&gt;
+</I>&gt;<i> &gt;&gt; &gt; &gt;            
+</I>&gt;<i> &gt;&gt; &gt; &gt;                &lt;blockTable&gt;
+</I>&gt;<i> &gt;&gt; &gt; &gt;                
+</I>&gt;<i> &gt;&gt; &gt; &gt;                    &lt;tr&gt;&lt;td&gt;Texto&lt;/td&gt;&lt;td&gt;en&lt;/td&gt;&lt;/tr&gt;
+</I>&gt;<i> &gt;&gt; &gt; &gt;                    &lt;tr&gt;&lt;td&gt;tabla&lt;/td&gt;&lt;td&gt;fuera&lt;/td&gt;&lt;/tr&gt;
+</I>&gt;<i> &gt;&gt; &gt; &gt;                    &lt;tr&gt;&lt;td&gt;de&lt;/td&gt;&lt;td&gt;story&lt;/td&gt;&lt;/tr&gt;
+</I>&gt;<i> &gt;&gt; &gt; &gt;                
+</I>&gt;<i> &gt;&gt; &gt; &gt;                &lt;/blockTable&gt;
+</I>&gt;<i> &gt;&gt; &gt; &gt;                
+</I>&gt;<i> &gt;&gt; &gt; &gt;                &lt;setFont name=&quot;Helvetica&quot; size=&quot;8&quot;/&gt;
+</I>&gt;<i> &gt;&gt; &gt; &gt;                &lt;fill color=&quot;(0,0,0)&quot;/&gt;
+</I>&gt;<i> &gt;&gt; &gt; &gt;                &lt;stroke color=&quot;(0,0,0)&quot;/&gt;
+</I>&gt;<i> &gt;&gt; &gt; &gt;                &lt;drawString x=&quot;7.3cm&quot; y=&quot;1.2cm&quot;&gt;TEXTO&lt;/drawString&gt;
+</I>&gt;<i> &gt;&gt; &gt; &gt;            
+</I>&gt;<i> &gt;&gt; &gt; &gt;            &lt;/pageGraphics&gt;
+</I>&gt;<i> &gt;&gt; &gt; &gt;        
+</I>&gt;<i> &gt;&gt; &gt; &gt;        &lt;/pageTemplate&gt;
+</I>&gt;<i> &gt;&gt; &gt; &gt;    
+</I>&gt;<i> &gt;&gt; &gt; &gt;    &lt;/template&gt;
+</I>&gt;<i> &gt;&gt; &gt; &gt;    &lt;story&gt;
+</I>&gt;<i> &gt;&gt; &gt; &gt;    
+</I>&gt;<i> &gt;&gt; &gt; &gt;        &lt;blockTable&gt;
+</I>&gt;<i> &gt;&gt; &gt; &gt;        
+</I>&gt;<i> &gt;&gt; &gt; &gt;            &lt;tr&gt;&lt;td&gt;Texto&lt;/td&gt;&lt;td&gt;en&lt;/td&gt;&lt;/tr&gt;
+</I>&gt;<i> &gt;&gt; &gt; &gt;            &lt;tr&gt;&lt;td&gt;tabla&lt;/td&gt;&lt;td&gt;dentro&lt;/td&gt;&lt;/tr&gt;
+</I>&gt;<i> &gt;&gt; &gt; &gt;            &lt;tr&gt;&lt;td&gt;de&lt;/td&gt;&lt;td&gt;story&lt;/td&gt;&lt;/tr&gt;
+</I>&gt;<i> &gt;&gt; &gt; &gt;        
+</I>&gt;<i> &gt;&gt; &gt; &gt;        &lt;/blockTable&gt;
+</I>&gt;<i> &gt;&gt; &gt; &gt;    
+</I>&gt;<i> &gt;&gt; &gt; &gt;    &lt;/story&gt;
+</I>&gt;<i> &gt;&gt; &gt; &gt; 
+</I>&gt;<i> &gt;&gt; &gt; &gt; &lt;/document&gt;
+</I>&gt;<i> &gt;&gt; &gt; &gt; 
+</I>&gt;<i> &gt;&gt; &gt; &gt; _______________________________________________
+</I>&gt;<i> &gt;&gt; &gt; &gt; Bulmages-main mailing list
+</I>&gt;<i> &gt;&gt; &gt; &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt;&gt; &gt; &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i> &gt;&gt; 
+</I>&gt;<i> &gt;&gt; _______________________________________________
+</I>&gt;<i> &gt;&gt; Bulmages-main mailing list
+</I>&gt;<i> &gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>
+-- 
+Hilex Transformaciones Metálicas S.L.
+Tfno.:966 556 536
+Fax:966 556 513
+Latitud: 38.612969
+Longitud: -0.579291
+C/Zamora, 2 y 4
+03440 Ibi (Alicante)
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">hilex en metalica-hilex.com</A>
+
+AVISO LEGAL - CLÁUSULA DE PRIVACIDAD
+Este mensaje se dirige exclusivamente a su destinatario y puede contener 
+información privilegiada o confidencial. Si no es vd. el destinatario 
+indicado, queda informado de que la utilización, divulgación y/o copia sin 
+autorización está prohibida en virtud de la legislación vigente. Si ha 
+recibido este mensaje por error, le rogamos que lo comunique inmediatamente 
+por esta misma vía y proceda a su destrucción.
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20110224/f303e837/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20110224/f303e837/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="005224.html">[BulmaGés]blockTable en la sección pageTemplate de un informe RML (no en story)
+</A></li>
+	<LI>Próximo mensaje: <A HREF="005231.html">[BulmaGés]blockTable en la sección pageTemplate de un informe RML (no en story)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5228">[ fecha ]</a>
+              <a href="thread.html#5228">[ hilo ]</a>
+              <a href="subject.html#5228">[ asunto ]</a>
+              <a href="author.html#5228">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

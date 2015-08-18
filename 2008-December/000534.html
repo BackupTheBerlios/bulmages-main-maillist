@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] accents als llistats per RML
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20accents%20als%20llistats%20per%20RML&In-Reply-To=%3C20081214234649.GA12338%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000492.html">
+   <LINK REL="Next"  HREF="000540.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] accents als llistats per RML </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20accents%20als%20llistats%20per%20RML&In-Reply-To=%3C20081214234649.GA12338%40localhost%3E"
+       TITLE="[BulmaGés] accents als llistats per RML">xdrudis en tinet.cat
+       </A><BR>
+    <I>Lun Dic 15 00:46:49 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000492.html">[BulmaGés]r2834 - trunk/bulmages/installbulmages/bgtrml2pdf
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000540.html">[BulmaGés]accents als llistats per RML
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#534">[ fecha ]</a>
+              <a href="thread.html#534">[ hilo ]</a>
+              <a href="subject.html#534">[ asunto ]</a>
+              <a href="author.html#534">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wed, Dec 10, 2008 at 10:18:10PM +0100, Xavi Drudis Ferran wrote:
+&gt;<i> 
+</I>&gt;<i> Por cierto, todavía no va. Ahora me fallan los acentos que vienen de la 
+</I>&gt;<i> base de datos con sentencias SQL incrustadas en el .rml, sólo van los 
+</I>&gt;<i> acentos en el propio rml y en los datos cogidos del formulario (grid) 
+</I>&gt;<i> en pantalla. Me he puesto a mirarlo en C++ pero el kdevelop se me cuelga, 
+</I>&gt;<i> no sé que le pasa. Funcionaba hace unas horas...
+</I>&gt;<i>
+</I>
+Ara comença a funcionar alguna cosa. Poca. 
+He pujat unes plantilles de RML traduïdes al català. 
+Però només he provat pressupost, comanda, albarà, factura i rebut a client. 
+I només he provat la visualització a evince, no sé si altres visors 
+donaran algun problema (diria que no, en teoria el PDF va en UTF-8 -segons una
+constant python-, crec, independentment de la codificació de la plantilla). 
+
+He modificat el C++ que afegeix dades a les plantilles per a que
+respecti la codificació de la plantilla original (només he provat una
+mica ASCII, ISO-8859-1, UTF-8, UTF-16LE i UTF-16BE. UTF-32 no va,
+sembla un bug de Qt però podria ser jo que no entenc alguna cosa, no
+sé, però diria que ningú fa servir UTF-32). Hi havia llocs en que això
+ja es feia i llocs que no. On es feia era on es cridava el XMLProtect
+de funcaux.h, que per cada caracter no ASCII posa una referència
+numèrica de caracter dintre de un CDATA, més o menys
+aix&lt;![CDATA[&#237;]]&gt;. No era incorrecte,clar, el problema eren els
+llocs on no es cridava a XMLProtect. Per exemple, em sembla que era a
+les dades que venien de &lt;!--QUERY SELECT ... --&gt; incrustats al RML que
+per comptes de cridar a XMLProtect es menjaven els accents
+(minúscules), apòstrofs cometes i salts de línia (els canviaven per un
+blanc).
+
+He substituit les crides a XMLProtect que he vist per crides a
+xmlEscape, i n'he afegit on m'ha semblat que faltaven, potser
+faltaven, o no faltaven però no feien mal i potser algun dia si el fat
+se'ns girava en contra podien arribar a faltar. xmlEscape escapa menys 
+que XMLProtect, només quan troba caracters prohibits (per significatius)
+a XML : &lt;, &gt;, &quot;, &amp; . a resta la deixa en unicode en memòria, esperant
+que s'escrigui bé a disc en escriure el fitxer. I no posa CDATAs, només 
+referències numériques de caracter, aix&#237;. Em fa l'efecte que en segons
+quin esquema XSD o DTD no es poden posar CDATAs a qualsevol lloc, no sé, 
+al menys no n'he vist mai en atributs, per exemple. A més crec que alguns 
+parsers ho tractarien com bolcs de text diferents. Potser són paranoies
+meves i havia de deixar XMLProtect, no sé. 
+
+DBRecord::generaRML es cuida ara d'escriure el fitxer RML a
+~/.bulmages/ respectant la codificació original. Crida a trataTags
+(que és virtual també) per a que tracti els tags, de forma diferent en
+cada cas. Els generaRML dels descendents (ficha.cpp i fichabf.cpp)
+criden al mètode del pare.  Però cada classe llença un plugin (abans
+només se'n llençava un, el de la classe més específica). Això podria
+afectar algun plugin, que abans no es cridés i ara sí, però una cerca
+ràpida no ha semblat trobar-ne cap cas al codi del svn. Si hi ha codi
+extern que depén d'això igual m'he carregat alguna cosa.
+
+He reorganitzat una mica el codi intentant treure duplicacions de codi. 
+Totes les substitucions de marcadors &lt;!--...--&gt; i [...] ara es fa al trataTags, 
+de manera que escriure el fitxer només ho fa DBRecord::generaRML, que és 
+qui acaba cridant tothom. 
+
+L'ideal seria que tothom cridés a DBRecord::generaRML, i que qualsevol
+text introduït al buffer RML llegit passés una vegada i només una per
+xmlEscape, però això només ho he fet en 3 classes, i una cerca ràpida
+m'ha semblat indicar que el codi que llegeix i escriu la plantilla RML
+està duplicat en una seixantena de llocs (espero que sigui un miratge,
+si us plau...) . No sé si arribaré a arreglar-los tots, perquè així
+cansat com estic se'm fa una mica costa amunt. Tampoc sé perquè hem de
+copiar convulsivament logo.png de /usr/share/bulmages/openreports a
+~/.bulmages/ cada vegada que imprimim res (per cert aquest sí que
+molaria tenir-lo en svg però em temo que en cal un per cada empresa,
+no el podem distribuir fet). O perquè cal tractar un fitxer XML amb
+streams i expressions regulars com si no hi hagués parsers ni perquè
+hem de posar instruccions dintre de comentaris XML del pal &lt;!-- QUERY
+...--&gt; ... &lt;!-- END QUERY--&gt; si l'XML ja té el concepte d'element per
+fer aquestes coses (obrir i tancar un contingut). Però si ens hem de
+posar a arreglar tot això ja podem passar-nos directament a XML+XSLT
+per generar XHTML+ CSS (media print) i que el PDF el generi un
+navegador, i vaja, que és com carregar-se tot el que hi ha i fa
+mandra, no?. Jo només volia accents als llistats ...
+  
+Espero no haver trencat res. He intentat anar amb compte, però com 
+que no conec gaire el programa, ni les Qt, ni el C++, ni el python, 
+ni l'RML... 
+
+El bgtrml2pdf tal com el vaig deixar dilluns sembla menjar-se totes 
+les codificacions feliçment, però vaja potser falta provar-ho tot en 
+altres S.O. i locales, no sé...
+
+El que sí que m'he trobat és algun problema de quadradets negres 
+per comptes de caràcters al PDF, però sospito que és per tipus de 
+lletra que no tenen el caràcter (no recordo quin era, grec, o navajo, o així...) 
+
+Envio el missatge perquè el Leo ho va suggerir. Ho dic perquè com que 
+no sé si m'ha quedat tan constructiu com voldria, així li tiro la 
+culpa a un altre, ;op. 
+
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>
+Signa per fer Collserola parc natural com cal
+<A HREF="http://www.collserola.org/salvemelparcnatural/">http://www.collserola.org/salvemelparcnatural/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000492.html">[BulmaGés]r2834 - trunk/bulmages/installbulmages/bgtrml2pdf
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000540.html">[BulmaGés]accents als llistats per RML
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#534">[ fecha ]</a>
+              <a href="thread.html#534">[ hilo ]</a>
+              <a href="subject.html#534">[ asunto ]</a>
+              <a href="author.html#534">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

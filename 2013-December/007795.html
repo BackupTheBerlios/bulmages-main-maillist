@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]problema con bulmasetup en Debian
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fproblema_con_bulmaset%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fup_en_Debian%3F%3D&In-Reply-To=%3CCAJWqEtehT4GO_NYgqKGTGdn_XPjO%2BLX%2BgpjiooMpYU0s%3DZMCbQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007794.html">
+   <LINK REL="Next"  HREF="007796.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]problema con bulmasetup en Debian </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fproblema_con_bulmaset%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fup_en_Debian%3F%3D&In-Reply-To=%3CCAJWqEtehT4GO_NYgqKGTGdn_XPjO%2BLX%2BgpjiooMpYU0s%3DZMCbQ%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]problema con bulmasetup en Debian">tborras en gmail.com
+       </A><BR>
+    <I>Lun Dic 30 10:42:35 CET 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007794.html">[BulmaGés]problema con bulmasetup en Debian
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007796.html">[BulmaGés]problema con bulmasetup en Debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7795">[ fecha ]</a>
+              <a href="thread.html#7795">[ hilo ]</a>
+              <a href="subject.html#7795">[ asunto ]</a>
+              <a href="author.html#7795">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>la 0.13 es algo antigua. Diría que tiene unos 2 años.
+
+Pero si te ha compilado bien quiere decir que aun la puedes hacer servir.
+
+Parece que te falla algún paso del ccmake y que hay un directorio que no
+esta bien puesto.
+
+Probablemente CMAKE_INSTALL_PREFIX que debería ser /usr/local y lo tienes
+como /datos/Programacion/trunk para verificarlo mira a ver si se ha
+instalado correctamente en /usr/local/share/bulmages y si no reanuda la
+compilacion desde cero y sin tocar nada con el ccmake.
+
+
+Espero que te ayude.
+
+Salut
+
+
+El 30 de diciembre de 2013, 10:23, Miguel Ángel Ordóñez Moya &lt;
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">miguelangel.ordonez en gmail.com</A>&gt; escribió:
+
+&gt;<i> El 30/12/13 00:19, aitor_cz escribió:
+</I>&gt;<i> &gt; ¡Dios mío, pero qué es todo eso! ¿Cómo lo estás intentando instalar, y
+</I>&gt;<i> &gt; qué versión?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Aitor.
+</I>&gt;<i> &gt;
+</I>&gt;<i> Muy buenas.
+</I>&gt;<i>
+</I>&gt;<i> A ver, he seguido las instrucciones de la web
+</I>&gt;<i> <A HREF="http://www.iglues.org/wiki_users/doku.php?id=administracion:start">http://www.iglues.org/wiki_users/doku.php?id=administracion:start</A>
+</I>&gt;<i>
+</I>&gt;<i> cd /datos/Programacion
+</I>&gt;<i> svn checkout <A HREF="svn://svn.berlios.de/bulmages/trunk">svn://svn.berlios.de/bulmages/trunk</A>
+</I>&gt;<i> cd trunk/bulmages
+</I>&gt;<i> mkdir build
+</I>&gt;<i> cd build/
+</I>&gt;<i> cmake ../
+</I>&gt;<i> make
+</I>&gt;<i> make install
+</I>&gt;<i> sudo make install
+</I>&gt;<i> kdesudo bulmasetup
+</I>&gt;<i>
+</I>&gt;<i> Creo que la versión es la 0.13
+</I>&gt;<i>
+</I>&gt;<i> Acabo de leer que pasasteis de subversion a git...
+</I>&gt;<i>
+</I>&gt;<i> Un saludo y gracias por la paciencia.
+</I>&gt;<i> --
+</I>&gt;<i> Miguel Ángel
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20131230/6a4d273f/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20131230/6a4d273f/attachment.html</A>&gt;
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007794.html">[BulmaGés]problema con bulmasetup en Debian
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007796.html">[BulmaGés]problema con bulmasetup en Debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7795">[ fecha ]</a>
+              <a href="thread.html#7795">[ hilo ]</a>
+              <a href="subject.html#7795">[ asunto ]</a>
+              <a href="author.html#7795">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

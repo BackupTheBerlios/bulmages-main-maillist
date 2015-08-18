@@ -1,0 +1,231 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Bug #14476] Falten fitxers sql de	plugins ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2314476%5D%20Falten%20fitxers%20sql%20de%0A%09plugins%20%3F&In-Reply-To=%3C200809111250.m8BCo7mK010535%40unicorn.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000021.html">
+   <LINK REL="Next"  HREF="000023.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Bug #14476] Falten fitxers sql de	plugins ? </H1>
+    <B>admin en berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2314476%5D%20Falten%20fitxers%20sql%20de%0A%09plugins%20%3F&In-Reply-To=%3C200809111250.m8BCo7mK010535%40unicorn.berlios.de%3E"
+       TITLE="[BulmaGés] [Bug #14476] Falten fitxers sql de	plugins ?">admin en berlios.de
+       </A><BR>
+    <I>Jue Sep 11 14:50:07 CEST 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000021.html">[Bug #14482] segmentation fault després de desintal·lar plugin (bloqueig)
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000023.html">[Bug #14477] Errors de codificació de caràcters a la consola d'errors sql
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#22">[ fecha ]</a>
+              <a href="thread.html#22">[ hilo ]</a>
+              <a href="subject.html#22">[ asunto ]</a>
+              <a href="author.html#22">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bug #14476, was updated on 2008-Sep-10 23:15
+Here is a current snapshot of the bug.
+
+Project: BulmaGes, Gestión Empresarial Libre
+Category: bulmasetup
+Status: Open
+Resolution: None
+Bug Group: None
+Priority: 5
+Submitted by: xdrudis
+Assigned to : none
+Summary: Falten fitxers sql de plugins ?
+
+Details: Això ho he provat amb el bulmages-0.11.1-2 de lenny
+
+Al fer bulmasetup dóna alguns errors inofensius però que embruten 
+el log i fan més difícil veure els errors reals. Potser es podria arreglar
+creant fitxers sql buits o amb noops per als plugins corresponents. 
+O canviant el bulmasetup perquè no intenti executar un fitxer si el nom 
+del fitxer és buit. 
+
+L'error que dóna és 
+
+su postgres -c &quot;psql -t -f /usr/share/bulmages/dbmodels/plugins/ bulmafact&quot;
+Start.
+Start.
+error: psql:/usr/share/bulmages/dbmodels/plugins:0: 
+error: no se pudo leer el archivo de entrada: és un directori 
+
+i apareix al següents plugins: 
+ Tratando Remesas Bancarias
+Tratando Manejo de TPV
+Tratando Control de Presencia por Centralita Asterisk
+
+Tratando Promedios en ArtÃ­culos
+Tratando Informe Clientes en Hoja de CÃ¡lculo
+Tratando GestiÃ³n de Contratos con Clientes
+Tratando Trabajo con mÃºltiples documentos.
+Tratando Envio de Documentos por e-mail
+Tratando Tarifas
+Tratando Activar Modo Debug
+Tratando CatÃ¡logo de ArtÃ­culos
+Tratando ImpresiÃ³n de Tickets
+Tratando Apertura Rapida Desde CÃ³digos de Barras
+--------------------
+Açò ac è provat damb eth *bulmages-0.11.1-2 de *lenny
+
+En tot hèr *bulmasetup da bèri errors inofensius mès qu'empipornen 
+eth *log e fan mès malaisit veir es errors reaus. Dilhèu s'apoiridie apraiar
+en tot crear fichèrs *sql uets o damb *noops entàs *plugins corresponents. 
+O en tot cambiar eth *bulmasetup pr'amor que non sage executar un fichèr s'eth nòm 
+deth fichèr ei uet. 
+
+Er error que da ei 
+
+su postgres -c &quot;psql -t -f /usr/share/bulmages/dbmodels/plugins/ bulmafact&quot;
+Start.
+Start.
+error: psql:/usr/share/bulmages/dbmodels/plugins:0: 
+error: no se pudo leer el archivo de entrada: és un directori 
+
+E ges enes plugins: 
+ Tratando Remesas Bancarias
+Tratando Manejo de TPV
+Tratando Control de Presencia por Centralita Asterisk
+
+Tratando Promedios en ArtÃ­culos
+Tratando Informe Clientes en Hoja de CÃ¡lculo
+Tratando GestiÃ³n de Contratos con Clientes
+Tratando Trabajo con mÃºltiples documentos.
+Tratando Envio de Documentos por e-mail
+Tratando Tarifas
+Tratando Activar Modo Debug
+Tratando CatÃ¡logo de ArtÃ­culos
+Tratando ImpresiÃ³n de Tickets
+Tratando Apertura Rapida Desde CÃ³digos de Barras
+
+----------------------
+Tested with the bulmages-0.11.1-2  in lenny
+
+bulmasetup gives some harmless errors  but they litter 
+the log and make more difficult to see the real errors. Perhaps could  fix
+creating empty sql files or files with noops for the corresponding plugins . 
+Or changing bulmasetup so that it does not try to execute a file if the name 
+of the filename is empty. 
+
+The error that it gives is 
+su postgres -c &quot;psql -t -f /usr/share/bulmages/dbmodels/plugins/ bulmafact&quot;
+Start.
+Start.
+error: psql:/usr/share/bulmages/dbmodels/plugins:0: 
+error: no se pudo leer el archivo de entrada: és un directori 
+
+appearing at plugins:
+
+ Tratando Remesas Bancarias
+Tratando Manejo de TPV
+Tratando Control de Presencia por Centralita Asterisk
+
+Tratando Promedios en ArtÃ­culos
+Tratando Informe Clientes en Hoja de CÃ¡lculo
+Tratando GestiÃ³n de Contratos con Clientes
+Tratando Trabajo con mÃºltiples documentos.
+Tratando Envio de Documentos por e-mail
+Tratando Tarifas
+Tratando Activar Modo Debug
+Tratando CatÃ¡logo de ArtÃ­culos
+Tratando ImpresiÃ³n de Tickets
+Tratando Apertura Rapida Desde CÃ³digos de Barras
+
+----------------------------
+
+Esto lo he probado con el *bulmages-0.11.1-2 de *lenny
+
+Al hacer *bulmasetup da algunos errores inofensivos pero que ensucian 
+el *log y hacen más difícil ver los errores reales. Quizás se podría arreglar
+creando ficheros *sql vacíos o con *noops para los *plugins correspondientes. 
+O cambiando el *bulmasetup porque no intente ejecutar un fichero si el nombre 
+del fichero es vacío. 
+
+El error que da es 
+su postgres -c &quot;psql -t -f /usr/share/bulmages/dbmodels/plugins/ bulmafact&quot;
+Start.
+Start.
+error: psql:/usr/share/bulmages/dbmodels/plugins:0: 
+error: no se pudo leer el archivo de entrada: és un directori 
+
+aparece en los plugins:
+
+ Tratando Remesas Bancarias
+Tratando Manejo de TPV
+Tratando Control de Presencia por Centralita Asterisk
+
+Tratando Promedios en ArtÃ­culos
+Tratando Informe Clientes en Hoja de CÃ¡lculo
+Tratando GestiÃ³n de Contratos con Clientes
+Tratando Trabajo con mÃºltiples documentos.
+Tratando Envio de Documentos por e-mail
+Tratando Tarifas
+Tratando Activar Modo Debug
+Tratando CatÃ¡logo de ArtÃ­culos
+Tratando ImpresiÃ³n de Tickets
+Tratando Apertura Rapida Desde CÃ³digos de Barras
+
+-----------------------
+
+
+
+Follow-Ups:
+
+Date: 2008-Sep-11 04:50
+By: xdrudis
+
+Comment:
+Idem per bulmacont a 
+
+Tratando Plugin de resumen de una cuenta.
+Tratando Plugin de Cuentas Anuales 
+Tratando Plugin de Importacion de datos separados por coma
+Tratando Plugin de impresiÃ³n subformulario.
+Tratando Plugin de Impresion de Informes Personalizados
+Tratando Plugin de exportacion de listados a ODS.
+Tratando Plugin de exportacion de listados a SXC.
+Tratando Informes Personalizados
+Tratando Plugin corrector
+
+
+su postgres -c &quot;psql -t -f /usr/share/bulmages/dbmodels/plugins/- bulmacont&quot;
+Start.
+Start.
+error: /usr/share/bulmages/dbmodels/plugins/-: El fitxer o directori no existeix 
+
+-------------------------------------------------------
+
+For detailed info, follow this link:
+<A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=14476&amp;group_id=4472">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=14476&amp;group_id=4472</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000021.html">[Bug #14482] segmentation fault després de desintal·lar plugin (bloqueig)
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000023.html">[Bug #14477] Errors de codificació de caràcters a la consola d'errors sql
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#22">[ fecha ]</a>
+              <a href="thread.html#22">[ hilo ]</a>
+              <a href="subject.html#22">[ asunto ]</a>
+              <a href="author.html#22">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

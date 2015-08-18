@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] Gettext proposta
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Gettext%20proposta&In-Reply-To=%3C4986C19E.2050107%40todo-redes.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001053.html">
+   <LINK REL="Next"  HREF="000908.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] Gettext proposta </H1>
+    <B>Fco. Javier M. C.</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Gettext%20proposta&In-Reply-To=%3C4986C19E.2050107%40todo-redes.com%3E"
+       TITLE="[BulmaGés] Gettext proposta">fcojavmc en todo-redes.com
+       </A><BR>
+    <I>Lun Feb  2 10:49:18 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001053.html">[BulmaGés]Proposta per debatir.
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000908.html">[BulmaGés] r2945 - in trunk/bulmages: bulmacont/plugins/plugincorrector bulmacont/plugins/pluginproyectos bulmacont/plugins/pluginregistroiva bulmacont/plugins/pluginresumcta bulmafact/plugins/comercialbf bulmafact/plugins/plugin_tc_articulos bulmafact/plugins/pluginalias bulmafact/plugins/pluginalmacen bulmafact/plugins/pluginasterisk bulmafact/plugins/pluginbulmacont bulmafact/plugins/plugincatalogo bulmafact/plugins/pluginclientprov bulmafact/plugins/plugincontratos bulmafact/plugins/plugincorrectorbf bulmafact/plugins/pluginetiquetado bulmafact/plugins/pluginetiquetas bulmafact/plugins/pluginfacturar bulmafact/plugins/pluginimpresionesmultiples bulmafact/plugins/plugininformeclientes bulmafact/plugins/plugininformeclientessxc bulmafact/plugins/plugininventario bulmafact/plugins/pluginivainc bulmafact/plugins/pluginmail bulmafact/plugins/pluginmailthunderbird bulmafact/plugins/pluginopenref bulmafact/plugins/pluginpreciocoste bulmafact/plugins/pluginpromedios bulmafact/plug! ins/pluginq19 bulmafact/plugins/pluginresarticulos bulmafact/plugins/plugintarifas bulmafact/plugins/pluginticket bulmafact/plugins/plugintipostrabajo bulmafact/plugins/plugintpv bulmafact/src bulmages/src bulmalib/plugins/pluginarchivos bulmalib/plugins/pluginbloqueos bulmalib/plugins/plugindocked bulmalib/plugins/pluginimpers bulmalib/plugins/pluginimpersmail bulmalib/plugins/pluginimpersods bulmalib/plugins/pluginimportcsv bulmalib/plugins/plugininformes bulmalib/plugins/plugininformesods bulmalib/src bulmatpv/plugins/pluginabrevs bulmatpv/plugins/pluginadmin bulmatpv/plugins/pluginalias1 bulmatpv/plugins/pluginaliastpv bulmatpv/plugins/pluginartgraficos bulmatpv/plugins/pluginartsubform bulmatpv/plugins/pluginbuscaarticulo bulmatpv/plugins/pluginbuscacliente bulmatpv/plugins/plugincambio bulmatpv/plugins/plugincambioivainc bulmatpv/plugins/plugincobrar bulmatpv/plugins/plugindevolucion bulmatpv/plugins/plugindevolucion2 bulmatpv/plugins/plugintcaliastpv bulmatpv/plugins! /plugintccompras bulmatpv/plugins/plugintecladonumerico bulmat! pv/plugi
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#902">[ fecha ]</a>
+              <a href="thread.html#902">[ hilo ]</a>
+              <a href="subject.html#902">[ asunto ]</a>
+              <a href="author.html#902">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Amb el permís de'n Leo envio aquest mail a la llista per que tothom 
+estigui assabentat de les derreres decisions.
+
+Després d'uns dies una mica tensos amb el tema del sistema de 
+traduccions 'gettext' i després de unes quantes hores de parlar Leo, 
+Tomeu i jo pel Jabber, per telèfon, per IRC y per senyals de fum :) Hem 
+aconseguir &quot;fumar la pipa de la pau&quot; i arribar a un acord de 
+col·laboració adecuada pel projecte i per empènyer tots en la mateixa 
+direcció. Com qualsevol negociació no és l'objectiu impossar les ideas 
+de ningú perque si, sino raonar i fer les coses objectivament. En resum:
+
+En Leo millorará i fara les adaptacions corresponents a 'cmake'.
+Jo faré la feina en el codi del projecte.
+
+Informació general:
+- Per les traduccions s'usará, en el codi, el format: _(&quot;texte a traduir&quot;).
+- Cada plugin o projecte tindrá un directori &quot;po&quot; a on es possarán les 
+traduccions.
+- Quan es crein els .pot i .gmo es fará dintre el directori de compilació.
+- Desprès de compilar es podrá fer un make 'messages_extract' per 
+generar els .pot
+- Amb &quot;make translations&quot; es fará el mesclat del po amb les noves 
+cadenes per traduir i es generarán els .gmo per instal·lar.
+- Quan es faci un 'make install' es fará tot el procés de forma automática.
+
+
+Crec que no s'he m'oblida res.
+
+
+Salut.
+
+
+Leopold Palomo Avellaneda escribió:
+&gt;<i> Bones,
+</I>&gt;<i>
+</I>&gt;<i> jo crec que la feina per fer funcionar el del gettext és la següent:
+</I>&gt;<i>
+</I>&gt;<i> 1) preparar el codi, de forma que totes les cadenes de text traduïbles 
+</I>&gt;<i> estiguin dintre d'una funció que definim (i18n, trQt, etc ...)
+</I>&gt;<i>
+</I>&gt;<i> 2) fer aquest codi compili, de forma que tingui els #includes que calgui i que 
+</I>&gt;<i> les funcions donin un resultat coherent.
+</I>&gt;<i>
+</I>&gt;<i> 3) definir i fer mòduls (dominis) per agrupar les traduccions. En principi 
+</I>&gt;<i> tant en Fco con jo creiem que el més fàcil és que cada plugin tingui el seu 
+</I>&gt;<i> domini. Jo afegiria que bulmalib tingui el seu, i els aplicatius 
+</I>&gt;<i> [bulma]cont,fact i tpv, que estan dividits en una llibreria i un executable, 
+</I>&gt;<i> tinguin un únic per mòdul: 1 per bulmacont (lib + app), 1 per bulmafact (lib 
+</I>&gt;<i> + app) + 1 per bulmatpv (lib + app).
+</I>&gt;<i>
+</I>&gt;<i> 4) fer que el codi (de cada mòdul) carregui el seu domini i que funcioni.
+</I>&gt;<i>
+</I>&gt;<i> 5) modificar els CMakeLists.txt de forma que per cada mòdul cregui els seu 
+</I>&gt;<i> fitxer de cadenes (.pot) i que pugui compilar els seu fitxer de missatges 
+</I>&gt;<i> (.po -&gt; gmo) per poder-los instal·lar. A més, d'haver fet el search de la 
+</I>&gt;<i> biblioteca gettext per trobar els includes, -l, etc i si està al sistema.
+</I>&gt;<i>
+</I>&gt;<i> 6) Preparar totes les traduccions, recopilar tot els fitxers antics qm, 
+</I>&gt;<i> passar-los a po i fer un catàleg de missatges de forma que podem aprofitar el 
+</I>&gt;<i> màxim.
+</I>&gt;<i>
+</I>&gt;<i> Penso que un cop preparat tot, la metodologia de funcionament hauria de ser la 
+</I>&gt;<i> següent:
+</I>&gt;<i>
+</I>&gt;<i> - es continua treballant igual que fins ara, de forma, però cada plugin nou ha 
+</I>&gt;<i> de tenir en compte les macros noves de gettext en temes de Cmake i els 
+</I>&gt;<i> includes, dominis i funcions (i18n...) .
+</I>&gt;<i>
+</I>&gt;<i> - es compila com sempre i es fan les proves com sempre.
+</I>&gt;<i>
+</I>&gt;<i> - quan  es vulgui alliberar, o es vulgui tancar una versió, es prepara de 
+</I>&gt;<i> forma que es pugui congelar cadenes (com ho fa tothom) de forma que un 
+</I>&gt;<i> determinat dia es genera el .pot de cada mòdul de forma que els traductors 
+</I>&gt;<i> puguin començar la seva feina. En aquest transitori, es pot continuar 
+</I>&gt;<i> programant, però no s'haurien de generar noves cadenes. Per generar cadenes:
+</I>&gt;<i>
+</I>&gt;<i> make messages_extract
+</I>&gt;<i>
+</I>&gt;<i> els .pot generats es pugen al svn.
+</I>&gt;<i>
+</I>&gt;<i> - quan es decideixi que ja es vol tenir traduccions, amb els po, es generen el 
+</I>&gt;<i> gmo. Es podrien fer la fusió amb els .pot, etc. 
+</I>&gt;<i>
+</I>&gt;<i> - aquest .gmo són els que s'instal·len.
+</I>&gt;<i>
+</I>&gt;<i> Penseu que el procés de extracció de cadenes, traducció, barreja, etc és forma 
+</I>&gt;<i> ferregós, i projectes com kde, al principi, les cadenes a traduir les extreia 
+</I>&gt;<i> un script, no la comanda de cmake.
+</I>&gt;<i>
+</I>&gt;<i> Aleshores, vist tota aquesta feina crec que es podria separar i complementar 
+</I>&gt;<i> de la següent manera:
+</I>&gt;<i>
+</I>&gt;<i> - la part de Cmake, preparar les CMakeLists.txt, etc, jo la tenia acabada. Em 
+</I>&gt;<i> faltaven uns serrells, que amb el que ha fet el Fco Javier ho remato. Jo 
+</I>&gt;<i> preparo en uns dies (he de modificar tots els CMakeList &gt; 100) de forma que:
+</I>&gt;<i> * facin servir els defines que havia preparat en FcoJavier
+</I>&gt;<i>
+</I>&gt;<i> # i18n
+</I>&gt;<i> ADD_DEFINITIONS(&quot;-D'_(String)=i18n(\&quot;${plugin}\&quot;, String)'&quot; )
+</I>&gt;<i> ADD_DEFINITIONS(&quot;-D'N_(String, Int)=i18n(\&quot;${plugin}\&quot;, String)'&quot; )
+</I>&gt;<i>
+</I>&gt;<i> i amb banderes, protegeixin la feina:
+</I>&gt;<i> if(USE_GETTEXT)
+</I>&gt;<i> .....
+</I>&gt;<i>
+</I>&gt;<i> de forma que si tenim activat gettext podem fer:
+</I>&gt;<i>
+</I>&gt;<i> make messages_extract
+</I>&gt;<i> -&gt; crear els .pot
+</I>&gt;<i> make translations
+</I>&gt;<i> -&gt; fusionar els po amb el pot i compilar-ho. Aquesta feina però, no la tinc 
+</I>&gt;<i> clara, ja que potser faria un pas més, però ho he de pensar i consultar.
+</I>&gt;<i>
+</I>&gt;<i> - la part de codi, jo no em veig amb cor de fer-ho, es toquen coses de 
+</I>&gt;<i> bulmalib i dels aplicatius que no crec que tingui prou experiència per 
+</I>&gt;<i> arriscar-me. Jo preferiria que en Fco Javier li fiqui ma. Per tant, crec que 
+</I>&gt;<i> Fco Javier, que té més experiència que jo en el codi de bulmages li podria 
+</I>&gt;<i> fotre ma al codi de forma que cada mòdul carregui el domini que toqui i que 
+</I>&gt;<i> no passin coses rares.
+</I>&gt;<i>
+</I>&gt;<i> Queda després altre feina pendent, que és assegurar-se que fem servir per cada 
+</I>&gt;<i> cadena de text una funció i18n ... que això ens ho podem dividir entre tots i 
+</I>&gt;<i> fins i tot li podem dir al Xavi Drudis que ens doni un cop de ma. 
+</I>&gt;<i>
+</I>&gt;<i> Després ha sorgit un problema afegit, que és que els textos del msgid, les 
+</I>&gt;<i> cadenes que s'han de traduir haurien d'estar _només_ ens ascii, ja que sinó 
+</I>&gt;<i> gettext es queixa. per tant, tenim una tasca d'anar eliminant un munt 
+</I>&gt;<i> d'accents, i !&quot;,etc del codi. Que també hauríem d'anar fent.
+</I>&gt;<i>
+</I>&gt;<i> Bé, més o menys aquesta és la meva proposta. No estic molt a gust amb aquesta 
+</I>&gt;<i> situació i pensant-ho bé i reflexionant-ho crec que ho hauríem d'haver evitat 
+</I>&gt;<i> tots plegats. Jo per part meva per haver-ho deixat sense acabar i no haver 
+</I>&gt;<i> demanat ajuda, en Fco Javier per haver tirat milles i no haver parlat amb mi, 
+</I>&gt;<i> ja que ens podriem haver coordinat i ja ho tindríem fet i millor i en Tomeu 
+</I>&gt;<i> veient-ho, per no haver estat més pendent per intentar solucionar-ho.
+</I>&gt;<i>
+</I>&gt;<i> Independentment de tot plegat, que crec que ens pot servir a tots per aprendre 
+</I>&gt;<i> i no caure de nou, us demano que intentem sortir d'això de la millor manera 
+</I>&gt;<i> possible ja que hi ha molta feina i el projecte que ens uneix és molt xulo.
+</I>&gt;<i>
+</I>&gt;<i> Jo aquest vespre (però no em quedaré fins molt tard) intentaré estar online i 
+</I>&gt;<i> en code party i espero que em digueu quelcom.
+</I>&gt;<i>
+</I>&gt;<i> Leo
+</I>&gt;<i>
+</I>&gt;<i> PS si voleu podeu fer reply a la llista.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+-- 
+Fco. Javier M. C.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001053.html">[BulmaGés]Proposta per debatir.
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000908.html">[BulmaGés] r2945 - in trunk/bulmages: bulmacont/plugins/plugincorrector bulmacont/plugins/pluginproyectos bulmacont/plugins/pluginregistroiva bulmacont/plugins/pluginresumcta bulmafact/plugins/comercialbf bulmafact/plugins/plugin_tc_articulos bulmafact/plugins/pluginalias bulmafact/plugins/pluginalmacen bulmafact/plugins/pluginasterisk bulmafact/plugins/pluginbulmacont bulmafact/plugins/plugincatalogo bulmafact/plugins/pluginclientprov bulmafact/plugins/plugincontratos bulmafact/plugins/plugincorrectorbf bulmafact/plugins/pluginetiquetado bulmafact/plugins/pluginetiquetas bulmafact/plugins/pluginfacturar bulmafact/plugins/pluginimpresionesmultiples bulmafact/plugins/plugininformeclientes bulmafact/plugins/plugininformeclientessxc bulmafact/plugins/plugininventario bulmafact/plugins/pluginivainc bulmafact/plugins/pluginmail bulmafact/plugins/pluginmailthunderbird bulmafact/plugins/pluginopenref bulmafact/plugins/pluginpreciocoste bulmafact/plugins/pluginpromedios bulmafact/plug! ins/pluginq19 bulmafact/plugins/pluginresarticulos bulmafact/plugins/plugintarifas bulmafact/plugins/pluginticket bulmafact/plugins/plugintipostrabajo bulmafact/plugins/plugintpv bulmafact/src bulmages/src bulmalib/plugins/pluginarchivos bulmalib/plugins/pluginbloqueos bulmalib/plugins/plugindocked bulmalib/plugins/pluginimpers bulmalib/plugins/pluginimpersmail bulmalib/plugins/pluginimpersods bulmalib/plugins/pluginimportcsv bulmalib/plugins/plugininformes bulmalib/plugins/plugininformesods bulmalib/src bulmatpv/plugins/pluginabrevs bulmatpv/plugins/pluginadmin bulmatpv/plugins/pluginalias1 bulmatpv/plugins/pluginaliastpv bulmatpv/plugins/pluginartgraficos bulmatpv/plugins/pluginartsubform bulmatpv/plugins/pluginbuscaarticulo bulmatpv/plugins/pluginbuscacliente bulmatpv/plugins/plugincambio bulmatpv/plugins/plugincambioivainc bulmatpv/plugins/plugincobrar bulmatpv/plugins/plugindevolucion bulmatpv/plugins/plugindevolucion2 bulmatpv/plugins/plugintcaliastpv bulmatpv/plugins! /plugintccompras bulmatpv/plugins/plugintecladonumerico bulmat! pv/plugi
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#902">[ fecha ]</a>
+              <a href="thread.html#902">[ hilo ]</a>
+              <a href="subject.html#902">[ asunto ]</a>
+              <a href="author.html#902">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

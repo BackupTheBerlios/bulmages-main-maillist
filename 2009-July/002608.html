@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Definición de listados y mascaras
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FDefinici%3DF3n_de_lista%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fdos_y_mascaras%3F%3D&In-Reply-To=%3C200907042204.41391.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002607.html">
+   <LINK REL="Next"  HREF="002609.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Definición de listados y mascaras </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FDefinici%3DF3n_de_lista%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fdos_y_mascaras%3F%3D&In-Reply-To=%3C200907042204.41391.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]Definición de listados y mascaras">tborras en conetxia.com
+       </A><BR>
+    <I>Sab Jul  4 22:04:41 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002607.html">[BulmaGés]Definición de listados y mascaras
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002609.html">[BulmaGés]Definición de listados y mascaras
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2608">[ fecha ]</a>
+              <a href="thread.html#2608">[ hilo ]</a>
+              <a href="subject.html#2608">[ asunto ]</a>
+              <a href="author.html#2608">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola Adrian:
+
+Así a grosso modo los listados estan de forma parecida (quizas un poco mas 
+potente).
+
+Los listados son (en general archivos parseados por el programa con macros que 
+hacen cosas y que luego te detallaré) y que tras ser parseados son procesados 
+por un agente &quot;externo&quot;. Los agentes externos son 2:
+	bgtrml2pdf que es una adaptacion del trml2pdf y que convierte un archivos RML 
+en un pdf
+
+	python que puede hacer lo que te de la gana( principalmente escribir un 
+script ooolib y sacar un documento de openoffice).
+
+
+Las principales macros que puedes usar son:
+	1.- Variables del bulmages (bien de la ficha, de la configuracion, o algunas 
+especificas que las pones entre corchetes
+
+	2.- &lt;!--QUERY = &quot;......&quot;--&gt; que hace una iteracion sobre el query 
+especificado. (El query es parametrizable mediante las variables disponibles 
+en el punto 1. Dentro de la clausula QUERY los resultados del mismo son 
+tratados como variables del punto 1. 
+
+	3.- &lt;!--IFACE ....&gt; que muestra una pantalla .ui diseñada por ti y recoge el 
+contenido de sus widgets y los pone como variables de las especificadas en el 
+punto 1(para ser usadas en otras partes del parseo)
+
+	4.- &lt;!-- SUBQUERY  y &lt;!--SUBQUERY1 para anidar querys (creo que tienes hasta 
+4 niveles de anidamiento
+
+	5.- &lt;!-- IF EXISTS   &lt;!-- IF QUERY para hacer casos condicionales en el 
+listado
+
+	6. &lt;!-- INCLUDE FILE=&quot;....&quot; Para hacer inclusion de subplantillas dentro de 
+las plantillas. (Desde antes de ayer los archivos incluidos tambien soportan 
+todos los metatags que estoy describiendo.
+
+	Y alguna cosa más que ahora no recuerdo bien. Pero a grosso modo con esto 
+tienes toda la potencia para hacer buenos informes, parametrizables asi como 
+quieras y en los formatos mas versatiles (pdf y openoffice). Por ejemplo el 
+de cuentas anuales de bulmacont es una passada.
+
+	Sobre la organizacion también tienes varios puntos de organizacion.
+
+	Si el archivos se llama igual que la tabla de la ficha que hace la impresion 
+entonces es el informe que se imprime por defecto al darle a la impresiora.
+
+	Si el archivos se llama impers_tabla este listado estará en la opcion 
+Informes Personales que aparece al pulsar con el boton derecho sobre la ficha 
+en cuestion (es necesario tener el plugin instalado para que funcione)
+
+	Si el archivos se llama inf_XXXX el informe estara como opcion general del 
+menu Informes y al darle se pondrá en marcha.
+
+	Y segun la extension (rml o pys) sera procesado con bgtrml2pdf o con python 
+para sacar el openoffice correspondiente.
+
+Enfin que hay para jugar un buen rato. Pq luego puedes coger y enlazar un 
+script python que lo unico que inicializa es el acceso a la base de datos y 
+toma el control de todo lo que le interesa para extender funcionalidades con 
+un programa de script (pero eso ya es algo avanzado).
+
+Dicho lo dicho, y pensandolo friamente potencia no nos falta. Sólo que no 
+tenemos una interficie gráfica para controlar tanta potencia. ÇDe hecho  creo 
+que si la tuviesemos jamás podriamos sacarle el jugo tanto como con la 
+edicion manual.
+
+Salut
+
+El Saturday 04 July 2009 01:33:41 adrian15 escribió:
+&gt;<i> Hola lista de Bulmages,
+</I>&gt;<i>
+</I>&gt;<i> 	Aunque no lo parezca sigo subscrito por aquí. Albert Mas de vez en
+</I>&gt;<i> cuando me hace un resumen de lo que le parece más importante. Según me
+</I>&gt;<i> cuenta la mayoría de los errorcillos que había encontrado se van
+</I>&gt;<i> solucionando.
+</I>&gt;<i>
+</I>&gt;<i> 	En este email quería hablarlos de los listados. La verdad es que no
+</I>&gt;<i> tengo bulmages a mano así. Bueno, sí, aquí la tengo en mi repositorio
+</I>&gt;<i> offline de Ubuntu 9.04 pero me cuesta instalarla. Quiero decir que no he
+</I>&gt;<i> probado vuestros listados. Es todo de oidas.
+</I>&gt;<i>
+</I>&gt;<i> 	Os explico. Llevo unos cuántos mails dónde veo fragmentos de algo que
+</I>&gt;<i> sería un informe. Un xml con los campos qué imprimir y dónde se encuentran.
+</I>&gt;<i>
+</I>&gt;<i> 	Y aquí viene lo bueno, para sacar los campos qué imprimir se puede
+</I>&gt;<i> interrumpir el xml en todo momento y hacer consultas sql.
+</I>&gt;<i>
+</I>&gt;<i> 	No sé. Llevo como 20 minutos viendo los archivos del correo y no sé
+</I>&gt;<i> encontrar a lo que me refiero.
+</I>&gt;<i>
+</I>&gt;<i> 	Puede que esté equivocado. Incluso he visto que en las plantillas usais
+</I>&gt;<i> cosas como [Factura] o [Total Factura] que es algo parecido a lo que
+</I>&gt;<i> estoy acostumbrado en nuestro programa privativo de gestión.
+</I>&gt;<i>
+</I>&gt;<i> 	VOLVIENDO AL TEMA...
+</I>&gt;<i>
+</I>&gt;<i> 	En el programa privativo de gestión no hay informes como tales sino que
+</I>&gt;<i> se dividen en dos partes:
+</I>&gt;<i> 	- Definición de Listado
+</I>&gt;<i> 	- Máscara de Listado
+</I>&gt;<i>
+</I>&gt;<i> En la definición de Listado se especifica por un lado qué sentencia sql
+</I>&gt;<i> se ejecuta. También se define en qué tabla(s) se especifica los limites
+</I>&gt;<i> qué preguntar al usuario.
+</I>&gt;<i> P.ej, si es sobre clientes y los datos están en 3 tablas diferentes tú
+</I>&gt;<i> puedes decir qué quieres los límites de la tabla Cliente qué tiene
+</I>&gt;<i> definidos como campos para limites: CódigoCliente y RazonSocial.
+</I>&gt;<i>
+</I>&gt;<i> Esto implica qué cuando el usuario ejecuta el listado se le pregunten
+</I>&gt;<i> por esos limites.
+</I>&gt;<i>
+</I>&gt;<i> La máscara de listado es independiente de la definicion del listado.
+</I>&gt;<i> (Aunque la definición de listado tiene una referencia hacia la máscara
+</I>&gt;<i> de listado).
+</I>&gt;<i>
+</I>&gt;<i> Para editar la máscara de listado tenemos un editor visual muy chulo,
+</I>&gt;<i> lamentablemente no puedes echar mano de cosas como xml. Y, bueno, ahí
+</I>&gt;<i> echas manos de los campos de la consulta sql, de valores del programa,
+</I>&gt;<i> de valores de la empresa, de valores de la interfaz del programa (por
+</I>&gt;<i> ejemplo puedes imprimir los límites elegidos por el usuario).
+</I>&gt;<i>
+</I>&gt;<i> El tema es que clonando las definiciones de listado (Copiar cambiando su
+</I>&gt;<i> nombre) y sólo creando máscaras diferentes tienes mucho juego. Yo no lo
+</I>&gt;<i> uso mucho. Pero la idea, sería, por ejemplo, qué los datos son los
+</I>&gt;<i> mismos pero según los trabajadores se ven más aparentes unos registros u
+</I>&gt;<i> otros. O se vé con mayor tipo de letra o esto o lo otro.
+</I>&gt;<i>
+</I>&gt;<i> De cara al usuario final él sólo ve como listados las definiciones de
+</I>&gt;<i> listados.
+</I>&gt;<i>
+</I>&gt;<i> Por último otra característica útil es que los listados tienen apellido,
+</I>&gt;<i> mejor dicho pueden clasificarse dentro de un grupo.
+</I>&gt;<i>
+</I>&gt;<i> Por ejemplo, todos los informes de articulos los pongo en el grupo
+</I>&gt;<i> garticulos. La pantalla de edición de artículos la configuras para que
+</I>&gt;<i> la impresión sólo te muestre como listados los del grupo garticulos.
+</I>&gt;<i> Y... tenemos que cuándo estás viendo los artículos y le das al botón de
+</I>&gt;<i> imprimir te aparecen los listados (definiciones de listados técnicamente
+</I>&gt;<i> hablando) de solamente el grupo garticulos.
+</I>&gt;<i>
+</I>&gt;<i> ¿Alguien me puede explicar así, por encima, medio comparando con lo que
+</I>&gt;<i> acabo de escribir como están ahora mismo los informes en Bulmages?
+</I>&gt;<i>
+</I>&gt;<i> Muchas gracias.
+</I>&gt;<i>
+</I>&gt;<i> adrian15
+</I>
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002607.html">[BulmaGés]Definición de listados y mascaras
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002609.html">[BulmaGés]Definición de listados y mascaras
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2608">[ fecha ]</a>
+              <a href="thread.html#2608">[ hilo ]</a>
+              <a href="subject.html#2608">[ asunto ]</a>
+              <a href="author.html#2608">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

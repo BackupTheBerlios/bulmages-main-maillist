@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130816112317.5DF46420%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007700.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130816112317.5DF46420%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Vie Ago 16 13:23:17 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007700.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+        
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7701">[ fecha ]</a>
+              <a href="thread.html#7701">[ hilo ]</a>
+              <a href="subject.html#7701">[ asunto ]</a>
+              <a href="author.html#7701">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from b4295d9 to 4909605
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/b4295d932242deb4cb88d9817d6e23b27afeb1fd/diffs/49096055bb33af9c73f87a9cdc799539e833568b">https://gitorious.org/bulmages/bulmages/commit/b4295d932242deb4cb88d9817d6e23b27afeb1fd/diffs/49096055bb33af9c73f87a9cdc799539e833568b</A>
+
+Diff: 
+
+commit 49096055bb33af9c73f87a9cdc799539e833568b
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Fri Aug 16 13:22:45 2013 +0200
+
+    Arreglo bulmasetup para que se puedan borrar empresas en windows
+
+diff --git a/bulmages/bulmasetup/eliminarempresa.in b/bulmages/bulmasetup/eliminarempresa.in
+index 8590c62..b5b1e4f 100644
+--- a/bulmages/bulmasetup/eliminarempresa.in
++++ b/bulmages/bulmasetup/eliminarempresa.in
+@@ -69,7 +69,7 @@ class EliminarEmpresa(Ui_EliminarEmpresa, Empresa):
+                 i = i + 1
+ 
+             self.proceso = QtCore.QProcess()
+-            command = functions.as_postgres + 'dropdb ' + str(self.lista_empresas.item(i,1).text()) + functions.end_sql
++            command = functions.dropdb + str(self.lista_empresas.item(i,1).text()) + functions.end_sql
+             self.proceso.start(command)
+             self.proceso.waitForFinished(-1)
+ 
+diff --git a/bulmages/bulmasetup/functions.py b/bulmages/bulmasetup/functions.py
+index 06d3cfc..64bd249 100644
+--- a/bulmages/bulmasetup/functions.py
++++ b/bulmages/bulmasetup/functions.py
+@@ -118,6 +118,7 @@ if os.name == 'posix':
+     psql2 = as_postgres2 + multios().search_executable(&quot;psql&quot;)
+     pg_dump = multios().search_executable(&quot;pg_dump&quot;)
+     createdb = as_postgres + &quot;createdb&quot; + ' -E UNICODE '
++    dropdb = as_postgres + &quot;dropdb &quot;
+     createuser = as_postgres + &quot;createuser&quot;
+ elif os.name=='nt':
+     #Win XP
+@@ -130,6 +131,7 @@ elif os.name=='nt':
+     psql2 = &quot;\&quot;&quot; + os.getcwd().replace(&quot;bulmasetup&quot;,&quot;pgsql\\bin\\psql.exe&quot;)  + &quot;\&quot;&quot;
+     pg_dump = &quot;\&quot;&quot; + os.getcwd().replace(&quot;bulmasetup&quot;,&quot;pgsql\\bin\\pg_dump.exe&quot;)  + &quot;\&quot;&quot;
+     createdb = &quot;\&quot;&quot; + os.getcwd().replace(&quot;bulmasetup&quot;,&quot;pgsql\\bin\\createdb.exe&quot;) +&quot;\&quot;&quot; + &quot; &quot;
++    dropdb = &quot;\&quot;&quot; + os.getcwd().replace(&quot;bulmasetup&quot;,&quot;pgsql\\bin\\dropdb.exe&quot;) +&quot;\&quot;&quot; + &quot; &quot;
+     createuser = &quot;\&quot;&quot; + os.getcwd().replace(&quot;bulmasetup&quot;,&quot;pgsql\\bin\\createuser.exe&quot;) + &quot;\&quot;&quot; + &quot; &quot;
+ else:
+     # Other Windows
+@@ -141,6 +143,7 @@ else:
+     psql2 = os.getcwd().replace(&quot;bulmasetup&quot;,&quot;pgsql\\bin\\psql.exe&quot;) 
+     pg_dump = os.getcwd().replace(&quot;bulmasetup&quot;,&quot;pgsql\\bin\\pg_dump.exe&quot;) 
+     createdb = os.getcwd().replace(&quot;bulmasetup&quot;,&quot;pgsql\\bin\\createdb.exe&quot;) + &quot; &quot;
++    dropdb = os.getcwd().replace(&quot;bulmasetup&quot;,&quot;pgsql\\bin\\dropdb.exe&quot;) + &quot; &quot;
+     createuser = os.getcwd().replace(&quot;bulmasetup&quot;,&quot;pgsql\\bin\\createuser.exe&quot;) + &quot; &quot;
+     
+ 
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007700.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+	
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7701">[ fecha ]</a>
+              <a href="thread.html#7701">[ hilo ]</a>
+              <a href="subject.html#7701">[ asunto ]</a>
+              <a href="author.html#7701">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

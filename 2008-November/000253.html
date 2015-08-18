@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3F%3D5BBulmaFact_y_BulmaTPV%3D5D%3F%3D%0A%20%3D%3Futf-8%3Fq%3F_Dudas_variadas_y_fallos_variados%3F%3D&In-Reply-To=%3C200811042112.37674.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000251.html">
+   <LINK REL="Next"  HREF="000256.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3F%3D5BBulmaFact_y_BulmaTPV%3D5D%3F%3D%0A%20%3D%3Futf-8%3Fq%3F_Dudas_variadas_y_fallos_variados%3F%3D&In-Reply-To=%3C200811042112.37674.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados">tborras en conetxia.com
+       </A><BR>
+    <I>Mar Nov  4 21:12:37 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000251.html">[BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000256.html">[BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#253">[ fecha ]</a>
+              <a href="thread.html#253">[ hilo ]</a>
+              <a href="subject.html#253">[ asunto ]</a>
+              <a href="author.html#253">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>El Tuesday 04 November 2008 20:29:26 Daniel Bustos Fernández escribió:
+&gt;<i> Hola a todos
+</I>&gt;<i>
+</I>&gt;<i> &gt;&gt; Guardar imágenes de artículos
+</I>&gt;<i>
+</I>&gt;<i> Efectivamente, para que se guarden las imágenes había que editar el archivo
+</I>&gt;<i> /etc/bulmages/bulmafact.conf
+</I>&gt;<i> Ahí salen las siguientes directivas
+</I>&gt;<i>
+</I>&gt;<i> CONF_DIR_IMG_ARTICLES     /var/bulmages/articles/
+</I>&gt;<i> CONF_DIR_IMG_PERSONAL   /var/bulmages/personal/
+</I>&gt;<i>
+</I>&gt;<i> Como ninguno de las dos carpetas existían en mi kubuntu, las he creado y
+</I>&gt;<i> asunto resuelto.
+</I>&gt;<i> Decir que las he creado dándoles el mismo user que lanza la aplicación, no
+</I>&gt;<i> como root.
+</I>&gt;<i> Las imágenes de artículos se guardan en la carpeta articles (artículos).
+</I>&gt;<i> Ignoro para qué servirá la otra pero ya está creada para no tener
+</I>&gt;<i> problemas.
+</I>&gt;<i>
+</I>&gt;<i> &gt;&gt;Plugins y Problema al guardar albaranes
+</I>&gt;<i>
+</I>&gt;<i> En cuanto al asunto de los plugins, efectivamente, tras chequear el
+</I>&gt;<i> apartado correspondiente en bulmafact.conf veo que sí que hay instalados
+</I>&gt;<i> unos cuantos, y entre ellos el de trazabilidad ( libplugintrazabilidad.so
+</I>&gt;<i> ). Sin embargo, en bulmasetup al revisar la empresa creada no tengo ninguno
+</I>&gt;<i> marcado como instalado.
+</I>&gt;<i> Casualmente hay uno que se llama Trazabilidad. ¿Es el mismo?
+</I>&gt;<i> En ese caso, ¿no funciona el marcado en bulmasetup todavía? ¿no revisa
+</I>&gt;<i> bulmasetup el archivo para marcar o no los plugins?
+</I>&gt;<i>
+</I>Este problema es debido a la forma de multiples archivos de configuracion. 
+Para mi que lo mas correcto seria dejar el bulmafact.conf sin ningun plugin 
+por defecto.
+
+Me explico:
+Bulmages permite tener una configuración distinta para cada empresa creada 
+(esto es tener varias empresas usando plugins distintos)
+Para ello cada empresa puede tener su propio archivo de configuracion 
+bulmafact_XXXXX.conf  donde XXXXX es el nombre de la base de datos.
+Bajo esta configuracion el programa lee primero el archivo bulmafact.conf y 
+luego lee el archivo bulmafact_XXXXX.conf reemplazando las opciones leidas 
+previamente con las que encuentra en este fichero. Asi la configuración de 
+bulmafact.conf es generica para todas las empresas y la de 
+bulmafact_XXXXX.conf especifica para cada emrpesa.
+
+BulmaSetup no actua sobre bulmafact.conf sino que únicamente escirbe el 
+archvio bulmafact_XXXXX.conf de ahi que si nunca habías generado la 
+configuracion especifica se cogieran las configuraciones por defecto.
+
+Ese es básicamente el problema. Luego hay más archivos de configuracion 
+especificos para cada usuario pero no suele ser necesario usarlos.
+
+
+
+&gt;<i> Aqui una captura por si no me explico bien
+</I>&gt;<i> <A HREF="http://img83.imageshack.us/my.php?image=instantnea2dr6.png">http://img83.imageshack.us/my.php?image=instantnea2dr6.png</A>
+</I>&gt;<i>
+</I>&gt;<i> Tras eliminar libplugintrazabilidad.so no hay problema al generar albaranes
+</I>&gt;<i> y entrar tantas veces como quiera y necesite.
+</I>&gt;<i>
+</I>&gt;<i> He intentado parchear pero me da un error: &quot;no existe el lenguaje plpgsql&quot;.
+</I>&gt;<i> Ignoro si debo instalar algún paquete en kubuntu ( según el manual de
+</I>&gt;<i> bulmages tengo que instalar postgresql-devel pero no aparece en el apt) o
+</I>&gt;<i> configurar algo en el postgres que ya está instalado.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Comentar que en la web hay un error, pone revf_plugintrazabilidad.sql en
+</I>&gt;<i> vez de revf-plugintrazabilidad.sql (guión bajo por guión normal).
+</I>&gt;<i>
+</I>
+No necesitas parchear ya que el plugin no ha sido instalado nunca.
+Miraré el error este a ver de donde viene.
+
+&gt;<i>
+</I>&gt;<i> Ahora vamos con un par de dudas / posibles errores nuevos
+</I>&gt;<i>
+</I>&gt;<i> &gt;&gt; Generar PDF's
+</I>&gt;<i>
+</I>&gt;<i> Estoy generando un presupuesto p.e., relleno todos los datos y hago clic en
+</I>&gt;<i> el botón de &quot;Informe por referencia&quot;.
+</I>&gt;<i> Se genera un pdf con todos los datos correctos, excepto 2. En el cuadrito
+</I>&gt;<i> de arriba, en vez de salir los datos del proveedor, sale
+</I>&gt;<i> [nomproveedor],[cifproveedor]
+</I>&gt;<i> Decir que el proveedor tiene todos los datos ok en su pantalla
+</I>&gt;<i> correspondiente.
+</I>&gt;<i>
+</I>Plantilla mal hecha. Hace años que no miro el informe por referencia. Tengo 
+que revisarlo.
+
+&gt;<i> &gt;&gt; Presupuesto -&gt; Factura ?
+</I>&gt;<i>
+</I>&gt;<i> Yo tenía la siguiente idea: generabas un presupuesto, y a partir de él la
+</I>&gt;<i> factura.
+</I>&gt;<i> Sin embargo por lo que veo, en bulmages puedo hacer esto a partir de un
+</I>&gt;<i> albarán. Primero creo el albarán y más tarde la factura (y luego el cobro).
+</I>&gt;<i> ¿Qué paso intermedio entre presupuesto-factura o presupuesto-albarán me
+</I>&gt;<i> estoy perdiendo?
+</I>Creas el presupuesto, lo pasas a pedido, lo pasas a albaran y finalmente a 
+factura. Si no te interesan los documentos intermedios simplemente no los 
+guardes.
+NOTA: Piensa que si no guardas el albaran no descontará stock.
+
+&gt;<i>
+</I>&gt;<i> Decir que el problema con el plugin de trazabilidad anteriormente, también
+</I>&gt;<i> ocurría al añadir albaranes a facturas, ahora tras borrar el plugin no da
+</I>&gt;<i> problemas.
+</I>&gt;<i>
+</I>&gt;<i> &gt;&gt;PFC
+</I>&gt;<i>
+</I>&gt;<i> Como ya comenté, el uso de bulmages es parte de mi PFC. Mi tutor insiste en
+</I>&gt;<i> que siga, para el desarrollo de la interfaz que siga métrica v.3. que es lo
+</I>&gt;<i> que piden para el desarrollo de software para la administración española.
+</I>&gt;<i> No voy a desarrollar para la administración, pero mi tutor dice que así
+</I>&gt;<i> aprendo para el futuro.
+</I>&gt;<i> He estado mirando los pdf's de métrica y son infumables. Supongo que
+</I>&gt;<i> métrica debe abarcar cualquier cosa de cualquier tamaño, y para lo que yo
+</I>&gt;<i> quiero hacer, que es pequeño, me sobra muuuuucho. ¿Teneis experiencia en
+</I>&gt;<i> desarrollar con metrica? ¿es tan coñazo como parece?
+</I>&gt;<i>
+</I>Yo no.
+
+Salut
+
+
+-- 
+Tomeu Borrás Riera
+Conetxia Soluciones Informáticas
+902 88 11 66
+971 29 06 29
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000251.html">[BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000256.html">[BulmaGés][BulmaFact y BulmaTPV] Dudas variadas y fallos variados
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#253">[ fecha ]</a>
+              <a href="thread.html#253">[ hilo ]</a>
+              <a href="subject.html#253">[ asunto ]</a>
+              <a href="author.html#253">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

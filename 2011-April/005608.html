@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]r4750 - in trunk/bulmages: bulmacont/src bulmatpv/src installbulmages
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fr4750_-_in_trunk/bulmages%3F%3D%0A%20%3D%3Futf-8%3Fq%3F%3D3A_bulmacont/src_bulmatpv/src_installbulmages%3F%3D&In-Reply-To=%3C201104150926.42962.auryn%40wanadoo.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005606.html">
+   <LINK REL="Next"  HREF="005603.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]r4750 - in trunk/bulmages: bulmacont/src bulmatpv/src installbulmages </H1>
+    <B>Aron</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fr4750_-_in_trunk/bulmages%3F%3D%0A%20%3D%3Futf-8%3Fq%3F%3D3A_bulmacont/src_bulmatpv/src_installbulmages%3F%3D&In-Reply-To=%3C201104150926.42962.auryn%40wanadoo.es%3E"
+       TITLE="[BulmaGés]r4750 - in trunk/bulmages: bulmacont/src bulmatpv/src installbulmages">auryn en wanadoo.es
+       </A><BR>
+    <I>Vie Abr 15 09:26:42 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="005606.html">[BulmaGés]r4750 - in trunk/bulmages: bulmacont/src bulmatpv/src installbulmages
+</A></li>
+        <LI>Próximo mensaje: <A HREF="005603.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 659697f35085fa5b96db3ffeeaab0509356472fc
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5608">[ fecha ]</a>
+              <a href="thread.html#5608">[ hilo ]</a>
+              <a href="subject.html#5608">[ asunto ]</a>
+              <a href="author.html#5608">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bueno... sólo se ve &quot;&lt;@servidor&gt;&quot; cuando conecto a bulmafact mediante &quot;ssh -
+X&quot;... no tenía nada que ver con lo definido en el programa.
+
+Por tanto el título queda realmente así:
+&quot;Facturación GPL :: <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">usuario en empresa</A> - [nombre de subventana]&quot;
+
+
+
+
+
+On Jueves 14 Abril 2011 19:54:51 Daniel Ripoll Osma escribió:
+&gt;<i> Hola Aron,
+</I>&gt;<i> 
+</I>&gt;<i> Con la nueva modificación de hilex, esto se encuentra el los
+</I>&gt;<i> *company.cpp del programa en cuestión.
+</I>&gt;<i> 
+</I>&gt;<i> Si tomemos a bulmafact, en el archivo:
+</I>&gt;<i> 
+</I>&gt;<i> bulmages.git/bulmages/bulmafact/src/bfcompany.cpp
+</I>&gt;<i> b/bulmages/bulmafact/src/bfcompany.cpp
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> En la linea 99 nos encontramos:
+</I>&gt;<i> 
+</I>&gt;<i> (...............) g_confpr-&gt;valor ( CONF_MAIN_WINDOW_TITLE ) + &quot; :: &quot;
+</I>&gt;<i> + currentUser() + &quot;@&quot; + dbName() );
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Teóricamente, solo habría que modificar y añadir un cadena.
+</I>&gt;<i> 
+</I>&gt;<i> g_confpr-&gt;valor ( CONF_MAIN_WINDOW_TITLE ) + &quot; :: &lt; &quot; + currentUser()
+</I>&gt;<i> + &quot;@&quot; + dbName() + &quot;&gt;&quot; );
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Corregidme si me equivoco.
+</I>&gt;<i> 
+</I>&gt;<i> 2011/4/14 Aron &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">auryn en wanadoo.es</A>&gt;:
+</I>&gt;<i> &gt; En los títulos ahora pone:
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; &quot;Facturación GPL :: <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">usuario en empresa</A> - [nombre de subventana] &lt;@servidor&gt;&quot;
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; He personalizado la parte anterior a &quot;::&quot;.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; No parece correcto poner &quot;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">usuario en empresa</A>&quot;, igual sería mejor
+</I>&gt;<i> &gt; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">usuario en servidor</A>&gt;, pero esa parte del título no la encuentro en el
+</I>&gt;<i> &gt; código.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Un saludo.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; --
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Aron
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Bulmages-main mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20110415/ae737909/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20110415/ae737909/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="005606.html">[BulmaGés]r4750 - in trunk/bulmages: bulmacont/src bulmatpv/src installbulmages
+</A></li>
+	<LI>Próximo mensaje: <A HREF="005603.html">[BulmaGés] 	[Git]Project bulmages at BerliOS branch, master,	updated. 659697f35085fa5b96db3ffeeaab0509356472fc
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#5608">[ fecha ]</a>
+              <a href="thread.html#5608">[ hilo ]</a>
+              <a href="subject.html#5608">[ asunto ]</a>
+              <a href="author.html#5608">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaG�s] [Bug #15712] pluginbt_devolucion2 de	BulmaTPV
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2315712%5D%20pluginbt_devolucion2%20de%0A%09BulmaTPV&In-Reply-To=%3C200905211425.n4LEPhEw009257%40unicorn.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002027.html">
+   <LINK REL="Next"  HREF="002029.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaG�s] [Bug #15712] pluginbt_devolucion2 de	BulmaTPV </H1>
+    <B>admin en berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2315712%5D%20pluginbt_devolucion2%20de%0A%09BulmaTPV&In-Reply-To=%3C200905211425.n4LEPhEw009257%40unicorn.berlios.de%3E"
+       TITLE="[BulmaG�s] [Bug #15712] pluginbt_devolucion2 de	BulmaTPV">admin en berlios.de
+       </A><BR>
+    <I>Jue Mayo 21 16:25:43 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002027.html">[BulmaG�s] [Bug #15711] Error en el sql de borrado	del plugin Devolucion2
+</A></li>
+        <LI>Pr�ximo mensaje: <A HREF="002029.html">[BulmaG�s] r3384 - in	trunk/bulmages/bulmafact/plugins: pluginbf_clientealbaran	pluginbf_clientecobro pluginbf_clientefactura pluginbf_clientepedido
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2028">[ fecha ]</a>
+              <a href="thread.html#2028">[ hilo ]</a>
+              <a href="subject.html#2028">[ asunto ]</a>
+              <a href="author.html#2028">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bug #15712, was updated on 2009-May-21 06:25
+Here is a current snapshot of the bug.
+
+Project: BulmaGes, Gesti�n Empresarial Libre
+Category: bulmasetup
+Status: Open
+Resolution: None
+Bug Group: None
+Priority: 5
+Submitted by: talvarez
+Assigned to : none
+Summary: pluginbt_devolucion2 de BulmaTPV
+
+Details: Al crear una nueva empresa de Bulmafact con TPV desde bulmasetup, instalando el plugin pluginbt_devolucion2 da el siguiente error:
+
+
+
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/pluginbt_devolucion2.sql pruebaTPV&quot;
+Started.
+Started.
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbt_devolucion2.sql:92: NOTICE: CREATE TABLE creará una secuencia implícita «devolucion_iddevolucion_seq» para la columna serial «devolucion.iddevolucion» CONTEXT: sentencia SQL: «CREATE TABLE devolucion ( iddevolucion serial PRIMARY KEY, idalbaran_origen integer NOT NULL REFERENCES albaran(idalbaran), idalbaran_devolucion integer NOT NULL REFERENCES albaran(idalbaran) )» PL/pgSQL function &quot;aux&quot; line 7 at SQL statement psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbt_devolucion2.sql:92: NOTICE: CREATE TABLE / PRIMARY KEY creará el índice implícito «devolucion_pkey» para la tabla «devolucion» CONTEXT: sentencia SQL: «CREATE TABLE devolucion ( iddevolucion serial PRIMARY KEY, idalbaran_origen integer NOT NULL REFERENCES albaran(idalbaran), idalbaran_devolucion integer NOT NULL REFERENCES albaran(idalbaran) )» PL/pgSQL function &quot;aux&quot; line 7 at SQL statement 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbt_devolucion2.sql:92: NOTICE: CREATE TABLE creará una secuencia implícita «vale_idvale_seq» para la columna serial «vale.idvale» CONTEXT: sentencia SQL: «CREATE TABLE vale ( idvale serial PRIMARY KEY, refvale character varying(12) NOT NULL, fechavale date DEFAULT now(), impvale numeric(12,2) DEFAULT 0, descvale character varying(150), idtrabajador integer REFERENCES trabajador (idtrabajador), anuladovale boolean, iddevolucion integer REFERENCES devolucion (iddevolucion), idalbaran_canjeo integer REFERENCES albaran (idalbaran) )» PL/pgSQL function &quot;aux&quot; line 15 at SQL statement 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbt_devolucion2.sql:92: NOTICE: CREATE TABLE / PRIMARY KEY creará el índice implícito «vale_pkey» para la tabla «vale» CONTEXT: sentencia SQL: «CREATE TABLE vale ( idvale serial PRIMARY KEY, refvale character varying(12) NOT NULL, fechavale date DEFAULT now(), impvale numeric(12,2) DEFAULT 0, descvale character varying(150), idtrabajador integer REFERENCES trabajador (idtrabajador), anuladovale boolean, iddevolucion integer REFERENCES devolucion (iddevolucion), idalbaran_canjeo integer REFERENCES albaran (idalbaran) )» PL/pgSQL function &quot;aux&quot; line 15 at SQL statement 
+error: psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbt_devolucion2.sql:112: NOTICE: CREATE OR REPLACE FUNCTION crearef() RETURNS character varying(15) AS $BB$ DECLARE asd RECORD; result character varying(15); efound boolean; BEGIN efound := FALSE; WHILE efound = FALSE LOOP result := random_string(6); efound := TRUE; SELECT INTO asd idpresupuesto FROM presupuesto WHERE refpresupuesto = result; IF FOUND THEN efound := FALSE; END IF; SELECT INTO asd idpedidocliente FROM pedidocliente WHERE refpedidocliente = result; IF FOUND THEN efound := FALSE; END IF; SELECT INTO asd idalbaran FROM albaran WHERE refalbaran = result; IF FOUND THEN efound := FALSE; END IF; SELECT INTO asd idfactura FROM factura WHERE reffactura = result; IF FOUND THEN efound := FALSE; END IF; SELECT INTO asd idcobro FROM cobro WHERE refcobro = result; IF FOUND THEN efound := FALSE; END IF; SELECT INTO asd idpedidoproveedor FROM pedidoproveedor WHERE refpedidoproveedor = result; IF FOUND THEN efound :=!
+  FALSE; END IF; SELECT INTO asd idalbaranp FROM albaranp WHERE refalbaranp = result; IF FOUND THEN efound := FALSE; END IF; SELECT INTO asd idfacturap FROM facturap WHERE reffacturap = result; IF FOUND THEN efound := FALSE; END IF; SELECT INTO asd idpago FROM pago WHERE refpago = result; IF FOUND THEN efound := FALSE; END IF; -- MODIFICACION PLUGINDEVOLUCION2 SELECT INTO asd idvale FROM vale WHERE refvale = result; IF FOUND THEN efound := FALSE; END IF; -- END MODIFICACION PLUGINDEVOLUCION2 -- PLUGINS END LOOP; RETURN result; END; $BB$ LANGUAGE 'plpgsql' ; 
+
+For detailed info, follow this link:
+<A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=15712&amp;group_id=4472">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=15712&amp;group_id=4472</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002027.html">[BulmaG�s] [Bug #15711] Error en el sql de borrado	del plugin Devolucion2
+</A></li>
+	<LI>Pr�ximo mensaje: <A HREF="002029.html">[BulmaG�s] r3384 - in	trunk/bulmages/bulmafact/plugins: pluginbf_clientealbaran	pluginbf_clientecobro pluginbf_clientefactura pluginbf_clientepedido
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2028">[ fecha ]</a>
+              <a href="thread.html#2028">[ hilo ]</a>
+              <a href="subject.html#2028">[ asunto ]</a>
+              <a href="author.html#2028">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">M�s informaci�n sobre la lista de distribuci�n Bulmages-main </a><br>
+</body></html>

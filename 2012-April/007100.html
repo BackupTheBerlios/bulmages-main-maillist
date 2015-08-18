@@ -1,0 +1,260 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Hablando de ramas
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FHablando_de_ramas%3F%3D&In-Reply-To=%3CCAJWqEtfaDxWJWya-ObQU5QndogYZ6zwbeY92LgTQBHx4AypHJw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007099.html">
+   <LINK REL="Next"  HREF="007101.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Hablando de ramas </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FHablando_de_ramas%3F%3D&In-Reply-To=%3CCAJWqEtfaDxWJWya-ObQU5QndogYZ6zwbeY92LgTQBHx4AypHJw%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]Hablando de ramas">tborras en conetxia.com
+       </A><BR>
+    <I>Dom Abr 22 21:39:15 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007099.html">[BulmaGés]Hablando de ramas
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007101.html">[BulmaGés]Hablando de ramas
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7100">[ fecha ]</a>
+              <a href="thread.html#7100">[ hilo ]</a>
+              <a href="subject.html#7100">[ asunto ]</a>
+              <a href="author.html#7100">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola
+
+&gt;<i>
+</I>&gt;<i> Lo primero pedir perdón por no haber contestado los correos que se han
+</I>&gt;<i> enviado durante la semana. He estado tremendamente liado y no he tenido
+</I>&gt;<i> tiempo de pararme a pensar qué se estaba haciendo. Justo el viernes veo que
+</I>&gt;<i> el repositorio tarda en sincronizar :)
+</I>&gt;<i>
+</I>&gt;<i> Me gusta tu idea Daniel. Yo también veo que meter cosas que no son
+</I>&gt;<i> necesarias para desarrollar Bulmages no es correcto. Los paquetes de
+</I>&gt;<i> instalación y otros códigos adicionales deberian ir en otros módulos,
+</I>&gt;<i> aparte, como comentas.
+</I>&gt;<i>
+</I>&gt;<i> Si y no. Si los metemos en módulos aparte es un problema el generarlos ya
+</I>que, por desgracia, lo que no se puede hacer en git es tener un repo dentro
+de otro. Y se necesita del source para generar los instaladores.
+
+
+
+&gt;<i>
+</I>&gt;<i> También tengo una duda con Tomeu. A ver, se supone que la rama 'master' es
+</I>&gt;<i> para desarrollo y la 'release' es para ir estabilizando. Bien. Me gusta,
+</I>&gt;<i> pero alguien tiene que realizar el trabajo. No se debería dejar tocar a
+</I>&gt;<i> todo el mundo en 'release'. A mi me gustaría que sea Tomeu el encargado de
+</I>&gt;<i> estabilizar y cogiendo parches interesantes de 'master' y pasarlos a
+</I>&gt;<i> 'release' y al revés (cuando sea necesario), pero Tomeu propone crear un
+</I>&gt;<i> clon y luego sincronizar con 'master' y 'release', eso es incómodo y crea
+</I>&gt;<i> mucho más trabajo para los colaboradores sin que se vea que alguien está
+</I>&gt;<i> controlando todo el proceso. De esta manera no se gana nada.
+</I>&gt;<i>
+</I>&gt;<i> No debe estar todo pendiente de una sóla persona.
+</I>
+
+&gt;<i> Lo de crear el clon, creo que es bueno para probar cosas nuevas, pero esto
+</I>&gt;<i> también lo hago en rama local y luego, cuando estoy seguro que funciona, lo
+</I>&gt;<i> subo a 'master', es lo mismo.
+</I>&gt;<i>
+</I>&gt;<i> No es lo mismo. Deberíamos poder probarlo todos antes, testearlo antes, y
+</I>además si no lo haces como rama separada luego meter los cambios en una o
+varias ramas es más difícil. No es un merge.
+
+&gt;<i>
+</I>&gt;<i> Daniel, he visto, en otro correo tuyo, que quieres hacer cambios en
+</I>&gt;<i> BulmaLib, por favor, coméntalo porque yo tengo pensado también algunos
+</I>&gt;<i> cambios (no muchos, más bien de estilo del código) y así estamos
+</I>&gt;<i> sincronizados y evitamos conflictos. También he 'sufrido' algunos bugs en
+</I>&gt;<i> algunas funciones implementadas por ti, cuando tenga un rato subiré las
+</I>&gt;<i> correcciones. Esto pasa por no hacer algunas pruebas mínimas a lo que se
+</I>&gt;<i> cambia en BulmaLib y me preocupa porque es el núcleo del programa y se debe
+</I>&gt;<i> tocar con mucho más cuidado si cabe.
+</I>&gt;<i>
+</I>&gt;<i> Y aquí me das la razón para el uso de ramas separadas y clones.
+</I>
+
+Salut
+
+
+&gt;<i> Un saludo a todos.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> El 22/04/12 13:37, Daniel Ripoll escribió:
+</I>&gt;<i>
+</I>&gt;<i> Al 18/04/12 23:33, En/na Tomeu Borras ha escrit:
+</I>&gt;<i>
+</I>&gt;<i> Aun no he llegado a profundizar con los tags. Pero parece que estamos
+</I>&gt;<i> deacuerdo y que release14 debería pasar a ser simplemente release.
+</I>&gt;<i>
+</I>&gt;<i> Mi idea es dejar unas pocas ramas bien definidas (hasta que puedan verse
+</I>&gt;<i> todas en el gitorious).
+</I>&gt;<i>
+</I>&gt;<i> Mis siguiente victimas van a ser release5.3 y otras releases antiguas.
+</I>&gt;<i>
+</I>&gt;<i> Y me queda por estudiar debian-packages (que ni la he mirado).
+</I>&gt;<i>
+</I>&gt;<i> Salut
+</I>&gt;<i>
+</I>&gt;<i> El 18 de abril de 2012 22:53, Pablo Alvarez de Sotomayor Posadillo &lt;
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">palvarez at iglues.org</A>&gt; escribió:
+</I>&gt;<i>
+</I>&gt;&gt;<i> &gt; La duda es la siguiente:
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; Siendo la diferencia con cualquier otra rama un directorio.
+</I>&gt;&gt;<i> &gt; (nsis_bulmages), y estando en  Git y no en subversion, donde las ramas
+</I>&gt;&gt;<i> son
+</I>&gt;&gt;<i> &gt; bastante diferentes. ¿Merece la pena que sea una rama separada?.
+</I>&gt;&gt;<i> &gt; Pq este detalle nos obligará a hacer un winversion14 y toda la
+</I>&gt;&gt;<i> parafernalia
+</I>&gt;&gt;<i> &gt; asociada a hacer merges parriba y pabajo mientras que teniendo el
+</I>&gt;&gt;<i> &gt; directorio como &quot;uno más&quot; se adapta perfectamente sin molestar a nadie.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  Yo lo mantendria en la misma rama. Como bien dices, en git las ramas son
+</I>&gt;&gt;<i> un poco diferentes, y generalmente estan pensadas para ir desarrollando
+</I>&gt;&gt;<i> funcionalidades manteniendo un codigo base mas o menos estable. Desde mi
+</I>&gt;&gt;<i> punto de vista es el mismo caso que puede tener, por ejemplo, un paquete
+</I>&gt;&gt;<i> debian, que basicamente varia con respecto al resto del programa en un
+</I>&gt;&gt;<i> directorio. En ese caso se suele crear una rama para desarrollar una
+</I>&gt;&gt;<i> funcionalidad (crear un paquete debian a partir del codigo fuente) y,
+</I>&gt;&gt;<i> una vez que se termina de desarrollar la funcionalidad se mergea con la
+</I>&gt;&gt;<i> rama correspondiente. Asi no tienes que tener una rama para crear paquetes
+</I>&gt;&gt;<i> debian que tengas que actualizar cada vez que quieras crear un paquete.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Otra cosa es que el codigo en windows compartiera poco con el resto, con
+</I>&gt;&gt;<i> lo que si podria tener sentido tenerlo en una rama aparte (si ves mi
+</I>&gt;&gt;<i> repositorio en gitorious he hecho eso para la documentacion o la web, ya
+</I>&gt;&gt;<i> que quien esta trabajando en la documentacion o en la web no le preocupa
+</I>&gt;&gt;<i> si alguien ha hecho un cambio en el codigo fuente). E incluso para estos
+</I>&gt;&gt;<i> casos mucha gente prefiere tener repositorios aparte.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   Hola lista,
+</I>&gt;<i>
+</I>&gt;<i> Una cosa es cierto, estamos usando las ramas mal, pero meter nsis_packages
+</I>&gt;<i> en master, no es la solución y más después de analizar las carpetas, no
+</I>&gt;<i> tiene ningún sentido tener nsis_packages (y otras) en el repositorio
+</I>&gt;<i> central junto al master. ¿Porque?
+</I>&gt;<i>
+</I>&gt;<i> Tanto la carpeta debian, como la carpeta nsis_packages no son necesarias
+</I>&gt;<i> para &quot;compilar&quot; la suite por defecto, son grandes y no los &quot;necesitamos
+</I>&gt;<i> fisicamente&quot;, especialmente nsis_packages, contiene python, postgresql, etc
+</I>&gt;<i> para Windows ¡enteritos!
+</I>&gt;<i>
+</I>&gt;<i> ¿Que quiero decir con esto? Fácil, mirad los directorios
+</I>&gt;<i>
+</I>&gt;<i> nsis_packages tiene 17175 elementos y una medida total de 562,9 MB
+</I>&gt;<i> debian contiene 54 elementos, medida total de 568,6 kB (bastante más
+</I>&gt;<i> pequeño)
+</I>&gt;<i> devkitPro 2357 elementos, medida total 123,8 MB
+</I>&gt;<i> documentos 157 elementos, medida total 84,9 MB
+</I>&gt;<i> web 18 elementos, medida total 1,9 MB
+</I>&gt;<i> no-cont-bulmages 317 elementos, medida total 13,0 MB
+</I>&gt;<i>
+</I>&gt;<i> Y finalmente, el unico directorio estrictamente necesario:
+</I>&gt;<i> bulmages 9933 elementos, medida total de 264,5 MB
+</I>&gt;<i>
+</I>&gt;<i> Si los dejamos todos directamente en la rama principal, convertimos el
+</I>&gt;<i> proyecto en una mole de:
+</I>&gt;<i> 30012 elementos, de medida total 1,1 GB
+</I>&gt;<i>
+</I>&gt;<i> Aparte de eliminarnos la escalabilidad de la que &quot;podemos fardar&quot; en
+</I>&gt;<i> BulmaGés, es totalmente intolerante, tener que descargar 1,1GB, ¡estamos
+</I>&gt;<i> ocupando más que una ISO de una distribución Linux! y descargar eso en una
+</I>&gt;<i> linea de ADSL normal es un infierno, ya no os digo si tienen conexiones de
+</I>&gt;<i> 3 megas o 1 mega.
+</I>&gt;<i>
+</I>&gt;<i> ¿que sugiero yo?
+</I>&gt;<i>
+</I>&gt;<i> Repositorios por separado, con git-submodules
+</I>&gt;<i>
+</I>&gt;<i> ¿Que es un submodulo?
+</I>&gt;<i>
+</I>&gt;<i> En resumen: un repositorio de git, dentro de un repositorio.
+</I>&gt;<i>
+</I>&gt;<i> ¿Y que hacemos con ello?
+</I>&gt;<i>
+</I>&gt;<i> Que todas y cada una de esas carpetas, excepto &quot;bulmages&quot;, sea un
+</I>&gt;<i> submodulo de git, de esta manera, nos aparecerán las carpetas aparentemente
+</I>&gt;<i> vacías apuntando hacia un repositorio submodular.
+</I>&gt;<i>
+</I>&gt;<i> ¿y que conseguimos con esto?
+</I>&gt;<i>
+</I>&gt;<i> Reducir el tamaño del repositorio central a 265 MB (aproximadamente).
+</I>&gt;<i>
+</I>&gt;<i> Mucho mejor incluso que antes, y teniendo solo lo interesante a la hora de
+</I>&gt;<i> programar y pasando de una casi hora de descarga de código, a solo unos
+</I>&gt;<i> minutos, y que luego si alguien las necesita modificar, tan solo debe
+</I>&gt;<i> sincronizar el submodulo y listo.
+</I>&gt;<i>
+</I>&gt;<i> Saludos, y disculpas por el trochomail
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Daniel Ripoll <A HREF="Osmahttp://danielripoll.es">Osmahttp://danielripoll.es</A>
+</I>&gt;<i> 6688.27.4.90
+</I>&gt;<i>
+</I>&gt;<i> Web &amp; Desktop Developer
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">listBulmages-main at lists.berlios.dehttps</A>://lists.berlios.de/mailman/listinfo/bulmages-main
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Javier.
+</I>&gt;<i> TODO-<A HREF="REDEShttp://www.todo-redes.com">REDEShttp://www.todo-redes.com</A>
+</I>&gt;<i> C/Begònia 12 - 07010 Palma de Mallorca.
+</I>&gt;<i> Tel.: 971499071
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>
+
+
+-- 
+Tomeu Borrás
+Conetxia Soluciones Informáticas
+902 88 11 66 - 677 77 44 76
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20120422/80293247/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20120422/80293247/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007099.html">[BulmaGés]Hablando de ramas
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007101.html">[BulmaGés]Hablando de ramas
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7100">[ fecha ]</a>
+              <a href="thread.html#7100">[ hilo ]</a>
+              <a href="subject.html#7100">[ asunto ]</a>
+              <a href="author.html#7100">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

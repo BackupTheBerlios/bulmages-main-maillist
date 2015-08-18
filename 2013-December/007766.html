@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]presentación
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Futf-8%3Fq%3Fpresentaci%3DC3%3DB3n%3F%3D&In-Reply-To=%3C201312192033.08652.asmond%40gmx.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007765.html">
+   <LINK REL="Next"  HREF="007767.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]presentación </H1>
+    <B>Toni Asensi Esteve</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Futf-8%3Fq%3Fpresentaci%3DC3%3DB3n%3F%3D&In-Reply-To=%3C201312192033.08652.asmond%40gmx.com%3E"
+       TITLE="[BulmaGés]presentación">asmond en gmx.com
+       </A><BR>
+    <I>Jue Dic 19 20:33:08 CET 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007765.html">[BulmaGés]presentación
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007767.html">[BulmaGés]presentación
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7766">[ fecha ]</a>
+              <a href="thread.html#7766">[ hilo ]</a>
+              <a href="subject.html#7766">[ asunto ]</a>
+              <a href="author.html#7766">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>¡Hola!
+
+&gt;<i> Pienso que primero deberías empezar por C, 
+</I>
+Sólo quería comentar que [dice Stroustrup]
+(<A HREF="http://www.informit.com/articles/article.aspx?p=2080042">http://www.informit.com/articles/article.aspx?p=2080042</A>) 
+que es mejor aprender primero la programación orientada a objetos, que 
+simplifica más las cosas, etc. Por ejemplo está la diferencia entre el código 
+de C++:
+    string compose(const string&amp; name, const string&amp; domain)
+    {
+        return name+&#8217;@&#8217;+domain;
+    }
+   [...]
+   string addr = compose(&#8220;bs&#8221;,&#8221;cs.tamu.edu&#8221;);
+
+y su versión no orientada a objetos, en C:
+
+    char* compose(const char* name, const char* domain)
+    {
+        char* res = calloc(strlen(name)+strlen(domain)+2);  // space for 
+strings, &#8216;@&#8217;, and 0
+        char* p = strcpy(name,res);
+        *p = &#8216;@&#8217;;
+        strcpy(domain,p+1);
+        return res;
+    }
+    [...]
+    char* addr = compose(&#8220;bs&#8221;,&quot;cs.tamu.edu&#8221;);
+    // ...
+    free(addr); // release memory when done
+
+
+¡Saludos!
+-- 
+Toni Asensi Esteve.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007765.html">[BulmaGés]presentación
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007767.html">[BulmaGés]presentación
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7766">[ fecha ]</a>
+              <a href="thread.html#7766">[ hilo ]</a>
+              <a href="subject.html#7766">[ asunto ]</a>
+              <a href="author.html#7766">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

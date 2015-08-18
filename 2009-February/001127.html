@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Selección Natural en Redes Neuronales de Topologia Aleatoria.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FSelecci%3DF3n_Natural_e%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fn_Redes_Neuronales_de_Topologia_Aleatoria%3D2E%3F%3D&In-Reply-To=%3Cc42865c40902171110w29cc129ak82adacf3af07da44%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001132.html">
+   <LINK REL="Next"  HREF="001117.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Selección Natural en Redes Neuronales de Topologia Aleatoria. </H1>
+    <B>Raül Martínez i Peris</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FSelecci%3DF3n_Natural_e%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fn_Redes_Neuronales_de_Topologia_Aleatoria%3D2E%3F%3D&In-Reply-To=%3Cc42865c40902171110w29cc129ak82adacf3af07da44%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]Selección Natural en Redes Neuronales de Topologia Aleatoria.">elferrer en gmail.com
+       </A><BR>
+    <I>Mar Feb 17 20:10:03 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001132.html">[BulmaGés][BulmaGÃ©s]Selección Natural en Redes Neuronales de Topologia	Aleatoria.
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001117.html">[BulmaGés] r3065 - in trunk/bulmages:	bulmafact/plugins/pluginbf_almacen	bulmafact/plugins/pluginbf_almacen/po	bulmafact/plugins/pluginbf_banco	bulmafact/plugins/pluginbf_banco/po installbulmages/i18n
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1127">[ fecha ]</a>
+              <a href="thread.html#1127">[ hilo ]</a>
+              <a href="subject.html#1127">[ asunto ]</a>
+              <a href="author.html#1127">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>2009/2/17 Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+
+&gt;<i> Un poco de I.A:
+</I>&gt;<i>
+</I>&gt;<i> Imaginemos una red formada por un conjunto de perceptrones (o a-ceptrones
+</I>&gt;<i> que
+</I>&gt;<i> son los que diseñe) dispuestos de forma aleatoria y en cantidad suficiente
+</I>&gt;<i> como para aprender algo (llamemosle f(x)). Funciona pq ya lo hemos probado
+</I>&gt;<i> en
+</I>&gt;<i> 2 ocasiones. El principal problema está en la cantidad de perceptrones que
+</I>&gt;<i> tienes que usar para conseguir por estadística una combinacion valida para
+</I>&gt;<i> aprender f(x). A ello vamos:
+</I>&gt;<i>
+</I>&gt;<i> Una vez aprendido f(x) (pongamos que con una tasa de acierto de 99%).
+</I>&gt;<i> Hagamos
+</I>&gt;<i> lo siguiente:
+</I>&gt;<i>        1.- Quitemos todos los perceptrones cuya pseudo-constante de
+</I>&gt;<i> aprendizaje sea
+</I>&gt;<i> aproximadamente 0 (Esto es que se comportan de forma aleatoria). ¿Afectaría
+</I>&gt;<i> este cambio al conocimiento adquirido por la red?. Yo creo que no.
+</I>&gt;<i>
+</I>
+
+No afectaría a una red establecida en base a f(x) con aprendizaje
+completado. Pero, si la nueva tasa de perceptrones válidos (eliminando los
+datos aleatorios, o ruido) los utilizamos para una nueva red f'(x')
+tendremos un resultado diferente puesto que hemos eliminado el &quot;ruido&quot; o
+&quot;caos&quot; necesario para alinear las constantes dentro del conjunto. Dicho de
+otra forma, el conjunto cambia y por lo tanto cambia el resultado. Aunque
+solo es comprobable si disponemos de las dos redes para compararlas, puesto
+que el resultado depende del observador.
+
+
+
+&gt;<i>
+</I>&gt;<i>        2.- Bombardeemos la red con nuevos perceptrones (también
+</I>&gt;<i> distribuidos de
+</I>&gt;<i> forma aleatoria) con la pseudo-constante de aprendizaje puesta a 0 (Esto es
+</I>&gt;<i> que se comporten de forma completamente aleatoria ). ¿Afectaría este cambio
+</I>&gt;<i> al conocimiento adquirido por la red?. Yo creo que perdería muy poca tasa
+</I>&gt;<i> de
+</I>&gt;<i> acierto y la recuperaría rápidamente (Habría que simularlo para
+</I>&gt;<i> asegurarse).
+</I>&gt;<i>
+</I>
+
+En este caso añadiría &quot;ruido&quot;, que por sí solo y de forma inmediata solo
+&quot;ensuciaría&quot; el resultado denigrando el conjunto, pero, a más tiempo,
+ganaría el conjunto resultante por contener más tasa de &quot;ruido&quot;, con lo cual
+la red en sí sería el resultado de un mayor número de opciones y por ende
+con alguna nueva experiencia que pudiera dar aprendizaje a la red primaria.
+
+
+
+&gt;<i>
+</I>&gt;<i> Este proceso se podría repetir cíclicamente y hasta se podría, mediante
+</I>&gt;<i> aplicaciones sucesivas, mantener constante el porcentaje de perceptrones
+</I>&gt;<i> con
+</I>&gt;<i> capacidad de aprender cosas.
+</I>&gt;<i>
+</I>&gt;<i> Y si la red no ha aprendido f(x) y aplicas esta optimización ?
+</I>&gt;<i> Pueden pasar dos cosas:
+</I>&gt;<i>        1.- Que la red inicialmente no poseayese la capacidad de aprender
+</I>&gt;<i> f(x) por lo
+</I>&gt;<i> que renovar la red completamente es aconsejable.
+</I>
+
+&gt;<i>        2.- Que no le estes dando suficientemente tiempo para aprender (con
+</I>&gt;<i> lo que la
+</I>&gt;<i> estas cagando).
+</I>
+
+
+
+Renovar la red, o considerar dejarla evolucionar, dando más tiempo y
+definiendo un espacio mayor, con más cantidad de vacío y más &quot;ruido&quot;.
+
+
+
+
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Luego hay otras cosas como bombardeo con patrones predefinidos (con
+</I>&gt;<i> aprendizaje incluido o sin él). Es un tema ámplio y fascinante.
+</I>&gt;<i>
+</I>
+&gt;<i> Ale, ya os he mareado un poco.
+</I>&gt;<i>
+</I>
+
+¿Dónde puedo leer más sobre la I.A.?
+
+
+
+
+&gt;<i>
+</I>&gt;<i> Salut
+</I>
+
+i força en el ....
+
+
+
+&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Tomeu Borrás Riera
+</I>&gt;<i> Conetxia Soluciones Informáticas
+</I>&gt;<i> 902 88 11 66
+</I>&gt;<i> 971 29 06 29
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>
+
+
+-- 
+Raül Martínez i Peris
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20090217/8d20c352/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20090217/8d20c352/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001132.html">[BulmaGés][BulmaGÃ©s]Selección Natural en Redes Neuronales de Topologia	Aleatoria.
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001117.html">[BulmaGés] r3065 - in trunk/bulmages:	bulmafact/plugins/pluginbf_almacen	bulmafact/plugins/pluginbf_almacen/po	bulmafact/plugins/pluginbf_banco	bulmafact/plugins/pluginbf_banco/po installbulmages/i18n
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1127">[ fecha ]</a>
+              <a href="thread.html#1127">[ hilo ]</a>
+              <a href="subject.html#1127">[ asunto ]</a>
+              <a href="author.html#1127">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

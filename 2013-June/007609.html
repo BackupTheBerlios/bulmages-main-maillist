@@ -1,0 +1,445 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130603192727.A3D69165%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007608.html">
+   <LINK REL="Next"  HREF="007611.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130603192727.A3D69165%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Lun Jun  3 21:27:27 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007608.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007611.html">[BulmaGés]Error en la versión Windows que subí ayer
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7609">[ fecha ]</a>
+              <a href="thread.html#7609">[ hilo ]</a>
+              <a href="subject.html#7609">[ asunto ]</a>
+              <a href="author.html#7609">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from 7c388a6 to 2c7e3f7
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/7c388a639702d80c20724f6428c85df64a370c23/diffs/2c7e3f77f189e38d8a5522d02e43494839252e75">https://gitorious.org/bulmages/bulmages/commit/7c388a639702d80c20724f6428c85df64a370c23/diffs/2c7e3f77f189e38d8a5522d02e43494839252e75</A>
+
+Diff: 
+
+commit 2c7e3f77f189e38d8a5522d02e43494839252e75
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon Jun 3 21:27:14 2013 +0200
+
+    Arreglos diversos en la contabilidad. Sobretodo en signals no disparadas correctamente
+
+diff --git a/bulmages/bulmafact/plugins/CMakeLists.txt b/bulmages/bulmafact/plugins/CMakeLists.txt
+index 3741d93..beab007 100644
+--- a/bulmages/bulmafact/plugins/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/CMakeLists.txt
+@@ -103,7 +103,7 @@ add_subdirectory(pluginbf_diario)
+ add_subdirectory(pluginbf_mayor)
+ add_subdirectory(pluginbf_balance)
+ add_subdirectory(pluginbf_ccaa2ods)
+-#add_subdirectory(pluginbf_cuentaresumen)
++add_subdirectory(pluginbf_cuentaresumen)
+ 
+ 
+ # ======== PLUGINS DE GESTION ALUMNOS
+diff --git a/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientobase.ui b/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientobase.ui
+index 0a78ac9..bfd4436 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientobase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientobase.ui
+@@ -1225,22 +1225,5 @@
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_detalles&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;frame&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;241&lt;/x&gt;
+-     &lt;y&gt;43&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;56&lt;/x&gt;
+-     &lt;y&gt;95&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
++ &lt;connections/&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoview.cpp b/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoview.cpp
+index e874f53..16036c1 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoview.cpp
+@@ -473,6 +473,12 @@ void BcAsientoView::on_mui_list_editFinish ( int, int )
+ }
+ 
+ 
++void BcAsientoView::on_mui_detalles_toggled( bool check) {
++  BL_FUNC_DEBUG
++  frame-&gt;setVisible(check);
++}
++
++
+ /// =========================================================================================
+ ///                       LISTASIENTOS
+ /// =========================================================================================
+diff --git a/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoview.h b/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoview.h
+index 3837cce..bd7f386 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoview.h
++++ b/bulmages/bulmafact/plugins/pluginbf_asiento/bcasientoview.h
+@@ -117,8 +117,7 @@ public slots:
+     virtual void on_mui_fecha_enterPressed();
+     virtual void on_mui_configurar_toggled ( bool checked );
+     virtual void on_mui_list_toogledConfig ( bool check );
+-    /// Al pulsar return sobre el n&uacute;mero de asiento se procede como si fuese una
+-    /// carga de dicho asiento.
++    virtual void on_mui_detalles_toggled( bool check);
+     void mui_ordenAsiento_pulsadoIntro();
+     virtual void boton_cargarasiento();
+ };
+diff --git a/bulmages/bulmafact/plugins/pluginbf_ccaa2ods/README.es b/bulmages/bulmafact/plugins/pluginbf_ccaa2ods/README.es
+index 374ac6c..648975d 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_ccaa2ods/README.es
++++ b/bulmages/bulmafact/plugins/pluginbf_ccaa2ods/README.es
+@@ -6,7 +6,7 @@
+ 
+ Nombre: Cuentas anuales 
+ 
+-Biblioteca: 
++Biblioteca: libpluginbf_ccaaods
+ 
+ Descripción: &lt;H1&gt;Cuentas anuales&lt;/H1&gt;
+ &lt;P&gt;Permite obtener un balance de cuentas anuales para los planes contables españoles del 2007: Cuentas anuales, abreviadas y de pymes. Y para los planes contables anteriores al 2008: Cuentas anuales y abreviadas de asociaciones sin animo de lucro. &lt;/P&gt;
+@@ -25,7 +25,7 @@ Incompatibles:
+ Reports: inf_ccaa-pgc1990.pys; inf_ccaa-pgc2007_asl.pys; inf_ccaa-pgc2007_pymes.pys; inf_ccaa-pgc2007_abrev.pys; inf_ccaa-pgc2007_fac.pys; inf_ccaa-pgc2007.pys; fbalance.ui
+ 
+ 
+-Categorias: Contabilidad general
++Categorias: Contabilidad general;Experimentales;
+ 
+ Orden: 180
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/CMakeLists.txt
+index cfe2619..a80c18f 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/CMakeLists.txt
+@@ -25,8 +25,8 @@ include_directories(
+ 	${CMAKE_SOURCE_DIR}/bulmalib/src/
+ 	${CMAKE_BINARY_DIR}/bulmafact/src/
+ 	${CMAKE_SOURCE_DIR}/bulmafact/src/
+-   ${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_asiento/
+-   ${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_asiento/)
++	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginbf_asiento/
++	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginbf_asiento/)
+ 
+ # generate rules for building source files from the resources
+ #QT5_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/README.es b/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/README.es
+index c6f78a6..62c6be4 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/README.es
++++ b/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/README.es
+@@ -26,7 +26,7 @@ Dependencias:
+ 
+ Incompatibles:
+ 
+-Categorias: Utilidades genericas;
++Categorias: Contabilidad general;Experimentales;
+ 
+ Orden: 40
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/correctorwidget.cpp b/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/correctorwidget.cpp
+index 6c742af..ce50745 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/correctorwidget.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_cuentaresumen/correctorwidget.cpp
+@@ -18,10 +18,13 @@
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+  ***************************************************************************/
+ 
+-#include &quot;bfasientoview.h&quot;
+-#include &quot;pluginbf_asiento.h&quot;
++#include &quot;bcasientoview.h&quot;
++//#include &quot;pluginbf_asiento.h&quot;
+ #include &quot;correctorwidget.h&quot;
++#include &quot;pdefs_pluginbf_cuentaresumen.h&quot;
+ 
++/// USamos un extern para la variable global de asiento.
++extern &quot;C&quot; PLUGINBC_CUENTARESUMEN_EXPORT BcAsientoView *g_asiento;
+ 
+ /** Inicializacion de la clase.
+     En el constructor del corrector no se hacen tareas especiales. */
+diff --git a/bulmages/bulmafact/plugins/pluginbf_diario/bcdiariobase.ui b/bulmages/bulmafact/plugins/pluginbf_diario/bcdiariobase.ui
+index 2b15e00..5af3fb5 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_diario/bcdiariobase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_diario/bcdiariobase.ui
+@@ -6,7 +6,7 @@
+    &lt;rect&gt;
+     &lt;x&gt;0&lt;/x&gt;
+     &lt;y&gt;0&lt;/y&gt;
+-    &lt;width&gt;667&lt;/width&gt;
++    &lt;width&gt;808&lt;/width&gt;
+     &lt;height&gt;550&lt;/height&gt;
+    &lt;/rect&gt;
+   &lt;/property&gt;
+@@ -298,7 +298,7 @@
+        &lt;/widget&gt;
+       &lt;/item&gt;
+       &lt;item row=&quot;2&quot; column=&quot;5&quot;&gt;
+-       &lt;widget class=&quot;BlSearchWidget&quot; name=&quot;mui_contrapartida&quot;/&gt;
++       &lt;widget class=&quot;BlSearchWidget&quot; name=&quot;mui_contrapartida&quot; native=&quot;true&quot;/&gt;
+       &lt;/item&gt;
+       &lt;item row=&quot;1&quot; column=&quot;0&quot; colspan=&quot;2&quot;&gt;
+        &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_3_2&quot;&gt;
+@@ -334,7 +334,7 @@
+        &lt;widget class=&quot;QLineEdit&quot; name=&quot;mui_saldoinf&quot;/&gt;
+       &lt;/item&gt;
+       &lt;item row=&quot;0&quot; column=&quot;2&quot;&gt;
+-       &lt;widget class=&quot;BlDateSearch&quot; name=&quot;mui_fechainicial&quot;&gt;
++       &lt;widget class=&quot;BlDateSearch&quot; name=&quot;mui_fechainicial&quot; native=&quot;true&quot;&gt;
+         &lt;property name=&quot;sizePolicy&quot;&gt;
+          &lt;sizepolicy hsizetype=&quot;Preferred&quot; vsizetype=&quot;Preferred&quot;&gt;
+           &lt;horstretch&gt;0&lt;/horstretch&gt;
+@@ -360,7 +360,7 @@
+        &lt;/widget&gt;
+       &lt;/item&gt;
+       &lt;item row=&quot;0&quot; column=&quot;5&quot;&gt;
+-       &lt;widget class=&quot;BlDateSearch&quot; name=&quot;mui_fechafinal&quot;&gt;
++       &lt;widget class=&quot;BlDateSearch&quot; name=&quot;mui_fechafinal&quot; native=&quot;true&quot;&gt;
+         &lt;property name=&quot;minimumSize&quot;&gt;
+          &lt;size&gt;
+           &lt;width&gt;150&lt;/width&gt;
+@@ -598,22 +598,5 @@
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;frame&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;155&lt;/x&gt;
+-     &lt;y&gt;37&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;249&lt;/x&gt;
+-     &lt;y&gt;88&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
++ &lt;connections/&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_diario/bcdiarioview.cpp b/bulmages/bulmafact/plugins/pluginbf_diario/bcdiarioview.cpp
+index 41eecb0..9303136 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_diario/bcdiarioview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_diario/bcdiarioview.cpp
+@@ -356,3 +356,8 @@ void BcDiarioView::openAsiento()
+     asiento -&gt;setFocus();
+ }
+ 
++void BcDiarioView::on_mui_filtrar_toggled(bool check) {
++  BL_FUNC_DEBUG
++  frame-&gt;setVisible(check);
++}
++
+diff --git a/bulmages/bulmafact/plugins/pluginbf_diario/bcdiarioview.h b/bulmages/bulmafact/plugins/pluginbf_diario/bcdiarioview.h
+index 75aaf38..d2dee39 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_diario/bcdiarioview.h
++++ b/bulmages/bulmafact/plugins/pluginbf_diario/bcdiarioview.h
+@@ -67,6 +67,7 @@ public slots:
+     virtual void on_mui_configurar_toggled ( bool checked );
+     virtual void on_mui_list_cellDoubleClicked ( int, int columna );
+     virtual void openAsiento();
++    virtual void on_mui_filtrar_toggled(bool check);
+ };
+ 
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractobase.ui b/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractobase.ui
+index 2d56b68..d17d755 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractobase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractobase.ui
+@@ -6,7 +6,7 @@
+    &lt;rect&gt;
+     &lt;x&gt;0&lt;/x&gt;
+     &lt;y&gt;0&lt;/y&gt;
+-    &lt;width&gt;699&lt;/width&gt;
++    &lt;width&gt;836&lt;/width&gt;
+     &lt;height&gt;618&lt;/height&gt;
+    &lt;/rect&gt;
+   &lt;/property&gt;
+@@ -1728,22 +1728,5 @@
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+   &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+- &lt;connections&gt;
+-  &lt;connection&gt;
+-   &lt;sender&gt;mui_filtrar&lt;/sender&gt;
+-   &lt;signal&gt;toggled(bool)&lt;/signal&gt;
+-   &lt;receiver&gt;frame&lt;/receiver&gt;
+-   &lt;slot&gt;setShown(bool)&lt;/slot&gt;
+-   &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot;&gt;
+-     &lt;x&gt;153&lt;/x&gt;
+-     &lt;y&gt;44&lt;/y&gt;
+-    &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot;&gt;
+-     &lt;x&gt;224&lt;/x&gt;
+-     &lt;y&gt;116&lt;/y&gt;
+-    &lt;/hint&gt;
+-   &lt;/hints&gt;
+-  &lt;/connection&gt;
+- &lt;/connections&gt;
++ &lt;connections/&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractoview.cpp b/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractoview.cpp
+index 7f747f8..d39a9c3 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractoview.cpp
++++ b/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractoview.cpp
+@@ -225,7 +225,6 @@ void BcExtractoView::accept()
+ void BcExtractoView::botonSiguiente()
+ {
+     BL_FUNC_DEBUG
+-    if(mainCompany()-&gt;pWorkspace()-&gt;activeWindow() == this) {
+       if ( m_cursorcta != NULL ) {
+           if ( !m_cursorcta-&gt;isLastRecord() ) {
+               save();
+@@ -233,8 +232,6 @@ void BcExtractoView::botonSiguiente()
+               presentar();
+           } // end if
+       } // end if
+-    } // end if
+-    
+ }
+ 
+ 
+@@ -244,7 +241,6 @@ void BcExtractoView::botonSiguiente()
+ void BcExtractoView::botonAnterior()
+ {
+     BL_FUNC_DEBUG
+-    if(mainCompany()-&gt;pWorkspace()-&gt;activeWindow() == this) {
+       if ( m_cursorcta != NULL ) {
+           if ( !m_cursorcta-&gt;isFirstRecord() ) {
+               save();
+@@ -252,8 +248,6 @@ void BcExtractoView::botonAnterior()
+               presentar();
+           } // end if
+       } // end if
+-    } // end if
+-    
+ }
+ 
+ /// Retrocede al principio de las cuentas.
+@@ -262,14 +256,12 @@ void BcExtractoView::botonAnterior()
+ void BcExtractoView::botonInicio()
+ {
+     BL_FUNC_DEBUG
+-    if(mainCompany()-&gt;pWorkspace()-&gt;activeWindow() == this) {
++
+       if ( m_cursorcta != NULL ) {
+           save();
+           m_cursorcta-&gt;firstRecord();
+           presentar();
+       } // end if
+-    } // end if
+-    
+ }
+ 
+ /// Avanza al final de las cuentas.
+@@ -278,14 +270,11 @@ void BcExtractoView::botonInicio()
+ void BcExtractoView::botonFin()
+ {
+     BL_FUNC_DEBUG
+-    if(mainCompany()-&gt;pWorkspace()-&gt;activeWindow() == this) {
+       if ( m_cursorcta != NULL ) {
+           save();
+           m_cursorcta-&gt;lastRecord();
+           presentar();
+       } // end if
+-    } // end if
+-    
+ }
+ 
+ 
+@@ -1036,4 +1025,9 @@ void BcExtractoView::on_mui_siguiente_released() {
+ void BcExtractoView::on_mui_fin_released() {
+       BL_FUNC_DEBUG
+       botonFin();
++}
++
++void BcExtractoView::on_mui_filtrar_toggled(bool check) {
++  BL_FUNC_DEBUG
++  frame-&gt;setVisible(check);
+ }
+\ No newline at end of file
+diff --git a/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractoview.h b/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractoview.h
+index dc161fe..f53a3e5 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractoview.h
++++ b/bulmages/bulmafact/plugins/pluginbf_mayor/bcextractoview.h
+@@ -75,6 +75,7 @@ public slots:
+     virtual void on_mui_fin_released();
+     virtual void on_mui_siguiente_released();
+     virtual void on_mui_anterior_released();
++    virtual void on_mui_filtrar_toggled(bool check);
+ };
+ 
+ 
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007608.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007611.html">[BulmaGés]Error en la versión Windows que subí ayer
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7609">[ fecha ]</a>
+              <a href="thread.html#7609">[ hilo ]</a>
+              <a href="subject.html#7609">[ asunto ]</a>
+              <a href="author.html#7609">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

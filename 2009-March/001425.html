@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Las llamadas a plugin devuelven SIEMPRE un tipo int
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-March/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FLas_llamadas_a_plugin%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F_devuelven_SIEMPRE_un_tipo_int%3F%3D&In-Reply-To=%3Cc42865c40903250327k93b29e1oe6ebd2eaa8b6e7c3%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001411.html">
+   <LINK REL="Next"  HREF="001412.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Las llamadas a plugin devuelven SIEMPRE un tipo int </H1>
+    <B>Raül Martínez i Peris</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FLas_llamadas_a_plugin%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F_devuelven_SIEMPRE_un_tipo_int%3F%3D&In-Reply-To=%3Cc42865c40903250327k93b29e1oe6ebd2eaa8b6e7c3%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]Las llamadas a plugin devuelven SIEMPRE un tipo int">elferrer en gmail.com
+       </A><BR>
+    <I>Mie Mar 25 11:27:58 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001411.html">[BulmaGés] Las llamadas a plugin devuelven SIEMPRE	un tipo int
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001412.html">[BulmaGés] r3161 - in trunk/bulmages: bulmacont/plugins/pluginadocumental bulmacont/plugins/pluginbalance bulmacont/plugins/pluginbalance-old bulmacont/plugins/pluginbalancetree bulmacont/plugins/pluginbc_example bulmacont/plugins/plugincanualesods bulmacont/plugins/plugincorrector bulmacont/plugins/plugindebugbc bulmacont/plugins/pluginestadisticas bulmacont/plugins/pluginonline bulmacont/plugins/pluginpychart bulmacont/plugins/pluginresumcta bulmafact/plugins/efacturabf bulmafact/plugins/pluginbarcodeopen bulmafact/plugins/pluginbf_corrector bulmafact/plugins/pluginbf_debug bulmafact/plugins/pluginbf_example bulmafact/plugins/pluginbf_profesor/dbmodels bulmafact/plugins/pluginbf_recibo bulmafact/plugins/pluginbf_tallascolores bulmafact/plugins/plugincatalogo bulmafact/plugins/plugincuadrante bulmafact/plugins/plugininformeclientes bulmafact/plugins/plugininformeclientessxc bulmafact/plugins/pluginz2z bulmalib/plugins/plugindocked bulmalib/plugins/pluginimportcsv bulmalib/plu! gins/plugininformesods
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1425">[ fecha ]</a>
+              <a href="thread.html#1425">[ hilo ]</a>
+              <a href="subject.html#1425">[ asunto ]</a>
+              <a href="author.html#1425">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>El 24 de marzo de 2009 13:13, Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt; escribió:
+
+&gt;<i> Hola ricuras:
+</I>&gt;<i>
+</I>&gt;<i> A ver que me explique:
+</I>&gt;<i>
+</I>&gt;<i> g_plugins-&gt;lanza() siempre espera que se devuelva un int (Valor entero)
+</I>&gt;<i>
+</I>&gt;<i> SIEMPRE !!!!
+</I>&gt;<i>
+</I>&gt;<i> No se porque alguien ha cambiado todos los entryPoint para que devuelvan un
+</I>&gt;<i> void y como no le funcionaba bien ha cambiado el plugins.cpp para que se
+</I>&gt;<i> salte la finalizacion de una llamada a plugins si el valor devuelto es
+</I>&gt;<i> distinto de cero con lo que ha fastidiado todo el invento y no funciona
+</I>&gt;<i> nada
+</I>&gt;<i> asi como debe.
+</I>&gt;<i>
+</I>&gt;<i> Lo explico para que se entienda:
+</I>&gt;<i>
+</I>&gt;<i> Nosotros cargamos los plugins que deseamos en una lista ORDENADA de
+</I>&gt;<i> ejecución.
+</I>&gt;<i>
+</I>&gt;<i> Dicha lista dispara los puntos de interrupcion en el ORDEN establecido.
+</I>&gt;<i>
+</I>&gt;<i> Si en algun momento de la cadena una llamada devuelve un valor distinto de
+</I>&gt;<i> cero la cadena se INTERRUMPE dando por finalizada la llamada de plugins
+</I>&gt;<i> (normalmente cuando un plugin ha dado respuesta a la llamada y no quiere
+</I>&gt;<i> que
+</I>&gt;<i> nadie mas responda) Esta caracteristica es DESEABLE ya que para ello usamos
+</I>&gt;<i> la ORDENACION de los plugins.
+</I>&gt;<i>
+</I>&gt;<i> Por tanto todas las llamadas de plugins deben devolver un valor ENTERO y en
+</I>&gt;<i> el
+</I>&gt;<i> caso del entryPoint deben devolver SIEMPRE un 0 para que se ejecuten todos
+</I>&gt;<i> los entryPoint de todos los plugins. Y eso no es lo mismo que hacerlos del
+</I>&gt;<i> tipo void donde el resultado es aleatorio.
+</I>&gt;<i>
+</I>&gt;<i> PD: Os voy a cortar las manos !!!!
+</I>&gt;<i>
+</I>
+... menos mal que yo estaba de vacaciones...
+
+... aunque, hablando de cortar, estoy destripando a la libelula del ejemplo,
+ya os iré enseñando... acabarán llamándome jack :)
+
+
+
+&gt;<i>
+</I>&gt;<i> Venga, que tengais un buen dia, salut, paz para todos y que se acabe la
+</I>&gt;<i> crisis
+</I>&gt;<i> pronto. Hasta luego.
+</I>&gt;<i>
+</I>
+&gt;<i> --
+</I>&gt;<i> Tomeu Borrás Riera
+</I>&gt;<i> Conetxia Soluciones Informáticas
+</I>&gt;<i> 902 88 11 66
+</I>&gt;<i> 971 29 06 29
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>
+
+
+-- 
+Raül Martínez i Peris
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20090325/7bf2f0f9/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20090325/7bf2f0f9/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001411.html">[BulmaGés] Las llamadas a plugin devuelven SIEMPRE	un tipo int
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001412.html">[BulmaGés] r3161 - in trunk/bulmages: bulmacont/plugins/pluginadocumental bulmacont/plugins/pluginbalance bulmacont/plugins/pluginbalance-old bulmacont/plugins/pluginbalancetree bulmacont/plugins/pluginbc_example bulmacont/plugins/plugincanualesods bulmacont/plugins/plugincorrector bulmacont/plugins/plugindebugbc bulmacont/plugins/pluginestadisticas bulmacont/plugins/pluginonline bulmacont/plugins/pluginpychart bulmacont/plugins/pluginresumcta bulmafact/plugins/efacturabf bulmafact/plugins/pluginbarcodeopen bulmafact/plugins/pluginbf_corrector bulmafact/plugins/pluginbf_debug bulmafact/plugins/pluginbf_example bulmafact/plugins/pluginbf_profesor/dbmodels bulmafact/plugins/pluginbf_recibo bulmafact/plugins/pluginbf_tallascolores bulmafact/plugins/plugincatalogo bulmafact/plugins/plugincuadrante bulmafact/plugins/plugininformeclientes bulmafact/plugins/plugininformeclientessxc bulmafact/plugins/pluginz2z bulmalib/plugins/plugindocked bulmalib/plugins/pluginimportcsv bulmalib/plu! gins/plugininformesods
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1425">[ fecha ]</a>
+              <a href="thread.html#1425">[ hilo ]</a>
+              <a href="subject.html#1425">[ asunto ]</a>
+              <a href="author.html#1425">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

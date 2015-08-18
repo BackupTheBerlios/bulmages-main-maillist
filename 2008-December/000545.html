@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Inkscape y sus problemas
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FInkscape_y_sus_proble%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fmas%3F%3D&In-Reply-To=%3Cc42865c40812150833x18cd875ei2b0648af693e776d%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000536.html">
+   <LINK REL="Next"  HREF="000502.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Inkscape y sus problemas </H1>
+    <B>Raül Martínez i Peris</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FInkscape_y_sus_proble%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fmas%3F%3D&In-Reply-To=%3Cc42865c40812150833x18cd875ei2b0648af693e776d%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]Inkscape y sus problemas">elferrer en gmail.com
+       </A><BR>
+    <I>Lun Dic 15 17:33:40 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000536.html">[BulmaGés]Inkscape y sus problemas
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000502.html">[BulmaGés] r2837 - trunk/bulmages/bulmacont/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#545">[ fecha ]</a>
+              <a href="thread.html#545">[ hilo ]</a>
+              <a href="subject.html#545">[ asunto ]</a>
+              <a href="author.html#545">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>2008/12/15 Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+
+&gt;<i> Hola a todos
+</I>&gt;<i>
+</I>&gt;<i> No es necesariamente cierto que un grafico vectorial sea más pesado o lento
+</I>&gt;<i> que un bitmap.
+</I>&gt;<i>
+</I>&gt;<i> Por ejemplo un vectorial que solo dibuja una linea simplemente tiene que
+</I>&gt;<i> almacenar la formula de la linea ( y=ax  ) y yastá. Hasta el renderizado
+</I>&gt;<i> puede
+</I>&gt;<i> ser  más rápido que un bitmap que almacena el color de todos los puntos de
+</I>&gt;<i> la
+</I>&gt;<i> imagen ya que tambien tiene que pintar dichos puntos mientras que la linea
+</I>&gt;<i> apenas pinta unos pocos.
+</I>&gt;<i>
+</I>&gt;<i> Y en cuanto al overhead de calculo en el procesador pués la fórmula
+</I>&gt;<i> matemática
+</I>&gt;<i> contra la descompresión / renderización. Como la descompresión de jpeg.
+</I>&gt;<i>
+</I>&gt;<i> Lo que marca la diferencia entre uno y otro es la cantidad de elementos que
+</I>&gt;<i> el
+</I>&gt;<i> vectorizador tenga y el tamaño del lienzo.
+</I>&gt;<i>
+</I>&gt;<i> Sobre cual es el tamaño adecuado para los iconos que estamos hablando pués
+</I>&gt;<i> creo que entre los 0 y los 150 Kb es un tamaño adecuado. (no 4 Megas que es
+</I>&gt;<i> varios órdenes de magnitud superior).
+</I>&gt;<i>
+</I>
+Vale, me centraré entonces en dejar en un límite de unos 150 kb los iconos.
+
+Pero, continúo con la duda de si se puede utilizar png como tema para
+máquinas lentas.
+
+
+
+
+&gt;<i>
+</I>&gt;<i> Salut
+</I>&gt;<i>
+</I>
+Salut.
+
+
+&gt;<i>
+</I>&gt;<i> El Sunday 14 December 2008 13:51:25 Xavi Drudis Ferran escribió:
+</I>&gt;<i> &gt; On Sun, Dec 14, 2008 at 01:34:21PM +0100, Raül Martínez i Peris wrote:
+</I>&gt;<i> &gt; &gt; Hola Xavi, vamos aclarando puntos.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Karbon destroza la imagen (ójala no fuera así), se pierden ciertas
+</I>&gt;<i> cosas
+</I>&gt;<i> &gt; &gt; como degradados y transparencias. Al ver dicho resultado optamos por
+</I>&gt;<i> &gt; &gt; reconvertir la sombra de los iconos en un juego de degradados
+</I>&gt;<i> circulares
+</I>&gt;<i> &gt; &gt; que no den error al compilar, supongo que hice algo mal en dicho
+</I>&gt;<i> proceso
+</I>&gt;<i> &gt; &gt; y continúa dando el mismo error (¿correcto?).
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Vale. Queda claro. Ya me parecía a mi que no iba a ser tan fácil.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &gt; Cuando digo que no sé a partir de qué tamaño comienzan a ser &quot;pesados&quot;
+</I>&gt;<i> &gt; &gt; para su visualización me refiero a que yo no tengo la información para
+</I>&gt;<i> &gt; &gt; decidir si una imagen de 500kb o de 2000kb son el límite, y ese enfoque
+</I>&gt;<i> &gt; &gt; es importante para rehacer los iconos.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ah!. Yo tampoco lo sé. Siempre he usado bitmaps para los iconos, y claro
+</I>&gt;<i> &gt; con 40 o 50 KB vas sobrado.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &gt; Mejor svg que png, pero, en máquinas viejas la diferencia de tiempo me
+</I>&gt;<i> ha
+</I>&gt;<i> &gt; &gt; parecido entender que es crucial. Por eso propongo con el mismo juego
+</I>&gt;<i> de
+</I>&gt;<i> &gt; &gt; iconos mantener el juego de iconos svg (solucionando los problemas de
+</I>&gt;<i> &gt; &gt; compilación) y al mismo tiempo tener otro juego de iconos iguales en
+</I>&gt;<i> &gt; &gt; formato png. Como se ha rehecho el sistema de iconos para que puedan
+</I>&gt;<i> &gt; &gt; cambiarse de un juego a otro me ha quedado la duda si el cambio de
+</I>&gt;<i> &gt; &gt; formato es un problema, si no lo es podríamos meter los dos juegos (svg
+</I>&gt;<i> y
+</I>&gt;<i> &gt; &gt; png) para que en máquina viejas/lentas se agilice el dibujado de
+</I>&gt;<i> &gt; &gt; pantallas.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Este último punto creo que no es un problema a corto/medio plazo puesto
+</I>&gt;<i> &gt; &gt; que bulmagés solo utiliza iconos 48x48, ¿correcto?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; No sé. Pero lo que no entiendo es cual es la ventaja del .svg si luego
+</I>&gt;<i> &gt; siempre se va a mostrar a 48x48. Que diferència puede ver un usuario de
+</I>&gt;<i> &gt; otro si la medida en píxels es fija ? . Yo pensaba que la ventaja de los
+</I>&gt;<i> &gt; gráficos vectoriales es que escalan muy bien, y los bitmaps se ven fatal
+</I>&gt;<i> si
+</I>&gt;<i> &gt; los escalas, pero si no vamos a escalarlos, que otras ventajas tienen los
+</I>&gt;<i> &gt; svg ? No digo para dibujar, crearlos, editarlos, digo para distribuir los
+</I>&gt;<i> &gt; iconos.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Yo pensaba que si distribuían svgs era porque algún usuario tendría
+</I>&gt;<i> &gt; botones de 48x48 y otro de 64x64 y otro de 32x32 o lo que sea, segun
+</I>&gt;<i> &gt; su resolución, medida física de pantalla o lo que sea, de manera que
+</I>&gt;<i> &gt; siempre los tengan de un 5% del ancho de pantalla, o de 0,5 cm o lo
+</I>&gt;<i> &gt; que sea. Pero si los van a tener siempre a 48px, que ganan porqué sean
+</I>&gt;<i> &gt; svg ? Podríamos usar los svg como fuentes, y generar pngs de 48x48
+</I>&gt;<i> &gt; automáticamente con cualquier proceso que nos guste la calidad de
+</I>&gt;<i> &gt; renderizado que de y distribuir sólo pngs.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Perdón por mi ignorancia gráfica.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &gt; Si quieres ver la diferencia de iconos pasados por Karbon, ábrete los
+</I>&gt;<i> dos
+</I>&gt;<i> &gt; &gt; directorios (el de iconos originales hechos con inkscape y el de los
+</I>&gt;<i> &gt; &gt; convertidos) y advertiras la diferencia en las sombras (supongo que
+</I>&gt;<i> este
+</I>&gt;<i> &gt; &gt; punto ahora no se notará) y con la transparencia de algunos objetos
+</I>&gt;<i> como
+</I>&gt;<i> &gt; &gt; los iconos que tienen &quot;hojas de texto&quot; en los que quedan los bordes
+</I>&gt;<i> como
+</I>&gt;<i> &gt; &gt; trazos negros (a lo marilin manson).
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Ya no tengo los originales, podría bajarmelos del svn, pero no hace
+</I>&gt;<i> falta,
+</I>&gt;<i> &gt; te creo más a tí que a mis ojos. Soy un negado para cosas visuales,
+</I>&gt;<i> &gt; estéticas, etc.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Tomeu Borrás Riera
+</I>&gt;<i> Conetxia Soluciones Informáticas
+</I>&gt;<i> 902 88 11 66
+</I>&gt;<i> 971 29 06 29
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>
+
+
+-- 
+Raül Martínez i Peris
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20081215/d3defb69/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20081215/d3defb69/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000536.html">[BulmaGés]Inkscape y sus problemas
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000502.html">[BulmaGés] r2837 - trunk/bulmages/bulmacont/src
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#545">[ fecha ]</a>
+              <a href="thread.html#545">[ hilo ]</a>
+              <a href="subject.html#545">[ asunto ]</a>
+              <a href="author.html#545">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

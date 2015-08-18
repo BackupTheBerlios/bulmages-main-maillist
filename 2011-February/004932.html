@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] r4387 - in trunk/bulmages/bulmatpv_nds:	. base64 data source
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-February/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r4387%20-%20in%20trunk/bulmages/bulmatpv_nds%3A%0A%09.%20base64%20data%20source&In-Reply-To=%3C20110209205408.DC145481390%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="004931.html">
+   <LINK REL="Next"  HREF="004933.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] r4387 - in trunk/bulmages/bulmatpv_nds:	. base64 data source </H1>
+    <B>svn en mail.berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r4387%20-%20in%20trunk/bulmages/bulmatpv_nds%3A%0A%09.%20base64%20data%20source&In-Reply-To=%3C20110209205408.DC145481390%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] r4387 - in trunk/bulmages/bulmatpv_nds:	. base64 data source">svn en mail.berlios.de
+       </A><BR>
+    <I>Mie Feb  9 21:54:08 CET 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="004931.html">[BulmaGés] r4386 -	trunk/bulmages/bulmafact/plugins/pluginbf_alumno
+</A></li>
+        <LI>Próximo mensaje: <A HREF="004933.html">[BulmaGés] r4388 - in	trunk/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont: .	dbmodels
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4932">[ fecha ]</a>
+              <a href="thread.html#4932">[ hilo ]</a>
+              <a href="subject.html#4932">[ asunto ]</a>
+              <a href="author.html#4932">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: fcojavmc
+Date: 2011-02-09 21:54:08 +0100 (Wed, 09 Feb 2011)
+New Revision: 4387
+
+Added:
+   trunk/bulmages/bulmatpv_nds/base64/
+   trunk/bulmages/bulmatpv_nds/base64/base64.cpp
+   trunk/bulmages/bulmatpv_nds/base64/base64.h
+   trunk/bulmages/bulmatpv_nds/source/bndsmodifier.cpp
+   trunk/bulmages/bulmatpv_nds/source/bndsmodifier.h
+   trunk/bulmages/bulmatpv_nds/source/bndsreadfilecontent.cpp
+   trunk/bulmages/bulmatpv_nds/source/bndsreadfilecontent.h
+Modified:
+   trunk/bulmages/bulmatpv_nds/Makefile.demo
+   trunk/bulmages/bulmatpv_nds/Makefile.final
+   trunk/bulmages/bulmatpv_nds/README.es
+   trunk/bulmages/bulmatpv_nds/data/splash.png
+   trunk/bulmages/bulmatpv_nds/source/bndsarticlesview.cpp
+   trunk/bulmages/bulmatpv_nds/source/bndsconfig.cpp
+   trunk/bulmages/bulmatpv_nds/source/bndsconfig.h
+   trunk/bulmages/bulmatpv_nds/source/bndsconfigview.cpp
+   trunk/bulmages/bulmatpv_nds/source/bndsconfigview.h
+   trunk/bulmages/bulmatpv_nds/source/bndsdb.cpp
+   trunk/bulmages/bulmatpv_nds/source/bndsdb.h
+   trunk/bulmages/bulmatpv_nds/source/bndsfunctions.cpp
+   trunk/bulmages/bulmatpv_nds/source/bndsfunctions.h
+   trunk/bulmages/bulmatpv_nds/source/bndslistui.cpp
+   trunk/bulmages/bulmatpv_nds/source/bndslistui.h
+   trunk/bulmages/bulmatpv_nds/source/bndssocket.cpp
+   trunk/bulmages/bulmatpv_nds/source/bndssocket.h
+   trunk/bulmages/bulmatpv_nds/source/bndsticket.cpp
+   trunk/bulmages/bulmatpv_nds/source/bndsticket.h
+   trunk/bulmages/bulmatpv_nds/source/bndsticketline.cpp
+   trunk/bulmages/bulmatpv_nds/source/bndsticketline.h
+   trunk/bulmages/bulmatpv_nds/source/bndsticketview.cpp
+   trunk/bulmages/bulmatpv_nds/source/bndsticketview.h
+   trunk/bulmages/bulmatpv_nds/source/bndsvideo.cpp
+   trunk/bulmages/bulmatpv_nds/source/bndsvideo.h
+   trunk/bulmages/bulmatpv_nds/source/main.cpp
+Log:
+BulmaTPV NDS:
+
+Nueva version 2.1 del cliente para Nintendo DS.
+
+- Mejoras en configuracion de red.
+- Uso de la pantalla tactil para modificar articulos.
+- Envio de modificadores en formato grafico al TPV central.
+- Uso de multiples terminales al mismo tiempo.
+
+
+
+*********************************
+*          Todo-Redes           *
+*        C/.Begonia, 12         *
+*   07010 Palma de Mallorca.    *
+*      Tel: +34-971499071       *
+*   <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A>   *
+*  comercial(en)todo-redes.com  *
+*********************************
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="004931.html">[BulmaGés] r4386 -	trunk/bulmages/bulmafact/plugins/pluginbf_alumno
+</A></li>
+	<LI>Próximo mensaje: <A HREF="004933.html">[BulmaGés] r4388 - in	trunk/bulmages/bulmafact/plugins/pluginbf_sincrobulmacont: .	dbmodels
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#4932">[ fecha ]</a>
+              <a href="thread.html#4932">[ hilo ]</a>
+              <a href="subject.html#4932">[ asunto ]</a>
+              <a href="author.html#4932">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

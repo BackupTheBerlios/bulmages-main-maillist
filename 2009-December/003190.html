@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Error en executar bulmafact
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FError_en_executar_bul%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fmafact%3F%3D&In-Reply-To=%3C200912031428.11237.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003189.html">
+   <LINK REL="Next"  HREF="003191.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Error en executar bulmafact </H1>
+    <B>Tomeu</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FError_en_executar_bul%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fmafact%3F%3D&In-Reply-To=%3C200912031428.11237.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]Error en executar bulmafact">tborras en conetxia.com
+       </A><BR>
+    <I>Jue Dic  3 14:28:11 CET 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003189.html">[BulmaGés] Error en executar bulmafact
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003191.html">[BulmaGés]Error en executar bulmafact
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3190">[ fecha ]</a>
+              <a href="thread.html#3190">[ hilo ]</a>
+              <a href="subject.html#3190">[ asunto ]</a>
+              <a href="author.html#3190">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola
+
+Aquest error es bastant comú. I es degut a que la llibreria per defecte 
+s'instal·la a /usr/local/lib i ubuntu no cerca llibreries en aquesta 
+localització.
+
+La sol·lució es editar l'arxiu /etc/ld.so.conf.d/i486-linux-gnu
+
+afegir al final al linia:
+
+/usr/local/lib
+
+Després s'ha d'executar com a superusuari la comanda ldconfig (o reiniciar) 
+perque es trobin les llibreries.
+
+Salut
+
+&gt;<i> Continuo avançant, però em torno a quedar a mitges. He compilat sense
+</I>&gt;<i> problemes bulmages a un Ubuntu 9.10, he conseguit córrer el
+</I>&gt;<i> bulmasetup, he creat un usuari i he configurat bulmafact amb els
+</I>&gt;<i> plugis d'associacionns. Surto de bulmasetup després que tot sembli
+</I>&gt;<i> instal·lar-s'hi correctament, però en cridar &quot;bulmafact&quot; em surt el
+</I>&gt;<i> següent error:
+</I>&gt;<i> 
+</I>&gt;<i> bulmafact: error while loading shared libraries: libbulmafact.so.0.12:
+</I>&gt;<i> cannot open shared object file: No such file or directory
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Gràcies,
+</I>&gt;<i> Walter
+</I>&gt;<i> &quot;
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003189.html">[BulmaGés] Error en executar bulmafact
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003191.html">[BulmaGés]Error en executar bulmafact
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3190">[ fecha ]</a>
+              <a href="thread.html#3190">[ hilo ]</a>
+              <a href="subject.html#3190">[ asunto ]</a>
+              <a href="author.html#3190">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

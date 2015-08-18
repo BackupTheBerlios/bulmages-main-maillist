@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]&quot;Error en el bus&quot; al ejecutar el programa
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F%3D22Error_en_el_bus%3D22%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F_al_ejecutar_el_programa%3F%3D&In-Reply-To=%3C8c64fb150812150322w50864ea9tc983cc5cbf75aff8%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000537.html">
+   <LINK REL="Next"  HREF="000539.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]&quot;Error en el bus&quot; al ejecutar el programa </H1>
+    <B>Albert Mas</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F%3D22Error_en_el_bus%3D22%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3F_al_ejecutar_el_programa%3F%3D&In-Reply-To=%3C8c64fb150812150322w50864ea9tc983cc5cbf75aff8%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]&quot;Error en el bus&quot; al ejecutar el programa">albertmas en termens.cat
+       </A><BR>
+    <I>Lun Dic 15 12:22:49 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000537.html">[BulmaGés] &quot;Error en el bus&quot; al ejecutar el	programa
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000539.html">[BulmaGés]&quot;Error en el bus&quot; al ejecutar el programa (Recomenat per a Xavi Drudis)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#538">[ fecha ]</a>
+              <a href="thread.html#538">[ hilo ]</a>
+              <a href="subject.html#538">[ asunto ]</a>
+              <a href="author.html#538">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Marcos, precisamente yo me encontré con este mismo problema en la
+TERMENS LAN PARTY de este fin de semana.
+
+Suerte que estava allí Tomeu y se paso toda una noche para saber que
+el problema viene del svn 3821, una modificación que hizo Xavi i que
+parece que funciona en todas las distros menos un openSUSE. Tu tambien
+usas openSUSE?
+
+Yo me quedaria en la version 3820 de bulmages y no actualizaria hasta
+que Tomeu o Xavi nos digan algo.
+
+
+2008/12/15 Marcos Mezo &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">m.mezo en upm.es</A>&gt;:
+&gt;<i> Buenas a todos,
+</I>&gt;<i>
+</I>&gt;<i> Tras haber podido compilar el programa bien con vuestra ayuda (quitando los
+</I>&gt;<i> restos viejos de una compilación con qmake) ahora tengo dificultades para
+</I>&gt;<i> ejecutar los programas.
+</I>&gt;<i>
+</I>&gt;<i> Antes de nada borré el directorio /etc/bulmages antes de volver a hacer un
+</I>&gt;<i> make install. También he borrado todas las bases de datos &quot;viejas&quot;. Todo ello
+</I>&gt;<i> para tenerlo todo &quot;limpito&quot; en esta ocasión.
+</I>&gt;<i>
+</I>&gt;<i> He ejecutado el bulmasetup.py y he creado una base de datos y una
+</I>&gt;<i> configuración nueva para bulmacont. En el archivo bulmages.conf de /etc he
+</I>&gt;<i> cambiado la variable del servidor para ser &quot;localhost&quot; en vez de &quot;--&quot;.
+</I>&gt;<i>
+</I>&gt;<i> He tenido que sortear algunos escollos pequeños, como meter manualmente en el
+</I>&gt;<i> LD_LIBRARY_PATH el directorio /usr/local/lib, al ser el directorio de
+</I>&gt;<i> instalación por defecto de las librerías y porque yo no lo tenía en el path.
+</I>&gt;<i>
+</I>&gt;<i> Luego me daba un error, supongo que más bien aviso porque seguía, de que no
+</I>&gt;<i> encontraba unos archivos .qm, que ya he descubierto que son los idiomas y es
+</I>&gt;<i> porque el make install no copia la carpeta traducciones
+</I>&gt;<i> a /usr/local/share/bulmages/traducciones/, pero sin embargo en el archivo
+</I>&gt;<i> bulmages.conf viene configurado allí. Copiando el directorio a mano se
+</I>&gt;<i> soluciona.
+</I>&gt;<i>
+</I>&gt;<i> Pero este ya no he sabido por dónde atacarlo...
+</I>&gt;<i>
+</I>&gt;<i> Cualquier programa que ejecuto siempre acaba en &quot;Error en el bus&quot;. He hecho un
+</I>&gt;<i> rgrep en todos los fuentes de bulmages con la cadena &quot;Error en el bus&quot; y no
+</I>&gt;<i> ha encontrado nada.
+</I>&gt;<i>
+</I>&gt;<i> El problema ocurre tanto si ejecuto los programas como usuario como si lo hago
+</I>&gt;<i> como root. En este último caso se me abre una ventana diciendo que la
+</I>&gt;<i> identificación es incorrecta, pero después de poner el usuario correcto y
+</I>&gt;<i> cerrarla sale exactamente lo mismo.
+</I>&gt;<i>
+</I>&gt;<i> Por ejemplo:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">mmezo en pcmarcos</A>:~$ bulmacont
+</I>&gt;<i> --&gt; Leyendo el archivo '/etc/bulmages/bulmages.conf'&lt;--
+</I>&gt;<i> Leyendo configuracion/etc/bulmages/bulmages.conf
+</I>&gt;<i>
+</I>&gt;<i> FIN Leyendo configuracion
+</I>&gt;<i> --&gt; El archivo '/etc/bulmages/bulmacont.conf' existe. Se va a leer.&lt;--
+</I>&gt;<i> Leyendo configuracion/etc/bulmages/bulmacont.conf
+</I>&gt;<i>
+</I>&gt;<i> FIN Leyendo configuracion
+</I>&gt;<i> --&gt; El archivo '/home/mmezo/.bulmages/bulmages.conf' no existe. &lt;--
+</I>&gt;<i> --&gt; El archivo '/home/mmezo/.bulmages/bulmacont.conf' no existe. &lt;--
+</I>&gt;<i> Error en el bus
+</I>&gt;<i>
+</I>&gt;<i> He buscado en la lista y tampo he encontrado ningún mensaje con referencia a
+</I>&gt;<i> algo parecido.
+</I>&gt;<i>
+</I>&gt;<i> Gracias otra vez por vuestra ayuda y disculpad los emails tan largos, pero
+</I>&gt;<i> trato de dar toda la información posible para confinar lo más posible el
+</I>&gt;<i> problema.
+</I>&gt;<i>
+</I>&gt;<i> Marcos Mezo
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>
+
+
+-- 
+__________________
+Albert Mas
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">albertmas en termens.cat</A>
+blog: <A HREF="http://www.turkil.net">http://www.turkil.net</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000537.html">[BulmaGés] &quot;Error en el bus&quot; al ejecutar el	programa
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000539.html">[BulmaGés]&quot;Error en el bus&quot; al ejecutar el programa (Recomenat per a Xavi Drudis)
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#538">[ fecha ]</a>
+              <a href="thread.html#538">[ hilo ]</a>
+              <a href="subject.html#538">[ asunto ]</a>
+              <a href="author.html#538">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

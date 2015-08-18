@@ -1,0 +1,1602 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 5	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%205%0A%09commits%20to%20master...&In-Reply-To=%3C20120411184423.8AC5675901%40steelheart.shortcut.kunder.linpro.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007026.html">
+   <LINK REL="Next"  HREF="007028.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 5	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%205%0A%09commits%20to%20master...&In-Reply-To=%3C20120411184423.8AC5675901%40steelheart.shortcut.kunder.linpro.no%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 5	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Mie Abr 11 20:44:23 CEST 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007026.html">[BulmaGés] 5 claves a la hora de elegir un nicho	de mercado
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007028.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7027">[ fecha ]</a>
+              <a href="thread.html#7027">[ hilo ]</a>
+              <a href="subject.html#7027">[ asunto ]</a>
+              <a href="author.html#7027">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 5 commits to master
+master changed from c5a3f3b to 289f99b
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/c5a3f3b5dd905649a52cc7e3fbdf060cbaf554f4/diffs/289f99b88409e961582722ee0c1f689efd9eaf89">https://gitorious.org/bulmages/bulmages/commit/c5a3f3b5dd905649a52cc7e3fbdf060cbaf554f4/diffs/289f99b88409e961582722ee0c1f689efd9eaf89</A>
+
+Diff: 
+
+commit 289f99b88409e961582722ee0c1f689efd9eaf89
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon Apr 9 12:35:47 2012 +0200
+
+    Arreglo un problema en el pluginbt_devolucion2, que fallaba en el sql al haber una variable mal definida
+
+diff --git a/bulmages/bulmatpv/plugins/pluginbt_devolucion2/dbmodels/pluginbt_devolucion2.sql b/bulmages/bulmatpv/plugins/pluginbt_devolucion2/dbmodels/pluginbt_devolucion2.sql
+index 4e69094..93e74a3 100644
+--- a/bulmages/bulmatpv/plugins/pluginbt_devolucion2/dbmodels/pluginbt_devolucion2.sql
++++ b/bulmages/bulmatpv/plugins/pluginbt_devolucion2/dbmodels/pluginbt_devolucion2.sql
+@@ -135,10 +135,10 @@ BEGIN
+ 	END IF;
+ 
+ 	IF NEW.refavale IS NULL OR NEW.refvale = '' THEN
+-		SELECT INTO rs crearef() AS m;
++		SELECT INTO rs2 crearef() AS m;
+ 
+ 		IF FOUND THEN
+-			NEW.refvale := rs.m;
++			NEW.refvale := rs2.m;
+ 		END IF;
+ 	END IF;
+ 
+@@ -162,9 +162,9 @@ BEGIN
+ 	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBt_Devolucion2'';
+ 
+ 	IF FOUND THEN
+-		UPDATE CONFIGURACION SET valor=''0.11.1-0001'' WHERE nombre=''PluginBt_Devolucion2'';
++		UPDATE CONFIGURACION SET valor=''0.11.1-0002'' WHERE nombre=''PluginBt_Devolucion2'';
+ 	ELSE
+-		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBt_Devolucion2'', ''0.11.1-0001'');
++		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBt_Devolucion2'', ''0.11.1-0002'');
+ 	END IF;
+ 
+ 	RETURN 0;
+
+commit 0e7cef98ea57e9a7dd38b43f00ccba299a8a7524
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon Apr 9 12:21:21 2012 +0200
+
+    Agrego el icono de comerciales a las distintas ventanas
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_comercial/incidenciacomercialbase.ui b/bulmages/bulmafact/plugins/pluginbf_comercial/incidenciacomercialbase.ui
+index 2c624a8..191ea90 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_comercial/incidenciacomercialbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_comercial/incidenciacomercialbase.ui
+@@ -1,8 +1,9 @@
+-&lt;ui version=&quot;4.0&quot; &gt;
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
++&lt;ui version=&quot;4.0&quot;&gt;
+  &lt;author&gt;Tomeu Borras&lt;/author&gt;
+  &lt;class&gt;IncidenciaComercialBase&lt;/class&gt;
+- &lt;widget class=&quot;QWidget&quot; name=&quot;IncidenciaComercialBase&quot; &gt;
+-  &lt;property name=&quot;geometry&quot; &gt;
++ &lt;widget class=&quot;QWidget&quot; name=&quot;IncidenciaComercialBase&quot;&gt;
++  &lt;property name=&quot;geometry&quot;&gt;
+    &lt;rect&gt;
+     &lt;x&gt;0&lt;/x&gt;
+     &lt;y&gt;0&lt;/y&gt;
+@@ -10,63 +11,63 @@
+     &lt;height&gt;414&lt;/height&gt;
+    &lt;/rect&gt;
+   &lt;/property&gt;
+-  &lt;property name=&quot;windowTitle&quot; &gt;
++  &lt;property name=&quot;windowTitle&quot;&gt;
+    &lt;string&gt;Ruta comercial&lt;/string&gt;
+   &lt;/property&gt;
+-  &lt;property name=&quot;windowIcon&quot; &gt;
+-   &lt;iconset resource=&quot;../../../bulmages.qrc&quot; &gt;
+-    &lt;normaloff&gt;:/BfBulmaFact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png&lt;/normaloff&gt;:/BfBulmaFact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png&lt;/iconset&gt;
++  &lt;property name=&quot;windowIcon&quot;&gt;
++   &lt;iconset resource=&quot;../../../bulmages.qrc&quot;&gt;
++    &lt;normaloff&gt;:/Images/rcomercial.png&lt;/normaloff&gt;:/Images/rcomercial.png&lt;/iconset&gt;
+   &lt;/property&gt;
+-  &lt;layout class=&quot;QVBoxLayout&quot; &gt;
+-   &lt;property name=&quot;spacing&quot; &gt;
++  &lt;layout class=&quot;QVBoxLayout&quot;&gt;
++   &lt;property name=&quot;spacing&quot;&gt;
+     &lt;number&gt;5&lt;/number&gt;
+    &lt;/property&gt;
+-   &lt;property name=&quot;margin&quot; &gt;
++   &lt;property name=&quot;margin&quot;&gt;
+     &lt;number&gt;5&lt;/number&gt;
+    &lt;/property&gt;
+    &lt;item&gt;
+-    &lt;layout class=&quot;QHBoxLayout&quot; &gt;
+-     &lt;property name=&quot;spacing&quot; &gt;
++    &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++     &lt;property name=&quot;spacing&quot;&gt;
+       &lt;number&gt;6&lt;/number&gt;
+      &lt;/property&gt;
+-     &lt;property name=&quot;margin&quot; &gt;
++     &lt;property name=&quot;margin&quot;&gt;
+       &lt;number&gt;0&lt;/number&gt;
+      &lt;/property&gt;
+      &lt;item&gt;
+-      &lt;layout class=&quot;QHBoxLayout&quot; &gt;
+-       &lt;property name=&quot;spacing&quot; &gt;
++      &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++       &lt;property name=&quot;spacing&quot;&gt;
+         &lt;number&gt;6&lt;/number&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;margin&quot; &gt;
++       &lt;property name=&quot;margin&quot;&gt;
+         &lt;number&gt;0&lt;/number&gt;
+        &lt;/property&gt;
+        &lt;item&gt;
+-        &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_2_2_3_8&quot; &gt;
+-         &lt;property name=&quot;sizePolicy&quot; &gt;
+-          &lt;sizepolicy vsizetype=&quot;Preferred&quot; hsizetype=&quot;Minimum&quot; &gt;
++        &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_2_2_3_8&quot;&gt;
++         &lt;property name=&quot;sizePolicy&quot;&gt;
++          &lt;sizepolicy hsizetype=&quot;Minimum&quot; vsizetype=&quot;Preferred&quot;&gt;
+            &lt;horstretch&gt;0&lt;/horstretch&gt;
+            &lt;verstretch&gt;0&lt;/verstretch&gt;
+           &lt;/sizepolicy&gt;
+          &lt;/property&gt;
+-         &lt;property name=&quot;text&quot; &gt;
++         &lt;property name=&quot;text&quot;&gt;
+           &lt;string&gt;Fecha de la incidencia:&lt;/string&gt;
+          &lt;/property&gt;
+-         &lt;property name=&quot;buddy&quot; &gt;
++         &lt;property name=&quot;buddy&quot;&gt;
+           &lt;cstring&gt;mui_fechaincidenciacomercial&lt;/cstring&gt;
+          &lt;/property&gt;
+         &lt;/widget&gt;
+        &lt;/item&gt;
+        &lt;item&gt;
+-        &lt;widget class=&quot;BlDateSearch&quot; name=&quot;mui_fechaincidenciacomercial&quot; /&gt;
++        &lt;widget class=&quot;BlDateSearch&quot; name=&quot;mui_fechaincidenciacomercial&quot;/&gt;
+        &lt;/item&gt;
+       &lt;/layout&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+       &lt;spacer&gt;
+-       &lt;property name=&quot;orientation&quot; &gt;
++       &lt;property name=&quot;orientation&quot;&gt;
+         &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot; &gt;
++       &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
+         &lt;size&gt;
+          &lt;width&gt;40&lt;/width&gt;
+          &lt;height&gt;20&lt;/height&gt;
+@@ -75,54 +76,54 @@
+       &lt;/spacer&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+-      &lt;layout class=&quot;QHBoxLayout&quot; &gt;
+-       &lt;property name=&quot;spacing&quot; &gt;
++      &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++       &lt;property name=&quot;spacing&quot;&gt;
+         &lt;number&gt;6&lt;/number&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;margin&quot; &gt;
++       &lt;property name=&quot;margin&quot;&gt;
+         &lt;number&gt;0&lt;/number&gt;
+        &lt;/property&gt;
+        &lt;item&gt;
+-        &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_2_2_3_6&quot; &gt;
+-         &lt;property name=&quot;sizePolicy&quot; &gt;
+-          &lt;sizepolicy vsizetype=&quot;Preferred&quot; hsizetype=&quot;Minimum&quot; &gt;
++        &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_2_2_3_6&quot;&gt;
++         &lt;property name=&quot;sizePolicy&quot;&gt;
++          &lt;sizepolicy hsizetype=&quot;Minimum&quot; vsizetype=&quot;Preferred&quot;&gt;
+            &lt;horstretch&gt;0&lt;/horstretch&gt;
+            &lt;verstretch&gt;0&lt;/verstretch&gt;
+           &lt;/sizepolicy&gt;
+          &lt;/property&gt;
+-         &lt;property name=&quot;text&quot; &gt;
++         &lt;property name=&quot;text&quot;&gt;
+           &lt;string&gt;Referencia&lt;/string&gt;
+          &lt;/property&gt;
+-         &lt;property name=&quot;buddy&quot; &gt;
++         &lt;property name=&quot;buddy&quot;&gt;
+           &lt;cstring&gt;mui_refincidenciacomercial&lt;/cstring&gt;
+          &lt;/property&gt;
+         &lt;/widget&gt;
+        &lt;/item&gt;
+        &lt;item&gt;
+-        &lt;widget class=&quot;QLineEdit&quot; name=&quot;mui_refincidenciacomercial&quot; /&gt;
++        &lt;widget class=&quot;QLineEdit&quot; name=&quot;mui_refincidenciacomercial&quot;/&gt;
+        &lt;/item&gt;
+        &lt;item&gt;
+-        &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_informereferencia_2&quot; &gt;
+-         &lt;property name=&quot;minimumSize&quot; &gt;
++        &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_informereferencia_2&quot;&gt;
++         &lt;property name=&quot;minimumSize&quot;&gt;
+           &lt;size&gt;
+            &lt;width&gt;32&lt;/width&gt;
+            &lt;height&gt;32&lt;/height&gt;
+           &lt;/size&gt;
+          &lt;/property&gt;
+-         &lt;property name=&quot;toolTip&quot; &gt;
++         &lt;property name=&quot;toolTip&quot;&gt;
+           &lt;string&gt;Informe por Referencia&lt;/string&gt;
+          &lt;/property&gt;
+-         &lt;property name=&quot;whatsThis&quot; &gt;
++         &lt;property name=&quot;whatsThis&quot;&gt;
+           &lt;string&gt;Informe por Referencia&lt;/string&gt;
+          &lt;/property&gt;
+-         &lt;property name=&quot;text&quot; &gt;
++         &lt;property name=&quot;text&quot;&gt;
+           &lt;string/&gt;
+          &lt;/property&gt;
+-         &lt;property name=&quot;icon&quot; &gt;
+-          &lt;iconset resource=&quot;../../../bulmages.qrc&quot; &gt;
++         &lt;property name=&quot;icon&quot;&gt;
++          &lt;iconset resource=&quot;../../../bulmages.qrc&quot;&gt;
+            &lt;normaloff&gt;:/BfBulmaFact48x48/images/png/48x48/i_bulmages_informexreferencia.48x48.png&lt;/normaloff&gt;:/BfBulmaFact48x48/images/png/48x48/i_bulmages_informexreferencia.48x48.png&lt;/iconset&gt;
+          &lt;/property&gt;
+-         &lt;property name=&quot;iconSize&quot; &gt;
++         &lt;property name=&quot;iconSize&quot;&gt;
+           &lt;size&gt;
+            &lt;width&gt;32&lt;/width&gt;
+            &lt;height&gt;32&lt;/height&gt;
+@@ -135,38 +136,38 @@
+     &lt;/layout&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+-    &lt;layout class=&quot;QHBoxLayout&quot; &gt;
+-     &lt;property name=&quot;spacing&quot; &gt;
++    &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++     &lt;property name=&quot;spacing&quot;&gt;
+       &lt;number&gt;6&lt;/number&gt;
+      &lt;/property&gt;
+-     &lt;property name=&quot;margin&quot; &gt;
++     &lt;property name=&quot;margin&quot;&gt;
+       &lt;number&gt;0&lt;/number&gt;
+      &lt;/property&gt;
+      &lt;item&gt;
+-      &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_2_2_3_9&quot; &gt;
+-       &lt;property name=&quot;sizePolicy&quot; &gt;
+-        &lt;sizepolicy vsizetype=&quot;Preferred&quot; hsizetype=&quot;Minimum&quot; &gt;
++      &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_2_2_3_9&quot;&gt;
++       &lt;property name=&quot;sizePolicy&quot;&gt;
++        &lt;sizepolicy hsizetype=&quot;Minimum&quot; vsizetype=&quot;Preferred&quot;&gt;
+          &lt;horstretch&gt;0&lt;/horstretch&gt;
+          &lt;verstretch&gt;0&lt;/verstretch&gt;
+         &lt;/sizepolicy&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;text&quot; &gt;
++       &lt;property name=&quot;text&quot;&gt;
+         &lt;string&gt;Hora:&lt;/string&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;buddy&quot; &gt;
++       &lt;property name=&quot;buddy&quot;&gt;
+         &lt;cstring&gt;mui_refincidenciacomercial&lt;/cstring&gt;
+        &lt;/property&gt;
+       &lt;/widget&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+-      &lt;widget class=&quot;QLineEdit&quot; name=&quot;mui_horaincidenciacomercial&quot; /&gt;
++      &lt;widget class=&quot;QLineEdit&quot; name=&quot;mui_horaincidenciacomercial&quot;/&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+       &lt;spacer&gt;
+-       &lt;property name=&quot;orientation&quot; &gt;
++       &lt;property name=&quot;orientation&quot;&gt;
+         &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot; &gt;
++       &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
+         &lt;size&gt;
+          &lt;width&gt;40&lt;/width&gt;
+          &lt;height&gt;20&lt;/height&gt;
+@@ -177,77 +178,77 @@
+     &lt;/layout&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+-    &lt;layout class=&quot;QHBoxLayout&quot; &gt;
+-     &lt;property name=&quot;spacing&quot; &gt;
++    &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++     &lt;property name=&quot;spacing&quot;&gt;
+       &lt;number&gt;6&lt;/number&gt;
+      &lt;/property&gt;
+-     &lt;property name=&quot;margin&quot; &gt;
++     &lt;property name=&quot;margin&quot;&gt;
+       &lt;number&gt;0&lt;/number&gt;
+      &lt;/property&gt;
+      &lt;item&gt;
+-      &lt;layout class=&quot;QHBoxLayout&quot; &gt;
+-       &lt;property name=&quot;spacing&quot; &gt;
++      &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++       &lt;property name=&quot;spacing&quot;&gt;
+         &lt;number&gt;6&lt;/number&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;margin&quot; &gt;
++       &lt;property name=&quot;margin&quot;&gt;
+         &lt;number&gt;0&lt;/number&gt;
+        &lt;/property&gt;
+        &lt;item&gt;
+-        &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_2_2_3_11&quot; &gt;
+-         &lt;property name=&quot;sizePolicy&quot; &gt;
+-          &lt;sizepolicy vsizetype=&quot;Preferred&quot; hsizetype=&quot;Minimum&quot; &gt;
++        &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_2_2_3_11&quot;&gt;
++         &lt;property name=&quot;sizePolicy&quot;&gt;
++          &lt;sizepolicy hsizetype=&quot;Minimum&quot; vsizetype=&quot;Preferred&quot;&gt;
+            &lt;horstretch&gt;0&lt;/horstretch&gt;
+            &lt;verstretch&gt;0&lt;/verstretch&gt;
+           &lt;/sizepolicy&gt;
+          &lt;/property&gt;
+-         &lt;property name=&quot;text&quot; &gt;
++         &lt;property name=&quot;text&quot;&gt;
+           &lt;string&gt;Cliente:&lt;/string&gt;
+          &lt;/property&gt;
+-         &lt;property name=&quot;buddy&quot; &gt;
++         &lt;property name=&quot;buddy&quot;&gt;
+           &lt;cstring&gt;mui_idcliente&lt;/cstring&gt;
+          &lt;/property&gt;
+         &lt;/widget&gt;
+        &lt;/item&gt;
+        &lt;item&gt;
+-        &lt;widget class=&quot;BlSearchWidget&quot; name=&quot;mui_idcliente&quot; /&gt;
++        &lt;widget class=&quot;BlSearchWidget&quot; name=&quot;mui_idcliente&quot; native=&quot;true&quot;/&gt;
+        &lt;/item&gt;
+       &lt;/layout&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+-      &lt;layout class=&quot;QHBoxLayout&quot; &gt;
+-       &lt;property name=&quot;spacing&quot; &gt;
++      &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++       &lt;property name=&quot;spacing&quot;&gt;
+         &lt;number&gt;6&lt;/number&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;margin&quot; &gt;
++       &lt;property name=&quot;margin&quot;&gt;
+         &lt;number&gt;0&lt;/number&gt;
+        &lt;/property&gt;
+        &lt;item&gt;
+-        &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_2_2_3_7&quot; &gt;
+-         &lt;property name=&quot;sizePolicy&quot; &gt;
+-          &lt;sizepolicy vsizetype=&quot;Preferred&quot; hsizetype=&quot;Minimum&quot; &gt;
++        &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_2_2_3_7&quot;&gt;
++         &lt;property name=&quot;sizePolicy&quot;&gt;
++          &lt;sizepolicy hsizetype=&quot;Minimum&quot; vsizetype=&quot;Preferred&quot;&gt;
+            &lt;horstretch&gt;0&lt;/horstretch&gt;
+            &lt;verstretch&gt;0&lt;/verstretch&gt;
+           &lt;/sizepolicy&gt;
+          &lt;/property&gt;
+-         &lt;property name=&quot;text&quot; &gt;
++         &lt;property name=&quot;text&quot;&gt;
+           &lt;string&gt;Trabajador:&lt;/string&gt;
+          &lt;/property&gt;
+-         &lt;property name=&quot;buddy&quot; &gt;
++         &lt;property name=&quot;buddy&quot;&gt;
+           &lt;cstring&gt;mui_idtrabajador&lt;/cstring&gt;
+          &lt;/property&gt;
+         &lt;/widget&gt;
+        &lt;/item&gt;
+        &lt;item&gt;
+-        &lt;widget class=&quot;BfBuscarTrabajador&quot; name=&quot;mui_idtrabajador&quot; /&gt;
++        &lt;widget class=&quot;BfBuscarTrabajador&quot; name=&quot;mui_idtrabajador&quot;/&gt;
+        &lt;/item&gt;
+       &lt;/layout&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+       &lt;spacer&gt;
+-       &lt;property name=&quot;orientation&quot; &gt;
++       &lt;property name=&quot;orientation&quot;&gt;
+         &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot; &gt;
++       &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
+         &lt;size&gt;
+          &lt;width&gt;40&lt;/width&gt;
+          &lt;height&gt;20&lt;/height&gt;
+@@ -258,48 +259,48 @@
+     &lt;/layout&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+-    &lt;layout class=&quot;QHBoxLayout&quot; &gt;
+-     &lt;property name=&quot;spacing&quot; &gt;
++    &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++     &lt;property name=&quot;spacing&quot;&gt;
+       &lt;number&gt;6&lt;/number&gt;
+      &lt;/property&gt;
+-     &lt;property name=&quot;margin&quot; &gt;
++     &lt;property name=&quot;margin&quot;&gt;
+       &lt;number&gt;0&lt;/number&gt;
+      &lt;/property&gt;
+      &lt;item&gt;
+-      &lt;layout class=&quot;QHBoxLayout&quot; &gt;
+-       &lt;property name=&quot;spacing&quot; &gt;
++      &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++       &lt;property name=&quot;spacing&quot;&gt;
+         &lt;number&gt;6&lt;/number&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;margin&quot; &gt;
++       &lt;property name=&quot;margin&quot;&gt;
+         &lt;number&gt;0&lt;/number&gt;
+        &lt;/property&gt;
+        &lt;item&gt;
+-        &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_2_2_3_12&quot; &gt;
+-         &lt;property name=&quot;sizePolicy&quot; &gt;
+-          &lt;sizepolicy vsizetype=&quot;Preferred&quot; hsizetype=&quot;Minimum&quot; &gt;
++        &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_2_2_3_12&quot;&gt;
++         &lt;property name=&quot;sizePolicy&quot;&gt;
++          &lt;sizepolicy hsizetype=&quot;Minimum&quot; vsizetype=&quot;Preferred&quot;&gt;
+            &lt;horstretch&gt;0&lt;/horstretch&gt;
+            &lt;verstretch&gt;0&lt;/verstretch&gt;
+           &lt;/sizepolicy&gt;
+          &lt;/property&gt;
+-         &lt;property name=&quot;text&quot; &gt;
++         &lt;property name=&quot;text&quot;&gt;
+           &lt;string&gt;Estado de la incidencia:&lt;/string&gt;
+          &lt;/property&gt;
+-         &lt;property name=&quot;buddy&quot; &gt;
++         &lt;property name=&quot;buddy&quot;&gt;
+           &lt;cstring&gt;mui_estadoincidenciacomercial&lt;/cstring&gt;
+          &lt;/property&gt;
+         &lt;/widget&gt;
+        &lt;/item&gt;
+        &lt;item&gt;
+-        &lt;widget class=&quot;BusquedaEstadoIncidencia&quot; name=&quot;mui_estadoincidenciacomercial&quot; /&gt;
++        &lt;widget class=&quot;BusquedaEstadoIncidencia&quot; name=&quot;mui_estadoincidenciacomercial&quot;/&gt;
+        &lt;/item&gt;
+       &lt;/layout&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+       &lt;spacer&gt;
+-       &lt;property name=&quot;orientation&quot; &gt;
++       &lt;property name=&quot;orientation&quot;&gt;
+         &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot; &gt;
++       &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
+         &lt;size&gt;
+          &lt;width&gt;40&lt;/width&gt;
+          &lt;height&gt;20&lt;/height&gt;
+@@ -310,27 +311,27 @@
+     &lt;/layout&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+-    &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_2_2_3_5&quot; &gt;
+-     &lt;property name=&quot;sizePolicy&quot; &gt;
+-      &lt;sizepolicy vsizetype=&quot;Preferred&quot; hsizetype=&quot;Minimum&quot; &gt;
++    &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_2_2_3_5&quot;&gt;
++     &lt;property name=&quot;sizePolicy&quot;&gt;
++      &lt;sizepolicy hsizetype=&quot;Minimum&quot; vsizetype=&quot;Preferred&quot;&gt;
+        &lt;horstretch&gt;0&lt;/horstretch&gt;
+        &lt;verstretch&gt;0&lt;/verstretch&gt;
+       &lt;/sizepolicy&gt;
+      &lt;/property&gt;
+-     &lt;property name=&quot;text&quot; &gt;
++     &lt;property name=&quot;text&quot;&gt;
+       &lt;string&gt;Comentarios:&lt;/string&gt;
+      &lt;/property&gt;
+-     &lt;property name=&quot;buddy&quot; &gt;
++     &lt;property name=&quot;buddy&quot;&gt;
+       &lt;cstring&gt;mui_comentincidenciacomercial&lt;/cstring&gt;
+      &lt;/property&gt;
+     &lt;/widget&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+-    &lt;widget class=&quot;QTextEdit&quot; name=&quot;mui_comentincidenciacomercial&quot; /&gt;
++    &lt;widget class=&quot;QTextEdit&quot; name=&quot;mui_comentincidenciacomercial&quot;/&gt;
+    &lt;/item&gt;
+   &lt;/layout&gt;
+  &lt;/widget&gt;
+- &lt;layoutdefault spacing=&quot;2&quot; margin=&quot;2&quot; /&gt;
++ &lt;layoutdefault spacing=&quot;2&quot; margin=&quot;2&quot;/&gt;
+  &lt;customwidgets&gt;
+   &lt;customwidget&gt;
+    &lt;class&gt;BusquedaEstadoIncidencia&lt;/class&gt;
+@@ -348,13 +349,13 @@
+    &lt;header&gt;bldatesearch.h&lt;/header&gt;
+   &lt;/customwidget&gt;
+   &lt;customwidget&gt;
+-   &lt;class&gt;Busqueda&lt;/class&gt;
+-   &lt;extends&gt;QLineEdit&lt;/extends&gt;
++   &lt;class&gt;BlSearchWidget&lt;/class&gt;
++   &lt;extends&gt;QWidget&lt;/extends&gt;
+    &lt;header&gt;blsearchwidget.h&lt;/header&gt;
+   &lt;/customwidget&gt;
+  &lt;/customwidgets&gt;
+  &lt;resources&gt;
+-  &lt;include location=&quot;../../../bulmages.qrc&quot; /&gt;
++  &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+  &lt;connections/&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_comercial/listzonacomercialbase.ui b/bulmages/bulmafact/plugins/pluginbf_comercial/listzonacomercialbase.ui
+index fa08e16..10d2666 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_comercial/listzonacomercialbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_comercial/listzonacomercialbase.ui
+@@ -1,8 +1,9 @@
+-&lt;ui version=&quot;4.0&quot; &gt;
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
++&lt;ui version=&quot;4.0&quot;&gt;
+  &lt;author&gt;Tomeu Borras Riera&lt;/author&gt;
+  &lt;class&gt;ListZonaComercialBase&lt;/class&gt;
+- &lt;widget class=&quot;QWidget&quot; name=&quot;ListZonaComercialBase&quot; &gt;
+-  &lt;property name=&quot;geometry&quot; &gt;
++ &lt;widget class=&quot;QWidget&quot; name=&quot;ListZonaComercialBase&quot;&gt;
++  &lt;property name=&quot;geometry&quot;&gt;
+    &lt;rect&gt;
+     &lt;x&gt;0&lt;/x&gt;
+     &lt;y&gt;0&lt;/y&gt;
+@@ -10,37 +11,37 @@
+     &lt;height&gt;349&lt;/height&gt;
+    &lt;/rect&gt;
+   &lt;/property&gt;
+-  &lt;property name=&quot;windowTitle&quot; &gt;
++  &lt;property name=&quot;windowTitle&quot;&gt;
+    &lt;string&gt;Zonas comerciales&lt;/string&gt;
+   &lt;/property&gt;
+-  &lt;property name=&quot;windowIcon&quot; &gt;
+-   &lt;iconset resource=&quot;../../../bulmages.qrc&quot; &gt;
+-    &lt;normaloff&gt;:/BfBulmaFact32x32/images/png/32x32/i_bulmages_gestortareas_mas.32x32.png&lt;/normaloff&gt;:/BfBulmaFact32x32/images/png/32x32/i_bulmages_gestortareas_mas.32x32.png&lt;/iconset&gt;
++  &lt;property name=&quot;windowIcon&quot;&gt;
++   &lt;iconset resource=&quot;../../../bulmages.qrc&quot;&gt;
++    &lt;normaloff&gt;:/Images/rcomercial.png&lt;/normaloff&gt;:/Images/rcomercial.png&lt;/iconset&gt;
+   &lt;/property&gt;
+-  &lt;layout class=&quot;QVBoxLayout&quot; &gt;
+-   &lt;property name=&quot;spacing&quot; &gt;
++  &lt;layout class=&quot;QVBoxLayout&quot;&gt;
++   &lt;property name=&quot;spacing&quot;&gt;
+     &lt;number&gt;5&lt;/number&gt;
+    &lt;/property&gt;
+-   &lt;property name=&quot;margin&quot; &gt;
++   &lt;property name=&quot;margin&quot;&gt;
+     &lt;number&gt;5&lt;/number&gt;
+    &lt;/property&gt;
+    &lt;item&gt;
+-    &lt;widget class=&quot;ListZonaComercialSubForm&quot; name=&quot;mui_listado&quot; /&gt;
++    &lt;widget class=&quot;ListZonaComercialSubForm&quot; name=&quot;mui_listado&quot;/&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+-    &lt;layout class=&quot;QHBoxLayout&quot; &gt;
+-     &lt;property name=&quot;spacing&quot; &gt;
++    &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++     &lt;property name=&quot;spacing&quot;&gt;
+       &lt;number&gt;6&lt;/number&gt;
+      &lt;/property&gt;
+-     &lt;property name=&quot;margin&quot; &gt;
++     &lt;property name=&quot;margin&quot;&gt;
+       &lt;number&gt;0&lt;/number&gt;
+      &lt;/property&gt;
+      &lt;item&gt;
+       &lt;spacer&gt;
+-       &lt;property name=&quot;orientation&quot; &gt;
++       &lt;property name=&quot;orientation&quot;&gt;
+         &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot; &gt;
++       &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
+         &lt;size&gt;
+          &lt;width&gt;277&lt;/width&gt;
+          &lt;height&gt;27&lt;/height&gt;
+@@ -49,15 +50,15 @@
+       &lt;/spacer&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+-      &lt;widget class=&quot;QPushButton&quot; name=&quot;mui_aceptar&quot; &gt;
+-       &lt;property name=&quot;text&quot; &gt;
++      &lt;widget class=&quot;QPushButton&quot; name=&quot;mui_aceptar&quot;&gt;
++       &lt;property name=&quot;text&quot;&gt;
+         &lt;string&gt;&amp;Aceptar&lt;/string&gt;
+        &lt;/property&gt;
+       &lt;/widget&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+-      &lt;widget class=&quot;QPushButton&quot; name=&quot;mui_cancelar&quot; &gt;
+-       &lt;property name=&quot;text&quot; &gt;
++      &lt;widget class=&quot;QPushButton&quot; name=&quot;mui_cancelar&quot;&gt;
++       &lt;property name=&quot;text&quot;&gt;
+         &lt;string&gt;&amp;Cancelar&lt;/string&gt;
+        &lt;/property&gt;
+       &lt;/widget&gt;
+@@ -66,7 +67,7 @@
+    &lt;/item&gt;
+   &lt;/layout&gt;
+  &lt;/widget&gt;
+- &lt;layoutdefault spacing=&quot;2&quot; margin=&quot;6&quot; /&gt;
++ &lt;layoutdefault spacing=&quot;2&quot; margin=&quot;6&quot;/&gt;
+  &lt;customwidgets&gt;
+   &lt;customwidget&gt;
+    &lt;class&gt;ListZonaComercialSubForm&lt;/class&gt;
+@@ -75,8 +76,8 @@
+   &lt;/customwidget&gt;
+  &lt;/customwidgets&gt;
+  &lt;resources&gt;
+-  &lt;include location=&quot;../../../bulmages.qrc&quot; /&gt;
+-  &lt;include location=&quot;../../../bulmages.qrc&quot; /&gt;
++  &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
++  &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+  &lt;connections&gt;
+   &lt;connection&gt;
+@@ -85,11 +86,11 @@
+    &lt;receiver&gt;ListZonaComercialBase&lt;/receiver&gt;
+    &lt;slot&gt;close()&lt;/slot&gt;
+    &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot; &gt;
++    &lt;hint type=&quot;sourcelabel&quot;&gt;
+      &lt;x&gt;311&lt;/x&gt;
+      &lt;y&gt;563&lt;/y&gt;
+     &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot; &gt;
++    &lt;hint type=&quot;destinationlabel&quot;&gt;
+      &lt;x&gt;6&lt;/x&gt;
+      &lt;y&gt;564&lt;/y&gt;
+     &lt;/hint&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_comercial/rutacomercialincbase.ui b/bulmages/bulmafact/plugins/pluginbf_comercial/rutacomercialincbase.ui
+index a52e73a..a1cb812 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_comercial/rutacomercialincbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_comercial/rutacomercialincbase.ui
+@@ -1,8 +1,9 @@
+-&lt;ui version=&quot;4.0&quot; &gt;
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
++&lt;ui version=&quot;4.0&quot;&gt;
+  &lt;author&gt;Tomeu Borras&lt;/author&gt;
+  &lt;class&gt;RutaComercialIncBase&lt;/class&gt;
+- &lt;widget class=&quot;QWidget&quot; name=&quot;RutaComercialIncBase&quot; &gt;
+-  &lt;property name=&quot;geometry&quot; &gt;
++ &lt;widget class=&quot;QWidget&quot; name=&quot;RutaComercialIncBase&quot;&gt;
++  &lt;property name=&quot;geometry&quot;&gt;
+    &lt;rect&gt;
+     &lt;x&gt;0&lt;/x&gt;
+     &lt;y&gt;0&lt;/y&gt;
+@@ -10,73 +11,81 @@
+     &lt;height&gt;440&lt;/height&gt;
+    &lt;/rect&gt;
+   &lt;/property&gt;
+-  &lt;property name=&quot;windowTitle&quot; &gt;
++  &lt;property name=&quot;windowTitle&quot;&gt;
+    &lt;string&gt;Ruta comercial&lt;/string&gt;
+   &lt;/property&gt;
+-  &lt;property name=&quot;windowIcon&quot; &gt;
+-   &lt;iconset resource=&quot;../../../bulmages.qrc&quot; &gt;:/BfBulmaFact48x48/images/png/48x48/i_bulmages_cuentas_ingresos.48x48.png&lt;/iconset&gt;
++  &lt;property name=&quot;windowIcon&quot;&gt;
++   &lt;iconset resource=&quot;../../../bulmages.qrc&quot;&gt;
++    &lt;normaloff&gt;:/Images/rcomercial.png&lt;/normaloff&gt;:/Images/rcomercial.png&lt;/iconset&gt;
+   &lt;/property&gt;
+-  &lt;layout class=&quot;QVBoxLayout&quot; &gt;
+-   &lt;property name=&quot;margin&quot; &gt;
++  &lt;layout class=&quot;QVBoxLayout&quot;&gt;
++   &lt;property name=&quot;spacing&quot;&gt;
+     &lt;number&gt;5&lt;/number&gt;
+    &lt;/property&gt;
+-   &lt;property name=&quot;spacing&quot; &gt;
++   &lt;property name=&quot;margin&quot;&gt;
+     &lt;number&gt;5&lt;/number&gt;
+    &lt;/property&gt;
+    &lt;item&gt;
+-    &lt;layout class=&quot;QHBoxLayout&quot; &gt;
+-     &lt;property name=&quot;margin&quot; &gt;
+-      &lt;number&gt;0&lt;/number&gt;
+-     &lt;/property&gt;
+-     &lt;property name=&quot;spacing&quot; &gt;
++    &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++     &lt;property name=&quot;spacing&quot;&gt;
+       &lt;number&gt;6&lt;/number&gt;
+      &lt;/property&gt;
++     &lt;property name=&quot;margin&quot;&gt;
++      &lt;number&gt;0&lt;/number&gt;
++     &lt;/property&gt;
+      &lt;item&gt;
+-      &lt;widget class=&quot;QLabel&quot; name=&quot;pixmapLabel1&quot; &gt;
+-       &lt;property name=&quot;pixmap&quot; &gt;
+-        &lt;pixmap resource=&quot;../../../bulmages.qrc&quot; &gt;:/BfBulmaFact48x48/images/png/48x48/i_bulmages_cuentas_ingresos.48x48.png&lt;/pixmap&gt;
++      &lt;widget class=&quot;QLabel&quot; name=&quot;pixmapLabel1&quot;&gt;
++       &lt;property name=&quot;maximumSize&quot;&gt;
++        &lt;size&gt;
++         &lt;width&gt;48&lt;/width&gt;
++         &lt;height&gt;48&lt;/height&gt;
++        &lt;/size&gt;
++       &lt;/property&gt;
++       &lt;property name=&quot;pixmap&quot;&gt;
++        &lt;pixmap resource=&quot;../../../bulmages.qrc&quot;&gt;:/Images/rcomercial.png&lt;/pixmap&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;scaledContents&quot; &gt;
++       &lt;property name=&quot;scaledContents&quot;&gt;
+         &lt;bool&gt;true&lt;/bool&gt;
+        &lt;/property&gt;
+       &lt;/widget&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+-      &lt;widget class=&quot;QFrame&quot; name=&quot;frame&quot; &gt;
+-       &lt;property name=&quot;frameShape&quot; &gt;
++      &lt;widget class=&quot;QFrame&quot; name=&quot;frame&quot;&gt;
++       &lt;property name=&quot;frameShape&quot;&gt;
+         &lt;enum&gt;QFrame::StyledPanel&lt;/enum&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;frameShadow&quot; &gt;
++       &lt;property name=&quot;frameShadow&quot;&gt;
+         &lt;enum&gt;QFrame::Raised&lt;/enum&gt;
+        &lt;/property&gt;
+-       &lt;layout class=&quot;QHBoxLayout&quot; &gt;
+-        &lt;property name=&quot;margin&quot; &gt;
++       &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++        &lt;property name=&quot;spacing&quot;&gt;
+          &lt;number&gt;5&lt;/number&gt;
+         &lt;/property&gt;
+-        &lt;property name=&quot;spacing&quot; &gt;
++        &lt;property name=&quot;margin&quot;&gt;
+          &lt;number&gt;5&lt;/number&gt;
+         &lt;/property&gt;
+         &lt;item&gt;
+-         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_guardar&quot; &gt;
+-          &lt;property name=&quot;minimumSize&quot; &gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_guardar&quot;&gt;
++          &lt;property name=&quot;minimumSize&quot;&gt;
+            &lt;size&gt;
+             &lt;width&gt;32&lt;/width&gt;
+             &lt;height&gt;32&lt;/height&gt;
+            &lt;/size&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;toolTip&quot; &gt;
++          &lt;property name=&quot;toolTip&quot;&gt;
+            &lt;string&gt;Guardar Factura&lt;/string&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;whatsThis&quot; &gt;
++          &lt;property name=&quot;whatsThis&quot;&gt;
+            &lt;string&gt;Guardar Factura&lt;/string&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;text&quot; &gt;
++          &lt;property name=&quot;text&quot;&gt;
+            &lt;string/&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;icon&quot; &gt;
+-           &lt;iconset resource=&quot;../../../bulmages.qrc&quot; &gt;:/Images/edit-save.png&lt;/iconset&gt;
++          &lt;property name=&quot;icon&quot;&gt;
++           &lt;iconset resource=&quot;../../../bulmages.qrc&quot;&gt;
++            &lt;normaloff&gt;:/Images/edit-save.png&lt;/normaloff&gt;:/Images/edit-save.png&lt;/iconset&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;iconSize&quot; &gt;
++          &lt;property name=&quot;iconSize&quot;&gt;
+            &lt;size&gt;
+             &lt;width&gt;32&lt;/width&gt;
+             &lt;height&gt;32&lt;/height&gt;
+@@ -85,26 +94,27 @@
+          &lt;/widget&gt;
+         &lt;/item&gt;
+         &lt;item&gt;
+-         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_borrar&quot; &gt;
+-          &lt;property name=&quot;minimumSize&quot; &gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_borrar&quot;&gt;
++          &lt;property name=&quot;minimumSize&quot;&gt;
+            &lt;size&gt;
+             &lt;width&gt;32&lt;/width&gt;
+             &lt;height&gt;32&lt;/height&gt;
+            &lt;/size&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;toolTip&quot; &gt;
++          &lt;property name=&quot;toolTip&quot;&gt;
+            &lt;string&gt;Borrar Factura&lt;/string&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;whatsThis&quot; &gt;
++          &lt;property name=&quot;whatsThis&quot;&gt;
+            &lt;string&gt;Borrar Factura&lt;/string&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;text&quot; &gt;
++          &lt;property name=&quot;text&quot;&gt;
+            &lt;string/&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;icon&quot; &gt;
+-           &lt;iconset resource=&quot;../../../bulmages.qrc&quot; &gt;:Images/edit-delete.png&lt;/iconset&gt;
++          &lt;property name=&quot;icon&quot;&gt;
++           &lt;iconset&gt;
++            &lt;normaloff&gt;:Images/edit-delete.png&lt;/normaloff&gt;:Images/edit-delete.png&lt;/iconset&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;iconSize&quot; &gt;
++          &lt;property name=&quot;iconSize&quot;&gt;
+            &lt;size&gt;
+             &lt;width&gt;32&lt;/width&gt;
+             &lt;height&gt;32&lt;/height&gt;
+@@ -114,13 +124,13 @@
+         &lt;/item&gt;
+         &lt;item&gt;
+          &lt;spacer&gt;
+-          &lt;property name=&quot;orientation&quot; &gt;
++          &lt;property name=&quot;orientation&quot;&gt;
+            &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;sizeType&quot; &gt;
++          &lt;property name=&quot;sizeType&quot;&gt;
+            &lt;enum&gt;QSizePolicy::Expanding&lt;/enum&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;sizeHint&quot; &gt;
++          &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
+            &lt;size&gt;
+             &lt;width&gt;149&lt;/width&gt;
+             &lt;height&gt;36&lt;/height&gt;
+@@ -129,29 +139,30 @@
+          &lt;/spacer&gt;
+         &lt;/item&gt;
+         &lt;item&gt;
+-         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_agregaralbaran&quot; &gt;
+-          &lt;property name=&quot;enabled&quot; &gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_agregaralbaran&quot;&gt;
++          &lt;property name=&quot;enabled&quot;&gt;
+            &lt;bool&gt;true&lt;/bool&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;minimumSize&quot; &gt;
++          &lt;property name=&quot;minimumSize&quot;&gt;
+            &lt;size&gt;
+             &lt;width&gt;32&lt;/width&gt;
+             &lt;height&gt;32&lt;/height&gt;
+            &lt;/size&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;toolTip&quot; &gt;
++          &lt;property name=&quot;toolTip&quot;&gt;
+            &lt;string&gt;Ver Albaran&lt;/string&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;whatsThis&quot; &gt;
++          &lt;property name=&quot;whatsThis&quot;&gt;
+            &lt;string&gt;Ver Albaran&lt;/string&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;text&quot; &gt;
++          &lt;property name=&quot;text&quot;&gt;
+            &lt;string/&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;icon&quot; &gt;
+-           &lt;iconset resource=&quot;../../../bulmages.qrc&quot; &gt;:/BfBulmaFact48x48/images/png/48x48/i_bulmages_ventas_albaran_mas.48x48.png&lt;/iconset&gt;
++          &lt;property name=&quot;icon&quot;&gt;
++           &lt;iconset resource=&quot;../../../bulmages.qrc&quot;&gt;
++            &lt;normaloff&gt;:/BfBulmaFact48x48/images/png/48x48/i_bulmages_ventas_albaran_mas.48x48.png&lt;/normaloff&gt;:/BfBulmaFact48x48/images/png/48x48/i_bulmages_ventas_albaran_mas.48x48.png&lt;/iconset&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;iconSize&quot; &gt;
++          &lt;property name=&quot;iconSize&quot;&gt;
+            &lt;size&gt;
+             &lt;width&gt;32&lt;/width&gt;
+             &lt;height&gt;32&lt;/height&gt;
+@@ -160,29 +171,30 @@
+          &lt;/widget&gt;
+         &lt;/item&gt;
+         &lt;item&gt;
+-         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_cobrar&quot; &gt;
+-          &lt;property name=&quot;enabled&quot; &gt;
++         &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_cobrar&quot;&gt;
++          &lt;property name=&quot;enabled&quot;&gt;
+            &lt;bool&gt;true&lt;/bool&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;minimumSize&quot; &gt;
++          &lt;property name=&quot;minimumSize&quot;&gt;
+            &lt;size&gt;
+             &lt;width&gt;32&lt;/width&gt;
+             &lt;height&gt;32&lt;/height&gt;
+            &lt;/size&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;toolTip&quot; &gt;
++          &lt;property name=&quot;toolTip&quot;&gt;
+            &lt;string&gt;Realizar Cobro&lt;/string&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;whatsThis&quot; &gt;
++          &lt;property name=&quot;whatsThis&quot;&gt;
+            &lt;string&gt;Realizar Cobro&lt;/string&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;text&quot; &gt;
++          &lt;property name=&quot;text&quot;&gt;
+            &lt;string/&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;icon&quot; &gt;
+-           &lt;iconset resource=&quot;../../../bulmages.qrc&quot; &gt;:/Images/receive.png&lt;/iconset&gt;
++          &lt;property name=&quot;icon&quot;&gt;
++           &lt;iconset resource=&quot;../../../bulmages.qrc&quot;&gt;
++            &lt;normaloff&gt;:/Images/receive.png&lt;/normaloff&gt;:/Images/receive.png&lt;/iconset&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;iconSize&quot; &gt;
++          &lt;property name=&quot;iconSize&quot;&gt;
+            &lt;size&gt;
+             &lt;width&gt;32&lt;/width&gt;
+             &lt;height&gt;32&lt;/height&gt;
+@@ -192,13 +204,13 @@
+         &lt;/item&gt;
+         &lt;item&gt;
+          &lt;spacer&gt;
+-          &lt;property name=&quot;orientation&quot; &gt;
++          &lt;property name=&quot;orientation&quot;&gt;
+            &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;sizeType&quot; &gt;
++          &lt;property name=&quot;sizeType&quot;&gt;
+            &lt;enum&gt;QSizePolicy::Expanding&lt;/enum&gt;
+           &lt;/property&gt;
+-          &lt;property name=&quot;sizeHint&quot; &gt;
++          &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
+            &lt;size&gt;
+             &lt;width&gt;149&lt;/width&gt;
+             &lt;height&gt;36&lt;/height&gt;
+@@ -212,28 +224,26 @@
+     &lt;/layout&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+-    &lt;widget class=&quot;QGroupBox&quot; name=&quot;groupBox&quot; &gt;
+-     &lt;property name=&quot;title&quot; &gt;
++    &lt;widget class=&quot;QGroupBox&quot; name=&quot;groupBox&quot;&gt;
++     &lt;property name=&quot;title&quot;&gt;
+       &lt;string&gt;Ruta comercial:&lt;/string&gt;
+      &lt;/property&gt;
+-     &lt;layout class=&quot;QVBoxLayout&quot; &gt;
+-      &lt;property name=&quot;margin&quot; &gt;
+-       &lt;number&gt;9&lt;/number&gt;
+-      &lt;/property&gt;
+-      &lt;property name=&quot;spacing&quot; &gt;
++     &lt;layout class=&quot;QVBoxLayout&quot;&gt;
++      &lt;property name=&quot;spacing&quot;&gt;
+        &lt;number&gt;6&lt;/number&gt;
+       &lt;/property&gt;
++      &lt;property name=&quot;margin&quot;&gt;
++       &lt;number&gt;9&lt;/number&gt;
++      &lt;/property&gt;
+       &lt;item&gt;
+-       &lt;widget class=&quot;RutaComercialView&quot; name=&quot;mui_rutacomercial&quot; &gt;
+-        &lt;property name=&quot;sizePolicy&quot; &gt;
+-         &lt;sizepolicy&gt;
+-          &lt;hsizetype&gt;7&lt;/hsizetype&gt;
+-          &lt;vsizetype&gt;7&lt;/vsizetype&gt;
++       &lt;widget class=&quot;RutaComercialView&quot; name=&quot;mui_rutacomercial&quot;&gt;
++        &lt;property name=&quot;sizePolicy&quot;&gt;
++         &lt;sizepolicy hsizetype=&quot;Expanding&quot; vsizetype=&quot;Expanding&quot;&gt;
+           &lt;horstretch&gt;0&lt;/horstretch&gt;
+           &lt;verstretch&gt;0&lt;/verstretch&gt;
+          &lt;/sizepolicy&gt;
+         &lt;/property&gt;
+-        &lt;property name=&quot;minimumSize&quot; &gt;
++        &lt;property name=&quot;minimumSize&quot;&gt;
+          &lt;size&gt;
+           &lt;width&gt;0&lt;/width&gt;
+           &lt;height&gt;100&lt;/height&gt;
+@@ -245,23 +255,21 @@
+     &lt;/widget&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+-    &lt;widget class=&quot;QGroupBox&quot; name=&quot;groupBox_2&quot; &gt;
+-     &lt;property name=&quot;title&quot; &gt;
++    &lt;widget class=&quot;QGroupBox&quot; name=&quot;groupBox_2&quot;&gt;
++     &lt;property name=&quot;title&quot;&gt;
+       &lt;string&gt;Incidencia comercial:&lt;/string&gt;
+      &lt;/property&gt;
+-     &lt;layout class=&quot;QVBoxLayout&quot; &gt;
+-      &lt;property name=&quot;margin&quot; &gt;
+-       &lt;number&gt;9&lt;/number&gt;
+-      &lt;/property&gt;
+-      &lt;property name=&quot;spacing&quot; &gt;
++     &lt;layout class=&quot;QVBoxLayout&quot;&gt;
++      &lt;property name=&quot;spacing&quot;&gt;
+        &lt;number&gt;6&lt;/number&gt;
+       &lt;/property&gt;
++      &lt;property name=&quot;margin&quot;&gt;
++       &lt;number&gt;9&lt;/number&gt;
++      &lt;/property&gt;
+       &lt;item&gt;
+-       &lt;widget class=&quot;IncidenciaComercialView&quot; name=&quot;mui_incidenciacomercial&quot; &gt;
+-        &lt;property name=&quot;sizePolicy&quot; &gt;
+-         &lt;sizepolicy&gt;
+-          &lt;hsizetype&gt;7&lt;/hsizetype&gt;
+-          &lt;vsizetype&gt;7&lt;/vsizetype&gt;
++       &lt;widget class=&quot;IncidenciaComercialView&quot; name=&quot;mui_incidenciacomercial&quot;&gt;
++        &lt;property name=&quot;sizePolicy&quot;&gt;
++         &lt;sizepolicy hsizetype=&quot;Expanding&quot; vsizetype=&quot;Expanding&quot;&gt;
+           &lt;horstretch&gt;0&lt;/horstretch&gt;
+           &lt;verstretch&gt;0&lt;/verstretch&gt;
+          &lt;/sizepolicy&gt;
+@@ -272,19 +280,19 @@
+     &lt;/widget&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+-    &lt;layout class=&quot;QHBoxLayout&quot; &gt;
+-     &lt;property name=&quot;margin&quot; &gt;
+-      &lt;number&gt;0&lt;/number&gt;
+-     &lt;/property&gt;
+-     &lt;property name=&quot;spacing&quot; &gt;
++    &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++     &lt;property name=&quot;spacing&quot;&gt;
+       &lt;number&gt;6&lt;/number&gt;
+      &lt;/property&gt;
++     &lt;property name=&quot;margin&quot;&gt;
++      &lt;number&gt;0&lt;/number&gt;
++     &lt;/property&gt;
+      &lt;item&gt;
+       &lt;spacer&gt;
+-       &lt;property name=&quot;orientation&quot; &gt;
++       &lt;property name=&quot;orientation&quot;&gt;
+         &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;sizeHint&quot; &gt;
++       &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
+         &lt;size&gt;
+          &lt;width&gt;362&lt;/width&gt;
+          &lt;height&gt;29&lt;/height&gt;
+@@ -293,15 +301,15 @@
+       &lt;/spacer&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+-      &lt;widget class=&quot;QPushButton&quot; name=&quot;mui_aceptar&quot; &gt;
+-       &lt;property name=&quot;text&quot; &gt;
++      &lt;widget class=&quot;QPushButton&quot; name=&quot;mui_aceptar&quot;&gt;
++       &lt;property name=&quot;text&quot;&gt;
+         &lt;string&gt;&amp;Aceptar&lt;/string&gt;
+        &lt;/property&gt;
+       &lt;/widget&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+-      &lt;widget class=&quot;QPushButton&quot; name=&quot;mui_cancelar&quot; &gt;
+-       &lt;property name=&quot;text&quot; &gt;
++      &lt;widget class=&quot;QPushButton&quot; name=&quot;mui_cancelar&quot;&gt;
++       &lt;property name=&quot;text&quot;&gt;
+         &lt;string&gt;&amp;Cancelar&lt;/string&gt;
+        &lt;/property&gt;
+       &lt;/widget&gt;
+@@ -310,21 +318,23 @@
+    &lt;/item&gt;
+   &lt;/layout&gt;
+  &lt;/widget&gt;
+- &lt;layoutdefault spacing=&quot;2&quot; margin=&quot;2&quot; /&gt;
++ &lt;layoutdefault spacing=&quot;2&quot; margin=&quot;2&quot;/&gt;
+  &lt;customwidgets&gt;
+   &lt;customwidget&gt;
+    &lt;class&gt;RutaComercialView&lt;/class&gt;
+    &lt;extends&gt;QFrame&lt;/extends&gt;
+    &lt;header&gt;rutacomercialview.h&lt;/header&gt;
++   &lt;container&gt;1&lt;/container&gt;
+   &lt;/customwidget&gt;
+   &lt;customwidget&gt;
+    &lt;class&gt;IncidenciaComercialView&lt;/class&gt;
+    &lt;extends&gt;QFrame&lt;/extends&gt;
+    &lt;header&gt;incidenciacomercialview.h&lt;/header&gt;
++   &lt;container&gt;1&lt;/container&gt;
+   &lt;/customwidget&gt;
+  &lt;/customwidgets&gt;
+  &lt;resources&gt;
+-  &lt;include location=&quot;../../../bulmages.qrc&quot; /&gt;
++  &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+  &lt;connections&gt;
+   &lt;connection&gt;
+@@ -333,11 +343,11 @@
+    &lt;receiver&gt;RutaComercialIncBase&lt;/receiver&gt;
+    &lt;slot&gt;close()&lt;/slot&gt;
+    &lt;hints&gt;
+-    &lt;hint type=&quot;sourcelabel&quot; &gt;
++    &lt;hint type=&quot;sourcelabel&quot;&gt;
+      &lt;x&gt;633&lt;/x&gt;
+      &lt;y&gt;683&lt;/y&gt;
+     &lt;/hint&gt;
+-    &lt;hint type=&quot;destinationlabel&quot; &gt;
++    &lt;hint type=&quot;destinationlabel&quot;&gt;
+      &lt;x&gt;2&lt;/x&gt;
+      &lt;y&gt;645&lt;/y&gt;
+     &lt;/hint&gt;
+diff --git a/bulmages/bulmafact/plugins/pluginbf_comercial/rutacomerciallistbase.ui b/bulmages/bulmafact/plugins/pluginbf_comercial/rutacomerciallistbase.ui
+index 831f7f0..56dbae1 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_comercial/rutacomerciallistbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_comercial/rutacomerciallistbase.ui
+@@ -19,7 +19,7 @@
+   &lt;/property&gt;
+   &lt;property name=&quot;windowIcon&quot;&gt;
+    &lt;iconset resource=&quot;../../../bulmages.qrc&quot;&gt;
+-    &lt;normaloff&gt;:/Images/client-quote-list.png&lt;/normaloff&gt;:/Images/client-quote-list.png&lt;/iconset&gt;
++    &lt;normaloff&gt;:/Images/rcomercial.png&lt;/normaloff&gt;:/Images/rcomercial.png&lt;/iconset&gt;
+   &lt;/property&gt;
+   &lt;layout class=&quot;QVBoxLayout&quot;&gt;
+    &lt;property name=&quot;spacing&quot;&gt;
+@@ -54,7 +54,7 @@
+         &lt;string/&gt;
+        &lt;/property&gt;
+        &lt;property name=&quot;pixmap&quot;&gt;
+-        &lt;pixmap resource=&quot;../../../bulmages.qrc&quot;&gt;:/Images/client-quote-list.png&lt;/pixmap&gt;
++        &lt;pixmap resource=&quot;../../../bulmages.qrc&quot;&gt;:/Images/rcomercial.png&lt;/pixmap&gt;
+        &lt;/property&gt;
+        &lt;property name=&quot;scaledContents&quot;&gt;
+         &lt;bool&gt;true&lt;/bool&gt;
+
+commit 463c40957d694cf232a86bc70d9d6e26ec1339b9
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon Apr 9 11:32:53 2012 +0200
+
+    Agrego imagen para las rutas comerciales
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_comercial/images/pathing.png b/bulmages/bulmafact/plugins/pluginbf_comercial/images/pathing.png
+new file mode 100644
+index 0000000..02d9f80
+Binary files /dev/null and b/bulmages/bulmafact/plugins/pluginbf_comercial/images/pathing.png differ
+diff --git a/bulmages/bulmafact/plugins/pluginbf_comercial/rutacomercialbase.ui b/bulmages/bulmafact/plugins/pluginbf_comercial/rutacomercialbase.ui
+index 2aff4ac..0b24591 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_comercial/rutacomercialbase.ui
++++ b/bulmages/bulmafact/plugins/pluginbf_comercial/rutacomercialbase.ui
+@@ -1,8 +1,9 @@
+-&lt;ui version=&quot;4.0&quot; &gt;
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
++&lt;ui version=&quot;4.0&quot;&gt;
+  &lt;author&gt;Tomeu Borras&lt;/author&gt;
+  &lt;class&gt;RutaComercialBase&lt;/class&gt;
+- &lt;widget class=&quot;QWidget&quot; name=&quot;RutaComercialBase&quot; &gt;
+-  &lt;property name=&quot;geometry&quot; &gt;
++ &lt;widget class=&quot;QWidget&quot; name=&quot;RutaComercialBase&quot;&gt;
++  &lt;property name=&quot;geometry&quot;&gt;
+    &lt;rect&gt;
+     &lt;x&gt;0&lt;/x&gt;
+     &lt;y&gt;0&lt;/y&gt;
+@@ -10,63 +11,63 @@
+     &lt;height&gt;398&lt;/height&gt;
+    &lt;/rect&gt;
+   &lt;/property&gt;
+-  &lt;property name=&quot;windowTitle&quot; &gt;
++  &lt;property name=&quot;windowTitle&quot;&gt;
+    &lt;string&gt;Ruta comercial&lt;/string&gt;
+   &lt;/property&gt;
+-  &lt;property name=&quot;windowIcon&quot; &gt;
+-   &lt;iconset resource=&quot;../../../bulmages.qrc&quot; &gt;
+-    &lt;normaloff&gt;:/BfBulmaFact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png&lt;/normaloff&gt;:/BfBulmaFact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png&lt;/iconset&gt;
++  &lt;property name=&quot;windowIcon&quot;&gt;
++   &lt;iconset resource=&quot;../../../bulmages.qrc&quot;&gt;
++    &lt;normaloff&gt;:/Images/rcomercial.png&lt;/normaloff&gt;:/Images/rcomercial.png&lt;/iconset&gt;
+   &lt;/property&gt;
+-  &lt;layout class=&quot;QVBoxLayout&quot; &gt;
+-   &lt;property name=&quot;spacing&quot; &gt;
++  &lt;layout class=&quot;QVBoxLayout&quot;&gt;
++   &lt;property name=&quot;spacing&quot;&gt;
+     &lt;number&gt;5&lt;/number&gt;
+    &lt;/property&gt;
+-   &lt;property name=&quot;margin&quot; &gt;
++   &lt;property name=&quot;margin&quot;&gt;
+     &lt;number&gt;5&lt;/number&gt;
+    &lt;/property&gt;
+    &lt;item&gt;
+-    &lt;layout class=&quot;QHBoxLayout&quot; &gt;
+-     &lt;property name=&quot;spacing&quot; &gt;
++    &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++     &lt;property name=&quot;spacing&quot;&gt;
+       &lt;number&gt;6&lt;/number&gt;
+      &lt;/property&gt;
+-     &lt;property name=&quot;margin&quot; &gt;
++     &lt;property name=&quot;margin&quot;&gt;
+       &lt;number&gt;0&lt;/number&gt;
+      &lt;/property&gt;
+      &lt;item&gt;
+-      &lt;layout class=&quot;QHBoxLayout&quot; &gt;
+-       &lt;property name=&quot;spacing&quot; &gt;
++      &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++       &lt;property name=&quot;spacing&quot;&gt;
+         &lt;number&gt;6&lt;/number&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;margin&quot; &gt;
++       &lt;property name=&quot;margin&quot;&gt;
+         &lt;number&gt;0&lt;/number&gt;
+        &lt;/property&gt;
+        &lt;item&gt;
+-        &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_2_2_3_9&quot; &gt;
+-         &lt;property name=&quot;sizePolicy&quot; &gt;
+-          &lt;sizepolicy vsizetype=&quot;Preferred&quot; hsizetype=&quot;Minimum&quot; &gt;
++        &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_2_2_3_9&quot;&gt;
++         &lt;property name=&quot;sizePolicy&quot;&gt;
++          &lt;sizepolicy hsizetype=&quot;Minimum&quot; vsizetype=&quot;Preferred&quot;&gt;
+            &lt;horstretch&gt;0&lt;/horstretch&gt;
+            &lt;verstretch&gt;0&lt;/verstretch&gt;
+           &lt;/sizepolicy&gt;
+          &lt;/property&gt;
+-         &lt;property name=&quot;text&quot; &gt;
++         &lt;property name=&quot;text&quot;&gt;
+           &lt;string&gt;Fecha ruta:&lt;/string&gt;
+          &lt;/property&gt;
+-         &lt;property name=&quot;buddy&quot; &gt;
++         &lt;property name=&quot;buddy&quot;&gt;
+           &lt;cstring&gt;mui_fecharutacomercial&lt;/cstring&gt;
+          &lt;/property&gt;
+         &lt;/widget&gt;
+        &lt;/item&gt;
+        &lt;item&gt;
+-        &lt;widget class=&quot;BlDateSearch&quot; name=&quot;mui_fecharutacomercial&quot; /&gt;
++        &lt;widget class=&quot;BlDateSearch&quot; name=&quot;mui_fecharutacomercial&quot;/&gt;
+        &lt;/item&gt;
+       &lt;/layout&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+       &lt;spacer&gt;
+-       &lt;property name=&quot;orientation&quot; &gt;
++       &lt;property name=&quot;orientation&quot;&gt;
+         &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot; &gt;
++       &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
+         &lt;size&gt;
+          &lt;width&gt;40&lt;/width&gt;
+          &lt;height&gt;20&lt;/height&gt;
+@@ -75,54 +76,54 @@
+       &lt;/spacer&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+-      &lt;layout class=&quot;QHBoxLayout&quot; &gt;
+-       &lt;property name=&quot;spacing&quot; &gt;
++      &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++       &lt;property name=&quot;spacing&quot;&gt;
+         &lt;number&gt;6&lt;/number&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;margin&quot; &gt;
++       &lt;property name=&quot;margin&quot;&gt;
+         &lt;number&gt;0&lt;/number&gt;
+        &lt;/property&gt;
+        &lt;item&gt;
+-        &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_2_2_3_3&quot; &gt;
+-         &lt;property name=&quot;sizePolicy&quot; &gt;
+-          &lt;sizepolicy vsizetype=&quot;Preferred&quot; hsizetype=&quot;Minimum&quot; &gt;
++        &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_2_2_3_3&quot;&gt;
++         &lt;property name=&quot;sizePolicy&quot;&gt;
++          &lt;sizepolicy hsizetype=&quot;Minimum&quot; vsizetype=&quot;Preferred&quot;&gt;
+            &lt;horstretch&gt;0&lt;/horstretch&gt;
+            &lt;verstretch&gt;0&lt;/verstretch&gt;
+           &lt;/sizepolicy&gt;
+          &lt;/property&gt;
+-         &lt;property name=&quot;text&quot; &gt;
++         &lt;property name=&quot;text&quot;&gt;
+           &lt;string&gt;Referencia:&lt;/string&gt;
+          &lt;/property&gt;
+-         &lt;property name=&quot;buddy&quot; &gt;
++         &lt;property name=&quot;buddy&quot;&gt;
+           &lt;cstring&gt;mui_refrutacomercial&lt;/cstring&gt;
+          &lt;/property&gt;
+         &lt;/widget&gt;
+        &lt;/item&gt;
+        &lt;item&gt;
+-        &lt;widget class=&quot;QLineEdit&quot; name=&quot;mui_refrutacomercial&quot; /&gt;
++        &lt;widget class=&quot;QLineEdit&quot; name=&quot;mui_refrutacomercial&quot;/&gt;
+        &lt;/item&gt;
+        &lt;item&gt;
+-        &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_informereferencia&quot; &gt;
+-         &lt;property name=&quot;minimumSize&quot; &gt;
++        &lt;widget class=&quot;QToolButton&quot; name=&quot;mui_informereferencia&quot;&gt;
++         &lt;property name=&quot;minimumSize&quot;&gt;
+           &lt;size&gt;
+            &lt;width&gt;32&lt;/width&gt;
+            &lt;height&gt;32&lt;/height&gt;
+           &lt;/size&gt;
+          &lt;/property&gt;
+-         &lt;property name=&quot;toolTip&quot; &gt;
++         &lt;property name=&quot;toolTip&quot;&gt;
+           &lt;string&gt;Informe por Referencia&lt;/string&gt;
+          &lt;/property&gt;
+-         &lt;property name=&quot;whatsThis&quot; &gt;
++         &lt;property name=&quot;whatsThis&quot;&gt;
+           &lt;string&gt;Informe por Referencia&lt;/string&gt;
+          &lt;/property&gt;
+-         &lt;property name=&quot;text&quot; &gt;
++         &lt;property name=&quot;text&quot;&gt;
+           &lt;string/&gt;
+          &lt;/property&gt;
+-         &lt;property name=&quot;icon&quot; &gt;
+-          &lt;iconset resource=&quot;../../../bulmages.qrc&quot; &gt;
++         &lt;property name=&quot;icon&quot;&gt;
++          &lt;iconset resource=&quot;../../../bulmages.qrc&quot;&gt;
+            &lt;normaloff&gt;:/BfBulmaFact48x48/images/png/48x48/i_bulmages_informexreferencia.48x48.png&lt;/normaloff&gt;:/BfBulmaFact48x48/images/png/48x48/i_bulmages_informexreferencia.48x48.png&lt;/iconset&gt;
+          &lt;/property&gt;
+-         &lt;property name=&quot;iconSize&quot; &gt;
++         &lt;property name=&quot;iconSize&quot;&gt;
+           &lt;size&gt;
+            &lt;width&gt;32&lt;/width&gt;
+            &lt;height&gt;32&lt;/height&gt;
+@@ -135,38 +136,38 @@
+     &lt;/layout&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+-    &lt;layout class=&quot;QHBoxLayout&quot; &gt;
+-     &lt;property name=&quot;spacing&quot; &gt;
++    &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++     &lt;property name=&quot;spacing&quot;&gt;
+       &lt;number&gt;6&lt;/number&gt;
+      &lt;/property&gt;
+-     &lt;property name=&quot;margin&quot; &gt;
++     &lt;property name=&quot;margin&quot;&gt;
+       &lt;number&gt;0&lt;/number&gt;
+      &lt;/property&gt;
+      &lt;item&gt;
+-      &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_2_2_3_5&quot; &gt;
+-       &lt;property name=&quot;sizePolicy&quot; &gt;
+-        &lt;sizepolicy vsizetype=&quot;Preferred&quot; hsizetype=&quot;Minimum&quot; &gt;
++      &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_2_2_3_5&quot;&gt;
++       &lt;property name=&quot;sizePolicy&quot;&gt;
++        &lt;sizepolicy hsizetype=&quot;Minimum&quot; vsizetype=&quot;Preferred&quot;&gt;
+          &lt;horstretch&gt;0&lt;/horstretch&gt;
+          &lt;verstretch&gt;0&lt;/verstretch&gt;
+         &lt;/sizepolicy&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;text&quot; &gt;
++       &lt;property name=&quot;text&quot;&gt;
+         &lt;string&gt;Hora:&lt;/string&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;buddy&quot; &gt;
++       &lt;property name=&quot;buddy&quot;&gt;
+         &lt;cstring&gt;mui_refrutacomercial&lt;/cstring&gt;
+        &lt;/property&gt;
+       &lt;/widget&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+-      &lt;widget class=&quot;QLineEdit&quot; name=&quot;mui_horarutacomercial&quot; /&gt;
++      &lt;widget class=&quot;QLineEdit&quot; name=&quot;mui_horarutacomercial&quot;/&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+       &lt;spacer&gt;
+-       &lt;property name=&quot;orientation&quot; &gt;
++       &lt;property name=&quot;orientation&quot;&gt;
+         &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot; &gt;
++       &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
+         &lt;size&gt;
+          &lt;width&gt;40&lt;/width&gt;
+          &lt;height&gt;20&lt;/height&gt;
+@@ -177,48 +178,48 @@
+     &lt;/layout&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+-    &lt;layout class=&quot;QHBoxLayout&quot; &gt;
+-     &lt;property name=&quot;spacing&quot; &gt;
++    &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++     &lt;property name=&quot;spacing&quot;&gt;
+       &lt;number&gt;6&lt;/number&gt;
+      &lt;/property&gt;
+-     &lt;property name=&quot;margin&quot; &gt;
++     &lt;property name=&quot;margin&quot;&gt;
+       &lt;number&gt;0&lt;/number&gt;
+      &lt;/property&gt;
+      &lt;item&gt;
+-      &lt;layout class=&quot;QHBoxLayout&quot; &gt;
+-       &lt;property name=&quot;spacing&quot; &gt;
++      &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++       &lt;property name=&quot;spacing&quot;&gt;
+         &lt;number&gt;6&lt;/number&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;margin&quot; &gt;
++       &lt;property name=&quot;margin&quot;&gt;
+         &lt;number&gt;0&lt;/number&gt;
+        &lt;/property&gt;
+        &lt;item&gt;
+-        &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_2_2_3_10&quot; &gt;
+-         &lt;property name=&quot;sizePolicy&quot; &gt;
+-          &lt;sizepolicy vsizetype=&quot;Preferred&quot; hsizetype=&quot;Minimum&quot; &gt;
++        &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_2_2_3_10&quot;&gt;
++         &lt;property name=&quot;sizePolicy&quot;&gt;
++          &lt;sizepolicy hsizetype=&quot;Minimum&quot; vsizetype=&quot;Preferred&quot;&gt;
+            &lt;horstretch&gt;0&lt;/horstretch&gt;
+            &lt;verstretch&gt;0&lt;/verstretch&gt;
+           &lt;/sizepolicy&gt;
+          &lt;/property&gt;
+-         &lt;property name=&quot;text&quot; &gt;
++         &lt;property name=&quot;text&quot;&gt;
+           &lt;string&gt;Cliente:&lt;/string&gt;
+          &lt;/property&gt;
+-         &lt;property name=&quot;buddy&quot; &gt;
++         &lt;property name=&quot;buddy&quot;&gt;
+           &lt;cstring&gt;mui_idcliente&lt;/cstring&gt;
+          &lt;/property&gt;
+         &lt;/widget&gt;
+        &lt;/item&gt;
+        &lt;item&gt;
+-        &lt;widget class=&quot;BlSearchWidget&quot; name=&quot;mui_idcliente&quot; /&gt;
++        &lt;widget class=&quot;BlSearchWidget&quot; name=&quot;mui_idcliente&quot; native=&quot;true&quot;/&gt;
+        &lt;/item&gt;
+       &lt;/layout&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+       &lt;spacer&gt;
+-       &lt;property name=&quot;orientation&quot; &gt;
++       &lt;property name=&quot;orientation&quot;&gt;
+         &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot; &gt;
++       &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
+         &lt;size&gt;
+          &lt;width&gt;40&lt;/width&gt;
+          &lt;height&gt;20&lt;/height&gt;
+@@ -229,37 +230,37 @@
+     &lt;/layout&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+-    &lt;layout class=&quot;QVBoxLayout&quot; &gt;
+-     &lt;property name=&quot;spacing&quot; &gt;
++    &lt;layout class=&quot;QVBoxLayout&quot;&gt;
++     &lt;property name=&quot;spacing&quot;&gt;
+       &lt;number&gt;5&lt;/number&gt;
+      &lt;/property&gt;
+-     &lt;property name=&quot;margin&quot; &gt;
++     &lt;property name=&quot;margin&quot;&gt;
+       &lt;number&gt;0&lt;/number&gt;
+      &lt;/property&gt;
+      &lt;item&gt;
+-      &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_2_2_3_4&quot; &gt;
+-       &lt;property name=&quot;sizePolicy&quot; &gt;
+-        &lt;sizepolicy vsizetype=&quot;Preferred&quot; hsizetype=&quot;Minimum&quot; &gt;
++      &lt;widget class=&quot;QLabel&quot; name=&quot;textLabel1_2_2_3_4&quot;&gt;
++       &lt;property name=&quot;sizePolicy&quot;&gt;
++        &lt;sizepolicy hsizetype=&quot;Minimum&quot; vsizetype=&quot;Preferred&quot;&gt;
+          &lt;horstretch&gt;0&lt;/horstretch&gt;
+          &lt;verstretch&gt;0&lt;/verstretch&gt;
+         &lt;/sizepolicy&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;text&quot; &gt;
++       &lt;property name=&quot;text&quot;&gt;
+         &lt;string&gt;Comentarios:&lt;/string&gt;
+        &lt;/property&gt;
+-       &lt;property name=&quot;buddy&quot; &gt;
++       &lt;property name=&quot;buddy&quot;&gt;
+         &lt;cstring&gt;mui_comentrutacomercial&lt;/cstring&gt;
+        &lt;/property&gt;
+       &lt;/widget&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+-      &lt;widget class=&quot;QTextEdit&quot; name=&quot;mui_comentrutacomercial&quot; /&gt;
++      &lt;widget class=&quot;QTextEdit&quot; name=&quot;mui_comentrutacomercial&quot;/&gt;
+      &lt;/item&gt;
+     &lt;/layout&gt;
+    &lt;/item&gt;
+   &lt;/layout&gt;
+  &lt;/widget&gt;
+- &lt;layoutdefault spacing=&quot;2&quot; margin=&quot;2&quot; /&gt;
++ &lt;layoutdefault spacing=&quot;2&quot; margin=&quot;2&quot;/&gt;
+  &lt;customwidgets&gt;
+   &lt;customwidget&gt;
+    &lt;class&gt;BlDateSearch&lt;/class&gt;
+@@ -267,13 +268,13 @@
+    &lt;header&gt;bldatesearch.h&lt;/header&gt;
+   &lt;/customwidget&gt;
+   &lt;customwidget&gt;
+-   &lt;class&gt;Busqueda&lt;/class&gt;
+-   &lt;extends&gt;QLineEdit&lt;/extends&gt;
++   &lt;class&gt;BlSearchWidget&lt;/class&gt;
++   &lt;extends&gt;QWidget&lt;/extends&gt;
+    &lt;header&gt;blsearchwidget.h&lt;/header&gt;
+   &lt;/customwidget&gt;
+  &lt;/customwidgets&gt;
+  &lt;resources&gt;
+-  &lt;include location=&quot;../../../bulmages.qrc&quot; /&gt;
++  &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
+  &lt;/resources&gt;
+  &lt;connections/&gt;
+ &lt;/ui&gt;
+diff --git a/bulmages/bulmages.qrc b/bulmages/bulmages.qrc
+index 941126f..3771f19 100644
+--- a/bulmages/bulmages.qrc
++++ b/bulmages/bulmages.qrc
+@@ -103,6 +103,7 @@
+         &lt;file alias=&quot;edit_down.png&quot;&gt;images/oxygen/actions/48x48/edit_down.png&lt;/file&gt;
+         &lt;file alias=&quot;attach_document.png&quot;&gt;images/oxygen/actions/48x48/attach_document.png&lt;/file&gt;
+         &lt;file alias=&quot;i_promocion.png&quot;&gt;images/oxygen/actions/48x48/i_promocion.png&lt;/file&gt;
++        &lt;file alias=&quot;rcomercial.png&quot;&gt;bulmafact/plugins/pluginbf_comercial/images/pathing.png&lt;/file&gt;
+     &lt;/qresource&gt;
+     &lt;qresource prefix=&quot;/BulmaCont32x32&quot; &gt;
+         &lt;file&gt;images/png/decrypted.png&lt;/file&gt;
+
+commit 9e2772d11f3a5758c82ce56fe8a19427d447b29a
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Mon Apr 9 09:22:48 2012 +0200
+
+    Arreglo los textos del plugin de comerciales
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_comercial/CMakeLists.txt b/bulmages/bulmafact/plugins/pluginbf_comercial/CMakeLists.txt
+index fc7e93f..b589889 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_comercial/CMakeLists.txt
++++ b/bulmages/bulmafact/plugins/pluginbf_comercial/CMakeLists.txt
+@@ -113,3 +113,4 @@ install(DIRECTORY openreports/
+       DESTINATION share/bulmages/openreports
+       PATTERN &quot;.svn&quot; EXCLUDE)
+ 
++install(DIRECTORY images DESTINATION share/bulmages PATTERN &quot;.svn&quot; EXCLUDE)
+diff --git a/bulmages/bulmafact/plugins/pluginbf_comercial/README.es b/bulmages/bulmafact/plugins/pluginbf_comercial/README.es
+index 9ca1a8f..5067ac4 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_comercial/README.es
++++ b/bulmages/bulmafact/plugins/pluginbf_comercial/README.es
+@@ -8,9 +8,12 @@ Nombre: Comerciales
+ 
+ Biblioteca: libpluginbf_comercial.so
+ 
+-Descripción: &lt;H1&gt;Comerciales&lt;/H1&gt;
+-&lt;P&gt;Permite llevar la gestión de los comerciales de la empresa.
+-Teniendo un planing de visitas y de rutas a realizar.&lt;/P&gt;
++Descripción: &lt;H1&gt;&lt;IMG SRC=&quot;@CMAKE_INSTALL_PREFIX@/share/bulmages/images/comercial.png&quot; WIDTH=&quot;100&quot;/&gt;&lt;BR&gt;Comerciales&lt;/H1&gt;
++&lt;P&gt;Permite llevar la gestión de los comerciales de la empresa.&lt;/P&gt;
++&lt;P&gt;Primero permite establecer las &lt;B&gt;Zonas Comerciales&lt;/B&gt; en las que se delimita el área de actuación&lt;/P&gt;
++&lt;P&gt;En la ficha de cliente se podrá especificar a que &lt;B&gt;Zona Comercial&lt;/B&gt; pertenece y que forma de visita se establece.&lt;/P&gt;
++&lt;P&gt;En la ficha de &lt;B&gt;Trabajadores&lt;/B&gt; Podremos establecer cuales son comerciales y cuales no&lt;/P&gt;
++&lt;P&gt; De esta forma podremos establecer un planing de visitas y de rutas a realizar.&lt;/P&gt;
+ &lt;B&gt;Author:&lt;/B&gt;Tomeu Borrás (<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>)&lt;BR&gt;
+ &lt;HR&gt;
+ 
+diff --git a/bulmages/bulmafact/plugins/pluginbf_comercial/images/comercial.png b/bulmages/bulmafact/plugins/pluginbf_comercial/images/comercial.png
+new file mode 100644
+index 0000000..b68149c
+Binary files /dev/null and b/bulmages/bulmafact/plugins/pluginbf_comercial/images/comercial.png differ
+
+commit 6571ad05bb554c51fc8a340857760281c665248b
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Sun Apr 8 21:11:02 2012 +0200
+
+    Arreglo el texto del plugin de promedios para que el readme sea mas claro
+
+diff --git a/bulmages/bulmafact/plugins/pluginbf_promedios/README.es b/bulmages/bulmafact/plugins/pluginbf_promedios/README.es
+index 32d621c..4853844 100644
+--- a/bulmages/bulmafact/plugins/pluginbf_promedios/README.es
++++ b/bulmages/bulmafact/plugins/pluginbf_promedios/README.es
+@@ -9,8 +9,27 @@ Nombre: Promedios en artículos
+ Biblioteca: libpluginbf_promedios.so
+ 
+ Descripción: &lt;H1&gt;Promedios en articulos&lt;/H1&gt;
+-&lt;P&gt;Agrega una pestaña a la ficha de articulos que muestra información relativa a
++&lt;P&gt;Agrega la pestaña &lt;B&gt;Promedios&lt;/B&gt; a la ficha de articulos que muestra información relativa a
+ las compras y ventas de dicho artículo y algunos datos estadísticos adicionales sobre el mismo.&lt;/P&gt;
++&lt;P&gt;Los campos presentados son los siguientes:&lt;/P&gt;
++&lt;H2&gt;Compras&lt;/H2&gt;
++&lt;LI&gt; &lt;B&gt;Total:&lt;/B&gt; Presenta el total (en moneda) de las compras del articulo.
++&lt;LI&gt; &lt;B&gt;Precio Mayor:&lt;/B&gt; Indica el precio de venta unitario mayor al que se ha comprado el artículo.
++&lt;LI&gt; &lt;B&gt;Precio Menor:&lt;/B&gt;  Indica el precio de venta unitario menor al que se ha comprado el artículo.
++&lt;LI&gt; &lt;B&gt;Precio Medio:&lt;/B&gt;  Presenta la media de precio de compra.
++&lt;LI&gt; &lt;B&gt;Und. Compradas:&lt;/B&gt;  Indica el total de compras del artículo.
++&lt;LI&gt; &lt;B&gt;Cantidad Mayor:&lt;/B&gt;  Presenta la compra (en unidades) máxima del artículo.
++&lt;LI&gt; &lt;B&gt;Cantidad Menor:&lt;/B&gt;  Presenta la compra (en unidades) mínima del artículo.
++&lt;LI&gt; &lt;B&gt;Cantidad Media:&lt;/B&gt;  Presenta la compra (en unidades) media del artículo.
++&lt;H2&gt;Ventas&lt;/H2&gt;
++&lt;LI&gt; &lt;B&gt;Total:&lt;/B&gt; Presenta el total (en moneda) de las ventas del articulo.
++&lt;LI&gt; &lt;B&gt;Precio Mayor:&lt;/B&gt; Indica el precio de venta unitario mayor al que se ha vendido el artículo.
++&lt;LI&gt; &lt;B&gt;Precio Menor:&lt;/B&gt;  Indica el precio de venta unitario menor al que se ha comprado el artículo.
++&lt;LI&gt; &lt;B&gt;Precio Medio:&lt;/B&gt;  Presenta la media de precio de venta.
++&lt;LI&gt; &lt;B&gt;Und. Compradas:&lt;/B&gt;  Indica el total de ventas del artículo.
++&lt;LI&gt; &lt;B&gt;Cantidad Mayor:&lt;/B&gt;  Presenta la venta (en unidades) máxima del artículo.
++&lt;LI&gt; &lt;B&gt;Cantidad Menor:&lt;/B&gt;  Presenta la venta (en unidades) mínima del artículo.
++&lt;LI&gt; &lt;B&gt;Cantidad Media:&lt;/B&gt;  Presenta la venta (en unidades) media del artículo.
+ &lt;B&gt;Author:&lt;/B&gt;Tomeu Borrás (<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>)&lt;BR&gt;
+ &lt;HR&gt;
+ 
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007026.html">[BulmaGés] 5 claves a la hora de elegir un nicho	de mercado
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007028.html">[BulmaGés] [Gitorious] Activity: tborras pushed 2	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7027">[ fecha ]</a>
+              <a href="thread.html#7027">[ hilo ]</a>
+              <a href="subject.html#7027">[ asunto ]</a>
+              <a href="author.html#7027">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,840 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]problema con bulmasetup en Debian
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fproblema_con_bulmasetup_en%3F%3D%20%3D%3Futf-8%3Fq%3F_Debian%3F%3D&In-Reply-To=%3C52C18FEC.4030701%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007801.html">
+   <LINK REL="Next"  HREF="007808.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]problema con bulmasetup en Debian </H1>
+    <B>Miguel Ángel Ordóñez Moya</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Futf-8%3Fq%3Fproblema_con_bulmasetup_en%3F%3D%20%3D%3Futf-8%3Fq%3F_Debian%3F%3D&In-Reply-To=%3C52C18FEC.4030701%40gmail.com%3E"
+       TITLE="[BulmaGés]problema con bulmasetup en Debian">miguelangel.ordonez en gmail.com
+       </A><BR>
+    <I>Lun Dic 30 16:23:24 CET 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007801.html">[BulmaGés]problema con bulmasetup en Debian
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007808.html">[BulmaGés]problema con bulmasetup en Debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7807">[ fecha ]</a>
+              <a href="thread.html#7807">[ hilo ]</a>
+              <a href="subject.html#7807">[ asunto ]</a>
+              <a href="author.html#7807">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>El 30/12/13 11:38, Tomeu Borras escribió:
+&gt;<i> Un par de cosas:
+</I>&gt;<i> 
+</I>&gt;<i> El bulmaetup donde lo ejecutas ? Porque igual estas ejecutando la
+</I>&gt;<i> versión del source en lugar de la instalada.
+</I>&gt;<i> haz:
+</I>&gt;<i> cd /usr/local/share/bulmages/bulmasetup
+</I>&gt;<i> sudo ./bulmasetup
+</I>&gt;<i> 
+</I>&gt;<i> Otra cosa que puedes mirar es dentro de este directorio
+</I>&gt;<i> 
+</I>&gt;<i> rgrep /datos/Programacion/trunk *
+</I>&gt;<i> 
+</I>&gt;<i> e intenta cambiar las lineas a mano por /usr/local/share/
+</I>&gt;<i> 
+</I>&gt;<i> Salut
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>Hola de nuevo.
+
+Entiendo que el bulmasetup que se ejecuta es el de /usr/local/bin
+
+Creo que acabo de descubrir uno de los errores. Creo que tiene relación
+con el lenguaje plpgsql que está instalado por defecto desde la versión
+9.0 de postgresql.
+
+He comentado las líneas del fichero bulmacont_schema.sql que se
+encuentra en /usr/local/share/bulmages/dbmodels/crear/bulmacont
+\echo -n ':: plpgsql_call_handler ... '
+--CREATE OR REPLACE FUNCTION plpgsql_call_handler() RETURNS language_handler
+--    AS '$libdir/plpgsql', 'plpgsql_call_handler'
+--    LANGUAGE c;
+
+\echo -n ':: Establecemos el lenguaje de procedimientos ... '
+--DROP PROCEDURAL LANGUAGE IF EXISTS plpgsql CASCADE;
+--CREATE TRUSTED PROCEDURAL LANGUAGE plpgsql HANDLER plpgsql_call_handler;
+
+
+Ahora si que se crea la base de datos, aunque todavía aparece algún
+error, como este:
+
+Tratando Bloqueo de Fechas
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels	/plugins/
+coordinadora&quot;
+
+Started.
+error: psql:/usr/local/share/bulmages/dbmodels/plugins:0: no se pudo
+leer el archivo de entrada: Es un directorio
+
+
+
+Perdonadme que pegue de nuevo el &quot;chorizo&quot; de la consola de bulmasetup.
+
+Un saludo y muchas gracias.
+
+
+
+
+
+su postgres -c &quot;createdb -E UNICODE coordinadora&quot;
+
+Started.
+Done.
+
+su postgres -c &quot;psql coordinadora
+
+Started.
+********* INICIADO FICHERO DE ESTRUCTURA DE LA BASE DE DATOS DE
+BULMACONT ********* ::
+BEGIN :: Establecemos los mensajes minimos a avisos y otros parametros
+... ::
+SET ::
+SET ::
+SET ::
+SET :: plpgsql_call_handler ... :: Establecemos el lenguaje de
+procedimientos ... ::
+REVOKE ::
+GRANT :: Configuracion ...
+CREATE TABLE :: Pais ...
+CREATE TABLE :: Provincia ...
+CREATE TABLE
+::<i> Canal ...
+</I>CREATE TABLE
+::<i> Centro de coste ...
+</I>CREATE TABLE :: Centro de coste distribuido ...
+CREATE TABLE
+::<i> Cuenta ...
+</I>CREATE TABLE
+::<i> Acumulado centro de coste ...
+</I>CREATE TABLE :: Acumulado canal ...
+CREATE TABLE
+::<i> Diario (La tabla diario esta en desuso, aunque de momento se crea.) ...
+</I>CREATE TABLE
+::<i> Asiento ...
+</I>CREATE TABLE :: Archivo documental ...
+CREATE TABLE :: Apunte ...
+CREATE TABLE
+::<i> Borrador ...
+</I>CREATE TABLE
+::<i> Forma de pago ...
+</I>CREATE TABLE
+::<i> Tipo de IVA ...
+</I>CREATE TABLE :: Registro de IVA ...
+CREATE TABLE :: Prevision de cobro ...
+CREATE TABLE
+::<i> IVA ...
+</I>CREATE TABLE :: Asiento inteligente ...
+CREATE TABLE :: Linea de asientos inteligentes (Pte. borrar)...
+CREATE TABLE :: Balance ...
+CREATE TABLE
+::<i> Masa patrimonial ...
+</I>CREATE TABLE
+::<i> Componente de masa patrimonial ...
+</I>CREATE TABLE
+::<i> Componente de balance ...
+</I>CREATE TABLE :: Amortizacion ...
+CREATE TABLE :: Linea de amortizacion ...
+CREATE TABLE
+::<i> Ejercicios ...
+</I>CREATE TABLE :: Funcion abre asientos ...
+CREATE FUNCTION :: Funcion cambia asiento ...
+CREATE FUNCTION :: Funcion calcular contrapartida ...
+CREATE FUNCTION :: Funcion contrapartidas de un asiento ...
+CREATE FUNCTION :: Funcion buscar contrapartida ...
+CREATE FUNCTION :: Funcion buscar contrapartida borrador ...
+CREATE FUNCTION :: Funcion ID cuenta ...
+CREATE FUNCTION :: Funcion nivel de codigo de cuenta ... :: Usamos la
+longitud del codigo para determinarlo ya que los sistemas contables usan
+esa notacion. Podria usarse el nivel en el arbol de cuentas y seria mas
+general y correcto
+CREATE FUNCTION :: Funcion saldo total masa patrimonial ... CREATE
+FUNCTION :: Funcion saldo masa patrimonial ...
+CREATE FUNCTION :: Funcion debe de masa patrimonial ... CREATE FUNCTION
+::<i> Funcion haber de masa patrimonial ...
+</I>CREATE FUNCTION :: Funcion saldo total ...
+CREATE FUNCTION :: Funcion debe total entre fechas ... CREATE FUNCTION
+::<i> Funcion debe total ...
+</I>CREATE FUNCTION :: Funcion haber total entre fechas ... CREATE FUNCTION
+::<i> Funcion haber total ...
+</I>CREATE FUNCTION :: Funcion recalcula saldos ... CREATE FUNCTION ::
+Funcion recalcula saldos 2 ...
+CREATE FUNCTION :: Funcion tratamiento de acumulados ...
+CREATE FUNCTION
+::<i> Disparador nuevo apunte aumente valor ...
+</I>CREATE TRIGGER :: Funcion crea cuenta ... CREATE FUNCTION :: Disparador
+nueva cuenta ...
+CREATE TRIGGER :: Funcion borra cuenta ...
+CREATE FUNCTION :: Disparador borra cuenta ... CREATE TRIGGER :: Funcion
+crea canal ...
+CREATE FUNCTION :: Disparador nuevo canal ... CREATE TRIGGER :: Funcion
+borra canal ...
+CREATE FUNCTION :: Disparador borra canal ... CREATE TRIGGER :: Funcion
+crea centro de coste ...
+CREATE FUNCTION :: Disparador nuevo centro de coste ... CREATE TRIGGER
+::<i> Funcion borra centro de coste ... CREATE FUNCTION :: Disparador borra
+</I>centro de coste ...
+CREATE TRIGGER :: Funcion propaga acumulado cuenta ... CREATE FUNCTION
+::<i> Disparador propaga acumulado cuenta ...
+</I>CREATE TRIGGER :: Funcion propaga acumulado centro de coste ... CREATE
+FUNCTION :: Disparador propaga acumulado centro de coste ...
+CREATE TRIGGER :: Funcion acumulados canal ... CREATE FUNCTION ::
+Disparador acumulados canal ...
+CREATE TRIGGER :: Funcion abre asiento ... CREATE FUNCTION :: Funcion
+cierra asiento ... CREATE FUNCTION :: Funcion reordena asientos por
+ejercicio ...
+CREATE FUNCTION :: Funcion reordena todos los asientos ... CREATE
+FUNCTION :: Funcion restricciones de cuenta ...
+CREATE FUNCTION :: Disparador restricciones de cuenta ... CREATE TRIGGER
+::<i> Funcion restricciones al borrado de cuenta ... CREATE FUNCTION ::
+</I>Disparador restricciones al borrado de cuenta ...
+CREATE TRIGGER :: Funcion restricciones borrador ... CREATE FUNCTION ::
+Disparador restricciones borrador ...
+CREATE TRIGGER :: Funcion distribucion centros de coste en borrador ...
+CREATE FUNCTION :: Disparador restricciones borrador ...
+CREATE TRIGGER :: Funcion restricciones asiento ... CREATE FUNCTION ::
+Disparador restricciones asiento ... CREATE TRIGGER :: Funcion borrado
+asiento desde un disparador ...
+CREATE FUNCTION :: Disparador restricciones borrado de asiento ...
+CREATE TRIGGER :: Funcion inserta tipo de IVA ...
+CREATE FUNCTION :: Disparador nuevo tipo de IVA ... CREATE TRIGGER ::
+Funcion borra tipo de IVA ... CREATE FUNCTION :: Disparador borra tipo
+de IVA ...
+CREATE TRIGGER :: Funcion cambiado IVA ... CREATE FUNCTION :: Disparador
+cambio tipo IVA ... CREATE TRIGGER
+CREATE FUNCTION
+actualizarevision ------------------- 0 (1 fila)
+DROP FUNCTION &quot;Actualizada la revision de la base de datos a la version
+0.13.1&quot; ::
+COMMENT ::
+COMMIT ********* FIN FICHERO DE ESTRUCTURA DE LA BASE DE DATOS DE
+BULMACONT *********
+Done.
+
+su postgres -c &quot;psql coordinadora
+
+Started.
+BEGIN
+INSERT 0 1
+INSERT 0 1 INSERT 0 1 INSERT 0 1
+INSERT 0 1 INSERT 0 1 INSERT 0 1 INSERT 0 1
+INSERT 0 1 INSERT 0 1 INSERT 0 1 INSERT 0 1
+INSERT 0 1 INSERT 0 1 INSERT 0 1 INSERT 0 1 INSERT 0 1
+INSERT 0 1 INSERT 0 1 INSERT 0 1 INSERT 0 1 INSERT 0 1
+INSERT 0 1 INSERT 0 1 INSERT 0 1
+COMMIT
+Done.
+
+su postgres -c 'psql coordinadora -c &quot;UPDATE configuracion set
+valor='&quot;'coordinadora'&quot;' WHERE nombre = '&quot;'NombreEmpresa'&quot;';&quot;'
+
+Started.
+error: coordinadora: -c: lÃ­nea 0: EOF inesperado mientras se buscaba un
+`'' coincidente
+error: coordinadora: -c: lÃ­nea 1: error sintÃ¡ctico: no se esperaba el
+final del fichero
+Done.
+
+ACTUALIZANDO PLUGINS
+Tratando Asiento
+Tratando Balance Jerárquico.
+Tratando Duplicar Asientos Contables
+Tratando Mayor
+Tratando Balance
+Tratando Diario
+Tratando Cuentas Contables
+Tratando Importar datos separados por coma
+Tratando Resumen de una cuenta contable
+Tratando Imprimir subformularios
+Tratando Exportar subformularios a ODS.
+Tratando Informes personalizados por ficha
+Tratando Informes personalizados por e-mail
+Tratando Informes personalizados de ficha en ODS
+Tratando Bloquear configuraciones
+Tratando Exportar listados a SXC.
+Tratando Cuentas anuales
+Tratando Pegar desde el portapapeles
+Tratando Corrector Contable
+Tratando Modo Debug
+Tratando Embeber aplicaciones
+Tratando Mostrar el logotipo
+Tratando Adjuntar documentos
+Tratando Proyectos Contables
+Tratando Ejemplo de desarrollo
+Tratando Amortizaciones
+Tratando Cuentas Anuales
+Tratando Bloqueo de fichas
+Tratando Informes personalizados
+Tratando Informes personalizados en ODS
+Tratando Bloqueo de Fechas
+Tratando Registro de IVA
+Tratando Bloqueo de Fechas
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/
+coordinadora&quot;
+
+Started.
+error: psql:/usr/local/share/bulmages/dbmodels/plugins:0: no se pudo
+leer el archivo de entrada: Es un directorio
+Done.
+
+
+Tratando Registro de IVA
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/
+coordinadora&quot;
+
+Started.
+error: psql:/usr/local/share/bulmages/dbmodels/plugins:0: no se pudo
+leer el archivo de entrada: Es un directorio
+Done.
+
+
+Tratando Informes personalizados en ODS
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/
+coordinadora&quot;
+
+Started.
+error: psql:/usr/local/share/bulmages/dbmodels/plugins:0: no se pudo
+leer el archivo de entrada: Es un directorio
+Done.
+
+
+Tratando Informes personalizados
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/
+coordinadora&quot;
+
+Started.
+error: psql:/usr/local/share/bulmages/dbmodels/plugins:0:
+error: no se pudo leer el archivo de entrada: Es un directorio
+Done.
+
+
+Tratando Bloqueo de fichas
+su postgres -c &quot;psql -t -f
+/usr/local/share/bulmages/dbmodels/plugins/pluginbl_formlock-rm.sql
+coordinadora&quot;
+
+Started.
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE BLOQUEOS
+*********&quot; &quot;:: Establecemos los mensajes minimos a avisos y otros
+parametros ... &quot; &quot;:: &quot;
+SET
+SET
+BEGIN
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+0
+DROP FUNCTION
+CREATE FUNCTION
+0
+DROP FUNCTION &quot;Eliminado el plugin de bloqueos de la base de datos.&quot;
+DROP FUNCTION
+DROP FUNCTION
+COMMIT
+Done.
+
+
+Tratando Cuentas Anuales
+Tratando Amortizaciones
+Tratando Modo Debug
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/
+coordinadora&quot;
+
+Started.
+error: psql:/usr/local/share/bulmages/dbmodels/plugins:0: no se pudo
+leer el archivo de entrada: Es un directorio
+Done.
+
+
+Tratando Embeber aplicaciones
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/
+coordinadora&quot;
+
+Started.
+error: psql:/usr/local/share/bulmages/dbmodels/plugins:0: no se pudo
+leer el archivo de entrada: Es un directorio
+Done.
+
+
+Tratando Mostrar el logotipo
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/
+coordinadora&quot;
+
+Started.
+error: psql:/usr/local/share/bulmages/dbmodels/plugins:0: no se pudo
+leer el archivo de entrada: Es un directorio
+Done.
+
+
+Tratando Adjuntar documentos
+su postgres -c &quot;psql -t -f
+/usr/local/share/bulmages/dbmodels/plugins/pluginbl_attachdocument-rm.sql coordinadora&quot;
+
+Started.
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE ARCHIVOS *********&quot;
+&quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot;
+&quot;:: &quot;
+SET
+SET BEGIN
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+0
+DROP FUNCTION
+CREATE FUNCTION
+0
+DROP FUNCTION &quot;Eliminada la revision de la base de datos&quot;
+DROP FUNCTION
+DROP FUNCTION
+COMMIT
+Done.
+
+
+Tratando Proyectos Contables
+su postgres -c &quot;psql -t -f
+/usr/local/share/bulmages/dbmodels/plugins/pluginbc_proyectos-rm.sql
+coordinadora&quot;
+
+Started.
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE PRESUPUESTOS
+CONTABLES *********&quot; &quot;:: Establecemos los mensajes minimos a avisos y
+otros parametros ... &quot; &quot;:: &quot;
+SET
+SET
+BEGIN
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+0
+DROP FUNCTION &quot;Eliminamos las tablas necesarias para presupuestos
+contables&quot;
+CREATE FUNCTION
+0
+DROP FUNCTION &quot;Eliminamos la revision de la base de datos&quot;
+DROP FUNCTION
+DROP FUNCTION
+COMMIT
+Done.
+
+
+Tratando Ejemplo de desarrollo
+Tratando Corrector Contable
+Tratando Bloquear configuraciones
+Tratando Exportar listados a SXC.
+Tratando Cuentas anuales
+Tratando Pegar desde el portapapeles
+Tratando Informes personalizados por ficha
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/
+coordinadora&quot;
+
+Started.
+error: psql:/usr/local/share/bulmages/dbmodels/plugins:0: no se pudo
+leer el archivo de entrada: Es un directorio
+Done.
+
+
+Tratando Informes personalizados por e-mail
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/
+coordinadora&quot;
+
+Started.
+error: psql:/usr/local/share/bulmages/dbmodels/plugins:0: no se pudo
+leer el archivo de entrada: Es un directorio
+Done.
+
+
+Tratando Informes personalizados de ficha en ODS
+su postgres -c &quot;psql -t -f /usr/local/share/bulmages/dbmodels/plugins/
+coordinadora&quot;
+
+Started.
+error: psql:/usr/local/share/bulmages/dbmodels/plugins:0: no se pudo
+leer el archivo de entrada: Es un directorio
+Done.
+
+
+Tratando Imprimir subformularios
+Tratando Exportar subformularios a ODS.
+Tratando Importar datos separados por coma
+Tratando Resumen de una cuenta contable
+Tratando Balance Jerárquico.
+Tratando Duplicar Asientos Contables
+Tratando Mayor
+Tratando Balance
+Tratando Diario
+Tratando Cuentas Contables
+Tratando Asiento
+ESCRIBIENDO CONFIGURACION
+Escribiendo configuracion en /etc/bulmages/
+
+Started.
+Done.
+
+
+
+Started.
+Done.
+
+
+Tratando Asiento
+Tratando Balance Jerárquico.
+Tratando Duplicar Asientos Contables
+Tratando Mayor
+Tratando Balance
+Tratando Diario
+Tratando Cuentas Contables
+Tratando Importar datos separados por coma
+Tratando Resumen de una cuenta contable
+Tratando Imprimir subformularios
+Tratando Exportar subformularios a ODS.
+Tratando Informes personalizados por ficha
+Tratando Informes personalizados por e-mail
+Tratando Informes personalizados de ficha en ODS
+Tratando Bloquear configuraciones
+Tratando Exportar listados a SXC.
+Tratando Cuentas anuales
+Tratando Pegar desde el portapapeles
+Tratando Corrector Contable
+Tratando Modo Debug
+Tratando Embeber aplicaciones
+Tratando Mostrar el logotipo
+Tratando Adjuntar documentos
+Tratando Proyectos Contables
+Tratando Ejemplo de desarrollo
+Tratando Amortizaciones
+Tratando Cuentas Anuales
+Tratando Bloqueo de fichas
+Tratando Informes personalizados
+Tratando Informes personalizados en ODS
+Tratando Bloqueo de Fechas
+Tratando Registro de IVA
+Generando plantillas RML y PYS
+
+Started.
+Done.
+
+
+Started.
+Done.
+
+
+Started.
+Done.
+
+
+Started.
+Done.
+
+
+Started.
+Done.
+
+
+Started.
+Done.
+
+Generamos backup de las plantillas de impresion en
+/opt/bulmages/openreports_coordinadora_old1
+cp /usr/local/share/bulmages/openreports/es/canuales.rml
+/opt/bulmages/openreports_coordinadora/es
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/es/diario.rml
+/opt/bulmages/openreports_coordinadora/es
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/es/extracto.rml
+/opt/bulmages/openreports_coordinadora/es
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/es/plantilla.rml
+/opt/bulmages/openreports_coordinadora/es
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/es/plantilla1.rml
+/opt/bulmages/openreports_coordinadora/es
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/es/estilos.rml
+/opt/bulmages/openreports_coordinadora/es
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/es/listado.rml
+/opt/bulmages/openreports_coordinadora/es
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/es/logo.jpg
+/opt/bulmages/openreports_coordinadora/es
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/es/ficha.rml
+/opt/bulmages/openreports_coordinadora/es
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/ca/canuales.rml
+/opt/bulmages/openreports_coordinadora/ca
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/ca/diario.rml
+/opt/bulmages/openreports_coordinadora/ca
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/ca/extracto.rml
+/opt/bulmages/openreports_coordinadora/ca
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/ca/plantilla.rml
+/opt/bulmages/openreports_coordinadora/ca
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/ca/plantilla1.rml
+/opt/bulmages/openreports_coordinadora/ca
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/ca/estilos.rml
+/opt/bulmages/openreports_coordinadora/ca
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/ca/listado.rml
+/opt/bulmages/openreports_coordinadora/ca
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/ca/logo.jpg
+/opt/bulmages/openreports_coordinadora/ca
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/ca/ficha.rml
+/opt/bulmages/openreports_coordinadora/ca
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/fr/canuales.rml
+/opt/bulmages/openreports_coordinadora/fr
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/fr/diario.rml
+/opt/bulmages/openreports_coordinadora/fr
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/fr/extracto.rml
+/opt/bulmages/openreports_coordinadora/fr
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/fr/plantilla.rml
+/opt/bulmages/openreports_coordinadora/fr
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/fr/plantilla1.rml
+/opt/bulmages/openreports_coordinadora/fr
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/fr/estilos.rml
+/opt/bulmages/openreports_coordinadora/fr
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/fr/listado.rml
+/opt/bulmages/openreports_coordinadora/fr
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/fr/logo.jpg
+/opt/bulmages/openreports_coordinadora/fr
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/fr/ficha.rml
+/opt/bulmages/openreports_coordinadora/fr
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/en/canuales.rml
+/opt/bulmages/openreports_coordinadora/en
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/en/diario.rml
+/opt/bulmages/openreports_coordinadora/en
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/en/extracto.rml
+/opt/bulmages/openreports_coordinadora/en
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/en/plantilla.rml
+/opt/bulmages/openreports_coordinadora/en
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/en/plantilla1.rml
+/opt/bulmages/openreports_coordinadora/en
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/en/estilos.rml
+/opt/bulmages/openreports_coordinadora/en
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/en/listado.rml
+/opt/bulmages/openreports_coordinadora/en
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/en/logo.jpg
+/opt/bulmages/openreports_coordinadora/en
+
+Started.
+Done.
+
+cp /usr/local/share/bulmages/openreports/en/ficha.rml
+/opt/bulmages/openreports_coordinadora/en
+
+Started.
+Done.
+
+Tratando Bloqueo de Fechas
+Tratando Cuentas Anuales
+Tratando Corrector Contable
+Tratando Informes personalizados
+Tratando Informes personalizados por ficha
+Tratando Asiento
+Tratando Bloquear configuraciones
+Tratando Importar datos separados por coma
+Tratando Balance Jerárquico.
+Tratando Modo Debug
+Tratando Imprimir subformularios
+Tratando Duplicar Asientos Contables
+Tratando Exportar listados a SXC.
+Tratando Mayor
+Tratando Balance
+Tratando Embeber aplicaciones
+Tratando Mostrar el logotipo
+Tratando Diario
+Tratando Amortizaciones
+Tratando Registro de IVA
+Tratando Adjuntar documentos
+Tratando Cuentas anuales
+Tratando Bloqueo de fichas
+Tratando Informes personalizados en ODS
+Tratando Exportar subformularios a ODS.
+Tratando Proyectos Contables
+Tratando Ejemplo de desarrollo
+Tratando Informes personalizados por e-mail
+Tratando Cuentas Contables
+Tratando Resumen de una cuenta contable
+Tratando Informes personalizados de ficha en ODS
+Tratando Pegar desde el portapapeles
+
+Started.
+Done.
+
+
+Done.
+
+
+-- 
+Miguel Ángel
+
+------------ próxima parte ------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 897 bytes
+Desc: OpenPGP digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20131230/fd8f5300/attachment-0001.pgp">https://lists.berlios.de/pipermail/bulmages-main/attachments/20131230/fd8f5300/attachment-0001.pgp</A>&gt;
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007801.html">[BulmaGés]problema con bulmasetup en Debian
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007808.html">[BulmaGés]problema con bulmasetup en Debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7807">[ fecha ]</a>
+              <a href="thread.html#7807">[ hilo ]</a>
+              <a href="subject.html#7807">[ asunto ]</a>
+              <a href="author.html#7807">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]r3858 - in trunk: bulmages debian
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fr3858_-_in_trunk%3D3A_b%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fulmages_debian%3F%3D&In-Reply-To=%3C201006091255.49335.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003692.html">
+   <LINK REL="Next"  HREF="003694.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]r3858 - in trunk: bulmages debian </H1>
+    <B>Tomeu</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fr3858_-_in_trunk%3D3A_b%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fulmages_debian%3F%3D&In-Reply-To=%3C201006091255.49335.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]r3858 - in trunk: bulmages debian">tborras en conetxia.com
+       </A><BR>
+    <I>Mie Jun  9 12:55:48 CEST 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003692.html">[BulmaGés]r3858 - in trunk: bulmages debian
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003694.html">[BulmaGés]r3858 - in trunk: bulmages debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3690">[ fecha ]</a>
+              <a href="thread.html#3690">[ hilo ]</a>
+              <a href="subject.html#3690">[ asunto ]</a>
+              <a href="author.html#3690">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> A Dimecres 09 Juny 2010, Iker Salmón San Millán va escriure:
+</I>&gt;<i> &gt; Pues entonces no se que hacer, porque el warning es este:
+</I>&gt;<i> &gt; dpkg-shlibdeps: warning: symbol
+</I>&gt;<i> &gt; _ZN19BcPlanContableArbol14actualizaHojasEP13BlDbRecordSet used by
+</I>&gt;<i> &gt; debian/bulmacont/usr/lib/bulmacont/plugins/libpluginbc_cuentasanuales.so.
+</I>&gt;<i> &gt;0. 12.0 found in none of the libraries.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Y esa ruta ya está incluida en el rules, así que supongo que podría
+</I>&gt;<i> &gt; ignorarse ¿no?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Creo que entonces ha llegado el momento de subir los paquetes generados
+</I>&gt;<i> &gt; por si alguien se ofrece a probarlos.
+</I>&gt;<i> 
+</I>&gt;<i> el problema que hay es que hay un plugin que está linkado contra otro
+</I>&gt;<i>  plugin. Entonces, se queja porque no está en /usr/lib si no
+</I>&gt;<i> en /usr/lib/bulmacont/plugins.
+</I>&gt;<i> 
+</I>&gt;<i> No sé como solucionar-lo. Habría que preguntar a altas instancias
+</I>&gt;<i>  debianeras que punyetas dice las policy en éste tema tan preciso. Otra
+</I>&gt;<i>  cosa seria linkar en estático. Com ho veus Tomeu?
+</I>
+Linkar en estatico es IMPOSIBLE. Ya en su dia me pelee con ello y luego nos 
+peleamos Fco. Javier y yo con el tema el linkado estatico.
+
+Resulta que si linkas plugins en estatíco estas duplicando las funciones (es 
+decir que aparecen 2 veces en el ejecutable) y por tanto también ejecutas 2 
+veces lo linkado estaticamente en las llamadas a plugins con lo que te 
+encuentras sorpresas como que la pantalla de clientes aparece 2 veces o que 
+vas a abrir una ficha y se abre duplicada etc. Bastante desagradable pero 
+lógico si te paras a pensar lo que es el linkado estático.
+
+
+Salut
+
+&gt;<i> 
+</I>&gt;<i> Leo
+</I>&gt;<i> 
+</I>&gt;<i> &gt; 2010/6/9 Tomeu &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &gt; &gt; Pues eso no lo ha solucionado, sin embargo he conseguido construir el
+</I>&gt;<i> &gt; &gt; &gt; paquete sin tener que exportar las librerías añadiendo un parámetro
+</I>&gt;<i> &gt; &gt; &gt; al dh_shlibdeps en el archivo rules, pero sigo obteniendo los
+</I>&gt;<i> &gt; &gt; &gt; warnings por
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; los
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; plugins. Creo que esos warnings se pueden evitar si localizo donde
+</I>&gt;<i> &gt; &gt; &gt; están los symbol correspondientes.
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; por ejemplo:  ¿en qué librería se encuentra symbol
+</I>&gt;<i> &gt; &gt; &gt; _ZN19BcPlanContableArbol14actualizaHojasEP13BlDbRecordSet ?
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; bulmacont/plugins/pluginbc_cuenta
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Salut
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; 2010/6/9 &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">svn en mail.berlios.de</A>&gt;
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; Author: lepalom
+</I>&gt;<i> &gt; &gt; &gt; &gt; Date: 2010-06-09 00:23:48 +0200 (dc, 09 jun 2010)
+</I>&gt;<i> &gt; &gt; &gt; &gt; New Revision: 3858
+</I>&gt;<i> &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; Modified:
+</I>&gt;<i> &gt; &gt; &gt; &gt;   trunk/bulmages/CMakeLists.txt
+</I>&gt;<i> &gt; &gt; &gt; &gt;   trunk/debian/changelog
+</I>&gt;<i> &gt; &gt; &gt; &gt;   trunk/debian/control
+</I>&gt;<i> &gt; &gt; &gt; &gt; Log:
+</I>&gt;<i> &gt; &gt; &gt; &gt; - Pequeña modificación del cmake para intentar resolver los
+</I>&gt;<i> &gt; &gt; &gt; &gt; problems
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; del
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; RPATH.
+</I>&gt;<i> &gt; &gt; &gt; &gt; - Corrección del fichero control y del changelog.
+</I>&gt;<i> &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; _______________________________________________
+</I>&gt;<i> &gt; &gt; &gt; &gt; Bulmages-main mailing list
+</I>&gt;<i> &gt; &gt; &gt; &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt; &gt; &gt; &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &quot;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; _______________________________________________
+</I>&gt;<i> &gt; &gt; Bulmages-main mailing list
+</I>&gt;<i> &gt; &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt; &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i> &quot;
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003692.html">[BulmaGés]r3858 - in trunk: bulmages debian
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003694.html">[BulmaGés]r3858 - in trunk: bulmages debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3690">[ fecha ]</a>
+              <a href="thread.html#3690">[ hilo ]</a>
+              <a href="subject.html#3690">[ asunto ]</a>
+              <a href="author.html#3690">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]A ver quien simplifica esto
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-15%3Fq%3FA_ver_quien_simplifi%3F%3D%20%3D%3Fiso-8859-15%3Fq%3Fca_esto%3F%3D&In-Reply-To=%3C201107271158.16227.auryn%40wanadoo.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006333.html">
+   <LINK REL="Next"  HREF="006336.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]A ver quien simplifica esto </H1>
+    <B>Aron</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-15%3Fq%3FA_ver_quien_simplifi%3F%3D%20%3D%3Fiso-8859-15%3Fq%3Fca_esto%3F%3D&In-Reply-To=%3C201107271158.16227.auryn%40wanadoo.es%3E"
+       TITLE="[BulmaGés]A ver quien simplifica esto">auryn en wanadoo.es
+       </A><BR>
+    <I>Mie Jul 27 11:58:16 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006333.html">[BulmaGés] A ver quien simplifica esto
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006336.html">[BulmaGés]=?iso-8859-15?q?A_ver_quien_simplifi?= =?iso-8859-15?q?ca_esto?=
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6334">[ fecha ]</a>
+              <a href="thread.html#6334">[ hilo ]</a>
+              <a href="subject.html#6334">[ asunto ]</a>
+              <a href="author.html#6334">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>He cambiado el diseño de la consulta para verla mejor.
+Está ingeniosa, no veo que se pueda simplificar mucho ya, a no ser que exista alguna función de PostgreSQL que no conozcamos.
+
+SELECT
+	*,
+	Fecha1 + &quot;S&quot;.&quot;I&quot; AS Fecha2
+FROM  (
+	SELECT
+		('01/07/2011'::DATE + &quot;Series&quot;.&quot;Index&quot;) AS Fecha1,
+		EXTRACT ('dow' FROM '01/07/2011'::DATE + &quot;Series&quot;.&quot;Index&quot; ) AS dowe
+	FROM generate_series(-6,2) AS &quot;Series&quot;(&quot;Index&quot;)
+	WHERE EXTRACT ('dow' FROM '01/07/2011'::DATE + &quot;Series&quot;.&quot;Index&quot; ) = 1 LIMIT 1
+) AS S2, generate_series(0,41) AS &quot;S&quot;(&quot;I&quot;);
+
+On Miércoles, 27 de Julio de 2011 11:03:57 Tomeu Borras escribió:
+&gt;<i> Buenas
+</I>&gt;<i> 
+</I>&gt;<i> Esta es la consulta SQL a la que he llegado tras estar un dia estudiandome
+</I>&gt;<i> como hacerlo. Lo que saca son las ocurrencias de calendario teniendo en
+</I>&gt;<i> cuenta la posicion del dia de la semana en la que empieza el mes.
+</I>&gt;<i> 
+</I>&gt;<i> Es decir, si mirais un calendario mensual de julio vereis que el primer dia
+</I>&gt;<i> mostrado es el 26 de junio.
+</I>&gt;<i> 
+</I>&gt;<i> No se si hay formas más simples de hacerlo, pero no se me han ocurrido.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> SELECT *, Fecha1 + &quot;S&quot;.&quot;I&quot; AS Fecha2 FROM  (SELECT ('01/07/2011'::DATE +
+</I>&gt;<i> &quot;Series&quot;.&quot;Index&quot;) AS Fecha1, EXTRACT ('dow' FROM '01/07/2011'::DATE +
+</I>&gt;<i> &quot;Series&quot;.&quot;Index&quot; ) AS dowe FROM generate_series(-6,2) AS &quot;Series&quot;(&quot;Index&quot;)
+</I>&gt;<i> WHERE EXTRACT ('dow' FROM '01/07/2011'::DATE + &quot;Series&quot;.&quot;Index&quot; ) = 1 LIMIT
+</I>&gt;<i> 1 ) AS S2, generate_series(0,41) AS &quot;S&quot;(&quot;I&quot;);
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Salut
+</I>&gt;<i> 
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006333.html">[BulmaGés] A ver quien simplifica esto
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006336.html">[BulmaGés]=?iso-8859-15?q?A_ver_quien_simplifi?= =?iso-8859-15?q?ca_esto?=
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6334">[ fecha ]</a>
+              <a href="thread.html#6334">[ hilo ]</a>
+              <a href="subject.html#6334">[ asunto ]</a>
+              <a href="author.html#6334">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

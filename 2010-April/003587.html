@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Disponible la versión 1.0 de NxSpooler; impresión con FreeNX si se trabaja remotamente con  =?iso-8859-1?q?_Bulmag=E9s?=, por ejemplo.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FDisponible_la_versi%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3DF3n_1%3D2E0_de_NxSpooler%3D3B_impresi%3DF3n_con_FreeNX_si_se_tr%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fabaja_remotamente_con__%3D3D%3D3Fiso-8859-1%3D3Fq%3D3F%3D5FBulmag%3D3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FE9s%3D3F%3D3D%3D2C_por_ejemplo%3D2E%3F%3D&In-Reply-To=%3C201004061750.10522.asmond%40orange.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003586.html">
+   <LINK REL="Next"  HREF="003588.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Disponible la versión 1.0 de NxSpooler; impresión con FreeNX si se trabaja remotamente con  =?iso-8859-1?q?_Bulmag=E9s?=, por ejemplo. </H1>
+    <B>Toni Asensi Esteve</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FDisponible_la_versi%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3F%3DF3n_1%3D2E0_de_NxSpooler%3D3B_impresi%3DF3n_con_FreeNX_si_se_tr%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Fabaja_remotamente_con__%3D3D%3D3Fiso-8859-1%3D3Fq%3D3F%3D5FBulmag%3D3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FE9s%3D3F%3D3D%3D2C_por_ejemplo%3D2E%3F%3D&In-Reply-To=%3C201004061750.10522.asmond%40orange.es%3E"
+       TITLE="[BulmaGés]Disponible la versión 1.0 de NxSpooler; impresión con FreeNX si se trabaja remotamente con  =?iso-8859-1?q?_Bulmag=E9s?=, por ejemplo.">asmond en orange.es
+       </A><BR>
+    <I>Mar Abr  6 17:50:10 CEST 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003586.html">[BulmaGés]Estadísticas BulmaGes.
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003588.html">[BulmaGés]Disponible la versión 1.0 de NxSpooler; impresión con FreeNX si se trabaja remotamente con  =?iso-8859-1?q?_Bulmag=E9s?=, por ejemplo.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3587">[ fecha ]</a>
+              <a href="thread.html#3587">[ hilo ]</a>
+              <a href="subject.html#3587">[ asunto ]</a>
+              <a href="author.html#3587">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hola a todos:
+
+      Ya está disponible la versión 1.0 de NxSpooler, por ejemplo se ha 
+añadido la capacidad de abrir programadamente  carpetas compartidas del 
+servidor  en  el ordenador del usuario, lo que puede venir muy bien. 
+        
+      Aparte, los cambios desde la última versión mencionada en esta lista de 
+correo (<A HREF="https://lists.berlios.de/pipermail/bulmages-main/2009-">https://lists.berlios.de/pipermail/bulmages-main/2009-</A>
+July/002816.html) son:
+            - Ahora la carpeta de trabajo predeterminada en el ordenador local 
+no es &quot;.bulmages&quot; sino &quot;.nxspooler&quot;, para hacerlo más genérico. 
+            - Se ha añadido gestión de excepciones (bloques &quot;try&quot;) en slots 
+que pueden ser llamados por las bibliotecas Qt. 
+              Nota: la gestión de excepciones debe existir en slots que pueden 
+ser llamados por las bibliotecas Qt. Esto es debido a que el usuario 
+normalmente tiene las bibliotecas Qt compiladas sin soporte a excepciones y 
+por ello una excepción que alcance el código de las bibliotecas Qt... causa 
+que se cierre el programa (aunque mostrando el texto de la excepción en 
+stderr). 
+            - NxSpooler es traducible.  
+            - Se detecta una nueva extensión: .nxspooler-open
+              Cuando NxSpooler encuentra un archivo de texto con esta 
+extensión, trata de abrir la carpeta mencionada en dicho archivo. Esto se hace 
+así para que Bulmagés en el servidor pueda crear archivos .nxspooler-open y 
+por tanto, para que programadamente Bulmagés pueda hacer que en el ordenador 
+del usuario se abran carpetas compartidas del servidor (por ejemplo: la 
+carpeta de archivos del proyecto 33, para que el usuario pueda añadir archivos 
+allí, abrirlos, etc).
+            - Para Windows:
+                - Se tienen disponibles instaladores .exe para Windows en 
+<A HREF="https://developer.berlios.de/projects/nxspooler/.">https://developer.berlios.de/projects/nxspooler/.</A> Estos instaladores fueron 
+construidos automáticamente usando un guión para NSIS, el guión de texto está 
+entre los archivos del código fuente.
+                - Añadido un icono particular para Windows.
+                - El instalador cambia el valor de ForegroundLockTimeout en el 
+registro. Esto se hace para conseguir que pasen a primer plano las ventanas 
+abiertas por NxSpooler.
+            - Para evitar el problema de tratar de abrir un archivo aún 
+formándose, se espera hasta que tenga un tamaño que no cambie.
+            - Varios cambios menores.
+
+      Se pueden conseguir los archivos desde la web del proyecto:  
+<A HREF="http://developer.berlios.de/project/showfiles.php?group_id=11041">http://developer.berlios.de/project/showfiles.php?group_id=11041</A>
+
+-- 
+Aron Galdón Ginés y Toni Asensi Esteve.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003586.html">[BulmaGés]Estadísticas BulmaGes.
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003588.html">[BulmaGés]Disponible la versión 1.0 de NxSpooler; impresión con FreeNX si se trabaja remotamente con  =?iso-8859-1?q?_Bulmag=E9s?=, por ejemplo.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3587">[ fecha ]</a>
+              <a href="thread.html#3587">[ hilo ]</a>
+              <a href="subject.html#3587">[ asunto ]</a>
+              <a href="author.html#3587">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

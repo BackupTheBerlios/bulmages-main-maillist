@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés][Un paso más al futuro] Ya compilamos (lo básico) en Qt5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2012-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3F%3D5BUn_paso_m%3DE1s_al_f%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Futuro%3D5D_Ya_compilamos_%3D28lo_b%3DE1sico%3D29_en_Qt5%3F%3D&In-Reply-To=%3C50C3803A.70002%40danielripoll.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007439.html">
+   <LINK REL="Next"  HREF="007442.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés][Un paso más al futuro] Ya compilamos (lo básico) en Qt5 </H1>
+    <B>Daniel Ripoll</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3F%3D5BUn_paso_m%3DE1s_al_f%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Futuro%3D5D_Ya_compilamos_%3D28lo_b%3DE1sico%3D29_en_Qt5%3F%3D&In-Reply-To=%3C50C3803A.70002%40danielripoll.es%3E"
+       TITLE="[BulmaGés][Un paso más al futuro] Ya compilamos (lo básico) en Qt5">info en danielripoll.es
+       </A><BR>
+    <I>Sab Dic  8 19:00:26 CET 2012</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007439.html">[BulmaGés][Camino hacia el futuro] Más cosas que no existen en Qt5
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007442.html">[BulmaGés]Estándar de numeración de versiones
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7441">[ fecha ]</a>
+              <a href="thread.html#7441">[ hilo ]</a>
+              <a href="subject.html#7441">[ asunto ]</a>
+              <a href="author.html#7441">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Buenas chicos,
+
+Tengo una pequeña noticia para vosotros pero antes me disculpo por el 
+tochopost...
+
+Mis &quot;monos&quot; y yo hemos conseguido al final realizar todas las 
+modificaciones necesarias al código de BulmaGés para compilar en Qt5.
+
+Ojo, todavía la cosa no es funcional, ya que compilamos solo lo que es 
+la base y algunos plugins, pero paso por paso.
+
+Así a voz de pronto, se puede decir que:
+
+pluginbl_feeds todavía no probamos a compilarlo , ya que ninguno de 
+nosotros ha conseguido compilar Qt5Webkit correctamente, supongo que con 
+la RC2 o la Release final ya no habrá problemas.
+
+pluginbl_embed no compila, ni compilará, principalmente porque 
+QX11EmbedContainer ha dejado de existir y nadie de TODO QT tiene deseos 
+de mantenerlo y/o portarlo (seamos sinceros, ¿para que xD, cuando los 
+programas por si solos funcionan y en caso extremo se pueden integrar a 
+nivel de puntero?
+
+Los &quot;widgets&quot; de &quot;designer&quot; por ahora no compilan... y al ser 
+necesitados por designer y no por bulmages los meteré en una directiva 
+de CMAKE aparte (asi nos ahorramos esos FEOS errores de compilación 
+paralela)
+
+CMake requiere de una versión muy elevada y mucho de lo que había hasta 
+ahora en CMake queda &quot;roto&quot; así que veremos como podremos hacerlo para 
+integrar el código todo junto...
+
+La idea respecto a repositorios será dejarlo tal que así:
+
+Bulmages-&gt;Bulmages-&gt;ramas{qt4, qt4-release, master, release)
+
+
+Salut!
+
+
+-- 
+Daniel Ripoll Osma
+<A HREF="http://danielripoll.es">http://danielripoll.es</A>
+<A HREF="http://bulmages.es">http://bulmages.es</A>
+<A HREF="http://manualencatala.tk">http://manualencatala.tk</A>
+6688.27.4.90
+
+Web &amp; Desktop Developer
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007439.html">[BulmaGés][Camino hacia el futuro] Más cosas que no existen en Qt5
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007442.html">[BulmaGés]Estándar de numeración de versiones
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7441">[ fecha ]</a>
+              <a href="thread.html#7441">[ hilo ]</a>
+              <a href="subject.html#7441">[ asunto ]</a>
+              <a href="author.html#7441">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

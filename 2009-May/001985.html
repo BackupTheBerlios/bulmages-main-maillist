@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] Deteccion de errores
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Deteccion%20de%20errores&In-Reply-To=%3Cee3be790905190447o288b87b5h9b15e6eec44b1907%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001982.html">
+   <LINK REL="Next"  HREF="001986.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] Deteccion de errores </H1>
+    <B>Tony Alvarez</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Deteccion%20de%20errores&In-Reply-To=%3Cee3be790905190447o288b87b5h9b15e6eec44b1907%40mail.gmail.com%3E"
+       TITLE="[BulmaGés] Deteccion de errores">t.alvarezpascual en gmail.com
+       </A><BR>
+    <I>Mar Mayo 19 13:47:42 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="001982.html">[BulmaGés] r3371 -	trunk/bulmages/bulmafact/plugins/pluginbf_q19
+</A></li>
+        <LI>Próximo mensaje: <A HREF="001986.html">[BulmaGés] r3372 - in trunk/bulmages:	bulmafact/plugins/pluginbf_profesor/dbmodels bulmasetup
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1985">[ fecha ]</a>
+              <a href="thread.html#1985">[ hilo ]</a>
+              <a href="subject.html#1985">[ asunto ]</a>
+              <a href="author.html#1985">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>buenas
+
+como no conozco el funcionamiento de bulmacont ni bulmafact.. estos dias me
+dedicare a detectar errores, me he puesto a crear empresas, primero de
+bulmacont, una empresa por cada plugin.. y bueno no ha dado ningun error,
+tambien he creado otra empresa de contabilidad con todos los plugins a la
+vez, y tampoco a soltado ningun error.
+
+al empezar con bulmafact.. al crear la primera empresa me ha dado un error
+al tratar con el plugin bf_profesor-rm.. supongo que ya tenias constancia de
+este error.. pero bueno.. seguiré creando empresas con todas las
+posibilidades de plugins que se me ocurran y reportando los errores..
+
+copio el error que muestra la consola al intentar copiar el sql del plugin:
+
+
+*<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">talvarez en omicron</A>:~/BulmaGes/trunk/bulmages/bulmasetup$ sudo su postgres -c
+&quot;psql -t -f
+/usr/local/share/bulmages/dbmodels/plugins/pluginbf_profesor-rm.sql fact1&quot;
+[sudo] password for talvarez:
+&quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE VARIACION TARIFA POR
+CANTIDAD *********&quot;
+&quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot;
+&quot;:: &quot;SET
+SET
+BEGIN
+CREATE FUNCTION
+CREATE FUNCTION
+psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_profesor-rm.sql:44:
+ERROR:  no existe la función actualizacantrecibo_insert()
+psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_profesor-rm.sql:45:
+ERROR:  transacción abortada, las consultas serán ignoradas hasta el fin de
+bloque de transacción
+psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_profesor-rm.sql:46:
+ERROR:  transacción abortada, las consultas serán ignoradas hasta el fin de
+bloque de transacción
+psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_profesor-rm.sql:102:
+ERROR:  transacción abortada, las consultas serán ignoradas hasta el fin de
+bloque de transacción
+psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_profesor-rm.sql:103:
+ERROR:  transacción abortada, las consultas serán ignoradas hasta el fin de
+bloque de transacción
+psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_profesor-rm.sql:104:
+ERROR:  transacción abortada, las consultas serán ignoradas hasta el fin de
+bloque de transacción
+&quot;Creamos la tabla profesor.&quot;
+psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_profesor-rm.sql:122:
+ERROR:  transacción abortada, las consultas serán ignoradas hasta el fin de
+bloque de transacción
+psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_profesor-rm.sql:123:
+ERROR:  transacción abortada, las consultas serán ignoradas hasta el fin de
+bloque de transacción
+psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_profesor-rm.sql:124:
+ERROR:  transacción abortada, las consultas serán ignoradas hasta el fin de
+bloque de transacción
+&quot;Actualizada la revision de la base de datos a la version&quot;
+psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_profesor-rm.sql:128:
+ERROR:  transacción abortada, las consultas serán ignoradas hasta el fin de
+bloque de transacción
+psql:/usr/local/share/bulmages/dbmodels/plugins/pluginbf_profesor-rm.sql:129:
+ERROR:  transacción abortada, las consultas serán ignoradas hasta el fin de
+bloque de transacción
+ROLLBACK*
+------------ próxima parte ------------
+Se ha borrado un adjunto en formato HTML...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20090519/ed7df208/attachment.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20090519/ed7df208/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="001982.html">[BulmaGés] r3371 -	trunk/bulmages/bulmafact/plugins/pluginbf_q19
+</A></li>
+	<LI>Próximo mensaje: <A HREF="001986.html">[BulmaGés] r3372 - in trunk/bulmages:	bulmafact/plugins/pluginbf_profesor/dbmodels bulmasetup
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#1985">[ fecha ]</a>
+              <a href="thread.html#1985">[ hilo ]</a>
+              <a href="subject.html#1985">[ asunto ]</a>
+              <a href="author.html#1985">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] r3487 - in trunk/bulmages: bulmalib/src	bulmatpv/plugins/pluginbt_articulograficodb installbulmages
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3487%20-%20in%20trunk/bulmages%3A%20bulmalib/src%0A%09bulmatpv/plugins/pluginbt_articulograficodb%20installbulmages&In-Reply-To=%3C200906081122.n58BMr2G032337%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002363.html">
+   <LINK REL="Next"  HREF="002365.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] r3487 - in trunk/bulmages: bulmalib/src	bulmatpv/plugins/pluginbt_articulograficodb installbulmages </H1>
+    <B>svn en mail.berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3487%20-%20in%20trunk/bulmages%3A%20bulmalib/src%0A%09bulmatpv/plugins/pluginbt_articulograficodb%20installbulmages&In-Reply-To=%3C200906081122.n58BMr2G032337%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] r3487 - in trunk/bulmages: bulmalib/src	bulmatpv/plugins/pluginbt_articulograficodb installbulmages">svn en mail.berlios.de
+       </A><BR>
+    <I>Lun Jun  8 13:22:53 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002363.html">[BulmaGés][Bug #15827] SINTAXI ERROR
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002365.html">[BulmaGés]r3487 - in trunk/bulmages: bulmalib/src bulmatpv/plugins/pluginbt_articulograficodb installbulmages
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2364">[ fecha ]</a>
+              <a href="thread.html#2364">[ hilo ]</a>
+              <a href="subject.html#2364">[ asunto ]</a>
+              <a href="author.html#2364">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: arturo_ml
+Date: 2009-06-08 13:22:49 +0200 (dl, 08 jun 2009)
+New Revision: 3487
+
+Modified:
+   trunk/bulmages/bulmalib/src/blconfiguration.cpp
+   trunk/bulmages/bulmalib/src/blconfiguration.h
+   trunk/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.cpp
+   trunk/bulmages/bulmatpv/plugins/pluginbt_articulograficodb/artgraficosdb.h
+   trunk/bulmages/installbulmages/bulmatpv.conf.in
+Log:
+
+Ya está implementada por completo la funcionalidad de que el TPV coja familias
+y artículos desde la base de datos. He añadido dos variables más de configuración:
+
+- CONF_TPV_CELL_WIDTH: nos dice el ancho (y alto, ya que las hacemos cuadradas) de
+las celdas donde se presentan los artículos.
+- CONF_TPV_CELLS_PER_ROW: celdas por fila (ancho de la parrilla, básicamente).
+
+Ambos valores se especifican en píxeles.
+
+Lo que falta por hacer ahora será el tratamiento automático de thumbnails. La cosa
+sería así:
+
+1. Comprobar qué imágenes hay en CONF_DIR_IMG_ARTICLES (imágenes de los artículos
+de BulmaFact).
+2. Comprobar cuáles tienen un thumbnail en CONF_DIR_THUMB_ARTICLES.
+3. De las obtenidas en el punto 2, generar su thumbnail en CONF_DIR_THUMB_ARTICLES.
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002363.html">[BulmaGés][Bug #15827] SINTAXI ERROR
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002365.html">[BulmaGés]r3487 - in trunk/bulmages: bulmalib/src bulmatpv/plugins/pluginbt_articulograficodb installbulmages
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2364">[ fecha ]</a>
+              <a href="thread.html#2364">[ hilo ]</a>
+              <a href="subject.html#2364">[ asunto ]</a>
+              <a href="author.html#2364">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

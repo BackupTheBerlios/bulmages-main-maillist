@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] Compilant sota cygwin
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Compilant%20sota%20cygwin&In-Reply-To=%3C20100804174213.GB3092%40upf.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003877.html">
+   <LINK REL="Next"  HREF="003880.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] Compilant sota cygwin </H1>
+    <B>Walter Garcia-Fontes</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Compilant%20sota%20cygwin&In-Reply-To=%3C20100804174213.GB3092%40upf.edu%3E"
+       TITLE="[BulmaGés] Compilant sota cygwin">walter.garcia en upf.edu
+       </A><BR>
+    <I>Mie Ago  4 19:42:13 CEST 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003877.html">[BulmaGés] r3934 -	trunk/bulmages/bulmafact/plugins/pluginbf_proveedor
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003880.html">[BulmaGés]Compilant sota cygwin
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3878">[ fecha ]</a>
+              <a href="thread.html#3878">[ hilo ]</a>
+              <a href="subject.html#3878">[ asunto ]</a>
+              <a href="author.html#3878">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Estoy intentando compilar el bulmages bajo cygwin. La compilación peta
+en las librerías relacionadas con la internacionalización, a pesar de
+que cygwin permite instalar todos los elementos necesarios. La
+detección parece correcta, este es el resultado del &quot;cmake ../&quot; en el
+directorio &quot;build&quot;:
+
+$ cmake ../
+-- The C compiler identification is GNU
+-- The CXX compiler identification is GNU
+-- Check for working C compiler: /usr/bin/gcc.exe
+-- Check for working C compiler: /usr/bin/gcc.exe -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++.exe
+-- Check for working CXX compiler: /usr/bin/c++.exe -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Using cmake version 2.6
+-- Looking for Q_WS_X11
+-- Looking for Q_WS_X11 - found
+-- Looking for Q_WS_WIN
+-- Looking for Q_WS_WIN - not found.
+-- Looking for Q_WS_QWS
+-- Looking for Q_WS_QWS - not found.
+-- Looking for Q_WS_MAC
+-- Looking for Q_WS_MAC - not found.
+-- Found Qt-Version 4.5.3
+-- Found OpenSSL: /lib/libssl.dll.a
+-- Found PostgreSQL pg_config: /usr/bin/pg_config.exe
+-- Found PostgreSQL includedir: /usr/include
+-- Found PostgreSQL library: /usr/bin/cygpq.dll
+-- Found PostgreSQL binary utils dir: /usr/bin
+-- Looking for include files HAVE_LIBINTL_H
+-- Looking for include files HAVE_LIBINTL_H - found
+-- Looking for dgettext
+-- Looking for dgettext - not found
+-- Looking for dgettext in /lib/libintl.dll.a
+-- Looking for dgettext in /lib/libintl.dll.a - found
+-- Found Gettext: in /lib/libintl.dll.a
+-- Working on bulmalib
+-- Working on bulmacont
+-- Working on bulmafact
+-- Working on bulmages
+-- Working on bulmatpv
+-- Working on bulmasetup
+-- Working on installbulmages
+-- Working on documentation
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/wgarcia/bulmages/build
+
+Como se puede ver &quot;gettext&quot; se detecta en libintl.dll.a. Sin embargo
+después la compilación peta con &quot;undefined reference to
+_libintl_gettext&quot; en el siguiente paso:
+
+Linking CXX shared library cygbulmalib-0.12.0.dll
+Creating library file: libbulmalib.dll.a
+CMakeFiles/bulmalib.dir/blconfiguration.o:blconfiguration.cpp:(.text+0x6785):
+undefined reference to `_libintl_bindtextdomain'
+CMakeFiles/bulmalib.dir/blconfiguration.o:blconfiguration.cpp:(.text+0x6811):
+undefined reference to `_libintl_textdomain'
+CMakeFiles/bulmalib.dir/bli18n.o:bli18n.cpp:(.text+0x29): undefined
+reference to `_libintl_dgettext'
+CMakeFiles/bulmalib.dir/bli18n.o:bli18n.cpp:(.text+0x3c3): undefined
+reference to `_libintl_dgettext'
+CMakeFiles/bulmalib.dir/bli18n.o:bli18n.cpp:(.text+0x43a): undefined
+reference to `_libintl_gettext'
+CMakeFiles/bulmalib.dir/bli18n.o:bli18n.cpp:(.text+0x468): undefined
+reference to `_libintl_textdomain'
+CMakeFiles/bulmalib.dir/bli18n.o:bli18n.cpp:(.text+0x7d6): undefined
+reference to `_libintl_gettext'
+collect2: ld returned 1 exit status
+make[2]: *** [bulmalib/src/cygbulmalib-0.12.0.dll] Error 1
+make[1]: *** [bulmalib/src/CMakeFiles/bulmalib.dir/all] Error 2
+make: *** [all] Error 2
+
+Mirando en las flags que crea cmake, me parece entender que la
+libreria &quot;libintl.dll.a&quot; no se referencia a pesar de la detección que
+mencionaba. Por ejemplo al final de
+
+~/bulmages/build/bulmalib/src/CMakeFiles/bulmalib.dir/link.txt
+
+encuentro referenciadas las siguientes librerías:
+
+-L/usr/lib/qt4/lib
+-L/usr/bin/usr/lib/qt4/lib/libQtAssistantClient.dll.a
+/usr/lib/qt4/lib/libQtUiTools.a /usr/lib/qt4/lib/libQtGui.dll.a 
+-lpng -lSM -lICE -lXi -lXrender -lXrandr -lXcursor -lXinerama
+-lXfixes -lfreetype -lfontconfig -lXext -lX11
+-/usr/lib/qt4/lib/libQtXml.dll.a 
+/usr/lib/qt4/lib/libQtCore.dll.a /usr/bin/cygz.dll -lgthread-2.0
+--lglib-2.0 -lpthread -ldl /usr/bin/cygpq.dll
+
+pero no veo &quot;libintl.dll.a&quot;. 
+
+También he comprobado que la cadena &quot;_libintl_gettext&quot; aparece en
+&quot;libintl.dll.a&quot; 
+
+Es un problema del cmake? Puedo meter &quot;a mano&quot; de momento esta
+librería en &quot;link.txt&quot; a ver si puedo progresar un poco más en la
+compilación?
+
+Por cierto, también he probado de introducir macros tipo &quot;#ifdef
+__CYGWIN__&quot; similares a las de WIN32 para no usar gettext pero
+tampoco me funciona, me peta diciendo que &quot;textdomain&quot; y
+&quot;bindtextdomain&quot; ya están definidas y no puedo redefinirlas. 
+
+Walter
+
+-- 
+Walter Garcia-Fontes
+mailto: <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">walter.garcia en upf.edu</A> - <A HREF="http://puna.upf.edu">http://puna.upf.edu</A>
+Departament d'Economia i Empresa - <A HREF="http://www.econ.upf.edu">http://www.econ.upf.edu</A>
+Universitat Pompeu Fabra
+Ramon Trias Fargas 25-27, 08005 Barcelona, Spain
+Tel. +34 93 542 2722 - Fax. +34 93 542 1746
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003877.html">[BulmaGés] r3934 -	trunk/bulmages/bulmafact/plugins/pluginbf_proveedor
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003880.html">[BulmaGés]Compilant sota cygwin
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3878">[ fecha ]</a>
+              <a href="thread.html#3878">[ hilo ]</a>
+              <a href="subject.html#3878">[ asunto ]</a>
+              <a href="author.html#3878">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Más temas de compilación en cygwin
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FM%3DE1s_temas_de_compil%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Faci%3DF3n_en_cygwin%3F%3D&In-Reply-To=%3C201008051458.55054.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003891.html">
+   <LINK REL="Next"  HREF="003894.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Más temas de compilación en cygwin </H1>
+    <B>Tomeu</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FM%3DE1s_temas_de_compil%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Faci%3DF3n_en_cygwin%3F%3D&In-Reply-To=%3C201008051458.55054.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]Más temas de compilación en cygwin">tborras en conetxia.com
+       </A><BR>
+    <I>Jue Ago  5 14:58:54 CEST 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003891.html">[BulmaGés]Más temas de compilación en cygwin
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003894.html">[BulmaGés] r3938 - in trunk/bulmages: .	images/oxygen/actions/48x48
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3892">[ fecha ]</a>
+              <a href="thread.html#3892">[ hilo ]</a>
+              <a href="subject.html#3892">[ asunto ]</a>
+              <a href="author.html#3892">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Si te fijas en los CMakeList.txt hay una macro que esta comentada
+
+
+# i18n
+#if(WIN32)
+#ADD_DEFINITIONS(&quot;-D_(String)=BlI18n(\\\&quot;bulmalib\\\&quot;,String)&quot; )
+#ADD_DEFINITIONS(&quot;-DN_(String,Int)=BlI18n(\\\&quot;bulmalib\\\&quot;,String)&quot; )
+#endif(WIN32)                                                        
+
+#if(NOT WIN32)
+#ADD_DEFINITIONS(&quot;-D'_(String)=BlI18n(\&quot;bulmalib\&quot;,String)'&quot; )
+#ADD_DEFINITIONS(&quot;-D'N_(String,Int)=BlI18n(\&quot;bulmalib\&quot;,String)'&quot; )
+#endif(NOT WIN32)
+
+Esta macro era para el sistema de traducciones en, creo, versiones antiguas de 
+gettext.
+
+Supongo que volviendo a poner las macros el problema se arreglará.
+
+Salut
+
+&gt;<i> Finalmente pude avanzar y completar el link en &quot;bulmadir&quot;
+</I>&gt;<i> especificando la línea de lincado directamente y agregando
+</I>&gt;<i> &quot;libintl.dll.a&quot; al final. Otras maneras que probé introduciendo esta
+</I>&gt;<i> librería en diversos lugares de &quot;CMakeCache.txt&quot; agregaba esta cadena
+</I>&gt;<i> pero al principio, justo después de /usr/bin/c++, y seguía quejándose
+</I>&gt;<i> de no encontrar las _libintl_gettext y otras relacionadas. Pero
+</I>&gt;<i> poniéndola al final completó el lincado y después de copiar las
+</I>&gt;<i> librerías creadas al lugar adecuado el make se dio por satisfecho y
+</I>&gt;<i> siguió.
+</I>&gt;<i> 
+</I>&gt;<i> En seguida apareció otro problema en bulmatpv.dir. Hay unos paréntesis
+</I>&gt;<i> que interpreta como  paréntesis de la línea de comandos, (&quot;D_(String&quot;
+</I>&gt;<i> y cosas así), cosa que he arreglado poniéndole entrando otra vez el
+</I>&gt;<i> comando directamente y poniéndole un &quot;\&quot; delante de los
+</I>&gt;<i> paréntesis. Pero esto de momento me obliga a compilar cada objeto por
+</I>&gt;<i> separado, copiar los .o al lugar adecuado, etc. Se os ocurre porqué en
+</I>&gt;<i> &quot;cygwin&quot; estos paréntesis dan problemas pero no en linux? Es posible
+</I>&gt;<i> que &quot;sh&quot; no sea &quot;sh&quot; sino &quot;ash&quot; en cygwin, y quizás esto cause los
+</I>&gt;<i> problemas.
+</I>&gt;<i> 
+</I>&gt;<i> Walter
+</I>&gt;<i> &quot;
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003891.html">[BulmaGés]Más temas de compilación en cygwin
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003894.html">[BulmaGés] r3938 - in trunk/bulmages: .	images/oxygen/actions/48x48
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3892">[ fecha ]</a>
+              <a href="thread.html#3892">[ hilo ]</a>
+              <a href="subject.html#3892">[ asunto ]</a>
+              <a href="author.html#3892">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

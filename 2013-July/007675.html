@@ -1,0 +1,272 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Sincronizacion postGresql asincrona multipuesto
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FSincronizacion_postGr%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fesql_asincrona_multipuesto%3F%3D&In-Reply-To=%3CCAJWqEtf9jjfv4xFzN%2Bjshps6ZW2J%2BJ9cbcFDt%2BdN7z2N2XX3wg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007674.html">
+   <LINK REL="Next"  HREF="007676.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Sincronizacion postGresql asincrona multipuesto </H1>
+    <B>Tomeu Borras</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FSincronizacion_postGr%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3Fesql_asincrona_multipuesto%3F%3D&In-Reply-To=%3CCAJWqEtf9jjfv4xFzN%2Bjshps6ZW2J%2BJ9cbcFDt%2BdN7z2N2XX3wg%40mail.gmail.com%3E"
+       TITLE="[BulmaGés]Sincronizacion postGresql asincrona multipuesto">tborras en conetxia.com
+       </A><BR>
+    <I>Lun Jul  1 13:56:10 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007674.html">[BulmaGés]Sincronizacion postGresql asincrona multipuesto
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007676.html">[BulmaGés]Sincronizacion postGresql asincrona multipuesto
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7675">[ fecha ]</a>
+              <a href="thread.html#7675">[ hilo ]</a>
+              <a href="subject.html#7675">[ asunto ]</a>
+              <a href="author.html#7675">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Slony es master - slave replication (lecturas en local y escrituras en el
+master). Requiere de conexión ininterrumpida lo cual sólo permitiría
+trabajar en modo lectura a los desconectados. Que no esta nada mal (es muy
+eficiente !!, y el jefe se podría llevar los datos en el portátil pero sin
+tocar nada) pero no es el caso más difícil y simplemente es un modo de
+configuracion del sistema. (Lo podrías implementar ya mismo tocando el
+pg_hba.conf).
+
+Lo que propuse es (multi - master replication). El proyecto que lo lleva es
+bucardo <A HREF="http://bucardo.org">http://bucardo.org</A> y no esta integrado en postgresql (Pq tiene el
+grandisimo problema de requerir intervencion manual en los conflictos).
+También hay cosillas comerciales hechas y programas que hacen algo similiar
+a un nivel que un usuario normal no sabría entender. Y para terminarla de
+liar es un script en perl.
+
+..... o tal vez ser un poco menos ambiciosos y conformarnos con la
+esquemática master-slave que también da buenos resultados y no tiene tantas
+limitaciones.
+
+
+El 1 de julio de 2013 13:18, Santos &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">otilio at apdo.com</A>&gt; escribió:
+
+&gt;<i>  <A HREF="http://slony.info/">http://slony.info/</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> El 01/07/2013 12:31, Tomeu Borras escribió:
+</I>&gt;<i>
+</I>&gt;<i> Tienes la info de como se hace ?. Pq todo lo que he encontrado es para
+</I>&gt;<i> alta disponibilidad sin resolución manual de conflictos.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> El 1 de julio de 2013 10:16, Otilio &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">otilio at apdo.com</A>&gt; escribió:
+</I>&gt;<i>
+</I>&gt;&gt;<i>  Todo ese rollo ... o hacerlo con la sincronización nativa de Postgres
+</I>&gt;&gt;<i> ...
+</I>&gt;&gt;<i> Yo me quedaría con la segunda, vamos.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> El 30/06/13 19:36, Tomeu Borras escribió:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         O sea:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Vayamos a lo difícil, que resuleve prácticamente todos los casos y el
+</I>&gt;&gt;<i> resto será un paseo por la playa.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  Os pongo en antecedentes del problema: Dos bases de datos que en un
+</I>&gt;&gt;<i> momento conocido A estaban sincronizadas y ahora no lo están. Debemos idear
+</I>&gt;&gt;<i> un proceso para volverlas a tener en un estado de sincronización (Es decir
+</I>&gt;&gt;<i> que sean iguales). Es el típico caso donde alguien se lleva la empresa en
+</I>&gt;&gt;<i> el portátil y luego quiere adjuntar los cambios realizados a la
+</I>&gt;&gt;<i> principal. (Como es largo y tedioso vamos a suponer que queremos mantener
+</I>&gt;&gt;<i> sincronizada únicamente una tabla sin claves foráneas que vayan a complicar
+</I>&gt;&gt;<i> el tema, este tema lo trataremos luego.)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  Lo que si tenemos es un riguroso registro de cambios sucedidos en ambas
+</I>&gt;&gt;<i> bases de datos desde el momento A hasta el momento actual. Supongamos
+</I>&gt;&gt;<i> además que en las tablas sólo se hacen las operaciones INSERT, UPDATE y
+</I>&gt;&gt;<i> DELETE.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  Supongamos además que las bases de datos son predecibles. Es decir que
+</I>&gt;&gt;<i> no hay disparadores que en función del tiempo (o de  la aleatoriedad) metan
+</I>&gt;&gt;<i> mano a los datos.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  También ayudará bastante que ambas bases de datos tienen identificadores
+</I>&gt;&gt;<i> únicos para todos sus registros y que no se han repetido nunca, ni
+</I>&gt;&gt;<i> reutilizado varias veces (vuestros odiados autonuméricos) y que todas las
+</I>&gt;&gt;<i> tablas los tienen (Esto simplificara muchísimo la creación del log). En
+</I>&gt;&gt;<i> definitiva que no se hace nunca jamás una alteración de la clave primaria
+</I>&gt;&gt;<i> de las tablas.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  Y ya de paso .... como a nosotros nos va así ... podemos alargar el
+</I>&gt;&gt;<i> requisito a que todas las FK's estan bien referenciadas y con comprobación
+</I>&gt;&gt;<i> estricta
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Cumpliendo con estos requisitos vamos a ver que podemos hacer y diseñar
+</I>&gt;&gt;<i> un algoritmo de sincronización.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  Llamaremos log1 y log2 a los respectivos logs de ambas bases de datos.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Diremos que un registro de la base de datos esta afectado por la
+</I>&gt;&gt;<i> sincronizacion si aparece en el log1 o log2 y que esta en conflicto si
+</I>&gt;&gt;<i> aparece en ambos logs.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  Para sincronizar los registros afectados que no estan en conflicto
+</I>&gt;&gt;<i> traspasamos a la otra base de datos el cambio indicado en el log y asunto
+</I>&gt;&gt;<i> resuelto.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  Para resolver los conflictos voy a elaborar una tabla con el tipo de
+</I>&gt;&gt;<i> operacion realizada y voy a hacer distinción de casos:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  Pondré tuplas de operaciones en un log y en otro (op1, op2)  que
+</I>&gt;&gt;<i> significa que operaciones realizadas en cada uno de los logs en el registro
+</I>&gt;&gt;<i> en conflicto. Sólo pongo la mitad de la tabla porque es simétrica y se
+</I>&gt;&gt;<i> deben aplicar las mismas medidas.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  INSERT INSERT : Es un caso en el que se han hecho inserciones en la
+</I>&gt;&gt;<i> misma tabla y ambas (aunque distintas)  han cogido el mismo identificador.
+</I>&gt;&gt;<i> Este problema se podría evitar asignando rangos de inserción distintos para
+</I>&gt;&gt;<i> los identificadores en cada una de las réplicas.
+</I>&gt;&gt;<i>  Pero si aun así se diese el caso la solución es hacer los inserts
+</I>&gt;&gt;<i> faltantes en ambas bases de datos y luego ajustar los identificadores para
+</I>&gt;&gt;<i> que sean los mismos en ambas bases de datos.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  INSERT UPDATE: No puede darse &quot;teóricamente&quot; sin que antes  haya habido
+</I>&gt;&gt;<i> un conflicto de tipo INSERT INSERT que lo solucionase. De aqui se deduce
+</I>&gt;&gt;<i> que si se arreglan, o tocan, identificadores el log también debe
+</I>&gt;&gt;<i> reajustarse para los siguientes problemas (Principalmente con las FK's).
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  INSERT DELETE: Exactamente igual que el caso anterior. No debería
+</I>&gt;&gt;<i> ocurrir. No se puede borrar un registro que antes no existía.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  UPDATE UPDATE: Es un auténtico conflicto. Hay que comparar datos,
+</I>&gt;&gt;<i> entremezclar, usar sistemas cronológicos y también preguntar. Puede
+</I>&gt;&gt;<i> requerir intervención manual.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  UPDATE DELETE: Es un auténtico conflicto. Hay que comparar datos,
+</I>&gt;&gt;<i> entremezclar, usar sistemas cronológicos y también preguntar. Puede
+</I>&gt;&gt;<i> requerir intervención manual. No sabemos si se actualizó antes o después
+</I>&gt;&gt;<i> del borrado o si se quería borrar tras el UPDATE.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  Las FK's pueden dar algun dolor de cabeza intentando resolver un
+</I>&gt;&gt;<i> conflicto de forma desordenada. Por eso una primera mejora es intentar
+</I>&gt;&gt;<i> combinar ambos logs y ordenarlos cronológicamente a fin de disminuir
+</I>&gt;&gt;<i> posibilidades de conflico. Por suerte el NTP ha ayudado bastante en esto.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  Reconozco que este es el peor de los casos posibles en cuanto a
+</I>&gt;&gt;<i> sincronización ya que los otros modos descritos no dan pie a conflictos que
+</I>&gt;&gt;<i> deban resolverse manualmente.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  Este proceso no evita la existencia de cooperación por parte del
+</I>&gt;&gt;<i> usuario. ¿Quien no ha duplicado toda su libreta de contactos del móvil al
+</I>&gt;&gt;<i> intentar sincronizarla con OutLook? Pero hecho con cabeza y un poco de
+</I>&gt;&gt;<i> organización puede ir bastante bien.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Asignar rangos de insercion en las tablas es una buena idea que elimina
+</I>&gt;&gt;<i> la mitad de los problemas y tener las fechas de los ordenadores bien
+</I>&gt;&gt;<i> actualizadas con NTP puede eliminar el 90% de la otra mitad. También
+</I>&gt;&gt;<i> podemos ayudar en el momento de la sincronización haciendo comparación de
+</I>&gt;&gt;<i> fechas y metiendo en el LOG registros de control.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  De hecho si consideramos firme el tema de registros ordenados
+</I>&gt;&gt;<i> cronologicamente el algoritmo se puede optimizar mucho ya que se combinan
+</I>&gt;&gt;<i> ordenadamente por fecha ambos registros y se va sincronizando desde el
+</I>&gt;&gt;<i> momento A hasta el final haciendo desplazar para las comparaciones el
+</I>&gt;&gt;<i> momento A a medida que se va sincronizando.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  Teniendo en cuenta como es el trabajo de la facturación y contabilidad
+</I>&gt;&gt;<i> y como se organizan los trabajadores en torno a este hay muchos puntos a
+</I>&gt;&gt;<i> favor de este método:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  Prácticamente todo serán INSERTS o UPDATES sobre INSERTS creados en el
+</I>&gt;&gt;<i> mismo lado (pocos conflictos). No suelen hacerse DELETES. El exceso de
+</I>&gt;&gt;<i> conflictos sería en realidad un indicio de que hay un empleado tocón al que
+</I>&gt;&gt;<i> hay que cortarle las manos, o que el sistema de permisos no está bien
+</I>&gt;&gt;<i> establecido en la empresa.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  El tema de mantenimiento de permisos no voy a tratarlo. Ya sabeis .....
+</I>&gt;&gt;<i> &quot;Divide y vencerás&quot;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  Me ha salido un poco largo. Igual habría tardado menos en hacerlo que
+</I>&gt;&gt;<i> en explicarlo. Es a lo que me voy a dedicar a partir de  ahora.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  Salut
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> --
+</I>&gt;&gt;<i> Tomeu Borrás
+</I>&gt;&gt;<i> Conetxia Soluciones Informáticas
+</I>&gt;&gt;<i> 677 77 44 76
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  _______________________________________________
+</I>&gt;&gt;<i> Bulmages-main mailing <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">listBulmages-main at lists.berlios.dehttps</A>://lists.berlios.de/mailman/listinfo/bulmages-main
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Bulmages-main mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Tomeu Borrás
+</I>&gt;<i> Conetxia Soluciones Informáticas
+</I>&gt;<i> 677 77 44 76
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">listBulmages-main at lists.berlios.dehttps</A>://lists.berlios.de/mailman/listinfo/bulmages-main
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i>
+</I>
+
+
+-- 
+Tomeu Borrás
+Conetxia Soluciones Informáticas
+677 77 44 76
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20130701/667b0d3a/attachment-0001.html">https://lists.berlios.de/pipermail/bulmages-main/attachments/20130701/667b0d3a/attachment-0001.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007674.html">[BulmaGés]Sincronizacion postGresql asincrona multipuesto
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007676.html">[BulmaGés]Sincronizacion postGresql asincrona multipuesto
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7675">[ fecha ]</a>
+              <a href="thread.html#7675">[ hilo ]</a>
+              <a href="subject.html#7675">[ asunto ]</a>
+              <a href="author.html#7675">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

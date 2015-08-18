@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Bug #18202] Pluginbf_Articulo	ReferenceError:Can't find variable:QWidget
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2011-September/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2318202%5D%20Pluginbf_Articulo%0A%09ReferenceError%3ACan%27t%20find%20variable%3AQWidget&In-Reply-To=%3C201109072036.p87KaSRA014532%40unicorn.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006447.html">
+   <LINK REL="Next"  HREF="006449.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Bug #18202] Pluginbf_Articulo	ReferenceError:Can't find variable:QWidget </H1>
+    <B>admin en berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2318202%5D%20Pluginbf_Articulo%0A%09ReferenceError%3ACan%27t%20find%20variable%3AQWidget&In-Reply-To=%3C201109072036.p87KaSRA014532%40unicorn.berlios.de%3E"
+       TITLE="[BulmaGés] [Bug #18202] Pluginbf_Articulo	ReferenceError:Can't find variable:QWidget">admin en berlios.de
+       </A><BR>
+    <I>Mie Sep  7 22:36:28 CEST 2011</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="006447.html">[Bug #18233] Error amb caràcters especials a Dades entitat
+</A></li>
+        <LI>Próximo mensaje: <A HREF="006449.html">[BulmaGés] [Bug #18200] BulmaGes no compila a	Windows 7
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6448">[ fecha ]</a>
+              <a href="thread.html#6448">[ hilo ]</a>
+              <a href="subject.html#6448">[ asunto ]</a>
+              <a href="author.html#6448">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bug #18202, was updated on 2011-Jul-03 23:24
+Here is a current snapshot of the bug.
+
+Project: BulmaGes, Gestión Empresarial Libre
+Category: bulmafact
+Status: Closed
+Resolution: Invalid
+Bug Group: Fix released
+Priority: 5
+Submitted by: mph2
+Assigned to : fcojavmc
+Summary: Pluginbf_Articulo ReferenceError:Can't find variable:QWidget
+
+Details: Cuando intento editar o crear un nuevo articulo, me salta el siguiente error en un una ventana emergente.
+ReferenceError: Can't find variable: QWidget
+
+Lo curioso, es que el programa sigue funcionando perfectamente, o al menos eso parece.
+
+Adjuntaría el bulmagesout.txt pero es que el archivo se ha vuelto enorme, como he explicado en el bug #18201.
+
+Follow-Ups:
+
+Date: 2011-Jul-04 14:36
+By: mph2
+
+Comment:
+Solucionado, existían algunos plugins en controversia, algunos que faltaba, otros que sobraban.
+
+Confirmo cierre del &quot;bug&quot;.
+-------------------------------------------------------
+
+Date: 2011-Jul-04 01:12
+By: fcojavmc
+
+Comment:
+Esto viene del archivo &quot;articulo_XXXX_0_tablecfn.cfn&quot; (donde XXXX es la base de datos) que tiene referencia a un elemento que no existe.
+
+En el GIT parece correcto, revisa tu archivo o bórralo y que se vuelva a crear.
+
+Un saludo.
+
+-------------------------------------------------------
+
+For detailed info, follow this link:
+<A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=18202&amp;group_id=4472">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=18202&amp;group_id=4472</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="006447.html">[Bug #18233] Error amb caràcters especials a Dades entitat
+</A></li>
+	<LI>Próximo mensaje: <A HREF="006449.html">[BulmaGés] [Bug #18200] BulmaGes no compila a	Windows 7
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#6448">[ fecha ]</a>
+              <a href="thread.html#6448">[ hilo ]</a>
+              <a href="subject.html#6448">[ asunto ]</a>
+              <a href="author.html#6448">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

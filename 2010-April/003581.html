@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] r3811 - in trunk/bulmages:	bulmafact/plugins/pluginbf_clientecobro bulmalib/src
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-April/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3811%20-%20in%20trunk/bulmages%3A%0A%09bulmafact/plugins/pluginbf_clientecobro%20bulmalib/src&In-Reply-To=%3C201004011919.o31JJbYh028540%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+   <LINK REL="Next"  HREF="003582.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] r3811 - in trunk/bulmages:	bulmafact/plugins/pluginbf_clientecobro bulmalib/src </H1>
+    <B>svn en mail.berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20r3811%20-%20in%20trunk/bulmages%3A%0A%09bulmafact/plugins/pluginbf_clientecobro%20bulmalib/src&In-Reply-To=%3C201004011919.o31JJbYh028540%40sheep.berlios.de%3E"
+       TITLE="[BulmaGés] r3811 - in trunk/bulmages:	bulmafact/plugins/pluginbf_clientecobro bulmalib/src">svn en mail.berlios.de
+       </A><BR>
+    <I>Jue Abr  1 21:19:37 CEST 2010</I>
+    <P><UL>
+        
+        <LI>Próximo mensaje: <A HREF="003582.html">[BulmaGés]Estadísticas BulmaGes.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3581">[ fecha ]</a>
+              <a href="thread.html#3581">[ hilo ]</a>
+              <a href="subject.html#3581">[ asunto ]</a>
+              <a href="author.html#3581">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: fcojavmc
+Date: 2010-04-01 21:19:36 +0200 (dj, 01 abr 2010)
+New Revision: 3811
+
+Modified:
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientecobro/cobroslist.cpp
+   trunk/bulmages/bulmafact/plugins/pluginbf_clientecobro/cobroslistbase.ui
+   trunk/bulmages/bulmalib/src/blform.cpp
+Log:
+- Bug de tipo dolor de cabeza: Al tener el plugin de cobros a cliente
+  (pluginbf_clientecobro), en la ficha del cliente no se podía guardar
+su 'Forma de pago'. Sucedía que aparecía la pestaña de 'Cobros' y esa
+ficha, en el apartado de filtrado, contenía un 'BfBuscarFormaPago' con
+el mismo nombre (mui_forma_pago) que en la ficha principal. Al guardar
+en la base de datos se llama a BlForm::recogeValores que, al recorrer
+todos los 'widgets' con nombre del tipo 'mui_&lt;campo-en-base-de-datos&gt;'
+se hacía un lio al encontrar dos con el mismo nombre.
+
+- Reviso el filtrado de datos de la ficha de 'cobros a clientes'. Pongo
+  un 'QComboBox' para tratar los cobros 'previstos' o no.
+
+
+******************************
+*         Todo-Redes         *
+*       C/.Begònia, 12       *
+*  07010 Palma de Mallorca.  *
+*     Tel: +34-971499071     *
+*  <A HREF="http://www.todo-redes.com">http://www.todo-redes.com</A> *
+*  <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">comercial en todo-redes.com</A>  *
+******************************
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Próximo mensaje: <A HREF="003582.html">[BulmaGés]Estadísticas BulmaGes.
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3581">[ fecha ]</a>
+              <a href="thread.html#3581">[ hilo ]</a>
+              <a href="subject.html#3581">[ asunto ]</a>
+              <a href="author.html#3581">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

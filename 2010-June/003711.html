@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Comportamiento de la tecla tab en las listas editables
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FComportamiento_de_la_%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Ftecla_tab_en_las_listas_editables%3F%3D&In-Reply-To=%3C201006181534.03874.tborras%40conetxia.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003709.html">
+   <LINK REL="Next"  HREF="003710.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Comportamiento de la tecla tab en las listas editables </H1>
+    <B>Tomeu</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3FComportamiento_de_la_%3F%3D%0A%20%3D%3Fiso-8859-1%3Fq%3Ftecla_tab_en_las_listas_editables%3F%3D&In-Reply-To=%3C201006181534.03874.tborras%40conetxia.com%3E"
+       TITLE="[BulmaGés]Comportamiento de la tecla tab en las listas editables">tborras en conetxia.com
+       </A><BR>
+    <I>Vie Jun 18 15:34:03 CEST 2010</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="003709.html">[BulmaGés]Comportamiento de la tecla tab en las listas editables
+</A></li>
+        <LI>Próximo mensaje: <A HREF="003710.html">[BulmaGés] 	Sending file: pluginbf_cdi_inv.tar.gz
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3711">[ fecha ]</a>
+              <a href="thread.html#3711">[ hilo ]</a>
+              <a href="subject.html#3711">[ asunto ]</a>
+              <a href="author.html#3711">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> Curiosamente, &quot;mayúsculas + tab&quot; recorre las celdas editables o no el orden
+</I>&gt;<i> esperado y subiendo de fila en la tabla.
+</I> 
+Cierto. Aqui lo que esta mal es el shift + tab y hay que hacer que vaya a la 
+casilla editable y visible más a la izquierda o a la superior.
+
+No suele suceder pero a veces ocurre que tenemos una casilla editable y oculta 
+en el subformulario y entonces no recuerdo si el sistema se la salta o no 
+(pero debería saltarsela) por eso lo de editable y visible.
+
+¿Lo podeis apuntar como bug?
+
+Salut
+
+&gt;<i> 
+</I>&gt;<i> On Viernes, 18 de Junio de 2010 11:07:22 Fco. Javier M. C. escribió:
+</I>&gt;<i> &gt; Hola Aron.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Esto pasa cuando la celda a la que tiene que ir no es editable, entonces
+</I>&gt;<i> &gt; va a la que sea editable más cercana. No es el comportamiento más
+</I>&gt;<i> &gt; intuituvo, lo reconozco, pero tampoco está bien que vayas a una celda
+</I>&gt;<i> &gt; donde no puedes hacer nada.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Para este caso estuve pensando en marcar, con otro color o una marca,
+</I>&gt;<i> &gt; las celdas no editables, pero no es tan fácil como pueda parecer, así
+</I>&gt;<i> &gt; que, hasta encontrar una solución óptima está así. Si se te ocurre
+</I>&gt;<i> &gt; alguna buena idea, proponla.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Un saludo.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; El 18/06/10 10:19, Aron escribió:
+</I>&gt;<i> &gt; &gt; Hola
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Parece que esto es algo común a todos: cuando está el usuario editando
+</I>&gt;<i> &gt; &gt; una lista, en una casilla, y pulsa en la tecla &quot;tab&quot;... él espera
+</I>&gt;<i> &gt; &gt; editar la casilla de la derecha, pero no es así. ¿Hay algún motivo para
+</I>&gt;<i> &gt; &gt; este comportamiento?
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Si no hay motivo para este comportamiento, podemos ver una programación
+</I>&gt;<i> &gt; &gt; para que se mueva el &quot;cursor&quot; a la casilla de la derecha, concretamente
+</I>&gt;<i> &gt; &gt; en
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; 	bool BlSubFormDelegate::eventFilter
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; hemos estado viendo el añadir
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; 		emit closeEditor ( (QWidget*)obj,
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; QAbstractItemDelegate::EditNextItem);
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Saludos
+</I>&gt;<i> &gt; &gt; _______________________________________________
+</I>&gt;<i> &gt; &gt; Bulmages-main mailing list
+</I>&gt;<i> &gt; &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> &gt; &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Bulmages-main mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">Bulmages-main en lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">https://lists.berlios.de/mailman/listinfo/bulmages-main</A>
+</I>&gt;<i> &quot;
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="003709.html">[BulmaGés]Comportamiento de la tecla tab en las listas editables
+</A></li>
+	<LI>Próximo mensaje: <A HREF="003710.html">[BulmaGés] 	Sending file: pluginbf_cdi_inv.tar.gz
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#3711">[ fecha ]</a>
+              <a href="thread.html#3711">[ hilo ]</a>
+              <a href="subject.html#3711">[ asunto ]</a>
+              <a href="author.html#3711">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

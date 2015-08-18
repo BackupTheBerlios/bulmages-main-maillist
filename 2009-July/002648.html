@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Me presento
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FMe_presento%3F%3D&In-Reply-To=%3C200907080015.15799.leo%40alaxarxa.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002646.html">
+   <LINK REL="Next"  HREF="002650.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Me presento </H1>
+    <B>Leopold Palomo Avellaneda</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%3D%3Fiso-8859-1%3Fq%3FMe_presento%3F%3D&In-Reply-To=%3C200907080015.15799.leo%40alaxarxa.net%3E"
+       TITLE="[BulmaGés]Me presento">leo en alaxarxa.net
+       </A><BR>
+    <I>Mie Jul  8 00:15:15 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002646.html">[BulmaGés] Me presento
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002650.html">[BulmaGés]Me presento
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2648">[ fecha ]</a>
+              <a href="thread.html#2648">[ hilo ]</a>
+              <a href="subject.html#2648">[ asunto ]</a>
+              <a href="author.html#2648">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>A Dimarts 07 Juliol 2009, Pedro Lopez-Cabanillas va escriure:
+&gt;<i> Hola,
+</I>&gt;<i>
+</I>&gt;<i> Soy gallego de nacimiento, pero vivo en Barcelona desde hace ya 20 años
+</I>&gt;<i> (tengo 47). Soy músico aficionado, y programador de profesión. Contribuyo
+</I>&gt;<i> ocasionalmente a algunos proyectos de software libre: Rosegarden, QSynth,
+</I>&gt;<i> FluidSynth, ALSA,... y algunos de mi cosecha: VMPK, KMidimon, KMetronome.
+</I>&gt;<i> Todos relacionados con la música. Casi todos en C++ y con Qt o KDE. Ahora
+</I>&gt;<i> mismo estoy usando OpenSuse.
+</I>&gt;<i>
+</I>&gt;<i> Me sonaba Bulmages desde hace tiempo, pero he tenido el placer de asistir a
+</I>&gt;<i> la excelente presentación de Francisco Javier y Tomeu el sábado pasado, en
+</I>&gt;<i> las Jornades de PL de Barcelona, que han estado bastante bien en general,
+</I>&gt;<i> por cierto.
+</I>
+per a mi la teva presentació/xerrada curta del VMPK va ser genial!!
+
+&gt;<i> Quiero contribuir un poquito, para empezar creando paquetes RPM para
+</I>&gt;<i> openSUSE. Utilizo habitualmente el Build Service para empaquetar mis
+</I>&gt;<i> programas, así que he creado en local unos RPMs de la versión 0.11.1, que
+</I>&gt;<i> es la más reciente publicada ¿verdad?
+</I>
+nops ...
+
+ara mateix tots estem treballant en treure una 0.12, que és trunk.
+
+&gt;<i> Aprovecho para plantear unas dudas/problemas:
+</I>&gt;<i>
+</I>&gt;<i> Las traducciones (*.qm) no se instalan. Se me han quedado fuera de los
+</I>&gt;<i> paquetes RPM de momento. Los he copiado a mano
+</I>&gt;<i> en /usr/share/bulmages/traducciones.
+</I>
+ara fem gettext *.mo) no fem servir qm (a excepció de bulmasetup ...)
+
+&gt;<i> No he encontrado archivos *.desktop, supongo que debería crear al menos
+</I>&gt;<i> dos: uno para &quot;/usr/bin/bulmages&quot;, y el otro para &quot;kdesu
+</I>&gt;<i> /usr/bin/bulmasetup&quot;, ¿y que iconos les pongo? Se trata de que aparezcan
+</I>&gt;<i> los programas en el menú del escritorio (en mi caso, KDE).
+</I>
+umm, 
+
+que han de contenir aquests fitxers? els icones que has de posar estan aquí:
+
+trunk/bulmages/images/oxygen/applications. Tens svg.
+
+&gt;<i> He creado un usuario y dos bases de datos, una para contabilidad y otra
+</I>&gt;<i> para facturación/tpv. ¿Esto es correcto/recomendable? 
+</I>
+Sí, es correcte. Però per a fer el paquet? Per fer servir el programa si clar.
+
+&gt;<i> Cuando intenté usar 
+</I>&gt;<i> el mismo nombre de BD para los dos módulos, uno de los juegos de tablas no
+</I>&gt;<i> se creó.
+</I>
+per aquí em diuen que no pots fer-ho. Cada empresa ha de tenir un nom de base 
+de dades diferent, això és el que crec però els gurus que diguin quelcom. 
+Pensa en trunk. 0.11 la abandonarem.
+
+&gt;<i> El programa bulmages muestra el selector, y pulsando los botones solicita
+</I>&gt;<i> seleccionar la empresa. Después de eso, no abre nada más. Tampoco veo
+</I>&gt;<i> ningun error. Esto es lo que aparece en la consola:
+</I>
+[...]
+
+no, hauria de funcionar.
+
+&gt;<i> Y ya para acabar, el Build Service de openSUSE es un poco tiquismiquis.
+</I>&gt;<i> Aborta la construcción por unos warnings de la compilación, que se aceptan
+</I>&gt;<i> por la política de la distro. Esta es la parte interesante del log:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> I: Program returns random data in a function
+</I>&gt;<i> E: bulmages
+</I>&gt;<i> no-return-in-nonvoid-function
+</I>&gt;<i> /usr/src/packages/BUILD/bulmages-0.11.1/bulmafact/plugins/pluginpreciocoste
+</I>&gt;<i>/pluginpreciocoste.cpp:206 E: bulmages
+</I>&gt;<i> no-return-in-nonvoid-function
+</I>&gt;<i> /usr/src/packages/BUILD/bulmages-0.11.1/bulmatpv/plugins/plugintecladonumer
+</I>&gt;<i>ico/plugintecladonumerico.cpp:65 E: bulmages
+</I>&gt;<i> no-return-in-nonvoid-function
+</I>&gt;<i> /usr/src/packages/BUILD/bulmages-0.11.1/bulmatpv/plugins/pluginvisor/plugin
+</I>&gt;<i>visor.cpp:95, 85
+</I>&gt;<i> E: bulmages
+</I>&gt;<i> no-return-in-nonvoid-function
+</I>&gt;<i> /usr/src/packages/BUILD/bulmages-0.11.1/bulmatpv/src/subform2bt.cpp:350
+</I>&gt;<i>
+</I>&gt;<i> I: Expression compares a char* pointer with a string literal.
+</I>&gt;<i> Usually a strcmp() was intended by the programmer
+</I>&gt;<i> E: bulmages
+</I>&gt;<i> stringcompare
+</I>&gt;<i> /usr/src/packages/BUILD/bulmages-0.11.1/bulmacont/src/modelo300.cpp:211,
+</I>&gt;<i> 224, 237
+</I>
+treballa amb trunk, a veure que diu. I reporta el log d'aquest servei tant 
+xulo.
+
+&gt;<i>
+</I>&gt;<i> Añadiré un parche a la compilación para evitarlos, 
+</I>trunk, trunk, trunk!!!!!!
+
+&gt;<i> y lo pondré en la lista. 
+</I>&gt;<i> Por otro lado, la construcción para x86_64 falla después de la instalación
+</I>&gt;<i> quejándose del directorio (las librerias van en lib64/ en vez de lib/).
+</I>
+?
+cmake no les posa allà? et toca fer un parche al cmake. Ens ho mirem, jo crec 
+que sé com fer-ho fàcilment.
+
+
+&gt;<i> Saludos,
+</I>&gt;<i> Pedro
+</I>
+Moltes gràcies Pedro!!!!
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002646.html">[BulmaGés] Me presento
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002650.html">[BulmaGés]Me presento
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2648">[ fecha ]</a>
+              <a href="thread.html#2648">[ hilo ]</a>
+              <a href="subject.html#2648">[ asunto ]</a>
+              <a href="author.html#2648">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

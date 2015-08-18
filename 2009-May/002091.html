@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Bug #15717] FALLO DE PERMISOS AL SQL
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2315717%5D%20FALLO%20DE%20PERMISOS%20AL%20SQL&In-Reply-To=%3C200905222203.n4MM3ZZw007293%40unicorn.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002090.html">
+   <LINK REL="Next"  HREF="002097.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Bug #15717] FALLO DE PERMISOS AL SQL </H1>
+    <B>admin en berlios.de</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BBug%20%2315717%5D%20FALLO%20DE%20PERMISOS%20AL%20SQL&In-Reply-To=%3C200905222203.n4MM3ZZw007293%40unicorn.berlios.de%3E"
+       TITLE="[BulmaGés] [Bug #15717] FALLO DE PERMISOS AL SQL">admin en berlios.de
+       </A><BR>
+    <I>Sab Mayo 23 00:03:35 CEST 2009</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="002090.html">[BulmaGés] r3398 -	trunk/bulmages/bulmatpv/plugins/pluginbt_devolucion2/dbmodels
+</A></li>
+        <LI>Próximo mensaje: <A HREF="002097.html">[BulmaGés] [Bug #15718] NO SE PUEDE IMPRIMIR UN	COBRO
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2091">[ fecha ]</a>
+              <a href="thread.html#2091">[ hilo ]</a>
+              <a href="subject.html#2091">[ asunto ]</a>
+              <a href="author.html#2091">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bug #15717, was updated on 2009-May-22 09:46
+Here is a current snapshot of the bug.
+
+Project: BulmaGes, Gestión Empresarial Libre
+Category: bulmafact
+Status: Closed
+Resolution: Fixed
+Bug Group: None
+Priority: 5
+Submitted by: zhixiong
+Assigned to : tborras
+Summary: FALLO DE PERMISOS AL SQL
+
+Details: En BulmaFact,al creamos un nuevo banco,cuando queramos guardar-lo,nos dará este mensage de error:
+
+       &quot;Error al intentar modificar la base de datos:
+         Codigo de error :7
+         ERROR:No existe la columna &lt;&lt;sufijobanco&gt;&gt; en la relación &lt;&lt;banco&gt;&gt; 
+         ..............
+         &quot;
+
+
+UPDATE banco SET nombanco='LA CAIXA', dirbanco='Jaime III   58', poblbanco='Palma de Mallorca', cpbanco='07694', telbanco='971805469', faxbanco='971505478', emailbanco='<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">info en lacaixa.com</A>', contactobanco='654854319', codentidadbanco='5479', codagenciabanco='3361', numcuentabanco='6497432359', dcbanco='11', comentbanco='La Caixa',  webbanco='www.lacaixa.com',  sufijobanco=1 WHERE idbanco=6
+ERROR:  no existe la columna «sufijobanco» en la relación «banco»
+LINEA 1: ...ntbanco='La Caixa',  webbanco='www.lacaixa.com',  sufijobanc...
+                                                              ^
+
+
+Follow-Ups:
+
+Date: 2009-May-23 00:03
+By: tborras
+
+Comment:
+He actualizado una empresa que tenia con la base de datos antigua y el error estaba solucionado.
+
+-------------------------------------------------------
+
+For detailed info, follow this link:
+<A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=15717&amp;group_id=4472">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=15717&amp;group_id=4472</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="002090.html">[BulmaGés] r3398 -	trunk/bulmages/bulmatpv/plugins/pluginbt_devolucion2/dbmodels
+</A></li>
+	<LI>Próximo mensaje: <A HREF="002097.html">[BulmaGés] [Bug #15718] NO SE PUEDE IMPRIMIR UN	COBRO
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#2091">[ fecha ]</a>
+              <a href="thread.html#2091">[ hilo ]</a>
+              <a href="subject.html#2091">[ asunto ]</a>
+              <a href="author.html#2091">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

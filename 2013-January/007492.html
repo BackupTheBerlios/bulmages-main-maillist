@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] Paquetes Debian:  documentacion, scripts tools y subida al servidor git
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-January/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Paquetes%20Debian%3A%20%20documentacion%2C%0A%20scripts%20tools%20y%20subida%20al%20servidor%20git&In-Reply-To=%3C20130111104441.791fa241%40namir.ctr.unican.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007485.html">
+   <LINK REL="Next"  HREF="007495.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] Paquetes Debian:  documentacion, scripts tools y subida al servidor git </H1>
+    <B>Miguel Telleria de Esteban</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20Paquetes%20Debian%3A%20%20documentacion%2C%0A%20scripts%20tools%20y%20subida%20al%20servidor%20git&In-Reply-To=%3C20130111104441.791fa241%40namir.ctr.unican.es%3E"
+       TITLE="[BulmaGés] Paquetes Debian:  documentacion, scripts tools y subida al servidor git">miguel en mtelleria.com
+       </A><BR>
+    <I>Vie Ene 11 10:44:41 CET 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007485.html">[BulmaGés]Qt 5, listo!
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007495.html">[BulmaGés]Fwd: Re:  Paquetes Debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7492">[ fecha ]</a>
+              <a href="thread.html#7492">[ hilo ]</a>
+              <a href="subject.html#7492">[ asunto ]</a>
+              <a href="author.html#7492">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>[Estoy en el IRC con el nick Snapy]
+
+Hola a todos y feliz año!!
+
+Como habréis visto por la cantidad de actualizaciones del wiki
+generadas, he estado este último mes dando vueltas a las diferentes
+formas de empaquetar BulmaGés con git y usar los números de versión.
+
+El resultado han sido 3 documentos sobre las versiones, el empaquetado
+y el uso de git.
+
+<A HREF="http://redmine.bulmages.es/projects/bulmages-main/wiki/Numeracion_de_versiones">http://redmine.bulmages.es/projects/bulmages-main/wiki/Numeracion_de_versiones</A>
+<A HREF="http://redmine.bulmages.es/projects/bulmages-main/wiki/Empaquetado_para_Debian">http://redmine.bulmages.es/projects/bulmages-main/wiki/Empaquetado_para_Debian</A>
+<A HREF="http://redmine.bulmages.es/projects/bulmages-main/wiki/Bulmages_y_git-buildpackage">http://redmine.bulmages.es/projects/bulmages-main/wiki/Bulmages_y_git-buildpackage</A>
+
+Aunque sean documentos largos y detallados (sí, me enrollo como las
+persianas lo sé), no los toméis como una imposición. Siempre están
+abiertos a cambios de estrategia (incluso radicales).
+
+El tema que más tiempo me ha llevado a sido lo de &quot;le número de
+versión&quot; (o los diferentes números de versiones) que ha resultado en 3
+herramientas python que menciono en el primer artículo:
+
+	tools/generate_orig_tar_gz.py
+	tools/compute_and_set_version.py
+	debian/version_and_tag_upstream.py (esta en la rama debian)
+
+  y que usan todas una librería común (para localizar las funciones
+clave)
+        tools/bgversion.py
+
+Podéis ver estos ficheros en la rama gbp-debian-master de mi repo.
+<A HREF="https://gitorious.org/~mtelleria/bulmages/mtelleria-bulmages/commits/gbp-debian-master">https://gitorious.org/~mtelleria/bulmages/mtelleria-bulmages/commits/gbp-debian-master</A>
+<A HREF="https://gitorious.org/~mtelleria/bulmages/mtelleria-bulmages/trees/cc04d448fde6d13bcc06a7dce08d9a46f5b43f9d">https://gitorious.org/~mtelleria/bulmages/mtelleria-bulmages/trees/cc04d448fde6d13bcc06a7dce08d9a46f5b43f9d</A>
+
+LO QUE ME QUEDA POR HACER Y OS QUIERO PEDIR
+
+Me gustaría subir al repositorio oficial de Bulmages:
+
+*  5 commits a la rama master (y también a la rama release) con los
+   ficheros del directorio tools/
+
+*  Crear las ramas siguientes para el empaquetado:
+   gbp-debian-master
+   gbp-debian-release
+   gbp-squeeze-master
+   gbp-squeeze-release
+
+     que contendrán las respectivas master y release con los metadatos
+  de Debian.
+
+*  Añadir la rama pristine-tar
+
+*  Hacer 2 empaquetados de master y release con las tags
+   correspondientes.
+
+Respecto a los paquetes en sí (.deb y fuente) me gustaría subirlos a
+algún sitio de BulmaGes.  En su tiempo Daniel de un espacio en un
+servidor con acceso SSH para supongo poner un repositorio.  
+
+Me gustaría probar el sistema reprepro (nunca lo he usado pero supongo
+que no será difícil).
+
+Saludos,
+
+	Miguel
+
+
+-- 
+
+      (O-O)
+---oOO-(_)-OOo-----------------------------------------------------
+ Miguel TELLERIA DE ESTEBAN               <A HREF="http://www.mtelleria.com">http://www.mtelleria.com</A>
+ Email: miguel at mtelleria.com           Tel GSM:  +34 650 801098
+                                          Tel Fix:  +34 942 280174
+
+ Miembro de <A HREF="http://www.linuca.org">http://www.linuca.org</A>    Membre du <A HREF="http://www.bxlug.be">http://www.bxlug.be</A>
+ ¿Usuario captivo o libre?    <A HREF="http://www.obtengalinux.org/windows/">http://www.obtengalinux.org/windows/</A>
+ Free or  captive user?        <A HREF="http://www.getgnulinux.org/windows/">http://www.getgnulinux.org/windows/</A>
+-------------------------------------------------------------------
+
+------------ próxima parte ------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 198 bytes
+Desc: no disponible
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/bulmages-main/attachments/20130111/616331ec/attachment.pgp">https://lists.berlios.de/pipermail/bulmages-main/attachments/20130111/616331ec/attachment.pgp</A>&gt;
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007485.html">[BulmaGés]Qt 5, listo!
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007495.html">[BulmaGés]Fwd: Re:  Paquetes Debian
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7492">[ fecha ]</a>
+              <a href="thread.html#7492">[ hilo ]</a>
+              <a href="subject.html#7492">[ asunto ]</a>
+              <a href="author.html#7492">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

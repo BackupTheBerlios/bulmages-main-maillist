@@ -1,0 +1,349 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130711054220.D1B4418C%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007687.html">
+   <LINK REL="Next"  HREF="007689.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130711054220.D1B4418C%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Jue Jul 11 07:42:20 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007687.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007689.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7688">[ fecha ]</a>
+              <a href="thread.html#7688">[ hilo ]</a>
+              <a href="subject.html#7688">[ asunto ]</a>
+              <a href="author.html#7688">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from f19af1e to 5b0aef3
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/f19af1ebd5ef4c1c5e134b2d385df5579f8afae8/diffs/5b0aef34b29414ba521d42f46d30027bf47d25ee">https://gitorious.org/bulmages/bulmages/commit/f19af1ebd5ef4c1c5e134b2d385df5579f8afae8/diffs/5b0aef34b29414ba521d42f46d30027bf47d25ee</A>
+
+Diff: 
+
+commit 5b0aef34b29414ba521d42f46d30027bf47d25ee
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Thu Jul 11 07:42:00 2013 +0200
+
+    La sincronizacion ya puede crear directorios y pide confirmación antes de empezar
+
+diff --git a/bulmages/bulmalib/src/blsync.cpp b/bulmages/bulmalib/src/blsync.cpp
+index 069eaf7..f77fd3c 100644
+--- a/bulmages/bulmalib/src/blsync.cpp
++++ b/bulmages/bulmalib/src/blsync.cpp
+@@ -19,6 +19,8 @@
+  ***************************************************************************/
+ #include &lt;QtNetwork/QNetworkAccessManager&gt;
+ #include &lt;QtCore/QFileInfo&gt;
++#include &lt;QtCore/QUrl&gt;
++#include &lt;QtCore/QDir&gt;
+ #include &lt;QtWidgets/QProgressBar&gt;
+ 
+ #include &quot;blfunctions.h&quot;
+@@ -55,6 +57,7 @@ void BlSync::sync() {
+     #endif
+       
+       bool reinicio = false;
++      bool actualizaciones = false;
+       
+       
+       // Cogemos la lista de ficheros
+@@ -72,50 +75,73 @@ void BlSync::sync() {
+ #ifdef CONFIG_DEBUG
+ 	  fprintf(stderr,&quot;No se pudo abrir archivo de indices\n&quot;);
+ #endif
+-	  return;
+-      } // end if
+-      QTextStream in(&amp;file);
+-      QString line = in.readLine();
+-      while (!line.isNull()) {
+-	  QStringList arch = line.split(&quot; &quot;);
+-	  QString filename = arch[0];
+-	  QString dest = arch[1];
+-	  QString date= arch[2];
+-	  
+-	  bool descarga = true;
+-	  
+-	  QFile file1 ( g_confpr-&gt;value(CONF_DIR_USER)+&quot;lfiles.txt&quot;);
+-	  if (file1.open(QIODevice::ReadOnly)) {
+-	      QTextStream lin(&amp;file1);
+-	      QString lline = lin.readLine();
+-	      while (!lline.isNull()) {
+-		  QStringList larch = lline.split(&quot; &quot;);
+-		  if (filename == larch[0] &amp;&amp; date == larch[2]) {
+-		     descarga = false;
+-		     break;
++      } else {
++	  QTextStream in(&amp;file);
++	  QString line = in.readLine();
++	  while (!line.isNull()) {
++	    
++	      if (!line.startsWith(&quot;#&quot;) &amp;&amp; !(line == &quot;\n&quot;)) {
++		  QStringList arch = line.split(&quot; &quot;);
++		  QString filename = arch[0];
++		  QString dest = arch[1];
++		  QString date= arch[2];
++		  
++		  bool descarga = true;
++		  
++		  QFile file1 ( g_confpr-&gt;value(CONF_DIR_USER)+&quot;lfiles.txt&quot;);
++		  if (file1.open(QIODevice::ReadOnly)) {
++		      QTextStream lin(&amp;file1);
++		      QString lline = lin.readLine();
++		      while (!lline.isNull()) {
++			  if (!lline.startsWith(&quot;#&quot;) &amp;&amp; !(lline == &quot;\n&quot;)) {
++			      QStringList larch = lline.split(&quot; &quot;);
++			      if (filename == larch[0] &amp;&amp; date == larch[2]) {
++				descarga = false;
++				break;
++			      } // end if
++			  } // end if
++			  lline = lin.readLine();
++		      } // end while
++		      file1.close();
+ 		  } // end if
+-		  lline = lin.readLine();
+-	      } // end while
+-	      file1.close();
+-	  } // end if
+-	  if (descarga) {
+-	      dest.replace(&quot;[CONF_DIR_OPENREPORTS]&quot;, g_confpr-&gt;value(CONF_DIR_OPENREPORTS));
+-	      dest.replace(&quot;[CONFIG_DIR_CONFIG]&quot;, CONFIG_DIR_CONFIG);
+-	      dest.replace(&quot;[CONF_DIR_PLUGINS]&quot;, g_confpr-&gt;value(CONF_DIR_PLUGINS).replace(&quot;;&quot;,&quot;&quot;));
+-#ifdef Q_OS_WIN32
+-	      dest.replace(&quot;[CONF_EJECUTABLES]&quot;, g_confpr-&gt;value(CONF_EJECUTABLES).replace(&quot;program&quot;,&quot;program1&quot;));
+-#else		  
+-	      dest.replace(&quot;[CONF_EJECUTABLES]&quot;, g_confpr-&gt;value(CONF_EJECUTABLES));
+-#endif		 
+-	      getFile(filename, dest);
+-	      if (arch[3] == &quot;T&quot;) {
+-		reinicio = true;
+-	      }// end if
+-	  } // end if
+-	  line = in.readLine();
+-      } // end while
+- 
+-      blCopyFile(g_confpr-&gt;value(CONF_DIR_USER)+&quot;files.txt&quot;, g_confpr-&gt;value(CONF_DIR_USER)+&quot;lfiles.txt&quot;);
++		  if (descarga) {
++		    
++		    if (!actualizaciones) {
++			QMessageBox msgBox;
++			msgBox.setText(_(&quot;Hay actualizaciones pendientes de realizar.&quot;));
++			msgBox.setInformativeText(_(&quot;Desea actualizar ahora?&quot;));
++			msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
++			msgBox.setDefaultButton(QMessageBox::Ok);
++			int ret = msgBox.exec();
++			if (ret == QMessageBox::Cancel) {
++			  close();
++			  return;
++			} // end if
++			actualizaciones = true;
++		    } // end if
++		    
++		      dest.replace(&quot;[CONF_DIR_OPENREPORTS]&quot;, g_confpr-&gt;value(CONF_DIR_OPENREPORTS));
++		      dest.replace(&quot;[CONFIG_DIR_CONFIG]&quot;, CONFIG_DIR_CONFIG);
++		      dest.replace(&quot;[CONF_DIR_PLUGINS]&quot;, g_confpr-&gt;value(CONF_DIR_PLUGINS).replace(&quot;;&quot;,&quot;&quot;));
++	#ifdef Q_OS_WIN32
++		      dest.replace(&quot;[CONF_EJECUTABLES]&quot;, g_confpr-&gt;value(CONF_EJECUTABLES).replace(&quot;program&quot;,&quot;program1&quot;));
++	#else		  
++		      dest.replace(&quot;[CONF_EJECUTABLES]&quot;, g_confpr-&gt;value(CONF_EJECUTABLES));
++	#endif		 
++		      getFile(filename, dest);
++		      if (arch[3] == &quot;T&quot;) {
++			reinicio = true;
++		      }// end if
++		  } // end if
++	      } // end if
++	      line = in.readLine();
++	  } // end while
++    
++	  blCopyFile(g_confpr-&gt;value(CONF_DIR_USER)+&quot;files.txt&quot;, g_confpr-&gt;value(CONF_DIR_USER)+&quot;lfiles.txt&quot;);
++
++
++      } // end if
++
+       
+ /// Configuraciones personalizadas
+       url = g_confpr-&gt;value(CONF_URL_SYNC) + &quot;filesp.txt&quot;;
+@@ -128,50 +154,71 @@ void BlSync::sync() {
+ #ifdef CONFIG_DEBUG
+ 	  fprintf(stderr,&quot;No se pudo abrir archivo de indices\n&quot;);
+ #endif
+-	  return;
+-      } // end if
+-      QTextStream pin(&amp;pfile);
+-      QString pline = pin.readLine();
+-      while (!pline.isNull()) {
+-	  QStringList arch = pline.split(&quot; &quot;);
+-	  QString filename = arch[0];
+-	  QString dest = arch[1];
+-	  QString date= arch[2];
+-	  
+-	  bool descarga = true;
+-	  
+-	  QFile file1 ( g_confpr-&gt;value(CONF_DIR_USER)+&quot;lfilesp.txt&quot;);
+-	  if (file1.open(QIODevice::ReadOnly)) {
+-	      QTextStream lin(&amp;file1);
+-	      QString lline = lin.readLine();
+-	      while (!lline.isNull()) {
+-		  QStringList larch = lline.split(&quot; &quot;);
+-		  if (filename == larch[0] &amp;&amp; date == larch[2]) {
+-		     descarga = false;
+-		     break;
++      } else {
++	  QTextStream pin(&amp;pfile);
++	  QString pline = pin.readLine();
++	  while (!pline.isNull()) {
++	  if (!(pline.startsWith(&quot;#&quot;)) &amp;&amp; !(pline == &quot;\n&quot;)) {
++		  QStringList arch = pline.split(&quot; &quot;);
++		  QString filename = arch[0];
++		  QString dest = arch[1];
++		  QString date= arch[2];
++		  
++		  bool descarga = true;
++		  
++		  QFile file1 ( g_confpr-&gt;value(CONF_DIR_USER)+&quot;lfilesp.txt&quot;);
++		  if (file1.open(QIODevice::ReadOnly)) {
++		      QTextStream lin(&amp;file1);
++		      QString lline = lin.readLine();
++		      while (!lline.isNull()) {
++			  if (!(lline.startsWith(&quot;#&quot;)) &amp;&amp; !(lline == &quot;\n&quot;)) {
++			      QStringList larch = lline.split(&quot; &quot;);
++			      if (filename == larch[0] &amp;&amp; date == larch[2]) {
++				descarga = false;
++				break;
++			      } // end if
++			  } // end if
++			  lline = lin.readLine();
++		      } // end while
++		      file1.close();
+ 		  } // end if
+-		  lline = lin.readLine();
+-	      } // end while
+-	      file1.close();
+-	  } // end if
+-	  if (descarga) {
+-	      dest.replace(&quot;[CONF_DIR_OPENREPORTS]&quot;, g_confpr-&gt;value(CONF_DIR_OPENREPORTS));
+-	      dest.replace(&quot;[CONFIG_DIR_CONFIG]&quot;, CONFIG_DIR_CONFIG);
+-	      dest.replace(&quot;[CONF_DIR_PLUGINS]&quot;, g_confpr-&gt;value(CONF_DIR_PLUGINS).replace(&quot;;&quot;,&quot;&quot;));
+-#ifdef Q_OS_WIN32
+-	      dest.replace(&quot;[CONF_EJECUTABLES]&quot;, g_confpr-&gt;value(CONF_EJECUTABLES).replace(&quot;program&quot;,&quot;program1&quot;));
+-#else		  
+-	      dest.replace(&quot;[CONF_EJECUTABLES]&quot;, g_confpr-&gt;value(CONF_EJECUTABLES));
+-#endif
+-	      getFile(filename, dest);
+-	      if (arch[3] == &quot;T&quot;) {
+-		reinicio = true;
+-	      }// end if
+-	  } // end if
+-	  pline = pin.readLine();
+-      } // end while
+- 
+-      blCopyFile(g_confpr-&gt;value(CONF_DIR_USER)+&quot;filesp.txt&quot;, g_confpr-&gt;value(CONF_DIR_USER)+&quot;lfilesp.txt&quot;);
++		  
++		    if (!actualizaciones) {
++			QMessageBox msgBox;
++			msgBox.setText(_(&quot;Hay actualizaciones pendientes de realizar.&quot;));
++			msgBox.setInformativeText(_(&quot;Desea actualizar ahora?&quot;));
++			msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
++			msgBox.setDefaultButton(QMessageBox::Ok);
++			int ret = msgBox.exec();
++			if (ret == QMessageBox::Cancel) {
++			  close();
++			  return;
++			} // end if
++			actualizaciones = true;
++		    } // end if
++		  
++		  if (descarga) {
++		      dest.replace(&quot;[CONF_DIR_OPENREPORTS]&quot;, g_confpr-&gt;value(CONF_DIR_OPENREPORTS));
++		      dest.replace(&quot;[CONFIG_DIR_CONFIG]&quot;, CONFIG_DIR_CONFIG);
++		      dest.replace(&quot;[CONF_DIR_PLUGINS]&quot;, g_confpr-&gt;value(CONF_DIR_PLUGINS).replace(&quot;;&quot;,&quot;&quot;));
++	#ifdef Q_OS_WIN32
++		      dest.replace(&quot;[CONF_EJECUTABLES]&quot;, g_confpr-&gt;value(CONF_EJECUTABLES).replace(&quot;program&quot;,&quot;program1&quot;));
++	#else		  
++		      dest.replace(&quot;[CONF_EJECUTABLES]&quot;, g_confpr-&gt;value(CONF_EJECUTABLES));
++	#endif
++		      getFile(filename, dest);
++		      if (arch[3] == &quot;T&quot;) {
++			reinicio = true;
++		      }// end if
++		  } // end if
++	      } // end if
++	      pline = pin.readLine();
++	  } // end while
++    
++	  blCopyFile(g_confpr-&gt;value(CONF_DIR_USER)+&quot;filesp.txt&quot;, g_confpr-&gt;value(CONF_DIR_USER)+&quot;lfilesp.txt&quot;);
++
++      } // end if
++
+       
+       if (reinicio) {
+ 	blMsgInfo(&quot;Debe reiniciar el programa para que los cambios surjan efecto&quot;);
+@@ -287,7 +334,10 @@ void BlSync::slotReadyRead() {
+ void BlSync::replyFinished(QNetworkReply * reply) {
+   BL_FUNC_DEBUG
+   if (reply-&gt;error() == QNetworkReply::NoError) {
+-      
++      /// Si el destino esta en una carpeta inexistente crea el path primero.
++      QUrl url(m_destfile);
++      QDir dir (&quot;..&quot;);
++      dir.mkpath(url.path());
+       QFile localFile(m_destfile);
+       if (!localFile.open(QIODevice::WriteOnly)) {
+ 
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007687.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007689.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7688">[ fecha ]</a>
+              <a href="thread.html#7688">[ hilo ]</a>
+              <a href="subject.html#7688">[ asunto ]</a>
+              <a href="author.html#7688">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

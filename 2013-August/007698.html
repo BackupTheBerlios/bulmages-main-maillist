@@ -1,0 +1,1879 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130807195415.EA5ED19D%40ratt.gitorious.c.bitbit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="007697.html">
+   <LINK REL="Next"  HREF="007699.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master... </H1>
+    <B>Gitorious</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%20%5BGitorious%5D%20Activity%3A%20tborras%20pushed%201%0A%09commits%20to%20master...&In-Reply-To=%3C20130807195415.EA5ED19D%40ratt.gitorious.c.bitbit.net%3E"
+       TITLE="[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...">no-reply en gitorious.org
+       </A><BR>
+    <I>Mie Ago  7 21:54:15 CEST 2013</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="007697.html">[BulmaGés]Merge requests
+</A></li>
+        <LI>Próximo mensaje: <A HREF="007699.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7698">[ fecha ]</a>
+              <a href="thread.html#7698">[ hilo ]</a>
+              <a href="subject.html#7698">[ asunto ]</a>
+              <a href="author.html#7698">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Hello bulmagesmailing,
+
+One of your favorites has a new activity:
+------------------------------------------------------------------------
+tborras pushed 1 commits to master
+master changed from 1b7d240 to fdadbdf
+
+View the commit log at <A HREF="https://gitorious.org/bulmages/bulmages/commits">https://gitorious.org/bulmages/bulmages/commits</A>
+
+View the diff online: <A HREF="https://gitorious.org/bulmages/bulmages/commit/1b7d2404b90d3224b0497c06d092f460f78f3e9e/diffs/fdadbdfd42fb74f2d678d508197ee5ccc930865e">https://gitorious.org/bulmages/bulmages/commit/1b7d2404b90d3224b0497c06d092f460f78f3e9e/diffs/fdadbdfd42fb74f2d678d508197ee5ccc930865e</A>
+
+Diff: 
+
+commit fdadbdfd42fb74f2d678d508197ee5ccc930865e
+Author: Tomeu Borras &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>&gt;
+Date:   Wed Aug 7 21:49:31 2013 +0200
+
+    Agrego el pluginbl_alarm que permite generar avisos relacionados con cualquier ficha (incluso las creadas con autoforms).
+    Al poner el plugin en marcha aparece en todas las fichas un icono con un cronometro que despliega un menu para Agregar Alarmas, ver las alarmas existentes en esa ficha
+    o borrarlas.
+    
+    El plugin también crea un DockWidget en el cual se pueden ver ordenadas cronologicamente todas las alarmas creadas, y desde el que se puede acceder a las fichas afectadas por la alarma.
+    
+    Junto a esto he creado una llamada a plugin (Plugin_open) que permite abrir una ficha conociendo unicamente la tabla que se quiere editar y el identificador. Llamada que aprovecha el pluginbl_alarm y que
+    he empezado a adaptar en pluginbf_corrector ya que ambos abren fichas a partir de información de tabla e identificador (pero no del form utilizado para editar).
+    
+    Tambien he ampliado la información proporcionada por algunos README.es
+
+diff --git a/bulmages/bulmalib/plugins/pluginbl_alarm/CMakeLists.txt b/bulmages/bulmalib/plugins/pluginbl_alarm/CMakeLists.txt
+new file mode 100644
+index 0000000..68b5741
+--- /dev/null
++++ b/bulmages/bulmalib/plugins/pluginbl_alarm/CMakeLists.txt
+@@ -0,0 +1,109 @@
++###########################################
++# Plugin for bulmalib                     #
++###########################################
++#pluginbl_alarm
++
++set (plugin pluginbl_alarm)
++
++file(GLOB plugin_SRC *.c *.cpp *.cxx)
++file(GLOB plugin_MOCS *.hpp *.h)
++
++# Exclude files with no QObject macro.
++file(GLOB plugin_NO_MOCS pluginbl_alarm.h pdefs_pluginbl_alarm.h)
++list(REMOVE_ITEM plugin_MOCS ${plugin_NO_MOCS})
++
++file(GLOB plugin_UIS *.ui)
++
++include_directories(
++    ${QT_INCLUDE_DIR}
++	${PGSQL_INCLUDE_DIR}
++	${QT_QTXML_INCLUDE_DIR}
++        ${QT_QTSCRIPT_INCLUDE_DIR}
++	${CMAKE_CURRENT_BINARY_DIR}
++	${CMAKE_CURRENT_SOURCE_DIR}
++	${CMAKE_BINARY_DIR}/bulmalib/src/
++	${CMAKE_SOURCE_DIR}/bulmalib/src/
++	${CMAKE_BINARY_DIR}/bulmacont/src/
++	${CMAKE_SOURCE_DIR}/bulmacont/src/
++	${CMAKE_BINARY_DIR}/bulmafact/src/
++	${CMAKE_SOURCE_DIR}/bulmafact/src/)
++
++# generate rules for building source files from the resources
++#QT5_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
++
++# generate rules for building source files that moc generates
++QT5_WRAP_UI(plugin_UIS_H ${plugin_UIS} OPTIONS -tr N_)	
++QT5_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
++#QT5_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
++
++
++IF(WIN32)
++SET(CMAKE_SHARED_LINKER_FLAGS &quot;${CMAKE_SHARED_LINKER_FLAGS} -Wl,-enable-auto-import&quot;)
++ADD_DEFINITIONS(-DQWT_DLL -DQT_DLL -DQWT_MAKEDLL -DPLUGINBL_ALARM)
++ENDIF(WIN32)
++
++# i18n
++if(WIN32)
++ADD_DEFINITIONS(&quot;-D_(String)=blI18n(\\\&quot;${plugin}\\\&quot;,String)&quot; )
++ADD_DEFINITIONS(&quot;-DN_(String,Int)=blI18n(\\\&quot;${plugin}\\\&quot;,String)&quot; )
++endif(WIN32)
++
++if(NOT WIN32)
++ADD_DEFINITIONS(&quot;-D'_(String)=blI18n(\&quot;${plugin}\&quot;,String)'&quot; )
++ADD_DEFINITIONS(&quot;-D'N_(String,Int)=blI18n(\&quot;${plugin}\&quot;,String)'&quot; )
++endif(NOT WIN32)
++
++
++if(USE_GETTEXT)
++   set(plugin_i18n ${plugin_SRC} ${plugin_MOC_SRCS} ${plugin_UIS_H}
++			${plugin_SRCS} ${plugin_MOCS})
++   GETTEXT_CREATE_TEMPLATE(${plugin} ${CMAKE_CURRENT_BINARY_DIR}
++                                ${CMAKE_CURRENT_SOURCE_DIR} plugin_i18n)
++   GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/${plugin}.pot
++                                ALL LANGUAGES es_ES ca_ES fr_FR)
++endif(USE_GETTEXT)
++
++
++# build sources, moc'd sources, and rcc'd sources
++
++add_library(${plugin} SHARED ${plugin_SRC} ${plugin_MOC_SRCS}
++	${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
++
++
++set_target_properties( ${plugin} PROPERTIES 
++  SOVERSION &quot;${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}&quot;
++  VERSION &quot;${BULMAGES_VERSION}&quot;)
++
++if(WIN32)
++target_link_libraries(${plugin} bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
++qt5_use_modules(${plugin} UiTools Xml Core Widgets Script Network WebKit WebKitWidgets)
++else(WIN32)
++target_link_libraries(${plugin} bulmalib)
++qt5_use_modules(${plugin} Widgets WebKit WebKitWidgets)
++endif(WIN32)
++
++install_targets(/lib/bulmalib/plugins ${plugin})
++
++configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.es ${CMAKE_CURRENT_BINARY_DIR}/README.es @ONLY)
++install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.es DESTINATION share/bulmages/bulmalib-plugins/ RENAME README.es.${plugin})
++
++configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.ca ${CMAKE_CURRENT_BINARY_DIR}/README.ca @ONLY)
++install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.ca DESTINATION share/bulmages/bulmalib-plugins/ RENAME README.ca.${plugin})
++
++configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.fr ${CMAKE_CURRENT_BINARY_DIR}/README.fr @ONLY)
++install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.fr DESTINATION share/bulmages/bulmalib-plugins/ RENAME README.fr.${plugin})
++
++configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/README.en ${CMAKE_CURRENT_BINARY_DIR}/README.en @ONLY)
++install (FILES ${CMAKE_CURRENT_BINARY_DIR}/README.en DESTINATION share/bulmages/bulmalib-plugins/ RENAME README.en.${plugin})
++
++add_dependencies(${plugin} bulmalib bulmacont bulmafact)
++
++install(DIRECTORY dbmodels/ 
++	DESTINATION share/bulmages/dbmodels/plugins
++		PATTERN &quot;.svn&quot; EXCLUDE)
++
++install(DIRECTORY icons/ 
++	DESTINATION share/bulmages/icons
++		PATTERN &quot;.svn&quot; EXCLUDE)
++
++ADD_LOCAL_BLI18N_HEADER( ${plugin} )
+diff --git a/bulmages/bulmalib/plugins/pluginbl_alarm/README.ca b/bulmages/bulmalib/plugins/pluginbl_alarm/README.ca
+new file mode 100644
+index 0000000..0fb7545
+--- /dev/null
++++ b/bulmages/bulmalib/plugins/pluginbl_alarm/README.ca
+@@ -0,0 +1,33 @@
++#######
++#Plugins
++#######
++#README.ca
++#20080801
++
++Nombre: Adjuntar documents
++
++Biblioteca: libpluginbl_alarm.so
++
++Descripción: &lt;H1&gt;Adjuntar documents&lt;/H1&gt;
++&lt;P&gt;Permet associar fitxers a fitxes per obrir-los posterioment. Desa un vincle a l'aplicació.&lt;/P&gt;
++&lt;P&gt;Un cop instal·lat el plugin a tote les fitxes del programa apareixerà una opció al menú contextual de la fitxa que ens permetrà afegir referències a la fitxa, veure els fitxers existents i esborar les referències.&lt;/P&gt;
++&lt;BR&gt;
++&lt;IMG SRC=&quot;@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png&quot;/&gt;
++&lt;HR&gt;
++
++ParmBD: PluginBl_AttachDocument
++
++ArchivoSQLpatch: pluginbl_alarm.sql
++
++ArchivoSQLdeins: pluginbl_alarm-rm.sql
++
++Dependencias:
++
++Incompatibles:
++
++Categorias: Utilitats genèriques;Associacions de pares i mares d'alumnes;Experimentals;
++
++Orden: 90
++
++Comentarios:
++
+diff --git a/bulmages/bulmalib/plugins/pluginbl_alarm/README.en b/bulmages/bulmalib/plugins/pluginbl_alarm/README.en
+new file mode 100644
+index 0000000..3ec7885
+--- /dev/null
++++ b/bulmages/bulmalib/plugins/pluginbl_alarm/README.en
+@@ -0,0 +1,35 @@
++#######
++#Plugins
++#######
++#README.en
++#20080801
++
++Nombre: Adjuntar documentos
++
++Biblioteca: libpluginbl_alarm.so
++
++Descripción: &lt;H1&gt;Adjuntar documentos&lt;/H1&gt;
++&lt;P&gt;Permite asociar archivos a fichas para abrirlas posteriormente. Guarda un vínculo a la aplicación.&lt;/P&gt;
++&lt;P&gt;Una vez instalado el plugin en todas las fichas del programa aparecerá una opción en el menú contextual
++de la ficha que nos permitirá agregar referéncias a la ficha, ver los archivos existentes y borrar las
++referéncias&lt;/P&gt;
++&lt;BR&gt;
++&lt;IMG SRC=&quot;@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png&quot;/&gt;
++&lt;HR&gt;
++
++ParmBD: PluginBl_AttachDocument
++
++ArchivoSQLpatch: pluginbl_alarm.sql
++
++ArchivoSQLdeins: pluginbl_alarm-rm.sql
++
++Dependencias:
++
++Incompatibles:
++
++Categorias: School parental associations;Generic utilities; Experimentals;
++
++Orden: 90
++
++Comentarios:
++
+diff --git a/bulmages/bulmalib/plugins/pluginbl_alarm/README.es b/bulmages/bulmalib/plugins/pluginbl_alarm/README.es
+new file mode 100644
+index 0000000..5911ec8
+--- /dev/null
++++ b/bulmages/bulmalib/plugins/pluginbl_alarm/README.es
+@@ -0,0 +1,35 @@
++#######
++#Plugins
++#######
++#README.es
++#20080801
++
++Nombre: Alarmas
++
++Biblioteca: libpluginbl_alarm.so
++
++Descripción: &lt;H1&gt;&lt;IMG SRC=&quot;@CMAKE_INSTALL_PREFIX@/share/bulmages/images/chrono.png&quot; WIDTH=&quot;48&quot;/&gt;&lt;BR&gt;Alarmas&lt;/H1&gt;
++&lt;P&gt;Permite crear avisos programados sobre las fichas del programa que emergen generando un aviso programado.&lt;/P&gt;
++&lt;P&gt;Una vez instalado el plugin en todas las fichas del programa aparecerá la opción &lt;IMG SRC=&quot;@CMAKE_INSTALL_PREFIX@/share/bulmages/images/chrono.png&quot; WIDTH=&quot;16&quot;/&gt; en el menú y en el menú contextual de la ficha que nos permitirá agregar avisos, mostrar los avisos programados y borrarlos.&lt;/P&gt;
++&lt;P&gt;Cuando expira un aviso, éste genera un popup mostrandolo que permite acceder de forma rápida a la ficha que lo ha generado &lt;/P&gt;
++&lt;P&gt;El plugin también proporciona un gestor de alarmas, pudiendo manejarlas mejor todas agrupadas.&lt;/P&gt;
++&lt;BR&gt;
++&lt;IMG SRC=&quot;@CMAKE_INSTALL_PREFIX@/share/bulmages/images/chrono.png&quot; WIDTH=&quot;48&quot;/&gt;
++&lt;HR&gt;
++
++ParmBD: PluginBl_Alarm
++
++ArchivoSQLpatch: pluginbl_alarm.sql
++
++ArchivoSQLdeins: pluginbl_alarm-rm.sql
++
++Dependencias:
++
++Incompatibles:
++
++Categorias: Asociaciones de padres de alumnos;Utilidades genericas;Experimentales; Colmados; Ferreterías; Droguerías;Facturacion generica;Talleres;Distribución; Supermercados;Distribución Alimentaria;Servicios Generales;Alquileres;Restauración; Parques Infantiles; Tallas y Colores;
++
++Orden: 90
++
++Comentarios:
++
+diff --git a/bulmages/bulmalib/plugins/pluginbl_alarm/README.fr b/bulmages/bulmalib/plugins/pluginbl_alarm/README.fr
+new file mode 100644
+index 0000000..1ca2c68
+--- /dev/null
++++ b/bulmages/bulmalib/plugins/pluginbl_alarm/README.fr
+@@ -0,0 +1,33 @@
++#######
++#Plugins
++#######
++#README.fr
++#20110204
++
++Nombre: Joindre des documents
++
++Biblioteca: libpluginbl_alarm.so
++
++Descripción: &lt;H1&gt;Joindre des documents&lt;/H1&gt;
++&lt;P&gt;Permet d'associer des fichiers à des fiches pour les ouvrir postérieurement. Garde un lien vers l'application.&lt;/P&gt;
++&lt;P&gt;Une fois installé le greffon fait apparaitre une option dans toutes les fiches du programme dans le menu contextuel de celle-ci qui permet d'ajouter des références aux fiches, afficher les fichiers existants et effacer les références&lt;/P&gt;
++&lt;BR&gt;
++&lt;IMG SRC=&quot;@CMAKE_INSTALL_PREFIX@/share/bulmages/images/logopeq.png&quot;/&gt;
++&lt;HR&gt;
++
++ParmBD: PluginBl_AttachDocument
++
++ArchivoSQLpatch: pluginbl_alarm.sql
++
++ArchivoSQLdeins: pluginbl_alarm-rm.sql
++
++Dependencias:
++
++Incompatibles:
++
++Categorias: Association de parents d'eleves;Utilites generales ; Experimental ;
++
++Orden: 90
++
++Comentarios:
++
+diff --git a/bulmages/bulmalib/plugins/pluginbl_alarm/alarma.cpp b/bulmages/bulmalib/plugins/pluginbl_alarm/alarma.cpp
+new file mode 100644
+index 0000000..ba39293
+--- /dev/null
++++ b/bulmages/bulmalib/plugins/pluginbl_alarm/alarma.cpp
+@@ -0,0 +1,94 @@
++/***************************************************************************
++ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
++ *   <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>                                                  *
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 2 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program; if not, write to the                         *
++ *   Free Software Foundation, Inc.,                                       *
++ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
++ ***************************************************************************/
++
++#include &lt;fstream&gt;
++
++#include &lt;QtWidgets/QMessageBox&gt;
++#include &lt;QtGui/QCloseEvent&gt;
++#include &lt;QtCore/QFile&gt;
++#include &lt;QtCore/QTextStream&gt;
++#include &lt;QtWidgets/QWidget&gt;
++#include &lt;QtWidgets/QFileDialog&gt;
++
++#include &quot;blmaincompany.h&quot;
++#include &quot;alarma.h&quot;
++#include &quot;blconfiguration.h&quot;
++
++
++/** inicializa todos los componentes de la clase.
++    Resetea el sistema de control de cambios para que considere que no hay cambios por parte del usuario.
++    Mete la ventana en el workSpace.
++*/
++Alarma::Alarma ( BlMainCompany *comp, QWidget *parent )
++        : BlWidget ( comp, parent )
++{
++    BL_FUNC_DEBUG
++    setAttribute ( Qt::WA_DeleteOnClose );
++    try {
++        setupUi ( this );
++
++    } catch ( ... ) {
++        blMsgInfo ( _ ( &quot;Error al crear la ventana de importacion&quot; ) );
++    } // end try
++    
++}
++
++/** No precisa acciones adicionales en el destructor.
++*/
++Alarma::~Alarma()
++{
++    BL_FUNC_DEBUG
++    /// ATENCION: Hacer esto es un error ya que puede machacar procesos dependientes del listado.
++    // ((BfCompany *)mainCompany())-&gt;refreshCobrosCliente();
++    
++}
++
++void Alarma::on_mui_buscarAlarma_clicked()
++{
++/*
++    QString fileName = QFileDialog::getOpenFileName ( this, _ ( &quot;Open file&quot; ), &quot;&quot;, _ ( &quot;All files (*)&quot; ) );
++    mui_archivo-&gt;setText ( fileName );
++*/
++}
++
++/** No precisa acciones adicionales en el destructor.
++*/
++void Alarma::on_mui_aceptar_clicked()
++{
++    BL_FUNC_DEBUG
++    /*
++        QFile file ( mui_archivo-&gt;text() );
++        if ( !file.open ( QIODevice::ReadOnly | QIODevice::Text ) )
++            return;
++
++        if ( mui_cabeceras-&gt;isChecked() ) {
++            file.readLine();
++        } // end if
++
++        mainCompany()-&gt;begin();
++        while ( !file.atEnd() ) {
++            QByteArray line = file.readLine();
++            procesarLinea ( line );
++        } // end while
++        mainCompany()-&gt;commit();
++        file.close();
++    */
++    
++}
+diff --git a/bulmages/bulmalib/plugins/pluginbl_alarm/alarma.h b/bulmages/bulmalib/plugins/pluginbl_alarm/alarma.h
+new file mode 100644
+index 0000000..25d86c6
+--- /dev/null
++++ b/bulmages/bulmalib/plugins/pluginbl_alarm/alarma.h
+@@ -0,0 +1,64 @@
++/***************************************************************************
++ *   Copyright (C) 2008 by Tomeu Borras Riera                              *
++ *   <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>                                                  *
++ *   <A HREF="http://www.iglues.org">http://www.iglues.org</A>                                                 *
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 2 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program; if not, write to the                         *
++ *   Free Software Foundation, Inc.,                                       *
++ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
++ ***************************************************************************/
++
++#ifndef ALARMA_H
++#define ALARMA_H
++
++
++#include &lt;QtWidgets/QLineEdit&gt;
++#include &lt;QtWidgets/QLabel&gt;
++#include &lt;QtWidgets/QCheckBox&gt;
++#include &lt;QtWidgets/QWidget&gt;
++#include &lt;QtCore/QMap&gt;
++
++#include &quot;blfunctions.h&quot;
++#include &quot;ui_alarmabase.h&quot;
++#include &quot;blpostgresqlclient.h&quot;
++#include &quot;blwidget.h&quot;
++
++
++class BlMainCompany;
++
++
++/** Ventana de ficha de cobro.
++    Se encarga de la presentacion de la ficha de cobro y del tratamiento de eventos producidos
++    en dicha ventana.
++    Deriva de Ficha para metodos comunes a todas las ventanas.
++    Deriva de Cobro para el manejo de la Base de datos.
++**/
++class Alarma : public BlWidget, public Ui_AlarmaBase
++{
++    Q_OBJECT
++
++private:
++    QList&lt;QString&gt; m_claves;
++
++public:
++    Alarma ( BlMainCompany *, QWidget * );
++    ~Alarma();
++
++public slots:
++    void on_mui_aceptar_clicked();
++    void on_mui_buscarAlarma_clicked();
++};
++
++#endif
++
+diff --git a/bulmages/bulmalib/plugins/pluginbl_alarm/alarmabase.ui b/bulmages/bulmalib/plugins/pluginbl_alarm/alarmabase.ui
+new file mode 100644
+index 0000000..97ee6de
+--- /dev/null
++++ b/bulmages/bulmalib/plugins/pluginbl_alarm/alarmabase.ui
+@@ -0,0 +1,124 @@
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
++&lt;ui version=&quot;4.0&quot;&gt;
++ &lt;class&gt;AlarmaBase&lt;/class&gt;
++ &lt;widget class=&quot;QWidget&quot; name=&quot;AlarmaBase&quot;&gt;
++  &lt;property name=&quot;geometry&quot;&gt;
++   &lt;rect&gt;
++    &lt;x&gt;0&lt;/x&gt;
++    &lt;y&gt;0&lt;/y&gt;
++    &lt;width&gt;641&lt;/width&gt;
++    &lt;height&gt;400&lt;/height&gt;
++   &lt;/rect&gt;
++  &lt;/property&gt;
++  &lt;property name=&quot;windowTitle&quot;&gt;
++   &lt;string&gt;Importar CSV&lt;/string&gt;
++  &lt;/property&gt;
++  &lt;property name=&quot;windowIcon&quot;&gt;
++   &lt;iconset&gt;
++    &lt;normaloff&gt;:/BfBulmaFact32x32/images/png/32x32/i_bulmages_boton_listado.32x32.png&lt;/normaloff&gt;:/BfBulmaFact32x32/images/png/32x32/i_bulmages_boton_listado.32x32.png&lt;/iconset&gt;
++  &lt;/property&gt;
++  &lt;layout class=&quot;QVBoxLayout&quot; name=&quot;verticalLayout&quot;&gt;
++   &lt;item&gt;
++    &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++     &lt;item&gt;
++      &lt;widget class=&quot;QLabel&quot; name=&quot;label&quot;&gt;
++       &lt;property name=&quot;text&quot;&gt;
++        &lt;string&gt;Subject&lt;/string&gt;
++       &lt;/property&gt;
++      &lt;/widget&gt;
++     &lt;/item&gt;
++     &lt;item&gt;
++      &lt;widget class=&quot;QLineEdit&quot; name=&quot;mui_subjectalarma&quot;/&gt;
++     &lt;/item&gt;
++    &lt;/layout&gt;
++   &lt;/item&gt;
++   &lt;item&gt;
++    &lt;layout class=&quot;QHBoxLayout&quot; name=&quot;horizontalLayout_3&quot;&gt;
++     &lt;item&gt;
++      &lt;layout class=&quot;QHBoxLayout&quot; name=&quot;horizontalLayout&quot;&gt;
++       &lt;item&gt;
++        &lt;widget class=&quot;QLabel&quot; name=&quot;label_2&quot;&gt;
++         &lt;property name=&quot;text&quot;&gt;
++          &lt;string&gt;Fecha&lt;/string&gt;
++         &lt;/property&gt;
++        &lt;/widget&gt;
++       &lt;/item&gt;
++       &lt;item&gt;
++        &lt;widget class=&quot;BlDateSearch&quot; name=&quot;mui_fechaalarma&quot;/&gt;
++       &lt;/item&gt;
++      &lt;/layout&gt;
++     &lt;/item&gt;
++     &lt;item&gt;
++      &lt;layout class=&quot;QHBoxLayout&quot; name=&quot;horizontalLayout_2&quot;&gt;
++       &lt;item&gt;
++        &lt;widget class=&quot;QLabel&quot; name=&quot;label_3&quot;&gt;
++         &lt;property name=&quot;text&quot;&gt;
++          &lt;string&gt;Hora&lt;/string&gt;
++         &lt;/property&gt;
++        &lt;/widget&gt;
++       &lt;/item&gt;
++       &lt;item&gt;
++        &lt;widget class=&quot;QTimeEdit&quot; name=&quot;mui_horaalarma&quot;/&gt;
++       &lt;/item&gt;
++      &lt;/layout&gt;
++     &lt;/item&gt;
++    &lt;/layout&gt;
++   &lt;/item&gt;
++   &lt;item&gt;
++    &lt;widget class=&quot;QLabel&quot; name=&quot;label_4&quot;&gt;
++     &lt;property name=&quot;text&quot;&gt;
++      &lt;string&gt;Mensaje&lt;/string&gt;
++     &lt;/property&gt;
++    &lt;/widget&gt;
++   &lt;/item&gt;
++   &lt;item&gt;
++    &lt;widget class=&quot;QTextEdit&quot; name=&quot;mui_textoalarma&quot;/&gt;
++   &lt;/item&gt;
++   &lt;item&gt;
++    &lt;layout class=&quot;QHBoxLayout&quot;&gt;
++     &lt;item&gt;
++      &lt;spacer&gt;
++       &lt;property name=&quot;orientation&quot;&gt;
++        &lt;enum&gt;Qt::Horizontal&lt;/enum&gt;
++       &lt;/property&gt;
++       &lt;property name=&quot;sizeHint&quot; stdset=&quot;0&quot;&gt;
++        &lt;size&gt;
++         &lt;width&gt;40&lt;/width&gt;
++         &lt;height&gt;20&lt;/height&gt;
++        &lt;/size&gt;
++       &lt;/property&gt;
++      &lt;/spacer&gt;
++     &lt;/item&gt;
++     &lt;item&gt;
++      &lt;widget class=&quot;QPushButton&quot; name=&quot;mui_aceptar&quot;&gt;
++       &lt;property name=&quot;text&quot;&gt;
++        &lt;string&gt;Aceptar&lt;/string&gt;
++       &lt;/property&gt;
++      &lt;/widget&gt;
++     &lt;/item&gt;
++     &lt;item&gt;
++      &lt;widget class=&quot;QPushButton&quot; name=&quot;mui_cancelar&quot;&gt;
++       &lt;property name=&quot;text&quot;&gt;
++        &lt;string&gt;Cancelar&lt;/string&gt;
++       &lt;/property&gt;
++      &lt;/widget&gt;
++     &lt;/item&gt;
++    &lt;/layout&gt;
++   &lt;/item&gt;
++  &lt;/layout&gt;
++ &lt;/widget&gt;
++ &lt;customwidgets&gt;
++  &lt;customwidget&gt;
++   &lt;class&gt;BlDateSearch&lt;/class&gt;
++   &lt;extends&gt;QLineEdit&lt;/extends&gt;
++   &lt;header&gt;bldatesearch.h&lt;/header&gt;
++  &lt;/customwidget&gt;
++ &lt;/customwidgets&gt;
++ &lt;includes&gt;
++  &lt;include location=&quot;local&quot;&gt;local_blI18n.h&lt;/include&gt;
++ &lt;/includes&gt;
++ &lt;resources&gt;
++  &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
++ &lt;/resources&gt;
++ &lt;connections/&gt;
++&lt;/ui&gt;
+diff --git a/bulmages/bulmalib/plugins/pluginbl_alarm/alarmamenu.cpp b/bulmages/bulmalib/plugins/pluginbl_alarm/alarmamenu.cpp
+new file mode 100644
+index 0000000..5f19d6c
+--- /dev/null
++++ b/bulmages/bulmalib/plugins/pluginbl_alarm/alarmamenu.cpp
+@@ -0,0 +1,255 @@
++/***************************************************************************
++ *   Copyright (C) 2006 by Arturo Martin Llado                             *
++ *   <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">amartin en conetxia.com</A>                                                  *
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 2 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program; if not, write to the                         *
++ *   Free Software Foundation, Inc.,                                       *
++ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
++ ***************************************************************************/
++
++#include &lt;QtWidgets/QWidget&gt;
++#include &lt;QtCore/QString&gt;
++#include &lt;QtWidgets/QFileDialog&gt;
++#include &lt;QtCore/QMap&gt;
++#include &lt;QtCore/QList&gt;
++#include &lt;QtWidgets/QMenu&gt;
++#include &lt;QtWidgets/QAction&gt;
++#include &lt;QtCore/QTextStream&gt;
++#include &lt;QtCore/QFile&gt;
++#include &lt;QtWidgets/QToolButton&gt;
++#include &lt;QtWidgets/QPushButton&gt;
++
++
++#include &quot;blfixed.h&quot;
++#include &quot;blmaincompany.h&quot;
++#include &quot;bldb.h&quot;
++#include &quot;alarmamenu.h&quot;
++#include &quot;alarma.h&quot;
++#include &quot;blfunctions.h&quot;
++
++///
++/**
++\param parent
++**/
++AlQToolButton::AlQToolButton ( QWidget *parent ) : QToolButton ( parent )
++{
++    BL_FUNC_DEBUG
++   /// Buscamos alguna otra instancia y si la hay nos quitamos de enmedio
++    AlQToolButton *tool = parent-&gt;findChild&lt;AlQToolButton *&gt;(&quot;BotonAlarm&quot;);
++    if (tool) {
++      hide();
++      return;
++    } // end if
++    setObjectName(&quot;BotonAlarm&quot;);
++
++    connect ( parent, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( pintaMenu ( QMenu * ) ) );
++    connect ( parent, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( trataMenu ( QAction * ) ) );
++
++    m_BlForm = ( BlForm * ) parent;
++
++    QFrame *plugbotones = m_BlForm-&gt;findChild&lt;QFrame *&gt;(&quot;mui_plugbotones&quot;);
++    if (plugbotones) {
++	QHBoxLayout *m_hboxLayout1 = plugbotones-&gt;findChild&lt;QHBoxLayout *&gt; ( &quot;hboxLayout1&quot; );
++	if ( !m_hboxLayout1 ) {
++	    m_hboxLayout1 = new QHBoxLayout ( plugbotones );
++	    m_hboxLayout1-&gt;setSpacing ( 5 );
++	    m_hboxLayout1-&gt;setMargin ( 0 );
++	    m_hboxLayout1-&gt;setObjectName ( QString::fromUtf8 ( &quot;hboxLayout1&quot; ) );
++	} // end if
++	m_hboxLayout1-&gt;addWidget ( this );
++
++	setMinimumSize ( QSize ( 32, 32 ) );
++        setMaximumSize ( QSize ( 32, 32 ) );
++	setIcon ( QIcon ( g_confpr-&gt;value( CONF_PROGDATA ) + &quot;icons/chrono.png&quot; ) );
++	setIconSize ( QSize ( 32, 32 ) );  	
++	setPopupMode(QToolButton::InstantPopup);  
++	
++	hazMenu();
++
++    } else {
++        hide();
++    } // end if
++    
++}
++
++
++void AlQToolButton::hazMenu() {
++  	/// Creamos el menu
++	QMenu *menu = new QMenu(this);
++	
++	QAction *addaction = new QAction( _ ( &quot;Agregar Alarma &quot; ) , m_BlForm);
++	addaction-&gt;setIcon(QIcon ( g_confpr-&gt;value( CONF_PROGDATA ) + &quot;icons/chrono.png&quot; ));
++	menu-&gt;addAction (addaction);
++	addaction-&gt;setObjectName ( &quot;addalarma&quot; );
++	connect ( addaction, SIGNAL ( triggered ( bool ) ), this, SLOT ( trataMenu (  ) ) );
++	menu-&gt;addSeparator();
++	QString query = &quot;SELECT * FROM alarma WHERE fichaalarma = '&quot; + m_BlForm-&gt;tableName() + &quot;' AND idfichaalarma= '&quot; + m_BlForm-&gt;dbValue ( m_BlForm-&gt;fieldId() ) + &quot;'&quot;;
++	BlDbRecordSet *cur = m_BlForm-&gt;mainCompany()-&gt;loadQuery ( query );
++	while ( !cur-&gt;eof() ) {
++	    QMenu *n1menu = menu-&gt;addMenu ( cur-&gt;value( &quot;subjectalarma&quot; ) );
++	    QAction *addaction1 = new QAction ( _ ( &quot;Abrir&quot;), m_BlForm );
++	    n1menu-&gt;addAction (addaction1);
++	    addaction1-&gt;setObjectName ( &quot;abrir_alarma_&quot; + cur-&gt;value( &quot;idalarma&quot; ) );
++	    connect ( addaction1, SIGNAL ( triggered ( bool ) ), this, SLOT ( trataMenu (  ) ) );
++		    
++	    QAction *delaction = new QAction ( _ ( &quot;Borrar&quot;), m_BlForm );
++	    n1menu-&gt;addAction (delaction);
++	    delaction-&gt;setObjectName ( &quot;borrar_alarma_&quot; + cur-&gt;value( &quot;idalarma&quot; ) );
++	    connect ( delaction, SIGNAL ( triggered ( bool ) ), this, SLOT ( trataMenu ( ) ) );
++	    
++	    cur-&gt;nextRecord();
++	} // end while
++	delete cur;
++	
++	setMenu(menu);
++}
++
++///
++/**
++**/
++AlQToolButton::~AlQToolButton()
++{
++    BL_FUNC_DEBUG
++    
++}
++
++
++///
++/**
++\param menu El menu sobre el que pintar la opcion
++**/
++void AlQToolButton::pintaMenu ( QMenu *menu )
++{
++    BL_FUNC_DEBUG
++    QMenu *ajust = menu-&gt;addMenu (QIcon(&quot;:/Images/chrono.png&quot;), _ ( &quot;Avisos y alarmas&quot; ) );
++
++    
++	QAction *addaction = new QAction( _ ( &quot;Agregar Alarma &quot; ) , m_BlForm);
++	addaction-&gt;setIcon(QIcon ( g_confpr-&gt;value( CONF_PROGDATA ) + &quot;icons/chrono.png&quot; ));
++	ajust-&gt;addAction (addaction);
++	addaction-&gt;setObjectName ( &quot;addalarma&quot; );
++	ajust-&gt;addSeparator();
++	QString query = &quot;SELECT * FROM alarma WHERE fichaalarma = '&quot; + m_BlForm-&gt;tableName() + &quot;' AND idfichaalarma= '&quot; + m_BlForm-&gt;dbValue ( m_BlForm-&gt;fieldId() ) + &quot;'&quot;;
++	BlDbRecordSet *cur = m_BlForm-&gt;mainCompany()-&gt;loadQuery ( query );
++	while ( !cur-&gt;eof() ) {
++	    QMenu *n1menu = ajust-&gt;addMenu ( cur-&gt;value( &quot;subjectalarma&quot; ) );
++	    QAction *addaction1 = new QAction ( _ ( &quot;Abrir&quot;), m_BlForm );
++	    n1menu-&gt;addAction (addaction1);
++	    addaction-&gt;setObjectName ( &quot;abrir_alarma_&quot; + cur-&gt;value( &quot;idalarma&quot; ) );
++	    
++	    QAction *delaction = new QAction ( _ ( &quot;Borrar&quot;), m_BlForm );
++	    n1menu-&gt;addAction (delaction);
++	    delaction-&gt;setObjectName ( &quot;borrar_alarma_&quot; + cur-&gt;value( &quot;idalarma&quot; ) );
++	    
++	    cur-&gt;nextRecord();
++	} // end while
++	delete cur;
++
++    
++}
++
++
++///
++/**
++\param menu El menu sobre el que pintar la opcion
++**/
++void AlQToolButton::trataMenu ( QAction *action )
++{
++    BL_FUNC_DEBUG
++    
++     if (action == NULL) action = (QAction *) sender();
++    
++
++    if ( action-&gt;objectName() == &quot;addalarma&quot; ) {
++      
++
++        QDialog *diag = new QDialog;
++        Alarma *camb = new Alarma ( m_BlForm-&gt;mainCompany(), diag );
++        diag-&gt;setModal ( true );
++
++        QPushButton *button = camb-&gt;findChild&lt;QPushButton *&gt; ( &quot;mui_aceptar&quot; );
++        connect ( button, SIGNAL ( released ( ) ), diag, SLOT ( accept() ) );
++        QPushButton *button1 = camb-&gt;findChild&lt;QPushButton *&gt; ( &quot;mui_cancelar&quot; );
++        connect ( button1, SIGNAL ( released ( ) ), diag, SLOT ( reject() ) );
++
++        /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
++        /// para que sea redimensionable y aparezca el titulo de la ventana.
++        QHBoxLayout *layout = new QHBoxLayout;
++        layout-&gt;addWidget ( camb );
++        layout-&gt;setMargin ( 0 );
++        layout-&gt;setSpacing ( 0 );
++        diag-&gt;setLayout ( layout );
++        diag-&gt;setWindowTitle ( _(&quot;Agregar Alarma&quot;) );
++
++	
++
++        if ( diag-&gt;exec() ) {
++            QString query = &quot;INSERT INTO alarma (fichaalarma, idfichaalarma, subjectalarma, usuarioalarma, fechaalarma, horaalarma, textoalarma) VALUES ('&quot; + m_BlForm-&gt;tableName() + &quot;', '&quot; + m_BlForm-&gt;dbValue ( m_BlForm-&gt;fieldId() ) + &quot;' , '&quot; + camb-&gt;mui_subjectalarma-&gt;text() + &quot;', '&quot;+g_confpr-&gt;value(CONF_LOGIN_USER)+&quot;', '&quot;+camb-&gt;mui_fechaalarma-&gt;text()+&quot;', '&quot;+camb-&gt;mui_horaalarma-&gt;text()+&quot;', '&quot;+camb-&gt;mui_textoalarma-&gt;toPlainText()+&quot;') &quot;;
++            m_BlForm-&gt;mainCompany()-&gt;runQuery ( query );
++        } // end if
++
++        delete diag;
++	hazMenu();
++    } // end if
++
++    if ( action-&gt;objectName().left ( 13 ) == &quot;abrir_alarma_&quot; ) {
++        QString idalarma = action-&gt;objectName().right ( action-&gt;objectName().size() - 13 );
++        QString query = &quot;SELECT * FROM alarma WHERE idalarma = &quot; + idalarma;
++        BlDbRecordSet *cur = m_BlForm-&gt;mainCompany()-&gt;loadQuery ( query );
++        if ( !cur-&gt;eof() ) {
++	    QDialog *diag = new QDialog;
++	    Alarma *camb = new Alarma ( m_BlForm-&gt;mainCompany(), diag );
++	    diag-&gt;setModal ( true );
++
++	    QPushButton *button = camb-&gt;findChild&lt;QPushButton *&gt; ( &quot;mui_aceptar&quot; );
++	    connect ( button, SIGNAL ( released ( ) ), diag, SLOT ( accept() ) );
++	    QPushButton *button1 = camb-&gt;findChild&lt;QPushButton *&gt; ( &quot;mui_cancelar&quot; );
++	    connect ( button1, SIGNAL ( released ( ) ), diag, SLOT ( reject() ) );
++
++	    /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
++	    /// para que sea redimensionable y aparezca el titulo de la ventana.
++	    QHBoxLayout *layout = new QHBoxLayout;
++	    layout-&gt;addWidget ( camb );
++	    layout-&gt;setMargin ( 0 );
++	    layout-&gt;setSpacing ( 0 );
++	    diag-&gt;setLayout ( layout );
++	    diag-&gt;setWindowTitle ( _(&quot;Agregar Alarma&quot;) );
++
++	    camb-&gt;mui_fechaalarma-&gt;setText(cur-&gt;value(&quot;fechaalarma&quot;));
++	    camb-&gt;mui_subjectalarma-&gt;setText(cur-&gt;value(&quot;subjectalarma&quot;));
++	    camb-&gt;mui_horaalarma-&gt;setTime(QTime::fromString(cur-&gt;value(&quot;horaalarma&quot;), &quot;hh:ss&quot;));
++	    camb-&gt;mui_textoalarma-&gt;setText(cur-&gt;value(&quot;textoalarma&quot;));
++	    if ( diag-&gt;exec() ) {
++	    } // end if
++
++	    delete diag;
++        } // end if
++        delete cur;
++    } // end if
++
++
++    if ( action-&gt;objectName().left ( 14 ) == &quot;borrar_alarma_&quot; ) {
++        QString idalarma = action-&gt;objectName().right ( action-&gt;objectName().size() - 14 );
++        QString query = &quot;DELETE FROM alarma WHERE idalarma = &quot; + idalarma;
++        m_BlForm-&gt;mainCompany()-&gt;runQuery ( query );
++	hazMenu();
++    } // end if
++
++    
++    
++}
++
++
++
++
+diff --git a/bulmages/bulmalib/plugins/pluginbl_alarm/alarmamenu.h b/bulmages/bulmalib/plugins/pluginbl_alarm/alarmamenu.h
+new file mode 100644
+index 0000000..22e8e6e
+--- /dev/null
++++ b/bulmages/bulmalib/plugins/pluginbl_alarm/alarmamenu.h
+@@ -0,0 +1,58 @@
++/***************************************************************************
++ *   Copyright (C) 2007 by Tomeu Borras Riera                              *
++ *   <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>                                                  *
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 2 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program; if not, write to the                         *
++ *   Free Software Foundation, Inc.,                                       *
++ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
++ ***************************************************************************/
++
++#ifndef ALARMAMENU_H
++#define ALARMAMENU_H
++
++#include &lt;QtWidgets/QWidget&gt;
++#include &lt;QtCore/QString&gt;
++#include &lt;QtCore/QMap&gt;
++#include &lt;QtWidgets/QToolButton&gt;
++
++#include &quot;blfunctions.h&quot;
++#include &quot;blmaincompany.h&quot;
++#include &quot;blform.h&quot;
++
++
++
++
++class AlQToolButton : public QToolButton
++{
++    Q_OBJECT
++
++private:
++    BlMainCompany *m_companyact;
++    BlForm *m_BlForm;
++
++
++public:
++    AlQToolButton ( QWidget *parent = NULL );
++    ~AlQToolButton();
++
++public slots:
++    virtual void pintaMenu ( QMenu * );
++    virtual void trataMenu ( QAction *action = NULL );
++    virtual void hazMenu();
++
++};
++
++
++#endif
++
+diff --git a/bulmages/bulmalib/plugins/pluginbl_alarm/dbmodels/pluginbl_alarm-rm.sql b/bulmages/bulmalib/plugins/pluginbl_alarm/dbmodels/pluginbl_alarm-rm.sql
+new file mode 100644
+index 0000000..4560905
+--- /dev/null
++++ b/bulmages/bulmalib/plugins/pluginbl_alarm/dbmodels/pluginbl_alarm-rm.sql
+@@ -0,0 +1,110 @@
++--
++-- Modificación de campos y funciones de la BD para la adaptacion para el plugin de Archivos
++--
++\echo &quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE ARCHIVOS *********&quot;
++
++\echo &quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot;
++\echo -n &quot;:: &quot;
++SET client_min_messages TO WARNING;
++SET log_min_messages TO WARNING;
++-- SET log_error_verbosity TO TERSE;
++BEGIN;
++
++--
++-- Estas primeras funciones cambiar&#65533; los tipos de columnas que est&#65533; como flotantes a NUMERIC.
++-- Se trata de un parche que se desea aplicar para almacenar los tipos monetarios
++-- ya que actualmente se encuantran almacenados como 'doubles' y es preferible
++-- que se almacenen como tipo 'numeric'.
++-- Todas devuelven como valor num&#65533;ico el nmero de filas influenciadas por el cambio
++-- NOTA: Si alguien sabe como pasar por par&#65533;etro un nombre de tabla y campo a modificar se
++-- har&#65533; mucho m&#65533; sencillito porque s&#65533;o habr&#65533; que implementar un funci&#65533; ya que siempre
++-- hay que hacer lo mismo.
++--
++
++--
++-- Función auxiliar para borrar funciones limpiamente
++--
++create or replace function drop_if_exists_table (text) returns INTEGER AS '
++DECLARE
++    tbl_name ALIAS FOR $1;
++
++BEGIN
++    IF (select count(*) from pg_tables where tablename=$1) THEN
++	EXECUTE ''DROP TABLE '' || $1;
++	RETURN 1;
++    END IF;
++
++    RETURN 0;
++END;
++'
++language 'plpgsql';
++
++
++create or replace function drop_if_exists_proc (text,text) returns INTEGER AS '
++DECLARE
++    proc_name ALIAS FOR $1;
++    proc_params ALIAS FOR $2;
++
++BEGIN
++    IF (select count(*) from pg_proc where proname=$1) THEN
++	EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
++	RETURN 1;
++    END IF;
++
++    RETURN 0;
++END;
++'
++language 'plpgsql';
++
++
++
++-- ========================== BLOQUEOS =======================
++
++
++
++CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
++DECLARE
++	rs RECORD;
++
++BEGIN
++	SELECT INTO rs * FROM pg_tables  WHERE tablename=''archivo'';
++
++	IF FOUND THEN
++	      DROP TABLE archivo;
++	END IF;
++
++	RETURN 0;
++END;
++'   LANGUAGE plpgsql;
++SELECT aux();
++DROP FUNCTION aux() CASCADE;
++
++-- ==============================================================================
++
++
++-- Agregamos nuevos parametros de configuraci&#65533;.
++--
++CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
++DECLARE
++	rs RECORD;
++
++BEGIN
++	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBl_AttachDocument'';
++
++	IF FOUND THEN
++		DELETE FROM CONFIGURACION WHERE nombre=''PluginBl_AttachDocument'';
++	END IF;
++
++	RETURN 0;
++END;
++'   LANGUAGE plpgsql;
++SELECT actualizarevision();
++DROP FUNCTION actualizarevision() CASCADE;
++\echo &quot;Eliminada la revision de la base de datos&quot;
++
++
++DROP FUNCTION drop_if_exists_table(text) CASCADE;
++DROP FUNCTION drop_if_exists_proc(text,text) CASCADE;
++
++
++COMMIT;
+diff --git a/bulmages/bulmalib/plugins/pluginbl_alarm/dbmodels/pluginbl_alarm.sql b/bulmages/bulmalib/plugins/pluginbl_alarm/dbmodels/pluginbl_alarm.sql
+new file mode 100644
+index 0000000..aa402d9
+--- /dev/null
++++ b/bulmages/bulmalib/plugins/pluginbl_alarm/dbmodels/pluginbl_alarm.sql
+@@ -0,0 +1,121 @@
++--
++-- Modificación de campos y funciones de la BD para la adaptacion para el plugin de Archivos
++--
++\echo &quot;********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE ARCHIVOS *********&quot;
++
++\echo &quot;:: Establecemos los mensajes minimos a avisos y otros parametros ... &quot;
++\echo -n &quot;:: &quot;
++SET client_min_messages TO WARNING;
++SET log_min_messages TO WARNING;
++-- SET log_error_verbosity TO TERSE;
++BEGIN;
++
++--
++-- Estas primeras funciones cambiar&#65533; los tipos de columnas que est&#65533; como flotantes a NUMERIC.
++-- Se trata de un parche que se desea aplicar para almacenar los tipos monetarios
++-- ya que actualmente se encuantran almacenados como 'doubles' y es preferible
++-- que se almacenen como tipo 'numeric'.
++-- Todas devuelven como valor num&#65533;ico el nmero de filas influenciadas por el cambio
++-- NOTA: Si alguien sabe como pasar por par&#65533;etro un nombre de tabla y campo a modificar se
++-- har&#65533; mucho m&#65533; sencillito porque s&#65533;o habr&#65533; que implementar un funci&#65533; ya que siempre
++-- hay que hacer lo mismo.
++--
++
++--
++-- Función auxiliar para borrar funciones limpiamente
++--
++create or replace function drop_if_exists_table (text) returns INTEGER AS '
++DECLARE
++    tbl_name ALIAS FOR $1;
++
++BEGIN
++    IF (select count(*) from pg_tables where tablename=$1) THEN
++	EXECUTE ''DROP TABLE '' || $1;
++	RETURN 1;
++    END IF;
++
++    RETURN 0;
++END;
++'
++language 'plpgsql';
++
++
++create or replace function drop_if_exists_proc (text,text) returns INTEGER AS '
++DECLARE
++    proc_name ALIAS FOR $1;
++    proc_params ALIAS FOR $2;
++
++BEGIN
++    IF (select count(*) from pg_proc where proname=$1) THEN
++	EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
++	RETURN 1;
++    END IF;
++
++    RETURN 0;
++END;
++'
++language 'plpgsql';
++
++
++
++-- ========================== BLOQUEOS =======================
++
++
++
++CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
++DECLARE
++	rs RECORD;
++
++BEGIN
++	SELECT INTO rs * FROM pg_tables  WHERE tablename=''alarma'';
++
++	IF NOT FOUND THEN
++		CREATE TABLE alarma (
++		idalarma SERIAL PRIMARY KEY,
++		fichaalarma varchar NOT NULL,
++		idfichaalarma integer,
++		usuarioalarma varchar NOT NULL,
++		subjectalarma	varchar NOT NULL,
++		textoalarma	varchar NOT NULL,
++		fechaalarma    date default now(),
++		horaalarma     time default now()
++		);
++
++	END IF;
++	RETURN 0;
++END;
++'   LANGUAGE plpgsql;
++SELECT aux();
++DROP FUNCTION aux() CASCADE;
++
++-- ==============================================================================
++
++
++-- Agregamos nuevos parametros de configuracion.
++--
++CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
++DECLARE
++	rs RECORD;
++
++BEGIN
++	SELECT INTO rs * FROM configuracion WHERE nombre=''PluginBl_Alarm'';
++
++	IF FOUND THEN
++		UPDATE CONFIGURACION SET valor=''1.5.1-0001'' WHERE nombre=''PluginBl_Alarm'';
++	ELSE
++		INSERT INTO configuracion (nombre, valor) VALUES (''PluginBl_Alarm'', ''1.5.1-0001'');
++	END IF;
++
++	RETURN 0;
++END;
++'   LANGUAGE plpgsql;
++SELECT actualizarevision();
++DROP FUNCTION actualizarevision() CASCADE;
++\echo &quot;Actualizada la revision de la base de datos a la version 1.5.1&quot;
++
++
++DROP FUNCTION drop_if_exists_table(text) CASCADE;
++DROP FUNCTION drop_if_exists_proc(text,text) CASCADE;
++
++
++COMMIT;
+diff --git a/bulmages/bulmalib/plugins/pluginbl_alarm/icons/chrono.png b/bulmages/bulmalib/plugins/pluginbl_alarm/icons/chrono.png
+new file mode 100644
+index 0000000..4878aec
+Binary files /dev/null and b/bulmages/bulmalib/plugins/pluginbl_alarm/icons/chrono.png differ
+diff --git a/bulmages/bulmalib/plugins/pluginbl_alarm/icons/technoargia_chrono.svg b/bulmages/bulmalib/plugins/pluginbl_alarm/icons/technoargia_chrono.svg
+new file mode 100644
+index 0000000..097730f
+--- /dev/null
++++ b/bulmages/bulmalib/plugins/pluginbl_alarm/icons/technoargia_chrono.svg
+@@ -0,0 +1,74 @@
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;
++&lt;!-- Created with Inkscape (<A HREF="http://www.inkscape.org/">http://www.inkscape.org/</A>) --&gt;
++&lt;svg xmlns:dc=&quot;<A HREF="http://purl.org/dc/elements/1.1/">http://purl.org/dc/elements/1.1/</A>&quot; xmlns:cc=&quot;<A HREF="http://web.resource.org/cc/">http://web.resource.org/cc/</A>&quot; xmlns:rdf=&quot;<A HREF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">http://www.w3.org/1999/02/22-rdf-syntax-ns#</A>&quot; xmlns:svg=&quot;<A HREF="http://www.w3.org/2000/svg">http://www.w3.org/2000/svg</A>&quot; xmlns=&quot;<A HREF="http://www.w3.org/2000/svg">http://www.w3.org/2000/svg</A>&quot; xmlns:sodipodi=&quot;<A HREF="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd">http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd</A>&quot; xmlns:inkscape=&quot;<A HREF="http://www.inkscape.org/namespaces/inkscape">http://www.inkscape.org/namespaces/inkscape</A>&quot; width=&quot;301.28pt&quot; height=&quot;400pt&quot; id=&quot;svg2&quot; sodipodi:version=&quot;0.32&quot; inkscape:version=&quot;0.43&quot; sodipodi:docbase=&quot;/home/f5soh/Swf/Tutoriel/svg&quot; sodipodi:docname=&quot;chrono2.svg&quot; version=&quot;1.0&quot;&gt;
++  &lt;defs id=&quot;defs4&quot;&gt;
++    &lt;marker inkscape:stockid=&quot;StopM&quot; orient=&quot;auto&quot; refY=&quot;0&quot; refX=&quot;0&quot; id=&quot;StopM&quot; style=&quot;overflow:visible&quot;&gt;
++      &lt;path id=&quot;path14689&quot; d=&quot;M 0,5.65 L 0,-5.65&quot; style=&quot;fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1pt&quot; transform=&quot;scale(0.4,0.4)&quot;/&gt;
++    &lt;/marker&gt;
++    &lt;marker inkscape:stockid=&quot;StopS&quot; orient=&quot;auto&quot; refY=&quot;0&quot; refX=&quot;0&quot; id=&quot;StopS&quot; style=&quot;overflow:visible&quot;&gt;
++      &lt;path id=&quot;path14686&quot; d=&quot;M 0,5.65 L 0,-5.65&quot; style=&quot;fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1pt&quot; transform=&quot;scale(0.2,0.2)&quot;/&gt;
++    &lt;/marker&gt;
++    &lt;marker inkscape:stockid=&quot;StopL&quot; orient=&quot;auto&quot; refY=&quot;0&quot; refX=&quot;0&quot; id=&quot;StopL&quot; style=&quot;overflow:visible&quot;&gt;
++      &lt;path id=&quot;path14692&quot; d=&quot;M 0,5.65 L 0,-5.65&quot; style=&quot;fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1pt&quot; transform=&quot;scale(0.8,0.8)&quot;/&gt;
++    &lt;/marker&gt;
++    &lt;linearGradient id=&quot;linearGradient6669&quot;&gt;
++      &lt;stop style=&quot;stop-color:#8b7b7b;stop-opacity:1;&quot; offset=&quot;0&quot; id=&quot;stop6671&quot;/&gt;
++      &lt;stop id=&quot;stop6677&quot; offset=&quot;0.11&quot; style=&quot;stop-color:#8b7b7b;stop-opacity:0.92241377;&quot;/&gt;
++      &lt;stop style=&quot;stop-color:#1c1414;stop-opacity:0.81034482;&quot; offset=&quot;1&quot; id=&quot;stop6673&quot;/&gt;
++    &lt;/linearGradient&gt;
++  &lt;/defs&gt;
++  &lt;sodipodi:namedview id=&quot;base&quot; pagecolor=&quot;#ffffff&quot; bordercolor=&quot;#666666&quot; borderopacity=&quot;1.0&quot; inkscape:pageopacity=&quot;0.0&quot; inkscape:pageshadow=&quot;2&quot; inkscape:zoom=&quot;0.80105501&quot; inkscape:cx=&quot;372.04724&quot; inkscape:cy=&quot;176.64205&quot; inkscape:document-units=&quot;px&quot; inkscape:current-layer=&quot;layer1&quot; inkscape:window-width=&quot;1272&quot; inkscape:window-height=&quot;996&quot; inkscape:window-x=&quot;0&quot; inkscape:window-y=&quot;0&quot;/&gt;
++  &lt;g inkscape:label=&quot;Calque 1&quot; inkscape:groupmode=&quot;layer&quot; id=&quot;layer1&quot;&gt;
++    &lt;g id=&quot;g4026&quot; style=&quot;fill:#000000;fill-opacity:0.41778977;fill-rule:nonzero;stroke:#000000;stroke-opacity:1&quot; transform=&quot;matrix(0.940559,0.166725,-0.154489,0.965491,238.345,-250.082)&quot;&gt;
++      &lt;path transform=&quot;translate(-84.00711,26.8968)&quot; sodipodi:nodetypes=&quot;csccsssccccccccsccccccccssssccssssccccsccccc&quot; id=&quot;path4028&quot; d=&quot;M 129.5,251.96875 C 93.528564,252.83932 64.78125,271.79806 64.78125,293 C 64.78126,308.6168 77.47717,322.09488 98.4375,328.4375 C 104.27112,339.749 117.8265,352.73138 117.03125,363.96875 C 43.379957,366.01631 -38.37501,441.43586 -38.375,536.875 C -38.374999,632.31415 39.092117,709.75002 134.53125,709.75 C 229.97039,709.75001 307.40627,632.31414 307.40625,536.875 C 307.40625,480.28258 280.06086,433.97432 245.18628,402.39502 C 245.37514,402.22442 245.54874,402.03178 245.71753,401.83252 L 250.96753,395.61377 L 252.34253,396.70752 C 254.37883,398.36921 257.13447,398.32936 258.56128,396.64502 L 262.15503,392.42627 C 263.58182,390.74192 263.09761,388.05671 261.06128,386.39502 L 243.87378,372.36377 C 243.77831,372.28589 243.69109,372.21552 243.59253,372.14502 C 241.58892,370.7113 238.9837,370.78965 237.62378,372.39502 L 234.03003,376.64502 C 232.60
+ 322,378.3294 233.08747,381.01459 235.12378,382.67627 L 236.96753,384.17627 L 231.68628,390.39502 C 231.27226,390.88378 233.79842,393.66042 230.74878,391.95752 C 206.94839,376.54467 174.97829,364.02045 148,363.21875 C 146.50446,354.67715 158.4239,340.12727 163.46664,327.21875 C 182.33901,320.46084 199.4375,307.66252 199.4375,293 C 199.43752,271.29226 169.29365,251.96876 132.125,251.96875 C 131.54426,251.96875 130.95225,251.95938 130.375,251.96875 C 130.23294,251.97107 130.07934,251.96588 129.9375,251.96875 C 129.79622,251.97161 129.64106,251.96534 129.5,251.96875 z M 130.28125,262.5625 C 130.50433,262.55694 130.74497,262.5665 130.96875,262.5625 C 131.08108,262.5605 131.2,262.56411 131.3125,262.5625 C 131.76966,262.55595 132.22758,262.5625 132.6875,262.5625 C 162.12234,262.56251 186,276.08079 186,292.71875 C 186.00001,301.95863 176.83561,312.89499 166.17082,318.26668 C 164.02373,314.56894 155.92202,309.07368 147.4633,306.59709 C 133.32337,307.91947 124.51924,307.19053 111.125,
+ 306.0625 C 102.19231,308.77466 97.85555,312.28607 96.40625,316.3125 C 85.55021,310.79356 79.34375,302.27258 79.34375,292.71875 C 79.34377,276.5322 101.95053,263.26855 130.28125,262.5625 z M 111.125,306.0625 L 149.16081,307.16292 C 167.23749,280.37197 138.35024,280.10213 133.5625,280.8125 C 129.28576,279.86245 93.72895,276.96495 111.125,306.0625 z &quot; style=&quot;fill:#000000;fill-opacity:0.41778977;fill-rule:nonzero;stroke:none;stroke-width:1.301;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1&quot;/&gt;
++    &lt;/g&gt;
++    &lt;path style=&quot;fill:#5e62c6;fill-opacity:1;fill-rule:nonzero;stroke:#221d1d;stroke-width:0.91592032;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1&quot; d=&quot;M 319.77635,162.8291 C 318.04124,161.1258 315.46094,160.78206 313.86767,162.09375 L 309.66486,165.55384 C 307.99319,166.93008 308.04336,169.59236 309.7738,171.51924 L 311.32523,173.24677 L 305.15571,178.32601 C 302.76766,180.29202 302.52256,183.74263 304.60618,186.06274 L 309.00185,190.95742 C 311.08547,193.27752 314.68541,193.56256 317.07344,191.59655 L 323.24299,186.51735 L 324.39479,187.79989 C 326.12522,189.72678 328.84337,190.147 330.51502,188.77079 L 334.71785,185.31073 C 336.38948,183.93449 336.36286,181.29839 334.6324,179.37151 L 320.01143,163.09084 C 319.9303,163.00053 319.8617,162.91286 319.77635,162.8291 z &quot; id=&quot;rect5779&quot;/&gt;
++    &lt;path style=&quot;fill:#7974a8;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.27857912;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1&quot; d=&quot;M 223.0524,93.392398 C 219.20011,98.704778 220.79297,105.62745 228.65735,104.11755 C 247.53689,106.04993 269.29127,103.79515 282.98494,89.743078 C 291.53155,81.164928 292.51219,67.114948 285.67902,57.149218 C 273.03517,37.845598 249.49078,28.210998 227.13016,24.917308 C 206.13162,22.269808 182.33966,24.681928 166.10423,39.000198 C 156.09779,47.483898 154.91659,62.847688 162.02845,73.553488 C 172.71995,90.249948 193.01343,98.102208 212.02094,101.4074 C 222.09756,100.05458 213.99805,89.275788 206.86457,90.878118 C 192.27602,87.073628 175.98331,78.722268 172.26607,63.153438 C 169.50702,52.054588 178.53557,42.304938 188.5998,38.788528 C 209.88339,30.831538 234.55144,34.037878 254.75882,43.892278 C 265.52916,49.496368 277.39598,58.802198 277.00409,71.857078 C 275.74273,85.42926
+ 8 261.25817,92.315258 248.87428,93.952788 C 240.32834,95.223948 231.57215,94.817478 223.0524,93.392398 z &quot; id=&quot;path3133&quot;/&gt;
++    &lt;path style=&quot;fill:#6b63c3;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.27857876;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1&quot; d=&quot;M 230.68841,83.607798 C 260.79502,55.758918 216.23959,54.778838 221.85357,55.837248 C 227.46755,56.895668 179.40916,42.718558 201.14572,78.676068 C 214.10799,81.969338 217.15468,82.629988 231.24368,83.701318 C 270.35194,102.35192 222.67978,122.92638 222.8305,136.90303 C 301.04237,152.41759 366.667,238.10198 351.28366,329.4434 C 335.90032,420.78482 247.40408,482.1155 153.74737,466.34223 C 60.090681,450.56897 -3.4355294,363.63531 11.947811,272.29389 C 27.331151,180.95247 119.72775,122.2939 192.33355,132.50664 C 197.01909,113.30038 162.32162,83.559408 201.70099,78.769588&quot; id=&quot;path2257&quot; sodipodi:nodetypes=&quot;csccccsscc&quot;/&gt;
++    &lt;path transform=&quot;matrix(1.025422,0.173911,-0.168428,1.007103,-82.22658,-326.0864)&quot; d=&quot;M 509.32831 562.38336 A 159.1651 159.1651 0 1 1  190.99811,562.38336 A 159.1651 159.1651 0 1 1  509.32831 562.38336 z&quot; sodipodi:ry=&quot;159.1651&quot; sodipodi:rx=&quot;159.1651&quot; sodipodi:cy=&quot;562.38336&quot; sodipodi:cx=&quot;350.16321&quot; id=&quot;path7568&quot; style=&quot;opacity:1;fill:#e7e9e7;fill-opacity:0.35309975;fill-rule:nonzero;stroke:#686871;stroke-width:1.301;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1&quot; sodipodi:type=&quot;arc&quot;/&gt;
++    &lt;path id=&quot;path1382&quot; style=&quot;opacity:0.97146738;fill:#e7e9e7;fill-opacity:1;fill-rule:nonzero;stroke:#686871;stroke-width:3.50099993;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1&quot; d=&quot;M 331.1427,354.10204 C 302.27579,434.33832 212.07768,475.43559 129.80763,445.83704 C 47.537571,416.23848 4.1958906,327.09718 33.062801,246.86091 C 61.929711,166.62464 152.12782,125.52736 234.39788,155.12591 C 316.66792,184.72447 360.00961,273.86578 331.1427,354.10204 M 160.7773,427.74309 L 156.39602,452.02612 M 52.746101,276.49548 L 28.008081,272.03211 M 337.47025,327.867 L 312.73222,323.40363 M 131.54351,154.34651 L 139.89073,177.56686 M 227.6164,421.60294 L 235.96362,444.8233 M 58.434831,344.63427 L 34.779391,353.13788 M 328.43597,248.33242 L 304.78052,256.83604 M 64.077151,198.44332 L 82.916221,214.37914 M 283.64086,384.99032 L 302.47995,400.92614 M 98.578471,399.61385 L 82.344061,418.80591 M 281.31207,183.257 L 265.07765,202.44908 M 205
+ .22212,148.49616 L 200.84084,172.77919&quot;/&gt;
++    &lt;path id=&quot;path13754&quot; style=&quot;opacity:0.625;fill:#c3c0c0;fill-opacity:0.61590295;fill-rule:nonzero;stroke:#4f4c4c;stroke-width:3.50099993;stroke-linecap:round;stroke-linejoin:round;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dashoffset:2.45069995;stroke-opacity:0.61455539&quot; d=&quot;M 216.83495,399.07891 C 212.20268,426.8324 185.91858,445.59745 158.16509,440.96518 C 130.4116,436.33291 111.64655,410.04881 116.27882,382.29533 C 120.91109,354.54183 147.19519,335.77678 174.94867,340.40905 C 202.70217,345.04132 221.46722,371.32542 216.83495,399.07891 z M 173.98796,340.2487 L 171.52921,354.97986 M 215.76732,399.55904 L 201.03618,397.1003 M 158.59224,440.37813 L 161.05098,425.64699 M 116.91885,384.37712 L 131.65,386.83587 M 147.63667,343.35584 L 153.59776,357.04954 M 212.84327,371.30326 L 199.14956,377.26435 M 187.12389,436.67681 L 181.1628,422.98311 M 121.6733,412.40737 L 135.36701,406.44628 M 126.88404,360.97812 L 139.34155,369.21598 M 196.88493,350.02997 L 188.64705,36
+ 2.48749 M 205.15454,421.85232 L 192.69703,413.61445 M 136.72612,431.16703 L 144.964,418.70952&quot;/&gt;
++    &lt;path id=&quot;path17471&quot; style=&quot;opacity:0.625;fill:#c3c0c0;fill-opacity:0.61590295;fill-rule:nonzero;stroke:#241f1f;stroke-width:5.32200003;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:2.45069995;stroke-opacity:0.98382748&quot; d=&quot;M 174.67369,394.25853 C 174.67369,398.91822 170.89191,402.70001 166.23221,402.70001 C 161.57251,402.70001 157.79072,398.91822 157.79072,394.25853 C 157.79072,389.59883 161.57251,385.81704 166.23221,385.81704 C 170.89191,385.81704 174.67369,389.59883 174.67369,394.25853 z M 165.58286,385.81703 L 164.28417,350.10306&quot;/&gt;
++    &lt;path id=&quot;path18352&quot; style=&quot;opacity:0.83831524;fill:none;fill-opacity:0.61590295;fill-rule:nonzero;stroke:#060505;stroke-width:7.32200003;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:2.45069995;stroke-opacity:0.99730458&quot; d=&quot;M 195.57556,292.15176 C 201.23107,300.00515 199.44729,310.96889 191.5939,316.6244 C 183.74051,322.27991 172.77677,320.49613 167.12125,312.64273 C 161.46575,304.78934 163.24953,293.82561 171.10293,288.17009 C 178.95632,282.51458 189.92005,284.29836 195.57556,292.15176 z M 171.10291,288.17006 L 95.210401,182.78372&quot;/&gt;
++  &lt;/g&gt;
++  &lt;metadata&gt;
++    &lt;rdf:RDF&gt;
++      &lt;cc:Work&gt;
++        &lt;dc:format&gt;image/svg+xml&lt;/dc:format&gt;
++        &lt;dc:type rdf:resource=&quot;<A HREF="http://purl.org/dc/dcmitype/StillImage">http://purl.org/dc/dcmitype/StillImage</A>&quot;/&gt;
++        &lt;cc:license rdf:resource=&quot;<A HREF="http://creativecommons.org/licenses/publicdomain/">http://creativecommons.org/licenses/publicdomain/</A>&quot;/&gt;
++        &lt;dc:publisher&gt;
++          &lt;cc:Agent rdf:about=&quot;<A HREF="http://openclipart.org/">http://openclipart.org/</A>&quot;&gt;
++            &lt;dc:title&gt;Open Clip Art Library&lt;/dc:title&gt;
++          &lt;/cc:Agent&gt;
++        &lt;/dc:publisher&gt;
++        &lt;dc:title&gt;chrono&lt;/dc:title&gt;
++        &lt;dc:date&gt;2006-09-18T07:01:59&lt;/dc:date&gt;
++        &lt;dc:description&gt;A chronometer : )&lt;/dc:description&gt;
++        &lt;dc:source&gt;<A HREF="http://openclipart.org/detail/162/chrono-by-technoargia&lt;/dc:source">http://openclipart.org/detail/162/chrono-by-technoargia&lt;/dc:source</A>&gt;
++        &lt;dc:creator&gt;
++          &lt;cc:Agent&gt;
++            &lt;dc:title&gt;technoargia&lt;/dc:title&gt;
++          &lt;/cc:Agent&gt;
++        &lt;/dc:creator&gt;
++        &lt;dc:subject&gt;
++          &lt;rdf:Bag&gt;
++            &lt;rdf:li&gt;chronometer&lt;/rdf:li&gt;
++            &lt;rdf:li&gt;clip art&lt;/rdf:li&gt;
++            &lt;rdf:li&gt;clipart&lt;/rdf:li&gt;
++            &lt;rdf:li&gt;clock&lt;/rdf:li&gt;
++            &lt;rdf:li&gt;contour&lt;/rdf:li&gt;
++            &lt;rdf:li&gt;meter&lt;/rdf:li&gt;
++            &lt;rdf:li&gt;pocket watch&lt;/rdf:li&gt;
++            &lt;rdf:li&gt;time&lt;/rdf:li&gt;
++          &lt;/rdf:Bag&gt;
++        &lt;/dc:subject&gt;
++      &lt;/cc:Work&gt;
++      &lt;cc:License rdf:about=&quot;<A HREF="http://creativecommons.org/licenses/publicdomain/">http://creativecommons.org/licenses/publicdomain/</A>&quot;&gt;
++        &lt;cc:permits rdf:resource=&quot;<A HREF="http://creativecommons.org/ns#Reproduction">http://creativecommons.org/ns#Reproduction</A>&quot;/&gt;
++        &lt;cc:permits rdf:resource=&quot;<A HREF="http://creativecommons.org/ns#Distribution">http://creativecommons.org/ns#Distribution</A>&quot;/&gt;
++        &lt;cc:permits rdf:resource=&quot;<A HREF="http://creativecommons.org/ns#DerivativeWorks">http://creativecommons.org/ns#DerivativeWorks</A>&quot;/&gt;
++      &lt;/cc:License&gt;
++    &lt;/rdf:RDF&gt;
++  &lt;/metadata&gt;
++&lt;/svg&gt;
+diff --git a/bulmages/bulmalib/plugins/pluginbl_alarm/pdefs_pluginbl_alarm.h b/bulmages/bulmalib/plugins/pluginbl_alarm/pdefs_pluginbl_alarm.h
+new file mode 100644
+index 0000000..1d68412
+--- /dev/null
++++ b/bulmages/bulmalib/plugins/pluginbl_alarm/pdefs_pluginbl_alarm.h
+@@ -0,0 +1,21 @@
++#ifndef PDEFS_PLUGINBL_ALARM_H
++#define PDEFS_PLUGINBL_ALARM_H
++
++
++#ifdef Q_OS_WIN32
++
++#ifdef PLUGINBL_ALARM
++#define PLUGINBL_ALARM_EXPORT __declspec(dllexport)
++#else
++#define PLUGINBL_ALARM_EXPORT __declspec(dllimport)
++#endif
++
++#else
++
++#define PLUGINBL_ALARM_EXPORT
++
++#endif
++
++
++#endif
++
+diff --git a/bulmages/bulmalib/plugins/pluginbl_alarm/pluginbl_alarm.cpp b/bulmages/bulmalib/plugins/pluginbl_alarm/pluginbl_alarm.cpp
+new file mode 100644
+index 0000000..4eb8564
+--- /dev/null
++++ b/bulmages/bulmalib/plugins/pluginbl_alarm/pluginbl_alarm.cpp
+@@ -0,0 +1,159 @@
++/***************************************************************************
++ *   Copyright (C) 2008 by Tomeu Borras Riera                              *
++ *   <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>                                                  *
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 2 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program; if not, write to the                         *
++ *   Free Software Foundation, Inc.,                                       *
++ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
++ ***************************************************************************/
++
++#include &lt;stdio.h&gt;
++
++#include &lt;QtWidgets/QAction&gt;
++#include &lt;QtWidgets/QMessageBox&gt;
++#include &lt;QtWidgets/QMessageBox&gt;
++#include &lt;QtWidgets/QWidget&gt;
++#include &lt;QtGui/QIcon&gt;
++#include &lt;QtWidgets/QApplication&gt;
++#include &lt;QtCore/QObject&gt;
++#include &lt;QtCore/QFile&gt;
++#include &lt;QtWidgets/QMenu&gt;
++#include &lt;QtWidgets/QMenuBar&gt;
++#include &lt;QtWidgets/QPushButton&gt;
++#include &lt;QtWidgets/QHBoxLayout&gt;
++#include &lt;QtGui/QDesktopServices&gt;
++
++#include &quot;local_blI18n.h&quot;
++#include &quot;pluginbl_alarm.h&quot;
++#include &quot;blform.h&quot;
++#include &quot;blmainwindow.h&quot;
++#include &quot;alarmamenu.h&quot;
++#include &quot;bltoolbutton.h&quot;
++#include &quot;blaction.h&quot;
++#include &quot;alarma.h&quot;
++#include &quot;visoralarm.h&quot;
++#include &quot;bldockwidget.h&quot;
++#include &quot;blfile.h&quot;
++
++
++QAction *viewAlarm;
++
++
++int entryPoint ( BlMainWindow *bcont )
++{
++    BL_FUNC_DEBUG
++
++    /// Inicializa el sistema de traducciones 'gettext'.
++    setlocale ( LC_ALL, &quot;&quot; );
++    blBindTextDomain ( &quot;pluginbl_alarm&quot;, g_confpr-&gt;value( CONF_DIR_TRADUCCION ).toLatin1().constData());
++    
++    BlMainCompany *main = bcont-&gt;company();
++
++
++    main-&gt;dbPatchVersionCheck(&quot;PluginBl_Alarm&quot;, &quot;1.5.1-0001&quot;);
++    
++    /// Vamos a probar con un docwindow.
++    BlDockWidget *doc1 = new BlDockWidget ( &quot;Alarmas&quot;, bcont );
++    doc1-&gt;setFeatures ( QDockWidget::AllDockWidgetFeatures );
++
++    doc1-&gt;setGeometry ( 100, 100, 100, 500 );
++    doc1-&gt;resize ( 330, 400 );
++    bcont-&gt;addDockWidget ( Qt::LeftDockWidgetArea, doc1 );
++    doc1-&gt;show();
++
++    visoralarm *corr = new visoralarm ( doc1 );
++    corr-&gt;setMainCompany ( main );
++    corr-&gt;presentar();
++    corr-&gt;dock = doc1;
++
++    doc1-&gt;setWidget ( corr );
++    
++    
++    /// A&ntilde;ade en el men&uacute; del programa la opci&amp;oacuteMn para
++    /// acceder al corrector.
++    viewAlarm = new QAction ( _(&quot;&amp;Alarmas&quot;), 0 );
++    viewAlarm-&gt;setCheckable ( true );
++    viewAlarm-&gt;setStatusTip ( _(&quot;Muestra/oculta las alarmas&quot;) );
++    viewAlarm-&gt;setWhatsThis ( _(&quot;Alarmas.\n\nMuestra/oculta las alarmas&quot;) );
++
++    QObject::connect ( viewAlarm, SIGNAL ( toggled ( bool ) ), doc1, SLOT ( setVisibilityState ( bool ) ) );
++    QObject::connect ( doc1, SIGNAL ( visibilityStateChanged ( bool ) ), viewAlarm, SLOT ( setChecked ( bool ) ) );
++    
++    QMenu *pPluginMenu = bcont-&gt;newMenu(_(&quot;&amp;Herramientas&quot;), &quot;menuHerramientas&quot;, &quot;menuAcerca_de&quot;);
++    pPluginMenu-&gt;addSeparator();    
++    pPluginMenu-&gt;addAction ( viewAlarm );
++
++    BlFile file ( g_confpr-&gt;value( CONF_DIR_USER ) + &quot;pluginalarmbl_&quot; + main-&gt;dbName() + &quot;.cfn&quot; );
++    if ( file.exists () ) {
++        doc1-&gt;show();
++        viewAlarm-&gt;setChecked ( true );
++    } else {
++        doc1-&gt;hide();
++        viewAlarm-&gt;setChecked ( false );
++    } // end if
++    
++    return 0;
++}
++
++
++
++int BlForm_load ( BlForm *ficha )
++{
++    BL_FUNC_DEBUG
++    AlQToolButton *eq = ficha-&gt;findChild&lt;AlQToolButton *&gt;(&quot;BotonAlarm&quot;);
++    
++    /// Comprueba la existencia del objeto.
++    if (eq != 0) {
++        eq-&gt;hazMenu();
++    } // end if
++    
++    return 0;
++    
++}
++
++
++int BlForm_DesFicha ( BlForm *ficha )
++{
++    return 0;
++}
++
++
++///
++/**
++\param l
++\return
++**/
++int BlForm_BlForm ( BlForm *l )
++{
++    BL_FUNC_DEBUG
++    return 0;
++}
++
++
++
++///
++/**
++\param l
++\return
++**/
++int BlForm_loadSpecs ( BlForm *l )
++{
++    BL_FUNC_DEBUG
++    new AlQToolButton ( l );
++    
++    return 0;
++}
++
++
++
+diff --git a/bulmages/bulmalib/plugins/pluginbl_alarm/pluginbl_alarm.h b/bulmages/bulmalib/plugins/pluginbl_alarm/pluginbl_alarm.h
+new file mode 100644
+index 0000000..50bae10
+--- /dev/null
++++ b/bulmages/bulmalib/plugins/pluginbl_alarm/pluginbl_alarm.h
+@@ -0,0 +1,39 @@
++/***************************************************************************
++ *   Copyright (C) 2008 by Tomeu Borras Riera                              *
++ *   <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>                                                  *
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 2 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program; if not, write to the                         *
++ *   Free Software Foundation, Inc.,                                       *
++ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
++ ***************************************************************************/
++
++#ifndef PLUGINBL_ALARM_H
++#define PLUGINBL_ALARM_H
++
++#include &quot;blfunctions.h&quot;
++#include &quot;blpostgresqlclient.h&quot;
++#include &quot;blmaincompany.h&quot;
++#include &quot;blform.h&quot;
++#include &quot;blmainwindow.h&quot;
++#include &quot;pdefs_pluginbl_alarm.h&quot;
++
++
++extern &quot;C&quot; PLUGINBL_ALARM_EXPORT int entryPoint ( BlMainWindow * );
++extern &quot;C&quot; PLUGINBL_ALARM_EXPORT int BlForm_load ( BlForm * );
++extern &quot;C&quot; PLUGINBL_ALARM_EXPORT int BlForm_DesBlForm ( BlForm * );
++extern &quot;C&quot; PLUGINBL_ALARM_EXPORT int BlForm_BlForm ( BlForm * );
++extern &quot;C&quot; PLUGINBL_ALARM_EXPORT int BlForm_loadSpecs ( BlForm * );
++
++#endif
++
+diff --git a/bulmages/bulmalib/plugins/pluginbl_alarm/visoralarm.cpp b/bulmages/bulmalib/plugins/pluginbl_alarm/visoralarm.cpp
+new file mode 100644
+index 0000000..0df90f5
+--- /dev/null
++++ b/bulmages/bulmalib/plugins/pluginbl_alarm/visoralarm.cpp
+@@ -0,0 +1,176 @@
++/***************************************************************************
++ *   Copyright (C) 2011 by Tomeu Borras Riera                              *
++ *   <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>                                                  *
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 2 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program; if not, write to the                         *
++ *   Free Software Foundation, Inc.,                                       *
++ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
++ ***************************************************************************/
++
++ 
++ 
++#include &quot;visoralarm.h&quot;
++#include &quot;bfcompany.h&quot;
++#include &quot;blfunctions.h&quot;
++#include &quot;bldockwidget.h&quot;
++#include &quot;blplugins.h&quot;
++
++#define CREAVARIABLESWEB
++#ifdef CREAVARIABLESWEB
++#include &lt;QtWebKitWidgets/QWebView&gt;
++#include &lt;QtWebKitWidgets/QWebPage&gt;
++#include &lt;QtWebKitWidgets/QWebFrame&gt;
++#endif
++#include &lt;QtCore/QRegExp&gt;
++#include &lt;QtCore/QTextStream&gt;
++#include &lt;QtCore/QUrlQuery&gt;
++#include &lt;QtWidgets/QDockWidget&gt;
++#include &lt;QtNetwork/QNetworkAccessManager&gt;
++#include &lt;QtCore/QEventLoop&gt;
++#include &lt;QtWidgets/QFileDialog&gt;
++#include &lt;QtNetwork/QNetworkRequest&gt;
++#include &lt;QtNetwork/QNetworkReply&gt;
++#include &lt;QtCore/QObject&gt;
++
++// Claves para el array de licencia
++#define USUARIO 0
++#define EMPRESA 1
++#define LICENCIA 2
++#define EJECUCIONES 3
++#define EMAIL 4
++
++#ifdef CREAVARIABLESWEB
++QWebView *g_webViewModal = NULL;
++QString g_valores[10];
++QString g_retorno = &quot;&quot;;
++#endif
++
++
++/// Funcion auxiliar
++void download(const QUrl &amp;url, const QString &amp;filename)
++{
++
++}
++
++
++
++/** Inicializacion de la clase.
++    En el constructor del corrector no se hacen tareas especiales. */
++/**
++\param parent
++\param fl
++**/
++visoralarm::visoralarm ( QWidget* parent, Qt::WindowFlags fl )
++        : BlWidget ( parent, fl )
++{
++    BL_FUNC_DEBUG
++    setupUi ( this );
++
++    BlDockWidget *par = (BlDockWidget *) parent;
++    mui_browser-&gt;page()-&gt;setLinkDelegationPolicy ( QWebPage::DelegateAllLinks );
++
++}
++
++
++void visoralarm::on_mui_browser_linkClicked ( const QUrl &amp; url  ) {
++  BL_FUNC_DEBUG
++    QUrlQuery uquery(url);
++    
++    QString op = uquery.queryItemValue(&quot;op&quot;);
++    if (op == &quot;borrar&quot;) {
++      QString query = &quot;DELETE FROM alarma WHERE idalarma = &quot; + uquery.queryItemValue(&quot;idalarma&quot;);
++      mainCompany()-&gt;runQuery(query);
++      presentar();
++    } else if (op == &quot;abrir&quot;) {
++        QString query = &quot;SELECT * FROM alarma WHERE idalarma = &quot; + uquery.queryItemValue(&quot;idalarma&quot;);
++	BlDbRecordSet *cur = mainCompany() -&gt;loadQuery ( query );
++	if ( ! cur-&gt;eof() ) {
++	    QString tabla = &quot;open_&quot;+cur-&gt;value(&quot;fichaalarma&quot;);
++//	    QString id = cur-&gt;value(&quot;idfichaalarma&quot;);
++	    /// Como estamos en un plugin buscamos nuevas formas de creacion de objetos.
++//	    g_plugParams = &id;
++//	    int resur = g_plugins-&gt;run ( tabla.toLatin1().constData(), ( BlMainCompany * ) mainCompany() );
++	    QString id = cur-&gt;value(&quot;fichaalarma&quot;) + &quot;_&quot; + cur-&gt;value(&quot;idfichaalarma&quot;);
++	    g_plugParams = &id;
++	    int resur = g_plugins-&gt;run (&quot;Plugin_open&quot;, ( BlMainCompany * ) mainCompany());
++	} // end if
++	delete cur;
++    } else {
++      QString query = &quot;UPDATE alarma SET fechaalarma = fechaalarma + '@1day'::interval WHERE idalarma = &quot; + uquery.queryItemValue(&quot;idalarma&quot;);
++      mainCompany()-&gt;runQuery(query);
++      presentar();
++    } // end if
++    
++}
++
++void visoralarm::sloadFinished ( bool ok  ) {
++
++}
++
++void visoralarm::on_mui_browser_loadFinished ( bool ok  ) {
++    mui_browser-&gt;page()-&gt;setLinkDelegationPolicy ( QWebPage::DelegateAllLinks );
++}
++
++void visoralarm::presentar() {
++    BL_FUNC_DEBUG
++    textBrowser = &quot;&lt;HTML&gt;&lt;BODY BGCOLOR='#FFFFFF'&gt;&quot;;
++    QString cadena;
++
++    QString query = &quot;SELECT *, (fechaalarma + horaalarma &lt;= now()) AS expirada FROM alarma ORDER BY fechaalarma, horaalarma&quot;;
++    BlDbRecordSet *cur = mainCompany() -&gt;loadQuery ( query );
++    while ( ! cur-&gt;eof() ) {
++        if (cur-&gt;value(&quot;expirada&quot;) == &quot;f&quot;) {
++	    cadena = &quot;&lt;img src='<A HREF="file://">file://</A>&quot; + g_confpr-&gt;value( CONF_PROGDATA ) +&quot;icons/chrono.png'&gt;&nbsp;&nbsp;  &lt;BR&gt; &quot; +cur-&gt;value( &quot;fechaalarma&quot; ) +&quot; &quot; + cur-&gt;value( &quot;horaalarma&quot; )  +&quot; &lt;br&gt;&lt;b&gt;&quot; +cur-&gt;value( &quot;subjectalarma&quot; ) +&quot;&lt;/b&gt;&lt;BR&gt;&quot; + cur-&gt;value(&quot;textoalarma&quot;);
++	} else {
++	    cadena = &quot;&lt;br&gt;&lt;img src='<A HREF="file://">file://</A>&quot; + g_confpr-&gt;value( CONF_PROGDATA ) +&quot;icons/chrono.png'&gt;&nbsp;&nbsp;  &lt;BR&gt; &quot; +&quot; &lt;font color='red'&gt;&quot; + cur-&gt;value( &quot;fechaalarma&quot; )  + cur-&gt;value( &quot;horaalarma&quot; )  +&quot; &lt;br&gt;&lt;b&gt;&quot; +cur-&gt;value( &quot;subjectalarma&quot; ) +&quot;&lt;/b&gt;&lt;BR&gt;&quot; + cur-&gt;value(&quot;textoalarma&quot;) + &quot; &lt;/font&gt;&quot;;
++	} // end if
++        agregarError ( cadena, &quot;alarma&quot;, cur-&gt;value( &quot;idalarma&quot; ) );
++        cur-&gt;nextRecord();
++    } // end while
++    delete cur;
++
++    
++    textBrowser += &quot;&lt;/BODY&gt;&lt;/HTML&gt;&quot;;
++    mui_browser-&gt;setHtml ( textBrowser );
++
++    QTimer::singleShot(10000, this, SLOT(presentar()));
++}
++
++
++/** Se encarga de agregar un error en el browser que los presenta.
++    Sirve para para introducir los errores hayados en el corrector y que se vean por
++    pantalla. */
++/**
++\param texto
++\param texto1
++\param texto2
++**/
++void visoralarm::agregarError ( QString texto, QString texto1, QString texto2 )
++{
++    BL_FUNC_DEBUG
++    textBrowser += &quot;&lt;HR&gt;&lt;table&gt;&lt;tr&gt;&lt;td colspan=2&gt;&quot; + texto + &quot;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;a name='masinfo' href='abredoc?op=posponer&amp;tabla=&quot;+texto1+&quot;&amp;idalarma=&quot; + texto2 + &quot;'&gt;Posponer Alarma&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a name='&quot; + texto1 + &quot;' href='abredoc?op=borrar&amp;tabla=&quot;+texto1+&quot;&amp;idalarma=&quot; + texto2 + &quot;'&gt;Borrar&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan='2'&gt;&lt;a name='abredoc' href='abredoc?op=abrir&amp;tabla=&quot;+texto1+&quot;&amp;idalarma=&quot; + texto2 + &quot;'&gt;Abrir Documento&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&quot;;
++    
++}
++
++
++///
++/**
++**/
++visoralarm::~visoralarm()
++{
++    BL_FUNC_DEBUG
++}
++
++
++
+diff --git a/bulmages/bulmalib/plugins/pluginbl_alarm/visoralarm.h b/bulmages/bulmalib/plugins/pluginbl_alarm/visoralarm.h
+new file mode 100644
+index 0000000..66196f0
+--- /dev/null
++++ b/bulmages/bulmalib/plugins/pluginbl_alarm/visoralarm.h
+@@ -0,0 +1,60 @@
++/***************************************************************************
++ *   Copyright (C) 2011 by Tomeu Borras Riera                              *
++ *   <A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">tborras en conetxia.com</A>                                                  *
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 2 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program; if not, write to the                         *
++ *   Free Software Foundation, Inc.,                                       *
++ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
++ ***************************************************************************/
++
++#ifndef ALARMWIDGET_H
++#define ALARMWIDGET_H
++
++#include &lt;QtWidgets/QDockWidget&gt;
++#include &lt;QtCore/QString&gt;
++#include &lt;QtCore/QObject&gt;
++#include &lt;QtWidgets/QWidget&gt;
++
++#include &quot;blfunctions.h&quot;
++#include &quot;ui_visoralarmbase.h&quot;
++#include &quot;pdefs_pluginbl_alarm.h&quot;
++#include &quot;blwidget.h&quot;
++
++
++/** Ver documentos en formato HTML. */
++class PLUGINBL_ALARM_EXPORT visoralarm : public BlWidget, public Ui_visoralarmbase
++{
++    Q_OBJECT
++
++public:
++    /// El informe generado se forma en HTML y se presenta mediante este QString.
++    QString textBrowser;
++    /// El corrector es una ventana del tipo dock, que se puede anexar a las esquinas
++    /// del worspace de la aplicacion. Este puntero apunta a la ventana contenedora del
++    /// corrector.
++    QDockWidget *dock;
++
++public:
++    visoralarm ( QWidget* parent = 0, Qt::WindowFlags fl = 0 );
++    ~visoralarm();
++    void agregarError(QString , QString , QString );
++
++public slots:
++    virtual void on_mui_browser_linkClicked(const QUrl &amp;url);
++    virtual void sloadFinished(bool ok);
++    virtual void on_mui_browser_loadFinished(bool ok);
++    virtual void presentar();
++};
++
++#endif
+diff --git a/bulmages/bulmalib/plugins/pluginbl_alarm/visoralarmbase.ui b/bulmages/bulmalib/plugins/pluginbl_alarm/visoralarmbase.ui
+new file mode 100644
+index 0000000..9cf28f9
+--- /dev/null
++++ b/bulmages/bulmalib/plugins/pluginbl_alarm/visoralarmbase.ui
+@@ -0,0 +1,63 @@
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
++&lt;ui version=&quot;4.0&quot;&gt;
++ &lt;class&gt;visoralarmbase&lt;/class&gt;
++ &lt;widget class=&quot;QWidget&quot; name=&quot;visoralarmbase&quot;&gt;
++  &lt;property name=&quot;geometry&quot;&gt;
++   &lt;rect&gt;
++    &lt;x&gt;0&lt;/x&gt;
++    &lt;y&gt;0&lt;/y&gt;
++    &lt;width&gt;260&lt;/width&gt;
++    &lt;height&gt;504&lt;/height&gt;
++   &lt;/rect&gt;
++  &lt;/property&gt;
++  &lt;property name=&quot;sizePolicy&quot;&gt;
++   &lt;sizepolicy hsizetype=&quot;Preferred&quot; vsizetype=&quot;Preferred&quot;&gt;
++    &lt;horstretch&gt;0&lt;/horstretch&gt;
++    &lt;verstretch&gt;0&lt;/verstretch&gt;
++   &lt;/sizepolicy&gt;
++  &lt;/property&gt;
++  &lt;property name=&quot;minimumSize&quot;&gt;
++   &lt;size&gt;
++    &lt;width&gt;260&lt;/width&gt;
++    &lt;height&gt;250&lt;/height&gt;
++   &lt;/size&gt;
++  &lt;/property&gt;
++  &lt;property name=&quot;maximumSize&quot;&gt;
++   &lt;size&gt;
++    &lt;width&gt;2630&lt;/width&gt;
++    &lt;height&gt;16777215&lt;/height&gt;
++   &lt;/size&gt;
++  &lt;/property&gt;
++  &lt;property name=&quot;windowTitle&quot;&gt;
++   &lt;string&gt;Navegador&lt;/string&gt;
++  &lt;/property&gt;
++  &lt;layout class=&quot;QGridLayout&quot; name=&quot;gridLayout&quot;&gt;
++   &lt;property name=&quot;margin&quot;&gt;
++    &lt;number&gt;0&lt;/number&gt;
++   &lt;/property&gt;
++   &lt;property name=&quot;spacing&quot;&gt;
++    &lt;number&gt;0&lt;/number&gt;
++   &lt;/property&gt;
++   &lt;item row=&quot;0&quot; column=&quot;0&quot;&gt;
++    &lt;widget class=&quot;QWebView&quot; name=&quot;mui_browser&quot; native=&quot;true&quot;&gt;
++     &lt;property name=&quot;url&quot; stdset=&quot;0&quot;&gt;
++      &lt;url&gt;
++       &lt;string&gt;about:blank&lt;/string&gt;
++      &lt;/url&gt;
++     &lt;/property&gt;
++    &lt;/widget&gt;
++   &lt;/item&gt;
++  &lt;/layout&gt;
++ &lt;/widget&gt;
++ &lt;customwidgets&gt;
++  &lt;customwidget&gt;
++   &lt;class&gt;QWebView&lt;/class&gt;
++   &lt;extends&gt;QWidget&lt;/extends&gt;
++   &lt;header&gt;QtWebKit/QWebView&lt;/header&gt;
++  &lt;/customwidget&gt;
++ &lt;/customwidgets&gt;
++ &lt;resources&gt;
++  &lt;include location=&quot;../../../bulmages.qrc&quot;/&gt;
++ &lt;/resources&gt;
++ &lt;connections/&gt;
++&lt;/ui&gt;
+
+
+<A HREF="https://gitorious.org/bulmages">https://gitorious.org/bulmages</A>
+------------------------------------------------------------------------
+
+You are receiving this email because you have chosen to be notified by
+email whenever this favorite has new activity. You can manage your
+favorite subscriptions at <A HREF="https://gitorious.org/favorites">https://gitorious.org/favorites</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="007697.html">[BulmaGés]Merge requests
+</A></li>
+	<LI>Próximo mensaje: <A HREF="007699.html">[BulmaGés] [Gitorious] Activity: tborras pushed 1	commits to master...
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#7698">[ fecha ]</a>
+              <a href="thread.html#7698">[ hilo ]</a>
+              <a href="subject.html#7698">[ asunto ]</a>
+              <a href="author.html#7698">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>

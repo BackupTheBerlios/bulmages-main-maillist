@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [BulmaGés]Inkscape y sus problemas
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/bulmages-main/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FInkscape_y_sus_proble%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fmas%3F%3D&In-Reply-To=%3C20081213173011.GB6405%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000501.html">
+   <LINK REL="Next"  HREF="000525.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[BulmaGés]Inkscape y sus problemas </H1>
+    <B>Xavi Drudis Ferran</B> 
+    <A HREF="mailto:bulmages-main%40lists.berlios.de?Subject=Re%3A%20%3D%3Futf-8%3Fb%3FW0J1bG1hR8Opc10%3D%3F%3D%0A%09%3D%3Fiso-8859-1%3Fq%3FInkscape_y_sus_proble%3F%3D%20%3D%3Fiso-8859-1%3Fq%3Fmas%3F%3D&In-Reply-To=%3C20081213173011.GB6405%40localhost%3E"
+       TITLE="[BulmaGés]Inkscape y sus problemas">xdrudis en tinet.cat
+       </A><BR>
+    <I>Sab Dic 13 18:30:11 CET 2008</I>
+    <P><UL>
+        <LI>Mensaje anterior: <A HREF="000501.html">[BulmaGés]Inkscape y sus problemas
+</A></li>
+        <LI>Próximo mensaje: <A HREF="000525.html">[BulmaGés]Inkscape y sus problemas
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#505">[ fecha ]</a>
+              <a href="thread.html#505">[ hilo ]</a>
+              <a href="subject.html#505">[ asunto ]</a>
+              <a href="author.html#505">[ autor ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Fri, Dec 12, 2008 at 05:59:37PM +0100, Raül Martínez i Peris wrote:
+&gt;<i> Perdón por no contestar antes.
+</I>&gt;<i> 
+</I>&gt;<i> Como dice Fco. Javier el problema viene de varios iconos en concreto.
+</I>&gt;<i> 
+</I>&gt;<i> Me he pasado un pelín con el de cash (valga el ejemplo) en el que hay 19.000
+</I>&gt;<i> líneas de código svg.
+</I>&gt;<i> 
+</I>&gt;<i> Así, sería interesante dirimir qué iconos sobrepasan cierta medida para
+</I>&gt;<i> ponerlos a &quot;régimen&quot;.
+</I>&gt;<i> 
+</I>
+Yo no me entero de nada con svg ni gráficos en general. Pero a raíz de una 
+conversación con Leo que intentaba ayudarme a poder compilar reduje el 
+tamaño de los superiores a 500k pasandólos por karbon. Lo que no tengo ni idea
+es si han quedado igual o mucho más feos. Ni idea, no los he mirado y tengo
+poco criterio para eso. 
+
+Pero en e proceso, busqué los iconos de más de cierta medida, y es tan 
+fácil (en GNU/linux) como ir al directorio donde estan y poner 
+
+find . -size +500k -name &quot;*.svg&quot; 
+
+(o el temaño umbral deseado en lugar de +500k ) 
+
+De hecho adjunto dos scripts guarros guarros (uno llama a otro y está hardcoded la ubicación 
+en el directorio home) . Si te pones en un directorio y llamas a ~/karbonitza_tots
+el programa busca todos los svg que cuelguen de ese árbol, los abre con karbon 
+y los graba encima del mismo fichero. 
+
+Cuidado que no sé cuánto daño puede hacer eso. Sólo fue una sugerencia de 
+Leo. Por lo poco que entiendo el resultado de eso no debería subirse a svn
+(pero igual ayuda a alguien a compilar hasta que se arregle mejor el tema). 
+
+&gt;<i> En cuanto al error linearGrandient476 intentaré buscar donde persisten los
+</I>&gt;<i> degradados elípticos (que es la fuente del problema) y los resolveré
+</I>&gt;<i> definitivamente. Si en este punto alguien puede orientarme en qué archivos
+</I>&gt;<i> en concreto iré directo y no se pasará ninguno.
+</I>&gt;<i> 
+</I>
+No sabría decirte. 
+
+&gt;<i> Lamentablemente los iconos en svg tienen el inconveniente de que siempre
+</I>&gt;<i> (repito: siempre) tienen que ser procesados por el sistema para ser
+</I>&gt;<i> dibujados, mientras que un icono png va directo a pantalla.
+</I>&gt;<i>
+</I>
+Sí y no. En teoría no hay nada que obligue a procesar un svg más de una vez. 
+Me explico. Si distribuyes svg tienes la ventaja de todos los detalles tan
+bien expresados como sea posible a la resolución que cada usuario necesite.
+Vale. Pero siempre es posible que la primera vez que un usuario muestre 
+un svg calcule su representación a la resolución que sea y luego guarde
+ese resultado como .png en ~/.bulmages . Eso es teoría. Luego habría 
+que ver como hacerlo en la práctica, pero al menos tendrías lo mejor de
+los dos mundos, la mejor imagén a la resolución requerida y el menor
+tiempo de proceso a partir de la segunda vez. A no ser que siempre muestres
+los gráficos a resoluciones diferentes. Pero me parece que estamos hablando
+de iconos de botones que para un usuario en concreto van a ser siempre 
+a la misma resolución, o a lo sumo a unas pocas distintas si usa monitores
+distintos. No he visto que los botones cambien de tamaño cuando cambias el 
+tamaño de la ventana ni nada de eso, no ? 
+Entonces es _teóricamente_ posible poner una cache. Pero hablo sin saber 
+el uso exacto que se hace en bulmages. 
+
+No entiendo bien ahora mismo qué proceso de la compilación necesita procesar
+svg. Si ese proceso es un problema quizás sea posible subir a svn el resultado
+de ese procesado, de manera que sólo tenga que repetirse cuando cambien 
+los svg originales (no sé si ya se está haciendo así). En general nunca se
+suben a svn resultados de compilación (objetos, librerías, etc.) pero si 
+en algún caso una parte de la compilación es muy lenta y el resultado 
+cambia poco a menudo, se pueden subir los resultados además de los fuentes, 
+me parece a mi. 
+
+&gt;<i> Tal vez, teniendo en cuenta que los bulmagés&amp;... tienen la clara
+</I>&gt;<i> funcionalidad de ser útiles en máquinas modestas para llevar una simple
+</I>&gt;<i> contabilidad y no pretenden ser un virtuosismo de funciones explosivas que
+</I>&gt;<i> aderecen la vista a lo &quot;Hollywood&quot;. Creo que debería después de solucionados
+</I>&gt;<i> los errores de los gradientes se deberían incorporar los iconos a tamaño
+</I>&gt;<i> exato en formato png y dejar la posibilidad de que al cambiar de tema se
+</I>&gt;<i> utilicen en formato svg para máquina potentes y chulis.
+</I>&gt;<i> 
+</I>
+Quizás complicándonos un poco más podamos mostrarlos chulis en cualquier 
+máquina. Eso siempre suponiendo que los botones no se muestran siempre 
+del mismo número de píxels sino que depende de la resolución del usuario. 
+Si se muestran siempre a la misma resolución para todos los usuarios, 
+entonces no veo porque iba a ser más chuli un svg que el png resultante
+de ese svg a la resolución prefijada. Pero conste que no sé de gráficos. 
+
+ 
+&gt;<i> 2008/12/12 Fco. Javier M. C. &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">fcojavmc en todo-redes.com</A>&gt;
+</I>&gt;<i> 
+</I>&gt;<i> &gt; Hola.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; No estoy deacuerdo. No creo que el problema venga de usar inkscape o
+</I>&gt;<i> &gt; usar karbon. El problema creo que viene de los mismos iconos, del diseño
+</I>&gt;<i> &gt; tan elaborado que tiene. Un ejemplo: 'cash_list.svg' tiene 4 megas. Por
+</I>&gt;<i> &gt; muy bonito que sea siempre será pesado procesar todo esto. Lo que he
+</I>&gt;<i> &gt; visto al abrir un svg en karbon es que borra casi todos los detalles y
+</I>&gt;<i> &gt; luego al guardarlo pesa menos, lógicamente.
+</I>&gt;<i> &gt;
+</I>
+Fco. Javier, lo que quieres decir es que después de pasar por karbon se ve peor pero 
+ocupa menos ? O sólo que borra detalles redundantes o cosas que de alguna 
+manera eran prescindibles ? 
+
+
+
+
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/bulmages-main">xdrudis en tinet.cat</A>
+Signa per fer Collserola parc natural com cal
+<A HREF="http://www.collserola.org/salvemelparcnatural/">http://www.collserola.org/salvemelparcnatural/</A>
+------------ próxima parte ------------
+#!/bin/bash
+if { dcop | grep karbon ; }  ; then  { echo &quot;tanca tots els karbon oberts&quot; ; exit 1 ; }  ; fi ; 
+file=$1
+   ls -l &quot;$file&quot; ;
+   KARBON=&quot;&quot;;
+   karbon &quot;$file&quot; &amp;
+   while [ -z $KARBON ] ; do { KARBON=`dcop |grep karbon` ; echo &quot;:$KARBON&quot; ; } ; done ;
+   DOC=&quot;&quot;;
+   while [ -z $DOC ] ; do {  DOC=`dcop $KARBON |grep -E '^Document'`  ; echo &quot;d$DOC&quot; ; } ; done ;
+   while [[ `dcop $KARBON $DOC isLoading` == &quot;true&quot; ]] ; do { sleep 3 ; echo -n &quot;.&quot; ; } ; done ;
+   dcop $KARBON $DOC saveAs  &quot;<A HREF="file://`pwd`/$file">file://`pwd`/$file</A>&quot; ;
+   sleep 30 ;
+   dcop $KARBON MainApplication-Interface quit ;
+   while { dcop | grep karbon ; } ;  do { sleep 3 ; echo -n &quot;!&quot; ; } ; done ;
+   ls -l &quot;$file&quot; ;
+   echo &quot;-------------------&quot;;
+------------ próxima parte ------------
+#!/bin/bash
+if { dcop | grep karbon ; }  ; then  { echo &quot;tanca tots els karbon oberts&quot; ; exit 1 ; }  ; fi ; 
+find . -size +500k -name &quot;*.svg&quot; -exec ~/karbonitza &quot;{}&quot; &quot;;&quot;
+ 
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Mensaje anterior: <A HREF="000501.html">[BulmaGés]Inkscape y sus problemas
+</A></li>
+	<LI>Próximo mensaje: <A HREF="000525.html">[BulmaGés]Inkscape y sus problemas
+</A></li>
+         <LI> <B>Mensajes ordenados por:</B> 
+              <a href="date.html#505">[ fecha ]</a>
+              <a href="thread.html#505">[ hilo ]</a>
+              <a href="subject.html#505">[ asunto ]</a>
+              <a href="author.html#505">[ autor ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/bulmages-main">Más información sobre la lista de distribución Bulmages-main </a><br>
+</body></html>
